@@ -545,7 +545,6 @@ namespace PMDS.DB
             }
         }
 
-
 		//----------------------------------------------------------------------------
 		/// <summary>
 		/// vergangene Aufenthalte für Patienten ermitteln
@@ -558,6 +557,7 @@ namespace PMDS.DB
 			DataBase.Fill(daHistoryByPatient, ds.History);
 			return ds.History;
 		}
+
         public bool updateAufnahmeEntlassung(Guid IDAufenthalt, DateTime Aufnahmezeitpunkt, DateTime Entlassungszeitpunkt)
         {
             OleDbCommand cmd = new OleDbCommand();
@@ -572,6 +572,5 @@ namespace PMDS.DB
             cmd.ExecuteNonQuery();
             return true;
         }
-
 	}
 }

@@ -218,6 +218,9 @@ namespace PMDS.Calc.UI
             {
                 PMDS.Global.ENV.HandleException(ex);
             }
+            finally
+            {
+            }
         }
 
         public void showAnzButtonsCalc(ref PMDS.Calc.Logic.dbPMDS db, DateTime von, DateTime bis, Nullable<DateTime> vonRechDatum, Nullable<DateTime> bisRechDatum,

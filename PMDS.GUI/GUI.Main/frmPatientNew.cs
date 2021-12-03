@@ -14,7 +14,7 @@ namespace PMDS.GUI
 
 	public class frmPatientNew : frmBase
 	{
-		private bool _canClose = false;
+		private bool _canClose;
 		private QS2.Desktop.ControlManagment.BaseLabel lblInfo1;
 		private QS2.Desktop.ControlManagment.BaseLabel lblInfo2;
 		private PMDS.GUI.ucPatientNew ucPatientNew1;
@@ -26,15 +26,15 @@ namespace PMDS.GUI
 
 		public frmPatientNew(Patient pat)
 		{
+            //Nicht in Verwendung. Es wird frmWizzard verwendet!
+
 			InitializeComponent();
-            
-            if (!DesignMode)
+
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
             }
-
-
             ucPatientNew1.Patient = pat;
 		}
 
@@ -68,7 +68,6 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            PMDS.BusinessLogic.Patient patient1 = new PMDS.BusinessLogic.Patient();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPatientNew));
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
@@ -129,71 +128,7 @@ namespace PMDS.GUI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucPatientNew1.Location = new System.Drawing.Point(0, 136);
             this.ucPatientNew1.Name = "ucPatientNew1";
-            patient1.abwesenheitenHändBerech = false;
-            patient1.Anatomie = false;
-            patient1.Angehörige = "";
-            patient1.ArbeitslosBezSeit = "";
-            patient1.Besonderheit = "";
-            patient1.Betreuer = "";
-            patient1.blob_Einverständniserklärung = null;
-            patient1.BlutGruppe = "";
-            patient1.DatumPensionsteilungsantrag = null;
-            patient1.DatumPflegegeldantrag = null;
-            patient1.Depotinjektion = "";
-            patient1.DNR = false;
-            patient1.EinverständniserklärungFileType = "";
-            patient1.Einzelzimmer = false;
-            patient1.ErlernterBeruf = "";
-            patient1.Familienstand = "";
-            patient1.FIBUKonto = "";
-            patient1.Geburtsdatum = null;
-            patient1.Geburtsort = "";
-            patient1.Hauptversicherung = "";
-            patient1.Hausarzt = "";
-            patient1.ID = new System.Guid("c8bf197a-7f07-4ec8-a1fc-5ff78ca72f74");
-            patient1.IDAbteilung = null;
-            patient1.IDAdresse = new System.Guid("5fa4373a-dce3-4188-b2d6-7ee19dbcd1a5");
-            patient1.IDBereich = null;
-            patient1.IDKontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
-            patient1.jpg_Einverständniserklärung = null;
-            patient1.Kennwort = "";
-            patient1.Klasse = "";
-            patient1.Klientennummer = "";
-            patient1.Konfession = "";
-            patient1.KrankengeldSeit = "";
-            patient1.KrankenKasse = "";
-            patient1.KZUeberlebender = false;
-            patient1.LedigerName = "";
-            patient1.Milieubetreuung = false;
-            patient1.minSaldo = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            patient1.Nachname = "";
-            patient1.NameVollstaendig = "";
-            patient1.PensionsteilungsantragJN = false;
-            patient1.PflegegeldantragJN = false;
-            patient1.Resusfaktor = "";
-            patient1.RezeptGebuehrbefreiungJN = false;
-            patient1.RollungBis = null;
-            patient1.RollungVon = null;
-            patient1.Sachwalter = "";
-            patient1.SachWalterBelange = "";
-            patient1.SachWalterBis = null;
-            patient1.SachWalterVon = null;
-            patient1.Selbstzahler = false;
-            patient1.Sexus = "";
-            patient1.Staatsb = "";
-            patient1.SterbeRegel = "";
-            patient1.Titel = "";
-            patient1.Todeszeitpunkt = null;
-            patient1.Vermerk = "";
-            patient1.VersicherungsNr = "";
-            patient1.Verstorben = false;
-            patient1.Vorname = "";
-            patient1.WohnungAbgemeldetJN = false;
-            this.ucPatientNew1.Patient = patient1;
+            this.ucPatientNew1.Patient = null;
             this.ucPatientNew1.ReadOnlyVersDat = false;
             this.ucPatientNew1.Size = new System.Drawing.Size(574, 528);
             this.ucPatientNew1.TabIndex = 0;
@@ -210,7 +145,7 @@ namespace PMDS.GUI
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(424, 672);
+            this.btnCancel.Location = new System.Drawing.Point(465, 656);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
             this.btnCancel.TabIndex = 2;
@@ -224,7 +159,7 @@ namespace PMDS.GUI
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             appearance5.Image = ((object)(resources.GetObject("appearance5.Image")));
-            appearance5.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnOK.Appearance = appearance5;
             this.btnOK.AutoWorkLayout = false;
@@ -232,12 +167,13 @@ namespace PMDS.GUI
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(520, 672);
+            this.btnOK.Location = new System.Drawing.Point(465, 694);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(48, 32);
+            this.btnOK.Size = new System.Drawing.Size(88, 32);
             this.btnOK.TabIndex = 1;
             this.btnOK.TabStop = false;
-            this.btnOK.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
+            this.btnOK.Text = "Speichern";
+            this.btnOK.TYPE = PMDS.GUI.ucButton.ButtonType.Save;
             this.btnOK.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
@@ -246,7 +182,7 @@ namespace PMDS.GUI
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(574, 716);
+            this.ClientSize = new System.Drawing.Size(574, 738);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);

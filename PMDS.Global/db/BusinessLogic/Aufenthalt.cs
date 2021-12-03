@@ -8,36 +8,40 @@ using PMDS.Global.db.Patient;
 
 namespace PMDS.BusinessLogic
 {
-
-
 	public class Aufenthalt : BusinessBase, IBusinessBase, IZusatz
 	{
 		private DBAufenthalt _db = new DBAufenthalt();
-		private AufenthaltVerlauf _aufVerlauf = null;
-		private AufenthaltVerlauf _curVerlauf = null;
-		private UrlaubVerlauf	_urlaub = null;
-
-
+		private AufenthaltVerlauf _aufVerlauf;
+		private AufenthaltVerlauf _curVerlauf;
+		private UrlaubVerlauf	_urlaub;
 
 		protected override IDBBase DBInterface
 		{
 			get	{	return (IDBBase)_db;	}
 		}
 
-
-
 		public static dsAufenthalt.AufenthaltDataTable ByPatient(Guid id)
 		{
-			return new DBAufenthalt().ByPatient(id);
+			using (DBAufenthalt db = new DBAufenthalt())
+			{
+				return db.ByPatient(id);
+			}
 		}
 
 		public static dsAufenthalt.HistoryDataTable HistoryByPatient(Guid id)
 		{
-			return new DBAufenthalt().HistoryByPatient(id);
+			using (DBAufenthalt db = new DBAufenthalt())
+			{
+				return db.HistoryByPatient(id);
+			}
 		}
+
         public bool updateAufnahmeEntlassung(Guid IDAufenthalt, DateTime Aufnahmezeitpunkt, DateTime Entlassungszeitpunkt)
         {
-            return new DBAufenthalt().updateAufnahmeEntlassung(IDAufenthalt, Aufnahmezeitpunkt, Entlassungszeitpunkt);
+			using (DBAufenthalt db = new DBAufenthalt())
+            {
+				return db.updateAufnahmeEntlassung(IDAufenthalt, Aufnahmezeitpunkt, Entlassungszeitpunkt);
+			}
         }
 
         public static Guid LastByPatient(Guid id)
@@ -67,18 +71,23 @@ namespace PMDS.BusinessLogic
         {
             try
             {
-                PMDS.Global.db.ERSystem.sqlManange sqlManange1 = new Global.db.ERSystem.sqlManange();
-                sqlManange1.initControl();
-                PMDS.Global.db.ERSystem.dsKlientenliste ds = new Global.db.ERSystem.dsKlientenliste ();
-                sqlManange1.getPatientActAufenthalt(id, 0, ref ds);
-                if (ds.AktAufenthaltPatient.Rows.Count != 1)
+				Guid retValue = Guid.Empty;
+				if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                 {
-                    return Guid.Empty;
-                    //throw new Exception("ds.vKlientenliste.Rows.Count != 1 for IDPatient '" + id.ToString() + "'!");
-                }
-                PMDS.Global.db.ERSystem.dsKlientenliste.AktAufenthaltPatientRow rvKlientenliste = (PMDS.Global.db.ERSystem.dsKlientenliste.AktAufenthaltPatientRow)ds.AktAufenthaltPatient.Rows[0];
-                return rvKlientenliste.ID;
-
+					using (PMDS.Global.db.ERSystem.sqlManange sqlManange1 = new Global.db.ERSystem.sqlManange())
+					{
+						sqlManange1.initControl();
+						PMDS.Global.db.ERSystem.dsKlientenliste ds = new Global.db.ERSystem.dsKlientenliste();
+						sqlManange1.getPatientActAufenthalt(id, 0, ref ds);
+						if (ds.AktAufenthaltPatient.Rows.Count != 1)
+						{
+							return retValue;
+						}
+						PMDS.Global.db.ERSystem.dsKlientenliste.AktAufenthaltPatientRow rvKlientenliste = (PMDS.Global.db.ERSystem.dsKlientenliste.AktAufenthaltPatientRow)ds.AktAufenthaltPatient.Rows[0];
+						retValue = rvKlientenliste.ID;
+					}
+				}
+				return retValue;
             }
             catch (Exception ex)
             {
@@ -108,23 +117,20 @@ namespace PMDS.BusinessLogic
 			_urlaub = null;
             base.Read();
 
-            DBAufenthaltVerlauf dbVerlauf = new DBAufenthaltVerlauf();
-            dsAufenthaltVerlauf.AufenthaltVerlaufDataTable dt = dbVerlauf.ByAufenthalt(this.ID);
-            if (dt.Rows.Count > 0)
+			using (DBAufenthaltVerlauf dbVerlauf = new DBAufenthaltVerlauf())
             {
-                _curVerlauf = new AufenthaltVerlauf(IDAufenthaltVerlauf);
+				dsAufenthaltVerlauf.AufenthaltVerlaufDataTable dt = dbVerlauf.ByAufenthalt(this.ID);
+				if (dt.Rows.Count > 0)
+				{
+					_curVerlauf = new AufenthaltVerlauf(IDAufenthaltVerlauf);
 
-                Guid id = AufenthaltVerlauf.FirsByAufenthalt(ID);
-                if (id == IDAufenthaltVerlauf)
-                    _aufVerlauf = _curVerlauf;
-                else
-                    _aufVerlauf = new AufenthaltVerlauf(id);
-            }
-            else
-            {
-                string xy = "sdf";
-            }
- 
+					Guid id = AufenthaltVerlauf.FirsByAufenthalt(ID);
+					if (id == IDAufenthaltVerlauf)
+						_aufVerlauf = _curVerlauf;
+					else
+						_aufVerlauf = new AufenthaltVerlauf(id);
+				}
+			}
 		}
 
 		public override void Write()

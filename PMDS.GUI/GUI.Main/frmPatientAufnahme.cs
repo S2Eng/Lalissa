@@ -27,7 +27,7 @@ namespace PMDS.GUI
 	//----------------------------------------------------------------------------
 	public class frmPatientAufnahme : QS2.Desktop.ControlManagment.baseForm 
 	{
-		private bool _canClose = false;
+		private bool _canClose;
 		private QS2.Desktop.ControlManagment.BaseTextEditor txtSearch;
         private QS2.Desktop.ControlManagment.BaseLabel lblSuchbegriff;
 		private PMDS.GUI.ucButton btnCancel;
@@ -41,8 +41,6 @@ namespace PMDS.GUI
         private dsPatientNichtAufgenommen dsPatientNichtAufgenommen1;
         private System.ComponentModel.IContainer components;
 
-        
-
 		//----------------------------------------------------------------------------
 		/// <summary>
 		/// Konstruktor
@@ -52,7 +50,7 @@ namespace PMDS.GUI
 		{
 			InitializeComponent();
 
-            if (!DesignMode)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
@@ -60,8 +58,6 @@ namespace PMDS.GUI
             dgMain.DisplayLayout.Appearance.BorderColor = Color.Silver;
             dgMain.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             UltraGridTools.SetGridLayoutToWhiteSmoke(dgMain, Color.WhiteSmoke);
-
-
 		}
 
 		//----------------------------------------------------------------------------
@@ -91,7 +87,18 @@ namespace PMDS.GUI
 			{
 				if(components != null)
 				{
-					components.Dispose();
+                    if (txtSearch != null) txtSearch.Dispose();
+                    if (lblSuchbegriff != null) lblSuchbegriff.Dispose();
+                    if (btnCancel != null) btnCancel.Dispose();
+                    if (btnOK != null) btnOK.Dispose();
+                    if (btnNeuaufnahme != null) btnNeuaufnahme.Dispose();
+                    if (btnHistorie != null) btnHistorie.Dispose();
+                    if (labInfo != null) labInfo.Dispose();
+                    if (dgMain != null) dgMain.Dispose();
+                    if (splitContainer1 != null) splitContainer1.Dispose();
+                    if (splitContainer2 != null) splitContainer2.Dispose();
+                    if (dsPatientNichtAufgenommen1 != null) dsPatientNichtAufgenommen1.Dispose();
+                    components.Dispose();
 				}
 			}
 			base.Dispose( disposing );
@@ -135,11 +142,12 @@ namespace PMDS.GUI
             this.btnNeuaufnahme = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnHistorie = new QS2.Desktop.ControlManagment.BaseButton();
             this.dgMain = new QS2.Desktop.ControlManagment.BaseGrid();
+            this.dsPatientNichtAufgenommen1 = new PMDS.Global.db.Patient.dsPatientNichtAufgenommen();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.dsPatientNichtAufgenommen1 = new PMDS.Global.db.Patient.dsPatientNichtAufgenommen();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPatientNichtAufgenommen1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -148,7 +156,6 @@ namespace PMDS.GUI
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsPatientNichtAufgenommen1)).BeginInit();
             this.SuspendLayout();
             // 
             // labInfo
@@ -198,7 +205,7 @@ namespace PMDS.GUI
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(408, 8);
+            this.btnCancel.Location = new System.Drawing.Point(437, 8);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
             this.btnCancel.TabIndex = 3;
@@ -221,9 +228,9 @@ namespace PMDS.GUI
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(502, 8);
+            this.btnOK.Location = new System.Drawing.Point(531, 8);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(117, 32);
+            this.btnOK.Size = new System.Drawing.Size(88, 32);
             this.btnOK.TabIndex = 2;
             this.btnOK.TabStop = false;
             this.btnOK.Text = "OK";
@@ -351,6 +358,11 @@ namespace PMDS.GUI
             this.dgMain.Text = "ultraGrid1";
             this.dgMain.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.dgMain_AfterSelectChange);
             // 
+            // dsPatientNichtAufgenommen1
+            // 
+            this.dsPatientNichtAufgenommen1.DataSetName = "dsPatientNichtAufgenommen";
+            this.dsPatientNichtAufgenommen1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -391,11 +403,6 @@ namespace PMDS.GUI
             this.splitContainer2.SplitterDistance = 475;
             this.splitContainer2.TabIndex = 0;
             // 
-            // dsPatientNichtAufgenommen1
-            // 
-            this.dsPatientNichtAufgenommen1.DataSetName = "dsPatientNichtAufgenommen";
-            this.dsPatientNichtAufgenommen1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // frmPatientAufnahme
             // 
             this.AcceptButton = this.btnOK;
@@ -417,6 +424,7 @@ namespace PMDS.GUI
             this.Load += new System.EventHandler(this.frmPatientAufnahme_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPatientNichtAufgenommen1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -426,7 +434,6 @@ namespace PMDS.GUI
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dsPatientNichtAufgenommen1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -535,6 +542,7 @@ namespace PMDS.GUI
 		private void btnCancel_Click(object sender, System.EventArgs e)
 		{
 			_canClose = true;
+            this.Dispose(true);
 		}
 
 		//----------------------------------------------------------------------------

@@ -28,16 +28,12 @@ namespace PMDS.GUI
 	//----------------------------------------------------------------------------
 	public class frmBase : QS2.Desktop.ControlManagment.baseForm  
 	{
-		private System.ComponentModel.Container components = null;
-
-
+		private System.ComponentModel.Container components;
 
 		public frmBase()
 		{
             InitializeComponent();
-		}
-
-        
+		}    
 
 		protected override void Dispose( bool disposing )
 		{
@@ -128,123 +124,13 @@ namespace PMDS.GUI
                     //g.DisplayLayout.Override.RowSelectorAppearance.BackColor = Color.red ;
                     //g.DisplayLayout.ScrollBarLook.Appearance.BackColor = c;
                 }
-
                 PatchCtrl(item );
             }
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Farbe je nach Gruppe (eventuell im Tag des Forms hinterlegen)
-		/// </summary>
-		//----------------------------------------------------------------------------
-		private Color GetColorxy()
-		{
-            Color c = System.Drawing.Color.Gainsboro;
-
-			switch(this.Name)
-			{
-				// Klinik
-				case "frmKlinik":
-				case "frmKlinikAbteilungen":
-				case "frmKlinikBereiche":
-				case "frmEinrichtung":
-					//c = ENVCOLOR.DLG_KLINIK_COLOR;
-					break;
-
-				// Drucken
-				case "frmPflegebericht":
-				case "frmPrintPflegebriefInfo":
-				case "frmPrintPreview":
-					
-				// Pflegeplan/Termine
-				case "frmAskEndAufgabe":
-				case "frmAskEndPDx":
-				case "frmAskLocalize":
-				case "frmASZM":
-				case "frmEditASZ":
-				case "frmAufgabe":
-				case "frmAufgabeNew":
-				case "frmEditPDx":
-				case "frmIntervallEdit":
-				case "frmPatientRueckmeldung":
-				case "frmPatientRueckmeldungBulk":
-				case "frmPatientRueckmeldungMissing":
-				case "frmPDX":
-				case "frmPflegeEintrag":
-				case "frmPflegePlan":
-				case "frmPflegePlanEdit":
-				case "frmSearchASZM":
-				case "frmTermine":
-				case "frmTerminEdit":
-				case "frmTop10":
-				case "frmWochentageEdit":
-				case "frmPatientMassnahme":
-				case "frmMassnahmenserien":
-					//c = ENVCOLOR.DLG_TERMIN_COLOR;
-					break;
-
-				// Benutzer
-				case "frmBenutzer":
-				case "frmBenutzerGruppe":
-				case "frmChangePassword":
-				case "frmEditPassword":
-				case "frmGruppe":
-				case "frmLogin":
-				case "frmLoginLocked":
-					//c = ENVCOLOR.DLG_USER_COLOR;
-					break;
-
-				// Patient
-				case "frmAufenthaltOrem":
-				case "frmAufEntInfo":
-				case "frmAufnahme":
-				case "frmEntlassung":
-				case "frmHistorie":
-				case "frmOREM":
-				case "frmOremVerlauf":
-				case "frmPatient":
-				case "frmPatientAufnahme":
-				case "frmPatientBem":
-				case "frmPatientBezug":
-				case "frmPatientHistorie":
-				case "frmPatientNew":
-				case "frmPatientPicker":
-				case "frmUrlaub":
-				case "frmVersetzung":
-				case "frmVersetzungBereich":
-				case "frmWizard":
-				case "frmBemerkung":
-				case "frmPatientVermerk":
-				case "frmRezept":
-				case "frmMedikamentenvorbereitung":
-				case "frmPflegestufe":
-					//c = ENVCOLOR.DLG_PATIENT_COLOR;
-					break;
-
-				// Standard
-				case "frmAbteilungsWahl":
-				case "frmAbout":
-				case "frmMain":
-				case "frmMainModern":
-				case "frmCustomizeColors":
-				case "frmDebugDataset":
-				case "frmPicker":
-				case "frmRowLayoutDesigner":
-				case "frmAuswahl":
-				case "frmZusatz":
-				case "frmZusatzEintrag":
-				case "frmRefresh":
-					break;
-			}
-
-            return c;
-            //return Color.White;             // os: Kein Farbenspiel nur mehr weiﬂ 14.11.2006
-		}
-
         private void frmBase_Load(object sender, EventArgs e)
         {
-            if (!DesignMode)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);

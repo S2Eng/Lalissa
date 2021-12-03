@@ -165,7 +165,7 @@ namespace PMDS.Calc.UI
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
+                this.panelGrid.Visible = false;
                 this.dbPMDS1.Clear();
                 this.numSum.Value = null;
                 this.checkUIDate();
@@ -230,6 +230,7 @@ namespace PMDS.Calc.UI
             }
             finally
             {
+                this.panelGrid.Visible = true;
                 this.Cursor = Cursors.Default;
             }
         }

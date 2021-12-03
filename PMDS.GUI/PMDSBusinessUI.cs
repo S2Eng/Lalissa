@@ -40,19 +40,11 @@ namespace PMDS.GUI
 
     public class PMDSBusinessUI
     {
-
-        public PMDSBusiness b = new PMDSBusiness();
-
         public static event SelListChanged dSelListChanged;
         public delegate void SelListChanged(string Grp, UltraComboEditor cbo, Infragistics.Win.ValueList val);
+        public static int SupressLevelHierarchieActiveInUI { get; set; }
 
-        public static int SupressLevelHierarchieActiveInUI = 0;
-
-
-
-
-
-
+        private PMDSBusiness b = new PMDSBusiness();
 
         public void loadSelList(string Grp, UltraComboEditor cbo, Infragistics.Win.ValueList val, object objCboSelected, ref List<PMDS.db.Entities.AuswahlListe> lstReturn, bool BezeichnungIsKey = false)
         {
@@ -1460,7 +1452,6 @@ namespace PMDS.GUI
                         if (MainWindow != null) MainWindow.MainWindow.tabStammdaten.SelectedTab = MainWindow.MainWindow.tabStammdaten.Tabs["PersoenlicheDaten"];
 
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox(MsgTxt, "Speichern");
-                    //this.MainWindow.tabStammdaten.SelectedTab = this.MainWindow.tabStammdaten.Tabs["Aufenthalt"];
                     return false;
                 }
 
@@ -1472,7 +1463,7 @@ namespace PMDS.GUI
             }
         }
 
-        public bool SaveVersicherungsdaten(Guid IDPatient, ref ucVersichrungsdaten ucVersichrungsdaten1)
+        public bool SaveVersicherungsdaten(Guid IDPatient, ucVersichrungsdaten ucVersichrungsdaten1)
         {
             try
             {
@@ -1487,13 +1478,12 @@ namespace PMDS.GUI
                         rPatient.SozVersStatus = ucVersichrungsdaten1.cboSozVersStatus.Text.Trim();
                         rPatient.SozVersLeerGrund = ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim();
                         rPatient.SozVersMitversichertBei = ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim();
-                        //rPatient.ELGAAbgemeldet = this.chkELGAAbgemeldet.Checked;
 
-                        if (ucVersichrungsdaten1.txtVersNr.Text.Trim() != "")
+                        if (String.IsNullOrWhiteSpace(ucVersichrungsdaten1.txtVersNr.Text))
                         {
                             rPatient.SozVersLeerGrund = "";
                             ucVersichrungsdaten1.cboSozVersLeerGrund.Text = "";
-                            if (ucVersichrungsdaten1.cboSozVersStatus.Text.Trim().ToLower() != ("mitversichert").Trim().ToLower())
+                            if (generic.sEquals(ucVersichrungsdaten1.cboSozVersStatus.Text, "mitversichert"))
                             {
                                 rPatient.SozVersMitversichertBei = "";
                                 ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = "";
@@ -1501,8 +1491,6 @@ namespace PMDS.GUI
                         }
                         else
                         {
-                            //rPatient.SozVersStatus = "";
-                            //this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text = "";
                             rPatient.SozVersMitversichertBei = "";
                             ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = "";
                             rPatient.Klasse = "";
@@ -1512,7 +1500,6 @@ namespace PMDS.GUI
                         db.SaveChanges();
                     }
                 }
-
                 return true;
             }
             catch (Exception ex)
@@ -1520,7 +1507,8 @@ namespace PMDS.GUI
                 throw new Exception("PMDSBusinessUI.SaveVersicherungsdaten: " + ex.ToString());
             }
         }
-        public bool SaveVersicherungsdaten2(Guid IDPatient, ref ucVersichrungsdaten ucVersichrungsdaten1)
+
+        public bool SaveVersicherungsdaten2(Guid IDPatient, ucVersichrungsdaten ucVersichrungsdaten1)
         {
             try
             {
@@ -1535,7 +1523,6 @@ namespace PMDS.GUI
                         rPatient.Klasse = ucVersichrungsdaten1.Klasse.Trim();
                         rPatient.Privatversicherung = ucVersichrungsdaten1.Privatversicherung.Trim();
                         rPatient.PrivPolNr = ucVersichrungsdaten1.PrivPolNr.Trim();
-
                         db.SaveChanges();
                     }
                 }
@@ -1547,7 +1534,6 @@ namespace PMDS.GUI
                 throw new Exception("PMDSBusinessUI.SaveVersicherungsdaten2: " + ex.ToString());
             }
         }
-
     }
 
 }

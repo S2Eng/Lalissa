@@ -12,15 +12,15 @@ using PMDS.Global;
 namespace PMDS.GUI
 {
 
-	public class frmWizard : frmBase
-	{
-		private bool			_bCanClose = true;
-		private ArrayList		_pages = new ArrayList();	// Pages in deren Reihenfolge
-		private ArrayList		_info = new ArrayList();	// Page-Beschreibung
-		private int				_pageIdx = 0;				// aktuelle Page Index
-		public UserControl		_activePage = null;			// aktive Page
-        public ucPatientNew ucPatientNew1 = null;
+    public class frmWizard : frmBase
+    {
+        public UserControl activePage  { get; set;}			// aktive Page
+        public ucPatientNew ucPatientNew1 { get; set; }
 
+        private bool _bCanClose = true;
+        private ArrayList _pages = new ArrayList(); // Pages in deren Reihenfolge
+        private ArrayList _info = new ArrayList();  // Page-Beschreibung
+        private int _pageIdx;                       // aktuelle Page Index
 
         private QS2.Desktop.ControlManagment.BaseGroupBoxWin grpBottom;
 		private QS2.Desktop.ControlManagment.BasePanel panelButtons;
@@ -33,16 +33,10 @@ namespace PMDS.GUI
 		private QS2.Desktop.ControlManagment.BaseButton btnPrev;
 		private QS2.Desktop.ControlManagment.BaseLabel labInfo;				
 
-
-
-
-
-
-
 		public frmWizard()
 		{
 			InitializeComponent();
-            if (!DesignMode)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
@@ -55,7 +49,16 @@ namespace PMDS.GUI
 			{
 				if(components != null)
 				{
-					components.Dispose();
+                    if (grpBottom != null) grpBottom.Dispose();
+                    if (panelButtons != null) panelButtons.Dispose();
+                    if (lblKlickenSieWeiter != null) lblKlickenSieWeiter.Dispose();
+                    if (panelPage != null) panelPage.Dispose();
+                    if (btnCancel != null) btnCancel.Dispose();
+                    if (btnOk != null) btnOk.Dispose();
+                    if (btnNext != null) btnNext.Dispose();
+                    if (btnPrev != null) btnPrev.Dispose();
+                    if (labInfo != null) labInfo.Dispose();
+                    components.Dispose();
 				}
 			}
 			base.Dispose( disposing );
@@ -111,7 +114,7 @@ namespace PMDS.GUI
             this.btnPrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrev.AutoWorkLayout = false;
             this.btnPrev.IsStandardControl = false;
-            this.btnPrev.Location = new System.Drawing.Point(96, 8);
+            this.btnPrev.Location = new System.Drawing.Point(3, 8);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(96, 32);
             this.btnPrev.TabIndex = 0;
@@ -131,7 +134,7 @@ namespace PMDS.GUI
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(304, 8);
+            this.btnCancel.Location = new System.Drawing.Point(207, 8);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
             this.btnCancel.TabIndex = 3;
@@ -153,7 +156,7 @@ namespace PMDS.GUI
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.DoOnClick = true;
             this.btnOk.IsStandardControl = true;
-            this.btnOk.Location = new System.Drawing.Point(192, 8);
+            this.btnOk.Location = new System.Drawing.Point(301, 8);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(96, 32);
             this.btnOk.TabIndex = 2;
@@ -168,7 +171,7 @@ namespace PMDS.GUI
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.AutoWorkLayout = false;
             this.btnNext.IsStandardControl = false;
-            this.btnNext.Location = new System.Drawing.Point(192, 8);
+            this.btnNext.Location = new System.Drawing.Point(105, 8);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(96, 32);
             this.btnNext.TabIndex = 1;
@@ -241,8 +244,8 @@ namespace PMDS.GUI
 
 		public void AddPage(string info, UserControl page)
 		{
-			if (page == null)
-				throw new ArgumentNullException("AddPage");
+ 			if (page == null)
+				throw new ArgumentNullException("UserControl Page", "AddPage");
 
 			if (!(page is IWizardPage))
 				throw new ArgumentException("AddPage IWizardPage");
@@ -290,22 +293,22 @@ namespace PMDS.GUI
 		private void ActivatePage(int i, bool validate)
 		{
 			// alte Page validieren - bei Fehler nicht wechseln
-			if (_activePage != null)
+			if (activePage != null)
 			{
-				if (validate && !((IWizardPage)_activePage).ValidateFields())
+				if (validate && !((IWizardPage)activePage).ValidateFields())
 					return;
 
-				panelPage.Controls.Remove(_activePage);
+				panelPage.Controls.Remove(activePage);
 			}
 
 			ActiveIndex = i;
 
 			// neue Page aktivieren
-			_activePage = this[i];
-			_activePage.Dock = DockStyle.Fill;
-			panelPage.Controls.Add(_activePage);
+			activePage = this[i];
+			activePage.Dock = DockStyle.Fill;
+			panelPage.Controls.Add(activePage);
 			Description = (string)_info[i];
-			_activePage.Focus();
+			activePage.Focus();
 
 			UpdateButtons();
 		}
@@ -314,10 +317,10 @@ namespace PMDS.GUI
 		{
 			get
 			{
-				if (_activePage == null)
+				if (activePage == null)
 					return true;
 
-				return ((IWizardPage)_activePage).ValidateFields();
+				return ((IWizardPage)activePage).ValidateFields();
 			}
 		}
 

@@ -774,83 +774,86 @@ namespace PMDS.GUI
             if (bNeuAufnahme || bWiederaufnahme)
                 pat.NewAufenthalt(ENV.ABTEILUNG, ENV.USERID);
 
-            frmWizard wizard = new frmWizard();
-
-            if (bNeuAufnahme)
+            using (frmWizard wizard = new frmWizard()) 
             {
-                wizard.Text = ENV.String("GUI.NEW_PATIENT_AUFNAHME");
-            }
-            else
-            {
-                wizard.Text = pat.FullInfo;
-                wizard.Description = "Aufnahme von " + pat.FullInfo;
-            }
-
-            ucPatientNew p0 = new ucPatientNew();
-            wizard.ucPatientNew1 = p0;
-
-            p0.Patient = pat;
-            p0.MODIFYMODE = !bNeuAufnahme;
-
-            if (!bNeuAufnahme)
-                p0.ReadOnly = true;
-            
-            string s = bNeuAufnahme ? ENV.String("GUI.NEW_PATIENT") : wizard.Description;
-            wizard.AddPage(s, p0);
-
-            wizard.Width = 590;
-            wizard.Height = 730;
-
-            if (ELGABusiness.checkELGASessionActive(false))     //&& ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPatientenSuchen, false)
-            {
-                wizard.ucPatientNew1.chkKontaktbestätigung.Visible = true;
-            }
-            else
-            {
-                wizard.ucPatientNew1.chkKontaktbestätigung.Visible = false;
-            }
-
-            if (wizard.ShowDialog() != DialogResult.OK)
-                return false;
-
-            if (!bNeuAufnahme)
-            {
-                Guid g = Aufenthalt.LastByPatient(pat.ID);
-
-                if (g != Guid.Empty)
+                if (bNeuAufnahme)
                 {
-                    Aufenthalt a = new Aufenthalt(g);
-                    if (a.Entlassungszeitpunkt == null)
+                    wizard.Text = ENV.String("GUI.NEW_PATIENT_AUFNAHME");
+                }
+                else
+                {
+                    wizard.Text = pat.FullInfo;
+                    wizard.Description = "Aufnahme von " + pat.FullInfo;
+                }
+
+                ucPatientNew p0 = new ucPatientNew();
+                wizard.ucPatientNew1 = p0;
+
+                p0.Patient = pat;
+                p0.MODIFYMODE = !bNeuAufnahme;
+
+                if (!bNeuAufnahme)
+                    p0.ReadOnly = true;
+
+                string s = bNeuAufnahme ? ENV.String("GUI.NEW_PATIENT") : wizard.Description;
+                wizard.AddPage(s, p0);
+
+                wizard.Width = 590;
+                wizard.Height = 730;
+
+                if (ELGABusiness.checkELGASessionActive(false))     //&& ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPatientenSuchen, false)
+                {
+                    wizard.ucPatientNew1.chkKontaktbestätigung.Visible = true;
+                }
+                else
+                {
+                    wizard.ucPatientNew1.chkKontaktbestätigung.Visible = false;
+                }
+
+                wizard.TopMost = true;
+                if (wizard.ShowDialog() != DialogResult.OK)
+                    return false;
+
+                if (!bNeuAufnahme)
+                {
+                    Guid g = Aufenthalt.LastByPatient(pat.ID);
+
+                    if (g != Guid.Empty)
                     {
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Klient ist bereits aufgenommen", "Klient bereits aufgenommen", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        return false;
+                        Aufenthalt a = new Aufenthalt(g);
+                        if (a.Entlassungszeitpunkt == null)
+                        {
+                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Klient ist bereits aufgenommen", "Klient bereits aufgenommen", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            return false;
+                        }
+                    }
+                }
+
+                pat.Write();
+                LastAufnahmePatientID = pat.ID;
+
+                PMDSBusinessUI bUI = new PMDSBusinessUI();
+                bUI.SaveVersicherungsdaten(pat.ID, p0.ucVersichrungsdaten1);
+                bUI.SaveVersicherungsdaten2(pat.ID, p0.ucVersichrungsdaten1);
+
+                if (wizard.activePage.GetType() == typeof(ucPatientNew))
+                {
+                    if (((ucPatientNew)wizard.activePage).chkKontaktbestätigung.Checked)
+                    {
+                        ELGABusiness bELGA = new ELGABusiness();
+                        BenutzerDTOS1 ben = bELGA.getELGASettingsForUser(ENV.USERID);
+                        if (ENV.lic_ELGA && ben.Elgaactive && !ben.IsGeneric)
+                        {
+                            using (frmELGAKlient frmELGAKlient1 = new frmELGAKlient())
+                            {
+                                frmELGAKlient1.initControl();
+                                frmELGAKlient1.contELGAKlient1.loadData(pat.ID, pat.Aufenthalt.ID);
+                                frmELGAKlient1.ShowDialog();
+                            }
+                        }
                     }
                 }
             }
-            
-            pat.Write();
-            LastAufnahmePatientID = pat.ID;
-
-            PMDSBusinessUI bUI = new PMDSBusinessUI();
-            bUI.SaveVersicherungsdaten(pat.ID, ref p0.ucVersichrungsdaten1);
-            bUI.SaveVersicherungsdaten2(pat.ID, ref p0.ucVersichrungsdaten1);
-
-            if (wizard._activePage.GetType() == typeof(ucPatientNew))
-            {          
-                if (((ucPatientNew)wizard._activePage).chkKontaktbestätigung.Checked)
-                {
-                    ELGABusiness bELGA = new ELGABusiness();
-                    BenutzerDTOS1 ben = bELGA.getELGASettingsForUser(ENV.USERID);
-                    if (ENV.lic_ELGA && ben.Elgaactive && !ben.IsGeneric)
-                    {
-                        frmELGAKlient frmELGAKlient1 = new frmELGAKlient();
-                        frmELGAKlient1.initControl();
-                        frmELGAKlient1.contELGAKlient1.loadData(pat.ID, pat.Aufenthalt.ID);
-                        frmELGAKlient1.ShowDialog();
-                    }
-                }
-            }
-
             return true;
         }
 

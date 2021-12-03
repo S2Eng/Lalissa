@@ -17,20 +17,15 @@ namespace PMDS.GUI
 
 	public class ucPatientNew : QS2.Desktop.ControlManagment.BaseControl, IWizardPage
 	{
-		private bool	_valueChangeEnabled = true;
-		private Patient	_patient;
-		public event EventHandler ValueChanged;
-
+        public event EventHandler ValueChanged;
         public event EventHandler VersDatenChanged;
-        private bool _lockValueChanges = false;
-        public bool abrechnungHasChanged = false;
+        public bool abrechnungHasChanged { get; set; }
 
-        public PMDSBusinessUI bUI = new PMDSBusinessUI();
-        public PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
-
-
-
-
+        private bool	_valueChangeEnabled = true;
+		private Patient	_patient;
+        private bool _lockValueChanges;
+        private PMDSBusinessUI bUI = new PMDSBusinessUI();
+        private PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
         private QS2.Desktop.ControlManagment.BaseDateTimeEditor dtpGebDatum;
 		private QS2.Desktop.ControlManagment.BaseLabel lblGebDatum;
 		private QS2.Desktop.ControlManagment.BaseTextEditor txtOrt;
@@ -56,25 +51,17 @@ namespace PMDS.GUI
         public ucVersichrungsdaten ucVersichrungsdaten1;
         private IContainer components;
 
-
-
-
-
 		public ucPatientNew()
 		{
-			InitializeComponent();
+            InitializeComponent();
 
             //Änderung nach 09.05.2007 MDA
-            if (DesignMode)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 return;
 
-            if (ENV.AppRunning)
-            {
-                Patient pat = new Patient();  
-                //Neuen Aufenthalt für den aktuellen Patienten erzeugen
-                pat.NewAufenthalt(ENV.ABTEILUNG, ENV.USERID);
-                Patient = pat;
-            }
+            Patient pat = new Patient();              
+            pat.NewAufenthalt(ENV.ABTEILUNG, ENV.USERID);       //Neuen Aufenthalt für den aktuellen Patienten erzeugen
+            Patient = pat;
             RequiredFields();
 		}
 
@@ -137,11 +124,11 @@ namespace PMDS.GUI
             this.dtpAufnahmedatum = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.lblAufnahmedatum = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblAbteilung = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.chkKontaktbestätigung = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.ucVersichrungsdaten1 = new PMDS.GUI.ucVersichrungsdaten();
             this.cbAbteilung = new PMDS.GUI.BaseControls.ucAbteilungBereichSelektor();
             this.txtTitel = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.txtSexus = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
-            this.chkKontaktbestätigung = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
-            this.ucVersichrungsdaten1 = new PMDS.GUI.ucVersichrungsdaten();
             ((System.ComponentModel.ISupportInitialize)(this.dtpGebDatum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).BeginInit();
@@ -150,9 +137,9 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.txtNachname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpAufnahmedatum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkKontaktbestätigung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTitel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSexus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkKontaktbestätigung)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpGebDatum
@@ -183,7 +170,7 @@ namespace PMDS.GUI
             this.txtOrt.Location = new System.Drawing.Point(101, 196);
             this.txtOrt.MaxLength = 50;
             this.txtOrt.Name = "txtOrt";
-            this.txtOrt.Size = new System.Drawing.Size(104, 21);
+            this.txtOrt.Size = new System.Drawing.Size(192, 21);
             this.txtOrt.TabIndex = 8;
             this.txtOrt.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -324,51 +311,6 @@ namespace PMDS.GUI
             this.lblAbteilung.TabIndex = 20;
             this.lblAbteilung.Text = "Abteilung";
             // 
-            // cbAbteilung
-            // 
-            this.cbAbteilung.BackColor = System.Drawing.Color.White;
-            this.cbAbteilung.Location = new System.Drawing.Point(101, 27);
-            this.cbAbteilung.Name = "cbAbteilung";
-            this.cbAbteilung.Size = new System.Drawing.Size(192, 23);
-            this.cbAbteilung.TabIndex = 1;
-            this.cbAbteilung.Tag = "DONTPATCH";
-            // 
-            // txtTitel
-            // 
-            this.txtTitel.AddEmptyEntry = false;
-            this.txtTitel.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            this.txtTitel.AutoOpenCBO = false;
-            this.txtTitel.BerufsstandGruppeJNA = -1;
-            this.txtTitel.ExactMatch = false;
-            this.txtTitel.Group = "TIT";
-            this.txtTitel.ID_PEP = -1;
-            this.txtTitel.Location = new System.Drawing.Point(101, 76);
-            this.txtTitel.Name = "txtTitel";
-            this.txtTitel.PflichtJN = false;
-            this.txtTitel.ShowAddButton = true;
-            this.txtTitel.Size = new System.Drawing.Size(128, 21);
-            this.txtTitel.sys = false;
-            this.txtTitel.TabIndex = 3;
-            this.txtTitel.ValueChanged += new System.EventHandler(this.OnValueChanged);
-            // 
-            // txtSexus
-            // 
-            this.txtSexus.AddEmptyEntry = false;
-            this.txtSexus.AutoOpenCBO = false;
-            this.txtSexus.BerufsstandGruppeJNA = -1;
-            this.txtSexus.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.txtSexus.ExactMatch = false;
-            this.txtSexus.Group = "SEX";
-            this.txtSexus.ID_PEP = -1;
-            this.txtSexus.Location = new System.Drawing.Point(101, 52);
-            this.txtSexus.Name = "txtSexus";
-            this.txtSexus.PflichtJN = false;
-            this.txtSexus.ShowAddButton = true;
-            this.txtSexus.Size = new System.Drawing.Size(128, 21);
-            this.txtSexus.sys = false;
-            this.txtSexus.TabIndex = 2;
-            this.txtSexus.ValueChanged += new System.EventHandler(this.OnValueChanged);
-            // 
             // chkKontaktbestätigung
             // 
             this.chkKontaktbestätigung.Location = new System.Drawing.Point(13, 507);
@@ -391,6 +333,55 @@ namespace PMDS.GUI
             this.ucVersichrungsdaten1.KlasseChanged += new System.EventHandler(this.onVersChanged);
             this.ucVersichrungsdaten1.PrivatversicherungChanged += new System.EventHandler(this.onVersChanged);
             this.ucVersichrungsdaten1.PolNrChanged += new System.EventHandler(this.onVersChanged);
+            // 
+            // cbAbteilung
+            // 
+            this.cbAbteilung.BackColor = System.Drawing.Color.White;
+            this.cbAbteilung.Location = new System.Drawing.Point(101, 27);
+            this.cbAbteilung.Name = "cbAbteilung";
+            this.cbAbteilung.Size = new System.Drawing.Size(192, 23);
+            this.cbAbteilung.TabIndex = 1;
+            this.cbAbteilung.Tag = "DONTPATCH";
+            // 
+            // txtTitel
+            // 
+            this.txtTitel.AddEmptyEntry = false;
+            this.txtTitel.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.txtTitel.AutoOpenCBO = false;
+            this.txtTitel.BerufsstandGruppeJNA = -1;
+            this.txtTitel.ExactMatch = false;
+            this.txtTitel.Group = "TIT";
+            this.txtTitel.ID_PEP = -1;
+            this.txtTitel.IgnoreUnterdruecken = true;
+            this.txtTitel.Location = new System.Drawing.Point(101, 76);
+            this.txtTitel.Name = "txtTitel";
+            this.txtTitel.PflichtJN = false;
+            this.txtTitel.SelectDistinct = false;
+            this.txtTitel.ShowAddButton = true;
+            this.txtTitel.Size = new System.Drawing.Size(192, 21);
+            this.txtTitel.sys = false;
+            this.txtTitel.TabIndex = 3;
+            this.txtTitel.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // txtSexus
+            // 
+            this.txtSexus.AddEmptyEntry = false;
+            this.txtSexus.AutoOpenCBO = false;
+            this.txtSexus.BerufsstandGruppeJNA = -1;
+            this.txtSexus.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.txtSexus.ExactMatch = false;
+            this.txtSexus.Group = "SEX";
+            this.txtSexus.ID_PEP = -1;
+            this.txtSexus.IgnoreUnterdruecken = true;
+            this.txtSexus.Location = new System.Drawing.Point(101, 52);
+            this.txtSexus.Name = "txtSexus";
+            this.txtSexus.PflichtJN = false;
+            this.txtSexus.SelectDistinct = false;
+            this.txtSexus.ShowAddButton = true;
+            this.txtSexus.Size = new System.Drawing.Size(128, 21);
+            this.txtSexus.sys = false;
+            this.txtSexus.TabIndex = 2;
+            this.txtSexus.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // ucPatientNew
             // 
@@ -418,7 +409,7 @@ namespace PMDS.GUI
             this.Controls.Add(this.txtNachname);
             this.Controls.Add(this.lblNachname);
             this.Name = "ucPatientNew";
-            this.Size = new System.Drawing.Size(574, 709);
+            this.Size = new System.Drawing.Size(574, 542);
             this.Load += new System.EventHandler(this.ucPatientNew_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtpGebDatum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).EndInit();
@@ -428,9 +419,9 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.txtNachname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpAufnahmedatum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkKontaktbestätigung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTitel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSexus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkKontaktbestätigung)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -544,7 +535,7 @@ namespace PMDS.GUI
 			GuiUtil.ValidateRequired(dtpGebDatum);
 		}
 
-		private bool _bmodifymode = false;
+		private bool _bmodifymode;
 		public bool MODIFYMODE 
 		{
 			set 
@@ -592,11 +583,6 @@ namespace PMDS.GUI
 			return !bError;
 		}
 
-
-
-
-
-
         public bool validateDataVersNr(bool withMsgBox)
         {
             try
@@ -616,6 +602,7 @@ namespace PMDS.GUI
             if (_valueChangeEnabled && (VersDatenChanged != null))
                 VersDatenChanged(sender, e);
         }
+
         protected void OnVersValueChanged(object sender, EventArgs args)
         {
             if (this._lockValueChanges) return;
@@ -632,6 +619,7 @@ namespace PMDS.GUI
                 ucVersichrungsdaten1.ReadOnly = value;
             }
         }
+
         public void setControlsAktivDisable(bool bOn)
         {
             //PMDS.GUI.BaseControls.historie.OnOffControls(this.ucVersichrungsdaten1.ultraGroupBoxVersicherungsdaten, bOn);
