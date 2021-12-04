@@ -739,11 +739,13 @@ namespace PMDS.DB
 		//----------------------------------------------------------------------------
 		public dsPflegeEintrag.PflegeEintragDataTable ByAufenthalt(Guid id)
 		{
-			dsPflegeEintrag ds = new dsPflegeEintrag();
-			daPflegeEintragByAufenthalt.SelectCommand.Parameters[0].Value = id;
-			DataBase.Fill(daPflegeEintragByAufenthalt, ds.PflegeEintrag);
-			return ds.PflegeEintrag;
-		}
+            using (dsPflegeEintrag ds = new dsPflegeEintrag())
+            {
+                daPflegeEintragByAufenthalt.SelectCommand.Parameters[0].Value = id;
+                DataBase.Fill(daPflegeEintragByAufenthalt, ds.PflegeEintrag);
+                return ds.PflegeEintrag;
+            }
+        }
 
         //----------------------------------------------------------------------------
         /// <summary>

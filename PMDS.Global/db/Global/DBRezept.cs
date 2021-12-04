@@ -81,7 +81,10 @@ namespace PMDS.DB
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DBRezept));
             this.oleDbConnection1 = new System.Data.OleDb.OleDbConnection();
             this.daRezeptEintragByAufenthalt = new System.Data.OleDb.OleDbDataAdapter();
+            this.oleDbDeleteCommand = new System.Data.OleDb.OleDbCommand();
+            this.oleDbInsertCommand = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand1 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbUpdateCommand = new System.Data.OleDb.OleDbCommand();
             this.daKlientenListeByMedikament = new System.Data.OleDb.OleDbDataAdapter();
             this.oleDbCommand2 = new System.Data.OleDb.OleDbCommand();
             this.dsKlientenListeByMedikament1 = new PMDS.Global.db.Global.dsKlientenListeByMedikament();
@@ -91,16 +94,13 @@ namespace PMDS.DB
             this.oleDbDeleteCommand1 = new System.Data.OleDb.OleDbCommand();
             this.daRezeptEintrag = new System.Data.OleDb.OleDbDataAdapter();
             this.dsRezeptEintrag1 = new PMDS.Data.Global.dsRezeptEintrag();
-            this.oleDbInsertCommand = new System.Data.OleDb.OleDbCommand();
-            this.oleDbUpdateCommand = new System.Data.OleDb.OleDbCommand();
-            this.oleDbDeleteCommand = new System.Data.OleDb.OleDbCommand();
             ((System.ComponentModel.ISupportInitialize)(this.dsKlientenListeByMedikament1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsRezeptEintrag1)).BeginInit();
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Persist Security Info=True;Password=NiwQ" +
-    "s21+!;User ID=hl;Initial Catalog=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=sty041;Integrated Security=SSPI;Initial Catalog=PM" +
+    "DS_DemoGross";
             // 
             // daRezeptEintragByAufenthalt
             // 
@@ -164,12 +164,138 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("NumberWunden", "NumberWunden")})});
             this.daRezeptEintragByAufenthalt.UpdateCommand = this.oleDbUpdateCommand;
             // 
+            // oleDbDeleteCommand
+            // 
+            this.oleDbDeleteCommand.CommandText = "DELETE FROM [RezeptEintrag] WHERE (([ID] = ?))";
+            this.oleDbDeleteCommand.Connection = this.oleDbConnection1;
+            this.oleDbDeleteCommand.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
+            // 
+            // oleDbInsertCommand
+            // 
+            this.oleDbInsertCommand.CommandText = resources.GetString("oleDbInsertCommand.CommandText");
+            this.oleDbInsertCommand.Connection = this.oleDbConnection1;
+            this.oleDbInsertCommand.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("IDMedikament", System.Data.OleDb.OleDbType.Guid, 0, "IDMedikament"),
+            new System.Data.OleDb.OleDbParameter("AbzugebenVon", System.Data.OleDb.OleDbType.Date, 16, "AbzugebenVon"),
+            new System.Data.OleDb.OleDbParameter("AbzugebenBis", System.Data.OleDb.OleDbType.Date, 16, "AbzugebenBis"),
+            new System.Data.OleDb.OleDbParameter("BeaufsichtigungJN", System.Data.OleDb.OleDbType.Boolean, 0, "BeaufsichtigungJN"),
+            new System.Data.OleDb.OleDbParameter("ZP0", System.Data.OleDb.OleDbType.Double, 0, "ZP0"),
+            new System.Data.OleDb.OleDbParameter("ZP1", System.Data.OleDb.OleDbType.Double, 0, "ZP1"),
+            new System.Data.OleDb.OleDbParameter("ZP2", System.Data.OleDb.OleDbType.Double, 0, "ZP2"),
+            new System.Data.OleDb.OleDbParameter("ZP3", System.Data.OleDb.OleDbType.Double, 0, "ZP3"),
+            new System.Data.OleDb.OleDbParameter("ZP4", System.Data.OleDb.OleDbType.Double, 0, "ZP4"),
+            new System.Data.OleDb.OleDbParameter("ZP5", System.Data.OleDb.OleDbType.Double, 0, "ZP5"),
+            new System.Data.OleDb.OleDbParameter("ZP6", System.Data.OleDb.OleDbType.Double, 0, "ZP6"),
+            new System.Data.OleDb.OleDbParameter("Einheit", System.Data.OleDb.OleDbType.VarChar, 0, "Einheit"),
+            new System.Data.OleDb.OleDbParameter("Intervall", System.Data.OleDb.OleDbType.Integer, 0, "Intervall"),
+            new System.Data.OleDb.OleDbParameter("Wochentage", System.Data.OleDb.OleDbType.Integer, 0, "Wochentage"),
+            new System.Data.OleDb.OleDbParameter("BedarfsMedikationJN", System.Data.OleDb.OleDbType.Boolean, 0, "BedarfsMedikationJN"),
+            new System.Data.OleDb.OleDbParameter("Bemerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Bemerkung"),
+            new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Erstellt"),
+            new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Geaendert"),
+            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 16, "DatumErstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 16, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("Herrichten", System.Data.OleDb.OleDbType.Integer, 0, "Herrichten"),
+            new System.Data.OleDb.OleDbParameter("AerztlichevorbereitungJN", System.Data.OleDb.OleDbType.Boolean, 0, "AerztlichevorbereitungJN"),
+            new System.Data.OleDb.OleDbParameter("Verabreichungsart", System.Data.OleDb.OleDbType.Integer, 0, "Verabreichungsart"),
+            new System.Data.OleDb.OleDbParameter("Applikationsform", System.Data.OleDb.OleDbType.VarChar, 0, "Applikationsform"),
+            new System.Data.OleDb.OleDbParameter("Wiederholungstyp", System.Data.OleDb.OleDbType.Integer, 0, "Wiederholungstyp"),
+            new System.Data.OleDb.OleDbParameter("Wiederholungseinheit", System.Data.OleDb.OleDbType.Integer, 0, "Wiederholungseinheit"),
+            new System.Data.OleDb.OleDbParameter("Wiederholungswert", System.Data.OleDb.OleDbType.Double, 0, "Wiederholungswert"),
+            new System.Data.OleDb.OleDbParameter("StandardzeitenJN", System.Data.OleDb.OleDbType.Boolean, 0, "StandardzeitenJN"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt0", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt0"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt1", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt1"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt2", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt2"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt3", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt3"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt4", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt4"),
+            new System.Data.OleDb.OleDbParameter("Packunggroesse", System.Data.OleDb.OleDbType.Double, 0, "Packunggroesse"),
+            new System.Data.OleDb.OleDbParameter("Rezeptdaten", System.Data.OleDb.OleDbType.VarChar, 0, "Rezeptdaten"),
+            new System.Data.OleDb.OleDbParameter("Packungeinheit", System.Data.OleDb.OleDbType.VarChar, 0, "Packungeinheit"),
+            new System.Data.OleDb.OleDbParameter("BestellenJN", System.Data.OleDb.OleDbType.Boolean, 0, "BestellenJN"),
+            new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, "IDAufenthalt"),
+            new System.Data.OleDb.OleDbParameter("IDAerzte", System.Data.OleDb.OleDbType.Guid, 0, "IDAerzte"),
+            new System.Data.OleDb.OleDbParameter("AusstellungsDatum", System.Data.OleDb.OleDbType.Date, 16, "AusstellungsDatum"),
+            new System.Data.OleDb.OleDbParameter("DosierungASString", System.Data.OleDb.OleDbType.VarChar, 0, "DosierungASString"),
+            new System.Data.OleDb.OleDbParameter("Packungsanzahl", System.Data.OleDb.OleDbType.Integer, 0, "Packungsanzahl"),
+            new System.Data.OleDb.OleDbParameter("ZuletztBestelltAm", System.Data.OleDb.OleDbType.Date, 16, "ZuletztBestelltAm"),
+            new System.Data.OleDb.OleDbParameter("IDAerzteGeaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDAerzteGeaendert"),
+            new System.Data.OleDb.OleDbParameter("IDArztAbgesetzt", System.Data.OleDb.OleDbType.Guid, 0, "IDArztAbgesetzt"),
+            new System.Data.OleDb.OleDbParameter("ZuletztBestelltVon", System.Data.OleDb.OleDbType.Guid, 0, "ZuletztBestelltVon"),
+            new System.Data.OleDb.OleDbParameter("HAGPflichtigJN", System.Data.OleDb.OleDbType.Boolean, 0, "HAGPflichtigJN"),
+            new System.Data.OleDb.OleDbParameter("lstMedDaten", System.Data.OleDb.OleDbType.LongVarChar, 0, "lstMedDaten"),
+            new System.Data.OleDb.OleDbParameter("ZeitpunktBlisterliste", System.Data.OleDb.OleDbType.Date, 16, "ZeitpunktBlisterliste"),
+            new System.Data.OleDb.OleDbParameter("NumberMedDaten", System.Data.OleDb.OleDbType.Integer, 0, "NumberMedDaten"),
+            new System.Data.OleDb.OleDbParameter("lstWunden", System.Data.OleDb.OleDbType.LongVarChar, 0, "lstWunden"),
+            new System.Data.OleDb.OleDbParameter("NumberWunden", System.Data.OleDb.OleDbType.Integer, 0, "NumberWunden")});
+            // 
             // oleDbCommand1
             // 
             this.oleDbCommand1.CommandText = resources.GetString("oleDbCommand1.CommandText");
             this.oleDbCommand1.Connection = this.oleDbConnection1;
             this.oleDbCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 16, "IDAufenthalt")});
+            // 
+            // oleDbUpdateCommand
+            // 
+            this.oleDbUpdateCommand.CommandText = resources.GetString("oleDbUpdateCommand.CommandText");
+            this.oleDbUpdateCommand.Connection = this.oleDbConnection1;
+            this.oleDbUpdateCommand.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("IDMedikament", System.Data.OleDb.OleDbType.Guid, 0, "IDMedikament"),
+            new System.Data.OleDb.OleDbParameter("AbzugebenVon", System.Data.OleDb.OleDbType.Date, 16, "AbzugebenVon"),
+            new System.Data.OleDb.OleDbParameter("AbzugebenBis", System.Data.OleDb.OleDbType.Date, 16, "AbzugebenBis"),
+            new System.Data.OleDb.OleDbParameter("BeaufsichtigungJN", System.Data.OleDb.OleDbType.Boolean, 0, "BeaufsichtigungJN"),
+            new System.Data.OleDb.OleDbParameter("ZP0", System.Data.OleDb.OleDbType.Double, 0, "ZP0"),
+            new System.Data.OleDb.OleDbParameter("ZP1", System.Data.OleDb.OleDbType.Double, 0, "ZP1"),
+            new System.Data.OleDb.OleDbParameter("ZP2", System.Data.OleDb.OleDbType.Double, 0, "ZP2"),
+            new System.Data.OleDb.OleDbParameter("ZP3", System.Data.OleDb.OleDbType.Double, 0, "ZP3"),
+            new System.Data.OleDb.OleDbParameter("ZP4", System.Data.OleDb.OleDbType.Double, 0, "ZP4"),
+            new System.Data.OleDb.OleDbParameter("ZP5", System.Data.OleDb.OleDbType.Double, 0, "ZP5"),
+            new System.Data.OleDb.OleDbParameter("ZP6", System.Data.OleDb.OleDbType.Double, 0, "ZP6"),
+            new System.Data.OleDb.OleDbParameter("Einheit", System.Data.OleDb.OleDbType.VarChar, 0, "Einheit"),
+            new System.Data.OleDb.OleDbParameter("Intervall", System.Data.OleDb.OleDbType.Integer, 0, "Intervall"),
+            new System.Data.OleDb.OleDbParameter("Wochentage", System.Data.OleDb.OleDbType.Integer, 0, "Wochentage"),
+            new System.Data.OleDb.OleDbParameter("BedarfsMedikationJN", System.Data.OleDb.OleDbType.Boolean, 0, "BedarfsMedikationJN"),
+            new System.Data.OleDb.OleDbParameter("Bemerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Bemerkung"),
+            new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Erstellt"),
+            new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Geaendert"),
+            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 16, "DatumErstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 16, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("Herrichten", System.Data.OleDb.OleDbType.Integer, 0, "Herrichten"),
+            new System.Data.OleDb.OleDbParameter("AerztlichevorbereitungJN", System.Data.OleDb.OleDbType.Boolean, 0, "AerztlichevorbereitungJN"),
+            new System.Data.OleDb.OleDbParameter("Verabreichungsart", System.Data.OleDb.OleDbType.Integer, 0, "Verabreichungsart"),
+            new System.Data.OleDb.OleDbParameter("Applikationsform", System.Data.OleDb.OleDbType.VarChar, 0, "Applikationsform"),
+            new System.Data.OleDb.OleDbParameter("Wiederholungstyp", System.Data.OleDb.OleDbType.Integer, 0, "Wiederholungstyp"),
+            new System.Data.OleDb.OleDbParameter("Wiederholungseinheit", System.Data.OleDb.OleDbType.Integer, 0, "Wiederholungseinheit"),
+            new System.Data.OleDb.OleDbParameter("Wiederholungswert", System.Data.OleDb.OleDbType.Double, 0, "Wiederholungswert"),
+            new System.Data.OleDb.OleDbParameter("StandardzeitenJN", System.Data.OleDb.OleDbType.Boolean, 0, "StandardzeitenJN"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt0", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt0"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt1", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt1"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt2", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt2"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt3", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt3"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt4", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt4"),
+            new System.Data.OleDb.OleDbParameter("Packunggroesse", System.Data.OleDb.OleDbType.Double, 0, "Packunggroesse"),
+            new System.Data.OleDb.OleDbParameter("Rezeptdaten", System.Data.OleDb.OleDbType.VarChar, 0, "Rezeptdaten"),
+            new System.Data.OleDb.OleDbParameter("Packungeinheit", System.Data.OleDb.OleDbType.VarChar, 0, "Packungeinheit"),
+            new System.Data.OleDb.OleDbParameter("BestellenJN", System.Data.OleDb.OleDbType.Boolean, 0, "BestellenJN"),
+            new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, "IDAufenthalt"),
+            new System.Data.OleDb.OleDbParameter("IDAerzte", System.Data.OleDb.OleDbType.Guid, 0, "IDAerzte"),
+            new System.Data.OleDb.OleDbParameter("AusstellungsDatum", System.Data.OleDb.OleDbType.Date, 16, "AusstellungsDatum"),
+            new System.Data.OleDb.OleDbParameter("DosierungASString", System.Data.OleDb.OleDbType.VarChar, 0, "DosierungASString"),
+            new System.Data.OleDb.OleDbParameter("Packungsanzahl", System.Data.OleDb.OleDbType.Integer, 0, "Packungsanzahl"),
+            new System.Data.OleDb.OleDbParameter("ZuletztBestelltAm", System.Data.OleDb.OleDbType.Date, 16, "ZuletztBestelltAm"),
+            new System.Data.OleDb.OleDbParameter("IDAerzteGeaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDAerzteGeaendert"),
+            new System.Data.OleDb.OleDbParameter("IDArztAbgesetzt", System.Data.OleDb.OleDbType.Guid, 0, "IDArztAbgesetzt"),
+            new System.Data.OleDb.OleDbParameter("ZuletztBestelltVon", System.Data.OleDb.OleDbType.Guid, 0, "ZuletztBestelltVon"),
+            new System.Data.OleDb.OleDbParameter("HAGPflichtigJN", System.Data.OleDb.OleDbType.Boolean, 0, "HAGPflichtigJN"),
+            new System.Data.OleDb.OleDbParameter("lstMedDaten", System.Data.OleDb.OleDbType.LongVarChar, 0, "lstMedDaten"),
+            new System.Data.OleDb.OleDbParameter("ZeitpunktBlisterliste", System.Data.OleDb.OleDbType.Date, 16, "ZeitpunktBlisterliste"),
+            new System.Data.OleDb.OleDbParameter("NumberMedDaten", System.Data.OleDb.OleDbType.Integer, 0, "NumberMedDaten"),
+            new System.Data.OleDb.OleDbParameter("lstWunden", System.Data.OleDb.OleDbType.LongVarChar, 0, "lstWunden"),
+            new System.Data.OleDb.OleDbParameter("NumberWunden", System.Data.OleDb.OleDbType.Integer, 0, "NumberWunden"),
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // daKlientenListeByMedikament
             // 
@@ -195,7 +321,7 @@ namespace PMDS.DB
             this.oleDbCommand2.Connection = this.oleDbConnection1;
             this.oleDbCommand2.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("IDMedikament", System.Data.OleDb.OleDbType.Guid, 16, "IDMedikament"),
-            new System.Data.OleDb.OleDbParameter("AbzugebenBis", System.Data.OleDb.OleDbType.Date, 8, "AbzugebenBis"),
+            new System.Data.OleDb.OleDbParameter("AbzugebenBis", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "AbzugebenBis"),
             new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 16, "IDAufenthalt")});
             // 
             // dsKlientenListeByMedikament1
@@ -403,132 +529,6 @@ namespace PMDS.DB
             this.dsRezeptEintrag1.DataSetName = "dsRezeptEintrag";
             this.dsRezeptEintrag1.Locale = new System.Globalization.CultureInfo("de-DE");
             this.dsRezeptEintrag1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // oleDbInsertCommand
-            // 
-            this.oleDbInsertCommand.CommandText = resources.GetString("oleDbInsertCommand.CommandText");
-            this.oleDbInsertCommand.Connection = this.oleDbConnection1;
-            this.oleDbInsertCommand.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
-            new System.Data.OleDb.OleDbParameter("IDMedikament", System.Data.OleDb.OleDbType.Guid, 0, "IDMedikament"),
-            new System.Data.OleDb.OleDbParameter("AbzugebenVon", System.Data.OleDb.OleDbType.Date, 16, "AbzugebenVon"),
-            new System.Data.OleDb.OleDbParameter("AbzugebenBis", System.Data.OleDb.OleDbType.Date, 16, "AbzugebenBis"),
-            new System.Data.OleDb.OleDbParameter("BeaufsichtigungJN", System.Data.OleDb.OleDbType.Boolean, 0, "BeaufsichtigungJN"),
-            new System.Data.OleDb.OleDbParameter("ZP0", System.Data.OleDb.OleDbType.Double, 0, "ZP0"),
-            new System.Data.OleDb.OleDbParameter("ZP1", System.Data.OleDb.OleDbType.Double, 0, "ZP1"),
-            new System.Data.OleDb.OleDbParameter("ZP2", System.Data.OleDb.OleDbType.Double, 0, "ZP2"),
-            new System.Data.OleDb.OleDbParameter("ZP3", System.Data.OleDb.OleDbType.Double, 0, "ZP3"),
-            new System.Data.OleDb.OleDbParameter("ZP4", System.Data.OleDb.OleDbType.Double, 0, "ZP4"),
-            new System.Data.OleDb.OleDbParameter("ZP5", System.Data.OleDb.OleDbType.Double, 0, "ZP5"),
-            new System.Data.OleDb.OleDbParameter("ZP6", System.Data.OleDb.OleDbType.Double, 0, "ZP6"),
-            new System.Data.OleDb.OleDbParameter("Einheit", System.Data.OleDb.OleDbType.VarChar, 0, "Einheit"),
-            new System.Data.OleDb.OleDbParameter("Intervall", System.Data.OleDb.OleDbType.Integer, 0, "Intervall"),
-            new System.Data.OleDb.OleDbParameter("Wochentage", System.Data.OleDb.OleDbType.Integer, 0, "Wochentage"),
-            new System.Data.OleDb.OleDbParameter("BedarfsMedikationJN", System.Data.OleDb.OleDbType.Boolean, 0, "BedarfsMedikationJN"),
-            new System.Data.OleDb.OleDbParameter("Bemerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Bemerkung"),
-            new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Erstellt"),
-            new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Geaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 16, "DatumErstellt"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 16, "DatumGeaendert"),
-            new System.Data.OleDb.OleDbParameter("Herrichten", System.Data.OleDb.OleDbType.Integer, 0, "Herrichten"),
-            new System.Data.OleDb.OleDbParameter("AerztlichevorbereitungJN", System.Data.OleDb.OleDbType.Boolean, 0, "AerztlichevorbereitungJN"),
-            new System.Data.OleDb.OleDbParameter("Verabreichungsart", System.Data.OleDb.OleDbType.Integer, 0, "Verabreichungsart"),
-            new System.Data.OleDb.OleDbParameter("Applikationsform", System.Data.OleDb.OleDbType.VarChar, 0, "Applikationsform"),
-            new System.Data.OleDb.OleDbParameter("Wiederholungstyp", System.Data.OleDb.OleDbType.Integer, 0, "Wiederholungstyp"),
-            new System.Data.OleDb.OleDbParameter("Wiederholungseinheit", System.Data.OleDb.OleDbType.Integer, 0, "Wiederholungseinheit"),
-            new System.Data.OleDb.OleDbParameter("Wiederholungswert", System.Data.OleDb.OleDbType.Double, 0, "Wiederholungswert"),
-            new System.Data.OleDb.OleDbParameter("StandardzeitenJN", System.Data.OleDb.OleDbType.Boolean, 0, "StandardzeitenJN"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt0", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt0"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt1", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt1"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt2", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt2"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt3", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt3"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt4", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt4"),
-            new System.Data.OleDb.OleDbParameter("Packunggroesse", System.Data.OleDb.OleDbType.Double, 0, "Packunggroesse"),
-            new System.Data.OleDb.OleDbParameter("Rezeptdaten", System.Data.OleDb.OleDbType.VarChar, 0, "Rezeptdaten"),
-            new System.Data.OleDb.OleDbParameter("Packungeinheit", System.Data.OleDb.OleDbType.VarChar, 0, "Packungeinheit"),
-            new System.Data.OleDb.OleDbParameter("BestellenJN", System.Data.OleDb.OleDbType.Boolean, 0, "BestellenJN"),
-            new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, "IDAufenthalt"),
-            new System.Data.OleDb.OleDbParameter("IDAerzte", System.Data.OleDb.OleDbType.Guid, 0, "IDAerzte"),
-            new System.Data.OleDb.OleDbParameter("AusstellungsDatum", System.Data.OleDb.OleDbType.Date, 16, "AusstellungsDatum"),
-            new System.Data.OleDb.OleDbParameter("DosierungASString", System.Data.OleDb.OleDbType.VarChar, 0, "DosierungASString"),
-            new System.Data.OleDb.OleDbParameter("Packungsanzahl", System.Data.OleDb.OleDbType.Integer, 0, "Packungsanzahl"),
-            new System.Data.OleDb.OleDbParameter("ZuletztBestelltAm", System.Data.OleDb.OleDbType.Date, 16, "ZuletztBestelltAm"),
-            new System.Data.OleDb.OleDbParameter("IDAerzteGeaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDAerzteGeaendert"),
-            new System.Data.OleDb.OleDbParameter("IDArztAbgesetzt", System.Data.OleDb.OleDbType.Guid, 0, "IDArztAbgesetzt"),
-            new System.Data.OleDb.OleDbParameter("ZuletztBestelltVon", System.Data.OleDb.OleDbType.Guid, 0, "ZuletztBestelltVon"),
-            new System.Data.OleDb.OleDbParameter("HAGPflichtigJN", System.Data.OleDb.OleDbType.Boolean, 0, "HAGPflichtigJN"),
-            new System.Data.OleDb.OleDbParameter("lstMedDaten", System.Data.OleDb.OleDbType.LongVarChar, 0, "lstMedDaten"),
-            new System.Data.OleDb.OleDbParameter("ZeitpunktBlisterliste", System.Data.OleDb.OleDbType.Date, 16, "ZeitpunktBlisterliste"),
-            new System.Data.OleDb.OleDbParameter("NumberMedDaten", System.Data.OleDb.OleDbType.Integer, 0, "NumberMedDaten"),
-            new System.Data.OleDb.OleDbParameter("lstWunden", System.Data.OleDb.OleDbType.LongVarChar, 0, "lstWunden"),
-            new System.Data.OleDb.OleDbParameter("NumberWunden", System.Data.OleDb.OleDbType.Integer, 0, "NumberWunden")});
-            // 
-            // oleDbUpdateCommand
-            // 
-            this.oleDbUpdateCommand.CommandText = resources.GetString("oleDbUpdateCommand.CommandText");
-            this.oleDbUpdateCommand.Connection = this.oleDbConnection1;
-            this.oleDbUpdateCommand.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
-            new System.Data.OleDb.OleDbParameter("IDMedikament", System.Data.OleDb.OleDbType.Guid, 0, "IDMedikament"),
-            new System.Data.OleDb.OleDbParameter("AbzugebenVon", System.Data.OleDb.OleDbType.Date, 16, "AbzugebenVon"),
-            new System.Data.OleDb.OleDbParameter("AbzugebenBis", System.Data.OleDb.OleDbType.Date, 16, "AbzugebenBis"),
-            new System.Data.OleDb.OleDbParameter("BeaufsichtigungJN", System.Data.OleDb.OleDbType.Boolean, 0, "BeaufsichtigungJN"),
-            new System.Data.OleDb.OleDbParameter("ZP0", System.Data.OleDb.OleDbType.Double, 0, "ZP0"),
-            new System.Data.OleDb.OleDbParameter("ZP1", System.Data.OleDb.OleDbType.Double, 0, "ZP1"),
-            new System.Data.OleDb.OleDbParameter("ZP2", System.Data.OleDb.OleDbType.Double, 0, "ZP2"),
-            new System.Data.OleDb.OleDbParameter("ZP3", System.Data.OleDb.OleDbType.Double, 0, "ZP3"),
-            new System.Data.OleDb.OleDbParameter("ZP4", System.Data.OleDb.OleDbType.Double, 0, "ZP4"),
-            new System.Data.OleDb.OleDbParameter("ZP5", System.Data.OleDb.OleDbType.Double, 0, "ZP5"),
-            new System.Data.OleDb.OleDbParameter("ZP6", System.Data.OleDb.OleDbType.Double, 0, "ZP6"),
-            new System.Data.OleDb.OleDbParameter("Einheit", System.Data.OleDb.OleDbType.VarChar, 0, "Einheit"),
-            new System.Data.OleDb.OleDbParameter("Intervall", System.Data.OleDb.OleDbType.Integer, 0, "Intervall"),
-            new System.Data.OleDb.OleDbParameter("Wochentage", System.Data.OleDb.OleDbType.Integer, 0, "Wochentage"),
-            new System.Data.OleDb.OleDbParameter("BedarfsMedikationJN", System.Data.OleDb.OleDbType.Boolean, 0, "BedarfsMedikationJN"),
-            new System.Data.OleDb.OleDbParameter("Bemerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Bemerkung"),
-            new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Erstellt"),
-            new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Geaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 16, "DatumErstellt"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 16, "DatumGeaendert"),
-            new System.Data.OleDb.OleDbParameter("Herrichten", System.Data.OleDb.OleDbType.Integer, 0, "Herrichten"),
-            new System.Data.OleDb.OleDbParameter("AerztlichevorbereitungJN", System.Data.OleDb.OleDbType.Boolean, 0, "AerztlichevorbereitungJN"),
-            new System.Data.OleDb.OleDbParameter("Verabreichungsart", System.Data.OleDb.OleDbType.Integer, 0, "Verabreichungsart"),
-            new System.Data.OleDb.OleDbParameter("Applikationsform", System.Data.OleDb.OleDbType.VarChar, 0, "Applikationsform"),
-            new System.Data.OleDb.OleDbParameter("Wiederholungstyp", System.Data.OleDb.OleDbType.Integer, 0, "Wiederholungstyp"),
-            new System.Data.OleDb.OleDbParameter("Wiederholungseinheit", System.Data.OleDb.OleDbType.Integer, 0, "Wiederholungseinheit"),
-            new System.Data.OleDb.OleDbParameter("Wiederholungswert", System.Data.OleDb.OleDbType.Double, 0, "Wiederholungswert"),
-            new System.Data.OleDb.OleDbParameter("StandardzeitenJN", System.Data.OleDb.OleDbType.Boolean, 0, "StandardzeitenJN"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt0", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt0"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt1", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt1"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt2", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt2"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt3", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt3"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt4", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt4"),
-            new System.Data.OleDb.OleDbParameter("Packunggroesse", System.Data.OleDb.OleDbType.Double, 0, "Packunggroesse"),
-            new System.Data.OleDb.OleDbParameter("Rezeptdaten", System.Data.OleDb.OleDbType.VarChar, 0, "Rezeptdaten"),
-            new System.Data.OleDb.OleDbParameter("Packungeinheit", System.Data.OleDb.OleDbType.VarChar, 0, "Packungeinheit"),
-            new System.Data.OleDb.OleDbParameter("BestellenJN", System.Data.OleDb.OleDbType.Boolean, 0, "BestellenJN"),
-            new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, "IDAufenthalt"),
-            new System.Data.OleDb.OleDbParameter("IDAerzte", System.Data.OleDb.OleDbType.Guid, 0, "IDAerzte"),
-            new System.Data.OleDb.OleDbParameter("AusstellungsDatum", System.Data.OleDb.OleDbType.Date, 16, "AusstellungsDatum"),
-            new System.Data.OleDb.OleDbParameter("DosierungASString", System.Data.OleDb.OleDbType.VarChar, 0, "DosierungASString"),
-            new System.Data.OleDb.OleDbParameter("Packungsanzahl", System.Data.OleDb.OleDbType.Integer, 0, "Packungsanzahl"),
-            new System.Data.OleDb.OleDbParameter("ZuletztBestelltAm", System.Data.OleDb.OleDbType.Date, 16, "ZuletztBestelltAm"),
-            new System.Data.OleDb.OleDbParameter("IDAerzteGeaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDAerzteGeaendert"),
-            new System.Data.OleDb.OleDbParameter("IDArztAbgesetzt", System.Data.OleDb.OleDbType.Guid, 0, "IDArztAbgesetzt"),
-            new System.Data.OleDb.OleDbParameter("ZuletztBestelltVon", System.Data.OleDb.OleDbType.Guid, 0, "ZuletztBestelltVon"),
-            new System.Data.OleDb.OleDbParameter("HAGPflichtigJN", System.Data.OleDb.OleDbType.Boolean, 0, "HAGPflichtigJN"),
-            new System.Data.OleDb.OleDbParameter("lstMedDaten", System.Data.OleDb.OleDbType.LongVarChar, 0, "lstMedDaten"),
-            new System.Data.OleDb.OleDbParameter("ZeitpunktBlisterliste", System.Data.OleDb.OleDbType.Date, 16, "ZeitpunktBlisterliste"),
-            new System.Data.OleDb.OleDbParameter("NumberMedDaten", System.Data.OleDb.OleDbType.Integer, 0, "NumberMedDaten"),
-            new System.Data.OleDb.OleDbParameter("lstWunden", System.Data.OleDb.OleDbType.LongVarChar, 0, "lstWunden"),
-            new System.Data.OleDb.OleDbParameter("NumberWunden", System.Data.OleDb.OleDbType.Integer, 0, "NumberWunden"),
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
-            // 
-            // oleDbDeleteCommand
-            // 
-            this.oleDbDeleteCommand.CommandText = "DELETE FROM [RezeptEintrag] WHERE (([ID] = ?))";
-            this.oleDbDeleteCommand.Connection = this.oleDbConnection1;
-            this.oleDbDeleteCommand.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             ((System.ComponentModel.ISupportInitialize)(this.dsKlientenListeByMedikament1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsRezeptEintrag1)).EndInit();
 

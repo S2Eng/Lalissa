@@ -167,6 +167,10 @@ namespace PMDS.GUI.BaseControls
                 TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.WUNDEN).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Wunde"));
                 TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.UNEXP_MASSNAHME).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Ungepl. Maßnahme"));
                 TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.MEDIKAMENT).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament"));
+                if (ENV.UseMediaktionVidieren)
+                {
+                    TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.MedikamentÄnderung).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament Änderung"));
+                }
                 TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.NOTFALL).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Notfall"));
                 TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.EVALUIERUNG).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Evaluierung"));
                 TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.Klient).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Klient"));
@@ -191,6 +195,10 @@ namespace PMDS.GUI.BaseControls
                     TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.WUNDEN).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Wunde"));
                     TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.UNEXP_MASSNAHME).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Ungepl. Maßnahme"));
                     TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.MEDIKAMENT).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament"));
+                    if (ENV.UseMediaktionVidieren)
+                    {
+                        TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.MedikamentÄnderung).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament Änderung"));
+                    }
                     TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.NOTFALL).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Notfall"));
                     TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.EVALUIERUNG).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Evaluierung"));
                     TreeNode = this.treeGruppe.Nodes.Add(((int)PMDS.Global.PflegeEintragTyp.Klient).ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Klient"));

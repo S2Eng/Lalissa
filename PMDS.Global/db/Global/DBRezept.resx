@@ -126,11 +126,17 @@
   <metadata name="oleDbDeleteCommand.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <metadata name="oleDbDeleteCommand.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="oleDbDeleteCommand.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
   <metadata name="oleDbInsertCommand.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
+  </metadata>
+  <metadata name="oleDbInsertCommand.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
   <metadata name="oleDbInsertCommand.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -159,6 +165,9 @@ ORDER BY AbzugebenVon, AbzugebenBis</value>
   <metadata name="oleDbUpdateCommand.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <metadata name="oleDbUpdateCommand.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="oleDbUpdateCommand.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
@@ -179,20 +188,18 @@ ORDER BY AbzugebenVon, AbzugebenBis</value>
   </metadata>
   <data name="oleDbCommand2.CommandText" xml:space="preserve">
     <value>SELECT DISTINCT 
-                      RezeptEintrag.IDMedikament, RezeptEintrag.AbzugebenVon, RezeptEintrag.AbzugebenBis, CAST(0 AS Bit) AS IstVorbereitet, 
-                      RezeptEintrag.Packunggroesse, Patient.Nachname, Patient.Vorname, Abteilung.Bezeichnung, Patient.ID, 
-                      Patient.Nachname + ' ' + Patient.Vorname + ' ' + Abteilung.Bezeichnung AS KlientAbteilung, Medikament.Bezeichnung AS Medikament, 
-                      RezeptEintrag.IDAufenthalt
-FROM         RezeptEintrag INNER JOIN
-                      Aufenthalt ON RezeptEintrag.IDAufenthalt = Aufenthalt.ID INNER JOIN
-                      Patient ON Aufenthalt.IDPatient = Patient.ID INNER JOIN
-                      Abteilung ON Aufenthalt.IDAbteilung = Abteilung.ID INNER JOIN
-                      Medikament ON RezeptEintrag.IDMedikament = Medikament.ID
-WHERE     (RezeptEintrag.IDMedikament = ?) AND (Aufenthalt.Entlassungszeitpunkt IS NULL) AND (RezeptEintrag.AbzugebenVon =
-                          (SELECT     MAX(RE2.AbzugebenVon) AS Maxdat
-                            FROM          RezeptEintrag AS RE2  INNER JOIN
-                                                   Medikament AS M2 ON RE2.IDMedikament = Medikament.ID
-                            WHERE      (RE2.IDAufenthalt = RezeptEintrag.IDAufenthalt))) AND (RezeptEintrag.AbzugebenBis &gt; ?) AND (RezeptEintrag.IDAufenthalt &lt;&gt; ?)
+                         RezeptEintrag.IDMedikament, RezeptEintrag.AbzugebenVon, RezeptEintrag.AbzugebenBis, CAST(0 AS Bit) AS IstVorbereitet, RezeptEintrag.Packunggroesse, Patient.Nachname, Patient.Vorname, Abteilung.Bezeichnung, 
+                         Patient.ID, Patient.Nachname + ' ' + Patient.Vorname + ' ' + Abteilung.Bezeichnung AS KlientAbteilung, RTRIM(Medikament.Bezeichnung) AS Medikament, RezeptEintrag.IDAufenthalt
+FROM            RezeptEintrag INNER JOIN
+                         Aufenthalt ON RezeptEintrag.IDAufenthalt = Aufenthalt.ID INNER JOIN
+                         Patient ON Aufenthalt.IDPatient = Patient.ID INNER JOIN
+                         Abteilung ON Aufenthalt.IDAbteilung = Abteilung.ID INNER JOIN
+                         Medikament ON RezeptEintrag.IDMedikament = Medikament.ID
+WHERE        (RezeptEintrag.IDMedikament = ?) AND (Aufenthalt.Entlassungszeitpunkt IS NULL) AND (RezeptEintrag.AbzugebenVon =
+                             (SELECT        MAX(RE2.AbzugebenVon) AS Maxdat
+                               FROM            RezeptEintrag AS RE2 INNER JOIN
+                                                         Medikament AS M2 ON RE2.IDMedikament = Medikament.ID
+                               WHERE        (RE2.IDAufenthalt = RezeptEintrag.IDAufenthalt))) AND (RezeptEintrag.AbzugebenBis &gt; ?) AND (RezeptEintrag.IDAufenthalt &lt;&gt; ?)
 ORDER BY RezeptEintrag.AbzugebenVon DESC</value>
   </data>
   <metadata name="dsKlientenListeByMedikament1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

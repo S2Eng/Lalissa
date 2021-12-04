@@ -417,6 +417,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Kein Medikament ausgewählt!", "", MessageBoxButtons.OK);
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament Änderung");
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Rezeptgebührenbefreit");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Abwesenheit beendet");
@@ -946,7 +947,6 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keinen Eintrag ausgewählt!");
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Medizinische Daten");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Von");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Bis");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Dosierung");
@@ -980,7 +980,6 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Bis");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Dosierung");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Signatur");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Palliativ ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("DNR    Palliativ ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Amputation: ");
@@ -990,7 +989,6 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Klienten");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Gefunden: ");
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Suchtext: Eingabe erforderlich!", "", MessageBoxButtons.OK);
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Assessment wurde editiert");
 
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Funktion noch nicht fertig! (In Entwicklung)", "", MessageBoxButtons.OK);
@@ -1848,7 +1846,6 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Planung");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Wunde");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Ungepl. Maßnahme");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Notfall");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Evaluierung");
                 
@@ -1861,7 +1858,6 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Planung");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Wunde");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Ungepl. Maßnahme");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Notfall");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Evaluierung");
 

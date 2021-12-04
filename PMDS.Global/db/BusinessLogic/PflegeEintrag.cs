@@ -6,6 +6,7 @@ using PMDS.Global;
 using PMDS.Data.Patient;
 using PMDS.Data.Global;
 using PMDS.Data.PflegePlan;
+using System.Linq;
 
 
 namespace PMDS.BusinessLogic
@@ -29,8 +30,10 @@ namespace PMDS.BusinessLogic
         // Liefert sämtliche zu einer Evaluierung gehörenden Pflegeeinträge eines Aufenthaltes
         public static dsPflegeEintrag AllAufenthaltEvaluierung(Guid IDAufenthalt, Guid IDPflegeplan)
         {
-            DBPflegeEintrag db = new DBPflegeEintrag();
-            return db.ByAufenthaltEvaluierung(IDAufenthalt, IDPflegeplan);
+            using (DBPflegeEintrag db = new DBPflegeEintrag())
+            {
+                return db.ByAufenthaltEvaluierung(IDAufenthalt, IDPflegeplan);
+            }
         }
 
 		// Alle Einträge mit dem zugehörigen Aufenthalt ermitteln
@@ -41,20 +44,37 @@ namespace PMDS.BusinessLogic
 
         public static PflegeEintrag NewByAufenthalt(Guid idAufenthalt, string PflegeplanText, PflegeEintragTyp PflegeEintragTyp, string DekursText, bool GegenzeichnenJN)
 		{
-			PflegeEintrag pe = new PflegeEintrag();
-            
-			pe.IDBenutzer	= ENV.USERID;
-			pe.IDBerufsstand= ENV.BERUFID;
-			pe.IDAufenthalt	= idAufenthalt;
-            pe.EintragsTyp = PflegeEintragTyp;
-            pe.PflegeplanText = PflegeplanText.Trim();
-            pe.Text = DekursText.Trim();
-            pe.AbzeichnenJN = GegenzeichnenJN;
-			return pe;
+            PflegeEintrag pe = new PflegeEintrag
+            {
+                IDBenutzer = ENV.USERID,
+                IDBerufsstand = ENV.BERUFID,
+                IDAufenthalt = idAufenthalt,
+                EintragsTyp = PflegeEintragTyp,
+                PflegeplanText = PflegeplanText.Trim(),
+                Text = DekursText.Trim(),
+                AbzeichnenJN = GegenzeichnenJN
+            };
+            return pe;
 		}
 
-		// Neuer Eintrag für Aufenthalt/Eintrag
-		public static PflegeEintrag NewByMassnahme(Guid idAufenthalt, Guid idMassnahme)
+        public static PflegeEintrag NewByAufenthalt(Guid idAufenthalt, string PflegeplanText, PflegeEintragTyp PflegeEintragTyp, string DekursText, bool GegenzeichnenJN, Guid IDSollBerufsstand)
+        {
+            PflegeEintrag pe = new PflegeEintrag
+            {
+                IDBenutzer = ENV.USERID,
+                IDBerufsstand = ENV.BERUFID,
+                IDAufenthalt = idAufenthalt,
+                EintragsTyp = PflegeEintragTyp,
+                PflegeplanText = PflegeplanText.Trim(),
+                Text = DekursText.Trim(),
+                AbzeichnenJN = GegenzeichnenJN, 
+                IDSollberufsstand = IDSollBerufsstand
+            };
+            return pe;
+        }
+
+        // Neuer Eintrag für Aufenthalt/Eintrag
+        public static PflegeEintrag NewByMassnahme(Guid idAufenthalt, Guid idMassnahme)
 		{
             PflegeEintrag pe = NewByAufenthalt(idAufenthalt, QS2.Desktop.ControlManagment.ControlManagment.getRes("Durchführungsnachweis"), PflegeEintragTyp.UNEXP_MASSNAHME, "", false);  
 
@@ -118,33 +138,53 @@ namespace PMDS.BusinessLogic
         {
             PMDS.DB.PMDSBusiness b = new PMDSBusiness();
 
-            PMDS.DB.DBMedikament medik = new PMDS.DB.DBMedikament();
-            PMDS.Global.db.Patient.dsMedikament.MedikamentDataTable dtMed = medik.ReadMedikament(IDMedikament);
-            string Medikament = ((PMDS.Global.db.Patient.dsMedikament.MedikamentRow)dtMed.Rows[0]).Bezeichnung.Trim();
-
-            PflegeEintrag pe = NewByAufenthalt(idAufenthalt, "Dekurs", PflegeEintragTyp.DEKURS, "", false);
-            pe.Zeitpunkt = time;
-            db.Entities.Benutzer rusrLoggedOn = b.LogggedOnUser();
-            if (rusrLoggedOn.IDBerufsstand != null)
-                pe.IDBerufsstand = ENV.BERUFID;
-            pe.EintragsTyp = PflegeEintragTyp.MEDIKAMENT;
-            pe.PflegeplanText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikation"); ;
-            pe.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikation") + " " + Medikament + " " + Aktion;
-            if (IDWichtigFür != System.Guid.Empty)
-                pe.IDWichtig = IDWichtigFür;
-            pe.AbzeichnenJN = GegenzeichnenJN;
-            pe.HAGPflichtigJN = HAGPflichtigJN;
-            pe.Write();
-
-            Guid IDGruppe = System.Guid.NewGuid();
-
-            System.Collections.Generic.List<Guid> lstWichtigFuer = PMDS.Global.Tools.GetWichtigFuerDefaults(eDekursDefaults.Medikation.ToString());
-            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+            using (PMDS.DB.DBMedikament medik = new PMDS.DB.DBMedikament())
             {
-                System.Collections.Generic.List<Guid> lstPEToCopy = new System.Collections.Generic.List<Guid>();
-                b.CopyAndAddPflegeeinträgeCC(db, pe.ID, ref lstWichtigFuer, false, true, GegenzeichnenJN, IDWichtigFür, ref lstPEToCopy, false, ref IDGruppe);
-            }
+                PMDS.Global.db.Patient.dsMedikament.MedikamentDataTable dtMed = medik.ReadMedikament(IDMedikament);
+                string Medikament = ((PMDS.Global.db.Patient.dsMedikament.MedikamentRow)dtMed.Rows[0]).Bezeichnung.Trim();
 
+                PflegeEintrag pe = NewByAufenthalt(idAufenthalt, "Dekurs", PflegeEintragTyp.DEKURS, "", false);
+                pe.Zeitpunkt = time;
+                db.Entities.Benutzer rusrLoggedOn = b.LogggedOnUser();
+                if (rusrLoggedOn.IDBerufsstand != null)
+                {
+                    pe.IDBerufsstand = ENV.BERUFID;
+                }
+
+                pe.EintragsTyp = PflegeEintragTyp.MEDIKAMENT;           //Default
+                System.Collections.Generic.List<Guid> lstWichtigFuer = PMDS.Global.Tools.GetWichtigFuerDefaults(ENV.UseMediaktionVidieren ? eDekursDefaults.MedikationÄnderung.ToString() : eDekursDefaults.Medikation.ToString());
+
+                if (ENV.UseMediaktionVidieren)
+                {
+                    pe.EintragsTyp = PflegeEintragTyp.MedikamentÄnderung;
+
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                    {
+                        pe.IDSollberufsstand = (from ber in db.AuswahlListe
+                                                    orderby ber.Hierarche descending
+                                                    where ber.IDAuswahlListeGruppe == "BER" && lstWichtigFuer.Contains(ber.ID) && ber.Beschreibung.ToLower().Contains("medikationvidieren")
+                                                    select ber.ID).FirstOrDefault();
+                    }
+                }
+
+                pe.PflegeplanText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikation Änderung");
+                pe.Text = Medikament + Aktion;
+                if (IDWichtigFür != System.Guid.Empty)
+                {
+                    pe.IDWichtig = IDWichtigFür;
+                }
+                pe.AbzeichnenJN = GegenzeichnenJN;
+                pe.HAGPflichtigJN = HAGPflichtigJN;
+                pe.Write();
+
+                Guid IDGruppe = System.Guid.NewGuid();
+
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                {
+                    System.Collections.Generic.List<Guid> lstPEToCopy = new System.Collections.Generic.List<Guid>();
+                    b.CopyAndAddPflegeeinträgeCC(db, pe.ID, ref lstWichtigFuer, false, true, GegenzeichnenJN, IDWichtigFür, ref lstPEToCopy, false, ref IDGruppe);
+                }
+            }
         }
 
         public static void InsertPflegeeintrag(Guid idAufenthalt, DateTime time, string Txt, PflegeEintragTyp PflegeEintragTyp, string PflegePlanText)
@@ -366,6 +406,26 @@ namespace PMDS.BusinessLogic
 					DB_ROW.IDWichtig = value;
 			}
 		}
+
+        public Guid IDSollberufsstand
+        {
+            get
+            {
+                if (DB_ROW.IsIDSollberufsstandNull())
+                    return Guid.Empty;
+
+                return DB_ROW.IDSollberufsstand;
+            }
+
+            set
+            {
+                if (value == Guid.Empty)
+                    DB_ROW.SetIDSollberufsstandNull();
+                else
+                    DB_ROW.IDSollberufsstand = value;
+            }
+        }
+
         public PMDS.Global.eDekursherkunft Dekursherkunft
         {
             get 

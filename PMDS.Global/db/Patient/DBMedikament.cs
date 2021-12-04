@@ -486,8 +486,8 @@ namespace PMDS.DB
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initi" +
-    "al Catalog=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=sty041;Integrated Security=SSPI;Initial Catalog=PM" +
+    "DS_DemoGross";
             // 
             // oleDbInsertCommand1
             // 
@@ -667,8 +667,9 @@ namespace PMDS.DB
             // 
             // oleDbCommand7
             // 
-            this.oleDbCommand7.CommandText = "SELECT        ID, Bezeichnung + \' (\' + CONVERT(varchar(50), Packungsgroesse) + \' " +
-    "\' + Packungseinheit + \')\' AS Bezeichnung, Aktuell\r\nFROM            Medikament";
+            this.oleDbCommand7.CommandText = "SELECT        ID, RTRIM(Bezeichnung) + \' (\' + CONVERT(nvarchar(50), Packungsgroes" +
+    "se) + \' \' + RTRIM(Packungseinheit) + \')\' AS Bezeichnung, Aktuell\r\nFROM          " +
+    "  Medikament";
             this.oleDbCommand7.Connection = this.oleDbConnection1;
             // 
             // dsMedikament1

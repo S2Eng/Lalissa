@@ -345,25 +345,34 @@ namespace PMDS.GUI
                 foreach (dsRezeptEintrag.RezeptEintragRow r in lRows)
                 {
                     string sAktion = "";
-                    if (frm.ucRezeptEintrag1.bIsStorno)
+
+                    bool bEX = (r.AbzugebenBis.Year != 3000);       //Abgesetzt
+
+                        if (frm.ucRezeptEintrag1.bIsStorno)
                     {
-                        sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("STORNIERT") + " (" + r.Bemerkung.Trim() + ")";
+                        sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("STORNIERT") + " (" + r.Bemerkung.Trim() + ") ";
                     }
                     else
                     {
-                        sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("geändert");
+                        if (bEX)
+                        {
+                            sAktion = "\n" + "EX: " + r.AbzugebenBis.ToString();
+                            sAktion += "\n(" + r.DosierungASString + " " + r.Einheit + ")";
+                        }
+                        else
+                        {
+                            sAktion = "\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("NEU ab ") + " " + r.AbzugebenVon.ToString();
+                            sAktion += "\n" + r.DosierungASString + " " + r.Einheit;
+                            sAktion += "\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Herr.: ") + PMDS.GUI.PMDSBusinessUI.getTxtHerrichten(r.Herrichten);
+                            sAktion += ", " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Verabr.: ") + PMDS.GUI.PMDSBusinessUI.getTxtVerabreichungsart(r.Verabreichungsart);
+                            if (r.HAGPflichtigJN)
+                                sAktion += "\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("HAG-Pflichtig");
+                        }
                     }
 
-                    sAktion += " ";
-                    sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("ab") + " " + r.AbzugebenVon.ToString() + " ";
-                    if (r.AbzugebenBis.Year != 3000)
-                        sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + r.AbzugebenBis.ToString() + " ";
-                    sAktion += r.DosierungASString;
-                    sAktion += ", " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Herrichten: ") + PMDS.GUI.PMDSBusinessUI.getTxtHerrichten(r.Herrichten);
-                    sAktion += ", " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Verabreichung: ") + PMDS.GUI.PMDSBusinessUI.getTxtVerabreichungsart(r.Verabreichungsart);
-                    if (r.HAGPflichtigJN)
-                        sAktion += ", " + QS2.Desktop.ControlManagment.ControlManagment.getRes("HAG-Pflichtig");
-
+                    //sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("ab") + " " + r.AbzugebenVon.ToString() + " ";                   
+                    //if (r.AbzugebenBis.Year != 3000)
+                    //    sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("EX: ") + " " + r.AbzugebenBis.ToString();
 
                     PflegeEintrag.NewRezeptAenderungEinfuegen(IDAufenthalt, DateTime.Now, r.IDMedikament, sAktion, frm.ucRezeptEintrag1.chkGegenzeichnen.Checked,
                                                                 frm.ucRezeptEintrag1.cbImportant.ID, r.HAGPflichtigJN);

@@ -249,6 +249,8 @@ namespace PMDS.Global
 
         public static int MedVerabreichenDefault = -1;
         public static bool UseEinzelverordnungEinfach;
+        public static bool UseMediaktionVidieren;
+
         public static bool SavePflegebegleitschreibenToArchiv = true;
 
         private static bool _AbteilungRMOptional;	            // Flag ob der Rückmeldetext für die Abteilung Optional ist oder nicht
@@ -1545,6 +1547,8 @@ namespace PMDS.Global
                 SetENVValue("RezeptUseErstattungscode", ref ENV.RezeptUseErstattungscode, "0");
                 SetENVValue("MedVerabreichenDefault", ref ENV.MedVerabreichenDefault);
                 SetENVValue("UseEinzelverordnungEinfach", ref ENV.UseEinzelverordnungEinfach);
+                SetENVValue("UseMedikationVidieren", ref ENV.UseMediaktionVidieren);
+
                 SetENVValue("SavePflegebegleitschreibenToArchiv", ref ENV.SavePflegebegleitschreibenToArchiv, "0");
                 SetENVValue("InterventionenEvaluieren", ref ENV.InterventionenEvaluieren);
 

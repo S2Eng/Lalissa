@@ -43,7 +43,8 @@ namespace PMDS.Global
         NeueWundtherapie = 10,
         NeuerWundeintrag = 11,
         NeuesAssessment = 12,
-        BefundimportTermin = 13
+        BefundimportTermin = 13,
+        MedikationÄnderung = 14
     }
 
     public enum eUITypeTermine
@@ -319,7 +320,8 @@ namespace PMDS.Global
         Assessment = 10,
         Verordnungen = 11,
         Wundverlauf = 12,
-        Wundtherapie = 13
+        Wundtherapie = 13,
+        MedikamentÄnderung = 14
     }
 
 	public enum PflegeEintragWichtig
