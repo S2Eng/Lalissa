@@ -150,12 +150,12 @@ Public Class Sql
 
     Public Sub readBills(ByVal id As String, ByRef von As Date, ByRef bis As Date, ByRef vonRechDatum As Nullable(Of DateTime), ByRef bisRechDatum As Nullable(Of DateTime),
                          ByRef db As dbPMDS, ByVal rechTyp As PMDS.Calc.Logic.eBillTyp, ByVal status As PMDS.Calc.Logic.eBillStatus,
-                         ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportierte As Boolean, RechNr As String)
+                         ByVal allKlients As Boolean, IDKlinik As System.Guid, showStornierte As Boolean, showExportierte As Boolean, RechNr As String)
         Try
             Dim da As New OleDb.OleDbDataAdapter
             Dim cmd As New OleDb.OleDbCommand
 
-            cmd.CommandText = Me.daBill.SelectCommand.CommandText + Me.getWhereVonBis(id.ToLower(), von, bis, rechTyp, status, allKlients, IDKlinik, showFreigegebenAndStorniert)
+            cmd.CommandText = Me.daBill.SelectCommand.CommandText + Me.getWhereVonBis(id.ToLower(), von, bis, rechTyp, status, allKlients, IDKlinik, showStornierte)
 
             If (Not vonRechDatum Is Nothing) Then
                 cmd.CommandText += " and RechDatum >= ? "
@@ -623,16 +623,33 @@ Public Class Sql
                 sWhere = " where IDKlient <> '" + System.Guid.NewGuid().ToString() + "' "
             End If
 
-            If showFreigegebenAndStorniert Then
-                sWhere += " and Freigegeben=1 "
-            Else
-                If status = eBillStatus.freigegeben Then
-                    sWhere += " and Freigegeben=1 "
-                ElseIf status = eBillStatus.storniert Then
+            If status <> eBillStatus.alle Then
+
+                If showFreigegebenAndStorniert Then
                     sWhere += " and Freigegeben=1 "
                 Else
-                    sWhere += " and Freigegeben=0 "
+                    If status = eBillStatus.freigegeben Then
+                        sWhere += " and Freigegeben=1 "
+                    ElseIf status = eBillStatus.storniert Then
+                        sWhere += " and Freigegeben=1 "
+                    Else
+                        sWhere += " and Freigegeben=0 "
+                    End If
                 End If
+
+                If showFreigegebenAndStorniert Then
+                    sWhere += " and (Status=" + CInt(eBillStatus.freigegeben).ToString() + " or Status=" + CInt(eBillStatus.storniert).ToString() + ") "
+                Else
+                    If status = eBillStatus.freigegeben Or status = eBillStatus.storniert Then
+                        If status = eBillStatus.freigegeben Then
+                            sWhere += " and Status = " + CInt(status).ToString() + " "
+                        ElseIf status = eBillStatus.storniert Then
+                            sWhere += " and Status = " + CInt(status).ToString() + " "
+                        End If
+                    ElseIf status = eBillStatus.offen Then
+                    End If
+                End If
+
             End If
 
             If idKlient = "" And Not allKlients Then
@@ -650,18 +667,6 @@ Public Class Sql
                     End If
                 End If
             End If
-            If showFreigegebenAndStorniert Then
-                sWhere += " and (Status=" + CInt(eBillStatus.freigegeben).ToString() + " or Status=" + CInt(eBillStatus.storniert).ToString() + ") "
-            Else
-                If status = eBillStatus.freigegeben Or status = eBillStatus.storniert Then
-                    If status = eBillStatus.freigegeben Then
-                        sWhere += " and Status = " + CInt(status).ToString() + " "
-                    ElseIf status = eBillStatus.storniert Then
-                        sWhere += " and Status = " + CInt(status).ToString() + " "
-                    End If
-                ElseIf status = eBillStatus.offen Then
-                End If
-            End If
 
             sWhere += " and datum >= ? and datum <= ? "
             sWhere += " and IDKlinik = '" + IDKlinik.ToString() + "' "
@@ -671,6 +676,7 @@ Public Class Sql
             calcBase.doExept(exept)
         End Try
     End Function
+
     Private Function getWhere_SR(ByRef monat As Date, ByVal IDKost As String, _
                                 ByVal subselect As Boolean, IDKlinik As System.Guid) As String
         Try

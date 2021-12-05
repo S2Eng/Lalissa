@@ -32,6 +32,7 @@ Public Enum eBillStatus
     offen = 0
     freigegeben = 1
     storniert = -10
+    alle = -1
 End Enum
 Public Enum eTypRechNr
     Standard = 0

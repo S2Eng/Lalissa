@@ -178,7 +178,7 @@ namespace PMDS.BusinessLogic
                 {
                     sb.Append("Einzelverordnung");
 
-                    if (ENV.UseEinzelverordnungEinfach)
+                    if (ENV.UseEinzelverordnungMax24)
                     {
                         sb.Clear();
                         sb.Append("Einzelverordnung: Einzeldosis = " + ConvertFractalsToString((double)row["ZP5"]) + " " + row["Einheit"] +  ", maximal " + ConvertFractalsToString((double)row["ZP6"]) + " " + row["Einheit"] + " in 24 Stunden");

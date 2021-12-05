@@ -233,7 +233,7 @@
             this.panelTopSr.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopSr.Location = new System.Drawing.Point(0, 0);
             this.panelTopSr.Name = "panelTopSr";
-            this.panelTopSr.Size = new System.Drawing.Size(1106, 77);
+            this.panelTopSr.Size = new System.Drawing.Size(1192, 77);
             this.panelTopSr.TabIndex = 0;
             // 
             // panelSucheAbrech
@@ -244,7 +244,7 @@
             this.panelSucheAbrech.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSucheAbrech.Location = new System.Drawing.Point(0, 0);
             this.panelSucheAbrech.Name = "panelSucheAbrech";
-            this.panelSucheAbrech.Size = new System.Drawing.Size(1106, 78);
+            this.panelSucheAbrech.Size = new System.Drawing.Size(1192, 78);
             this.panelSucheAbrech.TabIndex = 107;
             // 
             // ucKlinikDropDown1
@@ -605,7 +605,7 @@
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottom.Location = new System.Drawing.Point(0, 535);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(1106, 30);
+            this.panelBottom.Size = new System.Drawing.Size(1192, 30);
             this.panelBottom.TabIndex = 1;
             // 
             // btnRollung
@@ -691,7 +691,7 @@
             appearance42.FontData.SizeInPoints = 7.5F;
             appearance42.TextHAlignAsString = "Right";
             this.lblCount.Appearance = appearance42;
-            this.lblCount.Location = new System.Drawing.Point(886, 1);
+            this.lblCount.Location = new System.Drawing.Point(972, 1);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(214, 15);
             this.lblCount.TabIndex = 8;
@@ -782,6 +782,7 @@
             this.editor.PageMargins.Top = 79.03D;
             this.editor.Size = new System.Drawing.Size(71, 48);
             this.editor.TabIndex = 100;
+            this.editor.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editor.UserNames = null;
             this.editor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textControl1_KeyPress);
             // 
@@ -795,7 +796,7 @@
             this.panelAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAll.Location = new System.Drawing.Point(0, 0);
             this.panelAll.Name = "panelAll";
-            this.panelAll.Size = new System.Drawing.Size(1106, 565);
+            this.panelAll.Size = new System.Drawing.Size(1192, 565);
             this.panelAll.TabIndex = 4;
             // 
             // panelGrid
@@ -806,7 +807,7 @@
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGrid.Location = new System.Drawing.Point(0, 112);
             this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(1106, 423);
+            this.panelGrid.Size = new System.Drawing.Size(1192, 423);
             this.panelGrid.TabIndex = 100;
             // 
             // uGridAbrech2
@@ -1020,7 +1021,7 @@
             this.uGridAbrech2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uGridAbrech2.Location = new System.Drawing.Point(0, 0);
             this.uGridAbrech2.Name = "uGridAbrech2";
-            this.uGridAbrech2.Size = new System.Drawing.Size(1106, 423);
+            this.uGridAbrech2.Size = new System.Drawing.Size(1192, 423);
             this.uGridAbrech2.TabIndex = 165;
             this.uGridAbrech2.Text = "Abrechnungen";
             this.uGridAbrech2.BeforeRowActivate += new Infragistics.Win.UltraWinGrid.RowEventHandler(this.uGridAbrech2_BeforeRowActivate);
@@ -1047,6 +1048,7 @@
             this.editorPrecalc.PageMargins.Top = 79.03D;
             this.editorPrecalc.Size = new System.Drawing.Size(71, 48);
             this.editorPrecalc.TabIndex = 102;
+            this.editorPrecalc.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editorPrecalc.UserNames = null;
             // 
             // panelTop2
@@ -1061,7 +1063,7 @@
             this.panelTop2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop2.Location = new System.Drawing.Point(0, 77);
             this.panelTop2.Name = "panelTop2";
-            this.panelTop2.Size = new System.Drawing.Size(1106, 35);
+            this.panelTop2.Size = new System.Drawing.Size(1192, 35);
             this.panelTop2.TabIndex = 3;
             // 
             // panelFSW
@@ -1069,7 +1071,7 @@
             this.panelFSW.Controls.Add(this.btnFSWReset);
             this.panelFSW.Controls.Add(this.btnFSW);
             this.panelFSW.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelFSW.Location = new System.Drawing.Point(585, 0);
+            this.panelFSW.Location = new System.Drawing.Point(671, 0);
             this.panelFSW.Name = "panelFSW";
             this.panelFSW.Size = new System.Drawing.Size(166, 35);
             this.panelFSW.TabIndex = 111;
@@ -1079,9 +1081,9 @@
             this.panelAuswahlFreigStornoAll.Controls.Add(this.cboBillStatus);
             this.panelAuswahlFreigStornoAll.Controls.Add(this.lblBillStatus);
             this.panelAuswahlFreigStornoAll.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelAuswahlFreigStornoAll.Location = new System.Drawing.Point(443, 0);
+            this.panelAuswahlFreigStornoAll.Location = new System.Drawing.Point(452, 0);
             this.panelAuswahlFreigStornoAll.Name = "panelAuswahlFreigStornoAll";
-            this.panelAuswahlFreigStornoAll.Size = new System.Drawing.Size(128, 35);
+            this.panelAuswahlFreigStornoAll.Size = new System.Drawing.Size(165, 35);
             this.panelAuswahlFreigStornoAll.TabIndex = 110;
             // 
             // cboBillStatus
@@ -1099,7 +1101,7 @@
             valueListItem5});
             this.cboBillStatus.Location = new System.Drawing.Point(29, 7);
             this.cboBillStatus.Name = "cboBillStatus";
-            this.cboBillStatus.Size = new System.Drawing.Size(96, 21);
+            this.cboBillStatus.Size = new System.Drawing.Size(133, 21);
             this.cboBillStatus.TabIndex = 115;
             this.cboBillStatus.ValueChanged += new System.EventHandler(this.cboBillType_ValueChanged);
             // 
@@ -1118,15 +1120,15 @@
             this.panelAuswahlRechTyp.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelAuswahlRechTyp.Location = new System.Drawing.Point(231, 0);
             this.panelAuswahlRechTyp.Name = "panelAuswahlRechTyp";
-            this.panelAuswahlRechTyp.Size = new System.Drawing.Size(212, 35);
+            this.panelAuswahlRechTyp.Size = new System.Drawing.Size(221, 35);
             this.panelAuswahlRechTyp.TabIndex = 109;
             // 
             // cboRechTyp
             // 
             this.cboRechTyp.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboRechTyp.Location = new System.Drawing.Point(82, 7);
+            this.cboRechTyp.Location = new System.Drawing.Point(59, 7);
             this.cboRechTyp.Name = "cboRechTyp";
-            this.cboRechTyp.Size = new System.Drawing.Size(125, 21);
+            this.cboRechTyp.Size = new System.Drawing.Size(156, 21);
             this.cboRechTyp.TabIndex = 113;
             this.cboRechTyp.ValueChanged += new System.EventHandler(this.cboRechTyp_ValueChanged);
             // 
@@ -1136,7 +1138,7 @@
             this.lblRechTyp.Name = "lblRechTyp";
             this.lblRechTyp.Size = new System.Drawing.Size(82, 15);
             this.lblRechTyp.TabIndex = 112;
-            this.lblRechTyp.Text = "Rechnungstyp";
+            this.lblRechTyp.Text = "Beleg:";
             // 
             // panelHistorie2
             // 
@@ -1152,7 +1154,7 @@
             // 
             this.paneStorno.Controls.Add(this.btnStorno);
             this.paneStorno.Dock = System.Windows.Forms.DockStyle.Right;
-            this.paneStorno.Location = new System.Drawing.Point(751, 0);
+            this.paneStorno.Location = new System.Drawing.Point(837, 0);
             this.paneStorno.Name = "paneStorno";
             this.paneStorno.Size = new System.Drawing.Size(60, 35);
             this.paneStorno.TabIndex = 107;
@@ -1175,7 +1177,7 @@
             // 
             this.panelDelete.Controls.Add(this.btnDelete);
             this.panelDelete.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelDelete.Location = new System.Drawing.Point(811, 0);
+            this.panelDelete.Location = new System.Drawing.Point(897, 0);
             this.panelDelete.Name = "panelDelete";
             this.panelDelete.Size = new System.Drawing.Size(35, 35);
             this.panelDelete.TabIndex = 106;
@@ -1209,7 +1211,7 @@
             this.panelPrint.Controls.Add(this.btnExportAsExcel);
             this.panelPrint.Controls.Add(this.btnPrint);
             this.panelPrint.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelPrint.Location = new System.Drawing.Point(846, 0);
+            this.panelPrint.Location = new System.Drawing.Point(932, 0);
             this.panelPrint.Name = "panelPrint";
             this.panelPrint.Size = new System.Drawing.Size(260, 35);
             this.panelPrint.TabIndex = 105;
@@ -1317,7 +1319,7 @@
             this.panelAll2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAll2.Location = new System.Drawing.Point(0, 0);
             this.panelAll2.Name = "panelAll2";
-            this.panelAll2.Size = new System.Drawing.Size(1106, 565);
+            this.panelAll2.Size = new System.Drawing.Size(1192, 565);
             this.panelAll2.TabIndex = 102;
             // 
             // errorProvider1
@@ -1331,7 +1333,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.panelAll2);
             this.Name = "ucCalcs";
-            this.Size = new System.Drawing.Size(1106, 565);
+            this.Size = new System.Drawing.Size(1192, 565);
             this.VisibleChanged += new System.EventHandler(this.ucCalcs_VisibleChanged);
             this.Resize += new System.EventHandler(this.ucCalcs_Resize);
             this.panelTopSr.ResumeLayout(false);

@@ -640,7 +640,7 @@ namespace PMDS.DB
                         da.Fill(dtSelect);
                         foreach (DataRow r in dtSelect.Rows)
                         {
-                            if (ENV.UseEinzelverordnungEinfach)
+                            if (ENV.UseEinzelverordnungMax24)
                             {
                                 dt.AddIDListeRow(new Guid(r[0].ToString()), r[1].ToString().Replace("\r\n", " - ") + "||" + r[4].ToString() + "\n" + r[2].ToString());
                             }

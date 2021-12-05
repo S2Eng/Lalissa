@@ -2,7 +2,8 @@ Option Strict Off
 Option Explicit On
 Imports System.Text
 Imports VB = Microsoft.VisualBasic
-
+Imports System.Linq
+Imports System.Data.DataSetExtensions
 
 
 Public Class calculation
@@ -172,12 +173,76 @@ Public Class calculation
 
     Public Sub Load(ByRef klienten As ArrayList, ByVal von As DateTime, ByVal bis As DateTime, vonRechDatum As Nullable(Of DateTime), bisRechDatum As Nullable(Of DateTime),
                     ByRef db As dbPMDS, ByVal rechTyp As PMDS.Calc.Logic.eBillTyp,
-                    ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportiere As Boolean, RechNr As String)
+                    ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showStornierte As Boolean, showExportiere As Boolean, RechNr As String)
 
+
+        Dim dbTemp As dbPMDS = db.Clone
         calcBase.errTxt = ""
         For Each IDKlient As String In klienten
-            Me._sql.readBills(IDKlient, von, bis, vonRechDatum, bisRechDatum, db, rechTyp, status, allKlients, IDKlinik, showFreigegebenAndStorniert, showExportiere, RechNr)
+            Me._sql.readBills(IDKlient, von, bis, vonRechDatum, bisRechDatum, db, rechTyp, status, allKlients, IDKlinik, showStornierte, showExportiere, RechNr)
         Next
+
+        For Each r As dbPMDS.billsRow In db.bills
+            Me._sql.readBillHeader(r.ID, db, IDKlinik)
+        Next
+    End Sub
+
+    Public Sub Load(ByRef klienten As ArrayList, ByVal von As DateTime, ByVal bis As DateTime, vonRechDatum As Nullable(Of DateTime), bisRechDatum As Nullable(Of DateTime),
+                    ByRef db As dbPMDS, ByVal rechTyp As PMDS.Calc.Logic.eBillTyp,
+                    ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportiere As Boolean, RechNr As String,
+                    ByRef iOffene As Integer, ByRef iFreigegebene As Integer)
+
+
+        'Alle bills aus Db holen statt zweimal alle rechnungen lesen (einmal für offene und einmal für freigegeben)
+        'Dauert bei 200 bills ca. 4 Sekunden
+
+        Dim dbTemp As dbPMDS = db.Clone
+
+        Dim statusOriginal = status
+        status = eBillStatus.alle
+        calcBase.errTxt = ""
+        For Each IDKlient As String In klienten
+            Me._sql.readBills(IDKlient, von, bis, vonRechDatum, bisRechDatum, dbTemp, rechTyp, status, allKlients, IDKlinik, showFreigegebenAndStorniert, showExportiere, RechNr)
+        Next
+        status = statusOriginal
+
+        If status = PMDS.Calc.Logic.eBillStatus.offen Then
+            For Each r As dbPMDS.billsRow In dbTemp.bills
+                If r.Freigegeben = False Then
+                    db.bills.ImportRow(r)
+                    iOffene += 1
+                Else
+                    iFreigegebene += 1
+                End If
+            Next
+        ElseIf status = PMDS.Calc.Logic.eBillStatus.freigegeben Then
+            For Each r As dbPMDS.billsRow In dbTemp.bills
+                If r.Freigegeben = True Then
+                    If showFreigegebenAndStorniert Then
+                        db.bills.ImportRow(r)
+                        iFreigegebene += 1
+                    Else
+                        If r.Status = eBillStatus.freigegeben Then
+                            db.bills.ImportRow(r)
+                            iFreigegebene += 1
+                        End If
+                    End If
+                Else
+                    iOffene += 1
+                End If
+            Next
+        ElseIf status = eBillStatus.storniert Then
+            For Each r As dbPMDS.billsRow In dbTemp.bills
+                If r.Freigegeben = True Then
+                    If r.Status = eBillStatus.storniert Then
+                        db.bills.ImportRow(r)
+                        iFreigegebene += 1
+                    End If
+                Else
+                    iOffene += 1
+                End If
+            Next
+        End If
 
         For Each r As dbPMDS.billsRow In db.bills
             Me._sql.readBillHeader(r.ID, db, IDKlinik)

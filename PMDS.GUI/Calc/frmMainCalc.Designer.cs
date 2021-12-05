@@ -94,6 +94,7 @@
             this.styleAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new QS2.Desktop.ControlManagment.BasePanel();
             this.ucStartseite21 = new PMDS.Calc.UI.Admin.ucMainCalc();
+            this.textControl1 = new TXTextControl.TextControl();
             this._frmAbrechnung_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this.ultraToolbarsManager1 = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             this._frmAbrechnung_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
@@ -101,7 +102,6 @@
             this._frmAbrechnung_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this.timerControlManager = new System.Windows.Forms.Timer(this.components);
             this.appStylistRuntime1 = new Infragistics.Win.AppStyling.Runtime.AppStylistRuntime(this.components);
-            this.textControl1 = new TXTextControl.TextControl();
             ((System.ComponentModel.ISupportInitialize)(this.ultraStatusBar1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -114,7 +114,8 @@
             appearance1.ForeColor = System.Drawing.Color.Black;
             this.ultraStatusBar1.Appearance = appearance1;
             this.ultraStatusBar1.ContextMenuStrip = this.contextMenuStrip1;
-            this.ultraStatusBar1.Location = new System.Drawing.Point(0, 716);
+            this.ultraStatusBar1.Location = new System.Drawing.Point(0, 881);
+            this.ultraStatusBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraStatusBar1.Name = "ultraStatusBar1";
             appearance2.BorderColor = System.Drawing.Color.White;
             this.ultraStatusBar1.PanelAppearance = appearance2;
@@ -143,7 +144,7 @@
             ultraStatusPanel2,
             ultraStatusPanel3,
             ultraStatusPanel4});
-            this.ultraStatusBar1.Size = new System.Drawing.Size(1016, 18);
+            this.ultraStatusBar1.Size = new System.Drawing.Size(1355, 22);
             this.ultraStatusBar1.TabIndex = 22;
             this.ultraStatusBar1.Text = "ultraStatusBar1";
             this.ultraStatusBar1.ButtonClick += new Infragistics.Win.UltraWinStatusBar.PanelEventHandler(this.ultraStatusBar1_ButtonClick);
@@ -169,8 +170,9 @@
             this.panel1.Controls.Add(this.textControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 21);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1016, 695);
+            this.panel1.Size = new System.Drawing.Size(1355, 860);
             this.panel1.TabIndex = 1;
             // 
             // ucStartseite21
@@ -179,10 +181,21 @@
             this.ucStartseite21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucStartseite21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ucStartseite21.Location = new System.Drawing.Point(0, 0);
-            this.ucStartseite21.Margin = new System.Windows.Forms.Padding(4);
+            this.ucStartseite21.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.ucStartseite21.Name = "ucStartseite21";
-            this.ucStartseite21.Size = new System.Drawing.Size(1016, 695);
+            this.ucStartseite21.Size = new System.Drawing.Size(1355, 860);
             this.ucStartseite21.TabIndex = 0;
+            // 
+            // textControl1
+            // 
+            this.textControl1.Font = new System.Drawing.Font("Arial", 10F);
+            this.textControl1.Location = new System.Drawing.Point(116, 64);
+            this.textControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textControl1.Name = "textControl1";
+            this.textControl1.Size = new System.Drawing.Size(107, 85);
+            this.textControl1.TabIndex = 1;
+            this.textControl1.UserNames = null;
+            this.textControl1.ViewMode = TXTextControl.ViewMode.Normal;
             // 
             // _frmAbrechnung_Toolbars_Dock_Area_Left
             // 
@@ -191,8 +204,9 @@
             this._frmAbrechnung_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
             this._frmAbrechnung_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmAbrechnung_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 21);
+            this._frmAbrechnung_Toolbars_Dock_Area_Left.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this._frmAbrechnung_Toolbars_Dock_Area_Left.Name = "_frmAbrechnung_Toolbars_Dock_Area_Left";
-            this._frmAbrechnung_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 695);
+            this._frmAbrechnung_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 860);
             this._frmAbrechnung_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // ultraToolbarsManager1
@@ -315,9 +329,10 @@
             this._frmAbrechnung_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.Gainsboro;
             this._frmAbrechnung_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
             this._frmAbrechnung_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
-            this._frmAbrechnung_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1016, 21);
+            this._frmAbrechnung_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1355, 21);
+            this._frmAbrechnung_Toolbars_Dock_Area_Right.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this._frmAbrechnung_Toolbars_Dock_Area_Right.Name = "_frmAbrechnung_Toolbars_Dock_Area_Right";
-            this._frmAbrechnung_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 695);
+            this._frmAbrechnung_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 860);
             this._frmAbrechnung_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _frmAbrechnung_Toolbars_Dock_Area_Top
@@ -327,8 +342,9 @@
             this._frmAbrechnung_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top;
             this._frmAbrechnung_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmAbrechnung_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
+            this._frmAbrechnung_Toolbars_Dock_Area_Top.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this._frmAbrechnung_Toolbars_Dock_Area_Top.Name = "_frmAbrechnung_Toolbars_Dock_Area_Top";
-            this._frmAbrechnung_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1016, 21);
+            this._frmAbrechnung_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1355, 21);
             this._frmAbrechnung_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _frmAbrechnung_Toolbars_Dock_Area_Bottom
@@ -337,9 +353,10 @@
             this._frmAbrechnung_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.Gainsboro;
             this._frmAbrechnung_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom;
             this._frmAbrechnung_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText;
-            this._frmAbrechnung_Toolbars_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 716);
+            this._frmAbrechnung_Toolbars_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 881);
+            this._frmAbrechnung_Toolbars_Dock_Area_Bottom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this._frmAbrechnung_Toolbars_Dock_Area_Bottom.Name = "_frmAbrechnung_Toolbars_Dock_Area_Bottom";
-            this._frmAbrechnung_Toolbars_Dock_Area_Bottom.Size = new System.Drawing.Size(1016, 0);
+            this._frmAbrechnung_Toolbars_Dock_Area_Bottom.Size = new System.Drawing.Size(1355, 0);
             this._frmAbrechnung_Toolbars_Dock_Area_Bottom.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // timerControlManager
@@ -347,29 +364,21 @@
             this.timerControlManager.Interval = 1000;
             this.timerControlManager.Tick += new System.EventHandler(this.timerControlManager_Tick);
             // 
-            // textControl1
-            // 
-            this.textControl1.Font = new System.Drawing.Font("Arial", 10F);
-            this.textControl1.Location = new System.Drawing.Point(87, 52);
-            this.textControl1.Name = "textControl1";
-            this.textControl1.Size = new System.Drawing.Size(80, 69);
-            this.textControl1.TabIndex = 1;
-            this.textControl1.UserNames = null;
-            this.textControl1.ViewMode = TXTextControl.ViewMode.Normal;
-            // 
             // frmMainCalc
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1016, 734);
+            this.ClientSize = new System.Drawing.Size(1355, 903);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this._frmAbrechnung_Toolbars_Dock_Area_Left);
             this.Controls.Add(this._frmAbrechnung_Toolbars_Dock_Area_Right);
             this.Controls.Add(this._frmAbrechnung_Toolbars_Dock_Area_Bottom);
             this.Controls.Add(this.ultraStatusBar1);
             this.Controls.Add(this._frmAbrechnung_Toolbars_Dock_Area_Top);
-            this.MinimumSize = new System.Drawing.Size(1024, 768);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1360, 936);
             this.Name = "frmMainCalc";
             this.Text = "PMDS - Abrechnung";
             this.MaximumSizeChanged += new System.EventHandler(this.frmAbrechnung_MaximumSizeChanged);

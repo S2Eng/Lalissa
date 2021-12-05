@@ -145,31 +145,35 @@ namespace PMDS.Calc.UI
         public void loadCalcs(ref PMDS.Calc.Logic.dbPMDS db, DateTime von, DateTime bis, Nullable<DateTime> vonRechDatum, Nullable<DateTime> bisRechDatum,
                                 UltraGrid grid, UltraButton butAlleKeine,
                                 ref QS2.Desktop.ControlManagment.BaseLabel lblCount, PMDS.Calc.Logic.eBillTyp rechTyp, 
-                                PMDS.Calc.Logic.eBillStatus status, bool showFreigegebenAndStorniert, bool showExportierte,
+                                PMDS.Calc.Logic.eBillStatus status, bool showStornierte, bool showExportierte,
                                 PMDS.Calc.Logic.eBillStatus BillStatusFreigegeben,
                                 string RechNr)
         { 
             try
             {
-                db.Clear();                    
-                    
+                db.Clear();
+                int iOffene = 0;
+                int iFreigegebene = 0;
+
                 if (this.typ == eTyp.calc)
                 {
-                    this.calculation.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte, RechNr);
-                    this.showAnzButtonsCalc(ref db, von, bis, vonRechDatum, bisRechDatum, grid, butAlleKeine, ref lblCount, rechTyp, status, showFreigegebenAndStorniert, showExportierte, BillStatusFreigegeben);
+                    this.calculation.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showStornierte, showExportierte, RechNr, ref iOffene, ref iFreigegebene);
+                    this.showAnzButtonsCalc(ref db, von, bis, vonRechDatum, bisRechDatum, grid, butAlleKeine, ref lblCount, rechTyp, status, showStornierte, showExportierte, BillStatusFreigegeben);
+                    this.form.btnVorschau.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Vorschau") + "" + " (" + iOffene.ToString() + ")";
+                    this.form.btnFreigeben.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Freigegeben") + "" + " (" + iFreigegebene.ToString() + ")";
                 }
                 else if (this.typ == eTyp.depotgeld)
                 {
-                    this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, true, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte, RechNr);
+                    this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, true, ENV.IDKlinik, showStornierte, showExportierte, RechNr);
                 }
                 else if (this.typ == eTyp.sr)
                 {
-                    this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte, RechNr);
-                    this.showAnzButtonsCalc(ref db, von, bis, vonRechDatum, bisRechDatum, grid, butAlleKeine, ref lblCount, rechTyp, status, showFreigegebenAndStorniert, showExportierte, BillStatusFreigegeben);
+                    this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showStornierte, showExportierte, RechNr);
+                    this.showAnzButtonsCalc(ref db, von, bis, vonRechDatum, bisRechDatum, grid, butAlleKeine, ref lblCount, rechTyp, status, showStornierte, showExportierte, BillStatusFreigegeben);
                 }
                 else if (this.typ == eTyp.buchhaltung)
                 {
-                    this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, true, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte, RechNr);
+                    this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, true, ENV.IDKlinik, showStornierte, showExportierte, RechNr);
                 }
                     
                 grid.Refresh();
@@ -200,7 +204,7 @@ namespace PMDS.Calc.UI
                 }
 
                 this.setUI(grid);
-                this.gridToStorno(status == PMDS.Calc.Logic.eBillStatus.storniert || showFreigegebenAndStorniert, ref db, ref grid );
+                this.gridToStorno(status == PMDS.Calc.Logic.eBillStatus.storniert || showStornierte, ref db, ref grid );
                 grid.Selected.Rows.Clear();
                 this.sitemap.alleKeineButtonGrid((Infragistics.Win.Misc.UltraButton)butAlleKeine, false, (UltraGrid)grid, "", false);
                 this.sitemap.anz = db.bills.Rows.Count;
@@ -261,7 +265,7 @@ namespace PMDS.Calc.UI
                 calculation calculation2 = new calculation();
                 if (this.typ == eTyp.calc)
                 {
-                    calculation2.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref dbSelect, rechTyp, status2, false, ENV.IDKlinik, showFreigegebenAndStorniert2, showExportierte, "");
+                    //calculation2.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref dbSelect, rechTyp, status2, false, ENV.IDKlinik, showFreigegebenAndStorniert2, showExportierte, "");
                     if (status == eBillStatus.offen)
                     {
                         dbFreigegeben = dbSelect;

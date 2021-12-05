@@ -793,7 +793,7 @@ namespace PMDS.GUI
             {
                 GuiUtil.ValidateField(txtAnmerkung, txtAnmerkung.Text.Trim().Length > 0,
                                  "Bitte geben Sie eine Indikation ein.", ref bError, bInfo, errorProvider1);
-                if (ENV.UseEinzelverordnungEinfach)
+                if (ENV.UseEinzelverordnungMax24)
                 {
                     //zp5 UND zp6 müssen einen Wert haben
                     if (zp5.Value == DBNull.Value || (double)zp5.Value == 0)
@@ -1097,8 +1097,9 @@ namespace PMDS.GUI
                 zp4.Appearance.BackColor = Color.White;
                 ucStandardZeiten1.setZeitenBackcolor(Color.White);
 
-                if (ENV.UseEinzelverordnungEinfach) 
+                if (ENV.UseEinzelverordnungMax24) 
                 {
+                    pnlSignaturWiederholung.Visible = false;
                     pnlSignatur.Visible = false;
                     pnlSignaturEV.Left = pnlSignatur.Left;
                     pnlSignaturEV.Visible = true;
@@ -1110,6 +1111,7 @@ namespace PMDS.GUI
                 else
                 {
                     pnlSignaturEV.Visible = false;
+                    pnlSignaturWiederholung.Visible = true;
                     pnlSignatur.Visible = true;
                     lblVerabreichung.Visible = true;
                     cmbVerabreichungsart.Visible = true;
@@ -1121,6 +1123,7 @@ namespace PMDS.GUI
                 txtAnmerkung.Appearance.BackColor = Color.White;
 
                 pnlSignaturEV.Visible = false;
+                pnlSignaturWiederholung.Visible = true;
                 pnlSignatur.Visible = true;
                 lblVerabreichung.Visible = true;
                 cmbVerabreichungsart.Visible = true;
@@ -1169,13 +1172,15 @@ namespace PMDS.GUI
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                PMDS.GUI.Medikament.frmSearchMedikamente frm = new Medikament.frmSearchMedikamente();
-                frm.initControl();
-                frm.ShowDialog(this);
-                if (!frm.contSearchMedikamente1.abort)
+                using (PMDS.GUI.Medikament.frmSearchMedikamente frm = new Medikament.frmSearchMedikamente())
                 {
-                    this.txtMedikament.Tag = frm.contSearchMedikamente1.rSelMedikament.ID;
-                    this.UpdateDataForMedikament(frm.contSearchMedikamente1.rSelMedikament.ID);
+                    frm.initControl();
+                    frm.ShowDialog(this);
+                    if (!frm.contSearchMedikamente1.abort)
+                    {
+                        this.txtMedikament.Tag = frm.contSearchMedikamente1.rSelMedikament.ID;
+                        this.UpdateDataForMedikament(frm.contSearchMedikamente1.rSelMedikament.ID);
+                    }
                 }
 
             }
