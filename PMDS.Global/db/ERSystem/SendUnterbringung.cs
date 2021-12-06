@@ -12,6 +12,7 @@ using System.IO;
 using System.Net.Http;
 using System.Security.Principal;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace PMDS.Global.db.ERSystem
 {  
@@ -35,6 +36,8 @@ namespace PMDS.Global.db.ERSystem
             public string ResultXML = "";
         }
 
+        private X509Certificate2 certificate = new X509Certificate2();
+        private WebRequestHandler handler = new WebRequestHandler();
 
         public bool Send(System.Guid IDUnterbringung, ref retSendUnterbringung retSendUnterbringung1, ref eMeldungstyp Meldungart,
                             ref PMDS.db.Entities.Unterbringung rUnterbringungFromService, ref PMDS.db.Entities.ERModellPMDSEntities db)
@@ -855,15 +858,10 @@ namespace PMDS.Global.db.ERSystem
                 string strReason = "";
                 string strResult = "";
 
-
-
-
-
-                bool res = SendMeldungHTTP(txt, ENV.HAG_Url, ENV.HAG_Zertifikat, ref strResult, ref strCode, ref strReason);
+                bool res = SendMeldungHTTP(txt, new Uri(ENV.HAG_Url), ENV.HAG_Zertifikat, ref strResult, ref strCode, ref strReason);
 
                 if (res)
                 {
-
                     //XML im Log sichern
                     string LOGHAGPath = Path.Combine(ENV.ArchivPath, "HAG");
                     try
@@ -938,7 +936,6 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-
         public string LookUp(Dictionary<int, string> dict, int SearchFor)
         {
             foreach (KeyValuePair<int, string> val in dict)
@@ -948,11 +945,8 @@ namespace PMDS.Global.db.ERSystem
             throw new Exception("LookUp: Value '" + SearchFor + "' in ENUM not found!");
         }
 
-
-        public bool SendMeldungHTTP(string meldung, string url, string CertificateName, ref string strResult, ref string strCode, ref string strReason)
+        public bool SendMeldungHTTP(string meldung, Uri url, string CertificateName, ref string strResult, ref string strCode, ref string strReason)
         {
-
-
             try
             {
                 var result = new HttpResponseMessage();
@@ -960,7 +954,7 @@ namespace PMDS.Global.db.ERSystem
                 string resResult = "";
                 string resReason = "";
 
-                if (ENV.HAG_USER != "" && ENV.HAG_PASSWORD != "")
+                if (!String.IsNullOrWhiteSpace(ENV.HAG_USER) && !String.IsNullOrWhiteSpace(ENV.HAG_PASSWORD))
                 {
                     // Zertifikat aus dem LocalMachine-Zertifikatsspeicher mit dem User aus der Config 
                     Impersonation.RunAction(ENV.HAG_USER, ENV.HAG_PASSWORD, System.Environment.MachineName, LogonType.LOGON32_LOGON_NEW_CREDENTIALS, LogonProvider.LOGON32_PROVIDER_DEFAULT, () =>
@@ -972,10 +966,7 @@ namespace PMDS.Global.db.ERSystem
 
                         using (HttpClient client = new HttpClient(handler))
                         {
-                            var pairs = new List<KeyValuePair<string, string>>
-                {
-                    new KeyValuePair<string, string>("", meldung)
-                };
+                            var pairs = new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("", meldung) };
                             var content = new FormUrlEncodedContent(pairs);
 
                             result = client.PostAsync(url, content).Result;
@@ -987,20 +978,39 @@ namespace PMDS.Global.db.ERSystem
                 }
                 else
                 {
-                    X509Certificate2 certificate = new X509Certificate2();
-                    WebRequestHandler handler = new WebRequestHandler();
-                    handler = new WebRequestHandler();
+                    //20211206 - Zuerst File in Unterverzeichnis (mit passendem "gültig ab" im Format YYYY-MM-DD) suchen
+                    DirectoryInfo dirInfo = new DirectoryInfo(Path.GetDirectoryName(CertificateName));
+                    var dirs = dirInfo.EnumerateDirectories().OrderByDescending(d => d.Name);
+                    foreach (DirectoryInfo dir in dirs)
+                    {
+                        if (DateTime.TryParse(dir.Name, out DateTime GültigAb))
+                        {
+                            if (DateTime.Now >= GültigAb)
+                            {
+                                var files = dir.EnumerateFiles();
+                                foreach (FileInfo file in files)
+                                {
+                                    if (file.Extension == ".pfx")
+                                    {
+                                        CertificateName = file.FullName;
+                                        goto BreakSearchForCertificate;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    BreakSearchForCertificate:
 
                     //Wenn als Zertifikat ein existierendes Zertifiakt angegeben ist und das Passwort gesetzt ist
-                    if (File.Exists(CertificateName) && ENV.HAG_PASSWORD != "")
+                    if (File.Exists(CertificateName) && !String.IsNullOrWhiteSpace(ENV.HAG_PASSWORD))
                     {
                         // Zertifikat von der Festplatte laden
                         certificate = new X509Certificate2(CertificateName, ENV.HAG_PASSWORD);
                     }
-                    else if (ENV.HAG_USER == "" && ENV.HAG_PASSWORD == "")
+                    else if (String.IsNullOrWhiteSpace(ENV.HAG_USER) && String.IsNullOrWhiteSpace(ENV.HAG_PASSWORD))
                     {
                         // Zertifikat aus dem Zertifikatsspeicher des Benutzers holen
-                        FindCertificateFromStore(CertificateName, StoreLocation.CurrentUser, StoreName.My);
+                        certificate = FindCertificateFromStore(CertificateName, StoreLocation.CurrentUser, StoreName.My);
                     }
                     else
                     {
@@ -1012,11 +1022,10 @@ namespace PMDS.Global.db.ERSystem
 
                     handler.ClientCertificates.Add(certificate);
 
-
                     var proxy = WebRequest.DefaultWebProxy;
                     try
                     {
-                        System.Uri uri = new System.Uri(url);
+                        System.Uri uri = url;
                         if (!proxy.IsBypassed(uri))
                         {
 
@@ -1033,7 +1042,7 @@ namespace PMDS.Global.db.ERSystem
                             //Mit eingabe des Passworts
                             string pw = Console.ReadLine();
                             string promptValue = "";
-                            if (ENV.HAG_PASSWORD_TMP == "")
+                            if (String.IsNullOrWhiteSpace(ENV.HAG_PASSWORD_TMP))
                             {
                                 promptValue = Prompt.ShowDialog(QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte geben Sie Ihr Passwort ein"), QS2.Desktop.ControlManagment.ControlManagment.getRes("Meldung senden"));
                                 ENV.HAG_PASSWORD_TMP = promptValue;
@@ -1056,16 +1065,14 @@ namespace PMDS.Global.db.ERSystem
 
                         try
                         {
-                            //Cursor.Current = Cursors.WaitCursor;
                             var pairs = new List<KeyValuePair<string, string>>
                             {
                                 new KeyValuePair<string, string>("", meldung)
                             };
-                            var content = new FormUrlEncodedContent(pairs);
-                            //System.Windows.Forms.MessageBox.Show(url);
-                            //System.Windows.Forms.MessageBox.Show(meldung);
-
-                            result = client.PostAsync(url, content).Result;
+                            using (var content = new FormUrlEncodedContent(pairs))
+                            {
+                                result = client.PostAsync(url, content).Result;
+                            }
                             resCode = result.StatusCode;
                             resReason = result.ReasonPhrase.ToString();
                             resResult = result.Content.ReadAsStringAsync().Result;
@@ -1090,6 +1097,12 @@ namespace PMDS.Global.db.ERSystem
                 strResult = QS2.Desktop.ControlManagment.ControlManagment.getRes("Nicht gesendet");
                 return false;
             }
+
+            finally
+            {
+                if (certificate != null) certificate.Dispose();
+                if (handler != null) handler.Dispose();
+            }
         }
 
 
@@ -1097,32 +1110,34 @@ namespace PMDS.Global.db.ERSystem
         {
             public static string ShowDialog(string text, string caption)
             {
-                Form prompt = new Form()
+                using (Form prompt = new Form()
                 {
                     Width = 300,
                     Height = 150,
                     FormBorderStyle = FormBorderStyle.FixedToolWindow,
                     Text = caption,
                     StartPosition = FormStartPosition.CenterScreen
-                };
-                Label textLabel = new Label() { Left = 50, Top = 20, Width = 200, Text = text };
-                TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 200 };
-                textBox.PasswordChar = '*';
-                textBox.Font = new System.Drawing.Font(textBox.Font.FontFamily, 10);
-                Button confirmation = new Button() { Text = "Ok", Left = 150, Width = 100, Top = 80, DialogResult = DialogResult.OK };
-                confirmation.Click += (sender, e) => { prompt.Close(); };
-                prompt.Controls.Add(textBox);
-                prompt.Controls.Add(confirmation);
-                prompt.Controls.Add(textLabel);
-                prompt.AcceptButton = confirmation;
+                })
+                {
+                    Label textLabel = new Label() { Left = 50, Top = 20, Width = 200, Text = text };
+                    TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 200 };
+                    textBox.PasswordChar = '*';
+                    textBox.Font = new System.Drawing.Font(textBox.Font.FontFamily, 10);
+                    Button confirmation = new Button() { Text = "Ok", Left = 150, Width = 100, Top = 80, DialogResult = DialogResult.OK };
+                    confirmation.Click += (sender, e) => { prompt.Close(); };
+                    prompt.Controls.Add(textBox);
+                    prompt.Controls.Add(confirmation);
+                    prompt.Controls.Add(textLabel);
+                    prompt.AcceptButton = confirmation;
 
-                return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+                    return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+                }
             }
         }
 
         private X509Certificate2 FindCertificateFromStore(string cerSubject, StoreLocation storeLocation, StoreName storeName)
         {
-            X509Certificate2 cert = null;
+            X509Certificate2 cert = new X509Certificate2();
 
             var certStore = new X509Store(storeName, storeLocation);
             certStore.Open(OpenFlags.ReadOnly);
@@ -1137,11 +1152,7 @@ namespace PMDS.Global.db.ERSystem
             }
 
             certStore.Close();
-
             return cert;
         }
-
-
     }
-
 }

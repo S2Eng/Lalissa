@@ -488,8 +488,15 @@ namespace PMDS.DB.Global
                 daRead.SelectCommand.CommandText = this.seldaKostentraeger + sWhere;
                 using (dsKostentraeger.KostentraegerDataTable dt = new dsKostentraeger.KostentraegerDataTable())
                 {
+
                     DataBase.Fill(daRead, dt);
-                    return dt;
+
+                    //dsKostentraeger.KostentraegerDataTable dtSort = new dsKostentraeger.KostentraegerDataTable();
+                    //foreach (DataRow r in dt.AsEnumerable().OrderBy(o => o.Vorname)){
+                    //    dtSort.ImportRow(r);
+                    //}
+
+                    return (dsKostentraeger.KostentraegerDataTable) dt;
                 }
             }
         }
