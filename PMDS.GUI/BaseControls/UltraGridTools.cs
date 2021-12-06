@@ -1182,7 +1182,7 @@ namespace PMDS.GUI
                 g.ActiveCell.Value = g.ActiveCell.Value;
         }
 
-        public static void AddTaschengeldKostentraegerValueList(UltraGrid g, string sBoundGridColumn, bool refreshList, bool klinik, System.Guid IDKlinik)
+        public static void AddTaschengeldKostentraegerValueList(UltraGrid g, string sBoundGridColumn, bool refreshList, bool klinik, System.Guid IDKlinik, Guid IDKlient)
         {
             ValueListsCollection vlc = g.DisplayLayout.ValueLists;
             bool refresh = false;
@@ -1202,14 +1202,15 @@ namespace PMDS.GUI
             if (refresh || refreshList)
             {
                 // Werte laden
-                PMDS.DB.Global.DBKostentraeger k = new PMDS.DB.Global.DBKostentraeger();
-
-                //Neu nach 19.10.2007 MDA
-                vl.ValueListItems.Add(Guid.Empty, QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte Kostenträger wählen."));
-               
-                foreach (PMDS.Global.db.Global.ds_abrechnung.dsKostentraeger.KostentraegerRow r in k.GetTaschengeldKostentraeger(klinik, IDKlinik))
+                using (PMDS.DB.Global.DBKostentraeger k = new PMDS.DB.Global.DBKostentraeger())
                 {
-                    vl.ValueListItems.Add(r.ID, r.Name);
+                    //Neu nach 19.10.2007 MDA
+                    vl.ValueListItems.Add(Guid.Empty, QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte Kostenträger wählen."));
+
+                    foreach (PMDS.Global.db.Global.ds_abrechnung.dsKostentraeger.KostentraegerRow r in k.GetTaschengeldKostentraeger(klinik, IDKlinik, IDKlient))
+                    {
+                        vl.ValueListItems.Add(r.ID, r.Name + " " + r.Vorname + " (FiBu = " + r.FIBUKonto + ")");
+                    }
                 }
             }
 

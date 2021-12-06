@@ -466,7 +466,7 @@ namespace PMDS.DB.Global
             }
         }
 
-        public dsKostentraeger.KostentraegerDataTable GetTaschengeldKostentraeger(bool klinik, System.Guid IDKlinik)
+        public dsKostentraeger.KostentraegerDataTable GetTaschengeldKostentraeger(bool klinik, System.Guid IDKlinik, Guid IDKlient)
         {
             using (OleDbDataAdapter daRead = new OleDbDataAdapter())
             {
@@ -477,19 +477,20 @@ namespace PMDS.DB.Global
                 cmdRead.CommandTimeout = 0;
                 daRead.SelectCommand = cmdRead;
 
-                string sWhere = "";
-                if (!klinik)
+                string sWhere = " WHERE (TaschengeldJN = 1) ";
+
+                if (klinik)
                 {
-                    sWhere = " WHERE (TaschengeldJN = 1) ORDER BY Name ";
+                    sWhere += " and (IDKlinik = '" + IDKlinik.ToString() + "' or IDKlinik is null) ";
                 }
-                else
-                {
-                    sWhere = " WHERE (TaschengeldJN = 1) and (IDKlinik = '" + IDKlinik.ToString() + "' or IDKlinik is null) ORDER BY Name ";
-                }
+                sWhere += " ORDER BY CASE WHEN IDPatient = '" + IDKlient.ToString() + "' THEN 1 ELSE 0 END DESC, Name, Vorname";
+
                 daRead.SelectCommand.CommandText = this.seldaKostentraeger + sWhere;
-                dsKostentraeger.KostentraegerDataTable dt = new dsKostentraeger.KostentraegerDataTable();
-                DataBase.Fill(daRead, dt);
-                return dt;
+                using (dsKostentraeger.KostentraegerDataTable dt = new dsKostentraeger.KostentraegerDataTable())
+                {
+                    DataBase.Fill(daRead, dt);
+                    return dt;
+                }
             }
         }
         

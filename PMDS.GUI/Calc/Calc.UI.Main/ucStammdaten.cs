@@ -69,9 +69,10 @@ namespace PMDS.Calc.UI.Admin
 
         }
 
-        public void Save()
+        public void Save(out bool retOK)
         {
             bool eRet1 = true;
+            retOK = true;
 
             try
             {
@@ -103,10 +104,15 @@ namespace PMDS.Calc.UI.Admin
                             {
                                 _ContentChenged = false;
                                 EnableDisableButtons();
+                                retOK = true;
+                            }
+                            else
+                            {
+                                retOK = false;
                             }
                         }
                         else
-                        { 
+                        {
                             _ContentChenged = false;
                             EnableDisableButtons();
                         }
@@ -353,8 +359,11 @@ namespace PMDS.Calc.UI.Admin
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                Save();
-                this.RefreshControl();
+                Save(out bool retOK);
+                if (retOK)
+                {
+                    this.RefreshControl();
+                }
             }
             catch (Exception ex)
             {

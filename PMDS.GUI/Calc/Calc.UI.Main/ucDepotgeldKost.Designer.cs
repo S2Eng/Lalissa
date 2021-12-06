@@ -32,6 +32,8 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDepotgeldKost));
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Entfernen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Hinzufügen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("PatientTaschengeldKostentraeger", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
@@ -57,22 +59,20 @@
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Hinzufügen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             this.btnDel = new QS2.Desktop.ControlManagment.BaseButton();
-            this.dgMain = new QS2.Desktop.ControlManagment.BaseGrid();
-            this.dsPatientTaschengeldKostentraeger1 = new PMDS.Global.db.Global.ds_abrechnung.dsPatientTaschengeldKostentraeger();
             this.btnAdd = new QS2.Desktop.ControlManagment.BaseButton();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.panelButtons = new QS2.Desktop.ControlManagment.BasePanel();
             this.panel1ButtonsOben = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraGridBagLayoutPanel1 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.dgMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsPatientTaschengeldKostentraeger1)).BeginInit();
+            this.dgMain = new QS2.Desktop.ControlManagment.BaseGrid();
+            this.dsPatientTaschengeldKostentraeger1 = new PMDS.Global.db.Global.ds_abrechnung.dsPatientTaschengeldKostentraeger();
             this.panelButtons.SuspendLayout();
             this.panel1ButtonsOben.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel1)).BeginInit();
             this.ultraGridBagLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPatientTaschengeldKostentraeger1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDel
@@ -92,6 +92,60 @@
             this.ultraToolTipManager1.SetUltraToolTip(this.btnDel, ultraToolTipInfo2);
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
+            // btnAdd
+            // 
+            appearance16.Image = ((object)(resources.GetObject("appearance16.Image")));
+            appearance16.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance16.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAdd.Appearance = appearance16;
+            this.btnAdd.AutoWorkLayout = false;
+            this.btnAdd.ImageSize = new System.Drawing.Size(12, 12);
+            this.btnAdd.IsStandardControl = false;
+            this.btnAdd.Location = new System.Drawing.Point(19, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(22, 21);
+            this.btnAdd.TabIndex = 0;
+            ultraToolTipInfo1.ToolTipText = "Hinzufügen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnAdd, ultraToolTipInfo1);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // ultraToolTipManager1
+            // 
+            this.ultraToolTipManager1.AutoPopDelay = 0;
+            this.ultraToolTipManager1.ContainingControl = this;
+            this.ultraToolTipManager1.DisplayStyle = Infragistics.Win.ToolTipDisplayStyle.Standard;
+            this.ultraToolTipManager1.InitialDelay = 0;
+            // 
+            // panelButtons
+            // 
+            this.panelButtons.Controls.Add(this.panel1ButtonsOben);
+            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelButtons.Location = new System.Drawing.Point(0, 0);
+            this.panelButtons.Name = "panelButtons";
+            this.panelButtons.Size = new System.Drawing.Size(786, 27);
+            this.panelButtons.TabIndex = 13;
+            // 
+            // panel1ButtonsOben
+            // 
+            this.panel1ButtonsOben.Controls.Add(this.btnAdd);
+            this.panel1ButtonsOben.Controls.Add(this.btnDel);
+            this.panel1ButtonsOben.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1ButtonsOben.Location = new System.Drawing.Point(715, 0);
+            this.panel1ButtonsOben.Name = "panel1ButtonsOben";
+            this.panel1ButtonsOben.Size = new System.Drawing.Size(71, 27);
+            this.panel1ButtonsOben.TabIndex = 13;
+            // 
+            // ultraGridBagLayoutPanel1
+            // 
+            this.ultraGridBagLayoutPanel1.Controls.Add(this.dgMain);
+            this.ultraGridBagLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraGridBagLayoutPanel1.ExpandToFitHeight = true;
+            this.ultraGridBagLayoutPanel1.ExpandToFitWidth = true;
+            this.ultraGridBagLayoutPanel1.Location = new System.Drawing.Point(0, 27);
+            this.ultraGridBagLayoutPanel1.Name = "ultraGridBagLayoutPanel1";
+            this.ultraGridBagLayoutPanel1.Size = new System.Drawing.Size(786, 199);
+            this.ultraGridBagLayoutPanel1.TabIndex = 14;
+            // 
             // dgMain
             // 
             this.dgMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -107,26 +161,31 @@
             this.dgMain.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ResizeAllColumns;
             ultraGridColumn1.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn1.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn1.Header.Editor = null;
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridColumn1.Hidden = true;
             ultraGridColumn2.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn2.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn2.Header.Editor = null;
             ultraGridColumn2.Header.VisiblePosition = 1;
             ultraGridColumn2.Hidden = true;
             ultraGridColumn3.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn3.Header.Caption = "Kostenträger";
+            ultraGridColumn3.Header.Editor = null;
             ultraGridColumn3.Header.VisiblePosition = 2;
             ultraGridColumn3.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn3.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn3.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(316, 0);
             ultraGridColumn3.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn3.RowLayoutColumnInfo.SpanY = 2;
-            ultraGridColumn3.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
+            ultraGridColumn3.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ultraGridColumn4.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn4.Header.Caption = "Gültig ab";
+            ultraGridColumn4.Header.Editor = null;
             ultraGridColumn4.Header.VisiblePosition = 3;
             ultraGridColumn5.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn5.Header.Caption = "Gültig bis";
+            ultraGridColumn5.Header.Editor = null;
             ultraGridColumn5.Header.VisiblePosition = 4;
             ultraGridColumn5.RowLayoutColumnInfo.OriginX = 4;
             ultraGridColumn5.RowLayoutColumnInfo.OriginY = 0;
@@ -138,6 +197,7 @@
             appearance3.TextVAlignAsString = "Middle";
             ultraGridColumn6.CellAppearance = appearance3;
             ultraGridColumn6.Format = "###,###,##0.00";
+            ultraGridColumn6.Header.Editor = null;
             ultraGridColumn6.Header.VisiblePosition = 5;
             ultraGridColumn6.Hidden = true;
             ultraGridColumn6.MaskInput = "{double:-9.2}";
@@ -149,6 +209,7 @@
             ultraGridColumn6.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Currency;
             ultraGridColumn7.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn7.Header.Caption = "Erfasst am";
+            ultraGridColumn7.Header.Editor = null;
             ultraGridColumn7.Header.VisiblePosition = 6;
             ultraGridColumn7.RowLayoutColumnInfo.OriginX = 12;
             ultraGridColumn7.RowLayoutColumnInfo.OriginY = 0;
@@ -157,6 +218,7 @@
             ultraGridColumn7.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn8.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn8.Header.Caption = "Benutzer";
+            ultraGridColumn8.Header.Editor = null;
             ultraGridColumn8.Header.VisiblePosition = 7;
             ultraGridColumn8.RowLayoutColumnInfo.OriginX = 14;
             ultraGridColumn8.RowLayoutColumnInfo.OriginY = 0;
@@ -166,6 +228,7 @@
             ultraGridColumn9.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn9.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn9.Header.Caption = "Abgerechnet bis";
+            ultraGridColumn9.Header.Editor = null;
             ultraGridColumn9.Header.VisiblePosition = 8;
             ultraGridColumn9.Hidden = true;
             ultraGridColumn9.RowLayoutColumnInfo.OriginX = 16;
@@ -262,60 +325,6 @@
             this.dsPatientTaschengeldKostentraeger1.DataSetName = "dsPatientTaschengeldKostentraeger";
             this.dsPatientTaschengeldKostentraeger1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // btnAdd
-            // 
-            appearance16.Image = ((object)(resources.GetObject("appearance16.Image")));
-            appearance16.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance16.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAdd.Appearance = appearance16;
-            this.btnAdd.AutoWorkLayout = false;
-            this.btnAdd.ImageSize = new System.Drawing.Size(12, 12);
-            this.btnAdd.IsStandardControl = false;
-            this.btnAdd.Location = new System.Drawing.Point(19, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(22, 21);
-            this.btnAdd.TabIndex = 0;
-            ultraToolTipInfo1.ToolTipText = "Hinzufügen";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnAdd, ultraToolTipInfo1);
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // ultraToolTipManager1
-            // 
-            this.ultraToolTipManager1.AutoPopDelay = 0;
-            this.ultraToolTipManager1.ContainingControl = this;
-            this.ultraToolTipManager1.DisplayStyle = Infragistics.Win.ToolTipDisplayStyle.Standard;
-            this.ultraToolTipManager1.InitialDelay = 0;
-            // 
-            // panelButtons
-            // 
-            this.panelButtons.Controls.Add(this.panel1ButtonsOben);
-            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelButtons.Location = new System.Drawing.Point(0, 0);
-            this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(786, 27);
-            this.panelButtons.TabIndex = 13;
-            // 
-            // panel1ButtonsOben
-            // 
-            this.panel1ButtonsOben.Controls.Add(this.btnAdd);
-            this.panel1ButtonsOben.Controls.Add(this.btnDel);
-            this.panel1ButtonsOben.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1ButtonsOben.Location = new System.Drawing.Point(715, 0);
-            this.panel1ButtonsOben.Name = "panel1ButtonsOben";
-            this.panel1ButtonsOben.Size = new System.Drawing.Size(71, 27);
-            this.panel1ButtonsOben.TabIndex = 13;
-            // 
-            // ultraGridBagLayoutPanel1
-            // 
-            this.ultraGridBagLayoutPanel1.Controls.Add(this.dgMain);
-            this.ultraGridBagLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraGridBagLayoutPanel1.ExpandToFitHeight = true;
-            this.ultraGridBagLayoutPanel1.ExpandToFitWidth = true;
-            this.ultraGridBagLayoutPanel1.Location = new System.Drawing.Point(0, 27);
-            this.ultraGridBagLayoutPanel1.Name = "ultraGridBagLayoutPanel1";
-            this.ultraGridBagLayoutPanel1.Size = new System.Drawing.Size(786, 199);
-            this.ultraGridBagLayoutPanel1.TabIndex = 14;
-            // 
             // ucDepotgeldKost
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,12 +334,12 @@
             this.Controls.Add(this.panelButtons);
             this.Name = "ucDepotgeldKost";
             this.Size = new System.Drawing.Size(786, 226);
-            ((System.ComponentModel.ISupportInitialize)(this.dgMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsPatientTaschengeldKostentraeger1)).EndInit();
             this.panelButtons.ResumeLayout(false);
             this.panel1ButtonsOben.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel1)).EndInit();
             this.ultraGridBagLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPatientTaschengeldKostentraeger1)).EndInit();
             this.ResumeLayout(false);
 
         }

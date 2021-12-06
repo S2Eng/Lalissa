@@ -75,7 +75,7 @@ namespace PMDS.GUI
             _ds.PatientTaschengeldKostentraeger.IDBenutzerColumn.AllowDBNull = true;
             dgMain.DataSource = _ds;
 
-            UltraGridTools.AddTaschengeldKostentraegerValueList(dgMain, "IDKostentraeger", true, true, ENV.IDKlinik);
+            UltraGridTools.AddTaschengeldKostentraegerValueList(dgMain, "IDKostentraeger", true, true, ENV.IDKlinik, IDKlient);
         }
         
 
@@ -239,27 +239,29 @@ namespace PMDS.GUI
             if (PMDS.GUI.UltraGridTools.AskRowDelete() != DialogResult.Yes)
                 return;
 
-            dsPatientTaschengeldKostentraeger.PatientTaschengeldKostentraegerDataTable dt = new dsPatientTaschengeldKostentraeger.PatientTaschengeldKostentraegerDataTable();
-            ArrayList al2 = new ArrayList();
-            bool del = false;
-            foreach (UltraGridRow r in ra)
+            using (dsPatientTaschengeldKostentraeger.PatientTaschengeldKostentraegerDataTable dt = new dsPatientTaschengeldKostentraeger.PatientTaschengeldKostentraegerDataTable())
             {
+                ArrayList al2 = new ArrayList();
+                bool del = false;
+                foreach (UltraGridRow r in ra)
+                {
                     r.Delete(false);
                     del = true;
-            }
+                }
 
-            if (del)
-            {
-                this.valueChanged();
-            }
+                if (del)
+                {
+                    this.valueChanged();
+                }
 
-            if (dgMain.Rows.Count > 0)
-            {
-                dgMain.ActiveRow = dgMain.Rows[0];
-                dgMain.ActiveRow.Selected = true;
+                if (dgMain.Rows.Count > 0)
+                {
+                    dgMain.ActiveRow = dgMain.Rows[0];
+                    dgMain.ActiveRow.Selected = true;
+                }
+                else
+                    dgMain.ActiveRow = null;
             }
-            else
-                dgMain.ActiveRow = null;
         }
 
         private void InitCellsActivation()
