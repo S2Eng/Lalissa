@@ -558,23 +558,22 @@ namespace PMDS.GUI
             else
             {
                 vl = vlc.Add("ZEV");
-                vl.ValueListItems.Add(101, QS2.Desktop.ControlManagment.ControlManagment.getRes("Erreicht - ASZM ändern"));
-                vl.ValueListItems.Add(102, QS2.Desktop.ControlManagment.ControlManagment.getRes("Erreicht - weiter wie bisher"));
-                vl.ValueListItems.Add(103, QS2.Desktop.ControlManagment.ControlManagment.getRes("Erreicht - PDX beenden"));
+                vl.ValueListItems.Add(101, QS2.Desktop.ControlManagment.ControlManagment.getRes("Erreicht -> Pflegeplan ändern"));
+                vl.ValueListItems.Add(102, QS2.Desktop.ControlManagment.ControlManagment.getRes("Erreicht -> Pflegeplan unverändert lassen"));
+                vl.ValueListItems.Add(103, QS2.Desktop.ControlManagment.ControlManagment.getRes("Erreicht -> PD beenden"));
 
-                vl.ValueListItems.Add(201, QS2.Desktop.ControlManagment.ControlManagment.getRes("Teilweise erreicht - ASZM ändern"));
-                vl.ValueListItems.Add(202, QS2.Desktop.ControlManagment.ControlManagment.getRes("Teilweise erreicht - weiter wie bisher"));
-                vl.ValueListItems.Add(203, QS2.Desktop.ControlManagment.ControlManagment.getRes("Teilweise erreicht - PDX beenden"));
+                vl.ValueListItems.Add(201, QS2.Desktop.ControlManagment.ControlManagment.getRes("Teilweise erreicht -> Pflegeplan ändern"));
+                vl.ValueListItems.Add(202, QS2.Desktop.ControlManagment.ControlManagment.getRes("Teilweise erreicht -> Pflegeplan unverändert lassen"));
+                vl.ValueListItems.Add(203, QS2.Desktop.ControlManagment.ControlManagment.getRes("Teilweise erreicht -> PD beenden"));
 
-                vl.ValueListItems.Add(301, QS2.Desktop.ControlManagment.ControlManagment.getRes("Nicht erreicht - ASZM ändern"));
-                vl.ValueListItems.Add(302, QS2.Desktop.ControlManagment.ControlManagment.getRes("Nicht erreicht - weiter wie bisher"));
-                vl.ValueListItems.Add(303, QS2.Desktop.ControlManagment.ControlManagment.getRes("Nicht erreicht - PDX beenden"));
+                vl.ValueListItems.Add(301, QS2.Desktop.ControlManagment.ControlManagment.getRes("Nicht erreicht -> Pflegeplan ändern"));
+                vl.ValueListItems.Add(302, QS2.Desktop.ControlManagment.ControlManagment.getRes("Nicht erreicht -> Pflegeplan unverändert lassen"));
+                vl.ValueListItems.Add(303, QS2.Desktop.ControlManagment.ControlManagment.getRes("Nicht erreicht -> PD beenden"));
             }
 
             UltraGridColumn c = g.DisplayLayout.Bands[0].Columns[sBoundGridColumn];
             c.ValueList = vl;
             c.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
-
         }
 
 		public static void AddPflegerValueListWithEmptyEntry(UltraGrid g, string sBoundGridColumn) 
@@ -792,7 +791,7 @@ namespace PMDS.GUI
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
                     Guid IDZGE = new Guid(r.Cells["ID"].Value.ToString().ToUpper());
-                    if (db.ZusatzWert.Where(a => a.IDZusatzGruppeEintrag == IDZGE).Count() > 0)
+                    if (db.ZusatzWert.Where(a => a.IDZusatzGruppeEintrag == IDZGE).Any())
                     {
                         res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wenn Sie diesen Eintrag löschen, werden alle bisher erfassten Zusatzwerte unwiederbringlich gelöscht.\r\nSind Sie Sicher, dass Sie das möchten?", "ACHTUNG!", MessageBoxButtons.YesNo);
                     }

@@ -554,10 +554,11 @@ namespace PMDS.GUI
                     anzKlienten = 0;
                     panelButtons.Controls.Clear();
 
+                    ENV.selKlientenChanged(eSendMain.setIDMultiElement, this.getFilterStr(), false, null);          //Liste der Rechnungen zurücksetzen
+                    ENV.selKlientenChanged(eSendMain.singleElementActivated, new List<string>(), false, null);      //gewählten Klienten zurücksetzen
+
                     if (bClearList || dVon > dBis)
                     {
-                        ENV.selKlientenChanged(eSendMain.setIDMultiElement, this.getFilterStr(), false, null);          //Liste der Rechnungen zurücksetzen
-                        ENV.selKlientenChanged(eSendMain.singleElementActivated, new List<string>(), false, null);      //gewählten Klienten zurücksetzen
                         return;
                     }
 
