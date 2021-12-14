@@ -617,9 +617,9 @@ namespace PMDS.Global
                     {
                         if (IDSR.Length == 0)
                             res.IDSR = "";
-                        else if (IDSR.Length == 58 )
+                        else if (IDSR.Length == 47 )
                             res.IDSR = IDSR.Substring(IDSR.Length -18, 18);
-                        else if (IDSR.Length == 60)
+                        else if (IDSR.Length == 49)
                             res.IDSR = IDSR.Substring(IDSR.Length - 21, 21);
                         else
                         {
