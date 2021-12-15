@@ -6,7 +6,6 @@ using PMDS.Global.db.Patient;
 using PMDS.GUI.Calc.Calc.UI.Other;
 using System.Linq;
 
-
 namespace PMDS.Calc.UI.Admin.abwÜbersp
 {
     public class abwÜberspSitemap
@@ -17,7 +16,7 @@ namespace PMDS.Calc.UI.Admin.abwÜbersp
         private PMDS.BusinessLogic.Patient pat;
         private PMDSBusiness b = new PMDSBusiness();
 
-        public void searchAbw(DateTime von, DateTime bis, ref  dsAbwÜbersp ds, int typAuswÜbersp, bool händischJN,System.Guid IDKlinik)
+        public void searchAbw(DateTime von, DateTime bis, ref  dsAbwÜbersp ds, int typAuswÜbersp, bool händischJN,System.Guid IDKlinik, int MinTageAbwesenheit)
         {
             string errStartDat = "";
             using (dsPatientStation.PatientDataTable tRet = new dsPatientStation.PatientDataTable())
@@ -62,7 +61,7 @@ namespace PMDS.Calc.UI.Admin.abwÜbersp
                                 rNew.Bis = (DateTime)rUrlaub.EndeDatum;
                             }
 
-                            rNew.IDUrlaubVerlauf = rUrlaub.ID.ToString().ToLower();
+                            rNew.IDUrlaubVerlauf = rUrlaub.ID.ToString();
 
                             PMDS.Abrechnung.Global.dsPatientAbwesenheit.PatientAbwesenheitDataTable dtBereitsÜbersp = dbAbw.bereitsÜbersp(rUrlaub.ID.ToString(), PMDS.Global.ENV.IDKlinik);
 
@@ -82,9 +81,7 @@ namespace PMDS.Calc.UI.Admin.abwÜbersp
                             else
                                 throw new Exception("Fehler: Abwesenheit mehrfach überspielt. Das ist nicht zulässig.");
 
-
                             bool anzeigen = false;
-
                             if (PMDS.Global.ENV.AbwesenheitenMinimalUI)
                             {
                                 anzeigen = rNew.Überspielen;
@@ -98,6 +95,10 @@ namespace PMDS.Calc.UI.Admin.abwÜbersp
                                 else if (typAuswÜbersp == 1 && rNew.bereitsÜbersp)   // nur überspielte anzeigen
                                     anzeigen = true;
                             }
+
+                            //Anzahl der Datumswechsel!!! Bei offenen den aktuellen Tag als Abwesenheit mit berechnen (sicherheitshalber)
+                            bool bAbwesenheitBeruecksichtigen = Convert.ToInt32(((rNew.IsBisNull() ? DateTime.Now.Date.AddDays(1) : rNew.Bis.Date) - rNew.Von.Date).TotalDays) > MinTageAbwesenheit;
+                            anzeigen = anzeigen && bAbwesenheitBeruecksichtigen;
 
                             if (rKlient.IsIDKlinikNull())
                             {

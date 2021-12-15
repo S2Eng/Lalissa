@@ -18,9 +18,9 @@ using PMDS.Global.db.Patient;
 namespace PMDS.Calc.UI.Admin
 {
 
-    
 
-    public partial class frmAbwÜbersp : QS2.Desktop.ControlManagment.baseForm 
+
+    public partial class frmAbwÜbersp : QS2.Desktop.ControlManagment.baseForm
     {
 
         private PMDS.Calc.Logic.calcBase calcBase = new PMDS.Calc.Logic.calcBase();
@@ -48,11 +48,11 @@ namespace PMDS.Calc.UI.Admin
             PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik();
             dsKlinik.KlinikRow rActuelKlinik = DBKlinik1.loadKlinik(PMDS.Global.ENV.IDKlinik, true);
             this.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Abrechnung - Abwesenheiten übernehmen für ") + rActuelKlinik.Bezeichnung.Trim() + "";
-            
+
             this.ucKlinikDropDown1.initControl();
             this.ucKlinikDropDown1.loadComboAllKliniken();
-            
-            this.setDateActMonth();;
+
+            this.setDateActMonth(); ;
             this.InitTimeContextMenu();
             this.abwÜberspSitemap.sitemap.alleKeineButtonGrid(this.butAlleKeine, false, (Infragistics.Win.UltraWinGrid.UltraGrid)this.uGridAbw, "", false);
 
@@ -75,18 +75,18 @@ namespace PMDS.Calc.UI.Admin
 
                 this.checkUIDate();
                 this.dsAbwÜbersp1.abw.Rows.Clear();
-                this.abwÜberspSitemap.searchAbw(this.dtVon.DateTime, this.dtBis.DateTime, ref this.dsAbwÜbersp1, 
-                                                (int)uOptÜbersp.Value, chkHändischJN.Checked, ENV.IDKlinik);
+                this.abwÜberspSitemap.searchAbw(this.dtVon.DateTime, this.dtBis.DateTime, ref this.dsAbwÜbersp1,
+                                                (int)uOptÜbersp.Value, chkHändischJN.Checked, ENV.IDKlinik, (int)numMinTageAbwesenheit.Value);
                 this.uGridAbw.Refresh();
 
                 this.uGridAbw.Selected.Rows.Clear();
                 this.uGridAbw.ActiveRow = null;
 
-                this.abwÜberspSitemap.sitemap.alleKeineButtonGrid((Infragistics.Win.Misc.UltraButton) butAlleKeine, false, (Infragistics.Win.UltraWinGrid.UltraGrid)  this.uGridAbw, "", false);
+                this.abwÜberspSitemap.sitemap.alleKeineButtonGrid((Infragistics.Win.Misc.UltraButton)butAlleKeine, false, (Infragistics.Win.UltraWinGrid.UltraGrid)this.uGridAbw, "", false);
                 this.abwÜberspSitemap.sitemap.anz = this.dsAbwÜbersp1.abw.Rows.Count;
                 lblCount.Text = this.abwÜberspSitemap.sitemap.setUIAnzahl(QS2.Desktop.ControlManagment.ControlManagment.getRes("Keine Abwesenheiten gefunden!"));
                 if (this.dsAbwÜbersp1.abw.Rows.Count > 0) { uGridAbw.DisplayLayout.Rows[0].ExpandAll(); }
-                
+
             }
             catch (Exception ex)
             {
@@ -164,9 +164,9 @@ namespace PMDS.Calc.UI.Admin
                 if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie die gewählten Abwesenheiten ins Abrechnungssystem überspielen?", "Abwesenheiten überspielen", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     if (!this.ValidateRows()) return;
-                    int anz = this.abwÜberspSitemap.überspielen(ref this.dsAbwÜbersp1, this. chkEingepDelete.Checked);
-                    if (anz > 0 ) this.searchAbw();
-                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurden " + anz.ToString()  + " Abwesenheiten überspielt!", "Abwesenheiten überspielen", MessageBoxButtons.OK);
+                    int anz = this.abwÜberspSitemap.überspielen(ref this.dsAbwÜbersp1, this.chkEingepDelete.Checked);
+                    if (anz > 0) this.searchAbw();
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurden " + anz.ToString() + " Abwesenheiten überspielt!", "Abwesenheiten überspielen", MessageBoxButtons.OK);
                 }
             }
             catch (Exception ex)
@@ -182,7 +182,7 @@ namespace PMDS.Calc.UI.Admin
         {
             foreach (Infragistics.Win.UltraWinGrid.UltraGridRow r in PMDS.GUI.UltraGridTools.GetAllRowsFromGroupedUltraGrid(uGridAbw, false))
             {
-                if (r.IsGroupByRow)  continue;
+                if (r.IsGroupByRow) continue;
 
                 PMDS.GUI.Calc.Calc.UI.Other.dsAbwÜbersp.abwRow rDS = (PMDS.GUI.Calc.Calc.UI.Other.dsAbwÜbersp.abwRow)((System.Data.DataRowView)r.ListObject).Row;
                 rDS.SetColumnError(r.Cells[this.dsAbwÜbersp1.abw.GrundColumn.ColumnName].Column.Index, "");
@@ -215,7 +215,7 @@ namespace PMDS.Calc.UI.Admin
         {
             this.Close();
         }
-        
+
         private void btnTimes_MouseUp(object sender, MouseEventArgs e)
         {
             this.abwÜberspSitemap.sitemap.timemenu.Show(this, new Point(this.ultraGroupBoxSuche.Left + btnTimes.Left, this.ultraGroupBoxSuche.Top + btnTimes.Top + btnTimes.Height));
@@ -242,7 +242,7 @@ namespace PMDS.Calc.UI.Admin
         {
             if (this.uOptÜbersp.Focused)
             {
-                if ((int)this.uOptÜbersp.Value == 0 )
+                if ((int)this.uOptÜbersp.Value == 0)
                 {
                     this.chkEingepDelete.Visible = false;
                     this.chkEingepDelete.Checked = false;
@@ -272,12 +272,34 @@ namespace PMDS.Calc.UI.Admin
         private void uGridAbw_DoubleClick(object sender, EventArgs e)
         {
 
-        }   
+        }
         private void uGridAbw_BeforeRowRegionScroll(object sender, Infragistics.Win.UltraWinGrid.BeforeRowRegionScrollEventArgs e)
         {
 
         }
 
-     
+        private void dtVon_ValueChanged(object sender, EventArgs e)
+        {
+            if (this.dtVon.Focused)
+            {
+                this.searchAbw();
+            }
+        }
+
+        private void dtBis_ValueChanged(object sender, EventArgs e)
+        {
+            if (this.dtBis.Focused)
+            {
+                this.searchAbw();
+            }
+        }
+
+        private void numMinTageAbwesenheit_ValueChanged(object sender, EventArgs e)
+        {
+            if (this.numMinTageAbwesenheit.Focused)
+            {
+                this.searchAbw();
+            }
+        }
     }
 }
