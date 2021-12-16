@@ -12,6 +12,7 @@ using PMDS.BusinessLogic;
 using PMDS.Klient;
 using PMDS.GUI.Klient;
 using PMDS.DB;
+using S2Extensions;
 
 namespace PMDS.GUI
 {
@@ -772,15 +773,15 @@ namespace PMDS.GUI
                         PMDS.Global.db.ERSystem.SendUnterbringung.retSendUnterbringung retSendUnterbringung1 = new Global.db.ERSystem.SendUnterbringung.retSendUnterbringung();
 
                         PMDS.Global.db.ERSystem.SendUnterbringung.eMeldungstyp Meldungstyp = new Global.db.ERSystem.SendUnterbringung.eMeldungstyp();
-                        if (generic.sEquals(rUnterbringung.Aktion, "Vornahme"))
+                        if (rUnterbringung.Aktion.sEquals("Vornahme"))
                         {
                             Meldungstyp = Global.db.ERSystem.SendUnterbringung.eMeldungstyp.Vornahme;
                         }
-                        else if (generic.sEquals(rUnterbringung.Aktion, "Verlaengerung"))
+                        else if (rUnterbringung.Aktion.sEquals("Verlaengerung"))
                         {
                             Meldungstyp = Global.db.ERSystem.SendUnterbringung.eMeldungstyp.Verlaengerung;
                         }
-                        else if (generic.sEquals(rUnterbringung.Aktion, "Aufhebung"))
+                        else if (rUnterbringung.Aktion.sEquals("Aufhebung"))
                         {
                             Meldungstyp = Global.db.ERSystem.SendUnterbringung.eMeldungstyp.Aufhebung;
                         }

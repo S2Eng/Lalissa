@@ -8,6 +8,7 @@ Imports Infragistics.Win.UltraWinToolTip
 Imports Infragistics.Win
 Imports PMDS.Global.db.ERSystem
 Imports PMDS.GUI.VB.contSelectAbteilBereiche
+Imports S2Extensions
 
 Public Class frmNachrichtBereich
     Inherits System.Windows.Forms.Form
@@ -1458,13 +1459,13 @@ Public Class frmNachrichtBereich
             Me.txtBetreff.Text = Me.rPlanBereich.Betreff
 
             If Me.rPlanBereich.Status.Trim() <> "" Then
-                If PMDS.Global.generic.sEquals(Me.rPlanBereich.Status, "Offen") Then
+                If Me.rPlanBereich.Status.sEquals("Offen") Then
                     Me.optStatus.CheckedIndex = 0
-                ElseIf PMDS.Global.generic.sEquals(Me.rPlanBereich.Status, "Erledigt") Then
+                ElseIf Me.rPlanBereich.Status.sEquals("Erledigt") Then
                     Me.optStatus.CheckedIndex = 1
-                ElseIf PMDS.Global.generic.sEquals(Me.rPlanBereich.Status, "Erfolglos") Then
+                ElseIf Me.rPlanBereich.Status.sEquals("Erfolglos") Then
                     Me.optStatus.CheckedIndex = 2
-                ElseIf PMDS.Global.generic.sEquals(Me.rPlanBereich.Status, "Storniert") Then
+                ElseIf Me.rPlanBereich.Status.sEquals("Storniert") Then
                     Me.optStatus.CheckedIndex = 3
                 Else
                     Throw New Exception("frmNachrichtBereich.loadData: Me.rPlan.Status='" + Me.rPlanBereich.Status.Trim() + "' not allowed!")

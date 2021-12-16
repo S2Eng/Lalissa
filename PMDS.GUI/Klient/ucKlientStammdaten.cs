@@ -23,6 +23,7 @@ using System.Security.Permissions;
 using System.Security;
 using System.Linq;
 using PMDS.Global.db.ERSystem;
+using S2Extensions;
 
 namespace PMDS.GUI
 {
@@ -1198,7 +1199,7 @@ namespace PMDS.GUI
                         string lstSprachenTmp = rPatient.lstSprachen.Trim();
                         //PMDS.db.Entities.Patient rPatient = this.b.getPatient(ucKlient1.Klient.ID, db);
                         rPatient.lstSprachen = this.cboSprachenMulti.getSelectedRows();
-                        if (!PMDS.Global.generic.sEquals(lstSprachenTmp, rPatient.lstSprachen))                         {
+                        if (!lstSprachenTmp.sEquals(rPatient.lstSprachen))                         {
                             writeDekursSprachenChanged = true;
                             txtSprachenGeändert = "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Sprache") + ": " + lstSprachenTmp + " -> " +  rPatient.lstSprachen.Trim() + "";
                         }
@@ -1258,7 +1259,7 @@ namespace PMDS.GUI
                         {
                             rPatient.SozVersLeerGrund = "";
                             this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Text = "";
-                            if (!generic.sEquals(this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text, "mitversichert"))
+                            if (!this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text.sEquals("mitversichert"))
                             {
                                 rPatient.SozVersMitversichertBei = "";
                                 this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text = "";

@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using S2Extensions;
 
 namespace PMDS.GUI.ELGA
 {
@@ -186,7 +187,7 @@ namespace PMDS.GUI.ELGA
                     {
                         foreach (string sBrowser in browsers)
                         {
-                            if (PMDS.Global.generic.sEquals(sBrowser,"FIREFOX", Enums.eCompareMode.Contains))
+                            if (sBrowser.sEquals("FIREFOX", S2Extensions.Enums.eCompareMode.Contains))
                             {
                                 string firefox = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Mozilla\Firefox\Profiles");
                                 if (Directory.Exists(firefox))
@@ -200,7 +201,7 @@ namespace PMDS.GUI.ELGA
                                         string[] s = rb.Lines;
                                         for (int i = 0; i < rb.Lines.Length; i++)
                                         {
-                                            if (generic.sEquals(rb.Lines[i], "user_pref(\"privacy.file_unique_origin\", \"true\");"))
+                                            if (rb.Lines[i].sEquals("user_pref(\"privacy.file_unique_origin\", \"true\");"))
                                             {
                                                 s[i] = "user_pref(\"privacy.file_unique_origin\", \"false\");";
                                                 System.IO.File.Delete(di.FullName);
@@ -214,12 +215,12 @@ namespace PMDS.GUI.ELGA
                                     return;
                                 }
                             }
-                            else if (generic.sEquals(sBrowser, "IEXPLORE", Enums.eCompareMode.Contains))
+                            else if (sBrowser.sEquals("IEXPLORE", S2Extensions.Enums.eCompareMode.Contains))
                             {
                                 System.Diagnostics.Process.Start(sBrowser, sFileName);
                                 return;
                             }
-                            else if (generic.sEquals(sBrowser, "CHROME", Enums.eCompareMode.Contains) || generic.sEquals(sBrowser, "EDGE", Enums.eCompareMode.Contains))
+                            else if (sBrowser.sEquals("CHROME", S2Extensions.Enums.eCompareMode.Contains) || sBrowser.sEquals("EDGE", S2Extensions.Enums.eCompareMode.Contains))
                             {
                                 
                                 Type t = Type.GetTypeFromCLSID(new Guid("72C24DD5-D70A-438B-8A42-98424B88AFB8")); //Windows Script Host Shell Object

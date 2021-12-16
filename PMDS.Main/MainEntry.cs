@@ -9,6 +9,7 @@ using System.Configuration;
 using PMDS.Global.Remote;
 using System.Linq;
 using System.Diagnostics;
+using S2Extensions;
 
 namespace PMDS
 {
@@ -514,9 +515,9 @@ namespace PMDS
         {
             try
             {
-                if (!generic.sEquals(typ,"schnellrückmeldung") && 
-                    (generic.sEquals(Environment.MachineName, "styhl2") || generic.sEquals(Environment.MachineName,"sty041")) &&
-                    !generic.sEquals(ENV.StartFromShare, "1"))
+                if (!typ.sEquals("schnellrückmeldung") && 
+                    (Environment.MachineName.sEquals("styhl2") || Environment.MachineName.sEquals("sty041")) &&
+                    !ENV.StartFromShare.sEquals("1"))
                 {
                     PMDS.Global.db.ERSystem.PMDSBusinessUI bUI = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
                     bool runWithDefaultConfigFile = false;

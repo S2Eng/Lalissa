@@ -13,6 +13,7 @@ using PMDS.Global.db.ERSystem;
 using PMDSClient.Sitemap;
 using PMDS.DB;
 using WCFServicePMDS.BAL2.ELGABAL;
+using S2Extensions;
 
 namespace PMDS.GUI.ELGA
 {
@@ -200,7 +201,7 @@ namespace PMDS.GUI.ELGA
                             foreach (ELGADocumentsDTO elgaDocu in parOuot.lDocuments)
                             {
                                 bool bDocuOK = true;
-                                if (!this.chkStorniert.Checked && generic.sEquals(elgaDocu.DocStatus, "Deprecated", Enums.eCompareMode.Contains))
+                                if (!this.chkStorniert.Checked && elgaDocu.DocStatus.sEquals("Deprecated", S2Extensions.Enums.eCompareMode.Contains))
                                 {
                                     bDocuOK = false;
                                 }
@@ -236,7 +237,7 @@ namespace PMDS.GUI.ELGA
                     {
                         DataRowView v = (DataRowView)rGrid.ListObject;
                         dsManage.ELGASearchDocumentsRow rSelRow = (dsManage.ELGASearchDocumentsRow)v.Row;
-                        rGrid.Cells["Storniert"].Value = generic.sEquals(rSelRow.DocStatus, "Deprecated", Enums.eCompareMode.Contains);
+                        rGrid.Cells["Storniert"].Value = rSelRow.DocStatus.sEquals("Deprecated", S2Extensions.Enums.eCompareMode.Contains);
                     }
 
                     this.gridFound.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumente gefunden") + " (" + this.gridFound.Rows.Count.ToString() + ")";
@@ -391,7 +392,7 @@ namespace PMDS.GUI.ELGA
                 }
                 else
                 {
-                    if (generic.sEquals(e.Cell.Column, this.colSelect))
+                    if (e.Cell.Column.sEquals(this.colSelect))
                     {
                         e.Cell.Activation = Activation.AllowEdit;
                     }

@@ -6,7 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-
+using S2Extensions;
 
 namespace PMDS.Global.db.ERSystem
 {
@@ -174,7 +174,7 @@ namespace PMDS.Global.db.ERSystem
                                 PMDS.db.Entities.PflegePlan rPflegeplan = this.b.getPflegeplan(IDPflegeplan.Value, db);
                                 //IQueryable<PMDS.db.Entities.PflegePlanPDx> tPflegePlanPDx = db.PflegePlanPDx.Where(o => o.IDPflegePlan == IDPflegeplan.Value);
                                 //PMDS.db.Entities.PflegePlanPDx rPflegePlanPDx = tPflegePlanPDx.First();
-                                if (generic.sEquals(rPflegeplan.EintragGruppe, "T"))      //Keine VO zu Terminen möglich
+                                if (rPflegeplan.EintragGruppe.sEquals("T"))      //Keine VO zu Terminen möglich
                                     return true;
                                 
                                 

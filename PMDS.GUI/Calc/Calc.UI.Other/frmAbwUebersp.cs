@@ -13,8 +13,6 @@ using PMDS.GUI;
 using PMDS.Data.Patient;
 using PMDS.Global.db.Patient;
 
-
-
 namespace PMDS.Calc.UI.Admin
 {
 

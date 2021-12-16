@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMDS.Core.Elga", "Elga.core
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMDS.EFCore", "WCFServicePMDS\PMDS.EFCore.csproj", "{87427E1A-5914-4FD1-A0D0-C749DDEBB069}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S2Extensions", "S2Extensions\S2Extensions.csproj", "{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,18 +108,26 @@ Global
 		{87427E1A-5914-4FD1-A0D0-C749DDEBB069}.Release|Any CPU.Build.0 = Release|Any CPU
 		{87427E1A-5914-4FD1-A0D0-C749DDEBB069}.Release|x86.ActiveCfg = Release|Any CPU
 		{87427E1A-5914-4FD1-A0D0-C749DDEBB069}.Release|x86.Build.0 = Release|Any CPU
+		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Debug|x86.Build.0 = Debug|Any CPU
+		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Release|x86.ActiveCfg = Release|Any CPU
+		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_UpdateAssemblyVersion = True
-		BuildVersion_BuildVersioningStyle = None.None.Increment.TimeStamp
-		BuildVersion_StartDate = 2010/11/23
-		BuildVersion_AssemblyInfoFilename = Assembly.info
-		BuildVersion_UpdateFileVersion = True
-		BuildVersion_ConfigurationName = Debug
-		BuildVersion_UseGlobalSettings = True
 		SolutionGuid = {9701C6F5-0D36-44C1-97B0-8C2BC96AD3D3}
+		BuildVersion_UseGlobalSettings = True
+		BuildVersion_ConfigurationName = Debug
+		BuildVersion_UpdateFileVersion = True
+		BuildVersion_AssemblyInfoFilename = Assembly.info
+		BuildVersion_StartDate = 2010/11/23
+		BuildVersion_BuildVersioningStyle = None.None.Increment.TimeStamp
+		BuildVersion_UpdateAssemblyVersion = True
 	EndGlobalSection
 EndGlobal

@@ -27,6 +27,7 @@ using Patagames.Pdf.Net;
 using PMDS.GUI.ELGA;
 using static PMDS.Global.db.ERSystem.ELGABusiness;
 using Syncfusion.Pdf.Parsing;
+using S2Extensions;
 
 namespace PMDS.GUI
 {
@@ -1209,7 +1210,7 @@ namespace PMDS.GUI
                                                             where ein.ID == IDEinrichtungEmpfänger
                                                             select ein.ELGA_OrganizationOID).FirstOrDefault();
 
-                                    if (!generic.sEquals(ELGA_OrganizationOID, "DischLoctn", Enums.eCompareMode.Contains))
+                                    if (!ELGA_OrganizationOID.sEquals("DischLoctn", S2Extensions.Enums.eCompareMode.Contains))
                                         return false;
                                 }
                                 else

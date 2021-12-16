@@ -18,7 +18,7 @@ using PMDS.Global.db.Global;
 using PMDS.Global.db.ERSystem;
 using System.Windows.Forms;
 using System.Linq;
-
+using S2Extensions;
 
 namespace PMDS.Print
 {
@@ -669,15 +669,15 @@ namespace PMDS.Print
             object[] ParameterArray = { IDKlient, ReportRoot, PrintJN, UsePDFPrinter, IDAnamnese };
             BerichtParameter.BerichtParameterTyp[] TypArray = { BerichtParameter.BerichtParameterTyp.Klient, BerichtParameter.BerichtParameterTyp.Text, BerichtParameter.BerichtParameterTyp.Boolean, BerichtParameter.BerichtParameterTyp.Boolean, BerichtParameter.BerichtParameterTyp.SQL_GUID };
             string pIDName = "";
-            if (generic.sEquals(typ, "OREM"))
+            if (typ.sEquals("OREM"))
             {
                 pIDName = "IDAnamneseOREM";
             }
-            else if (generic.sEquals(typ, "Krohwinkel"))
+            else if (typ.sEquals("Krohwinkel"))
             {
                 pIDName = "IDAnamneseKrohwinkel";
             }
-            else if (generic.sEquals(typ, "POP"))
+            else if (typ.sEquals("POP"))
             {
                 pIDName = "IDAnamnesePOP";
             }
@@ -710,15 +710,15 @@ namespace PMDS.Print
             object[] ParameterArray = { THIDKlient, THReportRoot, THPrintJN, THUsePDFPrinter, THIDAnamnese };
             BerichtParameter.BerichtParameterTyp[] TypArray = { BerichtParameter.BerichtParameterTyp.Klient, BerichtParameter.BerichtParameterTyp.Text, BerichtParameter.BerichtParameterTyp.Boolean, BerichtParameter.BerichtParameterTyp.Boolean, BerichtParameter.BerichtParameterTyp.SQL_GUID };
             string pIDName = "";
-            if (generic.sEquals(THtyp, "OREM"))
+            if (THtyp.sEquals("OREM"))
             {
                 pIDName = "IDAnamneseOREM";
             }
-            else if (generic.sEquals(THtyp, "Krohwinkel"))
+            else if (THtyp.sEquals("Krohwinkel"))
             {
                 pIDName = "IDAnamneseKrohwinkel";
             }
-            else if (generic.sEquals(THtyp, "POP"))
+            else if (THtyp.sEquals("POP"))
             {
                 pIDName = "IDAnamnesePOP";
             }

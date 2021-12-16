@@ -23,16 +23,10 @@ using System.Data.Entity.Infrastructure;
 
 using PMDS.db.Entities;
 using System.Linq;
-
-
-
-
-
+using S2Extensions;
 
 namespace PMDS.GUI
 {
-
-
 	public class ucTermine : QS2.Desktop.ControlManagment.BaseControl
 	{
 
@@ -666,7 +660,7 @@ namespace PMDS.GUI
         {
             try
             {
-                if (generic.sEquals(e.Cell.Column, "Auswahl"))
+                if (e.Cell.Column.sEquals("Auswahl"))
                 {
                     e.Cell.Activation = Activation.AllowEdit;
                 }

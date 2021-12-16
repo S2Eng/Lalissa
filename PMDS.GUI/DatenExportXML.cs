@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Text.RegularExpressions;
-
+using S2Extensions;
 
 using System.Xml;
 
@@ -1324,8 +1324,8 @@ namespace PMDS.GUI
                                     vpropPropertyType == typeof(Nullable<byte>) ||
                                     vpropPropertyType == typeof(Nullable<sbyte>)
                                 )
-                                && !generic.sEquals(pName, "RTF", Enums.eCompareMode.Contains)
-                                && !generic.sEquals(pName, "BLOP", Enums.eCompareMode.Contains)
+                                && !pName.sEquals("RTF", S2Extensions.Enums.eCompareMode.Contains)
+                                && !pName.sEquals("BLOP", S2Extensions.Enums.eCompareMode.Contains)
                             )
                         {
                             object o = row.GetType().GetProperty(pName).GetValue(row, null);
@@ -1400,8 +1400,8 @@ namespace PMDS.GUI
                                     vpropPropertyType == typeof(Nullable<byte>) ||
                                     vpropPropertyType == typeof(Nullable<sbyte>)
                                 )
-                                && !generic.sEquals(pName, "RTF", Enums.eCompareMode.Contains)
-                                && !generic.sEquals(pName, "BLOP", Enums.eCompareMode.Contains)
+                                && !pName.sEquals("RTF", S2Extensions.Enums.eCompareMode.Contains)
+                                && !pName.sEquals("BLOP", S2Extensions.Enums.eCompareMode.Contains)
                             )
                         {
                             object o = row.GetType().GetProperty(pName).GetValue(row, null);
@@ -1412,7 +1412,7 @@ namespace PMDS.GUI
 
                                 if (AutoAssignSubNodes)
                                 {
-                                    if (generic.sEquals(vprop.Name, lSubNodeNames))
+                                    if (vprop.Name.sEquals(lSubNodeNames))
                                     {
                                         lSubNodeInfos.Add(new cSubNodeInfo() { Name = pName, ID = new Guid(pValue) } );     //Value muss ein Guid sein
                                     }
@@ -1438,21 +1438,21 @@ namespace PMDS.GUI
 
                         string propName = SubNodeInfo.Name;
                             
-                        if (generic.sEquals(propName, "IDKLINIK"))
+                        if (propName.sEquals("IDKLINIK"))
                         {
                             List<PMDS.db.Entities.Klinik> tblKlinik = db.Klinik.Where(a => a.ID == SubNodeInfo.ID).ToList();
                             XMLAddDetailNode(tblKlinik, "Klinik");
 //                            tblKlinik = null;
                         }
 
-                        else if (generic.sEquals(propName, "IDABTEILUNG")) //IDAbteilung_Von, IDAbteilung_Nach
+                        else if (propName.sEquals("IDABTEILUNG")) //IDAbteilung_Von, IDAbteilung_Nach
                         {
                             List<PMDS.db.Entities.Abteilung> tblAbteilung = db.Abteilung.Where(a => a.ID == SubNodeInfo.ID).ToList();
                             XMLAddDetailNode(tblAbteilung, "Abteilung");
 //                            tblAbteilung = null;
                         }
 
-                        else if (generic.sEquals(propName, "IDBEREICH"))
+                        else if (propName.sEquals("IDBEREICH"))
                         {
                             List<PMDS.db.Entities.Bereich> tblBereich = db.Bereich.Where(a => a.ID == SubNodeInfo.ID).ToList();
                             XMLAddDetailNode(tblBereich, "Bereich");
@@ -1460,7 +1460,7 @@ namespace PMDS.GUI
                         }
 
                         //Adressen
-                        else if (generic.sEquals(propName, "IDADRESSE") || generic.sEquals(propName, "IDADRESSESUB"))
+                        else if (propName.sEquals("IDADRESSE") || propName.sEquals("IDADRESSESUB"))
                         {
                             List<PMDS.db.Entities.Adresse> tblAdressen = db.Adresse.Where(a => a.ID == SubNodeInfo.ID).ToList();
                             XMLAddDetailNode(tblAdressen, SubNodeInfo.Name);
@@ -1468,14 +1468,14 @@ namespace PMDS.GUI
                         }
 
                         //Kontakte
-                        else if (generic.sEquals(propName, "IDKONTAKT") || generic.sEquals(propName, "IDKONTAKTSUB"))
+                        else if (propName.sEquals("IDKONTAKT") || propName.sEquals("IDKONTAKTSUB"))
                         {
                             List<PMDS.db.Entities.Kontakt> tblKontakte = db.Kontakt.Where(a => a.ID == SubNodeInfo.ID).ToList();
                             XMLAddDetailNode(tblKontakte, SubNodeInfo.Name);
 //                            tblKontakte = null;
                         }
 
-                        else if (generic.sEquals(propName, "IDBANK"))
+                        else if (propName.sEquals("IDBANK"))
                         {
                             List<PMDS.db.Entities.Bank> tblBanken = db.Bank.Where(a => a.ID == SubNodeInfo.ID).ToList();
                             XMLAddDetailNode(tblBanken, "Bank");
@@ -1484,7 +1484,7 @@ namespace PMDS.GUI
 
                         //Details zu den Benutzern NICHT zu jedem Node hinzufügen. ID reicht, man kann im Benutzernode nach der ID suchen.
                         //Benutzer
-                        //if (generic.sEquals(propName, "IDBENUTZER"))
+                        //if (propName.sEquals("IDBENUTZER"))
                         //{
                         //    Guid IDBenutzer = new Guid(row.GetType().GetProperty(propName).GetValue(row, null).ToString().Trim());
                         //    List<PMDS.db.Entities.Benutzer> tblUsers = tblBenutzer.Where(a => a.ID == IDBenutzer).ToList();
@@ -1499,42 +1499,42 @@ namespace PMDS.GUI
                         //}
 
                         //Pflegegeldstufen
-                        else if (generic.sEquals(propName, "IDPFLEGEGELDSTUFE") || generic.sEquals(propName, "IDPFLEGEGELDSTUFEANTRAG"))
+                        else if (propName.sEquals("IDPFLEGEGELDSTUFE") || propName.sEquals("IDPFLEGEGELDSTUFEANTRAG"))
                         {
                             List<PMDS.db.Entities.Pflegegeldstufe> tblPflegegeldStufen = db.Pflegegeldstufe.Where(a => a.ID == SubNodeInfo.ID).ToList();
                             XMLAddDetailNode(tblPflegegeldStufen, SubNodeInfo.Name);
 //                            tblPflegegeldStufen = null;
                         }
 
-                        else if (generic.sEquals(propName, "IDPLAN"))
+                        else if (propName.sEquals("IDPLAN"))
                         {
                             List<PMDS.db.Entities.plan> tblPlaene = db.plan.Where(a => a.ID == SubNodeInfo.ID).ToList();
                             XMLAddDetailNode(tblPlaene, "Plan");
 //                            tblPlaene = null;
                         }
 
-                        else if (generic.sEquals(propName, "IDPDX"))
+                        else if (propName.sEquals("IDPDX"))
                         {
                             List<PMDS.db.Entities.PDX> tblPDXs = db.PDX.Where(a => a.ID == SubNodeInfo.ID).ToList();
                             XMLAddDetailNode(tblPDXs, "PDX");
 //                            tblPDXs = null;
                         }
 
-                        else if (generic.sEquals(propName, "IDMEDIKAMENT"))
+                        else if (propName.sEquals("IDMEDIKAMENT"))
                         {
                             List<PMDS.db.Entities.Medikament> tblMedikamente = db.Medikament.Where(med => med.ID == SubNodeInfo.ID).ToList();
                             XMLAddDetailNode(tblMedikamente, "Medikament_Heilbehelf");
 //                            tblMedikamente = null;
                         }
 
-                        else if (generic.sEquals(propName, "IDMEDIZINISCHEDATEN"))
+                        else if (propName.sEquals("IDMEDIZINISCHEDATEN"))
                         {
                             List<PMDS.db.Entities.MedizinischeDaten> tblMedDaten = db.MedizinischeDaten.Where(med => med.ID == SubNodeInfo.ID).ToList();
                             XMLAddDetailNode(tblMedDaten, "MedizinischeDaten");
 //                            tblMedDaten = null;
                         }
 
-                        else if (generic.sEquals(propName, "IDWUNDEKOPF"))
+                        else if (propName.sEquals("IDWUNDEKOPF"))
                         {
                             List<PMDS.db.Entities.WundeKopf> tblWundeKopf = db.WundeKopf.Where(med => med.ID == SubNodeInfo.ID).ToList();
                             XMLAddDetailNode(tblWundeKopf, "WundeKopf");

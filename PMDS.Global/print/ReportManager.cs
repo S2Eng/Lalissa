@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using PMDS.Print;
 using PMDS.Global.db.ERSystem;
 using System.Linq;
-
+using S2Extensions;
 
 namespace PMDS.Print.CR
 {
@@ -87,7 +87,7 @@ namespace PMDS.Print.CR
                         SubreportObject so = (SubreportObject)o;
                         ReportDocument doc = so.OpenSubreport(so.SubreportName);
 
-                        //if (PMDS.Global.generic.sEqualsList1(doc.Name, new List<object>() { "MedikamentenblattSub", "MedDaten.rpt" }))
+                        //if (doc.Name.sEqualsList1(new List<object>() { "MedikamentenblattSub", "MedDaten.rpt" }))
                         //{
                         //    doc.SetDataSource(listds[0].DATASET);
                         //}
@@ -146,31 +146,31 @@ namespace PMDS.Print.CR
                 {
                     AddCrystalParameter(rpt, p.Name, (object)p.Value);
 
-                    if (p.Name == "IDKlient")
+                    if (p.Name.sEquals("IDKlient"))
                         IDKlient = p.Value.ToString().Replace("{", "").Replace("}", "");
 
-                    if (p.Name == "ReportRoot")
+                    if (p.Name.sEquals("ReportRoot"))
                         ReportRoot = p.Value.ToString();
 
-                    if (p.Name == "PrintJN")
+                    if (p.Name.sEquals("PrintJN"))
                         PrintJN = (bool)p.Value;
 
-                    if (p.Name == "IDAufenthalt_current")
+                    if (p.Name.sEquals("IDAufenthalt_current"))
                         IDAufenthalt_current = new Guid(p.Value.ToString());
 
-                    if (p.Name == "IDKlinik_current")
+                    if (p.Name.sEquals("IDKlinik_current"))
                         IDKlinik_current = new Guid(p.Value.ToString());
 
-                    if (p.Name == "IDKlient_current")
+                    if (p.Name.sEquals("IDKlient_current"))
                         IDKlient_current = new Guid(p.Value.ToString());
 
-                    if (p.Name == "IDAbteilung_current")
+                    if (p.Name.sEquals("IDAbteilung_current"))
                         IDAbteilung_current = new Guid(p.Value.ToString());
 
-                    if (p.Name == "vabgesetzeMed")
+                    if (p.Name.sEquals("vabgesetzeMed"))
                         vabgesetzteMed = (bool)p.Value;
 
-                    if (p.Name == "AufenthaltNr")
+                    if (p.Name.sEquals("AufenthaltNr"))
                         sAufenthaltNr = p.Value.ToString();
                 }
             }
@@ -180,7 +180,7 @@ namespace PMDS.Print.CR
             // Erweiterung des Datasets für Allergien und Unverträglichkeiten
             // ist in Pflegebegleitschreiben micht erforderlich (ist da eigener Sub-Report)
             //-----------------------------------------------------------------------
-            if (PMDS.Global.generic.sEquals(rpt.FileName, "Medikamentenblatt.rpt", Global.Enums.eCompareMode.Contains))
+            if (rpt.FileName.sEquals("Medikamentenblatt.rpt", S2Extensions.Enums.eCompareMode.Contains))
             {
                 using (dsKlientenliste dsKlientenliste1 = new dsKlientenliste())
                 {
@@ -393,7 +393,7 @@ namespace PMDS.Print.CR
 
             foreach (BerichtDatenquelle q in listds)
             {
-                if (PMDS.Global.generic.sEquals(q.Bereich, sCompareString))
+                if (q.Bereich.sEquals(sCompareString))
                     return true;
             }
             return false;
@@ -439,7 +439,7 @@ namespace PMDS.Print.CR
                 string repPath =  System.IO.Path.Combine (ReportRoot, KlientenNameGebDat);
                 System.IO.Directory.CreateDirectory(repPath);   // Pfad anlegen, wenn er nicht bereits besteht
 
-                if (!PMDS.Global.generic.sEquals(sAufenthaltNr, "0") && !PMDS.Global.generic.sEquals(sAufenthaltNr, ""))
+                if (!sAufenthaltNr.sEquals("0") && !sAufenthaltNr.sEquals(""))
                 {
                     sReportFile = Path.Combine(Path.GetDirectoryName(sReportFile), sAufenthaltNr + "." + Path.GetFileName(sReportFile));
                 }
@@ -463,7 +463,7 @@ namespace PMDS.Print.CR
                 string repPath = System.IO.Path.Combine(ReportRoot, KlientenNameGebDat);
                 System.IO.Directory.CreateDirectory(repPath);   // Pfad anlegen, wenn er nicht bereits besteht
 
-                if (!PMDS.Global.generic.sEquals(sAufenthaltNr, "0") && !PMDS.Global.generic.sEquals(sAufenthaltNr, ""))
+                if (!sAufenthaltNr.sEquals("0") && !sAufenthaltNr.sEquals(""))
                 {
                     sReportFile = Path.Combine(Path.GetDirectoryName(sReportFile), sAufenthaltNr + "." + Path.GetFileName(sReportFile));
                 }

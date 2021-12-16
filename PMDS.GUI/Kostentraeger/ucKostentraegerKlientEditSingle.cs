@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using PMDS.DB;
 using Infragistics.Win.UltraWinEditors;
 using PMDS.Global;
+using S2Extensions;
 
 
 namespace PMDS.GUI.Kostentraeger
@@ -396,12 +397,12 @@ namespace PMDS.GUI.Kostentraeger
 
                     tmpCompany = "";
                     string[] arr = rKostenträger.Rechnungsempfaenger.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (arr.Length == 2 && generic.sEquals(arr[0], "(EV", Enums.eCompareMode.StartsWith))   //Erwachsenenvertreter bei Company: Company einlesen
+                    if (arr.Length == 2 && arr[0].sEquals("(EV", S2Extensions.Enums.eCompareMode.StartsWith))   //Erwachsenenvertreter bei Company: Company einlesen
                     {
                         tmpCompany = arr[1].Trim();                            
                     }
 
-                    this._EVMode = generic.sEquals(rKostenträger.Rechnungsempfaenger, "(EV", Enums.eCompareMode.StartsWith);
+                    this._EVMode = rKostenträger.Rechnungsempfaenger.sEquals("(EV", S2Extensions.Enums.eCompareMode.StartsWith);
 
 
                     this.b3.InitListKostentraegerart(this.cboEnumKostentraegerart, false, rKostenträger.TransferleistungJN, rKostenträger.PatientbezogenJN, this._db);

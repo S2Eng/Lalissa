@@ -32,6 +32,7 @@ using MARC.Everest.Formatters.XML.Datatypes.R1;
 using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
 using MARC.Everest.DataTypes;
 using MARC.Everest.Attributes;
+using S2Extensions;
 
 namespace PMDS.Global
 {
@@ -616,7 +617,7 @@ namespace PMDS.Global
 
         public static string getAdditionalFolder()
         {
-            return !generic.sEquals(ENV.SimpleInstall, "1") ? "PMDS" : "";
+            return !ENV.SimpleInstall.sEquals("1") ? "PMDS" : "";
         }
 
         public static bool CallFctMainSystem(PMDS.Calc.Logic.calculation.eTypeMainFct TypeMainFct, ref PMDS.Calc.Logic.calculation.retMainSystem retMainSystem1)
@@ -2503,7 +2504,7 @@ namespace PMDS.Global
 
         public static void checkExceptionOutOfMemory(string except)
         {
-            if (generic.sEquals(except, "OutOfMemoryException", Enums.eCompareMode.Contains))             
+            if (except.sEquals("OutOfMemoryException", S2Extensions.Enums.eCompareMode.Contains))             
             {
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der max. Speicherverbrauch für PMDS wurde überschritten! (32 Bit Version)" + "\r\n" +
                                                                             "PMDS muss neu gestartet werden!", "PMDS", MessageBoxButtons.OK);

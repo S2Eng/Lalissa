@@ -9,7 +9,7 @@ using PMDS.Data.PflegePlan;
 using PMDS.Global;
 using PMDS.BusinessLogic;
 using System.Linq;
-
+using S2Extensions;
 
 namespace PMDS.GUI
 {
@@ -385,7 +385,7 @@ namespace PMDS.GUI
             tbNaechsteEvaluierungBemerkung.Text = _row.NaechsteEvaluierungBemerkung;
             if (_row.IsNaechsteEvaluierungNull())
             {
-                if (PMDS.Global.generic.sEquals(_row.EintragGruppe,EintragGruppe.M))
+                if (_row.EintragGruppe.sEquals(EintragGruppe.M))
                 {
                     dtpNaechsteEvaluierung.Value = null;
                 }

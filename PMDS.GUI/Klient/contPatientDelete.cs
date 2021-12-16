@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using PMDS.DB;
 using PMDS.GUI.VB;
+using S2Extensions;
 
 namespace PMDS.GUI.Klient
 {
@@ -163,7 +164,7 @@ namespace PMDS.GUI.Klient
             {
                 this.clearErrorProvider();
 
-                if (!Global.generic.sEquals(this.txtIDPatient.Text, this._IDPatient))
+                if (!this.txtIDPatient.Text.sEquals(this._IDPatient))
                 {
                     this.errorProvider1.SetError(this.txtIDPatient, "Error");
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Die eingegebene ID-Patient ist falsch!", "", MessageBoxButtons.OK);

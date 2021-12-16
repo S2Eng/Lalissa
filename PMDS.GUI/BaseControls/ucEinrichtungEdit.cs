@@ -20,6 +20,7 @@ using PMDS.Global.db.Global;
 using PMDS.GUI.ELGA;
 using static PMDSClient.Sitemap.WCFServiceClient;
 using PMDS.Global.db.ERSystem;
+using S2Extensions;
 
 namespace PMDS.GUI
 {
@@ -288,7 +289,7 @@ namespace PMDS.GUI
                 Restart:
                     int i = 0; foreach (Infragistics.Win.ValueListItem item in cbEinrichtung.Items)
                     {
-                        if (PMDS.Global.generic.sEquals(item.DisplayText, "<", Enums.eCompareMode.StartsWith))
+                        if (item.DisplayText.sEquals("<", S2Extensions.Enums.eCompareMode.StartsWith))
                         {
                             cbEinrichtung.Items.RemoveAt(i);
                             goto Restart;

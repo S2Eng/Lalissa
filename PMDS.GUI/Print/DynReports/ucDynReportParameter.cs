@@ -26,6 +26,7 @@ using PMDS.GUI.VB;
 using System.Linq;
 using PMDS.Global.db.ERSystem;
 using PMDSClient.Sitemap;
+using S2Extensions;
 
 namespace PMDS.GUI
 {
@@ -550,14 +551,14 @@ namespace PMDS.GUI
                 {
                     try
                     {
-                        if (generic.sEquals(u.BERICHTPARAMETER.Typ, "Datum"))
+                        if (u.BERICHTPARAMETER.Typ.sEquals("Datum"))
                         {
 
                             string sTemp = "=== PARSE('" + u.VALUE_TEXT + "' AS DATE USING '" + System.Globalization.CultureInfo.CurrentCulture  + "') ===";
                             sRet = sRet.Replace(sField1, sTemp);
                             sRet = sRet.Replace("'===", "").Replace("==='", "");
                         }
-                        else if (generic.sEquals(u.BERICHTPARAMETER.Typ, "DatumZeit"))
+                        else if (u.BERICHTPARAMETER.Typ.sEquals("DatumZeit"))
                         {
 
                             string sTemp = "=== PARSE('" + u.VALUE_TEXT + "' AS DATETIME USING '" + System.Globalization.CultureInfo.CurrentCulture + "') ===";

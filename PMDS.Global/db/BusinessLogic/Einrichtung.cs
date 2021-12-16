@@ -10,6 +10,7 @@ using PMDS.Global.db.Patient;
 using PMDS.Global.db.Global;
 using System.Linq;
 using System.Collections.Generic;
+using S2Extensions;
 
 namespace PMDS.BusinessLogic
 {
@@ -52,11 +53,11 @@ namespace PMDS.BusinessLogic
                             rNew.TEXT = QS2.Desktop.ControlManagment.ControlManagment.getRes("[Kein Name]");
                         }
 
-                        if (PSBOnly && (generic.sEquals(r.ELGA_OrganizationOID, "PSBReceiver") || generic.sEquals(r.ELGA_OrganizationOID, "PSBReceiver,DischLoctn") || String.IsNullOrEmpty(r.ELGA_OrganizationOID)))
+                        if (PSBOnly && (r.ELGA_OrganizationOID.sEquals("PSBReceiver") || r.ELGA_OrganizationOID.sEquals("PSBReceiver,DischLoctn") || String.IsNullOrEmpty(r.ELGA_OrganizationOID)))
                             t.Rows.Add(rNew);
-                        else if (DischLoctnOnly && (generic.sEquals(r.ELGA_OrganizationOID, "DischLoctn") || generic.sEquals(r.ELGA_OrganizationOID, "PSBReceiver,DischLoctn") || String.IsNullOrEmpty(r.ELGA_OrganizationOID)))
+                        else if (DischLoctnOnly && (r.ELGA_OrganizationOID.sEquals("DischLoctn") || r.ELGA_OrganizationOID.sEquals("PSBReceiver,DischLoctn") || String.IsNullOrEmpty(r.ELGA_OrganizationOID)))
                             t.Rows.Add(rNew);
-                        else if (!PSBOnly && !DischLoctnOnly && !generic.sEquals(r.Text, "Deprecate"))
+                        else if (!PSBOnly && !DischLoctnOnly && !r.Text.sEquals("Deprecate"))
                             t.Rows.Add(rNew);
                     }
                     t.AcceptChanges();

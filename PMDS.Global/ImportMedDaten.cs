@@ -16,7 +16,7 @@ using PMDS.DB;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
-
+using S2Extensions;
 
 namespace PMDS.Global
 {
@@ -108,7 +108,7 @@ namespace PMDS.Global
                 CountUpdated = 0;
                 CountDeactivated = 0;
 
-                if (generic.sEquals(MedikamenteImportType, "file"))
+                if (MedikamenteImportType.sEquals("file"))
                 {
 
                     if (File.Exists(@"C:\temp\Medikament.txt"))     //Fürs entwickeln
@@ -118,7 +118,7 @@ namespace PMDS.Global
                     else
                         sFile = System.IO.File.ReadAllText(System.IO.Path.Combine(ENV.ftpFileImportMedikamente, FileName));
                 }
-                else if (generic.sEquals(MedikamenteImportType, "service"))
+                else if (MedikamenteImportType.sEquals("service"))
                 {
                     setStatus(0, lbl, "Daten werden vom Apo-Verlag per Service heruntergeladen ....", true);
                     if (!this.GetXMLFromApoVerlag(out sFile, out string sMsgService, bImportGesamtdaten, iMonat))
@@ -127,7 +127,7 @@ namespace PMDS.Global
                         return false;
                     }
                 }
-                else if (generic.sEquals(MedikamenteImportType, "ftp"))
+                else if (MedikamenteImportType.sEquals("ftp"))
                 {
                     if (!this.downloadFileFtp(ref sFile, ref FileName))
                     {
@@ -163,7 +163,7 @@ namespace PMDS.Global
                 CountDeactivated = 0;
                 int LineNr = 0;
 
-                if (!generic.sEquals(MedikamenteImportType, "service"))
+                if (!MedikamenteImportType.sEquals("service"))
                 {
                     VariablesFile vars = new VariablesFile();
                     foreach (string line in aImport)
@@ -250,7 +250,7 @@ namespace PMDS.Global
                                     else
                                         rNewMedikmant.Packungseinheit = this.getVar(ref vars.Packungseinheit, line);
 
-                                    if (generic.sEquals(rNewMedikmant.Packungseinheit, "ST") || generic.sEquals(rNewMedikmant.Packungseinheit, "Stück"))
+                                    if (rNewMedikmant.Packungseinheit.sEquals("ST") || rNewMedikmant.Packungseinheit.sEquals("Stück"))
                                         rNewMedikmant.Herrichten = (int)medHerrichten.langfristig;
 
                                     rNewMedikmant.ImportiertAm = DateTime.Now;

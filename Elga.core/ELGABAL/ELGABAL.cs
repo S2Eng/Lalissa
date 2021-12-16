@@ -9,6 +9,7 @@ using WCFServicePMDS.BAL2.ELGABAL;
 using System.Collections.Concurrent;
 using Elga.core.ServiceReferenceELGA;
 using Elga.core;
+using S2Extensions;
 
 namespace WCFServicePMDS
 {
@@ -171,7 +172,7 @@ namespace WCFServicePMDS
 
                 ehrPatientRsp ehrPatientRsp1 = objWsLogin.queryPatients(ehrPatientRq1);
                 
-                if (ehrPatientRsp1.queryError == null || (ehrPatientRsp1.queryError != null && genericELGA.sEquals(ehrPatientRsp1.queryError.queryResponseCode,"OK")))
+                if (ehrPatientRsp1.queryError == null || (ehrPatientRsp1.queryError != null && ehrPatientRsp1.queryError.queryResponseCode.sEquals("OK")))
                 {
                     if (ehrPatientRsp1.responseData != null)
                     {
@@ -273,8 +274,8 @@ namespace WCFServicePMDS
                         string patLocalID = "";
                         foreach (var rPid in retDto.lPatients[0].ELGAPids)
                         {
-                            if (genericELGA.sEquals(rPid.patientID, parsIn.LocalPatientID) && 
-                                genericELGA.sEquals(rPid.authUniversalID, parsIn.authUniversalID))
+                            if (rPid.patientID.sEquals(parsIn.LocalPatientID) &&
+                                rPid.authUniversalID.sEquals(parsIn.authUniversalID))
                             {
                                 patLocalID = rPid.patientID;
                             }
@@ -1413,7 +1414,7 @@ namespace WCFServicePMDS
                                 if (OneDocuMustFound)
                                 {
                                     //Hier wird die Unique-ID des Documents von ELGA mit der internen GUID des lokalen CDAs verglichen -> Funktioniert nicht
-                                    if (genericELGA.sEquals(documentClientDto1.uniqueId, UniqueId))  
+                                    if (documentClientDto1.uniqueId.sEquals(UniqueId))  
                                     {
                                         AddDocu = true;
                                     }
@@ -1426,7 +1427,7 @@ namespace WCFServicePMDS
                                 bool TypeOK = false;
                                 string sTypeFileSave = "";
                                 string sTypeFileELGA = this.checkFieldNull(documentClientDto1.mimeType);
-                                if (genericELGA.sEquals(sTypeFileELGA, "xml", Enums.eCompareMode.Contains))
+                                if (sTypeFileELGA.sEquals("xml", S2Extensions.Enums.eCompareMode.Contains))
                                 {
                                     sTypeFileSave = ".xml";
                                     TypeOK = true;

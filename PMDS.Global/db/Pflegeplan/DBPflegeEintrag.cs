@@ -13,6 +13,7 @@ using RBU;
 using PMDS.Global;
 using PMDS.Data.PflegePlan;
 using System.Linq;
+using S2Extensions;
 
 namespace PMDS.DB
 {
@@ -601,11 +602,11 @@ namespace PMDS.DB
 
                 dsPflegePlan.PflegePlanRow r = db.PFLEGEPLAN_EINTRAEGE[0];
 
-                if (generic.sEquals(r.EintragGruppe, "M"))
+                if (r.EintragGruppe.sEquals("M"))
                 {
                     ITEM[0].PflegeplanText = r.Text;
                 }
-                else if (generic.sEquals(r.EintragGruppe, "T"))
+                else if (r.EintragGruppe.sEquals("T"))
                 {
                     ITEM[0].PflegeplanText = "Termin: " + r.Text;
                     ITEM[0].EintragsTyp = (int) PflegeEintragTyp.TERMIN;

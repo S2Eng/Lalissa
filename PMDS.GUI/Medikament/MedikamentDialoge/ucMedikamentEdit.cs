@@ -13,7 +13,7 @@ using PMDS.Data.Global;
 using PMDS.Data.Patient;
 
 using System.Linq;
-
+using S2Extensions;
 
 
 
@@ -43,7 +43,7 @@ namespace PMDS.GUI
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                 {
 
-                    if (generic.sEquals(ENV.MedikamenteImportType, "service"))
+                    if (ENV.MedikamenteImportType.sEquals("service"))
                     {
                         this.cbPackungsEinheit.Group = "AEH";
                         this.cmbApplikationsform.Group = "AAF";

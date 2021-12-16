@@ -8,12 +8,10 @@ using System.Windows.Forms;
 using PMDS.Data.Patient;
 using PMDS.DB;
 using System.Linq;
+using S2Extensions;
 
 namespace PMDS.GUI
 {
-
-
-
     public partial class frmMedikamentenVerwaltung : QS2.Desktop.ControlManagment.baseForm 
     {
         public PMDSBusiness b = new PMDSBusiness();
@@ -39,7 +37,7 @@ namespace PMDS.GUI
 
             pnlImport.Visible = PMDS.Global.ENV.APVDA;
             cboMonat.SelectedIndex = 0;
-            pnlMonat.Visible = PMDS.Global.generic.sEquals(PMDS.Global.ENV.MedikamenteImportType, "service") && PMDS.Global.ENV.ApoZusatzdaten;
+            pnlMonat.Visible = PMDS.Global.ENV.MedikamenteImportType.sEquals("service") && PMDS.Global.ENV.ApoZusatzdaten;
             this.btnImport.Appearance.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.btnImport.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Aktualisieren, 32, 32);
             this.btnSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Speichern, 32, 32);

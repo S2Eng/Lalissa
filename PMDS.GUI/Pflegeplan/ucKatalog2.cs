@@ -23,6 +23,7 @@ using PMDS.Global.db.ERSystem;
 
 using System.Linq;
 using PMDS.DB;
+using S2Extensions;
 
 namespace PMDS.GUI
 {
@@ -1270,7 +1271,7 @@ namespace PMDS.GUI
         {
             try
             {
-                if (generic.sEquals(e.Cell.Column, this.dsKlientenliste1.tSelectSimple.SelectColumn.ColumnName))
+                if (e.Cell.Column.sEquals(this.dsKlientenliste1.tSelectSimple.SelectColumn.ColumnName))
                 {
                     e.Cell.Activation = Activation.AllowEdit;
                 }

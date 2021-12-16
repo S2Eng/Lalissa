@@ -13,6 +13,7 @@ using PMDS.Global.db.ERSystem;
 using PMDS.DB;
 using WCFServicePMDS.BAL2.ELGABAL;
 using System.Globalization;
+using S2Extensions;
 
 namespace PMDS.GUI.ELGA
 {
@@ -155,7 +156,7 @@ namespace PMDS.GUI.ELGA
                                 {
                                     foreach (ELGAPidsDTO rPid in parOut.lPatients[0].ELGAPids)
                                     {
-                                        if (generic.sEquals(rPid.patientIDType, "PI") && generic.sEquals(rPid.authUniversalID, rKlinik.AuthUniversalID))
+                                        if (rPid.patientIDType.sEquals("PI") && rPid.authUniversalID.sEquals(rKlinik.AuthUniversalID))
                                         {
                                             ELGALocalIDStored = rPid.patientID.Trim();
                                             bPatientLocalIDOK = true;
@@ -197,13 +198,13 @@ namespace PMDS.GUI.ELGA
                                 //ELGAParOutDto parOutListContacts = this.WCFServiceClient1.ELGAInvalidateContact(rAufenthaltUpdate.ELGAKontaktbestätigungContactID.Trim());
 
                                 string sProtAttention = "";
-                                if (!PMDS.Global.generic.sEquals(rPatientUpdate.Nachname, frmELGASearchPatient1.contELGASearchPatient1._rSelRow.NachnameFirma))
+                                if (!rPatientUpdate.Nachname.sEquals(frmELGASearchPatient1.contELGASearchPatient1._rSelRow.NachnameFirma))
                                 {
                                     sProtAttention += "\n\r" + QS2.Desktop.ControlManagment.ControlManagment.getRes("{0} stimmt nicht überein: ELGA = {1}, PMDS = {2}!");
                                     sProtAttention = string.Format(ci, sProtAttention, new List<string> { "Familienname", frmELGASearchPatient1.contELGASearchPatient1._rSelRow.NachnameFirma, rPatientUpdate.Nachname }.ToArray());
                                 }
 
-                                if (!PMDS.Global.generic.sEquals(rPatientUpdate.Vorname, frmELGASearchPatient1.contELGASearchPatient1._rSelRow.Vorname))
+                                if (!rPatientUpdate.Vorname.sEquals(frmELGASearchPatient1.contELGASearchPatient1._rSelRow.Vorname))
                                 {
                                     sProtAttention += "\n\r" + QS2.Desktop.ControlManagment.ControlManagment.getRes("{0} stimmt nicht überein: ELGA = {1}, PMDS = {2}!");
                                     sProtAttention = string.Format(ci, sProtAttention, new List<string> { "Vorname", frmELGASearchPatient1.contELGASearchPatient1._rSelRow.Vorname, rPatientUpdate.Vorname }.ToArray());

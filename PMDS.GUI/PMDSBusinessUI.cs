@@ -33,6 +33,7 @@ using PMDS.GUI.ELGA;
 using System.Text.RegularExpressions;
 using PMDSClient.Sitemap;
 using PMDS.DynReportsForms;
+using S2Extensions;
 
 
 namespace PMDS.GUI
@@ -1483,7 +1484,7 @@ namespace PMDS.GUI
                         {
                             rPatient.SozVersLeerGrund = "";
                             ucVersichrungsdaten1.cboSozVersLeerGrund.Text = "";
-                            if (generic.sEquals(ucVersichrungsdaten1.cboSozVersStatus.Text, "mitversichert"))
+                            if (ucVersichrungsdaten1.cboSozVersStatus.Text.sEquals("mitversichert"))
                             {
                                 rPatient.SozVersMitversichertBei = "";
                                 ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = "";

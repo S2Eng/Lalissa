@@ -12,6 +12,7 @@ using PMDS.Global.db.Patient;
 using PMDS.Calc.Logic;
 using System.Linq;
 using PMDS.DB;
+using S2Extensions;
 
 namespace PMDS.Calc.UI
 {
@@ -353,7 +354,7 @@ namespace PMDS.Calc.UI
             PMDS.Calc.Logic.eBillStatus status = new PMDS.Calc.Logic.eBillStatus();
            
             if (this._freigeben)
-                if (sValCboBillStatus != null && generic.sEquals(sValCboBillStatus, "s"))
+                if (sValCboBillStatus != null && sValCboBillStatus.sEquals("s"))
                     status = PMDS.Calc.Logic.eBillStatus.storniert;
                 else
                     status = PMDS.Calc.Logic.eBillStatus.freigegeben;
@@ -365,7 +366,7 @@ namespace PMDS.Calc.UI
         {
             PMDS.Calc.Logic.eBillStatus status = new PMDS.Calc.Logic.eBillStatus();
 
-            if (sValCboBillStatus != null && generic.sEquals(sValCboBillStatus,"s"))
+            if (sValCboBillStatus != null && sValCboBillStatus.sEquals("s"))
                 status = PMDS.Calc.Logic.eBillStatus.storniert;
             else
                 status = PMDS.Calc.Logic.eBillStatus.freigegeben;

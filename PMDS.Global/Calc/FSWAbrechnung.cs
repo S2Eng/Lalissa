@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using Syncfusion.XlsIO;
 using System.Linq;
+using S2Extensions;
 
 namespace PMDS.Global
 {
@@ -172,11 +173,11 @@ namespace PMDS.Global
                             {
                                 if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !LeistungszeileBereitsVerrechnet(new Guid(Rechnungszeile.ID), new Guid(rBill.ID)))
                                 {
-                                    if (generic.sEquals(Rechnungszeile.Kennung, "LZ"))
+                                    if (Rechnungszeile.Kennung.sEquals("LZ"))
                                     {
                                         foreach (string sBW in lBW_Leistungen)
                                         {
-                                            if (generic.sEquals(Rechnungszeile.Bezeichnung, sBW, Enums.eCompareMode.StartsWith))
+                                            if (Rechnungszeile.Bezeichnung.sEquals(sBW, S2Extensions.Enums.eCompareMode.StartsWith))
                                             {
                                                 dBWNetto += Rechnungszeile.Netto;
                                             }
@@ -186,7 +187,7 @@ namespace PMDS.Global
                                             }
                                         }
                                     }
-                                    else if (generic.sEquals(Rechnungszeile.Kennung, "MWstSatz"))   //zur Kontrolle
+                                    else if (Rechnungszeile.Kennung.sEquals("MWstSatz"))   //zur Kontrolle
                                     {
                                         dMwSt += Rechnungszeile.Netto;
                                     }
@@ -225,13 +226,13 @@ namespace PMDS.Global
                                 //if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !lstZeilen.Contains(new Guid(Rechnungszeile.ID)))
                                 if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !LeistungszeileBereitsVerrechnet(new Guid(Rechnungszeile.ID), new Guid(rBill.ID)))
                                 {
-                                    if (generic.sEquals(Rechnungszeile.Kennung, "LZ"))
+                                    if (Rechnungszeile.Kennung.sEquals("LZ"))
                                     {
                                         bool bLZIsPflege = false;
                                         bool bLZIsBetreutesWohnen = false;
                                         foreach (string sBW in lBW_Leistungen)      //Art der Leistung ermitteln
                                         {
-                                            if (generic.sEquals(Rechnungszeile.Bezeichnung, sBW, Enums.eCompareMode.StartsWith))
+                                            if (Rechnungszeile.Bezeichnung.sEquals(sBW, S2Extensions.Enums.eCompareMode.StartsWith))
                                             {
                                                 bLZIsBetreutesWohnen = bLZIsBetreutesWohnen || true;
                                                 ZeileBW++;
@@ -276,7 +277,7 @@ namespace PMDS.Global
                                         });
                                     }
 
-                                    else if (generic.sEquals(Rechnungszeile.Kennung, "MWstSatz"))
+                                    else if (Rechnungszeile.Kennung.sEquals("MWstSatz"))
                                     {
                                         //Steuern werden als Surcharge verrechnet!!!!
                                         decimal Tax = Math.Round(Rechnungszeile.Netto * dPercentPflege, 2, MidpointRounding.AwayFromZero);
@@ -296,7 +297,7 @@ namespace PMDS.Global
                                         InvoiceBW.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = dBWNetto;
                                     }
 
-                                    else if (generic.sEquals(Rechnungszeile.Kennung, "GSGB"))
+                                    else if (Rechnungszeile.Kennung.sEquals("GSGB"))
                                     {
                                         Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount = dPflegeNetto;
                                         Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage = ENV.FSW_Prozent;

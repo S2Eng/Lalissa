@@ -6,24 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 using CrystalDecisions.CrystalReports.Engine;
 using System.Collections.Specialized;
 using CrystalDecisions.Shared;
 
-
-
 namespace PMDS.Print.CR
 {
-
-
     public class frmPrintPreview : QS2.Desktop.ControlManagment.baseForm
     {
-        public CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private System.ComponentModel.Container components = null;
-
-
-
+        public CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1 { get; set; }
+        private System.ComponentModel.Container components;
 		
 		#region Windows Form Designer generated code
 		/// <summary>
@@ -63,7 +55,6 @@ namespace PMDS.Print.CR
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrintPreview_FormClosing);
             this.Load += new System.EventHandler(this.frmPrintPreview_Load);
             this.ResumeLayout(false);
-
 		}
 		#endregion
         
@@ -81,8 +72,7 @@ namespace PMDS.Print.CR
             crDiskFileDestinationOptions.DiskFileName = file;
             crExportOptions.DestinationOptions = crDiskFileDestinationOptions;
             crExportOptions.ExportDestinationType = CrystalDecisions.Shared.ExportDestinationType.DiskFile;
-            crExportOptions.ExportFormatType =  CrystalDecisions.Shared.ExportFormatType.PortableDocFormat;
-            
+            crExportOptions.ExportFormatType =  CrystalDecisions.Shared.ExportFormatType.PortableDocFormat;            
             d.Export();
         }
   

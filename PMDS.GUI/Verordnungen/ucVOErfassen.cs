@@ -20,6 +20,7 @@ using Infragistics.Win.UltraWinToolTip;
 using System.Data.OleDb;
 using PMDS.GUI.VB;
 using Infragistics.Win.UltraWinEditors;
+using S2Extensions;
 
 namespace PMDS.GUI.Verordnungen
 {
@@ -1765,7 +1766,7 @@ namespace PMDS.GUI.Verordnungen
                 }
                 else
                 {
-                    if (generic.sEquals(e.Cell.Column, colSelect))
+                    if (e.Cell.Column.sEquals(colSelect))
                     {
                         e.Cell.Activation = Activation.AllowEdit;
                     }
@@ -1854,7 +1855,7 @@ namespace PMDS.GUI.Verordnungen
                 }
                 else
                 {
-                    if (generic.sEquals(e.Cell.Column, colSelect))
+                    if (e.Cell.Column.sEquals(colSelect))
                     {
                         e.Cell.Activation = Activation.AllowEdit;
                     }
@@ -2352,7 +2353,7 @@ namespace PMDS.GUI.Verordnungen
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                if (generic.sEquals(e.Button.Key, "Add"))
+                if (e.Button.Key.sEquals("Add"))
                 {
                     using (frmAuswahl frm = new frmAuswahl("LAZ"))
                     {

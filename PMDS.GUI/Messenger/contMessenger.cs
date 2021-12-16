@@ -16,6 +16,7 @@ using PMDS.Global.db.ERSystem;
 using System.IO;
 using PMDSClient.Sitemap;
 using WCFServicePMDS.BAL.DTO;
+using S2Extensions;
 
 
 namespace PMDS.GUI.Messenger
@@ -398,7 +399,7 @@ namespace PMDS.GUI.Messenger
                         this.setAllUsersMessageToUserPicker(tMessagesToUsers, rProtMessage, true, db);
 
                         bool UIAusgang;
-                        if (generic.sEquals(this.optPostEinAusgang.Value, "A"))
+                        if (this.optPostEinAusgang.Value.sEquals("A"))
                         {
                             var tMUNotReaded = (from mu in tMessagesToUsers
                                                 where !mu.Readed
@@ -422,7 +423,7 @@ namespace PMDS.GUI.Messenger
                             sTransTxtInfomessageBottom = string.Format(sTransTxtInfomessageBottom, tMUReaded.Count().ToString(), tMessagesToUsers.Count.ToString());
                             this.lblInfoMessageBottom.Text = sTransTxtInfomessageBottom.Trim();
                         }
-                        else if (generic.sEquals(this.optPostEinAusgang.Value,"E"))
+                        else if (this.optPostEinAusgang.Value.sEquals("E"))
                         {
                             if (updateMessageReaded)
                             {

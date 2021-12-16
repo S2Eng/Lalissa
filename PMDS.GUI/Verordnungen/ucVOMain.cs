@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using PMDS.DB;
+using S2Extensions;
 
 namespace PMDS.GUI.Verordnungen
 {
@@ -60,19 +61,19 @@ namespace PMDS.GUI.Verordnungen
             {
                 if (this.ultraTabControl1.Focused)
                 {
-                    if (PMDS.Global.generic.sEquals(ultraTabControl1.ActiveTab.Key,"Erfassung"))
+                    if (ultraTabControl1.ActiveTab.Key.sEquals("Erfassung"))
                     {
                         this.ucVOErfassen1.search2(this.ucVOErfassen1._IDAufenthalt, this.ucVOErfassen1._IDPflegeplan, this.ucVOErfassen1._IDMedDaten, this.ucVOErfassen1._IDWundeKopf);
                     }
-                    else if (PMDS.Global.generic.sEquals(ultraTabControl1.ActiveTab.Key, "Bestellvorschläge"))
+                    else if (ultraTabControl1.ActiveTab.Key.sEquals("Bestellvorschläge"))
                     {
                         this.ucVOBestellvorschläge1.search();
                     }
-                    else if (PMDS.Global.generic.sEquals(ultraTabControl1.ActiveTab.Key, "Bestellungen"))
+                    else if (ultraTabControl1.ActiveTab.Key.sEquals("Bestellungen"))
                     {
                         this.ucVOLieferung1.search();
                     }
-                    else if (PMDS.Global.generic.sEquals(ultraTabControl1.ActiveTab.Key, "Lager"))
+                    else if (ultraTabControl1.ActiveTab.Key.sEquals("Lager"))
                     {
                         this.ucLager1.loadData(null, "");
                     }

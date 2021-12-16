@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WCFServicePMDS.BAL2.ELGABAL;
+using S2Extensions;
 
 namespace PMDS.Global.db.ERSystem
 {
@@ -963,7 +964,7 @@ namespace PMDS.Global.db.ERSystem
                                                                 rELGADocu.IDPatient, null, rELGADocu.UniqueID, rELGADocu.ELGAPatientLocalID.Trim(), rELGADocu.Dokument, rELGADocu.Stylesheet,
                                                                 ref IDDocumenteneintrag,true , "", true, -1);
 
-                        if (generic.sEquals(rELGADocu.DocStatus, "Deprecated", Enums.eCompareMode.Contains))
+                        if (rELGADocu.DocStatus.sEquals("Deprecated", S2Extensions.Enums.eCompareMode.Contains))
                         {
                             var rDocu = db.tblDokumenteintrag.Where(pe => pe.ID == IDDocumenteneintrag).First();
                             rDocu.ELGAStorniert = true;
@@ -1348,8 +1349,8 @@ namespace PMDS.Global.db.ERSystem
                         xmlFile = sr.ReadToEnd();
                     }
 
-                    if(!generic.sEquals(rDocuEintragUpdate.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationsbericht) &&
-                       !generic.sEquals(rDocuEintragUpdate.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief))
+                    if(!rDocuEintragUpdate.ELGADocuType.sEquals(WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationsbericht) &&
+                       !rDocuEintragUpdate.ELGADocuType.sEquals(WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief))
                     {
                         throw new Exception("PMDSBusinessUI.SendELGADocu:  rDocuEintragUpdate.ELGADocuType '" + rDocuEintragUpdate.ELGADocuType.Trim() + "' not allowed send to ELGA!");
                     }
@@ -1359,14 +1360,14 @@ namespace PMDS.Global.db.ERSystem
                     ELGAParOutDto parOut = WCFServiceClient1.ELGAAddDocument(rAufenthalt.ELGALocalID, rKlinik.ELGA_OrganizationName, rKlinik.ELGA_OrganizationOID, rBenutzer.Benutzer1,
                                                                                 rDocuEintragUpdate.Bezeichnung, bDocu, rPatient.Nachname + " " + rPatient.Vorname, "", IDDocumenteneintrag.ToString(), "");
 
-                    if (generic.sEquals(rDocuEintragUpdate.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationsbericht))
+                    if (rDocuEintragUpdate.ELGADocuType.sEquals(WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationsbericht))
                     {
                         string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht für Patient {0} wurde nach ELGA übertragen");
                         sProt = string.Format(sProt, rPatient.Nachname + " " + rPatient.Vorname);
                         ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht übertragen"), null,
                                                         ELGABusiness.eTypeProt.ELGAAddDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, rPatient.ID, rAufenthalt.ID, sProt);
                     }
-                    else if (generic.sEquals(rDocuEintragUpdate.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief))
+                    else if (rDocuEintragUpdate.ELGADocuType.sEquals(WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief))
                     {
                         string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief für Patient {0} wurde nach ELGA übertragen");
                         sProt = string.Format(sProt, rPatient.Nachname + " " + rPatient.Vorname);

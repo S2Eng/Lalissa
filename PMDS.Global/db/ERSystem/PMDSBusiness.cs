@@ -17,7 +17,7 @@ using System.IO;
 using PMDS.Global.db.Patient;
 using System.Drawing;
 using PMDS.Global.db.ERSystem;
-
+using S2Extensions;
 
 using Patagames.Pdf.Net;        //https://www.youtube.com/watch?v=IF9cKSUFon8
 using Patagames.Pdf.Enums;
@@ -4162,7 +4162,7 @@ namespace PMDS.DB
                                                             ref lstPdx, ref lstPflegepläne);
                 }
 
-                if (generic.sEquals(rPflegePlan.EintragGruppe, EintragGruppe.M))
+                if (rPflegePlan.EintragGruppe.sEquals(EintragGruppe.M))
                 {
                     DateTime dNächstesDatum = (DateTime)rPflegePlan.StartDatum;           //new DateTime(rPflegeplan.StartDatum.Year, rPflegeplan.StartDatum.Month, rPflegeplan.StartDatum.Day, rPflegeplan.StartDatum.Hour, rPflegeplan.StartDatum.Minute, 0);
                     PMDS.DB.PMDSBusiness PMDSBusiness1 = new PMDSBusiness();
@@ -4342,7 +4342,7 @@ namespace PMDS.DB
                     rPflegePlan.OriginalJN = false;
                 }
 
-                if (generic.sEquals(rPflegePlan.EintragGruppe, EintragGruppe.M))
+                if (rPflegePlan.EintragGruppe.sEquals(EintragGruppe.M))
                 {
                     rPflegePlan.OhneZeitBezug = aszmArgUI.OhneZeitBezug;
                     rPflegePlan.EinmaligJN = aszmArgUI.EinmaligJN;

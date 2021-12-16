@@ -8,6 +8,7 @@ Imports System.Windows.Forms
 Imports Infragistics.Win.UltraWinToolTip
 Imports Infragistics.Win
 Imports PMDS.Global.db.ERSystem
+Imports S2Extensions
 
 Public Class frmNachricht3
     Inherits System.Windows.Forms.Form
@@ -2532,12 +2533,12 @@ Public Class frmNachricht3
             End If
             Me.lblMailVon.Text = Me.rPlan.MailFrom
 
-            If Not PMDS.Global.generic.sEquals(Me.rPlan.Status, "") Then
-                If PMDS.Global.generic.sEquals(Me.rPlan.Status, "Offen") Then
+            If Not Me.rPlan.Status.sEquals("") Then
+                If Me.rPlan.Status.sEquals("Offen") Then
                     Me.optStatus.CheckedIndex = 0
-                ElseIf PMDS.Global.generic.sEquals(Me.rPlan.Status, "Erledigt") Then
+                ElseIf Me.rPlan.Status.sEquals("Erledigt") Then
                     Me.optStatus.CheckedIndex = 1
-                ElseIf PMDS.Global.generic.sEquals(Me.rPlan.Status, "Erfolglos") Then
+                ElseIf Me.rPlan.Status.sEquals("Erfolglos") Then
                     Me.optStatus.CheckedIndex = 2
                 Else
                     Throw New Exception("frmNachricht.loadData: Me.rPlan.Status='" + Me.rPlan.Status.Trim() + "' not allowed!")

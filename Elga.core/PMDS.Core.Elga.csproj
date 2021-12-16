@@ -873,5 +873,11 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\S2Extensions\S2Extensions.csproj">
+      <Project>{10b7d2d1-0868-4fda-8473-a12b5bb9386f}</Project>
+      <Name>S2Extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

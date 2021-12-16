@@ -10,7 +10,7 @@ using Infragistics.Win.UltraWinGrid;
 using PMDS.Calc.Logic;
 using PMDS.DB;
 using PMDS.Global.db.Patient;
-
+using S2Extensions;
 
 
 
@@ -1087,11 +1087,11 @@ namespace PMDS.Calc.UI.Admin
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                if (Global.generic.sEquals(e.Tool.Key,"AbrechTabellenErstellen"))
+                if (e.Tool.Key.sEquals("AbrechTabellenErstellen"))
                 {
                     this.AbrechTabelleNeuErstellen();
                 }
-                else if (Global.generic.sEquals(e.Tool.Key,"btnClose"))
+                else if (e.Tool.Key.sEquals("btnClose"))
                 {
                     this.Close();
                 }

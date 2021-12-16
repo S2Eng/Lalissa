@@ -14,6 +14,7 @@ using PMDS.Global.db.Global;
 
 using PMDS.DB;
 using System.Linq;
+using S2Extensions;
 
 namespace PMDS.GUI
 {
@@ -49,7 +50,7 @@ namespace PMDS.GUI
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                 {
-                    if (generic.sEquals(ENV.MedikamenteImportType, "service"))
+                    if (ENV.MedikamenteImportType.sEquals("service"))
                     {
                         this.cbPackungsEinheit.Group = "AEH";
                     }

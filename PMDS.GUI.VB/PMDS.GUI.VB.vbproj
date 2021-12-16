@@ -1340,6 +1340,10 @@
       <Project>{1f894182-6563-4ffa-958d-b842cb449b21}</Project>
       <Name>QS2.Desktop.ControlManagment</Name>
     </ProjectReference>
+    <ProjectReference Include="..\S2Extensions\S2Extensions.csproj">
+      <Project>{10b7d2d1-0868-4fda-8473-a12b5bb9386f}</Project>
+      <Name>S2Extensions</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Gibodat\db\dsGibodat.cs">

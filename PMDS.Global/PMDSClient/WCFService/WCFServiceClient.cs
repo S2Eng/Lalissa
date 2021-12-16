@@ -16,6 +16,7 @@ using QS2.Desktop.ControlManagment;
 using WCFServicePMDS;
 using WCFServicePMDS.BAL.DTO;
 using WCFServicePMDS.BAL2.ELGABAL;
+using S2Extensions;
 
 namespace PMDSClient.Sitemap
 {
@@ -445,8 +446,8 @@ namespace PMDSClient.Sitemap
                 bool bContactFound = false;                
                 foreach(ELGAContactsDto contactsDto in parOutContacts.lContacts)
                 {
-                    if (PMDS.Global.generic.sEquals(contactsDto.status,"aktiv") &&                      //Status überprüfen?
-                        PMDS.Global.generic.sEquals(contactsDto.GdaID, parsIn.authUniversalID))         //authUniversalID oder ELGA_OID?
+                    if (contactsDto.status.sEquals("aktiv") &&                      //Status überprüfen?
+                        contactsDto.GdaID.sEquals(parsIn.authUniversalID))         //authUniversalID oder ELGA_OID?
                     {
                         parsIn.ContactID = contactsDto.TreatmentID;
                         bContactFound = true;
