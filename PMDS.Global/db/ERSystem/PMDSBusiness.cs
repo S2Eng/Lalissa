@@ -2979,6 +2979,25 @@ namespace PMDS.DB
             }
         }
 
+        public bool UpdateAufenthaltSetIDUrlaub(Guid IDAufenthalt, Guid IDUrlaub)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    System.Linq.IQueryable<PMDS.db.Entities.Aufenthalt> tAufenthalt = db.Aufenthalt.Where(p => p.ID == IDAufenthalt);
+                    PMDS.db.Entities.Aufenthalt rAufenthalt = tAufenthalt.First();
+                    rAufenthalt.IDUrlaub = IDUrlaub;
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.UpdateAufenthaltSetIDUrlaub: " + ex.ToString());
+            }
+        }
+
         public bool UpdateMedikamenteAsGeliefert(List<PMDS.db.Entities.vRezeptBestellung2> tRezepteBestSelected)
         {
             try

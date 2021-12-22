@@ -648,8 +648,6 @@ namespace PMDS.GUI
                 this.panelButtonleisteUnten.Visible = true;
                 this.mainWindow.ultraToolbarsManager1.Tools["btnPatientAufenthalteLöschen"].SharedProps.Visible = ENV.HasRight(UserRights.deleteKlient) || ENV.adminSecure;
                 this.btnKlient.Visible = true;
-
-
             }
             catch (Exception ex)
             {
@@ -1016,16 +1014,28 @@ namespace PMDS.GUI
 
         private void btnAbwesenheiten_Click(object sender, EventArgs e)
         {
-            if (!rowSelected(true)) return;
+            if (!rowSelected(true)) 
+                return;
 
-            if (!this.checkPatientHasActAufenthalt(ENV.CurrentIDPatient))
+            //if (!this.checkPatientHasActAufenthalt(ENV.CurrentIDPatient))             //os211222
+            //{
+            //    return;
+            //}
+
+            //SiteEventArgs args = new SiteEventArgs();
+            //args.IDPatient = ENV.CurrentIDPatient;
+            //args.IDAufenthalt = Aufenthalt.LastByPatient(ENV.CurrentIDPatient);
+
+            SiteEventArgs args = new SiteEventArgs();
+            args.IDPatient = ENV.CurrentIDPatient;
+            Guid IDAufenthaltSelected = ((PMDS.Global.db.ERSystem.dsKlientenliste.vKlientenlisteRow)((System.Data.DataRowView)this.ucPatientPicker1.GRID.ActiveRow.ListObject).Row).IDAufenthalt;
+            args.IDAufenthalt = IDAufenthaltSelected;
+
+            if (this.chkHistorie.Checked && !ENV.HasRight(UserRights.AbwesendeKlientenVerwalten))               //os211222
             {
                 return;
             }
 
-            SiteEventArgs args = new SiteEventArgs();
-            args.IDPatient = ENV.CurrentIDPatient;
-            args.IDAufenthalt = Aufenthalt.LastByPatient(ENV.CurrentIDPatient);
             this.setButtonsAktivDeaktiv(SiteEvents.Urlaub);
             GuiAction.ActionFromEvent(SiteEvents.Urlaub, args, this.ucPatientGroup1.getSelKlinikRow(), null);
             this.setButtonsAktivDeaktiv(SiteEvents.NONE);
@@ -1107,8 +1117,12 @@ namespace PMDS.GUI
         {
             this.btnEntlassen.Visible = false;
             this.btnVersetzen.Visible = false;
-            this.btnAbwesenheiten.Visible = false;
             this.btnBezugspersonen.Visible = false;
+
+            if (!ENV.HasRight(UserRights.AbwesendeKlientenVerwalten))       //os211222
+            {
+                this.btnAbwesenheiten.Visible = false;
+            }
         }
 
         private void btnOffeneTermine_Click(object sender, EventArgs e)

@@ -396,7 +396,7 @@ namespace PMDS.GUI
                 {
                     if (this.uceTodeszeitpunkt.DateTime > DateTime.Now)
                     {
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Todeszeitpunkt darf nicht in der zukunft liegen!", "", MessageBoxButtons.OK);
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Todeszeitpunkt darf nicht in der Zukunft liegen!", "", MessageBoxButtons.OK);
                         return false;
                     }
                 }

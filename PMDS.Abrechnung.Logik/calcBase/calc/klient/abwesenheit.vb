@@ -86,24 +86,26 @@ Public Class abwesenheit
                 Dim rtag As dbCalc.TageRow
                 While dIterate.Date <= EndeKuerzung.Date
                     rtag = Me.selectTag(dIterate, Calc.dbCalc, True)
-                    rtag.Anwesenheitsstatus = 2
-                    rtag.Grund = rAbw.Grund.Trim()
-                    'If Not rAbw.IsVonNull() Then
-                    rtag.AbwVon = rAbw.Von
-                    rtag.IDAbwesenheit = rAbw.ID
-                    'End If
-                    'If Not rAbw.IsBisNull() Then
-                    rtag.AbwBis = rAbw.Bis
-                    'End If
+
+                    If rtag.Anwesenheitsstatus = 1 Then
+                        rtag.Anwesenheitsstatus = 2
+                        rtag.Grund = rAbw.Grund.Trim()
+                        rtag.AbwVon = rAbw.Von
+                        rtag.IDAbwesenheit = rAbw.ID
+                        rtag.AbwBis = rAbw.Bis
+                    End If
                     dIterate = dIterate.AddDays(1)
                 End While
 
                 Dim dIterate2 As Date = rAbw.Von.Date
                 While dIterate2.Date <= rAbw.Bis.Date
                     rtag = Me.selectTag(dIterate2, Calc.dbCalc, False)
+
                     If Not rtag Is Nothing Then
-                        rtag.Abwesenheitsstatus = 2
-                        rtag.IDAbwesenheit = rAbw.ID
+                        If rtag.Anwesenheitsstatus > 0 Then
+                            rtag.Abwesenheitsstatus = 2
+                            rtag.IDAbwesenheit = rAbw.ID
+                        End If
                     End If
                     dIterate2 = dIterate2.AddDays(1)
                 End While
@@ -119,7 +121,7 @@ Public Class abwesenheit
                         rtag = Me.selectTag(LetzterTag, Calc.dbCalc, True)
                     End If
 
-                    If rtag.Anwesenheitsstatus = 3 Then     '= Entlassungstag
+                    If rtag.Anwesenheitsstatus = 3 Then         '= Entlassungstag
 
                         If Not KeineKürzung Then
                             rtag.Anwesenheitsstatus = 4         '= Patient ist extern entlassen (jedenfalls kürzen)
@@ -127,12 +129,8 @@ Public Class abwesenheit
                         End If
 
                         rtag.Grund = rAbw.Grund.Trim()
-                        'If Not rAbw.IsVonNull() Then
                         rtag.AbwVon = rAbw.Von
-                        'End If
-                        'If Not rAbw.IsBisNull() Then
                         rtag.AbwBis = rAbw.Bis
-                        'End If
                     End If
                 End If
             Next
@@ -143,15 +141,15 @@ Public Class abwesenheit
                     rtag.KürzungJN = True
                 End If
 
+                If rtag.Anwesenheitsstatus = 3 And (Me.rowKlient(Calc.dbCalc).KürzungLetzterTagAnwesenheit Or rtag.Abwesenheitsstatus = 2) Then
+                    rtag.KürzungJN = True
+                    'rtag.Anwesenheitsstatus = 0            //os: Kürzung muss hier her, nicht Anwesenheitsstatus = 0
+                End If
+
                 '4.. Wenn der Patient extern verstorben ist -> Immer kürzen
                 If rtag.Anwesenheitsstatus = 4 Then
                     rtag.KürzungJN = True
                 End If
-
-                If rtag.Anwesenheitsstatus = 3 And Me.rowKlient(Calc.dbCalc).KürzungLetzterTagAnwesenheit Then
-                    rtag.Anwesenheitsstatus = 0
-                End If
-
             Next
 
             ''Kürzungen kennzeichnen

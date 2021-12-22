@@ -86,7 +86,9 @@ namespace PMDS.GUI.GUI.Main
                 //this.rPatient = this.b.getPatient(this._IDPatient, this.db2);
                 //this.labInfo.Text = System.String.Format(labInfo.Text, this.rPatient.Nachname.Trim() + " " + this.rPatient.Vorname.Trim());
 
-                this.rAufenthaltAct = this.b.getAktuellerAufenthaltPatient(this._IDPatient, false, this.db2);
+                //this.rAufenthaltAct = this.b.getAktuellerAufenthaltPatient(this._IDPatient, false, this.db2);       //os211222
+                this.rAufenthaltAct = this.b.getAufenthalt(ENV.IDAUFENTHALT);
+
                 this.IsAbwesend = this.b.KlientIsAbwesend(this.db2, rAufenthaltAct.ID);
                 this.rUrlaubVerlauf = this.b.getOffenenUrlaub(this.db2, rAufenthaltAct.ID);
 
@@ -260,10 +262,11 @@ namespace PMDS.GUI.GUI.Main
                     return false;
                 }
 
-                if (!this.checkUrlaubStatusOK(this.IsAbwesend))
-                {
-                    return false;
-                }
+                //os211222 - nicht prüfen, ob Klient wieder anwesend ist (beim Beenden von Abwesenheiten in der Historie würde dies kein Beenden erlauben, wenn eine Wiederaufnahme stattgefunden hat).
+                //if (!this.checkUrlaubStatusOK(this.IsAbwesend))
+                //{
+                //    return false;
+                //}
 
                 DateTime dNow = DateTime.Now;
                 if (this.IsAbwesend)
@@ -305,6 +308,10 @@ namespace PMDS.GUI.GUI.Main
                                                     null, this.rAufenthaltAct.IDAbteilung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Planungsänderung"));
 
                     this.rAufenthaltAct.AbwesenheitBeendet = false;
+                    if (this.rAufenthaltAct.IDUrlaub != null)
+                    {
+                        PMDSBusiness1.UpdateAufenthaltSetIDUrlaub(rAufenthaltAct.ID, (Guid)rAufenthaltAct.IDUrlaub);
+                    }
 
                     //db.SaveChanges();
                     //_patient.Aufenthalt.Write();
