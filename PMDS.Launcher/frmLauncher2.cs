@@ -222,10 +222,9 @@ namespace Launcher
                 if (start)
                 {
                     notifyIcon1.BalloonTipText = "PMDS Anwendung wird gestartet\r\n\r\n";
-                    notifyIcon1.BalloonTipText += "Sie können hier den Starter wiederherstellen\r\noder nutzen Sie die rechte Maustaste um den Startmanager zu beenden";
-
+                    notifyIcon1.BalloonTipText += "Sie können hier den Starter wiederherstellen.\nNutzen Sie die rechte Maustaste, um den Startmanager zu beenden.";
                     notifyIcon1.Visible = true;
-                    notifyIcon1.ShowBalloonTip(5000);
+                    notifyIcon1.ShowBalloonTip(3000);
                 }
                 if (!onlyInfo) 
                     this.WindowState = FormWindowState.Minimized;
@@ -320,12 +319,17 @@ namespace Launcher
                 update.sProgramPath = this.config.searchKeyArg("ProgramPath", Environment.CommandLine);
                 update.sConfigFile = this.config.searchKeyArg("ConfigFile", Environment.CommandLine);
                 update.sConfigPath = this.config.searchKeyArg("ConfigPath", Environment.CommandLine);
+                update.sUsername = this.config.searchKeyArg("Username", Environment.CommandLine);
+                update.sPasswordEnc = this.config.searchKeyArg("Password", Environment.CommandLine);
 
                 //Commandline-Parameter übersteuern Default in Config
                 if (String.IsNullOrWhiteSpace(update.sProgramFile)) update.sProgramFile = ConfigFile.getValue("Main", "ProgramFile", false);
                 if (String.IsNullOrWhiteSpace(update.sProgramPath)) update.sProgramPath = ConfigFile.getValue("Main", "ProgramPath", false);
                 if (String.IsNullOrWhiteSpace(update.sConfigFile)) update.sConfigFile = ConfigFile.getValue("Main", "ConfigFile", false);
                 if (String.IsNullOrWhiteSpace(update.sConfigPath)) update.sConfigPath = ConfigFile.getValue("Main", "ConfigPath", false);
+
+                if (String.IsNullOrWhiteSpace(update.sUsername)) update.sUsername = ConfigFile.getValue("Main", "Username", false);
+                if (String.IsNullOrWhiteSpace(update.sPasswordEnc)) update.sPasswordEnc = ConfigFile.getValue("Main", "Password", false);
 
                 if (String.IsNullOrWhiteSpace(update.sProgramFile)) throw new Exception("Definition für ProgramFile fehlt");
                 if (String.IsNullOrWhiteSpace(update.sProgramPath)) throw new Exception("Definition für ProgramPath fehlt");
@@ -347,7 +351,7 @@ namespace Launcher
                     }
                 }
 
-                if (update.sProgramPath != "")
+                if (!String.IsNullOrWhiteSpace(update.sProgramPath))
                 {
                     if (onlineForm)
                     {
@@ -437,10 +441,28 @@ namespace Launcher
                             strExe = "\"" + strExe + "\"";
 
                         //MessageBox.Show(argsRun);
+                        using (Process p = new Process())
+                        {
+                            if (!String.IsNullOrWhiteSpace(update.sUsername) && !String.IsNullOrWhiteSpace(update.sPasswordEnc))
+                            {
+                                p.StartInfo.UserName = update.sUsername;
 
-                        System.Diagnostics.Process.Start(strExe, argsRun);
-                        this.tbPasswort.Text = "";
-                        Environment.Exit(0);
+                                qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+                                foreach (char c in Encryption1.StringDecrypt(update.sPasswordEnc, "*engineering_"))  //nicht ändern!! Texte in der DB und Config sind damit verschlüsselt
+                                {
+                                    p.StartInfo.Password.AppendChar(c);
+                                }
+                                p.StartInfo.UseShellExecute = false;
+                            }
+
+                            p.StartInfo.FileName = strExe;
+                            p.StartInfo.Arguments = argsRun;
+                            p.Start();
+
+                            //System.Diagnostics.Process.Start(strExe, argsRun);
+                            this.tbPasswort.Text = "";
+                            Environment.Exit(0);
+                        }
                     }
 
                     if (!uiIsOn)
@@ -477,7 +499,7 @@ namespace Launcher
         private string checkKey(string KeyName)
         {
             string ret = this.config.getKey(KeyName);
-            if (ret == "")
+            if (String.IsNullOrWhiteSpace(ret))
             {
                 this.showMessageBox("Definition für Variable " + KeyName + " fehlt in launcher.config!");
                 return "";

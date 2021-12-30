@@ -39,6 +39,10 @@ namespace Launcher
         public static string sProgramFile = "";
         public static string sshowSplash = "0";
 
+        //Für Starten mit sicherem User-Account
+        public static string sUsername = "";
+        public static string sPasswordEnc = "";
+
         public static SortedList<string, string> lstVersionsRemoveRoot = new SortedList<string, string>();
         public static SortedList<string, string> lstVersionsRemoveConfig = new SortedList<string, string>();
 
