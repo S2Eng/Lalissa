@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -36,32 +37,37 @@ namespace Launcher
             }
             else
             {
-                System.IO.StreamReader reader = new System.IO.StreamReader(Launcher.config.configFile);
+                StreamReader reader = NewMethod();
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine();
-                    if (line.Trim() == "")                          // Leerzeile
+                    if (String.IsNullOrWhiteSpace(line) || line.Substring(0, 2).Trim() == "//" || line.Substring(0, 1).Trim() == "[")                          // Leerzeile
                         continue;
 
-                    if (line.Substring(0, 2).Trim() == "//" || line.Substring(0, 1).Trim() == "[")               // Kommentarzeile
-                       continue;
+                    string[] par = line.Split(new char[] { '=' }, 2);
 
-                    int pos = line.IndexOf("=");
-                    if (pos == -1)                                  // Fehler und Prg-Stop -> Deklarierung ohne =
+                    if (par.Length < 2)
                     {
-                        MessageBox.Show("Starteintrag in launcher.config ohne '=' gefunden.", "Launcher wird beendet!");
+                        MessageBox.Show("Starteintrag in launcher.config ohne '=' gefunden: " + line.Trim(), "Launcher wird beendet!");
                         return false;
                     }
 
                     dsConfig.configRow rNew = (dsConfig.configRow)Launcher.config.dsconfigAll.config.NewRow();
-                    rNew.key  = ((string)line.Substring(0, pos)).Trim();
-                    rNew.val  = ((string)line.Substring(pos + 1, line.Length - (pos + 1))).Trim();
+
+                    rNew.key = par[0].Trim();
+                    rNew.val = par[1].Trim();
                     Launcher.config.dsconfigAll.config.Rows.Add(rNew);
                 }
                 reader.Close();
                 return true;
             }
         }
+
+        private static StreamReader NewMethod()
+        {
+            return new System.IO.StreamReader(Launcher.config.configFile);
+        }
+
         public string getKey (string keySearch)
         {
             dsConfig.configRow[] arrRow = (dsConfig.configRow[])Launcher.config.dsconfigAll.config.Select("key = '" + keySearch + "'");

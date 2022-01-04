@@ -40,6 +40,7 @@ namespace Launcher
         public static string sshowSplash = "0";
 
         //Für Starten mit sicherem User-Account
+        public static string sDomain = "";
         public static string sUsername = "";
         public static string sPasswordEnc = "";
 

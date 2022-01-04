@@ -319,6 +319,7 @@ namespace Launcher
                 update.sProgramPath = this.config.searchKeyArg("ProgramPath", Environment.CommandLine);
                 update.sConfigFile = this.config.searchKeyArg("ConfigFile", Environment.CommandLine);
                 update.sConfigPath = this.config.searchKeyArg("ConfigPath", Environment.CommandLine);
+                update.sDomain = this.config.searchKeyArg("Domain", Environment.CommandLine);
                 update.sUsername = this.config.searchKeyArg("Username", Environment.CommandLine);
                 update.sPasswordEnc = this.config.searchKeyArg("Password", Environment.CommandLine);
 
@@ -328,6 +329,7 @@ namespace Launcher
                 if (String.IsNullOrWhiteSpace(update.sConfigFile)) update.sConfigFile = ConfigFile.getValue("Main", "ConfigFile", false);
                 if (String.IsNullOrWhiteSpace(update.sConfigPath)) update.sConfigPath = ConfigFile.getValue("Main", "ConfigPath", false);
 
+                if (String.IsNullOrWhiteSpace(update.sDomain)) update.sDomain = ConfigFile.getValue("Main", "Domain", false);
                 if (String.IsNullOrWhiteSpace(update.sUsername)) update.sUsername = ConfigFile.getValue("Main", "Username", false);
                 if (String.IsNullOrWhiteSpace(update.sPasswordEnc)) update.sPasswordEnc = ConfigFile.getValue("Main", "Password", false);
 
@@ -443,9 +445,11 @@ namespace Launcher
                         //MessageBox.Show(argsRun);
                         using (Process p = new Process())
                         {
-                            if (!String.IsNullOrWhiteSpace(update.sUsername) && !String.IsNullOrWhiteSpace(update.sPasswordEnc))
+                            if (!String.IsNullOrWhiteSpace(update.sDomain) && !String.IsNullOrWhiteSpace(update.sUsername) && !String.IsNullOrWhiteSpace(update.sPasswordEnc))
                             {
+                                p.StartInfo.Domain = update.sDomain;
                                 p.StartInfo.UserName = update.sUsername;
+                                p.StartInfo.Password = new System.Security.SecureString();
 
                                 qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
                                 foreach (char c in Encryption1.StringDecrypt(update.sPasswordEnc, "*engineering_"))  //nicht ändern!! Texte in der DB und Config sind damit verschlüsselt
@@ -476,6 +480,10 @@ namespace Launcher
                         this.ProcessMinimize(true, false);
                     }
                 }
+            }
+            catch (Win32Exception w)
+            {
+                MessageBox.Show("Folgender Fehler wurde gemeldet: " + w.Message.ToString() + "\nBitte korrigieren Sie das Problem und starten Sie neu.");
             }
             catch (Exception ex)
             {
