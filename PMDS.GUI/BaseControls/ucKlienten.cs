@@ -640,6 +640,7 @@ namespace PMDS.GUI
         {
             try
             {
+                this.timer1.Stop();
                 bool bNoSearch = true;
                 bNoSearch = this.txtKlient.Text != tmpSearchKlient;
 
@@ -653,7 +654,6 @@ namespace PMDS.GUI
                     Cursor = Cursors.WaitCursor;
                     this.LoadListklienten(false);
                 }
-                this.timer1.Stop();
                 this.btnSearchKlienten.Visible = false;
             }
             catch (Exception exch)
