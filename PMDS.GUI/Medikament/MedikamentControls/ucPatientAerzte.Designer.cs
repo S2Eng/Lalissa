@@ -35,15 +35,14 @@
             // 
             // cmbArzt
             // 
-            this.cmbArzt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             editorButton1.Key = "Add";
             editorButton1.Text = "+";
             this.cmbArzt.ButtonsRight.Add(editorButton1);
+            this.cmbArzt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbArzt.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cmbArzt.Location = new System.Drawing.Point(2, 2);
+            this.cmbArzt.Location = new System.Drawing.Point(0, 0);
             this.cmbArzt.Name = "cmbArzt";
-            this.cmbArzt.Size = new System.Drawing.Size(294, 21);
+            this.cmbArzt.Size = new System.Drawing.Size(297, 21);
             this.cmbArzt.TabIndex = 2;
             this.cmbArzt.EditorButtonClick += new Infragistics.Win.UltraWinEditors.EditorButtonEventHandler(this.cmbArzt_EditorButtonClick);
             // 

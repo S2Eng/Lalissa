@@ -46,7 +46,7 @@
             this.ucRezeptEintrag1.Location = new System.Drawing.Point(1, 1);
             this.ucRezeptEintrag1.Margin = new System.Windows.Forms.Padding(4);
             this.ucRezeptEintrag1.Name = "ucRezeptEintrag1";
-            this.ucRezeptEintrag1.Size = new System.Drawing.Size(905, 679);
+            this.ucRezeptEintrag1.Size = new System.Drawing.Size(905, 654);
             this.ucRezeptEintrag1.TabIndex = 0;
             // 
             // btnOK
@@ -61,12 +61,12 @@
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(780, 692);
+            this.btnOK.Location = new System.Drawing.Point(744, 662);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(108, 32);
             this.btnOK.TabIndex = 1;
             this.btnOK.TabStop = false;
-            this.btnOK.Text = "Speichern";
+            this.btnOK.Text = "OK";
             this.btnOK.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
             this.btnOK.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -83,7 +83,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(666, 692);
+            this.btnCancel.Location = new System.Drawing.Point(630, 662);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(108, 32);
             this.btnCancel.TabIndex = 2;
@@ -98,7 +98,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(911, 732);
+            this.ClientSize = new System.Drawing.Size(911, 701);
             this.Controls.Add(this.ucRezeptEintrag1);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);

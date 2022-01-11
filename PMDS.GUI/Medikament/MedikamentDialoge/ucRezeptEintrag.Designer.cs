@@ -29,46 +29,47 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem8 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance49 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance50 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance51 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance59 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance57 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance65 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance58 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance61 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance60 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance56 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance52 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance53 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance54 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance55 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
             this.lblVerschreibungVon = new QS2.Desktop.ControlManagment.BaseLabel();
             this.dtpAbgebenVon = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.dtpAbgebenBis = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
@@ -115,14 +116,16 @@
             this.chkHAGPflichtigJN = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.lblSignatur = new QS2.Desktop.ControlManagment.BaseLabel();
             this.pnlPackungBeschreibung = new Infragistics.Win.Misc.UltraPanel();
-            this.cbPackungsEinheit = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.pnlSignatur = new Infragistics.Win.Misc.UltraPanel();
-            this.ucStandardZeiten1 = new PMDS.GUI.ucStandardZeiten();
             this.pnlSignaturEV = new Infragistics.Win.Misc.UltraPanel();
             this.lblEVMax24h = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblEVMenge = new QS2.Desktop.ControlManagment.BaseLabel();
             this.zp6 = new QS2.Desktop.ControlManagment.BaseMaskEdit();
             this.zp5 = new QS2.Desktop.ControlManagment.BaseMaskEdit();
+            this.pnlSignaturWiederholung = new Infragistics.Win.Misc.UltraPanel();
+            this.ucWochenTage21 = new PMDS.GUI.ucWochenTage2();
+            this.ucStandardZeiten1 = new PMDS.GUI.ucStandardZeiten();
+            this.cbPackungsEinheit = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.cmbEinheit = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.cbImportant = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.ucPatientAerzte1 = new PMDS.GUI.ucPatientAerzte();
@@ -130,9 +133,7 @@
             this.cmbVerabreichungsart = new PMDS.GUI.BaseControls.MedikamentverabreichungsartCombo();
             this.cmbHerrichten = new PMDS.GUI.BaseControls.MedikamentHerrichtenCombo();
             this.cmbApplikationsform = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
-            this.ucWochenTage21 = new PMDS.GUI.ucWochenTage2();
             this.dsMedikament1 = new PMDS.Global.db.Patient.dsMedikament();
-            this.pnlSignaturWiederholung = new Infragistics.Win.Misc.UltraPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dtpAbgebenVon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpAbgebenBis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.opWiederholungstyp)).BeginInit();
@@ -150,11 +151,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkHAGPflichtigJN)).BeginInit();
             this.pnlPackungBeschreibung.ClientArea.SuspendLayout();
             this.pnlPackungBeschreibung.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbPackungsEinheit)).BeginInit();
             this.pnlSignatur.ClientArea.SuspendLayout();
             this.pnlSignatur.SuspendLayout();
             this.pnlSignaturEV.ClientArea.SuspendLayout();
             this.pnlSignaturEV.SuspendLayout();
+            this.pnlSignaturWiederholung.ClientArea.SuspendLayout();
+            this.pnlSignaturWiederholung.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPackungsEinheit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEinheit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbImportant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userCombo1)).BeginInit();
@@ -162,14 +165,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbHerrichten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbApplikationsform)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMedikament1)).BeginInit();
-            this.pnlSignaturWiederholung.ClientArea.SuspendLayout();
-            this.pnlSignaturWiederholung.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblVerschreibungVon
             // 
-            appearance1.FontData.SizeInPoints = 8F;
-            this.lblVerschreibungVon.Appearance = appearance1;
+            appearance36.FontData.SizeInPoints = 8F;
+            this.lblVerschreibungVon.Appearance = appearance36;
             this.lblVerschreibungVon.AutoSize = true;
             this.lblVerschreibungVon.Location = new System.Drawing.Point(16, 94);
             this.lblVerschreibungVon.Margin = new System.Windows.Forms.Padding(4);
@@ -212,8 +213,8 @@
             // 
             // lblApplikationsform
             // 
-            appearance2.FontData.SizeInPoints = 8F;
-            this.lblApplikationsform.Appearance = appearance2;
+            appearance37.FontData.SizeInPoints = 8F;
+            this.lblApplikationsform.Appearance = appearance37;
             this.lblApplikationsform.AutoSize = true;
             this.lblApplikationsform.Location = new System.Drawing.Point(16, 160);
             this.lblApplikationsform.Margin = new System.Windows.Forms.Padding(4);
@@ -247,9 +248,9 @@
             // 
             // txtWiedWertAlle
             // 
-            appearance3.BackColorDisabled = System.Drawing.SystemColors.Control;
-            appearance3.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtWiedWertAlle.Appearance = appearance3;
+            appearance38.BackColorDisabled = System.Drawing.SystemColors.Control;
+            appearance38.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtWiedWertAlle.Appearance = appearance38;
             this.txtWiedWertAlle.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.txtWiedWertAlle.Enabled = false;
             this.txtWiedWertAlle.InputMask = "                 nnn";
@@ -263,9 +264,9 @@
             // 
             // txtWiedWertJeden
             // 
-            appearance4.BackColorDisabled = System.Drawing.SystemColors.Control;
-            appearance4.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtWiedWertJeden.Appearance = appearance4;
+            appearance39.BackColorDisabled = System.Drawing.SystemColors.Control;
+            appearance39.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtWiedWertJeden.Appearance = appearance39;
             this.txtWiedWertJeden.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
             this.txtWiedWertJeden.Enabled = false;
             this.txtWiedWertJeden.InputMask = "                   nn";
@@ -304,8 +305,8 @@
             // 
             // lblNTenDesMonats
             // 
-            appearance5.FontData.SizeInPoints = 8F;
-            this.lblNTenDesMonats.Appearance = appearance5;
+            appearance40.FontData.SizeInPoints = 8F;
+            this.lblNTenDesMonats.Appearance = appearance40;
             this.lblNTenDesMonats.AutoSize = true;
             this.lblNTenDesMonats.Location = new System.Drawing.Point(322, 66);
             this.lblNTenDesMonats.Margin = new System.Windows.Forms.Padding(4);
@@ -316,8 +317,8 @@
             // 
             // ultraLabel5
             // 
-            appearance6.FontData.SizeInPoints = 8F;
-            this.ultraLabel5.Appearance = appearance6;
+            appearance41.FontData.SizeInPoints = 8F;
+            this.ultraLabel5.Appearance = appearance41;
             this.ultraLabel5.AutoSize = true;
             this.ultraLabel5.Location = new System.Drawing.Point(67, 57);
             this.ultraLabel5.Margin = new System.Windows.Forms.Padding(4);
@@ -328,9 +329,9 @@
             // 
             // zp4
             // 
-            appearance7.BackColorDisabled = System.Drawing.Color.White;
-            appearance7.ForeColorDisabled = System.Drawing.Color.Black;
-            this.zp4.Appearance = appearance7;
+            appearance42.BackColorDisabled = System.Drawing.Color.White;
+            appearance42.ForeColorDisabled = System.Drawing.Color.Black;
+            this.zp4.Appearance = appearance42;
             this.zp4.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp4.InputMask = "nnnnn.nn";
             this.zp4.Location = new System.Drawing.Point(435, 53);
@@ -342,9 +343,9 @@
             // 
             // zp3
             // 
-            appearance8.BackColorDisabled = System.Drawing.Color.White;
-            appearance8.ForeColorDisabled = System.Drawing.Color.Black;
-            this.zp3.Appearance = appearance8;
+            appearance43.BackColorDisabled = System.Drawing.Color.White;
+            appearance43.ForeColorDisabled = System.Drawing.Color.Black;
+            this.zp3.Appearance = appearance43;
             this.zp3.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp3.InputMask = "nnnnn.nn";
             this.zp3.Location = new System.Drawing.Point(361, 53);
@@ -356,9 +357,9 @@
             // 
             // zp2
             // 
-            appearance9.BackColorDisabled = System.Drawing.Color.White;
-            appearance9.ForeColorDisabled = System.Drawing.Color.Black;
-            this.zp2.Appearance = appearance9;
+            appearance44.BackColorDisabled = System.Drawing.Color.White;
+            appearance44.ForeColorDisabled = System.Drawing.Color.Black;
+            this.zp2.Appearance = appearance44;
             this.zp2.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp2.InputMask = "nnnnn.nn";
             this.zp2.Location = new System.Drawing.Point(288, 53);
@@ -370,9 +371,9 @@
             // 
             // zp1
             // 
-            appearance10.BackColorDisabled = System.Drawing.Color.White;
-            appearance10.ForeColorDisabled = System.Drawing.Color.Black;
-            this.zp1.Appearance = appearance10;
+            appearance45.BackColorDisabled = System.Drawing.Color.White;
+            appearance45.ForeColorDisabled = System.Drawing.Color.Black;
+            this.zp1.Appearance = appearance45;
             this.zp1.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp1.InputMask = "nnnnn.nn";
             this.zp1.Location = new System.Drawing.Point(215, 53);
@@ -384,10 +385,10 @@
             // 
             // zp0
             // 
-            appearance11.BackColorDisabled = System.Drawing.Color.White;
-            appearance11.ForeColorDisabled = System.Drawing.Color.Black;
-            appearance11.TextHAlignAsString = "Right";
-            this.zp0.Appearance = appearance11;
+            appearance46.BackColorDisabled = System.Drawing.Color.White;
+            appearance46.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance46.TextHAlignAsString = "Right";
+            this.zp0.Appearance = appearance46;
             this.zp0.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp0.InputMask = "nnnnn.nn";
             this.zp0.Location = new System.Drawing.Point(141, 53);
@@ -396,11 +397,12 @@
             this.zp0.NonAutoSizeHeight = 20;
             this.zp0.Size = new System.Drawing.Size(71, 23);
             this.zp0.TabIndex = 108;
+            this.zp0.Visible = false;
             // 
             // cbBeaufsichtigungJN
             // 
             this.cbBeaufsichtigungJN.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbBeaufsichtigungJN.Location = new System.Drawing.Point(4, 90);
+            this.cbBeaufsichtigungJN.Location = new System.Drawing.Point(4, 80);
             this.cbBeaufsichtigungJN.Margin = new System.Windows.Forms.Padding(4);
             this.cbBeaufsichtigungJN.Name = "cbBeaufsichtigungJN";
             this.cbBeaufsichtigungJN.Size = new System.Drawing.Size(151, 34);
@@ -410,10 +412,10 @@
             // 
             // lblHerrichten
             // 
-            appearance12.TextHAlignAsString = "Left";
-            appearance12.TextVAlignAsString = "Middle";
-            this.lblHerrichten.Appearance = appearance12;
-            this.lblHerrichten.Location = new System.Drawing.Point(16, 423);
+            appearance47.TextHAlignAsString = "Left";
+            appearance47.TextVAlignAsString = "Middle";
+            this.lblHerrichten.Appearance = appearance47;
+            this.lblHerrichten.Location = new System.Drawing.Point(16, 409);
             this.lblHerrichten.Margin = new System.Windows.Forms.Padding(4);
             this.lblHerrichten.Name = "lblHerrichten";
             this.lblHerrichten.Size = new System.Drawing.Size(128, 26);
@@ -422,10 +424,10 @@
             // 
             // lblVerabreichung
             // 
-            appearance13.TextHAlignAsString = "Left";
-            appearance13.TextVAlignAsString = "Middle";
-            this.lblVerabreichung.Appearance = appearance13;
-            this.lblVerabreichung.Location = new System.Drawing.Point(413, 423);
+            appearance48.TextHAlignAsString = "Left";
+            appearance48.TextVAlignAsString = "Middle";
+            this.lblVerabreichung.Appearance = appearance48;
+            this.lblVerabreichung.Location = new System.Drawing.Point(413, 409);
             this.lblVerabreichung.Margin = new System.Windows.Forms.Padding(4);
             this.lblVerabreichung.Name = "lblVerabreichung";
             this.lblVerabreichung.Size = new System.Drawing.Size(109, 26);
@@ -434,20 +436,24 @@
             // 
             // txtAnmerkung
             // 
-            this.txtAnmerkung.Location = new System.Drawing.Point(155, 457);
+            this.txtAnmerkung.Location = new System.Drawing.Point(155, 443);
             this.txtAnmerkung.Margin = new System.Windows.Forms.Padding(4);
             this.txtAnmerkung.MaxLength = 255;
             this.txtAnmerkung.Multiline = true;
             this.txtAnmerkung.Name = "txtAnmerkung";
-            this.txtAnmerkung.Size = new System.Drawing.Size(697, 62);
+            this.txtAnmerkung.NullText = "<Strg-F3 für Textbausteine>";
+            appearance14.ForeColor = System.Drawing.Color.Silver;
+            this.txtAnmerkung.NullTextAppearance = appearance14;
+            this.txtAnmerkung.Size = new System.Drawing.Size(697, 48);
             this.txtAnmerkung.TabIndex = 117;
+            this.txtAnmerkung.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtAnmerkung_KeyUp);
             // 
             // lblIndikationAnmerkung
             // 
-            appearance14.FontData.SizeInPoints = 8F;
-            this.lblIndikationAnmerkung.Appearance = appearance14;
+            appearance49.FontData.SizeInPoints = 8F;
+            this.lblIndikationAnmerkung.Appearance = appearance49;
             this.lblIndikationAnmerkung.AutoSize = true;
-            this.lblIndikationAnmerkung.Location = new System.Drawing.Point(16, 460);
+            this.lblIndikationAnmerkung.Location = new System.Drawing.Point(16, 446);
             this.lblIndikationAnmerkung.Margin = new System.Windows.Forms.Padding(4);
             this.lblIndikationAnmerkung.Name = "lblIndikationAnmerkung";
             this.lblIndikationAnmerkung.Size = new System.Drawing.Size(86, 14);
@@ -456,8 +462,8 @@
             // 
             // lblPackungsgrösse
             // 
-            appearance15.FontData.SizeInPoints = 8F;
-            this.lblPackungsgrösse.Appearance = appearance15;
+            appearance50.FontData.SizeInPoints = 8F;
+            this.lblPackungsgrösse.Appearance = appearance50;
             this.lblPackungsgrösse.AutoSize = true;
             this.lblPackungsgrösse.Location = new System.Drawing.Point(4, 7);
             this.lblPackungsgrösse.Margin = new System.Windows.Forms.Padding(4);
@@ -468,9 +474,9 @@
             // 
             // txtPackGr
             // 
-            appearance16.BackColorDisabled = System.Drawing.Color.White;
-            appearance16.ForeColorDisabled = System.Drawing.Color.DimGray;
-            this.txtPackGr.Appearance = appearance16;
+            appearance51.BackColorDisabled = System.Drawing.Color.White;
+            appearance51.ForeColorDisabled = System.Drawing.Color.DimGray;
+            this.txtPackGr.Appearance = appearance51;
             this.txtPackGr.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.txtPackGr.InputMask = "nnnnnn";
             this.txtPackGr.Location = new System.Drawing.Point(143, 2);
@@ -486,8 +492,8 @@
             // 
             // ultraLabel10
             // 
-            appearance25.FontData.SizeInPoints = 8F;
-            this.ultraLabel10.Appearance = appearance25;
+            appearance59.FontData.SizeInPoints = 8F;
+            this.ultraLabel10.Appearance = appearance59;
             this.ultraLabel10.AutoSize = true;
             this.ultraLabel10.Location = new System.Drawing.Point(572, 313);
             this.ultraLabel10.Margin = new System.Windows.Forms.Padding(4);
@@ -498,9 +504,9 @@
             // 
             // lblWochentage
             // 
-            appearance18.TextHAlignAsString = "Left";
-            appearance18.TextVAlignAsString = "Middle";
-            this.lblWochentage.Appearance = appearance18;
+            appearance57.TextHAlignAsString = "Left";
+            appearance57.TextVAlignAsString = "Middle";
+            this.lblWochentage.Appearance = appearance57;
             this.lblWochentage.Location = new System.Drawing.Point(558, 38);
             this.lblWochentage.Margin = new System.Windows.Forms.Padding(4);
             this.lblWochentage.Name = "lblWochentage";
@@ -510,8 +516,8 @@
             // 
             // lblMedikament
             // 
-            appearance33.FontData.SizeInPoints = 8F;
-            this.lblMedikament.Appearance = appearance33;
+            appearance65.FontData.SizeInPoints = 8F;
+            this.lblMedikament.Appearance = appearance65;
             this.lblMedikament.AutoSize = true;
             this.lblMedikament.Location = new System.Drawing.Point(15, 10);
             this.lblMedikament.Margin = new System.Windows.Forms.Padding(4);
@@ -532,10 +538,10 @@
             // 
             // lblGändertBeendet
             // 
-            appearance32.TextHAlignAsString = "Left";
-            appearance32.TextVAlignAsString = "Middle";
-            this.lblGändertBeendet.Appearance = appearance32;
-            this.lblGändertBeendet.Location = new System.Drawing.Point(16, 677);
+            appearance64.TextHAlignAsString = "Left";
+            appearance64.TextVAlignAsString = "Middle";
+            this.lblGändertBeendet.Appearance = appearance64;
+            this.lblGändertBeendet.Location = new System.Drawing.Point(16, 617);
             this.lblGändertBeendet.Margin = new System.Windows.Forms.Padding(4);
             this.lblGändertBeendet.Name = "lblGändertBeendet";
             this.lblGändertBeendet.Size = new System.Drawing.Size(137, 36);
@@ -544,10 +550,10 @@
             // 
             // lblRezeptdaten
             // 
-            appearance31.TextHAlignAsString = "Left";
-            appearance31.TextVAlignAsString = "Middle";
-            this.lblRezeptdaten.Appearance = appearance31;
-            this.lblRezeptdaten.Location = new System.Drawing.Point(16, 524);
+            appearance63.TextHAlignAsString = "Left";
+            appearance63.TextVAlignAsString = "Middle";
+            this.lblRezeptdaten.Appearance = appearance63;
+            this.lblRezeptdaten.Location = new System.Drawing.Point(16, 501);
             this.lblRezeptdaten.Margin = new System.Windows.Forms.Padding(4);
             this.lblRezeptdaten.Name = "lblRezeptdaten";
             this.lblRezeptdaten.Size = new System.Drawing.Size(132, 22);
@@ -556,12 +562,12 @@
             // 
             // txtRezeptDaten
             // 
-            this.txtRezeptDaten.Location = new System.Drawing.Point(155, 524);
+            this.txtRezeptDaten.Location = new System.Drawing.Point(155, 501);
             this.txtRezeptDaten.Margin = new System.Windows.Forms.Padding(4);
             this.txtRezeptDaten.MaxLength = 255;
             this.txtRezeptDaten.Multiline = true;
             this.txtRezeptDaten.Name = "txtRezeptDaten";
-            this.txtRezeptDaten.Size = new System.Drawing.Size(697, 114);
+            this.txtRezeptDaten.Size = new System.Drawing.Size(697, 80);
             this.txtRezeptDaten.TabIndex = 119;
             // 
             // cbBis
@@ -576,8 +582,8 @@
             // 
             // lblPackungseinheit
             // 
-            appearance24.FontData.SizeInPoints = 8F;
-            this.lblPackungseinheit.Appearance = appearance24;
+            appearance58.FontData.SizeInPoints = 8F;
+            this.lblPackungseinheit.Appearance = appearance58;
             this.lblPackungseinheit.AutoSize = true;
             this.lblPackungseinheit.Location = new System.Drawing.Point(236, 7);
             this.lblPackungseinheit.Margin = new System.Windows.Forms.Padding(4);
@@ -588,8 +594,8 @@
             // 
             // lblArztAngeordnet
             // 
-            appearance30.FontData.SizeInPoints = 8F;
-            this.lblArztAngeordnet.Appearance = appearance30;
+            appearance62.FontData.SizeInPoints = 8F;
+            this.lblArztAngeordnet.Appearance = appearance62;
             this.lblArztAngeordnet.AutoSize = true;
             this.lblArztAngeordnet.Location = new System.Drawing.Point(400, 92);
             this.lblArztAngeordnet.Margin = new System.Windows.Forms.Padding(4);
@@ -662,9 +668,9 @@
             // btnSearchMedikament
             // 
             this.btnSearchMedikament.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance27.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance27.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSearchMedikament.Appearance = appearance27;
+            appearance61.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance61.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSearchMedikament.Appearance = appearance61;
             this.btnSearchMedikament.AutoWorkLayout = false;
             this.btnSearchMedikament.ImageSize = new System.Drawing.Size(12, 12);
             this.btnSearchMedikament.IsStandardControl = false;
@@ -677,8 +683,8 @@
             // 
             // lblArztAbgesetzt
             // 
-            appearance26.FontData.SizeInPoints = 8F;
-            this.lblArztAbgesetzt.Appearance = appearance26;
+            appearance60.FontData.SizeInPoints = 8F;
+            this.lblArztAbgesetzt.Appearance = appearance60;
             this.lblArztAbgesetzt.AutoSize = true;
             this.lblArztAbgesetzt.Location = new System.Drawing.Point(399, 127);
             this.lblArztAbgesetzt.Margin = new System.Windows.Forms.Padding(4);
@@ -700,7 +706,7 @@
             // 
             // chkGegenzeichnen
             // 
-            this.chkGegenzeichnen.Location = new System.Drawing.Point(509, 647);
+            this.chkGegenzeichnen.Location = new System.Drawing.Point(509, 589);
             this.chkGegenzeichnen.Margin = new System.Windows.Forms.Padding(5);
             this.chkGegenzeichnen.Name = "chkGegenzeichnen";
             this.chkGegenzeichnen.Size = new System.Drawing.Size(248, 27);
@@ -710,7 +716,7 @@
             // lblWichtigFür
             // 
             this.lblWichtigFür.AutoSize = true;
-            this.lblWichtigFür.Location = new System.Drawing.Point(16, 651);
+            this.lblWichtigFür.Location = new System.Drawing.Point(16, 593);
             this.lblWichtigFür.Margin = new System.Windows.Forms.Padding(5);
             this.lblWichtigFür.Name = "lblWichtigFür";
             this.lblWichtigFür.Size = new System.Drawing.Size(70, 17);
@@ -719,7 +725,7 @@
             // 
             // chkHAGPflichtigJN
             // 
-            this.chkHAGPflichtigJN.Location = new System.Drawing.Point(509, 681);
+            this.chkHAGPflichtigJN.Location = new System.Drawing.Point(509, 621);
             this.chkHAGPflichtigJN.Margin = new System.Windows.Forms.Padding(5);
             this.chkHAGPflichtigJN.Name = "chkHAGPflichtigJN";
             this.chkHAGPflichtigJN.Size = new System.Drawing.Size(248, 27);
@@ -728,8 +734,8 @@
             // 
             // lblSignatur
             // 
-            appearance17.FontData.SizeInPoints = 8F;
-            this.lblSignatur.Appearance = appearance17;
+            appearance56.FontData.SizeInPoints = 8F;
+            this.lblSignatur.Appearance = appearance56;
             this.lblSignatur.AutoSize = true;
             this.lblSignatur.Location = new System.Drawing.Point(2, 17);
             this.lblSignatur.Margin = new System.Windows.Forms.Padding(4);
@@ -753,12 +759,137 @@
             this.pnlPackungBeschreibung.Size = new System.Drawing.Size(665, 31);
             this.pnlPackungBeschreibung.TabIndex = 200;
             // 
+            // pnlSignatur
+            // 
+            // 
+            // pnlSignatur.ClientArea
+            // 
+            this.pnlSignatur.ClientArea.Controls.Add(this.cbNuechtern);
+            this.pnlSignatur.ClientArea.Controls.Add(this.zp1);
+            this.pnlSignatur.ClientArea.Controls.Add(this.zp2);
+            this.pnlSignatur.ClientArea.Controls.Add(this.zp3);
+            this.pnlSignatur.ClientArea.Controls.Add(this.zp4);
+            this.pnlSignatur.ClientArea.Controls.Add(this.ultraLabel5);
+            this.pnlSignatur.ClientArea.Controls.Add(this.cbBeaufsichtigungJN);
+            this.pnlSignatur.ClientArea.Controls.Add(this.zp0);
+            this.pnlSignatur.ClientArea.Controls.Add(this.ucStandardZeiten1);
+            this.pnlSignatur.Location = new System.Drawing.Point(12, 282);
+            this.pnlSignatur.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlSignatur.Name = "pnlSignatur";
+            this.pnlSignatur.Size = new System.Drawing.Size(534, 116);
+            this.pnlSignatur.TabIndex = 201;
+            // 
+            // pnlSignaturEV
+            // 
+            // 
+            // pnlSignaturEV.ClientArea
+            // 
+            this.pnlSignaturEV.ClientArea.Controls.Add(this.lblEVMax24h);
+            this.pnlSignaturEV.ClientArea.Controls.Add(this.lblEVMenge);
+            this.pnlSignaturEV.ClientArea.Controls.Add(this.zp6);
+            this.pnlSignaturEV.ClientArea.Controls.Add(this.zp5);
+            this.pnlSignaturEV.Location = new System.Drawing.Point(10, 330);
+            this.pnlSignaturEV.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlSignaturEV.Name = "pnlSignaturEV";
+            this.pnlSignaturEV.Size = new System.Drawing.Size(534, 31);
+            this.pnlSignaturEV.TabIndex = 202;
+            // 
+            // lblEVMax24h
+            // 
+            appearance52.FontData.SizeInPoints = 8F;
+            this.lblEVMax24h.Appearance = appearance52;
+            this.lblEVMax24h.AutoSize = true;
+            this.lblEVMax24h.Location = new System.Drawing.Point(304, 10);
+            this.lblEVMax24h.Margin = new System.Windows.Forms.Padding(4);
+            this.lblEVMax24h.Name = "lblEVMax24h";
+            this.lblEVMax24h.Size = new System.Drawing.Size(137, 14);
+            this.lblEVMax24h.TabIndex = 165;
+            this.lblEVMax24h.Text = "Maximale Menge in 24 Std.";
+            // 
+            // lblEVMenge
+            // 
+            appearance53.FontData.SizeInPoints = 8F;
+            this.lblEVMenge.Appearance = appearance53;
+            this.lblEVMenge.AutoSize = true;
+            this.lblEVMenge.Location = new System.Drawing.Point(4, 10);
+            this.lblEVMenge.Margin = new System.Windows.Forms.Padding(4);
+            this.lblEVMenge.Name = "lblEVMenge";
+            this.lblEVMenge.Size = new System.Drawing.Size(86, 14);
+            this.lblEVMenge.TabIndex = 164;
+            this.lblEVMenge.Text = "Menge pro Gabe";
+            // 
+            // zp6
+            // 
+            appearance54.BackColorDisabled = System.Drawing.Color.White;
+            appearance54.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance54.TextHAlignAsString = "Right";
+            this.zp6.Appearance = appearance54;
+            this.zp6.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
+            this.zp6.InputMask = "nnnnn.nn";
+            this.zp6.Location = new System.Drawing.Point(449, 4);
+            this.zp6.Margin = new System.Windows.Forms.Padding(4);
+            this.zp6.Name = "zp6";
+            this.zp6.NonAutoSizeHeight = 20;
+            this.zp6.Size = new System.Drawing.Size(71, 23);
+            this.zp6.TabIndex = 110;
+            // 
+            // zp5
+            // 
+            appearance55.BackColorDisabled = System.Drawing.Color.White;
+            appearance55.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance55.TextHAlignAsString = "Right";
+            this.zp5.Appearance = appearance55;
+            this.zp5.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
+            this.zp5.InputMask = "nnnnn.nn";
+            this.zp5.Location = new System.Drawing.Point(143, 4);
+            this.zp5.Margin = new System.Windows.Forms.Padding(4);
+            this.zp5.Name = "zp5";
+            this.zp5.NonAutoSizeHeight = 20;
+            this.zp5.Size = new System.Drawing.Size(71, 23);
+            this.zp5.TabIndex = 109;
+            // 
+            // pnlSignaturWiederholung
+            // 
+            // 
+            // pnlSignaturWiederholung.ClientArea
+            // 
+            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.opWiederholungstyp);
+            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.txtWiedWertAlle);
+            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.opWiedheinheit);
+            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.lblNTenDesMonats);
+            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.ucWochenTage21);
+            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.lblSignatur);
+            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.lblWochentage);
+            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.txtWiedWertJeden);
+            this.pnlSignaturWiederholung.Location = new System.Drawing.Point(14, 185);
+            this.pnlSignaturWiederholung.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlSignaturWiederholung.Name = "pnlSignaturWiederholung";
+            this.pnlSignaturWiederholung.Size = new System.Drawing.Size(860, 91);
+            this.pnlSignaturWiederholung.TabIndex = 203;
+            // 
+            // ucWochenTage21
+            // 
+            this.ucWochenTage21.Location = new System.Drawing.Point(649, 4);
+            this.ucWochenTage21.Name = "ucWochenTage21";
+            this.ucWochenTage21.Size = new System.Drawing.Size(208, 76);
+            this.ucWochenTage21.TabIndex = 105;
+            this.ucWochenTage21.WOCHENTAGE = 127;
+            this.ucWochenTage21.ValueChanged += new System.EventHandler(this.ucWochenTage21_ValueChanged);
+            // 
+            // ucStandardZeiten1
+            // 
+            this.ucStandardZeiten1.BkeepStandardzeiten = false;
+            this.ucStandardZeiten1.Location = new System.Drawing.Point(0, 20);
+            this.ucStandardZeiten1.Name = "ucStandardZeiten1";
+            this.ucStandardZeiten1.Size = new System.Drawing.Size(605, 56);
+            this.ucStandardZeiten1.TabIndex = 107;
+            // 
             // cbPackungsEinheit
             // 
             this.cbPackungsEinheit.AddEmptyEntry = false;
-            appearance23.BackColorDisabled = System.Drawing.Color.White;
-            appearance23.ForeColorDisabled = System.Drawing.Color.DimGray;
-            this.cbPackungsEinheit.Appearance = appearance23;
+            appearance24.BackColorDisabled = System.Drawing.Color.White;
+            appearance24.ForeColorDisabled = System.Drawing.Color.DimGray;
+            this.cbPackungsEinheit.Appearance = appearance24;
             this.cbPackungsEinheit.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cbPackungsEinheit.AutoOpenCBO = true;
             this.cbPackungsEinheit.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
@@ -777,103 +908,6 @@
             this.cbPackungsEinheit.Size = new System.Drawing.Size(360, 24);
             this.cbPackungsEinheit.sys = false;
             this.cbPackungsEinheit.TabIndex = 3;
-            // 
-            // pnlSignatur
-            // 
-            // 
-            // pnlSignatur.ClientArea
-            // 
-            this.pnlSignatur.ClientArea.Controls.Add(this.cbNuechtern);
-            this.pnlSignatur.ClientArea.Controls.Add(this.zp1);
-            this.pnlSignatur.ClientArea.Controls.Add(this.zp2);
-            this.pnlSignatur.ClientArea.Controls.Add(this.zp3);
-            this.pnlSignatur.ClientArea.Controls.Add(this.zp4);
-            this.pnlSignatur.ClientArea.Controls.Add(this.ultraLabel5);
-            this.pnlSignatur.ClientArea.Controls.Add(this.cbBeaufsichtigungJN);
-            this.pnlSignatur.ClientArea.Controls.Add(this.zp0);
-            this.pnlSignatur.ClientArea.Controls.Add(this.ucStandardZeiten1);
-            this.pnlSignatur.Location = new System.Drawing.Point(12, 282);
-            this.pnlSignatur.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlSignatur.Name = "pnlSignatur";
-            this.pnlSignatur.Size = new System.Drawing.Size(534, 126);
-            this.pnlSignatur.TabIndex = 201;
-            // 
-            // ucStandardZeiten1
-            // 
-            this.ucStandardZeiten1.BkeepStandardzeiten = false;
-            this.ucStandardZeiten1.Location = new System.Drawing.Point(0, 20);
-            this.ucStandardZeiten1.Name = "ucStandardZeiten1";
-            this.ucStandardZeiten1.Size = new System.Drawing.Size(605, 56);
-            this.ucStandardZeiten1.TabIndex = 107;
-            // 
-            // pnlSignaturEV
-            // 
-            // 
-            // pnlSignaturEV.ClientArea
-            // 
-            this.pnlSignaturEV.ClientArea.Controls.Add(this.lblEVMax24h);
-            this.pnlSignaturEV.ClientArea.Controls.Add(this.lblEVMenge);
-            this.pnlSignaturEV.ClientArea.Controls.Add(this.zp6);
-            this.pnlSignaturEV.ClientArea.Controls.Add(this.zp5);
-            this.pnlSignaturEV.Location = new System.Drawing.Point(12, 331);
-            this.pnlSignaturEV.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlSignaturEV.Name = "pnlSignaturEV";
-            this.pnlSignaturEV.Size = new System.Drawing.Size(534, 31);
-            this.pnlSignaturEV.TabIndex = 202;
-            // 
-            // lblEVMax24h
-            // 
-            appearance19.FontData.SizeInPoints = 8F;
-            this.lblEVMax24h.Appearance = appearance19;
-            this.lblEVMax24h.AutoSize = true;
-            this.lblEVMax24h.Location = new System.Drawing.Point(304, 10);
-            this.lblEVMax24h.Margin = new System.Windows.Forms.Padding(4);
-            this.lblEVMax24h.Name = "lblEVMax24h";
-            this.lblEVMax24h.Size = new System.Drawing.Size(137, 14);
-            this.lblEVMax24h.TabIndex = 165;
-            this.lblEVMax24h.Text = "Maximale Menge in 24 Std.";
-            // 
-            // lblEVMenge
-            // 
-            appearance20.FontData.SizeInPoints = 8F;
-            this.lblEVMenge.Appearance = appearance20;
-            this.lblEVMenge.AutoSize = true;
-            this.lblEVMenge.Location = new System.Drawing.Point(4, 10);
-            this.lblEVMenge.Margin = new System.Windows.Forms.Padding(4);
-            this.lblEVMenge.Name = "lblEVMenge";
-            this.lblEVMenge.Size = new System.Drawing.Size(86, 14);
-            this.lblEVMenge.TabIndex = 164;
-            this.lblEVMenge.Text = "Menge pro Gabe";
-            // 
-            // zp6
-            // 
-            appearance21.BackColorDisabled = System.Drawing.Color.White;
-            appearance21.ForeColorDisabled = System.Drawing.Color.Black;
-            appearance21.TextHAlignAsString = "Right";
-            this.zp6.Appearance = appearance21;
-            this.zp6.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
-            this.zp6.InputMask = "nnnnn.nn";
-            this.zp6.Location = new System.Drawing.Point(449, 4);
-            this.zp6.Margin = new System.Windows.Forms.Padding(4);
-            this.zp6.Name = "zp6";
-            this.zp6.NonAutoSizeHeight = 20;
-            this.zp6.Size = new System.Drawing.Size(71, 23);
-            this.zp6.TabIndex = 110;
-            // 
-            // zp5
-            // 
-            appearance22.BackColorDisabled = System.Drawing.Color.White;
-            appearance22.ForeColorDisabled = System.Drawing.Color.Black;
-            appearance22.TextHAlignAsString = "Right";
-            this.zp5.Appearance = appearance22;
-            this.zp5.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
-            this.zp5.InputMask = "nnnnn.nn";
-            this.zp5.Location = new System.Drawing.Point(143, 4);
-            this.zp5.Margin = new System.Windows.Forms.Padding(4);
-            this.zp5.Name = "zp5";
-            this.zp5.NonAutoSizeHeight = 20;
-            this.zp5.Size = new System.Drawing.Size(71, 23);
-            this.zp5.TabIndex = 109;
             // 
             // cmbEinheit
             // 
@@ -907,7 +941,7 @@
             this.cbImportant.Group = "BER";
             this.cbImportant.ID_PEP = -1;
             this.cbImportant.IgnoreUnterdruecken = true;
-            this.cbImportant.Location = new System.Drawing.Point(156, 647);
+            this.cbImportant.Location = new System.Drawing.Point(156, 589);
             this.cbImportant.Margin = new System.Windows.Forms.Padding(5);
             this.cbImportant.Name = "cbImportant";
             this.cbImportant.PflichtJN = false;
@@ -929,15 +963,15 @@
             // userCombo1
             // 
             this.userCombo1.Enabled = false;
-            this.userCombo1.Location = new System.Drawing.Point(154, 681);
+            this.userCombo1.Location = new System.Drawing.Point(156, 621);
             this.userCombo1.Margin = new System.Windows.Forms.Padding(4);
             this.userCombo1.Name = "userCombo1";
-            this.userCombo1.Size = new System.Drawing.Size(344, 24);
+            this.userCombo1.Size = new System.Drawing.Size(342, 24);
             this.userCombo1.TabIndex = 118;
             // 
             // cmbVerabreichungsart
             // 
-            this.cmbVerabreichungsart.Location = new System.Drawing.Point(524, 423);
+            this.cmbVerabreichungsart.Location = new System.Drawing.Point(524, 409);
             this.cmbVerabreichungsart.Margin = new System.Windows.Forms.Padding(4);
             this.cmbVerabreichungsart.Name = "cmbVerabreichungsart";
             this.cmbVerabreichungsart.Size = new System.Drawing.Size(327, 24);
@@ -945,7 +979,7 @@
             // 
             // cmbHerrichten
             // 
-            this.cmbHerrichten.Location = new System.Drawing.Point(155, 423);
+            this.cmbHerrichten.Location = new System.Drawing.Point(155, 409);
             this.cmbHerrichten.Margin = new System.Windows.Forms.Padding(4);
             this.cmbHerrichten.Name = "cmbHerrichten";
             this.cmbHerrichten.Size = new System.Drawing.Size(212, 24);
@@ -955,8 +989,8 @@
             // cmbApplikationsform
             // 
             this.cmbApplikationsform.AddEmptyEntry = false;
-            appearance34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.cmbApplikationsform.Appearance = appearance34;
+            appearance35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.cmbApplikationsform.Appearance = appearance35;
             this.cmbApplikationsform.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cmbApplikationsform.AutoOpenCBO = true;
             this.cmbApplikationsform.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
@@ -977,47 +1011,19 @@
             this.cmbApplikationsform.sys = false;
             this.cmbApplikationsform.TabIndex = 5;
             // 
-            // ucWochenTage21
-            // 
-            this.ucWochenTage21.Location = new System.Drawing.Point(649, 4);
-            this.ucWochenTage21.Name = "ucWochenTage21";
-            this.ucWochenTage21.Size = new System.Drawing.Size(208, 76);
-            this.ucWochenTage21.TabIndex = 105;
-            this.ucWochenTage21.WOCHENTAGE = 127;
-            this.ucWochenTage21.ValueChanged += new System.EventHandler(this.ucWochenTage21_ValueChanged);
-            // 
             // dsMedikament1
             // 
             this.dsMedikament1.DataSetName = "dsMedikament";
             this.dsMedikament1.Locale = new System.Globalization.CultureInfo("de-DE");
             this.dsMedikament1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // pnlSignaturWiederholung
-            // 
-            // 
-            // pnlSignaturWiederholung.ClientArea
-            // 
-            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.opWiederholungstyp);
-            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.txtWiedWertAlle);
-            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.opWiedheinheit);
-            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.lblNTenDesMonats);
-            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.ucWochenTage21);
-            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.lblSignatur);
-            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.lblWochentage);
-            this.pnlSignaturWiederholung.ClientArea.Controls.Add(this.txtWiedWertJeden);
-            this.pnlSignaturWiederholung.Location = new System.Drawing.Point(14, 185);
-            this.pnlSignaturWiederholung.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlSignaturWiederholung.Name = "pnlSignaturWiederholung";
-            this.pnlSignaturWiederholung.Size = new System.Drawing.Size(860, 91);
-            this.pnlSignaturWiederholung.TabIndex = 203;
-            // 
             // ucRezeptEintrag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Controls.Add(this.pnlSignaturWiederholung);
             this.Controls.Add(this.pnlSignaturEV);
+            this.Controls.Add(this.pnlSignaturWiederholung);
             this.Controls.Add(this.pnlSignatur);
             this.Controls.Add(this.pnlPackungBeschreibung);
             this.Controls.Add(this.chkHAGPflichtigJN);
@@ -1056,7 +1062,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucRezeptEintrag";
-            this.Size = new System.Drawing.Size(901, 761);
+            this.Size = new System.Drawing.Size(901, 650);
             ((System.ComponentModel.ISupportInitialize)(this.dtpAbgebenVon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpAbgebenBis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.opWiederholungstyp)).EndInit();
@@ -1075,13 +1081,16 @@
             this.pnlPackungBeschreibung.ClientArea.ResumeLayout(false);
             this.pnlPackungBeschreibung.ClientArea.PerformLayout();
             this.pnlPackungBeschreibung.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cbPackungsEinheit)).EndInit();
             this.pnlSignatur.ClientArea.ResumeLayout(false);
             this.pnlSignatur.ClientArea.PerformLayout();
             this.pnlSignatur.ResumeLayout(false);
             this.pnlSignaturEV.ClientArea.ResumeLayout(false);
             this.pnlSignaturEV.ClientArea.PerformLayout();
             this.pnlSignaturEV.ResumeLayout(false);
+            this.pnlSignaturWiederholung.ClientArea.ResumeLayout(false);
+            this.pnlSignaturWiederholung.ClientArea.PerformLayout();
+            this.pnlSignaturWiederholung.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cbPackungsEinheit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEinheit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbImportant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userCombo1)).EndInit();
@@ -1089,9 +1098,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbHerrichten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbApplikationsform)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMedikament1)).EndInit();
-            this.pnlSignaturWiederholung.ClientArea.ResumeLayout(false);
-            this.pnlSignaturWiederholung.ClientArea.PerformLayout();
-            this.pnlSignaturWiederholung.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

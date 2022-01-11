@@ -1256,5 +1256,21 @@ namespace PMDS.GUI
             }
 
         }
+
+        private void txtAnmerkung_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F3)
+            {
+                using (PMDS.GUI.GUI.Main.frmTextbausteinAuswahl frmTextbausteinAuswahl1 = new GUI.Main.frmTextbausteinAuswahl())
+                {
+                    frmTextbausteinAuswahl1.initControl();
+                    frmTextbausteinAuswahl1.ShowDialog(this);
+                    if (!frmTextbausteinAuswahl1.abort)
+                    {
+                        txtAnmerkung.Text = frmTextbausteinAuswahl1.TextbausteinAsPlainText;
+                    }
+                }
+            }
+        }
     }
 }
