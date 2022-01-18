@@ -35,17 +35,17 @@
             this.cboTextbausteine = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.lblTextbausteine = new QS2.Desktop.ControlManagment.BaseLabel();
             this.btnAbort = new QS2.Desktop.ControlManagment.BaseButton();
-            System.Globalization.CultureInfo currentCultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
             this.textControlConvert = new TXTextControl.TextControl();
-            System.Threading.Thread.CurrentThread.CurrentCulture = currentCultureInfo;
             ((System.ComponentModel.ISupportInitialize)(this.cboTextbausteine)).BeginInit();
             this.SuspendLayout();
             // 
             // cboTextbausteine
             // 
-            this.cboTextbausteine.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest;
+            this.cboTextbausteine.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cboTextbausteine.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.StartsWith;
             this.cboTextbausteine.DropDownButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
             this.cboTextbausteine.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cboTextbausteine.LimitToList = true;
             this.cboTextbausteine.Location = new System.Drawing.Point(101, 17);
             this.cboTextbausteine.Name = "cboTextbausteine";
             this.cboTextbausteine.NullText = "Bitte wählen";
@@ -92,6 +92,7 @@
             this.textControlConvert.Name = "textControlConvert";
             this.textControlConvert.Size = new System.Drawing.Size(61, 43);
             this.textControlConvert.TabIndex = 106;
+            this.textControlConvert.UserNames = null;
             this.textControlConvert.ViewMode = TXTextControl.ViewMode.Normal;
             // 
             // frmTextbausteinAuswahl

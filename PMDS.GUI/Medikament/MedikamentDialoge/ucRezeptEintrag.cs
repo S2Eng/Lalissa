@@ -28,7 +28,8 @@ namespace PMDS.GUI
         private bool _ValueChangedEnabled = true;
         private bool _bHerrichtenBedarf;
         private BearbeitungsModus _bearbeitungsmodus = BearbeitungsModus.neu;
-        
+        private BearbeitungsModus _exmodus = BearbeitungsModus.neu;
+
         private dsRezeptEintrag.RezeptEintragRow _newRezeptEintrag;          // != null ==> nachfolgeprozess muss den neuen Eintrag nehmen und verarbeiten
         
         private bool _UpdateGuiInProgress;
@@ -111,6 +112,11 @@ namespace PMDS.GUI
         {
             get { return _bearbeitungsmodus; }
             set { _bearbeitungsmodus = value; }
+        }
+        public BearbeitungsModus EintragExmodus
+        {
+            get { return _exmodus; }
+            set { _exmodus = value; }
         }
 
         //----------------------------------------------------------------------------
@@ -657,6 +663,10 @@ namespace PMDS.GUI
                     this.errorProvider1.SetError(this.dtpAbgebenBis, sText);
                     return false;
                 }
+                else if ((DateTime)dtpAbgebenBis.Value < new DateTime(3000,1,1))
+                {
+                    this.EintragExmodus = BearbeitungsModus.ex;     //Eintrag wird abgesetzt -> Pkg.EH, Applikationsform und Einheit nicht mehr prüfen
+                }
 
                 dsRezeptEintrag.RezeptEintragRow r = RezeptEintrag;
                 if (dtpAbgebenVon.Value != null && diff == 1 && bRechtStorno)
@@ -838,9 +848,23 @@ namespace PMDS.GUI
                                  ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
             string MsgTxt2 = "";
-            bool cbApplikationsformOK = PMDSBusinessUI.checkCboBox(this.cmbApplikationsform, QS2.Desktop.ControlManagment.ControlManagment.getRes("Applikationsform"), true, ref MsgTxt2, true);
-            bool cbPackungseinheitOK = PMDSBusinessUI.checkCboBox(this.cbPackungsEinheit, QS2.Desktop.ControlManagment.ControlManagment.getRes("Packungseinheit"), true, ref MsgTxt2, true);
-            bool cbEinheitOK = PMDSBusinessUI.checkCboBox(this.cmbEinheit, QS2.Desktop.ControlManagment.ControlManagment.getRes("Einheit"), true, ref MsgTxt2, true);
+            bool cbApplikationsformOK;
+            bool cbPackungseinheitOK;
+            bool cbEinheitOK;
+
+            if (this.EintragExmodus == BearbeitungsModus.ex)
+            {
+                cbApplikationsformOK = true;
+                cbPackungseinheitOK = true;
+                cbEinheitOK = true;
+            }
+            else
+            {
+                cbApplikationsformOK = PMDSBusinessUI.checkCboBox(this.cmbApplikationsform, QS2.Desktop.ControlManagment.ControlManagment.getRes("Applikationsform"), true, ref MsgTxt2, true);
+                cbPackungseinheitOK = PMDSBusinessUI.checkCboBox(this.cbPackungsEinheit, QS2.Desktop.ControlManagment.ControlManagment.getRes("Packungseinheit"), true, ref MsgTxt2, true);
+                cbEinheitOK = PMDSBusinessUI.checkCboBox(this.cmbEinheit, QS2.Desktop.ControlManagment.ControlManagment.getRes("Einheit"), true, ref MsgTxt2, true);
+            }
+
             if (!cbApplikationsformOK || !cbPackungseinheitOK || !cbEinheitOK)
             {
                 bError = true;
@@ -852,8 +876,6 @@ namespace PMDS.GUI
             {
                 if (temp_dtpAbgebenVon_Value != null && DetailsChanged && (DateTime)temp_dtpAbgebenVon_Value == (DateTime)dtpAbgebenVon.Value)
                 {
-
-
                     //Hinweise zur Änderung für den Anwender
                     int iAbgegeben = 0;
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
@@ -898,8 +920,6 @@ namespace PMDS.GUI
                     }
                 }
             }
-
-
             return !bError;
         }
 

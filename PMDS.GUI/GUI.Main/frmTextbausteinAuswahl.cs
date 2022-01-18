@@ -94,7 +94,8 @@ namespace PMDS.GUI.GUI.Main
                     //    itmCbo.Tag = rTextbausteinFound;
                     //}
                 }
-
+                this.cboTextbausteine.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+                this.cboTextbausteine.DropDownStyle = DropDownStyle.DropDown;
                 this.cboTextbausteine.Refresh();
 
             }

@@ -1000,7 +1000,7 @@ namespace PMDS.GUI
                             cbo.Appearance.BackColor = Color.Yellow;
                             cbo.UseAppStyling = false;
                         }
-                        string MsgTxtTmp = TitleMsg.Trim() + ": " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Falsche Eingabe!");
+                        string MsgTxtTmp = TitleMsg.Trim() + ": " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte wählen Sie einen gültigen Listeneintrag.");
                         if (getOnlyMsgTxt)
                         {
                             MsgTxtBack += MsgTxtTmp + "\r\n";

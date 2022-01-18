@@ -665,7 +665,8 @@ namespace PMDS.Global
     public enum BearbeitungsModus
     {
         neu = 0,
-        edit
+        edit = 1,
+        ex = 2
     }
         
     public enum ErfassungMode
