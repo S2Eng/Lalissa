@@ -345,11 +345,20 @@ namespace PMDS.DB
                 string sqlWhere = "";
                 this.getWhereTermine(para, IDKlinik, ref sqlWhere, false, ref UITypeTermine, ref lstPar, ref dsKlientenliste, ref lstKlienten);
                 this.sqlTermine1.davInterventionen.SelectCommand.CommandText += " " + sqlWhere;
-                foreach(OleDbParameter arFound in lstPar)
+
+                foreach (OleDbParameter arFound in lstPar)
                 {
-                    this.sqlTermine1.davInterventionen.SelectCommand.Parameters.Add(arFound);
+                    if (arFound.OleDbType == OleDbType.DBTimeStamp)
+                    {
+                        this.sqlTermine1.davInterventionen.SelectCommand.Parameters.Add(new System.Data.OleDb.OleDbParameter(arFound.ParameterName, System.Data.OleDb.OleDbType.Date, 16, arFound.ParameterName)).Value = arFound.Value;
+                    }
+                    else
+                    {
+                        this.sqlTermine1.davInterventionen.SelectCommand.Parameters.Add(arFound);
+                    }
                     SqlCommand += arFound.ParameterName + "\r\n" + arFound.Value.ToString() + "\r\n" + "\r\n";
                 }
+
                 this.sqlTermine1.davInterventionen.SelectCommand.CommandTimeout = 0;
                 SqlCommand = this.sqlTermine1.davInterventionen.SelectCommand.CommandText + "\r\n" + "\r\n" + SqlCommand;
 
