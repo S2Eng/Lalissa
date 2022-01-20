@@ -548,7 +548,23 @@ namespace PMDS.GUI.BaseControls
             _pe.Zeitpunkt           = ZEITPUNKT;
             _pe.DurchgefuehrtJN     = true;
             _pe.IstDauer            = Convert.ToInt32(tbDauer.Value.ToString().Trim() == "" ? "0" : tbDauer.Value);
-            _pe.Text                = cbMedikament.Visible && cbMedikament.ID != Guid.Empty ? QS2.Desktop.ControlManagment.ControlManagment.getRes("Einzelverordnung: ") + cbMedikament.Text.Remove(cbMedikament.Text.IndexOf(";")) + Environment.NewLine + txtBeschreibung.Text : txtBeschreibung.Text;
+
+            if (cbMedikament.Visible && cbMedikament.ID != Guid.Empty)
+            {
+                if (cbMedikament.Text.Contains(";"))
+                {
+                    _pe.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Einzelverordnung: ") + cbMedikament.Text.Remove(cbMedikament.Text.IndexOf(";")) + Environment.NewLine + txtBeschreibung.Text;
+
+                }
+                else
+                {
+                    _pe.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Einzelverordnung: ") + cbMedikament.Text + Environment.NewLine + txtBeschreibung.Text;
+                }
+            }
+            else
+            {
+                _pe.Text = txtBeschreibung.Text;
+            }
             _pe.IDWichtig           = cbWichtig.ID;
             _pe.IDEintrag           = cbMassnahme.ID;
         }
