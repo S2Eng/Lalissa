@@ -13,6 +13,7 @@ using PMDS.DB;
 using Infragistics.Win.UltraWinToolTip;
 using System.Linq;
 using System.IO;
+using S2Extensions;
 
 namespace PMDS.GUI.BaseControls
 {
@@ -636,13 +637,7 @@ namespace PMDS.GUI.BaseControls
         {
             try
             {
-                DateTime dNow = DateTime.Now.Date;
-                DateTime dGeburtstagHeuer = new DateTime(dNow.Year, GebDat.Month, GebDat.Day, 0, 0, 0);
-                if (!DateTime.IsLeapYear(dNow.Year) && dGeburtstagHeuer.Day == 29 && dGeburtstagHeuer.Month == 2)
-                {
-                    dGeburtstagHeuer = new DateTime(dGeburtstagHeuer.Year, dGeburtstagHeuer.Month, 28, 0, 0, 0);
-                }
-                if (dGeburtstagHeuer.Date.Equals(DateTime.Now.Date))
+                if (GebDat.IsBirthDay())
                 {
                     string ToolTipTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("Geburtstag");
                     string ToolTipText = " ";

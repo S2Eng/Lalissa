@@ -118,4 +118,28 @@ namespace S2Extensions
             }
         }
     }
+
+    public static class DateExtension
+    {
+        public static bool IsBirthDay(this DateTime BirthDate, DateTime CheckDate)
+        {
+            //Prüft, ob der Tag und Monat von Datum (BirthDate) mit dem Tag und Monat im angegebeben Datum (CheckDate) übereinstimmen
+            DateTime dGeburtstagHeuer = new DateTime();
+            if (!DateTime.IsLeapYear(CheckDate.Year) && BirthDate.Month == 2 && BirthDate.Day == 29)
+            {
+                dGeburtstagHeuer = new DateTime(CheckDate.Year, 2, 28, 0, 0, 0);
+            }
+            else
+            {
+                dGeburtstagHeuer = new DateTime(CheckDate.Year, BirthDate.Month, BirthDate.Day, 0, 0, 0);
+            }
+            return (dGeburtstagHeuer == CheckDate);
+        }
+
+        public static bool IsBirthDay(this DateTime BirthDate)
+        {
+            //Prüft, ob der Tag und Monat von Datum (BirthDate) mit dem Tag und Monat im angegebeben Datum (CheckDate) übereinstimmen
+            return BirthDate.IsBirthDay(DateTime.Now.Date);
+        }
+    }
 }

@@ -17,7 +17,7 @@ using System.Text;
 using PMDS.Data.Global;
 using System.IO;
 using PMDS.Global.db.Patient;
-
+using S2Extensions;
 
 
 
@@ -770,12 +770,8 @@ namespace PMDS.GUI
                     }
                     rowKlient.Cells["Alter"].Value = sAlter;
 
-                    DateTime dGeburtstagHeuer = new DateTime(dNow.Year, rKlient.Geburtsdatum.Date.Month, rKlient.Geburtsdatum.Date.Day, 0, 0, 0);
-                    if (!DateTime.IsLeapYear(dNow.Year) && dGeburtstagHeuer.Day == 29 && dGeburtstagHeuer.Month == 2)
-                    {
-                        dGeburtstagHeuer = new DateTime(dGeburtstagHeuer.Year, dGeburtstagHeuer.Month, 28, 0, 0, 0);
-                    }
-                    if (dNow.Date.Equals(dGeburtstagHeuer.Date))
+
+                    if (rKlient.Geburtsdatum.IsBirthDay())
                     {
                         rowKlient.Cells["Geburtstag"].Appearance.BackColor = Color.MediumVioletRed;
                         rowKlient.Cells["Geburtstag"].Value = "";

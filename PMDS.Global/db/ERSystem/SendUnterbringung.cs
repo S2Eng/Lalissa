@@ -1001,6 +1001,16 @@ namespace PMDS.Global.db.ERSystem
                     }
                     BreakSearchForCertificate:
 
+                    //Ggf. Passwort-Datei in dem selben Verzeichnis auslesen
+                    if (File.Exists(CertificateName))
+                    {
+                        string pwdFile = Path.ChangeExtension(CertificateName, ".txt");
+                        if (File.Exists(pwdFile))
+                        {
+                            ENV.HAG_PASSWORD = PMDS.BusinessLogic.BUtil.DecryptString(File.ReadAllText(pwdFile).Trim());
+                        }
+                    }
+
                     //Wenn als Zertifikat ein existierendes Zertifiakt angegeben ist und das Passwort gesetzt ist
                     if (File.Exists(CertificateName) && !String.IsNullOrWhiteSpace(ENV.HAG_PASSWORD))
                     {
