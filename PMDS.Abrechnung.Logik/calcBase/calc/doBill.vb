@@ -3,7 +3,7 @@ Option Explicit On
 Imports VB = Microsoft.VisualBasic
 
 Imports QS2.Desktop.Txteditor
-
+Imports S2Extensions
 
 
 Public Class doBill
@@ -1402,7 +1402,7 @@ Public Class doBill
         End Try
     End Function
 
-    Public Function SetRechnungsadresseVersand(ByVal r As PMDS.Calc.Logic.dbPMDS.billsRow, ByRef editor As TXTextControl.TextControl, Titel As String, Nachname As String, Vorname As String, Plz As String, Ort As String, Strasse As String, Empfaenger As String, Betreff As String)
+    Public Function SetRechnungsadresseVersand(ByVal r As PMDS.Calc.Logic.dbPMDS.billsRow, ByRef editor As TXTextControl.TextControl, Titel As String, Nachname As String, Vorname As String, Plz As String, Ort As String, Strasse As String, LandKZ As String, Empfaenger As String, Betreff As String)
         Try
 
             editor.Text = ""
@@ -1412,7 +1412,12 @@ Public Class doBill
             Me.doBookmarks.setBookmark("[KostName]", (Vorname + " " + Nachname).Trim(), editor)
             Me.doBookmarks.setBookmark("[KostEmpf]", Empfaenger, editor)
             Me.doBookmarks.setBookmark("[KostStrasse]", Strasse, editor)
-            Me.doBookmarks.setBookmark("[KostAnschrift]", (Plz + " " + Ort).Trim(), editor)
+
+            If LandKZ.sEquals("Österreich") Then
+                Me.doBookmarks.setBookmark("[KostAnschrift]", (Plz + " " + Ort).Trim(), editor)
+            Else
+                Me.doBookmarks.setBookmark("[KostAnschrift]", (Plz + " " + Ort + vbNewLine + LandKZ.ToUpper()).Trim(), editor)
+            End If
 
             'Me.doBookmarks.setBookmark("[RechDatum]", "------", editor)
             Me.doBookmarks.setBookmark("[Zahlkond]", "", editor)
