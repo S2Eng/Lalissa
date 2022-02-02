@@ -1353,14 +1353,14 @@ Public Class doBill
             Dim nCellNr As Integer = 0
 
             For Each txtField As TXTextControl.TextField In editor.TextFields
-                If txtField.Name.Trim().ToLower().Contains(rKostenKostenträger.ID.ToString().Trim().ToLower()) Then
-                    If txtField.Name.Trim().ToLower().Contains("_netto_") And rKostenKostenträger.Netto <> 0 Then
+                If txtField.Name.sContains(rKostenKostenträger.ID) Then
+                    If txtField.Name.sContains("_netto_") And rKostenKostenträger.Netto <> 0 Then
                         txtField.Text = String.Format("{0:c}", rKostenKostenträger.Netto)
                         bAnyChangesXMLDBHeader = True
-                    ElseIf txtField.Name.Trim().ToLower().Contains("_mwst_") And rKostenKostenträger.MWSt <> 0 Then
+                    ElseIf txtField.Name.sContains("_mwst_") And rKostenKostenträger.MWSt <> 0 Then
                         txtField.Text = rKostenKostenträger.MWSt.ToString() + "" + ""
                         bAnyChangesXMLDBHeader = True
-                    ElseIf txtField.Name.Trim().ToLower().Contains("_brutto_") And rKostenKostenträger.Brutto <> 0 Then
+                    ElseIf txtField.Name.sContains("_brutto_") And rKostenKostenträger.Brutto <> 0 Then
                         txtField.Text = String.Format("{0:c}", rKostenKostenträger.Brutto)
                         bAnyChangesXMLDBHeader = True
                     End If

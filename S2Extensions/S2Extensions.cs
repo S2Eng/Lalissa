@@ -117,6 +117,12 @@ namespace S2Extensions
                 throw new Exception("S2Extensions.sEquals: " + ex.ToString());
             }
         }
+
+        public static bool sContains(this object s1, object s2, bool trim = true, bool IgnoreCase = true)
+        {
+            return s1.sEquals(s2, Enums.eCompareMode.Contains, trim, IgnoreCase);
+        }
+
     }
 
     public static class DateExtension
