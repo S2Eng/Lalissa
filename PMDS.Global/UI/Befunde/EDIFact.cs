@@ -638,7 +638,7 @@ namespace EDIFact
                                 FileIn = System.IO.Path.Combine(Befund.Verzeichnis, Befund.BezeichnungFile);
                                 using (Chilkat.Zip zip = new Chilkat.Zip())
                                 {
-                                    zip.UnlockComponent("S2ENG.CB1032020_S4CwQSty6L2t");
+                                    zip.UnlockComponent("S2ENGN.CB1022023_XfLzJ7t36L5K");
                                     FileInfo fi = new FileInfo(FileIn);
                                     //Befund.DateiType = ENV.BefundTypText(eBefundTyp.ZIP);    //os 150998 warum?
                                     Befund.SizeDoku = Befund.byteDicomSeriesFile.Length;
@@ -856,7 +856,7 @@ namespace EDIFact
             {
                 cBefund Befund = new cBefund();
                 //Chilkat.Zip zip = new Chilkat.Zip();
-                //zip.UnlockComponent("S2ENGINEERZIP_SBV9zXKx4T55");
+                //zip.UnlockComponent("S2ENGN.CB1022023_XfLzJ7t36L5K");
 
                 if (System.IO.Path.GetExtension(Datei).Equals(ENV.BefundTypText(eBefundTyp.BEFUND), StringComparison.CurrentCultureIgnoreCase) ||
                     System.IO.Path.GetExtension(Datei).Equals(ENV.BefundTypText(eBefundTyp.LABOR), StringComparison.CurrentCultureIgnoreCase))
@@ -922,7 +922,7 @@ namespace EDIFact
                         using (Chilkat.Zip zip = new Chilkat.Zip())
                         {
                             //Verzeichnis inkl. Unterverzeichnisse in Zip-File speichern
-                            zip.UnlockComponent("S2ENG.CB1032020_S4CwQSty6L2t");
+                            zip.UnlockComponent("S2ENGN.CB1022023_XfLzJ7t36L5K");
                             zip.NewZip("not_used.zip");
                             FileInfo fi = new FileInfo(Datei);
                             zip.AppendFiles(System.IO.Path.Combine(fi.DirectoryName, "*.*"), true);
@@ -970,7 +970,7 @@ namespace EDIFact
                     //ZIP temporär entpacken
                     using (Chilkat.Zip zip = new Chilkat.Zip())
                     {
-                        zip.UnlockComponent("S2ENG.CB1032020_S4CwQSty6L2t");
+                        zip.UnlockComponent("S2ENGN.CB1022023_XfLzJ7t36L5K");
                         zip.OpenZip(Datei);
                         zip.Unzip(tmpDir);
                     }
