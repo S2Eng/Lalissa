@@ -96,13 +96,13 @@ namespace PMDS
                 fiMikogo = new FileInfo(Path.Combine(Application.StartupPath, "Mikogo.exe"));
                 this.btnWebMikogo.Visible = fiMikogo.Exists;
 
-
-                fiPMDS_Handbuch = new FileInfo(Path.Combine(Application.StartupPath, "PMDS_Handbuch.pdf"));
+                string HandbuchFile = PMDS.Global.ENV.StartupMode == "pmds" ? "PMDS_Handbuch.pdf" : "PMDS_Handbuch_Abrechnung.pdf";                
+                fiPMDS_Handbuch = new FileInfo(Path.Combine(Application.StartupPath, HandbuchFile));
                 if (!fiPMDS_Handbuch.Exists)
                 {
                     if (Directory.Exists(Path.Combine(Global.ENV.sRootDir, "Doku")))
                     {
-                        fiPMDS_Handbuch = new FileInfo(Path.Combine(Global.ENV.sRootDir, "Doku", "PMDS_Handbuch.pdf"));
+                        fiPMDS_Handbuch = new FileInfo(Path.Combine(Global.ENV.sRootDir, "Doku", HandbuchFile));
                     }
                 }
 

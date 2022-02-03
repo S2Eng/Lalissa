@@ -224,8 +224,11 @@ namespace PMDS
 
                 PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
 
+                
+
                 if (typ == "abrech")
                 {
+                    ENV.StartupMode = typ;
                     qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();
                     RunFromOhterSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
                     PMDS.Global.ENV.setStyleInfrag(true);
@@ -241,6 +244,7 @@ namespace PMDS
                 }
                 else if (typ == "depotabrech")
                 {
+                    ENV.StartupMode = typ;
                     if (infoStartMain != null)
                         infoStartMain.Close();
                     PMDS.Global.ENV.setStyleInfrag(true);
@@ -251,6 +255,7 @@ namespace PMDS
                 }
                 else if (typ == "log")
                 {
+                    ENV.StartupMode = typ;
                     if (infoStartMain != null)
                         infoStartMain.Close();
                     //PMDS.Global.ENV.setStyleInfrag(true);

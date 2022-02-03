@@ -107,7 +107,7 @@ namespace PMDS.Global
 
         }
 
-
+        public static string StartupMode = "pmds";
         public static bool VisualStudioMode = (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
         public static Guid VersionNr = new Guid("10000000-1009-1000-0000-000000000001");
 
