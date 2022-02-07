@@ -322,12 +322,14 @@ namespace Launcher
                 update.sDomain = this.config.searchKeyArg("Domain", Environment.CommandLine);
                 update.sUsername = this.config.searchKeyArg("Username", Environment.CommandLine);
                 update.sPasswordEnc = this.config.searchKeyArg("Password", Environment.CommandLine);
+                update.sshowSplash = this.config.searchKeyArg("showSplash", Environment.CommandLine);
 
                 //Commandline-Parameter übersteuern Default in Config
                 if (String.IsNullOrWhiteSpace(update.sProgramFile)) update.sProgramFile = ConfigFile.getValue("Main", "ProgramFile", false);
                 if (String.IsNullOrWhiteSpace(update.sProgramPath)) update.sProgramPath = ConfigFile.getValue("Main", "ProgramPath", false);
                 if (String.IsNullOrWhiteSpace(update.sConfigFile)) update.sConfigFile = ConfigFile.getValue("Main", "ConfigFile", false);
                 if (String.IsNullOrWhiteSpace(update.sConfigPath)) update.sConfigPath = ConfigFile.getValue("Main", "ConfigPath", false);
+                if (String.IsNullOrWhiteSpace(update.sshowSplash)) update.sshowSplash = ConfigFile.getValue("Main", "showSplash", false);
 
                 if (String.IsNullOrWhiteSpace(update.sDomain)) update.sDomain = ConfigFile.getValue("Main", "Domain", false);
                 if (String.IsNullOrWhiteSpace(update.sUsername)) update.sUsername = ConfigFile.getValue("Main", "Username", false);
