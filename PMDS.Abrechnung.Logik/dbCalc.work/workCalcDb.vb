@@ -806,7 +806,7 @@ Public Class workCalcDb
 
             If BMDExportTyp = eBMDExportTyp.MZ Then
                 'MZ-spezifische Spalten sezen
-                rNewRowExport.periode = rBill.RechDatum.Date.ToString("yyyyMM")
+                rNewRowExport.periode = rBill.RechDatum.Date.Month.ToString()
                 rNewRowExport.benutzer = "99"
                 rNewRowExport.text = ("ZIVK-" + lineExport1.NameKost.Trim()).Substring(0, Math.Min(18, lineExport1.NameKost.Trim().Length + 5))
 
@@ -822,7 +822,8 @@ Public Class workCalcDb
                     rUmbuchung.buchsymbol = rNewRowExport.buchsymbol
                     rUmbuchung.gkonto = rNewRowExport.konto
                     rUmbuchung.buchcode = rNewRowExport.buchcode
-                    rUmbuchung.betrag = rNewRowExport.betrag + rNewRowExport.steuer * -1
+                    'rUmbuchung.betrag = rNewRowExport.betrag + rNewRowExport.steuer * -1
+                    rUmbuchung.betrag = rNewRowExport.betrag * -1       'Bruttobetrag negativ, weil Buchungscode = 0.
                     rUmbuchung.prozent = 0
                     rUmbuchung.steuer = 0
                     rUmbuchung.text = ("FSW-" + lineExport1.NameKost.Trim()).Substring(0, Math.Min(18, lineExport1.NameKost.Trim().Length + 4))
