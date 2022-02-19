@@ -23,7 +23,8 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
-    <ApplicationIcon>ICO_pmds.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -274,9 +275,7 @@
     <Reference Include="TXTextControl.Windows.Forms, Version=25.0.1000.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
     <None Include="bin\Reports\Vitalzeichen_Klinik.rpt" />
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -752,7 +751,6 @@
     <None Include="bin\Reports\Zeitstatistik.rpt" />
     <None Include="bin\Reports\Zielliste.rpt" />
     <None Include="bin\SubReports\Wundtherapie.rpt" />
-    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -924,17 +922,88 @@
     <Content Include="bin\Reports\Wunddokumentation.JPG" />
     <Content Include="bin\Reports\Zeitstatistik.jpg" />
     <Content Include="bin\Reports\Zielliste.jpg" />
-    <Content Include="changes Runtime.txt" />
-    <Content Include="ICO_pmds.ico" />
+    <Content Include="dlls\adodb.dll" />
+    <Content Include="dlls\anycpu_deployment.dll" />
+    <Content Include="dlls\ChilkatDotNet47.dll" />
+    <Content Include="dlls\core.Cardiac.dll" />
+    <Content Include="dlls\core.PrintWindowAuto.dll" />
+    <Content Include="dlls\core.QTH.dll" />
+    <Content Include="dlls\core.TestProduct.dll" />
+    <Content Include="dlls\core.Vascular.dll" />
+    <Content Include="dlls\DevAge.Core.dll" />
+    <Content Include="dlls\DevAge.Data.dll" />
+    <Content Include="dlls\DevAge.Drawing.dll" />
+    <Content Include="dlls\DevAge.SourceGrid3.dll" />
+    <Content Include="dlls\DevAge.SourceGrid3.Extensions.dll" />
+    <Content Include="dlls\DevAge.Utilities.dll" />
+    <Content Include="dlls\DevAge.Windows.Forms.dll" />
+    <Content Include="dlls\DevAge.WindowsPlatform.dll" />
+    <Content Include="dlls\EntityFramework.dll" />
+    <Content Include="dlls\EntityFramework.SqlServer.dll" />
+    <Content Include="dlls\Ghostscript.NET.dll" />
+    <Content Include="dlls\Infragistics.Win.UIElementViewer.dll" />
+    <Content Include="dlls\ITSCont.ui.comm.scan.dll" />
+    <Content Include="dlls\MARC.Everest.Connectors.File.dll" />
+    <Content Include="dlls\MARC.Everest.Connectors.MSMQ.dll" />
+    <Content Include="dlls\MARC.Everest.Connectors.WCF.dll" />
+    <Content Include="dlls\MARC.Everest.dll" />
+    <Content Include="dlls\MARC.Everest.Formatters.XML.Datatypes.R1.dll" />
+    <Content Include="dlls\MARC.Everest.Formatters.XML.Datatypes.R2.dll" />
+    <Content Include="dlls\MARC.Everest.Formatters.XML.ITS1.dll" />
+    <Content Include="dlls\MARC.Everest.RMIM.CA.R020401.dll" />
+    <Content Include="dlls\MARC.Everest.RMIM.CA.R020402.dll" />
+    <Content Include="dlls\MARC.Everest.RMIM.CA.R020403.dll" />
+    <Content Include="dlls\MARC.Everest.RMIM.UV.CDAr2.dll" />
+    <Content Include="dlls\MARC.Everest.RMIM.UV.NE2008.dll" />
+    <Content Include="dlls\MARC.Everest.RMIM.UV.NE2010.dll" />
+    <Content Include="dlls\MARC.Everest.VisualStudio.Wizards.dll" />
+    <Content Include="dlls\Microsoft.mshtml.dll" />
+    <Content Include="dlls\PMDS.db.Entities.dll" />
+    <Content Include="dlls\poppler-qt4.dll" />
+    <Content Include="dlls\PrintWindowAuto.dll" />
+    <Content Include="dlls\qs2.core.dll" />
+    <Content Include="dlls\qs2.core.vb.dll" />
+    <Content Include="dlls\QS2.db.Entities.dll" />
+    <Content Include="dlls\qs2.design.auto.dll" />
+    <Content Include="dlls\QS2.Desktop.Txteditor.dll" />
+    <Content Include="dlls\QS2.Desktop.Txteditor2.dll" />
+    <Content Include="dlls\QS2.Desktop.UI.cs.dll" />
+    <Content Include="dlls\QS2.Desktop.UI.vb.dll" />
+    <Content Include="dlls\QS2.functions.cs.dll" />
+    <Content Include="dlls\QS2.functions.vb.dll" />
+    <Content Include="dlls\QS2.license.core.dll" />
+    <Content Include="dlls\QS2.Logging.Win.dll" />
+    <Content Include="dlls\QS2.Resources.dll" />
+    <Content Include="dlls\qs2.sitemap.dll" />
+    <Content Include="dlls\qs2.sitemap.vb.dll" />
+    <Content Include="dlls\qs2.ui.comm.scan.dll" />
+    <Content Include="dlls\qs2.ui.dll" />
+    <Content Include="dlls\qs2.ui.vb.dll" />
+    <Content Include="dlls\QueryExpress.dll" />
+    <Content Include="dlls\report.StayCARDIAC.dll" />
+    <Content Include="dlls\report.StayTestProduct.dll" />
+    <Content Include="dlls\report.StayVASCULAR.dll" />
+    <Content Include="dlls\Syncfusion.Compression.Base.dll" />
+    <Content Include="dlls\Syncfusion.Grid.Base.dll" />
+    <Content Include="dlls\Syncfusion.Grid.Windows.dll" />
+    <Content Include="dlls\Syncfusion.Pdf.Base.dll" />
+    <Content Include="dlls\Syncfusion.Pdf.Windows.dll" />
+    <Content Include="dlls\Syncfusion.PdfViewer.Windows.dll" />
+    <Content Include="dlls\Syncfusion.Shared.Base.dll" />
+    <Content Include="dlls\Syncfusion.Shared.Windows.dll" />
+    <Content Include="dlls\Syncfusion.SpellChecker.Base.dll" />
+    <Content Include="dlls\Syncfusion.Tools.Base.dll" />
+    <Content Include="dlls\Syncfusion.Tools.Windows.dll" />
+    <Content Include="dlls\Syncfusion.XlsIO.Base.dll" />
+    <Content Include="dlls\Syncfusion.XlsIO.Windows.dll" />
+    <Content Include="dlls\VintaSoft.Twain.dll" />
+    <Content Include="dlls\WinFormHtmlEditor.dll" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="x86\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="app.config" />
-    <None Include="launcherVorlage.Config" />
-    <None Include="PMDSVorlage.Config" />
     <None Include="sql.hl\sql.hl.sonstigeSkripts\AllePatientenL?schen.os.sql" />
   </ItemGroup>
   <ItemGroup>
@@ -1020,7 +1089,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_AssemblyInfoFilename="Assembly.info" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_StartDate="2010/11/23" />
+      <UserProperties BuildVersion_StartDate="2010/11/23" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_AssemblyInfoFilename="Assembly.info" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
