@@ -806,7 +806,7 @@ Public Class workCalcDb
 
             If BMDExportTyp = eBMDExportTyp.MZ Then
                 'MZ-spezifische Spalten sezen
-                rNewRowExport.periode = rBill.RechDatum.Date.ToString("yyyyMM")
+                rNewRowExport.periode = rBill.RechDatum.Month().ToString()
                 rNewRowExport.benutzer = "99"
                 rNewRowExport.text = ("ZIVK-" + lineExport1.NameKost.Trim()).Substring(0, Math.Min(18, lineExport1.NameKost.Trim().Length + 5))
 
@@ -815,7 +815,7 @@ Public Class workCalcDb
                     Dim rUmbuchung As dsExport.ExportBMDRow = Me.dbExport1.getNewRowExportBMD(dsExportResult, BMDExportTyp)
                     rUmbuchung.Satzart = rNewRowExport.Satzart
                     rUmbuchung.konto = rNewRowExport.FiBuKostSub
-                    rUmbuchung.buchdatum = rBill.RechDatum.Month().ToString()
+                    rUmbuchung.buchdatum = rNewRowExport.buchdatum
                     rUmbuchung.belegnr = rNewRowExport.belegnr
                     rUmbuchung.periode = rNewRowExport.periode
                     rUmbuchung.belegdatum = rNewRowExport.belegdatum
