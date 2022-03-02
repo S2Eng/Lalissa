@@ -7702,7 +7702,7 @@ namespace PMDS.DB
         {
             try
             {
-                PdfCommon.Initialize("52433553494d50032923be84e16cd6ae0bce153446af7918d52303038286fd2b0597de34bf5bb65e2a161a268e74107bd7da7c1adb202edff3e8c55a13bff7afa38569c96e45ff0cdef48e36b8df77e907676788cae00126f52c5eaadbb3c424062e8e0e5feb6faf89900306ee469aa40664bdf84b2e4fce7497c19f3f9d2d877dc1be192cb695f4");
+                PdfCommon.Initialize(ENV.PdfiumKey);
                 using (var docIn = PdfDocument.Load(bytesPDF))
                 {
                     using (var docOut = PdfDocument.CreateNew())
@@ -7718,7 +7718,7 @@ namespace PMDS.DB
 
                         using (var bmp = new PdfBitmap((int)page.Width, height, true))      //Create a bitmap 
                         {
-                            bmp.FillRect(0, 0, width, height, Color.White);                 //Fill background
+                            bmp.FillRect(0, 0, width, height, Patagames.Pdf.FS_COLOR.White);                 //Fill background
                             page.Render(bmp, 0, 0, width, height,
                                 Patagames.Pdf.Enums.PageRotate.Normal,
                                 Patagames.Pdf.Enums.RenderFlags.FPDF_ANNOT);                //Render contents in a page to a drawing surface specified by a coordinate pair, a width, and a height.

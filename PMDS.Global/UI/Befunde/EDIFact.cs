@@ -638,7 +638,7 @@ namespace EDIFact
                                 FileIn = System.IO.Path.Combine(Befund.Verzeichnis, Befund.BezeichnungFile);
                                 using (Chilkat.Zip zip = new Chilkat.Zip())
                                 {
-                                    zip.UnlockComponent("S2ENGN.CB1022023_XfLzJ7t36L5K");
+                                    zip.UnlockComponent(ENV.ChilkatKey);
                                     FileInfo fi = new FileInfo(FileIn);
                                     //Befund.DateiType = ENV.BefundTypText(eBefundTyp.ZIP);    //os 150998 warum?
                                     Befund.SizeDoku = Befund.byteDicomSeriesFile.Length;
@@ -922,7 +922,7 @@ namespace EDIFact
                         using (Chilkat.Zip zip = new Chilkat.Zip())
                         {
                             //Verzeichnis inkl. Unterverzeichnisse in Zip-File speichern
-                            zip.UnlockComponent("S2ENGN.CB1022023_XfLzJ7t36L5K");
+                            zip.UnlockComponent(ENV.ChilkatKey);
                             zip.NewZip("not_used.zip");
                             FileInfo fi = new FileInfo(Datei);
                             zip.AppendFiles(System.IO.Path.Combine(fi.DirectoryName, "*.*"), true);
@@ -970,7 +970,7 @@ namespace EDIFact
                     //ZIP temporär entpacken
                     using (Chilkat.Zip zip = new Chilkat.Zip())
                     {
-                        zip.UnlockComponent("S2ENGN.CB1022023_XfLzJ7t36L5K");
+                        zip.UnlockComponent(ENV.ChilkatKey);
                         zip.OpenZip(Datei);
                         zip.Unzip(tmpDir);
                     }

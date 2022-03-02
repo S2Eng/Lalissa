@@ -108,8 +108,12 @@ namespace PMDS.Global
         }
 
         public static string StartupMode = "pmds";
-        public static bool VisualStudioMode = (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
+        public static bool VisualStudioMode = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
         public static Guid VersionNr = new Guid("10000000-1009-1000-0000-000000000001");
+        
+        //public const string PdfiumKey = "52433553494d50032923be84e16cd6ae0bce153446af7918d52303038286fd2b0597de34bf5bb65e2a161a268e74107bd7da7c1adb202edff3e8c55a13bff7afa38569c96e45ff0cdef48e36b8df77e907676788cae00126f52c5eaadbb3c424062e8e0e5feb6faf89900306ee469aa40664bdf84b2e4fce7497c19f3f9d2d877dc1be192cb695f4";  //Version 3.10.5
+        public const string PdfiumKey = "EEF63308-0101E307-06060B50-44464955-4D5F434F-52501500-6F734073-322D656E-67696E65-6572696E-672E636F-6D40006E-50A02F72-7589BDC9-FA775FFE-E4C11070-8AECCB91-AA05BDDC-9064397A-0128DB07-08CA4E9D-1701E8DB-F0CAEA1E-386F13D9-6F207B8F-4FFCD647-D4BDA0FC-669139";        
+        public const string ChilkatKey = "S2ENGN.CB1022023_XfLzJ7t36L5K";  //Version 9.5.0.89 - 29.11.2021
 
         public static System.Data.OleDb.OleDbConnection conGiboDat;
         public static string IDApplication = qs2.core.license.doLicense.eApp.PMDS.ToString();

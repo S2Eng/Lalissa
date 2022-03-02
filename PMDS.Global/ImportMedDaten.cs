@@ -271,7 +271,7 @@ namespace PMDS.Global
                 {
                     using (Chilkat.Zip zip = new Chilkat.Zip())
                     {
-                        if (!zip.UnlockComponent("S2ENGN.CB1022023_XfLzJ7t36L5K"))
+                        if (!zip.UnlockComponent(ENV.ChilkatKey))
                         {
                             throw new Exception("Interner Fehler: Chilkat-Zip-Komponente kann nicht lizenzisert werden: \n" + zip.LastErrorText);
                         }
