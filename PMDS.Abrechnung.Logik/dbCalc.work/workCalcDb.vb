@@ -823,7 +823,7 @@ Public Class workCalcDb
                     rUmbuchung.gkonto = rNewRowExport.konto
                     rUmbuchung.buchcode = rNewRowExport.buchcode
                     'rUmbuchung.betrag = rNewRowExport.betrag + rNewRowExport.steuer * -1
-                    rUmbuchung.betrag = rNewRowExport.betrag * -1       'Bruttobetrag negativ, weil Buchungscode = 0.
+                    rUmbuchung.betrag = rNewRowExport.betrag
                     rUmbuchung.prozent = 0
                     rUmbuchung.steuer = 0
                     rUmbuchung.text = ("FSW-" + lineExport1.NameKost.Trim()).Substring(0, Math.Min(18, lineExport1.NameKost.Trim().Length + 4))
