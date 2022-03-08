@@ -323,6 +323,7 @@ namespace Launcher
                 update.sUsername = this.config.searchKeyArg("Username", Environment.CommandLine);
                 update.sPasswordEnc = this.config.searchKeyArg("Password", Environment.CommandLine);
                 update.sshowSplash = this.config.searchKeyArg("showSplash", Environment.CommandLine);
+                update.sKeepLauncherInTaskbar = this.config.searchKeyArg("keepLauncherInRaskbar", Environment.CommandLine);
 
                 //Commandline-Parameter übersteuern Default in Config
                 if (String.IsNullOrWhiteSpace(update.sProgramFile)) update.sProgramFile = ConfigFile.getValue("Main", "ProgramFile", false);
@@ -330,10 +331,12 @@ namespace Launcher
                 if (String.IsNullOrWhiteSpace(update.sConfigFile)) update.sConfigFile = ConfigFile.getValue("Main", "ConfigFile", false);
                 if (String.IsNullOrWhiteSpace(update.sConfigPath)) update.sConfigPath = ConfigFile.getValue("Main", "ConfigPath", false);
                 if (String.IsNullOrWhiteSpace(update.sshowSplash)) update.sshowSplash = ConfigFile.getValue("Main", "showSplash", false);
+                if (String.IsNullOrWhiteSpace(update.sKeepLauncherInTaskbar)) update.sKeepLauncherInTaskbar = ConfigFile.getValue("Main", "keepLauncherInTaskbar", false);
 
                 if (String.IsNullOrWhiteSpace(update.sDomain)) update.sDomain = ConfigFile.getValue("Main", "Domain", false);
                 if (String.IsNullOrWhiteSpace(update.sUsername)) update.sUsername = ConfigFile.getValue("Main", "Username", false);
                 if (String.IsNullOrWhiteSpace(update.sPasswordEnc)) update.sPasswordEnc = ConfigFile.getValue("Main", "Password", false);
+                if (String.IsNullOrWhiteSpace(update.sKeepLauncherInTaskbar)) update.sKeepLauncherInTaskbar = "0";
 
                 if (String.IsNullOrWhiteSpace(update.sProgramFile)) throw new Exception("Definition für ProgramFile fehlt");
                 if (String.IsNullOrWhiteSpace(update.sProgramPath)) throw new Exception("Definition für ProgramPath fehlt");
@@ -467,7 +470,15 @@ namespace Launcher
 
                             //System.Diagnostics.Process.Start(strExe, argsRun);
                             this.tbPasswort.Text = "";
-                            Environment.Exit(0);
+
+                            if (Convert.ToBoolean(Convert.ToInt32(update.sKeepLauncherInTaskbar)))
+                            {
+                                this.ProcessMinimize(true, false);
+                            }
+                            else
+                            {
+                                Environment.Exit(0);
+                            }
                         }
                     }
 

@@ -38,6 +38,7 @@ namespace Launcher
         public static string sProgramPath = "";
         public static string sProgramFile = "";
         public static string sshowSplash = "0";
+        public static string sKeepLauncherInTaskbar = "0";
 
         //Für Starten mit sicherem User-Account
         public static string sDomain = "";
