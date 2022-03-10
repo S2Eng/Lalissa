@@ -491,8 +491,8 @@ namespace PMDS.GUI
             {
                 HideOrShowEintragGruppe(tn, group, hide);
 
-
-                if (tn.ToString().ToUpper().Contains("RISIKO"))
+                PMDS.Global.PDxSelectionArgs t = (PMDS.Global.PDxSelectionArgs)tn.Tag;
+                if (t.PDXGruppe == 1 || tn.ToString().ToUpper().Contains("RISIKO"))
                 {
                     // Äthiologie in Risikofaktoren umbenennen
                     foreach (UltraTreeNode n in tn.Nodes)
@@ -502,10 +502,14 @@ namespace PMDS.GUI
                             n.Visible = false;
                             //HideOrShowEintragGruppe(n, group, false);
                         }
-                        else if (n.Tag.ToString() == "A")
+                        else if (_PflegePlanModus == PflegePlanModus.Normal && n.Tag.ToString() == "A")
                         {
-                            n.Text = ENV.String("RFs"); //Risikofaktoren
-                                                        //HideOrShowEintragGruppe(n, group, true);
+                            n.Text = ENV.String("RFs"); //Ätiologien in Risikofaktoren umbenennen
+                                                       
+                        }
+                        else if (_PflegePlanModus == PflegePlanModus.Wunde && n.Tag.ToString() == "A")
+                        {
+                            n.Text = ENV.String("B"); //Ätiologien in Beeinflussende Faktoren umbenennen
                         }
                     }
                 }
@@ -764,18 +768,40 @@ namespace PMDS.GUI
             {
                 if (name == "T" || name == "X") continue;
                 
-                //Bei PDXGruppe == -1 nur Maßnahmen anzeigen
+                //Bei PDXGruppe == 3 nur Maßnahmen anzeigen
                 if (pdxSA.PDXGruppe == 3 && _PflegePlanModus != PflegePlanModus.Wunde && name != "M")
                 {               
                         continue;
                 }
 
                 //Bei Wunden Symptome nicht anzeigen
-                if (_PflegePlanModus == PflegePlanModus.Wunde && name == "S") continue;
+                if (_PflegePlanModus == PflegePlanModus.Wunde && name == "S")
+                {
+                    continue;
+                }
+
+                //Bei Risikodiagnosen
+                if (pdxSA.PDXGruppe == 1 && name == "S")
+                {
+                        continue;       //Symptome ausblenden
+                }
 
                 if (!UltraTreeTools.ExistPDxEintragGruppe(tv, name + "_" + pdxSA.IDPDX.ToString()))
                 {
-                    n = tn.Nodes.Add(name + "_" + pdxSA.IDPDX.ToString(), ENV.String(name));
+                    if (_PflegePlanModus == PflegePlanModus.Normal && pdxSA.PDXGruppe == 1 && name == "A")
+                    {
+                        //Bei Risikodiagnosen 
+                        n = tn.Nodes.Add(name + "_" + pdxSA.IDPDX.ToString(), ENV.String("RFs"));   //Ätiologien in Risikofaktoren umbenennen
+                    }
+                    else if (_PflegePlanModus == PflegePlanModus.Wunde && name == "A")
+                    {
+                        //Bei Wund-Diagnosen 
+                        n = tn.Nodes.Add(name + "_" + pdxSA.IDPDX.ToString(), ENV.String("B"));   //Ätiologien in Beeinflussende Faktoren umbenennen
+                    }
+                    else
+                    {
+                        n = tn.Nodes.Add(name + "_" + pdxSA.IDPDX.ToString(), ENV.String(name));
+                    }
                     eintraggruppe = (EintragGruppe)Enum.Parse(typeof(EintragGruppe), name);
                     n.Tag = eintraggruppe;
                 }

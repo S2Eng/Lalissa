@@ -177,7 +177,7 @@ namespace PMDS.GUI
 
                                 if (iCounter == 0)
                                 {
-                                    Aktuellereintrag.Firsttext = rIntervention.Maﬂnahme.Trim();         //rEintrag.Text;
+                                    Aktuellereintrag.Firsttext = (rIntervention.Maﬂnahme.Trim() + "\n" + rIntervention.Anmerkung_und_Hinweis).Trim();         //rEintrag.Text;
                                     Aktuellereintrag.IDEintrag = rEintrag.ID;
                                 }
                                 QMEintrag.cPflegepl‰neProButton Pflegepl‰neProButton = new QMEintrag.cPflegepl‰neProButton();

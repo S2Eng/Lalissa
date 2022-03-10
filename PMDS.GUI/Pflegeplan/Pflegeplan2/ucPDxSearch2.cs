@@ -817,6 +817,32 @@ namespace PMDS.GUI
             tvGenerell.ListIDPDX = null;
             tvGenerell.PDX_SELARGS = listGenerell.ToArray();
             tvGenerell.RemovePDxNodes(tvSpecific.GetPDxNodes());
+            //tvGenerell.GetPDxNodes()[0].Nodes[0].Text = ENV.String("B");
+            
+            foreach (Infragistics.Win.UltraWinTree.UltraTreeNode n in tvGenerell.GetPDxNodes())
+            {
+                foreach (var nn in n.Nodes)
+                {
+                    foreach (PDxSelectionArgs selArg in listGenerell)
+                    {
+                        if (selArg.WundeJN)
+                        {
+                            if (nn.Tag.ToString() == "A" && n.Key == selArg.IDPDX.ToString())
+                            {
+                                nn.Text = ENV.String("B");
+                            }
+                        }
+                        else
+                        {
+                            if (nn.Tag.ToString() == "A" && n.Key == selArg.IDPDX.ToString() && selArg.PDXGruppe == 1)
+                            {
+                                nn.Text = ENV.String("RFs");
+                            }
+                        }
+                    }
+                }
+            }
+
 
             tvGenerell.SelectAllTreeNodes(false);
             ShowHideTabs();

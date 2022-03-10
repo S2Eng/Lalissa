@@ -1147,7 +1147,7 @@ Wollen Sie fortfahren und die Änderungen übernehmen?</value>
     <value>Ressource</value>
   </data>
   <data name="Rzugeordnet" xml:space="preserve">
-    <value>Tugeordnete Ressourcen</value>
+    <value>Zugeordnete Ressourcen</value>
   </data>
   <data name="R_Select" xml:space="preserve">
     <value>Ressourcenwahl:</value>

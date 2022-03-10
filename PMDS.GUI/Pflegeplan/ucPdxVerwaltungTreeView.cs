@@ -14,6 +14,7 @@ using PMDS.GUI.BaseControls;
 using PMDS.Global;
 using PMDS.Data.PflegePlan;
 using PMDS.Global.db.Pflegeplan;
+using S2Extensions;
 
 namespace PMDS.GUI
 {
@@ -119,8 +120,6 @@ namespace PMDS.GUI
                 AddASZMEintraege(tv.Nodes[0], name);
             }
 
-
-
             if (_ExpendAll)
                 tv.ExpandAll();
 
@@ -133,26 +132,39 @@ namespace PMDS.GUI
             UltraTreeNode n = new UltraTreeNode();
 
             bool bIsAdded = false;
-            if (Def.WundeJN && name == "A")
-            {
-                // Äthiologie in Beeinflussende Faktoren umbenennen
-                n = PDxTreeNode.Nodes.Add(Def.ID + "_" + name, ENV.String("B"));
-                bIsAdded = true;
-            }
 
-            if (!Def.WundeJN && name == "A" && PDxTreeNode.ToString().ToUpper().Contains("RISIKO"))
+            //Bei Wunden
+            if (Def.WundeJN)
             {
-                // Äthiologie in Risikofaktoren umbenennen
-                n = PDxTreeNode.Nodes.Add(Def.ID + "_" + name, ENV.String("RFs"));
-                bIsAdded = true;
+                if (name == "S")
+                {
+                    n = PDxTreeNode.Nodes.Add(Def.ID + "_" + name, ENV.String("B"));
+                    n.Visible = false;                              //Symptome ausblenden
+                    bIsAdded = true;
+                }
+                else if (name == "A")
+                {
+                    n = PDxTreeNode.Nodes.Add(Def.ID + "_" + name, ENV.String("B"));    // Ätiologien in Beeinflussende Faktoren umbenennen
+                    bIsAdded = true;
+                }
             }
-
-            if (name == "S" && PDxTreeNode.ToString().ToUpper().Contains("RISIKO"))
+            else
             {
-                //Symptome bei Risikodiagnosen ausblenden
-                n = PDxTreeNode.Nodes.Add(Def.ID + "_" + name, ENV.String("S"));
-                n.Visible = false;
-                bIsAdded = true;
+                if (PDxTreeNode.Tag.GetType() == typeof(PMDS.Global.PDXDef))
+                {
+                    PMDS.Global.PDXDef t = (PMDS.Global.PDXDef)PDxTreeNode.Tag;
+                    if (name == "A" && (t.PDXGruppe == PMDS.Global.ePDXGruppe.Risikodiagnose || PDxTreeNode.sContains("RISIKO")))
+                    {
+                        n = PDxTreeNode.Nodes.Add(Def.ID + "_" + name, ENV.String("RFs"));  // Ätiologien in Risikofaktoren umbenennen
+                        bIsAdded = true;
+                    }
+                    else if (name == "S" && (t.PDXGruppe == PMDS.Global.ePDXGruppe.Risikodiagnose || PDxTreeNode.sContains("RISIKO")))
+                    {
+                        n = PDxTreeNode.Nodes.Add(Def.ID + "_" + name, ENV.String("S"));
+                        n.Visible = false;                              //Symptome ausblenden
+                        bIsAdded = true;
+                    }
+                }
             }
 
             if (!bIsAdded)
@@ -184,9 +196,9 @@ namespace PMDS.GUI
                 }
 
             }
-
-
+            //n.Dispose();
         }
+
         public UltraTreeNode[] GetCheckedASZMTreeNodes()
         {
             List<UltraTreeNode> list = new List<UltraTreeNode>();

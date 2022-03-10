@@ -691,26 +691,27 @@ namespace PMDS.GUI
 
             foreach (UltraTreeNode tn1 in tv.Nodes)
             {
-                if (tn1.ToString().ToUpper().Contains("RISIKO"))
-                {
-                    // Äthiologie in Risikofaktoren umbenennen
+                //Bei Risikodiagnosen
+                PMDS.Global.PDxSelectionArgs t = (PMDS.Global.PDxSelectionArgs)tn1.Tag;
+                if (t.PDXGruppe == 1 || tn1.ToString().ToUpper().Contains("RISIKO")) 
+                {                    
                     foreach (UltraTreeNode n in tn1.Nodes)
                     {
-                        if (n.Tag.ToString() == "S")
+                        if (n.Tag.ToString() == "S")    //Symptome ausblenden
                         {
                             n.Visible = false;
-                            //HideOrShowEintragGruppe(n, group, false);
                         }
-                        else if (n.Tag.ToString() == "A")
+                        else if (_PflegePlanModus == PflegePlanModus.Normal && n.Tag.ToString() == "A")
                         {
-                            n.Text = ENV.String("RFs"); //Risikofaktoren
-                                                        //HideOrShowEintragGruppe(n, group, true);
+                            n.Text = ENV.String("RFs"); //Ätiologien in Risikofaktoren umbenennen                                                
+                        }
+                        else if (_PflegePlanModus == PflegePlanModus.Wunde && n.Tag.ToString() == "A")
+                        {
+                            n.Text = ENV.String("B"); //Ätiologien in Beeinflussende Faktoren umbenennen                                                
                         }
                     }
                 }
             }
-
-
 
             tv.Select();
             tv.EndUpdate();
@@ -1606,19 +1607,22 @@ namespace PMDS.GUI
                 tn.Visible = !hide;
             }
 
-            //os 20.9.2018 Risiko-PDX haben keine Ätiologie, sondern Risikofaktoren und keine Symptome
+            //os 20.9.2018 Risikodiagnosen haben keine Ätiologie, sondern Risikofaktoren und keine Symptome
+            //PMDS.Global.EintragGruppe t = (PMDS.Global.EintragGruppe)tn.Tag;
             if (tn.ToString().ToUpper().Contains("RISIKO"))
                 foreach (UltraTreeNode n in tn.Nodes)
                 {
                     if (n.Tag.ToString() == "S")
                     {
-                        n.Visible = false;
-                        //HideOrShowEintragGruppe(n, group, false);
+                        n.Visible = false;          //Symptome ausblenden
                     }
-                    else if (n.Tag.ToString() == "A")
+                    else if (_PflegePlanModus == PflegePlanModus.Normal && n.Tag.ToString() == "A")
                     {
-                        n.Text = ENV.String("RFs"); //Risikofaktoren
-                        //HideOrShowEintragGruppe(n, group, true);
+                        n.Text = ENV.String("RFs"); //Ätiologien in Risikofaktoren umbenennen
+                    }
+                    else if (_PflegePlanModus == PflegePlanModus.Wunde && n.Tag.ToString() == "A")
+                    {
+                        n.Text = ENV.String("B"); //Ätiologien in Beeinflussende Faktoren umbenennen
                     }
                 }
 
