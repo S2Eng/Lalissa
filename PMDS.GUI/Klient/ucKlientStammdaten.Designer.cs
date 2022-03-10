@@ -2,6 +2,7 @@
 using PMDS.Global.db.Global;
 using PMDS.GUI.Klient;
 using PMDS.Klient;
+using PMDSClient.Sitemap;
 
 namespace PMDS.GUI
 {
@@ -203,7 +204,7 @@ namespace PMDS.GUI
             PMDS.Global.UIGlobal uiGlobal1 = new PMDS.Global.UIGlobal();
             PMDS.DB.PMDSBusiness pmdsBusiness2 = new PMDS.DB.PMDSBusiness();
             PMDS.Global.UIGlobal uiGlobal2 = new PMDS.Global.UIGlobal();
-            //PMDSClient.Sitemap.WCFServiceClient wcfServiceClient1 = new PMDSClient.Sitemap.WCFServiceClient();
+            WCFServiceClient wcfServiceClient1 = new WCFServiceClient();
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
@@ -627,10 +628,12 @@ namespace PMDS.GUI
             this.txtLand.ExactMatch = false;
             this.txtLand.Group = "LND";
             this.txtLand.ID_PEP = -1;
+            this.txtLand.IgnoreUnterdruecken = true;
             this.txtLand.Location = new System.Drawing.Point(203, 119);
             this.txtLand.MaxLength = 20;
             this.txtLand.Name = "txtLand";
             this.txtLand.PflichtJN = false;
+            this.txtLand.SelectDistinct = false;
             this.txtLand.ShowAddButton = true;
             this.txtLand.Size = new System.Drawing.Size(250, 24);
             this.txtLand.sys = false;
@@ -948,10 +951,12 @@ namespace PMDS.GUI
             this.txtLandNWS.ExactMatch = false;
             this.txtLandNWS.Group = "LND";
             this.txtLandNWS.ID_PEP = -1;
+            this.txtLandNWS.IgnoreUnterdruecken = true;
             this.txtLandNWS.Location = new System.Drawing.Point(203, 89);
             this.txtLandNWS.MaxLength = 20;
             this.txtLandNWS.Name = "txtLandNWS";
             this.txtLandNWS.PflichtJN = false;
+            this.txtLandNWS.SelectDistinct = false;
             this.txtLandNWS.ShowAddButton = true;
             this.txtLandNWS.Size = new System.Drawing.Size(250, 24);
             this.txtLandNWS.sys = false;
@@ -1310,10 +1315,12 @@ namespace PMDS.GUI
             this.cboTitelPost.ExactMatch = false;
             this.cboTitelPost.Group = "TTP";
             this.cboTitelPost.ID_PEP = -1;
+            this.cboTitelPost.IgnoreUnterdruecken = true;
             this.cboTitelPost.Location = new System.Drawing.Point(309, 151);
             this.cboTitelPost.MaxLength = 40;
             this.cboTitelPost.Name = "cboTitelPost";
             this.cboTitelPost.PflichtJN = false;
+            this.cboTitelPost.SelectDistinct = false;
             this.cboTitelPost.ShowAddButton = true;
             this.cboTitelPost.Size = new System.Drawing.Size(173, 24);
             this.cboTitelPost.sys = false;
@@ -1388,10 +1395,12 @@ namespace PMDS.GUI
             this.cmbStaatsB.ExactMatch = false;
             this.cmbStaatsB.Group = "SBS";
             this.cmbStaatsB.ID_PEP = -1;
+            this.cmbStaatsB.IgnoreUnterdruecken = true;
             this.cmbStaatsB.Location = new System.Drawing.Point(309, 181);
             this.cmbStaatsB.MaxLength = 255;
             this.cmbStaatsB.Name = "cmbStaatsB";
             this.cmbStaatsB.PflichtJN = false;
+            this.cmbStaatsB.SelectDistinct = false;
             this.cmbStaatsB.ShowAddButton = true;
             this.cmbStaatsB.Size = new System.Drawing.Size(173, 24);
             this.cmbStaatsB.sys = false;
@@ -1431,10 +1440,12 @@ namespace PMDS.GUI
             this.cmbAkdGrad.ExactMatch = false;
             this.cmbAkdGrad.Group = "TIT";
             this.cmbAkdGrad.ID_PEP = -1;
+            this.cmbAkdGrad.IgnoreUnterdruecken = true;
             this.cmbAkdGrad.Location = new System.Drawing.Point(90, 151);
             this.cmbAkdGrad.MaxLength = 40;
             this.cmbAkdGrad.Name = "cmbAkdGrad";
             this.cmbAkdGrad.PflichtJN = false;
+            this.cmbAkdGrad.SelectDistinct = false;
             this.cmbAkdGrad.ShowAddButton = true;
             this.cmbAkdGrad.Size = new System.Drawing.Size(139, 24);
             this.cmbAkdGrad.sys = false;
@@ -1451,10 +1462,12 @@ namespace PMDS.GUI
             this.cmbKonfession.ExactMatch = false;
             this.cmbKonfession.Group = "KON";
             this.cmbKonfession.ID_PEP = -1;
+            this.cmbKonfession.IgnoreUnterdruecken = true;
             this.cmbKonfession.Location = new System.Drawing.Point(90, 211);
             this.cmbKonfession.MaxLength = 255;
             this.cmbKonfession.Name = "cmbKonfession";
             this.cmbKonfession.PflichtJN = false;
+            this.cmbKonfession.SelectDistinct = false;
             this.cmbKonfession.ShowAddButton = true;
             this.cmbKonfession.Size = new System.Drawing.Size(392, 24);
             this.cmbKonfession.sys = false;
@@ -1470,10 +1483,12 @@ namespace PMDS.GUI
             this.cmbAnrede.ExactMatch = false;
             this.cmbAnrede.Group = "ANR";
             this.cmbAnrede.ID_PEP = -1;
+            this.cmbAnrede.IgnoreUnterdruecken = true;
             this.cmbAnrede.Location = new System.Drawing.Point(309, 89);
             this.cmbAnrede.MaxLength = 15;
             this.cmbAnrede.Name = "cmbAnrede";
             this.cmbAnrede.PflichtJN = false;
+            this.cmbAnrede.SelectDistinct = false;
             this.cmbAnrede.ShowAddButton = true;
             this.cmbAnrede.Size = new System.Drawing.Size(173, 24);
             this.cmbAnrede.sys = false;
@@ -1501,10 +1516,12 @@ namespace PMDS.GUI
             this.cmbFAM.ExactMatch = false;
             this.cmbFAM.Group = "FAM";
             this.cmbFAM.ID_PEP = -1;
+            this.cmbFAM.IgnoreUnterdruecken = true;
             this.cmbFAM.Location = new System.Drawing.Point(90, 181);
             this.cmbFAM.MaxLength = 15;
             this.cmbFAM.Name = "cmbFAM";
             this.cmbFAM.PflichtJN = false;
+            this.cmbFAM.SelectDistinct = false;
             this.cmbFAM.ShowAddButton = true;
             this.cmbFAM.Size = new System.Drawing.Size(139, 24);
             this.cmbFAM.sys = false;
@@ -1542,10 +1559,12 @@ namespace PMDS.GUI
             this.cmbSexus.ExactMatch = false;
             this.cmbSexus.Group = "SEX";
             this.cmbSexus.ID_PEP = -1;
+            this.cmbSexus.IgnoreUnterdruecken = true;
             this.cmbSexus.Location = new System.Drawing.Point(90, 89);
             this.cmbSexus.MaxLength = 15;
             this.cmbSexus.Name = "cmbSexus";
             this.cmbSexus.PflichtJN = false;
+            this.cmbSexus.SelectDistinct = false;
             this.cmbSexus.ShowAddButton = true;
             this.cmbSexus.Size = new System.Drawing.Size(139, 24);
             this.cmbSexus.sys = false;
@@ -1771,6 +1790,7 @@ namespace PMDS.GUI
             this.lblPatientenverfügung.Size = new System.Drawing.Size(192, 17);
             this.lblPatientenverfügung.TabIndex = 97;
             this.lblPatientenverfügung.Text = "Patientenverfügung vorhanden!";
+            this.lblPatientenverfügung.Click += new System.EventHandler(this.lblPatientenverfügung_Click);
             this.lblPatientenverfügung.MouseEnter += new System.EventHandler(this.lblPatientenverfügung_MouseEnter);
             this.lblPatientenverfügung.MouseLeave += new System.EventHandler(this.lblPatientenverfügung_MouseLeave);
             this.lblPatientenverfügung.MouseHover += new System.EventHandler(this.lblPatientenverfügung_MouseHover);
@@ -2070,10 +2090,12 @@ namespace PMDS.GUI
             this.cmbstatur.ExactMatch = false;
             this.cmbstatur.Group = "STA";
             this.cmbstatur.ID_PEP = -1;
+            this.cmbstatur.IgnoreUnterdruecken = true;
             this.cmbstatur.Location = new System.Drawing.Point(137, 115);
             this.cmbstatur.MaxLength = 50;
             this.cmbstatur.Name = "cmbstatur";
             this.cmbstatur.PflichtJN = false;
+            this.cmbstatur.SelectDistinct = false;
             this.cmbstatur.ShowAddButton = true;
             this.cmbstatur.Size = new System.Drawing.Size(169, 24);
             this.cmbstatur.sys = false;
@@ -2090,10 +2112,12 @@ namespace PMDS.GUI
             this.cmbHaarFarbe.ExactMatch = false;
             this.cmbHaarFarbe.Group = "HFR";
             this.cmbHaarFarbe.ID_PEP = -1;
+            this.cmbHaarFarbe.IgnoreUnterdruecken = true;
             this.cmbHaarFarbe.Location = new System.Drawing.Point(137, 85);
             this.cmbHaarFarbe.MaxLength = 255;
             this.cmbHaarFarbe.Name = "cmbHaarFarbe";
             this.cmbHaarFarbe.PflichtJN = false;
+            this.cmbHaarFarbe.SelectDistinct = false;
             this.cmbHaarFarbe.ShowAddButton = true;
             this.cmbHaarFarbe.Size = new System.Drawing.Size(169, 24);
             this.cmbHaarFarbe.sys = false;
@@ -2110,10 +2134,12 @@ namespace PMDS.GUI
             this.cmbAugenFarbe.ExactMatch = false;
             this.cmbAugenFarbe.Group = "AFR";
             this.cmbAugenFarbe.ID_PEP = -1;
+            this.cmbAugenFarbe.IgnoreUnterdruecken = true;
             this.cmbAugenFarbe.Location = new System.Drawing.Point(137, 55);
             this.cmbAugenFarbe.MaxLength = 255;
             this.cmbAugenFarbe.Name = "cmbAugenFarbe";
             this.cmbAugenFarbe.PflichtJN = false;
+            this.cmbAugenFarbe.SelectDistinct = false;
             this.cmbAugenFarbe.ShowAddButton = true;
             this.cmbAugenFarbe.Size = new System.Drawing.Size(169, 24);
             this.cmbAugenFarbe.sys = false;
@@ -3049,10 +3075,12 @@ namespace PMDS.GUI
             this.cboRezGebBef_WiderrufGrund.ExactMatch = false;
             this.cboRezGebBef_WiderrufGrund.Group = "RGW";
             this.cboRezGebBef_WiderrufGrund.ID_PEP = -1;
+            this.cboRezGebBef_WiderrufGrund.IgnoreUnterdruecken = true;
             this.cboRezGebBef_WiderrufGrund.Location = new System.Drawing.Point(176, 138);
             this.cboRezGebBef_WiderrufGrund.MaxLength = 40;
             this.cboRezGebBef_WiderrufGrund.Name = "cboRezGebBef_WiderrufGrund";
             this.cboRezGebBef_WiderrufGrund.PflichtJN = false;
+            this.cboRezGebBef_WiderrufGrund.SelectDistinct = false;
             this.cboRezGebBef_WiderrufGrund.ShowAddButton = true;
             this.cboRezGebBef_WiderrufGrund.Size = new System.Drawing.Size(331, 24);
             this.cboRezGebBef_WiderrufGrund.sys = false;
@@ -3073,10 +3101,7 @@ namespace PMDS.GUI
             this.datRezGebBef_RegoAb.TabIndex = 3;
             this.datRezGebBef_RegoAb.Value = null;
             this.datRezGebBef_RegoAb.ValueChanged += new System.EventHandler(this.datRezGebBef_RegoAb_ValueChanged);
-            this.datRezGebBef_RegoAb.Enter += new System.EventHandler(this.datRezGebBef_RegoAb_Enter);
             this.datRezGebBef_RegoAb.Leave += new System.EventHandler(this.datRezGebBef_RegoAb_Leave);
-            this.datRezGebBef_RegoAb.MouseEnter += new System.EventHandler(this.datRezGebBef_RegoAb_MouseEnter);
-            this.datRezGebBef_RegoAb.MouseLeave += new System.EventHandler(this.datRezGebBef_RegoAb_MouseLeave);
             // 
             // baseLabel2
             // 
@@ -3398,6 +3423,7 @@ namespace PMDS.GUI
             this.contELGAKlient1.Size = new System.Drawing.Size(1028, 606);
             this.contELGAKlient1.TabIndex = 0;
             this.contELGAKlient1.UIGlobal1 = uiGlobal2;
+            this.contELGAKlient1.WCFServiceClient1 = wcfServiceClient1;
             // 
             // contextMenuStripÄrzte
             // 

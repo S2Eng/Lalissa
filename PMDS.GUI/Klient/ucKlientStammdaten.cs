@@ -24,6 +24,7 @@ using System.Security;
 using System.Linq;
 using PMDS.Global.db.ERSystem;
 using S2Extensions;
+using System.Collections;
 
 namespace PMDS.GUI
 {
@@ -38,7 +39,7 @@ namespace PMDS.GUI
         public event EventHandler VersDatenChanged;
         //Neu nach 27.04.2007 MDA
         private bool _readOnly = false;
-
+        private Guid IDPatientenverfügungOrdner = Guid.Empty;
 
         public bool _mainSystem = false;
         public bool _isAbrechnung = false;
@@ -1991,36 +1992,93 @@ namespace PMDS.GUI
             }
         }
 
-
         private void lblPatientenverfügung_MouseEnter(object sender, EventArgs e)
         {
             try
             {
-                if (this.InfoPatientenverfügung.Trim() != "")
+                if (!String.IsNullOrWhiteSpace(this.InfoPatientenverfügung))
                 {
-                    UltraToolTipInfo info = new UltraToolTipInfo();
-                    //info.ToolTipTitle = this.InfoPatientenverfügung.Trim();
-                    info.ToolTipText = this.InfoPatientenverfügung.Trim();
-                    this.ultraToolTipManager1.SetUltraToolTip(this.lblPatientenverfügung, info);
-                }
+                    using (UltraToolTipInfo info = new UltraToolTipInfo())
+                    {
+                        info.ToolTipText = this.InfoPatientenverfügung.Trim();
+                        this.ultraToolTipManager1.SetUltraToolTip(this.lblPatientenverfügung, info);
+                    }
 
+                    GetIDPatientenverfügungOrdner();
+                    if (IDPatientenverfügungOrdner != Guid.Empty)
+                    {
+                        Cursor = Cursors.Hand;
+                    }
+                }
             }
             catch (Exception ex)
             {
+                IDPatientenverfügungOrdner = Guid.Empty;
+                Cursor = Cursors.Default;
                 ENV.HandleException(ex);
             }
         }
+
         private void lblPatientenverfügung_MouseLeave(object sender, EventArgs e)
         {
             try
             {
-                UltraToolTipInfo info = new UltraToolTipInfo();
-                this.ultraToolTipManager1.SetUltraToolTip(this.lblPatientenverfügung, null);
+                using (UltraToolTipInfo info = new UltraToolTipInfo())
+                {
+                    this.ultraToolTipManager1.SetUltraToolTip(this.lblPatientenverfügung, null);
+                }
 
+                IDPatientenverfügungOrdner = Guid.Empty;
+                Cursor = Cursors.Default;
             }
             catch (Exception ex)
             {
+                IDPatientenverfügungOrdner = Guid.Empty;
+                Cursor = Cursors.Default;
                 ENV.HandleException(ex);
+            }
+        }
+
+        private void lblPatientenverfügung_Click(object sender, EventArgs e)
+        {
+            using (PMDS.GUI.VB.compSql comp = new PMDS.GUI.VB.compSql())
+            {
+
+                if (IDPatientenverfügungOrdner != Guid.Empty)
+                {
+                    ArrayList arrcheckedOrdner = new ArrayList();
+                    arrcheckedOrdner.Add(IDPatientenverfügungOrdner);
+                    PMDS.GUI.VB.dsPlanArchive data = new VB.dsPlanArchive();
+
+                    comp.qryDokumenteSuchen("Patientenverfügung", arrcheckedOrdner, new ArrayList(),
+                                        default(DateTime), default(DateTime), "", new ArrayList(), new ArrayList(),
+                                        PMDS.GUI.VB.compSql.etyp.dokumente,
+                                        default(DateTime), default(DateTime), "", false,
+                                        false, false, true,
+                                        ref data, false);
+
+                    if (data.tblDokumenteSuchen.Count == 1)
+                    {
+                        PMDS.GUI.VB.clFolder clOpen = new VB.clFolder();
+                        string dateiArchiv = Path.Combine(comp.pfadLesen(), data.tblDokumenteSuchen[0].Archivordner, data.tblDokumenteSuchen[0].DateinameArchiv);
+                        try
+                        {
+                            clOpen.openFile(dateiArchiv, false);
+                        }
+                        catch (Exception ex)
+                        {
+                            //Nothing!
+                        }
+                    }
+                }
+            }
+        }
+
+        private void GetIDPatientenverfügungOrdner()
+        {
+            using (PMDS.GUI.VB.compSql comp = new PMDS.GUI.VB.compSql())
+            {
+                IDPatientenverfügungOrdner = comp.GetOrdnerBiografie("Patientenverfügung");
             }
         }
 
@@ -2030,17 +2088,6 @@ namespace PMDS.GUI
             {
                 PMDS.DB.PMDSBusiness b = new PMDSBusiness();
                 dsPatientAerzte.PatientAerzteRow rSelÄrzte = this.getSelectedRowÄrtze(true);
-                //if (rSelÄrzte != null)
-                //{
-                //    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                //    {
-                //        if (b.ÄrzteZusammenführen(rSelÄrzte.ID, rSelÄrzte.IDPatient, db))
-                //        {
-                //            KlientGuiAction.RefreshListPatientAerzte(gridAerzte, Klient);
-                //        }
-                //    }
-                //}
-
             }
             catch (Exception ex)
             {
@@ -2048,39 +2095,6 @@ namespace PMDS.GUI
             }
         }
 
-        private void datRezGebBef_RegoAb_MouseEnter(object sender, EventArgs e)
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                ENV.HandleException(ex);
-            }
-        }
-        private void datRezGebBef_RegoAb_MouseLeave(object sender, EventArgs e)
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                ENV.HandleException(ex);
-            }
-        }
-        private void datRezGebBef_RegoAb_Enter(object sender, EventArgs e)
-        {
-            try
-            {
-                
-            }
-            catch (Exception ex)
-            {
-                ENV.HandleException(ex);
-            }
-        }
         private void datRezGebBef_RegoAb_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -2090,8 +2104,7 @@ namespace PMDS.GUI
                 {
                     this.datRezGebBefAbChanged = true;
                     this.OnValueChanged(sender, e);
-                }
-                
+                }                
             }
             catch (Exception ex)
             {
@@ -2604,6 +2617,7 @@ namespace PMDS.GUI
                 }
             }
         }
+
     }
 }
 
