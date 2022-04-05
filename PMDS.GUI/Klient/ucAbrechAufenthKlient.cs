@@ -252,60 +252,67 @@ namespace PMDS.GUI
             //if (!this._isBewerberJN)
             //{
             using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+            {
+                if (this.b.checkPatientExists(Klient.ID, db))
                 {
-                    if (this.b.checkPatientExists(Klient.ID, db))
-                    {
-                    //os191224
+                //os191224
                     var rPatInfo = (from p in db.Patient
-                                    where p.ID == Klient.ID
-                                    select new
-                                    { p.Nachname, 
-                                        p.Vorname,
-                                        p.Betreuungsstufe,
-                                        p.BetreuungsstufeAb,
-                                        p.BetreuungsstufeBis,
-                                        p.TageAbweseneheitOhneKuerzung}
-                                       ).First();
-                    //PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
-                        if (rPatInfo.Betreuungsstufe.Trim() != "")
-                        {
-                            this.cmbBetreuungsstufe.Text = rPatInfo.Betreuungsstufe.Trim();
-                        }
-                        else
-                        {
-                            this.cmbBetreuungsstufe.Value = null;
-                        }
-                        if (rPatInfo.BetreuungsstufeAb != null)
-                        {
-                            this.udteBetreuungsstufeAb.DateTime = rPatInfo.BetreuungsstufeAb.Value;
-                        }
-                        else
-                        {
-                            this.udteBetreuungsstufeAb.Value = null;
-                        }
-                        if (rPatInfo.BetreuungsstufeBis != null)
-                        {
-                            this.udteBetreuungsstufBis.DateTime = rPatInfo.BetreuungsstufeBis.Value;
-                        }
-                        else
-                        {
-                            this.udteBetreuungsstufBis.Value = null;
-                        }
+                                where p.ID == Klient.ID
+                                select new
+                                { p.Nachname, 
+                                    p.Vorname,
+                                    p.Betreuungsstufe,
+                                    p.BetreuungsstufeAb,
+                                    p.BetreuungsstufeBis,
+                                    p.TageAbweseneheitOhneKuerzung,
+                                    p.ForensischerHintergrund,
+                                    p.Hauptwohnsitzgemeinde}
+                                    ).First();
 
-                        this.numTageAbweseneheitOhneKuerzung.Value = rPatInfo.TageAbweseneheitOhneKuerzung;
+                    this.cmbBetreuungsstufe.Value = null;
+                    this.udteBetreuungsstufeAb.Value = null;
+                    this.udteBetreuungsstufBis.Value = null;
+                    this.chkForensicherHintergrund.Checked = false;
+                    this.cmbHaupwohnsitzgemeinde.Value = null;
 
-                        if (PMDS.Global.historie.HistorieOn)
-                        {
-                            PMDS.db.Entities.Aufenthalt rAufenthaltEntlassen = this.b.getAufenthalt(PMDS.Global.ENV.IDAUFENTHALT, db);
-                            this.dtpEntlassungszeitpunkt.DateTime = rAufenthaltEntlassen.Entlassungszeitpunkt.Value;
-                            this.dEntlassungszeitpunktOrig = this.dtpEntlassungszeitpunkt.DateTime;
-                            this.lblEntlassungszeitpunkt.Visible = true;
-                            this.dtpEntlassungszeitpunkt.Visible = true;
-                            this.IDAufenthaltEntlassen = rAufenthaltEntlassen.ID;
+                    if (!String.IsNullOrWhiteSpace(rPatInfo.Betreuungsstufe))
+                    {
+                        this.cmbBetreuungsstufe.Text = rPatInfo.Betreuungsstufe.Trim();
+                    }
+
+                    if (rPatInfo.BetreuungsstufeAb != null)
+                    {
+                        this.udteBetreuungsstufeAb.DateTime = rPatInfo.BetreuungsstufeAb.Value;
+                    }
+
+                    if (rPatInfo.BetreuungsstufeBis != null)
+                    {
+                        this.udteBetreuungsstufBis.DateTime = rPatInfo.BetreuungsstufeBis.Value;
+                    }
+
+                    if (rPatInfo.ForensischerHintergrund != null)
+                    {
+                        this.chkForensicherHintergrund.Checked = (bool) rPatInfo.ForensischerHintergrund;
+                    }
+
+                    if (rPatInfo.Hauptwohnsitzgemeinde != null)
+                    {
+                        this.cmbHaupwohnsitzgemeinde.Text = rPatInfo.Hauptwohnsitzgemeinde;
+                    }
+
+                    this.numTageAbweseneheitOhneKuerzung.Value = rPatInfo.TageAbweseneheitOhneKuerzung;
+
+                    if (PMDS.Global.historie.HistorieOn)
+                    {
+                        PMDS.db.Entities.Aufenthalt rAufenthaltEntlassen = this.b.getAufenthalt(PMDS.Global.ENV.IDAUFENTHALT, db);
+                        this.dtpEntlassungszeitpunkt.DateTime = rAufenthaltEntlassen.Entlassungszeitpunkt.Value;
+                        this.dEntlassungszeitpunktOrig = this.dtpEntlassungszeitpunkt.DateTime;
+                        this.lblEntlassungszeitpunkt.Visible = true;
+                        this.dtpEntlassungszeitpunkt.Visible = true;
+                        this.IDAufenthaltEntlassen = rAufenthaltEntlassen.ID;
                     }
                 }
-                }
-            //}
+            }
 
             if (PMDS.Global.historie.HistorieOn)
             {
@@ -767,6 +774,11 @@ namespace PMDS.GUI
             {
                 this.Cursor = Cursors.Default;
             }
+        }
+
+        private void ucVersichrungsdaten12_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

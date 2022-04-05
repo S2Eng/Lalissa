@@ -58,32 +58,38 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Gemeinde, in der letzte Hauptwohnsitz gelegen ist.", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucAbrechAufenthKlient));
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Hinzufügen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Entfernen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Entfernen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.panelGrundleistung = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
@@ -95,8 +101,8 @@ namespace PMDS.GUI
             this.gridPatPflegestufen = new QS2.Desktop.ControlManagment.BaseGrid();
             this.dsKlientPflegestufe1 = new PMDS.GUI.Klient.dsKlientPflegestufe();
             this.ultraGroupBox9 = new QS2.Desktop.ControlManagment.BaseGroupBox();
-            this.grpBetreuungsstufe = new QS2.Desktop.ControlManagment.BaseGroupBox();
-            this.cmbBetreuungsstufe = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.lblHauptwohnsitzgemeinde = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.chkForensicherHintergrund = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.lblBetreueungsstufeBis = new QS2.Desktop.ControlManagment.BaseLabel();
             this.udteBetreuungsstufBis = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.lblBetreueungsstufeAb = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -108,7 +114,7 @@ namespace PMDS.GUI
             this.chkBehindertenausweis = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.chkSelbstzahler = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.ultraLabel4 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.ultraLabel3 = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblSozialhilfebescheidDatum = new QS2.Desktop.ControlManagment.BaseLabel();
             this.cbSozilhBesch = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.panelButtons = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnUpdatePaPflegestufen = new QS2.Desktop.ControlManagment.BaseButton();
@@ -129,7 +135,6 @@ namespace PMDS.GUI
             this.btnHistorie = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelMitte = new QS2.Desktop.ControlManagment.BasePanel();
             this.baseGroupBox1 = new QS2.Desktop.ControlManagment.BaseGroupBox();
-            this.ucVersichrungsdaten12 = new PMDS.GUI.ucVersichrungsdaten();
             this.panelUnten = new QS2.Desktop.ControlManagment.BasePanel();
             this.numTageAbweseneheitOhneKuerzung = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.lblTageAbweseneheitOhneKuerzung = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -139,6 +144,14 @@ namespace PMDS.GUI
             this.ultraTabControlZahler = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.splitContainerMain = new System.Windows.Forms.SplitContainer();
+            this.splitContainerTop = new System.Windows.Forms.SplitContainer();
+            this.splitContainerBottom = new System.Windows.Forms.SplitContainer();
+            this.ucVersichrungsdaten12 = new PMDS.GUI.ucVersichrungsdaten();
+            this.cmbHaupwohnsitzgemeinde = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.cmbBetreuungsstufe = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.lblBetreuungsstufe = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblPensionsteilungsantragDatum = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl1.SuspendLayout();
             this.ultraTabPageControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtPensTeilAntrag)).BeginInit();
@@ -149,9 +162,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.dsKlientPflegestufe1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox9)).BeginInit();
             this.ultraGroupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grpBetreuungsstufe)).BeginInit();
-            this.grpBetreuungsstufe.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBetreuungsstufe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkForensicherHintergrund)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteBetreuungsstufBis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteBetreuungsstufeAb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEinzelzimmer)).BeginInit();
@@ -180,6 +191,20 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControlZahler)).BeginInit();
             this.ultraTabControlZahler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
+            this.splitContainerMain.Panel1.SuspendLayout();
+            this.splitContainerMain.Panel2.SuspendLayout();
+            this.splitContainerMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTop)).BeginInit();
+            this.splitContainerTop.Panel1.SuspendLayout();
+            this.splitContainerTop.Panel2.SuspendLayout();
+            this.splitContainerTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerBottom)).BeginInit();
+            this.splitContainerBottom.Panel1.SuspendLayout();
+            this.splitContainerBottom.Panel2.SuspendLayout();
+            this.splitContainerBottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbHaupwohnsitzgemeinde)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBetreuungsstufe)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraTabPageControl1
@@ -188,7 +213,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl1.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(1153, 115);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(1153, 299);
             // 
             // panelGrundleistung
             // 
@@ -196,7 +221,7 @@ namespace PMDS.GUI
             this.panelGrundleistung.Location = new System.Drawing.Point(0, 0);
             this.panelGrundleistung.Margin = new System.Windows.Forms.Padding(4);
             this.panelGrundleistung.Name = "panelGrundleistung";
-            this.panelGrundleistung.Size = new System.Drawing.Size(1153, 115);
+            this.panelGrundleistung.Size = new System.Drawing.Size(1153, 299);
             this.panelGrundleistung.TabIndex = 0;
             // 
             // ultraTabPageControl2
@@ -205,7 +230,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(1153, 115);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(1153, 299);
             // 
             // panelTransfer
             // 
@@ -213,7 +238,7 @@ namespace PMDS.GUI
             this.panelTransfer.Location = new System.Drawing.Point(0, 0);
             this.panelTransfer.Margin = new System.Windows.Forms.Padding(4);
             this.panelTransfer.Name = "panelTransfer";
-            this.panelTransfer.Size = new System.Drawing.Size(1153, 115);
+            this.panelTransfer.Size = new System.Drawing.Size(1153, 299);
             this.panelTransfer.TabIndex = 1;
             // 
             // dtPensTeilAntrag
@@ -221,14 +246,14 @@ namespace PMDS.GUI
             this.dtPensTeilAntrag.AutoSize = false;
             this.dtPensTeilAntrag.DateTime = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
             this.dtPensTeilAntrag.FormatString = "";
-            this.dtPensTeilAntrag.Location = new System.Drawing.Point(186, 30);
+            this.dtPensTeilAntrag.Location = new System.Drawing.Point(236, 78);
             this.dtPensTeilAntrag.Margin = new System.Windows.Forms.Padding(4);
             this.dtPensTeilAntrag.MaskInput = "";
             this.dtPensTeilAntrag.Name = "dtPensTeilAntrag";
             this.dtPensTeilAntrag.ownFormat = "";
             this.dtPensTeilAntrag.ownMaskInput = "";
-            this.dtPensTeilAntrag.Size = new System.Drawing.Size(138, 22);
-            this.dtPensTeilAntrag.TabIndex = 7;
+            this.dtPensTeilAntrag.Size = new System.Drawing.Size(98, 22);
+            this.dtPensTeilAntrag.TabIndex = 5;
             this.dtPensTeilAntrag.Value = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
             this.dtPensTeilAntrag.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -238,11 +263,11 @@ namespace PMDS.GUI
             this.cbPensionTeilAntrag.Appearance = appearance1;
             this.cbPensionTeilAntrag.BackColor = System.Drawing.Color.Transparent;
             this.cbPensionTeilAntrag.BackColorInternal = System.Drawing.Color.Transparent;
-            this.cbPensionTeilAntrag.Location = new System.Drawing.Point(17, 56);
+            this.cbPensionTeilAntrag.Location = new System.Drawing.Point(17, 79);
             this.cbPensionTeilAntrag.Margin = new System.Windows.Forms.Padding(4);
             this.cbPensionTeilAntrag.Name = "cbPensionTeilAntrag";
-            this.cbPensionTeilAntrag.Size = new System.Drawing.Size(192, 25);
-            this.cbPensionTeilAntrag.TabIndex = 6;
+            this.cbPensionTeilAntrag.Size = new System.Drawing.Size(165, 25);
+            this.cbPensionTeilAntrag.TabIndex = 4;
             this.cbPensionTeilAntrag.Text = "Pensionsteilungsantrag";
             this.cbPensionTeilAntrag.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -252,12 +277,12 @@ namespace PMDS.GUI
             this.cbTelBefr.Appearance = appearance2;
             this.cbTelBefr.BackColor = System.Drawing.Color.Transparent;
             this.cbTelBefr.BackColorInternal = System.Drawing.Color.Transparent;
-            this.cbTelBefr.Location = new System.Drawing.Point(17, 8);
+            this.cbTelBefr.Location = new System.Drawing.Point(17, 22);
             this.cbTelBefr.Margin = new System.Windows.Forms.Padding(4);
             this.cbTelBefr.Name = "cbTelBefr";
-            this.cbTelBefr.Size = new System.Drawing.Size(168, 22);
-            this.cbTelBefr.TabIndex = 8;
-            this.cbTelBefr.Text = "Telefongebührenbef.";
+            this.cbTelBefr.Size = new System.Drawing.Size(211, 22);
+            this.cbTelBefr.TabIndex = 0;
+            this.cbTelBefr.Text = "Telefongebührenbefreiung";
             this.cbTelBefr.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // cbFernsehBefr
@@ -266,12 +291,12 @@ namespace PMDS.GUI
             this.cbFernsehBefr.Appearance = appearance3;
             this.cbFernsehBefr.BackColor = System.Drawing.Color.Transparent;
             this.cbFernsehBefr.BackColorInternal = System.Drawing.Color.Transparent;
-            this.cbFernsehBefr.Location = new System.Drawing.Point(17, 28);
+            this.cbFernsehBefr.Location = new System.Drawing.Point(236, 20);
             this.cbFernsehBefr.Margin = new System.Windows.Forms.Padding(4);
             this.cbFernsehBefr.Name = "cbFernsehBefr";
-            this.cbFernsehBefr.Size = new System.Drawing.Size(184, 25);
-            this.cbFernsehBefr.TabIndex = 9;
-            this.cbFernsehBefr.Text = "Fernsehgebührenbef.";
+            this.cbFernsehBefr.Size = new System.Drawing.Size(194, 25);
+            this.cbFernsehBefr.TabIndex = 1;
+            this.cbFernsehBefr.Text = "Fernsehgebührenbefreiung";
             this.cbFernsehBefr.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // gridPatPflegestufen
@@ -438,7 +463,7 @@ namespace PMDS.GUI
             this.gridPatPflegestufen.Location = new System.Drawing.Point(8, 30);
             this.gridPatPflegestufen.Margin = new System.Windows.Forms.Padding(4);
             this.gridPatPflegestufen.Name = "gridPatPflegestufen";
-            this.gridPatPflegestufen.Size = new System.Drawing.Size(1048, 77);
+            this.gridPatPflegestufen.Size = new System.Drawing.Size(1126, 100);
             this.gridPatPflegestufen.TabIndex = 4;
             this.gridPatPflegestufen.Text = "ultraGrid16";
             this.gridPatPflegestufen.DoubleClickCell += new Infragistics.Win.UltraWinGrid.DoubleClickCellEventHandler(this.gridPatPflegestufen_DoubleClickCell);
@@ -452,7 +477,16 @@ namespace PMDS.GUI
             // 
             // ultraGroupBox9
             // 
-            this.ultraGroupBox9.Controls.Add(this.grpBetreuungsstufe);
+            this.ultraGroupBox9.Controls.Add(this.lblPensionsteilungsantragDatum);
+            this.ultraGroupBox9.Controls.Add(this.lblBetreueungsstufeBis);
+            this.ultraGroupBox9.Controls.Add(this.cmbBetreuungsstufe);
+            this.ultraGroupBox9.Controls.Add(this.udteBetreuungsstufBis);
+            this.ultraGroupBox9.Controls.Add(this.lblBetreuungsstufe);
+            this.ultraGroupBox9.Controls.Add(this.lblBetreueungsstufeAb);
+            this.ultraGroupBox9.Controls.Add(this.lblHauptwohnsitzgemeinde);
+            this.ultraGroupBox9.Controls.Add(this.udteBetreuungsstufeAb);
+            this.ultraGroupBox9.Controls.Add(this.chkForensicherHintergrund);
+            this.ultraGroupBox9.Controls.Add(this.cmbHaupwohnsitzgemeinde);
             this.ultraGroupBox9.Controls.Add(this.dtPensTeilAntrag);
             this.ultraGroupBox9.Controls.Add(this.chkEinzelzimmer);
             this.ultraGroupBox9.Controls.Add(this.txtSozilGZ);
@@ -463,57 +497,48 @@ namespace PMDS.GUI
             this.ultraGroupBox9.Controls.Add(this.chkSelbstzahler);
             this.ultraGroupBox9.Controls.Add(this.cbPensionTeilAntrag);
             this.ultraGroupBox9.Controls.Add(this.ultraLabel4);
-            this.ultraGroupBox9.Controls.Add(this.ultraLabel3);
+            this.ultraGroupBox9.Controls.Add(this.lblSozialhilfebescheidDatum);
             this.ultraGroupBox9.Controls.Add(this.cbFernsehBefr);
             this.ultraGroupBox9.Controls.Add(this.cbSozilhBesch);
-            this.ultraGroupBox9.Location = new System.Drawing.Point(563, 5);
+            this.ultraGroupBox9.Location = new System.Drawing.Point(526, 5);
             this.ultraGroupBox9.Margin = new System.Windows.Forms.Padding(4);
             this.ultraGroupBox9.Name = "ultraGroupBox9";
-            this.ultraGroupBox9.Size = new System.Drawing.Size(510, 233);
+            this.ultraGroupBox9.Size = new System.Drawing.Size(625, 233);
             this.ultraGroupBox9.TabIndex = 120;
+            this.ultraGroupBox9.Text = "Abrechnungs-Informationen";
             // 
-            // grpBetreuungsstufe
+            // lblHauptwohnsitzgemeinde
             // 
-            this.grpBetreuungsstufe.Controls.Add(this.cmbBetreuungsstufe);
-            this.grpBetreuungsstufe.Controls.Add(this.lblBetreueungsstufeBis);
-            this.grpBetreuungsstufe.Controls.Add(this.udteBetreuungsstufBis);
-            this.grpBetreuungsstufe.Controls.Add(this.lblBetreueungsstufeAb);
-            this.grpBetreuungsstufe.Controls.Add(this.udteBetreuungsstufeAb);
-            this.grpBetreuungsstufe.Location = new System.Drawing.Point(17, 141);
-            this.grpBetreuungsstufe.Margin = new System.Windows.Forms.Padding(4);
-            this.grpBetreuungsstufe.Name = "grpBetreuungsstufe";
-            this.grpBetreuungsstufe.Size = new System.Drawing.Size(271, 81);
-            this.grpBetreuungsstufe.TabIndex = 138;
-            this.grpBetreuungsstufe.Text = "Betreuungsstufe";
+            appearance21.BackColor = System.Drawing.Color.Transparent;
+            this.lblHauptwohnsitzgemeinde.Appearance = appearance21;
+            this.lblHauptwohnsitzgemeinde.AutoSize = true;
+            this.lblHauptwohnsitzgemeinde.Location = new System.Drawing.Point(183, 145);
+            this.lblHauptwohnsitzgemeinde.Name = "lblHauptwohnsitzgemeinde";
+            this.lblHauptwohnsitzgemeinde.Size = new System.Drawing.Size(146, 17);
+            this.lblHauptwohnsitzgemeinde.TabIndex = 219;
+            this.lblHauptwohnsitzgemeinde.Text = "Letzte HWS-Gemeinde";
+            ultraToolTipInfo4.ToolTipText = "Gemeinde, in der letzte Hauptwohnsitz gelegen ist.";
+            this.ultraToolTipManager1.SetUltraToolTip(this.lblHauptwohnsitzgemeinde, ultraToolTipInfo4);
             // 
-            // cmbBetreuungsstufe
+            // chkForensicherHintergrund
             // 
-            this.cmbBetreuungsstufe.AddEmptyEntry = false;
-            appearance16.BackColor = System.Drawing.Color.White;
-            this.cmbBetreuungsstufe.Appearance = appearance16;
-            this.cmbBetreuungsstufe.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            this.cmbBetreuungsstufe.AutoOpenCBO = false;
-            this.cmbBetreuungsstufe.BackColor = System.Drawing.Color.White;
-            this.cmbBetreuungsstufe.BerufsstandGruppeJNA = -1;
-            this.cmbBetreuungsstufe.ExactMatch = false;
-            this.cmbBetreuungsstufe.Group = "BST";
-            this.cmbBetreuungsstufe.ID_PEP = -1;
-            this.cmbBetreuungsstufe.Location = new System.Drawing.Point(9, 19);
-            this.cmbBetreuungsstufe.MaxLength = 40;
-            this.cmbBetreuungsstufe.Name = "cmbBetreuungsstufe";
-            this.cmbBetreuungsstufe.PflichtJN = false;
-            this.cmbBetreuungsstufe.ShowAddButton = true;
-            this.cmbBetreuungsstufe.Size = new System.Drawing.Size(248, 24);
-            this.cmbBetreuungsstufe.sys = false;
-            this.cmbBetreuungsstufe.TabIndex = 218;
-            this.cmbBetreuungsstufe.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            appearance32.BackColor = System.Drawing.Color.Transparent;
+            this.chkForensicherHintergrund.Appearance = appearance32;
+            this.chkForensicherHintergrund.BackColor = System.Drawing.Color.Transparent;
+            this.chkForensicherHintergrund.BackColorInternal = System.Drawing.Color.Transparent;
+            this.chkForensicherHintergrund.Location = new System.Drawing.Point(17, 144);
+            this.chkForensicherHintergrund.Name = "chkForensicherHintergrund";
+            this.chkForensicherHintergrund.Size = new System.Drawing.Size(180, 20);
+            this.chkForensicherHintergrund.TabIndex = 9;
+            this.chkForensicherHintergrund.Text = "Forensicher Hintergrund";
+            this.chkForensicherHintergrund.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblBetreueungsstufeBis
             // 
             appearance17.BackColor = System.Drawing.Color.Transparent;
             this.lblBetreueungsstufeBis.Appearance = appearance17;
             this.lblBetreueungsstufeBis.AutoSize = true;
-            this.lblBetreueungsstufeBis.Location = new System.Drawing.Point(133, 50);
+            this.lblBetreueungsstufeBis.Location = new System.Drawing.Point(489, 206);
             this.lblBetreueungsstufeBis.Name = "lblBetreueungsstufeBis";
             this.lblBetreueungsstufeBis.Size = new System.Drawing.Size(24, 17);
             this.lblBetreueungsstufeBis.TabIndex = 217;
@@ -524,23 +549,23 @@ namespace PMDS.GUI
             this.udteBetreuungsstufBis.AutoSize = false;
             this.udteBetreuungsstufBis.DateTime = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
             this.udteBetreuungsstufBis.FormatString = "";
-            this.udteBetreuungsstufBis.Location = new System.Drawing.Point(159, 47);
+            this.udteBetreuungsstufBis.Location = new System.Drawing.Point(520, 201);
             this.udteBetreuungsstufBis.Margin = new System.Windows.Forms.Padding(4);
             this.udteBetreuungsstufBis.MaskInput = "";
             this.udteBetreuungsstufBis.Name = "udteBetreuungsstufBis";
             this.udteBetreuungsstufBis.ownFormat = "";
             this.udteBetreuungsstufBis.ownMaskInput = "";
             this.udteBetreuungsstufBis.Size = new System.Drawing.Size(98, 22);
-            this.udteBetreuungsstufBis.TabIndex = 216;
+            this.udteBetreuungsstufBis.TabIndex = 15;
             this.udteBetreuungsstufBis.Value = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
             this.udteBetreuungsstufBis.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblBetreueungsstufeAb
             // 
-            appearance18.BackColor = System.Drawing.Color.Transparent;
-            this.lblBetreueungsstufeAb.Appearance = appearance18;
+            appearance20.BackColor = System.Drawing.Color.Transparent;
+            this.lblBetreueungsstufeAb.Appearance = appearance20;
             this.lblBetreueungsstufeAb.AutoSize = true;
-            this.lblBetreueungsstufeAb.Location = new System.Drawing.Point(6, 50);
+            this.lblBetreueungsstufeAb.Location = new System.Drawing.Point(343, 205);
             this.lblBetreueungsstufeAb.Name = "lblBetreueungsstufeAb";
             this.lblBetreueungsstufeAb.Size = new System.Drawing.Size(22, 17);
             this.lblBetreueungsstufeAb.TabIndex = 215;
@@ -551,38 +576,38 @@ namespace PMDS.GUI
             this.udteBetreuungsstufeAb.AutoSize = false;
             this.udteBetreuungsstufeAb.DateTime = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
             this.udteBetreuungsstufeAb.FormatString = "";
-            this.udteBetreuungsstufeAb.Location = new System.Drawing.Point(31, 47);
+            this.udteBetreuungsstufeAb.Location = new System.Drawing.Point(372, 202);
             this.udteBetreuungsstufeAb.Margin = new System.Windows.Forms.Padding(4);
             this.udteBetreuungsstufeAb.MaskInput = "";
             this.udteBetreuungsstufeAb.Name = "udteBetreuungsstufeAb";
             this.udteBetreuungsstufeAb.ownFormat = "";
             this.udteBetreuungsstufeAb.ownMaskInput = "";
             this.udteBetreuungsstufeAb.Size = new System.Drawing.Size(98, 22);
-            this.udteBetreuungsstufeAb.TabIndex = 214;
+            this.udteBetreuungsstufeAb.TabIndex = 14;
             this.udteBetreuungsstufeAb.Value = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
             this.udteBetreuungsstufeAb.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // chkEinzelzimmer
             // 
-            appearance19.BackColor = System.Drawing.Color.Transparent;
-            this.chkEinzelzimmer.Appearance = appearance19;
+            appearance34.BackColor = System.Drawing.Color.Transparent;
+            this.chkEinzelzimmer.Appearance = appearance34;
             this.chkEinzelzimmer.BackColor = System.Drawing.Color.Transparent;
             this.chkEinzelzimmer.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkEinzelzimmer.Location = new System.Drawing.Point(187, 58);
+            this.chkEinzelzimmer.Location = new System.Drawing.Point(17, 48);
             this.chkEinzelzimmer.Name = "chkEinzelzimmer";
             this.chkEinzelzimmer.Size = new System.Drawing.Size(137, 20);
-            this.chkEinzelzimmer.TabIndex = 210;
+            this.chkEinzelzimmer.TabIndex = 2;
             this.chkEinzelzimmer.Text = "Einzelzimmer";
             this.chkEinzelzimmer.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // txtSozilGZ
             // 
-            this.txtSozilGZ.Location = new System.Drawing.Point(322, 108);
+            this.txtSozilGZ.Location = new System.Drawing.Point(419, 104);
             this.txtSozilGZ.Margin = new System.Windows.Forms.Padding(4);
             this.txtSozilGZ.MaxLength = 30;
             this.txtSozilGZ.Name = "txtSozilGZ";
-            this.txtSozilGZ.Size = new System.Drawing.Size(179, 24);
-            this.txtSozilGZ.TabIndex = 127;
+            this.txtSozilGZ.Size = new System.Drawing.Size(199, 24);
+            this.txtSozilGZ.TabIndex = 8;
             this.txtSozilGZ.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // dtSoziAntragDatum
@@ -590,90 +615,90 @@ namespace PMDS.GUI
             this.dtSoziAntragDatum.AutoSize = false;
             this.dtSoziAntragDatum.DateTime = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
             this.dtSoziAntragDatum.FormatString = "";
-            this.dtSoziAntragDatum.Location = new System.Drawing.Point(128, 110);
+            this.dtSoziAntragDatum.Location = new System.Drawing.Point(236, 104);
             this.dtSoziAntragDatum.Margin = new System.Windows.Forms.Padding(4);
             this.dtSoziAntragDatum.MaskInput = "";
             this.dtSoziAntragDatum.Name = "dtSoziAntragDatum";
             this.dtSoziAntragDatum.ownFormat = "";
             this.dtSoziAntragDatum.ownMaskInput = "";
-            this.dtSoziAntragDatum.Size = new System.Drawing.Size(105, 22);
+            this.dtSoziAntragDatum.Size = new System.Drawing.Size(98, 22);
             this.dtSoziAntragDatum.TabIndex = 7;
             this.dtSoziAntragDatum.Value = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
             this.dtSoziAntragDatum.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // chkSozialcard
             // 
-            appearance20.BackColor = System.Drawing.Color.Transparent;
-            this.chkSozialcard.Appearance = appearance20;
+            appearance35.BackColor = System.Drawing.Color.Transparent;
+            this.chkSozialcard.Appearance = appearance35;
             this.chkSozialcard.BackColor = System.Drawing.Color.Transparent;
             this.chkSozialcard.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkSozialcard.Location = new System.Drawing.Point(362, 56);
+            this.chkSozialcard.Location = new System.Drawing.Point(236, 179);
             this.chkSozialcard.Name = "chkSozialcard";
             this.chkSozialcard.Size = new System.Drawing.Size(137, 20);
-            this.chkSozialcard.TabIndex = 213;
+            this.chkSozialcard.TabIndex = 12;
             this.chkSozialcard.Text = "Sozialcard";
             this.chkSozialcard.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // chkBehindertenausweis
             // 
-            appearance21.BackColor = System.Drawing.Color.Transparent;
-            this.chkBehindertenausweis.Appearance = appearance21;
+            appearance36.BackColor = System.Drawing.Color.Transparent;
+            this.chkBehindertenausweis.Appearance = appearance36;
             this.chkBehindertenausweis.BackColor = System.Drawing.Color.Transparent;
             this.chkBehindertenausweis.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkBehindertenausweis.Location = new System.Drawing.Point(362, 33);
+            this.chkBehindertenausweis.Location = new System.Drawing.Point(17, 179);
             this.chkBehindertenausweis.Name = "chkBehindertenausweis";
             this.chkBehindertenausweis.Size = new System.Drawing.Size(166, 20);
-            this.chkBehindertenausweis.TabIndex = 212;
+            this.chkBehindertenausweis.TabIndex = 11;
             this.chkBehindertenausweis.Text = "Behindertenausweis";
             this.chkBehindertenausweis.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // chkSelbstzahler
             // 
-            appearance22.BackColor = System.Drawing.Color.Transparent;
-            this.chkSelbstzahler.Appearance = appearance22;
+            appearance37.BackColor = System.Drawing.Color.Transparent;
+            this.chkSelbstzahler.Appearance = appearance37;
             this.chkSelbstzahler.BackColor = System.Drawing.Color.Transparent;
             this.chkSelbstzahler.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkSelbstzahler.Location = new System.Drawing.Point(362, 10);
+            this.chkSelbstzahler.Location = new System.Drawing.Point(236, 48);
             this.chkSelbstzahler.Name = "chkSelbstzahler";
             this.chkSelbstzahler.Size = new System.Drawing.Size(137, 20);
-            this.chkSelbstzahler.TabIndex = 211;
+            this.chkSelbstzahler.TabIndex = 3;
             this.chkSelbstzahler.Text = "Selbstzahler";
             this.chkSelbstzahler.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // ultraLabel4
             // 
-            appearance23.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel4.Appearance = appearance23;
+            appearance38.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel4.Appearance = appearance38;
             this.ultraLabel4.AutoSize = true;
-            this.ultraLabel4.Location = new System.Drawing.Point(241, 112);
+            this.ultraLabel4.Location = new System.Drawing.Point(343, 108);
             this.ultraLabel4.Margin = new System.Windows.Forms.Padding(4);
             this.ultraLabel4.Name = "ultraLabel4";
-            this.ultraLabel4.Size = new System.Drawing.Size(79, 17);
+            this.ultraLabel4.Size = new System.Drawing.Size(75, 17);
             this.ultraLabel4.TabIndex = 126;
-            this.ultraLabel4.Text = "Gesch.Zahl.";
+            this.ultraLabel4.Text = "Gesch.Zahl";
             // 
-            // ultraLabel3
+            // lblSozialhilfebescheidDatum
             // 
-            appearance24.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel3.Appearance = appearance24;
-            this.ultraLabel3.AutoSize = true;
-            this.ultraLabel3.Location = new System.Drawing.Point(40, 112);
-            this.ultraLabel3.Margin = new System.Windows.Forms.Padding(4);
-            this.ultraLabel3.Name = "ultraLabel3";
-            this.ultraLabel3.Size = new System.Drawing.Size(90, 17);
-            this.ultraLabel3.TabIndex = 125;
-            this.ultraLabel3.Text = "Antragsdatum";
+            appearance39.BackColor = System.Drawing.Color.Transparent;
+            this.lblSozialhilfebescheidDatum.Appearance = appearance39;
+            this.lblSozialhilfebescheidDatum.AutoSize = true;
+            this.lblSozialhilfebescheidDatum.Location = new System.Drawing.Point(183, 108);
+            this.lblSozialhilfebescheidDatum.Margin = new System.Windows.Forms.Padding(4);
+            this.lblSozialhilfebescheidDatum.Name = "lblSozialhilfebescheidDatum";
+            this.lblSozialhilfebescheidDatum.Size = new System.Drawing.Size(45, 17);
+            this.lblSozialhilfebescheidDatum.TabIndex = 125;
+            this.lblSozialhilfebescheidDatum.Text = "Datum";
             // 
             // cbSozilhBesch
             // 
-            appearance25.BackColor = System.Drawing.Color.Transparent;
-            this.cbSozilhBesch.Appearance = appearance25;
+            appearance40.BackColor = System.Drawing.Color.Transparent;
+            this.cbSozilhBesch.Appearance = appearance40;
             this.cbSozilhBesch.BackColor = System.Drawing.Color.Transparent;
             this.cbSozilhBesch.BackColorInternal = System.Drawing.Color.Transparent;
-            this.cbSozilhBesch.Location = new System.Drawing.Point(17, 87);
+            this.cbSozilhBesch.Location = new System.Drawing.Point(17, 104);
             this.cbSozilhBesch.Margin = new System.Windows.Forms.Padding(4);
             this.cbSozilhBesch.Name = "cbSozilhBesch";
-            this.cbSozilhBesch.Size = new System.Drawing.Size(179, 25);
+            this.cbSozilhBesch.Size = new System.Drawing.Size(165, 25);
             this.cbSozilhBesch.TabIndex = 6;
             this.cbSozilhBesch.Text = "Sozialhilfebescheid";
             this.cbSozilhBesch.CheckedChanged += new System.EventHandler(this.OnValueChanged);
@@ -684,7 +709,7 @@ namespace PMDS.GUI
             this.panelButtons.Controls.Add(this.btnUpdatePaPflegestufen);
             this.panelButtons.Controls.Add(this.btnAddPflStufe);
             this.panelButtons.Controls.Add(this.btnDelPflStufe);
-            this.panelButtons.Location = new System.Drawing.Point(557, 4);
+            this.panelButtons.Location = new System.Drawing.Point(635, 4);
             this.panelButtons.Margin = new System.Windows.Forms.Padding(4);
             this.panelButtons.Name = "panelButtons";
             this.panelButtons.Size = new System.Drawing.Size(499, 25);
@@ -692,10 +717,10 @@ namespace PMDS.GUI
             // 
             // btnUpdatePaPflegestufen
             // 
-            appearance26.Image = ((object)(resources.GetObject("appearance26.Image")));
-            appearance26.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance26.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnUpdatePaPflegestufen.Appearance = appearance26;
+            appearance25.Image = ((object)(resources.GetObject("appearance25.Image")));
+            appearance25.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance25.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnUpdatePaPflegestufen.Appearance = appearance25;
             this.btnUpdatePaPflegestufen.AutoWorkLayout = false;
             this.btnUpdatePaPflegestufen.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnUpdatePaPflegestufen.IsStandardControl = false;
@@ -711,10 +736,10 @@ namespace PMDS.GUI
             // 
             // btnAddPflStufe
             // 
-            appearance34.Image = ((object)(resources.GetObject("appearance34.Image")));
-            appearance34.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance34.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAddPflStufe.Appearance = appearance34;
+            appearance26.Image = ((object)(resources.GetObject("appearance26.Image")));
+            appearance26.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance26.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAddPflStufe.Appearance = appearance26;
             this.btnAddPflStufe.AutoWorkLayout = false;
             this.btnAddPflStufe.ImageSize = new System.Drawing.Size(12, 12);
             this.btnAddPflStufe.IsStandardControl = false;
@@ -730,10 +755,10 @@ namespace PMDS.GUI
             // 
             // btnDelPflStufe
             // 
-            appearance35.Image = ((object)(resources.GetObject("appearance35.Image")));
-            appearance35.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance35.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDelPflStufe.Appearance = appearance35;
+            appearance27.Image = ((object)(resources.GetObject("appearance27.Image")));
+            appearance27.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance27.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDelPflStufe.Appearance = appearance27;
             this.btnDelPflStufe.AutoWorkLayout = false;
             this.btnDelPflStufe.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDelPflStufe.IsStandardControl = false;
@@ -749,12 +774,12 @@ namespace PMDS.GUI
             // 
             // dtpAufnahmedatum
             // 
-            appearance32.ForeColor = System.Drawing.Color.Black;
-            appearance32.ForeColorDisabled = System.Drawing.Color.Black;
-            this.dtpAufnahmedatum.Appearance = appearance32;
+            appearance23.ForeColor = System.Drawing.Color.Black;
+            appearance23.ForeColorDisabled = System.Drawing.Color.Black;
+            this.dtpAufnahmedatum.Appearance = appearance23;
             this.dtpAufnahmedatum.DateTime = new System.DateTime(2007, 6, 11, 0, 0, 0, 0);
             this.dtpAufnahmedatum.FormatString = "";
-            this.dtpAufnahmedatum.Location = new System.Drawing.Point(172, 5);
+            this.dtpAufnahmedatum.Location = new System.Drawing.Point(147, 5);
             this.dtpAufnahmedatum.Margin = new System.Windows.Forms.Padding(4);
             this.dtpAufnahmedatum.MaskInput = "{date} {time}";
             this.dtpAufnahmedatum.Name = "dtpAufnahmedatum";
@@ -787,8 +812,8 @@ namespace PMDS.GUI
             // 
             // txtAusgZahlung
             // 
-            appearance33.TextHAlignAsString = "Left";
-            this.txtAusgZahlung.Appearance = appearance33;
+            appearance24.TextHAlignAsString = "Left";
+            this.txtAusgZahlung.Appearance = appearance24;
             this.txtAusgZahlung.Location = new System.Drawing.Point(225, 4);
             this.txtAusgZahlung.Margin = new System.Windows.Forms.Padding(4);
             this.txtAusgZahlung.MaskInput = "nnn";
@@ -813,9 +838,9 @@ namespace PMDS.GUI
             // 
             // uCheckEditorAbwesenheitenHändischBerech
             // 
-            appearance30.BackColor = System.Drawing.Color.Transparent;
-            appearance30.BackColorDisabled = System.Drawing.Color.WhiteSmoke;
-            this.uCheckEditorAbwesenheitenHändischBerech.Appearance = appearance30;
+            appearance31.BackColor = System.Drawing.Color.Transparent;
+            appearance31.BackColorDisabled = System.Drawing.Color.WhiteSmoke;
+            this.uCheckEditorAbwesenheitenHändischBerech.Appearance = appearance31;
             this.uCheckEditorAbwesenheitenHändischBerech.BackColor = System.Drawing.Color.Transparent;
             this.uCheckEditorAbwesenheitenHändischBerech.BackColorInternal = System.Drawing.Color.Transparent;
             this.uCheckEditorAbwesenheitenHändischBerech.Location = new System.Drawing.Point(21, 3);
@@ -860,9 +885,9 @@ namespace PMDS.GUI
             // 
             // dtpEntlassungszeitpunkt
             // 
-            appearance31.ForeColor = System.Drawing.Color.Black;
-            appearance31.ForeColorDisabled = System.Drawing.Color.Black;
-            this.dtpEntlassungszeitpunkt.Appearance = appearance31;
+            appearance22.ForeColor = System.Drawing.Color.Black;
+            appearance22.ForeColorDisabled = System.Drawing.Color.Black;
+            this.dtpEntlassungszeitpunkt.Appearance = appearance22;
             this.dtpEntlassungszeitpunkt.DateTime = new System.DateTime(2007, 6, 11, 0, 0, 0, 0);
             this.dtpEntlassungszeitpunkt.FormatString = "";
             this.dtpEntlassungszeitpunkt.Location = new System.Drawing.Point(533, 5);
@@ -899,13 +924,13 @@ namespace PMDS.GUI
             // 
             // btnHistorie
             // 
-            appearance29.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance29.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnHistorie.Appearance = appearance29;
+            appearance30.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance30.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnHistorie.Appearance = appearance30;
             this.btnHistorie.AutoWorkLayout = false;
             this.btnHistorie.ImageSize = new System.Drawing.Size(12, 12);
             this.btnHistorie.IsStandardControl = false;
-            this.btnHistorie.Location = new System.Drawing.Point(56, 4);
+            this.btnHistorie.Location = new System.Drawing.Point(56, 0);
             this.btnHistorie.Margin = new System.Windows.Forms.Padding(4);
             this.btnHistorie.Name = "btnHistorie";
             this.btnHistorie.Size = new System.Drawing.Size(167, 28);
@@ -915,40 +940,26 @@ namespace PMDS.GUI
             // 
             // panelMitte
             // 
+            this.panelMitte.AutoScroll = true;
             this.panelMitte.Controls.Add(this.baseGroupBox1);
             this.panelMitte.Controls.Add(this.ucVersichrungsdaten12);
             this.panelMitte.Controls.Add(this.ultraGroupBox9);
-            this.panelMitte.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMitte.Location = new System.Drawing.Point(0, 32);
+            this.panelMitte.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMitte.Location = new System.Drawing.Point(0, 0);
             this.panelMitte.Margin = new System.Windows.Forms.Padding(4);
             this.panelMitte.Name = "panelMitte";
-            this.panelMitte.Size = new System.Drawing.Size(1157, 366);
+            this.panelMitte.Size = new System.Drawing.Size(1157, 391);
             this.panelMitte.TabIndex = 136;
             // 
             // baseGroupBox1
             // 
             this.baseGroupBox1.Controls.Add(this.gridPatPflegestufen);
             this.baseGroupBox1.Controls.Add(this.panelButtons);
-            this.baseGroupBox1.Location = new System.Drawing.Point(9, 243);
+            this.baseGroupBox1.Location = new System.Drawing.Point(9, 245);
             this.baseGroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.baseGroupBox1.Name = "baseGroupBox1";
-            this.baseGroupBox1.Size = new System.Drawing.Size(1064, 114);
+            this.baseGroupBox1.Size = new System.Drawing.Size(1142, 137);
             this.baseGroupBox1.TabIndex = 137;
-            // 
-            // ucVersichrungsdaten12
-            // 
-            this.ucVersichrungsdaten12.BackColor = System.Drawing.Color.Transparent;
-            this.ucVersichrungsdaten12.Location = new System.Drawing.Point(9, -3);
-            this.ucVersichrungsdaten12.Margin = new System.Windows.Forms.Padding(4);
-            this.ucVersichrungsdaten12.Name = "ucVersichrungsdaten12";
-            this.ucVersichrungsdaten12.Size = new System.Drawing.Size(550, 241);
-            this.ucVersichrungsdaten12.TabIndex = 3;
-            this.ucVersichrungsdaten12.ValueChanged += new System.EventHandler(this.OnValueChanged);
-            this.ucVersichrungsdaten12.KrankenkasseChanged += new System.EventHandler(this.OnVersDatenChanged);
-            this.ucVersichrungsdaten12.SVNrChanged += new System.EventHandler(this.OnVersDatenChanged);
-            this.ucVersichrungsdaten12.KlasseChanged += new System.EventHandler(this.OnVersDatenChanged);
-            this.ucVersichrungsdaten12.PrivatversicherungChanged += new System.EventHandler(this.OnVersDatenChanged);
-            this.ucVersichrungsdaten12.PolNrChanged += new System.EventHandler(this.OnVersDatenChanged);
             // 
             // panelUnten
             // 
@@ -958,7 +969,7 @@ namespace PMDS.GUI
             this.panelUnten.Controls.Add(this.panelAufenthalshistorie);
             this.panelUnten.Controls.Add(this.uCheckEditorAbwesenheitenHändischBerech);
             this.panelUnten.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUnten.Location = new System.Drawing.Point(0, 398);
+            this.panelUnten.Location = new System.Drawing.Point(0, 0);
             this.panelUnten.Margin = new System.Windows.Forms.Padding(4);
             this.panelUnten.Name = "panelUnten";
             this.panelUnten.Size = new System.Drawing.Size(1157, 36);
@@ -977,8 +988,8 @@ namespace PMDS.GUI
             // 
             // lblTageAbweseneheitOhneKuerzung
             // 
-            appearance27.BackColor = System.Drawing.Color.Transparent;
-            this.lblTageAbweseneheitOhneKuerzung.Appearance = appearance27;
+            appearance28.BackColor = System.Drawing.Color.Transparent;
+            this.lblTageAbweseneheitOhneKuerzung.Appearance = appearance28;
             this.lblTageAbweseneheitOhneKuerzung.AutoSize = true;
             this.lblTageAbweseneheitOhneKuerzung.Location = new System.Drawing.Point(303, 4);
             this.lblTageAbweseneheitOhneKuerzung.Margin = new System.Windows.Forms.Padding(4);
@@ -989,9 +1000,9 @@ namespace PMDS.GUI
             // 
             // chkKürzungLetzterTagAnwesenheit
             // 
-            appearance28.BackColor = System.Drawing.Color.Transparent;
-            appearance28.BackColorDisabled = System.Drawing.Color.WhiteSmoke;
-            this.chkKürzungLetzterTagAnwesenheit.Appearance = appearance28;
+            appearance29.BackColor = System.Drawing.Color.Transparent;
+            appearance29.BackColorDisabled = System.Drawing.Color.WhiteSmoke;
+            this.chkKürzungLetzterTagAnwesenheit.Appearance = appearance29;
             this.chkKürzungLetzterTagAnwesenheit.BackColor = System.Drawing.Color.Transparent;
             this.chkKürzungLetzterTagAnwesenheit.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkKürzungLetzterTagAnwesenheit.Location = new System.Drawing.Point(603, 3);
@@ -1017,10 +1028,10 @@ namespace PMDS.GUI
             // 
             this.panelZahler.Controls.Add(this.ultraTabControlZahler);
             this.panelZahler.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelZahler.Location = new System.Drawing.Point(0, 434);
+            this.panelZahler.Location = new System.Drawing.Point(0, 0);
             this.panelZahler.Margin = new System.Windows.Forms.Padding(4);
             this.panelZahler.Name = "panelZahler";
-            this.panelZahler.Size = new System.Drawing.Size(1157, 142);
+            this.panelZahler.Size = new System.Drawing.Size(1157, 326);
             this.panelZahler.TabIndex = 139;
             // 
             // ultraTabControlZahler
@@ -1033,7 +1044,7 @@ namespace PMDS.GUI
             this.ultraTabControlZahler.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabControlZahler.Name = "ultraTabControlZahler";
             this.ultraTabControlZahler.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControlZahler.Size = new System.Drawing.Size(1157, 142);
+            this.ultraTabControlZahler.Size = new System.Drawing.Size(1157, 326);
             this.ultraTabControlZahler.TabIndex = 11;
             ultraTab1.TabPage = this.ultraTabPageControl1;
             ultraTab1.Text = "Zahler";
@@ -1048,11 +1059,159 @@ namespace PMDS.GUI
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1153, 115);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1153, 299);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // splitContainerMain
+            // 
+            this.splitContainerMain.BackColor = System.Drawing.Color.PeachPuff;
+            this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMain.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerMain.Name = "splitContainerMain";
+            this.splitContainerMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerMain.Panel1
+            // 
+            this.splitContainerMain.Panel1.Controls.Add(this.splitContainerTop);
+            // 
+            // splitContainerMain.Panel2
+            // 
+            this.splitContainerMain.Panel2.Controls.Add(this.splitContainerBottom);
+            this.splitContainerMain.Size = new System.Drawing.Size(1157, 800);
+            this.splitContainerMain.SplitterDistance = 430;
+            this.splitContainerMain.TabIndex = 140;
+            // 
+            // splitContainerTop
+            // 
+            this.splitContainerTop.BackColor = System.Drawing.Color.White;
+            this.splitContainerTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerTop.IsSplitterFixed = true;
+            this.splitContainerTop.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerTop.Name = "splitContainerTop";
+            this.splitContainerTop.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerTop.Panel1
+            // 
+            this.splitContainerTop.Panel1.Controls.Add(this.panelTop);
+            // 
+            // splitContainerTop.Panel2
+            // 
+            this.splitContainerTop.Panel2.Controls.Add(this.panelMitte);
+            this.splitContainerTop.Size = new System.Drawing.Size(1157, 430);
+            this.splitContainerTop.SplitterDistance = 35;
+            this.splitContainerTop.TabIndex = 0;
+            // 
+            // splitContainerBottom
+            // 
+            this.splitContainerBottom.BackColor = System.Drawing.Color.White;
+            this.splitContainerBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerBottom.IsSplitterFixed = true;
+            this.splitContainerBottom.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerBottom.Name = "splitContainerBottom";
+            this.splitContainerBottom.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerBottom.Panel1
+            // 
+            this.splitContainerBottom.Panel1.Controls.Add(this.panelUnten);
+            // 
+            // splitContainerBottom.Panel2
+            // 
+            this.splitContainerBottom.Panel2.Controls.Add(this.panelZahler);
+            this.splitContainerBottom.Size = new System.Drawing.Size(1157, 366);
+            this.splitContainerBottom.SplitterDistance = 36;
+            this.splitContainerBottom.TabIndex = 0;
+            // 
+            // ucVersichrungsdaten12
+            // 
+            this.ucVersichrungsdaten12.BackColor = System.Drawing.Color.Transparent;
+            this.ucVersichrungsdaten12.Location = new System.Drawing.Point(9, -3);
+            this.ucVersichrungsdaten12.Margin = new System.Windows.Forms.Padding(4);
+            this.ucVersichrungsdaten12.Name = "ucVersichrungsdaten12";
+            this.ucVersichrungsdaten12.Size = new System.Drawing.Size(517, 241);
+            this.ucVersichrungsdaten12.TabIndex = 3;
+            this.ucVersichrungsdaten12.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            this.ucVersichrungsdaten12.KrankenkasseChanged += new System.EventHandler(this.OnVersDatenChanged);
+            this.ucVersichrungsdaten12.SVNrChanged += new System.EventHandler(this.OnVersDatenChanged);
+            this.ucVersichrungsdaten12.KlasseChanged += new System.EventHandler(this.OnVersDatenChanged);
+            this.ucVersichrungsdaten12.PrivatversicherungChanged += new System.EventHandler(this.OnVersDatenChanged);
+            this.ucVersichrungsdaten12.PolNrChanged += new System.EventHandler(this.OnVersDatenChanged);
+            this.ucVersichrungsdaten12.Load += new System.EventHandler(this.ucVersichrungsdaten12_Load);
+            // 
+            // cmbHaupwohnsitzgemeinde
+            // 
+            this.cmbHaupwohnsitzgemeinde.AddEmptyEntry = false;
+            appearance33.BackColor = System.Drawing.Color.White;
+            this.cmbHaupwohnsitzgemeinde.Appearance = appearance33;
+            this.cmbHaupwohnsitzgemeinde.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cmbHaupwohnsitzgemeinde.AutoOpenCBO = false;
+            this.cmbHaupwohnsitzgemeinde.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cmbHaupwohnsitzgemeinde.BackColor = System.Drawing.Color.White;
+            this.cmbHaupwohnsitzgemeinde.BerufsstandGruppeJNA = -1;
+            this.cmbHaupwohnsitzgemeinde.ExactMatch = false;
+            this.cmbHaupwohnsitzgemeinde.Group = "GKZ";
+            this.cmbHaupwohnsitzgemeinde.ID_PEP = -1;
+            this.cmbHaupwohnsitzgemeinde.IgnoreUnterdruecken = true;
+            this.cmbHaupwohnsitzgemeinde.Location = new System.Drawing.Point(343, 141);
+            this.cmbHaupwohnsitzgemeinde.MaxLength = 40;
+            this.cmbHaupwohnsitzgemeinde.Name = "cmbHaupwohnsitzgemeinde";
+            this.cmbHaupwohnsitzgemeinde.PflichtJN = false;
+            this.cmbHaupwohnsitzgemeinde.SelectDistinct = false;
+            this.cmbHaupwohnsitzgemeinde.ShowAddButton = true;
+            this.cmbHaupwohnsitzgemeinde.Size = new System.Drawing.Size(275, 24);
+            this.cmbHaupwohnsitzgemeinde.sys = false;
+            this.cmbHaupwohnsitzgemeinde.TabIndex = 10;
+            this.cmbHaupwohnsitzgemeinde.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // cmbBetreuungsstufe
+            // 
+            this.cmbBetreuungsstufe.AddEmptyEntry = false;
+            appearance18.BackColor = System.Drawing.Color.White;
+            this.cmbBetreuungsstufe.Appearance = appearance18;
+            this.cmbBetreuungsstufe.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cmbBetreuungsstufe.AutoOpenCBO = false;
+            this.cmbBetreuungsstufe.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cmbBetreuungsstufe.BackColor = System.Drawing.Color.White;
+            this.cmbBetreuungsstufe.BerufsstandGruppeJNA = -1;
+            this.cmbBetreuungsstufe.ExactMatch = false;
+            this.cmbBetreuungsstufe.Group = "BST";
+            this.cmbBetreuungsstufe.ID_PEP = -1;
+            this.cmbBetreuungsstufe.IgnoreUnterdruecken = true;
+            this.cmbBetreuungsstufe.Location = new System.Drawing.Point(126, 203);
+            this.cmbBetreuungsstufe.MaxLength = 40;
+            this.cmbBetreuungsstufe.Name = "cmbBetreuungsstufe";
+            this.cmbBetreuungsstufe.PflichtJN = false;
+            this.cmbBetreuungsstufe.SelectDistinct = false;
+            this.cmbBetreuungsstufe.ShowAddButton = true;
+            this.cmbBetreuungsstufe.Size = new System.Drawing.Size(156, 24);
+            this.cmbBetreuungsstufe.sys = false;
+            this.cmbBetreuungsstufe.TabIndex = 13;
+            this.cmbBetreuungsstufe.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // lblBetreuungsstufe
+            // 
+            appearance19.BackColor = System.Drawing.Color.Transparent;
+            this.lblBetreuungsstufe.Appearance = appearance19;
+            this.lblBetreuungsstufe.AutoSize = true;
+            this.lblBetreuungsstufe.Location = new System.Drawing.Point(17, 207);
+            this.lblBetreuungsstufe.Name = "lblBetreuungsstufe";
+            this.lblBetreuungsstufe.Size = new System.Drawing.Size(105, 17);
+            this.lblBetreuungsstufe.TabIndex = 221;
+            this.lblBetreuungsstufe.Text = "Betreuungsstufe";
+            // 
+            // lblPensionsteilungsantragDatum
+            // 
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            this.lblPensionsteilungsantragDatum.Appearance = appearance16;
+            this.lblPensionsteilungsantragDatum.AutoSize = true;
+            this.lblPensionsteilungsantragDatum.Location = new System.Drawing.Point(183, 82);
+            this.lblPensionsteilungsantragDatum.Margin = new System.Windows.Forms.Padding(4);
+            this.lblPensionsteilungsantragDatum.Name = "lblPensionsteilungsantragDatum";
+            this.lblPensionsteilungsantragDatum.Size = new System.Drawing.Size(45, 17);
+            this.lblPensionsteilungsantragDatum.TabIndex = 222;
+            this.lblPensionsteilungsantragDatum.Text = "Datum";
             // 
             // ucAbrechAufenthKlient
             // 
@@ -1061,14 +1220,11 @@ namespace PMDS.GUI
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1031, 556);
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.panelZahler);
-            this.Controls.Add(this.panelUnten);
-            this.Controls.Add(this.panelMitte);
-            this.Controls.Add(this.panelTop);
+            this.Controls.Add(this.splitContainerMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucAbrechAufenthKlient";
-            this.Size = new System.Drawing.Size(1157, 576);
+            this.Size = new System.Drawing.Size(1157, 800);
             this.ultraTabPageControl1.ResumeLayout(false);
             this.ultraTabPageControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtPensTeilAntrag)).EndInit();
@@ -1080,10 +1236,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox9)).EndInit();
             this.ultraGroupBox9.ResumeLayout(false);
             this.ultraGroupBox9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grpBetreuungsstufe)).EndInit();
-            this.grpBetreuungsstufe.ResumeLayout(false);
-            this.grpBetreuungsstufe.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBetreuungsstufe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkForensicherHintergrund)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteBetreuungsstufBis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteBetreuungsstufeAb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEinzelzimmer)).EndInit();
@@ -1115,6 +1268,20 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControlZahler)).EndInit();
             this.ultraTabControlZahler.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.splitContainerMain.Panel1.ResumeLayout(false);
+            this.splitContainerMain.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
+            this.splitContainerMain.ResumeLayout(false);
+            this.splitContainerTop.Panel1.ResumeLayout(false);
+            this.splitContainerTop.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTop)).EndInit();
+            this.splitContainerTop.ResumeLayout(false);
+            this.splitContainerBottom.Panel1.ResumeLayout(false);
+            this.splitContainerBottom.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerBottom)).EndInit();
+            this.splitContainerBottom.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmbHaupwohnsitzgemeinde)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBetreuungsstufe)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1136,7 +1303,7 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel2;
         private QS2.Desktop.ControlManagment.BaseCheckBox cbSozilhBesch;
         private QS2.Desktop.ControlManagment.BaseDateTimeEditor dtSoziAntragDatum;
-        private QS2.Desktop.ControlManagment.BaseLabel ultraLabel3;
+        private QS2.Desktop.ControlManagment.BaseLabel lblSozialhilfebescheidDatum;
         private QS2.Desktop.ControlManagment.BaseTextEditor txtSozilGZ;
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel4;
         private QS2.Desktop.ControlManagment.BaseCheckBox uCheckEditorAbwesenheitenHändischBerech;
@@ -1165,7 +1332,6 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseCheckBox chkKürzungLetzterTagAnwesenheit;
         private QS2.Desktop.ControlManagment.BaseCheckBox chkSozialcard;
         private QS2.Desktop.ControlManagment.BaseCheckBox chkBehindertenausweis;
-        private QS2.Desktop.ControlManagment.BaseGroupBox grpBetreuungsstufe;
         private QS2.Desktop.ControlManagment.BaseLabel lblBetreueungsstufeBis;
         private QS2.Desktop.ControlManagment.BaseLabel lblBetreueungsstufeAb;
         public QS2.Desktop.ControlManagment.BaseDateTimeEditor udteBetreuungsstufBis;
@@ -1176,5 +1342,13 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseLabel lblEntlassungszeitpunkt;
         public QS2.Desktop.ControlManagment.BaseDateTimeEditor dtpEntlassungszeitpunkt;
         public ucVersichrungsdaten ucVersichrungsdaten12;
+        private System.Windows.Forms.SplitContainer splitContainerMain;
+        private System.Windows.Forms.SplitContainer splitContainerTop;
+        private System.Windows.Forms.SplitContainer splitContainerBottom;
+        private QS2.Desktop.ControlManagment.BaseLabel lblHauptwohnsitzgemeinde;
+        public BaseControls.AuswahlGruppeCombo cmbHaupwohnsitzgemeinde;
+        public QS2.Desktop.ControlManagment.BaseCheckBox chkForensicherHintergrund;
+        private QS2.Desktop.ControlManagment.BaseLabel lblBetreuungsstufe;
+        private QS2.Desktop.ControlManagment.BaseLabel lblPensionsteilungsantragDatum;
     }
 }

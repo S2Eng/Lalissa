@@ -130,10 +130,12 @@ namespace PMDS.GUI
             this.cboSozVersLeerGrund.ExactMatch = false;
             this.cboSozVersLeerGrund.Group = "SVE";
             this.cboSozVersLeerGrund.ID_PEP = -1;
+            this.cboSozVersLeerGrund.IgnoreUnterdruecken = true;
             this.cboSozVersLeerGrund.Location = new System.Drawing.Point(106, 43);
             this.cboSozVersLeerGrund.MaxLength = 25;
             this.cboSozVersLeerGrund.Name = "cboSozVersLeerGrund";
             this.cboSozVersLeerGrund.PflichtJN = false;
+            this.cboSozVersLeerGrund.SelectDistinct = false;
             this.cboSozVersLeerGrund.ShowAddButton = true;
             this.cboSozVersLeerGrund.Size = new System.Drawing.Size(441, 21);
             this.cboSozVersLeerGrund.sys = false;
@@ -142,8 +144,6 @@ namespace PMDS.GUI
             // 
             // lblSozVersLeerGrund
             // 
-            this.lblSozVersLeerGrund.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             appearance3.BackColor = System.Drawing.Color.Transparent;
             this.lblSozVersLeerGrund.Appearance = appearance3;
             this.lblSozVersLeerGrund.AutoSize = true;
@@ -168,10 +168,12 @@ namespace PMDS.GUI
             this.cboSozVersStatus.ExactMatch = false;
             this.cboSozVersStatus.Group = "SVS";
             this.cboSozVersStatus.ID_PEP = -1;
+            this.cboSozVersStatus.IgnoreUnterdruecken = true;
             this.cboSozVersStatus.Location = new System.Drawing.Point(106, 93);
             this.cboSozVersStatus.MaxLength = 25;
             this.cboSozVersStatus.Name = "cboSozVersStatus";
             this.cboSozVersStatus.PflichtJN = false;
+            this.cboSozVersStatus.SelectDistinct = false;
             this.cboSozVersStatus.ShowAddButton = true;
             this.cboSozVersStatus.Size = new System.Drawing.Size(441, 21);
             this.cboSozVersStatus.sys = false;
@@ -180,8 +182,6 @@ namespace PMDS.GUI
             // 
             // lblSozVersStatus
             // 
-            this.lblSozVersStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             appearance5.BackColor = System.Drawing.Color.Transparent;
             this.lblSozVersStatus.Appearance = appearance5;
             this.lblSozVersStatus.AutoSize = true;
@@ -217,10 +217,12 @@ namespace PMDS.GUI
             this.cmbKlasse.ExactMatch = false;
             this.cmbKlasse.Group = "KLA";
             this.cmbKlasse.ID_PEP = -1;
+            this.cmbKlasse.IgnoreUnterdruecken = true;
             this.cmbKlasse.Location = new System.Drawing.Point(106, 168);
             this.cmbKlasse.MaxLength = 25;
             this.cmbKlasse.Name = "cmbKlasse";
             this.cmbKlasse.PflichtJN = false;
+            this.cmbKlasse.SelectDistinct = false;
             this.cmbKlasse.ShowAddButton = true;
             this.cmbKlasse.Size = new System.Drawing.Size(278, 21);
             this.cmbKlasse.sys = false;
@@ -280,8 +282,6 @@ namespace PMDS.GUI
             // 
             // lblKasse
             // 
-            this.lblKasse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             appearance11.BackColor = System.Drawing.Color.Transparent;
             this.lblKasse.Appearance = appearance11;
             this.lblKasse.AutoSize = true;
@@ -296,7 +296,7 @@ namespace PMDS.GUI
             appearance12.BackColor = System.Drawing.Color.Transparent;
             this.lblSvNr.Appearance = appearance12;
             this.lblSvNr.AutoSize = true;
-            this.lblSvNr.Location = new System.Drawing.Point(11, 21);
+            this.lblSvNr.Location = new System.Drawing.Point(13, 23);
             this.lblSvNr.Name = "lblSvNr";
             this.lblSvNr.Size = new System.Drawing.Size(35, 14);
             this.lblSvNr.TabIndex = 77;
@@ -304,8 +304,6 @@ namespace PMDS.GUI
             // 
             // lblKrankenkasse
             // 
-            this.lblKrankenkasse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             appearance13.BackColor = System.Drawing.Color.Transparent;
             this.lblKrankenkasse.Appearance = appearance13;
             this.lblKrankenkasse.AutoSize = true;
@@ -331,8 +329,6 @@ namespace PMDS.GUI
             // 
             // lblSozVersMitversichertBei
             // 
-            this.lblSozVersMitversichertBei.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             appearance15.BackColor = System.Drawing.Color.Transparent;
             this.lblSozVersMitversichertBei.Appearance = appearance15;
             this.lblSozVersMitversichertBei.AutoSize = true;
