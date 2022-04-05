@@ -764,6 +764,7 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool133 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnExportCalculations");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool172 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnSuchtgiftschrankSchlüssel");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool178 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnVerordnungen");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool193 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnSTAMP");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool188 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnAbrechnungInkoProdukte");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool183 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnPatientAufenthalteLöschen");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool122 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Medizinische_Dialoge");
@@ -819,6 +820,7 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool189 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnAbrechnungInkoPauschale");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool190 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnAbrechnungInkoProdukte");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool192 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnPSE");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool194 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnSTAMP");
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -1170,6 +1172,7 @@ namespace PMDS
             buttonTool133,
             buttonTool172,
             buttonTool178,
+            buttonTool193,
             buttonTool188,
             buttonTool183});
             buttonTool122.SharedPropsInternal.Caption = "Medizinische  Dialoge";
@@ -1225,6 +1228,7 @@ namespace PMDS
             buttonTool189.SharedPropsInternal.Caption = "Abrechnung Inko-Pauschale";
             buttonTool190.SharedPropsInternal.Caption = "Abrechnung Inko-Produkt-Pauschale";
             buttonTool192.SharedPropsInternal.Caption = "Pflegestufen-Einschätzung";
+            buttonTool194.SharedPropsInternal.Caption = "STAMP Meldung senden";
             this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             popupMenuTool9,
             buttonTool7,
@@ -1343,7 +1347,8 @@ namespace PMDS
             buttonTool187,
             buttonTool189,
             buttonTool190,
-            buttonTool192});
+            buttonTool192,
+            buttonTool194});
             this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager1_ToolClick);
             // 
             // _frmBase_Toolbars_Dock_Area_Right
@@ -2796,6 +2801,12 @@ namespace PMDS
                             break;
                         }
 
+                    case "btnSTAMP":
+                        using (PMDS.GUI.STAMP.frmSTAMP frmSTAMP = new PMDS.GUI.STAMP.frmSTAMP())
+                        {
+                            frmSTAMP.ShowDialog(this);
+                            break;
+                        }
                     case "btnHeimverträge":
                         break;
 

@@ -381,10 +381,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v17.2.dll</HintPath>
     </Reference>
-    <Reference Include="Infragistics4.Win.v17.2.Design, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v17.2.Design.dll</HintPath>
-    </Reference>
     <Reference Include="MARC.Everest">
       <HintPath>..\Dlls\MARC.Everest.dll</HintPath>
     </Reference>
@@ -1703,6 +1699,12 @@
     <Compile Include="Remote\ICommunicationService.cs" />
     <Compile Include="Remote\remotingClient.cs" />
     <Compile Include="Remote\remotingSrv.cs" />
+    <Compile Include="STAMP\frmSTAMP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STAMP\frmSTAMP.Designer.cs">
+      <DependentUpon>frmSTAMP.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucSiteMapPMDS.cs" />
     <Compile Include="Klient\dsGegenstaende.cs">
       <DependentUpon>dsGegenstaende.xsd</DependentUpon>
@@ -4934,6 +4936,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Remote\frmMainFormIPCClient.resx">
       <DependentUpon>frmMainFormIPCClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STAMP\frmSTAMP.resx">
+      <DependentUpon>frmSTAMP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI.Sitemap\protCalc\frmProtDS.resx">
       <DependentUpon>frmProtDS.cs</DependentUpon>

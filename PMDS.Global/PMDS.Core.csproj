@@ -579,6 +579,7 @@
     <Compile Include="Calc\FSWAbrechnung.cs" />
     <Compile Include="db\cEBInterfaceDB.cs" />
     <Compile Include="db\cELDAInterfaceDB.cs" />
+    <Compile Include="db\cSTAMPInterfaceDB.cs" />
     <Compile Include="db\ERSystem\dsAsyncCommData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
