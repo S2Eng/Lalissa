@@ -215,8 +215,8 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab8 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab8 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab5 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab9 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab10 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -2366,7 +2366,7 @@ namespace PMDS.GUI
             // pageControlAufenthalt
             // 
             this.pageControlAufenthalt.Controls.Add(this.panelAufenthalt);
-            this.pageControlAufenthalt.Location = new System.Drawing.Point(-10000, -10000);
+            this.pageControlAufenthalt.Location = new System.Drawing.Point(1, 24);
             this.pageControlAufenthalt.Name = "pageControlAufenthalt";
             this.pageControlAufenthalt.Size = new System.Drawing.Size(1028, 606);
             // 
@@ -3243,7 +3243,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl5.AutoScroll = true;
             this.ultraTabPageControl5.Controls.Add(this.panelBewerbungdsdaten);
             this.ultraTabPageControl5.Controls.Add(this.ultraTabControlMainAdresse);
-            this.ultraTabPageControl5.Location = new System.Drawing.Point(1, 24);
+            this.ultraTabPageControl5.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl5.Name = "ultraTabPageControl5";
             this.ultraTabPageControl5.Size = new System.Drawing.Size(1028, 606);
             // 
@@ -3531,16 +3531,16 @@ namespace PMDS.GUI
             ultraTab1.Text = "Persönliche Daten";
             ultraTab4.Key = "Aufenthalt";
             ultraTab4.TabPage = this.pageControlAufenthalt;
-            ultraTab4.Text = "Aufenthalt";
+            ultraTab4.Text = "Abrechnungsdaten";
             ultraTab3.Key = "Kontakte";
             ultraTab3.TabPage = this.ultraTabPageControl3;
             ultraTab3.Text = "Kontakte";
-            ultraTab8.Key = "Rezeptgebührenbefreiung";
-            ultraTab8.TabPage = this.ultraTabPageControl7;
-            ultraTab8.Text = "Rezeptgebührenbefreiung";
             ultraTab2.Key = "Wohnsituation";
             ultraTab2.TabPage = this.ultraTabPageControl5;
             ultraTab2.Text = "Adress- und Bewerbungsdaten";
+            ultraTab8.Key = "Rezeptgebührenbefreiung";
+            ultraTab8.TabPage = this.ultraTabPageControl7;
+            ultraTab8.Text = "Rezeptgebührenbefreiung";
             ultraTab5.Key = "Dokumente";
             ultraTab5.TabPage = this.ultraTabPageControl1;
             ultraTab5.Text = "Dokumente";
@@ -3557,8 +3557,8 @@ namespace PMDS.GUI
             ultraTab1,
             ultraTab4,
             ultraTab3,
-            ultraTab8,
             ultraTab2,
+            ultraTab8,
             ultraTab5,
             ultraTab9,
             ultraTab10,
