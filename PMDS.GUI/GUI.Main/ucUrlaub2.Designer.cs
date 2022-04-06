@@ -42,10 +42,15 @@
             this.btnSave = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnAbort = new QS2.Desktop.ControlManagment.BaseButton();
             this.labInfo = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.auswahlSTAMP_Awesenheitsgrund = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.pnlSTAMP = new QS2.Desktop.ControlManagment.BasePanel();
+            this.lblAbwesenheitsgrund = new QS2.Desktop.ControlManagment.BaseLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEnde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUrlaub)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpBeginn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auswahlSTAMP_Awesenheitsgrund)).BeginInit();
+            this.pnlSTAMP.SuspendLayout();
             this.SuspendLayout();
             // 
             // labEnde
@@ -60,22 +65,30 @@
             // dtpEnde
             // 
             this.dtpEnde.FormatString = "";
-            this.dtpEnde.Location = new System.Drawing.Point(97, 89);
+            this.dtpEnde.Location = new System.Drawing.Point(135, 90);
             this.dtpEnde.MaskInput = "dd.mm.yyyy hh:mm";
             this.dtpEnde.Name = "dtpEnde";
+            this.dtpEnde.ownFormat = "";
+            this.dtpEnde.ownMaskInput = "";
             this.dtpEnde.Size = new System.Drawing.Size(128, 21);
             this.dtpEnde.TabIndex = 9;
             // 
             // txtUrlaub
             // 
             this.txtUrlaub.AddEmptyEntry = false;
+            this.txtUrlaub.AutoOpenCBO = false;
             this.txtUrlaub.BerufsstandGruppeJNA = -1;
+            this.txtUrlaub.ExactMatch = false;
             this.txtUrlaub.Group = "URL";
             this.txtUrlaub.ID_PEP = -1;
-            this.txtUrlaub.Location = new System.Drawing.Point(97, 113);
+            this.txtUrlaub.IgnoreUnterdruecken = true;
+            this.txtUrlaub.Location = new System.Drawing.Point(135, 114);
             this.txtUrlaub.Name = "txtUrlaub";
+            this.txtUrlaub.PflichtJN = false;
+            this.txtUrlaub.SelectDistinct = false;
             this.txtUrlaub.ShowAddButton = true;
             this.txtUrlaub.Size = new System.Drawing.Size(342, 21);
+            this.txtUrlaub.sys = false;
             this.txtUrlaub.TabIndex = 11;
             // 
             // labBeginn
@@ -99,9 +112,11 @@
             // dtpBeginn
             // 
             this.dtpBeginn.FormatString = "";
-            this.dtpBeginn.Location = new System.Drawing.Point(97, 65);
+            this.dtpBeginn.Location = new System.Drawing.Point(135, 66);
             this.dtpBeginn.MaskInput = "dd.mm.yyyy hh:mm";
             this.dtpBeginn.Name = "dtpBeginn";
+            this.dtpBeginn.ownFormat = "";
+            this.dtpBeginn.ownMaskInput = "";
             this.dtpBeginn.Size = new System.Drawing.Size(128, 21);
             this.dtpBeginn.TabIndex = 7;
             // 
@@ -117,7 +132,7 @@
             this.btnSave.Appearance = appearance2;
             this.btnSave.AutoWorkLayout = false;
             this.btnSave.IsStandardControl = false;
-            this.btnSave.Location = new System.Drawing.Point(390, 151);
+            this.btnSave.Location = new System.Drawing.Point(409, 169);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(48, 32);
@@ -133,7 +148,7 @@
             this.btnAbort.Appearance = appearance3;
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(301, 151);
+            this.btnAbort.Location = new System.Drawing.Point(320, 169);
             this.btnAbort.Margin = new System.Windows.Forms.Padding(4);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(88, 32);
@@ -153,14 +168,52 @@
             this.labInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labInfo.Location = new System.Drawing.Point(0, 0);
             this.labInfo.Name = "labInfo";
-            this.labInfo.Size = new System.Drawing.Size(455, 48);
+            this.labInfo.Size = new System.Drawing.Size(497, 48);
             this.labInfo.TabIndex = 14;
             this.labInfo.Text = "Abwesenheit von {0}";
+            // 
+            // auswahlSTAMP_Awesenheitsgrund
+            // 
+            this.auswahlSTAMP_Awesenheitsgrund.AddEmptyEntry = false;
+            this.auswahlSTAMP_Awesenheitsgrund.AutoOpenCBO = false;
+            this.auswahlSTAMP_Awesenheitsgrund.BerufsstandGruppeJNA = -1;
+            this.auswahlSTAMP_Awesenheitsgrund.ExactMatch = false;
+            this.auswahlSTAMP_Awesenheitsgrund.Group = "SAG";
+            this.auswahlSTAMP_Awesenheitsgrund.ID_PEP = -1;
+            this.auswahlSTAMP_Awesenheitsgrund.IgnoreUnterdruecken = true;
+            this.auswahlSTAMP_Awesenheitsgrund.Location = new System.Drawing.Point(123, 1);
+            this.auswahlSTAMP_Awesenheitsgrund.Name = "auswahlSTAMP_Awesenheitsgrund";
+            this.auswahlSTAMP_Awesenheitsgrund.PflichtJN = false;
+            this.auswahlSTAMP_Awesenheitsgrund.SelectDistinct = false;
+            this.auswahlSTAMP_Awesenheitsgrund.ShowAddButton = true;
+            this.auswahlSTAMP_Awesenheitsgrund.Size = new System.Drawing.Size(342, 21);
+            this.auswahlSTAMP_Awesenheitsgrund.sys = false;
+            this.auswahlSTAMP_Awesenheitsgrund.TabIndex = 15;
+            this.auswahlSTAMP_Awesenheitsgrund.ValueChanged += new System.EventHandler(this.auswahlSTAMP_Awesenheitsgrund_ValueChanged);
+            // 
+            // pnlSTAMP
+            // 
+            this.pnlSTAMP.Controls.Add(this.lblAbwesenheitsgrund);
+            this.pnlSTAMP.Controls.Add(this.auswahlSTAMP_Awesenheitsgrund);
+            this.pnlSTAMP.Location = new System.Drawing.Point(12, 140);
+            this.pnlSTAMP.Name = "pnlSTAMP";
+            this.pnlSTAMP.Size = new System.Drawing.Size(479, 24);
+            this.pnlSTAMP.TabIndex = 16;
+            // 
+            // lblAbwesenheitsgrund
+            // 
+            this.lblAbwesenheitsgrund.AutoSize = true;
+            this.lblAbwesenheitsgrund.Location = new System.Drawing.Point(0, 5);
+            this.lblAbwesenheitsgrund.Name = "lblAbwesenheitsgrund";
+            this.lblAbwesenheitsgrund.Size = new System.Drawing.Size(85, 14);
+            this.lblAbwesenheitsgrund.TabIndex = 17;
+            this.lblAbwesenheitsgrund.Text = "Grund (STAMP)";
             // 
             // ucUrlaub2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pnlSTAMP);
             this.Controls.Add(this.labInfo);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAbort);
@@ -171,12 +224,14 @@
             this.Controls.Add(this.labUrlaub);
             this.Controls.Add(this.dtpBeginn);
             this.Name = "ucUrlaub2";
-            this.Size = new System.Drawing.Size(455, 194);
-            this.Load += new System.EventHandler(this.ucUrlaub2_Load);
+            this.Size = new System.Drawing.Size(497, 215);
             ((System.ComponentModel.ISupportInitialize)(this.dtpEnde)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUrlaub)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpBeginn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auswahlSTAMP_Awesenheitsgrund)).EndInit();
+            this.pnlSTAMP.ResumeLayout(false);
+            this.pnlSTAMP.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,5 +249,8 @@
         public QS2.Desktop.ControlManagment.BaseButton btnSave;
         public QS2.Desktop.ControlManagment.BaseButton btnAbort;
         private QS2.Desktop.ControlManagment.BaseLabel labInfo;
+        public BaseControls.AuswahlGruppeCombo auswahlSTAMP_Awesenheitsgrund;
+        private QS2.Desktop.ControlManagment.BasePanel pnlSTAMP;
+        private QS2.Desktop.ControlManagment.BaseLabel lblAbwesenheitsgrund;
     }
 }

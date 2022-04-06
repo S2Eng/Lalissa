@@ -31,23 +31,10 @@ namespace PMDS.GUI.GUI.Main
         public bool abort = true;
         public bool restartFrm = false;
 
-        
-
-
-
-
-
         public ucUrlaub2()
         {
             InitializeComponent();
         }
-
-        private void ucUrlaub2_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
 
         public void initControl(Guid IDPatient)
         {
@@ -60,6 +47,7 @@ namespace PMDS.GUI.GUI.Main
                 this.mainWindow.CancelButton = this.btnAbort;
 
                 this.btnSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32);
+
 
             }
             catch (Exception ex)
@@ -80,13 +68,9 @@ namespace PMDS.GUI.GUI.Main
                                             {p.Nachname, p.Vorname}
                                         ).First();
 
-                    //PMDS.db.Entities.Patient rPatient = this.b.getPatient(this.IDPATIENT, db);
                     this.labInfo.Text = System.String.Format(labInfo.Text, rPatName.Nachname.Trim() + " " + rPatName.Vorname.Trim());
                 }
-                //this.rPatient = this.b.getPatient(this._IDPatient, this.db2);
-                //this.labInfo.Text = System.String.Format(labInfo.Text, this.rPatient.Nachname.Trim() + " " + this.rPatient.Vorname.Trim());
 
-                //this.rAufenthaltAct = this.b.getAktuellerAufenthaltPatient(this._IDPatient, false, this.db2);       //os211222
                 this.rAufenthaltAct = this.b.getAufenthalt(ENV.IDAUFENTHALT);
 
                 this.IsAbwesend = this.b.KlientIsAbwesend(this.db2, rAufenthaltAct.ID);
@@ -125,17 +109,6 @@ namespace PMDS.GUI.GUI.Main
                 {
                     throw new Exception("ucUrlaub2.loadData: !this.IsAbwesend && this.rAufenthaltAct.IDUrlaub != null not allowed for IDPatient '" + this._IDPatient.ToString() + "'!");
                 }
-
-                //if (IsAbwesend) 
-                //{
-                //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Status des Klienten wurde in der Zwischenzeit auf 'Abwesend' geändert.", "Hinweis");
-                //    this.mainWindow.Close();
-                //}
-                //else if (!IsAbwesend) 
-                //{
-                //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Status des Klienten wurde in der Zwischenzeit auf 'Anwesend' geändert.", "Hinweis");
-                //    this.mainWindow.Close();
-                //}
 
                 if (this.IsAbwesend)
                 {
@@ -217,35 +190,6 @@ namespace PMDS.GUI.GUI.Main
                 }
 
                 return true;
-                                
-
-                //bool bError = false;
-                //bool bInfo = true;
-
-                //if (dtpBeginn.Enabled)
-                //{
-                //    PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
-                //    bool DatOK = b.checkDateRückmeldung(dtpBeginn.DateTime, PflegeEintragTyp.NONE);
-                //    if (!DatOK)
-                //    {
-                //        bError = true;
-                //    }
-                //}
-
-                //if (dtpEnde.Enabled)
-                //{
-                //    GuiUtil.ValidateField(dtpEnde, (dtpBeginn.DateTime <= dtpEnde.DateTime),
-                //        ENV.String("GUI.E_NO_FUTURE_DATE"), ref bError, bInfo, errorProvider1);
-                //}
-
-                //if (txtUrlaub.Enabled)
-                //{
-                //    GuiUtil.ValidateField(txtUrlaub, (txtUrlaub.Text.Length > 0),
-                //        ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
-                //}
-
-                //return !bError;
-
             }
             catch (Exception ex)
             {
@@ -262,12 +206,6 @@ namespace PMDS.GUI.GUI.Main
                     return false;
                 }
 
-                //os211222 - nicht prüfen, ob Klient wieder anwesend ist (beim Beenden von Abwesenheiten in der Historie würde dies kein Beenden erlauben, wenn eine Wiederaufnahme stattgefunden hat).
-                //if (!this.checkUrlaubStatusOK(this.IsAbwesend))
-                //{
-                //    return false;
-                //}
-
                 DateTime dNow = DateTime.Now;
                 if (this.IsAbwesend)
                 {
@@ -279,7 +217,6 @@ namespace PMDS.GUI.GUI.Main
                     string sText = "Abwesenheitsende " + this.rUrlaubVerlauf.Text.Trim();
                     PMDS.DB.PMDSBusiness.retBusiness resCheck = PMDSBusiness1.AbwesenheitsEnde(this._IDPatient, this.rAufenthaltAct.ID, 
                                                                                                 this.rUrlaubVerlauf.EndeDatum.Value, ENV.IDKlinik, sText);
-                    //_patient.Aufenthalt.Write();
                 }
                 else
                 {
@@ -312,74 +249,12 @@ namespace PMDS.GUI.GUI.Main
                     {
                         PMDSBusiness1.UpdateAufenthaltSetIDUrlaub(rAufenthaltAct.ID, (Guid)rAufenthaltAct.IDUrlaub);
                     }
-
-                    //db.SaveChanges();
-                    //_patient.Aufenthalt.Write();
                 }
 
                 this.db2.SaveChanges();
                 PMDS.DB.PMDSBusinessComm.newCommAsyncToClients(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll, this.db2);
 
-                return true;
-
-
-                //if (!ucUrlaub1.ValidateFields())
-                //    return;
-
-                //ucUrlaub1.UpdateDATA();
-
-                //// ende datum für Rückmeldungen ermitteln
-                //UrlaubVerlauf u = ucUrlaub1.Urlaub;
-                //string text = (u.IsOpenUrlaub ? "" : u.Text);
-                //DateTime dtEnd = (u.IsOpenUrlaub ? u.StartDatum : (DateTime)u.EndeDatum);
-
-                //bool IsAbwesend = false;
-                //using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
-                //{
-                //    PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
-                //    IsAbwesend = b.KlientIsAbwesend(db, _patient.Aufenthalt.ID);
-                //}
-
-                //if (u.IsOpenUrlaub && !IsAbwesend)
-                //{
-                //    Guid idAuf = _patient.Aufenthalt.ID;
-                //    DateTime DatBeginnUrlaub = this.ucUrlaub1.dtpBeginn.DateTime;
-                //    PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();   //lthok
-                //    PMDS.DB.PMDSBusiness.retBusiness resCheck = PMDSBusiness1.getOpenTermine(_patient.ID, idAuf, DatBeginnUrlaub, ENV.IDKlinik);
-
-                //    PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext();
-                //    PMDSBusiness1.AddPflegeeintrag(db, "Abwesenheitsbeginn " + u.Text + " - Alle Maßnahmen werden unterbrochen.", DatBeginnUrlaub,
-                //        null, _patient.Aufenthalt.IDBereich,
-                //        _patient.Aufenthalt.ID, null, PflegeEintragTyp.PLANUNG,
-                //        null, _patient.Aufenthalt.IDAbteilung, "Planungsänderung");
-                //    db.SaveChanges();
-
-                //    _patient.Aufenthalt.Write();
-                //}
-                //else if (!u.IsOpenUrlaub && IsAbwesend)
-                //{
-                //    Guid idAuf = _patient.Aufenthalt.ID;
-                //    DateTime DatBeginnUrlaub = this.ucUrlaub1.dtpBeginn.DateTime;
-                //    PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();   //lthok
-                //    string sText = "Abwesenheitsende " + u.Text;
-                //    PMDS.DB.PMDSBusiness.retBusiness resCheck = PMDSBusiness1.AbwesenheitsEnde(_patient.ID, idAuf, dtEnd, ENV.IDKlinik, sText);
-                //    _patient.Aufenthalt.Write();
-                //}
-                //else if (u.IsOpenUrlaub && IsAbwesend)         //Klient ist bereits abwesend, kann nicht nocheinmal abwesend gemacht werden
-                //{
-                //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Status des Klienten wurde in der Zwischenzeit auf 'Abwesend' geändert.", "Hinweis");
-                //}
-                //else if (!u.IsOpenUrlaub && !IsAbwesend)         //Klient ist bereits abwesend, kann nicht nocheinmal abwesend gemacht werden
-                //{
-                //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Status des Klienten wurde in der Zwischenzeit auf 'Anwesend' geändert.", "Hinweis");
-                //}
-                //else         //Irregulärer Zustand
-                //{
-                //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Status des Klienten kann nicht festgestellt werden. Bitte schließen Sie das Fenster und probieren Sie es nocheinmal", "Hinweis");
-                //}
-
-                //_bCanclose = true;
-                
+                return true;                
             }
             catch (Exception ex)
             {
@@ -423,7 +298,6 @@ namespace PMDS.GUI.GUI.Main
             }
         }
 
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -465,6 +339,10 @@ namespace PMDS.GUI.GUI.Main
             }
         }
 
+        private void auswahlSTAMP_Awesenheitsgrund_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
