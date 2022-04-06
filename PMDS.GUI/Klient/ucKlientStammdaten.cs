@@ -1171,7 +1171,6 @@ namespace PMDS.GUI
                             sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Amputation: ") + sAmputationOld.Trim() + " -> " + sAmputationNew.Trim());
                         }
 
-
                         if (!String.IsNullOrWhiteSpace(this.ucAbrechAufenthKlient1.cmbBetreuungsstufe.Text))
                         {
                             rPatient.Betreuungsstufe = this.ucAbrechAufenthKlient1.cmbBetreuungsstufe.Text;
@@ -1180,6 +1179,18 @@ namespace PMDS.GUI
                         {
                             rPatient.Betreuungsstufe = "";
                         }
+
+                        if (!String.IsNullOrWhiteSpace(this.ucAbrechAufenthKlient1.cmbHaupwohnsitzgemeinde.Text))
+                        {
+                            rPatient.Hauptwohnsitzgemeinde = this.ucAbrechAufenthKlient1.cmbHaupwohnsitzgemeinde.Text;
+                        }
+                        else
+                        {
+                            rPatient.Hauptwohnsitzgemeinde = "";
+                        }
+
+                        rPatient.ForensischerHintergrund = ucAbrechAufenthKlient1.chkForensicherHintergrund.Checked;
+
                         if (this.ucAbrechAufenthKlient1.udteBetreuungsstufeAb.Value != null)
                         {
                             rPatient.BetreuungsstufeAb = this.ucAbrechAufenthKlient1.udteBetreuungsstufeAb.DateTime;
@@ -1446,25 +1457,6 @@ namespace PMDS.GUI
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Amputation muss zwischen 0 und 60 Prozent liegen!", "", MessageBoxButtons.OK);
                 bError = true;
             }
-
-            //if (this.cmbSexus.SelectedItem == null)
-            //{
-            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Geschlecht: Auswahl erforderlich!", "", MessageBoxButtons.OK);
-            //    this.cmbSexus.Focus();
-            //    bError = true;
-            //}
-            //if (this.cmbFAM.SelectedItem == null && this.cmbFAM.Text.Trim() != "")
-            //{
-            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fam.Stand: Auswahl erforderlich!", "", MessageBoxButtons.OK);
-            //    this.cmbFAM.Focus();
-            //    bError = true;
-            //}
-            //if (this.cmbKonfession.SelectedItem == null && this.cmbKonfession.Text.Trim() != "")
-            //{
-            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Konfession: Auswahl erforderlich!", "", MessageBoxButtons.OK);
-            //    this.cmbKonfession.Focus();
-            //    bError = true;
-            //}
 
             string MsgTxt2 = "";
             bool cbSexusOK = PMDSBusinessUI.checkCboBox(this.cmbSexus, QS2.Desktop.ControlManagment.ControlManagment.getRes("Geschlecht"), true, ref MsgTxt2, true);

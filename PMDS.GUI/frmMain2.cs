@@ -2802,9 +2802,9 @@ namespace PMDS
                         }
 
                     case "btnSTAMP":
-                        using (PMDS.GUI.ELDA.frmELDA frmELDA = new PMDS.GUI.ELDA.frmELDA())
+                        using (PMDS.GUI.STAMP.frmSTAMP frmSTAMP = new PMDS.GUI.STAMP.frmSTAMP())
                         {
-                            frmELDA.ShowDialog(this);
+                            frmSTAMP.ShowDialog(this);
                             break;
                         }
 

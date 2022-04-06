@@ -1035,6 +1035,7 @@
     </Compile>
     <Compile Include="Calc\UltraGridTools.cs" />
     <Compile Include="cELGADB.cs" />
+    <Compile Include="cSTAMPInterfaceDB.cs" />
     <Compile Include="Datenerhebung\AnamneseOREM\dsAnamneseOrem.cs">
       <DependentUpon>dsAnamneseOrem.xsd</DependentUpon>
     </Compile>
@@ -1703,6 +1704,10 @@
     <Compile Include="Remote\ICommunicationService.cs" />
     <Compile Include="Remote\remotingClient.cs" />
     <Compile Include="Remote\remotingSrv.cs" />
+    <Compile Include="STAMP\frmSTAMP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STAMP\frmSTAMP.Designer.cs" />
     <Compile Include="ucSiteMapPMDS.cs" />
     <Compile Include="Klient\dsGegenstaende.cs">
       <DependentUpon>dsGegenstaende.xsd</DependentUpon>
@@ -4935,6 +4940,7 @@
     <EmbeddedResource Include="Remote\frmMainFormIPCClient.resx">
       <DependentUpon>frmMainFormIPCClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="STAMP\frmSTAMP.resx" />
     <EmbeddedResource Include="UI.Sitemap\protCalc\frmProtDS.resx">
       <DependentUpon>frmProtDS.cs</DependentUpon>
       <SubType>Designer</SubType>

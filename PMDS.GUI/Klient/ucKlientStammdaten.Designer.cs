@@ -61,6 +61,7 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
@@ -70,6 +71,7 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance87 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance88 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance89 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance90 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance91 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance92 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance93 = new Infragistics.Win.Appearance();
@@ -86,8 +88,6 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance104 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance105 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance106 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance90 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance107 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance108 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance109 = new Infragistics.Win.Appearance();
@@ -272,6 +272,7 @@ namespace PMDS.GUI
             this.txtFaxNWS = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lblFaxSub = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.lblMobilTelNrKlient = new QS2.Desktop.ControlManagment.BaseLabel();
             this.panelAufenthaltsdaten2 = new QS2.Desktop.ControlManagment.BasePanel();
             this.chkELGAAbgemeldet = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.lblVorhergendeBetreuungsformen = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -288,6 +289,7 @@ namespace PMDS.GUI
             this.txtFallzahl = new QS2.Desktop.ControlManagment.BaseMaskEdit();
             this.txtgruppenkennzahl = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.ultraGroupBoxOben = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.lbleMailKlient = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblEMailPat = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblTitelPost = new QS2.Desktop.ControlManagment.BaseLabel();
             this.cboTitelPost = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
@@ -315,8 +317,6 @@ namespace PMDS.GUI
             this.lblGeschl = new QS2.Desktop.ControlManagment.BaseLabel();
             this.gebDatum = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.ultraGroupBoxAllgemein1 = new QS2.Desktop.ControlManagment.BaseGroupBox();
-            this.lbleMailKlient = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.lblMobilTelNrKlient = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblDNRAnmerkung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtDNRAnmerkung = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lblPatientenverfügung = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -1159,6 +1159,17 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.Size = new System.Drawing.Size(1028, 673);
             this.ultraTabPageControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.ultraTabPageControl2_Paint);
             // 
+            // lblMobilTelNrKlient
+            // 
+            appearance27.BackColor = System.Drawing.Color.Transparent;
+            this.lblMobilTelNrKlient.Appearance = appearance27;
+            this.lblMobilTelNrKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblMobilTelNrKlient.Location = new System.Drawing.Point(93, 251);
+            this.lblMobilTelNrKlient.Name = "lblMobilTelNrKlient";
+            this.lblMobilTelNrKlient.Size = new System.Drawing.Size(392, 20);
+            this.lblMobilTelNrKlient.TabIndex = 218;
+            this.lblMobilTelNrKlient.Text = "                                                             ";
+            // 
             // panelAufenthaltsdaten2
             // 
             this.panelAufenthaltsdaten2.Controls.Add(this.chkELGAAbgemeldet);
@@ -1209,10 +1220,11 @@ namespace PMDS.GUI
             // cboVorherigeBetreuungsformenMulti
             // 
             this.cboVorherigeBetreuungsformenMulti.Location = new System.Drawing.Point(121, 98);
-            this.cboVorherigeBetreuungsformenMulti.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cboVorherigeBetreuungsformenMulti.Margin = new System.Windows.Forms.Padding(5);
             this.cboVorherigeBetreuungsformenMulti.Name = "cboVorherigeBetreuungsformenMulti";
             this.cboVorherigeBetreuungsformenMulti.Size = new System.Drawing.Size(387, 26);
             this.cboVorherigeBetreuungsformenMulti.TabIndex = 18;
+            this.cboVorherigeBetreuungsformenMulti.AfterCheck += new System.EventHandler(this.OnValueChanged);
             // 
             // btnAbwesenheitsendeBestätigen
             // 
@@ -1371,6 +1383,17 @@ namespace PMDS.GUI
             this.ultraGroupBoxOben.Size = new System.Drawing.Size(494, 340);
             this.ultraGroupBoxOben.TabIndex = 90;
             this.ultraGroupBoxOben.Text = "Personendaten";
+            // 
+            // lbleMailKlient
+            // 
+            appearance90.BackColor = System.Drawing.Color.Transparent;
+            this.lbleMailKlient.Appearance = appearance90;
+            this.lbleMailKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lbleMailKlient.Location = new System.Drawing.Point(90, 273);
+            this.lbleMailKlient.Name = "lbleMailKlient";
+            this.lbleMailKlient.Size = new System.Drawing.Size(392, 18);
+            this.lbleMailKlient.TabIndex = 220;
+            this.lbleMailKlient.Text = "                                                             ";
             // 
             // lblEMailPat
             // 
@@ -1781,28 +1804,6 @@ namespace PMDS.GUI
             this.ultraGroupBoxAllgemein1.TabIndex = 91;
             this.ultraGroupBoxAllgemein1.Text = "Zusätzliche Daten, Wünsche, Kenntnisse";
             // 
-            // lbleMailKlient
-            // 
-            appearance90.BackColor = System.Drawing.Color.Transparent;
-            this.lbleMailKlient.Appearance = appearance90;
-            this.lbleMailKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lbleMailKlient.Location = new System.Drawing.Point(90, 273);
-            this.lbleMailKlient.Name = "lbleMailKlient";
-            this.lbleMailKlient.Size = new System.Drawing.Size(392, 18);
-            this.lbleMailKlient.TabIndex = 220;
-            this.lbleMailKlient.Text = "                                                             ";
-            // 
-            // lblMobilTelNrKlient
-            // 
-            appearance27.BackColor = System.Drawing.Color.Transparent;
-            this.lblMobilTelNrKlient.Appearance = appearance27;
-            this.lblMobilTelNrKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblMobilTelNrKlient.Location = new System.Drawing.Point(93, 251);
-            this.lblMobilTelNrKlient.Name = "lblMobilTelNrKlient";
-            this.lblMobilTelNrKlient.Size = new System.Drawing.Size(392, 20);
-            this.lblMobilTelNrKlient.TabIndex = 218;
-            this.lblMobilTelNrKlient.Text = "                                                             ";
-            // 
             // lblDNRAnmerkung
             // 
             appearance107.BackColor = System.Drawing.Color.Transparent;
@@ -1896,7 +1897,7 @@ namespace PMDS.GUI
             // cboSprachenMulti
             // 
             this.cboSprachenMulti.Location = new System.Drawing.Point(121, 114);
-            this.cboSprachenMulti.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboSprachenMulti.Margin = new System.Windows.Forms.Padding(4);
             this.cboSprachenMulti.Name = "cboSprachenMulti";
             this.cboSprachenMulti.Size = new System.Drawing.Size(387, 26);
             this.cboSprachenMulti.TabIndex = 4;

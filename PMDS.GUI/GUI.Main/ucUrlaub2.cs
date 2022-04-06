@@ -48,7 +48,7 @@ namespace PMDS.GUI.GUI.Main
 
                 this.btnSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32);
 
-
+                this.pnlSTAMP.Visible = PMDS.Global.ENV.lic_STAMP;
             }
             catch (Exception ex)
             {
@@ -205,7 +205,7 @@ namespace PMDS.GUI.GUI.Main
                 {
                     return false;
                 }
-
+               
                 DateTime dNow = DateTime.Now;
                 if (this.IsAbwesend)
                 {
@@ -231,14 +231,38 @@ namespace PMDS.GUI.GUI.Main
                     newUrlaubVerlauf.IDBenutzer_Geaendert = ENV.USERID;
                     newUrlaubVerlauf.DatumErstellt = dNow;
                     newUrlaubVerlauf.DatumGeaendert = dNow;
+
+                    PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
+                    PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext();
+
+                    if (ENV.lic_STAMP)
+                    {
+                        //Abesenheitsgrund muss ausgewählt werden
+                        if (auswahlSTAMP_Awesenheitsgrund.Value == null || String.IsNullOrWhiteSpace(auswahlSTAMP_Awesenheitsgrund.Value.ToString()))
+                        {
+                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bitte wählen Sie einen Abwesenheitsgrund aus der Liste aus.");
+                            return false;
+                        }
+                        else
+                        {
+                            PMDS.db.Entities.AuswahlListe rAuswahliste = PMDSBusiness1.GetAuswahlliste(db, "SAG", auswahlSTAMP_Awesenheitsgrund.Text);
+                            if (rAuswahliste != null)
+                                newUrlaubVerlauf.STAMP_Abwesenheitsgrund = rAuswahliste.Beschreibung;
+                            else
+                            {
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Unbekannter Eintrag bei Abwesenheitsgrund.");
+                                return false;
+                            }
+                        }
+                    }
+
                     this.db2.UrlaubVerlauf.Add(newUrlaubVerlauf);
 
                     this.rAufenthaltAct.IDUrlaub = newUrlaubVerlauf.ID;
 
-                    PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness(); 
                     PMDS.DB.PMDSBusiness.retBusiness resCheck = PMDSBusiness1.getOpenTermine(this._IDPatient, this.rAufenthaltAct.ID, newUrlaubVerlauf.StartDatum.Value, ENV.IDKlinik);
 
-                    PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext();
+
                     PMDSBusiness1.AddPflegeeintrag(db, QS2.Desktop.ControlManagment.ControlManagment.getRes("Abwesenheitsbeginn ") + newUrlaubVerlauf.Text.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes(" - Alle Maßnahmen werden unterbrochen."),
                                                     newUrlaubVerlauf.StartDatum.Value, null, this.rAufenthaltAct.IDBereich,
                                                     this.rAufenthaltAct.ID, null, PflegeEintragTyp.PLANUNG,
@@ -309,7 +333,6 @@ namespace PMDS.GUI.GUI.Main
                     this.abort = false;
                     this.mainWindow.Close();
                 }
-
             }
             catch (Exception ex)
             {
@@ -320,6 +343,7 @@ namespace PMDS.GUI.GUI.Main
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void btnAbort_Click(object sender, EventArgs e)
         {
             try

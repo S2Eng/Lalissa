@@ -175,7 +175,9 @@
             // auswahlSTAMP_Awesenheitsgrund
             // 
             this.auswahlSTAMP_Awesenheitsgrund.AddEmptyEntry = false;
+            this.auswahlSTAMP_Awesenheitsgrund.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.auswahlSTAMP_Awesenheitsgrund.AutoOpenCBO = false;
+            this.auswahlSTAMP_Awesenheitsgrund.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.StartsWith;
             this.auswahlSTAMP_Awesenheitsgrund.BerufsstandGruppeJNA = -1;
             this.auswahlSTAMP_Awesenheitsgrund.ExactMatch = false;
             this.auswahlSTAMP_Awesenheitsgrund.Group = "SAG";

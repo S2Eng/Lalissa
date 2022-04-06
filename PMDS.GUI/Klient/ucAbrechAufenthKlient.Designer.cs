@@ -636,7 +636,7 @@ namespace PMDS.GUI
             this.chkForensicherHintergrund.Name = "chkForensicherHintergrund";
             this.chkForensicherHintergrund.Size = new System.Drawing.Size(180, 20);
             this.chkForensicherHintergrund.TabIndex = 9;
-            this.chkForensicherHintergrund.Text = "Forensicher Hintergrund";
+            this.chkForensicherHintergrund.Text = "Forensischer Hintergrund";
             this.chkForensicherHintergrund.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // cmbHaupwohnsitzgemeinde

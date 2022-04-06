@@ -1577,7 +1577,7 @@ namespace PMDS.Global
                 ENV.lic_RezepteintragStorno = setLicValue("lic_RezepteintragStorno");
                 ENV.lic_ELDA = setLicValue("lic_ELDA");
                 ENV.lic_PflegestufenEinschätzung = setLicValue("lic_PflegestufenEinschätzung");
-                ENV.lic_PflegestufenEinschätzung = setLicValue("lic_STAMP");
+                ENV.lic_STAMP = setLicValue("lic_STAMP");
 
                 QS2.Logging.ENV.init(ENV._LOGPATH, true, ENV.adminSecure);
                 QS2.Desktop.ControlManagment.ENV.init(ref PMDS.Global.ENV.IDApplication, ref PMDS.Global.ENV.TypeRessourcesRun, ENV.adminSecure, ENV.DoNotShowRessources, ENV.AutoAddNewRessources, ENV.IntDeactivated, DataBase.CONNECTIONSqlClient);  
@@ -2760,6 +2760,8 @@ namespace PMDS.Global
         RezepteBestellen = 110,
         [Description("Abrechnung Inko-Produkt-Pauschale")]
         AbrechnungInkoProdukte = 117,
+        [Description("STAMP Meldung")]
+        STAMPMeldung = 118,
     }
 
     public enum UserRightsELGA

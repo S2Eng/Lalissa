@@ -130,7 +130,6 @@ namespace PMDS.GUI
                 this.abrechnungHasChanged = false;
                 _valueChangeEnabled = true;
                 InitErrorProvider();
-                HideOrShowControls();
             }
         }
 
@@ -292,6 +291,10 @@ namespace PMDS.GUI
                     {
                         this.chkForensicherHintergrund.Checked = (bool) rPatInfo.ForensischerHintergrund;
                     }
+                    else
+                    {
+                        this.chkForensicherHintergrund.Checked = false;
+                    }
 
                     if (rPatInfo.Hauptwohnsitzgemeinde != null)
                     {
@@ -365,12 +368,10 @@ namespace PMDS.GUI
                 }  
             }
 
-            //Befreiungen
-
             Klient.PensionsteilungsantragJN = cbPensionTeilAntrag.Checked;
             Klient.DatumPensionsteilungsantrag = dtPensTeilAntrag.Value;
             Klient.TelefongebuehrbefreiungJN = cbTelBefr.Checked;
-            Klient.FernsehgebuehrbefreiungJN = cbFernsehBefr.Checked;            
+            Klient.FernsehgebuehrbefreiungJN = cbFernsehBefr.Checked;                           
 
             if (Klient.AufenthaltZusatz.Count > 0)
             {
@@ -440,24 +441,7 @@ namespace PMDS.GUI
                         GuiUtil.ValidateField(dtpAufnahmedatum, (dtpAufnahmedatum.DateTime <= DateTime.Now),
                                  QS2.Desktop.ControlManagment.ControlManagment.getRes("Das Datum darf nicht in der Zukunft liegen."), ref bError, bInfo, errorProvider1, ref isWrong);
                     }
-
-                    //Gibt es Leistunen die vor dem Aufnahmedatum liegen, wenn ja Fehler
-                    if (!bError)
-                    {
-                        //PatientLeistungsplan pl = new PatientLeistungsplan();
-                        //dsPatientLeistungsplan.PatientLeistungsplanDataTable dt = pl.Read(Klient.ID);
-
-                        //dsPatientLeistungsplan.PatientLeistungsplanRow[] rows = (dsPatientLeistungsplan.PatientLeistungsplanRow[])dt.Select(dt.GueltigAbColumn.ColumnName + " < '" + dtpAufnahmedatum.DateTime.Date.ToString() + "'");
-
-                        //GuiUtil.ValidateField(dtpAufnahmedatum, (rows == null || rows.Length == 0),
-                        //"Es wurden bereits Leistungen vor dem " + dtpAufnahmedatum.DateTime.ToString("dd.MM.yyyy") + " abgerechnet. Das Aufnahmedatum kann nicht nach diesem Datum liegen.", ref bError, bInfo, errorProvider1);
-
-                    } 
                 }
-
-                // Versicherungsdaten
-                //if (!bError)
-                //    bError = ucVersichrungsdaten1.ValidateFields();
 
                 if (this._isAbrechnungControlAlone)
                 {
@@ -539,8 +523,6 @@ namespace PMDS.GUI
                 frmPflegestufe frm = new frmPflegestufe();
                 DialogResult res = frm.ShowDialog();
 
-                //Neu nach 23.05.2007 MDA
-                //Wenn eine neue Pflegestufe definiert wurde, dann ValueLists des Grids akltualisieren
                 if (frm.NEUE_PFLEGESTUFE)
                 {
                     gridPatPflegestufen.BeginUpdate();
@@ -577,8 +559,6 @@ namespace PMDS.GUI
                 frm.PFLEGESTUFE_ROW = CurrentPatientPflegestufeRow;
                 DialogResult res = frm.ShowDialog();
 
-                //Neu nach 23.05.2007 MDA
-                //Wenn eine neue Pflegestufe definiert wurde, dann ValueLists des Grids akltualisieren
                 if (frm.NEUE_PFLEGESTUFE)
                 {
                     gridPatPflegestufen.BeginUpdate();
@@ -607,10 +587,8 @@ namespace PMDS.GUI
 
             if (rows != null)
             {
-                //
-                //Sicherheitfrage
-                DialogResult res = KlientGuiAction.DelDialogResult(rows.Length);
 
+                DialogResult res = KlientGuiAction.DelDialogResult(rows.Length);
                 if (res == DialogResult.Yes)
                 {
                     foreach (DataRow r in rows)
@@ -620,15 +598,7 @@ namespace PMDS.GUI
                     return true;
                 }
             }
-
             return false;
-        }
-
-        private void HideOrShowControls()
-        {
-            //lblAufnahmedatum.Visible = Klient.Aufenthalt != null;
-            //dtpAufnahmedatum.Visible = Klient.Aufenthalt != null;
-            //ultraGroupBox2.Visible = Klient.Aufenthalt != null;
         }
 
         protected void OnValueChanged(object sender, EventArgs args)

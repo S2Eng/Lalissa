@@ -111,6 +111,15 @@ namespace PMDS.Calc.UI.Admin
                             PMDS.db.Entities.Aufenthalt rAufenthalt = this.b.getAktuellerAufenthaltPatient(IDKlient, false, db);
                         }
 
+                        if (!String.IsNullOrWhiteSpace(this.ucAbrechnungsdatenKlient1.cmbHaupwohnsitzgemeinde.Text))
+                        {
+                            rPatient.Hauptwohnsitzgemeinde = this.ucAbrechnungsdatenKlient1.cmbHaupwohnsitzgemeinde.SelectedText;
+                        }
+                        else
+                        {
+                            rPatient.Hauptwohnsitzgemeinde = "";
+                        }
+
                         if (this.ucAbrechnungsdatenKlient1.chkForensicherHintergrund != null)
                         {
                             rPatient.ForensischerHintergrund = ucAbrechnungsdatenKlient1.chkForensicherHintergrund.Checked;

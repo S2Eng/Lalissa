@@ -816,7 +816,6 @@
     <Compile Include="Other\cConfig.cs" />
     <Compile Include="Other\Config.cs" />
     <Compile Include="Other\Impersonation.cs" />
-    <Compile Include="PMDSClient\ENV\ENVClient.cs" />
     <Compile Include="print\FDF.cs" />
     <Compile Include="UI\Ansichtinfo.cs" />
     <Compile Include="Pdx_Aszm\ASZMSelectionArgs.cs" />
