@@ -118,6 +118,10 @@ namespace PMDS.GUI
 
             this.cboSprachenMulti.initControl("SPA");
             this.cboSprachenMulti.loadData();
+
+            this.cboVorherigeBetreuungsformenMulti.initControl("VBF");
+            this.cboVorherigeBetreuungsformenMulti.loadData();
+
             this.chkDatenschutz.CheckedChanged += new System.EventHandler(this.OnValueChanged);
 
             this.initKlientenstammdatenDokumente();
@@ -235,25 +239,7 @@ namespace PMDS.GUI
             PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxÄrtze, bOn);
             PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxSachverwalter, bOn);
 
-            //PMDS.GUI.BaseControls.historie.OnOffControls(this , bOn);
             this.ucBewerbungsdaten1 .setControlsAktivDisable(bOn);
-
-
-            //if (this.MainWindow != null)
-            //{
-            //    if (this.MainWindow.bewerberbeuanlage)
-            //    {
-            //        this.btnOpenPicture.Visible = false;
-            //    }
-            //    else
-            //    {
-            //        this.btnOpenPicture.Visible = !bOn;
-            //    }
-            //}
-            //else
-            //{
-            //    this.btnOpenPicture.Visible = !bOn;
-            //}
 
             this.ucKontaktPersonen1.panelButtonsKP2.Visible = true;
             this.panelButtons1.Visible = true;
@@ -371,7 +357,8 @@ namespace PMDS.GUI
             cmbAnrede.Text = Klient.Anrede;
             txtFallzahl.Text = (Klient.Aufenthalt != null) ? Klient.Aufenthalt.Fallnummer.ToString() : "";
             txtgruppenkennzahl.Text = (Klient.Aufenthalt != null) ? Klient.Aufenthalt.Gruppenkennzahl : "";
-            txtKliNr.Text = Klient.Klientennummer;
+            //txtKliNr.Text = Klient.Klientennummer;
+            //cboVorherigeBetreuungsformenMulti.setSelectedRows(Klient.Aufenthalt.lstSprachen.Trim());
 
             if (Klient.AufenthaltZusatz.Count > 0)
                 txtZimmerNr.Text = Klient.AufenthaltZusatz[0].Zimmernummer.Trim();
@@ -546,9 +533,20 @@ namespace PMDS.GUI
                                     }
                                    ).First();
 
-                    //PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
                     this.cboSprachenMulti.setSelectedRows(rPatInfo.lstSprachen.Trim());
-                    
+
+                    var VorherigeBetreuungsform = (from a in db.Aufenthalt
+                                                   where a.ID == Klient.Aufenthalt.ID
+                                                   select new
+                                                   {
+                                                       a.STAMP_VorherigeBetreuungsformen
+                                                   }).FirstOrDefault();
+
+                    if (VorherigeBetreuungsform.STAMP_VorherigeBetreuungsformen != null)
+                        cboVorherigeBetreuungsformenMulti.setSelectedRows(VorherigeBetreuungsform.STAMP_VorherigeBetreuungsformen.Trim());
+                    else
+                        cboVorherigeBetreuungsformenMulti.setSelectedRows("");
+
                     this.chkRezGebBef_RegoJN.Checked = rPatInfo.RezGebBef_RegoJN;
                     if (rPatInfo.RezGebBef_RegoAb != null)
                     {
@@ -678,16 +676,6 @@ namespace PMDS.GUI
                                         p.PatientverfuegungAnmerkung
                                     }
                                    );
-                    //PMDSBusiness b = new PMDSBusiness();
-                    //PMDS.db.Entities.Patient rPatient = null;
-                    //if (this._isBewerberJN)
-                    //{
-                    //    rPatient = b.getPatient2(this.Klient.ID, db);
-                    //}
-                    //else
-                    //{
-                    //    rPatient = b.getPatient(this.Klient.ID, db);
-                    //}
 
                     if (rPatInfo.Count() == 1)
                     {
@@ -777,11 +765,11 @@ namespace PMDS.GUI
                 Klient.Aufenthalt.Gruppenkennzahl = txtgruppenkennzahl.Text.Trim();
             }
 
-            if (Klient.Klientennummer != txtKliNr.Text.Trim())
-            {
-                sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Klientennummer: ") + Klient.Klientennummer + " -> " + txtKliNr.Text.Trim());
-            }
-            Klient.Klientennummer = txtKliNr.Text.Trim();
+            //if (Klient.Klientennummer != txtKliNr.Text.Trim())
+            //{
+            //    sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Klientennummer: ") + Klient.Klientennummer + " -> " + txtKliNr.Text.Trim());
+            //}
+            //Klient.Klientennummer = txtKliNr.Text.Trim();
 
             if (Klient.AufenthaltZusatz.Count > 0)
             {
@@ -1136,6 +1124,7 @@ namespace PMDS.GUI
 
             //this.loadPatientenverfügung();
         }
+
         public bool SaveER(ref bool writeDekursSprachenChanged, ref bool abweseneheitBeendetChanged, Guid IDAufenthaltAct, ref string txtSprachenGeändert)
         {
             try
@@ -1209,7 +1198,6 @@ namespace PMDS.GUI
                         }
 
                         string lstSprachenTmp = rPatient.lstSprachen.Trim();
-                        //PMDS.db.Entities.Patient rPatient = this.b.getPatient(ucKlient1.Klient.ID, db);
                         rPatient.lstSprachen = this.cboSprachenMulti.getSelectedRows();
                         if (!lstSprachenTmp.sEquals(rPatient.lstSprachen))                         {
                             writeDekursSprachenChanged = true;
@@ -1279,8 +1267,6 @@ namespace PMDS.GUI
                         }
                         else
                         {
-                            //rPatient.SozVersStatus = "";
-                            //this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text = "";
                             rPatient.SozVersMitversichertBei = "";
                             VersDaten.txtSozVersMitversichertBei.Text = "";
                             rPatient.Klasse = "";
@@ -1324,7 +1310,14 @@ namespace PMDS.GUI
                             sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Wichtige Informationen: ") + rAufenthalt.SofortMassnahmen.Trim() + " -> " + this.txtSofortmassnahmen.Text.Trim());
                         }
                         rAufenthalt.SofortMassnahmen = this.txtSofortmassnahmen.Text.Trim();
-                  
+
+                        string lstTmp = rAufenthalt.STAMP_VorherigeBetreuungsformen == null ? "" : rAufenthalt.STAMP_VorherigeBetreuungsformen.Trim();
+                        rAufenthalt.STAMP_VorherigeBetreuungsformen = this.cboVorherigeBetreuungsformenMulti.getSelectedRows();
+                        if (!lstTmp.sEquals(rAufenthalt.STAMP_VorherigeBetreuungsformen))
+                        {
+                            sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Vorherige Betreuungsformen") + ": " + lstTmp + " -> " + rAufenthalt.STAMP_VorherigeBetreuungsformen.Trim());
+                        }
+
                         db.SaveChanges();
                     }
 
@@ -1336,11 +1329,6 @@ namespace PMDS.GUI
                             if (this.ucAbrechAufenthKlient1.IDAufenthaltEntlassen != null && this.ucAbrechAufenthKlient1.dtpEntlassungszeitpunkt != null)
                             {
                                 Guid IDAufenthaltEntlassen;
-                                //using (ucAbrechAufenthKlient ucAbrechLocal = new ucAbrechAufenthKlient())
-                                //{
-                                //    if (ucAbrechLocal.IDAufenthaltEntlassen != null)
-                                //        ucAbrechLocal.IDAufenthaltEntlassen = ucAbrechLocal.IDAufenthaltEntlassen.Value;
-                                //}
                                 PMDS.db.Entities.Aufenthalt rAufenthaltEntlassen = this.b.getAufenthalt(this.ucAbrechAufenthKlient1.IDAufenthaltEntlassen.Value, db);
                                 if(rAufenthaltEntlassen.Aufnahmezeitpunkt <= this.ucAbrechAufenthKlient1.dtpEntlassungszeitpunkt.DateTime)
                                 {
@@ -1841,9 +1829,7 @@ namespace PMDS.GUI
                 txtgruppenkennzahl.Visible = Klient.Aufenthalt != null;
                 lblGewicht.Visible = Klient.Aufenthalt != null;
                 txtGewicht.Visible = Klient.Aufenthalt != null;
-                lblKlientNr.Visible = Klient.Aufenthalt != null;
                 lblZimNr.Visible = Klient.Aufenthalt != null;
-                txtKliNr.Visible = Klient.Aufenthalt != null;
                 txtZimmerNr.Visible = Klient.Aufenthalt != null;
             }
         }

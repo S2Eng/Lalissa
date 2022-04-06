@@ -209,12 +209,10 @@ namespace PMDS.GUI
             dtPensTeilAntrag.Value = Klient.DatumPensionsteilungsantrag;
             cbTelBefr.Checked = Klient.TelefongebuehrbefreiungJN;
             cbFernsehBefr.Checked = Klient.FernsehgebuehrbefreiungJN;
-            
-
-            //this.cmbBetreuungsstufe.Value = Klient.bet
-
 
             //Grig Patient Pflegestufen
+            txtKliNr.Text = Klient.Klientennummer;
+
             gridPatPflegestufen.DataSource = Klient.PATIENTPFLEGESTUFE.ALL;
             RefreshPflegeStufeValueList();
 
@@ -372,7 +370,7 @@ namespace PMDS.GUI
             Klient.PensionsteilungsantragJN = cbPensionTeilAntrag.Checked;
             Klient.DatumPensionsteilungsantrag = dtPensTeilAntrag.Value;
             Klient.TelefongebuehrbefreiungJN = cbTelBefr.Checked;
-            Klient.FernsehgebuehrbefreiungJN = cbFernsehBefr.Checked;
+            Klient.FernsehgebuehrbefreiungJN = cbFernsehBefr.Checked;            
 
             if (Klient.AufenthaltZusatz.Count > 0)
             {
@@ -397,13 +395,9 @@ namespace PMDS.GUI
             Klient.KürzungLetzterTagAnwesenheit = this.chkKürzungLetzterTagAnwesenheit.Checked;
             Klient.Behindertenausweis = this.chkBehindertenausweis.Checked;
             Klient.Sozialcard = this.chkSozialcard.Checked;
-            //Klient.IDAdresseSub = Nullable<Guid> IDAdresseSub;
+            Klient.Klientennummer = txtKliNr.Text.Trim();
 
             ucVersichrungsdaten12.UpdateDATA();
-
-            //Patient pat = new Patient();
-            //pat.updatePatient(Klient.ID , this.uCheckEditorAbwesenheitenHändischBerech.Checked);
-
         }
         public bool save(bool mainSystm, bool isAbrechnung, bool isBewerberJN )
         {
@@ -522,7 +516,8 @@ namespace PMDS.GUI
             cbFernsehBefr.Enabled = !ReadOnly;
             cbPensionTeilAntrag.Enabled = !ReadOnly;
             cbTelBefr.Enabled = !ReadOnly;
-           // Klient.AbwesenheitenHändischBerech = !ReadOnly;
+            txtKliNr.Enabled = !ReadOnly;
+            // Klient.AbwesenheitenHändischBerech = !ReadOnly;
             dtPensTeilAntrag.ReadOnly = ReadOnly;
             btnAddPflStufe.Enabled = !ReadOnly;
             btnDelPflStufe.Enabled = !ReadOnly;
