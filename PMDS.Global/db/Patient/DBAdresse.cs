@@ -103,7 +103,9 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("Plz", "Plz"),
                         new System.Data.Common.DataColumnMapping("Ort", "Ort"),
                         new System.Data.Common.DataColumnMapping("Region", "Region"),
-                        new System.Data.Common.DataColumnMapping("LandKZ", "LandKZ")})});
+                        new System.Data.Common.DataColumnMapping("LandKZ", "LandKZ"),
+                        new System.Data.Common.DataColumnMapping("Strasse_OhneHausnummer", "Strasse_OhneHausnummer"),
+                        new System.Data.Common.DataColumnMapping("Hausnummer", "Hausnummer")})});
             this.daAdresseByID.UpdateCommand = this.oleDbUpdateCommand2;
             // 
             // oleDbDeleteCommand2
@@ -115,13 +117,13 @@ namespace PMDS.DB
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Persist Security Info=True;Password=NiwQ" +
-    "s21+!;User ID=hl;Initial Catalog=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STY041\\MSSQL2019;Integrated Security=SSPI;Initial " +
+    "Catalog=PMDS_DemoGross";
             // 
             // oleDbInsertCommand2
             // 
-            this.oleDbInsertCommand2.CommandText = "INSERT INTO [Adresse] ([ID], [Strasse], [Plz], [Ort], [Region], [LandKZ]) VALUES " +
-    "(?, ?, ?, ?, ?, ?)";
+            this.oleDbInsertCommand2.CommandText = "INSERT INTO [Adresse] ([ID], [Strasse], [Plz], [Ort], [Region], [LandKZ], [Strass" +
+    "e_OhneHausnummer], [Hausnummer]) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             this.oleDbInsertCommand2.Connection = this.oleDbConnection1;
             this.oleDbInsertCommand2.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -129,12 +131,14 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("Plz", System.Data.OleDb.OleDbType.VarChar, 0, "Plz"),
             new System.Data.OleDb.OleDbParameter("Ort", System.Data.OleDb.OleDbType.VarChar, 0, "Ort"),
             new System.Data.OleDb.OleDbParameter("Region", System.Data.OleDb.OleDbType.VarChar, 0, "Region"),
-            new System.Data.OleDb.OleDbParameter("LandKZ", System.Data.OleDb.OleDbType.VarChar, 0, "LandKZ")});
+            new System.Data.OleDb.OleDbParameter("LandKZ", System.Data.OleDb.OleDbType.VarChar, 0, "LandKZ"),
+            new System.Data.OleDb.OleDbParameter("Strasse_OhneHausnummer", System.Data.OleDb.OleDbType.VarChar, 0, "Strasse_OhneHausnummer"),
+            new System.Data.OleDb.OleDbParameter("Hausnummer", System.Data.OleDb.OleDbType.VarChar, 0, "Hausnummer")});
             // 
             // oleDbSelectCommand1
             // 
-            this.oleDbSelectCommand1.CommandText = "SELECT        ID, Strasse, Plz, Ort, Region, LandKZ\r\nFROM            Adresse\r\nWHE" +
-    "RE        (ID = ?)";
+            this.oleDbSelectCommand1.CommandText = "SELECT        ID, Strasse, Plz, Ort, Region, LandKZ, Strasse_OhneHausnummer, Haus" +
+    "nummer\r\nFROM            Adresse\r\nWHERE        (ID = ?)";
             this.oleDbSelectCommand1.Connection = this.oleDbConnection1;
             this.oleDbSelectCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 16, "ID")});
@@ -142,7 +146,8 @@ namespace PMDS.DB
             // oleDbUpdateCommand2
             // 
             this.oleDbUpdateCommand2.CommandText = "UPDATE [Adresse] SET [ID] = ?, [Strasse] = ?, [Plz] = ?, [Ort] = ?, [Region] = ?," +
-    " [LandKZ] = ? WHERE (([ID] = ?))";
+    " [LandKZ] = ?, [Strasse_OhneHausnummer] = ?, [Hausnummer] = ? WHERE (([ID] = ?))" +
+    "";
             this.oleDbUpdateCommand2.Connection = this.oleDbConnection1;
             this.oleDbUpdateCommand2.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -151,6 +156,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("Ort", System.Data.OleDb.OleDbType.VarChar, 0, "Ort"),
             new System.Data.OleDb.OleDbParameter("Region", System.Data.OleDb.OleDbType.VarChar, 0, "Region"),
             new System.Data.OleDb.OleDbParameter("LandKZ", System.Data.OleDb.OleDbType.VarChar, 0, "LandKZ"),
+            new System.Data.OleDb.OleDbParameter("Strasse_OhneHausnummer", System.Data.OleDb.OleDbType.VarChar, 0, "Strasse_OhneHausnummer"),
+            new System.Data.OleDb.OleDbParameter("Hausnummer", System.Data.OleDb.OleDbType.VarChar, 0, "Hausnummer"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // dsAdresse1
@@ -171,7 +178,9 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("Plz", "Plz"),
                         new System.Data.Common.DataColumnMapping("Ort", "Ort"),
                         new System.Data.Common.DataColumnMapping("Region", "Region"),
-                        new System.Data.Common.DataColumnMapping("LandKZ", "LandKZ")})});
+                        new System.Data.Common.DataColumnMapping("LandKZ", "LandKZ"),
+                        new System.Data.Common.DataColumnMapping("Strasse_OhneHausnummer", "Strasse_OhneHausnummer"),
+                        new System.Data.Common.DataColumnMapping("Hausnummer", "Hausnummer")})});
             this.daAdresseWhere.UpdateCommand = this.oleDbCommand4;
             // 
             // oleDbCommand1
@@ -183,8 +192,8 @@ namespace PMDS.DB
             // 
             // oleDbCommand2
             // 
-            this.oleDbCommand2.CommandText = "INSERT INTO [Adresse] ([ID], [Strasse], [Plz], [Ort], [Region], [LandKZ]) VALUES " +
-    "(?, ?, ?, ?, ?, ?)";
+            this.oleDbCommand2.CommandText = "INSERT INTO [Adresse] ([ID], [Strasse], [Plz], [Ort], [Region], [LandKZ], [Strass" +
+    "e_OhneHausnummer], [Hausnummer]) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             this.oleDbCommand2.Connection = this.oleDbConnection1;
             this.oleDbCommand2.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -192,17 +201,21 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("Plz", System.Data.OleDb.OleDbType.VarChar, 0, "Plz"),
             new System.Data.OleDb.OleDbParameter("Ort", System.Data.OleDb.OleDbType.VarChar, 0, "Ort"),
             new System.Data.OleDb.OleDbParameter("Region", System.Data.OleDb.OleDbType.VarChar, 0, "Region"),
-            new System.Data.OleDb.OleDbParameter("LandKZ", System.Data.OleDb.OleDbType.VarChar, 0, "LandKZ")});
+            new System.Data.OleDb.OleDbParameter("LandKZ", System.Data.OleDb.OleDbType.VarChar, 0, "LandKZ"),
+            new System.Data.OleDb.OleDbParameter("Strasse_OhneHausnummer", System.Data.OleDb.OleDbType.VarChar, 0, "Strasse_OhneHausnummer"),
+            new System.Data.OleDb.OleDbParameter("Hausnummer", System.Data.OleDb.OleDbType.VarChar, 0, "Hausnummer")});
             // 
             // oleDbCommand3
             // 
-            this.oleDbCommand3.CommandText = "SELECT        ID, Strasse, Plz, Ort, Region, LandKZ\r\nFROM            Adresse\r\n";
+            this.oleDbCommand3.CommandText = "SELECT        ID, Strasse, Plz, Ort, Region, LandKZ, Strasse_OhneHausnummer, Haus" +
+    "nummer\r\nFROM            Adresse";
             this.oleDbCommand3.Connection = this.oleDbConnection1;
             // 
             // oleDbCommand4
             // 
             this.oleDbCommand4.CommandText = "UPDATE [Adresse] SET [ID] = ?, [Strasse] = ?, [Plz] = ?, [Ort] = ?, [Region] = ?," +
-    " [LandKZ] = ? WHERE (([ID] = ?))";
+    " [LandKZ] = ?, [Strasse_OhneHausnummer] = ?, [Hausnummer] = ? WHERE (([ID] = ?))" +
+    "";
             this.oleDbCommand4.Connection = this.oleDbConnection1;
             this.oleDbCommand4.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -211,6 +224,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("Ort", System.Data.OleDb.OleDbType.VarChar, 0, "Ort"),
             new System.Data.OleDb.OleDbParameter("Region", System.Data.OleDb.OleDbType.VarChar, 0, "Region"),
             new System.Data.OleDb.OleDbParameter("LandKZ", System.Data.OleDb.OleDbType.VarChar, 0, "LandKZ"),
+            new System.Data.OleDb.OleDbParameter("Strasse_OhneHausnummer", System.Data.OleDb.OleDbType.VarChar, 0, "Strasse_OhneHausnummer"),
+            new System.Data.OleDb.OleDbParameter("Hausnummer", System.Data.OleDb.OleDbType.VarChar, 0, "Hausnummer"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             ((System.ComponentModel.ISupportInitialize)(this.dsAdresse1)).EndInit();
 
@@ -235,22 +250,25 @@ namespace PMDS.DB
 		public override void New()
 		{
 			ITEM.Clear();
-            ITEM.AddAdresseRow(Guid.NewGuid(), "", "", "", "", "");
+            ITEM.AddAdresseRow(Guid.NewGuid(), "", "", "", "", "", "", "");
 		}
         public dsAdresse.AdresseRow loadAdresseKlinik(System.Guid IDAdresse, bool doExceptionNoKlinikFound)
         {
-            dsAdresse.AdresseDataTable dtAdresseKlinik = new dsAdresse.AdresseDataTable();
-            this.daAdresseByID.SelectCommand.Parameters[0].Value = IDAdresse;
-            RBU.DataBase.Fill(this.daAdresseByID, dtAdresseKlinik);
-            if (dtAdresseKlinik.Rows.Count != 1)
+            using (dsAdresse.AdresseDataTable dtAdresseKlinik = new dsAdresse.AdresseDataTable())
             {
-                if (doExceptionNoKlinikFound)
-                    throw new Exception("loadAdresseKlinik: dtAdresseKlinik.Rows.Count != 1 for IDAdresse '" + IDAdresse.ToString() + "'!");
-                else
-                    return null;
+                this.daAdresseByID.SelectCommand.Parameters[0].Value = IDAdresse;
+                RBU.DataBase.Fill(this.daAdresseByID, dtAdresseKlinik);
+                if (dtAdresseKlinik.Rows.Count != 1)
+                {
+                    if (doExceptionNoKlinikFound)
+                        throw new Exception("loadAdresseKlinik: dtAdresseKlinik.Rows.Count != 1 for IDAdresse '" + IDAdresse.ToString() + "'!");
+                    else
+                        return null;
+                }
+                return (dsAdresse.AdresseRow)dtAdresseKlinik.Rows[0];
             }
-            return (dsAdresse.AdresseRow)dtAdresseKlinik.Rows[0];
         }
+
         public void loadAdressenWhere(string sWhere, ref dsAdresse.AdresseDataTable dtAdresse)
         {
             if (sSelAdressenWhere.Trim() == "")

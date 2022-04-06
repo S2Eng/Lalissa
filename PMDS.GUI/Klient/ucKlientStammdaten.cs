@@ -407,6 +407,14 @@ namespace PMDS.GUI
             InitBenutzer();
 
             txtStrasse.Text = Klient.Adresse.Strasse;
+            if (Klient.Adresse.StrasseOhneHausnummer != null)
+                txtStrasseOhneHausnummer.Text = Klient.Adresse.StrasseOhneHausnummer;
+            else
+                txtStrasseOhneHausnummer.Text = Klient.Adresse.Strasse;
+            if (Klient.Adresse.Hausnummer != null)
+                txtHausnummer.Text = Klient.Adresse.Hausnummer;
+            else
+                txtHausnummer.Text = "";
             txtPLZ.Text = Klient.Adresse.Plz;
             txtOrt.Text = Klient.Adresse.Ort;
             txtLand.Text = Klient.Adresse.LandKZ;
@@ -1056,7 +1064,10 @@ namespace PMDS.GUI
             //              Adress- und Bewerbungsdaten
             //----------------------------------------------------
             Klient.IDBenutzer = cmbBenutzer.Value;
-            Klient.Adresse.Strasse = txtStrasse.Text.Trim();
+
+            Klient.Adresse.StrasseOhneHausnummer = txtStrasseOhneHausnummer.Text.Trim();
+            Klient.Adresse.Hausnummer = txtHausnummer.Text.Trim();
+            Klient.Adresse.Strasse = (Klient.Adresse.StrasseOhneHausnummer + " " + Klient.Adresse.Hausnummer).Trim();
             Klient.Adresse.Plz = txtPLZ.Text.Trim();
             Klient.Adresse.Ort = txtOrt.Text.Trim();
             Klient.Adresse.LandKZ = txtLand.Text.Trim();

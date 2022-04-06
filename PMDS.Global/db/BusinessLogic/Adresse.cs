@@ -76,6 +76,16 @@ namespace PMDS.BusinessLogic
             get { return DB_ROW.LandKZ; }
             set { DB_ROW.LandKZ = value; }
         }
+        public String StrasseOhneHausnummer
+        {
+            get { return DB_ROW.Strasse_OhneHausnummer; }
+            set { DB_ROW.Strasse_OhneHausnummer = value; }        }
+        public String Hausnummer
+        {
+            get { return DB_ROW.Hausnummer; }
+            set { DB_ROW.Hausnummer = value; }
+        }
+
         #endregion
 
         #region IBusinessBase Members

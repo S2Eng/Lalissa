@@ -292,6 +292,10 @@ namespace PMDS.Global.db.Patient {
             
             private global::System.Data.DataColumn columnLandKZ;
             
+            private global::System.Data.DataColumn columnStrasse_OhneHausnummer;
+            
+            private global::System.Data.DataColumn columnHausnummer;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public AdresseDataTable() {
@@ -375,6 +379,22 @@ namespace PMDS.Global.db.Patient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Strasse_OhneHausnummerColumn {
+                get {
+                    return this.columnStrasse_OhneHausnummer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn HausnummerColumn {
+                get {
+                    return this.columnHausnummer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -410,7 +430,7 @@ namespace PMDS.Global.db.Patient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public AdresseRow AddAdresseRow(System.Guid ID, string Strasse, string Plz, string Ort, string Region, string LandKZ) {
+            public AdresseRow AddAdresseRow(System.Guid ID, string Strasse, string Plz, string Ort, string Region, string LandKZ, string Strasse_OhneHausnummer, string Hausnummer) {
                 AdresseRow rowAdresseRow = ((AdresseRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -418,7 +438,9 @@ namespace PMDS.Global.db.Patient {
                         Plz,
                         Ort,
                         Region,
-                        LandKZ};
+                        LandKZ,
+                        Strasse_OhneHausnummer,
+                        Hausnummer};
                 rowAdresseRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAdresseRow);
                 return rowAdresseRow;
@@ -454,6 +476,8 @@ namespace PMDS.Global.db.Patient {
                 this.columnOrt = base.Columns["Ort"];
                 this.columnRegion = base.Columns["Region"];
                 this.columnLandKZ = base.Columns["LandKZ"];
+                this.columnStrasse_OhneHausnummer = base.Columns["Strasse_OhneHausnummer"];
+                this.columnHausnummer = base.Columns["Hausnummer"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -471,6 +495,10 @@ namespace PMDS.Global.db.Patient {
                 base.Columns.Add(this.columnRegion);
                 this.columnLandKZ = new global::System.Data.DataColumn("LandKZ", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLandKZ);
+                this.columnStrasse_OhneHausnummer = new global::System.Data.DataColumn("Strasse_OhneHausnummer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStrasse_OhneHausnummer);
+                this.columnHausnummer = new global::System.Data.DataColumn("Hausnummer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHausnummer);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
@@ -479,7 +507,10 @@ namespace PMDS.Global.db.Patient {
                 this.columnPlz.MaxLength = 6;
                 this.columnOrt.MaxLength = 50;
                 this.columnRegion.MaxLength = 20;
+                this.columnLandKZ.AllowDBNull = false;
                 this.columnLandKZ.MaxLength = 300;
+                this.columnStrasse_OhneHausnummer.MaxLength = 60;
+                this.columnHausnummer.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -699,15 +730,42 @@ namespace PMDS.Global.db.Patient {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string LandKZ {
                 get {
-                    try {
-                        return ((string)(this[this.tableAdresse.LandKZColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte LandKZ in Tabelle Adresse ist DBNull.", e);
-                    }
+                    return ((string)(this[this.tableAdresse.LandKZColumn]));
                 }
                 set {
                     this[this.tableAdresse.LandKZColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Strasse_OhneHausnummer {
+                get {
+                    try {
+                        return ((string)(this[this.tableAdresse.Strasse_OhneHausnummerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Strasse_OhneHausnummer in Tabelle Adresse ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAdresse.Strasse_OhneHausnummerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Hausnummer {
+                get {
+                    try {
+                        return ((string)(this[this.tableAdresse.HausnummerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Hausnummer in Tabelle Adresse ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAdresse.HausnummerColumn] = value;
                 }
             }
             
@@ -761,14 +819,26 @@ namespace PMDS.Global.db.Patient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsLandKZNull() {
-                return this.IsNull(this.tableAdresse.LandKZColumn);
+            public bool IsStrasse_OhneHausnummerNull() {
+                return this.IsNull(this.tableAdresse.Strasse_OhneHausnummerColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetLandKZNull() {
-                this[this.tableAdresse.LandKZColumn] = global::System.Convert.DBNull;
+            public void SetStrasse_OhneHausnummerNull() {
+                this[this.tableAdresse.Strasse_OhneHausnummerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsHausnummerNull() {
+                return this.IsNull(this.tableAdresse.HausnummerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetHausnummerNull() {
+                this[this.tableAdresse.HausnummerColumn] = global::System.Convert.DBNull;
             }
         }
         
