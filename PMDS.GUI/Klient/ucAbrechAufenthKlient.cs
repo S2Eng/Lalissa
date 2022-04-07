@@ -262,15 +262,13 @@ namespace PMDS.GUI
                                     p.BetreuungsstufeAb,
                                     p.BetreuungsstufeBis,
                                     p.TageAbweseneheitOhneKuerzung,
-                                    p.ForensischerHintergrund,
-                                    p.Hauptwohnsitzgemeinde}
+                                    p.ForensischerHintergrund}
                                     ).First();
 
                     this.cmbBetreuungsstufe.Value = null;
                     this.udteBetreuungsstufeAb.Value = null;
                     this.udteBetreuungsstufBis.Value = null;
                     this.chkForensicherHintergrund.Checked = false;
-                    this.cmbHaupwohnsitzgemeinde.Value = null;
 
                     if (!String.IsNullOrWhiteSpace(rPatInfo.Betreuungsstufe))
                     {
@@ -294,11 +292,6 @@ namespace PMDS.GUI
                     else
                     {
                         this.chkForensicherHintergrund.Checked = false;
-                    }
-
-                    if (rPatInfo.Hauptwohnsitzgemeinde != null)
-                    {
-                        this.cmbHaupwohnsitzgemeinde.Text = rPatInfo.Hauptwohnsitzgemeinde;
                     }
 
                     this.numTageAbweseneheitOhneKuerzung.Value = rPatInfo.TageAbweseneheitOhneKuerzung;

@@ -324,7 +324,6 @@ namespace PMDS.GUI
 
             GuiUtil.resetColor2(txtNachname);
             GuiUtil.resetColor2(txtVorname);
-            GuiUtil.resetColor2(cmbSexus);
             GuiUtil.resetColor2(gebDatum);
             GuiUtil.resetColor2(cmbBenutzer);
             GuiUtil.resetColor2(txtFallzahl);
@@ -337,6 +336,8 @@ namespace PMDS.GUI
             GuiUtil.resetColor2(datRezGebBef_BefristetAb);
             GuiUtil.resetColor2(datRezGebBef_BefristetBis);
             GuiUtil.resetColor2(cboRezGebBef_WiderrufGrund);
+
+            GuiUtil.resetColor2(cmbHaupwohnsitzgemeinde);
         }
 
         public void UpdateGUI()
@@ -355,10 +356,25 @@ namespace PMDS.GUI
             txtVorname.Text = Klient.Vorname;
             cmbAkdGrad.Text = Klient.Titel;
             cmbAnrede.Text = Klient.Anrede;
-            txtFallzahl.Text = (Klient.Aufenthalt != null) ? Klient.Aufenthalt.Fallnummer.ToString() : "";
-            txtgruppenkennzahl.Text = (Klient.Aufenthalt != null) ? Klient.Aufenthalt.Gruppenkennzahl : "";
-            //txtKliNr.Text = Klient.Klientennummer;
-            //cboVorherigeBetreuungsformenMulti.setSelectedRows(Klient.Aufenthalt.lstSprachen.Trim());
+
+            //----------------------------------------------------
+            // Aufenthaltsdaten (Dataset)
+            //----------------------------------------------------
+            if (Klient.Aufenthalt != null)
+            {
+                txtFallzahl.Text = Klient.Aufenthalt.Fallnummer.ToString();
+                txtgruppenkennzahl.Text = Klient.Aufenthalt.Gruppenkennzahl;
+            }
+            else
+            {
+                txtFallzahl.Text = "";
+                txtgruppenkennzahl.Text = "";                
+            }
+
+            //-----------------------------------------------------
+            // Aufenthaltsdaten (EF), werden später über EF gesetzt
+            //-----------------------------------------------------
+            cmbHaupwohnsitzgemeinde.Text = "";
 
             if (Klient.AufenthaltZusatz.Count > 0)
                 txtZimmerNr.Text = Klient.AufenthaltZusatz[0].Zimmernummer.Trim();
@@ -594,9 +610,11 @@ namespace PMDS.GUI
                     {
                         this.setTabELGAOnIff();
                     }
-
                 }
 
+                //---------------------------------------------------
+                // Aufenthaltsdaten (EF)
+                //---------------------------------------------------
                 if (b.checkAufenthaltExists(Klient.Aufenthalt.ID, db))
                 {
                     PMDS.db.Entities.Aufenthalt rAufenthalt = this.b.getAufenthalt(Klient.Aufenthalt.ID, db);
@@ -614,8 +632,8 @@ namespace PMDS.GUI
                     }
 
                     this.txtSofortmassnahmen.Text = rAufenthalt.SofortMassnahmen.Trim();
+                    cmbHaupwohnsitzgemeinde.Text = rAufenthalt.Hauptwohnsitzgemeinde;
                 }
-
             }
           
             //----------------------------------------------------
@@ -1107,12 +1125,6 @@ namespace PMDS.GUI
                 rKontaktSub.Mobil = this.txtMobilNWS.Text.Trim();
                 rKontaktSub.Fax = this.txtFaxNWS.Text.Trim();
                 rKontaktSub.Email = this.txtEmailNWS.Text.Trim();
-
-                //if (this.b.checkPatientExists(Klient.ID, db))
-                //{
-                //    PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
-                //    rPatient.lstSprachen = this.cboSprachenMulti.getSelectedRows();
-                //}
                 
                 db.SaveChanges();
             }
@@ -1121,8 +1133,6 @@ namespace PMDS.GUI
 
             if (ucAbrechAufenthKlient1 != null)
                 ucAbrechAufenthKlient1.UpdateDATA();
-
-            //this.loadPatientenverfügung();
         }
 
         public bool SaveER(ref bool writeDekursSprachenChanged, ref bool abweseneheitBeendetChanged, Guid IDAufenthaltAct, ref string txtSprachenGeändert)
@@ -1178,15 +1188,6 @@ namespace PMDS.GUI
                         else
                         {
                             rPatient.Betreuungsstufe = "";
-                        }
-
-                        if (!String.IsNullOrWhiteSpace(this.ucAbrechAufenthKlient1.cmbHaupwohnsitzgemeinde.Text))
-                        {
-                            rPatient.Hauptwohnsitzgemeinde = this.ucAbrechAufenthKlient1.cmbHaupwohnsitzgemeinde.Text;
-                        }
-                        else
-                        {
-                            rPatient.Hauptwohnsitzgemeinde = "";
                         }
 
                         rPatient.ForensischerHintergrund = ucAbrechAufenthKlient1.chkForensicherHintergrund.Checked;
@@ -1328,6 +1329,12 @@ namespace PMDS.GUI
                         {
                             sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Vorherige Betreuungsformen") + ": " + lstTmp + " -> " + rAufenthalt.STAMP_VorherigeBetreuungsformen.Trim());
                         }
+
+                        if (rAufenthalt.Hauptwohnsitzgemeinde != null && rAufenthalt.Hauptwohnsitzgemeinde != this.cmbHaupwohnsitzgemeinde.Text.Trim())
+                        {
+                            sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Vorherige Hauptwohnsitzgemeinde: ") + rAufenthalt.Hauptwohnsitzgemeinde.Trim() + " -> " + this.cmbHaupwohnsitzgemeinde.Text.Trim());
+                        }
+                        rAufenthalt.Hauptwohnsitzgemeinde = this.cmbHaupwohnsitzgemeinde.Text.Trim();
 
                         db.SaveChanges();
                     }

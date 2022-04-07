@@ -245,14 +245,7 @@ namespace PMDS.GUI.GUI.Main
                         }
                         else
                         {
-                            PMDS.db.Entities.AuswahlListe rAuswahliste = PMDSBusiness1.GetAuswahlliste(db, "SAG", auswahlSTAMP_Awesenheitsgrund.Text);
-                            if (rAuswahliste != null)
-                                newUrlaubVerlauf.STAMP_Abwesenheitsgrund = rAuswahliste.Beschreibung;
-                            else
-                            {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Unbekannter Eintrag bei Abwesenheitsgrund.");
-                                return false;
-                            }
+                            newUrlaubVerlauf.STAMP_Abwesenheitsgrund = auswahlSTAMP_Awesenheitsgrund.Text;
                         }
                     }
 

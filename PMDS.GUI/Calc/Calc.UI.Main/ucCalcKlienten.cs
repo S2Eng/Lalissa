@@ -81,7 +81,7 @@ namespace PMDS.Calc.UI.Admin
                         PMDS.db.Entities.Patient rPatient = this.b.getPatient(IDKlient, db);
                         rPatient.TageAbweseneheitOhneKuerzung = (int)this.ucAbrechnungsdatenKlient1.numTageAbweseneheitOhneKuerzung.Value;
 
-                        if (this.ucAbrechnungsdatenKlient1.cmbBetreuungsstufe.Text != "")
+                        if (!String.IsNullOrWhiteSpace(this.ucAbrechnungsdatenKlient1.cmbBetreuungsstufe.Text))
                         {
                             rPatient.Betreuungsstufe = this.ucAbrechnungsdatenKlient1.cmbBetreuungsstufe.Text;
                         }
@@ -111,25 +111,10 @@ namespace PMDS.Calc.UI.Admin
                             PMDS.db.Entities.Aufenthalt rAufenthalt = this.b.getAktuellerAufenthaltPatient(IDKlient, false, db);
                         }
 
-                        if (!String.IsNullOrWhiteSpace(this.ucAbrechnungsdatenKlient1.cmbHaupwohnsitzgemeinde.Text))
-                        {
-                            rPatient.Hauptwohnsitzgemeinde = this.ucAbrechnungsdatenKlient1.cmbHaupwohnsitzgemeinde.SelectedText;
-                        }
-                        else
-                        {
-                            rPatient.Hauptwohnsitzgemeinde = "";
-                        }
-
                         if (this.ucAbrechnungsdatenKlient1.chkForensicherHintergrund != null)
                         {
                             rPatient.ForensischerHintergrund = ucAbrechnungsdatenKlient1.chkForensicherHintergrund.Checked;
                         }
-
-                        if (this.ucAbrechnungsdatenKlient1.cmbHaupwohnsitzgemeinde != null)
-                        {
-                            rPatient.Hauptwohnsitzgemeinde = ucAbrechnungsdatenKlient1.cmbHaupwohnsitzgemeinde.SelectedText;
-                        }
-
                         db.SaveChanges();
                     }
                 }
