@@ -37,7 +37,7 @@ namespace PMDS.GUI
 
 
         public PMDS.DB.PMDSBusiness PMDSBusiness1 = new PMDS.DB.PMDSBusiness();
-
+        private Infragistics.Win.Misc.UltraLabel lblHinweisROT;
         public ucMain mainWindow = null;
 
 
@@ -82,27 +82,29 @@ namespace PMDS.GUI
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEntlassung));
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            PMDS.BusinessLogic.Aufenthalt aufenthalt2 = new PMDS.BusinessLogic.Aufenthalt();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            PMDS.BusinessLogic.Aufenthalt aufenthalt1 = new PMDS.BusinessLogic.Aufenthalt();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             this.labInfo = new QS2.Desktop.ControlManagment.BaseLabel();
             this.btnCancel = new PMDS.GUI.ucButton(this.components);
             this.btnOK = new PMDS.GUI.ucButton(this.components);
             this.ucEntlassung1 = new PMDS.GUI.ucEntlassung();
             this.lblWarning = new Infragistics.Win.Misc.UltraLabel();
             this.lblKlientenWirklichEntlassen = new Infragistics.Win.Misc.UltraLabel();
+            this.lblHinweisROT = new Infragistics.Win.Misc.UltraLabel();
             this.SuspendLayout();
             // 
             // labInfo
             // 
-            appearance1.ForeColor = System.Drawing.Color.White;
-            appearance1.TextHAlignAsString = "Center";
-            appearance1.TextVAlignAsString = "Middle";
-            this.labInfo.Appearance = appearance1;
+            appearance7.ForeColor = System.Drawing.Color.White;
+            appearance7.TextHAlignAsString = "Center";
+            appearance7.TextVAlignAsString = "Middle";
+            this.labInfo.Appearance = appearance7;
             this.labInfo.BackColorInternal = System.Drawing.SystemColors.ControlDark;
             this.labInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.labInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -115,19 +117,19 @@ namespace PMDS.GUI
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnCancel.Appearance = appearance2;
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            appearance8.Image = ((object)(resources.GetObject("appearance8.Image")));
+            appearance8.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance8.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnCancel.Appearance = appearance8;
             this.btnCancel.AutoWorkLayout = false;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(664, 367);
+            this.btnCancel.Location = new System.Drawing.Point(366, 481);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(88, 35);
+            this.btnCancel.Size = new System.Drawing.Size(386, 35);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "Abbrechen";
@@ -138,17 +140,17 @@ namespace PMDS.GUI
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
-            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOK.Appearance = appearance3;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOK.Appearance = appearance2;
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(664, 408);
+            this.btnOK.Location = new System.Drawing.Point(113, 484);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(88, 32);
             this.btnOK.TabIndex = 3;
@@ -163,77 +165,90 @@ namespace PMDS.GUI
             this.ucEntlassung1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            aufenthalt1.AufnahmeArt = 0;
-            aufenthalt1.Aufnahmezeitpunkt = new System.DateTime(2008, 11, 27, 15, 20, 48, 732);
-            aufenthalt1.Ausgleichszahlung = 0D;
-            aufenthalt1.BegleitungVon = "";
-            aufenthalt1.Bermerkung = "";
-            aufenthalt1.Besuchsregelung = "";
-            aufenthalt1.Entlassungsbemerkung = "";
-            aufenthalt1.Entlassungszeitpunkt = null;
-            aufenthalt1.Erwartungen = "";
-            aufenthalt1.Fallnummer = 0D;
-            aufenthalt1.Gewicht = 0D;
-            aufenthalt1.Gruppenkennzahl = "";
-            aufenthalt1.ID = new System.Guid("f1788b26-4378-4a20-b93f-3d0e279aec91");
-            aufenthalt1.IDAbteilung = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt1.IDAufenthaltVerlauf = new System.Guid("9106df53-c041-4144-be25-5db1372953fd");
-            aufenthalt1.IDBenutzer_Aufnahme = new System.Guid("00000000-0000-0000-0000-000001000000");
-            aufenthalt1.IDBenutzer_Entlassung = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt1.IDBereich = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt1.IDEinrichtung_Aufnahme = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt1.IDEinrichtung_Entlassung = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt1.IDErstkontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt1.IDKlinik = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt1.IDPatient = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt1.IDUrlaub = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt1.NaechsteEvaluierung = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            aufenthalt1.NaechsteEvaluierungBemerkung = "";
-            aufenthalt1.Postregelung = "";
-            aufenthalt1.PsychischeAuff = "";
-            aufenthalt1.SofortMassnahmen = "";
-            aufenthalt1.SomatischeAuff = "";
-            aufenthalt1.SonstigeBesonderheiten = "";
-            aufenthalt1.SonstigeRegelung = "";
-            aufenthalt1.TaschegeldVortragDatum = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            aufenthalt1.TaschengeldSollstand = 0D;
-            aufenthalt1.TaschengeldVortragBetrag = 0D;
-            aufenthalt1.Verfuegungsdatum = null;
-            aufenthalt1.VerhaltenAufnahme = "";
-            this.ucEntlassung1.Aufenthalt = aufenthalt1;
-            this.ucEntlassung1.Location = new System.Drawing.Point(0, 48);
+            aufenthalt2.AufnahmeArt = 0;
+            aufenthalt2.Aufnahmezeitpunkt = new System.DateTime(2008, 11, 27, 15, 20, 48, 732);
+            aufenthalt2.Ausgleichszahlung = 0D;
+            aufenthalt2.BegleitungVon = "";
+            aufenthalt2.Bermerkung = "";
+            aufenthalt2.Besuchsregelung = "";
+            aufenthalt2.Entlassungsbemerkung = "";
+            aufenthalt2.Entlassungszeitpunkt = null;
+            aufenthalt2.Erwartungen = "";
+            aufenthalt2.Fallnummer = 0D;
+            aufenthalt2.Gewicht = 0D;
+            aufenthalt2.Gruppenkennzahl = "";
+            aufenthalt2.ID = new System.Guid("f1788b26-4378-4a20-b93f-3d0e279aec91");
+            aufenthalt2.IDAbteilung = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt2.IDAufenthaltVerlauf = new System.Guid("9106df53-c041-4144-be25-5db1372953fd");
+            aufenthalt2.IDBenutzer_Aufnahme = new System.Guid("00000000-0000-0000-0000-000001000000");
+            aufenthalt2.IDBenutzer_Entlassung = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt2.IDBereich = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt2.IDEinrichtung_Aufnahme = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt2.IDEinrichtung_Entlassung = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt2.IDErstkontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt2.IDKlinik = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt2.IDPatient = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt2.IDUrlaub = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt2.NaechsteEvaluierung = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            aufenthalt2.NaechsteEvaluierungBemerkung = "";
+            aufenthalt2.Postregelung = "";
+            aufenthalt2.PsychischeAuff = "";
+            aufenthalt2.SofortMassnahmen = "";
+            aufenthalt2.SomatischeAuff = "";
+            aufenthalt2.SonstigeBesonderheiten = "";
+            aufenthalt2.SonstigeRegelung = "";
+            aufenthalt2.TaschegeldVortragDatum = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            aufenthalt2.TaschengeldSollstand = 0D;
+            aufenthalt2.TaschengeldVortragBetrag = 0D;
+            aufenthalt2.Verfuegungsdatum = null;
+            aufenthalt2.VerhaltenAufnahme = "";
+            this.ucEntlassung1.Aufenthalt = aufenthalt2;
+            this.ucEntlassung1.Location = new System.Drawing.Point(0, 91);
             this.ucEntlassung1.Name = "ucEntlassung1";
             this.ucEntlassung1.ReadOnly = false;
-            this.ucEntlassung1.Size = new System.Drawing.Size(766, 313);
+            this.ucEntlassung1.Size = new System.Drawing.Size(764, 305);
             this.ucEntlassung1.TabIndex = 4;
             // 
             // lblWarning
             // 
             this.lblWarning.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance4.BackColor = System.Drawing.Color.Red;
-            appearance4.ForeColor = System.Drawing.Color.White;
-            this.lblWarning.Appearance = appearance4;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.ForeColor = System.Drawing.Color.Black;
+            this.lblWarning.Appearance = appearance3;
             this.lblWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWarning.Location = new System.Drawing.Point(12, 367);
+            this.lblWarning.Location = new System.Drawing.Point(12, 423);
             this.lblWarning.Name = "lblWarning";
-            this.lblWarning.Size = new System.Drawing.Size(501, 35);
+            this.lblWarning.Size = new System.Drawing.Size(740, 19);
             this.lblWarning.TabIndex = 5;
-            this.lblWarning.Text = "Dies ist der Dialog für die Entlassung. Wenn Sie bloß eine Abwesenheit erfassen w" +
-    "ollen (z.B. einen Krankenhausaufenthalt), klicken Sie bitte auf Abbrechen.";
+            this.lblWarning.Text = "- Wenn Sie bloß eine Abwesenheit erfassen wollen (z.B. einen Krankenhausaufenthal" +
+    "t), klicken Sie bitte auf Abbrechen.";
             // 
             // lblKlientenWirklichEntlassen
             // 
             this.lblKlientenWirklichEntlassen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            appearance5.ForeColor = System.Drawing.Color.Black;
-            this.lblKlientenWirklichEntlassen.Appearance = appearance5;
+            appearance9.BackColor = System.Drawing.Color.Transparent;
+            appearance9.ForeColor = System.Drawing.Color.Black;
+            this.lblKlientenWirklichEntlassen.Appearance = appearance9;
             this.lblKlientenWirklichEntlassen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKlientenWirklichEntlassen.Location = new System.Drawing.Point(12, 408);
+            this.lblKlientenWirklichEntlassen.Location = new System.Drawing.Point(12, 448);
             this.lblKlientenWirklichEntlassen.Name = "lblKlientenWirklichEntlassen";
-            this.lblKlientenWirklichEntlassen.Size = new System.Drawing.Size(501, 32);
+            this.lblKlientenWirklichEntlassen.Size = new System.Drawing.Size(708, 20);
             this.lblKlientenWirklichEntlassen.TabIndex = 6;
-            this.lblKlientenWirklichEntlassen.Text = "Nur wenn Sie den Klienten wirklich entlassen wollen (z.B. verstorben oder ausgezo" +
-    "gen), klicken Sie auf OK.";
+            this.lblKlientenWirklichEntlassen.Text = "- Nur wenn Sie den Klienten wirklich entlassen wollen (z.B. verstorben oder ausge" +
+    "zogen), klicken Sie auf OK.";
+            // 
+            // lblHinweisROT
+            // 
+            this.lblHinweisROT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            appearance10.BackColor = System.Drawing.Color.Red;
+            appearance10.ForeColor = System.Drawing.Color.White;
+            this.lblHinweisROT.Appearance = appearance10;
+            this.lblHinweisROT.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHinweisROT.Location = new System.Drawing.Point(12, 53);
+            this.lblHinweisROT.Name = "lblHinweisROT";
+            this.lblHinweisROT.Size = new System.Drawing.Size(740, 35);
+            this.lblHinweisROT.TabIndex = 18;
+            this.lblHinweisROT.Text = "ACHTUNG: Dies ist der Dialog für die E N T L A S S U N G!";
             // 
             // frmEntlassung
             // 
@@ -241,7 +256,8 @@ namespace PMDS.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(764, 460);
+            this.ClientSize = new System.Drawing.Size(764, 528);
+            this.Controls.Add(this.lblHinweisROT);
             this.Controls.Add(this.lblKlientenWirklichEntlassen);
             this.Controls.Add(this.lblWarning);
             this.Controls.Add(this.ucEntlassung1);
@@ -293,14 +309,15 @@ namespace PMDS.GUI
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Entlassungszeitpunkt darf nicht vor dem Aufnahmezeitpunkt liegen.", "PMDS", MessageBoxButtons.OK);
                     return;
                 }
-
-
             }
+
+            DateTime DatEntlassung = this.ucEntlassung1.dtpDatum.DateTime;
+            string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassung (") + ucEntlassung1.cbEinrichtung.Text + "): " + ucEntlassung1.txtBemerkung.Text.Trim();
 
             using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
             {
                 System.Linq.IQueryable<PMDS.db.Entities.Unterbringung> tUnterbringung = this.PMDSBusiness1.checkOpenHAGMeldungenExists(IDKlient, db);
-                if (tUnterbringung.Count() > 0)
+                if (tUnterbringung.Any())
                 {
                     DialogResult resHAG = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es existieren offenen HAG Meldungen für diesen Klienten. Möchten Sie diese beenden?", "", MessageBoxButtons.YesNo);
                     if (resHAG == DialogResult.Yes)
@@ -314,46 +331,46 @@ namespace PMDS.GUI
                         return;
                     }
                 }
-            }
+
+                if (!ucEntlassung1.ValidateFields())
+    		        return;
 
 
-            if (!ucEntlassung1.ValidateFields())
-			return;
+                //Entlassungsdaten
+                ucEntlassung1.UpdateDATA(db);
 
-			ucEntlassung1.UpdateDATA();
-            
-            PatientBewerber bewerber = new PatientBewerber();
-            dsPatientBewerber.PatientRow row = bewerber.ReadByID(ucEntlassung1.Aufenthalt.IDPatient);
-
-            DialogResult res = DialogResult.No;
-            if (row != null &&  !row.IsBewerbungaktivJNNull() && row.BewerbungaktivJN)
-            {
-                res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sollen die Bewerbungsdaten zurückgesetzt werden?", "Klient ist aktiver Bewerber", MessageBoxButtons.YesNo);
-            }
-
-			Guid idAuf		= ucEntlassung1.Aufenthalt.ID;
-			DateTime dtEnd	= ucEntlassung1.Aufenthalt.Verlauf.Datum;
-            
-            DateTime DatEntlassung = this.ucEntlassung1.dtpDatum.DateTime;
-            PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();   //lthok
-            string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassung (") + ucEntlassung1.cbEinrichtung.Text + "): " + ucEntlassung1.txtBemerkung.Text.Trim();
-            PMDS.DB.PMDSBusiness.retBusiness resCheck = PMDSBusiness1.getOpenTermine(ucEntlassung1.Aufenthalt.IDPatient, ucEntlassung1.Aufenthalt.ID, DatEntlassung, ENV.IDKlinik);
-            PMDS.Calc.Admin.DB.DBPatientKostentraeger dbPatKost = new PMDS.Calc.Admin.DB.DBPatientKostentraeger();
-            if (dbPatKost.gültigBisAufEntl_alleLeistKost(ucEntlassung1.Aufenthalt.IDPatient, (DateTime )ucEntlassung1.Aufenthalt.Entlassungszeitpunkt ))
-            {
-                ucEntlassung1.Aufenthalt.Write();
-
-                if (res == DialogResult.Yes)
+                //Bewerber-Daten
+                using (PatientBewerber bewerber = new PatientBewerber())
                 {
-                    bewerber.InitBewerbungsdaten(row);
-                    bewerber.Write();
-                }
-            }
+                    dsPatientBewerber.PatientRow row = bewerber.ReadByID(ucEntlassung1.Aufenthalt.IDPatient);
 
-            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-            {
-                System.Linq.IQueryable<PMDS.db.Entities.Patient> tPatient = db.Patient.Where(o => o.ID == ucEntlassung1.Aufenthalt.IDPatient);
-                PMDS.db.Entities.Patient rPatient = tPatient.First();
+                    DialogResult res = DialogResult.No;
+                    if (row != null && !row.IsBewerbungaktivJNNull() && row.BewerbungaktivJN)
+                    {
+                        res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sollen die Bewerbungsdaten zurückgesetzt werden?", "Klient ist aktiver Bewerber", MessageBoxButtons.YesNo);
+                    }
+
+                    Guid idAuf = ucEntlassung1.Aufenthalt.ID;
+                    DateTime dtEnd = ucEntlassung1.Aufenthalt.Verlauf.Datum;
+
+                    PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();   //lthok
+                    PMDS.DB.PMDSBusiness.retBusiness resCheck = PMDSBusiness1.getOpenTermine(ucEntlassung1.Aufenthalt.IDPatient, ucEntlassung1.Aufenthalt.ID, DatEntlassung, ENV.IDKlinik);
+                    using (PMDS.Calc.Admin.DB.DBPatientKostentraeger dbPatKost = new PMDS.Calc.Admin.DB.DBPatientKostentraeger())
+                    {
+                        if (dbPatKost.gültigBisAufEntl_alleLeistKost(ucEntlassung1.Aufenthalt.IDPatient, (DateTime)ucEntlassung1.Aufenthalt.Entlassungszeitpunkt))
+                        {
+                            ucEntlassung1.Aufenthalt.Write();
+
+                            if (res == DialogResult.Yes)
+                            {
+                                bewerber.InitBewerbungsdaten(row);
+                                bewerber.Write();
+                            }
+                        }
+                    }
+                }
+
+                PMDS.db.Entities.Patient rPatient = db.Patient.Where(o => o.ID == ucEntlassung1.Aufenthalt.IDPatient).First();
                 rPatient.Verstorben = this.ucEntlassung1.chkVerstorben.Checked;
 
                 //-- Pflegeeintrag schreiben
@@ -363,15 +380,15 @@ namespace PMDS.GUI
                 {
                     rPatient.Verstorben = true;
                     rPatient.Todeszeitpunkt = this.ucEntlassung1.uceTodeszeitpunkt.DateTime;
-                    sText += QS2.Desktop.ControlManagment.ControlManagment.getRes("\n\rTodeszeitpunkt = ") + this.ucEntlassung1.uceTodeszeitpunkt.DateTime.ToString("dd.MM.yyyy HH:mm");
-                    
+                    sText += QS2.Desktop.ControlManagment.ControlManagment.getRes("\n\rTodeszeitpunkt = ") + this.ucEntlassung1.uceTodeszeitpunkt.DateTime.ToString("dd.MM.yyyy HH:mm");                    
                 }
                 else
                 {
                     rPatient.Verstorben = false;
                     rPatient.Todeszeitpunkt = null;
                 }
-                db.SaveChanges();
+
+                PMDS.DB.PMDSBusinessComm.newCommAsyncToClients(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll, db);
 
                 bool offeneTermineExists = PMDSBusiness1.checkOffeneTerminePatient(ucEntlassung1.Aufenthalt.IDPatient, ucEntlassung1.dtpDatum.DateTime, db);
                 if (offeneTermineExists)
@@ -385,7 +402,9 @@ namespace PMDS.GUI
                 }
 
                 PMDSBusiness1.checkVOAndUpdate(ucEntlassung1.Aufenthalt.ID, ucEntlassung1.dtpDatum.DateTime, db);
+                db.SaveChanges();
             }
+
             //Entlassungs-Dekurs schreiben
             PMDSBusiness1.EntlassungWriteDekurs(ucEntlassung1.Aufenthalt.ID, ucEntlassung1.Aufenthalt.IDAbteilung, ucEntlassung1.Aufenthalt.IDBereich,
                                                     ENV.IDKlinik, DatEntlassung, sText);
@@ -394,33 +413,30 @@ namespace PMDS.GUI
             string strProtokoll = "";
             strProtokoll = QS2.Desktop.ControlManagment.ControlManagment.getRes("IDKlient: ") + IDKlient.ToString() + "\n\r";
             strProtokoll += QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachname aus DB: ") + Nachname + "\n\r";
-            strProtokoll += QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachname eingegeben: ") + NachNameSecure;
+            strProtokoll += QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachname eingegeben: ") + NachNameSecure;          
             
-            qs2.core.vb.dsProtocol dsProtocol1 = new qs2.core.vb.dsProtocol();
-            qs2.core.vb.sqlProtocoll sqlProtocoll = new qs2.core.vb.sqlProtocoll();
-            sqlProtocoll.initControl();
-            string CmdReturn = "";
-            sqlProtocoll.getProtocol(System.Guid.NewGuid(), ref dsProtocol1, qs2.core.vb.sqlProtocoll.eSelProtocoll.ID, "", System.Guid.NewGuid(), -1, "", "", null, null, "", ref CmdReturn);
-
-            qs2.core.vb.dsProtocol.ProtocolRow rNewProt = (qs2.core.vb.dsProtocol.ProtocolRow)sqlProtocoll.newProtocol(ref dsProtocol1);
-            rNewProt.Type = "Entlassung";
-            rNewProt.IDApplication = "PMDS";
-            PMDS.BusinessLogic.Benutzer ben = new PMDS.BusinessLogic.Benutzer(ENV.USERID);
-            rNewProt.Created = DateTime.Now;
-            rNewProt.User = ben.FullName;
-            rNewProt.Info = QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassung Klient");
-            rNewProt.Protocol = strProtokoll;
-            rNewProt.IDGuid = System.Guid.NewGuid();
-
-            sqlProtocoll.daProtocol.Update(dsProtocol1.Protocol);
-            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+            using (qs2.core.vb.sqlProtocoll sqlProtocoll = new qs2.core.vb.sqlProtocoll())
             {
-                PMDS.DB.PMDSBusinessComm.newCommAsyncToClients(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll, db);
+                qs2.core.vb.dsProtocol dsProtocol1 = new qs2.core.vb.dsProtocol();
+                sqlProtocoll.initControl();
+                string CmdReturn = "";
+                sqlProtocoll.getProtocol(System.Guid.NewGuid(), ref dsProtocol1, qs2.core.vb.sqlProtocoll.eSelProtocoll.ID, "", System.Guid.NewGuid(), -1, "", "", null, null, "", ref CmdReturn);
+
+                qs2.core.vb.dsProtocol.ProtocolRow rNewProt = (qs2.core.vb.dsProtocol.ProtocolRow)sqlProtocoll.newProtocol(ref dsProtocol1);
+                rNewProt.Type = "Entlassung";
+                rNewProt.IDApplication = "PMDS";
+                PMDS.BusinessLogic.Benutzer ben = new PMDS.BusinessLogic.Benutzer(ENV.USERID);
+                rNewProt.Created = DateTime.Now;
+                rNewProt.User = ben.FullName;
+                rNewProt.Info = QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassung Klient");
+                rNewProt.Protocol = strProtokoll;
+                rNewProt.IDGuid = System.Guid.NewGuid();
+
+                sqlProtocoll.daProtocol.Update(dsProtocol1.Protocol);
             }
 
             _canClose = true;
 		}
-
 
 		//----------------------------------------------------------------------------
 		/// <summary>
@@ -436,6 +452,5 @@ namespace PMDS.GUI
         {
             this.BackColor = System.Drawing.Color.WhiteSmoke;
         }
-
 	}
 }

@@ -237,7 +237,7 @@ namespace PMDS.GUI.GUI.Main
 
                     if (ENV.lic_STAMP)
                     {
-                        //Abesenheitsgrund muss ausgewählt werden
+                        //Abwesenheitsgrund muss ausgewählt werden
                         if (auswahlSTAMP_Awesenheitsgrund.Value == null || String.IsNullOrWhiteSpace(auswahlSTAMP_Awesenheitsgrund.Value.ToString()))
                         {
                             QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bitte wählen Sie einen Abwesenheitsgrund aus der Liste aus.");

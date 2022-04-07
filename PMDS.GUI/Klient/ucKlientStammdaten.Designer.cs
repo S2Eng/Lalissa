@@ -199,7 +199,7 @@ namespace PMDS.GUI
             PMDS.Global.UIGlobal uiGlobal1 = new PMDS.Global.UIGlobal();
             PMDS.DB.PMDSBusiness pmdsBusiness2 = new PMDS.DB.PMDSBusiness();
             PMDS.Global.UIGlobal uiGlobal2 = new PMDS.Global.UIGlobal();
-            PMDSClient.Sitemap.WCFServiceClient wcfServiceClient1 = new PMDSClient.Sitemap.WCFServiceClient();
+            WCFServiceClient wcfServiceClient1 = new WCFServiceClient();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
