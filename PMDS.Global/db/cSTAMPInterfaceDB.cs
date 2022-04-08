@@ -53,7 +53,7 @@ namespace PMDS.Global.db
             public string vorname { get; set; } = "";
             public string nachname { get; set; } = "";
             public DateTime geburtsdatum { get; set; } = DateTime.MinValue;
-            public string staatsbergerschaft { get; set; } = "";                  //Exakt drei Zeichen
+            public string staatsbuergerschaft { get; set; } = "";                  //Exakt drei Zeichen
             public string geschlecht { get; set; } = "";                          //Ein Zeichen {m, w, d, u } 
             public bool forensicherHintergrund { get; set; }
             public bool gemeldetAmStandort { get; set; } = true;
@@ -161,7 +161,7 @@ namespace PMDS.Global.db
                                        pat_vorname = pat.Vorname,
                                        pat_nachname = pat.Nachname,
                                        pat_geburtsdatum = pat.Geburtsdatum,
-                                       pat_staatsbürgerschaft = pat.Staatsb,
+                                       pat_staatsbuergerschaft = pat.Staatsb,
                                        pat_geschlecht = pat.Sexus,
                                        pat_letzteHauptwohnsitzgemeinde = "",    //Patient.STAMP_LetzteHauptwohnsitzgemeinde
                                        pat_forensicherHintergrund = false,      //Patient.STAMP_ForensicherHintergrund
@@ -204,10 +204,10 @@ namespace PMDS.Global.db
                             bew.synonym = auf.pat_synonym;
                             bew.vorname = auf.pat_vorname;
                             bew.nachname = auf.pat_nachname;
-                            string STAMPstaatsbergerschaft = LookupAuswahllisteBezeichnung("LND", auf.pat_staatsbürgerschaft, AuswahllisteSucheTyp.ELGA_Code);
-                            if (!String.IsNullOrWhiteSpace(STAMPstaatsbergerschaft))
+                            string STAMPstaatsbuergerschaft = LookupAuswahllisteBezeichnung("LND", auf.pat_staatsbuergerschaft, AuswahllisteSucheTyp.ELGA_Code);
+                            if (!String.IsNullOrWhiteSpace(STAMPstaatsbuergerschaft))
                             {
-                                bew.staatsbergerschaft = STAMPstaatsbergerschaft;
+                                bew.staatsbuergerschaft = STAMPstaatsbuergerschaft;
                             }
                             else
                             {

@@ -128,6 +128,7 @@ namespace PMDS.GUI
             this.ucVOErfassen1.initControl(PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenKlientStammdaten, true, false, null);
 
             this.tabStammdaten.Tabs["VOErfassen"].Visible = PMDS.Global.ENV.lic_VO;
+            this.tabStammdaten.Tabs["STAMP"].Visible = PMDS.Global.ENV.lic_STAMP;
 
             bELGA.init();
             this.setTabELGAOnIff();
@@ -658,6 +659,13 @@ namespace PMDS.GUI
                 this.contELGAKlient1.loadData(Klient.ID, Klient.IDAuenthalt);
             }
 
+            //----------------------------------------------------
+            // STAMP-Kostentragungen
+            //----------------------------------------------------
+            if (ENV.lic_STAMP)
+            {
+                this.ucSTAMPData1.Init(ENV.IDAUFENTHALT);
+            }
         }
         public void UpdateGridSachwalter()
         {
@@ -2614,6 +2622,10 @@ namespace PMDS.GUI
             }
         }
 
+        private void tabStammdaten_SelectedTabChanged(object sender, SelectedTabChangedEventArgs e)
+        {
+
+        }
     }
 }
 

@@ -1708,6 +1708,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="STAMP\frmSTAMP.Designer.cs" />
+    <Compile Include="STAMP\ucSTAMPData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="STAMP\ucSTAMPData.Designer.cs">
+      <DependentUpon>ucSTAMPData.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucSiteMapPMDS.cs" />
     <Compile Include="Klient\dsGegenstaende.cs">
       <DependentUpon>dsGegenstaende.xsd</DependentUpon>
@@ -4941,6 +4947,9 @@
       <DependentUpon>frmMainFormIPCClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="STAMP\frmSTAMP.resx" />
+    <EmbeddedResource Include="STAMP\ucSTAMPData.resx">
+      <DependentUpon>ucSTAMPData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI.Sitemap\protCalc\frmProtDS.resx">
       <DependentUpon>frmProtDS.cs</DependentUpon>
       <SubType>Designer</SubType>
