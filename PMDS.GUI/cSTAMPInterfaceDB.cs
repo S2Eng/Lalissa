@@ -30,20 +30,13 @@ namespace PMDS.Global.db
             Beschreibung = 3
         }
 
-        public enum STAMPBewohnerStatus
-        {
-            neu = 0,
-            ok = 1,
-            SynonymFehlt = 2,
-            Datenfehler = 3,
-        }
-
         public class Bewohnerliste
         {
             public Guid ID { get; set; } = Guid.NewGuid();
             public DateTime ErstelltAm { get; set; } = _Now;
             public List<Bewohnerdaten> bewohnerdaten { get; set; } = new List<Bewohnerdaten>();
             public string Log { get; set; } = "";
+            public bool HasErrors { get; set; }
         }
 
 
@@ -67,7 +60,7 @@ namespace PMDS.Global.db
             public List<Pflegegeldstufe> pflegegeldstufen { get; } = new List<Pflegegeldstufe>();
             public List<Pflegegeldverfahren> pflegegeldverfahren { get; } = new List<Pflegegeldverfahren>();
             public Guid IDKlient { get; set; } = Guid.Empty;
-            public STAMPBewohnerStatus Status { get; set; } = STAMPBewohnerStatus.neu;
+            public string ErrLog { get; set; } = "";
         }
 
         public class STAMPString
@@ -79,18 +72,23 @@ namespace PMDS.Global.db
 
         public class Aufenthalt
         {
+            public string letzteHauptwohnsitzgemeinde { get; set; } = "";
             public List<VorherigeBetreuungsform> vorherigeBetreuungsformen { get; set; } = new List<VorherigeBetreuungsform>();
             public DateTime eintrittsdatum { get; set; } = DateTime.MinValue;
             public DateTime austrittsdatum { get; set; }
             public string austrittWohin { get; set; } = "";              //{ BET_WOH. 24H_BET, AND_PH, TOD, SONST }
-            public List<kostentragung> kostentragungen { get; set; } = new List<kostentragung>();
-            public List<abwesenheit> abwesenheiten { get; set; } = new List<abwesenheit>();
+            public List<kostentragung> kostentragungen { get; } = new List<kostentragung>();
+            public List<abwesenheit> abwesenheiten { get; } = new List<abwesenheit>();
             public Guid IDAufenthalt { get; set; } = Guid.Empty;
+            public string ErrLog { get; set; } = "";
+
         }
 
         public class VorherigeBetreuungsform
         {
             public string vorherigeBeteuungsform { get; set; } = "";      //{ MOB_HK, TAGZ, BET_WOH, 24H_BET, AND_PH, KH, PRIV_BET, KEINE, SONST }
+            public string ErrLog { get; set; } = "";
+
         }
 
         public class kostentragung
@@ -99,6 +97,8 @@ namespace PMDS.Global.db
             public string finanzierungSonstige { get; set; } = "";
             public DateTime gueltigVon { get; set; } = DateTime.MinValue;
             public DateTime gueltigBis { get; set; } = DateTime.MaxValue;
+            public string ErrLog { get; set; } = "";
+
         }
 
         public class abwesenheit
@@ -107,6 +107,8 @@ namespace PMDS.Global.db
             public DateTime vonDatum { get; set; } = DateTime.MinValue;
             public DateTime bisDatum { get; set; } = DateTime.MaxValue;
             public Guid IDUrlaub { get; set; } = Guid.Empty;
+            public string ErrLog { get; set; } = "";
+
         }
 
         public class Pflegegeldstufe
@@ -115,6 +117,8 @@ namespace PMDS.Global.db
             public DateTime gueltigVon { get; set; } = DateTime.MinValue;
             public DateTime gueltigBis { get; set; } = DateTime.MaxValue;
             public Guid IDPflegestufe { get; set; } = Guid.Empty;
+            public string ErrLog { get; set; } = "";
+
         }
 
         public class Pflegegeldverfahren
@@ -123,6 +127,8 @@ namespace PMDS.Global.db
             public string vorlaufigePflegegeldstufeVerrechnungPersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
             public DateTime kenntnisnahmeDatumBescheid { get; set; } = DateTime.MaxValue;
             public Guid IDPflegestufe { get; set; } = Guid.Empty;
+            public string ErrLog { get; set; } = "";
+
         }
 
         public bool init(DateTime Periode)
@@ -140,198 +146,261 @@ namespace PMDS.Global.db
                     sbLog.Append(AddLog("Kein gültiges Datum für die Meldeperiode.\n", ErrorClass.Kritisch));
                 }
 
+                Bewohnerliste lBew = new Bewohnerliste();
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    var lstAufenthalte = (from a in db.vAufenthaltsliste
-                                   join auf in db.Aufenthalt on a.IDAufenthalt equals auf.ID
-                                   join pat in db.Patient on a.IDPatient equals pat.ID
-                                   join adr in db.Adresse on pat.IDAdresse equals adr.ID
-                                   where a.IDKlinik == ENV.IDKlinik && 
-                                        (
-                                            (auf.Entlassungszeitpunkt >= _FirstOfPeriode && auf.Entlassungszeitpunkt < _LastOfPeriode) ||
-                                            (auf.Aufnahmezeitpunkt >= _FirstOfPeriode && auf.Aufnahmezeitpunkt < _LastOfPeriode) ||
-                                            (auf.Aufnahmezeitpunkt < _FirstOfPeriode && (auf.Entlassungszeitpunkt > _LastOfPeriode || auf.Entlassungszeitpunkt == null)) 
-                                        ) 
-                                  select new
-                                   {
-                                       IDKlient = a.IDPatient,
-                                       IDAufenthalt = a.IDAufenthalt,
-                                       IDAdresse = adr.ID,
-                                       //Klient
-                                       pat_vorname = pat.Vorname,
-                                       pat_nachname = pat.Nachname,
-                                       pat_geburtsdatum = pat.Geburtsdatum,
-                                       pat_staatsbürgerschaft = pat.Staatsb,
-                                       pat_geschlecht = pat.Sexus,
-                                       pat_letzteHauptwohnsitzgemeinde = "",    //Patient.STAMP_LetzteHauptwohnsitzgemeinde
-                                       pat_forensicherHintergrund = false,      //Patient.STAMP_ForensicherHintergrund
-                                       pat_gemeldetAmStandort = pat.WohnungAbgemeldetJN,
-                                       pat_synonym = "",                        //Patient.STAMP_Synonym
+                    //distinct PatientenIDs der betroffenen Aufenthalte
+                    var lstKlientenID = (from a in db.vAufenthaltsliste
+                                         join pat in db.Patient on a.IDPatient equals pat.ID
+                                         join adr in db.Adresse on pat.IDAdresse equals adr.ID
+                                         where a.IDKlinik == ENV.IDKlinik &&
+                                                (
+                                                    (a.Entlassungszeitpunkt >= _FirstOfPeriode && a.Entlassungszeitpunkt < _LastOfPeriode) ||
+                                                    (a.Aufnahmezeitpunkt >= _FirstOfPeriode && a.Aufnahmezeitpunkt < _LastOfPeriode) ||
+                                                    (a.Aufnahmezeitpunkt < _FirstOfPeriode && (a.Entlassungszeitpunkt > _LastOfPeriode || a.Entlassungszeitpunkt == null))
+                                                )
+                                           select new
+                                           {
+                                               IDKlient = a.IDPatient,
+                                               IDAufenthalt = a.IDAufenthalt,
+                                               IDAdresse = adr.ID,
+                                               //Klient
+                                               pat_vorname = pat.Vorname,
+                                               pat_nachname = pat.Nachname,
+                                               pat_geburtsdatum = pat.Geburtsdatum,
+                                               pat_staatsbürgerschaft = pat.Staatsb,
+                                               pat_geschlecht = pat.Sexus,
+                                               pat_forensicherHintergrund = pat.ForensischerHintergrund,      
+                                               pat_gemeldetAmStandort = pat.WohnungAbgemeldetJN,
+                                               pat_synonym = pat.STAMP_Synonym,                        
+                                               //Adresse
+                                               adr_plz = adr.Plz,
+                                               adr_ort = adr.Ort,
+                                               adr_strasse = adr.Strasse_OhneHausnummer,
+                                               adr_hausnummer = adr.Hausnummer
+                                           }).GroupBy(p => p.IDKlient).Select(g => g.FirstOrDefault()).ToList();
 
-                                       //Adresse
-                                       adr_plz = adr.Plz,
-                                       adr_ort = adr.Ort,
-                                       adr_strasse = adr.Strasse,
-                                       adr_hausnummer = "",                     //Adresse.Hausnummer
 
-                                       //Aufenthalt
-                                       auf_vorherigeBetreuungsform = "",
-                                       auf_eintrittsdatum = auf.Aufnahmezeitpunkt,
-                                       auf_austrittsdatum = auf.Entlassungszeitpunkt,
-                                       auf_austrittWohin = ""
-                                   }).ToList();
-
-                    Bewohnerliste lBew = new Bewohnerliste();
-
-                    foreach (var auf in lstAufenthalte)
+                    foreach (var kl in lstKlientenID)
                     {
                         Bewohnerdaten bew = new Bewohnerdaten();
 
-                        bool bewExists = false ;
-                        foreach (Bewohnerdaten bewCheck in lBew.bewohnerdaten)         
+                        bew.synonym = kl.pat_synonym;
+                        bew.vorname = kl.pat_vorname;
+                        bew.nachname = kl.pat_nachname;
+                        string STAMPstaatsbergerschaft = LookupAuswahllisteBezeichnung("LND", kl.pat_staatsbürgerschaft, AuswahllisteSucheTyp.ELGA_Code);
+                        if (!String.IsNullOrWhiteSpace(STAMPstaatsbergerschaft))
                         {
-                            if (bewCheck.IDKlient == auf.IDKlient)
+                            bew.staatsbergerschaft = STAMPstaatsbergerschaft;
+                        }
+                        else
+                        {
+                            bew.ErrLog += "Staatsbürgerschaft " + kl.pat_staatsbürgerschaft + " ist kein gültiger Listeneintrag\n";
+                            lBew.HasErrors = true;
+                        }
+                        if (!String.IsNullOrWhiteSpace(ConvertGeschlecht(kl.pat_geschlecht)))
+                        {
+                            bew.geschlecht = ConvertGeschlecht(kl.pat_geschlecht);
+                        }
+                        else
+                        {
+                            bew.ErrLog += "Geschlecht " + kl.pat_geschlecht + " ist kein gültiger Listeneintrag.\n";
+                            lBew.HasErrors = true;
+                        }
+
+                        if (kl.pat_forensicherHintergrund != null)
+                            bew.forensicherHintergrund = (bool)kl.pat_forensicherHintergrund;
+                        bew.gemeldetAmStandort = (bool)kl.pat_gemeldetAmStandort;
+                        if (!bew.gemeldetAmStandort)
+                        {
+                            bew.plz = kl.adr_plz;
+                            bew.ort = kl.adr_ort;
+                            bew.strasse = kl.adr_strasse;
+                            bew.hausnummer = kl.adr_hausnummer;
+                        }
+                        bew.synonymVorsystem = kl.IDKlient.ToString();
+                        bew.IDKlient = kl.IDKlient;
+
+                        lBew.bewohnerdaten.Add(bew);
+
+                        //Aufenthalte zu Klient
+                        var lstAufenthalte = (from a in db.vAufenthaltsliste
+                                              join auf in db.Aufenthalt on a.IDAufenthalt equals auf.ID
+                                              where a.IDPatient == kl.IDKlient
+                                              select new
+                                              {
+                                                  IDAufenthalt = a.IDAufenthalt,
+                                                  auf_letzteHauptwohnsitzgemeinde = auf.Hauptwohnsitzgemeinde,
+                                                  auf_vorherigeBetreuungsform = "",
+                                                  auf_eintrittsdatum = auf.Aufnahmezeitpunkt,
+                                                  auf_austrittsdatum = auf.Entlassungszeitpunkt,
+                                                  auf_austrittWohin = ""
+                                              }).ToList();
+
+                        foreach (var auf in lstAufenthalte)
+                        {
+                            Aufenthalt a = new Aufenthalt();
+                            a.letzteHauptwohnsitzgemeinde = LookupAuswahllisteBezeichnung("GEM", auf.auf_letzteHauptwohnsitzgemeinde, AuswahllisteSucheTyp.ELGA_Code);
+
+
+                            if (!String.IsNullOrEmpty((string)auf.auf_vorherigeBetreuungsform))
                             {
-                                bew = bewCheck;
-                                bewExists = true;
-                                continue;
+                                a.vorherigeBetreuungsformen = new List<VorherigeBetreuungsform>() { new VorherigeBetreuungsform { vorherigeBeteuungsform = (string)auf.auf_vorherigeBetreuungsform } };
                             }
-                        }
 
-                        if (!bewExists)
-                        {
+                            a.eintrittsdatum = (DateTime)auf.auf_eintrittsdatum;
 
-                            bew.synonym = auf.pat_synonym;
-                            bew.vorname = auf.pat_vorname;
-                            bew.nachname = auf.pat_nachname;
-                            string STAMPstaatsbergerschaft = LookupAuswahllisteBezeichnung("LND", auf.pat_staatsbürgerschaft, AuswahllisteSucheTyp.ELGA_Code);
-                            if (!String.IsNullOrWhiteSpace(STAMPstaatsbergerschaft))
+                            if (auf.auf_austrittsdatum != null)
                             {
-                                bew.staatsbergerschaft = STAMPstaatsbergerschaft;
+                                a.austrittsdatum = (DateTime)auf.auf_austrittsdatum;
                             }
-                            else
+
+                            if (!String.IsNullOrEmpty((string)auf.auf_austrittWohin))
                             {
-                                bew.Status = STAMPBewohnerStatus.Datenfehler;
-                            }
-                            bew.geschlecht = ConvertGeschlecht(auf.pat_geschlecht);
-                            bew.letzteHauptwohnsitzgemeinde = LookupAuswahllisteBezeichnung("GEM", auf.pat_letzteHauptwohnsitzgemeinde, AuswahllisteSucheTyp.ELGA_Code);
-                            bew.forensicherHintergrund = auf.pat_forensicherHintergrund;
-                            bew.gemeldetAmStandort = (bool)auf.pat_gemeldetAmStandort;
-                            bew.plz = auf.adr_plz;
-                            bew.ort = auf.adr_ort;
-                            bew.strasse = auf.adr_strasse;
-                            bew.hausnummer = auf.adr_hausnummer;
-                            bew.synonymVorsystem = auf.IDKlient.ToString();
-                            bew.IDKlient = auf.IDKlient;
-
-                            lBew.bewohnerdaten.Add(bew);
-                        }
-
-                        Aufenthalt a = new Aufenthalt();
-                        if (!String.IsNullOrEmpty((string)auf.auf_vorherigeBetreuungsform))
-                        {
-                            a.vorherigeBetreuungsformen = new List<VorherigeBetreuungsform>() { new VorherigeBetreuungsform { vorherigeBeteuungsform = (string)auf.auf_vorherigeBetreuungsform } };
-                        }
-
-                        a.eintrittsdatum = (DateTime) auf.auf_eintrittsdatum;
-                        
-                        if (auf.auf_austrittsdatum != null)
-                        {
-                            a.austrittsdatum = (DateTime)auf.auf_austrittsdatum;
-                        }
-
-                        if (!String.IsNullOrEmpty((string)auf.auf_austrittWohin))
-                        {
-                            a.austrittWohin = (string)auf.auf_austrittWohin;
-                        }
-
-                        //Kostentragungen zu Aufenthalt
-                        // Woher?
-
-                        //Abwesenheiten zu Aufenthalt
-                        var abw = (from auf1 in db.Aufenthalt
-                                   join url in db.UrlaubVerlauf on auf1.ID equals url.IDAufenthalt
-                                   where auf1.ID == a.IDAufenthalt
-                                   select new
-                                   {
-                                       abwesenheitsgrund = url.Text,
-                                       gueltigVon = url.StartDatum,
-                                       gueltigBis = url.EndeDatum
-                                   }).ToList();
-
-                        foreach (var ab in abw)
-                        {
-                            if (ab.gueltigBis != null)
-                            {                       
-                                //Nur Abweseneheiten mit mindestens einer Nacht
-                                DateTime bis = (DateTime)ab.gueltigBis;
-                                DateTime von = (DateTime)ab.gueltigVon;
-                                if (bis.Date <= von.Date)
-                                    continue;
+                                a.austrittWohin = (string)auf.auf_austrittWohin;
                             }
 
-                            abwesenheit abwh = new abwesenheit();
-                            abwh.abwesenheitsgrund = LookupAuswahllisteBezeichnung("URL", ab.abwesenheitsgrund, AuswahllisteSucheTyp.Beschreibung) ;
-                            abwh.vonDatum = (DateTime) ab.gueltigVon;
-                            if (ab.gueltigBis != null)
+                            //Kostentragungen zu Aufenthalt
+                            var kts = (from kt in db.STAMP_Kostentragungen
+                                       where kt.IDAufenthalt == a.IDAufenthalt
+                                       select new
+                                       {
+                                           kt.ID,
+                                           kt.IDAufenthalt,
+                                           kt.Finanzierung,
+                                           kt.FinanzierungSonstige,
+                                           kt.GueltigVon,
+                                           kt.GueltigBis
+                                       }).ToList();
+
+                            foreach (var kt in kts)
                             {
-                                abwh.bisDatum = (DateTime)ab.gueltigBis;
+                                kostentragung kostTrag = new kostentragung();
+                                kostTrag.finanzierung = kt.Finanzierung;
+                                kostTrag.finanzierungSonstige = kt.FinanzierungSonstige;
+                                kostTrag.gueltigVon = kt.GueltigVon;
+                                if (kt.GueltigBis != null)
+                                    kostTrag.gueltigBis = (DateTime) kt.GueltigBis;
+                                a.kostentragungen.Add(kostTrag);
                             }
-                            a.abwesenheiten.Add(abwh);
-                        }
-                        bew.aufenthalte.Add(a);
-
-                        //Pflegegeldstufen zum Klienten
-                        var lPST = (from kl in db.Patient
-                                    join pps in db.PatientPflegestufe on kl.ID equals pps.IDPatient
-                                    join ps in db.Pflegegeldstufe on pps.IDPflegegeldstufe equals ps.ID
-                                    where kl.ID == bew.IDKlient
-                                    select new
-                                    {
-                                        ID = pps.ID,
-                                        pflegegeldstufe = ps.StufeNr,
-                                        gueltigVon = pps.GueltigAb,
-                                        gueltigBis = pps.GueltigBis,
-                                    }).ToList();
-
-                        foreach (var ps in lPST)
-                        {
-                            Pflegegeldstufe pst = new Pflegegeldstufe();
-                            pst.pflegegeldstufe = ps.pflegegeldstufe.ToString();
-                            pst.gueltigVon = ps.gueltigVon;
-                            if (ps.gueltigBis != null)
+                            if (!kts.Any())
                             {
-                                pst.gueltigBis = (DateTime) ps.gueltigBis;
-                            }
-                            bew.pflegegeldstufen.Add(pst);                                
-                        }
+                                a.ErrLog += "Keine Kostentragungen gefunden.";
+                                lBew.HasErrors = true;
+                            };
 
-                        //Pflegegeldverfahren zum Klienten
-                        var lPSTV = (from kl in db.Patient
-                                    join pps in db.PatientPflegestufe on kl.ID equals pps.IDPatient
-                                    join ps in db.Pflegegeldstufe on pps.IDPflegegeldstufeAntrag equals ps.ID
-                                    where kl.ID == bew.IDKlient &&
-                                    pps.AenderungsantragDatum != null
-                                    select new
-                                    {
-                                        ID = pps.ID,
-                                        beantragtAm = pps.AenderungsantragDatum,
-                                        vorlaeufigePflegegeldstufeVerrechnungPersonal = ps.StufeNr,
-                                        kenntnisnahmeDatumBescheid = pps.GenehmigungDatum
-                                    }).ToList();
+                            //Abwesenheiten zu Aufenthalt
+                            var abw = (from auf1 in db.Aufenthalt
+                                       join url in db.UrlaubVerlauf on auf1.ID equals url.IDAufenthalt
+                                       where auf1.ID == a.IDAufenthalt
+                                       select new
+                                       {
+                                           abwesenheitsgrund = url.Text,
+                                           gueltigVon = url.StartDatum,
+                                           gueltigBis = url.EndeDatum
+                                       }).ToList();
 
-                        foreach (var psv in lPSTV)
-                        {
-                            Pflegegeldverfahren pgv = new Pflegegeldverfahren();
-                            pgv.beantragtAm = (DateTime) psv.beantragtAm;
-                            pgv.vorlaufigePflegegeldstufeVerrechnungPersonal = psv.vorlaeufigePflegegeldstufeVerrechnungPersonal == 0 ? "keine" : psv.vorlaeufigePflegegeldstufeVerrechnungPersonal.ToString();
-                            if (psv.kenntnisnahmeDatumBescheid != null)
+                            foreach (var ab in abw)
                             {
-                                pgv.kenntnisnahmeDatumBescheid = (DateTime) psv.kenntnisnahmeDatumBescheid;
+                                if (ab.gueltigBis != null)
+                                {
+                                    //Nur Abweseneheiten mit mindestens einer Nacht
+                                    DateTime bis = (DateTime)ab.gueltigBis;
+                                    DateTime von = (DateTime)ab.gueltigVon;
+                                    if (bis.Date <= von.Date)
+                                        continue;
+                                }
+
+                                abwesenheit abwh = new abwesenheit();
+                                abwh.abwesenheitsgrund = LookupAuswahllisteBezeichnung("URL", ab.abwesenheitsgrund, AuswahllisteSucheTyp.Beschreibung);
+                                abwh.vonDatum = (DateTime)ab.gueltigVon;
+                                if (String.IsNullOrWhiteSpace(abwh.abwesenheitsgrund))
+                                {
+                                    abwh.ErrLog += "Kein gültiger Abwesenheitsgrund für Abwesenheit vom " + abwh.vonDatum.ToString("dd.MM.yyyy") + " gefunden.";
+                                    lBew.HasErrors = true;
+                                }
+                                if (ab.gueltigBis != null)
+                                {
+                                    abwh.bisDatum = (DateTime)ab.gueltigBis;
+                                }
+                                a.abwesenheiten.Add(abwh);
                             }
-                            bew.pflegegeldverfahren.Add(pgv);
+                            bew.aufenthalte.Add(a);
+
+                            //Pflegegeldstufen zum Klienten
+                            var lPST = (from kl1 in db.Patient
+                                        join pps in db.PatientPflegestufe on kl1.ID equals pps.IDPatient
+                                        join ps in db.Pflegegeldstufe on pps.IDPflegegeldstufe equals ps.ID
+                                        where kl1.ID == bew.IDKlient
+                                        select new
+                                        {
+                                            ID = pps.ID,
+                                            pflegegeldstufe = ps.StufeNr,
+                                            gueltigVon = pps.GueltigAb,
+                                            gueltigBis = pps.GueltigBis,
+                                        }).ToList();
+
+                            foreach (var ps in lPST)
+                            {
+                                Pflegegeldstufe pst = new Pflegegeldstufe();
+                                pst.pflegegeldstufe = ps.pflegegeldstufe.ToString();
+
+                                if (ps.gueltigVon == null)
+                                {
+                                    bew.ErrLog += "Pflegestufeneintrag ohne gültigem von-Datum gefunden.";
+                                    lBew.HasErrors = true;
+                                }
+                                else
+                                {
+                                    pst.gueltigVon = ps.gueltigVon;
+                                }
+
+                                if (ps.gueltigBis != null)
+                                {
+                                    pst.gueltigBis = (DateTime)ps.gueltigBis;
+                                }
+                                bew.pflegegeldstufen.Add(pst);
+                            }
+                            //Mindestens eine PS -> sonst Fehler!
+                            if (!bew.pflegegeldstufen.Any())
+                            {
+                                bew.ErrLog += "Keine Pflegestufeneinträge gefunden.";
+                                lBew.HasErrors = true;
+                            }
+
+                            //Pflegegeldverfahren zum Klienten
+                            var lPSTV = (from kl1 in db.Patient
+                                         join pps in db.PatientPflegestufe on kl1.ID equals pps.IDPatient
+                                         join ps in db.Pflegegeldstufe on pps.IDPflegegeldstufeAntrag equals ps.ID
+                                         where kl1.ID == bew.IDKlient &&
+                                         pps.AenderungsantragDatum != null
+                                         select new
+                                         {
+                                             ID = pps.ID,
+                                             beantragtAm = pps.AenderungsantragDatum,
+                                             vorlaeufigePflegegeldstufeVerrechnungPersonal = ps.StufeNr,
+                                             kenntnisnahmeDatumBescheid = pps.GenehmigungDatum
+                                         }).ToList();
+
+                            foreach (var psv in lPSTV)
+                            {
+                                Pflegegeldverfahren pgv = new Pflegegeldverfahren();
+                                pgv.beantragtAm = (DateTime)psv.beantragtAm;
+                                pgv.vorlaufigePflegegeldstufeVerrechnungPersonal = psv.vorlaeufigePflegegeldstufeVerrechnungPersonal == 0 ? "keine" : psv.vorlaeufigePflegegeldstufeVerrechnungPersonal.ToString();
+                                if (psv.kenntnisnahmeDatumBescheid != null)
+                                {
+                                    pgv.kenntnisnahmeDatumBescheid = (DateTime)psv.kenntnisnahmeDatumBescheid;
+                                }
+                                bew.pflegegeldverfahren.Add(pgv);
+                            }
                         }
-                    }
+                        //Mindestens ein Aufenthalt, sonst Fehler!
+                        if (bew.aufenthalte.Count == 0)
+                        {
+                            bew.ErrLog += "Kein Aufenthalt für diesen Bewohner gefunden.";
+                            lBew.HasErrors = true;
+                        }
+                    }                    
                 }
                 return true;
             }
@@ -397,7 +466,7 @@ namespace PMDS.Global.db
                 else if (GeschlechtIn.sEquals("Divers"))
                     return "d";
                 else
-                    return "u";
+                    return "";
             }
             catch (Exception ex)
             {

@@ -55,7 +55,6 @@ namespace PMDS.Global.db
             public DateTime geburtsdatum { get; set; } = DateTime.MinValue;
             public string staatsbergerschaft { get; set; } = "";                  //Exakt drei Zeichen
             public string geschlecht { get; set; } = "";                          //Ein Zeichen {m, w, d, u } 
-            public string letzteHauptwohnsitzgemeinde { get; set; } = "";         //Fünf Zeichen
             public bool forensicherHintergrund { get; set; }
             public bool gemeldetAmStandort { get; set; } = true;
             public string plz { get; set; } = "";                                 //Max. 10 
@@ -79,6 +78,7 @@ namespace PMDS.Global.db
 
         public class Aufenthalt
         {
+            public string letzteHauptwohnsitzgemeinde { get; set; } = "";         //Fünf Zeichen
             public List<VorherigeBetreuungsform> vorherigeBetreuungsformen { get; set; } = new List<VorherigeBetreuungsform>();
             public DateTime eintrittsdatum { get; set; } = DateTime.MinValue;
             public DateTime austrittsdatum { get; set; }
@@ -245,8 +245,9 @@ namespace PMDS.Global.db
                             a.austrittWohin = (string)auf.auf_austrittWohin;
                         }
 
-                        //Kostentragungen zu Aufenthalt
-                        // Woher?
+                        //Kostentragungen zu Aufenthalt (STAMP_Kostentragungen)
+                        
+
 
                         //Abwesenheiten zu Aufenthalt
                         var abw = (from auf1 in db.Aufenthalt
