@@ -208,7 +208,7 @@ namespace PMDS.GUI
             PMDS.Global.UIGlobal uiGlobal1 = new PMDS.Global.UIGlobal();
             PMDS.DB.PMDSBusiness pmdsBusiness2 = new PMDS.DB.PMDSBusiness();
             PMDS.Global.UIGlobal uiGlobal2 = new PMDS.Global.UIGlobal();
-            WCFServiceClient wcfServiceClient1 = new  WCFServiceClient();
+            WCFServiceClient wcfServiceClient1 = new WCFServiceClient();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
@@ -438,6 +438,7 @@ namespace PMDS.GUI
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridBagLayoutPanel1 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
+            this.pnlSTAMP = new Infragistics.Win.Misc.UltraPanel();
             this.ultraTabPageControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBoxAdressdaten)).BeginInit();
             this.ultraGroupBoxAdressdaten.SuspendLayout();
@@ -578,6 +579,8 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel1)).BeginInit();
             this.ultraGridBagLayoutPanel1.SuspendLayout();
+            this.pnlSTAMP.ClientArea.SuspendLayout();
+            this.pnlSTAMP.SuspendLayout();
             this.SuspendLayout();
             // 
             // ultraTabPageControl4
@@ -2401,7 +2404,7 @@ namespace PMDS.GUI
             // pageControlAufenthalt
             // 
             this.pageControlAufenthalt.Controls.Add(this.panelAufenthalt);
-            this.pageControlAufenthalt.Location = new System.Drawing.Point(1, 24);
+            this.pageControlAufenthalt.Location = new System.Drawing.Point(-10000, -10000);
             this.pageControlAufenthalt.Name = "pageControlAufenthalt";
             this.pageControlAufenthalt.Size = new System.Drawing.Size(1028, 673);
             // 
@@ -3515,16 +3518,16 @@ namespace PMDS.GUI
             // 
             // ultraTabPageControl11
             // 
-            this.ultraTabPageControl11.Controls.Add(this.ucSTAMPData1);
-            this.ultraTabPageControl11.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl11.Controls.Add(this.pnlSTAMP);
+            this.ultraTabPageControl11.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl11.Name = "ultraTabPageControl11";
             this.ultraTabPageControl11.Size = new System.Drawing.Size(1028, 673);
             // 
             // ucSTAMPData1
             // 
+            this.ucSTAMPData1.AutoScroll = true;
             this.ucSTAMPData1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucSTAMPData1.Location = new System.Drawing.Point(0, 0);
-            this.ucSTAMPData1.Margin = new System.Windows.Forms.Padding(4);
             this.ucSTAMPData1.Name = "ucSTAMPData1";
             this.ucSTAMPData1.Size = new System.Drawing.Size(1028, 673);
             this.ucSTAMPData1.TabIndex = 0;
@@ -3668,6 +3671,18 @@ namespace PMDS.GUI
             this.ultraToolTipManager1.AutoPopDelay = 0;
             this.ultraToolTipManager1.ContainingControl = this;
             this.ultraToolTipManager1.InitialDelay = 0;
+            // 
+            // pnlSTAMP
+            // 
+            // 
+            // pnlSTAMP.ClientArea
+            // 
+            this.pnlSTAMP.ClientArea.Controls.Add(this.ucSTAMPData1);
+            this.pnlSTAMP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlSTAMP.Location = new System.Drawing.Point(0, 0);
+            this.pnlSTAMP.Name = "pnlSTAMP";
+            this.pnlSTAMP.Size = new System.Drawing.Size(1028, 673);
+            this.pnlSTAMP.TabIndex = 1;
             // 
             // ucKlientStammdaten
             // 
@@ -3831,6 +3846,8 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel1)).EndInit();
             this.ultraGridBagLayoutPanel1.ResumeLayout(false);
+            this.pnlSTAMP.ClientArea.ResumeLayout(false);
+            this.pnlSTAMP.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -4053,5 +4070,6 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseTextEditor txtgruppenkennzahl;
         private UltraTabPageControl ultraTabPageControl11;
         private STAMP.ucSTAMPData ucSTAMPData1;
+        private Infragistics.Win.Misc.UltraPanel pnlSTAMP;
     }
 }

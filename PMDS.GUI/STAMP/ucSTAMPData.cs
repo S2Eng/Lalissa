@@ -143,7 +143,6 @@ namespace PMDS.GUI.STAMP
             }
         }
 
-
         private void SetUI (bool resetFinanzierung, bool hideGemeinde, bool hideBundesland, bool hideLand, bool hideSonstiges)
         {
             pnlGemeinde.Visible = !hideGemeinde;
@@ -191,8 +190,8 @@ namespace PMDS.GUI.STAMP
             _rNew.IDAufenthalt = IDAufenthalt;
             _rNew.CreatedUser = Guid.NewGuid();
             _rNew.CreatedDate = DateTime.Now;
-            _rNew.UpdatedUser = _r.CreatedUser;
-            _rNew.LastUpdateDate = _r.CreatedDate;
+            _rNew.UpdatedUser = _rNew.CreatedUser;
+            _rNew.LastUpdateDate = _rNew.CreatedDate;
             _dt.Rows.Add(_rNew);
             dgKostentragungen.Refresh();
         }
@@ -238,6 +237,11 @@ namespace PMDS.GUI.STAMP
         }
 
         private void ucSTAMPData_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblGueltigVon_Click(object sender, EventArgs e)
         {
 
         }
