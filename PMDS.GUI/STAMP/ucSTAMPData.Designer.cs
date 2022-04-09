@@ -30,8 +30,8 @@ namespace PMDS.GUI.STAMP
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSTAMPData));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSTAMPData));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -51,6 +51,7 @@ namespace PMDS.GUI.STAMP
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             this.lblfinanzierung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.dtGueltigVon = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.lblGueltigVon = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -111,7 +112,8 @@ namespace PMDS.GUI.STAMP
             // 
             // lblfinanzierung
             // 
-            this.lblfinanzierung.Location = new System.Drawing.Point(27, 315);
+            this.lblfinanzierung.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblfinanzierung.Location = new System.Drawing.Point(14, 377);
             this.lblfinanzierung.Name = "lblfinanzierung";
             this.lblfinanzierung.Size = new System.Drawing.Size(100, 21);
             this.lblfinanzierung.TabIndex = 28;
@@ -119,7 +121,8 @@ namespace PMDS.GUI.STAMP
             // 
             // dtGueltigVon
             // 
-            this.dtGueltigVon.Location = new System.Drawing.Point(133, 425);
+            this.dtGueltigVon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtGueltigVon.Location = new System.Drawing.Point(120, 404);
             this.dtGueltigVon.Name = "dtGueltigVon";
             this.dtGueltigVon.ownFormat = "";
             this.dtGueltigVon.ownMaskInput = "";
@@ -128,7 +131,8 @@ namespace PMDS.GUI.STAMP
             // 
             // lblGueltigVon
             // 
-            this.lblGueltigVon.Location = new System.Drawing.Point(27, 429);
+            this.lblGueltigVon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblGueltigVon.Location = new System.Drawing.Point(14, 408);
             this.lblGueltigVon.Name = "lblGueltigVon";
             this.lblGueltigVon.Size = new System.Drawing.Size(100, 23);
             this.lblGueltigVon.TabIndex = 31;
@@ -152,7 +156,8 @@ namespace PMDS.GUI.STAMP
             // 
             // lblGueltigBis
             // 
-            this.lblGueltigBis.Location = new System.Drawing.Point(27, 450);
+            this.lblGueltigBis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblGueltigBis.Location = new System.Drawing.Point(14, 429);
             this.lblGueltigBis.Name = "lblGueltigBis";
             this.lblGueltigBis.Size = new System.Drawing.Size(100, 23);
             this.lblGueltigBis.TabIndex = 37;
@@ -160,7 +165,8 @@ namespace PMDS.GUI.STAMP
             // 
             // dtGueltigBis
             // 
-            this.dtGueltigBis.Location = new System.Drawing.Point(133, 452);
+            this.dtGueltigBis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtGueltigBis.Location = new System.Drawing.Point(120, 431);
             this.dtGueltigBis.Name = "dtGueltigBis";
             this.dtGueltigBis.ownFormat = "";
             this.dtGueltigBis.ownMaskInput = "";
@@ -169,7 +175,9 @@ namespace PMDS.GUI.STAMP
             // 
             // lblSTAMP
             // 
-            this.lblSTAMP.Location = new System.Drawing.Point(27, 29);
+            appearance1.FontData.BoldAsString = "True";
+            this.lblSTAMP.Appearance = appearance1;
+            this.lblSTAMP.Location = new System.Drawing.Point(14, 11);
             this.lblSTAMP.Name = "lblSTAMP";
             this.lblSTAMP.Size = new System.Drawing.Size(235, 21);
             this.lblSTAMP.TabIndex = 43;
@@ -293,68 +301,70 @@ namespace PMDS.GUI.STAMP
             // 
             // dgKostentragungen
             // 
+            this.dgKostentragungen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dgKostentragungen.AutoWork = true;
             this.dgKostentragungen.DataSource = this.bindingSource;
-            appearance1.BackColor = System.Drawing.SystemColors.Window;
-            appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dgKostentragungen.DisplayLayout.Appearance = appearance1;
+            appearance2.BackColor = System.Drawing.SystemColors.Window;
+            appearance2.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.dgKostentragungen.DisplayLayout.Appearance = appearance2;
             this.dgKostentragungen.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.dgKostentragungen.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            appearance2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance2.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance2.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance2.BorderColor = System.Drawing.SystemColors.Window;
-            this.dgKostentragungen.DisplayLayout.GroupByBox.Appearance = appearance2;
-            appearance3.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.dgKostentragungen.DisplayLayout.GroupByBox.BandLabelAppearance = appearance3;
-            this.dgKostentragungen.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance4.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance4.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance3.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance3.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance3.BorderColor = System.Drawing.SystemColors.Window;
+            this.dgKostentragungen.DisplayLayout.GroupByBox.Appearance = appearance3;
             appearance4.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.dgKostentragungen.DisplayLayout.GroupByBox.PromptAppearance = appearance4;
+            this.dgKostentragungen.DisplayLayout.GroupByBox.BandLabelAppearance = appearance4;
+            this.dgKostentragungen.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance5.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance5.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance5.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance5.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.dgKostentragungen.DisplayLayout.GroupByBox.PromptAppearance = appearance5;
             this.dgKostentragungen.DisplayLayout.MaxColScrollRegions = 1;
             this.dgKostentragungen.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance5.BackColor = System.Drawing.SystemColors.Window;
-            appearance5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgKostentragungen.DisplayLayout.Override.ActiveCellAppearance = appearance5;
-            appearance6.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance6.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgKostentragungen.DisplayLayout.Override.ActiveRowAppearance = appearance6;
+            appearance6.BackColor = System.Drawing.SystemColors.Window;
+            appearance6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgKostentragungen.DisplayLayout.Override.ActiveCellAppearance = appearance6;
+            appearance7.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance7.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgKostentragungen.DisplayLayout.Override.ActiveRowAppearance = appearance7;
             this.dgKostentragungen.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
             this.dgKostentragungen.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance7.BackColor = System.Drawing.SystemColors.Window;
-            this.dgKostentragungen.DisplayLayout.Override.CardAreaAppearance = appearance7;
-            appearance8.BorderColor = System.Drawing.Color.Silver;
-            appearance8.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.dgKostentragungen.DisplayLayout.Override.CellAppearance = appearance8;
+            appearance8.BackColor = System.Drawing.SystemColors.Window;
+            this.dgKostentragungen.DisplayLayout.Override.CardAreaAppearance = appearance8;
+            appearance9.BorderColor = System.Drawing.Color.Silver;
+            appearance9.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.dgKostentragungen.DisplayLayout.Override.CellAppearance = appearance9;
             this.dgKostentragungen.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
             this.dgKostentragungen.DisplayLayout.Override.CellPadding = 0;
-            appearance9.BackColor = System.Drawing.SystemColors.Control;
-            appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance9.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance9.BorderColor = System.Drawing.SystemColors.Window;
-            this.dgKostentragungen.DisplayLayout.Override.GroupByRowAppearance = appearance9;
-            appearance10.TextHAlignAsString = "Left";
-            this.dgKostentragungen.DisplayLayout.Override.HeaderAppearance = appearance10;
+            appearance10.BackColor = System.Drawing.SystemColors.Control;
+            appearance10.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance10.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance10.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance10.BorderColor = System.Drawing.SystemColors.Window;
+            this.dgKostentragungen.DisplayLayout.Override.GroupByRowAppearance = appearance10;
+            appearance11.TextHAlignAsString = "Left";
+            this.dgKostentragungen.DisplayLayout.Override.HeaderAppearance = appearance11;
             this.dgKostentragungen.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.dgKostentragungen.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
-            appearance11.BackColor = System.Drawing.SystemColors.Window;
-            appearance11.BorderColor = System.Drawing.Color.Silver;
-            this.dgKostentragungen.DisplayLayout.Override.RowAppearance = appearance11;
+            appearance12.BackColor = System.Drawing.SystemColors.Window;
+            appearance12.BorderColor = System.Drawing.Color.Silver;
+            this.dgKostentragungen.DisplayLayout.Override.RowAppearance = appearance12;
             this.dgKostentragungen.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
             this.dgKostentragungen.DisplayLayout.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.None;
             this.dgKostentragungen.DisplayLayout.Override.SelectTypeCol = Infragistics.Win.UltraWinGrid.SelectType.None;
             this.dgKostentragungen.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            appearance12.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.dgKostentragungen.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
+            appearance13.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.dgKostentragungen.DisplayLayout.Override.TemplateAddRowAppearance = appearance13;
             this.dgKostentragungen.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.dgKostentragungen.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.dgKostentragungen.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-            this.dgKostentragungen.Location = new System.Drawing.Point(27, 56);
+            this.dgKostentragungen.Location = new System.Drawing.Point(14, 38);
             this.dgKostentragungen.Name = "dgKostentragungen";
-            this.dgKostentragungen.Size = new System.Drawing.Size(948, 225);
+            this.dgKostentragungen.Size = new System.Drawing.Size(905, 333);
             this.dgKostentragungen.TabIndex = 46;
             this.dgKostentragungen.Text = "baseGrid1";
             this.dgKostentragungen.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.dgKostentragungen_ClickCell);
@@ -362,8 +372,9 @@ namespace PMDS.GUI.STAMP
             // cmbFinanzierung
             // 
             this.cmbFinanzierung.AddEmptyEntry = false;
-            appearance13.BackColor = System.Drawing.Color.White;
-            this.cmbFinanzierung.Appearance = appearance13;
+            this.cmbFinanzierung.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            appearance14.BackColor = System.Drawing.Color.White;
+            this.cmbFinanzierung.Appearance = appearance14;
             this.cmbFinanzierung.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cmbFinanzierung.AutoOpenCBO = false;
             this.cmbFinanzierung.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
@@ -373,30 +384,31 @@ namespace PMDS.GUI.STAMP
             this.cmbFinanzierung.Group = "SFI";
             this.cmbFinanzierung.ID_PEP = -1;
             this.cmbFinanzierung.IgnoreUnterdruecken = true;
-            this.cmbFinanzierung.Location = new System.Drawing.Point(133, 315);
+            this.cmbFinanzierung.Location = new System.Drawing.Point(120, 377);
             this.cmbFinanzierung.MaxLength = 40;
             this.cmbFinanzierung.Name = "cmbFinanzierung";
             this.cmbFinanzierung.PflichtJN = false;
             this.cmbFinanzierung.SelectDistinct = false;
             this.cmbFinanzierung.ShowAddButton = true;
-            this.cmbFinanzierung.Size = new System.Drawing.Size(212, 21);
+            this.cmbFinanzierung.Size = new System.Drawing.Size(169, 21);
             this.cmbFinanzierung.sys = false;
             this.cmbFinanzierung.TabIndex = 44;
             this.cmbFinanzierung.ValueChanged += new System.EventHandler(this.cmbFinanzierung_ValueChanged);
             // 
             // btnCancel
             // 
-            appearance14.BackColor = System.Drawing.Color.Transparent;
-            appearance14.Image = ((object)(resources.GetObject("appearance14.Image")));
-            appearance14.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance14.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnCancel.Appearance = appearance14;
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            appearance15.Image = ((object)(resources.GetObject("appearance15.Image")));
+            appearance15.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance15.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnCancel.Appearance = appearance15;
             this.btnCancel.AutoWorkLayout = false;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(558, 441);
+            this.btnCancel.Location = new System.Drawing.Point(517, 420);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 32);
             this.btnCancel.TabIndex = 41;
@@ -407,17 +419,18 @@ namespace PMDS.GUI.STAMP
             // 
             // btnOK
             // 
-            appearance15.BackColor = System.Drawing.Color.Transparent;
-            appearance15.Image = ((object)(resources.GetObject("appearance15.Image")));
-            appearance15.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance15.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOK.Appearance = appearance15;
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            appearance16.Image = ((object)(resources.GetObject("appearance16.Image")));
+            appearance16.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance16.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOK.Appearance = appearance16;
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(664, 441);
+            this.btnOK.Location = new System.Drawing.Point(623, 420);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(103, 32);
             this.btnOK.TabIndex = 42;
@@ -430,8 +443,8 @@ namespace PMDS.GUI.STAMP
             // cmbBundesland
             // 
             this.cmbBundesland.AddEmptyEntry = false;
-            appearance16.BackColor = System.Drawing.Color.White;
-            this.cmbBundesland.Appearance = appearance16;
+            appearance17.BackColor = System.Drawing.Color.White;
+            this.cmbBundesland.Appearance = appearance17;
             this.cmbBundesland.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cmbBundesland.AutoOpenCBO = false;
             this.cmbBundesland.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
@@ -454,8 +467,8 @@ namespace PMDS.GUI.STAMP
             // cmbLand
             // 
             this.cmbLand.AddEmptyEntry = false;
-            appearance17.BackColor = System.Drawing.Color.White;
-            this.cmbLand.Appearance = appearance17;
+            appearance18.BackColor = System.Drawing.Color.White;
+            this.cmbLand.Appearance = appearance18;
             this.cmbLand.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cmbLand.AutoOpenCBO = false;
             this.cmbLand.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
@@ -478,8 +491,8 @@ namespace PMDS.GUI.STAMP
             // cmbGemeinde
             // 
             this.cmbGemeinde.AddEmptyEntry = false;
-            appearance18.BackColor = System.Drawing.Color.White;
-            this.cmbGemeinde.Appearance = appearance18;
+            appearance19.BackColor = System.Drawing.Color.White;
+            this.cmbGemeinde.Appearance = appearance19;
             this.cmbGemeinde.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cmbGemeinde.AutoOpenCBO = false;
             this.cmbGemeinde.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
@@ -501,17 +514,19 @@ namespace PMDS.GUI.STAMP
             // 
             // btnDel
             // 
-            appearance19.BackColor = System.Drawing.Color.Transparent;
-            appearance19.Image = ((object)(resources.GetObject("appearance19.Image")));
-            appearance19.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance19.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDel.Appearance = appearance19;
+            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            appearance20.BackColor = System.Drawing.Color.Transparent;
+            appearance20.Image = ((object)(resources.GetObject("appearance20.Image")));
+            appearance20.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance20.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDel.Appearance = appearance20;
             this.btnDel.AutoWorkLayout = false;
             this.btnDel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDel.DoOnClick = true;
             this.btnDel.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDel.IsStandardControl = true;
-            this.btnDel.Location = new System.Drawing.Point(714, 29);
+            this.btnDel.Location = new System.Drawing.Point(852, 11);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(29, 26);
             this.btnDel.TabIndex = 26;
@@ -521,17 +536,19 @@ namespace PMDS.GUI.STAMP
             // 
             // btnAdd
             // 
-            appearance20.BackColor = System.Drawing.Color.Transparent;
-            appearance20.Image = ((object)(resources.GetObject("appearance20.Image")));
-            appearance20.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance20.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAdd.Appearance = appearance20;
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            appearance21.BackColor = System.Drawing.Color.Transparent;
+            appearance21.Image = ((object)(resources.GetObject("appearance21.Image")));
+            appearance21.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance21.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAdd.Appearance = appearance21;
             this.btnAdd.AutoWorkLayout = false;
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnAdd.DoOnClick = true;
             this.btnAdd.ImageSize = new System.Drawing.Size(12, 12);
             this.btnAdd.IsStandardControl = true;
-            this.btnAdd.Location = new System.Drawing.Point(749, 29);
+            this.btnAdd.Location = new System.Drawing.Point(887, 11);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(29, 26);
             this.btnAdd.TabIndex = 25;
@@ -542,12 +559,13 @@ namespace PMDS.GUI.STAMP
             // 
             // pnlGemeinde
             // 
+            this.pnlGemeinde.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             // 
             // pnlGemeinde.ClientArea
             // 
             this.pnlGemeinde.ClientArea.Controls.Add(this.lblGemeinde);
             this.pnlGemeinde.ClientArea.Controls.Add(this.cmbGemeinde);
-            this.pnlGemeinde.Location = new System.Drawing.Point(428, 315);
+            this.pnlGemeinde.Location = new System.Drawing.Point(299, 377);
             this.pnlGemeinde.Name = "pnlGemeinde";
             this.pnlGemeinde.Size = new System.Drawing.Size(430, 22);
             this.pnlGemeinde.TabIndex = 47;
@@ -567,7 +585,7 @@ namespace PMDS.GUI.STAMP
             // 
             this.pnlBundesland.ClientArea.Controls.Add(this.lblBundesland);
             this.pnlBundesland.ClientArea.Controls.Add(this.cmbBundesland);
-            this.pnlBundesland.Location = new System.Drawing.Point(428, 342);
+            this.pnlBundesland.Location = new System.Drawing.Point(836, 114);
             this.pnlBundesland.Name = "pnlBundesland";
             this.pnlBundesland.Size = new System.Drawing.Size(430, 22);
             this.pnlBundesland.TabIndex = 48;
@@ -587,7 +605,7 @@ namespace PMDS.GUI.STAMP
             // 
             this.pnlLand.ClientArea.Controls.Add(this.lblLand);
             this.pnlLand.ClientArea.Controls.Add(this.cmbLand);
-            this.pnlLand.Location = new System.Drawing.Point(428, 369);
+            this.pnlLand.Location = new System.Drawing.Point(836, 142);
             this.pnlLand.Name = "pnlLand";
             this.pnlLand.Size = new System.Drawing.Size(430, 22);
             this.pnlLand.TabIndex = 49;
@@ -607,7 +625,7 @@ namespace PMDS.GUI.STAMP
             // 
             this.pnlFinanzierungSonstige.ClientArea.Controls.Add(this.txtFinanzierungSonstige);
             this.pnlFinanzierungSonstige.ClientArea.Controls.Add(this.lblfinanzierungSonstige);
-            this.pnlFinanzierungSonstige.Location = new System.Drawing.Point(428, 396);
+            this.pnlFinanzierungSonstige.Location = new System.Drawing.Point(836, 170);
             this.pnlFinanzierungSonstige.Name = "pnlFinanzierungSonstige";
             this.pnlFinanzierungSonstige.Size = new System.Drawing.Size(430, 22);
             this.pnlFinanzierungSonstige.TabIndex = 50;
@@ -616,6 +634,7 @@ namespace PMDS.GUI.STAMP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.pnlFinanzierungSonstige);
             this.Controls.Add(this.pnlLand);
             this.Controls.Add(this.pnlBundesland);
@@ -634,7 +653,8 @@ namespace PMDS.GUI.STAMP
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnAdd);
             this.Name = "ucSTAMPData";
-            this.Size = new System.Drawing.Size(989, 480);
+            this.Size = new System.Drawing.Size(931, 463);
+            this.Load += new System.EventHandler(this.ucSTAMPData_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigVon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFinanzierungSonstige)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigBis)).EndInit();

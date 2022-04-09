@@ -641,8 +641,19 @@
     </Compile>
     <Compile Include="db\ERSystem\TestUnitsHL.cs" />
     <Compile Include="db\ERSystem\TestUnitsOS.cs" />
+    <Compile Include="db\Global\DBSTAMP_Kostentragungen.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBSTAMP_Kostentragungen.designer.cs">
+      <DependentUpon>DBSTAMP_Kostentragungen.cs</DependentUpon>
+    </Compile>
     <Compile Include="db\Global\dsPatientAerzte.cs">
       <DependentUpon>dsPatientAerzte.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsSTAMP_Kostentragungen.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSTAMP_Kostentragungen.xsd</DependentUpon>
     </Compile>
     <Compile Include="PMDSClient\PMDSClientWrapper.cs" />
     <Compile Include="PMDSClient\WCFService\WcfDTOs.cs" />
@@ -2047,6 +2058,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="db\ERSystem\sqlVO.resx">
       <DependentUpon>sqlVO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBSTAMP_Kostentragungen.resx">
+      <DependentUpon>DBSTAMP_Kostentragungen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="db\RBU\frmShowError.resx">
       <DependentUpon>frmShowError.cs</DependentUpon>
@@ -3944,6 +3958,17 @@
     </None>
     <None Include="db\Pflegeplan\dsZusatzwerteForEintrag.xss">
       <DependentUpon>dsZusatzwerteForEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="dsSTAMP_Kostentragungen.xsc">
+      <DependentUpon>dsSTAMP_Kostentragungen.xsd</DependentUpon>
+    </None>
+    <None Include="dsSTAMP_Kostentragungen.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSTAMP_Kostentragungen.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsSTAMP_Kostentragungen.xss">
+      <DependentUpon>dsSTAMP_Kostentragungen.xsd</DependentUpon>
     </None>
     <None Include="KlientByKostenträger.xsc">
       <DependentUpon>KlientByKostenträger.xsd</DependentUpon>

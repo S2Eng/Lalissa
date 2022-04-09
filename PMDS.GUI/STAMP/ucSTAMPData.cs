@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 using Infragistics.Win;
 using Infragistics.Win.UltraWinGrid;
+using PMDS.DB.Global;
 using S2Extensions;
 
 namespace PMDS.GUI.STAMP
@@ -18,7 +19,11 @@ namespace PMDS.GUI.STAMP
     public partial class ucSTAMPData : UserControl
     {
         private Guid IDAufenthalt = Guid.Empty;
-        private DataTable GridSource = new DataTable();
+
+        private DBSTAMP_Kostentragungen _db = new DBSTAMP_Kostentragungen();
+        private Global.dsSTAMP_Kostentragungen.STAMP_KostentragungenDataTable _dt = new Global.dsSTAMP_Kostentragungen.STAMP_KostentragungenDataTable();
+        private Global.dsSTAMP_Kostentragungen.STAMP_KostentragungenRow _r;
+        private Global.dsSTAMP_Kostentragungen.STAMP_KostentragungenRow _rNew;
 
         private enum RowStatus
         {
@@ -70,29 +75,8 @@ namespace PMDS.GUI.STAMP
         {
             try
             {
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
-                {
-                    var kts = (from kt in db.STAMP_Kostentragungen
-                               where kt.IDAufenthalt == this.IDAufenthalt
-                               select new
-                               {
-                                   kt.ID,
-                                   kt.IDAufenthalt,
-                                   kt.Finanzierung,
-                                   kt.FinanzierungSonstige,
-                                   kt.GueltigVon,
-                                   kt.GueltigBis,
-                                   kt.Bundesland,
-                                   kt.Gemeinde,
-                                   kt.CreatedUser,
-                                   kt.CreatedDate,
-                                   kt.LastUpdateDate,
-                                   Modified = RowStatus.unchanged
-                               }).ToList();
-
-                    GridSource = LINQToDataTable(kts);
-                    this.dgKostentragungen.DataSource = GridSource;
-                }
+                _dt = _db.Read(IDAufenthalt);
+                this.dgKostentragungen.DataSource = _dt;
 
                 return true;
             }
@@ -102,52 +86,11 @@ namespace PMDS.GUI.STAMP
             }
         }
 
-        private DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
-        {
-            DataTable dtReturn = new DataTable();
-
-            // column names 
-            PropertyInfo[] oProps = null;
-
-            if (varlist == null) return dtReturn;
-
-            foreach (T rec in varlist)
-            {
-                // Use reflection to get property names, to create table, Only first time, others will follow
-                 if (oProps == null)
-                {
-                    oProps = ((Type)rec.GetType()).GetProperties();
-                    foreach (PropertyInfo pi in oProps)
-                    {
-                        Type colType = pi.PropertyType;
-
-                        if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition() == typeof(Nullable<>)))
-                        {
-                            colType = colType.GetGenericArguments()[0];
-                        }
-                        dtReturn.Columns.Add(new DataColumn(pi.Name, colType));
-                    }
-                }
-
-                DataRow dr = dtReturn.NewRow();
-
-                foreach (PropertyInfo pi in oProps)
-                {
-                    dr[pi.Name] = pi.GetValue(rec, null) == null ? DBNull.Value : pi.GetValue
-                    (rec, null);
-                }
-                dtReturn.Rows.Add(dr);
-            }
-            return dtReturn;
-        }
-
-        private bool SaveData()
+        public bool SaveData()
         {
             try
             {
-
-
-
+                _db.Write(_dt);
                 return true;
             }
             catch (Exception ex)
@@ -166,10 +109,13 @@ namespace PMDS.GUI.STAMP
                 this.txtFinanzierungSonstige.Text = row.Cells["FinanzierungSonstige"].Text;
                 this.cmbGemeinde.Text = row.Cells["Gemeinde"].Text;
                 this.cmbBundesland.Text = row.Cells["Bundesland"].Text;
-                //this.cmbBundesland.Text = row.Cells["Land"].Text;
+                this.cmbLand.Text = row.Cells["Land"].Text;
                 this.dtGueltigVon.Value = row.Cells["GueltigVon"].Value;
                 this.dtGueltigBis.Value = row.Cells["GueltigBis"].Value;
                 this.cmbFinanzierung.Text = row.Cells["Finanzierung"].Text;
+
+                _r = _dt.FindByID(new Guid(row.Cells["ID"].Text));
+
             }
         }
 
@@ -214,33 +160,85 @@ namespace PMDS.GUI.STAMP
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            UltraGridRow row = this.dgKostentragungen.ActiveRow;
-
-            if (row != null)
+            if (_r != null)
             {
-                row.Cells["Finanzierung"].Value = cmbFinanzierung.Text;
-                row.Cells["FinanzierungSonstige"].Value = txtFinanzierungSonstige.Text;
-                row.Cells["GueltigVon"].Value = dtGueltigVon.DateTime;
-                row.Cells["GueltigBis"].Value = dtGueltigBis.DateTime;
-                row.Cells["Gemeinde"].Value = cmbGemeinde.Text;
-                row.Cells["Bundesland"].Value = cmbBundesland.Text;
-                //row.Cells["Land"].Value = cmbLand.Text;
-                row.Cells["LastUpdateDate"].Value = DateTime.Now; 
-            }
-            dgKostentragungen.Refresh();
+                //in DB Speichern für geänderte Row (Insert oder Update)
+                _r.Finanzierung = cmbFinanzierung.Text;
+                _r.Finanzierung = cmbFinanzierung.Text;
+                _r.FinanzierungSonstige = txtFinanzierungSonstige.Text;
+                _r.GueltigVon = dtGueltigVon.DateTime;
+                _r.GueltigBis = dtGueltigBis.DateTime;
+                _r.Gemeinde = cmbGemeinde.Text;
+                _r.Bundesland = cmbBundesland.Text;
+                _r.Land = cmbLand.Text;
+                _r.LastUpdateDate = DateTime.Now;
+                dgKostentragungen.Refresh();
 
-            //in DB Speichern für geänderte Row (Insert oder Update)
+                SaveData();
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            GridSource.Rows.Add();
-            foreach (DataRow r in GridSource.Rows)
+
+            _rNew = _dt.NewSTAMP_KostentragungenRow();
+            _rNew.ID = Guid.NewGuid();
+            _rNew.Finanzierung = "";
+            _rNew.FinanzierungSonstige = "";
+            _rNew.GueltigVon = DateTime.Now;
+            //_rNew.GueltigBis = null;
+            _rNew.Deleted = false;
+            _rNew.IDAufenthalt = IDAufenthalt;
+            _rNew.CreatedUser = Guid.NewGuid();
+            _rNew.CreatedDate = DateTime.Now;
+            _rNew.UpdatedUser = _r.CreatedUser;
+            _rNew.LastUpdateDate = _r.CreatedDate;
+            _dt.Rows.Add(_rNew);
+            dgKostentragungen.Refresh();
+        }
+
+
+        private DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
+        {
+            DataTable dtReturn = new DataTable();
+
+            // column names 
+            PropertyInfo[] oProps = null;
+
+            if (varlist == null) return dtReturn;
+
+            foreach (T rec in varlist)
             {
+                // Use reflection to get property names, to create table, Only first time, others will follow
+                if (oProps == null)
+                {
+                    oProps = ((Type)rec.GetType()).GetProperties();
+                    foreach (PropertyInfo pi in oProps)
+                    {
+                        Type colType = pi.PropertyType;
 
-               
+                        if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition() == typeof(Nullable<>)))
+                        {
+                            colType = colType.GetGenericArguments()[0];
+                        }
+                        dtReturn.Columns.Add(new DataColumn(pi.Name, colType));
+                    }
+                }
 
+                DataRow dr = dtReturn.NewRow();
+
+                foreach (PropertyInfo pi in oProps)
+                {
+                    dr[pi.Name] = pi.GetValue(rec, null) == null ? DBNull.Value : pi.GetValue
+                    (rec, null);
+                }
+                dtReturn.Rows.Add(dr);
             }
+            return dtReturn;
+        }
+
+        private void ucSTAMPData_Load(object sender, EventArgs e)
+        {
 
         }
     }

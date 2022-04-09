@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsSTAMP_Kostentragungen" targetNamespace="http://tempuri.org/dsSTAMP_Kostentragungen.xsd" xmlns:mstns="http://tempuri.org/dsSTAMP_Kostentragungen.xsd" xmlns="http://tempuri.org/dsSTAMP_Kostentragungen.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsSTAMP_Kostentragungen" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsSTAMP_Kostentragungen" msprop:Generator_DataSetName="dsSTAMP_Kostentragungen">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="STAMP_Kostentragungen" msprop:Generator_TableClassName="STAMP_KostentragungenDataTable" msprop:Generator_TableVarName="tableSTAMP_Kostentragungen" msprop:Generator_TablePropName="STAMP_Kostentragungen" msprop:Generator_RowDeletingName="STAMP_KostentragungenRowDeleting" msprop:Generator_RowChangingName="STAMP_KostentragungenRowChanging" msprop:Generator_RowEvHandlerName="STAMP_KostentragungenRowChangeEventHandler" msprop:Generator_RowDeletedName="STAMP_KostentragungenRowDeleted" msprop:Generator_UserTableName="STAMP_Kostentragungen" msprop:Generator_RowChangedName="STAMP_KostentragungenRowChanged" msprop:Generator_RowEvArgName="STAMP_KostentragungenRowChangeEvent" msprop:Generator_RowClassName="STAMP_KostentragungenRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDAufenthalt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAufenthalt" msprop:Generator_ColumnPropNameInRow="IDAufenthalt" msprop:Generator_ColumnPropNameInTable="IDAufenthaltColumn" msprop:Generator_UserColumnName="IDAufenthalt" type="xs:string" />
+              <xs:element name="Finanzierung" msprop:Generator_ColumnVarNameInTable="columnFinanzierung" msprop:Generator_ColumnPropNameInRow="Finanzierung" msprop:Generator_ColumnPropNameInTable="FinanzierungColumn" msprop:Generator_UserColumnName="Finanzierung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FinanzierungSonstige" msprop:Generator_ColumnVarNameInTable="columnFinanzierungSonstige" msprop:Generator_ColumnPropNameInRow="FinanzierungSonstige" msprop:Generator_ColumnPropNameInTable="FinanzierungSonstigeColumn" msprop:Generator_UserColumnName="FinanzierungSonstige" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GueltigVon" msprop:Generator_ColumnVarNameInTable="columnGueltigVon" msprop:Generator_ColumnPropNameInRow="GueltigVon" msprop:Generator_ColumnPropNameInTable="GueltigVonColumn" msprop:Generator_UserColumnName="GueltigVon" type="xs:dateTime" />
+              <xs:element name="GueltigBis" msprop:Generator_ColumnVarNameInTable="columnGueltigBis" msprop:Generator_ColumnPropNameInRow="GueltigBis" msprop:Generator_ColumnPropNameInTable="GueltigBisColumn" msprop:Generator_UserColumnName="GueltigBis" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Gemeinde" msprop:Generator_ColumnVarNameInTable="columnGemeinde" msprop:Generator_ColumnPropNameInRow="Gemeinde" msprop:Generator_ColumnPropNameInTable="GemeindeColumn" msprop:Generator_UserColumnName="Gemeinde" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Bundesland" msprop:Generator_ColumnVarNameInTable="columnBundesland" msprop:Generator_ColumnPropNameInRow="Bundesland" msprop:Generator_ColumnPropNameInTable="BundeslandColumn" msprop:Generator_UserColumnName="Bundesland" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Land" msprop:Generator_ColumnVarNameInTable="columnLand" msprop:Generator_ColumnPropNameInRow="Land" msprop:Generator_ColumnPropNameInTable="LandColumn" msprop:Generator_UserColumnName="Land" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Deleted" msprop:Generator_ColumnVarNameInTable="columnDeleted" msprop:Generator_ColumnPropNameInRow="Deleted" msprop:Generator_ColumnPropNameInTable="DeletedColumn" msprop:Generator_UserColumnName="Deleted" type="xs:boolean" />
+              <xs:element name="CreatedUser" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnCreatedUser" msprop:Generator_ColumnPropNameInRow="CreatedUser" msprop:Generator_ColumnPropNameInTable="CreatedUserColumn" msprop:Generator_UserColumnName="CreatedUser" type="xs:string" />
+              <xs:element name="CreatedDate" msprop:Generator_ColumnVarNameInTable="columnCreatedDate" msprop:Generator_ColumnPropNameInRow="CreatedDate" msprop:Generator_ColumnPropNameInTable="CreatedDateColumn" msprop:Generator_UserColumnName="CreatedDate" type="xs:dateTime" />
+              <xs:element name="UpdatedUser" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnUpdatedUser" msprop:Generator_ColumnPropNameInRow="UpdatedUser" msprop:Generator_ColumnPropNameInTable="UpdatedUserColumn" msprop:Generator_UserColumnName="UpdatedUser" type="xs:string" />
+              <xs:element name="LastUpdateDate" msprop:Generator_ColumnVarNameInTable="columnLastUpdateDate" msprop:Generator_ColumnPropNameInRow="LastUpdateDate" msprop:Generator_ColumnPropNameInTable="LastUpdateDateColumn" msprop:Generator_UserColumnName="LastUpdateDate" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:STAMP_Kostentragungen" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
