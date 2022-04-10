@@ -101,6 +101,10 @@ namespace PMDS.GUI
                 this.ucBewerbungsdaten1.ValueChanged += new System.EventHandler(this.ValueChanged);
                 this.panelBewerbungdsdaten.Controls.Add(this.ucBewerbungsdaten1);
 
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
+                {
+                    this.ucSTAMPData1.ValueChanged += new System.EventHandler(this.ValueChanged);
+                }
                 AufenthaltIsInitialized = true;
             }
 
@@ -1141,6 +1145,9 @@ namespace PMDS.GUI
 
             if (ucAbrechAufenthKlient1 != null)
                 ucAbrechAufenthKlient1.UpdateDATA();
+
+            if (ENV.lic_STAMP)
+                ucSTAMPData1.SaveData();
         }
 
         public bool SaveER(ref bool writeDekursSprachenChanged, ref bool abweseneheitBeendetChanged, Guid IDAufenthaltAct, ref string txtSprachenGeändert)

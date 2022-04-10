@@ -46,17 +46,16 @@ namespace PMDS.GUI.STAMP
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             this.lblfinanzierung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.dtGueltigVon = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.lblGueltigVon = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -81,24 +80,24 @@ namespace PMDS.GUI.STAMP
             this.dgKostentragungen = new QS2.Desktop.ControlManagment.BaseGrid();
             this.pnlGemeinde = new Infragistics.Win.Misc.UltraPanel();
             this.lblGemeinde = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.cmbGemeinde = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.pnlBundesland = new Infragistics.Win.Misc.UltraPanel();
             this.lblBundesland = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.cmbBundesland = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.pnlLand = new Infragistics.Win.Misc.UltraPanel();
             this.lblLand = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.cmbLand = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.pnlFinanzierungSonstige = new Infragistics.Win.Misc.UltraPanel();
-            this.cmbFinanzierung = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
-            this.btnCancel = new PMDS.GUI.ucButton(this.components);
-            this.btnOK = new PMDS.GUI.ucButton(this.components);
-            this.btnDel = new PMDS.GUI.ucButton(this.components);
-            this.btnAdd = new PMDS.GUI.ucButton(this.components);
             this.splitContainerSTAMP = new System.Windows.Forms.SplitContainer();
             this.splitContainerSTAMPOben = new System.Windows.Forms.SplitContainer();
             this.pnlHeader = new Infragistics.Win.Misc.UltraPanel();
             this.pnlMitte = new Infragistics.Win.Misc.UltraPanel();
             this.pnlUnten = new Infragistics.Win.Misc.UltraPanel();
+            this.btnDel = new PMDS.GUI.ucButton(this.components);
+            this.btnAdd = new PMDS.GUI.ucButton(this.components);
+            this.cmbFinanzierung = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.cmbLand = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.cmbBundesland = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.cmbGemeinde = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.btnOK = new PMDS.GUI.ucButton(this.components);
+            this.gbDetails = new QS2.Desktop.ControlManagment.BaseGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigVon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFinanzierungSonstige)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigBis)).BeginInit();
@@ -108,16 +107,12 @@ namespace PMDS.GUI.STAMP
             ((System.ComponentModel.ISupportInitialize)(this.dgKostentragungen)).BeginInit();
             this.pnlGemeinde.ClientArea.SuspendLayout();
             this.pnlGemeinde.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbGemeinde)).BeginInit();
             this.pnlBundesland.ClientArea.SuspendLayout();
             this.pnlBundesland.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBundesland)).BeginInit();
             this.pnlLand.ClientArea.SuspendLayout();
             this.pnlLand.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbLand)).BeginInit();
             this.pnlFinanzierungSonstige.ClientArea.SuspendLayout();
             this.pnlFinanzierungSonstige.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbFinanzierung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSTAMP)).BeginInit();
             this.splitContainerSTAMP.Panel1.SuspendLayout();
             this.splitContainerSTAMP.Panel2.SuspendLayout();
@@ -132,13 +127,19 @@ namespace PMDS.GUI.STAMP
             this.pnlMitte.SuspendLayout();
             this.pnlUnten.ClientArea.SuspendLayout();
             this.pnlUnten.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFinanzierung)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbLand)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBundesland)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbGemeinde)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gbDetails)).BeginInit();
+            this.gbDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblfinanzierung
             // 
             appearance1.BackColor = System.Drawing.Color.Transparent;
             this.lblfinanzierung.Appearance = appearance1;
-            this.lblfinanzierung.Location = new System.Drawing.Point(3, 8);
+            this.lblfinanzierung.Location = new System.Drawing.Point(6, 19);
             this.lblfinanzierung.Name = "lblfinanzierung";
             this.lblfinanzierung.Size = new System.Drawing.Size(100, 21);
             this.lblfinanzierung.TabIndex = 28;
@@ -147,22 +148,22 @@ namespace PMDS.GUI.STAMP
             // dtGueltigVon
             // 
             this.dtGueltigVon.DateTime = new System.DateTime(2022, 4, 9, 0, 0, 0, 0);
-            this.dtGueltigVon.Location = new System.Drawing.Point(109, 35);
+            this.dtGueltigVon.Location = new System.Drawing.Point(112, 46);
             this.dtGueltigVon.Name = "dtGueltigVon";
             this.dtGueltigVon.ownFormat = "";
             this.dtGueltigVon.ownMaskInput = "";
             this.dtGueltigVon.Size = new System.Drawing.Size(86, 21);
             this.dtGueltigVon.TabIndex = 30;
             this.dtGueltigVon.Value = new System.DateTime(2022, 4, 9, 0, 0, 0, 0);
+            this.dtGueltigVon.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblGueltigVon
             // 
-            this.lblGueltigVon.Location = new System.Drawing.Point(3, 35);
+            this.lblGueltigVon.Location = new System.Drawing.Point(6, 46);
             this.lblGueltigVon.Name = "lblGueltigVon";
             this.lblGueltigVon.Size = new System.Drawing.Size(100, 23);
             this.lblGueltigVon.TabIndex = 31;
             this.lblGueltigVon.Text = "Gültig von";
-            this.lblGueltigVon.Click += new System.EventHandler(this.lblGueltigVon_Click);
             // 
             // lblfinanzierungSonstige
             // 
@@ -181,10 +182,11 @@ namespace PMDS.GUI.STAMP
             this.txtFinanzierungSonstige.Name = "txtFinanzierungSonstige";
             this.txtFinanzierungSonstige.Size = new System.Drawing.Size(297, 21);
             this.txtFinanzierungSonstige.TabIndex = 33;
+            this.txtFinanzierungSonstige.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblGueltigBis
             // 
-            this.lblGueltigBis.Location = new System.Drawing.Point(3, 64);
+            this.lblGueltigBis.Location = new System.Drawing.Point(6, 75);
             this.lblGueltigBis.Name = "lblGueltigBis";
             this.lblGueltigBis.Size = new System.Drawing.Size(100, 23);
             this.lblGueltigBis.TabIndex = 37;
@@ -193,13 +195,14 @@ namespace PMDS.GUI.STAMP
             // dtGueltigBis
             // 
             this.dtGueltigBis.DateTime = new System.DateTime(2022, 4, 9, 0, 0, 0, 0);
-            this.dtGueltigBis.Location = new System.Drawing.Point(109, 62);
+            this.dtGueltigBis.Location = new System.Drawing.Point(112, 73);
             this.dtGueltigBis.Name = "dtGueltigBis";
             this.dtGueltigBis.ownFormat = "";
             this.dtGueltigBis.ownMaskInput = "";
             this.dtGueltigBis.Size = new System.Drawing.Size(86, 21);
             this.dtGueltigBis.TabIndex = 36;
             this.dtGueltigBis.Value = new System.DateTime(2022, 4, 9, 0, 0, 0, 0);
+            this.dtGueltigBis.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblSTAMP
             // 
@@ -293,6 +296,7 @@ namespace PMDS.GUI.STAMP
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -402,9 +406,9 @@ namespace PMDS.GUI.STAMP
             // 
             this.pnlGemeinde.ClientArea.Controls.Add(this.lblGemeinde);
             this.pnlGemeinde.ClientArea.Controls.Add(this.cmbGemeinde);
-            this.pnlGemeinde.Location = new System.Drawing.Point(322, 8);
+            this.pnlGemeinde.Location = new System.Drawing.Point(325, 19);
             this.pnlGemeinde.Name = "pnlGemeinde";
-            this.pnlGemeinde.Size = new System.Drawing.Size(430, 22);
+            this.pnlGemeinde.Size = new System.Drawing.Size(430, 23);
             this.pnlGemeinde.TabIndex = 47;
             // 
             // lblGemeinde
@@ -415,30 +419,6 @@ namespace PMDS.GUI.STAMP
             this.lblGemeinde.TabIndex = 34;
             this.lblGemeinde.Text = "Gemeinde";
             // 
-            // cmbGemeinde
-            // 
-            this.cmbGemeinde.AddEmptyEntry = false;
-            appearance16.BackColor = System.Drawing.Color.White;
-            this.cmbGemeinde.Appearance = appearance16;
-            this.cmbGemeinde.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
-            this.cmbGemeinde.AutoOpenCBO = false;
-            this.cmbGemeinde.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
-            this.cmbGemeinde.BackColor = System.Drawing.Color.White;
-            this.cmbGemeinde.BerufsstandGruppeJNA = -1;
-            this.cmbGemeinde.ExactMatch = false;
-            this.cmbGemeinde.Group = "GKZ";
-            this.cmbGemeinde.ID_PEP = -1;
-            this.cmbGemeinde.IgnoreUnterdruecken = true;
-            this.cmbGemeinde.Location = new System.Drawing.Point(80, 1);
-            this.cmbGemeinde.MaxLength = 40;
-            this.cmbGemeinde.Name = "cmbGemeinde";
-            this.cmbGemeinde.PflichtJN = false;
-            this.cmbGemeinde.SelectDistinct = false;
-            this.cmbGemeinde.ShowAddButton = true;
-            this.cmbGemeinde.Size = new System.Drawing.Size(241, 21);
-            this.cmbGemeinde.sys = false;
-            this.cmbGemeinde.TabIndex = 38;
-            // 
             // pnlBundesland
             // 
             // 
@@ -446,9 +426,9 @@ namespace PMDS.GUI.STAMP
             // 
             this.pnlBundesland.ClientArea.Controls.Add(this.lblBundesland);
             this.pnlBundesland.ClientArea.Controls.Add(this.cmbBundesland);
-            this.pnlBundesland.Location = new System.Drawing.Point(274, 124);
+            this.pnlBundesland.Location = new System.Drawing.Point(325, 47);
             this.pnlBundesland.Name = "pnlBundesland";
-            this.pnlBundesland.Size = new System.Drawing.Size(430, 22);
+            this.pnlBundesland.Size = new System.Drawing.Size(430, 23);
             this.pnlBundesland.TabIndex = 48;
             // 
             // lblBundesland
@@ -459,30 +439,6 @@ namespace PMDS.GUI.STAMP
             this.lblBundesland.TabIndex = 39;
             this.lblBundesland.Text = "Bundesland";
             // 
-            // cmbBundesland
-            // 
-            this.cmbBundesland.AddEmptyEntry = false;
-            appearance17.BackColor = System.Drawing.Color.White;
-            this.cmbBundesland.Appearance = appearance17;
-            this.cmbBundesland.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
-            this.cmbBundesland.AutoOpenCBO = false;
-            this.cmbBundesland.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
-            this.cmbBundesland.BackColor = System.Drawing.Color.White;
-            this.cmbBundesland.BerufsstandGruppeJNA = -1;
-            this.cmbBundesland.ExactMatch = false;
-            this.cmbBundesland.Group = "BLD";
-            this.cmbBundesland.ID_PEP = -1;
-            this.cmbBundesland.IgnoreUnterdruecken = true;
-            this.cmbBundesland.Location = new System.Drawing.Point(83, 1);
-            this.cmbBundesland.MaxLength = 40;
-            this.cmbBundesland.Name = "cmbBundesland";
-            this.cmbBundesland.PflichtJN = false;
-            this.cmbBundesland.SelectDistinct = false;
-            this.cmbBundesland.ShowAddButton = true;
-            this.cmbBundesland.Size = new System.Drawing.Size(198, 21);
-            this.cmbBundesland.sys = false;
-            this.cmbBundesland.TabIndex = 40;
-            // 
             // pnlLand
             // 
             // 
@@ -490,42 +446,18 @@ namespace PMDS.GUI.STAMP
             // 
             this.pnlLand.ClientArea.Controls.Add(this.lblLand);
             this.pnlLand.ClientArea.Controls.Add(this.cmbLand);
-            this.pnlLand.Location = new System.Drawing.Point(274, 152);
+            this.pnlLand.Location = new System.Drawing.Point(325, 75);
             this.pnlLand.Name = "pnlLand";
-            this.pnlLand.Size = new System.Drawing.Size(430, 22);
+            this.pnlLand.Size = new System.Drawing.Size(430, 23);
             this.pnlLand.TabIndex = 49;
             // 
             // lblLand
             // 
             this.lblLand.Location = new System.Drawing.Point(0, 4);
             this.lblLand.Name = "lblLand";
-            this.lblLand.Size = new System.Drawing.Size(84, 13);
+            this.lblLand.Size = new System.Drawing.Size(77, 13);
             this.lblLand.TabIndex = 41;
             this.lblLand.Text = "Land";
-            // 
-            // cmbLand
-            // 
-            this.cmbLand.AddEmptyEntry = false;
-            appearance18.BackColor = System.Drawing.Color.White;
-            this.cmbLand.Appearance = appearance18;
-            this.cmbLand.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
-            this.cmbLand.AutoOpenCBO = false;
-            this.cmbLand.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
-            this.cmbLand.BackColor = System.Drawing.Color.White;
-            this.cmbLand.BerufsstandGruppeJNA = -1;
-            this.cmbLand.ExactMatch = false;
-            this.cmbLand.Group = "LND";
-            this.cmbLand.ID_PEP = -1;
-            this.cmbLand.IgnoreUnterdruecken = true;
-            this.cmbLand.Location = new System.Drawing.Point(83, 0);
-            this.cmbLand.MaxLength = 40;
-            this.cmbLand.Name = "cmbLand";
-            this.cmbLand.PflichtJN = false;
-            this.cmbLand.SelectDistinct = false;
-            this.cmbLand.ShowAddButton = true;
-            this.cmbLand.Size = new System.Drawing.Size(337, 21);
-            this.cmbLand.sys = false;
-            this.cmbLand.TabIndex = 39;
             // 
             // pnlFinanzierungSonstige
             // 
@@ -534,127 +466,14 @@ namespace PMDS.GUI.STAMP
             // 
             this.pnlFinanzierungSonstige.ClientArea.Controls.Add(this.txtFinanzierungSonstige);
             this.pnlFinanzierungSonstige.ClientArea.Controls.Add(this.lblfinanzierungSonstige);
-            this.pnlFinanzierungSonstige.Location = new System.Drawing.Point(274, 96);
+            this.pnlFinanzierungSonstige.Location = new System.Drawing.Point(325, 103);
             this.pnlFinanzierungSonstige.Name = "pnlFinanzierungSonstige";
             this.pnlFinanzierungSonstige.Size = new System.Drawing.Size(430, 22);
             this.pnlFinanzierungSonstige.TabIndex = 50;
             // 
-            // cmbFinanzierung
-            // 
-            this.cmbFinanzierung.AddEmptyEntry = false;
-            appearance19.BackColor = System.Drawing.Color.White;
-            this.cmbFinanzierung.Appearance = appearance19;
-            this.cmbFinanzierung.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
-            this.cmbFinanzierung.AutoOpenCBO = false;
-            this.cmbFinanzierung.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
-            this.cmbFinanzierung.BackColor = System.Drawing.Color.White;
-            this.cmbFinanzierung.BerufsstandGruppeJNA = -1;
-            this.cmbFinanzierung.ExactMatch = false;
-            this.cmbFinanzierung.Group = "SFI";
-            this.cmbFinanzierung.ID_PEP = -1;
-            this.cmbFinanzierung.IgnoreUnterdruecken = true;
-            this.cmbFinanzierung.Location = new System.Drawing.Point(109, 8);
-            this.cmbFinanzierung.MaxLength = 40;
-            this.cmbFinanzierung.Name = "cmbFinanzierung";
-            this.cmbFinanzierung.PflichtJN = false;
-            this.cmbFinanzierung.SelectDistinct = false;
-            this.cmbFinanzierung.ShowAddButton = true;
-            this.cmbFinanzierung.Size = new System.Drawing.Size(207, 21);
-            this.cmbFinanzierung.sys = false;
-            this.cmbFinanzierung.TabIndex = 44;
-            this.cmbFinanzierung.ValueChanged += new System.EventHandler(this.cmbFinanzierung_ValueChanged);
-            // 
-            // btnCancel
-            // 
-            appearance20.BackColor = System.Drawing.Color.Transparent;
-            appearance20.Image = ((object)(resources.GetObject("appearance20.Image")));
-            appearance20.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance20.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnCancel.Appearance = appearance20;
-            this.btnCancel.AutoWorkLayout = false;
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.DoOnClick = true;
-            this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(388, 64);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(96, 26);
-            this.btnCancel.TabIndex = 41;
-            this.btnCancel.TabStop = false;
-            this.btnCancel.Text = "Abbrechen";
-            this.btnCancel.TYPE = PMDS.GUI.ucButton.ButtonType.Cancel;
-            this.btnCancel.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
-            // 
-            // btnOK
-            // 
-            appearance21.BackColor = System.Drawing.Color.Transparent;
-            appearance21.Image = ((object)(resources.GetObject("appearance21.Image")));
-            appearance21.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance21.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOK.Appearance = appearance21;
-            this.btnOK.AutoWorkLayout = false;
-            this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.DoOnClick = true;
-            this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(490, 64);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(89, 26);
-            this.btnOK.TabIndex = 42;
-            this.btnOK.TabStop = false;
-            this.btnOK.Text = "OK";
-            this.btnOK.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
-            this.btnOK.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance22.BackColor = System.Drawing.Color.Transparent;
-            appearance22.Image = ((object)(resources.GetObject("appearance22.Image")));
-            appearance22.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance22.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDel.Appearance = appearance22;
-            this.btnDel.AutoWorkLayout = false;
-            this.btnDel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnDel.DoOnClick = true;
-            this.btnDel.ImageSize = new System.Drawing.Size(12, 12);
-            this.btnDel.IsStandardControl = true;
-            this.btnDel.Location = new System.Drawing.Point(731, 4);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(96, 26);
-            this.btnDel.TabIndex = 26;
-            this.btnDel.TabStop = false;
-            this.btnDel.Text = "Entfernen";
-            this.btnDel.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
-            this.btnDel.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance23.BackColor = System.Drawing.Color.Transparent;
-            appearance23.Image = ((object)(resources.GetObject("appearance23.Image")));
-            appearance23.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance23.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAdd.Appearance = appearance23;
-            this.btnAdd.AutoWorkLayout = false;
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnAdd.DoOnClick = true;
-            this.btnAdd.ImageSize = new System.Drawing.Size(12, 12);
-            this.btnAdd.IsStandardControl = true;
-            this.btnAdd.Location = new System.Drawing.Point(833, 4);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(89, 26);
-            this.btnAdd.TabIndex = 25;
-            this.btnAdd.TabStop = false;
-            this.btnAdd.Text = "Hinzufügen";
-            this.btnAdd.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
-            this.btnAdd.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
             // splitContainerSTAMP
             // 
-            this.splitContainerSTAMP.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.splitContainerSTAMP.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.splitContainerSTAMP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerSTAMP.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerSTAMP.Location = new System.Drawing.Point(0, 0);
@@ -695,8 +514,8 @@ namespace PMDS.GUI.STAMP
             // 
             // pnlHeader
             // 
-            appearance24.BackColor = System.Drawing.Color.White;
-            this.pnlHeader.Appearance = appearance24;
+            appearance19.BackColor = System.Drawing.Color.White;
+            this.pnlHeader.Appearance = appearance19;
             // 
             // pnlHeader.ClientArea
             // 
@@ -711,8 +530,8 @@ namespace PMDS.GUI.STAMP
             // 
             // pnlMitte
             // 
-            appearance25.BackColor = System.Drawing.Color.Transparent;
-            this.pnlMitte.Appearance = appearance25;
+            appearance22.BackColor = System.Drawing.Color.Transparent;
+            this.pnlMitte.Appearance = appearance22;
             // 
             // pnlMitte.ClientArea
             // 
@@ -725,28 +544,206 @@ namespace PMDS.GUI.STAMP
             // 
             // pnlUnten
             // 
-            appearance26.BackColor = System.Drawing.Color.White;
-            this.pnlUnten.Appearance = appearance26;
+            appearance23.BackColor = System.Drawing.Color.White;
+            this.pnlUnten.Appearance = appearance23;
             // 
             // pnlUnten.ClientArea
             // 
-            this.pnlUnten.ClientArea.Controls.Add(this.cmbFinanzierung);
-            this.pnlUnten.ClientArea.Controls.Add(this.pnlFinanzierungSonstige);
-            this.pnlUnten.ClientArea.Controls.Add(this.pnlLand);
-            this.pnlUnten.ClientArea.Controls.Add(this.lblfinanzierung);
-            this.pnlUnten.ClientArea.Controls.Add(this.dtGueltigVon);
-            this.pnlUnten.ClientArea.Controls.Add(this.pnlBundesland);
-            this.pnlUnten.ClientArea.Controls.Add(this.lblGueltigVon);
-            this.pnlUnten.ClientArea.Controls.Add(this.pnlGemeinde);
-            this.pnlUnten.ClientArea.Controls.Add(this.dtGueltigBis);
-            this.pnlUnten.ClientArea.Controls.Add(this.lblGueltigBis);
-            this.pnlUnten.ClientArea.Controls.Add(this.btnOK);
-            this.pnlUnten.ClientArea.Controls.Add(this.btnCancel);
+            this.pnlUnten.ClientArea.Controls.Add(this.gbDetails);
             this.pnlUnten.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlUnten.Location = new System.Drawing.Point(0, 0);
             this.pnlUnten.Name = "pnlUnten";
             this.pnlUnten.Size = new System.Drawing.Size(934, 215);
             this.pnlUnten.TabIndex = 0;
+            // 
+            // btnDel
+            // 
+            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            appearance20.BackColor = System.Drawing.Color.Transparent;
+            appearance20.Image = ((object)(resources.GetObject("appearance20.Image")));
+            appearance20.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance20.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDel.Appearance = appearance20;
+            this.btnDel.AutoWorkLayout = false;
+            this.btnDel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnDel.DoOnClick = true;
+            this.btnDel.ImageSize = new System.Drawing.Size(12, 12);
+            this.btnDel.IsStandardControl = true;
+            this.btnDel.Location = new System.Drawing.Point(731, 4);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(96, 26);
+            this.btnDel.TabIndex = 26;
+            this.btnDel.TabStop = false;
+            this.btnDel.Text = "Entfernen";
+            this.btnDel.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
+            this.btnDel.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            appearance21.BackColor = System.Drawing.Color.Transparent;
+            appearance21.Image = ((object)(resources.GetObject("appearance21.Image")));
+            appearance21.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance21.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAdd.Appearance = appearance21;
+            this.btnAdd.AutoWorkLayout = false;
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnAdd.DoOnClick = true;
+            this.btnAdd.ImageSize = new System.Drawing.Size(12, 12);
+            this.btnAdd.IsStandardControl = true;
+            this.btnAdd.Location = new System.Drawing.Point(833, 4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(89, 26);
+            this.btnAdd.TabIndex = 25;
+            this.btnAdd.TabStop = false;
+            this.btnAdd.Text = "Hinzufügen";
+            this.btnAdd.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
+            this.btnAdd.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // cmbFinanzierung
+            // 
+            this.cmbFinanzierung.AddEmptyEntry = false;
+            appearance24.BackColor = System.Drawing.Color.White;
+            this.cmbFinanzierung.Appearance = appearance24;
+            this.cmbFinanzierung.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cmbFinanzierung.AutoOpenCBO = false;
+            this.cmbFinanzierung.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cmbFinanzierung.BackColor = System.Drawing.Color.White;
+            this.cmbFinanzierung.BerufsstandGruppeJNA = -1;
+            this.cmbFinanzierung.ExactMatch = false;
+            this.cmbFinanzierung.Group = "SFI";
+            this.cmbFinanzierung.ID_PEP = -1;
+            this.cmbFinanzierung.IgnoreUnterdruecken = true;
+            this.cmbFinanzierung.Location = new System.Drawing.Point(112, 19);
+            this.cmbFinanzierung.MaxLength = 40;
+            this.cmbFinanzierung.Name = "cmbFinanzierung";
+            this.cmbFinanzierung.PflichtJN = false;
+            this.cmbFinanzierung.SelectDistinct = false;
+            this.cmbFinanzierung.ShowAddButton = true;
+            this.cmbFinanzierung.Size = new System.Drawing.Size(207, 21);
+            this.cmbFinanzierung.sys = false;
+            this.cmbFinanzierung.TabIndex = 44;
+            this.cmbFinanzierung.ValueChanged += new System.EventHandler(this.cmbFinanzierung_ValueChanged);
+            // 
+            // cmbLand
+            // 
+            this.cmbLand.AddEmptyEntry = false;
+            appearance18.BackColor = System.Drawing.Color.White;
+            this.cmbLand.Appearance = appearance18;
+            this.cmbLand.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cmbLand.AutoOpenCBO = false;
+            this.cmbLand.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cmbLand.BackColor = System.Drawing.Color.White;
+            this.cmbLand.BerufsstandGruppeJNA = -1;
+            this.cmbLand.ExactMatch = false;
+            this.cmbLand.Group = "LND";
+            this.cmbLand.ID_PEP = -1;
+            this.cmbLand.IgnoreUnterdruecken = true;
+            this.cmbLand.Location = new System.Drawing.Point(83, 0);
+            this.cmbLand.MaxLength = 40;
+            this.cmbLand.Name = "cmbLand";
+            this.cmbLand.PflichtJN = false;
+            this.cmbLand.SelectDistinct = false;
+            this.cmbLand.ShowAddButton = true;
+            this.cmbLand.Size = new System.Drawing.Size(337, 21);
+            this.cmbLand.sys = false;
+            this.cmbLand.TabIndex = 39;
+            this.cmbLand.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // cmbBundesland
+            // 
+            this.cmbBundesland.AddEmptyEntry = false;
+            appearance17.BackColor = System.Drawing.Color.White;
+            this.cmbBundesland.Appearance = appearance17;
+            this.cmbBundesland.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cmbBundesland.AutoOpenCBO = false;
+            this.cmbBundesland.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cmbBundesland.BackColor = System.Drawing.Color.White;
+            this.cmbBundesland.BerufsstandGruppeJNA = -1;
+            this.cmbBundesland.ExactMatch = false;
+            this.cmbBundesland.Group = "BLD";
+            this.cmbBundesland.ID_PEP = -1;
+            this.cmbBundesland.IgnoreUnterdruecken = true;
+            this.cmbBundesland.Location = new System.Drawing.Point(83, 1);
+            this.cmbBundesland.MaxLength = 40;
+            this.cmbBundesland.Name = "cmbBundesland";
+            this.cmbBundesland.PflichtJN = false;
+            this.cmbBundesland.SelectDistinct = false;
+            this.cmbBundesland.ShowAddButton = true;
+            this.cmbBundesland.Size = new System.Drawing.Size(198, 21);
+            this.cmbBundesland.sys = false;
+            this.cmbBundesland.TabIndex = 40;
+            this.cmbBundesland.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // cmbGemeinde
+            // 
+            this.cmbGemeinde.AddEmptyEntry = false;
+            appearance16.BackColor = System.Drawing.Color.White;
+            this.cmbGemeinde.Appearance = appearance16;
+            this.cmbGemeinde.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cmbGemeinde.AutoOpenCBO = false;
+            this.cmbGemeinde.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cmbGemeinde.BackColor = System.Drawing.Color.White;
+            this.cmbGemeinde.BerufsstandGruppeJNA = -1;
+            this.cmbGemeinde.ExactMatch = false;
+            this.cmbGemeinde.Group = "GKZ";
+            this.cmbGemeinde.ID_PEP = -1;
+            this.cmbGemeinde.IgnoreUnterdruecken = true;
+            this.cmbGemeinde.Location = new System.Drawing.Point(83, 1);
+            this.cmbGemeinde.MaxLength = 40;
+            this.cmbGemeinde.Name = "cmbGemeinde";
+            this.cmbGemeinde.PflichtJN = false;
+            this.cmbGemeinde.SelectDistinct = false;
+            this.cmbGemeinde.ShowAddButton = true;
+            this.cmbGemeinde.Size = new System.Drawing.Size(241, 21);
+            this.cmbGemeinde.sys = false;
+            this.cmbGemeinde.TabIndex = 38;
+            this.cmbGemeinde.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // btnOK
+            // 
+            appearance25.BackColor = System.Drawing.Color.Transparent;
+            appearance25.Image = ((object)(resources.GetObject("appearance25.Image")));
+            appearance25.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance25.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOK.Appearance = appearance25;
+            this.btnOK.AutoWorkLayout = false;
+            this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOK.DoOnClick = true;
+            this.btnOK.IsStandardControl = true;
+            this.btnOK.Location = new System.Drawing.Point(777, 70);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(89, 26);
+            this.btnOK.TabIndex = 42;
+            this.btnOK.TabStop = false;
+            this.btnOK.Text = "OK";
+            this.btnOK.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
+            this.btnOK.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
+            this.btnOK.Visible = false;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // gbDetails
+            // 
+            this.gbDetails.Controls.Add(this.lblfinanzierung);
+            this.gbDetails.Controls.Add(this.cmbFinanzierung);
+            this.gbDetails.Controls.Add(this.pnlFinanzierungSonstige);
+            this.gbDetails.Controls.Add(this.btnOK);
+            this.gbDetails.Controls.Add(this.pnlLand);
+            this.gbDetails.Controls.Add(this.lblGueltigBis);
+            this.gbDetails.Controls.Add(this.dtGueltigBis);
+            this.gbDetails.Controls.Add(this.dtGueltigVon);
+            this.gbDetails.Controls.Add(this.pnlGemeinde);
+            this.gbDetails.Controls.Add(this.pnlBundesland);
+            this.gbDetails.Controls.Add(this.lblGueltigVon);
+            this.gbDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbDetails.Location = new System.Drawing.Point(0, 0);
+            this.gbDetails.Name = "gbDetails";
+            this.gbDetails.Size = new System.Drawing.Size(934, 215);
+            this.gbDetails.TabIndex = 51;
+            this.gbDetails.Text = "Details zur Kostentragung";
             // 
             // ucSTAMPData
             // 
@@ -757,7 +754,6 @@ namespace PMDS.GUI.STAMP
             this.Controls.Add(this.bindingNavigator1);
             this.Name = "ucSTAMPData";
             this.Size = new System.Drawing.Size(934, 457);
-            this.Load += new System.EventHandler(this.ucSTAMPData_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigVon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFinanzierungSonstige)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigBis)).EndInit();
@@ -769,19 +765,15 @@ namespace PMDS.GUI.STAMP
             this.pnlGemeinde.ClientArea.ResumeLayout(false);
             this.pnlGemeinde.ClientArea.PerformLayout();
             this.pnlGemeinde.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cmbGemeinde)).EndInit();
             this.pnlBundesland.ClientArea.ResumeLayout(false);
             this.pnlBundesland.ClientArea.PerformLayout();
             this.pnlBundesland.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBundesland)).EndInit();
             this.pnlLand.ClientArea.ResumeLayout(false);
             this.pnlLand.ClientArea.PerformLayout();
             this.pnlLand.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cmbLand)).EndInit();
             this.pnlFinanzierungSonstige.ClientArea.ResumeLayout(false);
             this.pnlFinanzierungSonstige.ClientArea.PerformLayout();
             this.pnlFinanzierungSonstige.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cmbFinanzierung)).EndInit();
             this.splitContainerSTAMP.Panel1.ResumeLayout(false);
             this.splitContainerSTAMP.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSTAMP)).EndInit();
@@ -795,8 +787,14 @@ namespace PMDS.GUI.STAMP
             this.pnlMitte.ClientArea.ResumeLayout(false);
             this.pnlMitte.ResumeLayout(false);
             this.pnlUnten.ClientArea.ResumeLayout(false);
-            this.pnlUnten.ClientArea.PerformLayout();
             this.pnlUnten.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFinanzierung)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbLand)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBundesland)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbGemeinde)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gbDetails)).EndInit();
+            this.gbDetails.ResumeLayout(false);
+            this.gbDetails.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -816,7 +814,6 @@ namespace PMDS.GUI.STAMP
         public BaseControls.AuswahlGruppeCombo cmbGemeinde;
         public BaseControls.AuswahlGruppeCombo cmbLand;
         public BaseControls.AuswahlGruppeCombo cmbBundesland;
-        private ucButton btnCancel;
         private ucButton btnOK;
         private QS2.Desktop.ControlManagment.BaseLabel lblSTAMP;
         public BaseControls.AuswahlGruppeCombo cmbFinanzierung;
@@ -846,5 +843,6 @@ namespace PMDS.GUI.STAMP
         private Infragistics.Win.Misc.UltraPanel pnlHeader;
         private Infragistics.Win.Misc.UltraPanel pnlMitte;
         private Infragistics.Win.Misc.UltraPanel pnlUnten;
+        private QS2.Desktop.ControlManagment.BaseGroupBox gbDetails;
     }
 }

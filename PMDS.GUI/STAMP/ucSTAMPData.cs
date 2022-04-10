@@ -18,6 +18,11 @@ namespace PMDS.GUI.STAMP
 {
     public partial class ucSTAMPData : UserControl
     {
+        public event EventHandler ValueChanged;
+        private bool _lockValueChanges;
+        public bool STAMPDataHasChanged { get; set; }
+        private bool _valueChangeEnabled = true;
+
         private Guid IDAufenthalt = Guid.Empty;
 
         private DBSTAMP_Kostentragungen _db = new DBSTAMP_Kostentragungen();
@@ -37,10 +42,43 @@ namespace PMDS.GUI.STAMP
             InitializeComponent();
         }
 
+        protected void OnValueChanged(object sender, EventArgs args)
+        {
+            if (this._lockValueChanges || _r == null || _r.RowState == DataRowState.Detached) 
+                return;
+            
+            if (cmbFinanzierung.Text != _r.Finanzierung ||
+                dtGueltigVon.DateTime != _r.GueltigVon ||
+                dtGueltigBis.DateTime != _r.GueltigBis ||
+                cmbGemeinde.Text != _r.Gemeinde ||
+                cmbBundesland.Text != _r.Bundesland ||
+                cmbLand.Text != _r.Land ||
+                txtFinanzierungSonstige.Text != _r.FinanzierungSonstige
+                )
+            {
+                _r.Finanzierung = cmbFinanzierung.Text;
+                _r.GueltigVon = dtGueltigVon.DateTime;
+                _r.GueltigBis = dtGueltigBis.DateTime;
+                _r.Gemeinde = cmbGemeinde.Text;
+                _r.Bundesland = cmbBundesland.Text;
+                _r.Land = cmbLand.Text;
+                _r.FinanzierungSonstige = txtFinanzierungSonstige.Text;
+                _r.LastUpdateDate = DateTime.Now;
+                _r.UpdatedUser = PMDS.Global.ENV.USERID;
+
+                dgKostentragungen.Refresh();
+
+                STAMPDataHasChanged = true;
+                if (_valueChangeEnabled && (ValueChanged != null))
+                    ValueChanged(sender, args);
+            }
+        }
+
         public void Init(Guid IDAufenthalt)
         {
             try
             {
+                gbDetails.Visible = false;
                 this.IDAufenthalt = IDAufenthalt;
                 cmbFinanzierung.initControl();
                 cmbGemeinde.initControl();
@@ -76,7 +114,7 @@ namespace PMDS.GUI.STAMP
             try
             {
                 _dt = _db.Read(IDAufenthalt);
-                this.dgKostentragungen.DataSource = _dt;
+                this.bindingSource.DataSource = _dt;
 
                 return true;
             }
@@ -102,9 +140,13 @@ namespace PMDS.GUI.STAMP
         private void dgKostentragungen_ClickCell(object sender, ClickCellEventArgs e)
         {
             int i = 0;
+            gbDetails.Visible = true;
             UltraGridRow row = this.dgKostentragungen.ActiveRow;
             if (row != null)
             {
+                this._lockValueChanges = true;
+                _r = _dt.FindByID(new Guid(row.Cells["ID"].Text));
+
                 //Reihenfolge einhalten, Finanzierung zum Schluss!!!
                 this.txtFinanzierungSonstige.Text = row.Cells["FinanzierungSonstige"].Text;
                 this.cmbGemeinde.Text = row.Cells["Gemeinde"].Text;
@@ -113,14 +155,18 @@ namespace PMDS.GUI.STAMP
                 this.dtGueltigVon.Value = row.Cells["GueltigVon"].Value;
                 this.dtGueltigBis.Value = row.Cells["GueltigBis"].Value;
                 this.cmbFinanzierung.Text = row.Cells["Finanzierung"].Text;
+                Application.DoEvents();
 
-                _r = _dt.FindByID(new Guid(row.Cells["ID"].Text));
+                this._lockValueChanges = false;
 
             }
         }
 
         private void cmbFinanzierung_ValueChanged(object sender, EventArgs e)
         {
+            if (_r == null)
+                return;
+
             if (cmbFinanzierung.Text.sEquals("Selbstzahler") || cmbFinanzierung.Text.sEquals("Bund") || cmbFinanzierung.Text.sEquals("Leistungszuerkennungsverfahren läuft"))
             {
                 SetUI(false, true, true, true, true);
@@ -140,6 +186,11 @@ namespace PMDS.GUI.STAMP
             else if (cmbFinanzierung.Text.sEquals("Sonstige"))
             {
                 SetUI(false, true, true, true, false);
+            }
+
+            if (cmbFinanzierung.Text != _r.Finanzierung)
+            {
+                this.OnValueChanged(sender, e);
             }
         }
 
@@ -196,7 +247,6 @@ namespace PMDS.GUI.STAMP
             dgKostentragungen.Refresh();
         }
 
-
         private DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
         {
             DataTable dtReturn = new DataTable();
@@ -236,14 +286,25 @@ namespace PMDS.GUI.STAMP
             return dtReturn;
         }
 
-        private void ucSTAMPData_Load(object sender, EventArgs e)
+        private void btnDel_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void lblGueltigVon_Click(object sender, EventArgs e)
-        {
-
+            if (_r != null)
+            {
+                for (int i = _dt.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataRow dr = _dt.Rows[i];
+                    if ((Guid)dr["ID"] == _r.ID)
+                    {
+                        dr.Delete();
+                        _dt.AcceptChanges();
+                        _r = null;
+                        OnValueChanged(sender, e);
+                        ValueChanged(sender, e);
+                        gbDetails.Visible = false;
+                        break;
+                    }
+                }
+            }
         }
     }
 }

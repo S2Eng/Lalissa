@@ -38,7 +38,7 @@ namespace PMDS.DB.Global
         }
 
         public void Write(dsSTAMP_Kostentragungen.STAMP_KostentragungenDataTable dt)
-        {
+        {            
             DataBase.Update(daSTAMP_Kostentragungen, dt);
         }
     }
