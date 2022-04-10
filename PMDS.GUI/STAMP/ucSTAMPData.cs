@@ -46,10 +46,11 @@ namespace PMDS.GUI.STAMP
         {
             if (this._lockValueChanges || _r == null || _r.RowState == DataRowState.Detached) 
                 return;
-            
+
+            DateTime chkDateBis = _r.IsGueltigBisNull() ? new DateTime(1753, 1, 1) : _r.GueltigBis;
             if (cmbFinanzierung.Text != _r.Finanzierung ||
                 dtGueltigVon.DateTime != _r.GueltigVon ||
-                dtGueltigBis.DateTime != _r.GueltigBis ||
+                dtGueltigBis.DateTime != chkDateBis ||
                 cmbGemeinde.Text != _r.Gemeinde ||
                 cmbBundesland.Text != _r.Bundesland ||
                 cmbLand.Text != _r.Land ||
@@ -58,7 +59,10 @@ namespace PMDS.GUI.STAMP
             {
                 _r.Finanzierung = cmbFinanzierung.Text;
                 _r.GueltigVon = dtGueltigVon.DateTime;
-                _r.GueltigBis = dtGueltigBis.DateTime;
+                if (dtGueltigBis.DateTime != new DateTime(1753, 1, 1))
+                {
+                    _r.GueltigBis = dtGueltigBis.DateTime;
+                }
                 _r.Gemeinde = cmbGemeinde.Text;
                 _r.Bundesland = cmbBundesland.Text;
                 _r.Land = cmbLand.Text;
@@ -236,7 +240,7 @@ namespace PMDS.GUI.STAMP
             _rNew.Finanzierung = "";
             _rNew.FinanzierungSonstige = "";
             _rNew.GueltigVon = DateTime.Now;
-            //_rNew.GueltigBis = null;
+            _rNew.SetGueltigBisNull();
             _rNew.Deleted = false;
             _rNew.IDAufenthalt = IDAufenthalt;
             _rNew.CreatedUser = Guid.NewGuid();
@@ -288,22 +292,14 @@ namespace PMDS.GUI.STAMP
 
         private void btnDel_Click(object sender, EventArgs e)
         {
+
             if (_r != null)
             {
-                for (int i = _dt.Rows.Count - 1; i >= 0; i--)
-                {
-                    DataRow dr = _dt.Rows[i];
-                    if ((Guid)dr["ID"] == _r.ID)
-                    {
-                        dr.Delete();
-                        _dt.AcceptChanges();
-                        _r = null;
-                        OnValueChanged(sender, e);
-                        ValueChanged(sender, e);
-                        gbDetails.Visible = false;
-                        break;
-                    }
-                }
+                UltraGridTools.DeleteCurrentSelectedRow(dgKostentragungen, true);
+                _r = null;
+                OnValueChanged(sender, e);
+                ValueChanged(sender, e);
+                gbDetails.Visible = false;
             }
         }
     }
