@@ -20,8 +20,9 @@ namespace PMDS.GUI.STAMP
     {
         public event EventHandler ValueChanged;
         private bool _lockValueChanges;
-        public bool STAMPDataHasChanged { get; set; }
         private bool _valueChangeEnabled = true;
+        public bool STAMPDataHasChanged { get; set; }
+        public bool IsDirty { get; set; }
 
         private Guid IDAufenthalt = Guid.Empty;
 
@@ -47,10 +48,11 @@ namespace PMDS.GUI.STAMP
             if (this._lockValueChanges || _r == null || _r.RowState == DataRowState.Detached) 
                 return;
 
-            DateTime chkDateBis = _r.IsGueltigBisNull() ? new DateTime(1753, 1, 1) : _r.GueltigBis;
+            DateTime chkDateBis = _r.IsGueltigBisNull() ? DateTime.MinValue : _r.GueltigBis;
             if (cmbFinanzierung.Text != _r.Finanzierung ||
                 dtGueltigVon.DateTime != _r.GueltigVon ||
-                dtGueltigBis.DateTime != chkDateBis ||
+                (dtGueltigBis.Value != null && dtGueltigBis.DateTime != chkDateBis) ||
+                (dtGueltigBis.Value == null && !_r.IsGueltigBisNull()) ||
                 cmbGemeinde.Text != _r.Gemeinde ||
                 cmbBundesland.Text != _r.Bundesland ||
                 cmbLand.Text != _r.Land ||
@@ -59,9 +61,13 @@ namespace PMDS.GUI.STAMP
             {
                 _r.Finanzierung = cmbFinanzierung.Text;
                 _r.GueltigVon = dtGueltigVon.DateTime;
-                if (dtGueltigBis.DateTime != new DateTime(1753, 1, 1))
+                if (dtGueltigBis.Value != null && dtGueltigBis.DateTime != DateTime.MinValue)
                 {
                     _r.GueltigBis = dtGueltigBis.DateTime;
+                }
+                else
+                {
+                    _r.SetGueltigBisNull();
                 }
                 _r.Gemeinde = cmbGemeinde.Text;
                 _r.Bundesland = cmbBundesland.Text;
@@ -73,7 +79,10 @@ namespace PMDS.GUI.STAMP
                 dgKostentragungen.Refresh();
 
                 STAMPDataHasChanged = true;
-                if (_valueChangeEnabled && (ValueChanged != null))
+
+                //IsDirty = !CheckData(false);
+
+                if (_valueChangeEnabled && (ValueChanged != null)) // && !IsDirty)
                     ValueChanged(sender, args);
             }
         }
@@ -112,7 +121,6 @@ namespace PMDS.GUI.STAMP
             }
         }
 
-
         private bool LoadData()
         {
             try
@@ -126,6 +134,53 @@ namespace PMDS.GUI.STAMP
             {
                 throw new Exception("ucSTAMPData.LoadData: " + ex.ToString());
             }
+        }
+
+        private bool CheckData(bool ShowMsg)
+        {
+            //Datenprüfung
+            string strError = "";
+            foreach (Global.dsSTAMP_Kostentragungen.STAMP_KostentragungenRow rowCheck in _dt)
+            {
+                if (rowCheck.Finanzierung.sEquals("§13(1) SHG") || rowCheck.Finanzierung.sEquals("§13(1) SHG iVm. §2(1) LEVO-SHG") || rowCheck.Finanzierung.sEquals("§19 StBHG"))
+                {
+                    if (String.IsNullOrWhiteSpace(rowCheck.Gemeinde))
+                    {
+                        strError += "Gemeinde darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
+                    }
+                }
+                else if (rowCheck.Finanzierung.sEquals("Anderes Bundesland"))
+                {
+                    if (String.IsNullOrWhiteSpace(rowCheck.Bundesland))
+                    {
+                        strError += "Bundesland darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
+                    }
+                }
+                else if (rowCheck.Finanzierung.sEquals("Anderer Staat"))
+                {
+                    if (String.IsNullOrWhiteSpace(rowCheck.Land))
+                    {
+                        strError += "Anderer Staat darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
+                    }
+                }
+                else if (rowCheck.Finanzierung.sEquals("Sonstige"))
+                {
+                    if (String.IsNullOrWhiteSpace(rowCheck.FinanzierungSonstige))
+                    {
+                        strError += "Finanzierungsbeschreibung darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
+                    }
+                }
+            }
+
+            if (!String.IsNullOrEmpty(strError))
+            {
+                if (ShowMsg)
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(strError, "Eingabefehler bei Kostentragungen", System.Windows.Forms.MessageBoxButtons.OK);
+                }
+                return false;
+            }
+            return true;
         }
 
         public bool SaveData()
@@ -162,7 +217,6 @@ namespace PMDS.GUI.STAMP
                 Application.DoEvents();
 
                 this._lockValueChanges = false;
-
             }
         }
 
@@ -212,26 +266,6 @@ namespace PMDS.GUI.STAMP
             txtFinanzierungSonstige.Text = hideSonstiges ? "" : txtFinanzierungSonstige.Text;
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            if (_r != null)
-            {
-                //in DB Speichern für geänderte Row (Insert oder Update)
-                _r.Finanzierung = cmbFinanzierung.Text;
-                _r.Finanzierung = cmbFinanzierung.Text;
-                _r.FinanzierungSonstige = txtFinanzierungSonstige.Text;
-                _r.GueltigVon = dtGueltigVon.DateTime;
-                _r.GueltigBis = dtGueltigBis.DateTime;
-                _r.Gemeinde = cmbGemeinde.Text;
-                _r.Bundesland = cmbBundesland.Text;
-                _r.Land = cmbLand.Text;
-                _r.LastUpdateDate = DateTime.Now;
-                dgKostentragungen.Refresh();
-
-                SaveData();
-            }
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
@@ -249,6 +283,8 @@ namespace PMDS.GUI.STAMP
             _rNew.LastUpdateDate = _rNew.CreatedDate;
             _dt.Rows.Add(_rNew);
             dgKostentragungen.Refresh();
+
+            //IsDirty = true;
         }
 
         private DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
