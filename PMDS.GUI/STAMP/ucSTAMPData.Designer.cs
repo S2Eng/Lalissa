@@ -98,6 +98,7 @@ namespace PMDS.GUI.STAMP
             this.pnlUnten = new Infragistics.Win.Misc.UltraPanel();
             this.gbDetails = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.cmbFinanzierung = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.txtErrLog = new PMDS.GUI.ucRichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigVon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFinanzierungSonstige)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigBis)).BeginInit();
@@ -297,6 +298,7 @@ namespace PMDS.GUI.STAMP
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -679,6 +681,7 @@ namespace PMDS.GUI.STAMP
             // 
             // gbDetails
             // 
+            this.gbDetails.Controls.Add(this.txtErrLog);
             this.gbDetails.Controls.Add(this.lblfinanzierung);
             this.gbDetails.Controls.Add(this.cmbFinanzierung);
             this.gbDetails.Controls.Add(this.pnlFinanzierungSonstige);
@@ -720,6 +723,19 @@ namespace PMDS.GUI.STAMP
             this.cmbFinanzierung.sys = false;
             this.cmbFinanzierung.TabIndex = 44;
             this.cmbFinanzierung.ValueChanged += new System.EventHandler(this.cmbFinanzierung_ValueChanged);
+            // 
+            // txtErrLog
+            // 
+            this.txtErrLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtErrLog.Enabled = false;
+            this.txtErrLog.HiglightColor = PMDS.GUI.RtfColor.White;
+            this.txtErrLog.Location = new System.Drawing.Point(115, 112);
+            this.txtErrLog.Name = "txtErrLog";
+            this.txtErrLog.Size = new System.Drawing.Size(806, 81);
+            this.txtErrLog.TabIndex = 51;
+            this.txtErrLog.Text = "";
+            this.txtErrLog.TextColor = PMDS.GUI.RtfColor.Black;
+            this.txtErrLog.Visible = false;
             // 
             // ucSTAMPData
             // 
@@ -819,5 +835,6 @@ namespace PMDS.GUI.STAMP
         private Infragistics.Win.Misc.UltraPanel pnlMitte;
         private Infragistics.Win.Misc.UltraPanel pnlUnten;
         private QS2.Desktop.ControlManagment.BaseGroupBox gbDetails;
+        private ucRichTextBox txtErrLog;
     }
 }

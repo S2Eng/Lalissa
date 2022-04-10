@@ -1146,7 +1146,7 @@ namespace PMDS.GUI
             if (ucAbrechAufenthKlient1 != null)
                 ucAbrechAufenthKlient1.UpdateDATA();
 
-            if (ENV.lic_STAMP)
+            if (ENV.lic_STAMP && !ucSTAMPData1.IsDirty) //Nur, wenn die Daten korrekt sind, abspeichern
                 ucSTAMPData1.SaveData();
         }
 

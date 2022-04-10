@@ -80,9 +80,9 @@ namespace PMDS.GUI.STAMP
 
                 STAMPDataHasChanged = true;
 
-                //IsDirty = !CheckData(false);
+                IsDirty = !CheckData(false);
 
-                if (_valueChangeEnabled && (ValueChanged != null)) // && !IsDirty)
+                if (_valueChangeEnabled && (ValueChanged != null))
                     ValueChanged(sender, args);
             }
         }
@@ -170,7 +170,19 @@ namespace PMDS.GUI.STAMP
                         strError += "Finanzierungsbeschreibung darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
                     }
                 }
+
+                if (!String.IsNullOrEmpty(strError))
+                {
+                    txtErrLog.Text = strError + "\n\nBitte ergänzen Sie die Daten, damit die Änderungen gespeichert werden können.";
+                    txtErrLog.Visible = true;
+                }
+                else
+                {
+                    txtErrLog.Text = "";
+                    txtErrLog.Visible = false;
+                }
             }
+
 
             if (!String.IsNullOrEmpty(strError))
             {
@@ -198,6 +210,11 @@ namespace PMDS.GUI.STAMP
 
         private void dgKostentragungen_ClickCell(object sender, ClickCellEventArgs e)
         {
+            ShowDetails();
+        }
+
+        private void ShowDetails()
+        {
             int i = 0;
             gbDetails.Visible = true;
             UltraGridRow row = this.dgKostentragungen.ActiveRow;
@@ -219,6 +236,8 @@ namespace PMDS.GUI.STAMP
                 this._lockValueChanges = false;
             }
         }
+
+
 
         private void cmbFinanzierung_ValueChanged(object sender, EventArgs e)
         {
@@ -271,7 +290,7 @@ namespace PMDS.GUI.STAMP
 
             _rNew = _dt.NewSTAMP_KostentragungenRow();
             _rNew.ID = Guid.NewGuid();
-            _rNew.Finanzierung = "";
+            _rNew.Finanzierung = "Selbstzahler";
             _rNew.FinanzierungSonstige = "";
             _rNew.GueltigVon = DateTime.Now;
             _rNew.SetGueltigBisNull();
@@ -284,7 +303,20 @@ namespace PMDS.GUI.STAMP
             _dt.Rows.Add(_rNew);
             dgKostentragungen.Refresh();
 
-            //IsDirty = true;
+            IsDirty = true;
+            ValueChanged(sender, e);
+
+            foreach (UltraGridRow row in dgKostentragungen.Rows)
+            {
+                if ((Guid)row.Cells["ID"].Value == _rNew.ID)
+                {
+                    row.Activated = true;
+                    row.Selected = true;
+                    ShowDetails();
+                    break;
+                }
+            }
+
         }
 
         private DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
