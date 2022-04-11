@@ -133,15 +133,21 @@ namespace PMDS.GUI
 
             this.tabStammdaten.Tabs["VOErfassen"].Visible = PMDS.Global.ENV.lic_VO;
             this.tabStammdaten.Tabs["STAMP"].Visible = PMDS.Global.ENV.lic_STAMP;
+            lblSTAMPSynonym.Visible = PMDS.Global.ENV.lic_STAMP;
+            txtSTAMPSynonym.Visible = PMDS.Global.ENV.lic_STAMP;
 
-            bELGA.init();
             this.setTabELGAOnIff();
-            this.contELGAKlient1.initControl(false);
+            if (ENV.lic_ELGA)
+            {
+                bELGA.init();
+                this.contELGAKlient1.initControl(false);
+            }
+            this.chkELGAAbgemeldet.Visible = ENV.lic_ELGA;
         }
 
         public void setTabELGAOnIff(bool bAbgemeldet = false)
         {
-            if (bAbgemeldet || !ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAAktionen, false))
+            if (!ENV.lic_ELGA || bAbgemeldet || !ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAAktionen, false))
             {
                 this.tabStammdaten.Tabs["ELGA"].Visible = false;
             }
@@ -193,11 +199,6 @@ namespace PMDS.GUI
             {
                 this.txtBesonderheit2.Visible = ENV.HasRight(UserRights.Dienstübergabe);
                 this.lblBesonderheit.Visible = ENV.HasRight(UserRights.Dienstübergabe);
-            }
-
-            if (ENV.lic_STAMP)
-            {
-                lblGruppenKz.Text = "Synonym (STAMP)";
             }
         }
         //----------------------------------------------------------------------------
@@ -523,6 +524,7 @@ namespace PMDS.GUI
             this.txtDNRAnmerkung.Text = "";
             this._DNRAnmerkung = "";
             this.chkELGAAbgemeldet.Checked = false;
+            this.txtSTAMPSynonym.Text = "";
 
             using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
             {
@@ -555,7 +557,8 @@ namespace PMDS.GUI
                                         p.SozVersLeerGrund,
                                         p.TitelPost,
                                         p.ELGAAbgemeldet,                                        
-                                        p.bPK
+                                        p.bPK,
+                                        p.STAMP_Synonym
                                     }
                                    ).First();
 
@@ -620,6 +623,7 @@ namespace PMDS.GUI
                     {
                         this.setTabELGAOnIff();
                     }
+                    this.txtSTAMPSynonym.Text = String.IsNullOrWhiteSpace(rPatInfo.STAMP_Synonym) ? "" : rPatInfo.STAMP_Synonym;
                 }
 
                 //---------------------------------------------------
@@ -1030,7 +1034,8 @@ namespace PMDS.GUI
                                         p.PrivPolNr,
                                         p.Klasse,
                                         p.bPK,
-                                        p.ELGAAbgemeldet
+                                        p.ELGAAbgemeldet,
+                                        p.STAMP_Synonym
                                     }
                                    ).First();
                     //PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
@@ -1075,6 +1080,11 @@ namespace PMDS.GUI
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA abgemeldet: ") + (rPatInfo.ELGAAbgemeldet ?? false ? sJa : sNein) + " -> " + (chkELGAAbgemeldet.Checked ? sJa : sNein));
                     }
+                    if (ENV.lic_STAMP && this.txtSTAMPSynonym.Text != rPatInfo.STAMP_Synonym)
+                    {
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("STAMP ID: ") + rPatInfo.STAMP_Synonym.Trim() + " -> " + this.txtSTAMPSynonym.Text.Trim());
+                    }
+
                 }
             }
 
@@ -1317,11 +1327,16 @@ namespace PMDS.GUI
                             rPatient.DNRAnmerkung = this.txtDNRAnmerkung.Text.Trim();
                         }
 
-
                         if (rPatient.bPK.Trim() != this.txtbPK.Text.Trim())
                         {
                             sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Bereichsspez. Personenkennz.: ") + rPatient.bPK + " -> " + this.txtbPK.Text);
                             rPatient.bPK = this.txtbPK.Text.Trim();
+                        }
+                        
+                        if (rPatient.STAMP_Synonym != this.txtSTAMPSynonym.Text.Trim())
+                        {
+                            sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("STAMP ID: ") + rPatient.STAMP_Synonym + " -> " + this.txtSTAMPSynonym.Text);
+                            rPatient.STAMP_Synonym = this.txtSTAMPSynonym.Text.Trim();
                         }
 
                         db.SaveChanges();   

@@ -618,6 +618,7 @@ namespace PMDS.Global.db.ERSystem
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Titel nachgestellt: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Bereichsspez. Personenkennz.: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("STAMP ID: ");
 
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Für den Patienten existiert bereits ein ELGA-Hausarzt!" + "\r\n" +
                                                                                 "Soll dieser als Hausarzt gespeichert werden und der neue Arzt als ELGA-Hausarzt gespeichert werden?", "", MessageBoxButtons.YesNo);
