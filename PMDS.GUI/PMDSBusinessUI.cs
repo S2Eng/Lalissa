@@ -1480,11 +1480,11 @@ namespace PMDS.GUI
                         rPatient.SozVersLeerGrund = ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim();
                         rPatient.SozVersMitversichertBei = ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim();
 
-                        if (String.IsNullOrWhiteSpace(ucVersichrungsdaten1.txtVersNr.Text))
+                        if (!String.IsNullOrWhiteSpace(ucVersichrungsdaten1.txtVersNr.Text))
                         {
                             rPatient.SozVersLeerGrund = "";
                             ucVersichrungsdaten1.cboSozVersLeerGrund.Text = "";
-                            if (ucVersichrungsdaten1.cboSozVersStatus.Text.sEquals("mitversichert"))
+                            if (!ucVersichrungsdaten1.cboSozVersStatus.Text.sEquals("mitversichert"))
                             {
                                 rPatient.SozVersMitversichertBei = "";
                                 ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = "";

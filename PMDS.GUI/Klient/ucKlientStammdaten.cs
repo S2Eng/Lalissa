@@ -2648,6 +2648,11 @@ namespace PMDS.GUI
                 }
             }
         }
+
+        private void lbleMailKlient_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

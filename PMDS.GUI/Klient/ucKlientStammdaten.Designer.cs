@@ -66,6 +66,8 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Bereichsspezifisches Personenkennzeichen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
@@ -226,8 +228,6 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab10 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab11 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab12 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Bereichsspezifisches Personenkennzeichen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             this.ultraTabPageControl4 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBoxAdressdaten = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.lblVorhergendeBetreuungsformen = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -284,6 +284,8 @@ namespace PMDS.GUI
             this.lblFaxSub = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.grpAdmin = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.lblSTAMPSynonym = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.txtSTAMPSynonym = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.chkELGAAbgemeldet = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.panelAufenthaltsdaten2 = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnAbwesenheitsendeBestätigen = new Infragistics.Win.Misc.UltraButton();
@@ -299,9 +301,9 @@ namespace PMDS.GUI
             this.lblKennwort = new QS2.Desktop.ControlManagment.BaseLabel();
             this.baseLabel4 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtbPK = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.lblMobilTelNrKlient = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraGroupBoxOben = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.lbleMailKlient = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblMobilTelNrKlient = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblEMailPat = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblTitelPost = new QS2.Desktop.ControlManagment.BaseLabel();
             this.cboTitelPost = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
@@ -442,8 +444,6 @@ namespace PMDS.GUI
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridBagLayoutPanel1 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
-            this.txtSTAMPSynonym = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.lblSTAMPSynonym = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBoxAdressdaten)).BeginInit();
             this.ultraGroupBoxAdressdaten.SuspendLayout();
@@ -478,6 +478,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpAdmin)).BeginInit();
             this.grpAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSTAMPSynonym)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkELGAAbgemeldet)).BeginInit();
             this.panelAufenthaltsdaten2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtZimmerNr)).BeginInit();
@@ -586,7 +587,6 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel1)).BeginInit();
             this.ultraGridBagLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSTAMPSynonym)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraTabPageControl4
@@ -645,18 +645,18 @@ namespace PMDS.GUI
             appearance2.BackColor = System.Drawing.Color.Transparent;
             this.lblVorhergendeBetreuungsformen.Appearance = appearance2;
             this.lblVorhergendeBetreuungsformen.AutoSize = true;
-            this.lblVorhergendeBetreuungsformen.Location = new System.Drawing.Point(8, 157);
+            this.lblVorhergendeBetreuungsformen.Location = new System.Drawing.Point(8, 156);
             this.lblVorhergendeBetreuungsformen.Name = "lblVorhergendeBetreuungsformen";
-            this.lblVorhergendeBetreuungsformen.Size = new System.Drawing.Size(105, 17);
+            this.lblVorhergendeBetreuungsformen.Size = new System.Drawing.Size(132, 17);
             this.lblVorhergendeBetreuungsformen.TabIndex = 225;
-            this.lblVorhergendeBetreuungsformen.Text = "Vorh. Betreuung";
+            this.lblVorhergendeBetreuungsformen.Text = "Vorherige Betreuung";
             // 
             // cboVorherigeBetreuungsformenMulti
             // 
-            this.cboVorherigeBetreuungsformenMulti.Location = new System.Drawing.Point(161, 150);
+            this.cboVorherigeBetreuungsformenMulti.Location = new System.Drawing.Point(160, 150);
             this.cboVorherigeBetreuungsformenMulti.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.cboVorherigeBetreuungsformenMulti.Name = "cboVorherigeBetreuungsformenMulti";
-            this.cboVorherigeBetreuungsformenMulti.Size = new System.Drawing.Size(292, 32);
+            this.cboVorherigeBetreuungsformenMulti.Size = new System.Drawing.Size(293, 32);
             this.cboVorherigeBetreuungsformenMulti.TabIndex = 224;
             // 
             // cmbHaupwohnsitzgemeinde
@@ -748,13 +748,13 @@ namespace PMDS.GUI
             this.txtLand.Group = "LND";
             this.txtLand.ID_PEP = -1;
             this.txtLand.IgnoreUnterdruecken = true;
-            this.txtLand.Location = new System.Drawing.Point(160, 87);
+            this.txtLand.Location = new System.Drawing.Point(112, 87);
             this.txtLand.MaxLength = 20;
             this.txtLand.Name = "txtLand";
             this.txtLand.PflichtJN = false;
             this.txtLand.SelectDistinct = false;
             this.txtLand.ShowAddButton = true;
-            this.txtLand.Size = new System.Drawing.Size(292, 24);
+            this.txtLand.Size = new System.Drawing.Size(340, 24);
             this.txtLand.sys = false;
             this.txtLand.TabIndex = 6;
             this.txtLand.ValueChanged += new System.EventHandler(this.OnValueChanged);
@@ -1232,12 +1232,11 @@ namespace PMDS.GUI
             // 
             this.ultraTabPageControl2.AutoScroll = true;
             this.ultraTabPageControl2.Controls.Add(this.grpAdmin);
-            this.ultraTabPageControl2.Controls.Add(this.lblMobilTelNrKlient);
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBoxOben);
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBoxAllgemein1);
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBoxPersonebescheibung);
             this.ultraTabPageControl2.Controls.Add(this.lblVorname);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 24);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(1028, 673);
             this.ultraTabPageControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.ultraTabPageControl2_Paint);
@@ -1259,6 +1258,29 @@ namespace PMDS.GUI
             this.grpAdmin.Size = new System.Drawing.Size(519, 239);
             this.grpAdmin.TabIndex = 222;
             this.grpAdmin.Text = "Administrative Daten";
+            // 
+            // lblSTAMPSynonym
+            // 
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            this.lblSTAMPSynonym.Appearance = appearance8;
+            this.lblSTAMPSynonym.AutoSize = true;
+            this.lblSTAMPSynonym.Location = new System.Drawing.Point(16, 153);
+            this.lblSTAMPSynonym.Name = "lblSTAMPSynonym";
+            this.lblSTAMPSynonym.Size = new System.Drawing.Size(71, 17);
+            this.lblSTAMPSynonym.TabIndex = 216;
+            this.lblSTAMPSynonym.Text = "STAMP-ID";
+            ultraToolTipInfo1.ToolTipText = "Bereichsspezifisches Personenkennzeichen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.lblSTAMPSynonym, ultraToolTipInfo1);
+            // 
+            // txtSTAMPSynonym
+            // 
+            this.errorProvider1.SetIconAlignment(this.txtSTAMPSynonym, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.txtSTAMPSynonym.Location = new System.Drawing.Point(121, 149);
+            this.txtSTAMPSynonym.MaxLength = 25;
+            this.txtSTAMPSynonym.Name = "txtSTAMPSynonym";
+            this.txtSTAMPSynonym.Size = new System.Drawing.Size(217, 24);
+            this.txtSTAMPSynonym.TabIndex = 20;
+            this.txtSTAMPSynonym.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // chkELGAAbgemeldet
             // 
@@ -1305,6 +1327,7 @@ namespace PMDS.GUI
             this.txtZimmerNr.Name = "txtZimmerNr";
             this.txtZimmerNr.Size = new System.Drawing.Size(97, 24);
             this.txtZimmerNr.TabIndex = 16;
+            this.txtZimmerNr.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblZimNr
             // 
@@ -1350,6 +1373,7 @@ namespace PMDS.GUI
             this.txtFallzahl.NonAutoSizeHeight = 20;
             this.txtFallzahl.Size = new System.Drawing.Size(98, 23);
             this.txtFallzahl.TabIndex = 13;
+            this.txtFallzahl.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // txtgruppenkennzahl
             // 
@@ -1358,6 +1382,7 @@ namespace PMDS.GUI
             this.txtgruppenkennzahl.Name = "txtgruppenkennzahl";
             this.txtgruppenkennzahl.Size = new System.Drawing.Size(150, 24);
             this.txtgruppenkennzahl.TabIndex = 14;
+            this.txtgruppenkennzahl.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // chkMilieubetreuung
             // 
@@ -1397,6 +1422,7 @@ namespace PMDS.GUI
             this.txtKennwort.Name = "txtKennwort";
             this.txtKennwort.Size = new System.Drawing.Size(386, 24);
             this.txtKennwort.TabIndex = 15;
+            this.txtKennwort.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblKennwort
             // 
@@ -1431,21 +1457,12 @@ namespace PMDS.GUI
             this.txtbPK.Name = "txtbPK";
             this.txtbPK.Size = new System.Drawing.Size(217, 24);
             this.txtbPK.TabIndex = 20;
-            // 
-            // lblMobilTelNrKlient
-            // 
-            appearance18.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lblMobilTelNrKlient.Appearance = appearance18;
-            this.lblMobilTelNrKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblMobilTelNrKlient.Location = new System.Drawing.Point(93, 251);
-            this.lblMobilTelNrKlient.Name = "lblMobilTelNrKlient";
-            this.lblMobilTelNrKlient.Size = new System.Drawing.Size(392, 20);
-            this.lblMobilTelNrKlient.TabIndex = 218;
-            this.lblMobilTelNrKlient.Text = "                                                             ";
+            this.txtbPK.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // ultraGroupBoxOben
             // 
             this.ultraGroupBoxOben.Controls.Add(this.lbleMailKlient);
+            this.ultraGroupBoxOben.Controls.Add(this.lblMobilTelNrKlient);
             this.ultraGroupBoxOben.Controls.Add(this.lblEMailPat);
             this.ultraGroupBoxOben.Controls.Add(this.lblTitelPost);
             this.ultraGroupBoxOben.Controls.Add(this.cboTitelPost);
@@ -1478,14 +1495,28 @@ namespace PMDS.GUI
             // 
             // lbleMailKlient
             // 
-            appearance19.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lbleMailKlient.Appearance = appearance19;
+            appearance18.BackColor = System.Drawing.Color.Transparent;
+            appearance18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lbleMailKlient.Appearance = appearance18;
+            this.lbleMailKlient.BorderStyleOuter = Infragistics.Win.UIElementBorderStyle.Solid;
             this.lbleMailKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lbleMailKlient.Location = new System.Drawing.Point(90, 273);
+            this.lbleMailKlient.Location = new System.Drawing.Point(90, 271);
             this.lbleMailKlient.Name = "lbleMailKlient";
-            this.lbleMailKlient.Size = new System.Drawing.Size(392, 18);
+            this.lbleMailKlient.Size = new System.Drawing.Size(392, 24);
             this.lbleMailKlient.TabIndex = 220;
-            this.lbleMailKlient.Text = "                                                             ";
+            // 
+            // lblMobilTelNrKlient
+            // 
+            appearance19.BackColor = System.Drawing.Color.Transparent;
+            appearance19.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblMobilTelNrKlient.Appearance = appearance19;
+            this.lblMobilTelNrKlient.BorderStyleOuter = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.lblMobilTelNrKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblMobilTelNrKlient.Location = new System.Drawing.Point(90, 241);
+            this.lblMobilTelNrKlient.Name = "lblMobilTelNrKlient";
+            this.lblMobilTelNrKlient.Size = new System.Drawing.Size(392, 24);
+            this.lblMobilTelNrKlient.TabIndex = 218;
+            this.lblMobilTelNrKlient.Text = "                                                             ";
             // 
             // lblEMailPat
             // 
@@ -1493,7 +1524,7 @@ namespace PMDS.GUI
             this.lblEMailPat.Appearance = appearance20;
             this.lblEMailPat.AutoSize = true;
             this.lblEMailPat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblEMailPat.Location = new System.Drawing.Point(16, 273);
+            this.lblEMailPat.Location = new System.Drawing.Point(18, 278);
             this.lblEMailPat.Name = "lblEMailPat";
             this.lblEMailPat.Size = new System.Drawing.Size(38, 17);
             this.lblEMailPat.TabIndex = 219;
@@ -1549,7 +1580,7 @@ namespace PMDS.GUI
             this.panelVerstorben.Controls.Add(this.dteTodeszeitpunkt);
             this.panelVerstorben.Controls.Add(this.lblTodeszeitpunkt);
             this.panelVerstorben.Controls.Add(this.chkVerstorben);
-            this.panelVerstorben.Location = new System.Drawing.Point(90, 299);
+            this.panelVerstorben.Location = new System.Drawing.Point(90, 301);
             this.panelVerstorben.Name = "panelVerstorben";
             this.panelVerstorben.Size = new System.Drawing.Size(392, 30);
             this.panelVerstorben.TabIndex = 13;
@@ -2494,7 +2525,7 @@ namespace PMDS.GUI
             // 
             this.splitContainer2.Panel2.Controls.Add(this.ultraGroupBoxSachverwalter);
             this.splitContainer2.Size = new System.Drawing.Size(1028, 514);
-            this.splitContainer2.SplitterDistance = 159;
+            this.splitContainer2.SplitterDistance = 265;
             this.splitContainer2.TabIndex = 0;
             // 
             // ultraGroupBoxÄrtze
@@ -2506,7 +2537,7 @@ namespace PMDS.GUI
             this.ultraGroupBoxÄrtze.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGroupBoxÄrtze.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBoxÄrtze.Name = "ultraGroupBoxÄrtze";
-            this.ultraGroupBoxÄrtze.Size = new System.Drawing.Size(1028, 159);
+            this.ultraGroupBoxÄrtze.Size = new System.Drawing.Size(1028, 265);
             this.ultraGroupBoxÄrtze.TabIndex = 20;
             this.ultraGroupBoxÄrtze.Text = "Ärzte";
             // 
@@ -2518,7 +2549,7 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel2.ExpandToFitWidth = true;
             this.ultraGridBagLayoutPanel2.Location = new System.Drawing.Point(3, 19);
             this.ultraGridBagLayoutPanel2.Name = "ultraGridBagLayoutPanel2";
-            this.ultraGridBagLayoutPanel2.Size = new System.Drawing.Size(987, 137);
+            this.ultraGridBagLayoutPanel2.Size = new System.Drawing.Size(987, 243);
             this.ultraGridBagLayoutPanel2.TabIndex = 7;
             // 
             // gridAerzte
@@ -2713,7 +2744,7 @@ namespace PMDS.GUI
             this.gridAerzte.Location = new System.Drawing.Point(0, 0);
             this.gridAerzte.Name = "gridAerzte";
             this.ultraGridBagLayoutPanel2.SetPreferredSize(this.gridAerzte, new System.Drawing.Size(243, 74));
-            this.gridAerzte.Size = new System.Drawing.Size(987, 137);
+            this.gridAerzte.Size = new System.Drawing.Size(987, 243);
             this.gridAerzte.TabIndex = 2;
             this.gridAerzte.Text = "ultraGrid2";
             this.gridAerzte.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.gridAerzte_CellChange);
@@ -2734,7 +2765,7 @@ namespace PMDS.GUI
             this.panelButtons1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelButtons1.Location = new System.Drawing.Point(990, 19);
             this.panelButtons1.Name = "panelButtons1";
-            this.panelButtons1.Size = new System.Drawing.Size(35, 137);
+            this.panelButtons1.Size = new System.Drawing.Size(35, 243);
             this.panelButtons1.TabIndex = 6;
             // 
             // btnELGAKontakDelegation
@@ -2822,7 +2853,7 @@ namespace PMDS.GUI
             this.ultraGroupBoxSachverwalter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGroupBoxSachverwalter.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBoxSachverwalter.Name = "ultraGroupBoxSachverwalter";
-            this.ultraGroupBoxSachverwalter.Size = new System.Drawing.Size(1028, 351);
+            this.ultraGroupBoxSachverwalter.Size = new System.Drawing.Size(1028, 245);
             this.ultraGroupBoxSachverwalter.TabIndex = 21;
             this.ultraGroupBoxSachverwalter.Text = "Erwachsenenvertreter / Vorsorgebevollmächtigte";
             // 
@@ -2834,7 +2865,7 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel3.ExpandToFitWidth = true;
             this.ultraGridBagLayoutPanel3.Location = new System.Drawing.Point(3, 19);
             this.ultraGridBagLayoutPanel3.Name = "ultraGridBagLayoutPanel3";
-            this.ultraGridBagLayoutPanel3.Size = new System.Drawing.Size(987, 329);
+            this.ultraGridBagLayoutPanel3.Size = new System.Drawing.Size(987, 223);
             this.ultraGridBagLayoutPanel3.TabIndex = 11;
             // 
             // gridSachwalter
@@ -2962,7 +2993,7 @@ namespace PMDS.GUI
             this.gridSachwalter.Location = new System.Drawing.Point(0, 0);
             this.gridSachwalter.Name = "gridSachwalter";
             this.ultraGridBagLayoutPanel3.SetPreferredSize(this.gridSachwalter, new System.Drawing.Size(378, 85));
-            this.gridSachwalter.Size = new System.Drawing.Size(987, 329);
+            this.gridSachwalter.Size = new System.Drawing.Size(987, 223);
             this.gridSachwalter.TabIndex = 6;
             this.gridSachwalter.Text = "ultraGrid4";
             this.gridSachwalter.DoubleClickCell += new Infragistics.Win.UltraWinGrid.DoubleClickCellEventHandler(this.gridSachwalter_DoubleClickCell);
@@ -2981,7 +3012,7 @@ namespace PMDS.GUI
             this.panelButtons2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelButtons2.Location = new System.Drawing.Point(990, 19);
             this.panelButtons2.Name = "panelButtons2";
-            this.panelButtons2.Size = new System.Drawing.Size(35, 329);
+            this.panelButtons2.Size = new System.Drawing.Size(35, 223);
             this.panelButtons2.TabIndex = 10;
             // 
             // btnUpdateSachw
@@ -3504,7 +3535,7 @@ namespace PMDS.GUI
             // ultraTabPageControl10
             // 
             this.ultraTabPageControl10.Controls.Add(this.contELGAKlient1);
-            this.ultraTabPageControl10.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl10.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl10.Name = "ultraTabPageControl10";
             this.ultraTabPageControl10.Size = new System.Drawing.Size(1028, 673);
             // 
@@ -3697,28 +3728,6 @@ namespace PMDS.GUI
             this.ultraToolTipManager1.ContainingControl = this;
             this.ultraToolTipManager1.InitialDelay = 0;
             // 
-            // txtSTAMPSynonym
-            // 
-            this.errorProvider1.SetIconAlignment(this.txtSTAMPSynonym, System.Windows.Forms.ErrorIconAlignment.TopLeft);
-            this.txtSTAMPSynonym.Location = new System.Drawing.Point(121, 149);
-            this.txtSTAMPSynonym.MaxLength = 25;
-            this.txtSTAMPSynonym.Name = "txtSTAMPSynonym";
-            this.txtSTAMPSynonym.Size = new System.Drawing.Size(217, 24);
-            this.txtSTAMPSynonym.TabIndex = 20;
-            // 
-            // lblSTAMPSynonym
-            // 
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            this.lblSTAMPSynonym.Appearance = appearance8;
-            this.lblSTAMPSynonym.AutoSize = true;
-            this.lblSTAMPSynonym.Location = new System.Drawing.Point(16, 153);
-            this.lblSTAMPSynonym.Name = "lblSTAMPSynonym";
-            this.lblSTAMPSynonym.Size = new System.Drawing.Size(71, 17);
-            this.lblSTAMPSynonym.TabIndex = 216;
-            this.lblSTAMPSynonym.Text = "STAMP-ID";
-            ultraToolTipInfo1.ToolTipText = "Bereichsspezifisches Personenkennzeichen";
-            this.ultraToolTipManager1.SetUltraToolTip(this.lblSTAMPSynonym, ultraToolTipInfo1);
-            // 
             // ucKlientStammdaten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3768,6 +3777,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.grpAdmin)).EndInit();
             this.grpAdmin.ResumeLayout(false);
             this.grpAdmin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSTAMPSynonym)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkELGAAbgemeldet)).EndInit();
             this.panelAufenthaltsdaten2.ResumeLayout(false);
             this.panelAufenthaltsdaten2.PerformLayout();
@@ -3885,7 +3895,6 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel1)).EndInit();
             this.ultraGridBagLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtSTAMPSynonym)).EndInit();
             this.ResumeLayout(false);
 
         }

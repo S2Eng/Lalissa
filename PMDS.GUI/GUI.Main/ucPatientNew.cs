@@ -10,7 +10,7 @@ using PMDS.Global;
 using PMDS.Data.Global;
 using PMDS.Data.Patient;
 using PMDS.DB;
-
+using System.Linq;
 
 namespace PMDS.GUI
 {
@@ -49,6 +49,19 @@ namespace PMDS.GUI
         private PMDS.GUI.BaseControls.ucAbteilungBereichSelektor cbAbteilung;
         public Infragistics.Win.UltraWinEditors.UltraCheckEditor chkKontaktbestätigung;
         public ucVersichrungsdaten ucVersichrungsdaten1;
+        private QS2.Desktop.ControlManagment.BaseLabel lblHausnummer;
+        private QS2.Desktop.ControlManagment.BaseTextEditor txtHausnummer;
+        private QS2.Desktop.ControlManagment.BaseTextEditor txtStrasseOhneHausnummer;
+        private BaseControls.AuswahlGruppeCombo cmbLand;
+        private QS2.Desktop.ControlManagment.BaseLabel lblLand;
+        private QS2.Desktop.ControlManagment.BaseLabel lblTitelPost;
+        private BaseControls.AuswahlGruppeCombo cboTitelPost;
+        private BaseControls.AuswahlGruppeCombo cmbAnrede;
+        private QS2.Desktop.ControlManagment.BaseLabel baseLabel1;
+        private BaseControls.AuswahlGruppeCombo cmbStaatsB;
+        private QS2.Desktop.ControlManagment.BaseLabel lblStatsB;
+        private BaseControls.AuswahlGruppeCombo cmbFAM;
+        private QS2.Desktop.ControlManagment.BaseLabel lblFamiliensst;
         private IContainer components;
 
 		public ucPatientNew()
@@ -74,15 +87,22 @@ namespace PMDS.GUI
         {
             set
             {
-                dtpAufnahmedatum.ReadOnly = false; //Neu nach 08.05.2007 MDA
+                dtpAufnahmedatum.ReadOnly = false;
                 txtNachname.ReadOnly      = value;
+                txtVorname.ReadOnly = value;
+                txtSexus.ReadOnly = value;
+                cmbAnrede.ReadOnly = value;     //Anrede
+                dtpGebDatum.ReadOnly = value;
+                txtTitel.ReadOnly = value;
+                cboTitelPost.ReadOnly = value;  //TitelPost
+                cmbFAM.ReadOnly = value;        //Familienstand
+                cmbStaatsB.ReadOnly = value;    //Staatsbürgerschaft
+                txtStrasse.ReadOnly = value;
+                txtStrasseOhneHausnummer.ReadOnly = value;  //StrasseOhneHausnummer
+                txtHausnummer.ReadOnly = value; //Hausnummer
+                txtPLZ.ReadOnly = value;
                 txtOrt.ReadOnly           = value;
-                txtPLZ.ReadOnly           = value;
-                txtSexus.ReadOnly         = value;
-                txtStrasse.ReadOnly       = value;
-                txtTitel.ReadOnly         = value;
-                txtVorname.ReadOnly       = value;
-                dtpGebDatum.ReadOnly      = value;
+                cmbLand.ReadOnly = value;       //Land
             }
         }
 
@@ -106,6 +126,12 @@ namespace PMDS.GUI
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.dtpGebDatum = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.lblGebDatum = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtOrt = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -129,6 +155,19 @@ namespace PMDS.GUI
             this.cbAbteilung = new PMDS.GUI.BaseControls.ucAbteilungBereichSelektor();
             this.txtTitel = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.txtSexus = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.lblHausnummer = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.txtHausnummer = new QS2.Desktop.ControlManagment.BaseTextEditor();
+            this.txtStrasseOhneHausnummer = new QS2.Desktop.ControlManagment.BaseTextEditor();
+            this.cmbLand = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.lblLand = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblTitelPost = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cboTitelPost = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.cmbAnrede = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cmbStaatsB = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.lblStatsB = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cmbFAM = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.lblFamiliensst = new QS2.Desktop.ControlManagment.BaseLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dtpGebDatum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).BeginInit();
@@ -140,26 +179,33 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.chkKontaktbestätigung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTitel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSexus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHausnummer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStrasseOhneHausnummer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbLand)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboTitelPost)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAnrede)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbStaatsB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFAM)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpGebDatum
             // 
             this.dtpGebDatum.DateTime = new System.DateTime(2007, 5, 8, 0, 0, 0, 0);
             this.dtpGebDatum.FormatString = "";
-            this.dtpGebDatum.Location = new System.Drawing.Point(101, 220);
+            this.dtpGebDatum.Location = new System.Drawing.Point(101, 112);
             this.dtpGebDatum.MaskInput = "";
             this.dtpGebDatum.Name = "dtpGebDatum";
             this.dtpGebDatum.ownFormat = "";
             this.dtpGebDatum.ownMaskInput = "";
             this.dtpGebDatum.Size = new System.Drawing.Size(104, 21);
-            this.dtpGebDatum.TabIndex = 9;
+            this.dtpGebDatum.TabIndex = 6;
             this.dtpGebDatum.Value = new System.DateTime(2007, 5, 8, 0, 0, 0, 0);
             this.dtpGebDatum.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblGebDatum
             // 
             this.lblGebDatum.AutoSize = true;
-            this.lblGebDatum.Location = new System.Drawing.Point(13, 223);
+            this.lblGebDatum.Location = new System.Drawing.Point(13, 115);
             this.lblGebDatum.Name = "lblGebDatum";
             this.lblGebDatum.Size = new System.Drawing.Size(59, 14);
             this.lblGebDatum.TabIndex = 14;
@@ -167,17 +213,17 @@ namespace PMDS.GUI
             // 
             // txtOrt
             // 
-            this.txtOrt.Location = new System.Drawing.Point(101, 196);
+            this.txtOrt.Location = new System.Drawing.Point(210, 232);
             this.txtOrt.MaxLength = 50;
             this.txtOrt.Name = "txtOrt";
-            this.txtOrt.Size = new System.Drawing.Size(192, 21);
-            this.txtOrt.TabIndex = 8;
+            this.txtOrt.Size = new System.Drawing.Size(342, 21);
+            this.txtOrt.TabIndex = 14;
             this.txtOrt.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblOrt
             // 
             this.lblOrt.AutoSize = true;
-            this.lblOrt.Location = new System.Drawing.Point(13, 199);
+            this.lblOrt.Location = new System.Drawing.Point(184, 235);
             this.lblOrt.Name = "lblOrt";
             this.lblOrt.Size = new System.Drawing.Size(20, 14);
             this.lblOrt.TabIndex = 12;
@@ -185,17 +231,17 @@ namespace PMDS.GUI
             // 
             // txtPLZ
             // 
-            this.txtPLZ.Location = new System.Drawing.Point(101, 172);
+            this.txtPLZ.Location = new System.Drawing.Point(101, 232);
             this.txtPLZ.MaxLength = 6;
             this.txtPLZ.Name = "txtPLZ";
             this.txtPLZ.Size = new System.Drawing.Size(56, 21);
-            this.txtPLZ.TabIndex = 7;
+            this.txtPLZ.TabIndex = 13;
             this.txtPLZ.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblPLZ
             // 
             this.lblPLZ.AutoSize = true;
-            this.lblPLZ.Location = new System.Drawing.Point(13, 175);
+            this.lblPLZ.Location = new System.Drawing.Point(13, 235);
             this.lblPLZ.Name = "lblPLZ";
             this.lblPLZ.Size = new System.Drawing.Size(25, 14);
             this.lblPLZ.TabIndex = 10;
@@ -204,25 +250,26 @@ namespace PMDS.GUI
             // lblTitel
             // 
             this.lblTitel.AutoSize = true;
-            this.lblTitel.Location = new System.Drawing.Point(13, 79);
+            this.lblTitel.Location = new System.Drawing.Point(13, 146);
             this.lblTitel.Name = "lblTitel";
-            this.lblTitel.Size = new System.Drawing.Size(26, 14);
+            this.lblTitel.Size = new System.Drawing.Size(48, 14);
             this.lblTitel.TabIndex = 2;
-            this.lblTitel.Text = "Titel";
+            this.lblTitel.Text = "Titel vor.";
             // 
             // txtStrasse
             // 
-            this.txtStrasse.Location = new System.Drawing.Point(101, 148);
+            this.txtStrasse.Location = new System.Drawing.Point(471, 204);
             this.txtStrasse.MaxLength = 50;
             this.txtStrasse.Name = "txtStrasse";
             this.txtStrasse.Size = new System.Drawing.Size(192, 21);
             this.txtStrasse.TabIndex = 6;
+            this.txtStrasse.Visible = false;
             this.txtStrasse.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblStrasse
             // 
             this.lblStrasse.AutoSize = true;
-            this.lblStrasse.Location = new System.Drawing.Point(13, 151);
+            this.lblStrasse.Location = new System.Drawing.Point(13, 208);
             this.lblStrasse.Name = "lblStrasse";
             this.lblStrasse.Size = new System.Drawing.Size(43, 14);
             this.lblStrasse.TabIndex = 8;
@@ -231,7 +278,7 @@ namespace PMDS.GUI
             // lblVorname
             // 
             this.lblVorname.AutoSize = true;
-            this.lblVorname.Location = new System.Drawing.Point(13, 103);
+            this.lblVorname.Location = new System.Drawing.Point(13, 61);
             this.lblVorname.Name = "lblVorname";
             this.lblVorname.Size = new System.Drawing.Size(50, 14);
             this.lblVorname.TabIndex = 4;
@@ -239,26 +286,26 @@ namespace PMDS.GUI
             // 
             // txtVorname
             // 
-            this.txtVorname.Location = new System.Drawing.Point(101, 100);
+            this.txtVorname.Location = new System.Drawing.Point(101, 58);
             this.txtVorname.MaxLength = 25;
             this.txtVorname.Name = "txtVorname";
-            this.txtVorname.Size = new System.Drawing.Size(192, 21);
-            this.txtVorname.TabIndex = 4;
+            this.txtVorname.Size = new System.Drawing.Size(237, 21);
+            this.txtVorname.TabIndex = 3;
             this.txtVorname.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // txtNachname
             // 
-            this.txtNachname.Location = new System.Drawing.Point(101, 124);
+            this.txtNachname.Location = new System.Drawing.Point(101, 31);
             this.txtNachname.MaxLength = 25;
             this.txtNachname.Name = "txtNachname";
-            this.txtNachname.Size = new System.Drawing.Size(192, 21);
-            this.txtNachname.TabIndex = 5;
+            this.txtNachname.Size = new System.Drawing.Size(237, 21);
+            this.txtNachname.TabIndex = 2;
             this.txtNachname.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblNachname
             // 
             this.lblNachname.AutoSize = true;
-            this.lblNachname.Location = new System.Drawing.Point(13, 127);
+            this.lblNachname.Location = new System.Drawing.Point(13, 34);
             this.lblNachname.Name = "lblNachname";
             this.lblNachname.Size = new System.Drawing.Size(59, 14);
             this.lblNachname.TabIndex = 6;
@@ -267,7 +314,7 @@ namespace PMDS.GUI
             // lblGeschlecht
             // 
             this.lblGeschlecht.AutoSize = true;
-            this.lblGeschlecht.Location = new System.Drawing.Point(13, 55);
+            this.lblGeschlecht.Location = new System.Drawing.Point(13, 88);
             this.lblGeschlecht.Name = "lblGeschlecht";
             this.lblGeschlecht.Size = new System.Drawing.Size(61, 14);
             this.lblGeschlecht.TabIndex = 0;
@@ -305,7 +352,7 @@ namespace PMDS.GUI
             // lblAbteilung
             // 
             this.lblAbteilung.AutoSize = true;
-            this.lblAbteilung.Location = new System.Drawing.Point(13, 31);
+            this.lblAbteilung.Location = new System.Drawing.Point(305, 11);
             this.lblAbteilung.Name = "lblAbteilung";
             this.lblAbteilung.Size = new System.Drawing.Size(52, 14);
             this.lblAbteilung.TabIndex = 20;
@@ -313,20 +360,20 @@ namespace PMDS.GUI
             // 
             // chkKontaktbestätigung
             // 
-            this.chkKontaktbestätigung.Location = new System.Drawing.Point(13, 507);
+            this.chkKontaktbestätigung.Location = new System.Drawing.Point(13, 508);
             this.chkKontaktbestätigung.Name = "chkKontaktbestätigung";
             this.chkKontaktbestätigung.Size = new System.Drawing.Size(228, 18);
-            this.chkKontaktbestätigung.TabIndex = 22;
+            this.chkKontaktbestätigung.TabIndex = 17;
             this.chkKontaktbestätigung.Text = "Kontaktbestätigung";
             // 
             // ucVersichrungsdaten1
             // 
             this.ucVersichrungsdaten1.BackColor = System.Drawing.Color.Transparent;
-            this.ucVersichrungsdaten1.Location = new System.Drawing.Point(12, 276);
+            this.ucVersichrungsdaten1.Location = new System.Drawing.Point(12, 297);
             this.ucVersichrungsdaten1.Margin = new System.Windows.Forms.Padding(4);
             this.ucVersichrungsdaten1.Name = "ucVersichrungsdaten1";
             this.ucVersichrungsdaten1.Size = new System.Drawing.Size(550, 204);
-            this.ucVersichrungsdaten1.TabIndex = 23;
+            this.ucVersichrungsdaten1.TabIndex = 16;
             this.ucVersichrungsdaten1.ValueChanged += new System.EventHandler(this.OnVersValueChanged);
             this.ucVersichrungsdaten1.KrankenkasseChanged += new System.EventHandler(this.onVersChanged);
             this.ucVersichrungsdaten1.SVNrChanged += new System.EventHandler(this.onVersChanged);
@@ -337,9 +384,9 @@ namespace PMDS.GUI
             // cbAbteilung
             // 
             this.cbAbteilung.BackColor = System.Drawing.Color.White;
-            this.cbAbteilung.Location = new System.Drawing.Point(101, 27);
+            this.cbAbteilung.Location = new System.Drawing.Point(379, 7);
             this.cbAbteilung.Name = "cbAbteilung";
-            this.cbAbteilung.Size = new System.Drawing.Size(192, 23);
+            this.cbAbteilung.Size = new System.Drawing.Size(173, 23);
             this.cbAbteilung.TabIndex = 1;
             this.cbAbteilung.Tag = "DONTPATCH";
             // 
@@ -353,14 +400,14 @@ namespace PMDS.GUI
             this.txtTitel.Group = "TIT";
             this.txtTitel.ID_PEP = -1;
             this.txtTitel.IgnoreUnterdruecken = true;
-            this.txtTitel.Location = new System.Drawing.Point(101, 76);
+            this.txtTitel.Location = new System.Drawing.Point(101, 143);
             this.txtTitel.Name = "txtTitel";
             this.txtTitel.PflichtJN = false;
             this.txtTitel.SelectDistinct = false;
             this.txtTitel.ShowAddButton = true;
             this.txtTitel.Size = new System.Drawing.Size(192, 21);
             this.txtTitel.sys = false;
-            this.txtTitel.TabIndex = 3;
+            this.txtTitel.TabIndex = 7;
             this.txtTitel.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // txtSexus
@@ -373,19 +420,224 @@ namespace PMDS.GUI
             this.txtSexus.Group = "SEX";
             this.txtSexus.ID_PEP = -1;
             this.txtSexus.IgnoreUnterdruecken = true;
-            this.txtSexus.Location = new System.Drawing.Point(101, 52);
+            this.txtSexus.Location = new System.Drawing.Point(101, 85);
             this.txtSexus.Name = "txtSexus";
             this.txtSexus.PflichtJN = false;
             this.txtSexus.SelectDistinct = false;
             this.txtSexus.ShowAddButton = true;
             this.txtSexus.Size = new System.Drawing.Size(128, 21);
             this.txtSexus.sys = false;
-            this.txtSexus.TabIndex = 2;
+            this.txtSexus.TabIndex = 4;
             this.txtSexus.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // lblHausnummer
+            // 
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            this.lblHausnummer.Appearance = appearance6;
+            this.lblHausnummer.AutoSize = true;
+            this.lblHausnummer.Location = new System.Drawing.Point(344, 209);
+            this.lblHausnummer.Name = "lblHausnummer";
+            this.lblHausnummer.Size = new System.Drawing.Size(19, 14);
+            this.lblHausnummer.TabIndex = 127;
+            this.lblHausnummer.Text = "Nr.";
+            // 
+            // txtHausnummer
+            // 
+            this.txtHausnummer.Location = new System.Drawing.Point(379, 205);
+            this.txtHausnummer.MaxLength = 10;
+            this.txtHausnummer.Name = "txtHausnummer";
+            this.txtHausnummer.Size = new System.Drawing.Size(77, 21);
+            this.txtHausnummer.TabIndex = 12;
+            this.txtHausnummer.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // txtStrasseOhneHausnummer
+            // 
+            this.txtStrasseOhneHausnummer.Location = new System.Drawing.Point(101, 205);
+            this.txtStrasseOhneHausnummer.MaxLength = 60;
+            this.txtStrasseOhneHausnummer.Name = "txtStrasseOhneHausnummer";
+            this.txtStrasseOhneHausnummer.Size = new System.Drawing.Size(237, 21);
+            this.txtStrasseOhneHausnummer.TabIndex = 11;
+            this.txtStrasseOhneHausnummer.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // cmbLand
+            // 
+            this.cmbLand.AddEmptyEntry = false;
+            this.cmbLand.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cmbLand.AutoOpenCBO = false;
+            this.cmbLand.BerufsstandGruppeJNA = -1;
+            this.cmbLand.ExactMatch = false;
+            this.cmbLand.Group = "LND";
+            this.cmbLand.ID_PEP = -1;
+            this.cmbLand.IgnoreUnterdruecken = true;
+            this.cmbLand.Location = new System.Drawing.Point(101, 259);
+            this.cmbLand.MaxLength = 20;
+            this.cmbLand.Name = "cmbLand";
+            this.cmbLand.PflichtJN = false;
+            this.cmbLand.SelectDistinct = false;
+            this.cmbLand.ShowAddButton = true;
+            this.cmbLand.Size = new System.Drawing.Size(451, 21);
+            this.cmbLand.sys = false;
+            this.cmbLand.TabIndex = 15;
+            this.cmbLand.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // lblLand
+            // 
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.lblLand.Appearance = appearance5;
+            this.lblLand.AutoSize = true;
+            this.lblLand.Location = new System.Drawing.Point(13, 263);
+            this.lblLand.Name = "lblLand";
+            this.lblLand.Size = new System.Drawing.Size(29, 14);
+            this.lblLand.TabIndex = 227;
+            this.lblLand.Text = "Land";
+            // 
+            // lblTitelPost
+            // 
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitelPost.Appearance = appearance4;
+            this.lblTitelPost.AutoSize = true;
+            this.lblTitelPost.Location = new System.Drawing.Point(305, 146);
+            this.lblTitelPost.Name = "lblTitelPost";
+            this.lblTitelPost.Size = new System.Drawing.Size(56, 14);
+            this.lblTitelPost.TabIndex = 229;
+            this.lblTitelPost.Text = "Titel nach.";
+            // 
+            // cboTitelPost
+            // 
+            this.cboTitelPost.AddEmptyEntry = false;
+            this.cboTitelPost.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cboTitelPost.AutoOpenCBO = true;
+            this.cboTitelPost.BerufsstandGruppeJNA = -1;
+            this.cboTitelPost.ExactMatch = false;
+            this.cboTitelPost.Group = "TTP";
+            this.cboTitelPost.ID_PEP = -1;
+            this.cboTitelPost.IgnoreUnterdruecken = true;
+            this.cboTitelPost.Location = new System.Drawing.Point(379, 143);
+            this.cboTitelPost.MaxLength = 40;
+            this.cboTitelPost.Name = "cboTitelPost";
+            this.cboTitelPost.PflichtJN = false;
+            this.cboTitelPost.SelectDistinct = false;
+            this.cboTitelPost.ShowAddButton = true;
+            this.cboTitelPost.Size = new System.Drawing.Size(173, 21);
+            this.cboTitelPost.sys = false;
+            this.cboTitelPost.TabIndex = 8;
+            this.cboTitelPost.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // cmbAnrede
+            // 
+            this.cmbAnrede.AddEmptyEntry = false;
+            this.cmbAnrede.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cmbAnrede.AutoOpenCBO = true;
+            this.cmbAnrede.BerufsstandGruppeJNA = -1;
+            this.cmbAnrede.ExactMatch = false;
+            this.cmbAnrede.Group = "ANR";
+            this.cmbAnrede.ID_PEP = -1;
+            this.cmbAnrede.IgnoreUnterdruecken = true;
+            this.cmbAnrede.Location = new System.Drawing.Point(379, 84);
+            this.cmbAnrede.MaxLength = 15;
+            this.cmbAnrede.Name = "cmbAnrede";
+            this.cmbAnrede.PflichtJN = false;
+            this.cmbAnrede.SelectDistinct = false;
+            this.cmbAnrede.ShowAddButton = true;
+            this.cmbAnrede.Size = new System.Drawing.Size(173, 21);
+            this.cmbAnrede.sys = false;
+            this.cmbAnrede.TabIndex = 5;
+            this.cmbAnrede.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // baseLabel1
+            // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.baseLabel1.Appearance = appearance3;
+            this.baseLabel1.AutoSize = true;
+            this.baseLabel1.Location = new System.Drawing.Point(305, 88);
+            this.baseLabel1.Name = "baseLabel1";
+            this.baseLabel1.Size = new System.Drawing.Size(41, 14);
+            this.baseLabel1.TabIndex = 231;
+            this.baseLabel1.Text = "Anrede";
+            // 
+            // cmbStaatsB
+            // 
+            this.cmbStaatsB.AddEmptyEntry = false;
+            this.cmbStaatsB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbStaatsB.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cmbStaatsB.AutoOpenCBO = true;
+            this.cmbStaatsB.BerufsstandGruppeJNA = -1;
+            this.cmbStaatsB.ExactMatch = false;
+            this.cmbStaatsB.Group = "SBS";
+            this.cmbStaatsB.ID_PEP = -1;
+            this.cmbStaatsB.IgnoreUnterdruecken = true;
+            this.cmbStaatsB.Location = new System.Drawing.Point(379, 173);
+            this.cmbStaatsB.MaxLength = 255;
+            this.cmbStaatsB.Name = "cmbStaatsB";
+            this.cmbStaatsB.PflichtJN = false;
+            this.cmbStaatsB.SelectDistinct = false;
+            this.cmbStaatsB.ShowAddButton = true;
+            this.cmbStaatsB.Size = new System.Drawing.Size(173, 21);
+            this.cmbStaatsB.sys = false;
+            this.cmbStaatsB.TabIndex = 10;
+            this.cmbStaatsB.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // lblStatsB
+            // 
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatsB.Appearance = appearance1;
+            this.lblStatsB.AutoSize = true;
+            this.lblStatsB.Location = new System.Drawing.Point(305, 177);
+            this.lblStatsB.Name = "lblStatsB";
+            this.lblStatsB.Size = new System.Drawing.Size(52, 14);
+            this.lblStatsB.TabIndex = 234;
+            this.lblStatsB.Text = "Staatsbg.";
+            // 
+            // cmbFAM
+            // 
+            this.cmbFAM.AddEmptyEntry = false;
+            this.cmbFAM.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cmbFAM.AutoOpenCBO = false;
+            this.cmbFAM.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cmbFAM.BerufsstandGruppeJNA = -1;
+            this.cmbFAM.ExactMatch = false;
+            this.cmbFAM.Group = "FAM";
+            this.cmbFAM.ID_PEP = -1;
+            this.cmbFAM.IgnoreUnterdruecken = true;
+            this.cmbFAM.Location = new System.Drawing.Point(101, 173);
+            this.cmbFAM.MaxLength = 15;
+            this.cmbFAM.Name = "cmbFAM";
+            this.cmbFAM.PflichtJN = false;
+            this.cmbFAM.SelectDistinct = false;
+            this.cmbFAM.ShowAddButton = true;
+            this.cmbFAM.Size = new System.Drawing.Size(192, 21);
+            this.cmbFAM.sys = false;
+            this.cmbFAM.TabIndex = 9;
+            this.cmbFAM.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // lblFamiliensst
+            // 
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.lblFamiliensst.Appearance = appearance2;
+            this.lblFamiliensst.AutoSize = true;
+            this.lblFamiliensst.Location = new System.Drawing.Point(13, 177);
+            this.lblFamiliensst.Name = "lblFamiliensst";
+            this.lblFamiliensst.Size = new System.Drawing.Size(63, 14);
+            this.lblFamiliensst.TabIndex = 235;
+            this.lblFamiliensst.Text = "Fam. Stand";
             // 
             // ucPatientNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.Controls.Add(this.cmbStaatsB);
+            this.Controls.Add(this.lblStatsB);
+            this.Controls.Add(this.cmbFAM);
+            this.Controls.Add(this.lblFamiliensst);
+            this.Controls.Add(this.cmbAnrede);
+            this.Controls.Add(this.baseLabel1);
+            this.Controls.Add(this.lblTitelPost);
+            this.Controls.Add(this.cboTitelPost);
+            this.Controls.Add(this.cmbLand);
+            this.Controls.Add(this.lblLand);
+            this.Controls.Add(this.lblHausnummer);
+            this.Controls.Add(this.txtHausnummer);
+            this.Controls.Add(this.txtStrasseOhneHausnummer);
             this.Controls.Add(this.ucVersichrungsdaten1);
             this.Controls.Add(this.chkKontaktbestätigung);
             this.Controls.Add(this.cbAbteilung);
@@ -409,7 +661,7 @@ namespace PMDS.GUI
             this.Controls.Add(this.txtNachname);
             this.Controls.Add(this.lblNachname);
             this.Name = "ucPatientNew";
-            this.Size = new System.Drawing.Size(574, 542);
+            this.Size = new System.Drawing.Size(574, 561);
             this.Load += new System.EventHandler(this.ucPatientNew_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtpGebDatum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).EndInit();
@@ -422,6 +674,13 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.chkKontaktbestätigung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTitel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSexus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHausnummer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStrasseOhneHausnummer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbLand)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboTitelPost)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAnrede)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbStaatsB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFAM)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -443,7 +702,6 @@ namespace PMDS.GUI
 				_patient = value;
 
                 this.ReadOnlyVersDat = false;
-                this.setControlsAktivDisable(true);
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
@@ -463,23 +721,52 @@ namespace PMDS.GUI
 			}
 		}
 
-		public void UpdateGUI()
-		{
-            dtpAufnahmedatum.Value     = Patient.Aufenthalt.Aufnahmezeitpunkt; //Neu nach 08.05.2007 MDA
-            cbAbteilung.IDAbteilung    = Patient.Aufenthalt.IDAbteilung;
-			txtSexus.Text		       = Patient.Sexus;
-			txtTitel.Text		       = Patient.Titel;
-			txtVorname.Text		       = Patient.Vorname;
-			txtNachname.Text	       = Patient.Nachname;
-			txtStrasse.Text		       = Patient.Adresse.Strasse;
-			txtPLZ.Text			       = Patient.Adresse.Plz;
-			txtOrt.Text			       = Patient.Adresse.Ort;
-			dtpGebDatum.Value	       = Patient.Geburtsdatum;
-		}
+        public void UpdateGUI()
+        {
+            dtpAufnahmedatum.Value = Patient.Aufenthalt.Aufnahmezeitpunkt;
+            cbAbteilung.IDAbteilung = Patient.Aufenthalt.IDAbteilung;
+            txtSexus.Text = Patient.Sexus;
+            txtTitel.Text = Patient.Titel;
+            txtVorname.Text = Patient.Vorname;
+            txtNachname.Text = Patient.Nachname;
+            txtStrasse.Text = Patient.Adresse.Strasse;
+            txtPLZ.Text = Patient.Adresse.Plz;
+            txtOrt.Text = Patient.Adresse.Ort;
+            dtpGebDatum.Value = Patient.Geburtsdatum;
 
-		public void UpdateDATA()
-		{
-            Patient.Aufenthalt.Aufnahmezeitpunkt = dtpAufnahmedatum.DateTime; //Neu nach 08.05.2007 MDA 
+            using (PMDS.db.Entities.ERModellPMDSEntities db1 = PMDSBusiness.getDBContext())
+            {
+                if (this.b.checkPatientExists(Patient.ID, db1))
+                {
+                    var rPatInfo = (from p in db1.Patient
+                                    join adr in db1.Adresse on p.IDAdresse equals adr.ID
+                                    where p.ID == Patient.ID
+
+                                    select new
+                                    {
+                                        p.TitelPost,
+                                        p.Anrede,
+                                        p.Familienstand,
+                                        p.Staatsb,
+                                        adr.Strasse_OhneHausnummer,
+                                        adr.Hausnummer,
+                                        adr.LandKZ
+                                    }
+                                   ).First();
+                    this.cmbAnrede.Text = rPatInfo.Anrede;
+                    this.cboTitelPost.Text = rPatInfo.TitelPost;
+                    this.cmbFAM.Text = rPatInfo.Familienstand;
+                    this.cmbStaatsB.Text = rPatInfo.Staatsb;
+                    this.txtStrasseOhneHausnummer.Text = rPatInfo.Strasse_OhneHausnummer == null ? "" : rPatInfo.Strasse_OhneHausnummer.ToString();
+                    this.txtHausnummer.Text = rPatInfo.Hausnummer == null ? "" : rPatInfo.Hausnummer.ToString();
+                    this.cmbLand.Text = rPatInfo.LandKZ;
+                }
+            }
+        }
+
+        public void UpdateDATA()
+        {
+            Patient.Aufenthalt.Aufnahmezeitpunkt = dtpAufnahmedatum.DateTime;
 
             if (cbAbteilung.IsAbteilungSelected)
             {
@@ -489,18 +776,18 @@ namespace PMDS.GUI
                 Patient.Aufenthalt.IDBereich = this.cbAbteilung.IDBereich;
             }
 
-            Patient.Sexus			             = txtSexus.Text;
-			Patient.Titel			             = txtTitel.Text;
-			Patient.Vorname			             = txtVorname.Text;
-			Patient.Nachname		             = txtNachname.Text;
-			Patient.Adresse.Strasse	             = txtStrasse.Text;
-			Patient.Adresse.Plz		             = txtPLZ.Text;
-			Patient.Adresse.Ort		             = txtOrt.Text;
-			Patient.Geburtsdatum	             = dtpGebDatum.Value;
+            Patient.Sexus = txtSexus.Text;
+            Patient.Titel = txtTitel.Text;
+            Patient.Vorname = txtVorname.Text;
+            Patient.Nachname = txtNachname.Text;
+            Patient.Adresse.Strasse = txtStrasse.Text;
+            Patient.Adresse.Plz = txtPLZ.Text;
+            Patient.Adresse.Ort = txtOrt.Text;
+            Patient.Geburtsdatum = dtpGebDatum.Value;
 
             if (Patient.Aufenthalt.IDAbteilung == null)
             {
-                throw new Exception("UpdateDATA: Patient.Aufenthalt.IDAbteilung == null not allowed for Patient '" + Patient.Nachname.Trim () + "'!");
+                throw new Exception("UpdateDATA: Patient.Aufenthalt.IDAbteilung == null not allowed for Patient '" + Patient.Nachname.Trim() + "'!");
             }
 
             Patient.IDAbteilung = Patient.Aufenthalt.IDAbteilung;
@@ -517,6 +804,39 @@ namespace PMDS.GUI
                 Patient.Aufenthalt.AufnahmeVerlauf.IDBereich = cbAbteilung.IDBereich;
 
             this.ucVersichrungsdaten1.UpdateDATA();
+        }
+
+        public void UpdateDataER()
+        {
+            //Save ER
+            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+            {
+                if (this.b.checkPatientExists(Patient.ID, db))
+                {
+                    //Patientenstammdaten
+                    PMDS.db.Entities.Patient rPatient = this.b.getPatient(Patient.ID, db);
+                    rPatient.Anrede = cmbAnrede.Text;
+                    rPatient.TitelPost = cboTitelPost.Text;
+                    rPatient.Familienstand = cmbFAM.Text;
+                    rPatient.Staatsb = cmbStaatsB.Text;
+                    rPatient.ForensischerHintergrund = false;
+
+                    //Versicherungsdaten
+                    rPatient.SozVersMitversichertBei = this.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text;
+                    rPatient.SozVersLeerGrund = this.ucVersichrungsdaten1.cboSozVersLeerGrund.Text;
+                    rPatient.SozVersStatus = this.ucVersichrungsdaten1.cboSozVersStatus.Text;
+                    rPatient.Klasse = this.ucVersichrungsdaten1.Klasse;
+
+                    //Adressdaten
+                    PMDS.db.Entities.Adresse rAdresse = this.b.getAdresse((Guid)rPatient.IDAdresse, db);
+                    rAdresse.Strasse_OhneHausnummer = txtStrasseOhneHausnummer.Text;
+                    rAdresse.Hausnummer = txtHausnummer.Text;
+                    rAdresse.Strasse = (txtStrasseOhneHausnummer.Text + " " + txtHausnummer.Text).Trim();
+                    rAdresse.LandKZ = cmbLand.Text;
+
+                    db.SaveChanges();
+                }
+            }
         }
 
 		protected void OnValueChanged(object sender, EventArgs args)
@@ -549,11 +869,6 @@ namespace PMDS.GUI
 			bool bError = false;
 			bool bInfo = true;
 
-            //Neu nach 08.05.2007 MDA
-            // dtpAufnahmedatum
-            //GuiUtil.ValidateField(dtpAufnahmedatum, (dtpAufnahmedatum.DateTime <= DateTime.Now),
-            //    "Das Datum darf nicht in der Zukunft liegen.", ref bError, bInfo, errorProvider1);
-            
             // cbAbteilung
             GuiUtil.ValidateField(cbAbteilung, cbAbteilung.IsAbteilungSelected,
                 ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
@@ -619,12 +934,6 @@ namespace PMDS.GUI
                 ucVersichrungsdaten1.ReadOnly = value;
             }
         }
-
-        public void setControlsAktivDisable(bool bOn)
-        {
-            //PMDS.GUI.BaseControls.historie.OnOffControls(this.ucVersichrungsdaten1.ultraGroupBoxVersicherungsdaten, bOn);
-        }
-
     }
 
 }

@@ -831,6 +831,7 @@ namespace PMDS.GUI
                 }
 
                 pat.Write();
+                p0.UpdateDataER();  //Daten aus dem Control in die DB per EF übertragen (für die die Datasets nicht erweitert wurden)
                 LastAufnahmePatientID = pat.ID;
 
                 PMDSBusinessUI bUI = new PMDSBusinessUI();
