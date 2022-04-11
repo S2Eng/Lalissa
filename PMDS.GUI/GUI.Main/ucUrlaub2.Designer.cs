@@ -56,7 +56,7 @@
             // labEnde
             // 
             this.labEnde.AutoSize = true;
-            this.labEnde.Location = new System.Drawing.Point(12, 92);
+            this.labEnde.Location = new System.Drawing.Point(12, 88);
             this.labEnde.Name = "labEnde";
             this.labEnde.Size = new System.Drawing.Size(31, 14);
             this.labEnde.TabIndex = 8;
@@ -65,7 +65,7 @@
             // dtpEnde
             // 
             this.dtpEnde.FormatString = "";
-            this.dtpEnde.Location = new System.Drawing.Point(135, 90);
+            this.dtpEnde.Location = new System.Drawing.Point(135, 86);
             this.dtpEnde.MaskInput = "dd.mm.yyyy hh:mm";
             this.dtpEnde.Name = "dtpEnde";
             this.dtpEnde.ownFormat = "";
@@ -76,13 +76,15 @@
             // txtUrlaub
             // 
             this.txtUrlaub.AddEmptyEntry = false;
+            this.txtUrlaub.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUrlaub.AutoOpenCBO = false;
             this.txtUrlaub.BerufsstandGruppeJNA = -1;
             this.txtUrlaub.ExactMatch = false;
             this.txtUrlaub.Group = "URL";
             this.txtUrlaub.ID_PEP = -1;
             this.txtUrlaub.IgnoreUnterdruecken = true;
-            this.txtUrlaub.Location = new System.Drawing.Point(135, 114);
+            this.txtUrlaub.Location = new System.Drawing.Point(135, 113);
             this.txtUrlaub.Name = "txtUrlaub";
             this.txtUrlaub.PflichtJN = false;
             this.txtUrlaub.SelectDistinct = false;
@@ -94,7 +96,7 @@
             // labBeginn
             // 
             this.labBeginn.AutoSize = true;
-            this.labBeginn.Location = new System.Drawing.Point(12, 68);
+            this.labBeginn.Location = new System.Drawing.Point(12, 61);
             this.labBeginn.Name = "labBeginn";
             this.labBeginn.Size = new System.Drawing.Size(40, 14);
             this.labBeginn.TabIndex = 6;
@@ -103,7 +105,7 @@
             // labUrlaub
             // 
             this.labUrlaub.AutoSize = true;
-            this.labUrlaub.Location = new System.Drawing.Point(12, 116);
+            this.labUrlaub.Location = new System.Drawing.Point(12, 115);
             this.labUrlaub.Name = "labUrlaub";
             this.labUrlaub.Size = new System.Drawing.Size(74, 14);
             this.labUrlaub.TabIndex = 10;
@@ -112,7 +114,7 @@
             // dtpBeginn
             // 
             this.dtpBeginn.FormatString = "";
-            this.dtpBeginn.Location = new System.Drawing.Point(135, 66);
+            this.dtpBeginn.Location = new System.Drawing.Point(135, 59);
             this.dtpBeginn.MaskInput = "dd.mm.yyyy hh:mm";
             this.dtpBeginn.Name = "dtpBeginn";
             this.dtpBeginn.ownFormat = "";
@@ -195,6 +197,8 @@
             // 
             // pnlSTAMP
             // 
+            this.pnlSTAMP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlSTAMP.Controls.Add(this.lblAbwesenheitsgrund);
             this.pnlSTAMP.Controls.Add(this.auswahlSTAMP_Awesenheitsgrund);
             this.pnlSTAMP.Location = new System.Drawing.Point(12, 140);

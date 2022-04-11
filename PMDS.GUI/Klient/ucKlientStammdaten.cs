@@ -182,7 +182,7 @@ namespace PMDS.GUI
 
             if (this._isAbrechnung || this._isBewerberJN)
             {
-
+                //Keine Aufenthaltsdaten verwenden
                 this.panelAufenthaltsdaten2.Visible = false;
                 this.txtGewicht.Visible = false;
                 this.lblGewicht.Visible = false;
@@ -193,6 +193,11 @@ namespace PMDS.GUI
             {
                 this.txtBesonderheit2.Visible = ENV.HasRight(UserRights.Dienstübergabe);
                 this.lblBesonderheit.Visible = ENV.HasRight(UserRights.Dienstübergabe);
+            }
+
+            if (ENV.lic_STAMP)
+            {
+                lblGruppenKz.Text = "Synonym (STAMP)";
             }
         }
         //----------------------------------------------------------------------------
@@ -563,7 +568,7 @@ namespace PMDS.GUI
                                                        a.STAMP_VorherigeBetreuungsformen
                                                    }).FirstOrDefault();
 
-                    if (VorherigeBetreuungsform.STAMP_VorherigeBetreuungsformen != null)
+                    if (VorherigeBetreuungsform != null  && VorherigeBetreuungsform.STAMP_VorherigeBetreuungsformen != null)
                         cboVorherigeBetreuungsformenMulti.setSelectedRows(VorherigeBetreuungsform.STAMP_VorherigeBetreuungsformen.Trim());
                     else
                         cboVorherigeBetreuungsformenMulti.setSelectedRows("");
@@ -2627,11 +2632,6 @@ namespace PMDS.GUI
                     frmMessageBox1.ShowDialog();
                 }
             }
-        }
-
-        private void tabStammdaten_SelectedTabChanged(object sender, SelectedTabChangedEventArgs e)
-        {
-
         }
     }
 }

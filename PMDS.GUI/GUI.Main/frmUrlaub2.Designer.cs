@@ -36,15 +36,16 @@
             this.ucUrlaub21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucUrlaub21.Location = new System.Drawing.Point(0, 0);
             this.ucUrlaub21.Name = "ucUrlaub21";
-            this.ucUrlaub21.Size = new System.Drawing.Size(449, 192);
+            this.ucUrlaub21.Size = new System.Drawing.Size(499, 228);
             this.ucUrlaub21.TabIndex = 0;
             // 
             // frmUrlaub2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 192);
+            this.ClientSize = new System.Drawing.Size(499, 228);
             this.Controls.Add(this.ucUrlaub21);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmUrlaub2";

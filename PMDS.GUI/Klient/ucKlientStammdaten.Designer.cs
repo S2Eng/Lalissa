@@ -37,12 +37,34 @@ namespace PMDS.GUI
         {
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo6 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Gemeinde, in der letzte Hauptwohnsitz gelegen ist.", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance119 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance120 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance121 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance122 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance123 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance124 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance125 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance126 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance127 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance128 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance134 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance129 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance130 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance131 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance132 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance133 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance59 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance60 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance61 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance65 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
@@ -52,6 +74,7 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Bereichsspezifisches Personenkennzeichen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
@@ -65,63 +88,39 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Gemeinde, in der letzte Hauptwohnsitz gelegen ist.", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance84 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance85 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance86 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance87 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Bereichsspezifisches Personenkennzeichen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance88 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance89 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance90 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance91 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance92 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance93 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance94 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance95 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance96 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance97 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance98 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance99 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance100 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance101 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance102 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance103 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance104 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance105 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance106 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance107 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance108 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance109 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance110 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance111 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance112 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance113 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance114 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance115 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance116 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance117 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance118 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance119 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance120 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance121 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance122 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance123 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance124 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo6 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Klientenfoto öffnen", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance125 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance126 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance127 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance128 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance129 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance130 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance131 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance132 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance133 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance134 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Klientenfoto öffnen", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance49 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance50 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance51 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance52 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance53 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance54 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance55 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance56 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance57 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance58 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance69 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance70 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("PatientAerzte", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatient");
@@ -137,59 +136,6 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Fachrichtung", 1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn50 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TelAdresse", 2);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn51 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EMail", 3);
-            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Kontaktdelegation", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucKlientStammdaten));
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance49 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance50 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance51 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance52 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Sachwalter", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn52 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn53 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatient");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn54 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAdresse");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn55 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKontakt");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Name");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Belange");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn58 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("BestimmtAm");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TelAdresse", 0, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn60 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EMail", 1);
-            Infragistics.Win.Appearance appearance53 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance54 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance55 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance56 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance57 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance58 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance59 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance60 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance61 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance65 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab6 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab7 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance69 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance70 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance71 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance72 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance73 = new Infragistics.Win.Appearance();
@@ -201,6 +147,59 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance79 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance80 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance81 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Appearance appearance82 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Kontaktdelegation", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance83 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucKlientStammdaten));
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance84 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance85 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance86 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance87 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Sachwalter", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn52 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn53 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatient");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn54 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAdresse");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn55 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKontakt");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Name");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Belange");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn58 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("BestimmtAm");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TelAdresse", 0, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn60 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EMail", 1);
+            Infragistics.Win.Appearance appearance88 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance89 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance90 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance91 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance92 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance93 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance94 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance95 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance96 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance97 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance98 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Appearance appearance99 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance100 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance101 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab6 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab7 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance102 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance103 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance104 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance105 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance106 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance107 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance108 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance109 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance110 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance111 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance112 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance113 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance114 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance115 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance116 = new Infragistics.Win.Appearance();
             PMDS.DB.PMDSBusiness pmdsBusiness1 = new PMDS.DB.PMDSBusiness();
             PMDS.GUI.PMDSBusinessUI pmdsBusinessUI1 = new PMDS.GUI.PMDSBusinessUI();
             PMDS.Global.db.ERSystem.PMDSBusinessUI pmdsBusinessUI2 = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
@@ -210,12 +209,12 @@ namespace PMDS.GUI
             PMDS.DB.PMDSBusiness pmdsBusiness2 = new PMDS.DB.PMDSBusiness();
             PMDS.Global.UIGlobal uiGlobal2 = new PMDS.Global.UIGlobal();
             WCFServiceClient wcfServiceClient1 = new WCFServiceClient();
-            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint3 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Appearance appearance82 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance83 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance117 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance118 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -226,8 +225,11 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab10 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab11 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab12 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl4 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBoxAdressdaten = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.cmbHaupwohnsitzgemeinde = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.lblHauptwohnsitzgemeinde = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblHausnummer = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtHausnummer = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.txtStrasseOhneHausnummer = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -278,25 +280,21 @@ namespace PMDS.GUI
             this.lblFaxSub = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.grpAdmin = new QS2.Desktop.ControlManagment.BaseGroupBox();
-            this.panelAufenthaltsdaten2 = new QS2.Desktop.ControlManagment.BasePanel();
             this.chkELGAAbgemeldet = new QS2.Desktop.ControlManagment.BaseCheckBox();
-            this.cmbHaupwohnsitzgemeinde = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
-            this.lblHauptwohnsitzgemeinde = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.lblVorhergendeBetreuungsformen = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.cboVorherigeBetreuungsformenMulti = new PMDS.GUI.Klient.cboAuswahllisteMulti();
+            this.panelAufenthaltsdaten2 = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnAbwesenheitsendeBestätigen = new Infragistics.Win.Misc.UltraButton();
             this.txtZimmerNr = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.lblKennwort = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.baseLabel4 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblZimNr = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.txtbPK = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.txtKennwort = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lblGruppenKz = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblFallzahl = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtFallzahl = new QS2.Desktop.ControlManagment.BaseMaskEdit();
             this.txtgruppenkennzahl = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.chkMilieubetreuung = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.chkAbwesenheitBeendet = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.txtKennwort = new QS2.Desktop.ControlManagment.BaseTextEditor();
+            this.lblKennwort = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.baseLabel4 = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.txtbPK = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lblMobilTelNrKlient = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraGroupBoxOben = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.lbleMailKlient = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -429,6 +427,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl10 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.contELGAKlient1 = new PMDS.GUI.ELGA.contELGAKlient();
             this.ultraTabPageControl11 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.pnlSTAMP = new Infragistics.Win.Misc.UltraPanel();
             this.ucSTAMPData1 = new PMDS.GUI.STAMP.ucSTAMPData();
             this.contextMenuStripÄrzte = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.zusammenführenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -439,10 +438,12 @@ namespace PMDS.GUI
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridBagLayoutPanel1 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
-            this.pnlSTAMP = new Infragistics.Win.Misc.UltraPanel();
+            this.lblVorhergendeBetreuungsformen = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cboVorherigeBetreuungsformenMulti = new PMDS.GUI.Klient.cboAuswahllisteMulti();
             this.ultraTabPageControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBoxAdressdaten)).BeginInit();
             this.ultraGroupBoxAdressdaten.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbHaupwohnsitzgemeinde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHausnummer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStrasseOhneHausnummer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lift)).BeginInit();
@@ -473,15 +474,14 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpAdmin)).BeginInit();
             this.grpAdmin.SuspendLayout();
-            this.panelAufenthaltsdaten2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkELGAAbgemeldet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbHaupwohnsitzgemeinde)).BeginInit();
+            this.panelAufenthaltsdaten2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtZimmerNr)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbPK)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKennwort)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtgruppenkennzahl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkMilieubetreuung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAbwesenheitBeendet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKennwort)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbPK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBoxOben)).BeginInit();
             this.ultraGroupBoxOben.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboTitelPost)).BeginInit();
@@ -574,34 +574,39 @@ namespace PMDS.GUI
             this.ultraTabPageControl9.SuspendLayout();
             this.ultraTabPageControl10.SuspendLayout();
             this.ultraTabPageControl11.SuspendLayout();
+            this.pnlSTAMP.ClientArea.SuspendLayout();
+            this.pnlSTAMP.SuspendLayout();
             this.contextMenuStripÄrzte.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabStammdaten)).BeginInit();
             this.tabStammdaten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel1)).BeginInit();
             this.ultraGridBagLayoutPanel1.SuspendLayout();
-            this.pnlSTAMP.ClientArea.SuspendLayout();
-            this.pnlSTAMP.SuspendLayout();
             this.SuspendLayout();
             // 
             // ultraTabPageControl4
             // 
             this.ultraTabPageControl4.Controls.Add(this.ultraGroupBoxAdressdaten);
+            this.ultraTabPageControl4.Controls.Add(this.cmbBenutzer);
+            this.ultraTabPageControl4.Controls.Add(this.lblErstKontakt);
             this.ultraTabPageControl4.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
-            this.ultraTabPageControl4.Size = new System.Drawing.Size(477, 544);
+            this.ultraTabPageControl4.Size = new System.Drawing.Size(477, 592);
             // 
             // ultraGroupBoxAdressdaten
             // 
             appearance1.BackColor = System.Drawing.Color.Transparent;
             this.ultraGroupBoxAdressdaten.Appearance = appearance1;
+            this.ultraGroupBoxAdressdaten.Controls.Add(this.lblVorhergendeBetreuungsformen);
+            this.ultraGroupBoxAdressdaten.Controls.Add(this.cboVorherigeBetreuungsformenMulti);
+            this.ultraGroupBoxAdressdaten.Controls.Add(this.cmbHaupwohnsitzgemeinde);
+            this.ultraGroupBoxAdressdaten.Controls.Add(this.lblHauptwohnsitzgemeinde);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.lblHausnummer);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.txtHausnummer);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.txtStrasseOhneHausnummer);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.lift);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.txtLand);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.lblLand);
-            this.ultraGroupBoxAdressdaten.Controls.Add(this.cmbBenutzer);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.lblZustgStelle);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.txtZustgStelle);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.lblWohnSituation);
@@ -615,7 +620,6 @@ namespace PMDS.GUI
             this.ultraGroupBoxAdressdaten.Controls.Add(this.txtEmail);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.lblMobil);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.txtMobil);
-            this.ultraGroupBoxAdressdaten.Controls.Add(this.lblErstKontakt);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.txtTelefon);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.lblTelefon);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.lblOrt);
@@ -625,18 +629,55 @@ namespace PMDS.GUI
             this.ultraGroupBoxAdressdaten.Controls.Add(this.lblStrasse);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.txtFax);
             this.ultraGroupBoxAdressdaten.Controls.Add(this.lblFax);
-            this.ultraGroupBoxAdressdaten.Location = new System.Drawing.Point(6, 3);
+            this.ultraGroupBoxAdressdaten.Location = new System.Drawing.Point(6, 7);
             this.ultraGroupBoxAdressdaten.Name = "ultraGroupBoxAdressdaten";
-            this.ultraGroupBoxAdressdaten.Size = new System.Drawing.Size(464, 518);
+            this.ultraGroupBoxAdressdaten.Size = new System.Drawing.Size(464, 551);
             this.ultraGroupBoxAdressdaten.TabIndex = 68;
             this.ultraGroupBoxAdressdaten.Text = "Adressdaten";
             // 
+            // cmbHaupwohnsitzgemeinde
+            // 
+            this.cmbHaupwohnsitzgemeinde.AddEmptyEntry = false;
+            appearance3.BackColor = System.Drawing.Color.White;
+            this.cmbHaupwohnsitzgemeinde.Appearance = appearance3;
+            this.cmbHaupwohnsitzgemeinde.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cmbHaupwohnsitzgemeinde.AutoOpenCBO = false;
+            this.cmbHaupwohnsitzgemeinde.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cmbHaupwohnsitzgemeinde.BackColor = System.Drawing.Color.White;
+            this.cmbHaupwohnsitzgemeinde.BerufsstandGruppeJNA = -1;
+            this.cmbHaupwohnsitzgemeinde.ExactMatch = false;
+            this.cmbHaupwohnsitzgemeinde.Group = "GKZ";
+            this.cmbHaupwohnsitzgemeinde.ID_PEP = -1;
+            this.cmbHaupwohnsitzgemeinde.IgnoreUnterdruecken = true;
+            this.cmbHaupwohnsitzgemeinde.Location = new System.Drawing.Point(160, 117);
+            this.cmbHaupwohnsitzgemeinde.MaxLength = 40;
+            this.cmbHaupwohnsitzgemeinde.Name = "cmbHaupwohnsitzgemeinde";
+            this.cmbHaupwohnsitzgemeinde.PflichtJN = false;
+            this.cmbHaupwohnsitzgemeinde.SelectDistinct = false;
+            this.cmbHaupwohnsitzgemeinde.ShowAddButton = true;
+            this.cmbHaupwohnsitzgemeinde.Size = new System.Drawing.Size(292, 24);
+            this.cmbHaupwohnsitzgemeinde.sys = false;
+            this.cmbHaupwohnsitzgemeinde.TabIndex = 7;
+            // 
+            // lblHauptwohnsitzgemeinde
+            // 
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.lblHauptwohnsitzgemeinde.Appearance = appearance4;
+            this.lblHauptwohnsitzgemeinde.AutoSize = true;
+            this.lblHauptwohnsitzgemeinde.Location = new System.Drawing.Point(8, 121);
+            this.lblHauptwohnsitzgemeinde.Name = "lblHauptwohnsitzgemeinde";
+            this.lblHauptwohnsitzgemeinde.Size = new System.Drawing.Size(146, 17);
+            this.lblHauptwohnsitzgemeinde.TabIndex = 223;
+            this.lblHauptwohnsitzgemeinde.Text = "Letzte HWS-Gemeinde";
+            ultraToolTipInfo6.ToolTipText = "Gemeinde, in der letzte Hauptwohnsitz gelegen ist.";
+            this.ultraToolTipManager1.SetUltraToolTip(this.lblHauptwohnsitzgemeinde, ultraToolTipInfo6);
+            // 
             // lblHausnummer
             // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.lblHausnummer.Appearance = appearance2;
+            appearance119.BackColor = System.Drawing.Color.Transparent;
+            this.lblHausnummer.Appearance = appearance119;
             this.lblHausnummer.AutoSize = true;
-            this.lblHausnummer.Location = new System.Drawing.Point(353, 63);
+            this.lblHausnummer.Location = new System.Drawing.Point(352, 31);
             this.lblHausnummer.Name = "lblHausnummer";
             this.lblHausnummer.Size = new System.Drawing.Size(23, 17);
             this.lblHausnummer.TabIndex = 124;
@@ -644,7 +685,7 @@ namespace PMDS.GUI
             // 
             // txtHausnummer
             // 
-            this.txtHausnummer.Location = new System.Drawing.Point(376, 59);
+            this.txtHausnummer.Location = new System.Drawing.Point(375, 27);
             this.txtHausnummer.MaxLength = 10;
             this.txtHausnummer.Name = "txtHausnummer";
             this.txtHausnummer.Size = new System.Drawing.Size(77, 24);
@@ -653,7 +694,7 @@ namespace PMDS.GUI
             // 
             // txtStrasseOhneHausnummer
             // 
-            this.txtStrasseOhneHausnummer.Location = new System.Drawing.Point(113, 59);
+            this.txtStrasseOhneHausnummer.Location = new System.Drawing.Point(112, 27);
             this.txtStrasseOhneHausnummer.MaxLength = 60;
             this.txtStrasseOhneHausnummer.Name = "txtStrasseOhneHausnummer";
             this.txtStrasseOhneHausnummer.Size = new System.Drawing.Size(237, 24);
@@ -662,14 +703,14 @@ namespace PMDS.GUI
             // 
             // lift
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.lift.Appearance = appearance3;
+            appearance120.BackColor = System.Drawing.Color.Transparent;
+            this.lift.Appearance = appearance120;
             this.lift.BackColor = System.Drawing.Color.Transparent;
             this.lift.BackColorInternal = System.Drawing.Color.Transparent;
-            this.lift.Location = new System.Drawing.Point(113, 372);
+            this.lift.Location = new System.Drawing.Point(112, 410);
             this.lift.Name = "lift";
             this.lift.Size = new System.Drawing.Size(85, 20);
-            this.lift.TabIndex = 13;
+            this.lift.TabIndex = 14;
             this.lift.Text = "Lift";
             this.lift.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -683,23 +724,23 @@ namespace PMDS.GUI
             this.txtLand.Group = "LND";
             this.txtLand.ID_PEP = -1;
             this.txtLand.IgnoreUnterdruecken = true;
-            this.txtLand.Location = new System.Drawing.Point(203, 119);
+            this.txtLand.Location = new System.Drawing.Point(160, 87);
             this.txtLand.MaxLength = 20;
             this.txtLand.Name = "txtLand";
             this.txtLand.PflichtJN = false;
             this.txtLand.SelectDistinct = false;
             this.txtLand.ShowAddButton = true;
-            this.txtLand.Size = new System.Drawing.Size(250, 24);
+            this.txtLand.Size = new System.Drawing.Size(292, 24);
             this.txtLand.sys = false;
             this.txtLand.TabIndex = 6;
             this.txtLand.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblLand
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.lblLand.Appearance = appearance4;
+            appearance121.BackColor = System.Drawing.Color.Transparent;
+            this.lblLand.Appearance = appearance121;
             this.lblLand.AutoSize = true;
-            this.lblLand.Location = new System.Drawing.Point(168, 123);
+            this.lblLand.Location = new System.Drawing.Point(8, 91);
             this.lblLand.Name = "lblLand";
             this.lblLand.Size = new System.Drawing.Size(35, 17);
             this.lblLand.TabIndex = 121;
@@ -709,18 +750,19 @@ namespace PMDS.GUI
             // 
             this.cmbBenutzer.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cmbBenutzer.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
-            this.cmbBenutzer.Location = new System.Drawing.Point(113, 29);
+            this.cmbBenutzer.Location = new System.Drawing.Point(119, 565);
             this.cmbBenutzer.Name = "cmbBenutzer";
             this.cmbBenutzer.Size = new System.Drawing.Size(340, 24);
             this.cmbBenutzer.TabIndex = 1;
+            this.cmbBenutzer.Visible = false;
             this.cmbBenutzer.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblZustgStelle
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.lblZustgStelle.Appearance = appearance5;
+            appearance122.BackColor = System.Drawing.Color.Transparent;
+            this.lblZustgStelle.Appearance = appearance122;
             this.lblZustgStelle.AutoSize = true;
-            this.lblZustgStelle.Location = new System.Drawing.Point(6, 395);
+            this.lblZustgStelle.Location = new System.Drawing.Point(8, 433);
             this.lblZustgStelle.Name = "lblZustgStelle";
             this.lblZustgStelle.Size = new System.Drawing.Size(74, 17);
             this.lblZustgStelle.TabIndex = 70;
@@ -729,19 +771,19 @@ namespace PMDS.GUI
             // txtZustgStelle
             // 
             this.txtZustgStelle.AutoSize = false;
-            this.txtZustgStelle.Location = new System.Drawing.Point(113, 395);
+            this.txtZustgStelle.Location = new System.Drawing.Point(112, 433);
             this.txtZustgStelle.MaxLength = 25;
             this.txtZustgStelle.Name = "txtZustgStelle";
             this.txtZustgStelle.Size = new System.Drawing.Size(340, 21);
-            this.txtZustgStelle.TabIndex = 14;
+            this.txtZustgStelle.TabIndex = 15;
             this.txtZustgStelle.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblWohnSituation
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.lblWohnSituation.Appearance = appearance6;
+            appearance123.BackColor = System.Drawing.Color.Transparent;
+            this.lblWohnSituation.Appearance = appearance123;
             this.lblWohnSituation.AutoSize = true;
-            this.lblWohnSituation.Location = new System.Drawing.Point(6, 329);
+            this.lblWohnSituation.Location = new System.Drawing.Point(8, 354);
             this.lblWohnSituation.Name = "lblWohnSituation";
             this.lblWohnSituation.Size = new System.Drawing.Size(92, 17);
             this.lblWohnSituation.TabIndex = 68;
@@ -750,20 +792,20 @@ namespace PMDS.GUI
             // txtWohnsituation
             // 
             this.txtWohnsituation.AutoSize = false;
-            this.txtWohnsituation.Location = new System.Drawing.Point(113, 326);
+            this.txtWohnsituation.Location = new System.Drawing.Point(112, 351);
             this.txtWohnsituation.MaxLength = 100;
             this.txtWohnsituation.Multiline = true;
             this.txtWohnsituation.Name = "txtWohnsituation";
-            this.txtWohnsituation.Size = new System.Drawing.Size(340, 40);
-            this.txtWohnsituation.TabIndex = 12;
+            this.txtWohnsituation.Size = new System.Drawing.Size(340, 53);
+            this.txtWohnsituation.TabIndex = 13;
             this.txtWohnsituation.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblHausTier
             // 
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            this.lblHausTier.Appearance = appearance7;
+            appearance124.BackColor = System.Drawing.Color.Transparent;
+            this.lblHausTier.Appearance = appearance124;
             this.lblHausTier.AutoSize = true;
-            this.lblHausTier.Location = new System.Drawing.Point(7, 472);
+            this.lblHausTier.Location = new System.Drawing.Point(8, 510);
             this.lblHausTier.Name = "lblHausTier";
             this.lblHausTier.Size = new System.Drawing.Size(73, 17);
             this.lblHausTier.TabIndex = 65;
@@ -771,19 +813,19 @@ namespace PMDS.GUI
             // 
             // txtHaustier
             // 
-            this.txtHaustier.Location = new System.Drawing.Point(113, 468);
+            this.txtHaustier.Location = new System.Drawing.Point(112, 506);
             this.txtHaustier.MaxLength = 100;
             this.txtHaustier.Multiline = true;
             this.txtHaustier.Name = "txtHaustier";
             this.txtHaustier.Size = new System.Drawing.Size(340, 40);
-            this.txtHaustier.TabIndex = 16;
+            this.txtHaustier.TabIndex = 17;
             this.txtHaustier.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblKlingel
             // 
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            this.lblKlingel.Appearance = appearance8;
-            this.lblKlingel.Location = new System.Drawing.Point(6, 425);
+            appearance125.BackColor = System.Drawing.Color.Transparent;
+            this.lblKlingel.Appearance = appearance125;
+            this.lblKlingel.Location = new System.Drawing.Point(8, 463);
             this.lblKlingel.Name = "lblKlingel";
             this.lblKlingel.Size = new System.Drawing.Size(93, 37);
             this.lblKlingel.TabIndex = 63;
@@ -792,33 +834,33 @@ namespace PMDS.GUI
             // txtKlingeln
             // 
             this.txtKlingeln.AutoSize = false;
-            this.txtKlingeln.Location = new System.Drawing.Point(113, 422);
+            this.txtKlingeln.Location = new System.Drawing.Point(112, 460);
             this.txtKlingeln.MaxLength = 100;
             this.txtKlingeln.Multiline = true;
             this.txtKlingeln.Name = "txtKlingeln";
             this.txtKlingeln.Size = new System.Drawing.Size(340, 40);
-            this.txtKlingeln.TabIndex = 15;
+            this.txtKlingeln.TabIndex = 16;
             this.txtKlingeln.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // WohnungAb
             // 
-            appearance9.BackColor = System.Drawing.Color.Transparent;
-            this.WohnungAb.Appearance = appearance9;
+            appearance126.BackColor = System.Drawing.Color.Transparent;
+            this.WohnungAb.Appearance = appearance126;
             this.WohnungAb.BackColor = System.Drawing.Color.Transparent;
             this.WohnungAb.BackColorInternal = System.Drawing.Color.Transparent;
-            this.WohnungAb.Location = new System.Drawing.Point(113, 149);
+            this.WohnungAb.Location = new System.Drawing.Point(112, 188);
             this.WohnungAb.Name = "WohnungAb";
             this.WohnungAb.Size = new System.Drawing.Size(162, 20);
-            this.WohnungAb.TabIndex = 7;
+            this.WohnungAb.TabIndex = 8;
             this.WohnungAb.Text = "Wohnung abgemeldet";
             this.WohnungAb.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblEmail
             // 
-            appearance10.BackColor = System.Drawing.Color.Transparent;
-            this.lblEmail.Appearance = appearance10;
+            appearance127.BackColor = System.Drawing.Color.Transparent;
+            this.lblEmail.Appearance = appearance127;
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(8, 276);
+            this.lblEmail.Location = new System.Drawing.Point(8, 310);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(39, 17);
             this.lblEmail.TabIndex = 60;
@@ -826,19 +868,19 @@ namespace PMDS.GUI
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(113, 272);
+            this.txtEmail.Location = new System.Drawing.Point(112, 306);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(340, 24);
-            this.txtEmail.TabIndex = 11;
+            this.txtEmail.TabIndex = 12;
             this.txtEmail.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblMobil
             // 
-            appearance11.BackColor = System.Drawing.Color.Transparent;
-            this.lblMobil.Appearance = appearance11;
+            appearance128.BackColor = System.Drawing.Color.Transparent;
+            this.lblMobil.Appearance = appearance128;
             this.lblMobil.AutoSize = true;
-            this.lblMobil.Location = new System.Drawing.Point(7, 216);
+            this.lblMobil.Location = new System.Drawing.Point(8, 250);
             this.lblMobil.Name = "lblMobil";
             this.lblMobil.Size = new System.Drawing.Size(38, 17);
             this.lblMobil.TabIndex = 58;
@@ -846,39 +888,40 @@ namespace PMDS.GUI
             // 
             // txtMobil
             // 
-            this.txtMobil.Location = new System.Drawing.Point(113, 212);
+            this.txtMobil.Location = new System.Drawing.Point(112, 246);
             this.txtMobil.MaxLength = 25;
             this.txtMobil.Name = "txtMobil";
             this.txtMobil.Size = new System.Drawing.Size(341, 24);
-            this.txtMobil.TabIndex = 9;
+            this.txtMobil.TabIndex = 10;
             this.txtMobil.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblErstKontakt
             // 
-            appearance12.BackColor = System.Drawing.Color.Transparent;
-            this.lblErstKontakt.Appearance = appearance12;
+            appearance134.BackColor = System.Drawing.Color.Transparent;
+            this.lblErstKontakt.Appearance = appearance134;
             this.lblErstKontakt.AutoSize = true;
-            this.lblErstKontakt.Location = new System.Drawing.Point(8, 33);
+            this.lblErstKontakt.Location = new System.Drawing.Point(14, 569);
             this.lblErstKontakt.Name = "lblErstKontakt";
             this.lblErstKontakt.Size = new System.Drawing.Size(74, 17);
             this.lblErstKontakt.TabIndex = 56;
             this.lblErstKontakt.Text = "Erstkontakt";
+            this.lblErstKontakt.Visible = false;
             // 
             // txtTelefon
             // 
-            this.txtTelefon.Location = new System.Drawing.Point(113, 182);
+            this.txtTelefon.Location = new System.Drawing.Point(112, 216);
             this.txtTelefon.MaxLength = 25;
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(341, 24);
-            this.txtTelefon.TabIndex = 8;
+            this.txtTelefon.TabIndex = 9;
             this.txtTelefon.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblTelefon
             // 
-            appearance13.BackColor = System.Drawing.Color.Transparent;
-            this.lblTelefon.Appearance = appearance13;
+            appearance129.BackColor = System.Drawing.Color.Transparent;
+            this.lblTelefon.Appearance = appearance129;
             this.lblTelefon.AutoSize = true;
-            this.lblTelefon.Location = new System.Drawing.Point(6, 186);
+            this.lblTelefon.Location = new System.Drawing.Point(8, 220);
             this.lblTelefon.Name = "lblTelefon";
             this.lblTelefon.Size = new System.Drawing.Size(51, 17);
             this.lblTelefon.TabIndex = 52;
@@ -886,10 +929,10 @@ namespace PMDS.GUI
             // 
             // lblOrt
             // 
-            appearance14.BackColor = System.Drawing.Color.Transparent;
-            this.lblOrt.Appearance = appearance14;
+            appearance130.BackColor = System.Drawing.Color.Transparent;
+            this.lblOrt.Appearance = appearance130;
             this.lblOrt.AutoSize = true;
-            this.lblOrt.Location = new System.Drawing.Point(168, 93);
+            this.lblOrt.Location = new System.Drawing.Point(167, 61);
             this.lblOrt.Name = "lblOrt";
             this.lblOrt.Size = new System.Drawing.Size(24, 17);
             this.lblOrt.TabIndex = 50;
@@ -897,7 +940,7 @@ namespace PMDS.GUI
             // 
             // txtOrt
             // 
-            this.txtOrt.Location = new System.Drawing.Point(203, 89);
+            this.txtOrt.Location = new System.Drawing.Point(202, 57);
             this.txtOrt.MaxLength = 50;
             this.txtOrt.Name = "txtOrt";
             this.txtOrt.Size = new System.Drawing.Size(250, 24);
@@ -906,10 +949,10 @@ namespace PMDS.GUI
             // 
             // lblPLZ
             // 
-            appearance15.BackColor = System.Drawing.Color.Transparent;
-            this.lblPLZ.Appearance = appearance15;
+            appearance131.BackColor = System.Drawing.Color.Transparent;
+            this.lblPLZ.Appearance = appearance131;
             this.lblPLZ.AutoSize = true;
-            this.lblPLZ.Location = new System.Drawing.Point(7, 93);
+            this.lblPLZ.Location = new System.Drawing.Point(8, 61);
             this.lblPLZ.Name = "lblPLZ";
             this.lblPLZ.Size = new System.Drawing.Size(30, 17);
             this.lblPLZ.TabIndex = 48;
@@ -917,7 +960,7 @@ namespace PMDS.GUI
             // 
             // txtPLZ
             // 
-            this.txtPLZ.Location = new System.Drawing.Point(113, 89);
+            this.txtPLZ.Location = new System.Drawing.Point(112, 57);
             this.txtPLZ.MaxLength = 6;
             this.txtPLZ.Name = "txtPLZ";
             this.txtPLZ.Size = new System.Drawing.Size(48, 24);
@@ -926,10 +969,10 @@ namespace PMDS.GUI
             // 
             // lblStrasse
             // 
-            appearance16.BackColor = System.Drawing.Color.Transparent;
-            this.lblStrasse.Appearance = appearance16;
+            appearance132.BackColor = System.Drawing.Color.Transparent;
+            this.lblStrasse.Appearance = appearance132;
             this.lblStrasse.AutoSize = true;
-            this.lblStrasse.Location = new System.Drawing.Point(8, 63);
+            this.lblStrasse.Location = new System.Drawing.Point(8, 31);
             this.lblStrasse.Name = "lblStrasse";
             this.lblStrasse.Size = new System.Drawing.Size(52, 17);
             this.lblStrasse.TabIndex = 46;
@@ -937,19 +980,19 @@ namespace PMDS.GUI
             // 
             // txtFax
             // 
-            this.txtFax.Location = new System.Drawing.Point(113, 242);
+            this.txtFax.Location = new System.Drawing.Point(112, 276);
             this.txtFax.MaxLength = 25;
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(340, 24);
-            this.txtFax.TabIndex = 10;
+            this.txtFax.TabIndex = 11;
             this.txtFax.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblFax
             // 
-            appearance17.BackColor = System.Drawing.Color.Transparent;
-            this.lblFax.Appearance = appearance17;
+            appearance133.BackColor = System.Drawing.Color.Transparent;
+            this.lblFax.Appearance = appearance133;
             this.lblFax.AutoSize = true;
-            this.lblFax.Location = new System.Drawing.Point(6, 246);
+            this.lblFax.Location = new System.Drawing.Point(8, 280);
             this.lblFax.Name = "lblFax";
             this.lblFax.Size = new System.Drawing.Size(28, 17);
             this.lblFax.TabIndex = 54;
@@ -964,8 +1007,8 @@ namespace PMDS.GUI
             // 
             // ultraGroupBoxAdressdatenNWS
             // 
-            appearance18.BackColor = System.Drawing.Color.Transparent;
-            this.ultraGroupBoxAdressdatenNWS.Appearance = appearance18;
+            appearance59.BackColor = System.Drawing.Color.Transparent;
+            this.ultraGroupBoxAdressdatenNWS.Appearance = appearance59;
             this.ultraGroupBoxAdressdatenNWS.Controls.Add(this.txtLandNWS);
             this.ultraGroupBoxAdressdatenNWS.Controls.Add(this.lblLandSub);
             this.ultraGroupBoxAdressdatenNWS.Controls.Add(this.lblEMailSub);
@@ -1011,8 +1054,8 @@ namespace PMDS.GUI
             // 
             // lblLandSub
             // 
-            appearance19.BackColor = System.Drawing.Color.Transparent;
-            this.lblLandSub.Appearance = appearance19;
+            appearance60.BackColor = System.Drawing.Color.Transparent;
+            this.lblLandSub.Appearance = appearance60;
             this.lblLandSub.AutoSize = true;
             this.lblLandSub.Location = new System.Drawing.Point(168, 93);
             this.lblLandSub.Name = "lblLandSub";
@@ -1022,8 +1065,8 @@ namespace PMDS.GUI
             // 
             // lblEMailSub
             // 
-            appearance20.BackColor = System.Drawing.Color.Transparent;
-            this.lblEMailSub.Appearance = appearance20;
+            appearance61.BackColor = System.Drawing.Color.Transparent;
+            this.lblEMailSub.Appearance = appearance61;
             this.lblEMailSub.AutoSize = true;
             this.lblEMailSub.Location = new System.Drawing.Point(259, 179);
             this.lblEMailSub.Name = "lblEMailSub";
@@ -1042,8 +1085,8 @@ namespace PMDS.GUI
             // 
             // lblMobilSub
             // 
-            appearance21.BackColor = System.Drawing.Color.Transparent;
-            this.lblMobilSub.Appearance = appearance21;
+            appearance62.BackColor = System.Drawing.Color.Transparent;
+            this.lblMobilSub.Appearance = appearance62;
             this.lblMobilSub.AutoSize = true;
             this.lblMobilSub.Location = new System.Drawing.Point(259, 149);
             this.lblMobilSub.Name = "lblMobilSub";
@@ -1071,8 +1114,8 @@ namespace PMDS.GUI
             // 
             // lblTelefonSub
             // 
-            appearance22.BackColor = System.Drawing.Color.Transparent;
-            this.lblTelefonSub.Appearance = appearance22;
+            appearance63.BackColor = System.Drawing.Color.Transparent;
+            this.lblTelefonSub.Appearance = appearance63;
             this.lblTelefonSub.AutoSize = true;
             this.lblTelefonSub.Location = new System.Drawing.Point(15, 149);
             this.lblTelefonSub.Name = "lblTelefonSub";
@@ -1082,8 +1125,8 @@ namespace PMDS.GUI
             // 
             // lblOrtSub
             // 
-            appearance23.BackColor = System.Drawing.Color.Transparent;
-            this.lblOrtSub.Appearance = appearance23;
+            appearance64.BackColor = System.Drawing.Color.Transparent;
+            this.lblOrtSub.Appearance = appearance64;
             this.lblOrtSub.AutoSize = true;
             this.lblOrtSub.Location = new System.Drawing.Point(168, 63);
             this.lblOrtSub.Name = "lblOrtSub";
@@ -1102,8 +1145,8 @@ namespace PMDS.GUI
             // 
             // lblPLZSub
             // 
-            appearance24.BackColor = System.Drawing.Color.Transparent;
-            this.lblPLZSub.Appearance = appearance24;
+            appearance65.BackColor = System.Drawing.Color.Transparent;
+            this.lblPLZSub.Appearance = appearance65;
             this.lblPLZSub.AutoSize = true;
             this.lblPLZSub.Location = new System.Drawing.Point(14, 63);
             this.lblPLZSub.Name = "lblPLZSub";
@@ -1131,8 +1174,8 @@ namespace PMDS.GUI
             // 
             // lblAdresse
             // 
-            appearance25.BackColor = System.Drawing.Color.Transparent;
-            this.lblAdresse.Appearance = appearance25;
+            appearance66.BackColor = System.Drawing.Color.Transparent;
+            this.lblAdresse.Appearance = appearance66;
             this.lblAdresse.AutoSize = true;
             this.lblAdresse.Location = new System.Drawing.Point(15, 33);
             this.lblAdresse.Name = "lblAdresse";
@@ -1151,8 +1194,8 @@ namespace PMDS.GUI
             // 
             // lblFaxSub
             // 
-            appearance26.BackColor = System.Drawing.Color.Transparent;
-            this.lblFaxSub.Appearance = appearance26;
+            appearance67.BackColor = System.Drawing.Color.Transparent;
+            this.lblFaxSub.Appearance = appearance67;
             this.lblFaxSub.AutoSize = true;
             this.lblFaxSub.Location = new System.Drawing.Point(15, 179);
             this.lblFaxSub.Name = "lblFaxSub";
@@ -1176,113 +1219,52 @@ namespace PMDS.GUI
             // 
             // grpAdmin
             // 
+            this.grpAdmin.Controls.Add(this.chkELGAAbgemeldet);
             this.grpAdmin.Controls.Add(this.panelAufenthaltsdaten2);
             this.grpAdmin.Controls.Add(this.chkMilieubetreuung);
             this.grpAdmin.Controls.Add(this.chkAbwesenheitBeendet);
+            this.grpAdmin.Controls.Add(this.txtKennwort);
+            this.grpAdmin.Controls.Add(this.lblKennwort);
+            this.grpAdmin.Controls.Add(this.baseLabel4);
+            this.grpAdmin.Controls.Add(this.txtbPK);
             this.grpAdmin.Location = new System.Drawing.Point(503, 410);
             this.grpAdmin.Name = "grpAdmin";
             this.grpAdmin.Size = new System.Drawing.Size(519, 239);
             this.grpAdmin.TabIndex = 222;
             this.grpAdmin.Text = "Administrative Daten";
             // 
+            // chkELGAAbgemeldet
+            // 
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            this.chkELGAAbgemeldet.Appearance = appearance8;
+            this.chkELGAAbgemeldet.BackColor = System.Drawing.Color.Transparent;
+            this.chkELGAAbgemeldet.BackColorInternal = System.Drawing.Color.Transparent;
+            this.chkELGAAbgemeldet.Location = new System.Drawing.Point(12, 184);
+            this.chkELGAAbgemeldet.Name = "chkELGAAbgemeldet";
+            this.chkELGAAbgemeldet.Size = new System.Drawing.Size(137, 20);
+            this.chkELGAAbgemeldet.TabIndex = 19;
+            this.chkELGAAbgemeldet.Text = "ELGA abgemeldet";
+            // 
             // panelAufenthaltsdaten2
             // 
-            this.panelAufenthaltsdaten2.Controls.Add(this.chkELGAAbgemeldet);
-            this.panelAufenthaltsdaten2.Controls.Add(this.cmbHaupwohnsitzgemeinde);
-            this.panelAufenthaltsdaten2.Controls.Add(this.lblHauptwohnsitzgemeinde);
-            this.panelAufenthaltsdaten2.Controls.Add(this.lblVorhergendeBetreuungsformen);
-            this.panelAufenthaltsdaten2.Controls.Add(this.cboVorherigeBetreuungsformenMulti);
             this.panelAufenthaltsdaten2.Controls.Add(this.btnAbwesenheitsendeBestätigen);
             this.panelAufenthaltsdaten2.Controls.Add(this.txtZimmerNr);
-            this.panelAufenthaltsdaten2.Controls.Add(this.lblKennwort);
-            this.panelAufenthaltsdaten2.Controls.Add(this.baseLabel4);
             this.panelAufenthaltsdaten2.Controls.Add(this.lblZimNr);
-            this.panelAufenthaltsdaten2.Controls.Add(this.txtbPK);
-            this.panelAufenthaltsdaten2.Controls.Add(this.txtKennwort);
             this.panelAufenthaltsdaten2.Controls.Add(this.lblGruppenKz);
             this.panelAufenthaltsdaten2.Controls.Add(this.lblFallzahl);
             this.panelAufenthaltsdaten2.Controls.Add(this.txtFallzahl);
             this.panelAufenthaltsdaten2.Controls.Add(this.txtgruppenkennzahl);
             this.panelAufenthaltsdaten2.Location = new System.Drawing.Point(1, 18);
             this.panelAufenthaltsdaten2.Name = "panelAufenthaltsdaten2";
-            this.panelAufenthaltsdaten2.Size = new System.Drawing.Size(518, 194);
+            this.panelAufenthaltsdaten2.Size = new System.Drawing.Size(518, 130);
             this.panelAufenthaltsdaten2.TabIndex = 14;
-            // 
-            // chkELGAAbgemeldet
-            // 
-            appearance27.BackColor = System.Drawing.Color.Transparent;
-            this.chkELGAAbgemeldet.Appearance = appearance27;
-            this.chkELGAAbgemeldet.BackColor = System.Drawing.Color.Transparent;
-            this.chkELGAAbgemeldet.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkELGAAbgemeldet.Location = new System.Drawing.Point(11, 165);
-            this.chkELGAAbgemeldet.Name = "chkELGAAbgemeldet";
-            this.chkELGAAbgemeldet.Size = new System.Drawing.Size(137, 20);
-            this.chkELGAAbgemeldet.TabIndex = 19;
-            this.chkELGAAbgemeldet.Text = "ELGA abgemeldet";
-            // 
-            // cmbHaupwohnsitzgemeinde
-            // 
-            this.cmbHaupwohnsitzgemeinde.AddEmptyEntry = false;
-            appearance28.BackColor = System.Drawing.Color.White;
-            this.cmbHaupwohnsitzgemeinde.Appearance = appearance28;
-            this.cmbHaupwohnsitzgemeinde.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
-            this.cmbHaupwohnsitzgemeinde.AutoOpenCBO = false;
-            this.cmbHaupwohnsitzgemeinde.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
-            this.cmbHaupwohnsitzgemeinde.BackColor = System.Drawing.Color.White;
-            this.cmbHaupwohnsitzgemeinde.BerufsstandGruppeJNA = -1;
-            this.cmbHaupwohnsitzgemeinde.ExactMatch = false;
-            this.cmbHaupwohnsitzgemeinde.Group = "GKZ";
-            this.cmbHaupwohnsitzgemeinde.ID_PEP = -1;
-            this.cmbHaupwohnsitzgemeinde.IgnoreUnterdruecken = true;
-            this.cmbHaupwohnsitzgemeinde.Location = new System.Drawing.Point(169, 132);
-            this.cmbHaupwohnsitzgemeinde.MaxLength = 40;
-            this.cmbHaupwohnsitzgemeinde.Name = "cmbHaupwohnsitzgemeinde";
-            this.cmbHaupwohnsitzgemeinde.PflichtJN = false;
-            this.cmbHaupwohnsitzgemeinde.SelectDistinct = false;
-            this.cmbHaupwohnsitzgemeinde.ShowAddButton = true;
-            this.cmbHaupwohnsitzgemeinde.Size = new System.Drawing.Size(337, 24);
-            this.cmbHaupwohnsitzgemeinde.sys = false;
-            this.cmbHaupwohnsitzgemeinde.TabIndex = 18;
-            this.cmbHaupwohnsitzgemeinde.ValueChanged += new System.EventHandler(this.OnValueChanged);
-            // 
-            // lblHauptwohnsitzgemeinde
-            // 
-            appearance29.BackColor = System.Drawing.Color.Transparent;
-            this.lblHauptwohnsitzgemeinde.Appearance = appearance29;
-            this.lblHauptwohnsitzgemeinde.AutoSize = true;
-            this.lblHauptwohnsitzgemeinde.Location = new System.Drawing.Point(10, 136);
-            this.lblHauptwohnsitzgemeinde.Name = "lblHauptwohnsitzgemeinde";
-            this.lblHauptwohnsitzgemeinde.Size = new System.Drawing.Size(146, 17);
-            this.lblHauptwohnsitzgemeinde.TabIndex = 221;
-            this.lblHauptwohnsitzgemeinde.Text = "Letzte HWS-Gemeinde";
-            ultraToolTipInfo4.ToolTipText = "Gemeinde, in der letzte Hauptwohnsitz gelegen ist.";
-            this.ultraToolTipManager1.SetUltraToolTip(this.lblHauptwohnsitzgemeinde, ultraToolTipInfo4);
-            // 
-            // lblVorhergendeBetreuungsformen
-            // 
-            appearance84.BackColor = System.Drawing.Color.Transparent;
-            this.lblVorhergendeBetreuungsformen.Appearance = appearance84;
-            this.lblVorhergendeBetreuungsformen.AutoSize = true;
-            this.lblVorhergendeBetreuungsformen.Location = new System.Drawing.Point(11, 102);
-            this.lblVorhergendeBetreuungsformen.Name = "lblVorhergendeBetreuungsformen";
-            this.lblVorhergendeBetreuungsformen.Size = new System.Drawing.Size(105, 17);
-            this.lblVorhergendeBetreuungsformen.TabIndex = 103;
-            this.lblVorhergendeBetreuungsformen.Text = "Vorh. Betreuung";
-            // 
-            // cboVorherigeBetreuungsformenMulti
-            // 
-            this.cboVorherigeBetreuungsformenMulti.Location = new System.Drawing.Point(121, 98);
-            this.cboVorherigeBetreuungsformenMulti.Margin = new System.Windows.Forms.Padding(5);
-            this.cboVorherigeBetreuungsformenMulti.Name = "cboVorherigeBetreuungsformenMulti";
-            this.cboVorherigeBetreuungsformenMulti.Size = new System.Drawing.Size(385, 26);
-            this.cboVorherigeBetreuungsformenMulti.TabIndex = 17;
             // 
             // btnAbwesenheitsendeBestätigen
             // 
-            appearance85.ForeColor = System.Drawing.Color.Black;
-            appearance85.ForeColorDisabled = System.Drawing.Color.Black;
-            this.btnAbwesenheitsendeBestätigen.Appearance = appearance85;
-            this.btnAbwesenheitsendeBestätigen.Location = new System.Drawing.Point(237, 64);
+            appearance9.ForeColor = System.Drawing.Color.Black;
+            appearance9.ForeColorDisabled = System.Drawing.Color.Black;
+            this.btnAbwesenheitsendeBestätigen.Appearance = appearance9;
+            this.btnAbwesenheitsendeBestätigen.Location = new System.Drawing.Point(237, 102);
             this.btnAbwesenheitsendeBestätigen.Name = "btnAbwesenheitsendeBestätigen";
             this.btnAbwesenheitsendeBestätigen.Size = new System.Drawing.Size(270, 26);
             this.btnAbwesenheitsendeBestätigen.TabIndex = 17;
@@ -1291,70 +1273,28 @@ namespace PMDS.GUI
             // 
             // txtZimmerNr
             // 
-            this.txtZimmerNr.Location = new System.Drawing.Point(121, 67);
+            this.txtZimmerNr.Location = new System.Drawing.Point(121, 36);
             this.txtZimmerNr.MaxLength = 5;
             this.txtZimmerNr.Name = "txtZimmerNr";
-            this.txtZimmerNr.Size = new System.Drawing.Size(68, 24);
+            this.txtZimmerNr.Size = new System.Drawing.Size(97, 24);
             this.txtZimmerNr.TabIndex = 16;
-            // 
-            // lblKennwort
-            // 
-            appearance86.BackColor = System.Drawing.Color.Transparent;
-            this.lblKennwort.Appearance = appearance86;
-            this.lblKennwort.AutoSize = true;
-            this.lblKennwort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblKennwort.Location = new System.Drawing.Point(11, 39);
-            this.lblKennwort.Name = "lblKennwort";
-            this.lblKennwort.Size = new System.Drawing.Size(63, 17);
-            this.lblKennwort.TabIndex = 100;
-            this.lblKennwort.Text = "Kennwort";
-            // 
-            // baseLabel4
-            // 
-            appearance87.BackColor = System.Drawing.Color.Transparent;
-            this.baseLabel4.Appearance = appearance87;
-            this.baseLabel4.AutoSize = true;
-            this.baseLabel4.Location = new System.Drawing.Point(169, 166);
-            this.baseLabel4.Name = "baseLabel4";
-            this.baseLabel4.Size = new System.Drawing.Size(31, 17);
-            this.baseLabel4.TabIndex = 214;
-            this.baseLabel4.Text = "bBK";
-            ultraToolTipInfo5.ToolTipText = "Bereichsspezifisches Personenkennzeichen";
-            this.ultraToolTipManager1.SetUltraToolTip(this.baseLabel4, ultraToolTipInfo5);
             // 
             // lblZimNr
             // 
-            appearance88.BackColor = System.Drawing.Color.Transparent;
-            this.lblZimNr.Appearance = appearance88;
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            this.lblZimNr.Appearance = appearance10;
             this.lblZimNr.AutoSize = true;
             this.lblZimNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblZimNr.Location = new System.Drawing.Point(11, 69);
+            this.lblZimNr.Location = new System.Drawing.Point(11, 40);
             this.lblZimNr.Name = "lblZimNr";
             this.lblZimNr.Size = new System.Drawing.Size(70, 17);
             this.lblZimNr.TabIndex = 101;
             this.lblZimNr.Text = "Zimmer.Nr";
             // 
-            // txtbPK
-            // 
-            this.errorProvider1.SetIconAlignment(this.txtbPK, System.Windows.Forms.ErrorIconAlignment.TopLeft);
-            this.txtbPK.Location = new System.Drawing.Point(296, 162);
-            this.txtbPK.MaxLength = 25;
-            this.txtbPK.Name = "txtbPK";
-            this.txtbPK.Size = new System.Drawing.Size(210, 24);
-            this.txtbPK.TabIndex = 20;
-            // 
-            // txtKennwort
-            // 
-            this.txtKennwort.Location = new System.Drawing.Point(121, 37);
-            this.txtKennwort.MaxLength = 20;
-            this.txtKennwort.Name = "txtKennwort";
-            this.txtKennwort.Size = new System.Drawing.Size(386, 24);
-            this.txtKennwort.TabIndex = 15;
-            // 
             // lblGruppenKz
             // 
-            appearance89.BackColor = System.Drawing.Color.Transparent;
-            this.lblGruppenKz.Appearance = appearance89;
+            appearance11.BackColor = System.Drawing.Color.Transparent;
+            this.lblGruppenKz.Appearance = appearance11;
             this.lblGruppenKz.AutoSize = true;
             this.lblGruppenKz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblGruppenKz.Location = new System.Drawing.Point(237, 10);
@@ -1365,8 +1305,8 @@ namespace PMDS.GUI
             // 
             // lblFallzahl
             // 
-            appearance90.BackColor = System.Drawing.Color.Transparent;
-            this.lblFallzahl.Appearance = appearance90;
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.lblFallzahl.Appearance = appearance12;
             this.lblFallzahl.AutoSize = true;
             this.lblFallzahl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblFallzahl.Location = new System.Drawing.Point(11, 11);
@@ -1394,12 +1334,12 @@ namespace PMDS.GUI
             // 
             // chkMilieubetreuung
             // 
-            appearance91.BackColor = System.Drawing.Color.Transparent;
-            appearance91.TextVAlignAsString = "Middle";
-            this.chkMilieubetreuung.Appearance = appearance91;
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            appearance13.TextVAlignAsString = "Middle";
+            this.chkMilieubetreuung.Appearance = appearance13;
             this.chkMilieubetreuung.BackColor = System.Drawing.Color.Transparent;
             this.chkMilieubetreuung.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkMilieubetreuung.Location = new System.Drawing.Point(11, 212);
+            this.chkMilieubetreuung.Location = new System.Drawing.Point(12, 210);
             this.chkMilieubetreuung.Name = "chkMilieubetreuung";
             this.chkMilieubetreuung.Size = new System.Drawing.Size(124, 20);
             this.chkMilieubetreuung.TabIndex = 21;
@@ -1409,22 +1349,64 @@ namespace PMDS.GUI
             // 
             // chkAbwesenheitBeendet
             // 
-            appearance92.BackColor = System.Drawing.Color.Transparent;
-            appearance92.TextVAlignAsString = "Middle";
-            this.chkAbwesenheitBeendet.Appearance = appearance92;
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            appearance14.TextVAlignAsString = "Middle";
+            this.chkAbwesenheitBeendet.Appearance = appearance14;
             this.chkAbwesenheitBeendet.BackColor = System.Drawing.Color.Transparent;
             this.chkAbwesenheitBeendet.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkAbwesenheitBeendet.Location = new System.Drawing.Point(170, 214);
+            this.chkAbwesenheitBeendet.Location = new System.Drawing.Point(170, 212);
             this.chkAbwesenheitBeendet.Name = "chkAbwesenheitBeendet";
             this.chkAbwesenheitBeendet.Size = new System.Drawing.Size(205, 18);
             this.chkAbwesenheitBeendet.TabIndex = 22;
             this.chkAbwesenheitBeendet.Text = "Abwesenheitsende bestätigen";
             this.chkAbwesenheitBeendet.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
+            // txtKennwort
+            // 
+            this.txtKennwort.Location = new System.Drawing.Point(120, 152);
+            this.txtKennwort.MaxLength = 20;
+            this.txtKennwort.Name = "txtKennwort";
+            this.txtKennwort.Size = new System.Drawing.Size(386, 24);
+            this.txtKennwort.TabIndex = 15;
+            // 
+            // lblKennwort
+            // 
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            this.lblKennwort.Appearance = appearance15;
+            this.lblKennwort.AutoSize = true;
+            this.lblKennwort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblKennwort.Location = new System.Drawing.Point(12, 156);
+            this.lblKennwort.Name = "lblKennwort";
+            this.lblKennwort.Size = new System.Drawing.Size(63, 17);
+            this.lblKennwort.TabIndex = 100;
+            this.lblKennwort.Text = "Kennwort";
+            // 
+            // baseLabel4
+            // 
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            this.baseLabel4.Appearance = appearance16;
+            this.baseLabel4.AutoSize = true;
+            this.baseLabel4.Location = new System.Drawing.Point(170, 185);
+            this.baseLabel4.Name = "baseLabel4";
+            this.baseLabel4.Size = new System.Drawing.Size(31, 17);
+            this.baseLabel4.TabIndex = 214;
+            this.baseLabel4.Text = "bPK";
+            ultraToolTipInfo1.ToolTipText = "Bereichsspezifisches Personenkennzeichen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.baseLabel4, ultraToolTipInfo1);
+            // 
+            // txtbPK
+            // 
+            this.errorProvider1.SetIconAlignment(this.txtbPK, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.txtbPK.Location = new System.Drawing.Point(236, 181);
+            this.txtbPK.MaxLength = 25;
+            this.txtbPK.Name = "txtbPK";
+            this.txtbPK.Size = new System.Drawing.Size(270, 24);
+            this.txtbPK.TabIndex = 20;
+            // 
             // lblMobilTelNrKlient
             // 
-            appearance93.BackColor = System.Drawing.Color.Transparent;
-            this.lblMobilTelNrKlient.Appearance = appearance93;
+            appearance17.BackColor = System.Drawing.Color.Transparent;
+            this.lblMobilTelNrKlient.Appearance = appearance17;
             this.lblMobilTelNrKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblMobilTelNrKlient.Location = new System.Drawing.Point(93, 251);
             this.lblMobilTelNrKlient.Name = "lblMobilTelNrKlient";
@@ -1467,8 +1449,8 @@ namespace PMDS.GUI
             // 
             // lbleMailKlient
             // 
-            appearance94.BackColor = System.Drawing.Color.Transparent;
-            this.lbleMailKlient.Appearance = appearance94;
+            appearance18.BackColor = System.Drawing.Color.Transparent;
+            this.lbleMailKlient.Appearance = appearance18;
             this.lbleMailKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lbleMailKlient.Location = new System.Drawing.Point(90, 273);
             this.lbleMailKlient.Name = "lbleMailKlient";
@@ -1478,8 +1460,8 @@ namespace PMDS.GUI
             // 
             // lblEMailPat
             // 
-            appearance95.BackColor = System.Drawing.Color.Transparent;
-            this.lblEMailPat.Appearance = appearance95;
+            appearance19.BackColor = System.Drawing.Color.Transparent;
+            this.lblEMailPat.Appearance = appearance19;
             this.lblEMailPat.AutoSize = true;
             this.lblEMailPat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblEMailPat.Location = new System.Drawing.Point(16, 273);
@@ -1490,8 +1472,8 @@ namespace PMDS.GUI
             // 
             // lblTitelPost
             // 
-            appearance96.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitelPost.Appearance = appearance96;
+            appearance20.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitelPost.Appearance = appearance20;
             this.lblTitelPost.AutoSize = true;
             this.lblTitelPost.Location = new System.Drawing.Point(235, 154);
             this.lblTitelPost.Name = "lblTitelPost";
@@ -1522,8 +1504,8 @@ namespace PMDS.GUI
             // 
             // lblMobilTel
             // 
-            appearance97.BackColor = System.Drawing.Color.Transparent;
-            this.lblMobilTel.Appearance = appearance97;
+            appearance21.BackColor = System.Drawing.Color.Transparent;
+            this.lblMobilTel.Appearance = appearance21;
             this.lblMobilTel.AutoSize = true;
             this.lblMobilTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblMobilTel.Location = new System.Drawing.Point(16, 246);
@@ -1545,13 +1527,13 @@ namespace PMDS.GUI
             // 
             // dteTodeszeitpunkt
             // 
-            appearance98.BackColor = System.Drawing.Color.White;
-            appearance98.BackColor2 = System.Drawing.Color.White;
-            appearance98.BackColorDisabled = System.Drawing.Color.White;
-            appearance98.BackColorDisabled2 = System.Drawing.Color.White;
-            appearance98.ForeColor = System.Drawing.Color.Black;
-            appearance98.ForeColorDisabled = System.Drawing.Color.Black;
-            this.dteTodeszeitpunkt.Appearance = appearance98;
+            appearance22.BackColor = System.Drawing.Color.White;
+            appearance22.BackColor2 = System.Drawing.Color.White;
+            appearance22.BackColorDisabled = System.Drawing.Color.White;
+            appearance22.BackColorDisabled2 = System.Drawing.Color.White;
+            appearance22.ForeColor = System.Drawing.Color.Black;
+            appearance22.ForeColorDisabled = System.Drawing.Color.Black;
+            this.dteTodeszeitpunkt.Appearance = appearance22;
             this.dteTodeszeitpunkt.BackColor = System.Drawing.Color.White;
             this.dteTodeszeitpunkt.DateTime = new System.DateTime(2017, 6, 19, 0, 0, 0, 0);
             this.dteTodeszeitpunkt.FormatString = "";
@@ -1567,8 +1549,8 @@ namespace PMDS.GUI
             // 
             // lblTodeszeitpunkt
             // 
-            appearance99.BackColor = System.Drawing.Color.Transparent;
-            this.lblTodeszeitpunkt.Appearance = appearance99;
+            appearance23.BackColor = System.Drawing.Color.Transparent;
+            this.lblTodeszeitpunkt.Appearance = appearance23;
             this.lblTodeszeitpunkt.AutoSize = true;
             this.lblTodeszeitpunkt.Location = new System.Drawing.Point(145, 8);
             this.lblTodeszeitpunkt.Name = "lblTodeszeitpunkt";
@@ -1578,8 +1560,8 @@ namespace PMDS.GUI
             // 
             // chkVerstorben
             // 
-            appearance100.BackColor = System.Drawing.Color.Transparent;
-            this.chkVerstorben.Appearance = appearance100;
+            appearance24.BackColor = System.Drawing.Color.Transparent;
+            this.chkVerstorben.Appearance = appearance24;
             this.chkVerstorben.BackColor = System.Drawing.Color.Transparent;
             this.chkVerstorben.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkVerstorben.Location = new System.Drawing.Point(3, 7);
@@ -1678,8 +1660,8 @@ namespace PMDS.GUI
             // 
             // lblStatsB
             // 
-            appearance101.BackColor = System.Drawing.Color.Transparent;
-            this.lblStatsB.Appearance = appearance101;
+            appearance25.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatsB.Appearance = appearance25;
             this.lblStatsB.AutoSize = true;
             this.lblStatsB.Location = new System.Drawing.Point(235, 185);
             this.lblStatsB.Name = "lblStatsB";
@@ -1721,8 +1703,8 @@ namespace PMDS.GUI
             // 
             // lblKonf
             // 
-            appearance102.BackColor = System.Drawing.Color.Transparent;
-            this.lblKonf.Appearance = appearance102;
+            appearance26.BackColor = System.Drawing.Color.Transparent;
+            this.lblKonf.Appearance = appearance26;
             this.lblKonf.AutoSize = true;
             this.lblKonf.Location = new System.Drawing.Point(14, 215);
             this.lblKonf.Name = "lblKonf";
@@ -1754,9 +1736,9 @@ namespace PMDS.GUI
             // 
             // txtNachname
             // 
-            appearance103.FontData.BoldAsString = "True";
-            appearance103.ForeColor = System.Drawing.Color.Red;
-            this.txtNachname.Appearance = appearance103;
+            appearance27.FontData.BoldAsString = "True";
+            appearance27.ForeColor = System.Drawing.Color.Red;
+            this.txtNachname.Appearance = appearance27;
             this.errorProvider1.SetIconAlignment(this.txtNachname, System.Windows.Forms.ErrorIconAlignment.TopLeft);
             this.txtNachname.Location = new System.Drawing.Point(90, 29);
             this.txtNachname.MaxLength = 25;
@@ -1767,8 +1749,8 @@ namespace PMDS.GUI
             // 
             // lblFamiliensst
             // 
-            appearance104.BackColor = System.Drawing.Color.Transparent;
-            this.lblFamiliensst.Appearance = appearance104;
+            appearance28.BackColor = System.Drawing.Color.Transparent;
+            this.lblFamiliensst.Appearance = appearance28;
             this.lblFamiliensst.AutoSize = true;
             this.lblFamiliensst.Location = new System.Drawing.Point(14, 185);
             this.lblFamiliensst.Name = "lblFamiliensst";
@@ -1778,8 +1760,8 @@ namespace PMDS.GUI
             // 
             // lblVorname2
             // 
-            appearance105.BackColor = System.Drawing.Color.Transparent;
-            this.lblVorname2.Appearance = appearance105;
+            appearance29.BackColor = System.Drawing.Color.Transparent;
+            this.lblVorname2.Appearance = appearance29;
             this.lblVorname2.AutoSize = true;
             this.lblVorname2.Location = new System.Drawing.Point(14, 63);
             this.lblVorname2.Name = "lblVorname2";
@@ -1789,8 +1771,8 @@ namespace PMDS.GUI
             // 
             // lblTitel
             // 
-            appearance106.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitel.Appearance = appearance106;
+            appearance30.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitel.Appearance = appearance30;
             this.lblTitel.AutoSize = true;
             this.lblTitel.Location = new System.Drawing.Point(235, 93);
             this.lblTitel.Name = "lblTitel";
@@ -1800,8 +1782,8 @@ namespace PMDS.GUI
             // 
             // lblNachname
             // 
-            appearance107.BackColor = System.Drawing.Color.Transparent;
-            this.lblNachname.Appearance = appearance107;
+            appearance31.BackColor = System.Drawing.Color.Transparent;
+            this.lblNachname.Appearance = appearance31;
             this.lblNachname.AutoSize = true;
             this.lblNachname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNachname.Location = new System.Drawing.Point(14, 29);
@@ -1812,8 +1794,8 @@ namespace PMDS.GUI
             // 
             // lblAkdGrad
             // 
-            appearance108.BackColor = System.Drawing.Color.Transparent;
-            this.lblAkdGrad.Appearance = appearance108;
+            appearance32.BackColor = System.Drawing.Color.Transparent;
+            this.lblAkdGrad.Appearance = appearance32;
             this.lblAkdGrad.AutoSize = true;
             this.lblAkdGrad.Location = new System.Drawing.Point(16, 155);
             this.lblAkdGrad.Name = "lblAkdGrad";
@@ -1823,8 +1805,8 @@ namespace PMDS.GUI
             // 
             // lblGebDat
             // 
-            appearance109.BackColor = System.Drawing.Color.Transparent;
-            this.lblGebDat.Appearance = appearance109;
+            appearance33.BackColor = System.Drawing.Color.Transparent;
+            this.lblGebDat.Appearance = appearance33;
             this.lblGebDat.AutoSize = true;
             this.lblGebDat.Location = new System.Drawing.Point(14, 124);
             this.lblGebDat.Name = "lblGebDat";
@@ -1834,8 +1816,8 @@ namespace PMDS.GUI
             // 
             // lblGeschl
             // 
-            appearance110.BackColor = System.Drawing.Color.Transparent;
-            this.lblGeschl.Appearance = appearance110;
+            appearance34.BackColor = System.Drawing.Color.Transparent;
+            this.lblGeschl.Appearance = appearance34;
             this.lblGeschl.AutoSize = true;
             this.lblGeschl.Location = new System.Drawing.Point(14, 93);
             this.lblGeschl.Name = "lblGeschl";
@@ -1887,8 +1869,8 @@ namespace PMDS.GUI
             // 
             // lblDNRAnmerkung
             // 
-            appearance111.BackColor = System.Drawing.Color.Transparent;
-            this.lblDNRAnmerkung.Appearance = appearance111;
+            appearance35.BackColor = System.Drawing.Color.Transparent;
+            this.lblDNRAnmerkung.Appearance = appearance35;
             this.lblDNRAnmerkung.Location = new System.Drawing.Point(11, 274);
             this.lblDNRAnmerkung.Name = "lblDNRAnmerkung";
             this.lblDNRAnmerkung.Size = new System.Drawing.Size(104, 37);
@@ -1911,9 +1893,9 @@ namespace PMDS.GUI
             // 
             // lblPatientenverfügung
             // 
-            appearance112.BackColor = System.Drawing.Color.Transparent;
-            appearance112.ForeColor = System.Drawing.Color.Red;
-            this.lblPatientenverfügung.Appearance = appearance112;
+            appearance36.BackColor = System.Drawing.Color.Transparent;
+            appearance36.ForeColor = System.Drawing.Color.Red;
+            this.lblPatientenverfügung.Appearance = appearance36;
             this.lblPatientenverfügung.AutoSize = true;
             this.lblPatientenverfügung.Location = new System.Drawing.Point(315, 248);
             this.lblPatientenverfügung.Name = "lblPatientenverfügung";
@@ -1927,9 +1909,9 @@ namespace PMDS.GUI
             // 
             // chkAnatomie
             // 
-            appearance113.BackColor = System.Drawing.Color.Transparent;
-            appearance113.TextVAlignAsString = "Middle";
-            this.chkAnatomie.Appearance = appearance113;
+            appearance37.BackColor = System.Drawing.Color.Transparent;
+            appearance37.TextVAlignAsString = "Middle";
+            this.chkAnatomie.Appearance = appearance37;
             this.chkAnatomie.BackColor = System.Drawing.Color.Transparent;
             this.chkAnatomie.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkAnatomie.Location = new System.Drawing.Point(228, 373);
@@ -1941,9 +1923,9 @@ namespace PMDS.GUI
             // 
             // chkDatenschutz
             // 
-            appearance114.BackColor = System.Drawing.Color.Transparent;
-            appearance114.TextVAlignAsString = "Middle";
-            this.chkDatenschutz.Appearance = appearance114;
+            appearance38.BackColor = System.Drawing.Color.Transparent;
+            appearance38.TextVAlignAsString = "Middle";
+            this.chkDatenschutz.Appearance = appearance38;
             this.chkDatenschutz.BackColor = System.Drawing.Color.Transparent;
             this.chkDatenschutz.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkDatenschutz.Location = new System.Drawing.Point(121, 373);
@@ -1955,8 +1937,8 @@ namespace PMDS.GUI
             // 
             // lblSprachen
             // 
-            appearance115.BackColor = System.Drawing.Color.Transparent;
-            this.lblSprachen.Appearance = appearance115;
+            appearance39.BackColor = System.Drawing.Color.Transparent;
+            this.lblSprachen.Appearance = appearance39;
             this.lblSprachen.AutoSize = true;
             this.lblSprachen.Location = new System.Drawing.Point(11, 121);
             this.lblSprachen.Name = "lblSprachen";
@@ -1966,8 +1948,8 @@ namespace PMDS.GUI
             // 
             // lblBeruf
             // 
-            appearance116.BackColor = System.Drawing.Color.Transparent;
-            this.lblBeruf.Appearance = appearance116;
+            appearance40.BackColor = System.Drawing.Color.Transparent;
+            this.lblBeruf.Appearance = appearance40;
             this.lblBeruf.AutoSize = true;
             this.lblBeruf.Location = new System.Drawing.Point(11, 88);
             this.lblBeruf.Name = "lblBeruf";
@@ -1986,8 +1968,8 @@ namespace PMDS.GUI
             // 
             // chkPalliativ
             // 
-            appearance117.BackColor = System.Drawing.Color.Transparent;
-            this.chkPalliativ.Appearance = appearance117;
+            appearance41.BackColor = System.Drawing.Color.Transparent;
+            this.chkPalliativ.Appearance = appearance41;
             this.chkPalliativ.BackColor = System.Drawing.Color.Transparent;
             this.chkPalliativ.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkPalliativ.Location = new System.Drawing.Point(228, 248);
@@ -2021,8 +2003,8 @@ namespace PMDS.GUI
             // 
             // lblGebOrt
             // 
-            appearance118.BackColor = System.Drawing.Color.Transparent;
-            this.lblGebOrt.Appearance = appearance118;
+            appearance42.BackColor = System.Drawing.Color.Transparent;
+            this.lblGebOrt.Appearance = appearance42;
             this.lblGebOrt.AutoSize = true;
             this.lblGebOrt.Location = new System.Drawing.Point(11, 58);
             this.lblGebOrt.Name = "lblGebOrt";
@@ -2043,9 +2025,9 @@ namespace PMDS.GUI
             // 
             // chkKZUeberlebender
             // 
-            appearance119.BackColor = System.Drawing.Color.Transparent;
-            appearance119.TextVAlignAsString = "Middle";
-            this.chkKZUeberlebender.Appearance = appearance119;
+            appearance43.BackColor = System.Drawing.Color.Transparent;
+            appearance43.TextVAlignAsString = "Middle";
+            this.chkKZUeberlebender.Appearance = appearance43;
             this.chkKZUeberlebender.BackColor = System.Drawing.Color.Transparent;
             this.chkKZUeberlebender.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkKZUeberlebender.Location = new System.Drawing.Point(357, 373);
@@ -2057,8 +2039,8 @@ namespace PMDS.GUI
             // 
             // lblGebName
             // 
-            appearance120.BackColor = System.Drawing.Color.Transparent;
-            this.lblGebName.Appearance = appearance120;
+            appearance44.BackColor = System.Drawing.Color.Transparent;
+            this.lblGebName.Appearance = appearance44;
             this.lblGebName.AutoSize = true;
             this.lblGebName.Location = new System.Drawing.Point(11, 28);
             this.lblGebName.Name = "lblGebName";
@@ -2068,8 +2050,8 @@ namespace PMDS.GUI
             // 
             // chkDNR
             // 
-            appearance121.BackColor = System.Drawing.Color.Transparent;
-            this.chkDNR.Appearance = appearance121;
+            appearance45.BackColor = System.Drawing.Color.Transparent;
+            this.chkDNR.Appearance = appearance45;
             this.chkDNR.BackColor = System.Drawing.Color.Transparent;
             this.chkDNR.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkDNR.Location = new System.Drawing.Point(121, 247);
@@ -2081,8 +2063,8 @@ namespace PMDS.GUI
             // 
             // lblInitBer
             // 
-            appearance122.BackColor = System.Drawing.Color.Transparent;
-            this.lblInitBer.Appearance = appearance122;
+            appearance46.BackColor = System.Drawing.Color.Transparent;
+            this.lblInitBer.Appearance = appearance46;
             this.lblInitBer.Location = new System.Drawing.Point(11, 151);
             this.lblInitBer.Name = "lblInitBer";
             this.lblInitBer.Size = new System.Drawing.Size(104, 20);
@@ -2134,8 +2116,8 @@ namespace PMDS.GUI
             // 
             // baseLabel3
             // 
-            appearance123.BackColor = System.Drawing.Color.Transparent;
-            this.baseLabel3.Appearance = appearance123;
+            appearance47.BackColor = System.Drawing.Color.Transparent;
+            this.baseLabel3.Appearance = appearance47;
             this.baseLabel3.AutoSize = true;
             this.baseLabel3.Location = new System.Drawing.Point(322, 179);
             this.baseLabel3.Name = "baseLabel3";
@@ -2145,8 +2127,8 @@ namespace PMDS.GUI
             // 
             // btnOpenPicture
             // 
-            appearance124.TextHAlignAsString = "Center";
-            this.btnOpenPicture.Appearance = appearance124;
+            appearance48.TextHAlignAsString = "Center";
+            this.btnOpenPicture.Appearance = appearance48;
             this.btnOpenPicture.AutoWorkLayout = false;
             this.btnOpenPicture.ButtonStyle = Infragistics.Win.UIElementButtonStyle.FlatBorderless;
             this.btnOpenPicture.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2155,14 +2137,14 @@ namespace PMDS.GUI
             this.btnOpenPicture.Name = "btnOpenPicture";
             this.btnOpenPicture.Size = new System.Drawing.Size(38, 30);
             this.btnOpenPicture.TabIndex = 16;
-            ultraToolTipInfo6.ToolTipText = "Klientenfoto öffnen";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnOpenPicture, ultraToolTipInfo6);
+            ultraToolTipInfo2.ToolTipText = "Klientenfoto öffnen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnOpenPicture, ultraToolTipInfo2);
             this.btnOpenPicture.Click += new System.EventHandler(this.btnOpenPicture_Click);
             // 
             // intAmputation_Prozent
             // 
-            appearance125.TextHAlignAsString = "Right";
-            this.intAmputation_Prozent.Appearance = appearance125;
+            appearance49.TextHAlignAsString = "Right";
+            this.intAmputation_Prozent.Appearance = appearance49;
             this.intAmputation_Prozent.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
             this.intAmputation_Prozent.Location = new System.Drawing.Point(430, 27);
             this.intAmputation_Prozent.MaxValue = 100;
@@ -2175,8 +2157,8 @@ namespace PMDS.GUI
             // 
             // lblAmputation_Prozent
             // 
-            appearance126.BackColor = System.Drawing.Color.Transparent;
-            this.lblAmputation_Prozent.Appearance = appearance126;
+            appearance50.BackColor = System.Drawing.Color.Transparent;
+            this.lblAmputation_Prozent.Appearance = appearance50;
             this.lblAmputation_Prozent.Location = new System.Drawing.Point(322, 30);
             this.lblAmputation_Prozent.Name = "lblAmputation_Prozent";
             this.lblAmputation_Prozent.Size = new System.Drawing.Size(105, 21);
@@ -2271,8 +2253,8 @@ namespace PMDS.GUI
             // 
             // lblGewicht
             // 
-            appearance127.BackColor = System.Drawing.Color.Transparent;
-            this.lblGewicht.Appearance = appearance127;
+            appearance51.BackColor = System.Drawing.Color.Transparent;
+            this.lblGewicht.Appearance = appearance51;
             this.lblGewicht.AutoSize = true;
             this.lblGewicht.Location = new System.Drawing.Point(140, 30);
             this.lblGewicht.Name = "lblGewicht";
@@ -2282,8 +2264,8 @@ namespace PMDS.GUI
             // 
             // lblAugenfarbe
             // 
-            appearance128.BackColor = System.Drawing.Color.Transparent;
-            this.lblAugenfarbe.Appearance = appearance128;
+            appearance52.BackColor = System.Drawing.Color.Transparent;
+            this.lblAugenfarbe.Appearance = appearance52;
             this.lblAugenfarbe.AutoSize = true;
             this.lblAugenfarbe.Location = new System.Drawing.Point(14, 60);
             this.lblAugenfarbe.Name = "lblAugenfarbe";
@@ -2293,8 +2275,8 @@ namespace PMDS.GUI
             // 
             // lblAnrede
             // 
-            appearance129.BackColor = System.Drawing.Color.Transparent;
-            this.lblAnrede.Appearance = appearance129;
+            appearance53.BackColor = System.Drawing.Color.Transparent;
+            this.lblAnrede.Appearance = appearance53;
             this.lblAnrede.AutoSize = true;
             this.lblAnrede.Location = new System.Drawing.Point(15, 179);
             this.lblAnrede.Name = "lblAnrede";
@@ -2317,8 +2299,8 @@ namespace PMDS.GUI
             // 
             // lblHaarFarbe
             // 
-            appearance130.BackColor = System.Drawing.Color.Transparent;
-            this.lblHaarFarbe.Appearance = appearance130;
+            appearance54.BackColor = System.Drawing.Color.Transparent;
+            this.lblHaarFarbe.Appearance = appearance54;
             this.lblHaarFarbe.AutoSize = true;
             this.lblHaarFarbe.Location = new System.Drawing.Point(14, 89);
             this.lblHaarFarbe.Name = "lblHaarFarbe";
@@ -2328,8 +2310,8 @@ namespace PMDS.GUI
             // 
             // lblAeussKenz
             // 
-            appearance131.BackColor = System.Drawing.Color.Transparent;
-            this.lblAeussKenz.Appearance = appearance131;
+            appearance55.BackColor = System.Drawing.Color.Transparent;
+            this.lblAeussKenz.Appearance = appearance55;
             this.lblAeussKenz.Location = new System.Drawing.Point(18, 208);
             this.lblAeussKenz.Name = "lblAeussKenz";
             this.lblAeussKenz.Size = new System.Drawing.Size(116, 21);
@@ -2349,8 +2331,8 @@ namespace PMDS.GUI
             // 
             // lblStatur
             // 
-            appearance132.BackColor = System.Drawing.Color.Transparent;
-            this.lblStatur.Appearance = appearance132;
+            appearance56.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatur.Appearance = appearance56;
             this.lblStatur.AutoSize = true;
             this.lblStatur.Location = new System.Drawing.Point(14, 118);
             this.lblStatur.Name = "lblStatur";
@@ -2360,8 +2342,8 @@ namespace PMDS.GUI
             // 
             // lblGroesse
             // 
-            appearance133.BackColor = System.Drawing.Color.Transparent;
-            this.lblGroesse.Appearance = appearance133;
+            appearance57.BackColor = System.Drawing.Color.Transparent;
+            this.lblGroesse.Appearance = appearance57;
             this.lblGroesse.AutoSize = true;
             this.lblGroesse.Location = new System.Drawing.Point(14, 30);
             this.lblGroesse.Name = "lblGroesse";
@@ -2385,8 +2367,8 @@ namespace PMDS.GUI
             // 
             // lblNamenstag
             // 
-            appearance134.BackColor = System.Drawing.Color.Transparent;
-            this.lblNamenstag.Appearance = appearance134;
+            appearance58.BackColor = System.Drawing.Color.Transparent;
+            this.lblNamenstag.Appearance = appearance58;
             this.lblNamenstag.AutoSize = true;
             this.lblNamenstag.Location = new System.Drawing.Point(14, 147);
             this.lblNamenstag.Name = "lblNamenstag";
@@ -2445,8 +2427,8 @@ namespace PMDS.GUI
             // 
             // ultraGroupBoxAngehörige
             // 
-            appearance33.BackColor = System.Drawing.Color.White;
-            this.ultraGroupBoxAngehörige.Appearance = appearance33;
+            appearance68.BackColor = System.Drawing.Color.White;
+            this.ultraGroupBoxAngehörige.Appearance = appearance68;
             this.ultraGroupBoxAngehörige.Controls.Add(this.ucKontaktPersonen1);
             this.ultraGroupBoxAngehörige.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGroupBoxAngehörige.Location = new System.Drawing.Point(0, 0);
@@ -2488,8 +2470,8 @@ namespace PMDS.GUI
             // 
             // ultraGroupBoxÄrtze
             // 
-            appearance34.BackColor = System.Drawing.Color.White;
-            this.ultraGroupBoxÄrtze.Appearance = appearance34;
+            appearance69.BackColor = System.Drawing.Color.White;
+            this.ultraGroupBoxÄrtze.Appearance = appearance69;
             this.ultraGroupBoxÄrtze.Controls.Add(this.ultraGridBagLayoutPanel2);
             this.ultraGroupBoxÄrtze.Controls.Add(this.panelButtons1);
             this.ultraGroupBoxÄrtze.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2515,9 +2497,9 @@ namespace PMDS.GUI
             this.gridAerzte.AutoWork = true;
             this.gridAerzte.DataMember = "PatientAerzte";
             this.gridAerzte.DataSource = this.dsPatientAerzte1;
-            appearance35.BackColor = System.Drawing.Color.White;
-            appearance35.BorderColor = System.Drawing.Color.Black;
-            this.gridAerzte.DisplayLayout.Appearance = appearance35;
+            appearance70.BackColor = System.Drawing.Color.White;
+            appearance70.BorderColor = System.Drawing.Color.Black;
+            this.gridAerzte.DisplayLayout.Appearance = appearance70;
             this.gridAerzte.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn;
             ultraGridColumn16.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn16.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
@@ -2641,52 +2623,52 @@ namespace PMDS.GUI
             this.gridAerzte.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.gridAerzte.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.gridAerzte.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            appearance36.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance36.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance36.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance36.BorderColor = System.Drawing.SystemColors.Window;
-            this.gridAerzte.DisplayLayout.GroupByBox.Appearance = appearance36;
-            appearance37.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.gridAerzte.DisplayLayout.GroupByBox.BandLabelAppearance = appearance37;
+            appearance71.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance71.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance71.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance71.BorderColor = System.Drawing.SystemColors.Window;
+            this.gridAerzte.DisplayLayout.GroupByBox.Appearance = appearance71;
+            appearance72.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.gridAerzte.DisplayLayout.GroupByBox.BandLabelAppearance = appearance72;
             this.gridAerzte.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.gridAerzte.DisplayLayout.GroupByBox.Hidden = true;
-            appearance38.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance38.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance38.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance38.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.gridAerzte.DisplayLayout.GroupByBox.PromptAppearance = appearance38;
+            appearance73.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance73.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance73.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance73.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.gridAerzte.DisplayLayout.GroupByBox.PromptAppearance = appearance73;
             this.gridAerzte.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance39.BackColor = System.Drawing.SystemColors.Window;
-            appearance39.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.gridAerzte.DisplayLayout.Override.ActiveCellAppearance = appearance39;
-            appearance40.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance40.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.gridAerzte.DisplayLayout.Override.ActiveRowAppearance = appearance40;
+            appearance74.BackColor = System.Drawing.SystemColors.Window;
+            appearance74.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.gridAerzte.DisplayLayout.Override.ActiveCellAppearance = appearance74;
+            appearance75.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance75.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.gridAerzte.DisplayLayout.Override.ActiveRowAppearance = appearance75;
             this.gridAerzte.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
             this.gridAerzte.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance41.BackColor = System.Drawing.SystemColors.Window;
-            this.gridAerzte.DisplayLayout.Override.CardAreaAppearance = appearance41;
-            appearance42.BackColor = System.Drawing.Color.White;
-            appearance42.BorderColor = System.Drawing.Color.Silver;
-            appearance42.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.gridAerzte.DisplayLayout.Override.CellAppearance = appearance42;
+            appearance76.BackColor = System.Drawing.SystemColors.Window;
+            this.gridAerzte.DisplayLayout.Override.CardAreaAppearance = appearance76;
+            appearance77.BackColor = System.Drawing.Color.White;
+            appearance77.BorderColor = System.Drawing.Color.Silver;
+            appearance77.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.gridAerzte.DisplayLayout.Override.CellAppearance = appearance77;
             this.gridAerzte.DisplayLayout.Override.CellPadding = 0;
-            appearance43.BackColor = System.Drawing.SystemColors.Control;
-            appearance43.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance43.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance43.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance43.BorderColor = System.Drawing.SystemColors.Window;
-            this.gridAerzte.DisplayLayout.Override.GroupByRowAppearance = appearance43;
-            appearance44.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance44.TextHAlignAsString = "Left";
-            this.gridAerzte.DisplayLayout.Override.HeaderAppearance = appearance44;
+            appearance78.BackColor = System.Drawing.SystemColors.Control;
+            appearance78.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance78.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance78.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance78.BorderColor = System.Drawing.SystemColors.Window;
+            this.gridAerzte.DisplayLayout.Override.GroupByRowAppearance = appearance78;
+            appearance79.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance79.TextHAlignAsString = "Left";
+            this.gridAerzte.DisplayLayout.Override.HeaderAppearance = appearance79;
             this.gridAerzte.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.gridAerzte.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.Standard;
-            appearance45.BackColor = System.Drawing.SystemColors.Window;
-            appearance45.BorderColor = System.Drawing.Color.Silver;
-            this.gridAerzte.DisplayLayout.Override.RowAppearance = appearance45;
-            appearance46.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.gridAerzte.DisplayLayout.Override.TemplateAddRowAppearance = appearance46;
+            appearance80.BackColor = System.Drawing.SystemColors.Window;
+            appearance80.BorderColor = System.Drawing.Color.Silver;
+            this.gridAerzte.DisplayLayout.Override.RowAppearance = appearance80;
+            appearance81.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.gridAerzte.DisplayLayout.Override.TemplateAddRowAppearance = appearance81;
             this.gridAerzte.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.gridAerzte.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.gridAerzte.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
@@ -2728,10 +2710,10 @@ namespace PMDS.GUI
             // 
             // btnELGAKontakDelegation
             // 
-            appearance47.Image = global::PMDS.GUI.Properties.Resources.Elga;
-            appearance47.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance47.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnELGAKontakDelegation.Appearance = appearance47;
+            appearance82.Image = global::PMDS.GUI.Properties.Resources.Elga;
+            appearance82.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance82.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnELGAKontakDelegation.Appearance = appearance82;
             this.btnELGAKontakDelegation.AutoWorkLayout = false;
             this.btnELGAKontakDelegation.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnELGAKontakDelegation.IsStandardControl = false;
@@ -2739,16 +2721,16 @@ namespace PMDS.GUI
             this.btnELGAKontakDelegation.Name = "btnELGAKontakDelegation";
             this.btnELGAKontakDelegation.Size = new System.Drawing.Size(30, 28);
             this.btnELGAKontakDelegation.TabIndex = 6;
-            ultraToolTipInfo1.ToolTipText = "Kontaktdelegation";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnELGAKontakDelegation, ultraToolTipInfo1);
+            ultraToolTipInfo3.ToolTipText = "Kontaktdelegation";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnELGAKontakDelegation, ultraToolTipInfo3);
             this.btnELGAKontakDelegation.Click += new System.EventHandler(this.btnELGAKontakDelegation_Click);
             // 
             // btnUpdateArzt
             // 
-            appearance48.Image = ((object)(resources.GetObject("appearance48.Image")));
-            appearance48.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance48.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnUpdateArzt.Appearance = appearance48;
+            appearance83.Image = ((object)(resources.GetObject("appearance83.Image")));
+            appearance83.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance83.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnUpdateArzt.Appearance = appearance83;
             this.btnUpdateArzt.AutoWorkLayout = false;
             this.btnUpdateArzt.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnUpdateArzt.IsStandardControl = false;
@@ -2756,17 +2738,17 @@ namespace PMDS.GUI
             this.btnUpdateArzt.Name = "btnUpdateArzt";
             this.btnUpdateArzt.Size = new System.Drawing.Size(30, 28);
             this.btnUpdateArzt.TabIndex = 5;
-            ultraToolTipInfo2.ToolTipText = "Editieren";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnUpdateArzt, ultraToolTipInfo2);
+            ultraToolTipInfo4.ToolTipText = "Editieren";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnUpdateArzt, ultraToolTipInfo4);
             this.btnUpdateArzt.Click += new System.EventHandler(this.btnUpdateArzt_Click);
             // 
             // btnDelAerzte
             // 
-            appearance49.BackColor = System.Drawing.Color.Transparent;
-            appearance49.Image = ((object)(resources.GetObject("appearance49.Image")));
-            appearance49.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance49.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDelAerzte.Appearance = appearance49;
+            appearance84.BackColor = System.Drawing.Color.Transparent;
+            appearance84.Image = ((object)(resources.GetObject("appearance84.Image")));
+            appearance84.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance84.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDelAerzte.Appearance = appearance84;
             this.btnDelAerzte.AutoWorkLayout = false;
             this.btnDelAerzte.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDelAerzte.DoOnClick = true;
@@ -2783,11 +2765,11 @@ namespace PMDS.GUI
             // 
             // btnUpdateAerzte
             // 
-            appearance50.BackColor = System.Drawing.Color.Transparent;
-            appearance50.Image = ((object)(resources.GetObject("appearance50.Image")));
-            appearance50.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance50.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnUpdateAerzte.Appearance = appearance50;
+            appearance85.BackColor = System.Drawing.Color.Transparent;
+            appearance85.Image = ((object)(resources.GetObject("appearance85.Image")));
+            appearance85.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance85.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnUpdateAerzte.Appearance = appearance85;
             this.btnUpdateAerzte.AutoWorkLayout = false;
             this.btnUpdateAerzte.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnUpdateAerzte.DoOnClick = true;
@@ -2804,8 +2786,8 @@ namespace PMDS.GUI
             // 
             // ultraGroupBoxSachverwalter
             // 
-            appearance51.BackColor = System.Drawing.Color.White;
-            this.ultraGroupBoxSachverwalter.Appearance = appearance51;
+            appearance86.BackColor = System.Drawing.Color.White;
+            this.ultraGroupBoxSachverwalter.Appearance = appearance86;
             this.ultraGroupBoxSachverwalter.Controls.Add(this.ultraGridBagLayoutPanel3);
             this.ultraGroupBoxSachverwalter.Controls.Add(this.panelButtons2);
             this.ultraGroupBoxSachverwalter.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2831,9 +2813,9 @@ namespace PMDS.GUI
             this.gridSachwalter.AutoWork = true;
             this.gridSachwalter.DataMember = "Sachwalter";
             this.gridSachwalter.DataSource = this.dsKlientSachwalter1;
-            appearance52.BackColor = System.Drawing.Color.White;
-            appearance52.BorderColor = System.Drawing.Color.Black;
-            this.gridSachwalter.DisplayLayout.Appearance = appearance52;
+            appearance87.BackColor = System.Drawing.Color.White;
+            appearance87.BorderColor = System.Drawing.Color.Black;
+            this.gridSachwalter.DisplayLayout.Appearance = appearance87;
             ultraGridColumn52.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn52.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn52.Header.Editor = null;
@@ -2892,52 +2874,52 @@ namespace PMDS.GUI
             this.gridSachwalter.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.gridSachwalter.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.gridSachwalter.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            appearance53.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance53.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance53.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance53.BorderColor = System.Drawing.SystemColors.Window;
-            this.gridSachwalter.DisplayLayout.GroupByBox.Appearance = appearance53;
-            appearance54.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.gridSachwalter.DisplayLayout.GroupByBox.BandLabelAppearance = appearance54;
+            appearance88.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance88.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance88.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance88.BorderColor = System.Drawing.SystemColors.Window;
+            this.gridSachwalter.DisplayLayout.GroupByBox.Appearance = appearance88;
+            appearance89.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.gridSachwalter.DisplayLayout.GroupByBox.BandLabelAppearance = appearance89;
             this.gridSachwalter.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.gridSachwalter.DisplayLayout.GroupByBox.Hidden = true;
-            appearance55.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance55.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance55.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance55.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.gridSachwalter.DisplayLayout.GroupByBox.PromptAppearance = appearance55;
-            appearance56.BackColor = System.Drawing.SystemColors.Window;
-            appearance56.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.gridSachwalter.DisplayLayout.Override.ActiveCellAppearance = appearance56;
-            appearance57.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance57.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.gridSachwalter.DisplayLayout.Override.ActiveRowAppearance = appearance57;
+            appearance90.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance90.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance90.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance90.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.gridSachwalter.DisplayLayout.GroupByBox.PromptAppearance = appearance90;
+            appearance91.BackColor = System.Drawing.SystemColors.Window;
+            appearance91.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.gridSachwalter.DisplayLayout.Override.ActiveCellAppearance = appearance91;
+            appearance92.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance92.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.gridSachwalter.DisplayLayout.Override.ActiveRowAppearance = appearance92;
             this.gridSachwalter.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
             this.gridSachwalter.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance58.BackColor = System.Drawing.SystemColors.Window;
-            this.gridSachwalter.DisplayLayout.Override.CardAreaAppearance = appearance58;
-            appearance59.BorderColor = System.Drawing.Color.Silver;
-            appearance59.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.gridSachwalter.DisplayLayout.Override.CellAppearance = appearance59;
+            appearance93.BackColor = System.Drawing.SystemColors.Window;
+            this.gridSachwalter.DisplayLayout.Override.CardAreaAppearance = appearance93;
+            appearance94.BorderColor = System.Drawing.Color.Silver;
+            appearance94.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.gridSachwalter.DisplayLayout.Override.CellAppearance = appearance94;
             this.gridSachwalter.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             this.gridSachwalter.DisplayLayout.Override.CellPadding = 0;
-            appearance60.BackColor = System.Drawing.SystemColors.Control;
-            appearance60.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance60.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance60.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance60.BorderColor = System.Drawing.SystemColors.Window;
-            this.gridSachwalter.DisplayLayout.Override.GroupByRowAppearance = appearance60;
-            appearance61.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance61.TextHAlignAsString = "Left";
-            this.gridSachwalter.DisplayLayout.Override.HeaderAppearance = appearance61;
+            appearance95.BackColor = System.Drawing.SystemColors.Control;
+            appearance95.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance95.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance95.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance95.BorderColor = System.Drawing.SystemColors.Window;
+            this.gridSachwalter.DisplayLayout.Override.GroupByRowAppearance = appearance95;
+            appearance96.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance96.TextHAlignAsString = "Left";
+            this.gridSachwalter.DisplayLayout.Override.HeaderAppearance = appearance96;
             this.gridSachwalter.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.gridSachwalter.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.Standard;
-            appearance62.BackColor = System.Drawing.SystemColors.Window;
-            appearance62.BorderColor = System.Drawing.Color.Silver;
-            this.gridSachwalter.DisplayLayout.Override.RowAppearance = appearance62;
+            appearance97.BackColor = System.Drawing.SystemColors.Window;
+            appearance97.BorderColor = System.Drawing.Color.Silver;
+            this.gridSachwalter.DisplayLayout.Override.RowAppearance = appearance97;
             this.gridSachwalter.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
-            appearance63.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.gridSachwalter.DisplayLayout.Override.TemplateAddRowAppearance = appearance63;
+            appearance98.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.gridSachwalter.DisplayLayout.Override.TemplateAddRowAppearance = appearance98;
             this.gridSachwalter.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.gridSachwalter.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.gridSachwalter.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
@@ -2975,10 +2957,10 @@ namespace PMDS.GUI
             // 
             // btnUpdateSachw
             // 
-            appearance64.Image = ((object)(resources.GetObject("appearance64.Image")));
-            appearance64.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance64.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnUpdateSachw.Appearance = appearance64;
+            appearance99.Image = ((object)(resources.GetObject("appearance99.Image")));
+            appearance99.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance99.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnUpdateSachw.Appearance = appearance99;
             this.btnUpdateSachw.AutoWorkLayout = false;
             this.btnUpdateSachw.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnUpdateSachw.IsStandardControl = false;
@@ -2986,17 +2968,17 @@ namespace PMDS.GUI
             this.btnUpdateSachw.Name = "btnUpdateSachw";
             this.btnUpdateSachw.Size = new System.Drawing.Size(30, 28);
             this.btnUpdateSachw.TabIndex = 9;
-            ultraToolTipInfo3.ToolTipText = "Editieren";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnUpdateSachw, ultraToolTipInfo3);
+            ultraToolTipInfo5.ToolTipText = "Editieren";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnUpdateSachw, ultraToolTipInfo5);
             this.btnUpdateSachw.Click += new System.EventHandler(this.btnUpdateSachw_Click);
             // 
             // btnDelSachwalter
             // 
-            appearance65.BackColor = System.Drawing.Color.Transparent;
-            appearance65.Image = ((object)(resources.GetObject("appearance65.Image")));
-            appearance65.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance65.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDelSachwalter.Appearance = appearance65;
+            appearance100.BackColor = System.Drawing.Color.Transparent;
+            appearance100.Image = ((object)(resources.GetObject("appearance100.Image")));
+            appearance100.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance100.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDelSachwalter.Appearance = appearance100;
             this.btnDelSachwalter.AutoWorkLayout = false;
             this.btnDelSachwalter.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDelSachwalter.DoOnClick = true;
@@ -3013,11 +2995,11 @@ namespace PMDS.GUI
             // 
             // btnAddSachw
             // 
-            appearance66.BackColor = System.Drawing.Color.Transparent;
-            appearance66.Image = ((object)(resources.GetObject("appearance66.Image")));
-            appearance66.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance66.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAddSachw.Appearance = appearance66;
+            appearance101.BackColor = System.Drawing.Color.Transparent;
+            appearance101.Image = ((object)(resources.GetObject("appearance101.Image")));
+            appearance101.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance101.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAddSachw.Appearance = appearance101;
             this.btnAddSachw.AutoWorkLayout = false;
             this.btnAddSachw.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnAddSachw.DoOnClick = true;
@@ -3037,7 +3019,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl5.AutoScroll = true;
             this.ultraTabPageControl5.Controls.Add(this.panelBewerbungdsdaten);
             this.ultraTabPageControl5.Controls.Add(this.ultraTabControlMainAdresse);
-            this.ultraTabPageControl5.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl5.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl5.Name = "ultraTabPageControl5";
             this.ultraTabPageControl5.Size = new System.Drawing.Size(1028, 673);
             // 
@@ -3049,8 +3031,8 @@ namespace PMDS.GUI
             this.panelBewerbungdsdaten.Controls.Add(this.txtStrasse);
             this.panelBewerbungdsdaten.Location = new System.Drawing.Point(490, 9);
             this.panelBewerbungdsdaten.Name = "panelBewerbungdsdaten";
-            this.panelBewerbungdsdaten.Size = new System.Drawing.Size(535, 568);
-            this.panelBewerbungdsdaten.TabIndex = 71;
+            this.panelBewerbungdsdaten.Size = new System.Drawing.Size(535, 619);
+            this.panelBewerbungdsdaten.TabIndex = 18;
             // 
             // txtStrasse
             // 
@@ -3071,7 +3053,7 @@ namespace PMDS.GUI
             this.ultraTabControlMainAdresse.Location = new System.Drawing.Point(6, 9);
             this.ultraTabControlMainAdresse.Name = "ultraTabControlMainAdresse";
             this.ultraTabControlMainAdresse.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControlMainAdresse.Size = new System.Drawing.Size(481, 571);
+            this.ultraTabControlMainAdresse.Size = new System.Drawing.Size(481, 619);
             this.ultraTabControlMainAdresse.TabIndex = 70;
             ultraTab6.Key = "Hauptwohnsitz";
             ultraTab6.TabPage = this.ultraTabPageControl4;
@@ -3087,7 +3069,7 @@ namespace PMDS.GUI
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(477, 544);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(477, 592);
             // 
             // ultraTabPageControl7
             // 
@@ -3100,8 +3082,8 @@ namespace PMDS.GUI
             // 
             // lblAnmerkung
             // 
-            appearance67.BackColor = System.Drawing.Color.Transparent;
-            this.lblAnmerkung.Appearance = appearance67;
+            appearance102.BackColor = System.Drawing.Color.Transparent;
+            this.lblAnmerkung.Appearance = appearance102;
             this.lblAnmerkung.AutoSize = true;
             this.lblAnmerkung.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnmerkung.Location = new System.Drawing.Point(6, 229);
@@ -3146,8 +3128,8 @@ namespace PMDS.GUI
             // 
             // chkRezGebBef_SachwalterJN
             // 
-            appearance68.BackColor = System.Drawing.Color.Transparent;
-            this.chkRezGebBef_SachwalterJN.Appearance = appearance68;
+            appearance103.BackColor = System.Drawing.Color.Transparent;
+            this.chkRezGebBef_SachwalterJN.Appearance = appearance103;
             this.chkRezGebBef_SachwalterJN.BackColor = System.Drawing.Color.Transparent;
             this.chkRezGebBef_SachwalterJN.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkRezGebBef_SachwalterJN.Location = new System.Drawing.Point(33, 170);
@@ -3242,8 +3224,8 @@ namespace PMDS.GUI
             // 
             // baseLabel2
             // 
-            appearance69.BackColor = System.Drawing.Color.Transparent;
-            this.baseLabel2.Appearance = appearance69;
+            appearance104.BackColor = System.Drawing.Color.Transparent;
+            this.baseLabel2.Appearance = appearance104;
             this.baseLabel2.Location = new System.Drawing.Point(295, 112);
             this.baseLabel2.Name = "baseLabel2";
             this.baseLabel2.Size = new System.Drawing.Size(36, 20);
@@ -3252,8 +3234,8 @@ namespace PMDS.GUI
             // 
             // chkRezGebBef_BefristetJN
             // 
-            appearance70.BackColor = System.Drawing.Color.Transparent;
-            this.chkRezGebBef_BefristetJN.Appearance = appearance70;
+            appearance105.BackColor = System.Drawing.Color.Transparent;
+            this.chkRezGebBef_BefristetJN.Appearance = appearance105;
             this.chkRezGebBef_BefristetJN.BackColor = System.Drawing.Color.Transparent;
             this.chkRezGebBef_BefristetJN.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkRezGebBef_BefristetJN.Location = new System.Drawing.Point(33, 104);
@@ -3267,8 +3249,8 @@ namespace PMDS.GUI
             // 
             // baseLabel1
             // 
-            appearance71.BackColor = System.Drawing.Color.Transparent;
-            this.baseLabel1.Appearance = appearance71;
+            appearance106.BackColor = System.Drawing.Color.Transparent;
+            this.baseLabel1.Appearance = appearance106;
             this.baseLabel1.Location = new System.Drawing.Point(295, 40);
             this.baseLabel1.Name = "baseLabel1";
             this.baseLabel1.Size = new System.Drawing.Size(36, 20);
@@ -3277,8 +3259,8 @@ namespace PMDS.GUI
             // 
             // chkRezGebBef_WiderrufJN
             // 
-            appearance72.BackColor = System.Drawing.Color.Transparent;
-            this.chkRezGebBef_WiderrufJN.Appearance = appearance72;
+            appearance107.BackColor = System.Drawing.Color.Transparent;
+            this.chkRezGebBef_WiderrufJN.Appearance = appearance107;
             this.chkRezGebBef_WiderrufJN.BackColor = System.Drawing.Color.Transparent;
             this.chkRezGebBef_WiderrufJN.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkRezGebBef_WiderrufJN.Location = new System.Drawing.Point(33, 137);
@@ -3292,8 +3274,8 @@ namespace PMDS.GUI
             // 
             // chkRezGebBef_UnbefristetJN
             // 
-            appearance73.BackColor = System.Drawing.Color.Transparent;
-            this.chkRezGebBef_UnbefristetJN.Appearance = appearance73;
+            appearance108.BackColor = System.Drawing.Color.Transparent;
+            this.chkRezGebBef_UnbefristetJN.Appearance = appearance108;
             this.chkRezGebBef_UnbefristetJN.BackColor = System.Drawing.Color.Transparent;
             this.chkRezGebBef_UnbefristetJN.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkRezGebBef_UnbefristetJN.Location = new System.Drawing.Point(33, 71);
@@ -3307,8 +3289,8 @@ namespace PMDS.GUI
             // 
             // cbRezeptGeb
             // 
-            appearance74.BackColor = System.Drawing.Color.Transparent;
-            this.cbRezeptGeb.Appearance = appearance74;
+            appearance109.BackColor = System.Drawing.Color.Transparent;
+            this.cbRezeptGeb.Appearance = appearance109;
             this.cbRezeptGeb.BackColor = System.Drawing.Color.Transparent;
             this.cbRezeptGeb.BackColorInternal = System.Drawing.Color.Transparent;
             this.cbRezeptGeb.Location = new System.Drawing.Point(13, 9);
@@ -3322,8 +3304,8 @@ namespace PMDS.GUI
             // 
             // chkRezGebBef_RegoJN
             // 
-            appearance75.BackColor = System.Drawing.Color.Transparent;
-            this.chkRezGebBef_RegoJN.Appearance = appearance75;
+            appearance110.BackColor = System.Drawing.Color.Transparent;
+            this.chkRezGebBef_RegoJN.Appearance = appearance110;
             this.chkRezGebBef_RegoJN.BackColor = System.Drawing.Color.Transparent;
             this.chkRezGebBef_RegoJN.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkRezGebBef_RegoJN.Location = new System.Drawing.Point(33, 38);
@@ -3393,9 +3375,9 @@ namespace PMDS.GUI
             // 
             this.txtSofortmassnahmen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance76.FontData.BoldAsString = "False";
-            appearance76.ForeColor = System.Drawing.Color.Black;
-            this.txtSofortmassnahmen.Appearance = appearance76;
+            appearance111.FontData.BoldAsString = "False";
+            appearance111.ForeColor = System.Drawing.Color.Black;
+            this.txtSofortmassnahmen.Appearance = appearance111;
             this.errorProvider1.SetIconAlignment(this.txtSofortmassnahmen, System.Windows.Forms.ErrorIconAlignment.TopLeft);
             this.txtSofortmassnahmen.Location = new System.Drawing.Point(141, 5);
             this.txtSofortmassnahmen.MaxLength = 255;
@@ -3408,8 +3390,8 @@ namespace PMDS.GUI
             // 
             // lblSofortmassnahmen
             // 
-            appearance77.BackColor = System.Drawing.Color.Transparent;
-            this.lblSofortmassnahmen.Appearance = appearance77;
+            appearance112.BackColor = System.Drawing.Color.Transparent;
+            this.lblSofortmassnahmen.Appearance = appearance112;
             this.lblSofortmassnahmen.AutoSize = true;
             this.lblSofortmassnahmen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSofortmassnahmen.Location = new System.Drawing.Point(3, 9);
@@ -3420,8 +3402,8 @@ namespace PMDS.GUI
             // 
             // lblInfoDienstuebergabe
             // 
-            appearance78.BackColor = System.Drawing.Color.Transparent;
-            this.lblInfoDienstuebergabe.Appearance = appearance78;
+            appearance113.BackColor = System.Drawing.Color.Transparent;
+            this.lblInfoDienstuebergabe.Appearance = appearance113;
             this.lblInfoDienstuebergabe.Location = new System.Drawing.Point(3, 60);
             this.lblInfoDienstuebergabe.Name = "lblInfoDienstuebergabe";
             this.lblInfoDienstuebergabe.Size = new System.Drawing.Size(587, 17);
@@ -3433,8 +3415,8 @@ namespace PMDS.GUI
             this.txtInfoDienstuebergabe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance79.BackColor = System.Drawing.Color.White;
-            this.txtInfoDienstuebergabe.Appearance = appearance79;
+            appearance114.BackColor = System.Drawing.Color.White;
+            this.txtInfoDienstuebergabe.Appearance = appearance114;
             this.txtInfoDienstuebergabe.Location = new System.Drawing.Point(3, 79);
             this.txtInfoDienstuebergabe.Name = "txtInfoDienstuebergabe";
             this.txtInfoDienstuebergabe.ReadOnly = true;
@@ -3444,8 +3426,8 @@ namespace PMDS.GUI
             // 
             // lblBesonderheit
             // 
-            appearance80.BackColor = System.Drawing.Color.Transparent;
-            this.lblBesonderheit.Appearance = appearance80;
+            appearance115.BackColor = System.Drawing.Color.Transparent;
+            this.lblBesonderheit.Appearance = appearance115;
             this.lblBesonderheit.Location = new System.Drawing.Point(3, 3);
             this.lblBesonderheit.Name = "lblBesonderheit";
             this.lblBesonderheit.Size = new System.Drawing.Size(457, 17);
@@ -3457,8 +3439,8 @@ namespace PMDS.GUI
             this.txtBesonderheit2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance81.BackColor = System.Drawing.Color.White;
-            this.txtBesonderheit2.Appearance = appearance81;
+            appearance116.BackColor = System.Drawing.Color.White;
+            this.txtBesonderheit2.Appearance = appearance116;
             this.txtBesonderheit2.Location = new System.Drawing.Point(3, 22);
             this.txtBesonderheit2.Name = "txtBesonderheit2";
             this.txtBesonderheit2.Size = new System.Drawing.Size(1022, 255);
@@ -3520,17 +3502,31 @@ namespace PMDS.GUI
             // ultraTabPageControl11
             // 
             this.ultraTabPageControl11.Controls.Add(this.pnlSTAMP);
-            this.ultraTabPageControl11.Location = new System.Drawing.Point(1, 24);
+            this.ultraTabPageControl11.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl11.Name = "ultraTabPageControl11";
             this.ultraTabPageControl11.Size = new System.Drawing.Size(1028, 673);
+            // 
+            // pnlSTAMP
+            // 
+            // 
+            // pnlSTAMP.ClientArea
+            // 
+            this.pnlSTAMP.ClientArea.Controls.Add(this.ucSTAMPData1);
+            this.pnlSTAMP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlSTAMP.Location = new System.Drawing.Point(0, 0);
+            this.pnlSTAMP.Name = "pnlSTAMP";
+            this.pnlSTAMP.Size = new System.Drawing.Size(1028, 673);
+            this.pnlSTAMP.TabIndex = 1;
             // 
             // ucSTAMPData1
             // 
             this.ucSTAMPData1.AutoScroll = true;
             this.ucSTAMPData1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucSTAMPData1.IsDirty = false;
             this.ucSTAMPData1.Location = new System.Drawing.Point(0, 0);
             this.ucSTAMPData1.Name = "ucSTAMPData1";
             this.ucSTAMPData1.Size = new System.Drawing.Size(1028, 673);
+            this.ucSTAMPData1.STAMPDataHasChanged = false;
             this.ucSTAMPData1.TabIndex = 0;
             // 
             // contextMenuStripÄrzte
@@ -3549,20 +3545,20 @@ namespace PMDS.GUI
             // 
             // tabStammdaten
             // 
-            appearance30.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance30.BorderColor = System.Drawing.Color.Black;
-            appearance30.FontData.BoldAsString = "True";
-            appearance30.FontData.UnderlineAsString = "False";
-            appearance30.ForeColor = System.Drawing.Color.Black;
-            this.tabStammdaten.ActiveTabAppearance = appearance30;
-            appearance31.BackColor = System.Drawing.Color.White;
-            appearance31.FontData.BoldAsString = "False";
-            appearance31.FontData.Name = "Microsoft Sans Serif";
-            appearance31.FontData.SizeInPoints = 10F;
-            appearance31.FontData.UnderlineAsString = "False";
-            this.tabStammdaten.Appearance = appearance31;
-            appearance32.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.tabStammdaten.ClientAreaAppearance = appearance32;
+            appearance5.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance5.BorderColor = System.Drawing.Color.Black;
+            appearance5.FontData.BoldAsString = "True";
+            appearance5.FontData.UnderlineAsString = "False";
+            appearance5.ForeColor = System.Drawing.Color.Black;
+            this.tabStammdaten.ActiveTabAppearance = appearance5;
+            appearance6.BackColor = System.Drawing.Color.White;
+            appearance6.FontData.BoldAsString = "False";
+            appearance6.FontData.Name = "Microsoft Sans Serif";
+            appearance6.FontData.SizeInPoints = 10F;
+            appearance6.FontData.UnderlineAsString = "False";
+            this.tabStammdaten.Appearance = appearance6;
+            appearance7.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.tabStammdaten.ClientAreaAppearance = appearance7;
             this.tabStammdaten.Controls.Add(this.ultraTabSharedControlsPage2);
             this.tabStammdaten.Controls.Add(this.ultraTabPageControl2);
             this.tabStammdaten.Controls.Add(this.ultraTabPageControl5);
@@ -3579,19 +3575,19 @@ namespace PMDS.GUI
             gridBagConstraint3.OriginX = 0;
             gridBagConstraint3.OriginY = 0;
             this.ultraGridBagLayoutPanel1.SetGridBagConstraint(this.tabStammdaten, gridBagConstraint3);
-            appearance82.BackColor = System.Drawing.Color.White;
-            appearance82.FontData.BoldAsString = "True";
-            appearance82.FontData.SizeInPoints = 10F;
-            appearance82.FontData.UnderlineAsString = "False";
-            appearance82.ForeColor = System.Drawing.Color.Black;
-            this.tabStammdaten.HotTrackAppearance = appearance82;
+            appearance117.BackColor = System.Drawing.Color.White;
+            appearance117.FontData.BoldAsString = "True";
+            appearance117.FontData.SizeInPoints = 10F;
+            appearance117.FontData.UnderlineAsString = "False";
+            appearance117.ForeColor = System.Drawing.Color.Black;
+            this.tabStammdaten.HotTrackAppearance = appearance117;
             this.tabStammdaten.Location = new System.Drawing.Point(0, 0);
             this.tabStammdaten.Name = "tabStammdaten";
             this.ultraGridBagLayoutPanel1.SetPreferredSize(this.tabStammdaten, new System.Drawing.Size(723, 468));
             this.tabStammdaten.SharedControlsPage = this.ultraTabSharedControlsPage2;
             this.tabStammdaten.Size = new System.Drawing.Size(1032, 700);
-            appearance83.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tabStammdaten.TabHeaderAreaAppearance = appearance83;
+            appearance118.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tabStammdaten.TabHeaderAreaAppearance = appearance118;
             this.tabStammdaten.TabIndex = 1;
             ultraTab1.Key = "PersoenlicheDaten";
             ultraTab1.TabPage = this.ultraTabPageControl2;
@@ -3636,7 +3632,6 @@ namespace PMDS.GUI
             ultraTab12});
             this.tabStammdaten.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.tabStammdaten.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
-            this.tabStammdaten.SelectedTabChanged += new Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventHandler(this.tabStammdaten_SelectedTabChanged);
             // 
             // ultraTabSharedControlsPage2
             // 
@@ -3673,17 +3668,24 @@ namespace PMDS.GUI
             this.ultraToolTipManager1.ContainingControl = this;
             this.ultraToolTipManager1.InitialDelay = 0;
             // 
-            // pnlSTAMP
+            // lblVorhergendeBetreuungsformen
             // 
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.lblVorhergendeBetreuungsformen.Appearance = appearance2;
+            this.lblVorhergendeBetreuungsformen.AutoSize = true;
+            this.lblVorhergendeBetreuungsformen.Location = new System.Drawing.Point(8, 157);
+            this.lblVorhergendeBetreuungsformen.Name = "lblVorhergendeBetreuungsformen";
+            this.lblVorhergendeBetreuungsformen.Size = new System.Drawing.Size(105, 17);
+            this.lblVorhergendeBetreuungsformen.TabIndex = 225;
+            this.lblVorhergendeBetreuungsformen.Text = "Vorh. Betreuung";
             // 
-            // pnlSTAMP.ClientArea
+            // cboVorherigeBetreuungsformenMulti
             // 
-            this.pnlSTAMP.ClientArea.Controls.Add(this.ucSTAMPData1);
-            this.pnlSTAMP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSTAMP.Location = new System.Drawing.Point(0, 0);
-            this.pnlSTAMP.Name = "pnlSTAMP";
-            this.pnlSTAMP.Size = new System.Drawing.Size(1028, 673);
-            this.pnlSTAMP.TabIndex = 1;
+            this.cboVorherigeBetreuungsformenMulti.Location = new System.Drawing.Point(161, 150);
+            this.cboVorherigeBetreuungsformenMulti.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.cboVorherigeBetreuungsformenMulti.Name = "cboVorherigeBetreuungsformenMulti";
+            this.cboVorherigeBetreuungsformenMulti.Size = new System.Drawing.Size(292, 32);
+            this.cboVorherigeBetreuungsformenMulti.TabIndex = 224;
             // 
             // ucKlientStammdaten
             // 
@@ -3696,9 +3698,11 @@ namespace PMDS.GUI
             this.Name = "ucKlientStammdaten";
             this.Size = new System.Drawing.Size(1032, 700);
             this.ultraTabPageControl4.ResumeLayout(false);
+            this.ultraTabPageControl4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBoxAdressdaten)).EndInit();
             this.ultraGroupBoxAdressdaten.ResumeLayout(false);
             this.ultraGroupBoxAdressdaten.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbHaupwohnsitzgemeinde)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHausnummer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStrasseOhneHausnummer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lift)).EndInit();
@@ -3731,16 +3735,16 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpAdmin)).EndInit();
             this.grpAdmin.ResumeLayout(false);
+            this.grpAdmin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkELGAAbgemeldet)).EndInit();
             this.panelAufenthaltsdaten2.ResumeLayout(false);
             this.panelAufenthaltsdaten2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkELGAAbgemeldet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbHaupwohnsitzgemeinde)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtZimmerNr)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbPK)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKennwort)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtgruppenkennzahl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkMilieubetreuung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAbwesenheitBeendet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKennwort)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbPK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBoxOben)).EndInit();
             this.ultraGroupBoxOben.ResumeLayout(false);
             this.ultraGroupBoxOben.PerformLayout();
@@ -3841,14 +3845,14 @@ namespace PMDS.GUI
             this.ultraTabPageControl9.ResumeLayout(false);
             this.ultraTabPageControl10.ResumeLayout(false);
             this.ultraTabPageControl11.ResumeLayout(false);
+            this.pnlSTAMP.ClientArea.ResumeLayout(false);
+            this.pnlSTAMP.ResumeLayout(false);
             this.contextMenuStripÄrzte.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabStammdaten)).EndInit();
             this.tabStammdaten.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel1)).EndInit();
             this.ultraGridBagLayoutPanel1.ResumeLayout(false);
-            this.pnlSTAMP.ClientArea.ResumeLayout(false);
-            this.pnlSTAMP.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -4051,13 +4055,9 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseLabel lblHausnummer;
         private QS2.Desktop.ControlManagment.BaseTextEditor txtHausnummer;
         private QS2.Desktop.ControlManagment.BaseTextEditor txtStrasseOhneHausnummer;
-        private QS2.Desktop.ControlManagment.BaseLabel lblHauptwohnsitzgemeinde;
-        public BaseControls.AuswahlGruppeCombo cmbHaupwohnsitzgemeinde;
         private QS2.Desktop.ControlManagment.BaseGroupBox grpAdmin;
         private QS2.Desktop.ControlManagment.BasePanel panelAufenthaltsdaten2;
         private QS2.Desktop.ControlManagment.BaseCheckBox chkELGAAbgemeldet;
-        private QS2.Desktop.ControlManagment.BaseLabel lblVorhergendeBetreuungsformen;
-        public cboAuswahllisteMulti cboVorherigeBetreuungsformenMulti;
         internal Infragistics.Win.Misc.UltraButton btnAbwesenheitsendeBestätigen;
         private QS2.Desktop.ControlManagment.BaseTextEditor txtZimmerNr;
         private QS2.Desktop.ControlManagment.BaseLabel lblKennwort;
@@ -4072,5 +4072,9 @@ namespace PMDS.GUI
         private UltraTabPageControl ultraTabPageControl11;
         private STAMP.ucSTAMPData ucSTAMPData1;
         private Infragistics.Win.Misc.UltraPanel pnlSTAMP;
+        public BaseControls.AuswahlGruppeCombo cmbHaupwohnsitzgemeinde;
+        private QS2.Desktop.ControlManagment.BaseLabel lblHauptwohnsitzgemeinde;
+        private QS2.Desktop.ControlManagment.BaseLabel lblVorhergendeBetreuungsformen;
+        public cboAuswahllisteMulti cboVorherigeBetreuungsformenMulti;
     }
 }

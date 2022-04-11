@@ -1079,7 +1079,7 @@ namespace PMDS.GUI
             this.chkKürzungLetzterTagAnwesenheit.Name = "chkKürzungLetzterTagAnwesenheit";
             this.chkKürzungLetzterTagAnwesenheit.Size = new System.Drawing.Size(234, 19);
             this.chkKürzungLetzterTagAnwesenheit.TabIndex = 138;
-            this.chkKürzungLetzterTagAnwesenheit.Text = "Kürzung letzter Tag Anwesenheit";
+            this.chkKürzungLetzterTagAnwesenheit.Text = "Kürzung letzter Tag des Aufenthalts";
             this.chkKürzungLetzterTagAnwesenheit.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // panelAufenthalshistorie
