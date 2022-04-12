@@ -200,7 +200,7 @@ namespace PMDS.Global.db
                                                adr_ort = adr.Ort,
                                                adr_strasse = adr.Strasse_OhneHausnummer,
                                                adr_hausnummer = adr.Hausnummer
-                                           }).GroupBy(p => p.IDKlient).Select(g => g.FirstOrDefault()).ToList();
+                                           }).GroupBy(p => p.IDKlient).Select(g => g.FirstOrDefault()).OrderBy(g => g.pat_nachname).ThenBy(g => g.pat_vorname).ToList();
 
 
                     foreach (var kl in lstKlientenID)
@@ -240,7 +240,7 @@ namespace PMDS.Global.db
                                                   auf_eintrittsdatum = auf.Aufnahmezeitpunkt,
                                                   auf_austrittsdatum = auf.Entlassungszeitpunkt,
                                                   auf_austrittWohin = ""
-                                              }).ToList();
+                                              }).OrderBy(o => o.auf_eintrittsdatum).ToList();
 
                         foreach (var auf in lstAufenthalte)
                         {
@@ -321,58 +321,59 @@ namespace PMDS.Global.db
                             }
                             bew.aufenthalte.Add(a);
 
-                            //Pflegegeldstufen zum Klienten
-                            var lPST = (from kl1 in db.Patient
-                                        join pps in db.PatientPflegestufe on kl1.ID equals pps.IDPatient
-                                        join ps in db.Pflegegeldstufe on pps.IDPflegegeldstufe equals ps.ID
-                                        where kl1.ID == bew.IDKlient
-                                        select new
-                                        {
-                                            ID = pps.ID,
-                                            pflegegeldstufe = ps.StufeNr,
-                                            gueltigVon = pps.GueltigAb,
-                                            gueltigBis = pps.GueltigBis,
-                                        }).ToList();
-
-                            foreach (var ps in lPST)
-                            {
-                                Pflegegeldstufe pst = new Pflegegeldstufe();
-                                pst.pflegegeldstufe = ps.pflegegeldstufe.ToString();
-                                pst.gueltigVon = ps.gueltigVon;
-
-                                if (ps.gueltigBis != null)
-                                {
-                                    pst.gueltigBis = (DateTime)ps.gueltigBis;
-                                }
-                                bew.pflegegeldstufen.Add(pst);
-                            }
-
-                            //Pflegegeldverfahren zum Klienten
-                            var lPSTV = (from kl1 in db.Patient
-                                         join pps in db.PatientPflegestufe on kl1.ID equals pps.IDPatient
-                                         join ps in db.Pflegegeldstufe on pps.IDPflegegeldstufeAntrag equals ps.ID
-                                         where kl1.ID == bew.IDKlient &&
-                                         pps.AenderungsantragDatum != null
-                                         select new
-                                         {
-                                             ID = pps.ID,
-                                             beantragtAm = pps.AenderungsantragDatum,
-                                             vorlaeufigePflegegeldstufeVerrechnungPersonal = ps.StufeNr,
-                                             kenntnisnahmeDatumBescheid = pps.GenehmigungDatum
-                                         }).ToList();
-
-                            foreach (var psv in lPSTV)
-                            {
-                                Pflegegeldverfahren pgv = new Pflegegeldverfahren();
-                                pgv.beantragtAm = (DateTime)psv.beantragtAm;
-                                pgv.vorlaufigePflegegeldstufeVerrechnungPersonal = psv.vorlaeufigePflegegeldstufeVerrechnungPersonal == 0 ? "keine" : psv.vorlaeufigePflegegeldstufeVerrechnungPersonal.ToString();
-                                if (psv.kenntnisnahmeDatumBescheid != null)
-                                {
-                                    pgv.kenntnisnahmeDatumBescheid = (DateTime)psv.kenntnisnahmeDatumBescheid;
-                                }
-                                bew.pflegegeldverfahren.Add(pgv);
-                            }
                         }
+                        //Pflegegeldstufen zum Klienten
+                        var lPST = (from kl1 in db.Patient
+                                    join pps in db.PatientPflegestufe on kl1.ID equals pps.IDPatient
+                                    join ps in db.Pflegegeldstufe on pps.IDPflegegeldstufe equals ps.ID
+                                    where kl1.ID == bew.IDKlient
+                                    select new
+                                    {
+                                        ID = pps.ID,
+                                        pflegegeldstufe = ps.StufeNr,
+                                        gueltigVon = pps.GueltigAb,
+                                        gueltigBis = pps.GueltigBis,
+                                    }).ToList();
+
+                        foreach (var ps in lPST)
+                        {
+                            Pflegegeldstufe pst = new Pflegegeldstufe();
+                            pst.pflegegeldstufe = ps.pflegegeldstufe.ToString();
+                            pst.gueltigVon = ps.gueltigVon;
+
+                            if (ps.gueltigBis != null)
+                            {
+                                pst.gueltigBis = (DateTime)ps.gueltigBis;
+                            }
+                            bew.pflegegeldstufen.Add(pst);
+                        }
+
+                        //Pflegegeldverfahren zum Klienten
+                        var lPSTV = (from kl1 in db.Patient
+                                     join pps in db.PatientPflegestufe on kl1.ID equals pps.IDPatient
+                                     join ps in db.Pflegegeldstufe on pps.IDPflegegeldstufeAntrag equals ps.ID
+                                     where kl1.ID == bew.IDKlient &&
+                                     pps.AenderungsantragDatum != null
+                                     select new
+                                     {
+                                         ID = pps.ID,
+                                         beantragtAm = pps.AenderungsantragDatum,
+                                         vorlaeufigePflegegeldstufeVerrechnungPersonal = ps.StufeNr,
+                                         kenntnisnahmeDatumBescheid = pps.GenehmigungDatum
+                                     }).ToList();
+
+                        foreach (var psv in lPSTV)
+                        {
+                            Pflegegeldverfahren pgv = new Pflegegeldverfahren();
+                            pgv.beantragtAm = (DateTime)psv.beantragtAm;
+                            pgv.vorlaufigePflegegeldstufeVerrechnungPersonal = psv.vorlaeufigePflegegeldstufeVerrechnungPersonal == 0 ? "keine" : psv.vorlaeufigePflegegeldstufeVerrechnungPersonal.ToString();
+                            if (psv.kenntnisnahmeDatumBescheid != null)
+                            {
+                                pgv.kenntnisnahmeDatumBescheid = (DateTime)psv.kenntnisnahmeDatumBescheid;
+                            }
+                            bew.pflegegeldverfahren.Add(pgv);
+                        }
+
                     }
                 }
 
@@ -402,6 +403,21 @@ namespace PMDS.Global.db
                 if (String.IsNullOrWhiteSpace(ConvertGeschlecht(bew.geschlecht)))
                 {
                     AddLog(ref chk, "Geschlecht '" + bew.geschlecht + "' ist kein gültiger Listeneintrag", ErrorLogClass.Bewohnerdaten, bew, null);
+                }
+
+                if (!bew.pflegegeldstufen.Any())
+                {
+                    AddLog(ref chk, "Keine Pflegegeldstufe gefunden", ErrorLogClass.Pflegegeldstufe, bew, null);
+                }
+
+                foreach (Pflegegeldstufe pgs in bew.pflegegeldstufen)
+                {
+                    chk.PflegegeldstufeOK = true;
+                }
+
+                foreach (Pflegegeldverfahren pgf in bew.pflegegeldverfahren)
+                {
+                    chk.PflegegeldstufeOK = true;
                 }
 
                 foreach (Aufenthalt auf in bew.aufenthalte)
@@ -449,20 +465,9 @@ namespace PMDS.Global.db
                     }
                 }
 
-                if (!bew.pflegegeldstufen.Any())
+                if (!chk.BewohnerdatenOK)
                 {
-                    AddLog(ref chk, "Keine Pflegegeldstufe gefunden", ErrorLogClass.Kostentragung, bew, null);
-                }
-
-                foreach (Pflegegeldstufe pgs in bew.pflegegeldstufen)
-                {
-                    chk.PflegegeldstufeOK = true;
-                }
-
-                foreach (Pflegegeldverfahren pgf in bew.pflegegeldverfahren) 
-                {
-                    chk.PflegegeldstufeOK = true;
-
+                    chk.sbLog.Append("\n");
                 }
             }
             return chk;
@@ -470,54 +475,68 @@ namespace PMDS.Global.db
 
         private void AddLog(ref CheckStatus chk, string txtLog, ErrorLogClass elc, Bewohnerdaten bew, Aufenthalt auf)
         {
+            AddHeaderToLog(ref chk, bew, auf);
+
             switch (elc) { 
                 case ErrorLogClass.Bewohnerliste:
                     break;
+
                 case ErrorLogClass.Bewohnerdaten:
-                    if (chk.BewohnerdatenOK) 
-                    {
-                        chk.sbLog.Append((bew.nachname + " "  + bew.vorname).Trim() + "\n");
-                    }
-                    chk.BewohnerdatenOK = false;
-                    chk.sbLog.Append(txtLog + "\n");
+                    chk.sbLog.Append("> " + txtLog + "\n");
                     break;
+
                 case ErrorLogClass.Aufenthalt:
-                    chk.AufenthaltOK = false;
-                    {
-                        if (chk.BewohnerdatenOK)
-                        {
-                            chk.sbLog.Append((bew.nachname + " " + bew.vorname).Trim() + "\n");
-                        }
-                        chk.sbLog.Append(">>> Aufenthalt vom " + auf.eintrittsdatum.ToString("dd.MM.yyyy")  + " <<<\n");
-                    }
                     chk.sbLog.Append("   " + txtLog + "\n");
                     break;
+                
                 case ErrorLogClass.VorherigeBetreuungsform:
                     chk.VorherigeBetreuungsformOK = false;
                     chk.sbLog.Append("   " + txtLog + "\n");
                     break;
+                
                 case ErrorLogClass.Kostentragung:
                     chk.KostentragungOK = false;
                     chk.sbLog.Append("   " + txtLog + "\n");
                     break;
+                
                 case ErrorLogClass.Abwesenheit:
                     chk.AbwesenheitOK = false;
                     chk.sbLog.Append("   " + txtLog + "\n");
                     break;
+                
                 case ErrorLogClass.Pflegegeldstufe:
                     chk.PflegegeldstufeOK = false;
-                    chk.sbLog.Append("   " + txtLog + "\n");
+                    chk.sbLog.Append("> " + txtLog + "\n");
                     break;
+                
                 case ErrorLogClass.Pflegegeldverfahren:
                     chk.PflegegeldverfahrenOK = false;
-                    chk.sbLog.Append("   " + txtLog + "\n");
+                    chk.sbLog.Append("> " + txtLog + "\n");
                     break;
+                
                 default:
                     break;
             }
             chk.BewohnerlisteOK = false;
+        }
 
-            //chk.sbLog.Append(txtLog + "\n");
+        private void AddHeaderToLog (ref CheckStatus chk, Bewohnerdaten bew, Aufenthalt auf)
+        {
+            if (chk.BewohnerdatenOK)
+            {
+                chk.sbLog.Append(("---------- " + bew.nachname + " " + bew.vorname).Trim() + " ----------\n");
+                chk.BewohnerdatenOK = false;
+            }
+
+            if (auf != null)
+            {
+                if (chk.AufenthaltOK)
+                {
+                    string strAbgeschlossen = auf.austrittsdatum == DateTime.MinValue ? "" : " (in Historie)";
+                    chk.sbLog.Append(">>> Aufenthalt vom " + auf.eintrittsdatum.ToString("dd.MM.yyyy") + strAbgeschlossen + " <<<\n");
+                    chk.AufenthaltOK = false;
+                }
+            }
         }
 
         private string LookupAuswahllisteBezeichnung(string IDAuswahllisteGruppe, string SearchValue, AuswahllisteSucheTyp SearchType)
