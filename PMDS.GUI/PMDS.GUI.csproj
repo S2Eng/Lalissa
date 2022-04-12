@@ -3253,9 +3253,6 @@
     <Compile Include="Pflegeplan\frmASZMZuordnung.Designer.cs">
       <DependentUpon>frmASZMZuordnung.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pflegeplan\frmEditPDx.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Pflegeplan\frmEditPDx1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -5416,10 +5413,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pflegeplan\frmASZMZuordnung.resx">
       <DependentUpon>frmASZMZuordnung.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pflegeplan\frmEditPDx.resx">
-      <DependentUpon>frmEditPDx.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pflegeplan\frmEditPDx1.resx">

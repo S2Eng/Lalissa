@@ -11,25 +11,23 @@ using PMDS.BusinessLogic;
 using PMDS.Global;
 using PMDS.Data.PflegePlan;
 using PMDS.Global.db.Pflegeplan;
+using S2Extensions;
 
 namespace PMDS.GUI
 {
 
     public partial class frmEditPDx1 : QS2.Desktop.ControlManagment.baseForm 
     {
-        private bool _saveKlicked = false;
-        private bool _bCanclose = false;
-        private bool _bModeNew = false;		// Flag ob neue oder alte PDx 
+        private bool _saveKlicked;
+        private bool _bCanclose;
+        private bool _bModeNew;		// Flag ob neue oder alte PDx 
         private PDXDef _PDXDef;
-        private bool _bCancel = false;		// signalisiert das Cancel ausgeführt wurde
+        private bool _bCancel;		// signalisiert das Cancel ausgeführt wurde
         private PMDS.BusinessLogic.Pflegemodelle _PflegeModelle;
-        private ValueList modellValueList = null;
+        private ValueList modellValueList;
         private string _modellErrorText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Eine Pflegedefinition darf pro Modell nur einmal vorkommen. Bitte ändern.");
         private bool _valueChangeEnabled = true;
         
-
-
-
         public frmEditPDx1(bool bNewPDx, ref PDXDef def)
         {
             _valueChangeEnabled = false;
@@ -56,13 +54,13 @@ namespace PMDS.GUI
             {
                 tbText.Text = def.Klartext;
                 tbDefinition.Text = def.Definition;
-                tbCode.Text = def.Code;
+                cmbCode.Text = def.Code;
+                cmbCode.Text = def.Code;
                 chkEntferntJN.Checked = def.EntferntJN;
                 cbGruppe.SelectedIndex = (int)def.PDXGruppe;
                 osLokalisierung.CheckedIndex = (int)def.PDXLokalisierungsTyp;
-                //Neu nach 15.09.2008 MDA
                 cbWundeJN.Checked = def.WundeJN;
-                tbPDXKuerzel.Text = def.PDXKuerzel; //Gernot%%
+                cmbPDXKuerzel.Text = def.PDXKuerzel; 
             }
 
             _valueChangeEnabled = true;
@@ -94,13 +92,14 @@ namespace PMDS.GUI
             else
                 errorProvider1.SetError(tbDefinition, "");
 
-            if (tbCode.Text.Length == 0)
+            if (cmbCode.Text.Length == 0)
             {
-                errorProvider1.SetError(tbCode, ENV.String("ERROR_PDXCODE"));
+                errorProvider1.SetError(cmbCode, ENV.String("ERROR_PDXCODE"));
                 _bCanclose = false;
             }
             else
-                errorProvider1.SetError(tbCode, "");
+                errorProvider1.SetError(cmbCode, "");
+
 
             if (CheckPDxCode() == true)
                 _bCanclose = false;
@@ -135,12 +134,16 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         private bool CheckPDxCode()
         {
+            if (cbGruppe.Text.sEquals("KeineDiagnose") && ( cmbCode.Text.sEquals("$15GuKG") || cmbCode.Text.sEquals("KeineDiagnose")))   //$15GuKG und KeineDiagnose müssen nicht eindeutig sein.
+                return false;
+
             if (!_bModeNew)			// nur bei Neuanlage prüfen
                 return false;
-            bool bRet = PMDS.DB.DBUtil.PDXCodeExists(tbCode.Text);
+
+            bool bRet = PMDS.DB.DBUtil.PDXCodeExists(cmbCode.Text);
             if (bRet)
             {
-                errorProvider1.SetError(tbCode, ENV.String("ERROR_PDX_CODE_EXISTS"));
+                errorProvider1.SetError(cmbCode, ENV.String("ERROR_PDX_CODE_EXISTS"));
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("ERROR_PDX_CODE_EXISTS"), true);
             }
             return bRet;
@@ -236,17 +239,6 @@ namespace PMDS.GUI
 
         //----------------------------------------------------------------------------
         /// <summary>
-        /// Prüfen ob Code schon in der DB vorhanden ist
-        /// </summary> 
-        //----------------------------------------------------------------------------
-        private void tbCode_Leave(object sender, System.EventArgs e)
-        {
-            errorProvider1.SetError(tbCode, "");			// vorher löschen
-            CheckPDxCode();
-        }
-
-        //----------------------------------------------------------------------------
-        /// <summary>
         /// Verhindern das ungerechtfertigt geschlossen wird
         /// </summary> 
         //----------------------------------------------------------------------------
@@ -257,7 +249,7 @@ namespace PMDS.GUI
 
             if (_bCanclose && !_bCancel)
             {
-                _PDXDef.Code = tbCode.Text;
+                _PDXDef.Code = cmbCode.Text;
                 _PDXDef.EntferntJN = chkEntferntJN.Checked;
                 _PDXDef.Definition = tbDefinition.Text;
                 _PDXDef.Klartext = tbText.Text;
@@ -268,7 +260,7 @@ namespace PMDS.GUI
 
                 //Neu nach 15.09.2008 MDa
                 _PDXDef.WundeJN = cbWundeJN.Checked;
-                _PDXDef.PDXKuerzel = tbPDXKuerzel.Text; //Gernot%%
+                _PDXDef.PDXKuerzel = cmbPDXKuerzel.Text; //Gernot%%
             }
         }
 
@@ -422,6 +414,40 @@ namespace PMDS.GUI
 
             if (cbWundeJN.Checked)
                 osLokalisierung.CheckedIndex = (int)PDxLokalisierungsTypen.Muss;
+        }
+
+        private void cmbCode_ValueChanged(object sender, EventArgs e)
+        {
+            if (cmbCode.Text.sEquals("KeineDiagnose"))
+            {
+                cmbPDXKuerzel.Text = "Keine Diag";
+            }
+            else
+            {
+                cmbPDXKuerzel.Text = "";
+            }
+        }
+
+        private void cbGruppe_ValueChanged(object sender, EventArgs e)
+        {
+            if (cbGruppe.Text.sEquals("KeineDiagnose") && !cmbCode.Text.sEquals("§15GuKG") && !cmbCode.Text.sEquals("KeineDiagnose"))
+            {
+                cmbCode.Text = null;
+            }
+        }
+
+        private void chkEntferntJN_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkEntferntJN.Checked)
+            {
+                chkEntferntJN.Appearance.ForeColor = Color.Red;
+                chkEntferntJN.Appearance.FontData.Bold = DefaultableBoolean.True;
+            }
+            else
+            {
+                chkEntferntJN.Appearance.ForeColor = Color.Black;
+                chkEntferntJN.Appearance.FontData.Bold = DefaultableBoolean.False;
+            }
         }
     }
 }

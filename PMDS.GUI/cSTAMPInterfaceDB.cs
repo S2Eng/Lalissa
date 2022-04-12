@@ -23,6 +23,18 @@ namespace PMDS.Global.db
             Kritisch = 3
         }
 
+        private enum ErrorLogClass
+        {
+            Bewohnerliste = 0,
+            Bewohnerdaten = 1,
+            Aufenthalt = 2,
+            VorherigeBetreuungsform =3,
+            Kostentragung = 4,
+            Abwesenheit = 5,
+            Pflegegeldstufe = 6,
+            Pflegegeldverfahren = 7
+        }
+
         private enum AuswahllisteSucheTyp
         {
             ELGA_ID = 1,
@@ -30,15 +42,28 @@ namespace PMDS.Global.db
             Beschreibung = 3
         }
 
+        private class CheckStatus
+        {
+            public StringBuilder sbLog = new StringBuilder();
+            public bool BewohnerlisteOK = true;
+            public bool BewohnerdatenOK = true;
+            public bool AufenthaltOK = true;
+            public bool VorherigeBetreuungsformOK = true;
+            public bool KostentragungOK = true;
+            public bool AbwesenheitOK = true;
+            public bool PflegegeldstufeOK = true;
+            public bool PflegegeldverfahrenOK = true;
+        }
+
         public class Bewohnerliste
         {
             public Guid ID { get; set; } = Guid.NewGuid();
             public DateTime ErstelltAm { get; set; } = _Now;
             public List<Bewohnerdaten> bewohnerdaten { get; set; } = new List<Bewohnerdaten>();
-            public string Log { get; set; } = "";
+            public StringBuilder sbLog { get; set; } = new StringBuilder();
+            public bool IsInitialized { get; set; }
             public bool HasErrors { get; set; }
         }
-
 
         public class Bewohnerdaten
         {
@@ -46,7 +71,7 @@ namespace PMDS.Global.db
             public string vorname { get; set; } = "";
             public string nachname { get; set; } = "";
             public DateTime geburtsdatum { get; set; } = DateTime.MinValue;
-            public string staatsbergerschaft { get; set; } = "";                  //Exakt drei Zeichen
+            public string staatsbuergerschaft { get; set; } = "";                  //Exakt drei Zeichen
             public string geschlecht { get; set; } = "";                          //Ein Zeichen {m, w, d, u } 
             public string letzteHauptwohnsitzgemeinde { get; set; } = "";         //Fünf Zeichen
             public bool forensicherHintergrund { get; set; }
@@ -60,14 +85,8 @@ namespace PMDS.Global.db
             public List<Pflegegeldstufe> pflegegeldstufen { get; } = new List<Pflegegeldstufe>();
             public List<Pflegegeldverfahren> pflegegeldverfahren { get; } = new List<Pflegegeldverfahren>();
             public Guid IDKlient { get; set; } = Guid.Empty;
-            public string ErrLog { get; set; } = "";
-        }
-
-        public class STAMPString
-        {
-            string Text { get; set; } = "";
-            int MaxLength { get; set; }
-            bool TrimText { get; set; } = true;
+            public StringBuilder sbErrLog { get; set; } = new StringBuilder();
+            public bool HasError { get; set; }
         }
 
         public class Aufenthalt
@@ -80,14 +99,15 @@ namespace PMDS.Global.db
             public List<kostentragung> kostentragungen { get; } = new List<kostentragung>();
             public List<abwesenheit> abwesenheiten { get; } = new List<abwesenheit>();
             public Guid IDAufenthalt { get; set; } = Guid.Empty;
-            public string ErrLog { get; set; } = "";
-
+            public StringBuilder sbErrLog { get; set; } = new StringBuilder();
+            public bool HasError { get; set; }
         }
 
         public class VorherigeBetreuungsform
         {
             public string vorherigeBeteuungsform { get; set; } = "";      //{ MOB_HK, TAGZ, BET_WOH, 24H_BET, AND_PH, KH, PRIV_BET, KEINE, SONST }
-            public string ErrLog { get; set; } = "";
+            public StringBuilder sbErrLog { get; set; } = new StringBuilder();
+            public bool HasError { get; set; }
 
         }
 
@@ -97,7 +117,8 @@ namespace PMDS.Global.db
             public string finanzierungSonstige { get; set; } = "";
             public DateTime gueltigVon { get; set; } = DateTime.MinValue;
             public DateTime gueltigBis { get; set; } = DateTime.MaxValue;
-            public string ErrLog { get; set; } = "";
+            public StringBuilder sbErrLog { get; set; } = new StringBuilder();
+            public bool HasError { get; set; }
 
         }
 
@@ -107,7 +128,8 @@ namespace PMDS.Global.db
             public DateTime vonDatum { get; set; } = DateTime.MinValue;
             public DateTime bisDatum { get; set; } = DateTime.MaxValue;
             public Guid IDUrlaub { get; set; } = Guid.Empty;
-            public string ErrLog { get; set; } = "";
+            public StringBuilder sbErrLog { get; set; } = new StringBuilder();
+            public bool HasError { get; set; }
 
         }
 
@@ -117,8 +139,8 @@ namespace PMDS.Global.db
             public DateTime gueltigVon { get; set; } = DateTime.MinValue;
             public DateTime gueltigBis { get; set; } = DateTime.MaxValue;
             public Guid IDPflegestufe { get; set; } = Guid.Empty;
-            public string ErrLog { get; set; } = "";
-
+            public StringBuilder sbErrLog { get; set; } = new StringBuilder();
+            public bool HasError { get; set; }
         }
 
         public class Pflegegeldverfahren
@@ -127,11 +149,11 @@ namespace PMDS.Global.db
             public string vorlaufigePflegegeldstufeVerrechnungPersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
             public DateTime kenntnisnahmeDatumBescheid { get; set; } = DateTime.MaxValue;
             public Guid IDPflegestufe { get; set; } = Guid.Empty;
-            public string ErrLog { get; set; } = "";
-
+            public StringBuilder sbErrLog { get; set; } = new StringBuilder();
+            public bool HasError { get; set; }
         }
 
-        public bool init(DateTime Periode)
+        public Bewohnerliste init(DateTime Periode)
         {
             try
             {
@@ -188,25 +210,8 @@ namespace PMDS.Global.db
                         bew.synonym = kl.pat_synonym;
                         bew.vorname = kl.pat_vorname;
                         bew.nachname = kl.pat_nachname;
-                        string STAMPstaatsbergerschaft = LookupAuswahllisteBezeichnung("LND", kl.pat_staatsbürgerschaft, AuswahllisteSucheTyp.ELGA_Code);
-                        if (!String.IsNullOrWhiteSpace(STAMPstaatsbergerschaft))
-                        {
-                            bew.staatsbergerschaft = STAMPstaatsbergerschaft;
-                        }
-                        else
-                        {
-                            bew.ErrLog += "Staatsbürgerschaft " + kl.pat_staatsbürgerschaft + " ist kein gültiger Listeneintrag\n";
-                            lBew.HasErrors = true;
-                        }
-                        if (!String.IsNullOrWhiteSpace(ConvertGeschlecht(kl.pat_geschlecht)))
-                        {
-                            bew.geschlecht = ConvertGeschlecht(kl.pat_geschlecht);
-                        }
-                        else
-                        {
-                            bew.ErrLog += "Geschlecht " + kl.pat_geschlecht + " ist kein gültiger Listeneintrag.\n";
-                            lBew.HasErrors = true;
-                        }
+                        bew.staatsbuergerschaft = kl.pat_staatsbürgerschaft;
+                        bew.geschlecht = kl.pat_geschlecht;
 
                         if (kl.pat_forensicherHintergrund != null)
                             bew.forensicherHintergrund = (bool)kl.pat_forensicherHintergrund;
@@ -241,7 +246,6 @@ namespace PMDS.Global.db
                         {
                             Aufenthalt a = new Aufenthalt();
                             a.letzteHauptwohnsitzgemeinde = LookupAuswahllisteBezeichnung("GEM", auf.auf_letzteHauptwohnsitzgemeinde, AuswahllisteSucheTyp.ELGA_Code);
-
 
                             if (!String.IsNullOrEmpty((string)auf.auf_vorherigeBetreuungsform))
                             {
@@ -283,11 +287,6 @@ namespace PMDS.Global.db
                                     kostTrag.gueltigBis = (DateTime) kt.GueltigBis;
                                 a.kostentragungen.Add(kostTrag);
                             }
-                            if (!kts.Any())
-                            {
-                                a.ErrLog += "Keine Kostentragungen gefunden.";
-                                lBew.HasErrors = true;
-                            };
 
                             //Abwesenheiten zu Aufenthalt
                             var abw = (from auf1 in db.Aufenthalt
@@ -314,11 +313,6 @@ namespace PMDS.Global.db
                                 abwesenheit abwh = new abwesenheit();
                                 abwh.abwesenheitsgrund = LookupAuswahllisteBezeichnung("URL", ab.abwesenheitsgrund, AuswahllisteSucheTyp.Beschreibung);
                                 abwh.vonDatum = (DateTime)ab.gueltigVon;
-                                if (String.IsNullOrWhiteSpace(abwh.abwesenheitsgrund))
-                                {
-                                    abwh.ErrLog += "Kein gültiger Abwesenheitsgrund für Abwesenheit vom " + abwh.vonDatum.ToString("dd.MM.yyyy") + " gefunden.";
-                                    lBew.HasErrors = true;
-                                }
                                 if (ab.gueltigBis != null)
                                 {
                                     abwh.bisDatum = (DateTime)ab.gueltigBis;
@@ -344,28 +338,13 @@ namespace PMDS.Global.db
                             {
                                 Pflegegeldstufe pst = new Pflegegeldstufe();
                                 pst.pflegegeldstufe = ps.pflegegeldstufe.ToString();
-
-                                if (ps.gueltigVon == null)
-                                {
-                                    bew.ErrLog += "Pflegestufeneintrag ohne gültigem von-Datum gefunden.";
-                                    lBew.HasErrors = true;
-                                }
-                                else
-                                {
-                                    pst.gueltigVon = ps.gueltigVon;
-                                }
+                                pst.gueltigVon = ps.gueltigVon;
 
                                 if (ps.gueltigBis != null)
                                 {
                                     pst.gueltigBis = (DateTime)ps.gueltigBis;
                                 }
                                 bew.pflegegeldstufen.Add(pst);
-                            }
-                            //Mindestens eine PS -> sonst Fehler!
-                            if (!bew.pflegegeldstufen.Any())
-                            {
-                                bew.ErrLog += "Keine Pflegestufeneinträge gefunden.";
-                                lBew.HasErrors = true;
                             }
 
                             //Pflegegeldverfahren zum Klienten
@@ -394,20 +373,151 @@ namespace PMDS.Global.db
                                 bew.pflegegeldverfahren.Add(pgv);
                             }
                         }
-                        //Mindestens ein Aufenthalt, sonst Fehler!
-                        if (bew.aufenthalte.Count == 0)
-                        {
-                            bew.ErrLog += "Kein Aufenthalt für diesen Bewohner gefunden.";
-                            lBew.HasErrors = true;
-                        }
-                    }                    
+                    }
                 }
-                return true;
+
+                lBew.sbLog = CheckAll(lBew).sbLog;
+                lBew.IsInitialized = true;
+                return lBew;
             }
             catch (Exception ex)
             {
-                return false;
+                Bewohnerliste lBewError = new Bewohnerliste();
+                lBewError.sbLog.Append(ex.Message);
+                return new Bewohnerliste();
             }
+        }
+
+        private CheckStatus CheckAll(Bewohnerliste lBew)
+        {
+            CheckStatus chk = new CheckStatus();
+            foreach (Bewohnerdaten bew in lBew.bewohnerdaten)
+            {
+                chk.BewohnerdatenOK = true;
+                if (String.IsNullOrWhiteSpace(LookupAuswahllisteBezeichnung("LND", bew.staatsbuergerschaft, AuswahllisteSucheTyp.ELGA_Code)))
+                {
+                    AddLog(ref chk, "Staatsbürgerschaft '" + bew.staatsbuergerschaft + "' ist kein gültiger Listeneintrag", ErrorLogClass.Bewohnerdaten, bew, null);
+                }
+
+                if (String.IsNullOrWhiteSpace(ConvertGeschlecht(bew.geschlecht)))
+                {
+                    AddLog(ref chk, "Geschlecht '" + bew.geschlecht + "' ist kein gültiger Listeneintrag", ErrorLogClass.Bewohnerdaten, bew, null);
+                }
+
+                foreach (Aufenthalt auf in bew.aufenthalte)
+                {
+                    chk.AufenthaltOK = true;
+
+                    if (String.IsNullOrWhiteSpace(LookupAuswahllisteBezeichnung("GKZ", auf.letzteHauptwohnsitzgemeinde, AuswahllisteSucheTyp.Beschreibung)))
+                    {
+                        AddLog(ref chk, "Letzte Hauptwohnsitzgemeinde '" + bew.letzteHauptwohnsitzgemeinde + "' ist kein gültiger Listeneintrag", ErrorLogClass.Aufenthalt, bew, auf);
+                    }
+
+                    if (!auf.vorherigeBetreuungsformen.Any())
+                    {
+                        AddLog(ref chk, "Keine vorherigen Betreuungsform gefunden", ErrorLogClass.VorherigeBetreuungsform, bew, auf);
+                    }
+                    else
+                    {
+                        foreach (VorherigeBetreuungsform vbf in auf.vorherigeBetreuungsformen)
+                        {
+                            if (String.IsNullOrWhiteSpace(LookupAuswahllisteBezeichnung("VBF", vbf.vorherigeBeteuungsform, AuswahllisteSucheTyp.Beschreibung)))
+                            {
+                                AddLog(ref chk, "Vorhereige Betreuungsform '" + bew.letzteHauptwohnsitzgemeinde + "' ist kein gültiger Listeneintrag", ErrorLogClass.VorherigeBetreuungsform, bew, auf);
+                            }
+                        }
+                    }
+
+                    if (auf.austrittsdatum != DateTime.MinValue && String.IsNullOrWhiteSpace(LookupAuswahllisteBezeichnung("AWO", auf.austrittWohin, AuswahllisteSucheTyp.Beschreibung)))
+                    {
+                        AddLog(ref chk, "Austritt wohin' " + auf.austrittWohin + "' ist kein gültiger Listeneintrag", ErrorLogClass.Aufenthalt, bew, auf);
+                    }
+
+                    //Gültigkeit wird bereits in der Oberfläche geprüft, daher nur Prüfung, ob es mindestens eine gibt.
+                    if (!auf.kostentragungen.Any())
+                    {
+                        AddLog(ref chk, "Keine Kostentragungen gefunden", ErrorLogClass.Kostentragung, bew, auf);
+                    }
+
+                    foreach (abwesenheit abw in auf.abwesenheiten)
+                    {
+                        chk.AbwesenheitOK = true;
+                        if (String.IsNullOrWhiteSpace(LookupAuswahllisteBezeichnung("SAG", abw.abwesenheitsgrund, AuswahllisteSucheTyp.Beschreibung)))
+                        {
+                            AddLog(ref chk, "Abwesenheitsgrund '" + abw.abwesenheitsgrund + "' ist kein gültiger Listeneintrag bei Abwesenheit vom " + abw.vonDatum.ToString("dd.MM.yyyy"), ErrorLogClass.Abwesenheit, bew, auf);
+                        }
+                    }
+                }
+
+                if (!bew.pflegegeldstufen.Any())
+                {
+                    AddLog(ref chk, "Keine Pflegegeldstufe gefunden", ErrorLogClass.Kostentragung, bew, null);
+                }
+
+                foreach (Pflegegeldstufe pgs in bew.pflegegeldstufen)
+                {
+                    chk.PflegegeldstufeOK = true;
+                }
+
+                foreach (Pflegegeldverfahren pgf in bew.pflegegeldverfahren) 
+                {
+                    chk.PflegegeldstufeOK = true;
+
+                }
+            }
+            return chk;
+        }
+
+        private void AddLog(ref CheckStatus chk, string txtLog, ErrorLogClass elc, Bewohnerdaten bew, Aufenthalt auf)
+        {
+            switch (elc) { 
+                case ErrorLogClass.Bewohnerliste:
+                    break;
+                case ErrorLogClass.Bewohnerdaten:
+                    if (chk.BewohnerdatenOK) 
+                    {
+                        chk.sbLog.Append((bew.nachname + " "  + bew.vorname).Trim() + "\n");
+                    }
+                    chk.BewohnerdatenOK = false;
+                    chk.sbLog.Append(txtLog + "\n");
+                    break;
+                case ErrorLogClass.Aufenthalt:
+                    chk.AufenthaltOK = false;
+                    {
+                        if (chk.BewohnerdatenOK)
+                        {
+                            chk.sbLog.Append((bew.nachname + " " + bew.vorname).Trim() + "\n");
+                        }
+                        chk.sbLog.Append(">>> Aufenthalt vom " + auf.eintrittsdatum.ToString("dd.MM.yyyy")  + " <<<\n");
+                    }
+                    chk.sbLog.Append("   " + txtLog + "\n");
+                    break;
+                case ErrorLogClass.VorherigeBetreuungsform:
+                    chk.VorherigeBetreuungsformOK = false;
+                    chk.sbLog.Append("   " + txtLog + "\n");
+                    break;
+                case ErrorLogClass.Kostentragung:
+                    chk.KostentragungOK = false;
+                    chk.sbLog.Append("   " + txtLog + "\n");
+                    break;
+                case ErrorLogClass.Abwesenheit:
+                    chk.AbwesenheitOK = false;
+                    chk.sbLog.Append("   " + txtLog + "\n");
+                    break;
+                case ErrorLogClass.Pflegegeldstufe:
+                    chk.PflegegeldstufeOK = false;
+                    chk.sbLog.Append("   " + txtLog + "\n");
+                    break;
+                case ErrorLogClass.Pflegegeldverfahren:
+                    chk.PflegegeldverfahrenOK = false;
+                    chk.sbLog.Append("   " + txtLog + "\n");
+                    break;
+                default:
+                    break;
+            }
+            chk.BewohnerlisteOK = false;
+
+            //chk.sbLog.Append(txtLog + "\n");
         }
 
         private string LookupAuswahllisteBezeichnung(string IDAuswahllisteGruppe, string SearchValue, AuswahllisteSucheTyp SearchType)

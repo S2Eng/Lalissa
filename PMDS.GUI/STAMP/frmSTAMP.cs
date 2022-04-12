@@ -28,7 +28,24 @@ namespace PMDS.GUI.STAMP
             //rtbTxt.Text = "";
 
             PMDS.Global.db.cSTAMPInterfaceDB STAMP = new PMDS.Global.db.cSTAMPInterfaceDB();
-            STAMP.init(DateTime.Now);
+            PMDS.Global.db.cSTAMPInterfaceDB.Bewohnerliste lBew  = STAMP.init(DateTime.Now);
+
+            if (lBew.IsInitialized)
+            {
+                //unerwarteter Fehler (Exception)
+                this.rtbLog.Text = lBew.sbLog.ToString();
+            }
+            else
+            {
+                if (lBew.HasErrors) //Logikfehler -> nicht weiter machen
+                {
+                    this.rtbLog.Text = lBew.sbLog.ToString();
+                }
+                else
+                {
+                    this.rtbLog.Text = "Kein logischer Fehler. Daten können jetzt gesendet werden.";    //Weitermachen
+                }
+            }
         }
     }
 }
