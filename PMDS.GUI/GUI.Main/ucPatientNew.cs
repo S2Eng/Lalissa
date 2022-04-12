@@ -126,12 +126,12 @@ namespace PMDS.GUI
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             this.dtpGebDatum = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.lblGebDatum = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtOrt = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -432,8 +432,8 @@ namespace PMDS.GUI
             // 
             // lblHausnummer
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.lblHausnummer.Appearance = appearance6;
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.lblHausnummer.Appearance = appearance12;
             this.lblHausnummer.AutoSize = true;
             this.lblHausnummer.Location = new System.Drawing.Point(344, 209);
             this.lblHausnummer.Name = "lblHausnummer";
@@ -448,7 +448,7 @@ namespace PMDS.GUI
             this.txtHausnummer.Name = "txtHausnummer";
             this.txtHausnummer.Size = new System.Drawing.Size(77, 21);
             this.txtHausnummer.TabIndex = 12;
-            this.txtHausnummer.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            this.txtHausnummer.ValueChanged += new System.EventHandler(this.txtHausnummer_ValueChanged);
             // 
             // txtStrasseOhneHausnummer
             // 
@@ -457,7 +457,7 @@ namespace PMDS.GUI
             this.txtStrasseOhneHausnummer.Name = "txtStrasseOhneHausnummer";
             this.txtStrasseOhneHausnummer.Size = new System.Drawing.Size(237, 21);
             this.txtStrasseOhneHausnummer.TabIndex = 11;
-            this.txtStrasseOhneHausnummer.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            this.txtStrasseOhneHausnummer.ValueChanged += new System.EventHandler(this.txtStrasseOhneHausnummer_ValueChanged);
             // 
             // cmbLand
             // 
@@ -482,8 +482,8 @@ namespace PMDS.GUI
             // 
             // lblLand
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.lblLand.Appearance = appearance5;
+            appearance11.BackColor = System.Drawing.Color.Transparent;
+            this.lblLand.Appearance = appearance11;
             this.lblLand.AutoSize = true;
             this.lblLand.Location = new System.Drawing.Point(13, 263);
             this.lblLand.Name = "lblLand";
@@ -493,8 +493,8 @@ namespace PMDS.GUI
             // 
             // lblTitelPost
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitelPost.Appearance = appearance4;
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitelPost.Appearance = appearance10;
             this.lblTitelPost.AutoSize = true;
             this.lblTitelPost.Location = new System.Drawing.Point(305, 146);
             this.lblTitelPost.Name = "lblTitelPost";
@@ -546,8 +546,8 @@ namespace PMDS.GUI
             // 
             // baseLabel1
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.baseLabel1.Appearance = appearance3;
+            appearance9.BackColor = System.Drawing.Color.Transparent;
+            this.baseLabel1.Appearance = appearance9;
             this.baseLabel1.AutoSize = true;
             this.baseLabel1.Location = new System.Drawing.Point(305, 88);
             this.baseLabel1.Name = "baseLabel1";
@@ -580,8 +580,8 @@ namespace PMDS.GUI
             // 
             // lblStatsB
             // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            this.lblStatsB.Appearance = appearance1;
+            appearance7.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatsB.Appearance = appearance7;
             this.lblStatsB.AutoSize = true;
             this.lblStatsB.Location = new System.Drawing.Point(305, 177);
             this.lblStatsB.Name = "lblStatsB";
@@ -613,8 +613,8 @@ namespace PMDS.GUI
             // 
             // lblFamiliensst
             // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.lblFamiliensst.Appearance = appearance2;
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            this.lblFamiliensst.Appearance = appearance8;
             this.lblFamiliensst.AutoSize = true;
             this.lblFamiliensst.Location = new System.Drawing.Point(13, 177);
             this.lblFamiliensst.Name = "lblFamiliensst";
@@ -934,7 +934,22 @@ namespace PMDS.GUI
                 ucVersichrungsdaten1.ReadOnly = value;
             }
         }
-    }
 
+        private void txtStrasseOhneHausnummer_ValueChanged(object sender, EventArgs e)
+        {
+            SetStrasseMitHausnummer(sender, e);
+        }
+
+        private void txtHausnummer_ValueChanged(object sender, EventArgs e)
+        {
+            SetStrasseMitHausnummer(sender, e);
+        }
+
+        private void SetStrasseMitHausnummer(object sender, EventArgs e)
+        {
+            this.txtStrasse.Text = (txtStrasseOhneHausnummer.Text + " " + txtHausnummer.Text).Trim();
+            OnValueChanged(sender, e);
+        }
+    }
 }
 
