@@ -1080,7 +1080,7 @@ namespace PMDS.GUI
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA abgemeldet: ") + (rPatInfo.ELGAAbgemeldet ?? false ? sJa : sNein) + " -> " + (chkELGAAbgemeldet.Checked ? sJa : sNein));
                     }
-                    if (ENV.lic_STAMP && this.txtSTAMPSynonym.Text != rPatInfo.STAMP_Synonym)
+                    if (ENV.lic_STAMP && rPatInfo.STAMP_Synonym != null  && this.txtSTAMPSynonym.Text != rPatInfo.STAMP_Synonym)
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("STAMP ID: ") + rPatInfo.STAMP_Synonym.Trim() + " -> " + this.txtSTAMPSynonym.Text.Trim());
                     }

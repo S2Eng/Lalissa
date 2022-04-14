@@ -6,15 +6,21 @@ using System.Threading.Tasks;
 using System.Linq;
 using S2Extensions;
 
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+
 namespace PMDS.Global.db
 {
     public class cSTAMPInterfaceDB
     {
         public static DateTime _Now { get; set; } = DateTime.Now;
+        private static DateTime _MinPeriode = new DateTime(2022, 4, 1);
         private static DateTime _Periode = _Now;
         private static DateTime _FirstOfPeriode = _Periode;
         private static DateTime _LastOfPeriode = _Periode;
         private static StringBuilder sbLog = new StringBuilder();
+        private string dFormat = "dd.MM.yyyy";
 
         private enum ErrorClass
         {
@@ -42,7 +48,7 @@ namespace PMDS.Global.db
             Beschreibung = 3
         }
 
-        private class CheckStatus
+        public class CheckStatus
         {
             public StringBuilder sbLog = new StringBuilder();
             public bool BewohnerlisteOK = true;
@@ -65,15 +71,85 @@ namespace PMDS.Global.db
             public bool HasErrors { get; set; }
         }
 
+        //--------------------------- JSON - Strukturen für REST-Service, wird in CheckAll gefüllt -----------------
+
+        public class JSONBewohnerdaten
+        {
+            public string synonym { get; set; } = "";                             //ID von STAMP
+            public string vorname { get; set; } = "";
+            public string nachname { get; set; } = "";
+            public string geburtsdatum { get; set; } = "";
+            public string staatsbuergerschaft { get; set; } = "";                  //Exakt drei Zeichen
+            public string geschlecht { get; set; } = "";                          //Ein Zeichen {m, w, d, u } 
+            public bool forensicherHintergrund { get; set; }
+            public bool gemeldetAmStandort { get; set; } = true;
+            public string plz { get; set; } = "";                                 //Max. 10 
+            public string ort { get; set; } = "";                                 //Max. 50
+            public string strasse { get; set; } = "";                             //Max. 60
+            public string hausnummer { get; set; } = "";                          //Max. 10
+            public string synonymVorsystem { get; set; } = "";                    //Max. 50     //IDPatient
+            public JSONAufenthalt[] aufenthalte { get; set; } = Array.Empty<JSONAufenthalt>();
+            public JSONPflegegeldstufe[] pflegegeldstufen { get; set; } = Array.Empty<JSONPflegegeldstufe>();
+            public JSONPflegegeldverfahren[] pflegegeldverfahren { get; set; } = Array.Empty<JSONPflegegeldverfahren>();
+        }
+
+        public class JSONAufenthalt
+        {
+            public string letzteHauptwohnsitzgemeinde { get; set; } = "";
+            public JSONVorherigeBetreuungsform[] vorherigeBetreuungsformen { get; set; }
+            public string eintrittsdatum { get; set; } = "";
+            public string austrittsdatum { get; set; }
+            public string austrittWohin { get; set; } = "";              //{ BET_WOH. 24H_BET, AND_PH, TOD, SONST }
+            public JSONkostentragung[] kostentragungen { get; set; } = Array.Empty<JSONkostentragung>();
+            public JSONabwesenheit[] abwesenheiten { get; set; } = Array.Empty<JSONabwesenheit>();
+        }
+
+        public class JSONVorherigeBetreuungsform
+        {
+            public string vorherigeBeteuungsform { get; set; } = "";     //{ MOB_HK, TAGZ, BET_WOH, 24H_BET, AND_PH, KH, PRIV_BET, KEINE, SONST }
+        }
+
+        public class JSONkostentragung
+        {
+            public string finanzierung { get; set; } = "";     //SZ, RESTK_13_xxx, RESTK_13_2_xxx, RESTK_19_xxx, BUND, AB_X, AS_XXX. SONST, LE_ZU_LAUFEND }
+            public string finanzierungSonstige { get; set; } = "";
+            public string gueltigVon { get; set; }
+            public string gueltigBis { get; set; }
+        }
+
+        public class JSONabwesenheit
+        {
+            public string abwesenheitsgrund { get; set; } = "";   //{ PRIVAT, KH_KU_RE }
+            public string datumVon { get; set; } 
+            public string datumBis { get; set; }
+        }
+
+        public class JSONPflegegeldstufe
+        {
+            public string pflegegeldstufe { get; set; } = "";     // { keine, 1, 2, 3, 4, 5, 6, 7 }
+            public string gueltigVon { get; set; }
+            public string gueltigBis { get; set; }
+        }
+
+        public class JSONPflegegeldverfahren
+        {
+            public string beantragtAm { get; set; }
+            public string vorlaufigePflegegeldstufeVerrechnungPersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
+            public string kenntnisnahmeDatumBescheid { get; set; }
+        }
+
+
+        //--------------------------- C# - Strukturen für Check -----------------
+
         public class Bewohnerdaten
         {
             public string synonym { get; set; } = "";                             //ID von STAMP
             public string vorname { get; set; } = "";
             public string nachname { get; set; } = "";
             public DateTime geburtsdatum { get; set; } = DateTime.MinValue;
-            public string staatsbuergerschaft { get; set; } = "";                  //Exakt drei Zeichen
-            public string geschlecht { get; set; } = "";                          //Ein Zeichen {m, w, d, u } 
-            public string letzteHauptwohnsitzgemeinde { get; set; } = "";         //Fünf Zeichen
+            public string staatsbuergerschaft { get; set; } = "";                 
+            public string geschlecht { get; set; } = "";                         
+            public string letzteHauptwohnsitzgemeinde { get; set; } = "";         
             public bool forensicherHintergrund { get; set; }
             public bool gemeldetAmStandort { get; set; } = true;
             public string plz { get; set; } = "";                                 //Max. 10 
@@ -84,6 +160,7 @@ namespace PMDS.Global.db
             public List<Aufenthalt> aufenthalte { get; } = new List<Aufenthalt>();
             public List<Pflegegeldstufe> pflegegeldstufen { get; } = new List<Pflegegeldstufe>();
             public List<Pflegegeldverfahren> pflegegeldverfahren { get; } = new List<Pflegegeldverfahren>();
+            public JSONBewohnerdaten JSON { get; set; } = new JSONBewohnerdaten();
             public Guid IDKlient { get; set; } = Guid.Empty;
             public StringBuilder sbErrLog { get; set; } = new StringBuilder();
             public bool HasError { get; set; }
@@ -115,6 +192,9 @@ namespace PMDS.Global.db
         {
             public string finanzierung { get; set; } = "";     //SZ, RESTK_13_xxx, RESTK_13_2_xxx, RESTK_19_xxx, BUND, AB_X, AS_XXX. SONST, LE_ZU_LAUFEND }
             public string finanzierungSonstige { get; set; } = "";
+            public string Gemeinde { get; set; } = "";
+            public string Bundesland { get; set; } = "";
+            public string Land { get; set; } = "";
             public DateTime gueltigVon { get; set; } = DateTime.MinValue;
             public DateTime gueltigBis { get; set; } = DateTime.MaxValue;
             public StringBuilder sbErrLog { get; set; } = new StringBuilder();
@@ -125,8 +205,8 @@ namespace PMDS.Global.db
         public class abwesenheit
         {
             public string abwesenheitsgrund { get; set; } = "";   //{ PRIVAT, KH_KU_RE }
-            public DateTime vonDatum { get; set; } = DateTime.MinValue;
-            public DateTime bisDatum { get; set; } = DateTime.MaxValue;
+            public DateTime datumVon { get; set; } = DateTime.MinValue;
+            public DateTime datumBis { get; set; } = DateTime.MaxValue;
             public Guid IDUrlaub { get; set; } = Guid.Empty;
             public StringBuilder sbErrLog { get; set; } = new StringBuilder();
             public bool HasError { get; set; }
@@ -153,21 +233,39 @@ namespace PMDS.Global.db
             public bool HasError { get; set; }
         }
 
-        public Bewohnerliste init(DateTime Periode)
+        public bool Init(DateTime Periode)
         {
             try
             {
                 if (Periode != null)
                 {
-                    _Periode = Periode;
-                    _FirstOfPeriode = new DateTime(_Periode.Year, _Periode.Month, 1);
-                    _LastOfPeriode = _FirstOfPeriode.AddMonths(1).AddSeconds(-1);
+                    if (Periode < _MinPeriode)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        _Periode = Periode;
+                        _FirstOfPeriode = new DateTime(_Periode.Year, _Periode.Month, 1);
+                        _LastOfPeriode = _FirstOfPeriode.AddMonths(1).AddSeconds(-1);
+                        return true;
+                    }
                 }
                 else
                 {
-                    sbLog.Append(AddLog("Kein gültiges Datum für die Meldeperiode.\n", ErrorClass.Kritisch));
+                    return false;
                 }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
+        public Bewohnerliste LoadBewohnerliste()
+        {
+            try
+            {
                 Bewohnerliste lBew = new Bewohnerliste();
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
@@ -181,26 +279,26 @@ namespace PMDS.Global.db
                                                     (a.Aufnahmezeitpunkt >= _FirstOfPeriode && a.Aufnahmezeitpunkt < _LastOfPeriode) ||
                                                     (a.Aufnahmezeitpunkt < _FirstOfPeriode && (a.Entlassungszeitpunkt > _LastOfPeriode || a.Entlassungszeitpunkt == null))
                                                 )
-                                           select new
-                                           {
-                                               IDKlient = a.IDPatient,
-                                               IDAufenthalt = a.IDAufenthalt,
-                                               IDAdresse = adr.ID,
-                                               //Klient
-                                               pat_vorname = pat.Vorname,
-                                               pat_nachname = pat.Nachname,
-                                               pat_geburtsdatum = pat.Geburtsdatum,
-                                               pat_staatsbürgerschaft = pat.Staatsb,
-                                               pat_geschlecht = pat.Sexus,
-                                               pat_forensicherHintergrund = pat.ForensischerHintergrund,      
-                                               pat_gemeldetAmStandort = pat.WohnungAbgemeldetJN,
-                                               pat_synonym = pat.STAMP_Synonym,                        
-                                               //Adresse
-                                               adr_plz = adr.Plz,
-                                               adr_ort = adr.Ort,
-                                               adr_strasse = adr.Strasse_OhneHausnummer,
-                                               adr_hausnummer = adr.Hausnummer
-                                           }).GroupBy(p => p.IDKlient).Select(g => g.FirstOrDefault()).OrderBy(g => g.pat_nachname).ThenBy(g => g.pat_vorname).ToList();
+                                         select new
+                                         {
+                                             IDKlient = a.IDPatient,
+                                             IDAufenthalt = a.IDAufenthalt,
+                                             IDAdresse = adr.ID,
+                                             //Klient
+                                             pat_vorname = pat.Vorname,
+                                             pat_nachname = pat.Nachname,
+                                             pat_geburtsdatum = pat.Geburtsdatum,
+                                             pat_staatsbürgerschaft = pat.Staatsb,
+                                             pat_geschlecht = pat.Sexus,
+                                             pat_forensicherHintergrund = pat.ForensischerHintergrund,
+                                             pat_gemeldetAmStandort = pat.WohnungAbgemeldetJN,
+                                             pat_synonym = pat.STAMP_Synonym,
+                                             //Adresse
+                                             adr_plz = adr.Plz,
+                                             adr_ort = adr.Ort,
+                                             adr_strasse = adr.Strasse_OhneHausnummer,
+                                             adr_hausnummer = adr.Hausnummer
+                                         }).GroupBy(p => p.IDKlient).Select(g => g.FirstOrDefault()).OrderBy(g => g.pat_nachname).ThenBy(g => g.pat_vorname).ToList();
 
 
                     foreach (var kl in lstKlientenID)
@@ -210,6 +308,7 @@ namespace PMDS.Global.db
                         bew.synonym = kl.pat_synonym;
                         bew.vorname = kl.pat_vorname;
                         bew.nachname = kl.pat_nachname;
+                        bew.geburtsdatum = (DateTime)kl.pat_geburtsdatum;
                         bew.staatsbuergerschaft = kl.pat_staatsbürgerschaft;
                         bew.geschlecht = kl.pat_geschlecht;
 
@@ -232,24 +331,33 @@ namespace PMDS.Global.db
                         var lstAufenthalte = (from a in db.vAufenthaltsliste
                                               join auf in db.Aufenthalt on a.IDAufenthalt equals auf.ID
                                               where a.IDPatient == kl.IDKlient
+                                              && (
+                                                    (auf.Aufnahmezeitpunkt < _LastOfPeriode && auf.Entlassungszeitpunkt == null) ||
+                                                    (auf.Aufnahmezeitpunkt <= _LastOfPeriode && auf.Aufnahmezeitpunkt >= _MinPeriode)
+                                                 )
                                               select new
                                               {
                                                   IDAufenthalt = a.IDAufenthalt,
                                                   auf_letzteHauptwohnsitzgemeinde = auf.Hauptwohnsitzgemeinde,
-                                                  auf_vorherigeBetreuungsform = "",
+                                                  auf_vorherigeBetreuungsform = auf.STAMP_VorherigeBetreuungsformen,
                                                   auf_eintrittsdatum = auf.Aufnahmezeitpunkt,
                                                   auf_austrittsdatum = auf.Entlassungszeitpunkt,
-                                                  auf_austrittWohin = ""
+                                                  auf_austrittWohin = auf.STAMP_AustrittWohin
                                               }).OrderBy(o => o.auf_eintrittsdatum).ToList();
 
                         foreach (var auf in lstAufenthalte)
                         {
                             Aufenthalt a = new Aufenthalt();
-                            a.letzteHauptwohnsitzgemeinde = LookupAuswahllisteBezeichnung("GEM", auf.auf_letzteHauptwohnsitzgemeinde, AuswahllisteSucheTyp.ELGA_Code);
+                            a.letzteHauptwohnsitzgemeinde = auf.auf_letzteHauptwohnsitzgemeinde;  
 
                             if (!String.IsNullOrEmpty((string)auf.auf_vorherigeBetreuungsform))
                             {
-                                a.vorherigeBetreuungsformen = new List<VorherigeBetreuungsform>() { new VorherigeBetreuungsform { vorherigeBeteuungsform = (string)auf.auf_vorherigeBetreuungsform } };
+                                string[] vbf = auf.auf_vorherigeBetreuungsform.ToString().Split(new char[] { ';' }, 1);
+                                a.vorherigeBetreuungsformen = new List<VorherigeBetreuungsform>();
+                                foreach (string v in vbf)
+                                {
+                                    a.vorherigeBetreuungsformen.Add(new VorherigeBetreuungsform { vorherigeBeteuungsform = v.Replace(";", "") });
+                                }
                             }
 
                             a.eintrittsdatum = (DateTime)auf.auf_eintrittsdatum;
@@ -266,12 +374,15 @@ namespace PMDS.Global.db
 
                             //Kostentragungen zu Aufenthalt
                             var kts = (from kt in db.STAMP_Kostentragungen
-                                       where kt.IDAufenthalt == a.IDAufenthalt
+                                       where kt.IDAufenthalt == auf.IDAufenthalt
                                        select new
                                        {
                                            kt.ID,
                                            kt.IDAufenthalt,
                                            kt.Finanzierung,
+                                           kt.Gemeinde,
+                                           kt.Bundesland,
+                                           kt.Land,
                                            kt.FinanzierungSonstige,
                                            kt.GueltigVon,
                                            kt.GueltigBis
@@ -281,17 +392,20 @@ namespace PMDS.Global.db
                             {
                                 kostentragung kostTrag = new kostentragung();
                                 kostTrag.finanzierung = kt.Finanzierung;
+                                kostTrag.Gemeinde = kt.Gemeinde;
+                                kostTrag.Bundesland = kt.Bundesland;
+                                kostTrag.Land = kt.Land;
                                 kostTrag.finanzierungSonstige = kt.FinanzierungSonstige;
                                 kostTrag.gueltigVon = kt.GueltigVon;
                                 if (kt.GueltigBis != null)
-                                    kostTrag.gueltigBis = (DateTime) kt.GueltigBis;
+                                    kostTrag.gueltigBis = (DateTime)kt.GueltigBis;
                                 a.kostentragungen.Add(kostTrag);
                             }
 
                             //Abwesenheiten zu Aufenthalt
                             var abw = (from auf1 in db.Aufenthalt
                                        join url in db.UrlaubVerlauf on auf1.ID equals url.IDAufenthalt
-                                       where auf1.ID == a.IDAufenthalt
+                                       where auf1.ID == auf.IDAufenthalt
                                        select new
                                        {
                                            abwesenheitsgrund = url.Text,
@@ -312,10 +426,10 @@ namespace PMDS.Global.db
 
                                 abwesenheit abwh = new abwesenheit();
                                 abwh.abwesenheitsgrund = LookupAuswahllisteBezeichnung("URL", ab.abwesenheitsgrund, AuswahllisteSucheTyp.Beschreibung);
-                                abwh.vonDatum = (DateTime)ab.gueltigVon;
+                                abwh.datumVon = (DateTime)ab.gueltigVon;
                                 if (ab.gueltigBis != null)
                                 {
-                                    abwh.bisDatum = (DateTime)ab.gueltigBis;
+                                    abwh.datumBis = (DateTime)ab.gueltigBis;
                                 }
                                 a.abwesenheiten.Add(abwh);
                             }
@@ -374,10 +488,9 @@ namespace PMDS.Global.db
                             bew.pflegegeldverfahren.Add(pgv);
                         }
 
+                        //bew.JSON = JsonConvert.SerializeObject(bew.);
                     }
                 }
-
-                lBew.sbLog = CheckAll(lBew).sbLog;
                 lBew.IsInitialized = true;
                 return lBew;
             }
@@ -389,44 +502,84 @@ namespace PMDS.Global.db
             }
         }
 
-        private CheckStatus CheckAll(Bewohnerliste lBew)
+        public CheckStatus CheckAll(ref Bewohnerliste lBew)
         {
             CheckStatus chk = new CheckStatus();
+            int i = 0;
+            int j = 0;
+
             foreach (Bewohnerdaten bew in lBew.bewohnerdaten)
             {
                 chk.BewohnerdatenOK = true;
-                if (String.IsNullOrWhiteSpace(LookupAuswahllisteBezeichnung("LND", bew.staatsbuergerschaft, AuswahllisteSucheTyp.ELGA_Code)))
+
+                //JSONBewohnerdaten JSONbew = new JSONBewohnerdaten();
+
+                bew.JSON.vorname = bew.vorname;
+                bew.JSON.nachname = bew.nachname;
+                bew.JSON.geburtsdatum = bew.geburtsdatum.ToString(dFormat);
+                
+                bew.JSON.staatsbuergerschaft = LookupAuswahllisteBezeichnung("LND", bew.staatsbuergerschaft, AuswahllisteSucheTyp.ELGA_Code);
+                if (String.IsNullOrWhiteSpace(bew.JSON.staatsbuergerschaft))
                 {
                     AddLog(ref chk, "Staatsbürgerschaft '" + bew.staatsbuergerschaft + "' ist kein gültiger Listeneintrag", ErrorLogClass.Bewohnerdaten, bew, null);
                 }
 
-                if (String.IsNullOrWhiteSpace(ConvertGeschlecht(bew.geschlecht)))
+                bew.JSON.geschlecht = ConvertGeschlecht(bew.geschlecht);
+                if (String.IsNullOrWhiteSpace(bew.JSON.geschlecht))
                 {
                     AddLog(ref chk, "Geschlecht '" + bew.geschlecht + "' ist kein gültiger Listeneintrag", ErrorLogClass.Bewohnerdaten, bew, null);
                 }
+
+                bew.JSON.forensicherHintergrund = bew.forensicherHintergrund;
+                bew.JSON.gemeldetAmStandort = bew.gemeldetAmStandort;
+                bew.JSON.plz = bew.plz;
+                bew.JSON.ort = bew.ort;
+                bew.JSON.strasse = bew.strasse;
+                bew.JSON.hausnummer = bew.hausnummer;
+                bew.synonymVorsystem = bew.synonymVorsystem;
 
                 if (!bew.pflegegeldstufen.Any())
                 {
                     AddLog(ref chk, "Keine Pflegegeldstufe gefunden", ErrorLogClass.Pflegegeldstufe, bew, null);
                 }
 
+                bew.JSON.pflegegeldstufen = new JSONPflegegeldstufe[bew.pflegegeldstufen.Count];
+                i = 0;
                 foreach (Pflegegeldstufe pgs in bew.pflegegeldstufen)
                 {
+                    JSONPflegegeldstufe jpgs = new JSONPflegegeldstufe();
+                    jpgs.pflegegeldstufe = pgs.pflegegeldstufe;
+                    jpgs.gueltigVon = pgs.gueltigVon.ToString(dFormat);
+                    jpgs.gueltigBis = pgs.gueltigBis.ToString(dFormat);
+                    bew.JSON.pflegegeldstufen[i] = jpgs;
+                    i++;
                     chk.PflegegeldstufeOK = true;
                 }
 
-                foreach (Pflegegeldverfahren pgf in bew.pflegegeldverfahren)
+                bew.JSON.pflegegeldverfahren = new JSONPflegegeldverfahren[bew.pflegegeldverfahren.Count];
+                i = 0;
+                foreach (Pflegegeldverfahren pgv in bew.pflegegeldverfahren)
                 {
+                    JSONPflegegeldverfahren jpgv = new JSONPflegegeldverfahren();
+                    jpgv.beantragtAm = pgv.beantragtAm.ToString(dFormat);
+                    jpgv.vorlaufigePflegegeldstufeVerrechnungPersonal = pgv.vorlaufigePflegegeldstufeVerrechnungPersonal;
+                    jpgv.kenntnisnahmeDatumBescheid = pgv.kenntnisnahmeDatumBescheid.ToString(dFormat);
+                    bew.JSON.pflegegeldverfahren[i] = jpgv;
+                    i++;
                     chk.PflegegeldstufeOK = true;
                 }
 
+                bew.JSON.aufenthalte = new JSONAufenthalt[bew.aufenthalte.Count];
+                i = 0;
                 foreach (Aufenthalt auf in bew.aufenthalte)
                 {
                     chk.AufenthaltOK = true;
 
-                    if (String.IsNullOrWhiteSpace(LookupAuswahllisteBezeichnung("GKZ", auf.letzteHauptwohnsitzgemeinde, AuswahllisteSucheTyp.Beschreibung)))
+                    JSONAufenthalt jauf = new JSONAufenthalt();
+                    jauf.letzteHauptwohnsitzgemeinde = LookupAuswahllisteBezeichnung("GKZ", auf.letzteHauptwohnsitzgemeinde, AuswahllisteSucheTyp.Beschreibung);
+                    if (String.IsNullOrWhiteSpace(jauf.letzteHauptwohnsitzgemeinde))
                     {
-                        AddLog(ref chk, "Letzte Hauptwohnsitzgemeinde '" + bew.letzteHauptwohnsitzgemeinde + "' ist kein gültiger Listeneintrag", ErrorLogClass.Aufenthalt, bew, auf);
+                        AddLog(ref chk, "Letzte Hauptwohnsitzgemeinde '" + auf.letzteHauptwohnsitzgemeinde + "' ist kein gültiger Listeneintrag", ErrorLogClass.Aufenthalt, bew, auf);
                     }
 
                     if (!auf.vorherigeBetreuungsformen.Any())
@@ -435,41 +588,98 @@ namespace PMDS.Global.db
                     }
                     else
                     {
+                        jauf.vorherigeBetreuungsformen = new JSONVorherigeBetreuungsform[auf.vorherigeBetreuungsformen.Count];
+                        j = 0;
                         foreach (VorherigeBetreuungsform vbf in auf.vorherigeBetreuungsformen)
                         {
-                            if (String.IsNullOrWhiteSpace(LookupAuswahllisteBezeichnung("VBF", vbf.vorherigeBeteuungsform, AuswahllisteSucheTyp.Beschreibung)))
+                            JSONVorherigeBetreuungsform jvbf = new JSONVorherigeBetreuungsform();
+                            jvbf.vorherigeBeteuungsform = LookupAuswahllisteBezeichnung("VBF", vbf.vorherigeBeteuungsform, AuswahllisteSucheTyp.Beschreibung);
+                            jauf.vorherigeBetreuungsformen[j] = jvbf;
+                            j++;
+                            if (String.IsNullOrWhiteSpace(jvbf.vorherigeBeteuungsform))
                             {
                                 AddLog(ref chk, "Vorhereige Betreuungsform '" + bew.letzteHauptwohnsitzgemeinde + "' ist kein gültiger Listeneintrag", ErrorLogClass.VorherigeBetreuungsform, bew, auf);
                             }
                         }
                     }
 
-                    if (auf.austrittsdatum != DateTime.MinValue && String.IsNullOrWhiteSpace(LookupAuswahllisteBezeichnung("AWO", auf.austrittWohin, AuswahllisteSucheTyp.Beschreibung)))
+                    jauf.eintrittsdatum = auf.eintrittsdatum.ToString(dFormat);
+                    
+                    jauf.austrittWohin = LookupAuswahllisteBezeichnung("AWO", auf.austrittWohin, AuswahllisteSucheTyp.Beschreibung);
+                    if (auf.austrittsdatum != DateTime.MinValue && String.IsNullOrWhiteSpace(jauf.austrittWohin))
                     {
                         AddLog(ref chk, "Austritt wohin' " + auf.austrittWohin + "' ist kein gültiger Listeneintrag", ErrorLogClass.Aufenthalt, bew, auf);
                     }
 
-                    //Gültigkeit wird bereits in der Oberfläche geprüft, daher nur Prüfung, ob es mindestens eine gibt.
+                    //Gültigkeit wird bereits in der Oberfläche geprüft
                     if (!auf.kostentragungen.Any())
                     {
                         AddLog(ref chk, "Keine Kostentragungen gefunden", ErrorLogClass.Kostentragung, bew, auf);
                     }
 
+                    jauf.kostentragungen = new JSONkostentragung[auf.kostentragungen.Count];
+                    j = 0;
+                    foreach (kostentragung kt in auf.kostentragungen)
+                    {
+                        JSONkostentragung jkt = new JSONkostentragung();
+                        jkt.finanzierung = LookupAuswahllisteBezeichnung("SFI", kt.finanzierung, AuswahllisteSucheTyp.Beschreibung);  //Prüfung erfolgt bereits in der GUI
+                        string Gemeinde = LookupAuswahllisteBezeichnung("GKZ", kt.Gemeinde, AuswahllisteSucheTyp.Beschreibung);
+                        string Bundesland = LookupAuswahllisteBezeichnung("GKZ", kt.Bundesland, AuswahllisteSucheTyp.Beschreibung);
+                        string Land = LookupAuswahllisteBezeichnung("LND", kt.Land, AuswahllisteSucheTyp.ELGA_Code);
+
+                        switch (jkt.finanzierung) 
+                        {
+                            case "RESTK_13_":
+                            case "RESTK_13_2_":
+                            case "RESTK_19_":
+                                jkt.finanzierung += Gemeinde.Substring(0, 3);
+                                break;
+                            case "AB_":
+                                jkt.finanzierung += Bundesland.Substring(0, 1);
+                                break;
+                            case "AS_":
+                                jkt.finanzierung += Land;
+                                break;
+                            case "SONST":
+                                jkt.finanzierungSonstige = jkt.finanzierungSonstige;
+                                break;
+                        }
+                        jkt.gueltigVon = kt.gueltigVon.ToString(dFormat);
+                        jkt.gueltigBis = kt.gueltigBis.ToString(dFormat);
+                        jauf.kostentragungen[j] = jkt;
+                        j++;
+                    }
+
+                    jauf.abwesenheiten = new JSONabwesenheit[auf.abwesenheiten.Count];
+                    j = 0;
                     foreach (abwesenheit abw in auf.abwesenheiten)
                     {
                         chk.AbwesenheitOK = true;
-                        if (String.IsNullOrWhiteSpace(LookupAuswahllisteBezeichnung("SAG", abw.abwesenheitsgrund, AuswahllisteSucheTyp.Beschreibung)))
+
+                        JSONabwesenheit jabw = new JSONabwesenheit();
+                        jabw.abwesenheitsgrund = LookupAuswahllisteBezeichnung("SAG", abw.abwesenheitsgrund, AuswahllisteSucheTyp.Beschreibung);
+                        if (String.IsNullOrWhiteSpace(jabw.abwesenheitsgrund))
                         {
-                            AddLog(ref chk, "Abwesenheitsgrund '" + abw.abwesenheitsgrund + "' ist kein gültiger Listeneintrag bei Abwesenheit vom " + abw.vonDatum.ToString("dd.MM.yyyy"), ErrorLogClass.Abwesenheit, bew, auf);
+                            AddLog(ref chk, "Abwesenheitsgrund '" + abw.abwesenheitsgrund + "' ist kein gültiger Listeneintrag bei Abwesenheit vom " + abw.datumVon.ToString("dd.MM.yyyy"), ErrorLogClass.Abwesenheit, bew, auf);
                         }
+                        jabw.datumVon = abw.datumVon.ToString(dFormat);
+                        jabw.datumBis = abw.datumBis.ToString(dFormat);
+                        jauf.abwesenheiten[j] = jabw;
+                        j++;
                     }
+                    bew.JSON.aufenthalte[i] = jauf;
                 }
 
                 if (!chk.BewohnerdatenOK)
                 {
+                    lBew.HasErrors = true;
                     chk.sbLog.Append("\n");
                 }
             }
+            lBew.sbLog = chk.sbLog;
+
+            string res = JsonConvert.SerializeObject(lBew.bewohnerdaten[2].JSON, Formatting.Indented);
+
             return chk;
         }
 
@@ -608,6 +818,58 @@ namespace PMDS.Global.db
         {
             return Klasse.ToString() + ": " + Text + (AddLineBreak ? "\n" : "");
         }
+
+        //------------------------------------------------------------------------------------------------------------
+        //--   Service Calls
+        //------------------------------------------------------------------------------------------------------------
+
+        static async Task<JObject> GetSynonym(DateTime von, DateTime bis)
+        {
+            using (var client = new HttpClient() { BaseAddress = new Uri(ENV.STAMP_URL) })
+            {
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                DateTimeOffset doVon = (DateTimeOffset)von.Date;
+                string svon = "?start=" + doVon.ToUnixTimeMilliseconds().ToString();
+
+                DateTimeOffset doBis = (DateTimeOffset)bis.Date;
+                string sbis = "&end=" + doBis.ToUnixTimeMilliseconds().ToString();
+
+                //HttpResponseMessage response = await client.GetAsync("https://api.awattar.at/v1/marketdata?start=1420070400000&end=1564531200000");
+                HttpResponseMessage response = await client.GetAsync(client.BaseAddress + svon + sbis);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return JObject.Parse(await response.Content.ReadAsStringAsync());
+                }
+                return new JObject { response.StatusCode };
+            }
+        }
+
+        //public async Task<JObject> StartCall(Bewohnerliste lBew)
+        //{
+        //    try
+        //    {
+        //        foreach (Bewohnerdaten bew in lBew)
+        //        {
+        //            if (String.IsNullOrWhiteSpace(bew.synonym))
+        //            {
+        //                var respBewohner = await GetSynonym(bew.JSONBewohnerRequest);
+        //                return respBewohner;
+        //            }
+
+        //            //Update Patient.STAMP_Synonym
+        //        }
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //MessageBox.Show(ex.Message);
+        //        throw new Exception(ex.ToString());
+        //    }
+        //}
 
     }
 }

@@ -290,7 +290,7 @@ namespace PMDS.GUI.STAMP
 
             _rNew = _dt.NewSTAMP_KostentragungenRow();
             _rNew.ID = Guid.NewGuid();
-            _rNew.Finanzierung = "Selbstzahler";
+            _rNew.Finanzierung = "";
             _rNew.FinanzierungSonstige = "";
             _rNew.GueltigVon = DateTime.Now;
             _rNew.SetGueltigBisNull();
@@ -304,7 +304,6 @@ namespace PMDS.GUI.STAMP
             dgKostentragungen.Refresh();
 
             IsDirty = true;
-            ValueChanged(sender, e);
 
             foreach (UltraGridRow row in dgKostentragungen.Rows)
             {
@@ -313,10 +312,12 @@ namespace PMDS.GUI.STAMP
                     row.Activated = true;
                     row.Selected = true;
                     ShowDetails();
+                    //SetUI(false, true, true, true, true);
+                    //cmbFinanzierung_ValueChanged(sender, e);
+                    ValueChanged(sender, e);
                     break;
                 }
             }
-
         }
 
         private DataTable LINQToDataTable<T>(IEnumerable<T> varlist)

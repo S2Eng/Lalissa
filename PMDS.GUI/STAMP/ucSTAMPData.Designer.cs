@@ -97,8 +97,8 @@ namespace PMDS.GUI.STAMP
             this.pnlMitte = new Infragistics.Win.Misc.UltraPanel();
             this.pnlUnten = new Infragistics.Win.Misc.UltraPanel();
             this.gbDetails = new QS2.Desktop.ControlManagment.BaseGroupBox();
-            this.cmbFinanzierung = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.txtErrLog = new PMDS.GUI.ucRichTextBox();
+            this.cmbFinanzierung = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigVon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFinanzierungSonstige)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigBis)).BeginInit();
@@ -438,6 +438,7 @@ namespace PMDS.GUI.STAMP
             this.cmbGemeinde.Location = new System.Drawing.Point(83, 1);
             this.cmbGemeinde.MaxLength = 40;
             this.cmbGemeinde.Name = "cmbGemeinde";
+            this.cmbGemeinde.NullText = "<bitte auswählen ...>";
             this.cmbGemeinde.PflichtJN = false;
             this.cmbGemeinde.SelectDistinct = false;
             this.cmbGemeinde.ShowAddButton = true;
@@ -483,6 +484,7 @@ namespace PMDS.GUI.STAMP
             this.cmbBundesland.Location = new System.Drawing.Point(83, 1);
             this.cmbBundesland.MaxLength = 40;
             this.cmbBundesland.Name = "cmbBundesland";
+            this.cmbBundesland.NullText = "<bitte auswählen ...>";
             this.cmbBundesland.PflichtJN = false;
             this.cmbBundesland.SelectDistinct = false;
             this.cmbBundesland.ShowAddButton = true;
@@ -528,6 +530,7 @@ namespace PMDS.GUI.STAMP
             this.cmbLand.Location = new System.Drawing.Point(83, 0);
             this.cmbLand.MaxLength = 40;
             this.cmbLand.Name = "cmbLand";
+            this.cmbLand.NullText = "<bitte auswählen ...>";
             this.cmbLand.PflichtJN = false;
             this.cmbLand.SelectDistinct = false;
             this.cmbLand.ShowAddButton = true;
@@ -699,6 +702,20 @@ namespace PMDS.GUI.STAMP
             this.gbDetails.TabIndex = 51;
             this.gbDetails.Text = "Details zur Kostentragung";
             // 
+            // txtErrLog
+            // 
+            this.txtErrLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtErrLog.ForeColor = System.Drawing.Color.Red;
+            this.txtErrLog.HiglightColor = PMDS.GUI.RtfColor.White;
+            this.txtErrLog.Location = new System.Drawing.Point(115, 112);
+            this.txtErrLog.Name = "txtErrLog";
+            this.txtErrLog.ReadOnly = true;
+            this.txtErrLog.Size = new System.Drawing.Size(806, 81);
+            this.txtErrLog.TabIndex = 51;
+            this.txtErrLog.Text = "";
+            this.txtErrLog.TextColor = PMDS.GUI.RtfColor.Black;
+            this.txtErrLog.Visible = false;
+            // 
             // cmbFinanzierung
             // 
             this.cmbFinanzierung.AddEmptyEntry = false;
@@ -716,6 +733,7 @@ namespace PMDS.GUI.STAMP
             this.cmbFinanzierung.Location = new System.Drawing.Point(112, 19);
             this.cmbFinanzierung.MaxLength = 40;
             this.cmbFinanzierung.Name = "cmbFinanzierung";
+            this.cmbFinanzierung.NullText = "<bitte auswählen ...>";
             this.cmbFinanzierung.PflichtJN = false;
             this.cmbFinanzierung.SelectDistinct = false;
             this.cmbFinanzierung.ShowAddButton = true;
@@ -723,19 +741,6 @@ namespace PMDS.GUI.STAMP
             this.cmbFinanzierung.sys = false;
             this.cmbFinanzierung.TabIndex = 44;
             this.cmbFinanzierung.ValueChanged += new System.EventHandler(this.cmbFinanzierung_ValueChanged);
-            // 
-            // txtErrLog
-            // 
-            this.txtErrLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtErrLog.Enabled = false;
-            this.txtErrLog.HiglightColor = PMDS.GUI.RtfColor.White;
-            this.txtErrLog.Location = new System.Drawing.Point(115, 112);
-            this.txtErrLog.Name = "txtErrLog";
-            this.txtErrLog.Size = new System.Drawing.Size(806, 81);
-            this.txtErrLog.TabIndex = 51;
-            this.txtErrLog.Text = "";
-            this.txtErrLog.TextColor = PMDS.GUI.RtfColor.Black;
-            this.txtErrLog.Visible = false;
             // 
             // ucSTAMPData
             // 

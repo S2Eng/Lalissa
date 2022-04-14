@@ -2802,9 +2802,9 @@ namespace PMDS
                         }
 
                     case "btnSTAMP":
-                        using (PMDS.GUI.STAMP.frmSTAMP frmSTAMP = new PMDS.GUI.STAMP.frmSTAMP())
+                        using (PMDS.GUI.STAMP.frmSTAMPMeldung frmSTAMPMeldung = new PMDS.GUI.STAMP.frmSTAMPMeldung())
                         {
-                            frmSTAMP.ShowDialog(this);
+                            frmSTAMPMeldung.ShowDialog(this);
                             break;
                         }
 

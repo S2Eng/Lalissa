@@ -220,7 +220,7 @@ namespace PMDS.DB
                 // Daten erfolgreich gelesen ?
                 if (DataBase.Fill(da, t) != 1)
                 {
-                    string ID = (string)da.SelectCommand.Parameters[0].Value;
+                    string ID = da.SelectCommand.Parameters[0].Value.ToString();
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Ein eindeutiger Eintrag aus der Liste " + ID + " konnte nicht gefunden werden!", "ACHTUNG - Fehlerhafte Verarbeitung!", System.Windows.Forms.MessageBoxButtons.OK);
                     return;
 

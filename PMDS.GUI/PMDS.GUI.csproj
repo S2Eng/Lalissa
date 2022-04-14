@@ -399,6 +399,12 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Vsa, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Schema, Version=3.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.Schema.3.0.14\lib\net45\Newtonsoft.Json.Schema.dll</HintPath>
+    </Reference>
     <Reference Include="Patagames.Pdf, Version=5.22.16.472, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
       <HintPath>..\packages\Pdfium.Net.SDK.4.27.2704\lib\net472\Patagames.Pdf.dll</HintPath>
     </Reference>
@@ -571,7 +577,7 @@
       <HintPath>..\packages\System.Drawing.Common.4.5.1\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
@@ -1692,10 +1698,12 @@
     <Compile Include="Remote\ICommunicationService.cs" />
     <Compile Include="Remote\remotingClient.cs" />
     <Compile Include="Remote\remotingSrv.cs" />
-    <Compile Include="STAMP\frmSTAMP.cs">
+    <Compile Include="STAMP\frmSTAMPMeldung.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="STAMP\frmSTAMP.Designer.cs" />
+    <Compile Include="STAMP\frmSTAMPMeldung.Designer.cs">
+      <DependentUpon>frmSTAMPMeldung.cs</DependentUpon>
+    </Compile>
     <Compile Include="STAMP\ucSTAMPData.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -4931,7 +4939,9 @@
     <EmbeddedResource Include="Remote\frmMainFormIPCClient.resx">
       <DependentUpon>frmMainFormIPCClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="STAMP\frmSTAMP.resx" />
+    <EmbeddedResource Include="STAMP\frmSTAMPMeldung.resx">
+      <DependentUpon>frmSTAMPMeldung.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="STAMP\ucSTAMPData.resx">
       <DependentUpon>ucSTAMPData.cs</DependentUpon>
     </EmbeddedResource>

@@ -1089,6 +1089,7 @@ namespace PMDS.GUI
         {
             using (frmEditPassword frm = new frmEditPassword(false, false))
             {
+                frm.Text = "Neue Benutzerdaten erfassen";
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     // Benutzer Informationen setzen
