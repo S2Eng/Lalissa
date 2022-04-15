@@ -13,8 +13,7 @@ namespace PMDS.GUI.STAMP
 {
     public partial class frmSTAMPMeldung : Form
     {
-
-        private PMDS.Global.db.cSTAMPInterfaceDB STAMP = new PMDS.Global.db.cSTAMPInterfaceDB();
+        private   PMDS.Global.db.cSTAMPInterfaceDB STAMP = new PMDS.Global.db.cSTAMPInterfaceDB();
         private PMDS.Global.db.cSTAMPInterfaceDB.Bewohnerliste lBew = new Global.db.cSTAMPInterfaceDB.Bewohnerliste();
 
         public frmSTAMPMeldung()
@@ -54,11 +53,15 @@ namespace PMDS.GUI.STAMP
                 }
                 else
                 {
+
+                    this.btnSenden.Enabled = true;
+
+
                     STAMP.CheckAll(ref lBew);
                     if (lBew.HasErrors) //Logikfehler -> nicht weiter machen
                     {
                         this.rtbLog.Text = "Bitte korrigieren Sie die nachfolgenden Fehler, um fortfahren zu können:\n\n" + lBew.sbLog.ToString();
-                        this.btnSenden.Enabled = false;
+                       // this.btnSenden.Enabled = false;
                     }
                     else
                     {
@@ -82,7 +85,8 @@ namespace PMDS.GUI.STAMP
 
         private void btnSenden_Click(object sender, EventArgs e)
         {
-            //STAMP.StartCall(lBew);
+            Task<bool> res = STAMP.StartBewohnerMelden(Global.db.cSTAMPInterfaceDB.ServiceCallType.bewohnermelden, lBew);
+            string y = "";
         }
     }
 }

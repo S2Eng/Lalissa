@@ -10,6 +10,12 @@ using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 
+using System.Threading;
+using RestSharp;
+using RestSharp.Authenticators;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+
 namespace PMDS.Global.db
 {
     public class cSTAMPInterfaceDB
@@ -22,11 +28,22 @@ namespace PMDS.Global.db
         private static StringBuilder sbLog = new StringBuilder();
         private string dFormat = "dd.MM.yyyy";
 
+        private string traeger = "";            //Abfrage von Rest-Service
+        private string standort = "";           //Abfrage von Rest-Service
+
         private enum ErrorClass
         {
             Hinweis = 1,
             Warnung = 2,
             Kritisch = 3
+        }
+
+        public enum ServiceCallType
+        {
+            traeger = 1,
+            standort = 2,
+            bewohnermelden = 3,
+            bewohnerupdate = 4
         }
 
         private enum ErrorLogClass
@@ -72,10 +89,8 @@ namespace PMDS.Global.db
         }
 
         //--------------------------- JSON - Strukturen für REST-Service, wird in CheckAll gefüllt -----------------
-
-        public class JSONBewohnerdaten
+        public class JSONBewohnerdatenKurz
         {
-            public string synonym { get; set; } = "";                             //ID von STAMP
             public string vorname { get; set; } = "";
             public string nachname { get; set; } = "";
             public string geburtsdatum { get; set; } = "";
@@ -87,6 +102,14 @@ namespace PMDS.Global.db
             public string ort { get; set; } = "";                                 //Max. 50
             public string strasse { get; set; } = "";                             //Max. 60
             public string hausnummer { get; set; } = "";                          //Max. 10
+            public string synonymVorsystem { get; set; } = "";                    //Max. 50     //IDPatient
+        }
+
+        public class JSONBewohnerdaten
+        {
+            public string staatsbuergerschaft { get; set; } = "";                  //Exakt drei Zeichen
+            public string geschlecht { get; set; } = "";                          //Ein Zeichen {m, w, d, u } 
+            public bool forensicherHintergrund { get; set; }
             public string synonymVorsystem { get; set; } = "";                    //Max. 50     //IDPatient
             public JSONAufenthalt[] aufenthalte { get; set; } = Array.Empty<JSONAufenthalt>();
             public JSONPflegegeldstufe[] pflegegeldstufen { get; set; } = Array.Empty<JSONPflegegeldstufe>();
@@ -138,9 +161,7 @@ namespace PMDS.Global.db
             public string kenntnisnahmeDatumBescheid { get; set; }
         }
 
-
         //--------------------------- C# - Strukturen für Check -----------------
-
         public class Bewohnerdaten
         {
             public string synonym { get; set; } = "";                             //ID von STAMP
@@ -160,6 +181,7 @@ namespace PMDS.Global.db
             public List<Aufenthalt> aufenthalte { get; } = new List<Aufenthalt>();
             public List<Pflegegeldstufe> pflegegeldstufen { get; } = new List<Pflegegeldstufe>();
             public List<Pflegegeldverfahren> pflegegeldverfahren { get; } = new List<Pflegegeldverfahren>();
+            public JSONBewohnerdatenKurz JSONKurz { get; set; } = new JSONBewohnerdatenKurz();
             public JSONBewohnerdaten JSON { get; set; } = new JSONBewohnerdaten();
             public Guid IDKlient { get; set; } = Guid.Empty;
             public StringBuilder sbErrLog { get; set; } = new StringBuilder();
@@ -237,6 +259,7 @@ namespace PMDS.Global.db
         {
             try
             {
+
                 if (Periode != null)
                 {
                     if (Periode < _MinPeriode)
@@ -511,32 +534,37 @@ namespace PMDS.Global.db
             foreach (Bewohnerdaten bew in lBew.bewohnerdaten)
             {
                 chk.BewohnerdatenOK = true;
+                //Strukturen für Bewohnerdaten-Neumeldung (JSONKurz) und Bewohnerdaten-Update (JSON) erzeugen
 
-                //JSONBewohnerdaten JSONbew = new JSONBewohnerdaten();
-
-                bew.JSON.vorname = bew.vorname;
-                bew.JSON.nachname = bew.nachname;
-                bew.JSON.geburtsdatum = bew.geburtsdatum.ToString(dFormat);
+                bew.JSONKurz.vorname = bew.vorname;
+                bew.JSONKurz.nachname = bew.nachname;
+                bew.JSONKurz.geburtsdatum = bew.geburtsdatum.ToString(dFormat);
                 
-                bew.JSON.staatsbuergerschaft = LookupAuswahllisteBezeichnung("LND", bew.staatsbuergerschaft, AuswahllisteSucheTyp.ELGA_Code);
+                bew.JSONKurz.staatsbuergerschaft = LookupAuswahllisteBezeichnung("LND", bew.staatsbuergerschaft, AuswahllisteSucheTyp.ELGA_Code);
                 if (String.IsNullOrWhiteSpace(bew.JSON.staatsbuergerschaft))
                 {
                     AddLog(ref chk, "Staatsbürgerschaft '" + bew.staatsbuergerschaft + "' ist kein gültiger Listeneintrag", ErrorLogClass.Bewohnerdaten, bew, null);
                 }
+                bew.JSON.staatsbuergerschaft = bew.JSONKurz.staatsbuergerschaft;
 
-                bew.JSON.geschlecht = ConvertGeschlecht(bew.geschlecht);
+                bew.JSONKurz.geschlecht = ConvertGeschlecht(bew.geschlecht);
                 if (String.IsNullOrWhiteSpace(bew.JSON.geschlecht))
                 {
                     AddLog(ref chk, "Geschlecht '" + bew.geschlecht + "' ist kein gültiger Listeneintrag", ErrorLogClass.Bewohnerdaten, bew, null);
                 }
+                bew.JSON.geschlecht = bew.JSONKurz.geschlecht;
 
-                bew.JSON.forensicherHintergrund = bew.forensicherHintergrund;
-                bew.JSON.gemeldetAmStandort = bew.gemeldetAmStandort;
-                bew.JSON.plz = bew.plz;
-                bew.JSON.ort = bew.ort;
-                bew.JSON.strasse = bew.strasse;
-                bew.JSON.hausnummer = bew.hausnummer;
-                bew.synonymVorsystem = bew.synonymVorsystem;
+                bew.JSONKurz.forensicherHintergrund = bew.forensicherHintergrund;
+                bew.JSON.forensicherHintergrund = bew.JSON.forensicherHintergrund;
+
+                bew.JSONKurz.gemeldetAmStandort = bew.gemeldetAmStandort;
+                bew.JSONKurz.plz = bew.plz;
+                bew.JSONKurz.ort = bew.ort;
+                bew.JSONKurz.strasse = bew.strasse;
+                bew.JSONKurz.hausnummer = bew.hausnummer;
+                
+                bew.JSONKurz.synonymVorsystem = bew.synonymVorsystem;
+                bew.JSON.synonymVorsystem = bew.JSONKurz.synonymVorsystem;
 
                 if (!bew.pflegegeldstufen.Any())
                 {
@@ -823,53 +851,163 @@ namespace PMDS.Global.db
         //--   Service Calls
         //------------------------------------------------------------------------------------------------------------
 
-        static async Task<JObject> GetSynonym(DateTime von, DateTime bis)
+        static async Task<RestResponse> CallService(ServiceCallType scType, string traeger, string standort, string synonym, object value)
         {
-            using (var client = new HttpClient() { BaseAddress = new Uri(ENV.STAMP_URL) })
+            CancellationToken cancellationToken = new CancellationToken();
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.DefaultConnectionLimit = 9999;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
+
+            var certFile = System.IO.Path.Combine(@"C:\", "temp", "s2engineer_test_appuser.pfx");
+            X509Certificate2 certificate = new X509Certificate2(certFile, "kjhg8830MNB11000MNB11000MNB11000MNB11000MNB");
+
+            RestClientOptions ro = new RestClientOptions(ENV.STAMP_URL)
             {
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                ClientCertificates = new X509CertificateCollection() { certificate },
+                Proxy = new WebProxy()
+            };
 
-                DateTimeOffset doVon = (DateTimeOffset)von.Date;
-                string svon = "?start=" + doVon.ToUnixTimeMilliseconds().ToString();
-
-                DateTimeOffset doBis = (DateTimeOffset)bis.Date;
-                string sbis = "&end=" + doBis.ToUnixTimeMilliseconds().ToString();
-
-                //HttpResponseMessage response = await client.GetAsync("https://api.awattar.at/v1/marketdata?start=1420070400000&end=1564531200000");
-                HttpResponseMessage response = await client.GetAsync(client.BaseAddress + svon + sbis);
-
-                if (response.IsSuccessStatusCode)
+            using (RestClient client = new RestClient(ro))
+            {
+                if (scType == ServiceCallType.traeger)
                 {
-                    return JObject.Parse(await response.Content.ReadAsStringAsync());
+                    var request = new RestRequest("/traeger", Method.Get);
+                    request.RequestFormat = RestSharp.DataFormat.Json;
+                    RestResponse result = await client.ExecuteGetAsync(request, cancellationToken);
+                    return result;
                 }
-                return new JObject { response.StatusCode };
+                else if (scType == ServiceCallType.standort)
+                {
+                    var request = new RestRequest("/traeger/" + traeger + "/standort", Method.Get);
+                    request.RequestFormat = RestSharp.DataFormat.Json;
+                    RestResponse result = await client.ExecuteGetAsync(request, cancellationToken);
+                    return result;
+                }
+                else if(scType == ServiceCallType.bewohnermelden)
+                {
+                    var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner", Method.Post);
+                    request.RequestFormat = RestSharp.DataFormat.Json;
+                    request.AddParameter("application/json", value, ParameterType.RequestBody);
+                    RestResponse result = await client.ExecutePostAsync(request, cancellationToken);
+                    return result;
+                }
+                else if (scType == ServiceCallType.bewohnerupdate)
+                {
+                    var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner/" + synonym, Method.Post);
+                    request.RequestFormat = RestSharp.DataFormat.Json;
+                    request.AddParameter("application/json", value.ToString(), ParameterType.RequestBody);
+                    RestResponse result = await client.ExecutePostAsync(request, cancellationToken);
+                    return result;
+                }
+                return null;
             }
         }
 
-        //public async Task<JObject> StartCall(Bewohnerliste lBew)
-        //{
-        //    try
-        //    {
-        //        foreach (Bewohnerdaten bew in lBew)
-        //        {
-        //            if (String.IsNullOrWhiteSpace(bew.synonym))
-        //            {
-        //                var respBewohner = await GetSynonym(bew.JSONBewohnerRequest);
-        //                return respBewohner;
-        //            }
+        public async Task<bool> StartBewohnerMelden(ServiceCallType sc, Bewohnerliste lBew)
+        {
+            try
+            {
+                await StartService(ServiceCallType.traeger, "", null);
+                await StartService(ServiceCallType.standort, "", null);
 
-        //            //Update Patient.STAMP_Synonym
-        //        }
+                foreach(Bewohnerdaten bew in lBew.bewohnerdaten)
+                {
+                    if (String.IsNullOrWhiteSpace(bew.synonym) && !bew.HasError)
+                    {
+                        if (sc == ServiceCallType.bewohnermelden)
+                        {
+                            await StartService(sc, "", JsonConvert.SerializeObject(bew.JSONKurz, Formatting.Indented));
+                        }
+                        else if (sc == ServiceCallType.bewohnerupdate)
+                        {
+                            await StartService(sc, "", JsonConvert.SerializeObject(bew.JSON, Formatting.Indented));
+                        }
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                lBew.sbLog.Clear();
+                lBew.sbLog.Append(ex.Message);
+                return false;
+            }
+        }
 
+        //--------------------------- Service-Calls --------------------------------
+        private async Task<RestResponse> StartService(ServiceCallType scType, string synonym, object value)
+        {
+            try
+            {
+                RestResponse resp = new RestResponse();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //MessageBox.Show(ex.Message);
-        //        throw new Exception(ex.ToString());
-        //    }
-        //}
+                if (scType == ServiceCallType.traeger)
+                {
+                    resp = await CallService(scType, "", "", "", "");
+                    if (resp.IsSuccessful)
+                    {
+                        var objects = JArray.Parse(resp.Content); // parse as array  
+                        foreach (JObject root in objects)
+                        {
+                            foreach (KeyValuePair<String, JToken> app in root)
+                            {
+                                if (app.Key.sEquals("sekID"))
+                                {
+                                    traeger = app.Value.ToString();
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
 
+                else if (scType == ServiceCallType.standort)
+                {
+                    resp = await CallService(scType, traeger, "", "", "");
+                    if (resp.IsSuccessful)
+                    {
+                        var objects = JArray.Parse(resp.Content); // parse as array  
+                        foreach (JObject root in objects)
+                        {
+                            foreach (KeyValuePair<String, JToken> app in root)
+                            {
+                                if (app.Key.sEquals("id"))
+                                {
+                                    standort = app.Value.ToString();
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                else if (scType == ServiceCallType.bewohnermelden)
+                {
+                    resp = await CallService(scType, traeger, standort, "", value);
+                    if (resp.IsSuccessful)
+                    {
+                        
+                    }
+                }
+
+                else if (scType == ServiceCallType.bewohnerupdate)
+                {
+                    //Bewohnername entfernen
+
+                    resp = await CallService(scType, traeger, standort, synonym, value);
+                    if (resp.IsSuccessful)
+                    {
+
+                    }
+                }
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+                throw new Exception(ex.ToString());
+            }
+        }
     }
 }
