@@ -25,7 +25,9 @@ namespace PMDS.GUI.STAMP
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
+            this.btnMelden.Enabled = false;
             this.btnSenden.Enabled = false;
+
             this.rtbLog.Visible = true;
             rtbLog.Text = "";
 
@@ -50,30 +52,47 @@ namespace PMDS.GUI.STAMP
                 if (!lBew.IsInitialized)
                 {                    
                     this.rtbLog.Text = lBew.sbLog.ToString();   //unerwarteter Fehler (Exception)
+                    this.btnMelden.Enabled = false;
+                    this.btnSenden.Enabled = false;
                 }
                 else
                 {
 
-                    this.btnSenden.Enabled = true;
+                    this.btnMelden.Enabled = true;
 
 
                     STAMP.CheckAll(ref lBew);
                     if (lBew.HasErrors) //Logikfehler -> nicht weiter machen
                     {
                         this.rtbLog.Text = "Bitte korrigieren Sie die nachfolgenden Fehler, um fortfahren zu können:\n\n" + lBew.sbLog.ToString();
-                       // this.btnSenden.Enabled = false;
+                        //this.btnSenden.Enabled = false;
                     }
                     else
                     {
-                        this.rtbLog.Text = "Kein logischer Fehler. Die Daten können jetzt gesendet werden: \n\n";    //Weitermachen
-                        foreach (PMDS.Global.db.cSTAMPInterfaceDB.Bewohnerdaten bew in lBew.bewohnerdaten)
+
+                        if (lBew.NeueBewohner == 0)
                         {
-                            this.rtbLog.Text += bew.nachname + " " + bew.vorname + ", (" + (!String.IsNullOrWhiteSpace(bew.synonym) ? bew.synonym : "noch nicht gemeldet") + ")\n";
+                            this.rtbLog.Text = "Kein logischer Fehler. Die Daten können jetzt gesendet werden: \n\n";    //Weitermachen
+                            foreach (PMDS.Global.db.cSTAMPInterfaceDB.Bewohnerdaten bew in lBew.bewohnerdaten)
+                            {
+                                this.rtbLog.Text += bew.nachname + " " + bew.vorname + ", (" + (!String.IsNullOrWhiteSpace(bew.synonym) ? bew.synonym : "noch nicht gemeldet") + ")\n";
+                            }
+                            this.btnMelden.Enabled = false;
+                            this.btnSenden.Enabled = true;
                         }
-                       this.btnSenden.Enabled = true;
-
-                        
-
+                        else
+                        {
+                            this.rtbLog.Text = "Neue Klienten können jetzt gemeldet werden: \n\n";    //Weitermachen
+                            foreach (PMDS.Global.db.cSTAMPInterfaceDB.Bewohnerdaten bew in lBew.bewohnerdaten)
+                            {
+                                if (String.IsNullOrWhiteSpace(bew.synonym))
+                                {
+                                    this.rtbLog.Text += bew.nachname + " " + bew.vorname + ", (" + (!String.IsNullOrWhiteSpace(bew.synonym) ? bew.synonym : "noch nicht gemeldet") + ")\n";
+                                }
+                            }
+                            this.btnMelden.Enabled = true;
+                            this.btnSenden.Enabled = false;
+                        }
                     }
                 }
             }
@@ -83,10 +102,37 @@ namespace PMDS.GUI.STAMP
             }
         }
 
+        private void btnMelden_Click(object sender, EventArgs e)
+        {
+            //Geprüfte Daten vorhanden. Synonyme für neue Bewohner holen.
+            lBew.sbLog.Clear();
+            lBew.HasErrors = false;
+            Task<bool> res = STAMP.StartBewohnerMelden(Global.db.cSTAMPInterfaceDB.ServiceCallType.bewohnermelden, lBew);
+            if (lBew.sbLog.Length != 0)
+            {
+                rtbLog.Text = lBew.sbLog.ToString();
+            }
+            else
+            {
+                //Alles nochmals einlesen.
+                btnCheck_Click(sender, e);  
+            }
+        }
+
         private void btnSenden_Click(object sender, EventArgs e)
         {
-            Task<bool> res = STAMP.StartBewohnerMelden(Global.db.cSTAMPInterfaceDB.ServiceCallType.bewohnermelden, lBew);
-            string y = "";
+            lBew.sbLog.Clear();
+            lBew.HasErrors = false;
+            Task<bool> res = STAMP.StartBewohnerMelden(Global.db.cSTAMPInterfaceDB.ServiceCallType.bewohnerupdate, lBew);
+            if (lBew.sbLog.Length != 0)
+            {
+                rtbLog.Text = lBew.sbLog.ToString();
+            }
+            else
+            {
+                //Fertig
+                rtbLog.Text = "Fertig!";
+            }
         }
     }
 }

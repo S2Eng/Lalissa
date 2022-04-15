@@ -84,6 +84,7 @@ namespace PMDS.Global.db
             public DateTime ErstelltAm { get; set; } = _Now;
             public List<Bewohnerdaten> bewohnerdaten { get; set; } = new List<Bewohnerdaten>();
             public StringBuilder sbLog { get; set; } = new StringBuilder();
+            public int NeueBewohner { get; set; }
             public bool IsInitialized { get; set; }
             public bool HasErrors { get; set; }
         }
@@ -96,7 +97,7 @@ namespace PMDS.Global.db
             public string geburtsdatum { get; set; } = "";
             public string staatsbuergerschaft { get; set; } = "";                  //Exakt drei Zeichen
             public string geschlecht { get; set; } = "";                          //Ein Zeichen {m, w, d, u } 
-            public bool forensicherHintergrund { get; set; }
+            public bool forensischerHintergrund { get; set; }
             public bool gemeldetAmStandort { get; set; } = true;
             public string plz { get; set; } = "";                                 //Max. 10 
             public string ort { get; set; } = "";                                 //Max. 50
@@ -109,7 +110,7 @@ namespace PMDS.Global.db
         {
             public string staatsbuergerschaft { get; set; } = "";                  //Exakt drei Zeichen
             public string geschlecht { get; set; } = "";                          //Ein Zeichen {m, w, d, u } 
-            public bool forensicherHintergrund { get; set; }
+            public bool forensischerHintergrund { get; set; }
             public string synonymVorsystem { get; set; } = "";                    //Max. 50     //IDPatient
             public JSONAufenthalt[] aufenthalte { get; set; } = Array.Empty<JSONAufenthalt>();
             public JSONPflegegeldstufe[] pflegegeldstufen { get; set; } = Array.Empty<JSONPflegegeldstufe>();
@@ -171,7 +172,7 @@ namespace PMDS.Global.db
             public string staatsbuergerschaft { get; set; } = "";                 
             public string geschlecht { get; set; } = "";                         
             public string letzteHauptwohnsitzgemeinde { get; set; } = "";         
-            public bool forensicherHintergrund { get; set; }
+            public bool forensischerHintergrund { get; set; }
             public bool gemeldetAmStandort { get; set; } = true;
             public string plz { get; set; } = "";                                 //Max. 10 
             public string ort { get; set; } = "";                                 //Max. 50
@@ -313,7 +314,7 @@ namespace PMDS.Global.db
                                              pat_geburtsdatum = pat.Geburtsdatum,
                                              pat_staatsbürgerschaft = pat.Staatsb,
                                              pat_geschlecht = pat.Sexus,
-                                             pat_forensicherHintergrund = pat.ForensischerHintergrund,
+                                             pat_forensischerHintergrund = pat.ForensischerHintergrund,
                                              pat_gemeldetAmStandort = pat.WohnungAbgemeldetJN,
                                              pat_synonym = pat.STAMP_Synonym,
                                              //Adresse
@@ -329,14 +330,18 @@ namespace PMDS.Global.db
                         Bewohnerdaten bew = new Bewohnerdaten();
 
                         bew.synonym = kl.pat_synonym;
+                        if (String.IsNullOrWhiteSpace(bew.synonym))
+                        {
+                            lBew.NeueBewohner++;
+                        }
                         bew.vorname = kl.pat_vorname;
                         bew.nachname = kl.pat_nachname;
                         bew.geburtsdatum = (DateTime)kl.pat_geburtsdatum;
                         bew.staatsbuergerschaft = kl.pat_staatsbürgerschaft;
                         bew.geschlecht = kl.pat_geschlecht;
 
-                        if (kl.pat_forensicherHintergrund != null)
-                            bew.forensicherHintergrund = (bool)kl.pat_forensicherHintergrund;
+                        if (kl.pat_forensischerHintergrund != null)
+                            bew.forensischerHintergrund = (bool)kl.pat_forensischerHintergrund;
                         bew.gemeldetAmStandort = (bool)kl.pat_gemeldetAmStandort;
                         if (!bew.gemeldetAmStandort)
                         {
@@ -554,8 +559,8 @@ namespace PMDS.Global.db
                 }
                 bew.JSON.geschlecht = bew.JSONKurz.geschlecht;
 
-                bew.JSONKurz.forensicherHintergrund = bew.forensicherHintergrund;
-                bew.JSON.forensicherHintergrund = bew.JSON.forensicherHintergrund;
+                bew.JSONKurz.forensischerHintergrund = bew.forensischerHintergrund;
+                bew.JSON.forensischerHintergrund = bew.JSON.forensischerHintergrund;
 
                 bew.JSONKurz.gemeldetAmStandort = bew.gemeldetAmStandort;
                 bew.JSONKurz.plz = bew.plz;
@@ -888,7 +893,7 @@ namespace PMDS.Global.db
                 {
                     var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner", Method.Post);
                     request.RequestFormat = RestSharp.DataFormat.Json;
-                    request.AddParameter("application/json", value, ParameterType.RequestBody);
+                    request.AddStringBody(value.ToString(), DataFormat.Json);
                     RestResponse result = await client.ExecutePostAsync(request, cancellationToken);
                     return result;
                 }
@@ -896,7 +901,7 @@ namespace PMDS.Global.db
                 {
                     var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner/" + synonym, Method.Post);
                     request.RequestFormat = RestSharp.DataFormat.Json;
-                    request.AddParameter("application/json", value.ToString(), ParameterType.RequestBody);
+                    request.AddStringBody(value.ToString(), DataFormat.Json);
                     RestResponse result = await client.ExecutePostAsync(request, cancellationToken);
                     return result;
                 }
@@ -917,7 +922,11 @@ namespace PMDS.Global.db
                     {
                         if (sc == ServiceCallType.bewohnermelden)
                         {
-                            await StartService(sc, "", JsonConvert.SerializeObject(bew.JSONKurz, Formatting.Indented));
+                            StringBuilder sb =  await StartService(sc, "", JsonConvert.SerializeObject(bew.JSONKurz, Formatting.Indented));
+                            if (sb.Length != 0)
+                            {
+                                lBew.sbLog.Append(sb);
+                            }
                         }
                         else if (sc == ServiceCallType.bewohnerupdate)
                         {
@@ -936,10 +945,11 @@ namespace PMDS.Global.db
         }
 
         //--------------------------- Service-Calls --------------------------------
-        private async Task<RestResponse> StartService(ServiceCallType scType, string synonym, object value)
+        private async Task<StringBuilder> StartService(ServiceCallType scType, string synonym, object value)
         {
             try
             {
+                StringBuilder sbResult = new StringBuilder();
                 RestResponse resp = new RestResponse();
 
                 if (scType == ServiceCallType.traeger)
@@ -987,7 +997,17 @@ namespace PMDS.Global.db
                     resp = await CallService(scType, traeger, standort, "", value);
                     if (resp.IsSuccessful)
                     {
-                        
+                        //Synonym in DB und eintragen und ok
+                    }
+                    else
+                    {
+                        //Fehlermeldung und fortsetzen
+                        string sError = "";
+                        var res = JObject.Parse(resp.Content);
+                        foreach (KeyValuePair<String, JToken> app in res)
+                        {
+                            sError += app.Key + "=" + app.Value.ToString() + "\n";
+                        }                  
                     }
                 }
 
@@ -1001,7 +1021,7 @@ namespace PMDS.Global.db
 
                     }
                 }
-                return resp;
+                return sbResult;
             }
             catch (Exception ex)
             {
