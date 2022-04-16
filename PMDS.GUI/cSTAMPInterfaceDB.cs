@@ -20,6 +20,10 @@ namespace PMDS.Global.db
 {
     public class cSTAMPInterfaceDB
     {
+
+        public event Action UpdateLog = delegate { };
+        public event Action LoadAll = delegate { };
+
         public static DateTime _Now { get; set; } = DateTime.Now;
         private static DateTime _MinPeriode = new DateTime(2022, 4, 1);
         private static DateTime _Periode = _Now;
@@ -84,6 +88,8 @@ namespace PMDS.Global.db
             public DateTime ErstelltAm { get; set; } = _Now;
             public List<Bewohnerdaten> bewohnerdaten { get; set; } = new List<Bewohnerdaten>();
             public StringBuilder sbLog { get; set; } = new StringBuilder();
+            public StringBuilder sbLogOk { get; set; } = new StringBuilder();
+            public StringBuilder sbLokNoSynonym { get; set; } = new StringBuilder();
             public int NeueBewohner { get; set; }
             public bool IsInitialized { get; set; }
             public bool HasErrors { get; set; }
@@ -380,11 +386,14 @@ namespace PMDS.Global.db
 
                             if (!String.IsNullOrEmpty((string)auf.auf_vorherigeBetreuungsform))
                             {
-                                string[] vbf = auf.auf_vorherigeBetreuungsform.ToString().Split(new char[] { ';' }, 1);
+                                string[] vbf = auf.auf_vorherigeBetreuungsform.ToString().Split(new char[] { ';' });
                                 a.vorherigeBetreuungsformen = new List<VorherigeBetreuungsform>();
                                 foreach (string v in vbf)
                                 {
-                                    a.vorherigeBetreuungsformen.Add(new VorherigeBetreuungsform { vorherigeBeteuungsform = v.Replace(";", "") });
+                                    if (!String.IsNullOrWhiteSpace(v))
+                                    {
+                                        a.vorherigeBetreuungsformen.Add(new VorherigeBetreuungsform { vorherigeBeteuungsform = v });
+                                    }
                                 }
                             }
 
@@ -436,13 +445,19 @@ namespace PMDS.Global.db
                                        where auf1.ID == auf.IDAufenthalt
                                        select new
                                        {
-                                           abwesenheitsgrund = url.Text,
+                                           abwesenheitsgrund = url.STAMP_Abwesenheitsgrund,
                                            gueltigVon = url.StartDatum,
                                            gueltigBis = url.EndeDatum
                                        }).ToList();
 
                             foreach (var ab in abw)
                             {
+                                //Keine Abwesenheit ohne Abwsenheitsgrund (wurden vor STAMP begonnen)
+                                if (String.IsNullOrWhiteSpace(ab.abwesenheitsgrund))
+                                {
+                                    continue;
+                                }
+
                                 if (ab.gueltigBis != null)
                                 {
                                     //Nur Abweseneheiten mit mindestens einer Nacht
@@ -453,7 +468,7 @@ namespace PMDS.Global.db
                                 }
 
                                 abwesenheit abwh = new abwesenheit();
-                                abwh.abwesenheitsgrund = LookupAuswahllisteBezeichnung("URL", ab.abwesenheitsgrund, AuswahllisteSucheTyp.Beschreibung);
+                                abwh.abwesenheitsgrund = ab.abwesenheitsgrund;
                                 abwh.datumVon = (DateTime)ab.gueltigVon;
                                 if (ab.gueltigBis != null)
                                 {
@@ -546,14 +561,14 @@ namespace PMDS.Global.db
                 bew.JSONKurz.geburtsdatum = bew.geburtsdatum.ToString(dFormat);
                 
                 bew.JSONKurz.staatsbuergerschaft = LookupAuswahllisteBezeichnung("LND", bew.staatsbuergerschaft, AuswahllisteSucheTyp.ELGA_Code);
-                if (String.IsNullOrWhiteSpace(bew.JSON.staatsbuergerschaft))
+                if (String.IsNullOrWhiteSpace(bew.JSONKurz.staatsbuergerschaft))
                 {
                     AddLog(ref chk, "Staatsbürgerschaft '" + bew.staatsbuergerschaft + "' ist kein gültiger Listeneintrag", ErrorLogClass.Bewohnerdaten, bew, null);
                 }
                 bew.JSON.staatsbuergerschaft = bew.JSONKurz.staatsbuergerschaft;
 
                 bew.JSONKurz.geschlecht = ConvertGeschlecht(bew.geschlecht);
-                if (String.IsNullOrWhiteSpace(bew.JSON.geschlecht))
+                if (String.IsNullOrWhiteSpace(bew.JSONKurz.geschlecht))
                 {
                     AddLog(ref chk, "Geschlecht '" + bew.geschlecht + "' ist kein gültiger Listeneintrag", ErrorLogClass.Bewohnerdaten, bew, null);
                 }
@@ -719,7 +734,7 @@ namespace PMDS.Global.db
         private void AddLog(ref CheckStatus chk, string txtLog, ErrorLogClass elc, Bewohnerdaten bew, Aufenthalt auf)
         {
             AddHeaderToLog(ref chk, bew, auf);
-
+            bew.HasError = true;
             switch (elc) { 
                 case ErrorLogClass.Bewohnerliste:
                     break;
@@ -854,9 +869,9 @@ namespace PMDS.Global.db
 
         //------------------------------------------------------------------------------------------------------------
         //--   Service Calls
-        //------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------------------------        
 
-        static async Task<RestResponse> CallService(ServiceCallType scType, string traeger, string standort, string synonym, object value)
+        static async Task<RestResponse> CallService(ServiceCallType scType, string traeger, string standort, Bewohnerdaten bew)
         {
             CancellationToken cancellationToken = new CancellationToken();
 
@@ -893,15 +908,15 @@ namespace PMDS.Global.db
                 {
                     var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner", Method.Post);
                     request.RequestFormat = RestSharp.DataFormat.Json;
-                    request.AddStringBody(value.ToString(), DataFormat.Json);
+                    request.AddStringBody(JsonConvert.SerializeObject(bew.JSONKurz, Formatting.Indented).ToString(), DataFormat.Json);
                     RestResponse result = await client.ExecutePostAsync(request, cancellationToken);
                     return result;
                 }
                 else if (scType == ServiceCallType.bewohnerupdate)
                 {
-                    var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner/" + synonym, Method.Post);
+                    var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner/" + bew.synonym, Method.Post);
                     request.RequestFormat = RestSharp.DataFormat.Json;
-                    request.AddStringBody(value.ToString(), DataFormat.Json);
+                    request.AddStringBody(JsonConvert.SerializeObject(bew.JSON, Formatting.Indented).ToString(), DataFormat.Json);
                     RestResponse result = await client.ExecutePostAsync(request, cancellationToken);
                     return result;
                 }
@@ -909,32 +924,48 @@ namespace PMDS.Global.db
             }
         }
 
-        public async Task<bool> StartBewohnerMelden(ServiceCallType sc, Bewohnerliste lBew)
+        public async Task<bool> CallService(ServiceCallType sc, Bewohnerliste lBew)
         {
             try
             {
-                await StartService(ServiceCallType.traeger, "", null);
-                await StartService(ServiceCallType.standort, "", null);
+                await StartService(ServiceCallType.traeger, null);
+                if (lBew.sbLog.Length > 0)  //Kritischer Fehler, nicht fortsetzen
+                {
+                    return false;
+                }
 
-                foreach(Bewohnerdaten bew in lBew.bewohnerdaten)
+                await StartService(ServiceCallType.standort, null);
+                if (lBew.sbLog.Length > 0)  //Kritischer Fehler, nicht fortsetzen
+                {
+                    return false;
+                }
+
+                foreach (Bewohnerdaten bew in lBew.bewohnerdaten)
                 {
                     if (String.IsNullOrWhiteSpace(bew.synonym) && !bew.HasError)
                     {
                         if (sc == ServiceCallType.bewohnermelden)
                         {
-                            StringBuilder sb =  await StartService(sc, "", JsonConvert.SerializeObject(bew.JSONKurz, Formatting.Indented));
-                            if (sb.Length != 0)
+                            StringBuilder sb =  await StartService(sc, bew);
+                            if (sb.Length > 0)
                             {
                                 lBew.sbLog.Append(sb);
+                                UpdateLog();
                             }
                         }
                         else if (sc == ServiceCallType.bewohnerupdate)
                         {
-                            await StartService(sc, "", JsonConvert.SerializeObject(bew.JSON, Formatting.Indented));
+                            await StartService(sc, bew).ConfigureAwait(false);
                         }
                     }
                 }
-                return true;
+
+                if (sc == ServiceCallType.bewohnermelden && !lBew.HasErrors)
+                {
+                    LoadAll();  //Daten neu laden, sonst Fehlermeldung anzeigen
+                }
+
+                return (lBew.sbLog.Length == 0);
             }
             catch (Exception ex)
             {
@@ -945,7 +976,7 @@ namespace PMDS.Global.db
         }
 
         //--------------------------- Service-Calls --------------------------------
-        private async Task<StringBuilder> StartService(ServiceCallType scType, string synonym, object value)
+        private async Task<StringBuilder> StartService(ServiceCallType scType, Bewohnerdaten bew)
         {
             try
             {
@@ -954,10 +985,10 @@ namespace PMDS.Global.db
 
                 if (scType == ServiceCallType.traeger)
                 {
-                    resp = await CallService(scType, "", "", "", "");
+                    resp = await CallService(scType, "", "", null).ConfigureAwait(false);
+                    var objects = JArray.Parse(resp.Content); // parse as array  
                     if (resp.IsSuccessful)
                     {
-                        var objects = JArray.Parse(resp.Content); // parse as array  
                         foreach (JObject root in objects)
                         {
                             foreach (KeyValuePair<String, JToken> app in root)
@@ -970,14 +1001,25 @@ namespace PMDS.Global.db
                             }
                         }
                     }
+                    else
+                    {
+                        sbResult.Append("Fehler beim Abrufen der Träger-ID: \n");
+                        foreach (JObject root in objects)
+                        {
+                            foreach (KeyValuePair<String, JToken> app in root)
+                            {
+                                sbResult.Append(app.Key + "=" + app.Value.ToString() + "\n");
+                            }
+                        }                        
+                    }
                 }
 
                 else if (scType == ServiceCallType.standort)
                 {
-                    resp = await CallService(scType, traeger, "", "", "");
+                    resp = await CallService(scType, traeger, "", null).ConfigureAwait(false);
+                    var objects = JArray.Parse(resp.Content); // parse as array  
                     if (resp.IsSuccessful)
                     {
-                        var objects = JArray.Parse(resp.Content); // parse as array  
                         foreach (JObject root in objects)
                         {
                             foreach (KeyValuePair<String, JToken> app in root)
@@ -990,24 +1032,57 @@ namespace PMDS.Global.db
                             }
                         }
                     }
+                    else
+                    {
+                        sbResult.Append("Fehler beim Abrufen des Standortes: \n");
+                        foreach (JObject root in objects)
+                        {
+                            foreach (KeyValuePair<String, JToken> app in root)
+                            {
+                                sbResult.Append(app.Key + "=" + app.Value.ToString() + "\n");
+                            }
+                        }
+                    }
                 }
 
                 else if (scType == ServiceCallType.bewohnermelden)
                 {
-                    resp = await CallService(scType, traeger, standort, "", value);
+                    resp = await CallService(scType, traeger, standort, bew).ConfigureAwait(false);
                     if (resp.IsSuccessful)
                     {
-                        //Synonym in DB und eintragen und ok
+                        //Synonym in DB eintragen und ok
+                        var res = JObject.Parse(resp.Content);
+                        foreach (KeyValuePair<String, JToken> app in res)
+                        {
+                            if (app.Key.sEquals("synonym"))
+                            {
+                                string resUpdate = UpdateSynonymER(bew.IDKlient, app.Value.ToString());
+                                if (!String.IsNullOrWhiteSpace(resUpdate))
+                                {
+                                    sbResult.Append("--------------------------------------------------------------------------\n");
+                                    sbResult.Append("Fehler bei Speichern des Synonoms für " + bew.nachname + " " + bew.vorname + ":\n");
+                                    sbResult.Append(resUpdate);
+                                    sbResult.Append("    \n");
+                                }
+                                else
+                                {
+                                    bew.synonym = app.Value.ToString();
+                                }
+                                break;
+                            }
+                        }
                     }
                     else
                     {
                         //Fehlermeldung und fortsetzen
-                        string sError = "";
+                        sbResult.Append("--------------------------------------------------------------------------\n");
+                        sbResult.Append("STAMP-Service-Fehler beim Melden für " + bew.nachname + " " + bew.vorname +":\n");
                         var res = JObject.Parse(resp.Content);
                         foreach (KeyValuePair<String, JToken> app in res)
                         {
-                            sError += app.Key + "=" + app.Value.ToString() + "\n";
-                        }                  
+                            sbResult.Append(app.Key + "=" + app.Value.ToString() + "\n");
+                        }
+                        sbResult.Append("    \n");
                     }
                 }
 
@@ -1015,7 +1090,7 @@ namespace PMDS.Global.db
                 {
                     //Bewohnername entfernen
 
-                    resp = await CallService(scType, traeger, standort, synonym, value);
+                    resp = await CallService(scType, traeger, standort, bew).ConfigureAwait(false);
                     if (resp.IsSuccessful)
                     {
 
@@ -1027,6 +1102,34 @@ namespace PMDS.Global.db
             {
                 //MessageBox.Show(ex.Message);
                 throw new Exception(ex.ToString());
+            }
+        }
+
+        public string UpdateSynonymER(Guid IDPatient, string STAMPSynonym)
+        {
+            try
+            {
+                //Save ER
+                PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                {
+                    if (b.checkPatientExists(IDPatient, db))
+                    {
+                        //Patientenstammdaten
+                        PMDS.db.Entities.Patient rPatient = b.getPatient(IDPatient, db);
+                        rPatient.STAMP_Synonym = STAMPSynonym;
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        return "Klientendaten wurden in der Datenbank nicht gefunden.";
+                    }
+                }
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
     }
