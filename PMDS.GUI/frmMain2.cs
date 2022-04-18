@@ -110,6 +110,7 @@ namespace PMDS
             public bool Versetzung = false;
 
             public bool SuchtgiftschrankSchluessel = false;
+            public bool STAMP;
         }
 
         public ELGABusiness bElga = new ELGABusiness();
@@ -132,17 +133,6 @@ namespace PMDS
                 }
 
                 this.ultraToolbarsManager1.Tools["btnPatientAufenthalteLöschen"].SharedProps.Visible = false;
-
-                //throw new Exception("xy");
-                //this.TextException1();
-
-                //string sNrs = "";
-                //for (int i = 1000000; i < 1059999; i++)
-                //{
-                //    sNrs += i.ToString() + "\r\n";
-                //}
-                //sNrs += "\r\n";
-
             }
             catch (Exception ex)
             {
@@ -162,16 +152,11 @@ namespace PMDS
                 ucHeader1.HeaderButtonClick += new ucHeader.HeaderButtonClickDelegate(ucHeader1_HeaderButtonClick);
                 GuiAction.GuiActionDone += new GuiActionDoneDelegate(GuiAction_GuiActionDone);
                 ENV.NotfallChanged += new EventHandler(ENV_NotfallChanged);
-                //ENV.RestoreWindowPosition(this);
                 ENV.sendMainChanged += new sendMainChangedDelegate(this.mainEventReceive);
-
-                //PMDS.Global.Heimverträge.cHeimverträge cHeimverträge1 = new Global.Heimverträge.cHeimverträge();
-                //Infragistics.Win.UltraWinToolbars.PopupMenuTool popUpHeimverträge = (Infragistics.Win.UltraWinToolbars.PopupMenuTool)ultraToolbarsManager1.Tools["btnHeimverträge"];
-                //cHeimverträge1.loadMenü(popUpHeimverträge);
 
                 this.ultraToolbarsManager1.Tools["btnVerordnungen"].SharedProps.Visible = ENV.lic_VO;
                 this.ultraToolbarsManager1.Tools["btnVerordnungen2"].SharedProps.Visible = ENV.lic_VO;
-
+                this.ultraToolbarsManager1.Tools["btnSTAMP"].SharedProps.Visible = ENV.lic_STAMP;
             }
             catch (Exception ex)
             {
@@ -200,23 +185,7 @@ namespace PMDS
                 frmMain.Rights.ArchivTerminMail = ENV.HasRight(UserRights.ArchivTerminMail);
                 frmMain.Rights.Entlassung = ENV.HasRight(UserRights.Entlassung);
                 frmMain.Rights.Versetzung = ENV.HasRight(UserRights.Versetzung);
-                
-
-                //frmMain.Rights.Aufnahme = false;
-                //frmMain.Rights.Bewerber = false;
-                //frmMain.Rights.ImportGibodat = false;
-                //frmMain.Rights.QS2 = false;
-                //frmMain.Rights.DatenarchivierungAll = false;
-                //frmMain.Rights.Abrechnung = false;
-                //frmMain.Rights.btnTransferCalcData = false;
-                //frmMain.Rights.btnExportCalculations = false;
-                //frmMain.Rights.btnVerordnungen = false;
-                //frmMain.Rights.btnPatientAufenthalteLöschen = false;
-
-                //frmMain.Rights.ArchivTerminMail = false;
-                //frmMain.Rights.Entlassung = false;
-                //frmMain.Rights.Versetzung = false;
-                //frmMain.Rights.SuchtgiftschrankSchluessel = false;
+                frmMain.Rights.STAMP = ENV.HasRight(UserRights.STAMPMeldung);
             }
 
             this.ultraToolbarsManager1.Tools["Aufnahme"].SharedProps.Visible = frmMain.Rights.Aufnahme;
@@ -245,12 +214,11 @@ namespace PMDS
                 ultraToolbarsManager1.Tools["btnELGAPasswortÄndern"].SharedProps.Visible = ENV.lic_ELGA && ben.Elgaactive && !ben.IsGeneric;
                 IsInitialized = true;
             }
-
         }
+
         public void action(bool bOnOff)
         {
             this.ucHeader1._action = bOnOff;
-
         }
 
         public void mainEventReceive(eSendMain typ, cParDelegSendMain ParDelegSendMain)
@@ -549,6 +517,7 @@ namespace PMDS
             ultraToolbarsManager1.Tools["Entlassen"].SharedProps.Visible = ENV.HasRight(UserRights.Entlassung) && Guid.Empty != IDPatient;
             ultraToolbarsManager1.Tools["Versetzen"].SharedProps.Visible = ENV.HasRight(UserRights.Versetzung) && Guid.Empty != IDPatient;
             ultraToolbarsManager1.Tools["Bereichsversetzung"].SharedProps.Visible = ENV.HasRight(UserRights.Versetzung) && Guid.Empty != IDPatient;
+            ultraToolbarsManager1.Tools["btnSTAMP"].SharedProps.Visible = ENV.HasRight(UserRights.STAMPMeldung);
 
             // Wenn der Klient gewechselt wird, dann die Abteilung setzen und das RMOptional setzen
 
@@ -2374,6 +2343,8 @@ namespace PMDS
             ultraToolbarsManager1.Tools["Bereichsversetzung"].SharedProps.Visible = ENV.HasRight(UserRights.Versetzung);
             ultraToolbarsManager1.Tools["Abrechnung"].SharedProps.Visible = false;          // ENV.HasRight(UserRights.AbrechnungStarten);
             ultraToolbarsManager1.Tools["ImportGibodat"].SharedProps.Visible = ENV.HasRight(UserRights.ImportGibodat);
+            ultraToolbarsManager1.Tools["btnSTAMP"].SharedProps.Visible = ENV.HasRight(UserRights.STAMPMeldung);
+
 
             ultraToolbarsManager1.Tools["RezepteVerwalten"].SharedProps.Visible = ENV.HasRight(UserRights.RezepteVerwalten);
             ultraToolbarsManager1.Tools["Historie"].SharedProps.Visible = ENV.HasRight(UserRights.Historie);
