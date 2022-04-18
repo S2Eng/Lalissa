@@ -49,17 +49,15 @@ namespace PMDS.GUI.STAMP
 
             if (!PMDS.Global.ENV.lic_STAMP)
             {
-                rtbLog.Text = "Sie haben keine Lizenz für diese Funktion.";
+                MessageBox.Show("Sie haben keine Lizenz für diese Funktion.");
                 return;
             }
 
-            if (!Environment.MachineName.sEquals("sty041"))
+            if (!PMDS.Global.ENV.HasRight(Global.UserRights.STAMPMeldung))
             {
-                if (String.IsNullOrWhiteSpace(PMDS.Global.ENV.STAMP_Traeger) || String.IsNullOrWhiteSpace(PMDS.Global.ENV.STAMP_Standort))
-                {
-                    rtbLog.Text = "Ihre STAMP-Träger-ID (" + PMDS.Global.ENV.STAMP_Traeger + ") oder STAMP-Standort-ID (" + PMDS.Global.ENV.STAMP_Standort + ") ist leer.\nBitte tragen Sie die Werte in der Konfigurationsdatei ein.";
-                    return;
-                }
+
+                MessageBox.Show("Sie haben kein Recht für diese Funktion.");
+                return;
             }
 
             if (STAMP.Init(this.dtMonat.DateTime))

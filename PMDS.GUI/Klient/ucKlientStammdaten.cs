@@ -132,7 +132,7 @@ namespace PMDS.GUI
             this.ucVOErfassen1.initControl(PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenKlientStammdaten, true, false, null);
 
             this.tabStammdaten.Tabs["VOErfassen"].Visible = PMDS.Global.ENV.lic_VO;
-            this.tabStammdaten.Tabs["STAMP"].Visible = PMDS.Global.ENV.lic_STAMP;
+            this.tabStammdaten.Tabs["STAMP"].Visible = PMDS.Global.ENV.lic_STAMP  && ENV.HasRight(UserRights.STAMPMeldung);
             lblSTAMPSynonym.Visible = PMDS.Global.ENV.lic_STAMP;
             txtSTAMPSynonym.Visible = PMDS.Global.ENV.lic_STAMP;
 

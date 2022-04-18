@@ -202,8 +202,8 @@ namespace PMDS.Global
         public static string HAG_PASSWORD = "";
         public static string HAG_PASSWORD_TMP = "";         //Passwort, das der User für die HAG-Meldung eingegeben hat. Merken, damit es nicht mehrfach eingegeben werden muss
 
-        public static string STAMP_Traeger = "";
-        public static string STAMP_Standort = "";
+        public static string STAMP_PFX_Path = "";
+        public static string STAMP_LOG_Path = "";
         public static string STAMP_URL = "https://sterz3test.stmk.gv.at/at.gv.stmk.stamp-t/api";
 
         public static string ZahlKondBankeinzug = "Wir haben uns erlaubt, obigen Rechnungsbetrag von Ihrem Konto {0} einzuziehen.";
@@ -1544,8 +1544,8 @@ namespace PMDS.Global
                 SetENVValue("HAG_User", ref ENV.HAG_USER);
                 SetENVValue("HAG_Password", ref ENV.HAG_PASSWORD, eTrim.no, eDecrypt.PMDSMode);
 
-                SetENVValue("STAMP_Traeger", ref ENV.STAMP_Traeger);
-                SetENVValue("STAMP_Standort", ref ENV.STAMP_Standort);
+                SetENVValue("STAMP_PFX_Path", ref ENV.STAMP_PFX_Path);
+                SetENVValue("STAMP_LOG_Path", ref ENV.STAMP_LOG_Path);
                 SetENVValue("STAMP_URL", ref ENV.STAMP_URL);
 
                 SetENVValue("CheckConnectionAndPassword", ref ENV.CheckConnectionAndPassword);

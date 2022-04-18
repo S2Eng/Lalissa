@@ -16,6 +16,8 @@ using RestSharp.Authenticators;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 
+using System.IO;
+
 namespace PMDS.Global.db
 {
     public class cSTAMPInterfaceDB
@@ -34,6 +36,8 @@ namespace PMDS.Global.db
 
         private string traeger = "";            //Abfrage von Rest-Service
         private string standort = "";           //Abfrage von Rest-Service
+        private string certFile = "";
+        private string STAMP_PW = "";
 
         private enum ErrorClass
         {
@@ -870,8 +874,7 @@ namespace PMDS.Global.db
         //------------------------------------------------------------------------------------------------------------
         //--   Service Calls
         //------------------------------------------------------------------------------------------------------------        
-
-        static async Task<RestResponse> CallService(ServiceCallType scType, string traeger, string standort, Bewohnerdaten bew)
+        static async Task<RestResponse> CallService(ServiceCallType scType, string traeger, string standort, string certFile, string STAMP_PW, Bewohnerdaten bew)
         {
             CancellationToken cancellationToken = new CancellationToken();
 
@@ -879,9 +882,7 @@ namespace PMDS.Global.db
             ServicePointManager.DefaultConnectionLimit = 9999;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
 
-            var certFile = System.IO.Path.Combine(@"C:\", "temp", "s2engineer_test_appuser.pfx");
-            X509Certificate2 certificate = new X509Certificate2(certFile, "kjhg8830MNB11000MNB11000MNB11000MNB11000MNB");
-
+            X509Certificate2 certificate = new X509Certificate2(certFile, STAMP_PW);
             RestClientOptions ro = new RestClientOptions(ENV.STAMP_URL)
             {
                 ClientCertificates = new X509CertificateCollection() { certificate },
@@ -928,13 +929,52 @@ namespace PMDS.Global.db
         {
             try
             {
-                await StartService(ServiceCallType.traeger, null);
+                //PFX-File und Passwortfile in Unterverzeichnis mit passendem "gültig ab" im Format YYYY-MM-DD suchen
+                if (String.IsNullOrWhiteSpace(certFile) && String.IsNullOrWhiteSpace(STAMP_PW))
+                {
+                    DirectoryInfo dirInfo = new DirectoryInfo(ENV.STAMP_PFX_Path);
+                    var dirs = dirInfo.EnumerateDirectories().OrderByDescending(d => d.Name);
+                    foreach (DirectoryInfo dir in dirs)
+                    {
+                        if (DateTime.TryParse(dir.Name, out DateTime GültigAb))
+                        {
+                            if (DateTime.Now >= GültigAb)
+                            {
+                                var files = dir.EnumerateFiles();
+                                foreach (FileInfo file in files)
+                                {
+                                    if (file.Extension == ".pfx")
+                                    {
+                                        certFile = file.FullName;
+                                        string pwdFile = Path.ChangeExtension(certFile, ".txt");
+                                        if (File.Exists(pwdFile))
+                                        {
+                                            STAMP_PW = PMDS.BusinessLogic.BUtil.DecryptString(File.ReadAllText(pwdFile).Trim());
+                                        }
+                                        goto BreakSearchForCertificate;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                BreakSearchForCertificate:
+
+                    //Wenn als Zertifikat ein existierendes Zertifiakt angegeben ist und das Passwort gesetzt ist
+                    if (String.IsNullOrWhiteSpace(certFile) || String.IsNullOrWhiteSpace(STAMP_PW))
+                    {
+                        //Fehler!!!
+                        lBew.sbLog.Append("Fehler beim Lesen des Zertifikats.\nDie Funktion kann nicht fortgesetzt werden.");
+                        return false;
+                    }
+                }
+
+                await StartService(ServiceCallType.traeger, null, certFile, STAMP_PW);
                 if (lBew.sbLog.Length > 0)  //Kritischer Fehler, nicht fortsetzen
                 {
                     return false;
                 }
 
-                await StartService(ServiceCallType.standort, null);
+                await StartService(ServiceCallType.standort, null, certFile, STAMP_PW);
                 if (lBew.sbLog.Length > 0)  //Kritischer Fehler, nicht fortsetzen
                 {
                     return false;
@@ -946,7 +986,7 @@ namespace PMDS.Global.db
                     {
                         if (sc == ServiceCallType.bewohnermelden)
                         {
-                            StringBuilder sb =  await StartService(sc, bew);
+                            StringBuilder sb =  await StartService(sc, bew, certFile, STAMP_PW);
                             if (sb.Length > 0)
                             {
                                 lBew.sbLog.Append(sb);
@@ -955,7 +995,7 @@ namespace PMDS.Global.db
                         }
                         else if (sc == ServiceCallType.bewohnerupdate)
                         {
-                            await StartService(sc, bew).ConfigureAwait(false);
+                            await StartService(sc, bew, certFile, STAMP_PW);
                         }
                     }
                 }
@@ -976,7 +1016,7 @@ namespace PMDS.Global.db
         }
 
         //--------------------------- Service-Calls --------------------------------
-        private async Task<StringBuilder> StartService(ServiceCallType scType, Bewohnerdaten bew)
+        private async Task<StringBuilder> StartService(ServiceCallType scType, Bewohnerdaten bew, string certFile, string STAMP_PW)
         {
             try
             {
@@ -985,7 +1025,7 @@ namespace PMDS.Global.db
 
                 if (scType == ServiceCallType.traeger)
                 {
-                    resp = await CallService(scType, "", "", null).ConfigureAwait(false);
+                    resp = await CallService(scType, "", "", certFile, STAMP_PW, null).ConfigureAwait(false);
                     var objects = JArray.Parse(resp.Content); // parse as array  
                     if (resp.IsSuccessful)
                     {
@@ -1016,7 +1056,7 @@ namespace PMDS.Global.db
 
                 else if (scType == ServiceCallType.standort)
                 {
-                    resp = await CallService(scType, traeger, "", null).ConfigureAwait(false);
+                    resp = await CallService(scType, traeger, "", certFile, STAMP_PW, null).ConfigureAwait(false);
                     var objects = JArray.Parse(resp.Content); // parse as array  
                     if (resp.IsSuccessful)
                     {
@@ -1047,7 +1087,7 @@ namespace PMDS.Global.db
 
                 else if (scType == ServiceCallType.bewohnermelden)
                 {
-                    resp = await CallService(scType, traeger, standort, bew).ConfigureAwait(false);
+                    resp = await CallService(scType, traeger, standort, certFile, STAMP_PW, bew).ConfigureAwait(false);
                     if (resp.IsSuccessful)
                     {
                         //Synonym in DB eintragen und ok
@@ -1088,9 +1128,7 @@ namespace PMDS.Global.db
 
                 else if (scType == ServiceCallType.bewohnerupdate)
                 {
-                    //Bewohnername entfernen
-
-                    resp = await CallService(scType, traeger, standort, bew).ConfigureAwait(false);
+                    resp = await CallService(scType, traeger, standort, certFile, STAMP_PW, bew).ConfigureAwait(false);
                     if (resp.IsSuccessful)
                     {
 
