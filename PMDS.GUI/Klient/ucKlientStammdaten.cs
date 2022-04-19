@@ -413,7 +413,6 @@ namespace PMDS.GUI
             this.chkVerstorben.Checked = Klient.Verstorben;
             this.dteTodeszeitpunkt.Value = Klient.Todeszeitpunkt;
             this.chkDNR.Checked = Klient.DNR;
-
            
             //----------------------------------------------------
             //              Adressdaten
@@ -421,11 +420,16 @@ namespace PMDS.GUI
             InitBenutzer();
 
             txtStrasse.Text = Klient.Adresse.Strasse;
-            if (Klient.Adresse.StrasseOhneHausnummer != null)
+            if (!String.IsNullOrWhiteSpace(Klient.Adresse.StrasseOhneHausnummer))
+            {
                 txtStrasseOhneHausnummer.Text = Klient.Adresse.StrasseOhneHausnummer;
-            else
+            }
+            else if (String.IsNullOrWhiteSpace(Klient.Adresse.StrasseOhneHausnummer) && 
+                     String.IsNullOrWhiteSpace(Klient.Adresse.Hausnummer))
+            {
                 txtStrasseOhneHausnummer.Text = Klient.Adresse.Strasse;
-            if (Klient.Adresse.Hausnummer != null)
+            }
+            if (!String.IsNullOrWhiteSpace(Klient.Adresse.Hausnummer))
                 txtHausnummer.Text = Klient.Adresse.Hausnummer;
             else
                 txtHausnummer.Text = "";
@@ -2647,11 +2651,6 @@ namespace PMDS.GUI
                     frmMessageBox1.ShowDialog();
                 }
             }
-        }
-
-        private void lbleMailKlient_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
