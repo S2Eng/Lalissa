@@ -22,9 +22,9 @@ namespace PMDS.Global.db
 {
     public class cSTAMPInterfaceDB
     {
-
-        public event Action UpdateLog = delegate { };
         public event Action LoadAll = delegate { };
+        public event Action ShowLog = delegate { };
+        public event Action SaveServiceResult = delegate { };
 
         public static DateTime _Now { get; set; } = DateTime.Now;
         private static DateTime _MinPeriode = new DateTime(2022, 4, 1);
@@ -36,8 +36,8 @@ namespace PMDS.Global.db
 
         private string traeger = "";            //Abfrage von Rest-Service
         private string standort = "";           //Abfrage von Rest-Service
-        private string certFile = "";
-        private string STAMP_PW = "";
+        private string certFile = "";           //Von Festplatte
+        private string STAMP_PW = "";           //Von Festplatte
 
         private enum ErrorClass
         {
@@ -93,7 +93,8 @@ namespace PMDS.Global.db
             public List<Bewohnerdaten> bewohnerdaten { get; set; } = new List<Bewohnerdaten>();
             public StringBuilder sbLog { get; set; } = new StringBuilder();
             public StringBuilder sbLogOk { get; set; } = new StringBuilder();
-            public StringBuilder sbLokNoSynonym { get; set; } = new StringBuilder();
+            public StringBuilder sbLogNoSynonym { get; set; } = new StringBuilder();
+            public StringBuilder sbLogServiceCalls { get; set; } = new StringBuilder();
             public int NeueBewohner { get; set; }
             public bool IsInitialized { get; set; }
             public bool HasErrors { get; set; }
@@ -874,7 +875,7 @@ namespace PMDS.Global.db
         //------------------------------------------------------------------------------------------------------------
         //--   Service Calls
         //------------------------------------------------------------------------------------------------------------        
-        static async Task<RestResponse> CallService(ServiceCallType scType, string traeger, string standort, string certFile, string STAMP_PW, Bewohnerdaten bew)
+        static async Task<RestResponse> RunService(ServiceCallType scType, string traeger, string standort, string certFile, string STAMP_PW, Bewohnerdaten bew, StringBuilder sbLogServiceCalls)
         {
             CancellationToken cancellationToken = new CancellationToken();
 
@@ -896,6 +897,7 @@ namespace PMDS.Global.db
                     var request = new RestRequest("/traeger", Method.Get);
                     request.RequestFormat = RestSharp.DataFormat.Json;
                     RestResponse result = await client.ExecuteGetAsync(request, cancellationToken);
+                    sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
                     return result;
                 }
                 else if (scType == ServiceCallType.standort)
@@ -903,6 +905,7 @@ namespace PMDS.Global.db
                     var request = new RestRequest("/traeger/" + traeger + "/standort", Method.Get);
                     request.RequestFormat = RestSharp.DataFormat.Json;
                     RestResponse result = await client.ExecuteGetAsync(request, cancellationToken);
+                    sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
                     return result;
                 }
                 else if(scType == ServiceCallType.bewohnermelden)
@@ -911,6 +914,7 @@ namespace PMDS.Global.db
                     request.RequestFormat = RestSharp.DataFormat.Json;
                     request.AddStringBody(JsonConvert.SerializeObject(bew.JSONKurz, Formatting.Indented).ToString(), DataFormat.Json);
                     RestResponse result = await client.ExecutePostAsync(request, cancellationToken);
+                    sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
                     return result;
                 }
                 else if (scType == ServiceCallType.bewohnerupdate)
@@ -919,10 +923,41 @@ namespace PMDS.Global.db
                     request.RequestFormat = RestSharp.DataFormat.Json;
                     request.AddStringBody(JsonConvert.SerializeObject(bew.JSON, Formatting.Indented).ToString(), DataFormat.Json);
                     RestResponse result = await client.ExecutePostAsync(request, cancellationToken);
+                    sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
                     return result;
                 }
                 return null;
             }
+        }
+
+        private static StringBuilder ServiceLogMessage(RestResponse resp, ServiceCallType scType)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(">>> Request ");
+            sb.Append(DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss.ffff"));
+            sb.Append(" / User=");
+            sb.Append(ENV.ActiveUser.Nachname);
+            sb.Append(" ");
+            sb.Append(ENV.ActiveUser.Vorname);
+            sb.Append(" <<<\n");
+            sb.Append("Resource = " + ENV.STAMP_URL + resp.Request.Resource);
+
+            switch (scType)
+            {
+                case ServiceCallType.bewohnermelden:
+                case ServiceCallType.bewohnerupdate:
+                    sb.Append("\nParameters:\n");
+                    foreach (RestSharp.Parameter h in resp.Request.Parameters)
+                    {
+                        sb.Append(h.ToString() + "\n");
+                    }
+                    break;
+            }
+
+            sb.Append("\nResult:\n");
+            sb.Append(resp.Content.ToString());
+            sb.Append(" \n");
+            return sb;
         }
 
         public async Task<bool> CallService(ServiceCallType sc, Bewohnerliste lBew)
@@ -968,13 +1003,13 @@ namespace PMDS.Global.db
                     }
                 }
 
-                await StartService(ServiceCallType.traeger, null, certFile, STAMP_PW);
+                await StartService(ServiceCallType.traeger, null, certFile, STAMP_PW, lBew.sbLogServiceCalls);
                 if (lBew.sbLog.Length > 0)  //Kritischer Fehler, nicht fortsetzen
                 {
                     return false;
                 }
 
-                await StartService(ServiceCallType.standort, null, certFile, STAMP_PW);
+                await StartService(ServiceCallType.standort, null, certFile, STAMP_PW, lBew.sbLogServiceCalls);
                 if (lBew.sbLog.Length > 0)  //Kritischer Fehler, nicht fortsetzen
                 {
                     return false;
@@ -986,16 +1021,25 @@ namespace PMDS.Global.db
                     {
                         if (sc == ServiceCallType.bewohnermelden)
                         {
-                            StringBuilder sb =  await StartService(sc, bew, certFile, STAMP_PW);
+                            StringBuilder sb = await StartService(sc, bew, certFile, STAMP_PW, lBew.sbLogServiceCalls);
                             if (sb.Length > 0)
                             {
                                 lBew.sbLog.Append(sb);
-                                UpdateLog();
+                                ShowLog();
                             }
                         }
                         else if (sc == ServiceCallType.bewohnerupdate)
                         {
-                            await StartService(sc, bew, certFile, STAMP_PW);
+                            StringBuilder sb = await StartService(sc, bew, certFile, STAMP_PW, lBew.sbLogServiceCalls);
+                            if (sb.Length > 0)
+                            {
+                                lBew.sbLog.Append(sb);
+                                ShowLog();
+                            }
+                            else
+                            {
+                                SaveServiceResult();
+                            }
                         }
                     }
                 }
@@ -1016,7 +1060,7 @@ namespace PMDS.Global.db
         }
 
         //--------------------------- Service-Calls --------------------------------
-        private async Task<StringBuilder> StartService(ServiceCallType scType, Bewohnerdaten bew, string certFile, string STAMP_PW)
+        private async Task<StringBuilder> StartService(ServiceCallType scType, Bewohnerdaten bew, string certFile, string STAMP_PW, StringBuilder sbLogServiceCalls)
         {
             try
             {
@@ -1025,7 +1069,7 @@ namespace PMDS.Global.db
 
                 if (scType == ServiceCallType.traeger)
                 {
-                    resp = await CallService(scType, "", "", certFile, STAMP_PW, null).ConfigureAwait(false);
+                    resp = await RunService(scType, "", "", certFile, STAMP_PW, null, sbLogServiceCalls).ConfigureAwait(false);
                     var objects = JArray.Parse(resp.Content); // parse as array  
                     if (resp.IsSuccessful)
                     {
@@ -1056,7 +1100,7 @@ namespace PMDS.Global.db
 
                 else if (scType == ServiceCallType.standort)
                 {
-                    resp = await CallService(scType, traeger, "", certFile, STAMP_PW, null).ConfigureAwait(false);
+                    resp = await RunService(scType, traeger, "", certFile, STAMP_PW, null, sbLogServiceCalls).ConfigureAwait(false);
                     var objects = JArray.Parse(resp.Content); // parse as array  
                     if (resp.IsSuccessful)
                     {
@@ -1087,7 +1131,7 @@ namespace PMDS.Global.db
 
                 else if (scType == ServiceCallType.bewohnermelden)
                 {
-                    resp = await CallService(scType, traeger, standort, certFile, STAMP_PW, bew).ConfigureAwait(false);
+                    resp = await RunService(scType, traeger, standort, certFile, STAMP_PW, bew, sbLogServiceCalls).ConfigureAwait(false);
                     if (resp.IsSuccessful)
                     {
                         //Synonym in DB eintragen und ok
@@ -1114,7 +1158,7 @@ namespace PMDS.Global.db
                     }
                     else
                     {
-                        //Fehlermeldung und fortsetzen
+                        //Fehlermeldung und mit nächstem Bewohner fortsetzen
                         sbResult.Append("--------------------------------------------------------------------------\n");
                         sbResult.Append("STAMP-Service-Fehler beim Melden für " + bew.nachname + " " + bew.vorname +":\n");
                         var res = JObject.Parse(resp.Content);
@@ -1128,12 +1172,21 @@ namespace PMDS.Global.db
 
                 else if (scType == ServiceCallType.bewohnerupdate)
                 {
-                    resp = await CallService(scType, traeger, standort, certFile, STAMP_PW, bew).ConfigureAwait(false);
-                    if (resp.IsSuccessful)
+                    resp = await RunService(scType, traeger, standort, certFile, STAMP_PW, bew, sbLogServiceCalls).ConfigureAwait(false);
+                    if (!resp.IsSuccessful)
                     {
-
+                        //Fehlermeldung und mit nächstem Bewohner fortsetzen
+                        sbResult.Append("--------------------------------------------------------------------------\n");
+                        sbResult.Append("STAMP-Service-Fehler beim Update für " + bew.nachname + " " + bew.vorname + ":\n");
+                        var res = JObject.Parse(resp.Content);
+                        foreach (KeyValuePair<String, JToken> app in res)
+                        {
+                            sbResult.Append(app.Key + "=" + app.Value.ToString() + "\n");
+                        }
+                        sbResult.Append("    \n");
                     }
                 }
+
                 return sbResult;
             }
             catch (Exception ex)

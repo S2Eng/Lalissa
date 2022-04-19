@@ -17,7 +17,6 @@ namespace PMDS.GUI.STAMP
         private PMDS.Global.db.cSTAMPInterfaceDB STAMP = new PMDS.Global.db.cSTAMPInterfaceDB();
         private PMDS.Global.db.cSTAMPInterfaceDB.Bewohnerliste lBew = new Global.db.cSTAMPInterfaceDB.Bewohnerliste();
 
-
         public frmSTAMPMeldung()
         {
             InitializeComponent();
@@ -25,18 +24,61 @@ namespace PMDS.GUI.STAMP
             //this.dtMonat.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddDays(-1);
             this.dtMonat.MaxDate = DateTime.Now;
             STAMP.LoadAll += () => LoadAll();
-            STAMP.UpdateLog += () => UpdateLog();
+            STAMP.ShowLog += () => ShowLog();
+            STAMP.SaveServiceResult += () => SaveServiceResult();
         }
 
-        private void UpdateLog()
+        private void ShowLog()
         {
             rtbLog.Text = lBew.sbLog.ToString();
-            rtbOhneSynonym.Text = lBew.sbLokNoSynonym.ToString();
+            rtbOhneSynonym.Text = lBew.sbLogNoSynonym.ToString();
             rtbOK.Text = lBew.sbLogOk.ToString();
+
+            if (lBew.sbLogServiceCalls.ToString().Length != 0)
+            {
+                MessageBox.Show(lBew.sbLogServiceCalls.ToString());
+            }
 
             pnlLog.Visible = true;
             pnlOhneSynonym.Visible = true;
             pnlOK.Visible = true;
+            Application.DoEvents();
+        }
+
+        private void SaveServiceResult()
+        {
+            btnCheck.Enabled = true;
+            btnMelden.Enabled = false;
+            btnSenden.Enabled = false;
+
+            if (lBew.sbLog.Length != 0)
+            {
+                rtbLog.Text = lBew.sbLog.ToString();
+                rtbOhneSynonym.Clear();
+                rtbOK.Clear();
+            }
+            else
+            {
+                //Fertig, erfolgreiche Übertragung
+                rtbLog.Text = "Fertig! Alle Daten wurden erfolgreich übertragen und ein Protokoll wurde erstellt.\nSie können dieses Fenster jetzt schließen.";
+
+                string sLog = System.IO.Path.Combine(PMDS.Global.ENV.STAMP_LOG_Path, DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".log");
+                if (!PMDS.Global.generic.CheckDirWritable(sLog))
+                {
+                    //Log anzeigen
+                    MessageBox.Show(lBew.sbLogServiceCalls.ToString());
+                    rtbLog.Text += ".\nDie Log-Datei konnte wegen eines Schreibfehlers auf "+ PMDS.Global.ENV.STAMP_LOG_Path + " nicht gesichert werden";
+                }
+                else
+                {
+                    //Log auf die Festplatte schreiben
+                    System.IO.File.WriteAllText(sLog, lBew.sbLogServiceCalls.ToString());
+                    rtbLog.Text += " und ein Protokoll wurde erstellt: " + sLog;
+
+                }
+                System.IO.File.AppendAllText(PMDS.Global.ENV.STAMP_LOG_Path + "log.txt", lBew.sbLogServiceCalls.ToString());
+                rtbLog.Text += ".\nSie können dieses Fenster jetzt schließen.";
+            }
             Application.DoEvents();
         }
 
@@ -86,7 +128,8 @@ namespace PMDS.GUI.STAMP
 
                 lBew.sbLog.Clear();
                 lBew.sbLogOk.Clear();
-                lBew.sbLokNoSynonym.Clear();
+                lBew.sbLogNoSynonym.Clear();
+                lBew.sbLogServiceCalls.Clear();
 
                 STAMP.CheckAll(ref lBew);
                 foreach (PMDS.Global.db.cSTAMPInterfaceDB.Bewohnerdaten bew in lBew.bewohnerdaten)
@@ -95,7 +138,7 @@ namespace PMDS.GUI.STAMP
                     {
                         if (String.IsNullOrWhiteSpace(bew.synonym))
                         {
-                            lBew.sbLokNoSynonym.Append(bew.nachname + " " + bew.vorname + "\n");
+                            lBew.sbLogNoSynonym.Append(bew.nachname + " " + bew.vorname + "\n");
                             btnSenden.Enabled = false;
                         }
                         else
@@ -104,46 +147,38 @@ namespace PMDS.GUI.STAMP
                         }
                     }
                 }
-                UpdateLog();
+                ShowLog();
             }
-
-
         }
 
         private void btnMelden_Click(object sender, EventArgs e)
         {
             //Geprüfte Daten vorhanden. Synonyme für neue Bewohner holen und in DB speichern
             lBew.sbLog.Clear();
-            lBew.sbLokNoSynonym.Clear();
+            lBew.sbLogNoSynonym.Clear();
             lBew.sbLogOk.Clear();
+            lBew.sbLogServiceCalls.Clear();
             //lBew.HasErrors = false;
 
             btnMelden.Enabled = false;
             btnSenden.Enabled = false;
-            UpdateLog();
+            ShowLog();
 
             Task<bool> res = STAMP.CallService(Global.db.cSTAMPInterfaceDB.ServiceCallType.bewohnermelden, lBew);
         }
 
         private void btnSenden_Click(object sender, EventArgs e)
         {
-            lBew.sbLog.Clear();
-            lBew.HasErrors = false;
-            Task<bool> res = STAMP.CallService(Global.db.cSTAMPInterfaceDB.ServiceCallType.bewohnerupdate, lBew);
-
             btnCheck.Enabled = true;
             btnMelden.Enabled = false;
             btnSenden.Enabled = false;
 
-            if (lBew.sbLog.Length != 0)
-            {
-                rtbLog.Text = lBew.sbLog.ToString();
-            }
-            else
-            {
-                //Fertig
-                rtbLog.Text = "Fertig! Alle daten wurden erfolgreich übertragen.\nSie können dieses Fenster jetzt schließen.";
-            }
+            lBew.sbLog.Clear();
+            lBew.sbLogNoSynonym.Clear();
+            lBew.sbLogOk.Clear();
+            lBew.sbLogServiceCalls.Clear();
+            lBew.HasErrors = false;
+            Task<bool> res = STAMP.CallService(Global.db.cSTAMPInterfaceDB.ServiceCallType.bewohnerupdate, lBew);
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
