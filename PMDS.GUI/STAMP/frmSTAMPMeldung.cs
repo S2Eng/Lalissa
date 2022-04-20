@@ -21,7 +21,10 @@ namespace PMDS.GUI.STAMP
         {
             InitializeComponent();
             this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
-            //this.dtMonat.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddDays(-1);
+            if (DateTime.Now >= new DateTime(2022, 5, 1))
+            {
+                this.dtMonat.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddDays(-1);
+            }
             this.dtMonat.MaxDate = DateTime.Now;
             STAMP.LoadAll += () => LoadAll();
             STAMP.ShowLog += () => ShowLog();
@@ -36,7 +39,7 @@ namespace PMDS.GUI.STAMP
 
             if (lBew.sbLogServiceCalls.ToString().Length != 0)
             {
-                MessageBox.Show(lBew.sbLogServiceCalls.ToString());
+                WriteLogToFile(lBew.ServiceLogID);
             }
 
             pnlLog.Visible = true;
@@ -53,6 +56,7 @@ namespace PMDS.GUI.STAMP
 
             if (lBew.sbLog.Length != 0)
             {
+                WriteLogToFile(lBew.ServiceLogID);
                 rtbLog.Text = lBew.sbLog.ToString();
                 rtbOhneSynonym.Clear();
                 rtbOK.Clear();
@@ -60,26 +64,29 @@ namespace PMDS.GUI.STAMP
             else
             {
                 //Fertig, erfolgreiche Übertragung
-                rtbLog.Text = "Fertig! Alle Daten wurden erfolgreich übertragen und ein Protokoll wurde erstellt.\nSie können dieses Fenster jetzt schließen.";
-
-                string sLog = System.IO.Path.Combine(PMDS.Global.ENV.STAMP_LOG_Path, DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".log");
-                if (!PMDS.Global.generic.CheckDirWritable(sLog))
-                {
-                    //Log anzeigen
-                    MessageBox.Show(lBew.sbLogServiceCalls.ToString());
-                    rtbLog.Text += ".\nDie Log-Datei konnte wegen eines Schreibfehlers auf "+ PMDS.Global.ENV.STAMP_LOG_Path + " nicht gesichert werden";
-                }
-                else
-                {
-                    //Log auf die Festplatte schreiben
-                    System.IO.File.WriteAllText(sLog, lBew.sbLogServiceCalls.ToString());
-                    rtbLog.Text += " und ein Protokoll wurde erstellt: " + sLog;
-
-                }
-                System.IO.File.AppendAllText(PMDS.Global.ENV.STAMP_LOG_Path + "log.txt", lBew.sbLogServiceCalls.ToString());
+                rtbLog.Text = "Fertig! Alle Daten wurden erfolgreich übertragen und ein Protokoll wurde erstellt.\n.";
+                WriteLogToFile(lBew.ServiceLogID);
                 rtbLog.Text += ".\nSie können dieses Fenster jetzt schließen.";
             }
             Application.DoEvents();
+        }
+
+        private void  WriteLogToFile(string ServiceLogID)
+        {
+            string sLogFile = System.IO.Path.Combine(PMDS.Global.ENV.STAMP_LOG_Path, ServiceLogID);
+            if (!PMDS.Global.generic.CheckDirWritable(sLogFile))
+            {
+                //Log anzeigen
+                MessageBox.Show(lBew.sbLogServiceCalls.ToString());
+                rtbLog.Text += ".\nDie Protkoll-Datei für den Serviceaufruf konnte wegen eines Schreibfehlers auf " + PMDS.Global.ENV.STAMP_LOG_Path + " nicht gesichert werden";
+            }
+            else
+            {
+                //Log auf die Festplatte schreiben
+                System.IO.File.WriteAllText(sLogFile, lBew.sbLogServiceCalls.ToString());
+                rtbLog.Text += "Die Protokoll-Datei wurde hier gespeichert: " + sLogFile;
+
+            }
         }
 
         private void btnCheck_Click(object sender, EventArgs e)
@@ -108,12 +115,13 @@ namespace PMDS.GUI.STAMP
             }
             else
             {
-                this.rtbLog.Text = "Fehler beim Initailisieren der Funktion. \nBitte überprüfen Sie das Datumsfeld. Es muss ein gültiges Datum ab 1.4.2022 und heute erfasst werden.";
+                this.rtbLog.Text = "Fehler beim Initialisieren der Funktion. \nBitte überprüfen Sie das Datumsfeld. Es muss ein gültiges Datum ab 1.4.2022 und heute erfasst werden.";
             }
         }
 
         private void LoadAll() 
         {
+            lBew.bewohnerdaten.Clear();
             lBew = STAMP.LoadBewohnerliste();
             if (!lBew.IsInitialized)
             {
@@ -130,6 +138,11 @@ namespace PMDS.GUI.STAMP
                 lBew.sbLogOk.Clear();
                 lBew.sbLogNoSynonym.Clear();
                 lBew.sbLogServiceCalls.Clear();
+
+
+                this.rtbLog.Clear();
+                this.rtbOhneSynonym.Clear();
+                this.rtbOK.Clear();
 
                 STAMP.CheckAll(ref lBew);
                 foreach (PMDS.Global.db.cSTAMPInterfaceDB.Bewohnerdaten bew in lBew.bewohnerdaten)

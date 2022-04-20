@@ -30,8 +30,8 @@ namespace PMDS.GUI.STAMP
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.rtbLog = new System.Windows.Forms.RichTextBox();
             this.btnCheck = new QS2.Desktop.ControlManagment.BaseButton();
             this.dtMonat = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
@@ -126,9 +126,9 @@ namespace PMDS.GUI.STAMP
             // 
             this.lblError.Location = new System.Drawing.Point(7, 3);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(242, 23);
+            this.lblError.Size = new System.Drawing.Size(466, 23);
             this.lblError.TabIndex = 6;
-            this.lblError.Text = "Fehlermeldungen";
+            this.lblError.Text = "Meldungen und Hinweise";
             // 
             // rtbOhneSynonym
             // 
@@ -164,12 +164,12 @@ namespace PMDS.GUI.STAMP
             this.lblOK.Name = "lblOK";
             this.lblOK.Size = new System.Drawing.Size(280, 23);
             this.lblOK.TabIndex = 10;
-            this.lblOK.Text = "Klienten fertig zum Senden";
+            this.lblOK.Text = "Klienten geprüft und fertig zum Senden";
             // 
             // lblMonat
             // 
-            appearance4.ForeColor = System.Drawing.Color.White;
-            this.lblMonat.Appearance = appearance4;
+            appearance1.ForeColor = System.Drawing.Color.White;
+            this.lblMonat.Appearance = appearance1;
             this.lblMonat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMonat.Location = new System.Drawing.Point(21, 37);
             this.lblMonat.Name = "lblMonat";
@@ -211,8 +211,8 @@ namespace PMDS.GUI.STAMP
             // 
             // pnlTop
             // 
-            appearance6.BackColor = System.Drawing.Color.DarkGreen;
-            this.pnlTop.Appearance = appearance6;
+            appearance2.BackColor = System.Drawing.Color.DarkGreen;
+            this.pnlTop.Appearance = appearance2;
             // 
             // pnlTop.ClientArea
             // 

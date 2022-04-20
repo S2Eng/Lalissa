@@ -26,13 +26,15 @@ namespace PMDS.Global.db
         public event Action ShowLog = delegate { };
         public event Action SaveServiceResult = delegate { };
 
-        public static DateTime _Now { get; set; } = DateTime.Now;
+        private DateTime _Now { get; set; } = DateTime.Now;
+        private string _ServiceLogID { get; set; } = "";
         private static DateTime _MinPeriode = new DateTime(2022, 4, 1);
-        private static DateTime _Periode = _Now;
-        private static DateTime _FirstOfPeriode = _Periode;
-        private static DateTime _LastOfPeriode = _Periode;
-        private static StringBuilder sbLog = new StringBuilder();
+        private DateTime _Periode;
+        private DateTime _FirstOfPeriode;
+        private DateTime _LastOfPeriode;
+
         private string dFormat = "dd.MM.yyyy";
+        private Bewohnerliste lBew = new Bewohnerliste();
 
         private string traeger = "";            //Abfrage von Rest-Service
         private string standort = "";           //Abfrage von Rest-Service
@@ -89,7 +91,8 @@ namespace PMDS.Global.db
         public class Bewohnerliste
         {
             public Guid ID { get; set; } = Guid.NewGuid();
-            public DateTime ErstelltAm { get; set; } = _Now;
+            public DateTime ErstelltAm { get; set; }
+            public String ServiceLogID { get; set; }
             public List<Bewohnerdaten> bewohnerdaten { get; set; } = new List<Bewohnerdaten>();
             public StringBuilder sbLog { get; set; } = new StringBuilder();
             public StringBuilder sbLogOk { get; set; } = new StringBuilder();
@@ -280,9 +283,13 @@ namespace PMDS.Global.db
                     }
                     else
                     {
+                        _Now = DateTime.Now;
                         _Periode = Periode;
                         _FirstOfPeriode = new DateTime(_Periode.Year, _Periode.Month, 1);
                         _LastOfPeriode = _FirstOfPeriode.AddMonths(1).AddSeconds(-1);
+                        _ServiceLogID = "STAMP_ServiceLog_" + _Now.ToString("yyyyMMddHHmmssffff") + ".log";
+                        lBew.ErstelltAm = _Now;
+                        lBew.ServiceLogID = _ServiceLogID;
                         return true;
                     }
                 }
@@ -301,7 +308,6 @@ namespace PMDS.Global.db
         {
             try
             {
-                Bewohnerliste lBew = new Bewohnerliste();
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
                     //distinct PatientenIDs der betroffenen Aufenthalte
@@ -731,7 +737,7 @@ namespace PMDS.Global.db
             }
             lBew.sbLog = chk.sbLog;
 
-            string res = JsonConvert.SerializeObject(lBew.bewohnerdaten[2].JSON, Formatting.Indented);
+            //string res = JsonConvert.SerializeObject(lBew.bewohnerdaten[2].JSON, Formatting.Indented);
 
             return chk;
         }
