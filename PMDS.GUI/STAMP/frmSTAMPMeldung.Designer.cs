@@ -105,7 +105,7 @@ namespace PMDS.GUI.STAMP
             this.btnSenden.Name = "btnSenden";
             this.btnSenden.Size = new System.Drawing.Size(164, 33);
             this.btnSenden.TabIndex = 3;
-            this.btnSenden.Text = "Meldung senden";
+            this.btnSenden.Text = "Daten senden";
             this.btnSenden.Click += new System.EventHandler(this.btnSenden_Click);
             // 
             // btnMelden

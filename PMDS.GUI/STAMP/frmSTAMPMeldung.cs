@@ -17,6 +17,8 @@ namespace PMDS.GUI.STAMP
         private PMDS.Global.db.cSTAMPInterfaceDB STAMP = new PMDS.Global.db.cSTAMPInterfaceDB();
         private PMDS.Global.db.cSTAMPInterfaceDB.Bewohnerliste lBew = new Global.db.cSTAMPInterfaceDB.Bewohnerliste();
 
+        private bool isTest = true;
+
         public frmSTAMPMeldung()
         {
             InitializeComponent();
@@ -152,7 +154,7 @@ namespace PMDS.GUI.STAMP
                         if (String.IsNullOrWhiteSpace(bew.synonym))
                         {
                             lBew.sbLogNoSynonym.Append(bew.nachname + " " + bew.vorname + "\n");
-                            btnSenden.Enabled = false;
+                            btnSenden.Enabled = isTest;
                         }
                         else
                         {

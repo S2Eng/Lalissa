@@ -133,18 +133,13 @@ namespace PMDS.Global.db
 
         public class JSONAufenthalt
         {
-            public string letzteHauptwohnsitzgemeinde { get; set; } = "";
-            public JSONVorherigeBetreuungsform[] vorherigeBetreuungsformen { get; set; }
+            public string letzteHauptwohnsitzgemeinde { get; set; }
+            public string[] vorherigeBetreuungsformen { get; set; }
             public string eintrittsdatum { get; set; } = "";
             public string austrittsdatum { get; set; }
-            public string austrittWohin { get; set; } = "";              //{ BET_WOH. 24H_BET, AND_PH, TOD, SONST }
+            public string austrittWohin { get; set; }           //{ BET_WOH. 24H_BET, AND_PH, TOD, SONST }
             public JSONkostentragung[] kostentragungen { get; set; } = Array.Empty<JSONkostentragung>();
             public JSONabwesenheit[] abwesenheiten { get; set; } = Array.Empty<JSONabwesenheit>();
-        }
-
-        public class JSONVorherigeBetreuungsform
-        {
-            public string vorherigeBeteuungsform { get; set; } = "";     //{ MOB_HK, TAGZ, BET_WOH, 24H_BET, AND_PH, KH, PRIV_BET, KEINE, SONST }
         }
 
         public class JSONkostentragung
@@ -172,7 +167,7 @@ namespace PMDS.Global.db
         public class JSONPflegegeldverfahren
         {
             public string beantragtAm { get; set; }
-            public string vorlaufigePflegegeldstufeVerrechnungPersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
+            public string vorlaeufigePflegegeldstufePersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
             public string kenntnisnahmeDatumBescheid { get; set; }
         }
 
@@ -206,23 +201,15 @@ namespace PMDS.Global.db
         public class Aufenthalt
         {
             public string letzteHauptwohnsitzgemeinde { get; set; } = "";
-            public List<VorherigeBetreuungsform> vorherigeBetreuungsformen { get; set; } = new List<VorherigeBetreuungsform>();
+            public List<string> vorherigeBetreuungsformen { get; set; } = new List<string>();
             public DateTime eintrittsdatum { get; set; } = DateTime.MinValue;
             public DateTime austrittsdatum { get; set; }
-            public string austrittWohin { get; set; } = "";              //{ BET_WOH. 24H_BET, AND_PH, TOD, SONST }
+            public string austrittWohin { get; set; }               //{ BET_WOH. 24H_BET, AND_PH, TOD, SONST }
             public List<kostentragung> kostentragungen { get; } = new List<kostentragung>();
             public List<abwesenheit> abwesenheiten { get; } = new List<abwesenheit>();
             public Guid IDAufenthalt { get; set; } = Guid.Empty;
             public StringBuilder sbErrLog { get; set; } = new StringBuilder();
             public bool HasError { get; set; }
-        }
-
-        public class VorherigeBetreuungsform
-        {
-            public string vorherigeBeteuungsform { get; set; } = "";      //{ MOB_HK, TAGZ, BET_WOH, 24H_BET, AND_PH, KH, PRIV_BET, KEINE, SONST }
-            public StringBuilder sbErrLog { get; set; } = new StringBuilder();
-            public bool HasError { get; set; }
-
         }
 
         public class kostentragung
@@ -263,7 +250,7 @@ namespace PMDS.Global.db
         public class Pflegegeldverfahren
         {
             public DateTime beantragtAm { get; set; }
-            public string vorlaufigePflegegeldstufeVerrechnungPersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
+            public string vorlaeufigePflegegeldstufePersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
             public DateTime kenntnisnahmeDatumBescheid { get; set; } = DateTime.MaxValue;
             public Guid IDPflegestufe { get; set; } = Guid.Empty;
             public StringBuilder sbErrLog { get; set; } = new StringBuilder();
@@ -351,6 +338,10 @@ namespace PMDS.Global.db
                         {
                             lBew.NeueBewohner++;
                         }
+                        else
+                        {
+                            string x = "";
+                        }
                         bew.vorname = kl.pat_vorname;
                         bew.nachname = kl.pat_nachname;
                         bew.geburtsdatum = (DateTime)kl.pat_geburtsdatum;
@@ -398,12 +389,12 @@ namespace PMDS.Global.db
                             if (!String.IsNullOrEmpty((string)auf.auf_vorherigeBetreuungsform))
                             {
                                 string[] vbf = auf.auf_vorherigeBetreuungsform.ToString().Split(new char[] { ';' });
-                                a.vorherigeBetreuungsformen = new List<VorherigeBetreuungsform>();
+                                a.vorherigeBetreuungsformen = new List<string>();
                                 foreach (string v in vbf)
                                 {
                                     if (!String.IsNullOrWhiteSpace(v))
                                     {
-                                        a.vorherigeBetreuungsformen.Add(new VorherigeBetreuungsform { vorherigeBeteuungsform = v });
+                                        a.vorherigeBetreuungsformen.Add(v);
                                     }
                                 }
                             }
@@ -415,9 +406,13 @@ namespace PMDS.Global.db
                                 a.austrittsdatum = (DateTime)auf.auf_austrittsdatum;
                             }
 
-                            if (!String.IsNullOrEmpty((string)auf.auf_austrittWohin))
+                            if (!String.IsNullOrWhiteSpace((string)auf.auf_austrittWohin))
                             {
                                 a.austrittWohin = (string)auf.auf_austrittWohin;
+                            }
+                            else
+                            {
+                                a.austrittWohin = null;
                             }
 
                             //Kostentragungen zu Aufenthalt
@@ -526,7 +521,7 @@ namespace PMDS.Global.db
                                      {
                                          ID = pps.ID,
                                          beantragtAm = pps.AenderungsantragDatum,
-                                         vorlaeufigePflegegeldstufeVerrechnungPersonal = ps.StufeNr,
+                                         vorlaeufigePflegegeldstufePersonal = ps.StufeNr,
                                          kenntnisnahmeDatumBescheid = pps.GenehmigungDatum
                                      }).ToList();
 
@@ -534,7 +529,7 @@ namespace PMDS.Global.db
                         {
                             Pflegegeldverfahren pgv = new Pflegegeldverfahren();
                             pgv.beantragtAm = (DateTime)psv.beantragtAm;
-                            pgv.vorlaufigePflegegeldstufeVerrechnungPersonal = psv.vorlaeufigePflegegeldstufeVerrechnungPersonal == 0 ? "keine" : psv.vorlaeufigePflegegeldstufeVerrechnungPersonal.ToString();
+                            pgv.vorlaeufigePflegegeldstufePersonal = psv.vorlaeufigePflegegeldstufePersonal == 0 ? "keine" : psv.vorlaeufigePflegegeldstufePersonal.ToString();
                             if (psv.kenntnisnahmeDatumBescheid != null)
                             {
                                 pgv.kenntnisnahmeDatumBescheid = (DateTime)psv.kenntnisnahmeDatumBescheid;
@@ -571,7 +566,7 @@ namespace PMDS.Global.db
                 bew.JSONKurz.nachname = bew.nachname;
                 bew.JSONKurz.geburtsdatum = bew.geburtsdatum.ToString(dFormat);
                 
-                bew.JSONKurz.staatsbuergerschaft = LookupAuswahllisteBezeichnung("LND", bew.staatsbuergerschaft, AuswahllisteSucheTyp.ELGA_Code);
+                bew.JSONKurz.staatsbuergerschaft = LookupAuswahllisteBezeichnung("LND", bew.staatsbuergerschaft, AuswahllisteSucheTyp.ELGA_Code, false);
                 if (String.IsNullOrWhiteSpace(bew.JSONKurz.staatsbuergerschaft))
                 {
                     AddLog(ref chk, "Staatsbürgerschaft '" + bew.staatsbuergerschaft + "' ist kein gültiger Listeneintrag", ErrorLogClass.Bewohnerdaten, bew, null);
@@ -621,7 +616,7 @@ namespace PMDS.Global.db
                 {
                     JSONPflegegeldverfahren jpgv = new JSONPflegegeldverfahren();
                     jpgv.beantragtAm = pgv.beantragtAm.ToString(dFormat);
-                    jpgv.vorlaufigePflegegeldstufeVerrechnungPersonal = pgv.vorlaufigePflegegeldstufeVerrechnungPersonal;
+                    jpgv.vorlaeufigePflegegeldstufePersonal = pgv.vorlaeufigePflegegeldstufePersonal;
                     jpgv.kenntnisnahmeDatumBescheid = pgv.kenntnisnahmeDatumBescheid.ToString(dFormat);
                     bew.JSON.pflegegeldverfahren[i] = jpgv;
                     i++;
@@ -635,7 +630,7 @@ namespace PMDS.Global.db
                     chk.AufenthaltOK = true;
 
                     JSONAufenthalt jauf = new JSONAufenthalt();
-                    jauf.letzteHauptwohnsitzgemeinde = LookupAuswahllisteBezeichnung("GKZ", auf.letzteHauptwohnsitzgemeinde, AuswahllisteSucheTyp.Beschreibung);
+                    jauf.letzteHauptwohnsitzgemeinde = LookupAuswahllisteBezeichnung("GKZ", auf.letzteHauptwohnsitzgemeinde, AuswahllisteSucheTyp.Beschreibung, false);
                     if (String.IsNullOrWhiteSpace(jauf.letzteHauptwohnsitzgemeinde))
                     {
                         AddLog(ref chk, "Letzte Hauptwohnsitzgemeinde '" + auf.letzteHauptwohnsitzgemeinde + "' ist kein gültiger Listeneintrag", ErrorLogClass.Aufenthalt, bew, auf);
@@ -647,24 +642,23 @@ namespace PMDS.Global.db
                     }
                     else
                     {
-                        jauf.vorherigeBetreuungsformen = new JSONVorherigeBetreuungsform[auf.vorherigeBetreuungsformen.Count];
+                        jauf.vorherigeBetreuungsformen = new string[auf.vorherigeBetreuungsformen.Count];
                         j = 0;
-                        foreach (VorherigeBetreuungsform vbf in auf.vorherigeBetreuungsformen)
+                        foreach (string vbf in auf.vorherigeBetreuungsformen)
                         {
-                            JSONVorherigeBetreuungsform jvbf = new JSONVorherigeBetreuungsform();
-                            jvbf.vorherigeBeteuungsform = LookupAuswahllisteBezeichnung("VBF", vbf.vorherigeBeteuungsform, AuswahllisteSucheTyp.Beschreibung);
+                            string jvbf = LookupAuswahllisteBezeichnung("VBF", vbf, AuswahllisteSucheTyp.Beschreibung, true);
                             jauf.vorherigeBetreuungsformen[j] = jvbf;
                             j++;
-                            if (String.IsNullOrWhiteSpace(jvbf.vorherigeBeteuungsform))
+                            if (String.IsNullOrWhiteSpace(jvbf))
                             {
-                                AddLog(ref chk, "Vorhereige Betreuungsform '" + bew.letzteHauptwohnsitzgemeinde + "' ist kein gültiger Listeneintrag", ErrorLogClass.VorherigeBetreuungsform, bew, auf);
+                                AddLog(ref chk, "Vorherige Betreuungsform '" + bew.letzteHauptwohnsitzgemeinde + "' ist kein gültiger Listeneintrag", ErrorLogClass.VorherigeBetreuungsform, bew, auf);
                             }
                         }
                     }
 
                     jauf.eintrittsdatum = auf.eintrittsdatum.ToString(dFormat);
                     
-                    jauf.austrittWohin = LookupAuswahllisteBezeichnung("AWO", auf.austrittWohin, AuswahllisteSucheTyp.Beschreibung);
+                    jauf.austrittWohin = LookupAuswahllisteBezeichnung("AWO", auf.austrittWohin, AuswahllisteSucheTyp.Beschreibung, true);
                     if (auf.austrittsdatum != DateTime.MinValue && String.IsNullOrWhiteSpace(jauf.austrittWohin))
                     {
                         AddLog(ref chk, "Austritt wohin' " + auf.austrittWohin + "' ist kein gültiger Listeneintrag", ErrorLogClass.Aufenthalt, bew, auf);
@@ -681,10 +675,10 @@ namespace PMDS.Global.db
                     foreach (kostentragung kt in auf.kostentragungen)
                     {
                         JSONkostentragung jkt = new JSONkostentragung();
-                        jkt.finanzierung = LookupAuswahllisteBezeichnung("SFI", kt.finanzierung, AuswahllisteSucheTyp.Beschreibung);  //Prüfung erfolgt bereits in der GUI
-                        string Gemeinde = LookupAuswahllisteBezeichnung("GKZ", kt.Gemeinde, AuswahllisteSucheTyp.Beschreibung);
-                        string Bundesland = LookupAuswahllisteBezeichnung("GKZ", kt.Bundesland, AuswahllisteSucheTyp.Beschreibung);
-                        string Land = LookupAuswahllisteBezeichnung("LND", kt.Land, AuswahllisteSucheTyp.ELGA_Code);
+                        jkt.finanzierung = LookupAuswahllisteBezeichnung("SFI", kt.finanzierung, AuswahllisteSucheTyp.Beschreibung, false);  //Prüfung erfolgt bereits in der GUI
+                        string Gemeinde = LookupAuswahllisteBezeichnung("GKZ", kt.Gemeinde, AuswahllisteSucheTyp.Beschreibung, false);
+                        string Bundesland = LookupAuswahllisteBezeichnung("GKZ", kt.Bundesland, AuswahllisteSucheTyp.Beschreibung, false);
+                        string Land = LookupAuswahllisteBezeichnung("LND", kt.Land, AuswahllisteSucheTyp.ELGA_Code, false);
 
                         switch (jkt.finanzierung) 
                         {
@@ -716,7 +710,7 @@ namespace PMDS.Global.db
                         chk.AbwesenheitOK = true;
 
                         JSONabwesenheit jabw = new JSONabwesenheit();
-                        jabw.abwesenheitsgrund = LookupAuswahllisteBezeichnung("SAG", abw.abwesenheitsgrund, AuswahllisteSucheTyp.Beschreibung);
+                        jabw.abwesenheitsgrund = LookupAuswahllisteBezeichnung("SAG", abw.abwesenheitsgrund, AuswahllisteSucheTyp.Beschreibung, false);
                         if (String.IsNullOrWhiteSpace(jabw.abwesenheitsgrund))
                         {
                             AddLog(ref chk, "Abwesenheitsgrund '" + abw.abwesenheitsgrund + "' ist kein gültiger Listeneintrag bei Abwesenheit vom " + abw.datumVon.ToString("dd.MM.yyyy"), ErrorLogClass.Abwesenheit, bew, auf);
@@ -808,7 +802,7 @@ namespace PMDS.Global.db
             }
         }
 
-        private string LookupAuswahllisteBezeichnung(string IDAuswahllisteGruppe, string SearchValue, AuswahllisteSucheTyp SearchType)
+        private string LookupAuswahllisteBezeichnung(string IDAuswahllisteGruppe, string SearchValue, AuswahllisteSucheTyp SearchType, bool ReturnNullIfEmpty)
         {
             try
             {
@@ -836,20 +830,20 @@ namespace PMDS.Global.db
                                 return retValue.Beschreibung;
                             default:
                                 AddLog("Fehlerhafter Suchtyp für Auswahlliste " + IDAuswahllisteGruppe + ": " + SearchValue, ErrorClass.Kritisch);
-                                return "";
+                                return ReturnNullIfEmpty ? null : "";
                         }
                     }
                     else
                     {
                         AddLog("Fehlerhafter Listeneintrag in Auswahlliste " + IDAuswahllisteGruppe + ": " + SearchValue, ErrorClass.Kritisch);
-                        return "";
+                        return ReturnNullIfEmpty ? null : "";
                     }
                 }
             }
             catch (Exception ex)
             {
                 AddLog("Fehlerbei Suche in Auswahliste " + IDAuswahllisteGruppe + ": " + SearchValue + "\n" + ex.Message, ErrorClass.Kritisch);
-                return "";
+                return ReturnNullIfEmpty ? null : "";
             }
         }
 
@@ -925,10 +919,10 @@ namespace PMDS.Global.db
                 }
                 else if (scType == ServiceCallType.bewohnerupdate)
                 {
-                    var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner/" + bew.synonym, Method.Post);
+                    var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner/" + bew.synonym, Method.Put);
                     request.RequestFormat = RestSharp.DataFormat.Json;
-                    request.AddStringBody(JsonConvert.SerializeObject(bew.JSON, Formatting.Indented).ToString(), DataFormat.Json);
-                    RestResponse result = await client.ExecutePostAsync(request, cancellationToken);
+                    request.AddJsonBody(bew.JSON);
+                    RestResponse result = await client.ExecutePutAsync(request, cancellationToken);
                     sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
                     return result;
                 }
@@ -951,11 +945,17 @@ namespace PMDS.Global.db
             switch (scType)
             {
                 case ServiceCallType.bewohnermelden:
-                case ServiceCallType.bewohnerupdate:
                     sb.Append("\nParameters:\n");
-                    foreach (RestSharp.Parameter h in resp.Request.Parameters)
+                    foreach (RestSharp.Parameter h in resp.Request.Parameters) //Daten im Post-Body
                     {
                         sb.Append(h.ToString() + "\n");
+                    }
+                    break;
+                case ServiceCallType.bewohnerupdate:
+                    sb.Append("\nParameters:\n");
+                    foreach (RestSharp.Parameter h in resp.Request.Parameters) //Daten im PUT-Body
+                    {
+                        sb.Append(JsonConvert.SerializeObject(h.Value) + "\n");
                     }
                     break;
             }
@@ -1021,11 +1021,11 @@ namespace PMDS.Global.db
                     return false;
                 }
 
-                foreach (Bewohnerdaten bew in lBew.bewohnerdaten)
+                if (sc == ServiceCallType.bewohnermelden)
                 {
-                    if (String.IsNullOrWhiteSpace(bew.synonym) && !bew.HasError)
+                    foreach (Bewohnerdaten bew in lBew.bewohnerdaten)
                     {
-                        if (sc == ServiceCallType.bewohnermelden)
+                        if (String.IsNullOrWhiteSpace(bew.synonym) && !bew.HasError)
                         {
                             StringBuilder sb = await StartService(sc, bew, certFile, STAMP_PW, lBew.sbLogServiceCalls);
                             if (sb.Length > 0)
@@ -1034,7 +1034,19 @@ namespace PMDS.Global.db
                                 ShowLog();
                             }
                         }
-                        else if (sc == ServiceCallType.bewohnerupdate)
+                    }
+
+                    if (!lBew.HasErrors)
+                    {
+                        LoadAll();  //Daten neu laden, sonst Fehlermeldung anzeigen
+                    }
+                }
+
+                if (sc == ServiceCallType.bewohnerupdate)
+                {
+                    foreach (Bewohnerdaten bew in lBew.bewohnerdaten)
+                    {
+                        if (!String.IsNullOrWhiteSpace(bew.synonym) && !bew.HasError)
                         {
                             StringBuilder sb = await StartService(sc, bew, certFile, STAMP_PW, lBew.sbLogServiceCalls);
                             if (sb.Length > 0)
@@ -1049,12 +1061,6 @@ namespace PMDS.Global.db
                         }
                     }
                 }
-
-                if (sc == ServiceCallType.bewohnermelden && !lBew.HasErrors)
-                {
-                    LoadAll();  //Daten neu laden, sonst Fehlermeldung anzeigen
-                }
-
                 return (lBew.sbLog.Length == 0);
             }
             catch (Exception ex)
@@ -1184,10 +1190,17 @@ namespace PMDS.Global.db
                         //Fehlermeldung und mit nächstem Bewohner fortsetzen
                         sbResult.Append("--------------------------------------------------------------------------\n");
                         sbResult.Append("STAMP-Service-Fehler beim Update für " + bew.nachname + " " + bew.vorname + ":\n");
-                        var res = JObject.Parse(resp.Content);
-                        foreach (KeyValuePair<String, JToken> app in res)
+                        if (!resp.StatusCode.sEquals("OK"))
                         {
-                            sbResult.Append(app.Key + "=" + app.Value.ToString() + "\n");
+                            sbResult.Append(resp.Content.ToString() + "\n");
+                        }
+                        else
+                        {
+                            var res = JObject.Parse(resp.Content);
+                            foreach (KeyValuePair<String, JToken> app in res)
+                            {
+                                sbResult.Append(app.Key + "=" + app.Value.ToString() + "\n");
+                            }
                         }
                         sbResult.Append("    \n");
                     }
