@@ -115,10 +115,12 @@ namespace PMDS.GUI.GUI.Main
                     this.dtpBeginn.Value = this.rUrlaubVerlauf.StartDatum;
                     this.dtpEnde.Value = null;
                     this.txtUrlaub.Text = this.rUrlaubVerlauf.Text;
+                    this.auswahlSTAMP_Awesenheitsgrund.Text = rUrlaubVerlauf.STAMP_Abwesenheitsgrund;
 
                     this.dtpBeginn.Enabled = false;
                     this.dtpEnde.Enabled = true;
                     this.txtUrlaub.Enabled = false;
+                    this.pnlSTAMP.Enabled = false;
                 }
                 else
                 {
@@ -212,6 +214,7 @@ namespace PMDS.GUI.GUI.Main
                     this.rUrlaubVerlauf.EndeDatum = this.dtpEnde.DateTime;
                     this.rUrlaubVerlauf.DatumGeaendert = dNow;
                     this.rAufenthaltAct.IDUrlaub = null;
+                    this.rUrlaubVerlauf.STAMP_Abwesenheitsgrund = this.auswahlSTAMP_Awesenheitsgrund.Text;
                     
                     PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness(); 
                     string sText = "Abwesenheitsende " + this.rUrlaubVerlauf.Text.Trim();

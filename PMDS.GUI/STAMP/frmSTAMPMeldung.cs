@@ -23,7 +23,7 @@ namespace PMDS.GUI.STAMP
         {
             InitializeComponent();
             this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
-            if (DateTime.Now >= new DateTime(2022, 5, 1))
+            if (DateTime.Now >= new DateTime(2022, 6, 1))
             {
                 this.dtMonat.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddDays(-1);
             }
@@ -60,15 +60,15 @@ namespace PMDS.GUI.STAMP
             {
                 WriteLogToFile(lBew.ServiceLogID);
                 rtbLog.Text = lBew.sbLog.ToString();
-                rtbOhneSynonym.Clear();
                 rtbOK.Clear();
             }
             else
             {
                 //Fertig, erfolgreiche Übertragung
-                rtbLog.Text = "Fertig! Alle Daten wurden erfolgreich übertragen und ein Protokoll wurde erstellt.\n.";
+                rtbLog.Text = "Fertig! Die Daten wurden erfolgreich übertragen und ein Protokoll wurde erstellt.\n\n";
                 WriteLogToFile(lBew.ServiceLogID);
-                rtbLog.Text += ".\nSie können dieses Fenster jetzt schließen.";
+                rtbLog.Text += "Sie können dieses Fenster jetzt schließen.\n\n";
+                rtbOK.Clear();
             }
             Application.DoEvents();
         }
@@ -80,7 +80,7 @@ namespace PMDS.GUI.STAMP
             {
                 //Log anzeigen
                 MessageBox.Show(lBew.sbLogServiceCalls.ToString());
-                rtbLog.Text += ".\nDie Protkoll-Datei für den Serviceaufruf konnte wegen eines Schreibfehlers auf " + PMDS.Global.ENV.STAMP_LOG_Path + " nicht gesichert werden";
+                rtbLog.Text += "Die Protkoll-Datei für den Serviceaufruf konnte wegen eines Schreibfehlers auf " + PMDS.Global.ENV.STAMP_LOG_Path + " nicht gesichert werden.\n";
             }
             else
             {
@@ -117,7 +117,7 @@ namespace PMDS.GUI.STAMP
             }
             else
             {
-                this.rtbLog.Text = "Fehler beim Initialisieren der Funktion. \nBitte überprüfen Sie das Datumsfeld. Es muss ein gültiges Datum ab 1.4.2022 und heute erfasst werden.";
+                this.rtbLog.Text = "Fehler beim Initialisieren der Funktion. \nBitte überprüfen Sie das Datumsfeld. Es muss ein gültiges Datum ab 1.5.2022 und heute erfasst werden.";
             }
         }
 

@@ -1238,7 +1238,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBoxAllgemein1);
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBoxPersonebescheibung);
             this.ultraTabPageControl2.Controls.Add(this.lblVorname);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(1028, 673);
             this.ultraTabPageControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.ultraTabPageControl2_Paint);
@@ -1321,6 +1321,7 @@ namespace PMDS.GUI
             this.btnAbwesenheitsendeBestätigen.TabIndex = 17;
             this.btnAbwesenheitsendeBestätigen.Tag = "";
             this.btnAbwesenheitsendeBestätigen.Text = "Abwesenheitsende bestätigen";
+            this.btnAbwesenheitsendeBestätigen.Click += new System.EventHandler(this.btnAbwesenheitsendeBestätigen_Click);
             // 
             // txtZimmerNr
             // 
@@ -3081,7 +3082,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl5.AutoScroll = true;
             this.ultraTabPageControl5.Controls.Add(this.panelBewerbungdsdaten);
             this.ultraTabPageControl5.Controls.Add(this.ultraTabControlMainAdresse);
-            this.ultraTabPageControl5.Location = new System.Drawing.Point(1, 24);
+            this.ultraTabPageControl5.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl5.Name = "ultraTabPageControl5";
             this.ultraTabPageControl5.Size = new System.Drawing.Size(1028, 673);
             // 

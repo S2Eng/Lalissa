@@ -28,7 +28,7 @@ namespace PMDS.Global.db
 
         private DateTime _Now { get; set; } = DateTime.Now;
         private string _ServiceLogID { get; set; } = "";
-        private static DateTime _MinPeriode = new DateTime(2022, 4, 1);
+        private static DateTime _MinPeriode = new DateTime(2022, 5, 1);
         private DateTime _Periode;
         private DateTime _FirstOfPeriode;
         private DateTime _LastOfPeriode;
@@ -167,7 +167,7 @@ namespace PMDS.Global.db
         public class JSONPflegegeldverfahren
         {
             public string beantragtAm { get; set; }
-            public string vorlaeufigePflegegeldstufePersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
+            public string vorlauefigePflegegeldstufePersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
             public string kenntnisnahmeDatumBescheid { get; set; }
         }
 
@@ -250,13 +250,14 @@ namespace PMDS.Global.db
         public class Pflegegeldverfahren
         {
             public DateTime beantragtAm { get; set; }
-            public string vorlaeufigePflegegeldstufePersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
+            public string vorlauefigePflegegeldstufePersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
             public DateTime kenntnisnahmeDatumBescheid { get; set; } = DateTime.MaxValue;
             public Guid IDPflegestufe { get; set; } = Guid.Empty;
             public StringBuilder sbErrLog { get; set; } = new StringBuilder();
             public bool HasError { get; set; }
         }
 
+        //----------------------------- Funktionen ----------------------------
         public bool Init(DateTime Periode)
         {
             try
@@ -521,7 +522,7 @@ namespace PMDS.Global.db
                                      {
                                          ID = pps.ID,
                                          beantragtAm = pps.AenderungsantragDatum,
-                                         vorlaeufigePflegegeldstufePersonal = ps.StufeNr,
+                                         vorlauefigePflegegeldstufePersonal = ps.StufeNr,
                                          kenntnisnahmeDatumBescheid = pps.GenehmigungDatum
                                      }).ToList();
 
@@ -529,7 +530,7 @@ namespace PMDS.Global.db
                         {
                             Pflegegeldverfahren pgv = new Pflegegeldverfahren();
                             pgv.beantragtAm = (DateTime)psv.beantragtAm;
-                            pgv.vorlaeufigePflegegeldstufePersonal = psv.vorlaeufigePflegegeldstufePersonal == 0 ? "keine" : psv.vorlaeufigePflegegeldstufePersonal.ToString();
+                            pgv.vorlauefigePflegegeldstufePersonal = psv.vorlauefigePflegegeldstufePersonal == 0 ? "keine" : psv.vorlauefigePflegegeldstufePersonal.ToString();
                             if (psv.kenntnisnahmeDatumBescheid != null)
                             {
                                 pgv.kenntnisnahmeDatumBescheid = (DateTime)psv.kenntnisnahmeDatumBescheid;
@@ -616,7 +617,7 @@ namespace PMDS.Global.db
                 {
                     JSONPflegegeldverfahren jpgv = new JSONPflegegeldverfahren();
                     jpgv.beantragtAm = pgv.beantragtAm.ToString(dFormat);
-                    jpgv.vorlaeufigePflegegeldstufePersonal = pgv.vorlaeufigePflegegeldstufePersonal;
+                    jpgv.vorlauefigePflegegeldstufePersonal = pgv.vorlauefigePflegegeldstufePersonal;
                     jpgv.kenntnisnahmeDatumBescheid = pgv.kenntnisnahmeDatumBescheid.ToString(dFormat);
                     bew.JSON.pflegegeldverfahren[i] = jpgv;
                     i++;
@@ -875,97 +876,6 @@ namespace PMDS.Global.db
         //------------------------------------------------------------------------------------------------------------
         //--   Service Calls
         //------------------------------------------------------------------------------------------------------------        
-        static async Task<RestResponse> RunService(ServiceCallType scType, string traeger, string standort, string certFile, string STAMP_PW, Bewohnerdaten bew, StringBuilder sbLogServiceCalls)
-        {
-            CancellationToken cancellationToken = new CancellationToken();
-
-            ServicePointManager.Expect100Continue = true;
-            ServicePointManager.DefaultConnectionLimit = 9999;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
-
-            X509Certificate2 certificate = new X509Certificate2(certFile, STAMP_PW);
-            RestClientOptions ro = new RestClientOptions(ENV.STAMP_URL)
-            {
-                ClientCertificates = new X509CertificateCollection() { certificate },
-                Proxy = new WebProxy()
-            };
-
-            using (RestClient client = new RestClient(ro))
-            {
-                if (scType == ServiceCallType.traeger)
-                {
-                    var request = new RestRequest("/traeger", Method.Get);
-                    request.RequestFormat = RestSharp.DataFormat.Json;
-                    RestResponse result = await client.ExecuteGetAsync(request, cancellationToken);
-                    sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
-                    return result;
-                }
-                else if (scType == ServiceCallType.standort)
-                {
-                    var request = new RestRequest("/traeger/" + traeger + "/standort", Method.Get);
-                    request.RequestFormat = RestSharp.DataFormat.Json;
-                    RestResponse result = await client.ExecuteGetAsync(request, cancellationToken);
-                    sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
-                    return result;
-                }
-                else if(scType == ServiceCallType.bewohnermelden)
-                {
-                    var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner", Method.Post);
-                    request.RequestFormat = RestSharp.DataFormat.Json;
-                    request.AddStringBody(JsonConvert.SerializeObject(bew.JSONKurz, Formatting.Indented).ToString(), DataFormat.Json);
-                    RestResponse result = await client.ExecutePostAsync(request, cancellationToken);
-                    sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
-                    return result;
-                }
-                else if (scType == ServiceCallType.bewohnerupdate)
-                {
-                    var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner/" + bew.synonym, Method.Put);
-                    request.RequestFormat = RestSharp.DataFormat.Json;
-                    request.AddJsonBody(bew.JSON);
-                    RestResponse result = await client.ExecutePutAsync(request, cancellationToken);
-                    sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
-                    return result;
-                }
-                return null;
-            }
-        }
-
-        private static StringBuilder ServiceLogMessage(RestResponse resp, ServiceCallType scType)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(">>> Request ");
-            sb.Append(DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss.ffff"));
-            sb.Append(" / User=");
-            sb.Append(ENV.ActiveUser.Nachname);
-            sb.Append(" ");
-            sb.Append(ENV.ActiveUser.Vorname);
-            sb.Append(" <<<\n");
-            sb.Append("Resource = " + ENV.STAMP_URL + resp.Request.Resource);
-
-            switch (scType)
-            {
-                case ServiceCallType.bewohnermelden:
-                    sb.Append("\nParameters:\n");
-                    foreach (RestSharp.Parameter h in resp.Request.Parameters) //Daten im Post-Body
-                    {
-                        sb.Append(h.ToString() + "\n");
-                    }
-                    break;
-                case ServiceCallType.bewohnerupdate:
-                    sb.Append("\nParameters:\n");
-                    foreach (RestSharp.Parameter h in resp.Request.Parameters) //Daten im PUT-Body
-                    {
-                        sb.Append(JsonConvert.SerializeObject(h.Value) + "\n");
-                    }
-                    break;
-            }
-
-            sb.Append("\nResult:\n");
-            sb.Append(resp.Content.ToString());
-            sb.Append(" \n");
-            return sb;
-        }
-
         public async Task<bool> CallService(ServiceCallType sc, Bewohnerliste lBew)
         {
             try
@@ -1071,7 +981,6 @@ namespace PMDS.Global.db
             }
         }
 
-        //--------------------------- Service-Calls --------------------------------
         private async Task<StringBuilder> StartService(ServiceCallType scType, Bewohnerdaten bew, string certFile, string STAMP_PW, StringBuilder sbLogServiceCalls)
         {
             try
@@ -1106,7 +1015,7 @@ namespace PMDS.Global.db
                             {
                                 sbResult.Append(app.Key + "=" + app.Value.ToString() + "\n");
                             }
-                        }                        
+                        }
                     }
                 }
 
@@ -1172,7 +1081,7 @@ namespace PMDS.Global.db
                     {
                         //Fehlermeldung und mit nächstem Bewohner fortsetzen
                         sbResult.Append("--------------------------------------------------------------------------\n");
-                        sbResult.Append("STAMP-Service-Fehler beim Melden für " + bew.nachname + " " + bew.vorname +":\n");
+                        sbResult.Append("STAMP-Service-Fehler beim Melden für " + bew.nachname + " " + bew.vorname + ":\n");
                         var res = JObject.Parse(resp.Content);
                         foreach (KeyValuePair<String, JToken> app in res)
                         {
@@ -1215,6 +1124,98 @@ namespace PMDS.Global.db
             }
         }
 
+        static async Task<RestResponse> RunService(ServiceCallType scType, string traeger, string standort, string certFile, string STAMP_PW, Bewohnerdaten bew, StringBuilder sbLogServiceCalls)
+        {
+            CancellationToken cancellationToken = new CancellationToken();
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.DefaultConnectionLimit = 9999;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
+
+            X509Certificate2 certificate = new X509Certificate2(certFile, STAMP_PW);
+            RestClientOptions ro = new RestClientOptions(ENV.STAMP_URL)
+            {
+                ClientCertificates = new X509CertificateCollection() { certificate },
+                Proxy = new WebProxy()
+            };
+
+            using (RestClient client = new RestClient(ro))
+            {
+                if (scType == ServiceCallType.traeger)
+                {
+                    var request = new RestRequest("/traeger", Method.Get);
+                    request.RequestFormat = RestSharp.DataFormat.Json;
+                    RestResponse result = await client.ExecuteGetAsync(request, cancellationToken);
+                    sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
+                    return result;
+                }
+                else if (scType == ServiceCallType.standort)
+                {
+                    var request = new RestRequest("/traeger/" + traeger + "/standort", Method.Get);
+                    request.RequestFormat = RestSharp.DataFormat.Json;
+                    RestResponse result = await client.ExecuteGetAsync(request, cancellationToken);
+                    sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
+                    return result;
+                }
+                else if(scType == ServiceCallType.bewohnermelden)
+                {
+                    var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner", Method.Post);
+                    request.RequestFormat = RestSharp.DataFormat.Json;
+                    request.AddStringBody(JsonConvert.SerializeObject(bew.JSONKurz, Formatting.Indented).ToString(), DataFormat.Json);
+                    RestResponse result = await client.ExecutePostAsync(request, cancellationToken);
+                    sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
+                    return result;
+                }
+                else if (scType == ServiceCallType.bewohnerupdate)
+                {
+                    var request = new RestRequest("/traeger/" + traeger + "/standort/" + standort + "/bewohner/" + bew.synonym, Method.Put);
+                    request.RequestFormat = RestSharp.DataFormat.Json;
+                    request.AddJsonBody(bew.JSON);
+                    RestResponse result = await client.ExecutePutAsync(request, cancellationToken);
+                    sbLogServiceCalls.Append(ServiceLogMessage(result, scType));
+                    return result;
+                }
+                return null;
+            }
+        }
+
+        private static StringBuilder ServiceLogMessage(RestResponse resp, ServiceCallType scType)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(">>> Request ");
+            sb.Append(DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss.ffff"));
+            sb.Append(" / User=");
+            sb.Append(ENV.ActiveUser.Nachname);
+            sb.Append(" ");
+            sb.Append(ENV.ActiveUser.Vorname);
+            sb.Append(" <<<\n");
+            sb.Append("Resource = " + ENV.STAMP_URL + resp.Request.Resource);
+
+            switch (scType)
+            {
+                case ServiceCallType.bewohnermelden:
+                    sb.Append("\nParameters:\n");
+                    foreach (RestSharp.Parameter h in resp.Request.Parameters) //Daten im Post-Body
+                    {
+                        sb.Append(h.ToString() + "\n");
+                    }
+                    break;
+                case ServiceCallType.bewohnerupdate:
+                    sb.Append("\nParameters:\n");
+                    foreach (RestSharp.Parameter h in resp.Request.Parameters) //Daten im PUT-Body
+                    {
+                        sb.Append(JsonConvert.SerializeObject(h.Value) + "\n");
+                    }
+                    break;
+            }
+
+            sb.Append("\nResponse: " + "StatusCode = " + resp.StatusCode +"\n");
+            sb.Append(resp.Content.ToString());
+            sb.Append(" \n");
+            return sb;
+        }
+
+        //---------------- DB Update ------------------------------------------------
         public string UpdateSynonymER(Guid IDPatient, string STAMPSynonym)
         {
             try
