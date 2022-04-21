@@ -28,7 +28,7 @@ namespace PMDS.Global.db
 
         private DateTime _Now { get; set; } = DateTime.Now;
         private string _ServiceLogID { get; set; } = "";
-        private static DateTime _MinPeriode = new DateTime(2022, 5, 1);
+        private static DateTime _MinPeriode = new DateTime(2022, 4, 1);
         private DateTime _Periode;
         private DateTime _FirstOfPeriode;
         private DateTime _LastOfPeriode;
