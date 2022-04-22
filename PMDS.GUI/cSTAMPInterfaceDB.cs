@@ -339,7 +339,8 @@ namespace PMDS.Global.db
                         {
                             lBew.NeueBewohner++;
                         }
-                        else
+
+                        if (kl.pat_nachname == "Bachler")
                         {
                             string x = "";
                         }
@@ -370,7 +371,8 @@ namespace PMDS.Global.db
                                               where a.IDPatient == kl.IDKlient
                                               && (
                                                     (auf.Aufnahmezeitpunkt < _LastOfPeriode && auf.Entlassungszeitpunkt == null) ||
-                                                    (auf.Aufnahmezeitpunkt <= _LastOfPeriode && auf.Aufnahmezeitpunkt >= _MinPeriode)
+                                                    (auf.Aufnahmezeitpunkt <= _LastOfPeriode && auf.Aufnahmezeitpunkt >= _MinPeriode ||
+                                                     auf.Aufnahmezeitpunkt <= _LastOfPeriode && auf.Entlassungszeitpunkt >= _MinPeriode)
                                                  )
                                               select new
                                               {
