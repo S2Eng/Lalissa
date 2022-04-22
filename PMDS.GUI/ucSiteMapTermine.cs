@@ -801,7 +801,7 @@ namespace PMDS.GUI
                                 frm.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dekurs");
                                 frm._rv‹bergabe = this._TermineEx.CurTerminRow‹bergabe;
 
-                                frm._IsDekurs = this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == 0;
+                                frm.IsDekurs = this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == 0;
                                 frm.ShowDialog();
                                 if (!frm.abort)
                                 {

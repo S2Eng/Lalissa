@@ -182,8 +182,7 @@ namespace PMDS.Calc.UI
                 //Spalte Rechnungsempfänger im Grid füllen
                 using (PMDS.db.Entities.ERModellPMDSEntities dbKost = PMDSBusiness.getDBContext())
                 {
-                int Zeile = 0;
-                    foreach (dbPMDS.billsRow bill in db.bills)
+                    foreach (dbPMDS.billsRow bill in db.bills.OrderBy(b => b.RechNr))
                     {
                         Guid IDKost = new Guid(bill.IDKost);
                         var rKost = (from k in dbKost.Kostentraeger
@@ -197,10 +196,14 @@ namespace PMDS.Calc.UI
                                             Rechnungsempfaenger = k.Rechnungsempfaenger.Trim()
                                         }).FirstOrDefault();
 
-                        if (rKost != null)
-                            grid.Rows[Zeile].Cells["Re-Empfänger"].Value = rKost.Rechnungsempfaenger;
-
-                        Zeile++;
+                        UltraGridBand band = grid.DisplayLayout.Bands[0];
+                        foreach (UltraGridRow row in band.GetRowEnumerator(GridRowType.DataRow))
+                        {
+                            if (row.Cells["IDKost"].Value.sEquals(IDKost))
+                            {
+                                row.Cells["Re-Empfänger"].Value = rKost.Rechnungsempfaenger;
+                            }
+                        }
                     }
                 }
 

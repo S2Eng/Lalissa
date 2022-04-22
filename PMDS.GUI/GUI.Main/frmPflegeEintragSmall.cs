@@ -13,33 +13,21 @@ using Infragistics.Win.UltraWinToolTip;
 
 namespace PMDS.GUI
 {
-
-
     public partial class frmPflegeEintragSmall : QS2.Desktop.ControlManagment.baseForm
     {
+        private PMDS.db.Entities.PflegeEintrag rPflegeEintrag;
+        private PMDS.DB.PMDSBusiness PMDSBusiness1;
+        private PMDS.db.Entities.ERModellPMDSEntities _db;
+        private QS2.Desktop.Txteditor.doEditor doEditor1;
+        private bool _bEdit;
+        private PMDS.db.Entities.PflegePlan _rPflegePlan;
+        private bool HistorischerModus;
+        private bool HistorieFound;
 
-        public PMDS.db.Entities.PflegeEintrag rPflegeEintrag = null;
-        public PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
-        public PMDS.db.Entities.ERModellPMDSEntities _db = null;
-        public QS2.Desktop.Txteditor.doEditor doEditor1 = new QS2.Desktop.Txteditor.doEditor();
-
-        public bool _bEdit = false;
-        public bool abort = true;
-
-        public bool _IsDekurs = false;
-        public Global.db.ERSystem.dsTermine.vÜbergabeRow _rvÜbergabe = null;
-        public PMDS.db.Entities.PflegePlan _rPflegePlan = null;
-
-        public bool HasChanged = false;
-        public bool HistorischerModus = true;
-        public bool HistorieFound = false;
-
-
-
-
-
-
-
+        public bool abort { get; set; } = true;
+        public bool IsDekurs { get; set; }
+        public Global.db.ERSystem.dsTermine.vÜbergabeRow _rvÜbergabe { get; set; }
+        public bool HasChanged { get; set; }
 
         public frmPflegeEintragSmall()
         {
@@ -52,8 +40,8 @@ namespace PMDS.GUI
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
             }
-
         }
+
         private void frmShowText_Load(object sender, EventArgs e)
         {
             try
@@ -81,8 +69,9 @@ namespace PMDS.GUI
                 this.textControlHistorie.Text = "";
                 this.textControlHistorie.EditMode = TXTextControl.EditMode.ReadAndSelect;
 
+                PMDSBusiness1 = new DB.PMDSBusiness();
                 this._db = PMDS.DB.PMDSBusiness.getDBContext();
-
+                doEditor1 = new QS2.Desktop.Txteditor.doEditor();
             }
             catch (Exception ex)
             {
@@ -364,10 +353,6 @@ namespace PMDS.GUI
                     else
                     {
                         this.ucZusatzWert1.saveZusatzwerteEF(this.rPflegeEintrag.ID, this._db);
-                        //if (this.chkSaveForAllCC.Checked)
-                        //{
-                        //    PMDSBusiness1.copyUpdateZusatzwertePEIDGruppe(this.rPflegeEintrag.ID, this._db);
-                        //}
                     }
                 }
 
@@ -613,7 +598,7 @@ namespace PMDS.GUI
             {
                 if (this.Visible)
                 {
-                    this.loadData(this._IsDekurs, this._rvÜbergabe);
+                    this.loadData(this.IsDekurs, this._rvÜbergabe);
                 }
             }
             catch (Exception ex)
