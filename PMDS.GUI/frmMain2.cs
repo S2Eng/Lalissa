@@ -2773,11 +2773,9 @@ namespace PMDS
                         }
 
                     case "btnSTAMP":
-                        using (PMDS.GUI.STAMP.frmSTAMPMeldung frmSTAMPMeldung = new PMDS.GUI.STAMP.frmSTAMPMeldung())
-                        {
-                            frmSTAMPMeldung.ShowDialog(this);
+                            PMDS.GUI.STAMP.frmSTAMPMeldung frmSTAMPMeldung = new PMDS.GUI.STAMP.frmSTAMPMeldung();
+                            frmSTAMPMeldung.Show(this);
                             break;
-                        }
 
                     case "btnHeimverträge":
                         break;

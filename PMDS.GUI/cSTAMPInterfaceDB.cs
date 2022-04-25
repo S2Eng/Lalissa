@@ -204,7 +204,7 @@ namespace PMDS.Global.db
             public List<string> vorherigeBetreuungsformen { get; set; } = new List<string>();
             public DateTime eintrittsdatum { get; set; } = DateTime.MinValue;
             public DateTime austrittsdatum { get; set; }
-            public string austrittWohin { get; set; }               //{ BET_WOH. 24H_BET, AND_PH, TOD, SONST }
+            public string austrittWohin { get; set; }               //{ BET_WOH, 24H_BET, AND_PH, TOD, SONST }
             public List<kostentragung> kostentragungen { get; } = new List<kostentragung>();
             public List<abwesenheit> abwesenheiten { get; } = new List<abwesenheit>();
             public Guid IDAufenthalt { get; set; } = Guid.Empty;
@@ -1081,13 +1081,33 @@ namespace PMDS.Global.db
                     }
                     else
                     {
-                        //Fehlermeldung und mit nächstem Bewohner fortsetzen
                         sbResult.Append("--------------------------------------------------------------------------\n");
-                        sbResult.Append("STAMP-Service-Fehler beim Melden für " + bew.nachname + " " + bew.vorname + ":\n");
+                        sbResult.Append("STAMP-Service-Hinweis beim Melden für " + bew.nachname + " " + bew.vorname + ":\n");
                         var res = JObject.Parse(resp.Content);
-                        foreach (KeyValuePair<String, JToken> app in res)
+
+                        //Fehlermeldung untersuchen - Siehe https://restfulapi.net/http-status-codes/
+                        if (resp.StatusCode == HttpStatusCode.Found)
                         {
-                            sbResult.Append(app.Key + "=" + app.Value.ToString() + "\n");
+                            //Bereits gemeldet. Synonym händisch eintragen.
+                            sbResult.Append("Klient ist bereits mit dem Synonym ");
+                            foreach (KeyValuePair<String, JToken> app in res)
+                            {
+                                if (app.Key.sEquals("synonym"))
+                                {
+                                    sbResult.Append(app.Value.ToString());
+                                    break;
+                                }
+                            }
+                            sbResult.Append(" gemeldet.\nBitte im Klientenakt eintragen.\n");
+                        }
+                        else
+                        {
+                            //Fehlermeldung protokollieren
+                            sbResult.Append("Statuscode = " + resp.StatusCode.ToString() + "\n");
+                            foreach (KeyValuePair<String, JToken> app in res)
+                            {
+                                sbResult.Append(app.Key + "=" + app.Value.ToString() + "\n");
+                            }
                         }
                         sbResult.Append("    \n");
                     }
@@ -1107,6 +1127,7 @@ namespace PMDS.Global.db
                         }
                         else
                         {
+                            sbResult.Append("Statuscode = " + resp.StatusCode.ToString() + "\n");
                             var res = JObject.Parse(resp.Content);
                             foreach (KeyValuePair<String, JToken> app in res)
                             {
