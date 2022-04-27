@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
 using S2Extensions;
 
 using System.Net.Http;
@@ -77,15 +76,15 @@ namespace PMDS.Global.db
 
         public class CheckStatus
         {
-            public StringBuilder sbLog = new StringBuilder();
-            public bool BewohnerlisteOK = true;
-            public bool BewohnerdatenOK = true;
-            public bool AufenthaltOK = true;
-            public bool VorherigeBetreuungsformOK = true;
-            public bool KostentragungOK = true;
-            public bool AbwesenheitOK = true;
-            public bool PflegegeldstufeOK = true;
-            public bool PflegegeldverfahrenOK = true;
+            public StringBuilder sbLog { get; set; } = new StringBuilder();
+            public bool BewohnerlisteOK { get; set; } = true;
+            public bool BewohnerdatenOK { get; set; } = true;
+            public bool AufenthaltOK { get; set; } = true;
+            public bool VorherigeBetreuungsformOK { get; set; } = true;
+            public bool KostentragungOK { get; set; } = true;
+            public bool AbwesenheitOK { get; set; } = true;
+            public bool PflegegeldstufeOK { get; set; } = true;
+            public bool PflegegeldverfahrenOK { get; set; } = true;
         }
 
         public class Bewohnerliste
@@ -340,10 +339,6 @@ namespace PMDS.Global.db
                             lBew.NeueBewohner++;
                         }
 
-                        if (kl.pat_nachname == "Bachler")
-                        {
-                            string x = "";
-                        }
                         bew.vorname = kl.pat_vorname;
                         bew.nachname = kl.pat_nachname;
                         bew.geburtsdatum = (DateTime)kl.pat_geburtsdatum;
@@ -729,7 +724,7 @@ namespace PMDS.Global.db
                 if (!chk.BewohnerdatenOK)
                 {
                     lBew.HasErrors = true;
-                    chk.sbLog.Append("\n");
+                    chk.sbLog.Append('\n');
                 }
             }
             lBew.sbLog = chk.sbLog;
@@ -921,13 +916,13 @@ namespace PMDS.Global.db
                     }
                 }
 
-                await StartService(ServiceCallType.traeger, null, certFile, STAMP_PW, lBew.sbLogServiceCalls);
+                await StartService(ServiceCallType.traeger, null, certFile, STAMP_PW, lBew.sbLogServiceCalls).ConfigureAwait(true);
                 if (lBew.sbLog.Length > 0)  //Kritischer Fehler, nicht fortsetzen
                 {
                     return false;
                 }
 
-                await StartService(ServiceCallType.standort, null, certFile, STAMP_PW, lBew.sbLogServiceCalls);
+                await StartService(ServiceCallType.standort, null, certFile, STAMP_PW, lBew.sbLogServiceCalls).ConfigureAwait(true);
                 if (lBew.sbLog.Length > 0)  //Kritischer Fehler, nicht fortsetzen
                 {
                     return false;
@@ -939,7 +934,7 @@ namespace PMDS.Global.db
                     {
                         if (String.IsNullOrWhiteSpace(bew.synonym) && !bew.HasError)
                         {
-                            StringBuilder sb = await StartService(sc, bew, certFile, STAMP_PW, lBew.sbLogServiceCalls);
+                            StringBuilder sb = await StartService(sc, bew, certFile, STAMP_PW, lBew.sbLogServiceCalls).ConfigureAwait(true);
                             if (sb.Length > 0)
                             {
                                 lBew.sbLog.Append(sb);
@@ -974,6 +969,11 @@ namespace PMDS.Global.db
                     }
                 }
                 return (lBew.sbLog.Length == 0);
+            }
+            catch (ArgumentNullException exNull)
+            {
+                System.Windows.Forms.MessageBox.Show("Schwerwiegender Fehler: " + exNull.Message);
+                return false;
             }
             catch (Exception ex)
             {
@@ -1209,7 +1209,7 @@ namespace PMDS.Global.db
             sb.Append(DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss.ffff"));
             sb.Append(" / User=");
             sb.Append(ENV.ActiveUser.Nachname);
-            sb.Append(" ");
+            sb.Append(' ');
             sb.Append(ENV.ActiveUser.Vorname);
             sb.Append(" <<<\n");
             sb.Append("Resource = " + ENV.STAMP_URL + resp.Request.Resource);
@@ -1227,19 +1227,19 @@ namespace PMDS.Global.db
                     sb.Append("\nParameters:\n");
                     foreach (RestSharp.Parameter h in resp.Request.Parameters) //Daten im PUT-Body
                     {
-                        sb.Append(JsonConvert.SerializeObject(h.Value) + "\n");
+                        sb.Append(JsonConvert.SerializeObject(h.Value) + '\n');
                     }
                     break;
             }
 
-            sb.Append("\nResponse: " + "StatusCode = " + resp.StatusCode +"\n");
-            sb.Append(resp.Content.ToString());
-            sb.Append(" \n");
+            sb.Append("\nResponse: " + "StatusCode = " + resp.StatusCode +'\n');
+            sb.Append(resp.Content);
+            sb.Append('\n');
             return sb;
         }
 
         //---------------- DB Update ------------------------------------------------
-        public string UpdateSynonymER(Guid IDPatient, string STAMPSynonym)
+        public static string UpdateSynonymER(Guid IDPatient, string STAMPSynonym)
         {
             try
             {

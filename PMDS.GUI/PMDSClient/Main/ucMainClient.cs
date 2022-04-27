@@ -1333,6 +1333,10 @@ namespace PMDS.GUI.PMDSClient
                     }
                     frmLock1.Dispose();
                     this.mainWindow.Visible = true;
+                    this.mainWindow.WindowState = FormWindowState.Normal;
+                    this.mainWindow.BringToFront();
+                    Application.DoEvents();
+                    this.mainWindow.Activate();
                 }
                 else
                 {
@@ -1471,9 +1475,5 @@ namespace PMDS.GUI.PMDSClient
                 throw new Exception("ucMain.checkIPCCallToClient: " + ex.ToString());
             }
         }
-
-
-
-
     }
 }

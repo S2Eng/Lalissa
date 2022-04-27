@@ -1281,6 +1281,7 @@ namespace PMDS.GUI
             this.Size = new System.Drawing.Size(1131, 619);
             this.Load += new System.EventHandler(this.ucSiteMapStart_Load);
             this.VisibleChanged += new System.EventHandler(this.ucSiteMapStart_VisibleChanged);
+            this.MouseHover += new System.EventHandler(this.ucMain_MouseHover);
             this.Resize += new System.EventHandler(this.ucSiteMapStart_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanelMitte)).EndInit();

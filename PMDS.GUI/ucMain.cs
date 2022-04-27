@@ -1387,7 +1387,13 @@ namespace PMDS.GUI
                         this.mainWindow.Close();
                     }
                     else
+                    {
                         this.mainWindow.Visible = true;
+                        this.mainWindow.WindowState = FormWindowState.Normal;
+                        this.mainWindow.BringToFront();
+                        Application.DoEvents();
+                        this.mainWindow.Activate();
+                    }
                     frmLock1.Dispose();
                 }
                 else
@@ -1548,5 +1554,9 @@ namespace PMDS.GUI
             }
         }
 
+        private void ucMain_MouseHover(object sender, EventArgs e)
+        {
+            string x = "";
+        }
     }
 }
