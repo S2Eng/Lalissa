@@ -142,47 +142,49 @@ namespace PMDS.GUI.STAMP
             string strError = "";
             foreach (Global.dsSTAMP_Kostentragungen.STAMP_KostentragungenRow rowCheck in _dt)
             {
-                if (rowCheck.Finanzierung.sEquals("§13(1) SHG") || rowCheck.Finanzierung.sEquals("§13(1) SHG iVm. §2(1) LEVO-SHG") || rowCheck.Finanzierung.sEquals("§19 StBHG"))
+                if (rowCheck.RowState != DataRowState.Deleted)
                 {
-                    if (String.IsNullOrWhiteSpace(rowCheck.Gemeinde))
+                    if (rowCheck.Finanzierung.sEquals("§13(1) SHG") || rowCheck.Finanzierung.sEquals("§13(1) SHG iVm. §2(1) LEVO-SHG") || rowCheck.Finanzierung.sEquals("§19 StBHG"))
                     {
-                        strError += "Gemeinde darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
+                        if (String.IsNullOrWhiteSpace(rowCheck.Gemeinde))
+                        {
+                            strError += "Gemeinde darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
+                        }
                     }
-                }
-                else if (rowCheck.Finanzierung.sEquals("Anderes Bundesland"))
-                {
-                    if (String.IsNullOrWhiteSpace(rowCheck.Bundesland))
+                    else if (rowCheck.Finanzierung.sEquals("Anderes Bundesland"))
                     {
-                        strError += "Bundesland darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
+                        if (String.IsNullOrWhiteSpace(rowCheck.Bundesland))
+                        {
+                            strError += "Bundesland darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
+                        }
                     }
-                }
-                else if (rowCheck.Finanzierung.sEquals("Anderer Staat"))
-                {
-                    if (String.IsNullOrWhiteSpace(rowCheck.Land))
+                    else if (rowCheck.Finanzierung.sEquals("Anderer Staat"))
                     {
-                        strError += "Anderer Staat darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
+                        if (String.IsNullOrWhiteSpace(rowCheck.Land))
+                        {
+                            strError += "Anderer Staat darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
+                        }
                     }
-                }
-                else if (rowCheck.Finanzierung.sEquals("Sonstige"))
-                {
-                    if (String.IsNullOrWhiteSpace(rowCheck.FinanzierungSonstige))
+                    else if (rowCheck.Finanzierung.sEquals("Sonstige"))
                     {
-                        strError += "Finanzierungsbeschreibung darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
+                        if (String.IsNullOrWhiteSpace(rowCheck.FinanzierungSonstige))
+                        {
+                            strError += "Finanzierungsbeschreibung darf nicht leer sein bei Kostentragung vom " + rowCheck.GueltigVon.ToString("dd.MM.yyyy") + "\n";
+                        }
                     }
-                }
 
-                if (!String.IsNullOrEmpty(strError))
-                {
-                    txtErrLog.Text = strError + "\n\nBitte ergänzen Sie die Daten, damit die Änderungen gespeichert werden können.";
-                    txtErrLog.Visible = true;
-                }
-                else
-                {
-                    txtErrLog.Text = "";
-                    txtErrLog.Visible = false;
+                    if (!String.IsNullOrEmpty(strError))
+                    {
+                        txtErrLog.Text = strError + "\n\nBitte ergänzen Sie die Daten, damit die Änderungen gespeichert werden können.";
+                        txtErrLog.Visible = true;
+                    }
+                    else
+                    {
+                        txtErrLog.Text = "";
+                        txtErrLog.Visible = false;
+                    }
                 }
             }
-
 
             if (!String.IsNullOrEmpty(strError))
             {
