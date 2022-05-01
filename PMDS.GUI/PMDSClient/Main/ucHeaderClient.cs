@@ -299,7 +299,6 @@ namespace PMDS.GUI.PMDSClient
         
         private void RefreshControl(Guid IDPatient, bool bSelectKlient, bool clickGridTermine)
         {
-            this.checkMemory();
             _LastIDPatient = IDPatient;
 
             _RefreshShouldBeAfterVisible = true;
@@ -1903,34 +1902,9 @@ namespace PMDS.GUI.PMDSClient
         {
             try
             {
-                this.checkMemory();
                 this.setButtonsDeaktive();
                 PMDS.Global.UIGlobal.setAktiv(btnTermine, -1, activeForeCol, activeFrameCol, activeBackCol);
                 GuiAction.archivTerminMail(false, false, false, false);
-
-                //PMDS.BusinessLogic.Patient pat = new PMDS.BusinessLogic.Patient(ENV.CurrentIDPatient);
-                //string bezPatient = pat.Vorname + " " + pat.Nachname;
-
-                //if (PMDS.Global.ENV.VersionPlanArchive == 1)
-                //{
-                //    PMDS.GUI.VB.cMailTermine clManagTermine = new PMDS.GUI.VB.cMailTermine();
-                //    clManagTermine.Termin_Neu(DateTime.Now, DateTime.Now, ENV.CurrentIDPatient.ToString(), bezPatient, null, null);
-                //}
-                //else if (PMDS.Global.ENV.VersionPlanArchive == 2)
-                //{
-                //    PMDS.GUI.VB.General gen = new VB.General();
-                //    PMDS.GUI.VB.compPlan compPlanTmp = new VB.compPlan();
-                //    PMDS.GUI.VB.dsPlan.planObjectDataTable tPlanObject = new VB.dsPlan.planObjectDataTable();
-                //    PMDS.GUI.VB.dsPlan.planObjectRow newPlanObject = compPlanTmp.getNewRowPlanObject(tPlanObject);
-                //    newPlanObject.IDObject = ENV.CurrentIDPatient;
-
-                //    string sBezeichnung = "";
-                //    string sFileType = "";
-                //    byte[] byt = null;
-                //    gen.newMessage(DateTime.Now, DateTime.Now, tPlanObject, null, System.Guid.NewGuid(), false, false,
-                //                    sBezeichnung, sFileType, byt, false, false);
-                //}
-
             }
             catch (Exception ex)
             {
@@ -1942,59 +1916,14 @@ namespace PMDS.GUI.PMDSClient
         {
             try
             {
-                this.checkMemory();
                 this.setButtonsDeaktive();
                 PMDS.Global.UIGlobal.setAktiv(this.btnArchiv , -1, activeForeCol, activeFrameCol, activeBackCol);
                 GuiAction.archivTerminMail(false, false, true, false);
-
-                ////PMDS.BusinessLogic.Patient pat = new PMDS.BusinessLogic.Patient(ENV.CurrentIDPatient);
-                ////string bezPatient = pat.Vorname + " " + pat.Nachname;
-
-                ////PMDS.GUI.VB.frmArchivAbleg frm = new PMDS.GUI.VB.frmArchivAbleg();
-                ////ArrayList arrObject = new ArrayList();
-                ////PMDS.GUI.VB.clObject aktObj = new PMDS.GUI.VB.clObject();
-                ////aktObj.id = ENV.CurrentIDPatient.ToString();
-                ////aktObj.bezeichnung = bezPatient;
-
-                ////arrObject.Add(aktObj);
-                ////frm.contArchivDokumentAblegen.objects = arrObject;
-
-                ////frm.ShowDialog(this);
-
-
-                //////PMDS.GUI.VB.frmArchAbleg frm = new PMDS.GUI.VB.frmArchAbleg();
-                //////ArrayList arrObject = new ArrayList();
-                //////PMDS.GUI.VB.clObject aktObj = new PMDS.GUI.VB.clObject();
-                //////aktObj.id = ENV.CurrentIDPatient.ToString();
-                //////aktObj.bezeichnung = bezPatient;
-                //////arrObject.Add(aktObj);
-
-                //////PMDS.GUI.VB.compDoku compDokuTmp = new VB.compDoku();
-                //////PMDS.GUI.VB.dbArchiv.archObjectDataTable tArchivObjects = new VB.dbArchiv.archObjectDataTable();
-                //////PMDS.GUI.VB.dbArchiv.archObjectRow newArchObject = compDokuTmp.getNewRowArchObject(tArchivObjects);
-                //////newArchObject.IDObject = ENV.CurrentIDPatient;
-
-                //////PMDS.GUI.VB.clFileInfo clFileInfo1 = new VB.clFileInfo();
-                //////clFileInfo1.tArchObject = tArchivObjects;
-                //////frm.ContArchAbleg1.arrFilesToSave.Add(clFileInfo1);
-
-                //////frm.ShowDialog(this);
-
             }
             catch (Exception ex)
             {
                 throw new Exception("neuesDokument: " + ex.ToString());
             }
-        }
-
-        private void uDropDownButtArchivTermin_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ucPatientGroupPicker1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btn18_MouseUp(object sender, MouseEventArgs e)
@@ -2019,7 +1948,6 @@ namespace PMDS.GUI.PMDSClient
             {
                 this.Cursor = Cursors.WaitCursor;   
 
-                this.checkMemory();
                 if (ENV.CurrentIDPatient == null || ENV.CurrentIDPatient == Guid.Empty)
                 {
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurde kein Patient ausgewählt!", "", MessageBoxButtons.OK);
@@ -2140,21 +2068,6 @@ namespace PMDS.GUI.PMDSClient
             catch (Exception ex)
             {
                 throw new Exception("ucHeader.checkAnsichtsmodus: " + ex.ToString());
-            }
-        }
-
-
-        public void checkMemory()
-        {
-            try
-            {
-                PMDS.Data.Global.db.checkMemorySizeAppClient(ref this.mainWindow.lblTxtMemory, ref this.mainWindow.pBarMemoryUsage,
-                                                            ref this.ultraToolTipManagerWarningMemory);          
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ucHeader.checkMemory: " + ex.ToString());
             }
         }
 

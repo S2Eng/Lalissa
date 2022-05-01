@@ -47,12 +47,12 @@ namespace PMDS.GUI
 
         public void initControl()
         {
-            this.ucKlient1 = new ucKlient();
+            this.ucKlient1 = new ucKlient();        //os-Performance (2.3)
             this.ucKlient1.mainSystm = true;
             this.ucKlient1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucKlient1.Dock = DockStyle.Fill;
             this.ucKlient1.ValueChanged += new System.EventHandler(this.ucKlient1_ValueChanged);
-            this.ucKlient1.initControl();
+            this.ucKlient1.initControl();           //os-Performace (1.3)
             this.panelKlientenakt.Controls.Add(this.ucKlient1);
             this.ucKlient1.MainWindow = this;
 

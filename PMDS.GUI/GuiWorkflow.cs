@@ -232,11 +232,11 @@ namespace PMDS.GUI
             {
                 System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 _SitemapKlientenDetails = new ucSiteMapKlientenDetails();
-                _SitemapKlientenDetails.initControl();
+                _SitemapKlientenDetails.initControl();          //os-Performance (2.7)
                 System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 GuiWorkflow.mainWindow.AddObject(_SitemapKlientenDetails);
                 _SitemapKlientenDetails.AttachFramework();
-                _SitemapKlientenDetails.ENV_ENVPatientIDChanged(ENV.CurrentIDPatient, eCurrentPatientChange.keiner, true, false);       //os-Performance
+                _SitemapKlientenDetails.ENV_ENVPatientIDChanged(ENV.CurrentIDPatient, eCurrentPatientChange.keiner, true, false);       //os-Performance (1.3)
                 initdone = true;
             }
 

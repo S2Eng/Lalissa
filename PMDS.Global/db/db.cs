@@ -155,73 +155,6 @@ namespace PMDS.Data.Global
                 db.writeLogxy(txtLog);
             }
         }
-        public static void checkMemorySizeAppClient(ref Infragistics.Win .Misc.UltraLabel lblInfoTxt, ref  Syncfusion.Windows.Forms.Tools.ProgressBarAdv pBarMemoryUsage,
-                                                        ref Infragistics.Win.UltraWinToolTip.UltraToolTipManager toolTipManager)
-        {
-            try
-            {                
-                return;
-
-                //System.Diagnostics.Process proc = System.Diagnostics.Process.GetCurrentProcess();
-                //int memoryUsedByApp = 0;  
-                //PerformanceCounter PC = new PerformanceCounter();
-                //PC.CategoryName = "Process";
-                //PC.CounterName = "Working Set - Private";
-                //PC.InstanceName = proc.ProcessName;
-                //memoryUsedByApp = Convert.ToInt32(PC.NextValue()) / (int)(1024);
-                //PC.Close();
-                //PC.Dispose();
-                //long iRamUsedMB = memoryUsedByApp/1000;
-
-                //long iPercentRamUsed = 100 * iRamUsedMB / 1300;
-                //pBarMemoryUsage.Value = (int) iPercentRamUsed;
-                //lblInfoTxt.Visible = true;
-                //pBarMemoryUsage.Visible = true;
-
-                //int SizeWarningPercent = 85;
-                //if (iPercentRamUsed > SizeWarningPercent)
-                //{
-                    
-                //    db.iInfoMemoryToHighIntervallClick += 1;
-                //    if (db.iInfoMemoryToHighShown <= 100000 && db.iInfoMemoryToHighIntervallClick >= 0)
-                //    {
-                //        Infragistics.Win.UltraWinToolTip.UltraToolTipInfo info = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo();
-                //        info.ToolTipTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("Warnung Speicherverbrauch");
-                //        info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Auf Ihrem Windows-Rechner ist wenig Speicherplatz frei!" + "\r\n" +
-                //                                                                                "Bitte starten Sie in den nächsten Minuten PMDS neu.");
-                //        toolTipManager.InitialDelay = 0;
-                //        toolTipManager.AutoPopDelay = 15000;
-                //        toolTipManager.SetUltraToolTip(pBarMemoryUsage, info);
-                //        Point bottomRightOfForm = pBarMemoryUsage.PointToScreen(Point.Empty);
-                //        toolTipManager.ShowToolTip(pBarMemoryUsage, bottomRightOfForm);
-
-                //        db.iInfoMemoryToHighShown += 1;
-                //        db.iInfoMemoryToHighIntervallClick = -3;
-
-                //        string txtLog = DateTime.Now.ToString() + " - Ram consumption exceeded - Memory used by App: " + iRamUsedMB.ToString() + " MB (SizeWarningPercent=" + SizeWarningPercent.ToString() + ") - " + System.Environment.MachineName.Trim() + "!" + "\r\n";
-                //        Exception ex6 = new Exception(txtLog);
-                //        //PMDS.Global.ENV.HandleException(ex6, "WarningRAM", false);
-                //        //PMDS.Global.ENV.WriteLog(txtLog);
-                //    }
-                //}
-                //else
-                //{
-                //    toolTipManager.SetUltraToolTip(pBarMemoryUsage, null);
-                //}
-
-            }
-            catch (Exception ex)
-            {
-                db.iInfoMemoryToHighIntervallClick = -3;
-                pBarMemoryUsage.Visible = false;
-
-                string txtLog = "Warning - Get memory for Computer(Fct. checkMemorySizeAppClient): " + System.Environment.MachineName.Trim() + "\r\n" + ex.ToString() + "\r\n";
-                Exception ex2 = new Exception(txtLog);
-                PMDS.Global.ENV.WriteLog(txtLog);
-                //PMDS.Global.ENV.HandleException(ex, "WarningRAM", false);
-             
-            }
-        }
 
         public static void writeLogxy(string txt)
         {
@@ -237,20 +170,6 @@ namespace PMDS.Data.Global
                 {
                     file.WriteLine(txt);
                 }
-
-                //if (!System.IO.File.Exists(logFile))
-                //{
-                //    System.IO.File.Create(logFile);
-                //}
-
-                //System.GC.Collect();
-                //txt = "\r\n" + "\r\n" + txt + "\r\n" + "\r\n";
-                //System.IO.StreamWriter sw = new System.IO.StreamWriter(logFile, true);
-                //sw.Write(txt);
-                //sw.Flush();
-                //sw.Close();
-                //System.GC.Collect();
-
             }
             catch (Exception ex)
             {

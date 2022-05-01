@@ -78,7 +78,6 @@ namespace PMDS
         private Panel PanelStatusbar;
         public UltraStatusBar ultraStatusBar1;
         public Infragistics.Win.Misc.UltraLabel lblTxtMemory;
-        public Syncfusion.Windows.Forms.Tools.ProgressBarAdv pBarMemoryUsage;
         private Panel panelBottomRight;
         public PMDS.DB.PMDSBusiness b = new PMDS.DB.PMDSBusiness();
 
@@ -832,7 +831,6 @@ namespace PMDS
             this.PanelStatusbar = new System.Windows.Forms.Panel();
             this.ultraStatusBar1 = new Infragistics.Win.UltraWinStatusBar.UltraStatusBar();
             this.lblTxtMemory = new Infragistics.Win.Misc.UltraLabel();
-            this.pBarMemoryUsage = new Syncfusion.Windows.Forms.Tools.ProgressBarAdv();
             this.panelBottomRight = new System.Windows.Forms.Panel();
             this.timerELGA = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStripLogging.SuspendLayout();
@@ -843,7 +841,6 @@ namespace PMDS
             ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintraege1)).BeginInit();
             this.PanelStatusbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraStatusBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBarMemoryUsage)).BeginInit();
             this.panelBottomRight.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1536,50 +1533,12 @@ namespace PMDS
             this.lblTxtMemory.TabIndex = 104;
             this.lblTxtMemory.Text = "Speicher:";
             this.lblTxtMemory.Visible = false;
-            // 
-            // pBarMemoryUsage
-            // 
-            this.pBarMemoryUsage.BackgroundStyle = Syncfusion.Windows.Forms.Tools.ProgressBarBackgroundStyles.Gradient;
-            this.pBarMemoryUsage.BackMultipleColors = new System.Drawing.Color[] {
-        System.Drawing.Color.Empty};
-            this.pBarMemoryUsage.BackSegments = false;
-            this.pBarMemoryUsage.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(149)))), ((int)(((byte)(152)))));
-            this.pBarMemoryUsage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBarMemoryUsage.CustomText = null;
-            this.pBarMemoryUsage.CustomWaitingRender = false;
-            this.pBarMemoryUsage.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pBarMemoryUsage.ForeColor = System.Drawing.Color.Transparent;
-            this.pBarMemoryUsage.ForegroundImage = null;
-            this.pBarMemoryUsage.ForeSegments = false;
-            this.pBarMemoryUsage.GradientEndColor = System.Drawing.Color.Transparent;
-            this.pBarMemoryUsage.GradientStartColor = System.Drawing.Color.Transparent;
-            this.pBarMemoryUsage.Location = new System.Drawing.Point(67, 5);
-            this.pBarMemoryUsage.MultipleColors = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128))))),
-        System.Drawing.Color.Red};
-            this.pBarMemoryUsage.Name = "pBarMemoryUsage";
-            this.pBarMemoryUsage.ProgressStyle = Syncfusion.Windows.Forms.Tools.ProgressBarStyles.MultipleGradient;
-            this.pBarMemoryUsage.SegmentWidth = 12;
-            this.pBarMemoryUsage.Size = new System.Drawing.Size(66, 13);
-            this.pBarMemoryUsage.Step = 1;
-            this.pBarMemoryUsage.StretchMultGrad = false;
-            this.pBarMemoryUsage.TabIndex = 105;
-            this.pBarMemoryUsage.ThemeName = "MultipleGradient";
-            this.pBarMemoryUsage.ThemesEnabled = true;
-            this.pBarMemoryUsage.TubeEndColor = System.Drawing.Color.Transparent;
-            this.pBarMemoryUsage.TubeStartColor = System.Drawing.Color.Transparent;
-            this.pBarMemoryUsage.Value = 95;
-            this.pBarMemoryUsage.Visible = false;
-            this.pBarMemoryUsage.WaitingGradientWidth = 400;
+            
             // 
             // panelBottomRight
             // 
             this.panelBottomRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panelBottomRight.Controls.Add(this.lblTxtMemory);
-            this.panelBottomRight.Controls.Add(this.pBarMemoryUsage);
             this.panelBottomRight.Location = new System.Drawing.Point(860, 676);
             this.panelBottomRight.Name = "panelBottomRight";
             this.panelBottomRight.Size = new System.Drawing.Size(146, 24);
@@ -1628,7 +1587,6 @@ namespace PMDS
             ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintraege1)).EndInit();
             this.PanelStatusbar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraStatusBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBarMemoryUsage)).EndInit();
             this.panelBottomRight.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1707,8 +1665,6 @@ namespace PMDS
             this.panelControl.Height = 0;
             this.panelControl.Width = 0;
             this.Show();
-
-            this.ucHeader1.checkMemory();
 
             Application.DoEvents();
         }
@@ -1908,20 +1864,6 @@ namespace PMDS
         {
             try
             {
-                //Startgröße und -position abhängig von der Bildschirmauflösung
-                //Standardgröße des Formulars bei 1024 * 768 = 1024* 737 = minimale Größe 
-
-                //                int Width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
-                //                int Height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
-
-                //                this.Width = (int) (this.Width / 1024 * Width * 0.9);
-                //                this.Height = (int) (this.Height / 737 * Height * 0.9);
-
-                //if (Width > 1024)
-                //{
-                //    this.MinimumSize = new Size(1024 , 768);
-                //}
-
                 this.panelStart.BringToFront();
 
                 ENV.TaskbarPosition TaskbarPos = ENV.TaskbarPosition.Ausgeblendet;     //0 = ausgeblendet, 1 = unten, 2 = rechts, 3 = links
@@ -2004,16 +1946,11 @@ namespace PMDS
                 this.UISitemap = new PMDS.UI.Sitemap.UIFct();
                 if (!PMDS.Global.ENV.adminSecure)
                 {
-                    //this.ultraToolbarsManager1.Tools["popUpAmdmin"].SharedProps.Visible = false;
                     this.ultraStatusBar1.Panels["Laden"].Visible = false;
                     this.ultraStatusBar1.Panels["Config"].Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Text;
                 }
 
                 this.UISitemap.infoRuntimStatusbar(ref this.ultraStatusBar1);
-                //this.WindowState = FormWindowState.Maximized;
-                //this.Show();
-                //this.Visible = true;
-
                 PMDS.BusinessLogic.Standardzeiten.InitStandardzeiten();
 
                 if (ENV.PathDokumente.Trim() != "" && !System.IO.Directory.Exists(ENV.PathDokumente.Trim()))
@@ -2037,12 +1974,6 @@ namespace PMDS
                     this.bElga.setStatusbarOnOff(this.ultraStatusBar1, false);
                 }
 
-                //if (ENV.CheckConnectionAndPassword)
-                //{
-                //    //this.timerCheckConnectionAndNetwork.Enabled = true;
-                //    //this.timerCheckConnectionAndNetwork.Start();
-                //}
-
                 System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(this.th_checkNewVersion));
                 t.Start();
 
@@ -2050,8 +1981,6 @@ namespace PMDS
                 {
                     this.ultraStatusBar1.ContextMenuStrip = null;
                 }
-
-                this.ucHeader1.checkMemory();
             }
             catch (Exception ex)
             {
@@ -3085,7 +3014,6 @@ namespace PMDS
                         this.timerCheckConnectionAndNetwork.Stop();
                     }
                 }
-
             }
             catch (Exception ex)
             {
