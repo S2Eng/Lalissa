@@ -849,7 +849,7 @@ namespace PMDS
             this.splitter1.BackColor = System.Drawing.Color.Gainsboro;
             this.splitter1.Location = new System.Drawing.Point(0, 20);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(1, 678);
+            this.splitter1.Size = new System.Drawing.Size(1, 670);
             this.splitter1.TabIndex = 9;
             this.splitter1.TabStop = false;
             // 
@@ -891,7 +891,7 @@ namespace PMDS
             this._frmBase_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.Color.Black;
             this._frmBase_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 20);
             this._frmBase_Toolbars_Dock_Area_Left.Name = "_frmBase_Toolbars_Dock_Area_Left";
-            this._frmBase_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 678);
+            this._frmBase_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 670);
             this._frmBase_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // ultraToolbarsManager1
@@ -1325,7 +1325,7 @@ namespace PMDS
             this._frmBase_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.Color.Black;
             this._frmBase_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1008, 20);
             this._frmBase_Toolbars_Dock_Area_Right.Name = "_frmBase_Toolbars_Dock_Area_Right";
-            this._frmBase_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 678);
+            this._frmBase_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 670);
             this._frmBase_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _frmBase_Toolbars_Dock_Area_Top
@@ -1345,7 +1345,7 @@ namespace PMDS
             this._frmBase_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.WhiteSmoke;
             this._frmBase_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom;
             this._frmBase_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.Color.Black;
-            this._frmBase_Toolbars_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 698);
+            this._frmBase_Toolbars_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 690);
             this._frmBase_Toolbars_Dock_Area_Bottom.Name = "_frmBase_Toolbars_Dock_Area_Bottom";
             this._frmBase_Toolbars_Dock_Area_Bottom.Size = new System.Drawing.Size(1008, 0);
             this._frmBase_Toolbars_Dock_Area_Bottom.ToolbarsManager = this.ultraToolbarsManager1;
@@ -1392,7 +1392,7 @@ namespace PMDS
             this.ucHeader1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ucHeader1.LEFTINFO = "";
             this.ucHeader1.Location = new System.Drawing.Point(0, 0);
-            this.ucHeader1.Margin = new System.Windows.Forms.Padding(5);
+            this.ucHeader1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.ucHeader1.MIDDLEINFO = "";
             this.ucHeader1.Name = "ucHeader1";
             this.ucHeader1.RIGHTINFO = "";
@@ -1533,7 +1533,6 @@ namespace PMDS
             this.lblTxtMemory.TabIndex = 104;
             this.lblTxtMemory.Text = "Speicher:";
             this.lblTxtMemory.Visible = false;
-            
             // 
             // panelBottomRight
             // 
@@ -1553,7 +1552,7 @@ namespace PMDS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1008, 698);
+            this.ClientSize = new System.Drawing.Size(1008, 690);
             this.Controls.Add(this.panelBottomRight);
             this.Controls.Add(this.PanelStatusbar);
             this.Controls.Add(this.panelControlGesamt);
@@ -1564,9 +1563,9 @@ namespace PMDS
             this.Controls.Add(this._frmBase_Toolbars_Dock_Area_Right);
             this.Controls.Add(this._frmBase_Toolbars_Dock_Area_Bottom);
             this.Controls.Add(this._frmBase_Toolbars_Dock_Area_Top);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(947, 737);
+            this.MinimumSize = new System.Drawing.Size(947, 683);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PMDS";
