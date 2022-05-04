@@ -417,8 +417,8 @@ namespace PMDS.GUI
             appearance11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgTermine.DisplayLayout.Override.RowAppearance = appearance11;
             this.dgTermine.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            this.dgTermine.DisplayLayout.Override.RowSpacingAfter = 3;
-            this.dgTermine.DisplayLayout.Override.RowSpacingBefore = 2;
+            this.dgTermine.DisplayLayout.Override.RowSpacingAfter = 0;
+            this.dgTermine.DisplayLayout.Override.RowSpacingBefore = 0;
             appearance12.BackColor = System.Drawing.Color.LightGray;
             appearance12.ForeColor = System.Drawing.Color.Black;
             this.dgTermine.DisplayLayout.Override.SelectedRowAppearance = appearance12;

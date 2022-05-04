@@ -554,8 +554,8 @@
             this.dgMain.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
             this.dgMain.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
             this.dgMain.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            this.dgMain.DisplayLayout.Override.RowSpacingAfter = 2;
-            this.dgMain.DisplayLayout.Override.RowSpacingBefore = 2;
+            //this.dgMain.DisplayLayout.Override.RowSpacingAfter = 2;
+            //this.dgMain.DisplayLayout.Override.RowSpacingBefore = 2;
             this.dgMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             gridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both;
             gridBagConstraint1.Insets.Bottom = 5;

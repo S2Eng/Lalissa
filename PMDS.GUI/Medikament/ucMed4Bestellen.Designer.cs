@@ -1135,8 +1135,8 @@
             appearance19.BackColor = System.Drawing.SystemColors.Window;
             appearance19.BorderColor = System.Drawing.Color.Silver;
             this.gridMedikamenteBestellen.DisplayLayout.Override.RowAppearance = appearance19;
-            this.gridMedikamenteBestellen.DisplayLayout.Override.RowSpacingAfter = 2;
-            this.gridMedikamenteBestellen.DisplayLayout.Override.RowSpacingBefore = 2;
+            this.gridMedikamenteBestellen.DisplayLayout.Override.RowSpacingAfter = 0;
+            this.gridMedikamenteBestellen.DisplayLayout.Override.RowSpacingBefore = 0;
             appearance20.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gridMedikamenteBestellen.DisplayLayout.Override.TemplateAddRowAppearance = appearance20;
             this.gridMedikamenteBestellen.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;

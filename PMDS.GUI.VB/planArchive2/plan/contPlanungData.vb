@@ -826,8 +826,8 @@ Public Class contPlanungData
         Appearance7.BackColor = System.Drawing.Color.White
         Appearance7.BackColor2 = System.Drawing.Color.White
         Me.gridPlans.DisplayLayout.Override.RowAlternateAppearance = Appearance7
-        Me.gridPlans.DisplayLayout.Override.RowSpacingAfter = 1
-        Me.gridPlans.DisplayLayout.Override.RowSpacingBefore = 2
+        Me.gridPlans.DisplayLayout.Override.RowSpacingAfter = 0
+        Me.gridPlans.DisplayLayout.Override.RowSpacingBefore = 0
         Appearance8.BackColor = System.Drawing.Color.DarkGray
         Appearance8.ForeColor = System.Drawing.Color.White
         Me.gridPlans.DisplayLayout.Override.SelectedRowAppearance = Appearance8

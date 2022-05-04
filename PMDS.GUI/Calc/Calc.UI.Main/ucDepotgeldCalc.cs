@@ -435,5 +435,10 @@ namespace PMDS.Calc.UI
             if (this.sitemap.evDoubleClickOK(ref sender, ref e, (Infragistics.Win.UltraWinGrid.UltraGrid)this.uGridAbrech))
                 this.openEinAusz(false);
         }
+
+        private void ucKlinikDropDown1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

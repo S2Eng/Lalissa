@@ -185,7 +185,7 @@
             appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
             editorButton1.Appearance = appearance1;
             this.cboBezeichnungstexte.ButtonsRight.Add(editorButton1);
-            this.cboBezeichnungstexte.Location = new System.Drawing.Point(43, 71);
+            this.cboBezeichnungstexte.Location = new System.Drawing.Point(53, 77);
             this.cboBezeichnungstexte.Name = "cboBezeichnungstexte";
             this.cboBezeichnungstexte.Size = new System.Drawing.Size(108, 21);
             this.cboBezeichnungstexte.TabIndex = 158;
@@ -197,7 +197,7 @@
             this.ultraTabPageControl1.Controls.Add(this.panelGrid);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(984, 273);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(1155, 256);
             // 
             // panelGrid
             // 
@@ -205,7 +205,7 @@
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGrid.Location = new System.Drawing.Point(0, 0);
             this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(984, 273);
+            this.panelGrid.Size = new System.Drawing.Size(1155, 256);
             this.panelGrid.TabIndex = 100;
             // 
             // uGridBookings
@@ -219,10 +219,12 @@
             appearance2.BackColor = System.Drawing.Color.White;
             this.uGridBookings.DisplayLayout.Appearance = appearance2;
             ultraGridColumn16.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn16.Header.Editor = null;
             ultraGridColumn16.Header.VisiblePosition = 0;
             ultraGridColumn16.Hidden = true;
             ultraGridColumn16.Width = 108;
             ultraGridColumn17.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn17.Header.Editor = null;
             ultraGridColumn17.Header.VisiblePosition = 1;
             ultraGridColumn17.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn17.RowLayoutColumnInfo.OriginY = 0;
@@ -233,6 +235,7 @@
             ultraGridColumn18.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn18.EditorComponent = this.cboBezeichnungstexte;
             ultraGridColumn18.Header.Caption = "Buchungstext";
+            ultraGridColumn18.Header.Editor = null;
             ultraGridColumn18.Header.VisiblePosition = 2;
             ultraGridColumn18.RowLayoutColumnInfo.OriginX = 4;
             ultraGridColumn18.RowLayoutColumnInfo.OriginY = 0;
@@ -243,6 +246,7 @@
             ultraGridColumn18.Width = 52;
             ultraGridColumn19.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn19.Header.Caption = "Gegenkonto";
+            ultraGridColumn19.Header.Editor = null;
             ultraGridColumn19.Header.VisiblePosition = 14;
             ultraGridColumn19.RowLayoutColumnInfo.OriginX = 2;
             ultraGridColumn19.RowLayoutColumnInfo.OriginY = 0;
@@ -251,6 +255,7 @@
             ultraGridColumn19.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ultraGridColumn20.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn20.Header.Caption = "Gegenkonto";
+            ultraGridColumn20.Header.Editor = null;
             ultraGridColumn20.Header.VisiblePosition = 3;
             ultraGridColumn20.Hidden = true;
             ultraGridColumn20.RowLayoutColumnInfo.OriginX = 8;
@@ -263,6 +268,7 @@
             ultraGridColumn21.CellAppearance = appearance3;
             ultraGridColumn21.Format = "###,###,##0.00";
             ultraGridColumn21.Header.Caption = " Betrag";
+            ultraGridColumn21.Header.Editor = null;
             ultraGridColumn21.Header.VisiblePosition = 5;
             ultraGridColumn21.Hidden = true;
             ultraGridColumn21.RowLayoutColumnInfo.OriginX = 12;
@@ -276,6 +282,7 @@
             appearance4.TextHAlignAsString = "Right";
             ultraGridColumn22.CellAppearance = appearance4;
             ultraGridColumn22.Format = "##0";
+            ultraGridColumn22.Header.Editor = null;
             ultraGridColumn22.Header.VisiblePosition = 6;
             ultraGridColumn22.Hidden = true;
             ultraGridColumn22.RowLayoutColumnInfo.OriginX = 14;
@@ -287,6 +294,7 @@
             ultraGridColumn22.Width = 36;
             ultraGridColumn23.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn23.Header.Caption = "Rech.Nr";
+            ultraGridColumn23.Header.Editor = null;
             ultraGridColumn23.Header.VisiblePosition = 8;
             ultraGridColumn23.RowLayoutColumnInfo.OriginX = 16;
             ultraGridColumn23.RowLayoutColumnInfo.OriginY = 0;
@@ -296,6 +304,7 @@
             ultraGridColumn23.Width = 52;
             ultraGridColumn24.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn24.Header.Caption = "Klient";
+            ultraGridColumn24.Header.Editor = null;
             ultraGridColumn24.Header.VisiblePosition = 4;
             ultraGridColumn24.RowLayoutColumnInfo.OriginX = 14;
             ultraGridColumn24.RowLayoutColumnInfo.OriginY = 0;
@@ -306,6 +315,7 @@
             ultraGridColumn24.Width = 106;
             ultraGridColumn25.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn25.Header.Caption = "Kostenträger";
+            ultraGridColumn25.Header.Editor = null;
             ultraGridColumn25.Header.VisiblePosition = 7;
             ultraGridColumn25.RowLayoutColumnInfo.OriginX = 12;
             ultraGridColumn25.RowLayoutColumnInfo.OriginY = 0;
@@ -315,6 +325,7 @@
             ultraGridColumn25.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ultraGridColumn25.Width = 130;
             ultraGridColumn26.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn26.Header.Editor = null;
             ultraGridColumn26.Header.VisiblePosition = 9;
             ultraGridColumn26.RowLayoutColumnInfo.OriginX = 18;
             ultraGridColumn26.RowLayoutColumnInfo.OriginY = 0;
@@ -322,12 +333,14 @@
             ultraGridColumn26.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn27.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn27.Header.Caption = "Erstell am";
+            ultraGridColumn27.Header.Editor = null;
             ultraGridColumn27.Header.VisiblePosition = 10;
             ultraGridColumn27.RowLayoutColumnInfo.OriginX = 20;
             ultraGridColumn27.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn27.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn27.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn28.Header.Caption = "Einrichtung";
+            ultraGridColumn28.Header.Editor = null;
             ultraGridColumn28.Header.VisiblePosition = 13;
             ultraGridColumn28.RowLayoutColumnInfo.OriginX = 10;
             ultraGridColumn28.RowLayoutColumnInfo.OriginY = 0;
@@ -340,6 +353,7 @@
             appearance5.TextHAlignAsString = "Right";
             ultraGridColumn29.CellAppearance = appearance5;
             ultraGridColumn29.Format = "###,###,##0.00";
+            ultraGridColumn29.Header.Editor = null;
             ultraGridColumn29.Header.VisiblePosition = 11;
             ultraGridColumn29.RowLayoutColumnInfo.OriginX = 6;
             ultraGridColumn29.RowLayoutColumnInfo.OriginY = 0;
@@ -351,6 +365,7 @@
             appearance6.TextHAlignAsString = "Right";
             ultraGridColumn30.CellAppearance = appearance6;
             ultraGridColumn30.Format = "###,###,##0.00";
+            ultraGridColumn30.Header.Editor = null;
             ultraGridColumn30.Header.VisiblePosition = 12;
             ultraGridColumn30.RowLayoutColumnInfo.OriginX = 8;
             ultraGridColumn30.RowLayoutColumnInfo.OriginY = 0;
@@ -464,7 +479,7 @@
             this.uGridBookings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uGridBookings.Location = new System.Drawing.Point(7, 3);
             this.uGridBookings.Name = "uGridBookings";
-            this.uGridBookings.Size = new System.Drawing.Size(972, 267);
+            this.uGridBookings.Size = new System.Drawing.Size(1143, 250);
             this.uGridBookings.TabIndex = 0;
             this.uGridBookings.Text = "Abrechnungen";
             this.uGridBookings.AfterRowActivate += new System.EventHandler(this.uGridBookings_AfterRowActivate);
@@ -536,7 +551,7 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(988, 127);
+            this.panelTop.Size = new System.Drawing.Size(1159, 144);
             this.panelTop.TabIndex = 0;
             // 
             // contextMenuStripBooking
@@ -562,7 +577,7 @@
             this.btnExportExcel.Appearance = appearance12;
             this.btnExportExcel.AutoWorkLayout = false;
             this.btnExportExcel.IsStandardControl = false;
-            this.btnExportExcel.Location = new System.Drawing.Point(951, 105);
+            this.btnExportExcel.Location = new System.Drawing.Point(1122, 122);
             this.btnExportExcel.Name = "btnExportExcel";
             this.btnExportExcel.Size = new System.Drawing.Size(29, 22);
             this.btnExportExcel.TabIndex = 104;
@@ -577,7 +592,7 @@
             this.panelButtonsAddDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panelButtonsAddDel.Controls.Add(this.btnAdd);
             this.panelButtonsAddDel.Controls.Add(this.btnDelete);
-            this.panelButtonsAddDel.Location = new System.Drawing.Point(761, 106);
+            this.panelButtonsAddDel.Location = new System.Drawing.Point(932, 123);
             this.panelButtonsAddDel.Name = "panelButtonsAddDel";
             this.panelButtonsAddDel.Size = new System.Drawing.Size(55, 20);
             this.panelButtonsAddDel.TabIndex = 103;
@@ -635,7 +650,7 @@
             this.btnPrint.Appearance = appearance20;
             this.btnPrint.AutoWorkLayout = false;
             this.btnPrint.IsStandardControl = false;
-            this.btnPrint.Location = new System.Drawing.Point(817, 105);
+            this.btnPrint.Location = new System.Drawing.Point(988, 122);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(134, 22);
             this.btnPrint.TabIndex = 101;
@@ -668,14 +683,14 @@
             this.grpSuche.Controls.Add(this.lblKlienten);
             this.grpSuche.Location = new System.Drawing.Point(7, 7);
             this.grpSuche.Name = "grpSuche";
-            this.grpSuche.Size = new System.Drawing.Size(973, 100);
+            this.grpSuche.Size = new System.Drawing.Size(1144, 109);
             this.grpSuche.TabIndex = 0;
             this.grpSuche.Text = "Kontobuchungen filtern";
             // 
             // ucKlinikDropDown1
             // 
             this.ucKlinikDropDown1.BackColor = System.Drawing.Color.Silver;
-            this.ucKlinikDropDown1.Location = new System.Drawing.Point(43, 45);
+            this.ucKlinikDropDown1.Location = new System.Drawing.Point(53, 51);
             this.ucKlinikDropDown1.Name = "ucKlinikDropDown1";
             this.ucKlinikDropDown1.Size = new System.Drawing.Size(33, 20);
             this.ucKlinikDropDown1.TabIndex = 164;
@@ -692,7 +707,7 @@
             appearance23.ForeColor = System.Drawing.Color.Black;
             this.lblZurücksetzen.HotTrackAppearance = appearance23;
             this.lblZurücksetzen.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblZurücksetzen.Location = new System.Drawing.Point(746, 55);
+            this.lblZurücksetzen.Location = new System.Drawing.Point(814, 60);
             this.lblZurücksetzen.Name = "lblZurücksetzen";
             this.lblZurücksetzen.Size = new System.Drawing.Size(72, 12);
             this.lblZurücksetzen.TabIndex = 159;
@@ -703,7 +718,7 @@
             // 
             // dtBis
             // 
-            this.dtBis.Location = new System.Drawing.Point(145, 18);
+            this.dtBis.Location = new System.Drawing.Point(164, 24);
             this.dtBis.MaskInput = "{LOC}mm.yyyy";
             this.dtBis.Name = "dtBis";
             this.dtBis.ownFormat = "";
@@ -715,7 +730,7 @@
             // 
             // dtVon
             // 
-            this.dtVon.Location = new System.Drawing.Point(43, 18);
+            this.dtVon.Location = new System.Drawing.Point(53, 24);
             this.dtVon.MaskInput = "{LOC}mm.yyyy";
             this.dtVon.Name = "dtVon";
             this.dtVon.ownFormat = "";
@@ -728,7 +743,7 @@
             // cboKonto
             // 
             this.cboKonto.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
-            this.cboKonto.Location = new System.Drawing.Point(335, 17);
+            this.cboKonto.Location = new System.Drawing.Point(400, 23);
             this.cboKonto.Name = "cboKonto";
             this.cboKonto.Size = new System.Drawing.Size(279, 21);
             this.cboKonto.TabIndex = 3;
@@ -739,7 +754,7 @@
             // 
             this.cboKlienten.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cboKlienten.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
-            this.cboKlienten.Location = new System.Drawing.Point(335, 71);
+            this.cboKlienten.Location = new System.Drawing.Point(400, 77);
             this.cboKlienten.Name = "cboKlienten";
             this.cboKlienten.Size = new System.Drawing.Size(279, 21);
             this.cboKlienten.TabIndex = 5;
@@ -750,7 +765,7 @@
             // 
             this.cboKostenträger.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cboKostenträger.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
-            this.cboKostenträger.Location = new System.Drawing.Point(335, 44);
+            this.cboKostenträger.Location = new System.Drawing.Point(400, 50);
             this.cboKostenträger.Name = "cboKostenträger";
             this.cboKostenträger.Size = new System.Drawing.Size(279, 21);
             this.cboKostenträger.TabIndex = 4;
@@ -759,14 +774,14 @@
             // 
             // txtText
             // 
-            this.txtText.Location = new System.Drawing.Point(704, 18);
+            this.txtText.Location = new System.Drawing.Point(772, 23);
             this.txtText.Name = "txtText";
             this.txtText.Size = new System.Drawing.Size(263, 21);
             this.txtText.TabIndex = 2;
             // 
             // lblText
             // 
-            this.lblText.Location = new System.Drawing.Point(654, 22);
+            this.lblText.Location = new System.Drawing.Point(722, 27);
             this.lblText.Name = "lblText";
             this.lblText.Size = new System.Drawing.Size(44, 15);
             this.lblText.TabIndex = 112;
@@ -784,7 +799,7 @@
             this.butSearch.Cursor = System.Windows.Forms.Cursors.Default;
             this.butSearch.DoOnClick = true;
             this.butSearch.IsStandardControl = true;
-            this.butSearch.Location = new System.Drawing.Point(704, 48);
+            this.butSearch.Location = new System.Drawing.Point(772, 53);
             this.butSearch.Name = "butSearch";
             this.butSearch.Size = new System.Drawing.Size(36, 30);
             this.butSearch.TabIndex = 6;
@@ -795,7 +810,7 @@
             // 
             // lblKonto
             // 
-            this.lblKonto.Location = new System.Drawing.Point(254, 22);
+            this.lblKonto.Location = new System.Drawing.Point(298, 28);
             this.lblKonto.Name = "lblKonto";
             this.lblKonto.Size = new System.Drawing.Size(46, 15);
             this.lblKonto.TabIndex = 108;
@@ -803,7 +818,7 @@
             // 
             // lblKostenträger
             // 
-            this.lblKostenträger.Location = new System.Drawing.Point(254, 48);
+            this.lblKostenträger.Location = new System.Drawing.Point(298, 54);
             this.lblKostenträger.Name = "lblKostenträger";
             this.lblKostenträger.Size = new System.Drawing.Size(75, 19);
             this.lblKostenträger.TabIndex = 106;
@@ -811,7 +826,7 @@
             // 
             // btnTimes
             // 
-            this.btnTimes.Location = new System.Drawing.Point(227, 16);
+            this.btnTimes.Location = new System.Drawing.Point(249, 23);
             this.btnTimes.Name = "btnTimes";
             this.btnTimes.ShowFocusRect = false;
             this.btnTimes.Size = new System.Drawing.Size(21, 24);
@@ -822,7 +837,7 @@
             // 
             // lblBis
             // 
-            this.lblBis.Location = new System.Drawing.Point(124, 21);
+            this.lblBis.Location = new System.Drawing.Point(139, 27);
             this.lblBis.Name = "lblBis";
             this.lblBis.Size = new System.Drawing.Size(27, 15);
             this.lblBis.TabIndex = 4;
@@ -830,7 +845,7 @@
             // 
             // lblVon
             // 
-            this.lblVon.Location = new System.Drawing.Point(10, 21);
+            this.lblVon.Location = new System.Drawing.Point(10, 27);
             this.lblVon.Name = "lblVon";
             this.lblVon.Size = new System.Drawing.Size(27, 15);
             this.lblVon.TabIndex = 3;
@@ -838,7 +853,7 @@
             // 
             // lblKlienten
             // 
-            this.lblKlienten.Location = new System.Drawing.Point(254, 75);
+            this.lblKlienten.Location = new System.Drawing.Point(298, 81);
             this.lblKlienten.Name = "lblKlienten";
             this.lblKlienten.Size = new System.Drawing.Size(56, 15);
             this.lblKlienten.TabIndex = 104;
@@ -851,7 +866,7 @@
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottom.Location = new System.Drawing.Point(0, 426);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(988, 32);
+            this.panelBottom.Size = new System.Drawing.Size(1159, 32);
             this.panelBottom.TabIndex = 1;
             // 
             // lblCount
@@ -870,7 +885,7 @@
             this.panelButtonSpeichern.Controls.Add(this.btnSave);
             this.panelButtonSpeichern.Controls.Add(this.btnReset);
             this.panelButtonSpeichern.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelButtonSpeichern.Location = new System.Drawing.Point(369, 0);
+            this.panelButtonSpeichern.Location = new System.Drawing.Point(540, 0);
             this.panelButtonSpeichern.Name = "panelButtonSpeichern";
             this.panelButtonSpeichern.Size = new System.Drawing.Size(619, 32);
             this.panelButtonSpeichern.TabIndex = 106;
@@ -959,16 +974,16 @@
             this.panelAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAll.Location = new System.Drawing.Point(0, 0);
             this.panelAll.Name = "panelAll";
-            this.panelAll.Size = new System.Drawing.Size(988, 458);
+            this.panelAll.Size = new System.Drawing.Size(1159, 458);
             this.panelAll.TabIndex = 4;
             // 
             // panelBookings
             // 
             this.panelBookings.Controls.Add(this.ultraTabControl1);
             this.panelBookings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelBookings.Location = new System.Drawing.Point(0, 127);
+            this.panelBookings.Location = new System.Drawing.Point(0, 144);
             this.panelBookings.Name = "panelBookings";
-            this.panelBookings.Size = new System.Drawing.Size(988, 299);
+            this.panelBookings.Size = new System.Drawing.Size(1159, 282);
             this.panelBookings.TabIndex = 102;
             // 
             // ultraTabControl1
@@ -980,7 +995,7 @@
             this.ultraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.ultraTabControl1.Name = "ultraTabControl1";
             this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControl1.Size = new System.Drawing.Size(988, 299);
+            this.ultraTabControl1.Size = new System.Drawing.Size(1159, 282);
             this.ultraTabControl1.TabIndex = 101;
             ultraTab1.Key = "Buchungen";
             ultraTab1.TabPage = this.ultraTabPageControl1;
@@ -998,7 +1013,7 @@
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(984, 273);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1155, 256);
             // 
             // ultraGridBagLayoutPanel1
             // 
@@ -1031,7 +1046,7 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.panelAll);
             this.Name = "ucBookings";
-            this.Size = new System.Drawing.Size(988, 458);
+            this.Size = new System.Drawing.Size(1159, 458);
             this.Resize += new System.EventHandler(this.ucCalcs_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.cboBezeichnungstexte)).EndInit();
             this.ultraTabPageControl1.ResumeLayout(false);

@@ -840,8 +840,8 @@
             this.dgEintraege.DisplayLayout.Override.RowAppearance = appearance11;
             this.dgEintraege.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
             this.dgEintraege.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.AutoFree;
-            this.dgEintraege.DisplayLayout.Override.RowSpacingAfter = 2;
-            this.dgEintraege.DisplayLayout.Override.RowSpacingBefore = 2;
+            this.dgEintraege.DisplayLayout.Override.RowSpacingAfter = 0;
+            this.dgEintraege.DisplayLayout.Override.RowSpacingBefore = 0;
             this.dgEintraege.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             appearance12.BackColor = System.Drawing.SystemColors.ControlLight;
             this.dgEintraege.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;

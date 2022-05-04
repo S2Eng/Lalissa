@@ -476,8 +476,8 @@ namespace PMDS.GUI
             this.dgEintrag.DisplayLayout.GroupByBox.Prompt = "Zu gruppierende Spalten hier herein ziehen.";
             this.dgEintrag.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             this.dgEintrag.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            this.dgEintrag.DisplayLayout.Override.RowSpacingAfter = 1;
-            this.dgEintrag.DisplayLayout.Override.RowSpacingBefore = 2;
+            this.dgEintrag.DisplayLayout.Override.RowSpacingAfter = 0;
+            this.dgEintrag.DisplayLayout.Override.RowSpacingBefore = 0;
             this.dgEintrag.DisplayLayout.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.dgEintrag.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.dgEintrag.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;

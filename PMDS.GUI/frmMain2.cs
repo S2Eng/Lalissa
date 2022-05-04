@@ -77,8 +77,6 @@ namespace PMDS
         public static qs2.ui.frmMain frmMainQS2 = null;
         private Panel PanelStatusbar;
         public UltraStatusBar ultraStatusBar1;
-        public Infragistics.Win.Misc.UltraLabel lblTxtMemory;
-        private Panel panelBottomRight;
         public PMDS.DB.PMDSBusiness b = new PMDS.DB.PMDSBusiness();
 
         public bool _KlientenlisteOnTop = true;
@@ -565,7 +563,7 @@ namespace PMDS
         {
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("MainMenu");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool1 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Programm");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool2 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("mnuKlient");
@@ -589,7 +587,7 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool6 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Beenden");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool7 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Beenden");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool8 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Arbeitsstationsperren");
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool9 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Benutzerwechsel");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool10 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Passwort");
@@ -789,21 +787,20 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool190 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnAbrechnungInkoProdukte");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool192 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnPSE");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool194 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnSTAMP");
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel1 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel2 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel3 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel4 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel8 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel5 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel6 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel9 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel7 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.ultraPopupControlContainer1 = new Infragistics.Win.Misc.UltraPopupControlContainer(this.components);
             this.contextMenuStripLogging = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -830,8 +827,6 @@ namespace PMDS
             this.timerCheckConnectionAndNetwork = new System.Windows.Forms.Timer(this.components);
             this.PanelStatusbar = new System.Windows.Forms.Panel();
             this.ultraStatusBar1 = new Infragistics.Win.UltraWinStatusBar.UltraStatusBar();
-            this.lblTxtMemory = new Infragistics.Win.Misc.UltraLabel();
-            this.panelBottomRight = new System.Windows.Forms.Panel();
             this.timerELGA = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStripLogging.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).BeginInit();
@@ -841,7 +836,6 @@ namespace PMDS
             ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintraege1)).BeginInit();
             this.PanelStatusbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraStatusBar1)).BeginInit();
-            this.panelBottomRight.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitter1
@@ -905,8 +899,8 @@ namespace PMDS
             this.ultraToolbarsManager1.DockWithinContainer = this;
             this.ultraToolbarsManager1.DockWithinContainerBaseType = typeof(PMDS.GUI.frmBase);
             this.ultraToolbarsManager1.LockToolbars = true;
-            appearance8.BackColor = System.Drawing.Color.White;
-            this.ultraToolbarsManager1.MenuSettings.Appearance = appearance8;
+            appearance7.BackColor = System.Drawing.Color.White;
+            this.ultraToolbarsManager1.MenuSettings.Appearance = appearance7;
             this.ultraToolbarsManager1.RuntimeCustomizationOptions = Infragistics.Win.UltraWinToolbars.RuntimeCustomizationOptions.None;
             this.ultraToolbarsManager1.ShowFullMenusDelay = 500;
             ultraToolbar1.DockedColumn = 0;
@@ -963,8 +957,8 @@ namespace PMDS
             buttonTool6});
             buttonTool7.SharedPropsInternal.Caption = "Beenden";
             buttonTool7.SharedPropsInternal.Category = "Programm";
-            appearance9.Image = ((object)(resources.GetObject("appearance9.Image")));
-            buttonTool8.SharedPropsInternal.AppearancesSmall.Appearance = appearance9;
+            appearance8.Image = ((object)(resources.GetObject("appearance8.Image")));
+            buttonTool8.SharedPropsInternal.AppearancesSmall.Appearance = appearance8;
             buttonTool8.SharedPropsInternal.Caption = "Arbeitsstation sperren";
             buttonTool8.SharedPropsInternal.Category = "Programm";
             buttonTool9.SharedPropsInternal.Caption = "Abmelden";
@@ -1392,7 +1386,7 @@ namespace PMDS
             this.ucHeader1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ucHeader1.LEFTINFO = "";
             this.ucHeader1.Location = new System.Drawing.Point(0, 0);
-            this.ucHeader1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ucHeader1.Margin = new System.Windows.Forms.Padding(5);
             this.ucHeader1.MIDDLEINFO = "";
             this.ucHeader1.Name = "ucHeader1";
             this.ucHeader1.RIGHTINFO = "";
@@ -1401,10 +1395,10 @@ namespace PMDS
             // 
             // lblIsLoading
             // 
-            appearance7.ForeColor = System.Drawing.Color.Gray;
-            appearance7.TextHAlignAsString = "Center";
-            appearance7.TextVAlignAsString = "Middle";
-            this.lblIsLoading.Appearance = appearance7;
+            appearance6.ForeColor = System.Drawing.Color.Gray;
+            appearance6.TextHAlignAsString = "Center";
+            appearance6.TextVAlignAsString = "Middle";
+            this.lblIsLoading.Appearance = appearance6;
             this.lblIsLoading.BackColorInternal = System.Drawing.Color.Transparent;
             this.lblIsLoading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblIsLoading.Location = new System.Drawing.Point(0, 0);
@@ -1421,7 +1415,7 @@ namespace PMDS
             this.panelStart.BackColor = System.Drawing.Color.Gainsboro;
             this.panelStart.Location = new System.Drawing.Point(0, 21);
             this.panelStart.Name = "panelStart";
-            this.panelStart.Size = new System.Drawing.Size(1006, 655);
+            this.panelStart.Size = new System.Drawing.Size(1006, 641);
             this.panelStart.TabIndex = 35;
             this.panelStart.Paint += new System.Windows.Forms.PaintEventHandler(this.panelStart_Paint);
             // 
@@ -1459,21 +1453,21 @@ namespace PMDS
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelStatusbar.BackColor = System.Drawing.Color.Transparent;
             this.PanelStatusbar.Controls.Add(this.ultraStatusBar1);
-            this.PanelStatusbar.Location = new System.Drawing.Point(-1, 676);
+            this.PanelStatusbar.Location = new System.Drawing.Point(-1, 662);
             this.PanelStatusbar.Name = "PanelStatusbar";
-            this.PanelStatusbar.Size = new System.Drawing.Size(865, 22);
+            this.PanelStatusbar.Size = new System.Drawing.Size(1009, 24);
             this.PanelStatusbar.TabIndex = 40;
             // 
             // ultraStatusBar1
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            appearance3.ForeColor = System.Drawing.Color.Black;
-            this.ultraStatusBar1.Appearance = appearance3;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            appearance2.ForeColor = System.Drawing.Color.Black;
+            this.ultraStatusBar1.Appearance = appearance2;
             this.ultraStatusBar1.ContextMenuStrip = this.contextMenuStripLogging;
-            this.ultraStatusBar1.Location = new System.Drawing.Point(0, 4);
+            this.ultraStatusBar1.Location = new System.Drawing.Point(0, 6);
             this.ultraStatusBar1.Name = "ultraStatusBar1";
-            appearance4.BorderColor = System.Drawing.Color.White;
-            this.ultraStatusBar1.PanelAppearance = appearance4;
+            appearance3.BorderColor = System.Drawing.Color.White;
+            this.ultraStatusBar1.PanelAppearance = appearance3;
             ultraStatusPanel1.Key = "User";
             ultraStatusPanel1.ToolTipText = "Angemeldeter Benutzer";
             ultraStatusPanel1.Width = 200;
@@ -1487,14 +1481,14 @@ namespace PMDS
             ultraStatusPanel8.Key = "UnreadedMessages";
             ultraStatusPanel8.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Automatic;
             ultraStatusPanel8.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Button;
-            appearance5.FontData.SizeInPoints = 7F;
-            ultraStatusPanel5.Appearance = appearance5;
+            appearance4.FontData.SizeInPoints = 7F;
+            ultraStatusPanel5.Appearance = appearance4;
             ultraStatusPanel5.Key = "Config";
             ultraStatusPanel5.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Automatic;
             ultraStatusPanel5.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Button;
             ultraStatusPanel5.Text = "Config";
-            appearance6.FontData.SizeInPoints = 7F;
-            ultraStatusPanel6.Appearance = appearance6;
+            appearance5.FontData.SizeInPoints = 7F;
+            ultraStatusPanel6.Appearance = appearance5;
             ultraStatusPanel6.Key = "Laden";
             ultraStatusPanel6.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Automatic;
             ultraStatusPanel6.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Button;
@@ -1515,33 +1509,10 @@ namespace PMDS
             ultraStatusPanel6,
             ultraStatusPanel9,
             ultraStatusPanel7});
-            this.ultraStatusBar1.Size = new System.Drawing.Size(865, 18);
+            this.ultraStatusBar1.Size = new System.Drawing.Size(1009, 18);
             this.ultraStatusBar1.TabIndex = 22;
             this.ultraStatusBar1.ButtonClick += new Infragistics.Win.UltraWinStatusBar.PanelEventHandler(this.ultraStatusBar2_ButtonClick);
             this.ultraStatusBar1.Click += new System.EventHandler(this.ultraStatusBar2_Click);
-            // 
-            // lblTxtMemory
-            // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            appearance2.FontData.SizeInPoints = 8F;
-            appearance2.TextHAlignAsString = "Right";
-            this.lblTxtMemory.Appearance = appearance2;
-            this.lblTxtMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTxtMemory.Location = new System.Drawing.Point(10, 5);
-            this.lblTxtMemory.Name = "lblTxtMemory";
-            this.lblTxtMemory.Size = new System.Drawing.Size(54, 13);
-            this.lblTxtMemory.TabIndex = 104;
-            this.lblTxtMemory.Text = "Speicher:";
-            this.lblTxtMemory.Visible = false;
-            // 
-            // panelBottomRight
-            // 
-            this.panelBottomRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBottomRight.Controls.Add(this.lblTxtMemory);
-            this.panelBottomRight.Location = new System.Drawing.Point(860, 676);
-            this.panelBottomRight.Name = "panelBottomRight";
-            this.panelBottomRight.Size = new System.Drawing.Size(146, 24);
-            this.panelBottomRight.TabIndex = 106;
             // 
             // timerELGA
             // 
@@ -1553,7 +1524,6 @@ namespace PMDS
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1008, 690);
-            this.Controls.Add(this.panelBottomRight);
             this.Controls.Add(this.PanelStatusbar);
             this.Controls.Add(this.panelControlGesamt);
             this.Controls.Add(this.splitter1);
@@ -1586,7 +1556,6 @@ namespace PMDS
             ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintraege1)).EndInit();
             this.PanelStatusbar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraStatusBar1)).EndInit();
-            this.panelBottomRight.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -222,11 +222,11 @@ namespace PMDS.GUI
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.lblBenutzer = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblPasswort = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtBenutzer = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -285,11 +285,11 @@ namespace PMDS.GUI
             // 
             // btnCancel
             // 
-            appearance5.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance5.Image = ((object)(resources.GetObject("appearance5.Image")));
-            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnCancel.Appearance = appearance5;
+            appearance1.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnCancel.Appearance = appearance1;
             this.btnCancel.AutoWorkLayout = false;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -310,11 +310,11 @@ namespace PMDS.GUI
             // 
             // btnOK
             // 
-            appearance1.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
-            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOK.Appearance = appearance1;
+            appearance2.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOK.Appearance = appearance2;
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -340,9 +340,9 @@ namespace PMDS.GUI
             // 
             // lblInfo
             // 
-            appearance6.ForeColor = System.Drawing.Color.Black;
-            appearance6.TextHAlignAsString = "Center";
-            this.lblInfo.Appearance = appearance6;
+            appearance4.ForeColor = System.Drawing.Color.Black;
+            appearance4.TextHAlignAsString = "Center";
+            this.lblInfo.Appearance = appearance4;
             this.lblInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo.Location = new System.Drawing.Point(10, 33);
             this.lblInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -353,9 +353,9 @@ namespace PMDS.GUI
             // 
             // lblConnection
             // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            appearance2.ForeColor = System.Drawing.Color.Gray;
-            this.lblConnection.Appearance = appearance2;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.ForeColor = System.Drawing.Color.Gray;
+            this.lblConnection.Appearance = appearance3;
             this.lblConnection.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             this.lblConnection.Location = new System.Drawing.Point(10, 72);
             this.lblConnection.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -372,7 +372,7 @@ namespace PMDS.GUI
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
-            this.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(367, 275);
             this.ControlBox = false;

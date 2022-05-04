@@ -1190,8 +1190,8 @@ namespace PMDS.GUI
             this.dgMain.DisplayLayout.Override.RowAppearance = appearance33;
             this.dgMain.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
             this.dgMain.DisplayLayout.Override.RowSpacingAfter = 2;
-            this.dgMain.DisplayLayout.Override.RowSpacingBefore = 2;
-            this.dgMain.DisplayLayout.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.None;
+            //this.dgMain.DisplayLayout.Override.RowSpacingBefore = 2;
+            //this.dgMain.DisplayLayout.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.None;
             this.dgMain.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             appearance34.BackColor = System.Drawing.SystemColors.ControlLight;
             this.dgMain.DisplayLayout.Override.TemplateAddRowAppearance = appearance34;

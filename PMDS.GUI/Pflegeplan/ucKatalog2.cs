@@ -1040,8 +1040,8 @@ namespace PMDS.GUI
             appearance14.BackColor = System.Drawing.SystemColors.Window;
             appearance14.BorderColor = System.Drawing.Color.Silver;
             this.gridFormulare.DisplayLayout.Override.RowAppearance = appearance14;
-            this.gridFormulare.DisplayLayout.Override.RowSpacingAfter = 2;
-            this.gridFormulare.DisplayLayout.Override.RowSpacingBefore = 2;
+            this.gridFormulare.DisplayLayout.Override.RowSpacingAfter = 0;
+            this.gridFormulare.DisplayLayout.Override.RowSpacingBefore = 0;
             this.gridFormulare.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.ExtendedAutoDrag;
             appearance15.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gridFormulare.DisplayLayout.Override.TemplateAddRowAppearance = appearance15;

@@ -589,7 +589,7 @@ Public Class contArchSuch
         Me.gridDocus.DisplayLayout.Override.ActiveRowAppearance = Appearance4
         Me.gridDocus.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect
         Me.gridDocus.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti
-        Me.gridDocus.DisplayLayout.Override.RowSpacingAfter = 2
+        Me.gridDocus.DisplayLayout.Override.RowSpacingAfter = 0
         Me.gridDocus.DisplayLayout.Override.RowSpacingBefore = 0
         Appearance5.BackColor = System.Drawing.Color.DarkGray
         Appearance5.BackColor2 = System.Drawing.Color.DarkGray

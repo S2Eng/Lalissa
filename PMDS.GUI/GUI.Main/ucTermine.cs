@@ -141,8 +141,8 @@ namespace PMDS.GUI
             appearance9.BorderColor = System.Drawing.Color.Silver;
             this.dgTermine.DisplayLayout.Override.RowAppearance = appearance9;
             this.dgTermine.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
-            this.dgTermine.DisplayLayout.Override.RowSpacingAfter = 3;
-            this.dgTermine.DisplayLayout.Override.RowSpacingBefore = 2;
+            this.dgTermine.DisplayLayout.Override.RowSpacingAfter = 0;
+            this.dgTermine.DisplayLayout.Override.RowSpacingBefore = 0;
             appearance10.BackColor = System.Drawing.SystemColors.ControlLight;
             this.dgTermine.DisplayLayout.Override.TemplateAddRowAppearance = appearance10;
             this.dgTermine.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;

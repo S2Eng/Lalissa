@@ -65,8 +65,10 @@ namespace PMDS.Calc.UI
             this.dtAbrechMonat.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             this.dtRechDatum.DateTime = DateTime.Now;
 
-            this.uOptSetAbrechTyp.Items.Add((int)PMDS.Calc.Logic.eCalcRun.month, QS2.Desktop.ControlManagment.ControlManagment.getRes("Monatsabrechnung"));
-            this.uOptSetAbrechTyp.Items.Add((int)PMDS.Calc.Logic.eCalcRun.freeBill, QS2.Desktop.ControlManagment.ControlManagment.getRes("Freie Rechnung"));
+            this.uOptSetAbrechTyp.Items.Add((int)PMDS.Calc.Logic.eCalcRun.month, QS2.Desktop.ControlManagment.ControlManagment.getRes("Monat"));
+            this.uOptSetAbrechTyp.Items.Add((int)PMDS.Calc.Logic.eCalcRun.freeBill, QS2.Desktop.ControlManagment.ControlManagment.getRes("Frei erstellte"));
+            this.uOptSetAbrechTyp.ItemSpacingVertical = 3;
+            this.uOptSetAbrechTyp.ItemSpacingHorizontal = 3;
             this.uOptSetAbrechTyp.Value = (int)PMDS.Calc.Logic.eCalcRun.month;
 
             this.cboBillStatus.Value = "a";

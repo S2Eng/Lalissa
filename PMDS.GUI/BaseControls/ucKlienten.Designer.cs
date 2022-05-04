@@ -68,7 +68,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAllgemeineKostenträger.AutoSize = false;
             this.cbAllgemeineKostenträger.DropDownButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
-            this.cbAllgemeineKostenträger.Location = new System.Drawing.Point(7, 57);
+            this.cbAllgemeineKostenträger.Location = new System.Drawing.Point(8, 75);
             this.cbAllgemeineKostenträger.Name = "cbAllgemeineKostenträger";
             this.cbAllgemeineKostenträger.Size = new System.Drawing.Size(277, 21);
             this.cbAllgemeineKostenträger.TabIndex = 0;
@@ -96,9 +96,9 @@
             this.panelUntenButt.Controls.Add(this.uButtonAlleKeine);
             this.panelUntenButt.Controls.Add(this.lblTitelKlienten);
             this.panelUntenButt.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelUntenButt.Location = new System.Drawing.Point(0, 297);
+            this.panelUntenButt.Location = new System.Drawing.Point(0, 291);
             this.panelUntenButt.Name = "panelUntenButt";
-            this.panelUntenButt.Size = new System.Drawing.Size(289, 28);
+            this.panelUntenButt.Size = new System.Drawing.Size(289, 34);
             this.panelUntenButt.TabIndex = 8;
             // 
             // uButtonAlleKeine
@@ -110,7 +110,7 @@
             this.uButtonAlleKeine.IsStandardControl = false;
             this.uButtonAlleKeine.Location = new System.Drawing.Point(3, 3);
             this.uButtonAlleKeine.Name = "uButtonAlleKeine";
-            this.uButtonAlleKeine.Size = new System.Drawing.Size(46, 20);
+            this.uButtonAlleKeine.Size = new System.Drawing.Size(65, 25);
             this.uButtonAlleKeine.TabIndex = 48;
             this.uButtonAlleKeine.Tag = "A";
             this.uButtonAlleKeine.Text = "Alle";
@@ -133,12 +133,12 @@
             this.panelSuche.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSuche.Location = new System.Drawing.Point(0, 0);
             this.panelSuche.Name = "panelSuche";
-            this.panelSuche.Size = new System.Drawing.Size(289, 161);
+            this.panelSuche.Size = new System.Drawing.Size(289, 185);
             this.panelSuche.TabIndex = 14;
             // 
             // chkNurSelbstzahlerJN
             // 
-            this.chkNurSelbstzahlerJN.Location = new System.Drawing.Point(7, 84);
+            this.chkNurSelbstzahlerJN.Location = new System.Drawing.Point(7, 105);
             this.chkNurSelbstzahlerJN.Name = "chkNurSelbstzahlerJN";
             this.chkNurSelbstzahlerJN.Size = new System.Drawing.Size(127, 14);
             this.chkNurSelbstzahlerJN.TabIndex = 164;
@@ -151,7 +151,7 @@
             this.btnSearchKlienten.Appearance = appearance3;
             this.btnSearchKlienten.AutoWorkLayout = false;
             this.btnSearchKlienten.IsStandardControl = false;
-            this.btnSearchKlienten.Location = new System.Drawing.Point(116, 109);
+            this.btnSearchKlienten.Location = new System.Drawing.Point(116, 139);
             this.btnSearchKlienten.Name = "btnSearchKlienten";
             this.btnSearchKlienten.Size = new System.Drawing.Size(65, 34);
             this.btnSearchKlienten.TabIndex = 10;
@@ -163,7 +163,7 @@
             // lblNameKlient
             // 
             this.lblNameKlient.AutoSize = true;
-            this.lblNameKlient.Location = new System.Drawing.Point(5, 4);
+            this.lblNameKlient.Location = new System.Drawing.Point(8, 8);
             this.lblNameKlient.Name = "lblNameKlient";
             this.lblNameKlient.Size = new System.Drawing.Size(115, 14);
             this.lblNameKlient.TabIndex = 154;
@@ -173,7 +173,7 @@
             // 
             this.txtKlient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtKlient.Location = new System.Drawing.Point(7, 19);
+            this.txtKlient.Location = new System.Drawing.Point(8, 30);
             this.txtKlient.Name = "txtKlient";
             this.txtKlient.Size = new System.Drawing.Size(277, 21);
             this.txtKlient.TabIndex = 1;
@@ -184,7 +184,7 @@
             appearance4.TextHAlignAsString = "Center";
             this.dtBis.Appearance = appearance4;
             this.dtBis.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
-            this.dtBis.Location = new System.Drawing.Point(33, 126);
+            this.dtBis.Location = new System.Drawing.Point(33, 156);
             this.dtBis.MaskInput = "{LOC}mm.yyyy";
             this.dtBis.Name = "dtBis";
             this.dtBis.ownFormat = "";
@@ -199,7 +199,7 @@
             appearance5.TextHAlignAsString = "Center";
             this.dtVon.Appearance = appearance5;
             this.dtVon.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
-            this.dtVon.Location = new System.Drawing.Point(33, 103);
+            this.dtVon.Location = new System.Drawing.Point(33, 127);
             this.dtVon.MaskInput = "{LOC}mm.yyyy";
             this.dtVon.Name = "dtVon";
             this.dtVon.ownFormat = "";
@@ -211,7 +211,7 @@
             // 
             // lblBis
             // 
-            this.lblBis.Location = new System.Drawing.Point(7, 129);
+            this.lblBis.Location = new System.Drawing.Point(7, 159);
             this.lblBis.Name = "lblBis";
             this.lblBis.Size = new System.Drawing.Size(27, 15);
             this.lblBis.TabIndex = 8;
@@ -219,7 +219,7 @@
             // 
             // lblVon
             // 
-            this.lblVon.Location = new System.Drawing.Point(7, 107);
+            this.lblVon.Location = new System.Drawing.Point(7, 131);
             this.lblVon.Name = "lblVon";
             this.lblVon.Size = new System.Drawing.Size(27, 15);
             this.lblVon.TabIndex = 7;
@@ -229,9 +229,9 @@
             // 
             appearance6.ForeColor = System.Drawing.Color.Black;
             this.lblAllgemeineKostenträger.Appearance = appearance6;
-            this.lblAllgemeineKostenträger.Location = new System.Drawing.Point(3, 41);
+            this.lblAllgemeineKostenträger.Location = new System.Drawing.Point(8, 57);
             this.lblAllgemeineKostenträger.Name = "lblAllgemeineKostenträger";
-            this.lblAllgemeineKostenträger.Size = new System.Drawing.Size(192, 13);
+            this.lblAllgemeineKostenträger.Size = new System.Drawing.Size(192, 15);
             this.lblAllgemeineKostenträger.TabIndex = 3;
             this.lblAllgemeineKostenträger.Text = "Allgemeine Kostenträger";
             this.lblAllgemeineKostenträger.UseAppStyling = false;
@@ -249,9 +249,9 @@
             this.panelButtons.AutoScroll = true;
             this.panelButtons.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelButtons.Location = new System.Drawing.Point(0, 161);
+            this.panelButtons.Location = new System.Drawing.Point(0, 185);
             this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(289, 136);
+            this.panelButtons.Size = new System.Drawing.Size(289, 106);
             this.panelButtons.TabIndex = 15;
             // 
             // timer1

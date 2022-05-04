@@ -47,8 +47,8 @@ Public Class doBaseElements
             If Not IsLoaded And qs2.core.ENV.SystemIsInitialized Then
                 If TypeOf cont Is Infragistics.Win.UltraWinGrid.UltraGrid Then
                     Dim grd As Infragistics.Win.UltraWinGrid.UltraGrid = cont
-                    grd.DisplayLayout.Override.RowSpacingAfter = 2
-                    grd.DisplayLayout.Override.RowSpacingBefore = 2
+                    grd.DisplayLayout.Override.RowSpacingAfter = 0
+                    grd.DisplayLayout.Override.RowSpacingBefore = 0
                     grd.DisplayLayout.Override.DefaultRowHeight = 18
                     'grd.DisplayLayout.Appearance.FontData.SizeInPoints = 12
                     'grd.DisplayLayout.Override.CellAppearance.FontData.SizeInPoints = 12

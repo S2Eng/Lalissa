@@ -70,7 +70,12 @@ namespace PMDS.Calc.UI
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                if (!this.checkUIDate(ref this.dtMonat)) return;
+                if (this.dtMonat.Value == null)
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurde kein Abrechnungsmonat ausgewählt!", "Abrechnen");
+                    return;
+                }
+
                 this._daylist.run(this.dtMonat.DateTime, this.ucbill1.editor.textControl1, ENV.IDKlinik);
             }
             catch (Exception ex)
@@ -83,15 +88,6 @@ namespace PMDS.Calc.UI
             }
         }
 
-        public bool checkUIDate(ref Infragistics.Win.UltraWinEditors.UltraDateTimeEditor AbrechMonat )
-        {
-            if (AbrechMonat.Value == null)
-            {
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurde kein Abrechnungsmonat ausgewählt!", "Abrechnen");
-                return false;
-            }
-            return true;
-        }
         private void ucDaylist_Load(object sender, EventArgs e)
         {
 

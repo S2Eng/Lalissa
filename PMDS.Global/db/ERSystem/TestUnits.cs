@@ -2000,8 +2000,8 @@ namespace PMDS.Global.db.ERSystem
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Buchungen drucken");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Zurück");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Monatsabrechnung");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Freie Rechnung");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Monat");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Frei erstellte");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Abgerechnet bis");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die selektierten Rechnungen wirklich löschen?");
 
