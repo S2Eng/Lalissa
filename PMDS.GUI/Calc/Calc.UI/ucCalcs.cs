@@ -18,12 +18,11 @@ namespace PMDS.Calc.UI
         public PMDS.Calc.UI.ucCalcsSitemap uiSiteMapForm;
         public PMDS.Calc.UI.ucSR ucSR;
         private bool editorVis = false;
+        private PMDS.Calc.Logic.CalcUIMode ActUIMode = Logic.CalcUIMode.Undefiniert;
 
         public bool freigegebenOn = false;
         public PMDS.GUI.VB.gridExport export = new PMDS.GUI.VB.gridExport();
         //public QS2.Ressources.Handle.doRessources doRessources = new QS2.Ressources.Handle.doRessources();
-
-
 
 
         public ucCalcs()
@@ -213,16 +212,9 @@ namespace PMDS.Calc.UI
 
                 this.uiSiteMapForm.loadCalcs(ref this.dbPMDS1, dFrom, dTo, vonRechDatum, bisRechDatum,
                                             (UltraGrid)this.uGridAbrech2, (Infragistics.Win.Misc.UltraButton)this.butAlleKeine, ref this.lblCount,
-                                            billTyp, BillStatus, showFreigegebenAndStorniert, true, BillStatusFreigegeben, this.txtReNr.Text);
+                                            billTyp, BillStatus, showFreigegebenAndStorniert, true, BillStatusFreigegeben, this.txtReNr.Text, this.ActUIMode);
 
                 this.doSum();
-
-                //this.doRessources.run(this, this.components, null,
-                //          QS2.Ressources.Handle.doRessources.eTypeRessourcesRun.RessourcenManagement,
-                //          QS2.Ressources.Handle.doRessources.eSystemGroup.Booking,
-                //          QS2.Ressources.Handle.doRessources.eControlGroup.Booking,
-                //          QS2.Ressources.Handle.doRessources.eResType.Img, RBU.DataBase.CONNECTION);
-
             }
             catch (Exception ex)
             {
@@ -314,6 +306,7 @@ namespace PMDS.Calc.UI
                 switch (aktivButton)
                 {
                     case "F":
+                        ActUIMode = PMDS.Calc.Logic.CalcUIMode.Freigegeben;
                         this.btnPrint.Text = "Rechnung(en) öffnen";
                         PMDS.Global.UIGlobal.setAktiv(this.btnFreigeben, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.White);
                         ultraToolTipInfoF.ToolTipText = "\nFür Rechnungsversand = Umschalt-Taste\nFür Rechnungskopie = Strg-Taste";
@@ -321,6 +314,7 @@ namespace PMDS.Calc.UI
                         break;
 
                     case "O":
+                        ActUIMode = PMDS.Calc.Logic.CalcUIMode.Vorschau;
                         this.btnPrint.Text = "Vorschau(en) öffnen";
                         PMDS.Global.UIGlobal.setAktiv(this.btnVorschau, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.White);
                         ultraToolTipInfoF.ToolTipText += "\nFür FSW-XLSX-Vorschau = Strg-Taste";
@@ -328,6 +322,7 @@ namespace PMDS.Calc.UI
                         break;
 
                     default:
+                        ActUIMode = PMDS.Calc.Logic.CalcUIMode.Belege;
                         this.btnPrint.Text = "Beleg(e) öffnen";
                         PMDS.Global.UIGlobal.setAktivDisable(this.btnVorschau, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
                         ultraToolTipInfoF.ToolTipText += "";

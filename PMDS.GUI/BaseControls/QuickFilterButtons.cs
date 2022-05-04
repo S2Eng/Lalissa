@@ -79,28 +79,11 @@ namespace PMDS.GUI.BaseControls
 
                 this._gridxy = gridTmp;
 
-
 			    dsQuickFilter.QuickFilterDataTable dt = new dsQuickFilter.QuickFilterDataTable();
-                //toolTip1.RemoveAll();
-                      
-                //if (ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht)
-                //{
-                //    dt = _manager.ReadAll(ENV.CurrentIDAbteilung, ENV.IQuickNurAbt);
-                //}
-                //else if (ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Klientanansicht)
-                //{
-                //    Patient pat = new Patient(ENV.CurrentIDPatient);
-                //    dt = _manager.ReadAll(ENV.ABTEILUNG = pat.Aufenthalt.Verlauf.IDAbteilung_Nach, ENV.IQuickNurAbt);
-                //}
-
-                //Patient pat = new Patient(ENV.CurrentIDPatient);
-                //dt = _manager.ReadAll( pat.Aufenthalt.Verlauf.IDAbteilung_Nach, ENV.IQuickNurAbt);
 
                 dt = _manager.ReadAll(ENV.CurrentIDAbteilung, ENV.IDKlinik);
                 
                 int y = pnlMain.Width;
-                //if (dt.Rows.Count == 0 && ENV.IQuickNurAbt)
-                //    dt = _manager.ReadAllNurGesHaus(ENV.IDKlinik);
 
                 this._MainWindow.IDKlinikLast = ENV.IDKlinik;
                 this._MainWindow.IDAbteilungLast = ENV.CurrentIDAbteilung;
@@ -121,7 +104,7 @@ namespace PMDS.GUI.BaseControls
                             b = new  QuickFilterButton();
                             b.Click += new EventHandler(button_Click);
 
-                            b.UseAppStyling = false;
+                            //b.UseAppStyling = false;
                             b.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
                             b.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
 
@@ -132,8 +115,6 @@ namespace PMDS.GUI.BaseControls
 
                             b.initControl();
                             pnlMain.Controls.Add(b);
-                                                        
-                            //PMDS.Global.UIGlobal.setAktivDisable(b, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
                         }
 
                         b.MainWindow = this;

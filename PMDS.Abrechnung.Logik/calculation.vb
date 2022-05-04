@@ -171,9 +171,12 @@ Public Class calculation
         End Try
     End Function
 
-    Public Sub Load(ByRef klienten As ArrayList, ByVal von As DateTime, ByVal bis As DateTime, vonRechDatum As Nullable(Of DateTime), bisRechDatum As Nullable(Of DateTime),
+    Public Sub Load(ByRef klienten As ArrayList, ByVal von As DateTime, ByVal bis As DateTime, vonRechDatum As Nullable(Of DateTime),
+                    bisRechDatum As Nullable(Of DateTime),
                     ByRef db As dbPMDS, ByVal rechTyp As PMDS.Calc.Logic.eBillTyp,
-                    ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showStornierte As Boolean, showExportiere As Boolean, RechNr As String)
+                    ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid,
+                    showStornierte As Boolean, showExportiere As Boolean, RechNr As String,
+                    ActUIMode As PMDS.Calc.Logic.CalcUIMode)
 
 
         Dim dbTemp As dbPMDS = db.Clone
@@ -190,7 +193,7 @@ Public Class calculation
     Public Sub Load(ByRef klienten As ArrayList, ByVal von As DateTime, ByVal bis As DateTime, vonRechDatum As Nullable(Of DateTime), bisRechDatum As Nullable(Of DateTime),
                     ByRef db As dbPMDS, ByVal rechTyp As PMDS.Calc.Logic.eBillTyp,
                     ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportiere As Boolean, RechNr As String,
-                    ByRef iOffene As Integer, ByRef iFreigegebene As Integer)
+                    ByRef iOffene As Integer, ByRef iFreigegebene As Integer, UIMode As PMDS.Calc.Logic.CalcUIMode)
 
 
         'Alle bills aus Db holen statt zweimal alle rechnungen lesen (einmal für offene und einmal für freigegeben)
@@ -208,11 +211,15 @@ Public Class calculation
 
         If status = PMDS.Calc.Logic.eBillStatus.offen Then
             For Each r As dbPMDS.billsRow In dbTemp.bills
-                If r.Freigegeben = False Then
-                    db.bills.ImportRow(r)
-                    iOffene += 1
+                If UIMode = CalcUIMode.Vorschau And r.Typ <> eBillTyp.Beilage And r.Typ <> eBillTyp.Rechnung And r.Typ <> eBillTyp.FreieRechnung Then
+                    'ignorieren // in Rechnugnsvorschau nur Beilagen, Rechnungen und FreiRechnungen anzeigen
                 Else
-                    iFreigegebene += 1
+                    If r.Freigegeben = False Then
+                        db.bills.ImportRow(r)
+                        iOffene += 1
+                    Else
+                        iFreigegebene += 1
+                    End If
                 End If
             Next
         ElseIf status = PMDS.Calc.Logic.eBillStatus.freigegeben Then

@@ -438,7 +438,7 @@ namespace PMDS
             this.lblLogViewer.Size = new System.Drawing.Size(60, 14);
             this.lblLogViewer.TabIndex = 15;
             this.lblLogViewer.Text = "Log-Viewer";
-            this.lblLogViewer.UseAppStyling = false;
+            this.lblLogViewer.UseAppStyling = true;
             this.lblLogViewer.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.lblLogViewer.Click += new System.EventHandler(this.lblLogViewer_Click);
             // 
@@ -459,7 +459,7 @@ namespace PMDS
             this.lblUIviewer.Size = new System.Drawing.Size(48, 14);
             this.lblUIviewer.TabIndex = 17;
             this.lblUIviewer.Text = "UiViewer";
-            this.lblUIviewer.UseAppStyling = false;
+            this.lblUIviewer.UseAppStyling = true;
             this.lblUIviewer.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.lblUIviewer.Visible = false;
             // 

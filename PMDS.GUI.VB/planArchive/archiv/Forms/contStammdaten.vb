@@ -865,7 +865,7 @@ Public Class contStammdaten
         Me.lblPfadAuswahlen.Size = New System.Drawing.Size(73, 16)
         Me.lblPfadAuswahlen.TabIndex = 1
         Me.lblPfadAuswahlen.Text = "Pfad suchen"
-        Me.lblPfadAuswahlen.UseAppStyling = False
+        Me.lblPfadAuswahlen.UseAppStyling = True
         Me.lblPfadAuswahlen.UseHotTracking = Infragistics.Win.DefaultableBoolean.[True]
         '
         'lblPostBoxErstellen
@@ -883,7 +883,7 @@ Public Class contStammdaten
         Me.lblPostBoxErstellen.Size = New System.Drawing.Size(192, 16)
         Me.lblPostBoxErstellen.TabIndex = 2
         Me.lblPostBoxErstellen.Text = "Postbox für alle Benutzer erstellen"
-        Me.lblPostBoxErstellen.UseAppStyling = False
+        Me.lblPostBoxErstellen.UseAppStyling = True
         Me.lblPostBoxErstellen.UseHotTracking = Infragistics.Win.DefaultableBoolean.[True]
         Me.lblPostBoxErstellen.Visible = False
         '
@@ -902,7 +902,7 @@ Public Class contStammdaten
         Me.lblGesamtesArchivLöschen.Size = New System.Drawing.Size(144, 16)
         Me.lblGesamtesArchivLöschen.TabIndex = 1
         Me.lblGesamtesArchivLöschen.Text = "Gesamtes Archiv löschen"
-        Me.lblGesamtesArchivLöschen.UseAppStyling = False
+        Me.lblGesamtesArchivLöschen.UseAppStyling = True
         Me.lblGesamtesArchivLöschen.UseHotTracking = Infragistics.Win.DefaultableBoolean.[True]
         Me.lblGesamtesArchivLöschen.Visible = False
         '

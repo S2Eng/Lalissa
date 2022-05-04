@@ -288,15 +288,15 @@
             // 
             appearance3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnPrintSettings.Appearance = appearance3;
-            this.btnPrintSettings.Location = new System.Drawing.Point(0, 0);
+            this.btnPrintSettings.Location = new System.Drawing.Point(3, 0);
             this.btnPrintSettings.Name = "btnPrintSettings";
             this.btnPrintSettings.PopupItemKey = "pnlPrintStammDatenBlatt";
             this.btnPrintSettings.PopupItemProvider = this.ultraPopupControlContainer1;
             this.btnPrintSettings.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.btnPrintSettings.Size = new System.Drawing.Size(165, 30);
+            this.btnPrintSettings.Size = new System.Drawing.Size(153, 32);
             this.btnPrintSettings.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.btnPrintSettings.TabIndex = 89;
-            this.btnPrintSettings.Text = "&Stammdatenblatt drucken";
+            this.btnPrintSettings.Text = "&Stammdatenblatt";
             this.btnPrintSettings.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnPrintSettings.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             // 

@@ -1238,7 +1238,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBoxAllgemein1);
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBoxPersonebescheibung);
             this.ultraTabPageControl2.Controls.Add(this.lblVorname);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 24);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(1028, 673);
             this.ultraTabPageControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.ultraTabPageControl2_Paint);
@@ -3139,7 +3139,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl7.Controls.Add(this.lblAnmerkung);
             this.ultraTabPageControl7.Controls.Add(this.editorRezGebBef_Anmerkung);
             this.ultraTabPageControl7.Controls.Add(this.baseGroupBox1);
-            this.ultraTabPageControl7.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl7.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl7.Name = "ultraTabPageControl7";
             this.ultraTabPageControl7.Size = new System.Drawing.Size(1028, 673);
             // 
@@ -3359,7 +3359,7 @@ namespace PMDS.GUI
             this.cbRezeptGeb.Location = new System.Drawing.Point(13, 9);
             this.cbRezeptGeb.Margin = new System.Windows.Forms.Padding(4);
             this.cbRezeptGeb.Name = "cbRezeptGeb";
-            this.cbRezeptGeb.Size = new System.Drawing.Size(179, 25);
+            this.cbRezeptGeb.Size = new System.Drawing.Size(273, 25);
             this.cbRezeptGeb.TabIndex = 1;
             this.cbRezeptGeb.Text = "Rezeptgebührenbefreiung";
             this.cbRezeptGeb.CheckedChanged += new System.EventHandler(this.OnValueChanged);

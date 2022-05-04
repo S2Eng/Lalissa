@@ -334,6 +334,9 @@ namespace PMDS.GUI
             GuiUtil.resetColor2(this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cmbKlasse);
 
             GuiUtil.resetColor2(txtNachname);
+            txtNachname.Appearance.ForeColor = Color.Red;
+            txtNachname.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+
             GuiUtil.resetColor2(txtVorname);
             GuiUtil.resetColor2(gebDatum);
             GuiUtil.resetColor2(cmbBenutzer);

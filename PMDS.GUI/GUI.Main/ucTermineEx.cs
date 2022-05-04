@@ -472,7 +472,7 @@ namespace PMDS.GUI
             // 
             // txtSearchInGrid
             // 
-            this.txtSearchInGrid.Location = new System.Drawing.Point(120, 8);
+            this.txtSearchInGrid.Location = new System.Drawing.Point(168, 7);
             this.txtSearchInGrid.MaxLength = 50;
             this.txtSearchInGrid.Name = "txtSearchInGrid";
             this.txtSearchInGrid.Size = new System.Drawing.Size(176, 21);
@@ -483,7 +483,7 @@ namespace PMDS.GUI
             // 
             this.lblSearch.Location = new System.Drawing.Point(3, 11);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(120, 14);
+            this.lblSearch.Size = new System.Drawing.Size(151, 17);
             this.lblSearch.TabIndex = 92;
             this.lblSearch.Text = "Suche in der Liste [F3]";
             // 
@@ -514,8 +514,8 @@ namespace PMDS.GUI
             this.ucTerminTimePicker1.Location = new System.Drawing.Point(64, 6);
             this.ucTerminTimePicker1.Mode = PMDS.GUI.EFilter.HEUTE;
             this.ucTerminTimePicker1.Name = "ucTerminTimePicker1";
-            this.ucTerminTimePicker1.RangeFrom = new System.DateTime(2021, 11, 3, 0, 0, 0, 0);
-            this.ucTerminTimePicker1.RangeTo = new System.DateTime(2021, 11, 3, 23, 59, 59, 0);
+            this.ucTerminTimePicker1.RangeFrom = new System.DateTime(2022, 5, 3, 0, 0, 0, 0);
+            this.ucTerminTimePicker1.RangeTo = new System.DateTime(2022, 5, 3, 23, 59, 59, 0);
             this.ucTerminTimePicker1.Size = new System.Drawing.Size(189, 24);
             this.ucTerminTimePicker1.TabIndex = 39;
             // 

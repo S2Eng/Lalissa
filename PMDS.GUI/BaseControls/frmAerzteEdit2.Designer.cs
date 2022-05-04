@@ -110,7 +110,7 @@
             this.btnKlientenMehrfachauswahl.Size = new System.Drawing.Size(150, 38);
             this.btnKlientenMehrfachauswahl.TabIndex = 6;
             this.btnKlientenMehrfachauswahl.Text = "Klienten Mehrfachauswahl";
-            this.btnKlientenMehrfachauswahl.UseAppStyling = false;
+            this.btnKlientenMehrfachauswahl.UseAppStyling = true;
             this.btnKlientenMehrfachauswahl.Click += new System.EventHandler(this.btnKlientenMehrfachauswahl_Click);
             // 
             // frmAerzteEdit

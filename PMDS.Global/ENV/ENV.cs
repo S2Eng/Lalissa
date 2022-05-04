@@ -107,6 +107,7 @@ namespace PMDS.Global
 
         }
 
+        public static string IGStyle = "pmds";
         public static string StartupMode = "pmds";
         public static bool VisualStudioMode = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
         public static Guid VersionNr = new Guid("10000000-1009-1000-0000-000000000001");
@@ -118,8 +119,8 @@ namespace PMDS.Global
         public static System.Data.OleDb.OleDbConnection conGiboDat;
         public static string IDApplication = qs2.core.license.doLicense.eApp.PMDS.ToString();
 
-        public static string pmdsRelease = "Release 4";
-        public static int pmdsDBVersion = 41000;
+        public static string pmdsRelease = "Release 5";
+        public static int pmdsDBVersion = 51000;
         public static string StartupTyp = "";                       //Mit welchem Paramter ?typ wurde gestartet
         public static string typRechNr = "Standard";
         public static string MainCaption = "PMDS";
@@ -841,8 +842,8 @@ namespace PMDS.Global
 
             Infragistics.Win.AppStyling.StyleManager.Reset();
 
-            if (bOn && System.IO.File.Exists(System.IO.Path.Combine(ENV.pathConfig, "PMDS.isl")))
-                    Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(ENV.pathConfig, "pmds.isl")); 
+            if (bOn && System.IO.File.Exists(System.IO.Path.Combine(ENV.pathConfig, ENV.IGStyle + ".isl")))
+                    Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(ENV.pathConfig, ENV.IGStyle + ".isl")); 
         }
 
         //-------------------------------- Properties -------------------------------------
@@ -1375,6 +1376,7 @@ namespace PMDS.Global
                 }
 
                 //------------------------------------------------------- ENV-Variablen aus Config lesen -------------------
+                SetENVValue("IGStyle", ref ENV.IGStyle);
                 SetENVValue("adminSecure", ref ENV.adminSecure);
                 SetENVValue("License", ref ENV.License, eTrim.yes, eDecrypt.PMDSMode);
                 SetENVValue("TypeRessourcesRun", ref ENV.TypeRessourcesRun);

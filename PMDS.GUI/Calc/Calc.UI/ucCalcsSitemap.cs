@@ -148,7 +148,7 @@ namespace PMDS.Calc.UI
                                 ref QS2.Desktop.ControlManagment.BaseLabel lblCount, PMDS.Calc.Logic.eBillTyp rechTyp, 
                                 PMDS.Calc.Logic.eBillStatus status, bool showStornierte, bool showExportierte,
                                 PMDS.Calc.Logic.eBillStatus BillStatusFreigegeben,
-                                string RechNr)
+                                string RechNr, PMDS.Calc.Logic.CalcUIMode ActUIMode)
         { 
             try
             {
@@ -158,7 +158,7 @@ namespace PMDS.Calc.UI
 
                 if (this.typ == eTyp.calc)
                 {
-                    this.calculation.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showStornierte, showExportierte, RechNr, ref iOffene, ref iFreigegebene);
+                    this.calculation.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showStornierte, showExportierte, RechNr, ref iOffene, ref iFreigegebene, ActUIMode);
                     this.showAnzButtonsCalc(ref db, von, bis, vonRechDatum, bisRechDatum, grid, butAlleKeine, ref lblCount, rechTyp, status, showStornierte, showExportierte, BillStatusFreigegeben);
                     this.form.btnVorschau.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Vorschau") + "" + " (" + iOffene.ToString() + ")";
                     this.form.btnFreigeben.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Freigegeben") + "" + " (" + iFreigegebene.ToString() + ")";
@@ -201,7 +201,10 @@ namespace PMDS.Calc.UI
                         {
                             if (row.Cells["IDKost"].Value.sEquals(IDKost))
                             {
-                                row.Cells["Re-Empfänger"].Value = rKost.Rechnungsempfaenger;
+                                if (rKost != null)
+                                {
+                                    row.Cells["Re-Empfänger"].Value = rKost.Rechnungsempfaenger;
+                                }
                             }
                         }
                     }
