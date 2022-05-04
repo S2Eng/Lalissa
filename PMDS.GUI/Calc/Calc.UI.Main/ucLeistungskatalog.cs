@@ -462,17 +462,17 @@ namespace PMDS.Calc.UI.Admin
             // 
             // lblLeistungskatalog
             // 
-            this.lblLeistungskatalog.Location = new System.Drawing.Point(13, 135);
+            this.lblLeistungskatalog.Location = new System.Drawing.Point(13, 129);
             this.lblLeistungskatalog.Name = "lblLeistungskatalog";
-            this.lblLeistungskatalog.Size = new System.Drawing.Size(160, 16);
+            this.lblLeistungskatalog.Size = new System.Drawing.Size(160, 24);
             this.lblLeistungskatalog.TabIndex = 6;
             this.lblLeistungskatalog.Text = "Leistungskatalog";
             // 
             // lblLeistungskatalogGruppe
             // 
-            this.lblLeistungskatalogGruppe.Location = new System.Drawing.Point(13, 10);
+            this.lblLeistungskatalogGruppe.Location = new System.Drawing.Point(13, 6);
             this.lblLeistungskatalogGruppe.Name = "lblLeistungskatalogGruppe";
-            this.lblLeistungskatalogGruppe.Size = new System.Drawing.Size(176, 16);
+            this.lblLeistungskatalogGruppe.Size = new System.Drawing.Size(176, 23);
             this.lblLeistungskatalogGruppe.TabIndex = 7;
             this.lblLeistungskatalogGruppe.Text = "Leistungskataloggruppe";
             // 

@@ -503,7 +503,7 @@
             this.ultraTabPageControl2.Controls.Add(this.panelPrint);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(984, 273);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(1155, 256);
             // 
             // panelPrint
             // 
@@ -511,7 +511,7 @@
             this.panelPrint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPrint.Location = new System.Drawing.Point(0, 0);
             this.panelPrint.Name = "panelPrint";
-            this.panelPrint.Size = new System.Drawing.Size(984, 273);
+            this.panelPrint.Size = new System.Drawing.Size(1155, 256);
             this.panelPrint.TabIndex = 1;
             // 
             // uGridBagLayoutPanelBooking
@@ -522,7 +522,7 @@
             this.uGridBagLayoutPanelBooking.ExpandToFitWidth = true;
             this.uGridBagLayoutPanelBooking.Location = new System.Drawing.Point(0, 0);
             this.uGridBagLayoutPanelBooking.Name = "uGridBagLayoutPanelBooking";
-            this.uGridBagLayoutPanelBooking.Size = new System.Drawing.Size(984, 273);
+            this.uGridBagLayoutPanelBooking.Size = new System.Drawing.Size(1155, 256);
             this.uGridBagLayoutPanelBooking.TabIndex = 1;
             // 
             // ucprint1
@@ -538,7 +538,7 @@
             this.ucprint1.Location = new System.Drawing.Point(5, 5);
             this.ucprint1.Name = "ucprint1";
             this.uGridBagLayoutPanelBooking.SetPreferredSize(this.ucprint1, new System.Drawing.Size(579, 156));
-            this.ucprint1.Size = new System.Drawing.Size(974, 263);
+            this.ucprint1.Size = new System.Drawing.Size(1145, 246);
             this.ucprint1.TabIndex = 0;
             // 
             // panelTop
@@ -812,7 +812,7 @@
             // 
             this.lblKonto.Location = new System.Drawing.Point(298, 28);
             this.lblKonto.Name = "lblKonto";
-            this.lblKonto.Size = new System.Drawing.Size(46, 15);
+            this.lblKonto.Size = new System.Drawing.Size(98, 15);
             this.lblKonto.TabIndex = 108;
             this.lblKonto.Text = "Konto";
             // 
@@ -820,7 +820,7 @@
             // 
             this.lblKostenträger.Location = new System.Drawing.Point(298, 54);
             this.lblKostenträger.Name = "lblKostenträger";
-            this.lblKostenträger.Size = new System.Drawing.Size(75, 19);
+            this.lblKostenträger.Size = new System.Drawing.Size(99, 19);
             this.lblKostenträger.TabIndex = 106;
             this.lblKostenträger.Text = "Kostenträger";
             // 
@@ -847,7 +847,7 @@
             // 
             this.lblVon.Location = new System.Drawing.Point(10, 27);
             this.lblVon.Name = "lblVon";
-            this.lblVon.Size = new System.Drawing.Size(27, 15);
+            this.lblVon.Size = new System.Drawing.Size(39, 15);
             this.lblVon.TabIndex = 3;
             this.lblVon.Text = "Von";
             // 
@@ -855,7 +855,7 @@
             // 
             this.lblKlienten.Location = new System.Drawing.Point(298, 81);
             this.lblKlienten.Name = "lblKlienten";
-            this.lblKlienten.Size = new System.Drawing.Size(56, 15);
+            this.lblKlienten.Size = new System.Drawing.Size(98, 15);
             this.lblKlienten.TabIndex = 104;
             this.lblKlienten.Text = "Klienten";
             // 

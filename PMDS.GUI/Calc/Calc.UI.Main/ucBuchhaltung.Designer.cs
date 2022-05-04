@@ -314,6 +314,7 @@
             appearance6.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance6.TextVAlignAsString = "Middle";
             this.btnAbrechnungsdaten.Appearance = appearance6;
+            this.btnAbrechnungsdaten.AutoWorkLayout = false;
             this.btnAbrechnungsdaten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnAbrechnungsdaten.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint4.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -324,6 +325,7 @@
             gridBagConstraint4.OriginY = 0;
             this.ultraGridBagLayoutPanel8.SetGridBagConstraint(this.btnAbrechnungsdaten, gridBagConstraint4);
             this.btnAbrechnungsdaten.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnAbrechnungsdaten.IsStandardControl = false;
             this.btnAbrechnungsdaten.Location = new System.Drawing.Point(1, 24);
             this.btnAbrechnungsdaten.Name = "btnAbrechnungsdaten";
             this.ultraGridBagLayoutPanel8.SetPreferredSize(this.btnAbrechnungsdaten, new System.Drawing.Size(92, 41));
@@ -350,6 +352,7 @@
             appearance7.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance7.TextVAlignAsString = "Middle";
             this.btnRechnungen.Appearance = appearance7;
+            this.btnRechnungen.AutoWorkLayout = false;
             this.btnRechnungen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnRechnungen.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint5.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -360,6 +363,7 @@
             gridBagConstraint5.OriginY = 0;
             this.ultraGridBagLayoutPanel8.SetGridBagConstraint(this.btnRechnungen, gridBagConstraint5);
             this.btnRechnungen.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnRechnungen.IsStandardControl = false;
             this.btnRechnungen.Location = new System.Drawing.Point(178, 24);
             this.btnRechnungen.Name = "btnRechnungen";
             this.ultraGridBagLayoutPanel8.SetPreferredSize(this.btnRechnungen, new System.Drawing.Size(68, 41));
@@ -386,6 +390,7 @@
             appearance8.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance8.TextVAlignAsString = "Middle";
             this.btnLeistungen.Appearance = appearance8;
+            this.btnLeistungen.AutoWorkLayout = false;
             this.btnLeistungen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnLeistungen.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint6.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -396,6 +401,7 @@
             gridBagConstraint6.OriginY = 0;
             this.ultraGridBagLayoutPanel8.SetGridBagConstraint(this.btnLeistungen, gridBagConstraint6);
             this.btnLeistungen.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnLeistungen.IsStandardControl = false;
             this.btnLeistungen.Location = new System.Drawing.Point(33, 24);
             this.btnLeistungen.Name = "btnLeistungen";
             this.ultraGridBagLayoutPanel8.SetPreferredSize(this.btnLeistungen, new System.Drawing.Size(60, 41));
@@ -422,6 +428,7 @@
             appearance9.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance9.TextVAlignAsString = "Middle";
             this.btnFreieRechnungen2.Appearance = appearance9;
+            this.btnFreieRechnungen2.AutoWorkLayout = false;
             this.btnFreieRechnungen2.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnFreieRechnungen2.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint7.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -432,6 +439,7 @@
             gridBagConstraint7.OriginY = 0;
             this.ultraGridBagLayoutPanel8.SetGridBagConstraint(this.btnFreieRechnungen2, gridBagConstraint7);
             this.btnFreieRechnungen2.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnFreieRechnungen2.IsStandardControl = false;
             this.btnFreieRechnungen2.Location = new System.Drawing.Point(142, 24);
             this.btnFreieRechnungen2.Name = "btnFreieRechnungen2";
             this.ultraGridBagLayoutPanel8.SetPreferredSize(this.btnFreieRechnungen2, new System.Drawing.Size(90, 41));
@@ -458,6 +466,7 @@
             appearance10.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance10.TextVAlignAsString = "Middle";
             this.btnAbwesenheiten.Appearance = appearance10;
+            this.btnAbwesenheiten.AutoWorkLayout = false;
             this.btnAbwesenheiten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnAbwesenheiten.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint8.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -468,6 +477,7 @@
             gridBagConstraint8.OriginY = 0;
             this.ultraGridBagLayoutPanel8.SetGridBagConstraint(this.btnAbwesenheiten, gridBagConstraint8);
             this.btnAbwesenheiten.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnAbwesenheiten.IsStandardControl = false;
             this.btnAbwesenheiten.Location = new System.Drawing.Point(54, 24);
             this.btnAbwesenheiten.Name = "btnAbwesenheiten";
             this.ultraGridBagLayoutPanel8.SetPreferredSize(this.btnAbwesenheiten, new System.Drawing.Size(76, 41));
@@ -494,6 +504,7 @@
             appearance11.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance11.TextVAlignAsString = "Middle";
             this.btnManBuchungen2.Appearance = appearance11;
+            this.btnManBuchungen2.AutoWorkLayout = false;
             this.btnManBuchungen2.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnManBuchungen2.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint9.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -504,6 +515,7 @@
             gridBagConstraint9.OriginY = 0;
             this.ultraGridBagLayoutPanel8.SetGridBagConstraint(this.btnManBuchungen2, gridBagConstraint9);
             this.btnManBuchungen2.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnManBuchungen2.IsStandardControl = false;
             this.btnManBuchungen2.Location = new System.Drawing.Point(85, 24);
             this.btnManBuchungen2.Name = "btnManBuchungen2";
             this.ultraGridBagLayoutPanel8.SetPreferredSize(this.btnManBuchungen2, new System.Drawing.Size(85, 41));
@@ -530,6 +542,7 @@
             appearance12.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance12.TextVAlignAsString = "Middle";
             this.btnDepotgeldkonto2.Appearance = appearance12;
+            this.btnDepotgeldkonto2.AutoWorkLayout = false;
             this.btnDepotgeldkonto2.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnDepotgeldkonto2.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint10.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -540,6 +553,7 @@
             gridBagConstraint10.OriginY = 0;
             this.ultraGridBagLayoutPanel8.SetGridBagConstraint(this.btnDepotgeldkonto2, gridBagConstraint10);
             this.btnDepotgeldkonto2.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnDepotgeldkonto2.IsStandardControl = false;
             this.btnDepotgeldkonto2.Location = new System.Drawing.Point(115, 24);
             this.btnDepotgeldkonto2.Name = "btnDepotgeldkonto2";
             this.ultraGridBagLayoutPanel8.SetPreferredSize(this.btnDepotgeldkonto2, new System.Drawing.Size(80, 41));
@@ -566,9 +580,11 @@
             appearance13.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance13.TextVAlignAsString = "Middle";
             this.btnTransferzahlungen2.Appearance = appearance13;
+            this.btnTransferzahlungen2.AutoWorkLayout = false;
             this.btnTransferzahlungen2.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnTransferzahlungen2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTransferzahlungen2.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnTransferzahlungen2.IsStandardControl = false;
             this.btnTransferzahlungen2.Location = new System.Drawing.Point(365, 0);
             this.btnTransferzahlungen2.Name = "btnTransferzahlungen2";
             this.btnTransferzahlungen2.ShowFocusRect = false;
@@ -648,6 +664,7 @@
             appearance16.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance16.TextVAlignAsString = "Middle";
             this.ultraButton1.Appearance = appearance16;
+            this.ultraButton1.AutoWorkLayout = false;
             this.ultraButton1.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.ultraButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint13.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -658,6 +675,7 @@
             gridBagConstraint13.OriginY = 0;
             this.ultraGridBagLayoutPanel2.SetGridBagConstraint(this.ultraButton1, gridBagConstraint13);
             this.ultraButton1.ImageSize = new System.Drawing.Size(24, 24);
+            this.ultraButton1.IsStandardControl = false;
             this.ultraButton1.Location = new System.Drawing.Point(1, 24);
             this.ultraButton1.Name = "ultraButton1";
             this.ultraGridBagLayoutPanel2.SetPreferredSize(this.ultraButton1, new System.Drawing.Size(92, 41));
@@ -684,6 +702,7 @@
             appearance17.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance17.TextVAlignAsString = "Middle";
             this.ultraButton2.Appearance = appearance17;
+            this.ultraButton2.AutoWorkLayout = false;
             this.ultraButton2.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.ultraButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint14.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -694,6 +713,7 @@
             gridBagConstraint14.OriginY = 0;
             this.ultraGridBagLayoutPanel2.SetGridBagConstraint(this.ultraButton2, gridBagConstraint14);
             this.ultraButton2.ImageSize = new System.Drawing.Size(24, 24);
+            this.ultraButton2.IsStandardControl = false;
             this.ultraButton2.Location = new System.Drawing.Point(178, 24);
             this.ultraButton2.Name = "ultraButton2";
             this.ultraGridBagLayoutPanel2.SetPreferredSize(this.ultraButton2, new System.Drawing.Size(68, 41));
@@ -720,6 +740,7 @@
             appearance18.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance18.TextVAlignAsString = "Middle";
             this.ultraButton3.Appearance = appearance18;
+            this.ultraButton3.AutoWorkLayout = false;
             this.ultraButton3.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.ultraButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint15.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -730,6 +751,7 @@
             gridBagConstraint15.OriginY = 0;
             this.ultraGridBagLayoutPanel2.SetGridBagConstraint(this.ultraButton3, gridBagConstraint15);
             this.ultraButton3.ImageSize = new System.Drawing.Size(24, 24);
+            this.ultraButton3.IsStandardControl = false;
             this.ultraButton3.Location = new System.Drawing.Point(33, 24);
             this.ultraButton3.Name = "ultraButton3";
             this.ultraGridBagLayoutPanel2.SetPreferredSize(this.ultraButton3, new System.Drawing.Size(60, 41));
@@ -756,6 +778,7 @@
             appearance19.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance19.TextVAlignAsString = "Middle";
             this.ultraButton4.Appearance = appearance19;
+            this.ultraButton4.AutoWorkLayout = false;
             this.ultraButton4.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.ultraButton4.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint16.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -766,6 +789,7 @@
             gridBagConstraint16.OriginY = 0;
             this.ultraGridBagLayoutPanel2.SetGridBagConstraint(this.ultraButton4, gridBagConstraint16);
             this.ultraButton4.ImageSize = new System.Drawing.Size(24, 24);
+            this.ultraButton4.IsStandardControl = false;
             this.ultraButton4.Location = new System.Drawing.Point(142, 24);
             this.ultraButton4.Name = "ultraButton4";
             this.ultraGridBagLayoutPanel2.SetPreferredSize(this.ultraButton4, new System.Drawing.Size(90, 41));
@@ -792,6 +816,7 @@
             appearance20.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance20.TextVAlignAsString = "Middle";
             this.ultraButton5.Appearance = appearance20;
+            this.ultraButton5.AutoWorkLayout = false;
             this.ultraButton5.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.ultraButton5.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint17.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -802,6 +827,7 @@
             gridBagConstraint17.OriginY = 0;
             this.ultraGridBagLayoutPanel2.SetGridBagConstraint(this.ultraButton5, gridBagConstraint17);
             this.ultraButton5.ImageSize = new System.Drawing.Size(24, 24);
+            this.ultraButton5.IsStandardControl = false;
             this.ultraButton5.Location = new System.Drawing.Point(54, 24);
             this.ultraButton5.Name = "ultraButton5";
             this.ultraGridBagLayoutPanel2.SetPreferredSize(this.ultraButton5, new System.Drawing.Size(76, 41));
@@ -828,6 +854,7 @@
             appearance21.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance21.TextVAlignAsString = "Middle";
             this.ultraButton6.Appearance = appearance21;
+            this.ultraButton6.AutoWorkLayout = false;
             this.ultraButton6.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.ultraButton6.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint18.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -838,6 +865,7 @@
             gridBagConstraint18.OriginY = 0;
             this.ultraGridBagLayoutPanel2.SetGridBagConstraint(this.ultraButton6, gridBagConstraint18);
             this.ultraButton6.ImageSize = new System.Drawing.Size(24, 24);
+            this.ultraButton6.IsStandardControl = false;
             this.ultraButton6.Location = new System.Drawing.Point(85, 24);
             this.ultraButton6.Name = "ultraButton6";
             this.ultraGridBagLayoutPanel2.SetPreferredSize(this.ultraButton6, new System.Drawing.Size(85, 41));
@@ -864,6 +892,7 @@
             appearance22.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance22.TextVAlignAsString = "Middle";
             this.ultraButton7.Appearance = appearance22;
+            this.ultraButton7.AutoWorkLayout = false;
             this.ultraButton7.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.ultraButton7.Cursor = System.Windows.Forms.Cursors.Hand;
             gridBagConstraint19.Anchor = Infragistics.Win.Layout.AnchorType.Left;
@@ -874,6 +903,7 @@
             gridBagConstraint19.OriginY = 0;
             this.ultraGridBagLayoutPanel2.SetGridBagConstraint(this.ultraButton7, gridBagConstraint19);
             this.ultraButton7.ImageSize = new System.Drawing.Size(24, 24);
+            this.ultraButton7.IsStandardControl = false;
             this.ultraButton7.Location = new System.Drawing.Point(115, 24);
             this.ultraButton7.Name = "ultraButton7";
             this.ultraGridBagLayoutPanel2.SetPreferredSize(this.ultraButton7, new System.Drawing.Size(80, 41));
@@ -900,9 +930,11 @@
             appearance23.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance23.TextVAlignAsString = "Middle";
             this.ultraButton8.Appearance = appearance23;
+            this.ultraButton8.AutoWorkLayout = false;
             this.ultraButton8.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.ultraButton8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ultraButton8.ImageSize = new System.Drawing.Size(24, 24);
+            this.ultraButton8.IsStandardControl = false;
             this.ultraButton8.Location = new System.Drawing.Point(365, 0);
             this.ultraButton8.Name = "ultraButton8";
             this.ultraButton8.ShowFocusRect = false;
@@ -919,10 +951,8 @@
             // uGroupBoxHeader
             // 
             this.uGroupBoxHeader.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.None;
-            appearance24.BackColor = System.Drawing.Color.White;
-            appearance24.BackColor2 = System.Drawing.Color.Silver;
-            appearance24.BackGradientStyle = Infragistics.Win.GradientStyle.GlassTop37Bright;
-            appearance24.BackHatchStyle = Infragistics.Win.BackHatchStyle.Horizontal;
+            appearance24.BackColor = System.Drawing.Color.Transparent;
+            appearance24.BackColor2 = System.Drawing.Color.Transparent;
             this.uGroupBoxHeader.ContentAreaAppearance = appearance24;
             this.uGroupBoxHeader.Controls.Add(this.ultraLabel6);
             this.uGroupBoxHeader.Controls.Add(this.btnTagsatzliste);
@@ -935,8 +965,6 @@
             this.uGroupBoxHeader.Name = "uGroupBoxHeader";
             this.uGroupBoxHeader.Size = new System.Drawing.Size(1011, 50);
             this.uGroupBoxHeader.TabIndex = 47;
-            this.uGroupBoxHeader.UseAppStyling = false;
-            this.uGroupBoxHeader.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.VisualStudio2005;
             // 
             // ultraLabel6
             // 
@@ -954,15 +982,17 @@
             appearance26.BackColor = System.Drawing.Color.Transparent;
             appearance26.FontData.SizeInPoints = 8F;
             appearance26.ForeColor = System.Drawing.Color.Black;
-            appearance26.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Abrechnung.ico_Tagsatzliste, 32, 32);
+            appearance26.Image = ((object)(resources.GetObject("appearance26.Image")));
             appearance26.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
             appearance26.ImageHAlign = Infragistics.Win.HAlign.Center;
             appearance26.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance26.TextVAlignAsString = "Middle";
             this.btnTagsatzliste.Appearance = appearance26;
+            this.btnTagsatzliste.AutoWorkLayout = false;
             this.btnTagsatzliste.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnTagsatzliste.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTagsatzliste.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnTagsatzliste.IsStandardControl = false;
             this.btnTagsatzliste.Location = new System.Drawing.Point(223, 4);
             this.btnTagsatzliste.Name = "btnTagsatzliste";
             this.btnTagsatzliste.ShowFocusRect = false;
@@ -989,9 +1019,11 @@
             appearance27.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance27.TextVAlignAsString = "Middle";
             this.btnRechnungenÜbersicht.Appearance = appearance27;
+            this.btnRechnungenÜbersicht.AutoWorkLayout = false;
             this.btnRechnungenÜbersicht.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnRechnungenÜbersicht.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRechnungenÜbersicht.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnRechnungenÜbersicht.IsStandardControl = false;
             this.btnRechnungenÜbersicht.Location = new System.Drawing.Point(88, 4);
             this.btnRechnungenÜbersicht.Name = "btnRechnungenÜbersicht";
             this.btnRechnungenÜbersicht.ShowFocusRect = false;
@@ -1028,9 +1060,11 @@
             appearance29.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance29.TextVAlignAsString = "Middle";
             this.btnBuchungen.Appearance = appearance29;
+            this.btnBuchungen.AutoWorkLayout = false;
             this.btnBuchungen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnBuchungen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuchungen.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnBuchungen.IsStandardControl = false;
             this.btnBuchungen.Location = new System.Drawing.Point(6, 4);
             this.btnBuchungen.Name = "btnBuchungen";
             this.btnBuchungen.ShowFocusRect = false;

@@ -117,8 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="ultraToolTipManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>172, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="appearance8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="appearance50.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJkSURBVFhHzZY7a1RRFIUtYrSIIKJgIaIQBVHQJn9ACdgI
@@ -134,26 +137,7 @@
         FG2dWCRvExOKtVYs1GwTM4q0XiyW2sSA7H8jFuyCCbC7aSDLsvY/rDXn8G1rQDQAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="ultraToolTipManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>172, 17</value>
-  </metadata>
-  <metadata name="dbPMDS1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>344, 17</value>
-  </metadata>
-  <data name="appearance29.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAaNJREFUWEft1T8ohHEcx/FLpySMlyJRLgxkMFiZDVI2GWzKJTEoZZDRpmSmSDIf
-        WS5ukkEkjP6M/qQYpPD+1Uf93P2ep+c8z2Nxn3otz+/7+37EcydRzr9MOptPYho5Pfq7UFqPDXziUI//
-        JhT24kTlxoiO4g9lY7i3ys0PUqvj+EJJHZZVahvXSHyhpAM5q/TbBWo0Fk8oGMS1Cm3vGNJY9GF5Bebw
-        hsJyYxtJjUcbFpuP2JaKXJ7QpvFow+I+nKnIy6zGowtLq2B+5a8q8XKAaF88FrZjVwV+ntGtaz/DQQaL
-        6EeDHvuGOfOijeIOrkLbBzK6WhwOL63hG6xjAj0oelv13O9FK7SDSl0vDodL1rDtAecwCxYwgxU8wjXv
-        cotmVbnDQCtMmWtBGC8YUI1/GJy0LkZlSuuDhQubBQvCWNXa4OFSCkfWkt/aQ7XWlhYumvfB/KdyLQ7i
-        FIE+yp5hQReutLAUx0hrTbiwqFMLXUUuZrZF16MJC807EeQLJ49GXYs+LDcfUa8/yRpSGo0vlDRhHvsw
-        X91ZDOu4nHJCJJH4ArqhDoDwQlNgAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="appearance36.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="appearance8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAmRJREFUWEfNljtrVFEUhS1itIggomAhohAFUdAmf0AJ2AiihaaMlcFXRGxE8CaN
@@ -169,7 +153,7 @@
         bBMzirReLJbaxIDsfyMW7IIJsLtpIMuy9j+sNefwbWtANAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="appearance37.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="appearance36.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAA4FJREFUWEfFV71Pk0EYhz8AVsNHKVgljkbUODkYB5XBVRIHRwcTHdwFY3QyJA5E
@@ -190,7 +174,7 @@
         p6lgY//h87yg4C84M1pQ0+C7ewAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="appearance39.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="appearance38.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFuSURBVFhH7Ze7TgJhEIXXC9oROo2l8W0t6bGRypBtSLCx
@@ -202,7 +186,7 @@
         hA+g/M/zBv3FF3jC8cVAwxE8h3fQG1rEe3gBjznWkCQ/3EnoaEs7aYUAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="appearance43.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="appearance42.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAANRJREFUWEftljEOwjAQBPkMDe9wy5/8K0QfylTU/IECpYDC8aFVFEUb8J2NBcgr
@@ -212,6 +196,22 @@
         TkSuQmCC
 </value>
   </data>
+  <data name="appearance28.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAaNJREFUWEft1T8ohHEcx/FLpySMlyJRLgxkMFiZDVI2GWzKJTEoZZDRpmSmSDIf
+        WS5ukkEkjP6M/qQYpPD+1Uf93P2ep+c8z2Nxn3otz+/7+37EcydRzr9MOptPYho5Pfq7UFqPDXziUI//
+        JhT24kTlxoiO4g9lY7i3ys0PUqvj+EJJHZZVahvXSHyhpAM5q/TbBWo0Fk8oGMS1Cm3vGNJY9GF5Bebw
+        hsJyYxtJjUcbFpuP2JaKXJ7QpvFow+I+nKnIy6zGowtLq2B+5a8q8XKAaF88FrZjVwV+ntGtaz/DQQaL
+        6EeDHvuGOfOijeIOrkLbBzK6WhwOL63hG6xjAj0oelv13O9FK7SDSl0vDodL1rDtAecwCxYwgxU8wjXv
+        cotmVbnDQCtMmWtBGC8YUI1/GJy0LkZlSuuDhQubBQvCWNXa4OFSCkfWkt/aQ7XWlhYumvfB/KdyLQ7i
+        FIE+yp5hQReutLAUx0hrTbiwqFMLXUUuZrZF16MJC807EeQLJ49GXYs+LDcfUa8/yRpSGo0vlDRhHvsw
+        X91ZDOu4nHJCJJH4ArqhDoDwQlNgAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="dbPMDS1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>344, 17</value>
+  </metadata>
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>450, 17</value>
   </metadata>

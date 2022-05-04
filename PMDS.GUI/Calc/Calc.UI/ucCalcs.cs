@@ -110,7 +110,8 @@ namespace PMDS.Calc.UI
             if (this.uiSiteMapForm.typ == ucCalcsSitemap.eTyp.buchhaltung || this.uiSiteMapForm.typ == ucCalcsSitemap.eTyp.depotgeld ||
                        this.uiSiteMapForm.typ == ucCalcsSitemap.eTyp.sr)
             {
-                this.panelTopSr.Height = 75;
+                this.panelTopSr.Height = this.grpSuche.Top * 2 + this.grpSuche.Height;
+                Application.DoEvents();
             }
             this.setColBack(false);
         }
