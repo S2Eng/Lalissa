@@ -133,7 +133,7 @@ namespace PMDS.GUI
             // 
             // chkDone
             // 
-            this.chkDone.Location = new System.Drawing.Point(440, 39);
+            this.chkDone.Location = new System.Drawing.Point(465, 39);
             this.chkDone.Size = new System.Drawing.Size(128, 19);
             this.chkDone.TabIndex = 3;
             this.chkDone.CheckedChanged += new System.EventHandler(this.chkDone_CheckedChanged);
@@ -359,6 +359,7 @@ namespace PMDS.GUI
                 {
                     dtpZeitpunkt.Appearance.ForeColor = Color.Red;
                     dtpZeitpunkt.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                    Application.DoEvents();
                 }
                 else
                 {

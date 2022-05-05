@@ -102,8 +102,8 @@
             // 
             // dtpZeitpunkt
             // 
-            this.dtpZeitpunkt.Location = new System.Drawing.Point(332, 5);
-            this.dtpZeitpunkt.Size = new System.Drawing.Size(135, 24);
+            this.dtpZeitpunkt.Location = new System.Drawing.Point(327, 5);
+            this.dtpZeitpunkt.Size = new System.Drawing.Size(143, 24);
             this.dtpZeitpunkt.ValueChanged += new System.EventHandler(this.dtpZeitpunkt_ValueChanged);
             // 
             // lblDauer
@@ -136,7 +136,7 @@
             // 
             this.auswahlGruppeComboMulti1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.auswahlGruppeComboMulti1.Location = new System.Drawing.Point(590, 5);
-            this.auswahlGruppeComboMulti1.Size = new System.Drawing.Size(494, 27);
+            this.auswahlGruppeComboMulti1.Size = new System.Drawing.Size(494, 24);
             // 
             // chkAlsDekursKopieren
             // 
@@ -241,7 +241,7 @@
             // 
             // lblZeitpunkt
             // 
-            this.lblZeitpunkt.Location = new System.Drawing.Point(260, 1);
+            this.lblZeitpunkt.Location = new System.Drawing.Point(251, 1);
             this.lblZeitpunkt.Name = "lblZeitpunkt";
             this.lblZeitpunkt.Size = new System.Drawing.Size(71, 25);
             this.lblZeitpunkt.TabIndex = 52;

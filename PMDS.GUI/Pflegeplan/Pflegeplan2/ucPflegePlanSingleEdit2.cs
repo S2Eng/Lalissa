@@ -1007,10 +1007,12 @@ namespace PMDS.GUI
             this.cbSide.ExactMatch = false;
             this.cbSide.Group = "";
             this.cbSide.ID_PEP = -1;
+            this.cbSide.IgnoreUnterdruecken = true;
             this.cbSide.Location = new System.Drawing.Point(365, 3);
             this.cbSide.MaxLength = 50;
             this.cbSide.Name = "cbSide";
             this.cbSide.PflichtJN = false;
+            this.cbSide.SelectDistinct = false;
             this.cbSide.ShowAddButton = true;
             this.cbSide.Size = new System.Drawing.Size(122, 24);
             this.cbSide.sys = false;
@@ -1036,10 +1038,12 @@ namespace PMDS.GUI
             this.cbArea.ExactMatch = false;
             this.cbArea.Group = "";
             this.cbArea.ID_PEP = -1;
+            this.cbArea.IgnoreUnterdruecken = true;
             this.cbArea.Location = new System.Drawing.Point(189, 3);
             this.cbArea.MaxLength = 50;
             this.cbArea.Name = "cbArea";
             this.cbArea.PflichtJN = false;
+            this.cbArea.SelectDistinct = false;
             this.cbArea.ShowAddButton = true;
             this.cbArea.Size = new System.Drawing.Size(124, 24);
             this.cbArea.sys = false;
@@ -1089,9 +1093,11 @@ namespace PMDS.GUI
             this.cbBerufsstand.ExactMatch = false;
             this.cbBerufsstand.Group = "";
             this.cbBerufsstand.ID_PEP = -1;
+            this.cbBerufsstand.IgnoreUnterdruecken = true;
             this.cbBerufsstand.Location = new System.Drawing.Point(326, 3);
             this.cbBerufsstand.Name = "cbBerufsstand";
             this.cbBerufsstand.PflichtJN = false;
+            this.cbBerufsstand.SelectDistinct = false;
             this.cbBerufsstand.ShowAddButton = true;
             this.cbBerufsstand.Size = new System.Drawing.Size(161, 24);
             this.cbBerufsstand.sys = false;
@@ -1425,6 +1431,8 @@ namespace PMDS.GUI
             this.cbLinkDokument.Name = "cbLinkDokument";
             this.cbLinkDokument.Size = new System.Drawing.Size(466, 24);
             this.cbLinkDokument.TabIndex = 20;
+            this.cbLinkDokument.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.cbLinkDokument.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.cbLinkDokument.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cbLinkDokument_BeforeDropDown);
             this.cbLinkDokument.ValueChanged += new System.EventHandler(this.cbLinkDokument_ValueChanged);
             // 
@@ -1497,9 +1505,11 @@ namespace PMDS.GUI
             this.cbTermin.ExactMatch = false;
             this.cbTermin.Group = "TRM";
             this.cbTermin.ID_PEP = -1;
+            this.cbTermin.IgnoreUnterdruecken = true;
             this.cbTermin.Location = new System.Drawing.Point(131, 43);
             this.cbTermin.Name = "cbTermin";
             this.cbTermin.PflichtJN = false;
+            this.cbTermin.SelectDistinct = false;
             this.cbTermin.ShowAddButton = true;
             this.cbTermin.Size = new System.Drawing.Size(408, 24);
             this.cbTermin.sys = false;

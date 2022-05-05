@@ -610,12 +610,13 @@ namespace PMDS.GUI
             // 
             this.pnlPrintTermine.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlPrintTermine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlPrintTermine.Controls.Clear();
             this.pnlPrintTermine.Controls.Add(this.uOptSetDruckauswahl);
             this.pnlPrintTermine.Controls.Add(this.ultraLabel2);
             this.pnlPrintTermine.Controls.Add(this.btnPrintTermine);
-            this.pnlPrintTermine.Location = new System.Drawing.Point(19, 214);
+            this.pnlPrintTermine.Location = new System.Drawing.Point(19, 146);
             this.pnlPrintTermine.Name = "pnlPrintTermine";
-            this.pnlPrintTermine.Size = new System.Drawing.Size(170, 123);
+            this.pnlPrintTermine.Size = new System.Drawing.Size(170, 191);
             this.pnlPrintTermine.TabIndex = 89;
             this.pnlPrintTermine.Visible = false;
             // 
@@ -839,9 +840,9 @@ namespace PMDS.GUI
             this.panelEinAusGesamt.Controls.Add(this.panelTextControl);
             this.panelEinAusGesamt.Controls.Add(this.textControl1);
             this.panelEinAusGesamt.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelEinAusGesamt.Location = new System.Drawing.Point(1195, 0);
+            this.panelEinAusGesamt.Location = new System.Drawing.Point(1215, 0);
             this.panelEinAusGesamt.Name = "panelEinAusGesamt";
-            this.panelEinAusGesamt.Size = new System.Drawing.Size(34, 78);
+            this.panelEinAusGesamt.Size = new System.Drawing.Size(14, 78);
             this.panelEinAusGesamt.TabIndex = 51;
             // 
             // panelTextControl
@@ -1020,7 +1021,7 @@ namespace PMDS.GUI
             this.panelStuhlbuttonsFläche.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelStuhlbuttonsFläche.Location = new System.Drawing.Point(55, 50);
             this.panelStuhlbuttonsFläche.Name = "panelStuhlbuttonsFläche";
-            this.panelStuhlbuttonsFläche.Size = new System.Drawing.Size(1140, 24);
+            this.panelStuhlbuttonsFläche.Size = new System.Drawing.Size(1160, 24);
             this.panelStuhlbuttonsFläche.TabIndex = 106;
             // 
             // panelStuhlbuttons
@@ -1029,7 +1030,7 @@ namespace PMDS.GUI
             this.panelStuhlbuttons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelStuhlbuttons.Location = new System.Drawing.Point(154, 0);
             this.panelStuhlbuttons.Name = "panelStuhlbuttons";
-            this.panelStuhlbuttons.Size = new System.Drawing.Size(986, 24);
+            this.panelStuhlbuttons.Size = new System.Drawing.Size(1006, 24);
             this.panelStuhlbuttons.TabIndex = 1;
             // 
             // panelLeer2
@@ -1046,7 +1047,7 @@ namespace PMDS.GUI
             this.panelStuhlbuttonsLeer.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelStuhlbuttonsLeer.Location = new System.Drawing.Point(55, 47);
             this.panelStuhlbuttonsLeer.Name = "panelStuhlbuttonsLeer";
-            this.panelStuhlbuttonsLeer.Size = new System.Drawing.Size(1140, 3);
+            this.panelStuhlbuttonsLeer.Size = new System.Drawing.Size(1160, 3);
             this.panelStuhlbuttonsLeer.TabIndex = 105;
             // 
             // pButtonsAllDyn
@@ -1056,7 +1057,7 @@ namespace PMDS.GUI
             this.pButtonsAllDyn.Dock = System.Windows.Forms.DockStyle.Top;
             this.pButtonsAllDyn.Location = new System.Drawing.Point(55, 0);
             this.pButtonsAllDyn.Name = "pButtonsAllDyn";
-            this.pButtonsAllDyn.Size = new System.Drawing.Size(1140, 47);
+            this.pButtonsAllDyn.Size = new System.Drawing.Size(1160, 47);
             this.pButtonsAllDyn.TabIndex = 101;
             // 
             // panelQuickButtons5
@@ -1066,7 +1067,7 @@ namespace PMDS.GUI
             this.panelQuickButtons5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelQuickButtons5.Location = new System.Drawing.Point(0, 0);
             this.panelQuickButtons5.Name = "panelQuickButtons5";
-            this.panelQuickButtons5.Size = new System.Drawing.Size(1055, 47);
+            this.panelQuickButtons5.Size = new System.Drawing.Size(1081, 47);
             this.panelQuickButtons5.TabIndex = 101;
             // 
             // panelButtonsÜbergabe
@@ -1081,7 +1082,7 @@ namespace PMDS.GUI
             this.panelButtonsÜbergabe.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelButtonsÜbergabe.Location = new System.Drawing.Point(0, 23);
             this.panelButtonsÜbergabe.Name = "panelButtonsÜbergabe";
-            this.panelButtonsÜbergabe.Size = new System.Drawing.Size(1055, 23);
+            this.panelButtonsÜbergabe.Size = new System.Drawing.Size(1081, 23);
             this.panelButtonsÜbergabe.TabIndex = 97;
             this.panelButtonsÜbergabe.Visible = false;
             // 
@@ -1091,16 +1092,17 @@ namespace PMDS.GUI
             appearance27.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.ultraDropDownButtonTermine.Appearance = appearance27;
             this.ultraDropDownButtonTermine.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ultraDropDownButtonTermine.Location = new System.Drawing.Point(222, 0);
+            this.ultraDropDownButtonTermine.Location = new System.Drawing.Point(280, 0);
             this.ultraDropDownButtonTermine.Name = "ultraDropDownButtonTermine";
             this.ultraDropDownButtonTermine.PopupItemKey = "panelSondertermin";
             this.ultraDropDownButtonTermine.PopupItemProvider = this.ultraPopupControlContainerSondertermine;
             this.ultraDropDownButtonTermine.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.ultraDropDownButtonTermine.Size = new System.Drawing.Size(88, 23);
+            this.ultraDropDownButtonTermine.Size = new System.Drawing.Size(116, 23);
             this.ultraDropDownButtonTermine.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.ultraDropDownButtonTermine.TabIndex = 113;
             this.ultraDropDownButtonTermine.Text = "Termine";
             this.ultraDropDownButtonTermine.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraDropDownButtonTermine.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.ultraDropDownButtonTermine.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.ultraDropDownButtonTermine.Click += new System.EventHandler(this.ultraDropDownButtonTermine_Click);
             // 
@@ -1114,16 +1116,17 @@ namespace PMDS.GUI
             appearance28.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.uDropDownDekursEntwürfe2.Appearance = appearance28;
             this.uDropDownDekursEntwürfe2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uDropDownDekursEntwürfe2.Location = new System.Drawing.Point(99, 0);
+            this.uDropDownDekursEntwürfe2.Location = new System.Drawing.Point(128, 0);
             this.uDropDownDekursEntwürfe2.Name = "uDropDownDekursEntwürfe2";
             this.uDropDownDekursEntwürfe2.PopupItemKey = "PanelDekursEntwürfe";
             this.uDropDownDekursEntwürfe2.PopupItemProvider = this.ultraPopupControlContainerDekursEntwürfe;
             this.uDropDownDekursEntwürfe2.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.uDropDownDekursEntwürfe2.Size = new System.Drawing.Size(123, 23);
+            this.uDropDownDekursEntwürfe2.Size = new System.Drawing.Size(152, 23);
             this.uDropDownDekursEntwürfe2.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.uDropDownDekursEntwürfe2.TabIndex = 112;
             this.uDropDownDekursEntwürfe2.Text = "Dekurs Entwurf";
             this.uDropDownDekursEntwürfe2.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.uDropDownDekursEntwürfe2.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.uDropDownDekursEntwürfe2.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             // 
             // ultraPopupControlContainerDekursEntwürfe
@@ -1140,11 +1143,13 @@ namespace PMDS.GUI
             this.btnOpenBefundÜbergabe.AutoWorkLayout = false;
             this.btnOpenBefundÜbergabe.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnOpenBefundÜbergabe.IsStandardControl = false;
-            this.btnOpenBefundÜbergabe.Location = new System.Drawing.Point(858, 0);
+            this.btnOpenBefundÜbergabe.Location = new System.Drawing.Point(844, 0);
             this.btnOpenBefundÜbergabe.Name = "btnOpenBefundÜbergabe";
-            this.btnOpenBefundÜbergabe.Size = new System.Drawing.Size(50, 23);
+            this.btnOpenBefundÜbergabe.Size = new System.Drawing.Size(66, 23);
             this.btnOpenBefundÜbergabe.TabIndex = 111;
             this.btnOpenBefundÜbergabe.Text = "Befund";
+            this.btnOpenBefundÜbergabe.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnOpenBefundÜbergabe.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnOpenBefundÜbergabe.Visible = false;
             this.btnOpenBefundÜbergabe.Click += new System.EventHandler(this.btnOpenBefundÜbergabe_Click);
             // 
@@ -1157,11 +1162,13 @@ namespace PMDS.GUI
             this.btnGegenzeichnen.AutoWorkLayout = false;
             this.btnGegenzeichnen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnGegenzeichnen.IsStandardControl = false;
-            this.btnGegenzeichnen.Location = new System.Drawing.Point(908, 0);
+            this.btnGegenzeichnen.Location = new System.Drawing.Point(910, 0);
             this.btnGegenzeichnen.Name = "btnGegenzeichnen";
-            this.btnGegenzeichnen.Size = new System.Drawing.Size(101, 23);
+            this.btnGegenzeichnen.Size = new System.Drawing.Size(115, 23);
             this.btnGegenzeichnen.TabIndex = 110;
             this.btnGegenzeichnen.Text = "Gegenzeichnen";
+            this.btnGegenzeichnen.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnGegenzeichnen.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnGegenzeichnen.Click += new System.EventHandler(this.btnGegenzeichnen_Click);
             // 
             // btnLesenÜbergabeDekurs
@@ -1173,11 +1180,13 @@ namespace PMDS.GUI
             this.btnLesenÜbergabeDekurs.AutoWorkLayout = false;
             this.btnLesenÜbergabeDekurs.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnLesenÜbergabeDekurs.IsStandardControl = false;
-            this.btnLesenÜbergabeDekurs.Location = new System.Drawing.Point(1009, 0);
+            this.btnLesenÜbergabeDekurs.Location = new System.Drawing.Point(1025, 0);
             this.btnLesenÜbergabeDekurs.Name = "btnLesenÜbergabeDekurs";
-            this.btnLesenÜbergabeDekurs.Size = new System.Drawing.Size(46, 23);
+            this.btnLesenÜbergabeDekurs.Size = new System.Drawing.Size(56, 23);
             this.btnLesenÜbergabeDekurs.TabIndex = 94;
             this.btnLesenÜbergabeDekurs.Text = "Lesen";
+            this.btnLesenÜbergabeDekurs.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnLesenÜbergabeDekurs.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnLesenÜbergabeDekurs.Click += new System.EventHandler(this.btnLesenÜbergabeDekurs_Click);
             // 
             // btnFreierBericht2
@@ -1192,9 +1201,12 @@ namespace PMDS.GUI
             this.btnFreierBericht2.IsStandardControl = false;
             this.btnFreierBericht2.Location = new System.Drawing.Point(0, 0);
             this.btnFreierBericht2.Name = "btnFreierBericht2";
-            this.btnFreierBericht2.Size = new System.Drawing.Size(99, 23);
+            this.btnFreierBericht2.Size = new System.Drawing.Size(128, 23);
             this.btnFreierBericht2.TabIndex = 62;
             this.btnFreierBericht2.Text = "Dekurs";
+            this.btnFreierBericht2.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnFreierBericht2.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnFreierBericht2.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnFreierBericht2.Click += new System.EventHandler(this.btnFreierBericht2_Click);
             // 
             // panelButtonsIntervention
@@ -1210,7 +1222,7 @@ namespace PMDS.GUI
             this.panelButtonsIntervention.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelButtonsIntervention.Location = new System.Drawing.Point(0, 0);
             this.panelButtonsIntervention.Name = "panelButtonsIntervention";
-            this.panelButtonsIntervention.Size = new System.Drawing.Size(1055, 23);
+            this.panelButtonsIntervention.Size = new System.Drawing.Size(1081, 23);
             this.panelButtonsIntervention.TabIndex = 54;
             // 
             // btnEndTask
@@ -1223,11 +1235,14 @@ namespace PMDS.GUI
             this.btnEndTask.AutoWorkLayout = false;
             this.btnEndTask.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEndTask.IsStandardControl = false;
-            this.btnEndTask.Location = new System.Drawing.Point(696, 0);
+            this.btnEndTask.Location = new System.Drawing.Point(731, 0);
             this.btnEndTask.Name = "btnEndTask";
-            this.btnEndTask.Size = new System.Drawing.Size(93, 23);
+            this.btnEndTask.Size = new System.Drawing.Size(106, 23);
             this.btnEndTask.TabIndex = 111;
             this.btnEndTask.Text = "M beenden";
+            this.btnEndTask.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnEndTask.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnEndTask.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnEndTask.Click += new System.EventHandler(this.btnEndTask_Click);
             // 
             // btnOpenBefundIntervention
@@ -1239,11 +1254,12 @@ namespace PMDS.GUI
             this.btnOpenBefundIntervention.AutoWorkLayout = false;
             this.btnOpenBefundIntervention.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnOpenBefundIntervention.IsStandardControl = false;
-            this.btnOpenBefundIntervention.Location = new System.Drawing.Point(858, 0);
+            this.btnOpenBefundIntervention.Location = new System.Drawing.Point(844, 0);
             this.btnOpenBefundIntervention.Name = "btnOpenBefundIntervention";
-            this.btnOpenBefundIntervention.Size = new System.Drawing.Size(50, 23);
+            this.btnOpenBefundIntervention.Size = new System.Drawing.Size(66, 23);
             this.btnOpenBefundIntervention.TabIndex = 110;
             this.btnOpenBefundIntervention.Text = "Befund";
+            this.btnOpenBefundIntervention.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnOpenBefundIntervention.Visible = false;
             this.btnOpenBefundIntervention.Click += new System.EventHandler(this.btnOpenBefundIntervention_Click);
             // 
@@ -1256,11 +1272,13 @@ namespace PMDS.GUI
             this.btnPDxRückmelden.AutoWorkLayout = false;
             this.btnPDxRückmelden.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnPDxRückmelden.IsStandardControl = false;
-            this.btnPDxRückmelden.Location = new System.Drawing.Point(908, 0);
+            this.btnPDxRückmelden.Location = new System.Drawing.Point(910, 0);
             this.btnPDxRückmelden.Name = "btnPDxRückmelden";
-            this.btnPDxRückmelden.Size = new System.Drawing.Size(101, 23);
+            this.btnPDxRückmelden.Size = new System.Drawing.Size(115, 23);
             this.btnPDxRückmelden.TabIndex = 109;
             this.btnPDxRückmelden.Text = "PDx rückmelden";
+            this.btnPDxRückmelden.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnPDxRückmelden.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnPDxRückmelden.Click += new System.EventHandler(this.btnPDxRückmelden_Click);
             // 
             // btnLesenInterventionen
@@ -1272,11 +1290,13 @@ namespace PMDS.GUI
             this.btnLesenInterventionen.AutoWorkLayout = false;
             this.btnLesenInterventionen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnLesenInterventionen.IsStandardControl = false;
-            this.btnLesenInterventionen.Location = new System.Drawing.Point(1009, 0);
+            this.btnLesenInterventionen.Location = new System.Drawing.Point(1025, 0);
             this.btnLesenInterventionen.Name = "btnLesenInterventionen";
-            this.btnLesenInterventionen.Size = new System.Drawing.Size(46, 23);
+            this.btnLesenInterventionen.Size = new System.Drawing.Size(56, 23);
             this.btnLesenInterventionen.TabIndex = 108;
             this.btnLesenInterventionen.Text = "Lesen";
+            this.btnLesenInterventionen.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnLesenInterventionen.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnLesenInterventionen.Visible = false;
             this.btnLesenInterventionen.Click += new System.EventHandler(this.btnLesenInterventionen_Click);
             // 
@@ -1289,9 +1309,9 @@ namespace PMDS.GUI
             this.panelIButtonLeiste.Controls.Add(this.btnUngeplMaßnahmenRückemelden);
             this.panelIButtonLeiste.Controls.Add(this.btnBedarfsmedikation);
             this.panelIButtonLeiste.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelIButtonLeiste.Location = new System.Drawing.Point(143, 0);
+            this.panelIButtonLeiste.Location = new System.Drawing.Point(137, 0);
             this.panelIButtonLeiste.Name = "panelIButtonLeiste";
-            this.panelIButtonLeiste.Size = new System.Drawing.Size(553, 23);
+            this.panelIButtonLeiste.Size = new System.Drawing.Size(594, 23);
             this.panelIButtonLeiste.TabIndex = 107;
             // 
             // uDropDownSondertermine
@@ -1300,16 +1320,17 @@ namespace PMDS.GUI
             appearance37.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.uDropDownSondertermine.Appearance = appearance37;
             this.uDropDownSondertermine.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uDropDownSondertermine.Location = new System.Drawing.Point(467, 0);
+            this.uDropDownSondertermine.Location = new System.Drawing.Point(477, 0);
             this.uDropDownSondertermine.Name = "uDropDownSondertermine";
             this.uDropDownSondertermine.PopupItemKey = "panelSondertermin";
             this.uDropDownSondertermine.PopupItemProvider = this.ultraPopupControlContainerSondertermine;
             this.uDropDownSondertermine.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.uDropDownSondertermine.Size = new System.Drawing.Size(86, 23);
+            this.uDropDownSondertermine.Size = new System.Drawing.Size(111, 23);
             this.uDropDownSondertermine.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.uDropDownSondertermine.TabIndex = 106;
             this.uDropDownSondertermine.Text = "Termine";
             this.uDropDownSondertermine.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.uDropDownSondertermine.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.uDropDownSondertermine.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             // 
             // panelSondertermine
@@ -1317,9 +1338,9 @@ namespace PMDS.GUI
             this.panelSondertermine.BackColor = System.Drawing.Color.Transparent;
             this.panelSondertermine.Controls.Add(this.uDropDownDekursEntwürfe);
             this.panelSondertermine.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSondertermine.Location = new System.Drawing.Point(343, 0);
+            this.panelSondertermine.Location = new System.Drawing.Point(332, 0);
             this.panelSondertermine.Name = "panelSondertermine";
-            this.panelSondertermine.Size = new System.Drawing.Size(124, 23);
+            this.panelSondertermine.Size = new System.Drawing.Size(145, 23);
             this.panelSondertermine.TabIndex = 105;
             // 
             // uDropDownDekursEntwürfe
@@ -1333,11 +1354,12 @@ namespace PMDS.GUI
             this.uDropDownDekursEntwürfe.PopupItemKey = "PanelDekursEntwürfe";
             this.uDropDownDekursEntwürfe.PopupItemProvider = this.ultraPopupControlContainerDekursEntwürfe;
             this.uDropDownDekursEntwürfe.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.uDropDownDekursEntwürfe.Size = new System.Drawing.Size(123, 23);
+            this.uDropDownDekursEntwürfe.Size = new System.Drawing.Size(145, 23);
             this.uDropDownDekursEntwürfe.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.uDropDownDekursEntwürfe.TabIndex = 90;
             this.uDropDownDekursEntwürfe.Text = "Dekurs Entwurf";
             this.uDropDownDekursEntwürfe.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.uDropDownDekursEntwürfe.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.uDropDownDekursEntwürfe.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             // 
             // btnFreierBericht
@@ -1350,12 +1372,15 @@ namespace PMDS.GUI
             this.btnFreierBericht.AutoWorkLayout = false;
             this.btnFreierBericht.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnFreierBericht.IsStandardControl = false;
-            this.btnFreierBericht.Location = new System.Drawing.Point(244, 0);
+            this.btnFreierBericht.Location = new System.Drawing.Point(239, 0);
             this.btnFreierBericht.Name = "btnFreierBericht";
             this.btnFreierBericht.ShowFocusRect = false;
-            this.btnFreierBericht.Size = new System.Drawing.Size(99, 23);
+            this.btnFreierBericht.Size = new System.Drawing.Size(93, 23);
             this.btnFreierBericht.TabIndex = 56;
             this.btnFreierBericht.Text = "Dekurs";
+            this.btnFreierBericht.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnFreierBericht.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnFreierBericht.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnFreierBericht.Click += new System.EventHandler(this.btnFreierBericht_Click);
             // 
             // btnUngeplMaßnahmenRückemelden
@@ -1368,11 +1393,14 @@ namespace PMDS.GUI
             this.btnUngeplMaßnahmenRückemelden.AutoWorkLayout = false;
             this.btnUngeplMaßnahmenRückemelden.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnUngeplMaßnahmenRückemelden.IsStandardControl = false;
-            this.btnUngeplMaßnahmenRückemelden.Location = new System.Drawing.Point(125, 0);
+            this.btnUngeplMaßnahmenRückemelden.Location = new System.Drawing.Point(126, 0);
             this.btnUngeplMaßnahmenRückemelden.Name = "btnUngeplMaßnahmenRückemelden";
-            this.btnUngeplMaßnahmenRückemelden.Size = new System.Drawing.Size(119, 23);
+            this.btnUngeplMaßnahmenRückemelden.Size = new System.Drawing.Size(113, 23);
             this.btnUngeplMaßnahmenRückemelden.TabIndex = 54;
             this.btnUngeplMaßnahmenRückemelden.Text = "Ungepl. M abz.";
+            this.btnUngeplMaßnahmenRückemelden.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnUngeplMaßnahmenRückemelden.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnUngeplMaßnahmenRückemelden.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnUngeplMaßnahmenRückemelden.Click += new System.EventHandler(this.btnUngeplMaßnahmenRückemelden_Click);
             // 
             // btnBedarfsmedikation
@@ -1387,16 +1415,19 @@ namespace PMDS.GUI
             this.btnBedarfsmedikation.IsStandardControl = false;
             this.btnBedarfsmedikation.Location = new System.Drawing.Point(0, 0);
             this.btnBedarfsmedikation.Name = "btnBedarfsmedikation";
-            this.btnBedarfsmedikation.Size = new System.Drawing.Size(125, 23);
+            this.btnBedarfsmedikation.Size = new System.Drawing.Size(126, 23);
             this.btnBedarfsmedikation.TabIndex = 55;
             this.btnBedarfsmedikation.Text = "Einzelverordnung";
+            this.btnBedarfsmedikation.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnBedarfsmedikation.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnBedarfsmedikation.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnBedarfsmedikation.Click += new System.EventHandler(this.btnBedarfsmedikation_Click);
             // 
             // panelSpace
             // 
             this.panelSpace.BackColor = System.Drawing.Color.Transparent;
             this.panelSpace.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSpace.Location = new System.Drawing.Point(134, 0);
+            this.panelSpace.Location = new System.Drawing.Point(128, 0);
             this.panelSpace.Name = "panelSpace";
             this.panelSpace.Size = new System.Drawing.Size(9, 23);
             this.panelSpace.TabIndex = 106;
@@ -1413,9 +1444,12 @@ namespace PMDS.GUI
             this.btnSchnellrückmeldung.IsStandardControl = false;
             this.btnSchnellrückmeldung.Location = new System.Drawing.Point(0, 0);
             this.btnSchnellrückmeldung.Name = "btnSchnellrückmeldung";
-            this.btnSchnellrückmeldung.Size = new System.Drawing.Size(134, 23);
+            this.btnSchnellrückmeldung.Size = new System.Drawing.Size(128, 23);
             this.btnSchnellrückmeldung.TabIndex = 53;
             this.btnSchnellrückmeldung.Text = "Schnell abzeichnen";
+            this.btnSchnellrückmeldung.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnSchnellrückmeldung.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnSchnellrückmeldung.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnSchnellrückmeldung.Click += new System.EventHandler(this.btnSchnellrückmeldung_Click);
             // 
             // panelButtonsStuhlDrucken
@@ -1423,9 +1457,9 @@ namespace PMDS.GUI
             this.panelButtonsStuhlDrucken.BackColor = System.Drawing.Color.Transparent;
             this.panelButtonsStuhlDrucken.Controls.Add(this.uDropDownDrucken);
             this.panelButtonsStuhlDrucken.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelButtonsStuhlDrucken.Location = new System.Drawing.Point(1055, 0);
+            this.panelButtonsStuhlDrucken.Location = new System.Drawing.Point(1081, 0);
             this.panelButtonsStuhlDrucken.Name = "panelButtonsStuhlDrucken";
-            this.panelButtonsStuhlDrucken.Size = new System.Drawing.Size(85, 47);
+            this.panelButtonsStuhlDrucken.Size = new System.Drawing.Size(79, 47);
             this.panelButtonsStuhlDrucken.TabIndex = 100;
             // 
             // uDropDownDrucken
@@ -1435,7 +1469,7 @@ namespace PMDS.GUI
             this.uDropDownDrucken.PopupItemKey = "pnlPrintStammDatenBlatt";
             this.uDropDownDrucken.PopupItemProvider = this.ultraPopupControlContainerPrint;
             this.uDropDownDrucken.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.uDropDownDrucken.Size = new System.Drawing.Size(67, 23);
+            this.uDropDownDrucken.Size = new System.Drawing.Size(77, 23);
             this.uDropDownDrucken.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.uDropDownDrucken.TabIndex = 91;
             this.uDropDownDrucken.Text = "Drucken";
