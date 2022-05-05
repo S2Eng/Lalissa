@@ -165,7 +165,7 @@ namespace PMDS.GUI
             // lblBemerkung
             // 
             this.lblBemerkung.AutoSize = true;
-            this.lblBemerkung.Location = new System.Drawing.Point(9, 95);
+            this.lblBemerkung.Location = new System.Drawing.Point(8, 101);
             this.lblBemerkung.Name = "lblBemerkung";
             this.lblBemerkung.Size = new System.Drawing.Size(62, 14);
             this.lblBemerkung.TabIndex = 4;
@@ -208,7 +208,7 @@ namespace PMDS.GUI
             this.chkVerstorben.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkVerstorben.Location = new System.Drawing.Point(112, 36);
             this.chkVerstorben.Name = "chkVerstorben";
-            this.chkVerstorben.Size = new System.Drawing.Size(114, 20);
+            this.chkVerstorben.Size = new System.Drawing.Size(126, 20);
             this.chkVerstorben.TabIndex = 2;
             this.chkVerstorben.Text = "Verstorben";
             this.chkVerstorben.CheckedChanged += new System.EventHandler(this.chkVerstorben_CheckedChanged);
@@ -233,7 +233,7 @@ namespace PMDS.GUI
             this.uceTodeszeitpunkt.Appearance = appearance1;
             this.uceTodeszeitpunkt.BackColor = System.Drawing.Color.White;
             this.uceTodeszeitpunkt.FormatString = "";
-            this.uceTodeszeitpunkt.Location = new System.Drawing.Point(333, 35);
+            this.uceTodeszeitpunkt.Location = new System.Drawing.Point(349, 35);
             this.uceTodeszeitpunkt.MaskInput = "dd.mm.yyyy hh:mm";
             this.uceTodeszeitpunkt.Name = "uceTodeszeitpunkt";
             this.uceTodeszeitpunkt.ownFormat = "";
@@ -288,7 +288,7 @@ namespace PMDS.GUI
             // lblAustrittWohin
             // 
             this.lblAustrittWohin.AutoSize = true;
-            this.lblAustrittWohin.Location = new System.Drawing.Point(0, 5);
+            this.lblAustrittWohin.Location = new System.Drawing.Point(3, 5);
             this.lblAustrittWohin.Name = "lblAustrittWohin";
             this.lblAustrittWohin.Size = new System.Drawing.Size(122, 14);
             this.lblAustrittWohin.TabIndex = 17;
@@ -305,12 +305,12 @@ namespace PMDS.GUI
             this.cmbSTAMP_AustrittWohin.Group = "AWO";
             this.cmbSTAMP_AustrittWohin.ID_PEP = -1;
             this.cmbSTAMP_AustrittWohin.IgnoreUnterdruecken = true;
-            this.cmbSTAMP_AustrittWohin.Location = new System.Drawing.Point(137, 1);
+            this.cmbSTAMP_AustrittWohin.Location = new System.Drawing.Point(136, 1);
             this.cmbSTAMP_AustrittWohin.Name = "cmbSTAMP_AustrittWohin";
             this.cmbSTAMP_AustrittWohin.PflichtJN = false;
             this.cmbSTAMP_AustrittWohin.SelectDistinct = false;
             this.cmbSTAMP_AustrittWohin.ShowAddButton = true;
-            this.cmbSTAMP_AustrittWohin.Size = new System.Drawing.Size(386, 21);
+            this.cmbSTAMP_AustrittWohin.Size = new System.Drawing.Size(387, 21);
             this.cmbSTAMP_AustrittWohin.sys = false;
             this.cmbSTAMP_AustrittWohin.TabIndex = 15;
             // 

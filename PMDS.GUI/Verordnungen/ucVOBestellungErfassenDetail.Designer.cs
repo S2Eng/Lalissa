@@ -181,7 +181,7 @@
             // 
             // udteGueltigBis
             // 
-            this.udteGueltigBis.Location = new System.Drawing.Point(117, 60);
+            this.udteGueltigBis.Location = new System.Drawing.Point(116, 65);
             this.udteGueltigBis.Name = "udteGueltigBis";
             this.udteGueltigBis.Size = new System.Drawing.Size(92, 21);
             this.udteGueltigBis.TabIndex = 2;
@@ -201,7 +201,7 @@
             // 
             appearance3.TextVAlignAsString = "Middle";
             this.lblGültigBis.Appearance = appearance3;
-            this.lblGültigBis.Location = new System.Drawing.Point(13, 62);
+            this.lblGültigBis.Location = new System.Drawing.Point(13, 68);
             this.lblGültigBis.Name = "lblGültigBis";
             this.lblGültigBis.Size = new System.Drawing.Size(83, 17);
             this.lblGültigBis.TabIndex = 37;
@@ -228,7 +228,7 @@
             editorButton1.Appearance = appearance6;
             editorButton1.Key = "Add";
             this.cboTyp.ButtonsRight.Add(editorButton1);
-            this.cboTyp.Location = new System.Drawing.Point(117, 83);
+            this.cboTyp.Location = new System.Drawing.Point(117, 92);
             this.cboTyp.Name = "cboTyp";
             this.cboTyp.ReadOnly = true;
             this.cboTyp.Size = new System.Drawing.Size(359, 21);
@@ -239,7 +239,7 @@
             // 
             appearance7.TextVAlignAsString = "Middle";
             this.lblTyp.Appearance = appearance7;
-            this.lblTyp.Location = new System.Drawing.Point(13, 85);
+            this.lblTyp.Location = new System.Drawing.Point(13, 96);
             this.lblTyp.Name = "lblTyp";
             this.lblTyp.Size = new System.Drawing.Size(83, 17);
             this.lblTyp.TabIndex = 39;
@@ -249,7 +249,7 @@
             // 
             appearance8.TextVAlignAsString = "Middle";
             this.lblMedikament.Appearance = appearance8;
-            this.lblMedikament.Location = new System.Drawing.Point(13, 16);
+            this.lblMedikament.Location = new System.Drawing.Point(13, 14);
             this.lblMedikament.Name = "lblMedikament";
             this.lblMedikament.Size = new System.Drawing.Size(83, 16);
             this.lblMedikament.TabIndex = 41;
@@ -260,7 +260,7 @@
             appearance9.BackColor = System.Drawing.Color.White;
             this.txtMedikament.Appearance = appearance9;
             this.txtMedikament.BackColor = System.Drawing.Color.White;
-            this.txtMedikament.Location = new System.Drawing.Point(117, 14);
+            this.txtMedikament.Location = new System.Drawing.Point(117, 11);
             this.txtMedikament.Name = "txtMedikament";
             this.txtMedikament.ReadOnly = true;
             this.txtMedikament.Size = new System.Drawing.Size(359, 21);
@@ -296,7 +296,7 @@
             // 
             // chkEigentumKlient
             // 
-            this.chkEigentumKlient.Location = new System.Drawing.Point(117, 191);
+            this.chkEigentumKlient.Location = new System.Drawing.Point(116, 234);
             this.chkEigentumKlient.Name = "chkEigentumKlient";
             this.chkEigentumKlient.Size = new System.Drawing.Size(136, 18);
             this.chkEigentumKlient.TabIndex = 6;
@@ -304,7 +304,7 @@
             // 
             // numMenge
             // 
-            this.numMenge.Location = new System.Drawing.Point(117, 213);
+            this.numMenge.Location = new System.Drawing.Point(116, 258);
             this.numMenge.Name = "numMenge";
             this.numMenge.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.numMenge.Size = new System.Drawing.Size(92, 21);
@@ -314,9 +314,10 @@
             // 
             appearance33.TextVAlignAsString = "Middle";
             this.lblMenge.Appearance = appearance33;
-            this.lblMenge.Location = new System.Drawing.Point(13, 215);
+            this.lblMenge.AutoSize = true;
+            this.lblMenge.Location = new System.Drawing.Point(5, 261);
             this.lblMenge.Name = "lblMenge";
-            this.lblMenge.Size = new System.Drawing.Size(83, 17);
+            this.lblMenge.Size = new System.Drawing.Size(39, 14);
             this.lblMenge.TabIndex = 51;
             this.lblMenge.Text = "Menge";
             // 
@@ -328,7 +329,7 @@
             editorButton3.Appearance = appearance31;
             editorButton3.Key = "Add";
             this.cboEinheit.ButtonsRight.Add(editorButton3);
-            this.cboEinheit.Location = new System.Drawing.Point(117, 236);
+            this.cboEinheit.Location = new System.Drawing.Point(116, 285);
             this.cboEinheit.Name = "cboEinheit";
             this.cboEinheit.Size = new System.Drawing.Size(359, 21);
             this.cboEinheit.TabIndex = 8;
@@ -338,9 +339,10 @@
             // 
             appearance32.TextVAlignAsString = "Middle";
             this.lblEinheit.Appearance = appearance32;
-            this.lblEinheit.Location = new System.Drawing.Point(13, 238);
+            this.lblEinheit.AutoSize = true;
+            this.lblEinheit.Location = new System.Drawing.Point(5, 288);
             this.lblEinheit.Name = "lblEinheit";
-            this.lblEinheit.Size = new System.Drawing.Size(83, 17);
+            this.lblEinheit.Size = new System.Drawing.Size(39, 14);
             this.lblEinheit.TabIndex = 53;
             this.lblEinheit.Text = "Einheit";
             // 
@@ -352,7 +354,7 @@
             editorButton2.Appearance = appearance29;
             editorButton2.Key = "Add";
             this.cboLieferant.ButtonsRight.Add(editorButton2);
-            this.cboLieferant.Location = new System.Drawing.Point(117, 259);
+            this.cboLieferant.Location = new System.Drawing.Point(116, 312);
             this.cboLieferant.Name = "cboLieferant";
             this.cboLieferant.Size = new System.Drawing.Size(359, 21);
             this.cboLieferant.TabIndex = 9;
@@ -362,9 +364,10 @@
             // 
             appearance30.TextVAlignAsString = "Middle";
             this.lblLieferant.Appearance = appearance30;
-            this.lblLieferant.Location = new System.Drawing.Point(13, 261);
+            this.lblLieferant.AutoSize = true;
+            this.lblLieferant.Location = new System.Drawing.Point(5, 316);
             this.lblLieferant.Name = "lblLieferant";
-            this.lblLieferant.Size = new System.Drawing.Size(83, 17);
+            this.lblLieferant.Size = new System.Drawing.Size(48, 14);
             this.lblLieferant.TabIndex = 55;
             this.lblLieferant.Text = "Lieferant";
             // 
@@ -373,19 +376,20 @@
             this.txtHinweisLieferant.AcceptsReturn = true;
             this.txtHinweisLieferant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtHinweisLieferant.Location = new System.Drawing.Point(117, 282);
+            this.txtHinweisLieferant.Location = new System.Drawing.Point(117, 339);
             this.txtHinweisLieferant.Multiline = true;
             this.txtHinweisLieferant.Name = "txtHinweisLieferant";
-            this.txtHinweisLieferant.Size = new System.Drawing.Size(501, 110);
+            this.txtHinweisLieferant.Size = new System.Drawing.Size(501, 91);
             this.txtHinweisLieferant.TabIndex = 10;
             // 
             // lblHinweisLieferant
             // 
             appearance28.TextVAlignAsString = "Middle";
             this.lblHinweisLieferant.Appearance = appearance28;
-            this.lblHinweisLieferant.Location = new System.Drawing.Point(13, 282);
+            this.lblHinweisLieferant.AutoSize = true;
+            this.lblHinweisLieferant.Location = new System.Drawing.Point(3, 340);
             this.lblHinweisLieferant.Name = "lblHinweisLieferant";
-            this.lblHinweisLieferant.Size = new System.Drawing.Size(106, 18);
+            this.lblHinweisLieferant.Size = new System.Drawing.Size(91, 14);
             this.lblHinweisLieferant.TabIndex = 57;
             this.lblHinweisLieferant.Text = "Hinweis Lieferant";
             // 
@@ -395,19 +399,20 @@
             this.txtAnmerkung.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAnmerkung.Location = new System.Drawing.Point(117, 394);
+            this.txtAnmerkung.Location = new System.Drawing.Point(117, 436);
             this.txtAnmerkung.Multiline = true;
             this.txtAnmerkung.Name = "txtAnmerkung";
-            this.txtAnmerkung.Size = new System.Drawing.Size(501, 175);
+            this.txtAnmerkung.Size = new System.Drawing.Size(501, 133);
             this.txtAnmerkung.TabIndex = 11;
             // 
             // lblAnmerkung
             // 
             appearance27.TextVAlignAsString = "Middle";
             this.lblAnmerkung.Appearance = appearance27;
-            this.lblAnmerkung.Location = new System.Drawing.Point(13, 394);
+            this.lblAnmerkung.AutoSize = true;
+            this.lblAnmerkung.Location = new System.Drawing.Point(5, 437);
             this.lblAnmerkung.Name = "lblAnmerkung";
-            this.lblAnmerkung.Size = new System.Drawing.Size(106, 18);
+            this.lblAnmerkung.Size = new System.Drawing.Size(62, 14);
             this.lblAnmerkung.TabIndex = 59;
             this.lblAnmerkung.Text = "Anmerkung";
             // 
@@ -420,9 +425,9 @@
             this.PanelSerientermineUISub.Controls.Add(this.grpWochentage);
             this.PanelSerientermineUISub.Controls.Add(this.iWiedWertJeden);
             this.PanelSerientermineUISub.Controls.Add(this.opTagWochenMonat);
-            this.PanelSerientermineUISub.Location = new System.Drawing.Point(117, 106);
+            this.PanelSerientermineUISub.Location = new System.Drawing.Point(117, 118);
             this.PanelSerientermineUISub.Name = "PanelSerientermineUISub";
-            this.PanelSerientermineUISub.Size = new System.Drawing.Size(443, 60);
+            this.PanelSerientermineUISub.Size = new System.Drawing.Size(501, 87);
             this.PanelSerientermineUISub.TabIndex = 4;
             // 
             // optSerienterminType
@@ -453,7 +458,7 @@
             this.optSerienterminType.ItemSpacingVertical = 4;
             this.optSerienterminType.Location = new System.Drawing.Point(2, 1);
             this.optSerienterminType.Name = "optSerienterminType";
-            this.optSerienterminType.Size = new System.Drawing.Size(55, 55);
+            this.optSerienterminType.Size = new System.Drawing.Size(89, 83);
             this.optSerienterminType.TabIndex = 0;
             this.optSerienterminType.Text = "täglich";
             this.optSerienterminType.ValueChanged += new System.EventHandler(this.optSerienterminType_ValueChanged);
@@ -466,7 +471,7 @@
             this.iNTenMonat.Appearance = appearance13;
             this.iNTenMonat.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
             this.iNTenMonat.InputMask = "nnn";
-            this.iNTenMonat.Location = new System.Drawing.Point(75, 37);
+            this.iNTenMonat.Location = new System.Drawing.Point(97, 50);
             this.iNTenMonat.MaxValue = ((short)(31));
             this.iNTenMonat.MinValue = ((short)(1));
             this.iNTenMonat.Name = "iNTenMonat";
@@ -481,7 +486,7 @@
             appearance14.FontData.SizeInPoints = 8F;
             this.lblTagWochenMonatnTen.Appearance = appearance14;
             this.lblTagWochenMonatnTen.AutoSize = true;
-            this.lblTagWochenMonatnTen.Location = new System.Drawing.Point(116, 41);
+            this.lblTagWochenMonatnTen.Location = new System.Drawing.Point(142, 53);
             this.lblTagWochenMonatnTen.Name = "lblTagWochenMonatnTen";
             this.lblTagWochenMonatnTen.Size = new System.Drawing.Size(82, 14);
             this.lblTagWochenMonatnTen.TabIndex = 500;
@@ -500,9 +505,9 @@
             this.grpWochentage.Controls.Add(this.cbMi);
             this.grpWochentage.Controls.Add(this.cbDi);
             this.grpWochentage.Controls.Add(this.cbMo);
-            this.grpWochentage.Location = new System.Drawing.Point(288, 2);
+            this.grpWochentage.Location = new System.Drawing.Point(312, 3);
             this.grpWochentage.Name = "grpWochentage";
-            this.grpWochentage.Size = new System.Drawing.Size(153, 57);
+            this.grpWochentage.Size = new System.Drawing.Size(185, 57);
             this.grpWochentage.TabIndex = 4;
             this.grpWochentage.Tag = "ResID.Wochentage";
             this.grpWochentage.Text = "Wochentage";
@@ -518,7 +523,7 @@
             this.cbSo.BackColor = System.Drawing.Color.White;
             this.cbSo.BackColorInternal = System.Drawing.Color.White;
             this.cbSo.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.cbSo.Location = new System.Drawing.Point(126, 16);
+            this.cbSo.Location = new System.Drawing.Point(157, 16);
             this.cbSo.Name = "cbSo";
             this.cbSo.Size = new System.Drawing.Size(24, 34);
             this.cbSo.TabIndex = 13;
@@ -534,7 +539,7 @@
             this.cbSa.BackColor = System.Drawing.Color.White;
             this.cbSa.BackColorInternal = System.Drawing.Color.White;
             this.cbSa.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.cbSa.Location = new System.Drawing.Point(106, 16);
+            this.cbSa.Location = new System.Drawing.Point(130, 16);
             this.cbSa.Name = "cbSa";
             this.cbSa.Size = new System.Drawing.Size(24, 34);
             this.cbSa.TabIndex = 12;
@@ -550,7 +555,7 @@
             this.cbFr.BackColor = System.Drawing.Color.White;
             this.cbFr.BackColorInternal = System.Drawing.Color.White;
             this.cbFr.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.cbFr.Location = new System.Drawing.Point(86, 16);
+            this.cbFr.Location = new System.Drawing.Point(106, 16);
             this.cbFr.Name = "cbFr";
             this.cbFr.Size = new System.Drawing.Size(24, 34);
             this.cbFr.TabIndex = 11;
@@ -566,7 +571,7 @@
             this.cbDo.BackColor = System.Drawing.Color.White;
             this.cbDo.BackColorInternal = System.Drawing.Color.White;
             this.cbDo.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.cbDo.Location = new System.Drawing.Point(66, 16);
+            this.cbDo.Location = new System.Drawing.Point(80, 16);
             this.cbDo.Name = "cbDo";
             this.cbDo.Size = new System.Drawing.Size(24, 34);
             this.cbDo.TabIndex = 10;
@@ -582,7 +587,7 @@
             this.cbMi.BackColor = System.Drawing.Color.White;
             this.cbMi.BackColorInternal = System.Drawing.Color.White;
             this.cbMi.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.cbMi.Location = new System.Drawing.Point(46, 16);
+            this.cbMi.Location = new System.Drawing.Point(54, 16);
             this.cbMi.Name = "cbMi";
             this.cbMi.Size = new System.Drawing.Size(24, 34);
             this.cbMi.TabIndex = 9;
@@ -598,7 +603,7 @@
             this.cbDi.BackColor = System.Drawing.Color.White;
             this.cbDi.BackColorInternal = System.Drawing.Color.White;
             this.cbDi.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.cbDi.Location = new System.Drawing.Point(26, 16);
+            this.cbDi.Location = new System.Drawing.Point(30, 16);
             this.cbDi.Name = "cbDi";
             this.cbDi.Size = new System.Drawing.Size(24, 34);
             this.cbDi.TabIndex = 8;
@@ -628,7 +633,7 @@
             this.iWiedWertJeden.Appearance = appearance23;
             this.iWiedWertJeden.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
             this.iWiedWertJeden.InputMask = "nnn";
-            this.iWiedWertJeden.Location = new System.Drawing.Point(75, 16);
+            this.iWiedWertJeden.Location = new System.Drawing.Point(97, 17);
             this.iWiedWertJeden.MaxValue = 1000;
             this.iWiedWertJeden.MinValue = 1;
             this.iWiedWertJeden.Name = "iWiedWertJeden";
@@ -660,9 +665,9 @@
             ValueListItem6,
             ValueListItem7,
             ValueListItem8});
-            this.opTagWochenMonat.Location = new System.Drawing.Point(116, 19);
+            this.opTagWochenMonat.Location = new System.Drawing.Point(138, 21);
             this.opTagWochenMonat.Name = "opTagWochenMonat";
-            this.opTagWochenMonat.Size = new System.Drawing.Size(168, 15);
+            this.opTagWochenMonat.Size = new System.Drawing.Size(172, 15);
             this.opTagWochenMonat.TabIndex = 2;
             this.opTagWochenMonat.Text = "Tage";
             this.opTagWochenMonat.ValueChanged += new System.EventHandler(this.opTagWochenMonat_ValueChanged);
@@ -684,7 +689,7 @@
             this.dteSerienterminEndetAm.Appearance = appearance25;
             this.dteSerienterminEndetAm.BackColor = System.Drawing.Color.White;
             this.dteSerienterminEndetAm.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dteSerienterminEndetAm.Location = new System.Drawing.Point(471, 171);
+            this.dteSerienterminEndetAm.Location = new System.Drawing.Point(461, 208);
             this.dteSerienterminEndetAm.MaskInput = "{date}";
             this.dteSerienterminEndetAm.Name = "dteSerienterminEndetAm";
             this.dteSerienterminEndetAm.Size = new System.Drawing.Size(93, 21);
@@ -699,7 +704,7 @@
             appearance26.ForeColorDisabled = System.Drawing.Color.Black;
             appearance26.TextVAlignAsString = "Middle";
             this.lblSerienterminEnde.Appearance = appearance26;
-            this.lblSerienterminEnde.Location = new System.Drawing.Point(398, 173);
+            this.lblSerienterminEnde.Location = new System.Drawing.Point(388, 210);
             this.lblSerienterminEnde.Name = "lblSerienterminEnde";
             this.lblSerienterminEnde.Size = new System.Drawing.Size(67, 17);
             this.lblSerienterminEnde.TabIndex = 505;
@@ -709,7 +714,7 @@
             // 
             // chkDauerbestellung
             // 
-            this.chkDauerbestellung.Location = new System.Drawing.Point(117, 170);
+            this.chkDauerbestellung.Location = new System.Drawing.Point(116, 210);
             this.chkDauerbestellung.Name = "chkDauerbestellung";
             this.chkDauerbestellung.Size = new System.Drawing.Size(136, 18);
             this.chkDauerbestellung.TabIndex = 5;
@@ -739,7 +744,7 @@
             this.btnSearchMedikmanete.Appearance = appearance10;
             this.btnSearchMedikmanete.AutoWorkLayout = false;
             this.btnSearchMedikmanete.IsStandardControl = false;
-            this.btnSearchMedikmanete.Location = new System.Drawing.Point(477, 10);
+            this.btnSearchMedikmanete.Location = new System.Drawing.Point(483, 4);
             this.btnSearchMedikmanete.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchMedikmanete.Name = "btnSearchMedikmanete";
             this.btnSearchMedikmanete.Size = new System.Drawing.Size(30, 28);

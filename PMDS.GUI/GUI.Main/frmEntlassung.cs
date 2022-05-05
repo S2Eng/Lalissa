@@ -82,14 +82,14 @@ namespace PMDS.GUI
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEntlassung));
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            PMDS.BusinessLogic.Aufenthalt aufenthalt2 = new PMDS.BusinessLogic.Aufenthalt();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEntlassung));
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            PMDS.BusinessLogic.Aufenthalt aufenthalt1 = new PMDS.BusinessLogic.Aufenthalt();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             this.labInfo = new QS2.Desktop.ControlManagment.BaseLabel();
             this.btnCancel = new PMDS.GUI.ucButton(this.components);
             this.btnOK = new PMDS.GUI.ucButton(this.components);
@@ -101,33 +101,33 @@ namespace PMDS.GUI
             // 
             // labInfo
             // 
-            appearance7.ForeColor = System.Drawing.Color.White;
-            appearance7.TextHAlignAsString = "Center";
-            appearance7.TextVAlignAsString = "Middle";
-            this.labInfo.Appearance = appearance7;
+            appearance1.ForeColor = System.Drawing.Color.White;
+            appearance1.TextHAlignAsString = "Center";
+            appearance1.TextVAlignAsString = "Middle";
+            this.labInfo.Appearance = appearance1;
             this.labInfo.BackColorInternal = System.Drawing.SystemColors.ControlDark;
             this.labInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.labInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labInfo.Location = new System.Drawing.Point(0, 0);
             this.labInfo.Name = "labInfo";
-            this.labInfo.Size = new System.Drawing.Size(764, 48);
+            this.labInfo.Size = new System.Drawing.Size(866, 48);
             this.labInfo.TabIndex = 0;
             this.labInfo.Text = "Entlassung von {0}";
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            appearance8.Image = ((object)(resources.GetObject("appearance8.Image")));
-            appearance8.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance8.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnCancel.Appearance = appearance8;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnCancel.Appearance = appearance2;
             this.btnCancel.AutoWorkLayout = false;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(366, 481);
+            this.btnCancel.Location = new System.Drawing.Point(468, 481);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(386, 35);
             this.btnCancel.TabIndex = 2;
@@ -140,17 +140,17 @@ namespace PMDS.GUI
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOK.Appearance = appearance2;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
+            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOK.Appearance = appearance3;
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(113, 484);
+            this.btnOK.Location = new System.Drawing.Point(215, 484);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(88, 32);
             this.btnOK.TabIndex = 3;
@@ -165,56 +165,56 @@ namespace PMDS.GUI
             this.ucEntlassung1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            aufenthalt2.AufnahmeArt = 0;
-            aufenthalt2.Aufnahmezeitpunkt = new System.DateTime(2008, 11, 27, 15, 20, 48, 732);
-            aufenthalt2.Ausgleichszahlung = 0D;
-            aufenthalt2.BegleitungVon = "";
-            aufenthalt2.Bermerkung = "";
-            aufenthalt2.Besuchsregelung = "";
-            aufenthalt2.Entlassungsbemerkung = "";
-            aufenthalt2.Entlassungszeitpunkt = null;
-            aufenthalt2.Erwartungen = "";
-            aufenthalt2.Fallnummer = 0D;
-            aufenthalt2.Gewicht = 0D;
-            aufenthalt2.Gruppenkennzahl = "";
-            aufenthalt2.ID = new System.Guid("f1788b26-4378-4a20-b93f-3d0e279aec91");
-            aufenthalt2.IDAbteilung = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt2.IDAufenthaltVerlauf = new System.Guid("9106df53-c041-4144-be25-5db1372953fd");
-            aufenthalt2.IDBenutzer_Aufnahme = new System.Guid("00000000-0000-0000-0000-000001000000");
-            aufenthalt2.IDBenutzer_Entlassung = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt2.IDBereich = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt2.IDEinrichtung_Aufnahme = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt2.IDEinrichtung_Entlassung = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt2.IDErstkontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt2.IDKlinik = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt2.IDPatient = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt2.IDUrlaub = new System.Guid("00000000-0000-0000-0000-000000000000");
-            aufenthalt2.NaechsteEvaluierung = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            aufenthalt2.NaechsteEvaluierungBemerkung = "";
-            aufenthalt2.Postregelung = "";
-            aufenthalt2.PsychischeAuff = "";
-            aufenthalt2.SofortMassnahmen = "";
-            aufenthalt2.SomatischeAuff = "";
-            aufenthalt2.SonstigeBesonderheiten = "";
-            aufenthalt2.SonstigeRegelung = "";
-            aufenthalt2.TaschegeldVortragDatum = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            aufenthalt2.TaschengeldSollstand = 0D;
-            aufenthalt2.TaschengeldVortragBetrag = 0D;
-            aufenthalt2.Verfuegungsdatum = null;
-            aufenthalt2.VerhaltenAufnahme = "";
-            this.ucEntlassung1.Aufenthalt = aufenthalt2;
+            aufenthalt1.AufnahmeArt = 0;
+            aufenthalt1.Aufnahmezeitpunkt = new System.DateTime(2008, 11, 27, 15, 20, 48, 732);
+            aufenthalt1.Ausgleichszahlung = 0D;
+            aufenthalt1.BegleitungVon = "";
+            aufenthalt1.Bermerkung = "";
+            aufenthalt1.Besuchsregelung = "";
+            aufenthalt1.Entlassungsbemerkung = "";
+            aufenthalt1.Entlassungszeitpunkt = null;
+            aufenthalt1.Erwartungen = "";
+            aufenthalt1.Fallnummer = 0D;
+            aufenthalt1.Gewicht = 0D;
+            aufenthalt1.Gruppenkennzahl = "";
+            aufenthalt1.ID = new System.Guid("f1788b26-4378-4a20-b93f-3d0e279aec91");
+            aufenthalt1.IDAbteilung = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt1.IDAufenthaltVerlauf = new System.Guid("9106df53-c041-4144-be25-5db1372953fd");
+            aufenthalt1.IDBenutzer_Aufnahme = new System.Guid("00000000-0000-0000-0000-000001000000");
+            aufenthalt1.IDBenutzer_Entlassung = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt1.IDBereich = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt1.IDEinrichtung_Aufnahme = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt1.IDEinrichtung_Entlassung = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt1.IDErstkontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt1.IDKlinik = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt1.IDPatient = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt1.IDUrlaub = new System.Guid("00000000-0000-0000-0000-000000000000");
+            aufenthalt1.NaechsteEvaluierung = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            aufenthalt1.NaechsteEvaluierungBemerkung = "";
+            aufenthalt1.Postregelung = "";
+            aufenthalt1.PsychischeAuff = "";
+            aufenthalt1.SofortMassnahmen = "";
+            aufenthalt1.SomatischeAuff = "";
+            aufenthalt1.SonstigeBesonderheiten = "";
+            aufenthalt1.SonstigeRegelung = "";
+            aufenthalt1.TaschegeldVortragDatum = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            aufenthalt1.TaschengeldSollstand = 0D;
+            aufenthalt1.TaschengeldVortragBetrag = 0D;
+            aufenthalt1.Verfuegungsdatum = null;
+            aufenthalt1.VerhaltenAufnahme = "";
+            this.ucEntlassung1.Aufenthalt = aufenthalt1;
             this.ucEntlassung1.Location = new System.Drawing.Point(0, 91);
             this.ucEntlassung1.Name = "ucEntlassung1";
             this.ucEntlassung1.ReadOnly = false;
-            this.ucEntlassung1.Size = new System.Drawing.Size(764, 305);
+            this.ucEntlassung1.Size = new System.Drawing.Size(866, 305);
             this.ucEntlassung1.TabIndex = 4;
             // 
             // lblWarning
             // 
             this.lblWarning.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            appearance3.ForeColor = System.Drawing.Color.Black;
-            this.lblWarning.Appearance = appearance3;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            appearance4.ForeColor = System.Drawing.Color.Black;
+            this.lblWarning.Appearance = appearance4;
             this.lblWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWarning.Location = new System.Drawing.Point(12, 423);
             this.lblWarning.Name = "lblWarning";
@@ -226,9 +226,9 @@ namespace PMDS.GUI
             // lblKlientenWirklichEntlassen
             // 
             this.lblKlientenWirklichEntlassen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance9.BackColor = System.Drawing.Color.Transparent;
-            appearance9.ForeColor = System.Drawing.Color.Black;
-            this.lblKlientenWirklichEntlassen.Appearance = appearance9;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            appearance5.ForeColor = System.Drawing.Color.Black;
+            this.lblKlientenWirklichEntlassen.Appearance = appearance5;
             this.lblKlientenWirklichEntlassen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKlientenWirklichEntlassen.Location = new System.Drawing.Point(12, 448);
             this.lblKlientenWirklichEntlassen.Name = "lblKlientenWirklichEntlassen";
@@ -240,9 +240,9 @@ namespace PMDS.GUI
             // lblHinweisROT
             // 
             this.lblHinweisROT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance10.BackColor = System.Drawing.Color.Red;
-            appearance10.ForeColor = System.Drawing.Color.White;
-            this.lblHinweisROT.Appearance = appearance10;
+            appearance6.BackColor = System.Drawing.Color.Red;
+            appearance6.ForeColor = System.Drawing.Color.White;
+            this.lblHinweisROT.Appearance = appearance6;
             this.lblHinweisROT.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHinweisROT.Location = new System.Drawing.Point(12, 53);
             this.lblHinweisROT.Name = "lblHinweisROT";
@@ -256,7 +256,7 @@ namespace PMDS.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(764, 528);
+            this.ClientSize = new System.Drawing.Size(866, 528);
             this.Controls.Add(this.lblHinweisROT);
             this.Controls.Add(this.lblKlientenWirklichEntlassen);
             this.Controls.Add(this.lblWarning);

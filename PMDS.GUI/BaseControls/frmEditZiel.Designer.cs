@@ -98,6 +98,7 @@
             this.textControSave.Name = "textControSave";
             this.textControSave.Size = new System.Drawing.Size(61, 43);
             this.textControSave.TabIndex = 42;
+            this.textControSave.UserNames = null;
             this.textControSave.ViewMode = TXTextControl.ViewMode.Normal;
             // 
             // textControChanges
@@ -108,6 +109,7 @@
             this.textControChanges.Name = "textControChanges";
             this.textControChanges.Size = new System.Drawing.Size(61, 43);
             this.textControChanges.TabIndex = 41;
+            this.textControChanges.UserNames = null;
             this.textControChanges.ViewMode = TXTextControl.ViewMode.Normal;
             // 
             // textControlLineBreak
@@ -118,6 +120,7 @@
             this.textControlLineBreak.Name = "textControlLineBreak";
             this.textControlLineBreak.Size = new System.Drawing.Size(61, 43);
             this.textControlLineBreak.TabIndex = 43;
+            this.textControlLineBreak.UserNames = null;
             this.textControlLineBreak.ViewMode = TXTextControl.ViewMode.Normal;
             // 
             // textControlOriginal
@@ -128,6 +131,7 @@
             this.textControlOriginal.Name = "textControlOriginal";
             this.textControlOriginal.Size = new System.Drawing.Size(61, 43);
             this.textControlOriginal.TabIndex = 38;
+            this.textControlOriginal.UserNames = null;
             this.textControlOriginal.ViewMode = TXTextControl.ViewMode.Normal;
             // 
             // btnSave
@@ -174,7 +178,7 @@
             this.gbEvaluierung.Controls.Add(this.panelStatusEingabe);
             this.gbEvaluierung.Location = new System.Drawing.Point(5, 3);
             this.gbEvaluierung.Name = "gbEvaluierung";
-            this.gbEvaluierung.Size = new System.Drawing.Size(294, 77);
+            this.gbEvaluierung.Size = new System.Drawing.Size(518, 94);
             this.gbEvaluierung.TabIndex = 44;
             this.gbEvaluierung.Text = "Evaluierungsstatus";
             this.gbEvaluierung.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2000;
@@ -186,7 +190,7 @@
             this.panelStatusEingabe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelStatusEingabe.Location = new System.Drawing.Point(3, 16);
             this.panelStatusEingabe.Name = "panelStatusEingabe";
-            this.panelStatusEingabe.Size = new System.Drawing.Size(288, 58);
+            this.panelStatusEingabe.Size = new System.Drawing.Size(512, 75);
             this.panelStatusEingabe.TabIndex = 29;
             // 
             // optEvaluierungsStatus2
@@ -204,9 +208,9 @@
             valueListItem3});
             this.optEvaluierungsStatus2.ItemSpacingHorizontal = 1;
             this.optEvaluierungsStatus2.ItemSpacingVertical = 2;
-            this.optEvaluierungsStatus2.Location = new System.Drawing.Point(139, 5);
+            this.optEvaluierungsStatus2.Location = new System.Drawing.Point(239, 4);
             this.optEvaluierungsStatus2.Name = "optEvaluierungsStatus2";
-            this.optEvaluierungsStatus2.Size = new System.Drawing.Size(148, 48);
+            this.optEvaluierungsStatus2.Size = new System.Drawing.Size(253, 68);
             this.optEvaluierungsStatus2.TabIndex = 4;
             this.optEvaluierungsStatus2.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.optEvaluierungsStatus2.ValueChanged += new System.EventHandler(this.optEvaluierungsStatus2_ValueChanged);
@@ -226,9 +230,9 @@
             valueListItem6});
             this.optEvaluierungsStatus1.ItemSpacingHorizontal = 1;
             this.optEvaluierungsStatus1.ItemSpacingVertical = 2;
-            this.optEvaluierungsStatus1.Location = new System.Drawing.Point(6, 5);
+            this.optEvaluierungsStatus1.Location = new System.Drawing.Point(6, 4);
             this.optEvaluierungsStatus1.Name = "optEvaluierungsStatus1";
-            this.optEvaluierungsStatus1.Size = new System.Drawing.Size(130, 47);
+            this.optEvaluierungsStatus1.Size = new System.Drawing.Size(227, 68);
             this.optEvaluierungsStatus1.TabIndex = 3;
             this.optEvaluierungsStatus1.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.optEvaluierungsStatus1.ValueChanged += new System.EventHandler(this.optEvaluierungsStatus1_ValueChanged);
@@ -240,9 +244,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelTxtEditorEdit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelTxtEditorEdit.Controls.Add(this.contTXTFieldBeschreibung);
-            this.PanelTxtEditorEdit.Location = new System.Drawing.Point(6, 81);
+            this.PanelTxtEditorEdit.Location = new System.Drawing.Point(6, 100);
             this.PanelTxtEditorEdit.Name = "PanelTxtEditorEdit";
-            this.PanelTxtEditorEdit.Size = new System.Drawing.Size(1062, 272);
+            this.PanelTxtEditorEdit.Size = new System.Drawing.Size(1062, 253);
             this.PanelTxtEditorEdit.TabIndex = 43;
             // 
             // contTXTFieldBeschreibung
@@ -251,16 +255,17 @@
             this.contTXTFieldBeschreibung.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contTXTFieldBeschreibung.Location = new System.Drawing.Point(0, 0);
             this.contTXTFieldBeschreibung.Name = "contTXTFieldBeschreibung";
-            this.contTXTFieldBeschreibung.Size = new System.Drawing.Size(1060, 270);
+            this.contTXTFieldBeschreibung.Size = new System.Drawing.Size(1060, 251);
             this.contTXTFieldBeschreibung.TabIndex = 38;
             // 
             // lblHistorie
             // 
             this.lblHistorie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblHistorie.AutoSize = true;
             this.lblHistorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHistorie.Location = new System.Drawing.Point(6, 354);
+            this.lblHistorie.Location = new System.Drawing.Point(6, 364);
             this.lblHistorie.Name = "lblHistorie";
-            this.lblHistorie.Size = new System.Drawing.Size(81, 15);
+            this.lblHistorie.Size = new System.Drawing.Size(55, 17);
             this.lblHistorie.TabIndex = 42;
             this.lblHistorie.Text = "Historie:";
             // 
@@ -271,11 +276,11 @@
             this.textControlHistorie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.textControlHistorie.BorderStyle = TXTextControl.BorderStyle.FixedSingle;
             this.textControlHistorie.Font = new System.Drawing.Font("Arial", 10F);
-            this.textControlHistorie.Location = new System.Drawing.Point(6, 372);
+            this.textControlHistorie.Location = new System.Drawing.Point(6, 387);
             this.textControlHistorie.Name = "textControlHistorie";
-            this.textControlHistorie.Size = new System.Drawing.Size(1062, 296);
+            this.textControlHistorie.Size = new System.Drawing.Size(1062, 281);
             this.textControlHistorie.TabIndex = 41;
-            this.textControlHistorie.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.textControlHistorie.UserNames = null;
             this.textControlHistorie.ViewMode = TXTextControl.ViewMode.Normal;
             // 
             // errorProvider1
@@ -297,6 +302,7 @@
             this.panelButtons.ResumeLayout(false);
             this.panelTxtControl.ResumeLayout(false);
             this.panelAll.ResumeLayout(false);
+            this.panelAll.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gbEvaluierung)).EndInit();
             this.gbEvaluierung.ResumeLayout(false);
             this.panelStatusEingabe.ResumeLayout(false);

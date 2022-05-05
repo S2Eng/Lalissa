@@ -158,7 +158,7 @@
             // 
             appearance3.TextVAlignAsString = "Middle";
             this.lblMedikament.Appearance = appearance3;
-            this.lblMedikament.Location = new System.Drawing.Point(11, 11);
+            this.lblMedikament.Location = new System.Drawing.Point(7, 31);
             this.lblMedikament.Name = "lblMedikament";
             this.lblMedikament.Size = new System.Drawing.Size(83, 16);
             this.lblMedikament.TabIndex = 48;
@@ -172,10 +172,10 @@
             appearance4.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtMedikament.Appearance = appearance4;
             this.txtMedikament.BackColor = System.Drawing.Color.White;
-            this.txtMedikament.Location = new System.Drawing.Point(107, 9);
+            this.txtMedikament.Location = new System.Drawing.Point(123, 28);
             this.txtMedikament.Name = "txtMedikament";
             this.txtMedikament.ReadOnly = true;
-            this.txtMedikament.Size = new System.Drawing.Size(328, 21);
+            this.txtMedikament.Size = new System.Drawing.Size(304, 21);
             this.txtMedikament.TabIndex = 0;
             // 
             // numMengeBestellung
@@ -186,10 +186,10 @@
             appearance5.ForeColorDisabled = System.Drawing.Color.Black;
             this.numMengeBestellung.Appearance = appearance5;
             this.numMengeBestellung.BackColor = System.Drawing.Color.White;
-            this.numMengeBestellung.Location = new System.Drawing.Point(107, 55);
+            this.numMengeBestellung.Location = new System.Drawing.Point(123, 82);
             this.numMengeBestellung.Name = "numMengeBestellung";
             this.numMengeBestellung.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
-            this.numMengeBestellung.Size = new System.Drawing.Size(92, 21);
+            this.numMengeBestellung.Size = new System.Drawing.Size(105, 21);
             this.numMengeBestellung.TabIndex = 2;
             // 
             // txtAnmerkung
@@ -203,10 +203,10 @@
             appearance6.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtAnmerkung.Appearance = appearance6;
             this.txtAnmerkung.BackColor = System.Drawing.Color.White;
-            this.txtAnmerkung.Location = new System.Drawing.Point(107, 212);
+            this.txtAnmerkung.Location = new System.Drawing.Point(123, 251);
             this.txtAnmerkung.Multiline = true;
             this.txtAnmerkung.Name = "txtAnmerkung";
-            this.txtAnmerkung.Size = new System.Drawing.Size(359, 169);
+            this.txtAnmerkung.Size = new System.Drawing.Size(341, 130);
             this.txtAnmerkung.TabIndex = 6;
             // 
             // udteDatumBestellung
@@ -217,16 +217,16 @@
             appearance7.ForeColorDisabled = System.Drawing.Color.Black;
             this.udteDatumBestellung.Appearance = appearance7;
             this.udteDatumBestellung.BackColor = System.Drawing.Color.White;
-            this.udteDatumBestellung.Location = new System.Drawing.Point(107, 32);
+            this.udteDatumBestellung.Location = new System.Drawing.Point(123, 55);
             this.udteDatumBestellung.Name = "udteDatumBestellung";
-            this.udteDatumBestellung.Size = new System.Drawing.Size(92, 21);
+            this.udteDatumBestellung.Size = new System.Drawing.Size(105, 21);
             this.udteDatumBestellung.TabIndex = 1;
             // 
             // lblMenge
             // 
             appearance8.TextVAlignAsString = "Middle";
             this.lblMenge.Appearance = appearance8;
-            this.lblMenge.Location = new System.Drawing.Point(11, 57);
+            this.lblMenge.Location = new System.Drawing.Point(7, 85);
             this.lblMenge.Name = "lblMenge";
             this.lblMenge.Size = new System.Drawing.Size(83, 17);
             this.lblMenge.TabIndex = 46;
@@ -236,7 +236,7 @@
             // 
             appearance9.TextVAlignAsString = "Middle";
             this.lblAnmerkung.Appearance = appearance9;
-            this.lblAnmerkung.Location = new System.Drawing.Point(11, 212);
+            this.lblAnmerkung.Location = new System.Drawing.Point(7, 252);
             this.lblAnmerkung.Name = "lblAnmerkung";
             this.lblAnmerkung.Size = new System.Drawing.Size(83, 18);
             this.lblAnmerkung.TabIndex = 45;
@@ -246,7 +246,7 @@
             // 
             appearance10.TextVAlignAsString = "Middle";
             this.lblDatumBestellung.Appearance = appearance10;
-            this.lblDatumBestellung.Location = new System.Drawing.Point(11, 34);
+            this.lblDatumBestellung.Location = new System.Drawing.Point(7, 58);
             this.lblDatumBestellung.Name = "lblDatumBestellung";
             this.lblDatumBestellung.Size = new System.Drawing.Size(83, 17);
             this.lblDatumBestellung.TabIndex = 42;
@@ -266,9 +266,9 @@
             editorButton1.Appearance = appearance12;
             editorButton1.Tag = "Add";
             this.cboEinheitBestellung.ButtonsRight.Add(editorButton1);
-            this.cboEinheitBestellung.Location = new System.Drawing.Point(107, 78);
+            this.cboEinheitBestellung.Location = new System.Drawing.Point(123, 109);
             this.cboEinheitBestellung.Name = "cboEinheitBestellung";
-            this.cboEinheitBestellung.Size = new System.Drawing.Size(359, 21);
+            this.cboEinheitBestellung.Size = new System.Drawing.Size(341, 21);
             this.cboEinheitBestellung.TabIndex = 3;
             this.cboEinheitBestellung.EditorButtonClick += new Infragistics.Win.UltraWinEditors.EditorButtonEventHandler(this.cboEinheitBestellung_EditorButtonClick);
             // 
@@ -276,7 +276,7 @@
             // 
             appearance13.TextVAlignAsString = "Middle";
             this.lblEinheit.Appearance = appearance13;
-            this.lblEinheit.Location = new System.Drawing.Point(11, 80);
+            this.lblEinheit.Location = new System.Drawing.Point(7, 113);
             this.lblEinheit.Name = "lblEinheit";
             this.lblEinheit.Size = new System.Drawing.Size(83, 17);
             this.lblEinheit.TabIndex = 55;
@@ -291,19 +291,19 @@
             appearance14.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtHinweisLieferant.Appearance = appearance14;
             this.txtHinweisLieferant.BackColor = System.Drawing.Color.White;
-            this.txtHinweisLieferant.Location = new System.Drawing.Point(107, 124);
+            this.txtHinweisLieferant.Location = new System.Drawing.Point(123, 163);
             this.txtHinweisLieferant.Multiline = true;
             this.txtHinweisLieferant.Name = "txtHinweisLieferant";
-            this.txtHinweisLieferant.Size = new System.Drawing.Size(359, 86);
+            this.txtHinweisLieferant.Size = new System.Drawing.Size(341, 82);
             this.txtHinweisLieferant.TabIndex = 5;
             // 
             // lblHinweisLieferant
             // 
             appearance15.TextVAlignAsString = "Middle";
             this.lblHinweisLieferant.Appearance = appearance15;
-            this.lblHinweisLieferant.Location = new System.Drawing.Point(11, 124);
+            this.lblHinweisLieferant.Location = new System.Drawing.Point(7, 164);
             this.lblHinweisLieferant.Name = "lblHinweisLieferant";
-            this.lblHinweisLieferant.Size = new System.Drawing.Size(106, 18);
+            this.lblHinweisLieferant.Size = new System.Drawing.Size(106, 54);
             this.lblHinweisLieferant.TabIndex = 61;
             this.lblHinweisLieferant.Text = "Hinweis Lieferant";
             // 
@@ -321,9 +321,9 @@
             editorButton2.Appearance = appearance17;
             editorButton2.Key = "Add";
             this.cboLieferant.ButtonsRight.Add(editorButton2);
-            this.cboLieferant.Location = new System.Drawing.Point(107, 101);
+            this.cboLieferant.Location = new System.Drawing.Point(123, 136);
             this.cboLieferant.Name = "cboLieferant";
-            this.cboLieferant.Size = new System.Drawing.Size(359, 21);
+            this.cboLieferant.Size = new System.Drawing.Size(341, 21);
             this.cboLieferant.TabIndex = 4;
             this.cboLieferant.EditorButtonClick += new Infragistics.Win.UltraWinEditors.EditorButtonEventHandler(this.cboLieferant_EditorButtonClick);
             // 
@@ -331,7 +331,7 @@
             // 
             appearance18.TextVAlignAsString = "Middle";
             this.lblLieferant.Appearance = appearance18;
-            this.lblLieferant.Location = new System.Drawing.Point(11, 103);
+            this.lblLieferant.Location = new System.Drawing.Point(7, 140);
             this.lblLieferant.Name = "lblLieferant";
             this.lblLieferant.Size = new System.Drawing.Size(83, 17);
             this.lblLieferant.TabIndex = 60;
@@ -342,16 +342,16 @@
             appearance19.ForeColor = System.Drawing.Color.Black;
             appearance19.ForeColorDisabled = System.Drawing.Color.Black;
             this.udteDatumLieferung.Appearance = appearance19;
-            this.udteDatumLieferung.Location = new System.Drawing.Point(597, 32);
+            this.udteDatumLieferung.Location = new System.Drawing.Point(622, 55);
             this.udteDatumLieferung.Name = "udteDatumLieferung";
-            this.udteDatumLieferung.Size = new System.Drawing.Size(92, 21);
+            this.udteDatumLieferung.Size = new System.Drawing.Size(107, 21);
             this.udteDatumLieferung.TabIndex = 0;
             // 
             // lblDatumLieferung
             // 
             appearance20.TextVAlignAsString = "Middle";
             this.lblDatumLieferung.Appearance = appearance20;
-            this.lblDatumLieferung.Location = new System.Drawing.Point(484, 34);
+            this.lblDatumLieferung.Location = new System.Drawing.Point(488, 59);
             this.lblDatumLieferung.Name = "lblDatumLieferung";
             this.lblDatumLieferung.Size = new System.Drawing.Size(108, 17);
             this.lblDatumLieferung.TabIndex = 103;
@@ -362,17 +362,17 @@
             appearance21.ForeColor = System.Drawing.Color.Black;
             appearance21.ForeColorDisabled = System.Drawing.Color.Black;
             this.inumMengeLieferung.Appearance = appearance21;
-            this.inumMengeLieferung.Location = new System.Drawing.Point(597, 55);
+            this.inumMengeLieferung.Location = new System.Drawing.Point(622, 82);
             this.inumMengeLieferung.Name = "inumMengeLieferung";
             this.inumMengeLieferung.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
-            this.inumMengeLieferung.Size = new System.Drawing.Size(92, 21);
+            this.inumMengeLieferung.Size = new System.Drawing.Size(107, 21);
             this.inumMengeLieferung.TabIndex = 1;
             // 
             // lblMengeLieferung
             // 
             appearance22.TextVAlignAsString = "Middle";
             this.lblMengeLieferung.Appearance = appearance22;
-            this.lblMengeLieferung.Location = new System.Drawing.Point(484, 57);
+            this.lblMengeLieferung.Location = new System.Drawing.Point(488, 85);
             this.lblMengeLieferung.Name = "lblMengeLieferung";
             this.lblMengeLieferung.Size = new System.Drawing.Size(108, 17);
             this.lblMengeLieferung.TabIndex = 105;
@@ -387,17 +387,17 @@
             appearance23.ForeColor = System.Drawing.Color.Black;
             appearance23.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtBemerkungLieferung.Appearance = appearance23;
-            this.txtBemerkungLieferung.Location = new System.Drawing.Point(597, 124);
+            this.txtBemerkungLieferung.Location = new System.Drawing.Point(622, 163);
             this.txtBemerkungLieferung.Multiline = true;
             this.txtBemerkungLieferung.Name = "txtBemerkungLieferung";
-            this.txtBemerkungLieferung.Size = new System.Drawing.Size(389, 257);
+            this.txtBemerkungLieferung.Size = new System.Drawing.Size(364, 218);
             this.txtBemerkungLieferung.TabIndex = 4;
             // 
             // lblBemerkungLieferung
             // 
             appearance24.TextVAlignAsString = "Middle";
             this.lblBemerkungLieferung.Appearance = appearance24;
-            this.lblBemerkungLieferung.Location = new System.Drawing.Point(484, 124);
+            this.lblBemerkungLieferung.Location = new System.Drawing.Point(488, 164);
             this.lblBemerkungLieferung.Name = "lblBemerkungLieferung";
             this.lblBemerkungLieferung.Size = new System.Drawing.Size(115, 18);
             this.lblBemerkungLieferung.TabIndex = 107;
@@ -427,9 +427,9 @@
             editorButton4.Appearance = appearance35;
             editorButton4.Key = "Add";
             this.cboStatus.ButtonsRight.Add(editorButton4);
-            this.cboStatus.Location = new System.Drawing.Point(597, 101);
+            this.cboStatus.Location = new System.Drawing.Point(622, 136);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(389, 21);
+            this.cboStatus.Size = new System.Drawing.Size(364, 21);
             this.cboStatus.TabIndex = 3;
             this.cboStatus.EditorButtonClick += new Infragistics.Win.UltraWinEditors.EditorButtonEventHandler(this.cboStatus_EditorButtonClick);
             // 
@@ -437,7 +437,7 @@
             // 
             appearance36.TextVAlignAsString = "Middle";
             this.lblStatus.Appearance = appearance36;
-            this.lblStatus.Location = new System.Drawing.Point(484, 103);
+            this.lblStatus.Location = new System.Drawing.Point(488, 140);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(83, 17);
             this.lblStatus.TabIndex = 109;
@@ -459,9 +459,9 @@
             editorButton3.Appearance = appearance32;
             editorButton3.Key = "Add";
             this.cboEinheitLieferung.ButtonsRight.Add(editorButton3);
-            this.cboEinheitLieferung.Location = new System.Drawing.Point(597, 78);
+            this.cboEinheitLieferung.Location = new System.Drawing.Point(622, 109);
             this.cboEinheitLieferung.Name = "cboEinheitLieferung";
-            this.cboEinheitLieferung.Size = new System.Drawing.Size(389, 21);
+            this.cboEinheitLieferung.Size = new System.Drawing.Size(364, 21);
             this.cboEinheitLieferung.TabIndex = 2;
             this.cboEinheitLieferung.EditorButtonClick += new Infragistics.Win.UltraWinEditors.EditorButtonEventHandler(this.cboEinheitLieferung_EditorButtonClick);
             // 
@@ -469,7 +469,7 @@
             // 
             appearance33.TextVAlignAsString = "Middle";
             this.lblEinheitLieferung.Appearance = appearance33;
-            this.lblEinheitLieferung.Location = new System.Drawing.Point(484, 80);
+            this.lblEinheitLieferung.Location = new System.Drawing.Point(488, 113);
             this.lblEinheitLieferung.Name = "lblEinheitLieferung";
             this.lblEinheitLieferung.Size = new System.Drawing.Size(107, 17);
             this.lblEinheitLieferung.TabIndex = 111;
@@ -482,7 +482,7 @@
             appearance29.BackColorDisabled = System.Drawing.Color.White;
             this.udteDatumNaechsterAnspruch.Appearance = appearance29;
             this.udteDatumNaechsterAnspruch.BackColor = System.Drawing.Color.White;
-            this.udteDatumNaechsterAnspruch.Location = new System.Drawing.Point(107, 387);
+            this.udteDatumNaechsterAnspruch.Location = new System.Drawing.Point(123, 387);
             this.udteDatumNaechsterAnspruch.Name = "udteDatumNaechsterAnspruch";
             this.udteDatumNaechsterAnspruch.Size = new System.Drawing.Size(92, 21);
             this.udteDatumNaechsterAnspruch.TabIndex = 7;
@@ -506,7 +506,7 @@
             this.btnSearchMedikmaneteGeliefert.Appearance = appearance27;
             this.btnSearchMedikmaneteGeliefert.AutoWorkLayout = false;
             this.btnSearchMedikmaneteGeliefert.IsStandardControl = false;
-            this.btnSearchMedikmaneteGeliefert.Location = new System.Drawing.Point(956, 5);
+            this.btnSearchMedikmaneteGeliefert.Location = new System.Drawing.Point(956, 23);
             this.btnSearchMedikmaneteGeliefert.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchMedikmaneteGeliefert.Name = "btnSearchMedikmaneteGeliefert";
             this.btnSearchMedikmaneteGeliefert.Size = new System.Drawing.Size(30, 28);
@@ -518,7 +518,7 @@
             // 
             appearance28.TextVAlignAsString = "Middle";
             this.lblMedikamentGeliefert.Appearance = appearance28;
-            this.lblMedikamentGeliefert.Location = new System.Drawing.Point(484, 11);
+            this.lblMedikamentGeliefert.Location = new System.Drawing.Point(490, 31);
             this.lblMedikamentGeliefert.Name = "lblMedikamentGeliefert";
             this.lblMedikamentGeliefert.Size = new System.Drawing.Size(113, 16);
             this.lblMedikamentGeliefert.TabIndex = 115;
@@ -531,10 +531,10 @@
             appearance26.BackColor = System.Drawing.Color.White;
             this.txtMedikamentGeliefert.Appearance = appearance26;
             this.txtMedikamentGeliefert.BackColor = System.Drawing.Color.White;
-            this.txtMedikamentGeliefert.Location = new System.Drawing.Point(597, 9);
+            this.txtMedikamentGeliefert.Location = new System.Drawing.Point(622, 28);
             this.txtMedikamentGeliefert.Name = "txtMedikamentGeliefert";
             this.txtMedikamentGeliefert.ReadOnly = true;
-            this.txtMedikamentGeliefert.Size = new System.Drawing.Size(325, 21);
+            this.txtMedikamentGeliefert.Size = new System.Drawing.Size(300, 21);
             this.txtMedikamentGeliefert.TabIndex = 114;
             // 
             // btnSearchMedikmanete
@@ -544,7 +544,7 @@
             this.btnSearchMedikmanete.Appearance = appearance25;
             this.btnSearchMedikmanete.AutoWorkLayout = false;
             this.btnSearchMedikmanete.IsStandardControl = false;
-            this.btnSearchMedikmanete.Location = new System.Drawing.Point(436, 6);
+            this.btnSearchMedikmanete.Location = new System.Drawing.Point(434, 23);
             this.btnSearchMedikmanete.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchMedikmanete.Name = "btnSearchMedikmanete";
             this.btnSearchMedikmanete.Size = new System.Drawing.Size(30, 28);
