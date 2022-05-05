@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
+            this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDepotgeldCalcÜbersicht));
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -155,11 +156,11 @@
             // uGroupBoxHeader
             // 
             this.uGroupBoxHeader.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.None;
-            appearance19.BackColor = System.Drawing.Color.White;
-            appearance19.BackColor2 = System.Drawing.Color.Silver;
-            appearance19.BackGradientStyle = Infragistics.Win.GradientStyle.GlassTop37Bright;
-            appearance19.BackHatchStyle = Infragistics.Win.BackHatchStyle.Horizontal;
-            this.uGroupBoxHeader.ContentAreaAppearance = appearance19;
+            appearance1.BackColor = System.Drawing.Color.White;
+            appearance1.BackColor2 = System.Drawing.Color.Silver;
+            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.GlassTop37Bright;
+            appearance1.BackHatchStyle = Infragistics.Win.BackHatchStyle.Horizontal;
+            this.uGroupBoxHeader.ContentAreaAppearance = appearance1;
             this.uGroupBoxHeader.Controls.Add(this.ultraLabel6);
             this.uGroupBoxHeader.Controls.Add(this.btnTagsatzlistenNeu);
             this.uGroupBoxHeader.Controls.Add(this.btnRechnungenNeu);
@@ -176,8 +177,8 @@
             // 
             // ultraLabel6
             // 
-            appearance21.BorderColor = System.Drawing.Color.DarkGray;
-            this.ultraLabel6.Appearance = appearance21;
+            appearance2.BorderColor = System.Drawing.Color.DarkGray;
+            this.ultraLabel6.Appearance = appearance2;
             this.ultraLabel6.BorderStyleOuter = Infragistics.Win.UIElementBorderStyle.Solid;
             this.ultraLabel6.Location = new System.Drawing.Point(216, 4);
             this.ultraLabel6.Name = "ultraLabel6";
@@ -187,17 +188,19 @@
             // btnTagsatzlistenNeu
             // 
             this.btnTagsatzlistenNeu.AcceptsFocus = false;
-            appearance22.BackColor = System.Drawing.Color.Transparent;
-            appearance22.FontData.SizeInPoints = 8F;
-            appearance22.ForeColor = System.Drawing.Color.Black;
-            appearance22.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance22.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance22.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance22.TextVAlignAsString = "Middle";
-            this.btnTagsatzlistenNeu.Appearance = appearance22;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.FontData.SizeInPoints = 8F;
+            appearance3.ForeColor = System.Drawing.Color.Black;
+            appearance3.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance3.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance3.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance3.TextVAlignAsString = "Middle";
+            this.btnTagsatzlistenNeu.Appearance = appearance3;
+            this.btnTagsatzlistenNeu.AutoWorkLayout = false;
             this.btnTagsatzlistenNeu.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnTagsatzlistenNeu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTagsatzlistenNeu.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnTagsatzlistenNeu.IsStandardControl = false;
             this.btnTagsatzlistenNeu.Location = new System.Drawing.Point(223, 4);
             this.btnTagsatzlistenNeu.Name = "btnTagsatzlistenNeu";
             this.btnTagsatzlistenNeu.ShowFocusRect = false;
@@ -215,17 +218,19 @@
             // btnRechnungenNeu
             // 
             this.btnRechnungenNeu.AcceptsFocus = false;
-            appearance28.BackColor = System.Drawing.Color.Transparent;
-            appearance28.FontData.SizeInPoints = 8F;
-            appearance28.ForeColor = System.Drawing.Color.Black;
-            appearance28.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance28.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance28.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance28.TextVAlignAsString = "Middle";
-            this.btnRechnungenNeu.Appearance = appearance28;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            appearance4.FontData.SizeInPoints = 8F;
+            appearance4.ForeColor = System.Drawing.Color.Black;
+            appearance4.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance4.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance4.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance4.TextVAlignAsString = "Middle";
+            this.btnRechnungenNeu.Appearance = appearance4;
+            this.btnRechnungenNeu.AutoWorkLayout = false;
             this.btnRechnungenNeu.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnRechnungenNeu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRechnungenNeu.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnRechnungenNeu.IsStandardControl = false;
             this.btnRechnungenNeu.Location = new System.Drawing.Point(88, 4);
             this.btnRechnungenNeu.Name = "btnRechnungenNeu";
             this.btnRechnungenNeu.ShowFocusRect = false;
@@ -242,8 +247,8 @@
             // 
             // ultraLabel5
             // 
-            appearance29.BorderColor = System.Drawing.Color.DarkGray;
-            this.ultraLabel5.Appearance = appearance29;
+            appearance5.BorderColor = System.Drawing.Color.DarkGray;
+            this.ultraLabel5.Appearance = appearance5;
             this.ultraLabel5.BorderStyleOuter = Infragistics.Win.UIElementBorderStyle.Solid;
             this.ultraLabel5.Location = new System.Drawing.Point(81, 4);
             this.ultraLabel5.Name = "ultraLabel5";
@@ -253,17 +258,19 @@
             // btnBuchungen
             // 
             this.btnBuchungen.AcceptsFocus = false;
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            appearance7.FontData.SizeInPoints = 8F;
-            appearance7.ForeColor = System.Drawing.Color.Black;
-            appearance7.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance7.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance7.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance7.TextVAlignAsString = "Middle";
-            this.btnBuchungen.Appearance = appearance7;
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            appearance6.FontData.SizeInPoints = 8F;
+            appearance6.ForeColor = System.Drawing.Color.Black;
+            appearance6.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance6.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance6.TextVAlignAsString = "Middle";
+            this.btnBuchungen.Appearance = appearance6;
+            this.btnBuchungen.AutoWorkLayout = false;
             this.btnBuchungen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnBuchungen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuchungen.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnBuchungen.IsStandardControl = false;
             this.btnBuchungen.Location = new System.Drawing.Point(6, 4);
             this.btnBuchungen.Name = "btnBuchungen";
             this.btnBuchungen.ShowFocusRect = false;
@@ -297,11 +304,11 @@
             // ultraGroupBox1
             // 
             this.ultraGroupBox1.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.None;
-            appearance8.BackColor = System.Drawing.Color.White;
-            appearance8.BackColor2 = System.Drawing.Color.Silver;
-            appearance8.BackGradientStyle = Infragistics.Win.GradientStyle.GlassTop37Bright;
-            appearance8.BackHatchStyle = Infragistics.Win.BackHatchStyle.Horizontal;
-            this.ultraGroupBox1.ContentAreaAppearance = appearance8;
+            appearance7.BackColor = System.Drawing.Color.White;
+            appearance7.BackColor2 = System.Drawing.Color.Silver;
+            appearance7.BackGradientStyle = Infragistics.Win.GradientStyle.GlassTop37Bright;
+            appearance7.BackHatchStyle = Infragistics.Win.BackHatchStyle.Horizontal;
+            this.ultraGroupBox1.ContentAreaAppearance = appearance7;
             this.ultraGroupBox1.Controls.Add(this.btnEssen);
             this.ultraGroupBox1.Controls.Add(this.btnBetten);
             this.ultraGroupBox1.Controls.Add(this.ultraLabel1);
@@ -321,17 +328,19 @@
             // 
             this.btnEssen.AcceptsFocus = false;
             this.btnEssen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance9.BackColor = System.Drawing.Color.Transparent;
-            appearance9.FontData.SizeInPoints = 8F;
-            appearance9.ForeColor = System.Drawing.Color.Black;
-            appearance9.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance9.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance9.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance9.TextVAlignAsString = "Middle";
-            this.btnEssen.Appearance = appearance9;
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            appearance8.FontData.SizeInPoints = 8F;
+            appearance8.ForeColor = System.Drawing.Color.Black;
+            appearance8.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance8.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance8.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance8.TextVAlignAsString = "Middle";
+            this.btnEssen.Appearance = appearance8;
+            this.btnEssen.AutoWorkLayout = false;
             this.btnEssen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnEssen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEssen.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnEssen.IsStandardControl = false;
             this.btnEssen.Location = new System.Drawing.Point(797, 4);
             this.btnEssen.Name = "btnEssen";
             this.btnEssen.ShowFocusRect = false;
@@ -350,17 +359,19 @@
             // 
             this.btnBetten.AcceptsFocus = false;
             this.btnBetten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance30.BackColor = System.Drawing.Color.Transparent;
-            appearance30.FontData.SizeInPoints = 8F;
-            appearance30.ForeColor = System.Drawing.Color.Black;
-            appearance30.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance30.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance30.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance30.TextVAlignAsString = "Middle";
-            this.btnBetten.Appearance = appearance30;
+            appearance9.BackColor = System.Drawing.Color.Transparent;
+            appearance9.FontData.SizeInPoints = 8F;
+            appearance9.ForeColor = System.Drawing.Color.Black;
+            appearance9.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance9.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance9.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance9.TextVAlignAsString = "Middle";
+            this.btnBetten.Appearance = appearance9;
+            this.btnBetten.AutoWorkLayout = false;
             this.btnBetten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnBetten.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBetten.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnBetten.IsStandardControl = false;
             this.btnBetten.Location = new System.Drawing.Point(738, 4);
             this.btnBetten.Name = "btnBetten";
             this.btnBetten.ShowFocusRect = false;
@@ -377,8 +388,8 @@
             // 
             // ultraLabel1
             // 
-            appearance31.BorderColor = System.Drawing.Color.DarkGray;
-            this.ultraLabel1.Appearance = appearance31;
+            appearance10.BorderColor = System.Drawing.Color.DarkGray;
+            this.ultraLabel1.Appearance = appearance10;
             this.ultraLabel1.BorderStyleOuter = Infragistics.Win.UIElementBorderStyle.Solid;
             this.ultraLabel1.Location = new System.Drawing.Point(245, 4);
             this.ultraLabel1.Name = "ultraLabel1";
@@ -388,18 +399,20 @@
             // btnKostenträger
             // 
             this.btnKostenträger.AcceptsFocus = false;
-            appearance12.BackColor = System.Drawing.Color.Transparent;
-            appearance12.FontData.SizeInPoints = 8F;
-            appearance12.ForeColor = System.Drawing.Color.Black;
-            appearance12.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Abrechnung.ico_Kostenstraeger, 32, 32);
-            appearance12.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance12.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance12.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance12.TextVAlignAsString = "Middle";
-            this.btnKostenträger.Appearance = appearance12;
+            appearance11.BackColor = System.Drawing.Color.Transparent;
+            appearance11.FontData.SizeInPoints = 8F;
+            appearance11.ForeColor = System.Drawing.Color.Black;
+            appearance11.Image = ((object)(resources.GetObject("appearance11.Image")));
+            appearance11.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance11.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance11.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance11.TextVAlignAsString = "Middle";
+            this.btnKostenträger.Appearance = appearance11;
+            this.btnKostenträger.AutoWorkLayout = false;
             this.btnKostenträger.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnKostenträger.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnKostenträger.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnKostenträger.IsStandardControl = false;
             this.btnKostenträger.Location = new System.Drawing.Point(253, 4);
             this.btnKostenträger.Name = "btnKostenträger";
             this.btnKostenträger.ShowFocusRect = false;
@@ -417,18 +430,20 @@
             // btnSonderleistungen
             // 
             this.btnSonderleistungen.AcceptsFocus = false;
-            appearance32.BackColor = System.Drawing.Color.Transparent;
-            appearance32.FontData.SizeInPoints = 8F;
-            appearance32.ForeColor = System.Drawing.Color.Black;
-            appearance32.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Abrechnung.ico_Sonderleistungen, 32, 32);
-            appearance32.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance32.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance32.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance32.TextVAlignAsString = "Middle";
-            this.btnSonderleistungen.Appearance = appearance32;
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            appearance12.FontData.SizeInPoints = 8F;
+            appearance12.ForeColor = System.Drawing.Color.Black;
+            appearance12.Image = ((object)(resources.GetObject("appearance12.Image")));
+            appearance12.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance12.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance12.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance12.TextVAlignAsString = "Middle";
+            this.btnSonderleistungen.Appearance = appearance12;
+            this.btnSonderleistungen.AutoWorkLayout = false;
             this.btnSonderleistungen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnSonderleistungen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSonderleistungen.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnSonderleistungen.IsStandardControl = false;
             this.btnSonderleistungen.Location = new System.Drawing.Point(121, 4);
             this.btnSonderleistungen.Name = "btnSonderleistungen";
             this.btnSonderleistungen.ShowFocusRect = false;
@@ -446,18 +461,20 @@
             // btnLeistungskatalog
             // 
             this.btnLeistungskatalog.AcceptsFocus = false;
-            appearance33.BackColor = System.Drawing.Color.Transparent;
-            appearance33.FontData.SizeInPoints = 8F;
-            appearance33.ForeColor = System.Drawing.Color.Black;
-            appearance33.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Abrechnung.ico_Leistungskatalog, 32, 32);
-            appearance33.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance33.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance33.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance33.TextVAlignAsString = "Middle";
-            this.btnLeistungskatalog.Appearance = appearance33;
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            appearance13.FontData.SizeInPoints = 8F;
+            appearance13.ForeColor = System.Drawing.Color.Black;
+            appearance13.Image = ((object)(resources.GetObject("appearance13.Image")));
+            appearance13.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance13.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance13.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance13.TextVAlignAsString = "Middle";
+            this.btnLeistungskatalog.Appearance = appearance13;
+            this.btnLeistungskatalog.AutoWorkLayout = false;
             this.btnLeistungskatalog.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnLeistungskatalog.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLeistungskatalog.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnLeistungskatalog.IsStandardControl = false;
             this.btnLeistungskatalog.Location = new System.Drawing.Point(7, 4);
             this.btnLeistungskatalog.Name = "btnLeistungskatalog";
             this.btnLeistungskatalog.ShowFocusRect = false;
@@ -510,11 +527,6 @@
             // ultraGroupBoxHeader
             // 
             this.ultraGroupBoxHeader.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.None;
-            appearance34.BackColor = System.Drawing.Color.White;
-            appearance34.BackColor2 = System.Drawing.Color.Silver;
-            appearance34.BackGradientStyle = Infragistics.Win.GradientStyle.GlassTop37Bright;
-            appearance34.BackHatchStyle = Infragistics.Win.BackHatchStyle.Horizontal;
-            this.ultraGroupBoxHeader.ContentAreaAppearance = appearance34;
             this.ultraGroupBoxHeader.Controls.Add(this.btnRechnungen);
             this.ultraGroupBoxHeader.Controls.Add(this.btnAbrechnen);
             this.ultraGroupBoxHeader.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -523,24 +535,24 @@
             this.ultraGroupBoxHeader.Name = "ultraGroupBoxHeader";
             this.ultraGroupBoxHeader.Size = new System.Drawing.Size(750, 51);
             this.ultraGroupBoxHeader.TabIndex = 49;
-            this.ultraGroupBoxHeader.UseAppStyling = false;
-            this.ultraGroupBoxHeader.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.VisualStudio2005;
             // 
             // btnRechnungen
             // 
             this.btnRechnungen.AcceptsFocus = false;
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            appearance4.FontData.SizeInPoints = 8F;
-            appearance4.ForeColor = System.Drawing.Color.Black;
-            appearance4.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Abrechnung.ico_Rechnung, 32, 32);
-            appearance4.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance4.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance4.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance4.TextVAlignAsString = "Middle";
-            this.btnRechnungen.Appearance = appearance4;
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            appearance14.FontData.SizeInPoints = 8F;
+            appearance14.ForeColor = System.Drawing.Color.Black;
+            appearance14.Image = ((object)(resources.GetObject("appearance14.Image")));
+            appearance14.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance14.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance14.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance14.TextVAlignAsString = "Middle";
+            this.btnRechnungen.Appearance = appearance14;
+            this.btnRechnungen.AutoWorkLayout = false;
             this.btnRechnungen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnRechnungen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRechnungen.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnRechnungen.IsStandardControl = false;
             this.btnRechnungen.Location = new System.Drawing.Point(95, 4);
             this.btnRechnungen.Name = "btnRechnungen";
             this.btnRechnungen.ShowFocusRect = false;
@@ -558,18 +570,20 @@
             // btnAbrechnen
             // 
             this.btnAbrechnen.AcceptsFocus = false;
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            appearance3.FontData.SizeInPoints = 8F;
-            appearance3.ForeColor = System.Drawing.Color.Black;
-            appearance3.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Abrechnung.ico_Abrechnung, 32, 32);
-            appearance3.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance3.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance3.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance3.TextVAlignAsString = "Middle";
-            this.btnAbrechnen.Appearance = appearance3;
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            appearance15.FontData.SizeInPoints = 8F;
+            appearance15.ForeColor = System.Drawing.Color.Black;
+            appearance15.Image = ((object)(resources.GetObject("appearance15.Image")));
+            appearance15.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance15.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance15.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance15.TextVAlignAsString = "Middle";
+            this.btnAbrechnen.Appearance = appearance15;
+            this.btnAbrechnen.AutoWorkLayout = false;
             this.btnAbrechnen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnAbrechnen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAbrechnen.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnAbrechnen.IsStandardControl = false;
             this.btnAbrechnen.Location = new System.Drawing.Point(6, 4);
             this.btnAbrechnen.Name = "btnAbrechnen";
             this.btnAbrechnen.ShowFocusRect = false;
@@ -649,14 +663,14 @@
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
             this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(746, 346);
             // 
-            // ucDepotgeld
+            // ucDepotgeldCalcÜbersicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.panelTab);
             this.Controls.Add(this.panelOben);
-            this.Name = "ucDepotgeld";
+            this.Name = "ucDepotgeldCalcÜbersicht";
             this.Size = new System.Drawing.Size(762, 437);
             this.Load += new System.EventHandler(this.ucDepotgeldCalc_Load);
             this.ultraTabPageControl1.ResumeLayout(false);

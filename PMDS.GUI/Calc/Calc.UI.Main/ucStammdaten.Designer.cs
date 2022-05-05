@@ -39,8 +39,6 @@
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucStammdaten));
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
@@ -48,8 +46,9 @@
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint4 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.panelLeistungskatalog = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
@@ -65,8 +64,6 @@
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.pnlButtons = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnReload = new QS2.Desktop.ControlManagment.BaseButton();
-            this.btnUndo = new PMDS.GUI.ucButton(this.components);
-            this.btnSave = new PMDS.GUI.ucButton(this.components);
             this.ultraGridBagLayoutPanel1 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.uGroupBoxHeader = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.btnEssen = new QS2.Desktop.ControlManagment.BaseButton();
@@ -78,6 +75,8 @@
             this.uGridBagLayoutPanelHeader = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.panel1 = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraGridBagLayoutPanel2 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
+            this.btnUndo = new PMDS.GUI.ucButton(this.components);
+            this.btnSave = new PMDS.GUI.ucButton(this.components);
             this.ultraTabPageControl1.SuspendLayout();
             this.ultraTabPageControl2.SuspendLayout();
             this.ultraTabPageControl3.SuspendLayout();
@@ -264,53 +263,15 @@
             appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
             appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.btnReload.Appearance = appearance2;
+            this.btnReload.AutoWorkLayout = false;
             this.btnReload.BackColorInternal = System.Drawing.Color.Transparent;
+            this.btnReload.IsStandardControl = false;
             this.btnReload.Location = new System.Drawing.Point(570, 3);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(88, 32);
             this.btnReload.TabIndex = 91;
             this.btnReload.Text = "Neu laden";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
-            // 
-            // btnUndo
-            // 
-            this.btnUndo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
-            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnUndo.Appearance = appearance3;
-            this.btnUndo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnUndo.Enabled = false;
-            this.btnUndo.Location = new System.Drawing.Point(659, 3);
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(96, 32);
-            this.btnUndo.TabIndex = 7;
-            this.btnUndo.TabStop = false;
-            this.btnUndo.Text = "&Rückgängig";
-            this.btnUndo.TYPE = PMDS.GUI.ucButton.ButtonType.Undo;
-            this.btnUndo.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
-            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            appearance4.Image = ((object)(resources.GetObject("appearance4.Image")));
-            appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSave.Appearance = appearance4;
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(755, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(89, 32);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.TabStop = false;
-            this.btnSave.Text = "&Speichern";
-            this.btnSave.TYPE = PMDS.GUI.ucButton.ButtonType.Save;
-            this.btnSave.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // ultraGridBagLayoutPanel1
             // 
@@ -334,11 +295,6 @@
             // uGroupBoxHeader
             // 
             this.uGroupBoxHeader.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.None;
-            appearance5.BackColor = System.Drawing.Color.White;
-            appearance5.BackColor2 = System.Drawing.Color.Silver;
-            appearance5.BackGradientStyle = Infragistics.Win.GradientStyle.GlassTop37Bright;
-            appearance5.BackHatchStyle = Infragistics.Win.BackHatchStyle.Horizontal;
-            this.uGroupBoxHeader.ContentAreaAppearance = appearance5;
             this.uGroupBoxHeader.Controls.Add(this.btnEssen);
             this.uGroupBoxHeader.Controls.Add(this.btnBetten);
             this.uGroupBoxHeader.Controls.Add(this.ultraLabel5);
@@ -351,26 +307,26 @@
             this.uGroupBoxHeader.Name = "uGroupBoxHeader";
             this.uGroupBoxHeader.Size = new System.Drawing.Size(854, 50);
             this.uGroupBoxHeader.TabIndex = 48;
-            this.uGroupBoxHeader.UseAppStyling = false;
-            this.uGroupBoxHeader.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.VisualStudio2005;
             // 
             // btnEssen
             // 
             this.btnEssen.AcceptsFocus = false;
             this.btnEssen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            appearance6.FontData.SizeInPoints = 8F;
-            appearance6.ForeColor = System.Drawing.Color.Black;
-            appearance6.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance6.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance6.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance6.TextVAlignAsString = "Middle";
-            this.btnEssen.Appearance = appearance6;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            appearance5.FontData.SizeInPoints = 8F;
+            appearance5.ForeColor = System.Drawing.Color.Black;
+            appearance5.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance5.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance5.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance5.TextVAlignAsString = "Middle";
+            this.btnEssen.Appearance = appearance5;
+            this.btnEssen.AutoWorkLayout = false;
             this.btnEssen.BackColorInternal = System.Drawing.Color.Transparent;
             this.btnEssen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnEssen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEssen.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnEssen.Location = new System.Drawing.Point(797, 4);
+            this.btnEssen.IsStandardControl = false;
+            this.btnEssen.Location = new System.Drawing.Point(797, 6);
             this.btnEssen.Name = "btnEssen";
             this.btnEssen.ShowFocusRect = false;
             this.btnEssen.ShowOutline = false;
@@ -388,19 +344,21 @@
             // 
             this.btnBetten.AcceptsFocus = false;
             this.btnBetten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            appearance7.FontData.SizeInPoints = 8F;
-            appearance7.ForeColor = System.Drawing.Color.Black;
-            appearance7.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance7.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance7.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance7.TextVAlignAsString = "Middle";
-            this.btnBetten.Appearance = appearance7;
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            appearance6.FontData.SizeInPoints = 8F;
+            appearance6.ForeColor = System.Drawing.Color.Black;
+            appearance6.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance6.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance6.TextVAlignAsString = "Middle";
+            this.btnBetten.Appearance = appearance6;
+            this.btnBetten.AutoWorkLayout = false;
             this.btnBetten.BackColorInternal = System.Drawing.Color.Transparent;
             this.btnBetten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnBetten.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBetten.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnBetten.Location = new System.Drawing.Point(738, 4);
+            this.btnBetten.IsStandardControl = false;
+            this.btnBetten.Location = new System.Drawing.Point(738, 6);
             this.btnBetten.Name = "btnBetten";
             this.btnBetten.ShowFocusRect = false;
             this.btnBetten.ShowOutline = false;
@@ -416,8 +374,8 @@
             // 
             // ultraLabel5
             // 
-            appearance8.BorderColor = System.Drawing.Color.DarkGray;
-            this.ultraLabel5.Appearance = appearance8;
+            appearance7.BorderColor = System.Drawing.Color.DarkGray;
+            this.ultraLabel5.Appearance = appearance7;
             this.ultraLabel5.BackColorInternal = System.Drawing.Color.Transparent;
             this.ultraLabel5.BorderStyleOuter = Infragistics.Win.UIElementBorderStyle.Solid;
             this.ultraLabel5.Location = new System.Drawing.Point(245, 4);
@@ -428,19 +386,21 @@
             // btnKostenträger
             // 
             this.btnKostenträger.AcceptsFocus = false;
-            appearance9.BackColor = System.Drawing.Color.Transparent;
-            appearance9.FontData.SizeInPoints = 8F;
-            appearance9.ForeColor = System.Drawing.Color.Black;
-            appearance9.Image = ((object)(resources.GetObject("appearance9.Image")));
-            appearance9.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance9.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance9.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance9.TextVAlignAsString = "Middle";
-            this.btnKostenträger.Appearance = appearance9;
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            appearance8.FontData.SizeInPoints = 8F;
+            appearance8.ForeColor = System.Drawing.Color.Black;
+            appearance8.Image = ((object)(resources.GetObject("appearance8.Image")));
+            appearance8.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance8.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance8.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance8.TextVAlignAsString = "Middle";
+            this.btnKostenträger.Appearance = appearance8;
+            this.btnKostenträger.AutoWorkLayout = false;
             this.btnKostenträger.BackColorInternal = System.Drawing.Color.Transparent;
             this.btnKostenträger.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnKostenträger.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnKostenträger.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnKostenträger.IsStandardControl = false;
             this.btnKostenträger.Location = new System.Drawing.Point(253, 4);
             this.btnKostenträger.Name = "btnKostenträger";
             this.btnKostenträger.ShowFocusRect = false;
@@ -458,19 +418,21 @@
             // btnSonderleistungen
             // 
             this.btnSonderleistungen.AcceptsFocus = false;
-            appearance10.BackColor = System.Drawing.Color.Transparent;
-            appearance10.FontData.SizeInPoints = 8F;
-            appearance10.ForeColor = System.Drawing.Color.Black;
-            appearance10.Image = ((object)(resources.GetObject("appearance10.Image")));
-            appearance10.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance10.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance10.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance10.TextVAlignAsString = "Middle";
-            this.btnSonderleistungen.Appearance = appearance10;
+            appearance9.BackColor = System.Drawing.Color.Transparent;
+            appearance9.FontData.SizeInPoints = 8F;
+            appearance9.ForeColor = System.Drawing.Color.Black;
+            appearance9.Image = ((object)(resources.GetObject("appearance9.Image")));
+            appearance9.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance9.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance9.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance9.TextVAlignAsString = "Middle";
+            this.btnSonderleistungen.Appearance = appearance9;
+            this.btnSonderleistungen.AutoWorkLayout = false;
             this.btnSonderleistungen.BackColorInternal = System.Drawing.Color.Transparent;
             this.btnSonderleistungen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnSonderleistungen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSonderleistungen.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnSonderleistungen.IsStandardControl = false;
             this.btnSonderleistungen.Location = new System.Drawing.Point(121, 4);
             this.btnSonderleistungen.Name = "btnSonderleistungen";
             this.btnSonderleistungen.ShowFocusRect = false;
@@ -488,19 +450,21 @@
             // btnLeistungskatalog
             // 
             this.btnLeistungskatalog.AcceptsFocus = false;
-            appearance11.BackColor = System.Drawing.Color.Transparent;
-            appearance11.FontData.SizeInPoints = 8F;
-            appearance11.ForeColor = System.Drawing.Color.Black;
-            appearance11.Image = ((object)(resources.GetObject("appearance11.Image")));
-            appearance11.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance11.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance11.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance11.TextVAlignAsString = "Middle";
-            this.btnLeistungskatalog.Appearance = appearance11;
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            appearance10.FontData.SizeInPoints = 8F;
+            appearance10.ForeColor = System.Drawing.Color.Black;
+            appearance10.Image = ((object)(resources.GetObject("appearance10.Image")));
+            appearance10.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance10.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance10.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance10.TextVAlignAsString = "Middle";
+            this.btnLeistungskatalog.Appearance = appearance10;
+            this.btnLeistungskatalog.AutoWorkLayout = false;
             this.btnLeistungskatalog.BackColorInternal = System.Drawing.Color.Transparent;
             this.btnLeistungskatalog.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnLeistungskatalog.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLeistungskatalog.ImageSize = new System.Drawing.Size(24, 24);
+            this.btnLeistungskatalog.IsStandardControl = false;
             this.btnLeistungskatalog.Location = new System.Drawing.Point(7, 4);
             this.btnLeistungskatalog.Name = "btnLeistungskatalog";
             this.btnLeistungskatalog.ShowFocusRect = false;
@@ -555,6 +519,52 @@
             this.ultraGridBagLayoutPanel2.Size = new System.Drawing.Size(866, 555);
             this.ultraGridBagLayoutPanel2.TabIndex = 51;
             // 
+            // btnUndo
+            // 
+            this.btnUndo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
+            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnUndo.Appearance = appearance3;
+            this.btnUndo.AutoWorkLayout = false;
+            this.btnUndo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnUndo.DoOnClick = true;
+            this.btnUndo.Enabled = false;
+            this.btnUndo.IsStandardControl = true;
+            this.btnUndo.Location = new System.Drawing.Point(659, 3);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(96, 32);
+            this.btnUndo.TabIndex = 7;
+            this.btnUndo.TabStop = false;
+            this.btnUndo.Text = "Rückgängig";
+            this.btnUndo.TYPE = PMDS.GUI.ucButton.ButtonType.Undo;
+            this.btnUndo.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            appearance4.Image = ((object)(resources.GetObject("appearance4.Image")));
+            appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSave.Appearance = appearance4;
+            this.btnSave.AutoWorkLayout = false;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnSave.DoOnClick = true;
+            this.btnSave.Enabled = false;
+            this.btnSave.IsStandardControl = true;
+            this.btnSave.Location = new System.Drawing.Point(755, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(89, 32);
+            this.btnSave.TabIndex = 8;
+            this.btnSave.TabStop = false;
+            this.btnSave.Text = "Speichern";
+            this.btnSave.TYPE = PMDS.GUI.ucButton.ButtonType.Save;
+            this.btnSave.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // ucStammdaten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -566,9 +576,6 @@
             this.Name = "ucStammdaten";
             this.Size = new System.Drawing.Size(866, 655);
             this.Load += new System.EventHandler(this.ucStammdaten_Load);
-            this.Controls.SetChildIndex(this.pnlButtons, 0);
-            this.Controls.SetChildIndex(this.uGridBagLayoutPanelHeader, 0);
-            this.Controls.SetChildIndex(this.ultraGridBagLayoutPanel2, 0);
             this.ultraTabPageControl1.ResumeLayout(false);
             this.ultraTabPageControl2.ResumeLayout(false);
             this.ultraTabPageControl3.ResumeLayout(false);
@@ -589,7 +596,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel2)).EndInit();
             this.ultraGridBagLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

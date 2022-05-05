@@ -514,8 +514,8 @@ namespace PMDS.GUI
             this.ucTerminTimePicker1.Location = new System.Drawing.Point(64, 6);
             this.ucTerminTimePicker1.Mode = PMDS.GUI.EFilter.HEUTE;
             this.ucTerminTimePicker1.Name = "ucTerminTimePicker1";
-            this.ucTerminTimePicker1.RangeFrom = new System.DateTime(2022, 5, 3, 0, 0, 0, 0);
-            this.ucTerminTimePicker1.RangeTo = new System.DateTime(2022, 5, 3, 23, 59, 59, 0);
+            this.ucTerminTimePicker1.RangeFrom = new System.DateTime(2022, 5, 5, 0, 0, 0, 0);
+            this.ucTerminTimePicker1.RangeTo = new System.DateTime(2022, 5, 5, 23, 59, 59, 0);
             this.ucTerminTimePicker1.Size = new System.Drawing.Size(189, 24);
             this.ucTerminTimePicker1.TabIndex = 39;
             // 
@@ -1225,7 +1225,7 @@ namespace PMDS.GUI
             this.btnEndTask.IsStandardControl = false;
             this.btnEndTask.Location = new System.Drawing.Point(696, 0);
             this.btnEndTask.Name = "btnEndTask";
-            this.btnEndTask.Size = new System.Drawing.Size(91, 23);
+            this.btnEndTask.Size = new System.Drawing.Size(93, 23);
             this.btnEndTask.TabIndex = 111;
             this.btnEndTask.Text = "M beenden";
             this.btnEndTask.Click += new System.EventHandler(this.btnEndTask_Click);

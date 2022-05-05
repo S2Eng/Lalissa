@@ -73,9 +73,8 @@
             // 
             // uGroupBoxHeader
             // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
+            appearance1.BackColor = System.Drawing.Color.Gainsboro;
             this.uGroupBoxHeader.Appearance = appearance1;
-            this.uGroupBoxHeader.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.None;
             this.uGroupBoxHeader.Controls.Add(this.ucKlinikCbo1);
             this.uGroupBoxHeader.Controls.Add(this.panelStmmdatenBerichte);
             this.uGroupBoxHeader.Controls.Add(this.panelBuchhaltung);
@@ -135,6 +134,7 @@
             this.btnStammdaten.Size = new System.Drawing.Size(108, 54);
             this.btnStammdaten.TabIndex = 31;
             this.btnStammdaten.Text = "Stammdaten";
+            this.btnStammdaten.UseAppStyling = false;
             this.btnStammdaten.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnStammdaten.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnStammdaten.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
@@ -164,6 +164,7 @@
             this.btnBerichte.Size = new System.Drawing.Size(80, 54);
             this.btnBerichte.TabIndex = 32;
             this.btnBerichte.Text = "Berichte";
+            this.btnBerichte.UseAppStyling = false;
             this.btnBerichte.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnBerichte.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnBerichte.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
@@ -213,6 +214,7 @@
             this.btnBuchhaltung.Size = new System.Drawing.Size(108, 54);
             this.btnBuchhaltung.TabIndex = 34;
             this.btnBuchhaltung.Text = "Buchhaltung";
+            this.btnBuchhaltung.UseAppStyling = false;
             this.btnBuchhaltung.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnBuchhaltung.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnBuchhaltung.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
@@ -272,6 +274,7 @@
             this.btnDepot.Size = new System.Drawing.Size(86, 54);
             this.btnDepot.TabIndex = 30;
             this.btnDepot.Text = "Depotgeld";
+            this.btnDepot.UseAppStyling = false;
             this.btnDepot.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnDepot.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnDepot.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
@@ -311,6 +314,7 @@
             this.btnSammelabrechnung2.Size = new System.Drawing.Size(109, 54);
             this.btnSammelabrechnung2.TabIndex = 33;
             this.btnSammelabrechnung2.Text = "Sammelabrechnung";
+            this.btnSammelabrechnung2.UseAppStyling = false;
             this.btnSammelabrechnung2.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnSammelabrechnung2.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnSammelabrechnung2.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
@@ -350,6 +354,7 @@
             this.btnAbrechnungPatient.Size = new System.Drawing.Size(102, 54);
             this.btnAbrechnungPatient.TabIndex = 28;
             this.btnAbrechnungPatient.Text = "Klienten";
+            this.btnAbrechnungPatient.UseAppStyling = false;
             this.btnAbrechnungPatient.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnAbrechnungPatient.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnAbrechnungPatient.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
@@ -393,7 +398,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.Controls.Add(this.uGroupBoxHeader);
             this.Controls.Add(this.uGridBagLayPanelMedizinDaten);
             this.Name = "ucHeaderCalc";

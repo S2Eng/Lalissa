@@ -154,7 +154,7 @@ namespace PMDS.Calc.UI.Admin
 
                     case AbrechnungsAktion.Stammdaten:
                         if (this.ucStammdaten1 == null)
-                        {
+                        {                            
                             this.ucStammdaten1 = new ucStammdaten();
                             this.ucStammdaten1.Dock = DockStyle.Fill;
                             this.panelStammdaten.Controls.Add(this.ucStammdaten1);
