@@ -26,6 +26,10 @@ using PMDS.Global.db.ERSystem;
 using S2Extensions;
 using System.Collections;
 
+using System.Text;
+using System.Threading.Tasks;
+
+
 namespace PMDS.GUI
 {
 
@@ -237,20 +241,20 @@ namespace PMDS.GUI
                 this.KlientUIEventsLocked = false;
             }
         }
-        public void setControlsAktivDisable(bool bOn)
+
+        public async Task<bool> setControlsAktivDisable(bool bOn)
         {
-            if (ucAbrechAufenthKlient1 != null) this.ucAbrechAufenthKlient1.setControlsAktivDisable2(bOn);
+            if (ucAbrechAufenthKlient1 != null) this.ucAbrechAufenthKlient1.setControlsAktivDisable2(bOn).ConfigureAwait(false);
            
-            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxOben, bOn);
-            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxAllgemein1, bOn);
-            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxPersonebescheibung, bOn);
-            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxAdressdaten, bOn);
+            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxOben, bOn).ConfigureAwait(false);
+            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxAllgemein1, bOn).ConfigureAwait(false);
+            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxPersonebescheibung, bOn).ConfigureAwait(false);
+            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxAdressdaten, bOn).ConfigureAwait(false);
+            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxAngehörige, bOn).ConfigureAwait(false);
+            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxÄrtze, bOn).ConfigureAwait(false);
+            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxSachverwalter, bOn).ConfigureAwait(false);
 
-            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxAngehörige, bOn);
-            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxÄrtze, bOn);
-            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxSachverwalter, bOn);
-
-            this.ucBewerbungsdaten1 .setControlsAktivDisable(bOn);
+            this.ucBewerbungsdaten1.setControlsAktivDisable(bOn);
 
             this.ucKontaktPersonen1.panelButtonsKP2.Visible = true;
             this.panelButtons1.Visible = true;
@@ -276,6 +280,7 @@ namespace PMDS.GUI
                 this.ucKontaktPersonen1.btnUpdateKP.Visible = true;
             }
 
+            return true;
         }
         //----------------------------------------------------------------------------
         /// <summary>

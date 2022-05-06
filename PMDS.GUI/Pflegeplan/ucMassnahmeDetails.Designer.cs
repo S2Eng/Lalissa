@@ -439,7 +439,7 @@
             this.cbBerufsstand.AddEmptyEntry = false;
             this.cbBerufsstand.BerufsstandGruppeJNA = -1;
             this.cbBerufsstand.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cbBerufsstand.Group = "";
+            this.cbBerufsstand.Group = "BER";
             this.cbBerufsstand.ID_PEP = -1;
             this.cbBerufsstand.Location = new System.Drawing.Point(77, 348);
             this.cbBerufsstand.Name = "cbBerufsstand";

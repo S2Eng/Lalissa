@@ -1412,7 +1412,7 @@ namespace PMDS
             this.panelStart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelStart.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelStart.BackColor = System.Drawing.Color.White;
             this.panelStart.Location = new System.Drawing.Point(0, 21);
             this.panelStart.Name = "panelStart";
             this.panelStart.Size = new System.Drawing.Size(1006, 641);
@@ -1807,9 +1807,9 @@ namespace PMDS
                 }
 
                 o.AttachFramework();
-                o.CONTROL.Show();       //os-Performance !!!
+                o.CONTROL.Show();       //os-Performance !!!    2,3 Sekunden
                 this.panelControl.Dock = DockStyle.Fill;
-                Application.DoEvents();
+                //Application.DoEvents();
 
                 _topGUI = o;
                 PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart._showFirst = false;

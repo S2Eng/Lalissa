@@ -13,6 +13,7 @@ using PMDS.Klient;
 using PMDS.GUI.Klient;
 using PMDS.DB;
 using S2Extensions;
+using System.Threading.Tasks;
 
 namespace PMDS.GUI
 {
@@ -724,13 +725,14 @@ namespace PMDS.GUI
         {
 
         }
-        public void setControlsAktivDisable(bool bOn)
+        public async Task<bool> setControlsAktivDisable(bool bOn)
         {
             PMDS.GUI.BaseControls.historie.OnOffControls(grpPatientverfügung, bOn);
             PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxRelgiöseWünsche, bOn);
             PMDS.GUI.BaseControls.historie.OnOffControls(grpRegelungen, bOn);
             
             panelButtons.Visible = !bOn || ENV.HasRight(UserRights.HAGMeldungen);
+            return true;
         }
 
         private void btnDelUnterbringung_Click(object sender, EventArgs e)

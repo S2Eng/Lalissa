@@ -39,8 +39,8 @@
             this.tv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tv.Location = new System.Drawing.Point(0, 0);
             this.tv.Name = "tv";
-            appearance1.BackColor = System.Drawing.Color.SkyBlue;
-            appearance1.ForeColor = System.Drawing.Color.White;
+            //appearance1.BackColor = System.Drawing.Color.SkyBlue;
+            //appearance1.ForeColor = System.Drawing.Color.White;
             _override1.ActiveNodeAppearance = appearance1;
             this.tv.Override = _override1;
             this.tv.Size = new System.Drawing.Size(296, 160);

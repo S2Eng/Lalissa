@@ -92,7 +92,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Wundumgebung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn50 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("WundrandOedemoesWulstig");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn75 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Wundheilungsphase", -1, 416974063);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn76 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Wundgrund", -1, 416956766);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn76 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Wundgrund", -1, 416956766, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn51 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bilder", 0);
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
@@ -105,17 +105,18 @@
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueList valueList1 = new Infragistics.Win.ValueList(416956766);
             Infragistics.Win.ValueList valueList2 = new Infragistics.Win.ValueList(416974063);
             Infragistics.Win.ValueList valueList3 = new Infragistics.Win.ValueList(422289110);
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWunddoku));
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWunddoku));
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("WundeTherapie", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn52 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn53 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDWundeKopf");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn54 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("VerordnetAm");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn54 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("VerordnetAm", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn55 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AbgesetztAm");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Therapie");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AngeordnetVon");
@@ -142,7 +143,6 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn80 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("VidiertAm");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn82 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("VorgeschlagenVon");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn81 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("WundtherapieVidieren", 0);
-            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
@@ -156,6 +156,8 @@
             Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -215,9 +217,9 @@
             // 
             this.ultraTabPageControl1.Controls.Add(this.panelBild);
             this.ultraTabPageControl1.Controls.Add(this.dgThumbnails);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(722, 508);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(865, 508);
             // 
             // panelBild
             // 
@@ -226,7 +228,7 @@
             this.panelBild.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBild.Location = new System.Drawing.Point(0, 0);
             this.panelBild.Name = "panelBild";
-            this.panelBild.Size = new System.Drawing.Size(722, 317);
+            this.panelBild.Size = new System.Drawing.Size(865, 317);
             this.panelBild.TabIndex = 0;
             // 
             // panelWundeEingabe
@@ -245,13 +247,13 @@
             this.panelWundeEingabe.Controls.Add(this.cboWundeEntstanden);
             this.panelWundeEingabe.Location = new System.Drawing.Point(369, 5);
             this.panelWundeEingabe.Name = "panelWundeEingabe";
-            this.panelWundeEingabe.Size = new System.Drawing.Size(332, 296);
+            this.panelWundeEingabe.Size = new System.Drawing.Size(493, 296);
             this.panelWundeEingabe.TabIndex = 1;
             // 
             // dtBekanntSeit
             // 
             this.dtBekanntSeit.FormatString = "dd.MM.yyyy";
-            this.dtBekanntSeit.Location = new System.Drawing.Point(81, 61);
+            this.dtBekanntSeit.Location = new System.Drawing.Point(104, 61);
             this.dtBekanntSeit.MaskInput = "";
             this.dtBekanntSeit.Name = "dtBekanntSeit";
             this.dtBekanntSeit.ownFormat = "";
@@ -264,7 +266,7 @@
             // 
             this.tbDekuwert.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
             this.tbDekuwert.InputMask = "nnnnnnnnn";
-            this.tbDekuwert.Location = new System.Drawing.Point(253, 34);
+            this.tbDekuwert.Location = new System.Drawing.Point(285, 34);
             this.tbDekuwert.Name = "tbDekuwert";
             this.tbDekuwert.NonAutoSizeHeight = 20;
             this.tbDekuwert.Size = new System.Drawing.Size(37, 20);
@@ -278,13 +280,15 @@
             this.cbDekuskala.BerufsstandGruppeJNA = -1;
             this.cbDekuskala.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbDekuskala.ExactMatch = false;
-            this.cbDekuskala.Group = "";
+            this.cbDekuskala.Group = "DES";
             this.cbDekuskala.ID_PEP = -1;
-            this.cbDekuskala.Location = new System.Drawing.Point(81, 34);
+            this.cbDekuskala.IgnoreUnterdruecken = true;
+            this.cbDekuskala.Location = new System.Drawing.Point(104, 34);
             this.cbDekuskala.Name = "cbDekuskala";
             this.cbDekuskala.PflichtJN = false;
+            this.cbDekuskala.SelectDistinct = false;
             this.cbDekuskala.ShowAddButton = true;
-            this.cbDekuskala.Size = new System.Drawing.Size(119, 21);
+            this.cbDekuskala.Size = new System.Drawing.Size(134, 21);
             this.cbDekuskala.sys = false;
             this.cbDekuskala.TabIndex = 1;
             this.cbDekuskala.ValueChanged += new System.EventHandler(this.cbWundart_ValueChanged);
@@ -299,11 +303,13 @@
             this.cbWundart.ExactMatch = false;
             this.cbWundart.Group = "WAT";
             this.cbWundart.ID_PEP = -1;
-            this.cbWundart.Location = new System.Drawing.Point(81, 7);
+            this.cbWundart.IgnoreUnterdruecken = true;
+            this.cbWundart.Location = new System.Drawing.Point(104, 7);
             this.cbWundart.Name = "cbWundart";
             this.cbWundart.PflichtJN = false;
+            this.cbWundart.SelectDistinct = false;
             this.cbWundart.ShowAddButton = true;
-            this.cbWundart.Size = new System.Drawing.Size(209, 21);
+            this.cbWundart.Size = new System.Drawing.Size(218, 21);
             this.cbWundart.sys = false;
             this.cbWundart.TabIndex = 0;
             this.cbWundart.ValueChanged += new System.EventHandler(this.cbWundart_ValueChanged);
@@ -312,9 +318,10 @@
             // 
             appearance1.BackColor = System.Drawing.Color.Transparent;
             this.lblWundeEntstanden.Appearance = appearance1;
-            this.lblWundeEntstanden.Location = new System.Drawing.Point(3, 271);
+            this.lblWundeEntstanden.AutoSize = true;
+            this.lblWundeEntstanden.Location = new System.Drawing.Point(4, 256);
             this.lblWundeEntstanden.Name = "lblWundeEntstanden";
-            this.lblWundeEntstanden.Size = new System.Drawing.Size(72, 19);
+            this.lblWundeEntstanden.Size = new System.Drawing.Size(61, 14);
             this.lblWundeEntstanden.TabIndex = 13;
             this.lblWundeEntstanden.Text = "Entstanden";
             // 
@@ -324,16 +331,16 @@
             this.lblBisherigeBehandlungen.Appearance = appearance2;
             this.lblBisherigeBehandlungen.Location = new System.Drawing.Point(4, 89);
             this.lblBisherigeBehandlungen.Name = "lblBisherigeBehandlungen";
-            this.lblBisherigeBehandlungen.Size = new System.Drawing.Size(207, 15);
+            this.lblBisherigeBehandlungen.Size = new System.Drawing.Size(94, 78);
             this.lblBisherigeBehandlungen.TabIndex = 12;
             this.lblBisherigeBehandlungen.Text = "Bisherige Behandlung";
             // 
             // txtBisherigeBehandlung
             // 
-            this.txtBisherigeBehandlung.Location = new System.Drawing.Point(4, 105);
+            this.txtBisherigeBehandlung.Location = new System.Drawing.Point(104, 89);
             this.txtBisherigeBehandlung.Multiline = true;
             this.txtBisherigeBehandlung.Name = "txtBisherigeBehandlung";
-            this.txtBisherigeBehandlung.Size = new System.Drawing.Size(286, 157);
+            this.txtBisherigeBehandlung.Size = new System.Drawing.Size(386, 157);
             this.txtBisherigeBehandlung.TabIndex = 4;
             this.txtBisherigeBehandlung.Text = "..";
             this.txtBisherigeBehandlung.ValueChanged += new System.EventHandler(this.txtBisherigeBehandlung_ValueChanged);
@@ -342,9 +349,10 @@
             // 
             appearance3.BackColor = System.Drawing.Color.Transparent;
             this.lblBekanntSeit.Appearance = appearance3;
+            this.lblBekanntSeit.AutoSize = true;
             this.lblBekanntSeit.Location = new System.Drawing.Point(3, 62);
             this.lblBekanntSeit.Name = "lblBekanntSeit";
-            this.lblBekanntSeit.Size = new System.Drawing.Size(72, 19);
+            this.lblBekanntSeit.Size = new System.Drawing.Size(66, 14);
             this.lblBekanntSeit.TabIndex = 10;
             this.lblBekanntSeit.Text = "Bekannt seit";
             // 
@@ -352,9 +360,10 @@
             // 
             appearance4.BackColor = System.Drawing.Color.Transparent;
             this.lblDekuwert.Appearance = appearance4;
-            this.lblDekuwert.Location = new System.Drawing.Point(212, 37);
+            this.lblDekuwert.AutoSize = true;
+            this.lblDekuwert.Location = new System.Drawing.Point(247, 37);
             this.lblDekuwert.Name = "lblDekuwert";
-            this.lblDekuwert.Size = new System.Drawing.Size(41, 19);
+            this.lblDekuwert.Size = new System.Drawing.Size(28, 14);
             this.lblDekuwert.TabIndex = 6;
             this.lblDekuwert.Text = "Wert";
             // 
@@ -362,9 +371,10 @@
             // 
             appearance5.BackColor = System.Drawing.Color.Transparent;
             this.lblDekuskala.Appearance = appearance5;
+            this.lblDekuskala.AutoSize = true;
             this.lblDekuskala.Location = new System.Drawing.Point(3, 35);
             this.lblDekuskala.Name = "lblDekuskala";
-            this.lblDekuskala.Size = new System.Drawing.Size(72, 19);
+            this.lblDekuskala.Size = new System.Drawing.Size(33, 14);
             this.lblDekuskala.TabIndex = 4;
             this.lblDekuskala.Text = "Skala";
             // 
@@ -372,16 +382,17 @@
             // 
             appearance6.BackColor = System.Drawing.Color.Transparent;
             this.lblWundart.Appearance = appearance6;
+            this.lblWundart.AutoSize = true;
             this.lblWundart.Location = new System.Drawing.Point(3, 8);
             this.lblWundart.Name = "lblWundart";
-            this.lblWundart.Size = new System.Drawing.Size(72, 19);
+            this.lblWundart.Size = new System.Drawing.Size(47, 14);
             this.lblWundart.TabIndex = 2;
             this.lblWundart.Text = "Wundart";
             // 
             // cboWundeEntstanden
             // 
             this.cboWundeEntstanden.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboWundeEntstanden.Location = new System.Drawing.Point(81, 269);
+            this.cboWundeEntstanden.Location = new System.Drawing.Point(104, 252);
             this.cboWundeEntstanden.Name = "cboWundeEntstanden";
             this.cboWundeEntstanden.Size = new System.Drawing.Size(209, 21);
             this.cboWundeEntstanden.TabIndex = 14;
@@ -492,7 +503,7 @@
             this.dgThumbnails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgThumbnails.Location = new System.Drawing.Point(0, 317);
             this.dgThumbnails.Name = "dgThumbnails";
-            this.dgThumbnails.Size = new System.Drawing.Size(722, 191);
+            this.dgThumbnails.Size = new System.Drawing.Size(865, 191);
             this.dgThumbnails.TabIndex = 2;
             this.dgThumbnails.Text = "Verfügbare Bilder";
             this.dgThumbnails.DoubleClick += new System.EventHandler(this.dgThumbnails_DoubleClick);
@@ -506,17 +517,17 @@
             // 
             this.ultraTabPageControl2.Controls.Add(this.panel1);
             this.ultraTabPageControl2.Controls.Add(this.panelButtons);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(722, 508);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(865, 508);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dgWundverlauf);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Location = new System.Drawing.Point(0, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(722, 484);
+            this.panel1.Size = new System.Drawing.Size(865, 474);
             this.panel1.TabIndex = 39;
             // 
             // dgWundverlauf
@@ -598,7 +609,7 @@
             ultraGridColumn20.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn20.RowLayoutColumnInfo.OriginY = 58;
             ultraGridColumn20.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(44, 66);
-            ultraGridColumn20.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(168, 0);
+            ultraGridColumn20.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(166, 0);
             ultraGridColumn20.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn20.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn21.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -790,7 +801,7 @@
             ultraGridColumn42.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn42.RowLayoutColumnInfo.OriginY = 40;
             ultraGridColumn42.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(44, 0);
-            ultraGridColumn42.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(182, 0);
+            ultraGridColumn42.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(166, 0);
             ultraGridColumn42.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn42.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn43.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -830,7 +841,7 @@
             ultraGridColumn46.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn46.RowLayoutColumnInfo.OriginY = 50;
             ultraGridColumn46.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(44, 0);
-            ultraGridColumn46.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(182, 0);
+            ultraGridColumn46.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(166, 0);
             ultraGridColumn46.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn46.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn47.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -840,7 +851,7 @@
             ultraGridColumn47.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn47.RowLayoutColumnInfo.OriginY = 52;
             ultraGridColumn47.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(44, 0);
-            ultraGridColumn47.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(182, 0);
+            ultraGridColumn47.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(166, 0);
             ultraGridColumn47.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn47.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn48.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -850,7 +861,7 @@
             ultraGridColumn48.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn48.RowLayoutColumnInfo.OriginY = 54;
             ultraGridColumn48.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(32, 0);
-            ultraGridColumn48.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(182, 0);
+            ultraGridColumn48.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(166, 0);
             ultraGridColumn48.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn48.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn49.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -870,12 +881,14 @@
             ultraGridColumn50.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn50.RowLayoutColumnInfo.OriginY = 42;
             ultraGridColumn50.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(44, 0);
+            ultraGridColumn50.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(159, 0);
             ultraGridColumn50.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn50.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn75.Header.Editor = null;
             ultraGridColumn75.Header.VisiblePosition = 38;
             ultraGridColumn75.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn75.RowLayoutColumnInfo.OriginY = 2;
+            ultraGridColumn75.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(122, 0);
             ultraGridColumn75.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn75.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn75.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
@@ -883,6 +896,7 @@
             ultraGridColumn76.Header.VisiblePosition = 40;
             ultraGridColumn76.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn76.RowLayoutColumnInfo.OriginY = 4;
+            ultraGridColumn76.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(78, 0);
             ultraGridColumn76.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn76.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn76.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
@@ -891,6 +905,7 @@
             ultraGridColumn51.Header.VisiblePosition = 39;
             ultraGridColumn51.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn51.RowLayoutColumnInfo.OriginY = 60;
+            ultraGridColumn51.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(48, 0);
             ultraGridColumn51.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn51.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn51.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Button;
@@ -936,58 +951,62 @@
             ultraGridColumn75,
             ultraGridColumn76,
             ultraGridColumn51});
+            appearance11.ImageHAlign = Infragistics.Win.HAlign.Left;
+            appearance11.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            ultraGridBand2.Header.Appearance = appearance11;
+            ultraGridBand2.Header.Editor = null;
             ultraGridBand2.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
             this.dgWundverlauf.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.dgWundverlauf.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.dgWundverlauf.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.True;
-            appearance11.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance11.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance11.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance11.BorderColor = System.Drawing.SystemColors.Window;
-            this.dgWundverlauf.DisplayLayout.GroupByBox.Appearance = appearance11;
-            appearance12.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.dgWundverlauf.DisplayLayout.GroupByBox.BandLabelAppearance = appearance12;
-            this.dgWundverlauf.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance13.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance13.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance13.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance12.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance12.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance12.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance12.BorderColor = System.Drawing.SystemColors.Window;
+            this.dgWundverlauf.DisplayLayout.GroupByBox.Appearance = appearance12;
             appearance13.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.dgWundverlauf.DisplayLayout.GroupByBox.PromptAppearance = appearance13;
+            this.dgWundverlauf.DisplayLayout.GroupByBox.BandLabelAppearance = appearance13;
+            this.dgWundverlauf.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance14.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance14.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance14.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance14.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.dgWundverlauf.DisplayLayout.GroupByBox.PromptAppearance = appearance14;
             this.dgWundverlauf.DisplayLayout.MaxColScrollRegions = 1;
             this.dgWundverlauf.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance14.BackColor = System.Drawing.SystemColors.Window;
-            appearance14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgWundverlauf.DisplayLayout.Override.ActiveCellAppearance = appearance14;
-            appearance15.BackColor = System.Drawing.Color.PapayaWhip;
-            appearance15.ForeColor = System.Drawing.Color.Black;
-            this.dgWundverlauf.DisplayLayout.Override.ActiveRowAppearance = appearance15;
+            appearance15.BackColor = System.Drawing.SystemColors.Window;
+            appearance15.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgWundverlauf.DisplayLayout.Override.ActiveCellAppearance = appearance15;
+            appearance16.BackColor = System.Drawing.Color.PapayaWhip;
+            appearance16.ForeColor = System.Drawing.Color.Black;
+            this.dgWundverlauf.DisplayLayout.Override.ActiveRowAppearance = appearance16;
             this.dgWundverlauf.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
             this.dgWundverlauf.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance16.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance16.BorderColor = System.Drawing.Color.Black;
-            this.dgWundverlauf.DisplayLayout.Override.CardAreaAppearance = appearance16;
-            appearance17.BackColor = System.Drawing.Color.White;
+            appearance17.BackColor = System.Drawing.Color.WhiteSmoke;
             appearance17.BorderColor = System.Drawing.Color.Black;
-            appearance17.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.dgWundverlauf.DisplayLayout.Override.CellAppearance = appearance17;
+            this.dgWundverlauf.DisplayLayout.Override.CardAreaAppearance = appearance17;
+            appearance18.BackColor = System.Drawing.Color.White;
+            appearance18.BorderColor = System.Drawing.Color.Black;
+            appearance18.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.dgWundverlauf.DisplayLayout.Override.CellAppearance = appearance18;
             this.dgWundverlauf.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
             this.dgWundverlauf.DisplayLayout.Override.CellPadding = 0;
-            appearance18.BackColor = System.Drawing.SystemColors.Control;
-            appearance18.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance18.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance18.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance18.BorderColor = System.Drawing.SystemColors.Window;
-            this.dgWundverlauf.DisplayLayout.Override.GroupByRowAppearance = appearance18;
-            appearance19.TextHAlignAsString = "Left";
-            this.dgWundverlauf.DisplayLayout.Override.HeaderAppearance = appearance19;
+            appearance19.BackColor = System.Drawing.SystemColors.Control;
+            appearance19.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance19.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance19.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance19.BorderColor = System.Drawing.SystemColors.Window;
+            this.dgWundverlauf.DisplayLayout.Override.GroupByRowAppearance = appearance19;
+            appearance20.TextHAlignAsString = "Left";
+            this.dgWundverlauf.DisplayLayout.Override.HeaderAppearance = appearance20;
             this.dgWundverlauf.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.dgWundverlauf.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
-            appearance20.BackColor = System.Drawing.SystemColors.Window;
-            appearance20.BorderColor = System.Drawing.Color.Silver;
-            this.dgWundverlauf.DisplayLayout.Override.RowAppearance = appearance20;
+            appearance21.BackColor = System.Drawing.SystemColors.Window;
+            appearance21.BorderColor = System.Drawing.Color.Silver;
+            this.dgWundverlauf.DisplayLayout.Override.RowAppearance = appearance21;
             this.dgWundverlauf.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
-            appearance21.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.dgWundverlauf.DisplayLayout.Override.TemplateAddRowAppearance = appearance21;
+            appearance22.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.dgWundverlauf.DisplayLayout.Override.TemplateAddRowAppearance = appearance22;
             this.dgWundverlauf.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.dgWundverlauf.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             valueList1.Key = "Wundgrund";
@@ -1000,11 +1019,11 @@
             this.dgWundverlauf.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgWundverlauf.Location = new System.Drawing.Point(0, 0);
             this.dgWundverlauf.Name = "dgWundverlauf";
-            this.dgWundverlauf.Size = new System.Drawing.Size(722, 484);
+            this.dgWundverlauf.Size = new System.Drawing.Size(865, 474);
             this.dgWundverlauf.TabIndex = 38;
             this.dgWundverlauf.Text = "Wundverlauf";
             this.dgWundverlauf.UseAppStyling = false;
-            this.dgWundverlauf.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
+            this.dgWundverlauf.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.dgWundverlauf.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.dgWundVerlaufCardview_CellChange);
             this.dgWundverlauf.ClickCellButton += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.dgWundVerlaufCardview_ClickCellButton);
             this.dgWundverlauf.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.dgWundVerlaufCardview_BeforeCellActivate);
@@ -1016,24 +1035,24 @@
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelButtons.Location = new System.Drawing.Point(0, 0);
             this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(722, 24);
+            this.panelButtons.Size = new System.Drawing.Size(865, 34);
             this.panelButtons.TabIndex = 37;
             // 
             // btnAdd
             // 
-            appearance22.BackColor = System.Drawing.Color.Transparent;
-            appearance22.Image = ((object)(resources.GetObject("appearance22.Image")));
-            appearance22.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance22.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAdd.Appearance = appearance22;
+            appearance23.BackColor = System.Drawing.Color.Transparent;
+            appearance23.Image = ((object)(resources.GetObject("appearance23.Image")));
+            appearance23.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance23.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAdd.Appearance = appearance23;
             this.btnAdd.AutoWorkLayout = false;
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnAdd.DoOnClick = true;
             this.btnAdd.ImageSize = new System.Drawing.Size(12, 12);
             this.btnAdd.IsStandardControl = true;
-            this.btnAdd.Location = new System.Drawing.Point(382, 0);
+            this.btnAdd.Location = new System.Drawing.Point(382, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(26, 21);
+            this.btnAdd.Size = new System.Drawing.Size(26, 26);
             this.btnAdd.TabIndex = 35;
             this.btnAdd.TabStop = false;
             this.btnAdd.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
@@ -1042,19 +1061,19 @@
             // 
             // btnDel
             // 
-            appearance23.BackColor = System.Drawing.Color.Transparent;
-            appearance23.Image = ((object)(resources.GetObject("appearance23.Image")));
-            appearance23.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance23.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDel.Appearance = appearance23;
+            appearance24.BackColor = System.Drawing.Color.Transparent;
+            appearance24.Image = ((object)(resources.GetObject("appearance24.Image")));
+            appearance24.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance24.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDel.Appearance = appearance24;
             this.btnDel.AutoWorkLayout = false;
             this.btnDel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDel.DoOnClick = true;
             this.btnDel.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDel.IsStandardControl = true;
-            this.btnDel.Location = new System.Drawing.Point(414, 0);
+            this.btnDel.Location = new System.Drawing.Point(414, 4);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(26, 21);
+            this.btnDel.Size = new System.Drawing.Size(26, 26);
             this.btnDel.TabIndex = 36;
             this.btnDel.TabStop = false;
             this.btnDel.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
@@ -1067,7 +1086,7 @@
             this.ultraTabPageControl3.Controls.Add(this.panelButtons2);
             this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
-            this.ultraTabPageControl3.Size = new System.Drawing.Size(722, 508);
+            this.ultraTabPageControl3.Size = new System.Drawing.Size(865, 508);
             // 
             // dgTherapie
             // 
@@ -1075,9 +1094,9 @@
             this.dgTherapie.DataMember = "WundeTherapie";
             this.dgTherapie.DataSource = this.dsWunde1;
             this.dgTherapie.DisplayLayout.AllowCardPrinting = Infragistics.Win.UltraWinGrid.AllowCardPrinting.RootBandOnly;
-            appearance24.BackColor = System.Drawing.Color.Transparent;
-            appearance24.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dgTherapie.DisplayLayout.Appearance = appearance24;
+            appearance25.BackColor = System.Drawing.Color.Transparent;
+            appearance25.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.dgTherapie.DisplayLayout.Appearance = appearance25;
             ultraGridBand3.CardSettings.AutoFit = true;
             ultraGridBand3.CardSettings.CaptionField = "VerordnetAm";
             ultraGridBand3.CardSettings.MaxCardAreaCols = 1;
@@ -1097,6 +1116,7 @@
             ultraGridColumn54.Header.VisiblePosition = 2;
             ultraGridColumn54.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn54.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn54.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn54.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn54.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn55.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1105,6 +1125,7 @@
             ultraGridColumn55.Header.VisiblePosition = 5;
             ultraGridColumn55.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn55.RowLayoutColumnInfo.OriginY = 34;
+            ultraGridColumn55.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn55.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn55.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn56.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1114,6 +1135,7 @@
             ultraGridColumn56.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn56.RowLayoutColumnInfo.OriginY = 32;
             ultraGridColumn56.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(0, 20);
+            ultraGridColumn56.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn56.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn56.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn57.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1122,6 +1144,7 @@
             ultraGridColumn57.Header.VisiblePosition = 3;
             ultraGridColumn57.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn57.RowLayoutColumnInfo.OriginY = 4;
+            ultraGridColumn57.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn57.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn57.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn58.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1130,6 +1153,7 @@
             ultraGridColumn58.Header.VisiblePosition = 6;
             ultraGridColumn58.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn58.RowLayoutColumnInfo.OriginY = 36;
+            ultraGridColumn58.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn58.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn58.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn59.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1157,6 +1181,7 @@
             ultraGridColumn63.Header.VisiblePosition = 11;
             ultraGridColumn63.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn63.RowLayoutColumnInfo.OriginY = 6;
+            ultraGridColumn63.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn63.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn63.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn64.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1164,6 +1189,7 @@
             ultraGridColumn64.Header.VisiblePosition = 12;
             ultraGridColumn64.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn64.RowLayoutColumnInfo.OriginY = 8;
+            ultraGridColumn64.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn64.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn64.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn65.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1171,6 +1197,7 @@
             ultraGridColumn65.Header.VisiblePosition = 13;
             ultraGridColumn65.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn65.RowLayoutColumnInfo.OriginY = 10;
+            ultraGridColumn65.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn65.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn65.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn66.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1179,6 +1206,7 @@
             ultraGridColumn66.Header.VisiblePosition = 14;
             ultraGridColumn66.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn66.RowLayoutColumnInfo.OriginY = 14;
+            ultraGridColumn66.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn66.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn66.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn67.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1186,6 +1214,7 @@
             ultraGridColumn67.Header.VisiblePosition = 15;
             ultraGridColumn67.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn67.RowLayoutColumnInfo.OriginY = 16;
+            ultraGridColumn67.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn67.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn67.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn68.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1193,6 +1222,7 @@
             ultraGridColumn68.Header.VisiblePosition = 16;
             ultraGridColumn68.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn68.RowLayoutColumnInfo.OriginY = 20;
+            ultraGridColumn68.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn68.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn68.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn69.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1200,6 +1230,7 @@
             ultraGridColumn69.Header.VisiblePosition = 17;
             ultraGridColumn69.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn69.RowLayoutColumnInfo.OriginY = 22;
+            ultraGridColumn69.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn69.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn69.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn70.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1207,6 +1238,7 @@
             ultraGridColumn70.Header.VisiblePosition = 18;
             ultraGridColumn70.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn70.RowLayoutColumnInfo.OriginY = 24;
+            ultraGridColumn70.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn70.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn70.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn71.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1214,6 +1246,7 @@
             ultraGridColumn71.Header.VisiblePosition = 19;
             ultraGridColumn71.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn71.RowLayoutColumnInfo.OriginY = 26;
+            ultraGridColumn71.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn71.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn71.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn72.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1221,6 +1254,7 @@
             ultraGridColumn72.Header.VisiblePosition = 20;
             ultraGridColumn72.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn72.RowLayoutColumnInfo.OriginY = 28;
+            ultraGridColumn72.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn72.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn72.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn73.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1228,6 +1262,7 @@
             ultraGridColumn73.Header.VisiblePosition = 21;
             ultraGridColumn73.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn73.RowLayoutColumnInfo.OriginY = 30;
+            ultraGridColumn73.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn73.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn73.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn74.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -1235,6 +1270,7 @@
             ultraGridColumn74.Header.VisiblePosition = 22;
             ultraGridColumn74.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn74.RowLayoutColumnInfo.OriginY = 12;
+            ultraGridColumn74.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn74.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn74.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn77.Header.Caption = "VW-Intervall";
@@ -1242,6 +1278,7 @@
             ultraGridColumn77.Header.VisiblePosition = 23;
             ultraGridColumn77.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn77.RowLayoutColumnInfo.OriginY = 18;
+            ultraGridColumn77.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn77.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn77.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn78.Header.Caption = "Vidiert J/N";
@@ -1249,6 +1286,7 @@
             ultraGridColumn78.Header.VisiblePosition = 24;
             ultraGridColumn78.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn78.RowLayoutColumnInfo.OriginY = 40;
+            ultraGridColumn78.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn78.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn78.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn79.Header.Caption = "Vidiert von";
@@ -1256,6 +1294,7 @@
             ultraGridColumn79.Header.VisiblePosition = 25;
             ultraGridColumn79.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn79.RowLayoutColumnInfo.OriginY = 42;
+            ultraGridColumn79.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn79.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn79.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn80.Header.Caption = "Vidiert am";
@@ -1263,12 +1302,14 @@
             ultraGridColumn80.Header.VisiblePosition = 26;
             ultraGridColumn80.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn80.RowLayoutColumnInfo.OriginY = 44;
+            ultraGridColumn80.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn80.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn80.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn82.Header.Editor = null;
             ultraGridColumn82.Header.VisiblePosition = 27;
             ultraGridColumn82.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn82.RowLayoutColumnInfo.OriginY = 2;
+            ultraGridColumn82.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn82.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn82.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn81.Header.Caption = "Wundtherapie vidieren";
@@ -1276,6 +1317,7 @@
             ultraGridColumn81.Header.VisiblePosition = 28;
             ultraGridColumn81.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn81.RowLayoutColumnInfo.OriginY = 38;
+            ultraGridColumn81.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(161, 0);
             ultraGridColumn81.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn81.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn81.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Button;
@@ -1309,68 +1351,75 @@
             ultraGridColumn80,
             ultraGridColumn82,
             ultraGridColumn81});
+            appearance26.TextHAlignAsString = "Left";
+            appearance26.TextVAlignAsString = "Middle";
+            ultraGridBand3.Header.Appearance = appearance26;
+            ultraGridBand3.Header.Editor = null;
+            ultraGridBand3.Override.ActiveCellBorderThickness = 0;
+            ultraGridBand3.Override.RowSpacingAfter = 0;
+            ultraGridBand3.Override.RowSpacingBefore = 0;
             ultraGridBand3.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
             this.dgTherapie.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
             this.dgTherapie.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.dgTherapie.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.True;
-            appearance25.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance25.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance25.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance25.BorderColor = System.Drawing.SystemColors.Window;
-            this.dgTherapie.DisplayLayout.GroupByBox.Appearance = appearance25;
-            appearance26.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.dgTherapie.DisplayLayout.GroupByBox.BandLabelAppearance = appearance26;
+            appearance27.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance27.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance27.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance27.BorderColor = System.Drawing.SystemColors.Window;
+            this.dgTherapie.DisplayLayout.GroupByBox.Appearance = appearance27;
+            appearance28.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.dgTherapie.DisplayLayout.GroupByBox.BandLabelAppearance = appearance28;
             this.dgTherapie.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.dgTherapie.DisplayLayout.GroupByBox.Hidden = true;
-            appearance27.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance27.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance27.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance27.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.dgTherapie.DisplayLayout.GroupByBox.PromptAppearance = appearance27;
+            appearance29.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance29.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance29.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance29.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.dgTherapie.DisplayLayout.GroupByBox.PromptAppearance = appearance29;
             this.dgTherapie.DisplayLayout.MaxColScrollRegions = 1;
             this.dgTherapie.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance28.BackColor = System.Drawing.SystemColors.Window;
-            appearance28.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgTherapie.DisplayLayout.Override.ActiveCellAppearance = appearance28;
-            appearance29.BackColor = System.Drawing.Color.PapayaWhip;
-            appearance29.ForeColor = System.Drawing.Color.Black;
-            this.dgTherapie.DisplayLayout.Override.ActiveRowAppearance = appearance29;
+            appearance30.BackColor = System.Drawing.SystemColors.Window;
+            appearance30.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgTherapie.DisplayLayout.Override.ActiveCellAppearance = appearance30;
+            appearance31.BackColor = System.Drawing.Color.PapayaWhip;
+            appearance31.ForeColor = System.Drawing.Color.Black;
+            this.dgTherapie.DisplayLayout.Override.ActiveRowAppearance = appearance31;
             this.dgTherapie.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
             this.dgTherapie.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance30.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgTherapie.DisplayLayout.Override.CardAreaAppearance = appearance30;
-            appearance31.BorderColor = System.Drawing.Color.Silver;
-            appearance31.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.dgTherapie.DisplayLayout.Override.CellAppearance = appearance31;
+            appearance32.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgTherapie.DisplayLayout.Override.CardAreaAppearance = appearance32;
+            appearance33.BorderColor = System.Drawing.Color.Silver;
+            appearance33.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.dgTherapie.DisplayLayout.Override.CellAppearance = appearance33;
             this.dgTherapie.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
             this.dgTherapie.DisplayLayout.Override.CellPadding = 0;
-            appearance32.BackColor = System.Drawing.SystemColors.Control;
-            appearance32.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance32.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance32.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance32.BorderColor = System.Drawing.SystemColors.Window;
-            this.dgTherapie.DisplayLayout.Override.GroupByRowAppearance = appearance32;
-            appearance33.TextHAlignAsString = "Left";
-            this.dgTherapie.DisplayLayout.Override.HeaderAppearance = appearance33;
+            appearance34.BackColor = System.Drawing.SystemColors.Control;
+            appearance34.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance34.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance34.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance34.BorderColor = System.Drawing.SystemColors.Window;
+            this.dgTherapie.DisplayLayout.Override.GroupByRowAppearance = appearance34;
+            appearance35.TextHAlignAsString = "Left";
+            this.dgTherapie.DisplayLayout.Override.HeaderAppearance = appearance35;
             this.dgTherapie.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.dgTherapie.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
-            appearance34.BackColor = System.Drawing.SystemColors.Window;
-            appearance34.BorderColor = System.Drawing.Color.Silver;
-            this.dgTherapie.DisplayLayout.Override.RowAppearance = appearance34;
+            appearance36.BackColor = System.Drawing.SystemColors.Window;
+            appearance36.BorderColor = System.Drawing.Color.Silver;
+            this.dgTherapie.DisplayLayout.Override.RowAppearance = appearance36;
             this.dgTherapie.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
-            appearance35.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.dgTherapie.DisplayLayout.Override.TemplateAddRowAppearance = appearance35;
+            appearance37.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.dgTherapie.DisplayLayout.Override.TemplateAddRowAppearance = appearance37;
             this.dgTherapie.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.dgTherapie.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.dgTherapie.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.dgTherapie.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgTherapie.Location = new System.Drawing.Point(0, 23);
+            this.dgTherapie.Location = new System.Drawing.Point(0, 34);
             this.dgTherapie.Name = "dgTherapie";
-            this.dgTherapie.Size = new System.Drawing.Size(722, 485);
+            this.dgTherapie.Size = new System.Drawing.Size(865, 474);
             this.dgTherapie.TabIndex = 40;
             this.dgTherapie.Text = "Therapie";
             this.dgTherapie.UseAppStyling = false;
-            this.dgTherapie.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
+            this.dgTherapie.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.dgTherapie.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ultraGrid1_CellChange);
             this.dgTherapie.ClickCellButton += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.dgTherapie_ClickCellButton);
             this.dgTherapie.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.ultraGrid1_BeforeCellActivate);
@@ -1383,24 +1432,24 @@
             this.panelButtons2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelButtons2.Location = new System.Drawing.Point(0, 0);
             this.panelButtons2.Name = "panelButtons2";
-            this.panelButtons2.Size = new System.Drawing.Size(722, 23);
+            this.panelButtons2.Size = new System.Drawing.Size(865, 34);
             this.panelButtons2.TabIndex = 39;
             // 
             // btnAddTherapie
             // 
-            appearance36.BackColor = System.Drawing.Color.Transparent;
-            appearance36.Image = ((object)(resources.GetObject("appearance36.Image")));
-            appearance36.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance36.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAddTherapie.Appearance = appearance36;
+            appearance38.BackColor = System.Drawing.Color.Transparent;
+            appearance38.Image = ((object)(resources.GetObject("appearance38.Image")));
+            appearance38.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance38.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAddTherapie.Appearance = appearance38;
             this.btnAddTherapie.AutoWorkLayout = false;
             this.btnAddTherapie.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnAddTherapie.DoOnClick = true;
             this.btnAddTherapie.ImageSize = new System.Drawing.Size(12, 12);
             this.btnAddTherapie.IsStandardControl = true;
-            this.btnAddTherapie.Location = new System.Drawing.Point(381, -1);
+            this.btnAddTherapie.Location = new System.Drawing.Point(382, 4);
             this.btnAddTherapie.Name = "btnAddTherapie";
-            this.btnAddTherapie.Size = new System.Drawing.Size(26, 21);
+            this.btnAddTherapie.Size = new System.Drawing.Size(26, 26);
             this.btnAddTherapie.TabIndex = 37;
             this.btnAddTherapie.TabStop = false;
             this.btnAddTherapie.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
@@ -1409,19 +1458,19 @@
             // 
             // btnDelTherapie
             // 
-            appearance37.BackColor = System.Drawing.Color.Transparent;
-            appearance37.Image = ((object)(resources.GetObject("appearance37.Image")));
-            appearance37.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance37.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDelTherapie.Appearance = appearance37;
+            appearance39.BackColor = System.Drawing.Color.Transparent;
+            appearance39.Image = ((object)(resources.GetObject("appearance39.Image")));
+            appearance39.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance39.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDelTherapie.Appearance = appearance39;
             this.btnDelTherapie.AutoWorkLayout = false;
             this.btnDelTherapie.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDelTherapie.DoOnClick = true;
             this.btnDelTherapie.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDelTherapie.IsStandardControl = true;
-            this.btnDelTherapie.Location = new System.Drawing.Point(413, -1);
+            this.btnDelTherapie.Location = new System.Drawing.Point(414, 4);
             this.btnDelTherapie.Name = "btnDelTherapie";
-            this.btnDelTherapie.Size = new System.Drawing.Size(26, 21);
+            this.btnDelTherapie.Size = new System.Drawing.Size(26, 26);
             this.btnDelTherapie.TabIndex = 38;
             this.btnDelTherapie.TabStop = false;
             this.btnDelTherapie.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
@@ -1430,8 +1479,8 @@
             // 
             // ultraTabControl1
             // 
-            appearance38.BackColor = System.Drawing.Color.Transparent;
-            this.ultraTabControl1.Appearance = appearance38;
+            appearance40.BackColor = System.Drawing.Color.Transparent;
+            this.ultraTabControl1.Appearance = appearance40;
             this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl2);
@@ -1440,7 +1489,7 @@
             this.ultraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.ultraTabControl1.Name = "ultraTabControl1";
             this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControl1.Size = new System.Drawing.Size(726, 534);
+            this.ultraTabControl1.Size = new System.Drawing.Size(869, 534);
             this.ultraTabControl1.TabIndex = 0;
             ultraTab1.Key = "Ausmaß und Lokalisierung der Gewebeschädigung";
             ultraTab1.TabPage = this.ultraTabPageControl1;
@@ -1461,7 +1510,7 @@
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(722, 508);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(865, 508);
             // 
             // ucWunddoku
             // 
@@ -1470,7 +1519,7 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.ultraTabControl1);
             this.Name = "ucWunddoku";
-            this.Size = new System.Drawing.Size(726, 534);
+            this.Size = new System.Drawing.Size(869, 534);
             this.ultraTabPageControl1.ResumeLayout(false);
             this.panelBild.ResumeLayout(false);
             this.panelWundeEingabe.ResumeLayout(false);

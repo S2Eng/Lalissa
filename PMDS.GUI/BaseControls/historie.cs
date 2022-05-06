@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Threading.Tasks;
 
 
 namespace PMDS.GUI.BaseControls
 {
     public class historie
     {
-
-
-        public static void OnOffControls(System.Windows.Forms.Control cont, bool bOn)
+        public static Task<bool> OnOffControls(System.Windows.Forms.Control cont, bool bOn)
         {
             foreach (System.Windows.Forms.Control cto in cont.Controls)
             {
-                OnOffControlsInObj((object)cto, bOn);
-                PMDS.GUI.BaseControls.historie .OnOffControls(cto, bOn);        
+                OnOffControlsInObj((object)cto, bOn).ConfigureAwait(false);
+                PMDS.GUI.BaseControls.historie .OnOffControls(cto, bOn).ConfigureAwait(false);        
             }
-
+            return Task.FromResult(true);
         }
-        private  static void OnOffControlsInObj(object cto, bool bOn)
+
+        private  static Task<bool> OnOffControlsInObj(object cto, bool bOn)
         {
 
                 if (cto.GetType().Name.ToString() == "UltraTextEditor")
@@ -175,9 +174,10 @@ namespace PMDS.GUI.BaseControls
                 }
                 else
                 {
-                    string yxyxyx = cto.GetType().Name.ToString();
+                    //string yxyxyx = cto.GetType().Name.ToString();
                 }
 
+            return Task.FromResult(true);
 
         }
     }

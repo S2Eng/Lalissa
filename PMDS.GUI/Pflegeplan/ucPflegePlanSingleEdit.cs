@@ -1297,7 +1297,7 @@ namespace PMDS.GUI
             this.cbBerufsstand.BerufsstandGruppeJNA = -1;
             this.cbBerufsstand.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbBerufsstand.ExactMatch = false;
-            this.cbBerufsstand.Group = "";
+            this.cbBerufsstand.Group = "BER";
             this.cbBerufsstand.ID_PEP = -1;
             this.cbBerufsstand.Location = new System.Drawing.Point(263, 22);
             this.cbBerufsstand.Name = "cbBerufsstand";
@@ -1324,7 +1324,7 @@ namespace PMDS.GUI
             this.cbArea.BerufsstandGruppeJNA = -1;
             this.cbArea.Enabled = false;
             this.cbArea.ExactMatch = false;
-            this.cbArea.Group = "";
+            this.cbArea.Group = "LOA";
             this.cbArea.ID_PEP = -1;
             this.cbArea.Location = new System.Drawing.Point(112, 22);
             this.cbArea.MaxLength = 50;
@@ -1345,7 +1345,7 @@ namespace PMDS.GUI
             this.cbSide.BerufsstandGruppeJNA = -1;
             this.cbSide.Enabled = false;
             this.cbSide.ExactMatch = false;
-            this.cbSide.Group = "";
+            this.cbSide.Group = "LOS";
             this.cbSide.ID_PEP = -1;
             this.cbSide.Location = new System.Drawing.Point(319, 21);
             this.cbSide.MaxLength = 50;

@@ -14,6 +14,7 @@ using PMDS.Data.Patient;
 using PMDS.Global.db.Patient;
 using PMDS.DB;
 using PMDS.GUI.Klient;
+using System.Threading.Tasks;
 
 namespace PMDS.GUI
 {
@@ -157,12 +158,12 @@ namespace PMDS.GUI
             }
         }
 
-        public void setControlsAktivDisable(bool bOn)
+        public async Task<bool> setControlsAktivDisable(bool bOn)
         {
-            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxBewerbungsdaten, bOn);        //ultraDropDownButtonHeimvertragDrucken
-            //pnlPrintHeimVertrag
-
+            PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxBewerbungsdaten, bOn).ConfigureAwait(false);        //ultraDropDownButtonHeimvertragDrucken
+            return true;
         }
+
         /// <summary>
         /// lädt die Daten aus einem Businessobject und aktualisiert die GUI.
         /// </summary>

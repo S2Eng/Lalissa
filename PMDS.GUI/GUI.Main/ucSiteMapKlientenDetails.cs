@@ -398,40 +398,14 @@ namespace PMDS.GUI
                 string txtSprachenGeändert = "";
                 this.ucKlient1.ucKlientStammdaten1.SaveER(ref writeDekursSprachenChanged, ref abweseneheitBeendetChanged, ucKlient1.Klient.Aufenthalt.ID, ref txtSprachenGeändert);
 
-                //this.ucKlient1.ucKlientStammdaten1.ucVOErfassen1.saveData();
-
                 btnSave2.Enabled = false;
                 btnundo2.Enabled = false;
                 _ContentChanged = false;
 
                 ucKlient1.checkRefresMedDatentypen();
 
-                //Patient pat = new Patient(this.ucKlient1.Klient.ID);
-                //PMDS.GUI.GuiWorkflow.HeaderMain.SetlblAbwesend(pat);
-                
                 ENV.SignalKlientChanged();
                 PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
-
-                //if (this.ucKlient1.PictureHasChanged)
-                //{
-                //    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
-                //    {
-                //        PMDS.db.Entities.PflegeEintrag rPflegeEintrag = b.AddPflegeeintrag(db, QS2.Desktop.ControlManagment.ControlManagment.getRes("Patient: '")  + pat.FullName.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes("' - Bild wurde geändert!") , DateTime.Now, null, null,
-                //                        ENV.IDAUFENTHALT, null, PflegeEintragTyp.MEDIKAMENT,
-                //                        null, ENV.CurrentIDAbteilung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Patienten-Stammdaten Änderung"));
-                //        db.SaveChanges();
-                //    }
-                //}
-                //if (this.ucKlient1.PictureDeleted)
-                //{
-                //    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
-                //    {
-                //        PMDS.db.Entities.PflegeEintrag rPflegeEintrag = b.AddPflegeeintrag(db, QS2.Desktop.ControlManagment.ControlManagment.getRes("Patient: '") + pat.FullName.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes("' - Bild wurde gelöscht!"), DateTime.Now, null, null,
-                //                        ENV.IDAUFENTHALT, null, PflegeEintragTyp.MEDIKAMENT,
-                //                        null, ENV.CurrentIDAbteilung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Patienten-Stammdaten Änderung"));
-                //        db.SaveChanges();
-                //    }
-                //}
                 this.ucKlient1.ucMedizinischeDaten1.UpdateMehrfachauswahlPatienten();
 
                 this.ucKlient1.PictureHasChanged = false;
@@ -576,25 +550,16 @@ namespace PMDS.GUI
                 _framework.HEADER.ShowOnlyHeader(true);  
 
                 ENV.UserLoggedOn += new EventHandler(ENV_UserLoggedOn);
-
                 UpdateActions();
-
-                // os: 30.09.2011 Recht KlientenstammdatenÄndern berücksichtigen
-                // Bei Historie = true:  und ENV.HasRight(UserRights.KlientenAktStammdatenAendern = false -> Controls deaktivieren
-                //bool bOn = PMDS.Global.historie.HistorieOn;
-                //if (!bOn) bOn =  !ENV.HasRight(UserRights.KlientenAktStammdatenAendern);
 
                 if (!PMDS.Global.historie.HistorieOn)
                 {
-                    bool bOn = ENV.HasRight(UserRights.KlientenAktStammdatenAendern);
-                    setControlsAktivDisable((bOn));
+                    panelButtons.Visible = ENV.HasRight(UserRights.KlientenAktStammdatenAendern);
                 }
                 else
                 {
-                    bool bOn = ENV.HasRight(UserRights.HistorischeDatenÄndern);
-                    setControlsAktivDisable((bOn));
+                    panelButtons.Visible = ENV.HasRight(UserRights.HistorischeDatenÄndern);
                 }
-
             }
             catch (Exception ex)
             {
@@ -606,11 +571,7 @@ namespace PMDS.GUI
                 _framework.HEADER.action(true);
             }
         }
-        public void setControlsAktivDisable(bool bOn)
-        {
-            this.panelButtons.Visible = bOn;
-            this.ucKlient1.setControlsAktivDisable(!bOn);
-        }
+
         //----------------------------------------------------------------------------
         /// <summary>
         /// aus Framework aushängen
@@ -659,22 +620,8 @@ namespace PMDS.GUI
         /// </summary>
         //----------------------------------------------------------------------------
         private void UpdateActions()
-        {
-            //neu nach 26.04.2007 MDA
-
-            //nach User Rechte Tab Stammdaten anzeigen oder ausblenden
-            //ucKlient1.StammdatenVisible = ENV.HasRight(UserRights.KlientenAktStammdatenAnzeigen);
-            
-            //Stammdaten ReadOnly setzen
-            //ucKlient1.StammdatenReadOnly = !ENV.HasRight(UserRights.KlientenAktStammdatenAendern);
-            
-            //Sonstige Visible
-            //ucKlient1.SonstigeVisible = ENV.HasRight(UserRights.KlientenAktSonstigeAnzeigen);
-            
-            //Sonstige ReadOnly
-            //ucKlient1.SonstigeReadOnly = !ENV.HasRight(UserRights.KlientenAktSonstigeAendern);
-            
-            this.panelKeinRecht .Visible = false;
+        {           
+            this.panelKeinRecht.Visible = false;
 
             if (!ENV.HasRight(UserRights.KlientenAktStammdatenAnzeigen))
             {
@@ -683,7 +630,6 @@ namespace PMDS.GUI
             }
         }
 
-
         private void ucSiteMapKlientenDetails_VisibleChanged(object sender, EventArgs e)
         {
             try
@@ -691,18 +637,12 @@ namespace PMDS.GUI
                 if (!this.Visible)
                     return;
 
-                //if ((ucKlient1.Klient.ID != ENV.CurrentIDPatient || ucKlient1.Klient.Aufenthalt.ID != Aufenthalt.LastByPatient(ENV.CurrentIDPatient)))
-                //{
-                //KlientDetails klient = new KlientDetails(ENV.CurrentIDPatient, Aufenthalt.LastByPatient(ENV.CurrentIDPatient));
-                //ucKlient1.Klient = klient;
                 if (!this.lockRefresh)
                 {
                     RefreshPatient();
-
                 }
-                //}
-                this.lockRefresh = false;
 
+                this.lockRefresh = false;
             }
             catch (Exception ex)
             {
@@ -714,14 +654,13 @@ namespace PMDS.GUI
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
                 ucKlient1.SuspendLayout();
-                ucKlient1.Visible = false;
-                
-                //if (ucKlient1.Klient.ID != ENV.CurrentIDPatient)
-                //{
-                if (ENV.CurrentIDPatient != Guid.Empty)
+                if ((ucKlient1.Klient.ID != ENV.CurrentIDPatient && ENV.CurrentIDPatient != Guid.Empty) || lockRefresh)
                 {
+                    this.Cursor = Cursors.WaitCursor;
+                    
+                    ucKlient1.Visible = false;
+
                     KlientDetails klient = new KlientDetails(ENV.CurrentIDPatient, Aufenthalt.LastByPatient(ENV.CurrentIDPatient), true);
                     ucKlient1.Klient = klient;          //os-Performance !!!!!!
                     CheckForRezeptgebührbefreiung(ucKlient1.Klient.ID);
@@ -744,7 +683,7 @@ namespace PMDS.GUI
                 ucKlient1.Visible = true;
                 ucKlient1.ResumeLayout();
                 this.Cursor = Cursors.Default;
-                Application.DoEvents();
+                //Application.DoEvents();
             }
         }
 

@@ -48,19 +48,6 @@ namespace PMDS.GUI
 
         public bool _action = false;
 
-
-        private System.Drawing.Color activeBackCol = System.Drawing.Color.SkyBlue;
-        private System.Drawing.Color activeForeCol = System.Drawing.Color.Black;
-        private System.Drawing.Color activeFrameCol = System.Drawing.Color.Transparent;
-
-        private System.Drawing.Color inactiveBackCol = System.Drawing.Color.Transparent;
-        private System.Drawing.Color inactiveForeCol = System.Drawing.Color.Black;
-        private System.Drawing.Color inactiveFrameCol = System.Drawing.Color.Transparent;
-
-        private System.Drawing.Color hoverBackCol = System.Drawing.Color.Orange;
-        private System.Drawing.Color hoverForeCol = System.Drawing.Color.Black;
-        private System.Drawing.Color hoverFrameCol = System.Drawing.Color.Transparent;
-
         private Guid _IDPatient;
         private TerminlisteAnsichtsmodi _LastTerminlisteAnsichtsmodi = TerminlisteAnsichtsmodi.Klientanansicht;
 
@@ -159,7 +146,7 @@ namespace PMDS.GUI
                 _buttons[i].Tag = i;
             }
             this.btnRefresh.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-            PMDS.Global.UIGlobal.setAktivDisable(this.btnRefresh, 1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);
+            PMDS.Global.UIGlobal.setAktivDisable(this.btnRefresh, 1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
             //PMDS.Global.UIGlobal.setAktiv(this.btnRefresh, 1, activeForeCol, activeFrameCol, activeBackCol);
 
             btnKlient.Tag = HeaderButtons.Details;      
@@ -746,7 +733,6 @@ namespace PMDS.GUI
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -761,10 +747,11 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar2 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("UltraToolbar1");
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("UltraToolbar1");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool2 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("popUpTerminArchiv");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool1 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("popUpTerminArchiv");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("DokumentAblegen");
@@ -773,11 +760,13 @@ namespace PMDS.GUI
             this.btnRefresh = new QS2.Desktop.ControlManagment.BaseButton();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.panelKlientenListe = new QS2.Desktop.ControlManagment.BasePanel();
+            this.line3 = new PMDS.GUI.BaseControls.Line();
             this.ucHeader_Fill_Panel = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelTop = new System.Windows.Forms.Panel();
             this.pAll = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnArztabrechnung = new QS2.Desktop.ControlManagment.BaseButton();
             this.pnlArchivTermine = new QS2.Desktop.ControlManagment.BasePanel();
+            this.line6 = new PMDS.GUI.BaseControls.Line();
             this.btnArchiv = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnTermine = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelPlanungDatenInterv = new QS2.Desktop.ControlManagment.BasePanel();
@@ -785,6 +774,7 @@ namespace PMDS.GUI
             this.btnDatenerhebung = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnPlanung = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnIntervention = new QS2.Desktop.ControlManagment.BaseButton();
+            this.line2 = new PMDS.GUI.BaseControls.Line();
             this.pMiddle = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnBerichte = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnKlient = new QS2.Desktop.ControlManagment.BaseButton();
@@ -792,29 +782,26 @@ namespace PMDS.GUI
             this.btnWunddoku = new QS2.Desktop.ControlManagment.BaseButton();
             this.pnlRight = new QS2.Desktop.ControlManagment.BasePanel();
             this.btn‹bergabe = new QS2.Desktop.ControlManagment.BaseButton();
+            this.line5 = new PMDS.GUI.BaseControls.Line();
+            this.line1 = new PMDS.GUI.BaseControls.Line();
             this.pLeft = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelKlientenauswahl = new QS2.Desktop.ControlManagment.BasePanel();
             this.lblPatRest = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblAufenthalt = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.contPatientUserPicker1 = new PMDS.GUI.PatientUserPicker.contPatientUserPicker();
             this.lblPatName = new QS2.Desktop.ControlManagment.BaseLabel();
             this.panelHistorieBereichOnOff = new QS2.Desktop.ControlManagment.BasePanel();
             this.lblHistorie = new QS2.Desktop.ControlManagment.BaseLabel();
             this.panelBottom = new System.Windows.Forms.Panel();
             this.panelLineHoriz = new System.Windows.Forms.Panel();
+            this.ucMedizinDaten1 = new PMDS.GUI.BaseControls.ucMedizinDaten();
             this._ucHeader_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
+            this.ultraToolbarsManagerPlanArchiv = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             this._ucHeader_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._ucHeader_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._ucHeader_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this.ultraToolTipManagerWarningMemory = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.line6 = new PMDS.GUI.BaseControls.Line();
-            this.line2 = new PMDS.GUI.BaseControls.Line();
-            this.line5 = new PMDS.GUI.BaseControls.Line();
-            this.line1 = new PMDS.GUI.BaseControls.Line();
-            this.contPatientUserPicker1 = new PMDS.GUI.PatientUserPicker.contPatientUserPicker();
-            this.line3 = new PMDS.GUI.BaseControls.Line();
-            this.ucMedizinDaten1 = new PMDS.GUI.BaseControls.ucMedizinDaten();
-            this.ultraToolbarsManagerPlanArchiv = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             this.panelKlientenListe.SuspendLayout();
             this.ucHeader_Fill_Panel.SuspendLayout();
             this.panelTop.SuspendLayout();
@@ -833,12 +820,12 @@ namespace PMDS.GUI
             // btnKlientenliste
             // 
             this.btnKlientenliste.AcceptsFocus = false;
-            appearance19.ForeColor = System.Drawing.Color.Black;
-            appearance19.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance19.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance19.TextHAlignAsString = "Center";
-            appearance19.TextVAlignAsString = "Middle";
-            this.btnKlientenliste.Appearance = appearance19;
+            appearance1.ForeColor = System.Drawing.Color.Black;
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance1.TextHAlignAsString = "Center";
+            appearance1.TextVAlignAsString = "Middle";
+            this.btnKlientenliste.Appearance = appearance1;
             this.btnKlientenliste.AutoWorkLayout = false;
             this.btnKlientenliste.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnKlientenliste.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -862,12 +849,12 @@ namespace PMDS.GUI
             // 
             this.btnRefresh.AcceptsFocus = false;
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            appearance1.ForeColor = System.Drawing.Color.Black;
-            appearance1.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance1.TextVAlignAsString = "Bottom";
-            this.btnRefresh.Appearance = appearance1;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            appearance2.ForeColor = System.Drawing.Color.Black;
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance2.TextVAlignAsString = "Bottom";
+            this.btnRefresh.Appearance = appearance2;
             this.btnRefresh.AutoWorkLayout = false;
             this.btnRefresh.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -907,12 +894,22 @@ namespace PMDS.GUI
             this.panelKlientenListe.Size = new System.Drawing.Size(84, 110);
             this.panelKlientenListe.TabIndex = 28;
             // 
+            // line3
+            // 
+            this.line3.BackColor = System.Drawing.Color.Black;
+            this.line3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.line3.Location = new System.Drawing.Point(0, 0);
+            this.line3.Name = "line3";
+            this.line3.Size = new System.Drawing.Size(1, 110);
+            this.line3.TabIndex = 25;
+            this.line3.Visible = false;
+            // 
             // ucHeader_Fill_Panel
             // 
             this.ucHeader_Fill_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucHeader_Fill_Panel.BackColor = System.Drawing.Color.Gainsboro;
+            this.ucHeader_Fill_Panel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucHeader_Fill_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ucHeader_Fill_Panel.Controls.Add(this.panelTop);
             this.ucHeader_Fill_Panel.Controls.Add(this.panelBottom);
@@ -955,12 +952,12 @@ namespace PMDS.GUI
             // btnArztabrechnung
             // 
             this.btnArztabrechnung.AcceptsFocus = false;
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            appearance2.ForeColor = System.Drawing.Color.Black;
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance2.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance2.TextVAlignAsString = "Bottom";
-            this.btnArztabrechnung.Appearance = appearance2;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.ForeColor = System.Drawing.Color.Black;
+            appearance3.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance3.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance3.TextVAlignAsString = "Bottom";
+            this.btnArztabrechnung.Appearance = appearance3;
             this.btnArztabrechnung.AutoWorkLayout = false;
             this.btnArztabrechnung.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnArztabrechnung.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -991,15 +988,24 @@ namespace PMDS.GUI
             this.pnlArchivTermine.Size = new System.Drawing.Size(70, 106);
             this.pnlArchivTermine.TabIndex = 32;
             // 
+            // line6
+            // 
+            this.line6.BackColor = System.Drawing.Color.Black;
+            this.line6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.line6.Location = new System.Drawing.Point(0, 0);
+            this.line6.Name = "line6";
+            this.line6.Size = new System.Drawing.Size(1, 106);
+            this.line6.TabIndex = 24;
+            // 
             // btnArchiv
             // 
             this.btnArchiv.AcceptsFocus = false;
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            appearance3.ForeColor = System.Drawing.Color.Black;
-            appearance3.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance3.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance3.TextVAlignAsString = "Bottom";
-            this.btnArchiv.Appearance = appearance3;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            appearance4.ForeColor = System.Drawing.Color.Black;
+            appearance4.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance4.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance4.TextVAlignAsString = "Bottom";
+            this.btnArchiv.Appearance = appearance4;
             this.btnArchiv.AutoWorkLayout = false;
             this.btnArchiv.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnArchiv.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1022,12 +1028,12 @@ namespace PMDS.GUI
             // btnTermine
             // 
             this.btnTermine.AcceptsFocus = false;
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            appearance4.ForeColor = System.Drawing.Color.Black;
-            appearance4.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance4.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance4.TextVAlignAsString = "Bottom";
-            this.btnTermine.Appearance = appearance4;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            appearance5.ForeColor = System.Drawing.Color.Black;
+            appearance5.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance5.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance5.TextVAlignAsString = "Bottom";
+            this.btnTermine.Appearance = appearance5;
             this.btnTermine.AutoWorkLayout = false;
             this.btnTermine.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnTermine.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1063,12 +1069,12 @@ namespace PMDS.GUI
             // btnEvaluierung
             // 
             this.btnEvaluierung.AcceptsFocus = false;
-            appearance5.FontData.SizeInPoints = 8F;
-            appearance5.ForeColor = System.Drawing.Color.Black;
-            appearance5.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance5.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance5.TextVAlignAsString = "Middle";
-            this.btnEvaluierung.Appearance = appearance5;
+            appearance6.FontData.SizeInPoints = 8F;
+            appearance6.ForeColor = System.Drawing.Color.Black;
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance6.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance6.TextVAlignAsString = "Middle";
+            this.btnEvaluierung.Appearance = appearance6;
             this.btnEvaluierung.AutoWorkLayout = false;
             this.btnEvaluierung.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnEvaluierung.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1091,13 +1097,13 @@ namespace PMDS.GUI
             // btnDatenerhebung
             // 
             this.btnDatenerhebung.AcceptsFocus = false;
-            appearance6.AlphaLevel = ((short)(255));
-            appearance6.FontData.SizeInPoints = 8F;
-            appearance6.ForeColor = System.Drawing.Color.Black;
-            appearance6.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance6.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance6.TextVAlignAsString = "Middle";
-            this.btnDatenerhebung.Appearance = appearance6;
+            appearance7.AlphaLevel = ((short)(255));
+            appearance7.FontData.SizeInPoints = 8F;
+            appearance7.ForeColor = System.Drawing.Color.Black;
+            appearance7.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance7.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance7.TextVAlignAsString = "Middle";
+            this.btnDatenerhebung.Appearance = appearance7;
             this.btnDatenerhebung.AutoWorkLayout = false;
             this.btnDatenerhebung.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnDatenerhebung.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1119,12 +1125,12 @@ namespace PMDS.GUI
             // btnPlanung
             // 
             this.btnPlanung.AcceptsFocus = false;
-            appearance7.FontData.SizeInPoints = 8F;
-            appearance7.ForeColor = System.Drawing.Color.Black;
-            appearance7.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance7.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance7.TextVAlignAsString = "Middle";
-            this.btnPlanung.Appearance = appearance7;
+            appearance8.FontData.SizeInPoints = 8F;
+            appearance8.ForeColor = System.Drawing.Color.Black;
+            appearance8.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance8.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance8.TextVAlignAsString = "Middle";
+            this.btnPlanung.Appearance = appearance8;
             this.btnPlanung.AutoWorkLayout = false;
             this.btnPlanung.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnPlanung.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1146,12 +1152,12 @@ namespace PMDS.GUI
             // btnIntervention
             // 
             this.btnIntervention.AcceptsFocus = false;
-            appearance8.FontData.SizeInPoints = 8F;
-            appearance8.ForeColor = System.Drawing.Color.Black;
-            appearance8.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance8.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance8.TextVAlignAsString = "Middle";
-            this.btnIntervention.Appearance = appearance8;
+            appearance9.FontData.SizeInPoints = 8F;
+            appearance9.ForeColor = System.Drawing.Color.Black;
+            appearance9.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance9.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance9.TextVAlignAsString = "Middle";
+            this.btnIntervention.Appearance = appearance9;
             this.btnIntervention.AutoWorkLayout = false;
             this.btnIntervention.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnIntervention.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1170,6 +1176,15 @@ namespace PMDS.GUI
             this.btnIntervention.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnIntervention.Click += new System.EventHandler(this.ultraButton1_Click);
             // 
+            // line2
+            // 
+            this.line2.BackColor = System.Drawing.Color.Black;
+            this.line2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.line2.Location = new System.Drawing.Point(461, 0);
+            this.line2.Name = "line2";
+            this.line2.Size = new System.Drawing.Size(1, 110);
+            this.line2.TabIndex = 15;
+            // 
             // pMiddle
             // 
             this.pMiddle.BackColor = System.Drawing.Color.Transparent;
@@ -1186,12 +1201,12 @@ namespace PMDS.GUI
             // btnBerichte
             // 
             this.btnBerichte.AcceptsFocus = false;
-            appearance9.BackColor = System.Drawing.Color.Transparent;
-            appearance9.ForeColor = System.Drawing.Color.Black;
-            appearance9.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance9.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance9.TextVAlignAsString = "Bottom";
-            this.btnBerichte.Appearance = appearance9;
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            appearance10.ForeColor = System.Drawing.Color.Black;
+            appearance10.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance10.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance10.TextVAlignAsString = "Bottom";
+            this.btnBerichte.Appearance = appearance10;
             this.btnBerichte.AutoWorkLayout = false;
             this.btnBerichte.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnBerichte.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1214,12 +1229,12 @@ namespace PMDS.GUI
             // btnKlient
             // 
             this.btnKlient.AcceptsFocus = false;
-            appearance10.BackColor = System.Drawing.Color.Transparent;
-            appearance10.ForeColor = System.Drawing.Color.Black;
-            appearance10.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance10.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance10.TextVAlignAsString = "Bottom";
-            this.btnKlient.Appearance = appearance10;
+            appearance11.BackColor = System.Drawing.Color.Transparent;
+            appearance11.ForeColor = System.Drawing.Color.Black;
+            appearance11.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance11.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance11.TextVAlignAsString = "Bottom";
+            this.btnKlient.Appearance = appearance11;
             this.btnKlient.AutoWorkLayout = false;
             this.btnKlient.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnKlient.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1242,12 +1257,12 @@ namespace PMDS.GUI
             // btnMitverantwortlicherBereich
             // 
             this.btnMitverantwortlicherBereich.AcceptsFocus = false;
-            appearance11.BackColor = System.Drawing.Color.Transparent;
-            appearance11.ForeColor = System.Drawing.Color.Black;
-            appearance11.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance11.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance11.TextVAlignAsString = "Bottom";
-            this.btnMitverantwortlicherBereich.Appearance = appearance11;
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            appearance12.ForeColor = System.Drawing.Color.Black;
+            appearance12.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance12.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance12.TextVAlignAsString = "Bottom";
+            this.btnMitverantwortlicherBereich.Appearance = appearance12;
             this.btnMitverantwortlicherBereich.AutoWorkLayout = false;
             this.btnMitverantwortlicherBereich.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnMitverantwortlicherBereich.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1271,12 +1286,12 @@ namespace PMDS.GUI
             // btnWunddoku
             // 
             this.btnWunddoku.AcceptsFocus = false;
-            appearance12.BackColor = System.Drawing.Color.Transparent;
-            appearance12.ForeColor = System.Drawing.Color.Black;
-            appearance12.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance12.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance12.TextVAlignAsString = "Bottom";
-            this.btnWunddoku.Appearance = appearance12;
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            appearance13.ForeColor = System.Drawing.Color.Black;
+            appearance13.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance13.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance13.TextVAlignAsString = "Bottom";
+            this.btnWunddoku.Appearance = appearance13;
             this.btnWunddoku.AutoWorkLayout = false;
             this.btnWunddoku.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnWunddoku.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1309,12 +1324,12 @@ namespace PMDS.GUI
             // btn‹bergabe
             // 
             this.btn‹bergabe.AcceptsFocus = false;
-            appearance13.FontData.SizeInPoints = 8F;
-            appearance13.ForeColor = System.Drawing.Color.Black;
-            appearance13.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance13.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance13.TextVAlignAsString = "Middle";
-            this.btn‹bergabe.Appearance = appearance13;
+            appearance14.FontData.SizeInPoints = 8F;
+            appearance14.ForeColor = System.Drawing.Color.Black;
+            appearance14.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance14.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance14.TextVAlignAsString = "Middle";
+            this.btn‹bergabe.Appearance = appearance14;
             this.btn‹bergabe.AutoWorkLayout = false;
             this.btn‹bergabe.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btn‹bergabe.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1334,6 +1349,24 @@ namespace PMDS.GUI
             this.btn‹bergabe.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btn‹bergabe.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btn‹bergabe.Click += new System.EventHandler(this.ultraButton1_Click);
+            // 
+            // line5
+            // 
+            this.line5.BackColor = System.Drawing.Color.Black;
+            this.line5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.line5.Location = new System.Drawing.Point(0, 0);
+            this.line5.Name = "line5";
+            this.line5.Size = new System.Drawing.Size(1, 106);
+            this.line5.TabIndex = 24;
+            // 
+            // line1
+            // 
+            this.line1.BackColor = System.Drawing.Color.Black;
+            this.line1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.line1.Location = new System.Drawing.Point(328, 0);
+            this.line1.Name = "line1";
+            this.line1.Size = new System.Drawing.Size(1, 110);
+            this.line1.TabIndex = 14;
             // 
             // pLeft
             // 
@@ -1363,10 +1396,10 @@ namespace PMDS.GUI
             // 
             this.lblPatRest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance14.FontData.SizeInPoints = 9F;
-            appearance14.ForeColor = System.Drawing.Color.Black;
-            appearance14.TextVAlignAsString = "Middle";
-            this.lblPatRest.Appearance = appearance14;
+            appearance15.FontData.SizeInPoints = 9F;
+            appearance15.ForeColor = System.Drawing.Color.Black;
+            appearance15.TextVAlignAsString = "Middle";
+            this.lblPatRest.Appearance = appearance15;
             this.lblPatRest.Font = new System.Drawing.Font("Arial", 7F);
             this.lblPatRest.Location = new System.Drawing.Point(5, 32);
             this.lblPatRest.Name = "lblPatRest";
@@ -1378,8 +1411,8 @@ namespace PMDS.GUI
             // 
             this.lblAufenthalt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance20.ForeColor = System.Drawing.Color.Black;
-            this.lblAufenthalt.Appearance = appearance20;
+            appearance16.ForeColor = System.Drawing.Color.Black;
+            this.lblAufenthalt.Appearance = appearance16;
             this.lblAufenthalt.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAufenthalt.Location = new System.Drawing.Point(5, 53);
             this.lblAufenthalt.Name = "lblAufenthalt";
@@ -1387,15 +1420,26 @@ namespace PMDS.GUI
             this.lblAufenthalt.TabIndex = 29;
             this.lblAufenthalt.Visible = false;
             // 
+            // contPatientUserPicker1
+            // 
+            this.contPatientUserPicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.contPatientUserPicker1.BackColor = System.Drawing.Color.White;
+            this.contPatientUserPicker1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.contPatientUserPicker1.Location = new System.Drawing.Point(4, 4);
+            this.contPatientUserPicker1.Name = "contPatientUserPicker1";
+            this.contPatientUserPicker1.Size = new System.Drawing.Size(319, 25);
+            this.contPatientUserPicker1.TabIndex = 34;
+            // 
             // lblPatName
             // 
             this.lblPatName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance21.BackColor = System.Drawing.Color.Transparent;
-            appearance21.FontData.BoldAsString = "True";
-            appearance21.ForeColor = System.Drawing.Color.Black;
-            appearance21.TextVAlignAsString = "Middle";
-            this.lblPatName.Appearance = appearance21;
+            appearance17.BackColor = System.Drawing.Color.Transparent;
+            appearance17.FontData.BoldAsString = "True";
+            appearance17.ForeColor = System.Drawing.Color.Black;
+            appearance17.TextVAlignAsString = "Middle";
+            this.lblPatName.Appearance = appearance17;
             this.lblPatName.Font = new System.Drawing.Font("Arial", 10F);
             this.lblPatName.Location = new System.Drawing.Point(5, 4);
             this.lblPatName.Name = "lblPatName";
@@ -1418,12 +1462,12 @@ namespace PMDS.GUI
             // 
             this.lblHistorie.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance22.BackColor = System.Drawing.Color.Transparent;
-            appearance22.BackColor2 = System.Drawing.Color.Transparent;
-            appearance22.FontData.SizeInPoints = 12F;
-            appearance22.ForeColor = System.Drawing.Color.Black;
-            appearance22.TextVAlignAsString = "Bottom";
-            this.lblHistorie.Appearance = appearance22;
+            appearance18.BackColor = System.Drawing.Color.Transparent;
+            appearance18.BackColor2 = System.Drawing.Color.Transparent;
+            appearance18.FontData.SizeInPoints = 12F;
+            appearance18.ForeColor = System.Drawing.Color.Black;
+            appearance18.TextVAlignAsString = "Bottom";
+            this.lblHistorie.Appearance = appearance18;
             this.lblHistorie.ImageSize = new System.Drawing.Size(24, 24);
             this.lblHistorie.Location = new System.Drawing.Point(4, 0);
             this.lblHistorie.Name = "lblHistorie";
@@ -1452,6 +1496,17 @@ namespace PMDS.GUI
             this.panelLineHoriz.Size = new System.Drawing.Size(1280, 1);
             this.panelLineHoriz.TabIndex = 34;
             // 
+            // ucMedizinDaten1
+            // 
+            this.ucMedizinDaten1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucMedizinDaten1.BackColor = System.Drawing.Color.Transparent;
+            this.ucMedizinDaten1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ucMedizinDaten1.Location = new System.Drawing.Point(5, 4);
+            this.ucMedizinDaten1.Name = "ucMedizinDaten1";
+            this.ucMedizinDaten1.Size = new System.Drawing.Size(1274, 19);
+            this.ucMedizinDaten1.TabIndex = 26;
+            // 
             // _ucHeader_Toolbars_Dock_Area_Left
             // 
             this._ucHeader_Toolbars_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
@@ -1462,6 +1517,28 @@ namespace PMDS.GUI
             this._ucHeader_Toolbars_Dock_Area_Left.Name = "_ucHeader_Toolbars_Dock_Area_Left";
             this._ucHeader_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 141);
             this._ucHeader_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManagerPlanArchiv;
+            // 
+            // ultraToolbarsManagerPlanArchiv
+            // 
+            this.ultraToolbarsManagerPlanArchiv.DesignerFlags = 1;
+            this.ultraToolbarsManagerPlanArchiv.DockWithinContainer = this;
+            this.ultraToolbarsManagerPlanArchiv.ShowFullMenusDelay = 500;
+            ultraToolbar1.DockedColumn = 0;
+            ultraToolbar1.DockedRow = 0;
+            ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            popupMenuTool2});
+            ultraToolbar1.Text = "UltraToolbar1";
+            ultraToolbar1.Visible = false;
+            this.ultraToolbarsManagerPlanArchiv.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
+            ultraToolbar1});
+            popupMenuTool1.SharedPropsInternal.Caption = "Termin/Archiv";
+            popupMenuTool1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool3});
+            buttonTool1.SharedPropsInternal.Caption = "Dokument ablegen";
+            this.ultraToolbarsManagerPlanArchiv.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            popupMenuTool1,
+            buttonTool1});
+            this.ultraToolbarsManagerPlanArchiv.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager1_ToolClick);
             // 
             // _ucHeader_Toolbars_Dock_Area_Right
             // 
@@ -1512,96 +1589,6 @@ namespace PMDS.GUI
             this.toolTip1.ShowAlways = true;
             this.toolTip1.UseAnimation = false;
             this.toolTip1.UseFading = false;
-            // 
-            // line6
-            // 
-            this.line6.BackColor = System.Drawing.Color.Black;
-            this.line6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.line6.Location = new System.Drawing.Point(0, 0);
-            this.line6.Name = "line6";
-            this.line6.Size = new System.Drawing.Size(1, 106);
-            this.line6.TabIndex = 24;
-            // 
-            // line2
-            // 
-            this.line2.BackColor = System.Drawing.Color.Black;
-            this.line2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.line2.Location = new System.Drawing.Point(461, 0);
-            this.line2.Name = "line2";
-            this.line2.Size = new System.Drawing.Size(1, 110);
-            this.line2.TabIndex = 15;
-            // 
-            // line5
-            // 
-            this.line5.BackColor = System.Drawing.Color.Black;
-            this.line5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.line5.Location = new System.Drawing.Point(0, 0);
-            this.line5.Name = "line5";
-            this.line5.Size = new System.Drawing.Size(1, 106);
-            this.line5.TabIndex = 24;
-            // 
-            // line1
-            // 
-            this.line1.BackColor = System.Drawing.Color.Black;
-            this.line1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.line1.Location = new System.Drawing.Point(328, 0);
-            this.line1.Name = "line1";
-            this.line1.Size = new System.Drawing.Size(1, 110);
-            this.line1.TabIndex = 14;
-            // 
-            // contPatientUserPicker1
-            // 
-            this.contPatientUserPicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.contPatientUserPicker1.BackColor = System.Drawing.Color.White;
-            this.contPatientUserPicker1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.contPatientUserPicker1.Location = new System.Drawing.Point(4, 4);
-            this.contPatientUserPicker1.Name = "contPatientUserPicker1";
-            this.contPatientUserPicker1.Size = new System.Drawing.Size(319, 25);
-            this.contPatientUserPicker1.TabIndex = 34;
-            // 
-            // line3
-            // 
-            this.line3.BackColor = System.Drawing.Color.Black;
-            this.line3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.line3.Location = new System.Drawing.Point(0, 0);
-            this.line3.Name = "line3";
-            this.line3.Size = new System.Drawing.Size(1, 110);
-            this.line3.TabIndex = 25;
-            this.line3.Visible = false;
-            // 
-            // ucMedizinDaten1
-            // 
-            this.ucMedizinDaten1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucMedizinDaten1.BackColor = System.Drawing.Color.Transparent;
-            this.ucMedizinDaten1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucMedizinDaten1.Location = new System.Drawing.Point(5, 4);
-            this.ucMedizinDaten1.Name = "ucMedizinDaten1";
-            this.ucMedizinDaten1.Size = new System.Drawing.Size(1274, 19);
-            this.ucMedizinDaten1.TabIndex = 26;
-            // 
-            // ultraToolbarsManagerPlanArchiv
-            // 
-            this.ultraToolbarsManagerPlanArchiv.DesignerFlags = 1;
-            this.ultraToolbarsManagerPlanArchiv.DockWithinContainer = this;
-            this.ultraToolbarsManagerPlanArchiv.ShowFullMenusDelay = 500;
-            ultraToolbar2.DockedColumn = 0;
-            ultraToolbar2.DockedRow = 0;
-            ultraToolbar2.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            popupMenuTool2});
-            ultraToolbar2.Text = "UltraToolbar1";
-            ultraToolbar2.Visible = false;
-            this.ultraToolbarsManagerPlanArchiv.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
-            ultraToolbar2});
-            popupMenuTool1.SharedPropsInternal.Caption = "Termin/Archiv";
-            popupMenuTool1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            buttonTool3});
-            buttonTool1.SharedPropsInternal.Caption = "Dokument ablegen";
-            this.ultraToolbarsManagerPlanArchiv.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            popupMenuTool1,
-            buttonTool1});
-            this.ultraToolbarsManagerPlanArchiv.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager1_ToolClick);
             // 
             // ucHeader
             // 
@@ -1687,15 +1674,15 @@ namespace PMDS.GUI
                 this.setButtonsDeaktive();
                 
                 if (ineu < 6)
-                    PMDS.Global.UIGlobal.setAktiv(_buttons[ineu], ineu, activeForeCol, activeFrameCol, activeBackCol);
+                    PMDS.Global.UIGlobal.setAktiv(_buttons[ineu], ineu, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 else if (ineu == (int)HeaderButtons.Details)      // Details soll auch markiert bleiben
-                    PMDS.Global.UIGlobal.setAktiv(btnKlient, -1, activeForeCol, activeFrameCol, activeBackCol);
+                    PMDS.Global.UIGlobal.setAktiv(btnKlient, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 else if (ineu == (int)HeaderButtons.Berichte)      // Berichte soll auch markiert bleiben
-                    PMDS.Global.UIGlobal.setAktiv(btnBerichte, -1, activeForeCol, activeFrameCol, activeBackCol);
+                    PMDS.Global.UIGlobal.setAktiv(btnBerichte, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 else if (ineu == (int)HeaderButtons.Medikamente)      // Medikamente soll auch markiert bleiben
-                    PMDS.Global.UIGlobal.setAktiv(btnMitverantwortlicherBereich, -1, activeForeCol, activeFrameCol, activeBackCol);
+                    PMDS.Global.UIGlobal.setAktiv(btnMitverantwortlicherBereich, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 else if (ineu == (int)HeaderButtons.Wunde)      // Wunde soll auch markiert bleiben
-                    PMDS.Global.UIGlobal.setAktiv(btnWunddoku, -1, activeForeCol, activeFrameCol, activeBackCol);
+                    PMDS.Global.UIGlobal.setAktiv(btnWunddoku, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 
             }
             catch (Exception ex)
@@ -1709,20 +1696,17 @@ namespace PMDS.GUI
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    Color aktBorderCol = activeFrameCol;
-                    Color hotTrackBackCol = hoverBackCol;
-                    PMDS.Global.UIGlobal.setAktivDisable(_buttons[i], i, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);
+                    PMDS.Global.UIGlobal.setAktivDisable(_buttons[i], i, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
                 }
 
-                PMDS.Global.UIGlobal.setAktivDisable(btnKlientenliste, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);
-                PMDS.Global.UIGlobal.setAktivDisable(btnKlient, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);                // Details button
-                PMDS.Global.UIGlobal.setAktivDisable(btnBerichte, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);                // Berichte Button
-                PMDS.Global.UIGlobal.setAktivDisable(btnMitverantwortlicherBereich, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);                // Mitverantwortlicher Bereich Button
-                PMDS.Global.UIGlobal.setAktivDisable(btnWunddoku, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);                // Wunde
-
-                PMDS.Global.UIGlobal.setAktivDisable(btnArchiv, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);
-                PMDS.Global.UIGlobal.setAktivDisable(btnTermine, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnArztabrechnung, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setAktivDisable(btnKlientenliste, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setAktivDisable(btnKlient, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setAktivDisable(btnBerichte, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setAktivDisable(btnMitverantwortlicherBereich, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setAktivDisable(btnWunddoku, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setAktivDisable(btnArchiv, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setAktivDisable(btnTermine, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setAktivDisable(btnArztabrechnung, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
 
             }
             catch (Exception ex)
@@ -1907,7 +1891,7 @@ namespace PMDS.GUI
             try
             {
                 this.setButtonsDeaktive();
-                PMDS.Global.UIGlobal.setAktiv(btnTermine, -1, activeForeCol, activeFrameCol, activeBackCol);
+                PMDS.Global.UIGlobal.setAktiv(btnTermine, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 GuiAction.archivTerminMail(false, false, false, false);
             }
             catch (Exception ex)
@@ -1923,7 +1907,7 @@ namespace PMDS.GUI
             try
             {
                 this.setButtonsDeaktive();
-                PMDS.Global.UIGlobal.setAktiv(this.btnArchiv , -1, activeForeCol, activeFrameCol, activeBackCol);
+                PMDS.Global.UIGlobal.setAktiv(this.btnArchiv , -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 GuiAction.archivTerminMail(false, false, true, false);
             }
             catch (Exception ex)

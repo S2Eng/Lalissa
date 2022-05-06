@@ -5,6 +5,7 @@ Imports System.Drawing
 Imports PMDS.GUI.VB.contPlanungData
 Imports Infragistics.Win.Misc
 Imports PMDS.db
+Imports PMDS.Global
 
 
 
@@ -586,12 +587,6 @@ Public Class contPlanung2Bereich
     Public contSelectAbtBereiche As New contSelectAbteilBereiche()
     Public b As New PMDS.db.PMDSBusiness()
 
-    Public activeBackCol As System.Drawing.Color = System.Drawing.Color.SkyBlue
-    Public activeForeCol As System.Drawing.Color = System.Drawing.Color.Black
-    Public activeFrameCol As System.Drawing.Color = System.Drawing.Color.Transparent
-    Public inactiveBackCol As System.Drawing.Color = System.Drawing.Color.Transparent
-    Public hoverBackCol As System.Drawing.Color = System.Drawing.Color.Gainsboro
-
     Public Enum eLayoutGrid
         AbtBereichPlan = 0
         KategorieAbtBereichPlan = 1
@@ -777,7 +772,7 @@ Public Class contPlanung2Bereich
 
     Public Sub setLayoutButton2(btn As UltraButton)
         Try
-            PMDS.Global.UIGlobal.setAktiv(btn, -1, activeForeCol, activeFrameCol, activeBackCol)
+            PMDS.Global.UIGlobal.setAktiv(btn, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol)
             Me._lastQuickbutton = btn.Tag.ToString().Trim()
 
         Catch ex As Exception
@@ -786,9 +781,9 @@ Public Class contPlanung2Bereich
     End Sub
     Public Sub resetLayoutButtons()
         Try
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_AbtBereichPlan, -1, Me.activeForeCol, Me.hoverBackCol, Me.activeFrameCol, Me.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_KatAbtBereichPlan, -1, Me.activeForeCol, Me.hoverBackCol, Me.activeFrameCol, Me.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_Plan, -1, Me.activeForeCol, Me.hoverBackCol, Me.activeFrameCol, Me.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
+            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_AbtBereichPlan, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
+            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_KatAbtBereichPlan, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
+            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_Plan, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
 
         Catch ex As Exception
             Throw New Exception("contPlanung2Bereich.resetLayoutButtons: " + ex.ToString())

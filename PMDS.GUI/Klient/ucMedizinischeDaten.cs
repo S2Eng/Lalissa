@@ -11,6 +11,7 @@ using PMDS.BusinessLogic;
 using PMDS.Klient;
 using System.Linq;
 using PMDS.Global.db.ERSystem;
+using System.Threading.Tasks;
 
 namespace PMDS.GUI
 {
@@ -283,7 +284,7 @@ namespace PMDS.GUI
                     InitializeGridFromControl(cc);
         }
         
-        public void setControlsAktivDisable(bool bOn)
+        public async Task<bool> setControlsAktivDisable(bool bOn)
         {
 
             PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn);
@@ -304,6 +305,8 @@ namespace PMDS.GUI
             this.ucNuechtern.setControlsAktivDisable(bOn);
             this.ucSonstige.setControlsAktivDisable(bOn);
             this.ucBefunde.setControlsAktivDisable(bOn);
+
+            return true;
         }
         private void InitializeGridLayout()
         {

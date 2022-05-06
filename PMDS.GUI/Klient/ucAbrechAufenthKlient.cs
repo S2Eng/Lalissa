@@ -14,6 +14,7 @@ using PMDS.Abrechnung.Global;
 using PMDS.Data.Global;
 using System.Linq;
 using Infragistics.Win.UltraWinEditors;
+using System.Threading.Tasks;
 
 namespace PMDS.GUI
 {
@@ -639,15 +640,15 @@ namespace PMDS.GUI
             if (_valueChangeEnabled && (ValueChanged != null))
                 ValueChanged(sender, e);
         }
-        public void setControlsAktivDisable2(bool bOn)
+
+        public async Task<bool> setControlsAktivDisable2(bool bOn)
         {
             if (this._isMainSystem)
             {
-                PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn);
-                PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBox9, bOn);
-                PMDS.GUI.BaseControls.historie.OnOffControls(this.ucVersichrungsdaten12.ultraGroupBoxVersicherungsdaten, bOn);
-
-                PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn);
+                PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn).ConfigureAwait(false);
+                PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBox9, bOn).ConfigureAwait(false);
+                PMDS.GUI.BaseControls.historie.OnOffControls(this.ucVersichrungsdaten12.ultraGroupBoxVersicherungsdaten, bOn).ConfigureAwait(false);
+                PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn).ConfigureAwait(false);
 
                 if (PMDS.Global.ENV.HasRight(PMDS.Global.UserRights.KlientenAktStammdatenAendern))
                 {
@@ -664,6 +665,7 @@ namespace PMDS.GUI
                     btnUpdatePaPflegestufen.Visible = !bOn;
                 }
             }
+            return true;
         }
 
         private void btnAddPflStufe_Click(object sender, EventArgs e)

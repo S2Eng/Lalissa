@@ -5,6 +5,7 @@ Imports System.Drawing
 Imports PMDS.GUI.VB.contPlanungData
 Imports Infragistics.Win.Misc
 Imports PMDS.db
+Imports PMDS.Global
 
 Public Class contPlanung2
     Inherits System.Windows.Forms.UserControl
@@ -1027,27 +1028,11 @@ Public Class contPlanung2
         save = 3
         send = 6
     End Enum
+
     Public IsInitializedVisible As Boolean = False
     Public contSelectSelListCategories As New contSelectSelList()
     Public b As New PMDS.db.PMDSBusiness()
-
-    Public activeBackCol As System.Drawing.Color = System.Drawing.Color.SkyBlue
-    Public activeForeCol As System.Drawing.Color = System.Drawing.Color.Black
-    Public activeFrameCol As System.Drawing.Color = System.Drawing.Color.Transparent
-    Public inactiveBackCol As System.Drawing.Color = System.Drawing.Color.Transparent
-    Public hoverBackCol As System.Drawing.Color = System.Drawing.Color.Gainsboro
-
     Public _lastQuickbutton As String = ""
-
-
-
-
-
-
-
-
-
-
 
     Private Sub initControl()
         Try
@@ -1350,7 +1335,7 @@ Public Class contPlanung2
 
     Public Sub setLayoutButton2(btn As UltraButton)
         Try
-            PMDS.Global.UIGlobal.setAktiv(btn, -1, activeForeCol, activeFrameCol, activeBackCol)
+            PMDS.Global.UIGlobal.setAktiv(btn, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol)
             Me._lastQuickbutton = btn.Tag.ToString().Trim()
 
         Catch ex As Exception
@@ -1359,10 +1344,10 @@ Public Class contPlanung2
     End Sub
     Public Sub resetLayoutButtons()
         Try
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_PatientBeginn, -1, Me.activeForeCol, Me.hoverBackCol, Me.activeFrameCol, Me.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_PatientKategorie, -1, Me.activeForeCol, Me.hoverBackCol, Me.activeFrameCol, Me.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_KategoriePatient, -1, Me.activeForeCol, Me.hoverBackCol, Me.activeFrameCol, Me.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_Beginn, -1, Me.activeForeCol, Me.hoverBackCol, Me.activeFrameCol, Me.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
+            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_PatientBeginn, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
+            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_PatientKategorie, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
+            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_KategoriePatient, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
+            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_Beginn, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
 
         Catch ex As Exception
             Throw New Exception("contPlanung2.resetLayoutButtons: " + ex.ToString())

@@ -889,8 +889,6 @@ namespace PMDS.Itscont
             }
         }
 
-
-
         public void setButtonsAktivDeaktiv(int aktivButton)
         {
             try
@@ -899,63 +897,48 @@ namespace PMDS.Itscont
 
                 if (aktivButton == 0) 
                 {
-                    PMDS.Global.UIGlobal.setAktiv(this.btnArchiv, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.SkyBlue);
-                    //this.lblInfo.Value = "<span style=" + (char)34 + "color:RoyalBlue; font-size:+7pt;" + (char)34 + ">Archiv</span><br/><span style=" + (char)34 + "font-size:+2pt;" + (char)34 + ">" + infAuswahl + "</span><br/>";
+                    PMDS.Global.UIGlobal.setAktiv(this.btnArchiv, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 }
                 else
                 {
-                    PMDS.Global.UIGlobal.setAktivDisable(this.btnArchiv, -1, System.Drawing.Color.Black, System.Drawing.Color.Gainsboro, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                    PMDS.Global.UIGlobal.setAktivDisable(this.btnArchiv, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
                 }
 
                 if (aktivButton == 1) 
                 {
-                    PMDS.Global.UIGlobal.setAktiv(this.btnTermineKlientenansicht, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.SkyBlue);
-                    //this.lblInfo.Value = "<span style=" + (char)34 + "color:RoyalBlue; font-size:+7pt;" + (char)34 + ">Termine</span><br/><span style=" + (char)34 + "font-size:+2pt;" + (char)34 + ">" + infAuswahl + "</span><br/>";
+                    PMDS.Global.UIGlobal.setAktiv(this.btnTermineKlientenansicht, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 }
                 else
                 {
-                    PMDS.Global.UIGlobal.setAktivDisable(this.btnTermineKlientenansicht, -1, System.Drawing.Color.Black, System.Drawing.Color.Gainsboro, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                    PMDS.Global.UIGlobal.setAktivDisable(this.btnTermineKlientenansicht, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
                 }
 
                 if (aktivButton == 2) 
                 {
-                    PMDS.Global.UIGlobal.setAktiv(this.btnMyTermine, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.SkyBlue);
-                    //this.lblInfo.Value = "<span style=" + (char)34 + "color:RoyalBlue; font-size:+7pt;" + (char)34 + ">E-Mails</span><br/><span style=" + (char)34 + "font-size:+2pt;" + (char)34 + ">" + infAuswahl + "</span><br/>";
+                    PMDS.Global.UIGlobal.setAktiv(this.btnMyTermine, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 }
                 else
                 {
-                    PMDS.Global.UIGlobal.setAktivDisable(this.btnMyTermine, -1, System.Drawing.Color.Black, System.Drawing.Color.Gainsboro, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                    PMDS.Global.UIGlobal.setAktivDisable(this.btnMyTermine, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
                 }
 
                 if (aktivButton == 3)
                 {
-                    PMDS.Global.UIGlobal.setAktiv(this.btnTermineAll, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.SkyBlue);
-                    //this.lblInfo.Value = "<span style=" + (char)34 + "color:RoyalBlue; font-size:+7pt;" + (char)34 + ">E-Mails</span><br/><span style=" + (char)34 + "font-size:+2pt;" + (char)34 + ">" + infAuswahl + "</span><br/>";
+                    PMDS.Global.UIGlobal.setAktiv(this.btnTermineAll, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 }
                 else
                 {
-                    PMDS.Global.UIGlobal.setAktivDisable(this.btnTermineAll, -1, System.Drawing.Color.Black, System.Drawing.Color.Gainsboro, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                    PMDS.Global.UIGlobal.setAktivDisable(this.btnTermineAll, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
                 }
 
                 if (aktivButton == 4)
                 {
-                    PMDS.Global.UIGlobal.setAktiv(this.btnEMail, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.SkyBlue);
-                    //this.lblInfo.Value = "<span style=" + (char)34 + "color:RoyalBlue; font-size:+7pt;" + (char)34 + ">E-Mails</span><br/><span style=" + (char)34 + "font-size:+2pt;" + (char)34 + ">" + infAuswahl + "</span><br/>";
+                    PMDS.Global.UIGlobal.setAktiv(this.btnEMail, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 }
                 else
                 {
-                    PMDS.Global.UIGlobal.setAktivDisable(this.btnEMail, -1, System.Drawing.Color.Black, System.Drawing.Color.Gainsboro, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                    PMDS.Global.UIGlobal.setAktivDisable(this.btnEMail, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
                 }
-
-                //if (aktivButton == 5)
-                //{
-                //    PMDS.Global.UIGlobal.setAktiv(this.btnTermineBereiche, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.SkyBlue);
-                //    //this.lblInfo.Value = "<span style=" + (char)34 + "color:RoyalBlue; font-size:+7pt;" + (char)34 + ">E-Mails</span><br/><span style=" + (char)34 + "font-size:+2pt;" + (char)34 + ">" + infAuswahl + "</span><br/>";
-                //}
-                //else
-                //{
-                //    PMDS.Global.UIGlobal.setAktivDisable(this.btnTermineBereiche, -1, System.Drawing.Color.Black, System.Drawing.Color.Gainsboro, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
-                //}
             }
             catch (Exception ex)
             {

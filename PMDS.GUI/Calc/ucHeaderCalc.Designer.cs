@@ -73,7 +73,7 @@
             // 
             // uGroupBoxHeader
             // 
-            appearance1.BackColor = System.Drawing.Color.Gainsboro;
+            appearance1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.uGroupBoxHeader.Appearance = appearance1;
             this.uGroupBoxHeader.Controls.Add(this.ucKlinikCbo1);
             this.uGroupBoxHeader.Controls.Add(this.panelStmmdatenBerichte);
@@ -105,9 +105,9 @@
             this.panelStmmdatenBerichte.Controls.Add(this.btnBerichte);
             this.panelStmmdatenBerichte.Controls.Add(this.ultraLabel5);
             this.panelStmmdatenBerichte.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelStmmdatenBerichte.Location = new System.Drawing.Point(453, 0);
+            this.panelStmmdatenBerichte.Location = new System.Drawing.Point(456, 3);
             this.panelStmmdatenBerichte.Name = "panelStmmdatenBerichte";
-            this.panelStmmdatenBerichte.Size = new System.Drawing.Size(203, 65);
+            this.panelStmmdatenBerichte.Size = new System.Drawing.Size(203, 59);
             this.panelStmmdatenBerichte.TabIndex = 102;
             // 
             // btnStammdaten
@@ -185,9 +185,9 @@
             this.panelBuchhaltung.BackColor = System.Drawing.Color.Transparent;
             this.panelBuchhaltung.Controls.Add(this.btnBuchhaltung);
             this.panelBuchhaltung.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelBuchhaltung.Location = new System.Drawing.Point(336, 0);
+            this.panelBuchhaltung.Location = new System.Drawing.Point(339, 3);
             this.panelBuchhaltung.Name = "panelBuchhaltung";
-            this.panelBuchhaltung.Size = new System.Drawing.Size(117, 65);
+            this.panelBuchhaltung.Size = new System.Drawing.Size(117, 59);
             this.panelBuchhaltung.TabIndex = 101;
             // 
             // btnBuchhaltung
@@ -225,9 +225,9 @@
             this.panelLine.BackColor = System.Drawing.Color.Transparent;
             this.panelLine.Controls.Add(this.ultraLabel1);
             this.panelLine.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLine.Location = new System.Drawing.Point(329, 0);
+            this.panelLine.Location = new System.Drawing.Point(332, 3);
             this.panelLine.Name = "panelLine";
-            this.panelLine.Size = new System.Drawing.Size(7, 65);
+            this.panelLine.Size = new System.Drawing.Size(7, 59);
             this.panelLine.TabIndex = 100;
             // 
             // ultraLabel1
@@ -245,9 +245,9 @@
             this.panelDepot.BackColor = System.Drawing.Color.Transparent;
             this.panelDepot.Controls.Add(this.btnDepot);
             this.panelDepot.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelDepot.Location = new System.Drawing.Point(232, 0);
+            this.panelDepot.Location = new System.Drawing.Point(235, 3);
             this.panelDepot.Name = "panelDepot";
-            this.panelDepot.Size = new System.Drawing.Size(97, 65);
+            this.panelDepot.Size = new System.Drawing.Size(97, 59);
             this.panelDepot.TabIndex = 99;
             // 
             // btnDepot
@@ -285,9 +285,9 @@
             this.panelSr.BackColor = System.Drawing.Color.Transparent;
             this.panelSr.Controls.Add(this.btnSammelabrechnung2);
             this.panelSr.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSr.Location = new System.Drawing.Point(115, 0);
+            this.panelSr.Location = new System.Drawing.Point(118, 3);
             this.panelSr.Name = "panelSr";
-            this.panelSr.Size = new System.Drawing.Size(117, 65);
+            this.panelSr.Size = new System.Drawing.Size(117, 59);
             this.panelSr.TabIndex = 98;
             // 
             // btnSammelabrechnung2
@@ -325,9 +325,9 @@
             this.panelKlient.BackColor = System.Drawing.Color.Transparent;
             this.panelKlient.Controls.Add(this.btnAbrechnungPatient);
             this.panelKlient.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelKlient.Location = new System.Drawing.Point(0, 0);
+            this.panelKlient.Location = new System.Drawing.Point(3, 3);
             this.panelKlient.Name = "panelKlient";
-            this.panelKlient.Size = new System.Drawing.Size(115, 65);
+            this.panelKlient.Size = new System.Drawing.Size(115, 59);
             this.panelKlient.TabIndex = 30;
             // 
             // btnAbrechnungPatient
@@ -398,7 +398,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightGray;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.uGroupBoxHeader);
             this.Controls.Add(this.uGridBagLayPanelMedizinDaten);
             this.Name = "ucHeaderCalc";

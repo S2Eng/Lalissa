@@ -161,11 +161,11 @@ namespace PMDS.GUI
 
         public void setControlsAktivDisable(bool bOn)
         {
-            this.ucKlientStammdaten1.setControlsAktivDisable(bOn);
-            if (this.ucMedizinischeDaten1 != null) this.ucMedizinischeDaten1.setControlsAktivDisable(bOn);
-            if (this.ucRegelungen1 != null) this.ucRegelungen1.setControlsAktivDisable(bOn);
-            if (this.ucDokumenteGegenstaende1 != null) this.ucDokumenteGegenstaende1.setControlsAktivDisable(bOn);
-            if (this.ucRehabilitation1 != null) this.ucRehabilitation1.setControlsAktivDisable(bOn);
+            this.ucKlientStammdaten1.setControlsAktivDisable(bOn).ConfigureAwait(false);
+            if (this.ucMedizinischeDaten1 != null) this.ucMedizinischeDaten1.setControlsAktivDisable(bOn).ConfigureAwait(false);
+            if (this.ucRegelungen1 != null) this.ucRegelungen1.setControlsAktivDisable(bOn).ConfigureAwait(false);
+            if (this.ucDokumenteGegenstaende1 != null) this.ucDokumenteGegenstaende1.setControlsAktivDisable(bOn).ConfigureAwait(false);
+            if (this.ucRehabilitation1 != null) this.ucRehabilitation1.setControlsAktivDisable(bOn).ConfigureAwait(false);
         }
 
         public void UpdateDATA()

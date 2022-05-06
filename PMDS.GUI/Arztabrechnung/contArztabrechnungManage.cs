@@ -94,7 +94,6 @@ namespace PMDS.GUI.Arztabrechnung
                 this.gridArztabrechnung.DisplayLayout.Bands[0].Columns[this.dsKlientenliste1.Arztabrechnung.AnmerkungColumn.ColumnName].Header.VisiblePosition = 6;
                 this.gridArztabrechnung.DisplayLayout.Bands[0].Columns[this.dsKlientenliste1.Arztabrechnung.KrankenkasseColumn.ColumnName].Header.VisiblePosition = 7;
                 this.gridArztabrechnung.DisplayLayout.Bands[0].Columns[this.dsKlientenliste1.Arztabrechnung.SVNrColumn.ColumnName].Header.VisiblePosition = 8;
-
             }
             catch (Exception ex)
             {

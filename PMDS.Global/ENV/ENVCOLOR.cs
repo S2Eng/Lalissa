@@ -12,7 +12,7 @@ using System.ComponentModel;
 
 namespace PMDS.Global
 {
-	public class ENVCOLOR 
+	public static class ENVCOLOR 
 	{
 		private static Color _ErrorBackColor;
 		private static Color _ErrorForeColor;
@@ -127,6 +127,19 @@ namespace PMDS.Global
 			}
 		}
 
+
+		//Colors for Menu-Buttons
+		public static System.Drawing.Color activeBackCol = System.Drawing.Color.NavajoWhite;
+		public static System.Drawing.Color activeForeCol = System.Drawing.Color.Black;
+		public static System.Drawing.Color activeFrameCol = System.Drawing.Color.DarkGray;
+
+		public static System.Drawing.Color inactiveBackCol = System.Drawing.Color.Transparent;
+		public static System.Drawing.Color inactiveForeCol = System.Drawing.Color.Black;
+		public static System.Drawing.Color inactiveFrameCol = System.Drawing.Color.Transparent;
+
+		public static System.Drawing.Color hoverBackCol = System.Drawing.Color.PapayaWhip;
+		public static System.Drawing.Color hoverForeCol = System.Drawing.Color.Black;
+		public static System.Drawing.Color hoverFrameCol = System.Drawing.Color.Transparent;
 	}
 
 }
