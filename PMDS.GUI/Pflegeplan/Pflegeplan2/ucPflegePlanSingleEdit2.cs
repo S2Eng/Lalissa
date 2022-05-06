@@ -1005,7 +1005,7 @@ namespace PMDS.GUI
             this.cbSide.BerufsstandGruppeJNA = -1;
             this.cbSide.Enabled = false;
             this.cbSide.ExactMatch = false;
-            this.cbSide.Group = "";
+            this.cbSide.Group = "LOS";
             this.cbSide.ID_PEP = -1;
             this.cbSide.IgnoreUnterdruecken = true;
             this.cbSide.Location = new System.Drawing.Point(365, 3);
@@ -1036,7 +1036,7 @@ namespace PMDS.GUI
             this.cbArea.BerufsstandGruppeJNA = -1;
             this.cbArea.Enabled = false;
             this.cbArea.ExactMatch = false;
-            this.cbArea.Group = "";
+            this.cbArea.Group = "LOA";
             this.cbArea.ID_PEP = -1;
             this.cbArea.IgnoreUnterdruecken = true;
             this.cbArea.Location = new System.Drawing.Point(189, 3);
@@ -1091,7 +1091,7 @@ namespace PMDS.GUI
             this.cbBerufsstand.BerufsstandGruppeJNA = -1;
             this.cbBerufsstand.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbBerufsstand.ExactMatch = false;
-            this.cbBerufsstand.Group = "";
+            this.cbBerufsstand.Group = "BER";
             this.cbBerufsstand.ID_PEP = -1;
             this.cbBerufsstand.IgnoreUnterdruecken = true;
             this.cbBerufsstand.Location = new System.Drawing.Point(326, 3);
@@ -1429,7 +1429,7 @@ namespace PMDS.GUI
             this.cbLinkDokument.IDLinkDokument = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.cbLinkDokument.Location = new System.Drawing.Point(113, 2);
             this.cbLinkDokument.Name = "cbLinkDokument";
-            this.cbLinkDokument.Size = new System.Drawing.Size(466, 24);
+            this.cbLinkDokument.Size = new System.Drawing.Size(466, 22);
             this.cbLinkDokument.TabIndex = 20;
             this.cbLinkDokument.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.cbLinkDokument.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
