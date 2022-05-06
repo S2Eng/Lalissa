@@ -177,16 +177,16 @@ namespace PMDS.GUI
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(151, 6);
+            this.txtSearch.Location = new System.Drawing.Point(191, 6);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(468, 21);
+            this.txtSearch.Size = new System.Drawing.Size(428, 21);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.ValueChanged += new System.EventHandler(this.ctrlValueChanged);
             // 
             // lblSuchbegriff
             // 
             this.lblSuchbegriff.AutoSize = true;
-            this.lblSuchbegriff.Location = new System.Drawing.Point(3, 3);
+            this.lblSuchbegriff.Location = new System.Drawing.Point(3, 10);
             this.lblSuchbegriff.Name = "lblSuchbegriff";
             this.lblSuchbegriff.Size = new System.Drawing.Size(142, 14);
             this.lblSuchbegriff.TabIndex = 1;

@@ -166,7 +166,7 @@ namespace PMDS.Global.db
         public class JSONPflegegeldverfahren
         {
             public string beantragtAm { get; set; }
-            public string vorlauefigePflegegeldstufePersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
+            public string vorlaeufigePflegegeldstufePersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
             public string kenntnisnahmeDatumBescheid { get; set; }
         }
 
@@ -249,7 +249,7 @@ namespace PMDS.Global.db
         public class Pflegegeldverfahren
         {
             public DateTime beantragtAm { get; set; }
-            public string vorlauefigePflegegeldstufePersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
+            public string vorlaeufigePflegegeldstufePersonal { get; set; } = "";    // { keine, 1, 2, 3, 4, 5, 6, 7 }
             public DateTime kenntnisnahmeDatumBescheid { get; set; } = DateTime.MaxValue;
             public Guid IDPflegestufe { get; set; } = Guid.Empty;
             public StringBuilder sbErrLog { get; set; } = new StringBuilder();
@@ -519,7 +519,7 @@ namespace PMDS.Global.db
                                      {
                                          ID = pps.ID,
                                          beantragtAm = pps.AenderungsantragDatum,
-                                         vorlauefigePflegegeldstufePersonal = ps.StufeNr,
+                                         vorlaeufigePflegegeldstufePersonal = ps.StufeNr,
                                          kenntnisnahmeDatumBescheid = pps.GenehmigungDatum
                                      }).ToList();
 
@@ -527,7 +527,7 @@ namespace PMDS.Global.db
                         {
                             Pflegegeldverfahren pgv = new Pflegegeldverfahren();
                             pgv.beantragtAm = (DateTime)psv.beantragtAm;
-                            pgv.vorlauefigePflegegeldstufePersonal = psv.vorlauefigePflegegeldstufePersonal == 0 ? "keine" : psv.vorlauefigePflegegeldstufePersonal.ToString();
+                            pgv.vorlaeufigePflegegeldstufePersonal = psv.vorlaeufigePflegegeldstufePersonal == 0 ? "keine" : psv.vorlaeufigePflegegeldstufePersonal.ToString();
                             if (psv.kenntnisnahmeDatumBescheid != null)
                             {
                                 pgv.kenntnisnahmeDatumBescheid = (DateTime)psv.kenntnisnahmeDatumBescheid;
@@ -614,7 +614,7 @@ namespace PMDS.Global.db
                 {
                     JSONPflegegeldverfahren jpgv = new JSONPflegegeldverfahren();
                     jpgv.beantragtAm = pgv.beantragtAm.ToString(dFormat);
-                    jpgv.vorlauefigePflegegeldstufePersonal = pgv.vorlauefigePflegegeldstufePersonal;
+                    jpgv.vorlaeufigePflegegeldstufePersonal = pgv.vorlaeufigePflegegeldstufePersonal;
                     jpgv.kenntnisnahmeDatumBescheid = pgv.kenntnisnahmeDatumBescheid.ToString(dFormat);
                     bew.JSON.pflegegeldverfahren[i] = jpgv;
                     i++;
@@ -674,6 +674,7 @@ namespace PMDS.Global.db
                     {
                         JSONkostentragung jkt = new JSONkostentragung();
                         jkt.finanzierung = LookupAuswahllisteBezeichnung("SFI", kt.finanzierung, AuswahllisteSucheTyp.Beschreibung, false);  //Prüfung erfolgt bereits in der GUI
+                        jkt.finanzierungSonstige = kt.finanzierungSonstige;
                         string Gemeinde = LookupAuswahllisteBezeichnung("GKZ", kt.Gemeinde, AuswahllisteSucheTyp.Beschreibung, false);
                         string Bundesland = LookupAuswahllisteBezeichnung("GKZ", kt.Bundesland, AuswahllisteSucheTyp.Beschreibung, false);
                         string Land = LookupAuswahllisteBezeichnung("LND", kt.Land, AuswahllisteSucheTyp.ELGA_Code, false);

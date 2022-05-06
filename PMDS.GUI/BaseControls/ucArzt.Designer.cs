@@ -105,7 +105,7 @@
             appearance1.FontData.SizeInPoints = 8F;
             this.lblArzt.Appearance = appearance1;
             this.lblArzt.AutoSize = true;
-            this.lblArzt.Location = new System.Drawing.Point(6, 22);
+            this.lblArzt.Location = new System.Drawing.Point(6, 25);
             this.lblArzt.Name = "lblArzt";
             this.lblArzt.Size = new System.Drawing.Size(24, 14);
             this.lblArzt.TabIndex = 146;
@@ -324,10 +324,12 @@
             this.txtLand.ExactMatch = false;
             this.txtLand.Group = "LND";
             this.txtLand.ID_PEP = -1;
+            this.txtLand.IgnoreUnterdruecken = true;
             this.txtLand.Location = new System.Drawing.Point(185, 68);
             this.txtLand.MaxLength = 20;
             this.txtLand.Name = "txtLand";
             this.txtLand.PflichtJN = false;
+            this.txtLand.SelectDistinct = false;
             this.txtLand.ShowAddButton = true;
             this.txtLand.Size = new System.Drawing.Size(256, 21);
             this.txtLand.sys = false;
@@ -406,7 +408,7 @@
             // 
             // txtVorname
             // 
-            this.txtVorname.Location = new System.Drawing.Point(101, 22);
+            this.txtVorname.Location = new System.Drawing.Point(101, 25);
             this.txtVorname.MaxLength = 25;
             this.txtVorname.Name = "txtVorname";
             this.txtVorname.Size = new System.Drawing.Size(97, 21);
@@ -414,7 +416,7 @@
             // 
             // txtNachname
             // 
-            this.txtNachname.Location = new System.Drawing.Point(204, 22);
+            this.txtNachname.Location = new System.Drawing.Point(204, 25);
             this.txtNachname.MaxLength = 25;
             this.txtNachname.Name = "txtNachname";
             this.txtNachname.Size = new System.Drawing.Size(143, 21);
@@ -492,10 +494,12 @@
             this.cbFachrichtung.ExactMatch = true;
             this.cbFachrichtung.Group = "FAR";
             this.cbFachrichtung.ID_PEP = -1;
+            this.cbFachrichtung.IgnoreUnterdruecken = true;
             this.cbFachrichtung.Location = new System.Drawing.Point(101, 53);
             this.cbFachrichtung.MaxLength = 255;
             this.cbFachrichtung.Name = "cbFachrichtung";
             this.cbFachrichtung.PflichtJN = false;
+            this.cbFachrichtung.SelectDistinct = false;
             this.cbFachrichtung.ShowAddButton = true;
             this.cbFachrichtung.Size = new System.Drawing.Size(346, 21);
             this.cbFachrichtung.sys = false;
@@ -510,10 +514,12 @@
             this.cmbAkdGrad.ExactMatch = false;
             this.cmbAkdGrad.Group = "TIT";
             this.cmbAkdGrad.ID_PEP = -1;
-            this.cmbAkdGrad.Location = new System.Drawing.Point(353, 22);
+            this.cmbAkdGrad.IgnoreUnterdruecken = true;
+            this.cmbAkdGrad.Location = new System.Drawing.Point(353, 25);
             this.cmbAkdGrad.MaxLength = 40;
             this.cmbAkdGrad.Name = "cmbAkdGrad";
             this.cmbAkdGrad.PflichtJN = false;
+            this.cmbAkdGrad.SelectDistinct = false;
             this.cmbAkdGrad.ShowAddButton = true;
             this.cmbAkdGrad.Size = new System.Drawing.Size(94, 21);
             this.cmbAkdGrad.sys = false;

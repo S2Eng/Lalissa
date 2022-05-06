@@ -24,45 +24,45 @@ namespace PMDS.GUI
 
         private dsQuickFilter.QuickFilterDataTable _dt = null;
         private PMDS.GUI.ucTerminFilterPicker ucTerminFilterPicker1;
-        private System.Windows.Forms.NumericUpDown nupVorher;
-        private System.Windows.Forms.NumericUpDown nupNachher;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private QS2.Desktop.ControlManagment.BaseLableWin lblVorher;
-        private QS2.Desktop.ControlManagment.BaseLableWin lblNachher;
         private PMDS.GUI.BaseControls.QuickFilterCombo cbFilter;
-        private QS2.Desktop.ControlManagment.BaseLableWin label1;
         private QS2.Desktop.ControlManagment.BasePanel panel1;
         private QS2.Desktop.ControlManagment.BaseTextEditor tbToolTip;
-        private QS2.Desktop.ControlManagment.BaseLableWin label2;
-        private QS2.Desktop.ControlManagment.BaseLableWin label3;
         private PMDS.GUI.AbteilungsAuswahlCombo cbAbteilung;
         private QS2.Desktop.ControlManagment.BaseGroupBoxWin groupBox1;
-        private CheckBox cbIntervention;
-        private CheckBox cb‹bergabe;
         private ucButton btnDeletexyxyxyxyxyxyx;
         private ucButton btnAdd;
         private ucButton btnUmbenennen;
-        private QS2.Desktop.ControlManagment.BaseLableWin label4;
-        private QS2.Desktop.ControlManagment.BaseMaskEdit tbReihenfolge;
-        private qs2.core.vb.cboLayout cboLayout1;
-        private QS2.Desktop.ControlManagment.BaseLableWin lblKeyQuickFilter;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtKeyQuickFilter;
         private ucButton btnSave;
-        private ucButton btnClose;
-        private CheckBox chkBereichIntervention;
-        private CheckBox chkBereich‹bergabe;
-        private CheckBox chkBereichDekurs;
-        private CheckBox chkBenutzenInDekursJN;
-        private QS2.Desktop.ControlManagment.BaseLableWin baseLableWin3;
-        private QS2.Desktop.ControlManagment.BaseLableWin baseLableWin2;
-        private QS2.Desktop.ControlManagment.BaseLableWin baseLableWin1;
         private ErrorProvider errorProvider1;
-        private CheckBox chkIsStandard;
         private QS2.Desktop.ControlManagment.BaseButton btnCopyAndPaste;
         public BaseControls.AuswahlGruppeComboMulti cboBerufsstand;
-        private QS2.Desktop.ControlManagment.BaseLableWin baseLableWin4;
         private IContainer components;
-
+        private QS2.Desktop.ControlManagment.BaseLabel lblQuickfilter;
+        private QS2.Desktop.ControlManagment.BaseCheckBox cbZeitraumAktivieren;
+        private QS2.Desktop.ControlManagment.BaseLabel lblAbteilung;
+        private QS2.Desktop.ControlManagment.BaseLabel lblVorher;
+        private QS2.Desktop.ControlManagment.BaseCheckBox chkIsStandard;
+        private QS2.Desktop.ControlManagment.BaseLabel lblNachher;
+        private QS2.Desktop.ControlManagment.BaseCheckBox chkBereich‹bergabe;
+        private QS2.Desktop.ControlManagment.BaseCheckBox chkBereichIntervention;
+        private QS2.Desktop.ControlManagment.BaseCheckBox chkBenutzenInDekursJN;
+        private QS2.Desktop.ControlManagment.BaseCheckBox cb‹bergabe;
+        private QS2.Desktop.ControlManagment.BaseCheckBox cbIntervention;
+        private QS2.Desktop.ControlManagment.BaseLabel lblEinzelansicht;
+        private QS2.Desktop.ControlManagment.BaseLabel lblDekurse;
+        private QS2.Desktop.ControlManagment.BaseLabel lbl‹bergabe;
+        private QS2.Desktop.ControlManagment.BaseLabel lblInterventionen;
+        private QS2.Desktop.ControlManagment.BaseLabel lblBereichsansicht;
+        private QS2.Desktop.ControlManagment.BaseLabel lblPosition;
+        private QS2.Desktop.ControlManagment.BaseCheckBox chkBereichDekurs;
+        private QS2.Desktop.ControlManagment.BaseLabel lblQuickfilterKey;
+        private QS2.Desktop.ControlManagment.BaseLabel lblTooltip;
+        private QS2.Desktop.ControlManagment.BaseLabel lblBerufsstand;
+        private qs2.core.vb.cboLayout cbLayout;
+        private QS2.Desktop.ControlManagment.BaseNumericEditor nupNachher;
+        private QS2.Desktop.ControlManagment.BaseNumericEditor nupVorher;
+        private QS2.Desktop.ControlManagment.BaseNumericEditor tbReihenfolge;
         public bool IsInitialized = false;
 
 
@@ -106,534 +106,321 @@ namespace PMDS.GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageQuickFilter));
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn133 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn134 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn135 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn130 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn131 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn132 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn127 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn128 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn129 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn124 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn125 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn126 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand5 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn121 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn122 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn123 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand6 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn118 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn119 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn120 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand5 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand7 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn115 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn116 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn117 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand6 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand8 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn112 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn113 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn114 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand7 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand9 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn109 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn110 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn111 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand8 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand10 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn106 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn107 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn108 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand9 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand11 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn103 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn104 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn105 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand10 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand12 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn100 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn101 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn102 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand11 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand13 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn97 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn98 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn99 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand12 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand14 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn94 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn95 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn96 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand13 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand15 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn91 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn92 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn93 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand14 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand16 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn88 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn89 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn90 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand15 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand17 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn85 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn86 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn87 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand16 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand18 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn82 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn83 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn84 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand17 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand19 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn79 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn80 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn81 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand18 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand20 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn76 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn77 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn78 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand19 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand21 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn73 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn74 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn75 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand20 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand22 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn71 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn72 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand21 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand23 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn67 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn68 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn69 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand22 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand24 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn64 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn65 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn66 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand23 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand25 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn61 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn62 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn63 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand24 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand26 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn58 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn60 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand25 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand27 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn55 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand26 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand28 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn52 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn53 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn54 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand27 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand29 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn50 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn51 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand28 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand30 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn46 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn47 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn48 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand29 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand31 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn43 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn44 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn45 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand30 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand32 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn41 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn42 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand31 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand33 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn37 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn38 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn39 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand32 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand34 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn34 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn35 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn36 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand33 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand35 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn31 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn32 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn33 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand34 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand36 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand35 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand37 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand36 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand38 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand37 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand39 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand38 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand40 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand39 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand41 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand40 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand42 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand41 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand43 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand42 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand44 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand43 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand45 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Abteilung", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik");
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            this.lblVorher = new QS2.Desktop.ControlManagment.BaseLableWin();
-            this.lblNachher = new QS2.Desktop.ControlManagment.BaseLableWin();
-            this.nupVorher = new System.Windows.Forms.NumericUpDown();
-            this.nupNachher = new System.Windows.Forms.NumericUpDown();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label1 = new QS2.Desktop.ControlManagment.BaseLableWin();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageQuickFilter));
             this.panel1 = new QS2.Desktop.ControlManagment.BasePanel();
-            this.cboBerufsstand = new PMDS.GUI.BaseControls.AuswahlGruppeComboMulti();
-            this.baseLableWin4 = new QS2.Desktop.ControlManagment.BaseLableWin();
-            this.chkIsStandard = new System.Windows.Forms.CheckBox();
-            this.tbReihenfolge = new QS2.Desktop.ControlManagment.BaseMaskEdit();
             this.txtKeyQuickFilter = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.tbToolTip = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.lblKeyQuickFilter = new QS2.Desktop.ControlManagment.BaseLableWin();
-            this.cboLayout1 = new qs2.core.vb.cboLayout();
-            this.label4 = new QS2.Desktop.ControlManagment.BaseLableWin();
             this.groupBox1 = new QS2.Desktop.ControlManagment.BaseGroupBoxWin();
-            this.baseLableWin3 = new QS2.Desktop.ControlManagment.BaseLableWin();
-            this.baseLableWin2 = new QS2.Desktop.ControlManagment.BaseLableWin();
-            this.baseLableWin1 = new QS2.Desktop.ControlManagment.BaseLableWin();
-            this.chkBereichDekurs = new System.Windows.Forms.CheckBox();
-            this.chkBenutzenInDekursJN = new System.Windows.Forms.CheckBox();
-            this.chkBereich‹bergabe = new System.Windows.Forms.CheckBox();
-            this.chkBereichIntervention = new System.Windows.Forms.CheckBox();
-            this.cbIntervention = new System.Windows.Forms.CheckBox();
-            this.cb‹bergabe = new System.Windows.Forms.CheckBox();
-            this.label2 = new QS2.Desktop.ControlManagment.BaseLableWin();
-            this.ucTerminFilterPicker1 = new PMDS.GUI.ucTerminFilterPicker();
-            this.label3 = new QS2.Desktop.ControlManagment.BaseLableWin();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnCopyAndPaste = new QS2.Desktop.ControlManagment.BaseButton();
+            this.lblAbteilung = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cbZeitraumAktivieren = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.lblQuickfilter = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblVorher = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblNachher = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.chkIsStandard = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.cbIntervention = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.cb‹bergabe = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.chkBenutzenInDekursJN = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.chkBereichIntervention = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.chkBereich‹bergabe = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.lblInterventionen = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lbl‹bergabe = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblDekurse = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblEinzelansicht = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblBereichsansicht = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.chkBereichDekurs = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.lblPosition = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblBerufsstand = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblTooltip = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblQuickfilterKey = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cbLayout = new qs2.core.vb.cboLayout();
+            this.tbReihenfolge = new QS2.Desktop.ControlManagment.BaseNumericEditor();
+            this.nupVorher = new QS2.Desktop.ControlManagment.BaseNumericEditor();
+            this.nupNachher = new QS2.Desktop.ControlManagment.BaseNumericEditor();
             this.cbAbteilung = new PMDS.GUI.AbteilungsAuswahlCombo();
             this.cbFilter = new PMDS.GUI.BaseControls.QuickFilterCombo();
-            this.btnClose = new PMDS.GUI.ucButton(this.components);
             this.btnSave = new PMDS.GUI.ucButton(this.components);
             this.btnDeletexyxyxyxyxyxyx = new PMDS.GUI.ucButton(this.components);
             this.btnAdd = new PMDS.GUI.ucButton(this.components);
             this.btnUmbenennen = new PMDS.GUI.ucButton(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.nupVorher)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nupNachher)).BeginInit();
+            this.ucTerminFilterPicker1 = new PMDS.GUI.ucTerminFilterPicker();
+            this.cboBerufsstand = new PMDS.GUI.BaseControls.AuswahlGruppeComboMulti();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtKeyQuickFilter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbToolTip)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbZeitraumAktivieren)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkIsStandard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbIntervention)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb‹bergabe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkBenutzenInDekursJN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkBereichIntervention)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkBereich‹bergabe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkBereichDekurs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbReihenfolge)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupVorher)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupNachher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbAbteilung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbFilter)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblVorher
-            // 
-            this.lblVorher.Enabled = false;
-            this.lblVorher.Location = new System.Drawing.Point(8, 32);
-            this.lblVorher.Name = "lblVorher";
-            this.lblVorher.Size = new System.Drawing.Size(100, 16);
-            this.lblVorher.TabIndex = 4;
-            this.lblVorher.Text = "Tage vor Heute";
-            // 
-            // lblNachher
-            // 
-            this.lblNachher.Enabled = false;
-            this.lblNachher.Location = new System.Drawing.Point(8, 55);
-            this.lblNachher.Name = "lblNachher";
-            this.lblNachher.Size = new System.Drawing.Size(100, 16);
-            this.lblNachher.TabIndex = 5;
-            this.lblNachher.Text = "Tage nach Heute";
-            // 
-            // nupVorher
-            // 
-            this.nupVorher.Enabled = false;
-            this.nupVorher.Location = new System.Drawing.Point(108, 32);
-            this.nupVorher.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nupVorher.Name = "nupVorher";
-            this.nupVorher.Size = new System.Drawing.Size(72, 20);
-            this.nupVorher.TabIndex = 1;
-            // 
-            // nupNachher
-            // 
-            this.nupNachher.Enabled = false;
-            this.nupNachher.Location = new System.Drawing.Point(108, 55);
-            this.nupNachher.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nupNachher.Name = "nupNachher";
-            this.nupNachher.Size = new System.Drawing.Size(72, 20);
-            this.nupNachher.TabIndex = 2;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.Location = new System.Drawing.Point(8, 8);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(152, 24);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Zeitraum aktivieren";
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(14, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 16);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Quickfilter";
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.cboBerufsstand);
-            this.panel1.Controls.Add(this.baseLableWin4);
-            this.panel1.Controls.Add(this.chkIsStandard);
-            this.panel1.Controls.Add(this.tbReihenfolge);
-            this.panel1.Controls.Add(this.nupVorher);
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.nupNachher);
+            this.panel1.Controls.Add(this.nupVorher);
+            this.panel1.Controls.Add(this.ucTerminFilterPicker1);
+            this.panel1.Controls.Add(this.lblQuickfilterKey);
+            this.panel1.Controls.Add(this.lblTooltip);
+            this.panel1.Controls.Add(this.lblBerufsstand);
+            this.panel1.Controls.Add(this.chkIsStandard);
+            this.panel1.Controls.Add(this.lblNachher);
+            this.panel1.Controls.Add(this.lblVorher);
+            this.panel1.Controls.Add(this.cboBerufsstand);
+            this.panel1.Controls.Add(this.cbZeitraumAktivieren);
             this.panel1.Controls.Add(this.txtKeyQuickFilter);
             this.panel1.Controls.Add(this.tbToolTip);
-            this.panel1.Controls.Add(this.lblKeyQuickFilter);
-            this.panel1.Controls.Add(this.cboLayout1);
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.cbLayout);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.ucTerminFilterPicker1);
-            this.panel1.Controls.Add(this.lblVorher);
-            this.panel1.Controls.Add(this.lblNachher);
-            this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Location = new System.Drawing.Point(14, 90);
+            this.panel1.Location = new System.Drawing.Point(4, 42);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(989, 595);
+            this.panel1.Size = new System.Drawing.Size(1138, 649);
             this.panel1.TabIndex = 2;
             this.panel1.Visible = false;
-            // 
-            // cboBerufsstand
-            // 
-            this.cboBerufsstand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboBerufsstand.BackColor = System.Drawing.Color.Transparent;
-            this.cboBerufsstand.Location = new System.Drawing.Point(74, 134);
-            this.cboBerufsstand.Name = "cboBerufsstand";
-            this.cboBerufsstand.Size = new System.Drawing.Size(182, 23);
-            this.cboBerufsstand.TabIndex = 19;
-            this.cboBerufsstand.TypeMulti = PMDS.GUI.BaseControls.AuswahlGruppeComboMulti.eTypeMulti.Berufsgruppe;
-            // 
-            // baseLableWin4
-            // 
-            this.baseLableWin4.Location = new System.Drawing.Point(8, 137);
-            this.baseLableWin4.Name = "baseLableWin4";
-            this.baseLableWin4.Size = new System.Drawing.Size(100, 16);
-            this.baseLableWin4.TabIndex = 20;
-            this.baseLableWin4.Text = "Berufsstand";
-            // 
-            // chkIsStandard
-            // 
-            this.chkIsStandard.Location = new System.Drawing.Point(9, 108);
-            this.chkIsStandard.Name = "chkIsStandard";
-            this.chkIsStandard.Size = new System.Drawing.Size(125, 15);
-            this.chkIsStandard.TabIndex = 18;
-            this.chkIsStandard.Text = "Standard";
-            // 
-            // tbReihenfolge
-            // 
-            this.tbReihenfolge.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
-            this.tbReihenfolge.Location = new System.Drawing.Point(451, 108);
-            this.tbReihenfolge.Name = "tbReihenfolge";
-            this.tbReihenfolge.NonAutoSizeHeight = 20;
-            this.tbReihenfolge.Size = new System.Drawing.Size(70, 20);
-            this.tbReihenfolge.TabIndex = 4;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // txtKeyQuickFilter
             // 
-            this.txtKeyQuickFilter.Location = new System.Drawing.Point(101, 305);
+            this.txtKeyQuickFilter.Location = new System.Drawing.Point(135, 407);
+            this.txtKeyQuickFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtKeyQuickFilter.Name = "txtKeyQuickFilter";
-            this.txtKeyQuickFilter.Size = new System.Drawing.Size(375, 21);
-            this.txtKeyQuickFilter.TabIndex = 6;
+            this.txtKeyQuickFilter.Size = new System.Drawing.Size(393, 24);
+            this.txtKeyQuickFilter.TabIndex = 15;
             // 
             // tbToolTip
             // 
-            this.tbToolTip.Location = new System.Drawing.Point(8, 177);
+            this.tbToolTip.Location = new System.Drawing.Point(135, 307);
+            this.tbToolTip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbToolTip.MaxLength = 255;
             this.tbToolTip.Multiline = true;
             this.tbToolTip.Name = "tbToolTip";
-            this.tbToolTip.Size = new System.Drawing.Size(516, 121);
-            this.tbToolTip.TabIndex = 5;
-            // 
-            // lblKeyQuickFilter
-            // 
-            this.lblKeyQuickFilter.Location = new System.Drawing.Point(8, 307);
-            this.lblKeyQuickFilter.Name = "lblKeyQuickFilter";
-            this.lblKeyQuickFilter.Size = new System.Drawing.Size(100, 16);
-            this.lblKeyQuickFilter.TabIndex = 17;
-            this.lblKeyQuickFilter.Text = "Key Quick-Filter";
-            // 
-            // cboLayout1
-            // 
-            this.cboLayout1.BackColor = System.Drawing.Color.Transparent;
-            this.cboLayout1.Location = new System.Drawing.Point(8, 326);
-            this.cboLayout1.Name = "cboLayout1";
-            this.cboLayout1.Size = new System.Drawing.Size(523, 27);
-            this.cboLayout1.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(349, 110);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 16);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Position von links";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tbToolTip.Size = new System.Drawing.Size(393, 92);
+            this.tbToolTip.TabIndex = 14;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.baseLableWin3);
-            this.groupBox1.Controls.Add(this.baseLableWin2);
-            this.groupBox1.Controls.Add(this.baseLableWin1);
+            this.groupBox1.Controls.Add(this.tbReihenfolge);
+            this.groupBox1.Controls.Add(this.lblPosition);
             this.groupBox1.Controls.Add(this.chkBereichDekurs);
-            this.groupBox1.Controls.Add(this.chkBenutzenInDekursJN);
+            this.groupBox1.Controls.Add(this.lblBereichsansicht);
             this.groupBox1.Controls.Add(this.chkBereich‹bergabe);
             this.groupBox1.Controls.Add(this.chkBereichIntervention);
-            this.groupBox1.Controls.Add(this.cbIntervention);
+            this.groupBox1.Controls.Add(this.lblEinzelansicht);
+            this.groupBox1.Controls.Add(this.chkBenutzenInDekursJN);
+            this.groupBox1.Controls.Add(this.lblDekurse);
             this.groupBox1.Controls.Add(this.cb‹bergabe);
-            this.groupBox1.Location = new System.Drawing.Point(263, 17);
+            this.groupBox1.Controls.Add(this.lbl‹bergabe);
+            this.groupBox1.Controls.Add(this.cbIntervention);
+            this.groupBox1.Controls.Add(this.lblInterventionen);
+            this.groupBox1.Location = new System.Drawing.Point(135, 71);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(261, 80);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(393, 178);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "sichtbar in";
-            // 
-            // baseLableWin3
-            // 
-            this.baseLableWin3.Location = new System.Drawing.Point(145, 58);
-            this.baseLableWin3.Name = "baseLableWin3";
-            this.baseLableWin3.Size = new System.Drawing.Size(22, 16);
-            this.baseLableWin3.TabIndex = 20;
-            this.baseLableWin3.Text = "-->";
-            // 
-            // baseLableWin2
-            // 
-            this.baseLableWin2.Location = new System.Drawing.Point(145, 39);
-            this.baseLableWin2.Name = "baseLableWin2";
-            this.baseLableWin2.Size = new System.Drawing.Size(22, 16);
-            this.baseLableWin2.TabIndex = 19;
-            this.baseLableWin2.Text = "-->";
-            // 
-            // baseLableWin1
-            // 
-            this.baseLableWin1.Location = new System.Drawing.Point(145, 20);
-            this.baseLableWin1.Name = "baseLableWin1";
-            this.baseLableWin1.Size = new System.Drawing.Size(22, 16);
-            this.baseLableWin1.TabIndex = 18;
-            this.baseLableWin1.Text = "-->";
-            // 
-            // chkBereichDekurs
-            // 
-            this.chkBereichDekurs.Location = new System.Drawing.Point(183, 57);
-            this.chkBereichDekurs.Name = "chkBereichDekurs";
-            this.chkBereichDekurs.Size = new System.Drawing.Size(72, 17);
-            this.chkBereichDekurs.TabIndex = 5;
-            this.chkBereichDekurs.Text = "Bereich";
-            // 
-            // chkBenutzenInDekursJN
-            // 
-            this.chkBenutzenInDekursJN.Location = new System.Drawing.Point(18, 57);
-            this.chkBenutzenInDekursJN.Name = "chkBenutzenInDekursJN";
-            this.chkBenutzenInDekursJN.Size = new System.Drawing.Size(125, 17);
-            this.chkBenutzenInDekursJN.TabIndex = 4;
-            this.chkBenutzenInDekursJN.Text = "Dekurs Einzel";
-            // 
-            // chkBereich‹bergabe
-            // 
-            this.chkBereich‹bergabe.Location = new System.Drawing.Point(183, 37);
-            this.chkBereich‹bergabe.Name = "chkBereich‹bergabe";
-            this.chkBereich‹bergabe.Size = new System.Drawing.Size(72, 17);
-            this.chkBereich‹bergabe.TabIndex = 3;
-            this.chkBereich‹bergabe.Text = "Bereich";
-            // 
-            // chkBereichIntervention
-            // 
-            this.chkBereichIntervention.Location = new System.Drawing.Point(183, 19);
-            this.chkBereichIntervention.Name = "chkBereichIntervention";
-            this.chkBereichIntervention.Size = new System.Drawing.Size(72, 15);
-            this.chkBereichIntervention.TabIndex = 1;
-            this.chkBereichIntervention.Text = "Bereich";
-            // 
-            // cbIntervention
-            // 
-            this.cbIntervention.Location = new System.Drawing.Point(18, 19);
-            this.cbIntervention.Name = "cbIntervention";
-            this.cbIntervention.Size = new System.Drawing.Size(125, 15);
-            this.cbIntervention.TabIndex = 0;
-            this.cbIntervention.Text = "Intervention Einzel";
-            // 
-            // cb‹bergabe
-            // 
-            this.cb‹bergabe.Location = new System.Drawing.Point(18, 37);
-            this.cb‹bergabe.Name = "cb‹bergabe";
-            this.cb‹bergabe.Size = new System.Drawing.Size(125, 17);
-            this.cb‹bergabe.TabIndex = 2;
-            this.cb‹bergabe.Text = "‹bergabe Einzel";
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(8, 161);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 16);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Tooltip";
-            // 
-            // ucTerminFilterPicker1
-            // 
-            this.ucTerminFilterPicker1.Abzeichnen = -1;
-            this.ucTerminFilterPicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucTerminFilterPicker1.BackColor = System.Drawing.Color.Gainsboro;
-            this.ucTerminFilterPicker1.Berufsstand = ((System.Collections.Generic.List<System.Guid>)(resources.GetObject("ucTerminFilterPicker1.Berufsstand")));
-            this.ucTerminFilterPicker1.HerkunftPlanungsEintrag = ((System.Collections.Generic.List<int>)(resources.GetObject("ucTerminFilterPicker1.HerkunftPlanungsEintrag")));
-            this.ucTerminFilterPicker1.IDBezug = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.ucTerminFilterPicker1.IDMassnahme = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.ucTerminFilterPicker1.Location = new System.Drawing.Point(537, -5);
-            this.ucTerminFilterPicker1.MASSNAHMEN = new System.Guid[0];
-            this.ucTerminFilterPicker1.Name = "ucTerminFilterPicker1";
-            this.ucTerminFilterPicker1.PlanungsEintr‰ge = ((System.Collections.Generic.List<int>)(resources.GetObject("ucTerminFilterPicker1.PlanungsEintr‰ge")));
-            this.ucTerminFilterPicker1.ShowBerufsstand = false;
-            this.ucTerminFilterPicker1.ShowBezug = false;
-            this.ucTerminFilterPicker1.ShowCC = -1;
-            this.ucTerminFilterPicker1.ShowHerkunftPlanungsEintrag = false;
-            this.ucTerminFilterPicker1.ShowPlanungsEintr‰geJN = false;
-            this.ucTerminFilterPicker1.ShowZeitbezugJN = false;
-            this.ucTerminFilterPicker1.ShowZusatzwerte = false;
-            this.ucTerminFilterPicker1.Size = new System.Drawing.Size(449, 565);
-            this.ucTerminFilterPicker1.TabIndex = 8;
-            this.ucTerminFilterPicker1.WichtigF¸r = ((System.Collections.Generic.List<System.Guid>)(resources.GetObject("ucTerminFilterPicker1.WichtigF¸r")));
-            this.ucTerminFilterPicker1.WichtigF¸rJN = false;
-            this.ucTerminFilterPicker1.ZeitbezugJNA = ((System.Collections.Generic.List<int>)(resources.GetObject("ucTerminFilterPicker1.ZeitbezugJNA")));
-            this.ucTerminFilterPicker1.Zusatzwerte = ((System.Collections.Generic.List<string>)(resources.GetObject("ucTerminFilterPicker1.Zusatzwerte")));
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(14, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 16);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Abteilung";
             // 
             // errorProvider1
             // 
@@ -642,21 +429,295 @@ namespace PMDS.GUI
             // btnCopyAndPaste
             // 
             this.btnCopyAndPaste.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance1.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnCopyAndPaste.Appearance = appearance1;
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance6.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnCopyAndPaste.Appearance = appearance6;
             this.btnCopyAndPaste.AutoWorkLayout = false;
             this.btnCopyAndPaste.IsStandardControl = false;
-            this.btnCopyAndPaste.Location = new System.Drawing.Point(978, 62);
+            this.btnCopyAndPaste.Location = new System.Drawing.Point(1097, 6);
+            this.btnCopyAndPaste.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCopyAndPaste.Name = "btnCopyAndPaste";
-            this.btnCopyAndPaste.Size = new System.Drawing.Size(23, 21);
+            this.btnCopyAndPaste.Size = new System.Drawing.Size(31, 26);
             this.btnCopyAndPaste.TabIndex = 106;
             this.btnCopyAndPaste.Click += new System.EventHandler(this.btnCopyAndPaste_Click_1);
+            // 
+            // lblAbteilung
+            // 
+            this.lblAbteilung.AutoSize = true;
+            this.lblAbteilung.Location = new System.Drawing.Point(5, 10);
+            this.lblAbteilung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblAbteilung.Name = "lblAbteilung";
+            this.lblAbteilung.Size = new System.Drawing.Size(61, 17);
+            this.lblAbteilung.TabIndex = 107;
+            this.lblAbteilung.Text = "Abteilung";
+            this.lblAbteilung.Click += new System.EventHandler(this.lblAbteilung_Click);
+            // 
+            // cbZeitraumAktivieren
+            // 
+            this.cbZeitraumAktivieren.AutoSize = true;
+            this.cbZeitraumAktivieren.Location = new System.Drawing.Point(1, 6);
+            this.cbZeitraumAktivieren.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbZeitraumAktivieren.Name = "cbZeitraumAktivieren";
+            this.cbZeitraumAktivieren.Size = new System.Drawing.Size(136, 20);
+            this.cbZeitraumAktivieren.TabIndex = 2;
+            this.cbZeitraumAktivieren.Text = "Zeitraum aktivieren";
+            this.cbZeitraumAktivieren.CheckedChanged += new System.EventHandler(this.cbZeitraumAktivieren_CheckedChanged);
+            // 
+            // lblQuickfilter
+            // 
+            this.lblQuickfilter.AutoSize = true;
+            this.lblQuickfilter.Location = new System.Drawing.Point(352, 10);
+            this.lblQuickfilter.Margin = new System.Windows.Forms.Padding(4);
+            this.lblQuickfilter.Name = "lblQuickfilter";
+            this.lblQuickfilter.Size = new System.Drawing.Size(65, 17);
+            this.lblQuickfilter.TabIndex = 109;
+            this.lblQuickfilter.Text = "Quickfilter";
+            // 
+            // lblVorher
+            // 
+            this.lblVorher.AutoSize = true;
+            this.lblVorher.Location = new System.Drawing.Point(159, 7);
+            this.lblVorher.Margin = new System.Windows.Forms.Padding(4);
+            this.lblVorher.Name = "lblVorher";
+            this.lblVorher.Size = new System.Drawing.Size(95, 17);
+            this.lblVorher.TabIndex = 110;
+            this.lblVorher.Text = "Tage vor heute";
+            // 
+            // lblNachher
+            // 
+            this.lblNachher.AutoSize = true;
+            this.lblNachher.Location = new System.Drawing.Point(348, 7);
+            this.lblNachher.Margin = new System.Windows.Forms.Padding(4);
+            this.lblNachher.Name = "lblNachher";
+            this.lblNachher.Size = new System.Drawing.Size(105, 17);
+            this.lblNachher.TabIndex = 111;
+            this.lblNachher.Text = "Tage nach heute";
+            // 
+            // chkIsStandard
+            // 
+            this.chkIsStandard.AutoSize = true;
+            this.chkIsStandard.Location = new System.Drawing.Point(1, 34);
+            this.chkIsStandard.Margin = new System.Windows.Forms.Padding(4);
+            this.chkIsStandard.Name = "chkIsStandard";
+            this.chkIsStandard.Size = new System.Drawing.Size(158, 20);
+            this.chkIsStandard.TabIndex = 5;
+            this.chkIsStandard.Text = "Ist Standard-Quickfilter";
+            // 
+            // cbIntervention
+            // 
+            this.cbIntervention.AutoSize = true;
+            this.cbIntervention.Location = new System.Drawing.Point(174, 45);
+            this.cbIntervention.Margin = new System.Windows.Forms.Padding(4);
+            this.cbIntervention.Name = "cbIntervention";
+            this.cbIntervention.Size = new System.Drawing.Size(14, 13);
+            this.cbIntervention.TabIndex = 6;
+            // 
+            // cb‹bergabe
+            // 
+            this.cb‹bergabe.AutoSize = true;
+            this.cb‹bergabe.Location = new System.Drawing.Point(174, 73);
+            this.cb‹bergabe.Margin = new System.Windows.Forms.Padding(4);
+            this.cb‹bergabe.Name = "cb‹bergabe";
+            this.cb‹bergabe.Size = new System.Drawing.Size(14, 13);
+            this.cb‹bergabe.TabIndex = 7;
+            // 
+            // chkBenutzenInDekursJN
+            // 
+            this.chkBenutzenInDekursJN.AutoSize = true;
+            this.chkBenutzenInDekursJN.Location = new System.Drawing.Point(174, 101);
+            this.chkBenutzenInDekursJN.Margin = new System.Windows.Forms.Padding(4);
+            this.chkBenutzenInDekursJN.Name = "chkBenutzenInDekursJN";
+            this.chkBenutzenInDekursJN.Size = new System.Drawing.Size(14, 13);
+            this.chkBenutzenInDekursJN.TabIndex = 8;
+            // 
+            // chkBereichIntervention
+            // 
+            this.chkBereichIntervention.AutoSize = true;
+            this.chkBereichIntervention.Location = new System.Drawing.Point(293, 45);
+            this.chkBereichIntervention.Margin = new System.Windows.Forms.Padding(4);
+            this.chkBereichIntervention.Name = "chkBereichIntervention";
+            this.chkBereichIntervention.Size = new System.Drawing.Size(14, 13);
+            this.chkBereichIntervention.TabIndex = 9;
+            // 
+            // chkBereich‹bergabe
+            // 
+            this.chkBereich‹bergabe.AutoSize = true;
+            this.chkBereich‹bergabe.Location = new System.Drawing.Point(293, 73);
+            this.chkBereich‹bergabe.Margin = new System.Windows.Forms.Padding(4);
+            this.chkBereich‹bergabe.Name = "chkBereich‹bergabe";
+            this.chkBereich‹bergabe.Size = new System.Drawing.Size(14, 13);
+            this.chkBereich‹bergabe.TabIndex = 10;
+            // 
+            // lblInterventionen
+            // 
+            this.lblInterventionen.AutoSize = true;
+            this.lblInterventionen.Location = new System.Drawing.Point(10, 41);
+            this.lblInterventionen.Margin = new System.Windows.Forms.Padding(4);
+            this.lblInterventionen.Name = "lblInterventionen";
+            this.lblInterventionen.Size = new System.Drawing.Size(90, 17);
+            this.lblInterventionen.TabIndex = 110;
+            this.lblInterventionen.Text = "Interventionen";
+            // 
+            // lbl‹bergabe
+            // 
+            this.lbl‹bergabe.AutoSize = true;
+            this.lbl‹bergabe.Location = new System.Drawing.Point(10, 71);
+            this.lbl‹bergabe.Margin = new System.Windows.Forms.Padding(4);
+            this.lbl‹bergabe.Name = "lbl‹bergabe";
+            this.lbl‹bergabe.Size = new System.Drawing.Size(64, 17);
+            this.lbl‹bergabe.TabIndex = 111;
+            this.lbl‹bergabe.Text = "‹bergabe";
+            // 
+            // lblDekurse
+            // 
+            this.lblDekurse.AutoSize = true;
+            this.lblDekurse.Location = new System.Drawing.Point(10, 101);
+            this.lblDekurse.Margin = new System.Windows.Forms.Padding(4);
+            this.lblDekurse.Name = "lblDekurse";
+            this.lblDekurse.Size = new System.Drawing.Size(89, 17);
+            this.lblDekurse.TabIndex = 112;
+            this.lblDekurse.Text = "ƒrztl. Dekurse";
+            // 
+            // lblEinzelansicht
+            // 
+            this.lblEinzelansicht.AutoSize = true;
+            this.lblEinzelansicht.Location = new System.Drawing.Point(146, 22);
+            this.lblEinzelansicht.Margin = new System.Windows.Forms.Padding(4);
+            this.lblEinzelansicht.Name = "lblEinzelansicht";
+            this.lblEinzelansicht.Size = new System.Drawing.Size(96, 17);
+            this.lblEinzelansicht.TabIndex = 113;
+            this.lblEinzelansicht.Text = "Klientenansicht";
+            // 
+            // lblBereichsansicht
+            // 
+            this.lblBereichsansicht.AutoSize = true;
+            this.lblBereichsansicht.Location = new System.Drawing.Point(253, 20);
+            this.lblBereichsansicht.Margin = new System.Windows.Forms.Padding(4);
+            this.lblBereichsansicht.Name = "lblBereichsansicht";
+            this.lblBereichsansicht.Size = new System.Drawing.Size(100, 17);
+            this.lblBereichsansicht.TabIndex = 118;
+            this.lblBereichsansicht.Text = "Bereichsansicht";
+            // 
+            // chkBereichDekurs
+            // 
+            this.chkBereichDekurs.AutoSize = true;
+            this.chkBereichDekurs.Location = new System.Drawing.Point(293, 101);
+            this.chkBereichDekurs.Margin = new System.Windows.Forms.Padding(4);
+            this.chkBereichDekurs.Name = "chkBereichDekurs";
+            this.chkBereichDekurs.Size = new System.Drawing.Size(14, 13);
+            this.chkBereichDekurs.TabIndex = 11;
+            // 
+            // lblPosition
+            // 
+            this.lblPosition.AutoSize = true;
+            this.lblPosition.Location = new System.Drawing.Point(10, 140);
+            this.lblPosition.Margin = new System.Windows.Forms.Padding(4);
+            this.lblPosition.Name = "lblPosition";
+            this.lblPosition.Size = new System.Drawing.Size(117, 17);
+            this.lblPosition.TabIndex = 120;
+            this.lblPosition.Text = "Position (von links)";
+            // 
+            // lblBerufsstand
+            // 
+            this.lblBerufsstand.AutoSize = true;
+            this.lblBerufsstand.Location = new System.Drawing.Point(3, 274);
+            this.lblBerufsstand.Margin = new System.Windows.Forms.Padding(4);
+            this.lblBerufsstand.Name = "lblBerufsstand";
+            this.lblBerufsstand.Size = new System.Drawing.Size(107, 17);
+            this.lblBerufsstand.TabIndex = 121;
+            this.lblBerufsstand.Text = "F¸r Berufsst‰nde";
+            // 
+            // lblTooltip
+            // 
+            this.lblTooltip.AutoSize = true;
+            this.lblTooltip.Location = new System.Drawing.Point(4, 310);
+            this.lblTooltip.Margin = new System.Windows.Forms.Padding(4);
+            this.lblTooltip.Name = "lblTooltip";
+            this.lblTooltip.Size = new System.Drawing.Size(45, 17);
+            this.lblTooltip.TabIndex = 122;
+            this.lblTooltip.Text = "Tooltip";
+            // 
+            // lblQuickfilterKey
+            // 
+            this.lblQuickfilterKey.AutoSize = true;
+            this.lblQuickfilterKey.Location = new System.Drawing.Point(4, 411);
+            this.lblQuickfilterKey.Margin = new System.Windows.Forms.Padding(4);
+            this.lblQuickfilterKey.Name = "lblQuickfilterKey";
+            this.lblQuickfilterKey.Size = new System.Drawing.Size(112, 17);
+            this.lblQuickfilterKey.TabIndex = 123;
+            this.lblQuickfilterKey.Text = "Eindeutiger Name";
+            // 
+            // cbLayout
+            // 
+            this.cbLayout.BackColor = System.Drawing.Color.Transparent;
+            this.cbLayout.Location = new System.Drawing.Point(0, 441);
+            this.cbLayout.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.cbLayout.Name = "cbLayout";
+            this.cbLayout.Size = new System.Drawing.Size(548, 36);
+            this.cbLayout.TabIndex = 16;
+            // 
+            // tbReihenfolge
+            // 
+            this.tbReihenfolge.Location = new System.Drawing.Point(146, 136);
+            this.tbReihenfolge.Name = "tbReihenfolge";
+            this.tbReihenfolge.Size = new System.Drawing.Size(68, 24);
+            this.tbReihenfolge.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
+            this.tbReihenfolge.TabIndex = 12;
+            // 
+            // nupVorher
+            // 
+            this.nupVorher.Location = new System.Drawing.Point(251, 3);
+            this.nupVorher.Name = "nupVorher";
+            this.nupVorher.Size = new System.Drawing.Size(72, 24);
+            this.nupVorher.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
+            this.nupVorher.TabIndex = 3;
+            // 
+            // nupNachher
+            // 
+            this.nupNachher.Location = new System.Drawing.Point(457, 2);
+            this.nupNachher.Name = "nupNachher";
+            this.nupNachher.Size = new System.Drawing.Size(71, 24);
+            this.nupNachher.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
+            this.nupNachher.TabIndex = 4;
             // 
             // cbAbteilung
             // 
             this.cbAbteilung.AutoSize = false;
             ultraGridBand1.ColHeadersVisible = false;
+            ultraGridColumn133.Header.Editor = null;
+            ultraGridColumn133.Header.VisiblePosition = 0;
+            ultraGridColumn133.Width = 253;
+            ultraGridColumn134.Header.Editor = null;
+            ultraGridColumn134.Header.VisiblePosition = 1;
+            ultraGridColumn134.Hidden = true;
+            ultraGridColumn135.Header.Editor = null;
+            ultraGridColumn135.Header.VisiblePosition = 2;
+            ultraGridColumn135.Hidden = true;
+            ultraGridBand1.Columns.AddRange(new object[] {
+            ultraGridColumn133,
+            ultraGridColumn134,
+            ultraGridColumn135});
+            ultraGridBand1.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand1.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand1.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand2.ColHeadersVisible = false;
+            ultraGridColumn130.Header.Editor = null;
+            ultraGridColumn130.Header.VisiblePosition = 0;
+            ultraGridColumn130.Width = 423;
+            ultraGridColumn131.Header.Editor = null;
+            ultraGridColumn131.Header.VisiblePosition = 1;
+            ultraGridColumn131.Hidden = true;
+            ultraGridColumn132.Header.Editor = null;
+            ultraGridColumn132.Header.VisiblePosition = 2;
+            ultraGridColumn132.Hidden = true;
+            ultraGridBand2.Columns.AddRange(new object[] {
+            ultraGridColumn130,
+            ultraGridColumn131,
+            ultraGridColumn132});
+            ultraGridBand2.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand2.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand2.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand3.ColHeadersVisible = false;
             ultraGridColumn127.Header.Editor = null;
             ultraGridColumn127.Header.VisiblePosition = 0;
             ultraGridColumn128.Header.Editor = null;
@@ -665,14 +726,14 @@ namespace PMDS.GUI
             ultraGridColumn129.Header.Editor = null;
             ultraGridColumn129.Header.VisiblePosition = 2;
             ultraGridColumn129.Hidden = true;
-            ultraGridBand1.Columns.AddRange(new object[] {
+            ultraGridBand3.Columns.AddRange(new object[] {
             ultraGridColumn127,
             ultraGridColumn128,
             ultraGridColumn129});
-            ultraGridBand1.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand1.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand1.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand2.ColHeadersVisible = false;
+            ultraGridBand3.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand3.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand3.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand4.ColHeadersVisible = false;
             ultraGridColumn124.Header.Editor = null;
             ultraGridColumn124.Header.VisiblePosition = 0;
             ultraGridColumn125.Header.Editor = null;
@@ -681,14 +742,14 @@ namespace PMDS.GUI
             ultraGridColumn126.Header.Editor = null;
             ultraGridColumn126.Header.VisiblePosition = 2;
             ultraGridColumn126.Hidden = true;
-            ultraGridBand2.Columns.AddRange(new object[] {
+            ultraGridBand4.Columns.AddRange(new object[] {
             ultraGridColumn124,
             ultraGridColumn125,
             ultraGridColumn126});
-            ultraGridBand2.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand2.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand2.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand3.ColHeadersVisible = false;
+            ultraGridBand4.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand4.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand4.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand5.ColHeadersVisible = false;
             ultraGridColumn121.Header.Editor = null;
             ultraGridColumn121.Header.VisiblePosition = 0;
             ultraGridColumn122.Header.Editor = null;
@@ -697,14 +758,14 @@ namespace PMDS.GUI
             ultraGridColumn123.Header.Editor = null;
             ultraGridColumn123.Header.VisiblePosition = 2;
             ultraGridColumn123.Hidden = true;
-            ultraGridBand3.Columns.AddRange(new object[] {
+            ultraGridBand5.Columns.AddRange(new object[] {
             ultraGridColumn121,
             ultraGridColumn122,
             ultraGridColumn123});
-            ultraGridBand3.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand3.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand3.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand4.ColHeadersVisible = false;
+            ultraGridBand5.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand5.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand5.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand6.ColHeadersVisible = false;
             ultraGridColumn118.Header.Editor = null;
             ultraGridColumn118.Header.VisiblePosition = 0;
             ultraGridColumn119.Header.Editor = null;
@@ -713,14 +774,14 @@ namespace PMDS.GUI
             ultraGridColumn120.Header.Editor = null;
             ultraGridColumn120.Header.VisiblePosition = 2;
             ultraGridColumn120.Hidden = true;
-            ultraGridBand4.Columns.AddRange(new object[] {
+            ultraGridBand6.Columns.AddRange(new object[] {
             ultraGridColumn118,
             ultraGridColumn119,
             ultraGridColumn120});
-            ultraGridBand4.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand4.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand4.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand5.ColHeadersVisible = false;
+            ultraGridBand6.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand6.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand6.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand7.ColHeadersVisible = false;
             ultraGridColumn115.Header.Editor = null;
             ultraGridColumn115.Header.VisiblePosition = 0;
             ultraGridColumn116.Header.Editor = null;
@@ -729,14 +790,14 @@ namespace PMDS.GUI
             ultraGridColumn117.Header.Editor = null;
             ultraGridColumn117.Header.VisiblePosition = 2;
             ultraGridColumn117.Hidden = true;
-            ultraGridBand5.Columns.AddRange(new object[] {
+            ultraGridBand7.Columns.AddRange(new object[] {
             ultraGridColumn115,
             ultraGridColumn116,
             ultraGridColumn117});
-            ultraGridBand5.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand5.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand5.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand6.ColHeadersVisible = false;
+            ultraGridBand7.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand7.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand7.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand8.ColHeadersVisible = false;
             ultraGridColumn112.Header.Editor = null;
             ultraGridColumn112.Header.VisiblePosition = 0;
             ultraGridColumn113.Header.Editor = null;
@@ -745,14 +806,14 @@ namespace PMDS.GUI
             ultraGridColumn114.Header.Editor = null;
             ultraGridColumn114.Header.VisiblePosition = 2;
             ultraGridColumn114.Hidden = true;
-            ultraGridBand6.Columns.AddRange(new object[] {
+            ultraGridBand8.Columns.AddRange(new object[] {
             ultraGridColumn112,
             ultraGridColumn113,
             ultraGridColumn114});
-            ultraGridBand6.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand6.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand6.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand7.ColHeadersVisible = false;
+            ultraGridBand8.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand8.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand8.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand9.ColHeadersVisible = false;
             ultraGridColumn109.Header.Editor = null;
             ultraGridColumn109.Header.VisiblePosition = 0;
             ultraGridColumn110.Header.Editor = null;
@@ -761,14 +822,14 @@ namespace PMDS.GUI
             ultraGridColumn111.Header.Editor = null;
             ultraGridColumn111.Header.VisiblePosition = 2;
             ultraGridColumn111.Hidden = true;
-            ultraGridBand7.Columns.AddRange(new object[] {
+            ultraGridBand9.Columns.AddRange(new object[] {
             ultraGridColumn109,
             ultraGridColumn110,
             ultraGridColumn111});
-            ultraGridBand7.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand7.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand7.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand8.ColHeadersVisible = false;
+            ultraGridBand9.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand9.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand9.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand10.ColHeadersVisible = false;
             ultraGridColumn106.Header.Editor = null;
             ultraGridColumn106.Header.VisiblePosition = 0;
             ultraGridColumn107.Header.Editor = null;
@@ -777,14 +838,14 @@ namespace PMDS.GUI
             ultraGridColumn108.Header.Editor = null;
             ultraGridColumn108.Header.VisiblePosition = 2;
             ultraGridColumn108.Hidden = true;
-            ultraGridBand8.Columns.AddRange(new object[] {
+            ultraGridBand10.Columns.AddRange(new object[] {
             ultraGridColumn106,
             ultraGridColumn107,
             ultraGridColumn108});
-            ultraGridBand8.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand8.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand8.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand9.ColHeadersVisible = false;
+            ultraGridBand10.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand10.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand10.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand11.ColHeadersVisible = false;
             ultraGridColumn103.Header.Editor = null;
             ultraGridColumn103.Header.VisiblePosition = 0;
             ultraGridColumn104.Header.Editor = null;
@@ -793,14 +854,14 @@ namespace PMDS.GUI
             ultraGridColumn105.Header.Editor = null;
             ultraGridColumn105.Header.VisiblePosition = 2;
             ultraGridColumn105.Hidden = true;
-            ultraGridBand9.Columns.AddRange(new object[] {
+            ultraGridBand11.Columns.AddRange(new object[] {
             ultraGridColumn103,
             ultraGridColumn104,
             ultraGridColumn105});
-            ultraGridBand9.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand9.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand9.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand10.ColHeadersVisible = false;
+            ultraGridBand11.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand11.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand11.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand12.ColHeadersVisible = false;
             ultraGridColumn100.Header.Editor = null;
             ultraGridColumn100.Header.VisiblePosition = 0;
             ultraGridColumn101.Header.Editor = null;
@@ -809,14 +870,14 @@ namespace PMDS.GUI
             ultraGridColumn102.Header.Editor = null;
             ultraGridColumn102.Header.VisiblePosition = 2;
             ultraGridColumn102.Hidden = true;
-            ultraGridBand10.Columns.AddRange(new object[] {
+            ultraGridBand12.Columns.AddRange(new object[] {
             ultraGridColumn100,
             ultraGridColumn101,
             ultraGridColumn102});
-            ultraGridBand10.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand10.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand10.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand11.ColHeadersVisible = false;
+            ultraGridBand12.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand12.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand12.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand13.ColHeadersVisible = false;
             ultraGridColumn97.Header.Editor = null;
             ultraGridColumn97.Header.VisiblePosition = 0;
             ultraGridColumn98.Header.Editor = null;
@@ -825,14 +886,14 @@ namespace PMDS.GUI
             ultraGridColumn99.Header.Editor = null;
             ultraGridColumn99.Header.VisiblePosition = 2;
             ultraGridColumn99.Hidden = true;
-            ultraGridBand11.Columns.AddRange(new object[] {
+            ultraGridBand13.Columns.AddRange(new object[] {
             ultraGridColumn97,
             ultraGridColumn98,
             ultraGridColumn99});
-            ultraGridBand11.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand11.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand11.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand12.ColHeadersVisible = false;
+            ultraGridBand13.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand13.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand13.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand14.ColHeadersVisible = false;
             ultraGridColumn94.Header.Editor = null;
             ultraGridColumn94.Header.VisiblePosition = 0;
             ultraGridColumn95.Header.Editor = null;
@@ -841,14 +902,14 @@ namespace PMDS.GUI
             ultraGridColumn96.Header.Editor = null;
             ultraGridColumn96.Header.VisiblePosition = 2;
             ultraGridColumn96.Hidden = true;
-            ultraGridBand12.Columns.AddRange(new object[] {
+            ultraGridBand14.Columns.AddRange(new object[] {
             ultraGridColumn94,
             ultraGridColumn95,
             ultraGridColumn96});
-            ultraGridBand12.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand12.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand12.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand13.ColHeadersVisible = false;
+            ultraGridBand14.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand14.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand14.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand15.ColHeadersVisible = false;
             ultraGridColumn91.Header.Editor = null;
             ultraGridColumn91.Header.VisiblePosition = 0;
             ultraGridColumn92.Header.Editor = null;
@@ -857,14 +918,14 @@ namespace PMDS.GUI
             ultraGridColumn93.Header.Editor = null;
             ultraGridColumn93.Header.VisiblePosition = 2;
             ultraGridColumn93.Hidden = true;
-            ultraGridBand13.Columns.AddRange(new object[] {
+            ultraGridBand15.Columns.AddRange(new object[] {
             ultraGridColumn91,
             ultraGridColumn92,
             ultraGridColumn93});
-            ultraGridBand13.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand13.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand13.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand14.ColHeadersVisible = false;
+            ultraGridBand15.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand15.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand15.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand16.ColHeadersVisible = false;
             ultraGridColumn88.Header.Editor = null;
             ultraGridColumn88.Header.VisiblePosition = 0;
             ultraGridColumn89.Header.Editor = null;
@@ -873,14 +934,14 @@ namespace PMDS.GUI
             ultraGridColumn90.Header.Editor = null;
             ultraGridColumn90.Header.VisiblePosition = 2;
             ultraGridColumn90.Hidden = true;
-            ultraGridBand14.Columns.AddRange(new object[] {
+            ultraGridBand16.Columns.AddRange(new object[] {
             ultraGridColumn88,
             ultraGridColumn89,
             ultraGridColumn90});
-            ultraGridBand14.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand14.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand14.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand15.ColHeadersVisible = false;
+            ultraGridBand16.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand16.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand16.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand17.ColHeadersVisible = false;
             ultraGridColumn85.Header.Editor = null;
             ultraGridColumn85.Header.VisiblePosition = 0;
             ultraGridColumn86.Header.Editor = null;
@@ -889,14 +950,14 @@ namespace PMDS.GUI
             ultraGridColumn87.Header.Editor = null;
             ultraGridColumn87.Header.VisiblePosition = 2;
             ultraGridColumn87.Hidden = true;
-            ultraGridBand15.Columns.AddRange(new object[] {
+            ultraGridBand17.Columns.AddRange(new object[] {
             ultraGridColumn85,
             ultraGridColumn86,
             ultraGridColumn87});
-            ultraGridBand15.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand15.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand15.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand16.ColHeadersVisible = false;
+            ultraGridBand17.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand17.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand17.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand18.ColHeadersVisible = false;
             ultraGridColumn82.Header.Editor = null;
             ultraGridColumn82.Header.VisiblePosition = 0;
             ultraGridColumn83.Header.Editor = null;
@@ -905,14 +966,14 @@ namespace PMDS.GUI
             ultraGridColumn84.Header.Editor = null;
             ultraGridColumn84.Header.VisiblePosition = 2;
             ultraGridColumn84.Hidden = true;
-            ultraGridBand16.Columns.AddRange(new object[] {
+            ultraGridBand18.Columns.AddRange(new object[] {
             ultraGridColumn82,
             ultraGridColumn83,
             ultraGridColumn84});
-            ultraGridBand16.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand16.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand16.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand17.ColHeadersVisible = false;
+            ultraGridBand18.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand18.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand18.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand19.ColHeadersVisible = false;
             ultraGridColumn79.Header.Editor = null;
             ultraGridColumn79.Header.VisiblePosition = 0;
             ultraGridColumn80.Header.Editor = null;
@@ -921,14 +982,14 @@ namespace PMDS.GUI
             ultraGridColumn81.Header.Editor = null;
             ultraGridColumn81.Header.VisiblePosition = 2;
             ultraGridColumn81.Hidden = true;
-            ultraGridBand17.Columns.AddRange(new object[] {
+            ultraGridBand19.Columns.AddRange(new object[] {
             ultraGridColumn79,
             ultraGridColumn80,
             ultraGridColumn81});
-            ultraGridBand17.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand17.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand17.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand18.ColHeadersVisible = false;
+            ultraGridBand19.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand19.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand19.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand20.ColHeadersVisible = false;
             ultraGridColumn76.Header.Editor = null;
             ultraGridColumn76.Header.VisiblePosition = 0;
             ultraGridColumn77.Header.Editor = null;
@@ -937,14 +998,14 @@ namespace PMDS.GUI
             ultraGridColumn78.Header.Editor = null;
             ultraGridColumn78.Header.VisiblePosition = 2;
             ultraGridColumn78.Hidden = true;
-            ultraGridBand18.Columns.AddRange(new object[] {
+            ultraGridBand20.Columns.AddRange(new object[] {
             ultraGridColumn76,
             ultraGridColumn77,
             ultraGridColumn78});
-            ultraGridBand18.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand18.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand18.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand19.ColHeadersVisible = false;
+            ultraGridBand20.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand20.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand20.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand21.ColHeadersVisible = false;
             ultraGridColumn73.Header.Editor = null;
             ultraGridColumn73.Header.VisiblePosition = 0;
             ultraGridColumn74.Header.Editor = null;
@@ -953,14 +1014,14 @@ namespace PMDS.GUI
             ultraGridColumn75.Header.Editor = null;
             ultraGridColumn75.Header.VisiblePosition = 2;
             ultraGridColumn75.Hidden = true;
-            ultraGridBand19.Columns.AddRange(new object[] {
+            ultraGridBand21.Columns.AddRange(new object[] {
             ultraGridColumn73,
             ultraGridColumn74,
             ultraGridColumn75});
-            ultraGridBand19.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand19.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand19.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand20.ColHeadersVisible = false;
+            ultraGridBand21.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand21.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand21.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand22.ColHeadersVisible = false;
             ultraGridColumn70.Header.Editor = null;
             ultraGridColumn70.Header.VisiblePosition = 0;
             ultraGridColumn71.Header.Editor = null;
@@ -969,14 +1030,14 @@ namespace PMDS.GUI
             ultraGridColumn72.Header.Editor = null;
             ultraGridColumn72.Header.VisiblePosition = 2;
             ultraGridColumn72.Hidden = true;
-            ultraGridBand20.Columns.AddRange(new object[] {
+            ultraGridBand22.Columns.AddRange(new object[] {
             ultraGridColumn70,
             ultraGridColumn71,
             ultraGridColumn72});
-            ultraGridBand20.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand20.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand20.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand21.ColHeadersVisible = false;
+            ultraGridBand22.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand22.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand22.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand23.ColHeadersVisible = false;
             ultraGridColumn67.Header.Editor = null;
             ultraGridColumn67.Header.VisiblePosition = 0;
             ultraGridColumn68.Header.Editor = null;
@@ -985,14 +1046,14 @@ namespace PMDS.GUI
             ultraGridColumn69.Header.Editor = null;
             ultraGridColumn69.Header.VisiblePosition = 2;
             ultraGridColumn69.Hidden = true;
-            ultraGridBand21.Columns.AddRange(new object[] {
+            ultraGridBand23.Columns.AddRange(new object[] {
             ultraGridColumn67,
             ultraGridColumn68,
             ultraGridColumn69});
-            ultraGridBand21.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand21.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand21.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand22.ColHeadersVisible = false;
+            ultraGridBand23.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand23.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand23.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand24.ColHeadersVisible = false;
             ultraGridColumn64.Header.Editor = null;
             ultraGridColumn64.Header.VisiblePosition = 0;
             ultraGridColumn65.Header.Editor = null;
@@ -1001,14 +1062,14 @@ namespace PMDS.GUI
             ultraGridColumn66.Header.Editor = null;
             ultraGridColumn66.Header.VisiblePosition = 2;
             ultraGridColumn66.Hidden = true;
-            ultraGridBand22.Columns.AddRange(new object[] {
+            ultraGridBand24.Columns.AddRange(new object[] {
             ultraGridColumn64,
             ultraGridColumn65,
             ultraGridColumn66});
-            ultraGridBand22.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand22.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand22.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand23.ColHeadersVisible = false;
+            ultraGridBand24.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand24.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand24.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand25.ColHeadersVisible = false;
             ultraGridColumn61.Header.Editor = null;
             ultraGridColumn61.Header.VisiblePosition = 0;
             ultraGridColumn62.Header.Editor = null;
@@ -1017,14 +1078,14 @@ namespace PMDS.GUI
             ultraGridColumn63.Header.Editor = null;
             ultraGridColumn63.Header.VisiblePosition = 2;
             ultraGridColumn63.Hidden = true;
-            ultraGridBand23.Columns.AddRange(new object[] {
+            ultraGridBand25.Columns.AddRange(new object[] {
             ultraGridColumn61,
             ultraGridColumn62,
             ultraGridColumn63});
-            ultraGridBand23.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand23.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand23.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand24.ColHeadersVisible = false;
+            ultraGridBand25.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand25.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand25.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand26.ColHeadersVisible = false;
             ultraGridColumn58.Header.Editor = null;
             ultraGridColumn58.Header.VisiblePosition = 0;
             ultraGridColumn59.Header.Editor = null;
@@ -1033,14 +1094,14 @@ namespace PMDS.GUI
             ultraGridColumn60.Header.Editor = null;
             ultraGridColumn60.Header.VisiblePosition = 2;
             ultraGridColumn60.Hidden = true;
-            ultraGridBand24.Columns.AddRange(new object[] {
+            ultraGridBand26.Columns.AddRange(new object[] {
             ultraGridColumn58,
             ultraGridColumn59,
             ultraGridColumn60});
-            ultraGridBand24.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand24.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand24.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand25.ColHeadersVisible = false;
+            ultraGridBand26.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand26.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand26.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand27.ColHeadersVisible = false;
             ultraGridColumn55.Header.Editor = null;
             ultraGridColumn55.Header.VisiblePosition = 0;
             ultraGridColumn56.Header.Editor = null;
@@ -1049,14 +1110,14 @@ namespace PMDS.GUI
             ultraGridColumn57.Header.Editor = null;
             ultraGridColumn57.Header.VisiblePosition = 2;
             ultraGridColumn57.Hidden = true;
-            ultraGridBand25.Columns.AddRange(new object[] {
+            ultraGridBand27.Columns.AddRange(new object[] {
             ultraGridColumn55,
             ultraGridColumn56,
             ultraGridColumn57});
-            ultraGridBand25.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand25.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand25.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand26.ColHeadersVisible = false;
+            ultraGridBand27.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand27.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand27.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand28.ColHeadersVisible = false;
             ultraGridColumn52.Header.Editor = null;
             ultraGridColumn52.Header.VisiblePosition = 0;
             ultraGridColumn53.Header.Editor = null;
@@ -1065,14 +1126,14 @@ namespace PMDS.GUI
             ultraGridColumn54.Header.Editor = null;
             ultraGridColumn54.Header.VisiblePosition = 2;
             ultraGridColumn54.Hidden = true;
-            ultraGridBand26.Columns.AddRange(new object[] {
+            ultraGridBand28.Columns.AddRange(new object[] {
             ultraGridColumn52,
             ultraGridColumn53,
             ultraGridColumn54});
-            ultraGridBand26.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand26.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand26.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand27.ColHeadersVisible = false;
+            ultraGridBand28.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand28.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand28.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand29.ColHeadersVisible = false;
             ultraGridColumn49.Header.Editor = null;
             ultraGridColumn49.Header.VisiblePosition = 0;
             ultraGridColumn50.Header.Editor = null;
@@ -1081,14 +1142,14 @@ namespace PMDS.GUI
             ultraGridColumn51.Header.Editor = null;
             ultraGridColumn51.Header.VisiblePosition = 2;
             ultraGridColumn51.Hidden = true;
-            ultraGridBand27.Columns.AddRange(new object[] {
+            ultraGridBand29.Columns.AddRange(new object[] {
             ultraGridColumn49,
             ultraGridColumn50,
             ultraGridColumn51});
-            ultraGridBand27.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand27.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand27.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand28.ColHeadersVisible = false;
+            ultraGridBand29.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand29.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand29.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand30.ColHeadersVisible = false;
             ultraGridColumn46.Header.Editor = null;
             ultraGridColumn46.Header.VisiblePosition = 0;
             ultraGridColumn47.Header.Editor = null;
@@ -1097,14 +1158,14 @@ namespace PMDS.GUI
             ultraGridColumn48.Header.Editor = null;
             ultraGridColumn48.Header.VisiblePosition = 2;
             ultraGridColumn48.Hidden = true;
-            ultraGridBand28.Columns.AddRange(new object[] {
+            ultraGridBand30.Columns.AddRange(new object[] {
             ultraGridColumn46,
             ultraGridColumn47,
             ultraGridColumn48});
-            ultraGridBand28.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand28.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand28.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand29.ColHeadersVisible = false;
+            ultraGridBand30.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand30.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand30.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand31.ColHeadersVisible = false;
             ultraGridColumn43.Header.Editor = null;
             ultraGridColumn43.Header.VisiblePosition = 0;
             ultraGridColumn44.Header.Editor = null;
@@ -1113,14 +1174,14 @@ namespace PMDS.GUI
             ultraGridColumn45.Header.Editor = null;
             ultraGridColumn45.Header.VisiblePosition = 2;
             ultraGridColumn45.Hidden = true;
-            ultraGridBand29.Columns.AddRange(new object[] {
+            ultraGridBand31.Columns.AddRange(new object[] {
             ultraGridColumn43,
             ultraGridColumn44,
             ultraGridColumn45});
-            ultraGridBand29.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand29.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand29.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand30.ColHeadersVisible = false;
+            ultraGridBand31.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand31.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand31.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand32.ColHeadersVisible = false;
             ultraGridColumn40.Header.Editor = null;
             ultraGridColumn40.Header.VisiblePosition = 0;
             ultraGridColumn41.Header.Editor = null;
@@ -1129,14 +1190,14 @@ namespace PMDS.GUI
             ultraGridColumn42.Header.Editor = null;
             ultraGridColumn42.Header.VisiblePosition = 2;
             ultraGridColumn42.Hidden = true;
-            ultraGridBand30.Columns.AddRange(new object[] {
+            ultraGridBand32.Columns.AddRange(new object[] {
             ultraGridColumn40,
             ultraGridColumn41,
             ultraGridColumn42});
-            ultraGridBand30.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand30.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand30.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand31.ColHeadersVisible = false;
+            ultraGridBand32.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand32.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand32.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand33.ColHeadersVisible = false;
             ultraGridColumn37.Header.Editor = null;
             ultraGridColumn37.Header.VisiblePosition = 0;
             ultraGridColumn38.Header.Editor = null;
@@ -1145,14 +1206,14 @@ namespace PMDS.GUI
             ultraGridColumn39.Header.Editor = null;
             ultraGridColumn39.Header.VisiblePosition = 2;
             ultraGridColumn39.Hidden = true;
-            ultraGridBand31.Columns.AddRange(new object[] {
+            ultraGridBand33.Columns.AddRange(new object[] {
             ultraGridColumn37,
             ultraGridColumn38,
             ultraGridColumn39});
-            ultraGridBand31.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand31.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand31.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand32.ColHeadersVisible = false;
+            ultraGridBand33.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand33.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand33.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand34.ColHeadersVisible = false;
             ultraGridColumn34.Header.Editor = null;
             ultraGridColumn34.Header.VisiblePosition = 0;
             ultraGridColumn34.Width = 317;
@@ -1162,14 +1223,14 @@ namespace PMDS.GUI
             ultraGridColumn36.Header.Editor = null;
             ultraGridColumn36.Header.VisiblePosition = 2;
             ultraGridColumn36.Hidden = true;
-            ultraGridBand32.Columns.AddRange(new object[] {
+            ultraGridBand34.Columns.AddRange(new object[] {
             ultraGridColumn34,
             ultraGridColumn35,
             ultraGridColumn36});
-            ultraGridBand32.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand32.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand32.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand33.ColHeadersVisible = false;
+            ultraGridBand34.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand34.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand34.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand35.ColHeadersVisible = false;
             ultraGridColumn31.Header.Editor = null;
             ultraGridColumn31.Header.VisiblePosition = 0;
             ultraGridColumn32.Header.Editor = null;
@@ -1178,14 +1239,14 @@ namespace PMDS.GUI
             ultraGridColumn33.Header.Editor = null;
             ultraGridColumn33.Header.VisiblePosition = 2;
             ultraGridColumn33.Hidden = true;
-            ultraGridBand33.Columns.AddRange(new object[] {
+            ultraGridBand35.Columns.AddRange(new object[] {
             ultraGridColumn31,
             ultraGridColumn32,
             ultraGridColumn33});
-            ultraGridBand33.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand33.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand33.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand34.ColHeadersVisible = false;
+            ultraGridBand35.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand35.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand35.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand36.ColHeadersVisible = false;
             ultraGridColumn28.Header.Editor = null;
             ultraGridColumn28.Header.VisiblePosition = 0;
             ultraGridColumn29.Header.Editor = null;
@@ -1194,14 +1255,14 @@ namespace PMDS.GUI
             ultraGridColumn30.Header.Editor = null;
             ultraGridColumn30.Header.VisiblePosition = 2;
             ultraGridColumn30.Hidden = true;
-            ultraGridBand34.Columns.AddRange(new object[] {
+            ultraGridBand36.Columns.AddRange(new object[] {
             ultraGridColumn28,
             ultraGridColumn29,
             ultraGridColumn30});
-            ultraGridBand34.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand34.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand34.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand35.ColHeadersVisible = false;
+            ultraGridBand36.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand36.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand36.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand37.ColHeadersVisible = false;
             ultraGridColumn25.Header.Editor = null;
             ultraGridColumn25.Header.VisiblePosition = 0;
             ultraGridColumn26.Header.Editor = null;
@@ -1210,14 +1271,14 @@ namespace PMDS.GUI
             ultraGridColumn27.Header.Editor = null;
             ultraGridColumn27.Header.VisiblePosition = 2;
             ultraGridColumn27.Hidden = true;
-            ultraGridBand35.Columns.AddRange(new object[] {
+            ultraGridBand37.Columns.AddRange(new object[] {
             ultraGridColumn25,
             ultraGridColumn26,
             ultraGridColumn27});
-            ultraGridBand35.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand35.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand35.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand36.ColHeadersVisible = false;
+            ultraGridBand37.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand37.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand37.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand38.ColHeadersVisible = false;
             ultraGridColumn22.Header.Editor = null;
             ultraGridColumn22.Header.VisiblePosition = 0;
             ultraGridColumn23.Header.Editor = null;
@@ -1226,14 +1287,14 @@ namespace PMDS.GUI
             ultraGridColumn24.Header.Editor = null;
             ultraGridColumn24.Header.VisiblePosition = 2;
             ultraGridColumn24.Hidden = true;
-            ultraGridBand36.Columns.AddRange(new object[] {
+            ultraGridBand38.Columns.AddRange(new object[] {
             ultraGridColumn22,
             ultraGridColumn23,
             ultraGridColumn24});
-            ultraGridBand36.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand36.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand36.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand37.ColHeadersVisible = false;
+            ultraGridBand38.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand38.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand38.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand39.ColHeadersVisible = false;
             ultraGridColumn19.Header.Editor = null;
             ultraGridColumn19.Header.VisiblePosition = 0;
             ultraGridColumn20.Header.Editor = null;
@@ -1242,14 +1303,14 @@ namespace PMDS.GUI
             ultraGridColumn21.Header.Editor = null;
             ultraGridColumn21.Header.VisiblePosition = 2;
             ultraGridColumn21.Hidden = true;
-            ultraGridBand37.Columns.AddRange(new object[] {
+            ultraGridBand39.Columns.AddRange(new object[] {
             ultraGridColumn19,
             ultraGridColumn20,
             ultraGridColumn21});
-            ultraGridBand37.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand37.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand37.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand38.ColHeadersVisible = false;
+            ultraGridBand39.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand39.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand39.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand40.ColHeadersVisible = false;
             ultraGridColumn16.Header.Editor = null;
             ultraGridColumn16.Header.VisiblePosition = 0;
             ultraGridColumn17.Header.Editor = null;
@@ -1258,14 +1319,14 @@ namespace PMDS.GUI
             ultraGridColumn18.Header.Editor = null;
             ultraGridColumn18.Header.VisiblePosition = 2;
             ultraGridColumn18.Hidden = true;
-            ultraGridBand38.Columns.AddRange(new object[] {
+            ultraGridBand40.Columns.AddRange(new object[] {
             ultraGridColumn16,
             ultraGridColumn17,
             ultraGridColumn18});
-            ultraGridBand38.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand38.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand38.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand39.ColHeadersVisible = false;
+            ultraGridBand40.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand40.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand40.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand41.ColHeadersVisible = false;
             ultraGridColumn13.Header.Editor = null;
             ultraGridColumn13.Header.VisiblePosition = 0;
             ultraGridColumn14.Header.Editor = null;
@@ -1274,14 +1335,14 @@ namespace PMDS.GUI
             ultraGridColumn15.Header.Editor = null;
             ultraGridColumn15.Header.VisiblePosition = 2;
             ultraGridColumn15.Hidden = true;
-            ultraGridBand39.Columns.AddRange(new object[] {
+            ultraGridBand41.Columns.AddRange(new object[] {
             ultraGridColumn13,
             ultraGridColumn14,
             ultraGridColumn15});
-            ultraGridBand39.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand39.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand39.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand40.ColHeadersVisible = false;
+            ultraGridBand41.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand41.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand41.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand42.ColHeadersVisible = false;
             ultraGridColumn10.Header.Editor = null;
             ultraGridColumn10.Header.VisiblePosition = 0;
             ultraGridColumn11.Header.Editor = null;
@@ -1290,14 +1351,14 @@ namespace PMDS.GUI
             ultraGridColumn12.Header.Editor = null;
             ultraGridColumn12.Header.VisiblePosition = 2;
             ultraGridColumn12.Hidden = true;
-            ultraGridBand40.Columns.AddRange(new object[] {
+            ultraGridBand42.Columns.AddRange(new object[] {
             ultraGridColumn10,
             ultraGridColumn11,
             ultraGridColumn12});
-            ultraGridBand40.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand40.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand40.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand41.ColHeadersVisible = false;
+            ultraGridBand42.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand42.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand42.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand43.ColHeadersVisible = false;
             ultraGridColumn7.Header.Editor = null;
             ultraGridColumn7.Header.VisiblePosition = 0;
             ultraGridColumn8.Header.Editor = null;
@@ -1306,14 +1367,14 @@ namespace PMDS.GUI
             ultraGridColumn9.Header.Editor = null;
             ultraGridColumn9.Header.VisiblePosition = 2;
             ultraGridColumn9.Hidden = true;
-            ultraGridBand41.Columns.AddRange(new object[] {
+            ultraGridBand43.Columns.AddRange(new object[] {
             ultraGridColumn7,
             ultraGridColumn8,
             ultraGridColumn9});
-            ultraGridBand41.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand41.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand41.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand42.ColHeadersVisible = false;
+            ultraGridBand43.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand43.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand43.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand44.ColHeadersVisible = false;
             ultraGridColumn4.Header.Editor = null;
             ultraGridColumn4.Header.VisiblePosition = 0;
             ultraGridColumn5.Header.Editor = null;
@@ -1322,14 +1383,14 @@ namespace PMDS.GUI
             ultraGridColumn6.Header.Editor = null;
             ultraGridColumn6.Header.VisiblePosition = 2;
             ultraGridColumn6.Hidden = true;
-            ultraGridBand42.Columns.AddRange(new object[] {
+            ultraGridBand44.Columns.AddRange(new object[] {
             ultraGridColumn4,
             ultraGridColumn5,
             ultraGridColumn6});
-            ultraGridBand42.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand42.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand42.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            ultraGridBand43.ColHeadersVisible = false;
+            ultraGridBand44.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand44.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand44.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand45.ColHeadersVisible = false;
             ultraGridColumn1.Header.Editor = null;
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridColumn2.Header.Editor = null;
@@ -1338,13 +1399,13 @@ namespace PMDS.GUI
             ultraGridColumn3.Header.Editor = null;
             ultraGridColumn3.Header.VisiblePosition = 2;
             ultraGridColumn3.Hidden = true;
-            ultraGridBand43.Columns.AddRange(new object[] {
+            ultraGridBand45.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2,
             ultraGridColumn3});
-            ultraGridBand43.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand43.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
-            ultraGridBand43.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            ultraGridBand45.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand45.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None;
+            ultraGridBand45.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
             this.cbAbteilung.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.cbAbteilung.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.cbAbteilung.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
@@ -1388,15 +1449,19 @@ namespace PMDS.GUI
             this.cbAbteilung.DisplayLayout.BandsSerializer.Add(ultraGridBand41);
             this.cbAbteilung.DisplayLayout.BandsSerializer.Add(ultraGridBand42);
             this.cbAbteilung.DisplayLayout.BandsSerializer.Add(ultraGridBand43);
+            this.cbAbteilung.DisplayLayout.BandsSerializer.Add(ultraGridBand44);
+            this.cbAbteilung.DisplayLayout.BandsSerializer.Add(ultraGridBand45);
             this.cbAbteilung.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.cbAbteilung.DisplayLayout.Override.RowFilterAction = Infragistics.Win.UltraWinGrid.RowFilterAction.HideFilteredOutRows;
             this.cbAbteilung.DisplayLayout.Override.RowFilterMode = Infragistics.Win.UltraWinGrid.RowFilterMode.AllRowsInBand;
             this.cbAbteilung.DisplayMember = "Bezeichnung";
             this.cbAbteilung.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList;
-            this.cbAbteilung.Location = new System.Drawing.Point(14, 21);
+            this.cbAbteilung.Location = new System.Drawing.Point(74, 6);
+            this.cbAbteilung.Margin = new System.Windows.Forms.Padding(4);
             this.cbAbteilung.Name = "cbAbteilung";
-            this.cbAbteilung.Size = new System.Drawing.Size(317, 23);
+            this.cbAbteilung.Size = new System.Drawing.Size(253, 28);
             this.cbAbteilung.TabIndex = 0;
+            this.cbAbteilung.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.cbAbteilung.ValueMember = "ID";
             this.cbAbteilung.ValueChanged += new System.EventHandler(this.cbAbteilung_ValueChanged);
             // 
@@ -1406,48 +1471,29 @@ namespace PMDS.GUI
             this.cbFilter.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbFilter.Enabled = false;
             this.cbFilter.ID = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.cbFilter.Location = new System.Drawing.Point(14, 62);
+            this.cbFilter.Location = new System.Drawing.Point(461, 6);
+            this.cbFilter.Margin = new System.Windows.Forms.Padding(4);
             this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(512, 21);
+            this.cbFilter.Size = new System.Drawing.Size(628, 24);
             this.cbFilter.TabIndex = 1;
             this.cbFilter.ValueChanged += new System.EventHandler(this.cbFilter_ValueChanged);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnClose.Appearance = appearance2;
-            this.btnClose.AutoWorkLayout = false;
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnClose.DoOnClick = true;
-            this.btnClose.IsStandardControl = true;
-            this.btnClose.Location = new System.Drawing.Point(968, 692);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(36, 32);
-            this.btnClose.TabIndex = 104;
-            this.btnClose.TabStop = false;
-            this.btnClose.TYPE = PMDS.GUI.ucButton.ButtonType.beenden;
-            this.btnClose.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
-            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSave.Appearance = appearance3;
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSave.Appearance = appearance1;
             this.btnSave.AutoWorkLayout = false;
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnSave.DoOnClick = true;
             this.btnSave.IsStandardControl = true;
-            this.btnSave.Location = new System.Drawing.Point(782, 692);
+            this.btnSave.Location = new System.Drawing.Point(1005, 698);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 32);
+            this.btnSave.Size = new System.Drawing.Size(133, 27);
             this.btnSave.TabIndex = 103;
             this.btnSave.TabStop = false;
             this.btnSave.Text = "Speichern";
@@ -1458,19 +1504,20 @@ namespace PMDS.GUI
             // btnDeletexyxyxyxyxyxyx
             // 
             this.btnDeletexyxyxyxyxyxyx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            appearance4.Image = ((object)(resources.GetObject("appearance4.Image")));
-            appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDeletexyxyxyxyxyxyx.Appearance = appearance4;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDeletexyxyxyxyxyxyx.Appearance = appearance2;
             this.btnDeletexyxyxyxyxyxyx.AutoWorkLayout = false;
             this.btnDeletexyxyxyxyxyxyx.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDeletexyxyxyxyxyxyx.DoOnClick = true;
             this.btnDeletexyxyxyxyxyxyx.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDeletexyxyxyxyxyxyx.IsStandardControl = true;
-            this.btnDeletexyxyxyxyxyxyx.Location = new System.Drawing.Point(106, 692);
+            this.btnDeletexyxyxyxyxyxyx.Location = new System.Drawing.Point(152, 698);
+            this.btnDeletexyxyxyxyxyxyx.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeletexyxyxyxyxyxyx.Name = "btnDeletexyxyxyxyxyxyx";
-            this.btnDeletexyxyxyxyxyxyx.Size = new System.Drawing.Size(91, 32);
+            this.btnDeletexyxyxyxyxyxyx.Size = new System.Drawing.Size(121, 27);
             this.btnDeletexyxyxyxyxyxyx.TabIndex = 101;
             this.btnDeletexyxyxyxyxyxyx.TabStop = false;
             this.btnDeletexyxyxyxyxyxyx.Text = "Entfernen";
@@ -1481,19 +1528,20 @@ namespace PMDS.GUI
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            appearance5.Image = ((object)(resources.GetObject("appearance5.Image")));
-            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAdd.Appearance = appearance5;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
+            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAdd.Appearance = appearance3;
             this.btnAdd.AutoWorkLayout = false;
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnAdd.DoOnClick = true;
             this.btnAdd.ImageSize = new System.Drawing.Size(12, 12);
             this.btnAdd.IsStandardControl = true;
-            this.btnAdd.Location = new System.Drawing.Point(14, 692);
+            this.btnAdd.Location = new System.Drawing.Point(30, 698);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(91, 32);
+            this.btnAdd.Size = new System.Drawing.Size(121, 27);
             this.btnAdd.TabIndex = 100;
             this.btnAdd.TabStop = false;
             this.btnAdd.Text = "Hinzuf¸gen";
@@ -1504,18 +1552,19 @@ namespace PMDS.GUI
             // btnUmbenennen
             // 
             this.btnUmbenennen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            appearance6.Image = ((object)(resources.GetObject("appearance6.Image")));
-            appearance6.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance6.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnUmbenennen.Appearance = appearance6;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            appearance4.Image = ((object)(resources.GetObject("appearance4.Image")));
+            appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnUmbenennen.Appearance = appearance4;
             this.btnUmbenennen.AutoWorkLayout = false;
             this.btnUmbenennen.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnUmbenennen.DoOnClick = true;
             this.btnUmbenennen.IsStandardControl = true;
-            this.btnUmbenennen.Location = new System.Drawing.Point(681, 692);
+            this.btnUmbenennen.Location = new System.Drawing.Point(870, 698);
+            this.btnUmbenennen.Margin = new System.Windows.Forms.Padding(4);
             this.btnUmbenennen.Name = "btnUmbenennen";
-            this.btnUmbenennen.Size = new System.Drawing.Size(100, 32);
+            this.btnUmbenennen.Size = new System.Drawing.Size(133, 27);
             this.btnUmbenennen.TabIndex = 102;
             this.btnUmbenennen.TabStop = false;
             this.btnUmbenennen.Text = "Editieren";
@@ -1523,40 +1572,92 @@ namespace PMDS.GUI
             this.btnUmbenennen.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnUmbenennen.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // ucTerminFilterPicker1
+            // 
+            this.ucTerminFilterPicker1.Abzeichnen = -1;
+            this.ucTerminFilterPicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucTerminFilterPicker1.AutoScroll = true;
+            this.ucTerminFilterPicker1.BackColor = System.Drawing.Color.Gainsboro;
+            this.ucTerminFilterPicker1.Berufsstand = ((System.Collections.Generic.List<System.Guid>)(resources.GetObject("ucTerminFilterPicker1.Berufsstand")));
+            this.ucTerminFilterPicker1.HerkunftPlanungsEintrag = ((System.Collections.Generic.List<int>)(resources.GetObject("ucTerminFilterPicker1.HerkunftPlanungsEintrag")));
+            this.ucTerminFilterPicker1.IDBezug = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.ucTerminFilterPicker1.IDMassnahme = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.ucTerminFilterPicker1.Location = new System.Drawing.Point(548, 2);
+            this.ucTerminFilterPicker1.Margin = new System.Windows.Forms.Padding(4);
+            this.ucTerminFilterPicker1.MASSNAHMEN = new System.Guid[0];
+            this.ucTerminFilterPicker1.Name = "ucTerminFilterPicker1";
+            this.ucTerminFilterPicker1.PlanungsEintr‰ge = ((System.Collections.Generic.List<int>)(resources.GetObject("ucTerminFilterPicker1.PlanungsEintr‰ge")));
+            this.ucTerminFilterPicker1.ShowBerufsstand = false;
+            this.ucTerminFilterPicker1.ShowBezug = false;
+            this.ucTerminFilterPicker1.ShowCC = -1;
+            this.ucTerminFilterPicker1.ShowHerkunftPlanungsEintrag = false;
+            this.ucTerminFilterPicker1.ShowPlanungsEintr‰geJN = false;
+            this.ucTerminFilterPicker1.ShowZeitbezugJN = false;
+            this.ucTerminFilterPicker1.ShowZusatzwerte = false;
+            this.ucTerminFilterPicker1.Size = new System.Drawing.Size(586, 641);
+            this.ucTerminFilterPicker1.TabIndex = 17;
+            this.ucTerminFilterPicker1.WichtigF¸r = ((System.Collections.Generic.List<System.Guid>)(resources.GetObject("ucTerminFilterPicker1.WichtigF¸r")));
+            this.ucTerminFilterPicker1.WichtigF¸rJN = false;
+            this.ucTerminFilterPicker1.ZeitbezugJNA = ((System.Collections.Generic.List<int>)(resources.GetObject("ucTerminFilterPicker1.ZeitbezugJNA")));
+            this.ucTerminFilterPicker1.Zusatzwerte = ((System.Collections.Generic.List<string>)(resources.GetObject("ucTerminFilterPicker1.Zusatzwerte")));
+            // 
+            // cboBerufsstand
+            // 
+            this.cboBerufsstand.BackColor = System.Drawing.Color.Transparent;
+            this.cboBerufsstand.Location = new System.Drawing.Point(135, 271);
+            this.cboBerufsstand.Margin = new System.Windows.Forms.Padding(4);
+            this.cboBerufsstand.Name = "cboBerufsstand";
+            this.cboBerufsstand.Size = new System.Drawing.Size(394, 28);
+            this.cboBerufsstand.TabIndex = 13;
+            this.cboBerufsstand.TypeMulti = PMDS.GUI.BaseControls.AuswahlGruppeComboMulti.eTypeMulti.Berufsgruppe;
+            // 
             // frmManageQuickFilter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1016, 730);
-            this.ControlBox = false;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1145, 729);
+            this.Controls.Add(this.lblQuickfilter);
+            this.Controls.Add(this.lblAbteilung);
             this.Controls.Add(this.btnCopyAndPaste);
             this.Controls.Add(this.cbAbteilung);
             this.Controls.Add(this.cbFilter);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnDeletexyxyxyxyxyxyx);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnUmbenennen);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1032, 769);
+            this.MinimumSize = new System.Drawing.Size(1000, 652);
             this.Name = "frmManageQuickFilter";
             this.Text = "Quickfilter Verwaltung";
             this.Closing += new System.ComponentModel.CancelEventHandler(this.frmManageQuickFilter_Closing);
             this.Load += new System.EventHandler(this.frmManageQuickFilter_Load);
             this.VisibleChanged += new System.EventHandler(this.FrmManageQuickFilter_VisibleChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.nupVorher)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nupNachher)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtKeyQuickFilter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbToolTip)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbZeitraumAktivieren)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkIsStandard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbIntervention)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb‹bergabe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkBenutzenInDekursJN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkBereichIntervention)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkBereich‹bergabe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkBereichDekurs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbReihenfolge)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupVorher)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupNachher)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbAbteilung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbFilter)).EndInit();
             this.ResumeLayout(false);
@@ -1570,6 +1671,8 @@ namespace PMDS.GUI
             try
             {
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Allgemein.ico_Table, 32, 32);
+                this.btnCopyAndPaste.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Kopieren, 32, 32);
+
                 _dt = _manager.Read(System.Guid.NewGuid());
 
                 ucTerminFilterPicker1.initControl(true, eUITypeTermine.None, false);
@@ -1577,11 +1680,11 @@ namespace PMDS.GUI
                 ucTerminFilterPicker1.panelClose.Visible = true;
                 ShowHideMenu();
 
-                this.cboLayout1.initControl(true, true, PMDS.Global.ENV.adminSecure );
-                this.cboLayout1.LoadData();
-
-                this.btnCopyAndPaste.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Kopieren, 32, 32);
-
+                //Layout f¸r cbLayout anpassen
+                this.cbLayout.initControl(false, false, PMDS.Global.ENV.adminSecure);
+                this.cbLayout.cboLay.Left = this.tbToolTip.Left;
+                this.cbLayout.cboLay.Width = this.tbToolTip.Width;
+                this.cbLayout.LoadData();
             }
             catch(Exception ex)
             {
@@ -1591,8 +1694,8 @@ namespace PMDS.GUI
         public void ClearErrorProvider()
         {
             this.errorProvider1.SetError(this.txtKeyQuickFilter, "");
-
         }
+
         public bool ValidateData() 
         {
             this.ClearErrorProvider();
@@ -1618,12 +1721,6 @@ namespace PMDS.GUI
 
             FieldsToRow(ROW);
             _manager.Write(_dt);
-        }
-
-        private void ProcessVerlassen()
-        {
-            //ProcessQuickfilterSave();
-            this.Close();
         }
 
         private PMDS.Global.db.Global.dsQuickFilter.QuickFilterRow ROW 
@@ -1656,7 +1753,7 @@ namespace PMDS.GUI
                 this.IsInitialized = true;
             }
 
-            checkBox1.Checked = r.ZeitraumJN;
+            cbZeitraumAktivieren.Checked = r.ZeitraumJN;
             nupNachher.Value = r.Tagenachher;
             nupVorher.Value = r.Tagevorher;
             if(r.MassnahmeJN)
@@ -1679,19 +1776,17 @@ namespace PMDS.GUI
             if (dsLayout1.Layout.Rows.Count == 1)
             {
                 qs2.core.vb.dsLayout.LayoutRow rLayout = (qs2.core.vb.dsLayout.LayoutRow)dsLayout1.Layout.Rows[0];
-                this.cboLayout1.cboLay.Value = rLayout.IDGuid;
+                this.cbLayout.cboLay.Value = rLayout.IDGuid;
             }
             else if (dsLayout1.Layout.Rows.Count == 0)
             {
-                this.cboLayout1.cboLay.Value = null;
+                this.cbLayout.cboLay.Value = null;
             }
             else
             {
                 throw new Exception("RowToFields: dsLayout1.Layout.Rows.Count > 1 for KeyLayout '" +  r.KeyLayout.Trim() +  "'");
             }
             this.txtKeyQuickFilter.Text = r.KeyQuickFilter;
-
-            //this.cboLayout1.cboLay.Value 
             
             ucTerminFilterPicker1.MASSNAHMEN		= QuickFilterManager.GuidArrayFromString(r.Massnahmen);
 
@@ -1805,8 +1900,8 @@ namespace PMDS.GUI
             }
 
             this.ucTerminFilterPicker1.Abzeichnen = r.AbzeichnenJN;
-
         }
+
         public System.Collections.Generic.List<Guid> setBerufsstandErstelltFromString(string slstGuid)
         {
             try
@@ -1848,7 +1943,7 @@ namespace PMDS.GUI
 
         private void FieldsToRow(PMDS.Global.db.Global.dsQuickFilter.QuickFilterRow r)
         {
-            r.ZeitraumJN				= checkBox1.Checked;
+            r.ZeitraumJN				= cbZeitraumAktivieren.Checked;
             r.Tagenachher				= (int)nupNachher.Value;
             r.Tagevorher				= (int)nupVorher.Value;
 
@@ -1866,7 +1961,7 @@ namespace PMDS.GUI
             
             r.Tooltip		= tbToolTip.Text.Trim();
 
-            qs2.core.vb.dsLayout.LayoutRow rLayoutSelected = this.cboLayout1.getSelectedRow(false);
+            qs2.core.vb.dsLayout.LayoutRow rLayoutSelected = this.cbLayout.getSelectedRow(false);
             if (rLayoutSelected != null)
             {
                 r.KeyLayout = rLayoutSelected.Key.Trim();
@@ -1913,19 +2008,12 @@ namespace PMDS.GUI
                 {
                     r.LstErstelltVonBerufgruppe += ID.ToString() + ";"; 
                 }
-                //System.Collections.Generic.List<string> lstMedTypeForPatient = qs2.core.generic.readStrVariables(rNewMedDaten.Beschreibung.Trim());
-                //foreach (string MedDatenType in lstMedTypeForPatient)
-                //{
-                //    if (rMedDat.MedizinischerTyp.ToString().Trim().Equals(MedDatenType.Trim()))
-                //    {
-                //        MedTypeExists = true;
-                //    }
-                //}
             }
             else
             {
                 r.LstErstelltVonBerufgruppe = "";
             }
+
             if (this.ucTerminFilterPicker1.WichtigF¸rJN)
             {
                 r.LstWichtigF¸rBerufsgruppe = "";
@@ -1938,6 +2026,7 @@ namespace PMDS.GUI
             {
                 r.LstWichtigF¸rBerufsgruppe = "";
             }
+
             if (this.ucTerminFilterPicker1.ShowZusatzwerte)
             {
                 r.LstZusatzwerte = "";
@@ -1950,6 +2039,7 @@ namespace PMDS.GUI
             {
                 r.LstZusatzwerte = "";
             }
+
             if (this.ucTerminFilterPicker1.ShowPlanungsEintr‰geJN)
             {
                 r.LstInterventionsTyp = "";
@@ -1994,8 +2084,7 @@ namespace PMDS.GUI
 
         private void RefreshList()
         {
-            RefreshList(Guid.Empty);
-            
+            RefreshList(Guid.Empty);            
         }
 
         private void RefreshList(Guid id) 
@@ -2100,10 +2189,10 @@ namespace PMDS.GUI
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                lblNachher.Enabled = checkBox1.Checked;
-                lblVorher.Enabled = checkBox1.Checked;
-                nupNachher.Enabled = checkBox1.Checked;
-                nupVorher.Enabled = checkBox1.Checked;
+                lblNachher.Enabled = cbZeitraumAktivieren.Checked;
+                lblVorher.Enabled = cbZeitraumAktivieren.Checked;
+                nupNachher.Enabled = cbZeitraumAktivieren.Checked;
+                nupVorher.Enabled = cbZeitraumAktivieren.Checked;
             }
             catch (Exception ex)
             {
@@ -2122,7 +2211,7 @@ namespace PMDS.GUI
 
             nupNachher.Value	= 0;
             nupVorher.Value		= 0;
-            checkBox1.Checked	= false;
+            cbZeitraumAktivieren.Checked	= false;
         }
 
         private void cbFilter_ValueChanged(object sender, System.EventArgs e)
@@ -2131,7 +2220,7 @@ namespace PMDS.GUI
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                this.cboLayout1.LoadData();
+                this.cbLayout.LoadData();
                 //ProcessQuickfilterSave();
                 ClearFields();
                 if (cbFilter.Value != null)
@@ -2291,7 +2380,7 @@ namespace PMDS.GUI
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
+                //this.Cursor = Cursors.WaitCursor;
                 this.Close();
 
             }
@@ -2337,6 +2426,37 @@ namespace PMDS.GUI
             ucTerminFilterPicker1.pAll.Visible = true;
             ucTerminFilterPicker1.btnClose2.Visible = false;
             ucTerminFilterPicker1.btn.Visible = false;
+        }
+
+        private void cbZeitraumAktivieren_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                lblVorher.Enabled = cbZeitraumAktivieren.Checked;
+                lblNachher.Enabled = cbZeitraumAktivieren.Checked;
+                nupNachher.Enabled = cbZeitraumAktivieren.Checked;
+                nupVorher.Enabled = cbZeitraumAktivieren.Checked;
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblAbteilung_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -42,7 +42,7 @@
             ultraStatusPanel1.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Automatic;
             this.ultraStatusBar1.Panels.AddRange(new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel[] {
             ultraStatusPanel1});
-            this.ultraStatusBar1.Size = new System.Drawing.Size(1044, 15);
+            this.ultraStatusBar1.Size = new System.Drawing.Size(1034, 15);
             this.ultraStatusBar1.TabIndex = 14;
             // 
             // contMessenger1
@@ -50,7 +50,7 @@
             this.contMessenger1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contMessenger1.Location = new System.Drawing.Point(0, 0);
             this.contMessenger1.Name = "contMessenger1";
-            this.contMessenger1.Size = new System.Drawing.Size(1044, 681);
+            this.contMessenger1.Size = new System.Drawing.Size(1034, 681);
             this.contMessenger1.TabIndex = 15;
             // 
             // frmMessenger
@@ -58,7 +58,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1044, 696);
+            this.ClientSize = new System.Drawing.Size(1034, 696);
             this.Controls.Add(this.contMessenger1);
             this.Controls.Add(this.ultraStatusBar1);
             this.Name = "frmMessenger";

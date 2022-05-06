@@ -255,14 +255,14 @@ Public Class contPlanung2
         Me.grpSearch.Controls.Add(Me.PanelViewModus)
         Me.grpSearch.Location = New System.Drawing.Point(7, 3)
         Me.grpSearch.Name = "grpSearch"
-        Me.grpSearch.Size = New System.Drawing.Size(557, 196)
+        Me.grpSearch.Size = New System.Drawing.Size(722, 196)
         Me.grpSearch.TabIndex = 0
         Me.grpSearch.Tag = "ResID.Search"
         Me.grpSearch.Text = "Suche"
         '
         'chkDatumFixieren
         '
-        Me.chkDatumFixieren.Location = New System.Drawing.Point(373, 49)
+        Me.chkDatumFixieren.Location = New System.Drawing.Point(394, 52)
         Me.chkDatumFixieren.Name = "chkDatumFixieren"
         Me.chkDatumFixieren.Size = New System.Drawing.Size(135, 17)
         Me.chkDatumFixieren.TabIndex = 1004
@@ -276,9 +276,9 @@ Public Class contPlanung2
         Me.PanelButtonsLayout.Controls.Add(Me.btnLayout_KategoriePatient)
         Me.PanelButtonsLayout.Controls.Add(Me.btnLayout_PatientKategorie)
         Me.PanelButtonsLayout.Controls.Add(Me.btnLayout_PatientBeginn)
-        Me.PanelButtonsLayout.Location = New System.Drawing.Point(123, 156)
+        Me.PanelButtonsLayout.Location = New System.Drawing.Point(141, 156)
         Me.PanelButtonsLayout.Name = "PanelButtonsLayout"
-        Me.PanelButtonsLayout.Size = New System.Drawing.Size(325, 23)
+        Me.PanelButtonsLayout.Size = New System.Drawing.Size(325, 34)
         Me.PanelButtonsLayout.TabIndex = 0
         '
         'btnLayout_Beginn
@@ -302,7 +302,7 @@ Public Class contPlanung2
         Me.btnLayout_Beginn.Name = "btnLayout_Beginn"
         Me.btnLayout_Beginn.ShowFocusRect = False
         Me.btnLayout_Beginn.ShowOutline = False
-        Me.btnLayout_Beginn.Size = New System.Drawing.Size(40, 23)
+        Me.btnLayout_Beginn.Size = New System.Drawing.Size(40, 34)
         Me.btnLayout_Beginn.TabIndex = 3
         Me.btnLayout_Beginn.Tag = "ResID.Beginn"
         Me.btnLayout_Beginn.Text = "Beginn"
@@ -332,7 +332,7 @@ Public Class contPlanung2
         Me.btnLayout_KategoriePatient.Name = "btnLayout_KategoriePatient"
         Me.btnLayout_KategoriePatient.ShowFocusRect = False
         Me.btnLayout_KategoriePatient.ShowOutline = False
-        Me.btnLayout_KategoriePatient.Size = New System.Drawing.Size(90, 23)
+        Me.btnLayout_KategoriePatient.Size = New System.Drawing.Size(90, 34)
         Me.btnLayout_KategoriePatient.TabIndex = 2
         Me.btnLayout_KategoriePatient.Tag = "ResID.KategoriePatient"
         Me.btnLayout_KategoriePatient.Text = "Kategorie/Patient"
@@ -362,7 +362,7 @@ Public Class contPlanung2
         Me.btnLayout_PatientKategorie.Name = "btnLayout_PatientKategorie"
         Me.btnLayout_PatientKategorie.ShowFocusRect = False
         Me.btnLayout_PatientKategorie.ShowOutline = False
-        Me.btnLayout_PatientKategorie.Size = New System.Drawing.Size(90, 23)
+        Me.btnLayout_PatientKategorie.Size = New System.Drawing.Size(90, 34)
         Me.btnLayout_PatientKategorie.TabIndex = 1
         Me.btnLayout_PatientKategorie.Tag = "ResID.PatientKategorie"
         Me.btnLayout_PatientKategorie.Text = "Patient/Kategorie"
@@ -392,7 +392,7 @@ Public Class contPlanung2
         Me.btnLayout_PatientBeginn.Name = "btnLayout_PatientBeginn"
         Me.btnLayout_PatientBeginn.ShowFocusRect = False
         Me.btnLayout_PatientBeginn.ShowOutline = False
-        Me.btnLayout_PatientBeginn.Size = New System.Drawing.Size(78, 23)
+        Me.btnLayout_PatientBeginn.Size = New System.Drawing.Size(78, 34)
         Me.btnLayout_PatientBeginn.TabIndex = 0
         Me.btnLayout_PatientBeginn.Tag = "ResID.PatientBeginn"
         Me.btnLayout_PatientBeginn.Text = "Patient/Beginn"
@@ -406,7 +406,7 @@ Public Class contPlanung2
         Appearance6.ForeColor = System.Drawing.Color.Black
         Appearance6.ForeColorDisabled = System.Drawing.Color.Black
         Me.btnSearch.Appearance = Appearance6
-        Me.btnSearch.Location = New System.Drawing.Point(471, 147)
+        Me.btnSearch.Location = New System.Drawing.Point(627, 157)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(72, 34)
         Me.btnSearch.TabIndex = 100
@@ -418,9 +418,10 @@ Public Class contPlanung2
         Appearance7.BackColor = System.Drawing.Color.Transparent
         Appearance7.TextVAlignAsString = "Middle"
         Me.UltraLabel1.Appearance = Appearance7
-        Me.UltraLabel1.Location = New System.Drawing.Point(9, 159)
+        Me.UltraLabel1.AutoSize = True
+        Me.UltraLabel1.Location = New System.Drawing.Point(9, 165)
         Me.UltraLabel1.Name = "UltraLabel1"
-        Me.UltraLabel1.Size = New System.Drawing.Size(63, 16)
+        Me.UltraLabel1.Size = New System.Drawing.Size(38, 14)
         Me.UltraLabel1.TabIndex = 1002
         Me.UltraLabel1.Tag = "ResID.Layout"
         Me.UltraLabel1.Text = "Layout"
@@ -434,7 +435,7 @@ Public Class contPlanung2
         Me.lblFound.Appearance = Appearance8
         Me.lblFound.AutoSize = True
         Me.lblFound.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFound.Location = New System.Drawing.Point(469, 181)
+        Me.lblFound.Location = New System.Drawing.Point(627, 133)
         Me.lblFound.Name = "lblFound"
         Me.lblFound.Size = New System.Drawing.Size(72, 12)
         Me.lblFound.TabIndex = 501
@@ -446,9 +447,10 @@ Public Class contPlanung2
         Appearance9.BackColor = System.Drawing.Color.Transparent
         Appearance9.TextVAlignAsString = "Middle"
         Me.lblAnsicht.Appearance = Appearance9
-        Me.lblAnsicht.Location = New System.Drawing.Point(9, 130)
+        Me.lblAnsicht.AutoSize = True
+        Me.lblAnsicht.Location = New System.Drawing.Point(9, 136)
         Me.lblAnsicht.Name = "lblAnsicht"
-        Me.lblAnsicht.Size = New System.Drawing.Size(89, 16)
+        Me.lblAnsicht.Size = New System.Drawing.Size(41, 14)
         Me.lblAnsicht.TabIndex = 500
         Me.lblAnsicht.Tag = "ResID.Ansicht"
         Me.lblAnsicht.Text = "Ansicht"
@@ -458,9 +460,10 @@ Public Class contPlanung2
         Appearance10.BackColor = System.Drawing.Color.Transparent
         Appearance10.TextVAlignAsString = "Middle"
         Me.lblZuordnungen.Appearance = Appearance10
-        Me.lblZuordnungen.Location = New System.Drawing.Point(9, 101)
+        Me.lblZuordnungen.AutoSize = True
+        Me.lblZuordnungen.Location = New System.Drawing.Point(9, 105)
         Me.lblZuordnungen.Name = "lblZuordnungen"
-        Me.lblZuordnungen.Size = New System.Drawing.Size(89, 16)
+        Me.lblZuordnungen.Size = New System.Drawing.Size(72, 14)
         Me.lblZuordnungen.TabIndex = 499
         Me.lblZuordnungen.Tag = "ResID.Zuordnungen"
         Me.lblZuordnungen.Text = "Zuordnungen"
@@ -470,9 +473,10 @@ Public Class contPlanung2
         Appearance11.BackColor = System.Drawing.Color.Transparent
         Appearance11.TextVAlignAsString = "Middle"
         Me.lblStatus.Appearance = Appearance11
-        Me.lblStatus.Location = New System.Drawing.Point(9, 76)
+        Me.lblStatus.AutoSize = True
+        Me.lblStatus.Location = New System.Drawing.Point(9, 79)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(38, 16)
+        Me.lblStatus.Size = New System.Drawing.Size(36, 14)
         Me.lblStatus.TabIndex = 498
         Me.lblStatus.Tag = "ResID.Status"
         Me.lblStatus.Text = "Status"
@@ -498,7 +502,7 @@ Public Class contPlanung2
         ValueListItem3.DisplayText = "Alle"
         ValueListItem3.Tag = "ResID.All"
         Me.optStatus.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem1, ValueListItem2, ValueListItem5, ValueListItem4, ValueListItem3})
-        Me.optStatus.Location = New System.Drawing.Point(125, 76)
+        Me.optStatus.Location = New System.Drawing.Point(147, 79)
         Me.optStatus.Name = "optStatus"
         Me.optStatus.Size = New System.Drawing.Size(416, 16)
         Me.optStatus.TabIndex = 3
@@ -509,7 +513,7 @@ Public Class contPlanung2
         Appearance12.BorderColor = System.Drawing.Color.Black
         Me.dropDownPatienten.Appearance = Appearance12
         Me.dropDownPatienten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
-        Me.dropDownPatienten.Location = New System.Drawing.Point(125, 98)
+        Me.dropDownPatienten.Location = New System.Drawing.Point(150, 102)
         Me.dropDownPatienten.Name = "dropDownPatienten"
         Me.dropDownPatienten.Size = New System.Drawing.Size(97, 22)
         Me.dropDownPatienten.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
@@ -522,7 +526,7 @@ Public Class contPlanung2
         Appearance13.BorderColor = System.Drawing.Color.Black
         Me.dropDownUsers.Appearance = Appearance13
         Me.dropDownUsers.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
-        Me.dropDownUsers.Location = New System.Drawing.Point(225, 98)
+        Me.dropDownUsers.Location = New System.Drawing.Point(250, 102)
         Me.dropDownUsers.Name = "dropDownUsers"
         Me.dropDownUsers.Size = New System.Drawing.Size(97, 22)
         Me.dropDownUsers.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
@@ -536,7 +540,7 @@ Public Class contPlanung2
         Me.UDateBis.Appearance = Appearance14
         Me.UDateBis.BackColor = System.Drawing.Color.White
         Me.UDateBis.DateTime = New Date(2008, 11, 3, 0, 0, 0, 0)
-        Me.UDateBis.Location = New System.Drawing.Point(272, 47)
+        Me.UDateBis.Location = New System.Drawing.Point(293, 50)
         Me.UDateBis.Name = "UDateBis"
         Me.UDateBis.Size = New System.Drawing.Size(91, 21)
         Me.UDateBis.TabIndex = 2
@@ -548,7 +552,7 @@ Public Class contPlanung2
         Me.UDateVon.Appearance = Appearance15
         Me.UDateVon.BackColor = System.Drawing.Color.White
         Me.UDateVon.DateTime = New Date(2008, 11, 3, 0, 0, 0, 0)
-        Me.UDateVon.Location = New System.Drawing.Point(125, 47)
+        Me.UDateVon.Location = New System.Drawing.Point(146, 50)
         Me.UDateVon.Name = "UDateVon"
         Me.UDateVon.Size = New System.Drawing.Size(91, 21)
         Me.UDateVon.TabIndex = 1
@@ -556,7 +560,7 @@ Public Class contPlanung2
         '
         'chkPreview
         '
-        Me.chkPreview.Location = New System.Drawing.Point(299, 129)
+        Me.chkPreview.Location = New System.Drawing.Point(324, 132)
         Me.chkPreview.Name = "chkPreview"
         Me.chkPreview.Size = New System.Drawing.Size(96, 20)
         Me.chkPreview.TabIndex = 8
@@ -580,7 +584,7 @@ Public Class contPlanung2
         Me.txtBetreff2.Appearance = Appearance16
         Me.txtBetreff2.AutoSize = False
         Me.txtBetreff2.BackColor = System.Drawing.Color.White
-        Me.txtBetreff2.Location = New System.Drawing.Point(168, 19)
+        Me.txtBetreff2.Location = New System.Drawing.Point(200, 19)
         Me.txtBetreff2.MaxLength = 0
         Me.txtBetreff2.Name = "txtBetreff2"
         Me.txtBetreff2.Size = New System.Drawing.Size(375, 23)
@@ -592,9 +596,10 @@ Public Class contPlanung2
         Appearance17.BackColor = System.Drawing.Color.Transparent
         Appearance17.TextVAlignAsString = "Middle"
         Me.lblBetreff.Appearance = Appearance17
-        Me.lblBetreff.Location = New System.Drawing.Point(125, 22)
+        Me.lblBetreff.AutoSize = True
+        Me.lblBetreff.Location = New System.Drawing.Point(143, 23)
         Me.lblBetreff.Name = "lblBetreff"
-        Me.lblBetreff.Size = New System.Drawing.Size(38, 16)
+        Me.lblBetreff.Size = New System.Drawing.Size(38, 14)
         Me.lblBetreff.TabIndex = 0
         Me.lblBetreff.Tag = "ResID.Subject"
         Me.lblBetreff.Text = "Betreff"
@@ -607,7 +612,7 @@ Public Class contPlanung2
         Me.dropDownCategories.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
         Me.dropDownCategories.Location = New System.Drawing.Point(9, 19)
         Me.dropDownCategories.Name = "dropDownCategories"
-        Me.dropDownCategories.Size = New System.Drawing.Size(110, 22)
+        Me.dropDownCategories.Size = New System.Drawing.Size(125, 22)
         Me.dropDownCategories.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
         Me.dropDownCategories.TabIndex = 6
         Me.dropDownCategories.TabStop = False
@@ -619,9 +624,10 @@ Public Class contPlanung2
         Appearance19.BackColor = System.Drawing.Color.Transparent
         Appearance19.TextVAlignAsString = "Middle"
         Me.lblBeginntZwischen.Appearance = Appearance19
-        Me.lblBeginntZwischen.Location = New System.Drawing.Point(9, 49)
+        Me.lblBeginntZwischen.AutoSize = True
+        Me.lblBeginntZwischen.Location = New System.Drawing.Point(9, 52)
         Me.lblBeginntZwischen.Name = "lblBeginntZwischen"
-        Me.lblBeginntZwischen.Size = New System.Drawing.Size(100, 16)
+        Me.lblBeginntZwischen.Size = New System.Drawing.Size(92, 14)
         Me.lblBeginntZwischen.TabIndex = 390
         Me.lblBeginntZwischen.Tag = "ResID.BeginntZwischen"
         Me.lblBeginntZwischen.Text = "Beginnt zwischen"
@@ -632,7 +638,7 @@ Public Class contPlanung2
         Appearance20.TextHAlignAsString = "Center"
         Appearance20.TextVAlignAsString = "Middle"
         Me.lblAnd.Appearance = Appearance20
-        Me.lblAnd.Location = New System.Drawing.Point(225, 49)
+        Me.lblAnd.Location = New System.Drawing.Point(246, 52)
         Me.lblAnd.Name = "lblAnd"
         Me.lblAnd.Size = New System.Drawing.Size(35, 16)
         Me.lblAnd.TabIndex = 389
@@ -647,7 +653,7 @@ Public Class contPlanung2
         Me.PanelViewModus.Controls.Add(Me._PanelViewModus_Toolbars_Dock_Area_Right)
         Me.PanelViewModus.Controls.Add(Me._PanelViewModus_Toolbars_Dock_Area_Bottom)
         Me.PanelViewModus.Controls.Add(Me._PanelViewModus_Toolbars_Dock_Area_Top)
-        Me.PanelViewModus.Location = New System.Drawing.Point(124, 126)
+        Me.PanelViewModus.Location = New System.Drawing.Point(149, 129)
         Me.PanelViewModus.Name = "PanelViewModus"
         Me.PanelViewModus.Size = New System.Drawing.Size(161, 23)
         Me.PanelViewModus.TabIndex = 7
@@ -798,7 +804,7 @@ Public Class contPlanung2
         Me.PanelDekursEntwürfe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PanelDekursEntwürfe.Controls.Add(Me.btnDekursEntwurfErstellenAs)
         Me.PanelDekursEntwürfe.Controls.Add(Me.btnDekursEntwurfErstellen)
-        Me.PanelDekursEntwürfe.Location = New System.Drawing.Point(613, 66)
+        Me.PanelDekursEntwürfe.Location = New System.Drawing.Point(767, 66)
         Me.PanelDekursEntwürfe.Name = "PanelDekursEntwürfe"
         Me.PanelDekursEntwürfe.Size = New System.Drawing.Size(103, 54)
         Me.PanelDekursEntwürfe.TabIndex = 1006
@@ -842,7 +848,7 @@ Public Class contPlanung2
         Appearance32.ForeColor = System.Drawing.Color.Black
         Appearance32.ForeColorDisabled = System.Drawing.Color.Black
         Me.btnPrint.Appearance = Appearance32
-        Me.btnPrint.Location = New System.Drawing.Point(1033, 150)
+        Me.btnPrint.Location = New System.Drawing.Point(1033, 163)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(83, 31)
         Me.btnPrint.TabIndex = 1003

@@ -30,7 +30,10 @@ namespace PMDS.GUI.STAMP
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             this.rtbLog = new System.Windows.Forms.RichTextBox();
             this.btnCheck = new QS2.Desktop.ControlManagment.BaseButton();
@@ -62,9 +65,9 @@ namespace PMDS.GUI.STAMP
             // 
             // rtbLog
             // 
-            this.rtbLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbLog.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbLog.Location = new System.Drawing.Point(8, 38);
-            this.rtbLog.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.rtbLog.Margin = new System.Windows.Forms.Padding(5);
             this.rtbLog.Name = "rtbLog";
             this.rtbLog.Size = new System.Drawing.Size(523, 737);
             this.rtbLog.TabIndex = 0;
@@ -72,21 +75,25 @@ namespace PMDS.GUI.STAMP
             // 
             // btnCheck
             // 
+            appearance1.FontData.Name = "Segoe UI";
+            appearance1.FontData.SizeInPoints = 10F;
+            this.btnCheck.Appearance = appearance1;
             this.btnCheck.AutoWorkLayout = false;
             this.btnCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheck.IsStandardControl = false;
             this.btnCheck.Location = new System.Drawing.Point(329, 38);
-            this.btnCheck.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnCheck.Margin = new System.Windows.Forms.Padding(5);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(185, 43);
             this.btnCheck.TabIndex = 1;
             this.btnCheck.Text = "Daten überprüfen";
+            this.btnCheck.UseAppStyling = false;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
             // dtMonat
             // 
             this.dtMonat.Location = new System.Drawing.Point(138, 46);
-            this.dtMonat.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dtMonat.Margin = new System.Windows.Forms.Padding(5);
             this.dtMonat.MaskInput = "{LOC}mm.yyyy";
             this.dtMonat.MinDate = new System.DateTime(2022, 4, 1, 0, 0, 0, 0);
             this.dtMonat.Name = "dtMonat";
@@ -97,36 +104,44 @@ namespace PMDS.GUI.STAMP
             // 
             // btnSenden
             // 
+            appearance2.FontData.Name = "Segoe UI";
+            appearance2.FontData.SizeInPoints = 10F;
+            this.btnSenden.Appearance = appearance2;
             this.btnSenden.AutoWorkLayout = false;
             this.btnSenden.Enabled = false;
             this.btnSenden.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSenden.IsStandardControl = false;
             this.btnSenden.Location = new System.Drawing.Point(715, 38);
-            this.btnSenden.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSenden.Margin = new System.Windows.Forms.Padding(5);
             this.btnSenden.Name = "btnSenden";
             this.btnSenden.Size = new System.Drawing.Size(185, 43);
             this.btnSenden.TabIndex = 3;
             this.btnSenden.Text = "Daten senden";
+            this.btnSenden.UseAppStyling = false;
             this.btnSenden.Click += new System.EventHandler(this.btnSenden_Click);
             // 
             // btnMelden
             // 
+            appearance3.FontData.Name = "Segoe UI";
+            appearance3.FontData.SizeInPoints = 10F;
+            this.btnMelden.Appearance = appearance3;
             this.btnMelden.AutoWorkLayout = false;
             this.btnMelden.Enabled = false;
             this.btnMelden.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMelden.IsStandardControl = false;
             this.btnMelden.Location = new System.Drawing.Point(522, 38);
-            this.btnMelden.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnMelden.Margin = new System.Windows.Forms.Padding(5);
             this.btnMelden.Name = "btnMelden";
             this.btnMelden.Size = new System.Drawing.Size(185, 43);
             this.btnMelden.TabIndex = 2;
             this.btnMelden.Text = "Neue Klienten melden";
+            this.btnMelden.UseAppStyling = false;
             this.btnMelden.Click += new System.EventHandler(this.btnMelden_Click);
             // 
             // lblError
             // 
             this.lblError.Location = new System.Drawing.Point(8, 4);
-            this.lblError.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblError.Margin = new System.Windows.Forms.Padding(4);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(525, 30);
             this.lblError.TabIndex = 6;
@@ -134,9 +149,9 @@ namespace PMDS.GUI.STAMP
             // 
             // rtbOhneSynonym
             // 
-            this.rtbOhneSynonym.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbOhneSynonym.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbOhneSynonym.Location = new System.Drawing.Point(5, 38);
-            this.rtbOhneSynonym.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.rtbOhneSynonym.Margin = new System.Windows.Forms.Padding(5);
             this.rtbOhneSynonym.Name = "rtbOhneSynonym";
             this.rtbOhneSynonym.Size = new System.Drawing.Size(347, 790);
             this.rtbOhneSynonym.TabIndex = 7;
@@ -145,7 +160,7 @@ namespace PMDS.GUI.STAMP
             // lblOhneSynonym
             // 
             this.lblOhneSynonym.Location = new System.Drawing.Point(5, 4);
-            this.lblOhneSynonym.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblOhneSynonym.Margin = new System.Windows.Forms.Padding(4);
             this.lblOhneSynonym.Name = "lblOhneSynonym";
             this.lblOhneSynonym.Size = new System.Drawing.Size(347, 30);
             this.lblOhneSynonym.TabIndex = 8;
@@ -153,9 +168,9 @@ namespace PMDS.GUI.STAMP
             // 
             // rtbOK
             // 
-            this.rtbOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbOK.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbOK.Location = new System.Drawing.Point(5, 38);
-            this.rtbOK.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.rtbOK.Margin = new System.Windows.Forms.Padding(5);
             this.rtbOK.Name = "rtbOK";
             this.rtbOK.Size = new System.Drawing.Size(351, 790);
             this.rtbOK.TabIndex = 9;
@@ -164,7 +179,7 @@ namespace PMDS.GUI.STAMP
             // lblOK
             // 
             this.lblOK.Location = new System.Drawing.Point(5, 4);
-            this.lblOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblOK.Margin = new System.Windows.Forms.Padding(4);
             this.lblOK.Name = "lblOK";
             this.lblOK.Size = new System.Drawing.Size(315, 30);
             this.lblOK.TabIndex = 10;
@@ -172,15 +187,16 @@ namespace PMDS.GUI.STAMP
             // 
             // lblMonat
             // 
-            appearance2.ForeColor = System.Drawing.Color.White;
-            this.lblMonat.Appearance = appearance2;
-            this.lblMonat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            appearance4.ForeColor = System.Drawing.Color.White;
+            this.lblMonat.Appearance = appearance4;
+            this.lblMonat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMonat.Location = new System.Drawing.Point(23, 48);
-            this.lblMonat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblMonat.Margin = new System.Windows.Forms.Padding(4);
             this.lblMonat.Name = "lblMonat";
             this.lblMonat.Size = new System.Drawing.Size(96, 30);
             this.lblMonat.TabIndex = 11;
             this.lblMonat.Text = "Monat";
+            this.lblMonat.UseAppStyling = false;
             // 
             // printDocument1
             // 
@@ -197,7 +213,7 @@ namespace PMDS.GUI.STAMP
             this.btnPrint.AutoWorkLayout = false;
             this.btnPrint.IsStandardControl = false;
             this.btnPrint.Location = new System.Drawing.Point(177, 785);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(5);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(158, 43);
             this.btnPrint.TabIndex = 4;
@@ -208,7 +224,7 @@ namespace PMDS.GUI.STAMP
             // 
             this.pictureBox1.Image = global::PMDS.GUI.Properties.Resources.LandSteiermark;
             this.pictureBox1.Location = new System.Drawing.Point(1080, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(172, 101);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -230,7 +246,7 @@ namespace PMDS.GUI.STAMP
             this.pnlTop.ClientArea.Controls.Add(this.btnMelden);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
-            this.pnlTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(4);
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(1274, 121);
             this.pnlTop.TabIndex = 14;
@@ -241,7 +257,7 @@ namespace PMDS.GUI.STAMP
             this.pnlLog.Controls.Add(this.rtbLog);
             this.pnlLog.Controls.Add(this.btnPrint);
             this.pnlLog.Location = new System.Drawing.Point(0, 128);
-            this.pnlLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLog.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLog.Name = "pnlLog";
             this.pnlLog.Size = new System.Drawing.Size(537, 1001);
             this.pnlLog.TabIndex = 15;
@@ -252,7 +268,7 @@ namespace PMDS.GUI.STAMP
             this.pnlOhneSynonym.Controls.Add(this.lblOhneSynonym);
             this.pnlOhneSynonym.Controls.Add(this.rtbOhneSynonym);
             this.pnlOhneSynonym.Location = new System.Drawing.Point(543, 128);
-            this.pnlOhneSynonym.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlOhneSynonym.Margin = new System.Windows.Forms.Padding(4);
             this.pnlOhneSynonym.Name = "pnlOhneSynonym";
             this.pnlOhneSynonym.Size = new System.Drawing.Size(360, 1001);
             this.pnlOhneSynonym.TabIndex = 16;
@@ -263,7 +279,7 @@ namespace PMDS.GUI.STAMP
             this.pnlOK.Controls.Add(this.lblOK);
             this.pnlOK.Controls.Add(this.rtbOK);
             this.pnlOK.Location = new System.Drawing.Point(909, 128);
-            this.pnlOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlOK.Margin = new System.Windows.Forms.Padding(4);
             this.pnlOK.Name = "pnlOK";
             this.pnlOK.Size = new System.Drawing.Size(360, 1001);
             this.pnlOK.TabIndex = 17;
@@ -280,7 +296,7 @@ namespace PMDS.GUI.STAMP
             this.Controls.Add(this.pnlTop);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmSTAMPMeldung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "STAMP-Meldung senden";

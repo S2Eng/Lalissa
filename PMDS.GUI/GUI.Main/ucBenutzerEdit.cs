@@ -114,7 +114,6 @@ namespace PMDS.GUI
             this.panelUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelUsers.BackColor = System.Drawing.Color.LightGray;
             this.panelUsers.Location = new System.Drawing.Point(8, 35);
             this.panelUsers.Name = "panelUsers";
             this.panelUsers.Size = new System.Drawing.Size(864, 485);

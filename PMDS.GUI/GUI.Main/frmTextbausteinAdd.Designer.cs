@@ -53,7 +53,7 @@
             this.btnOK.Appearance = appearance1;
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.IsStandardControl = false;
-            this.btnOK.Location = new System.Drawing.Point(335, 521);
+            this.btnOK.Location = new System.Drawing.Point(744, 522);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(66, 25);
             this.btnOK.TabIndex = 103;
@@ -69,7 +69,7 @@
             this.btnAbort.Appearance = appearance2;
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(401, 521);
+            this.btnAbort.Location = new System.Drawing.Point(659, 522);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(74, 25);
             this.btnAbort.TabIndex = 104;
@@ -79,7 +79,7 @@
             // 
             // txtKurzbezeichnung
             // 
-            this.txtKurzbezeichnung.Location = new System.Drawing.Point(110, 11);
+            this.txtKurzbezeichnung.Location = new System.Drawing.Point(126, 11);
             this.txtKurzbezeichnung.Name = "txtKurzbezeichnung";
             this.txtKurzbezeichnung.Size = new System.Drawing.Size(535, 21);
             this.txtKurzbezeichnung.TabIndex = 113;
@@ -95,7 +95,7 @@
             // auswahlGruppeComboMulti1
             // 
             this.auswahlGruppeComboMulti1.BackColor = System.Drawing.Color.Transparent;
-            this.auswahlGruppeComboMulti1.Location = new System.Drawing.Point(110, 36);
+            this.auswahlGruppeComboMulti1.Location = new System.Drawing.Point(126, 45);
             this.auswahlGruppeComboMulti1.Margin = new System.Windows.Forms.Padding(4);
             this.auswahlGruppeComboMulti1.Name = "auswahlGruppeComboMulti1";
             this.auswahlGruppeComboMulti1.Size = new System.Drawing.Size(535, 28);
@@ -105,7 +105,7 @@
             // lblWichtigFürCC
             // 
             this.lblWichtigFürCC.AutoSize = true;
-            this.lblWichtigFürCC.Location = new System.Drawing.Point(8, 41);
+            this.lblWichtigFürCC.Location = new System.Drawing.Point(8, 50);
             this.lblWichtigFürCC.Margin = new System.Windows.Forms.Padding(4);
             this.lblWichtigFürCC.Name = "lblWichtigFürCC";
             this.lblWichtigFürCC.Size = new System.Drawing.Size(78, 14);
@@ -118,15 +118,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelBeschreibungTXTEditor.BackColor = System.Drawing.Color.Transparent;
-            this.panelBeschreibungTXTEditor.Location = new System.Drawing.Point(8, 67);
+            this.panelBeschreibungTXTEditor.Location = new System.Drawing.Point(8, 88);
             this.panelBeschreibungTXTEditor.Margin = new System.Windows.Forms.Padding(4);
             this.panelBeschreibungTXTEditor.Name = "panelBeschreibungTXTEditor";
-            this.panelBeschreibungTXTEditor.Size = new System.Drawing.Size(802, 448);
+            this.panelBeschreibungTXTEditor.Size = new System.Drawing.Size(802, 427);
             this.panelBeschreibungTXTEditor.TabIndex = 117;
             // 
             // dsKlientenliste1
             // 
             this.dsKlientenliste1.DataSetName = "dsKlientenliste";
+            this.dsKlientenliste1.Locale = new System.Globalization.CultureInfo("de-DE");
             this.dsKlientenliste1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // errorProvider1

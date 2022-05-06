@@ -597,6 +597,10 @@ namespace PMDS.GUI.GUI.Main
             }
         }
 
+        private void txtFormularname2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

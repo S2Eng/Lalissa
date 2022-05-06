@@ -543,7 +543,7 @@
             this.ultraTabPageControl2.Controls.Add(this.ucLager1);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(1063, 207);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(1063, 199);
             // 
             // ucLager1
             // 
@@ -551,7 +551,7 @@
             this.ucLager1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucLager1.Location = new System.Drawing.Point(0, 0);
             this.ucLager1.Name = "ucLager1";
-            this.ucLager1.Size = new System.Drawing.Size(1063, 207);
+            this.ucLager1.Size = new System.Drawing.Size(1063, 199);
             this.ucLager1.TabIndex = 0;
             // 
             // btnDel
@@ -743,9 +743,9 @@
             editorButton1.Appearance = appearance16;
             editorButton1.Key = "Add";
             this.cboZustand.ButtonsRight.Add(editorButton1);
-            this.cboZustand.Location = new System.Drawing.Point(518, 14);
+            this.cboZustand.Location = new System.Drawing.Point(529, 19);
             this.cboZustand.Name = "cboZustand";
-            this.cboZustand.Size = new System.Drawing.Size(182, 21);
+            this.cboZustand.Size = new System.Drawing.Size(171, 21);
             this.cboZustand.TabIndex = 42;
             this.cboZustand.EditorButtonClick += new Infragistics.Win.UltraWinEditors.EditorButtonEventHandler(this.cboZustand_EditorButtonClick);
             // 
@@ -754,7 +754,7 @@
             appearance17.TextVAlignAsString = "Middle";
             this.lblZustandLager.Appearance = appearance17;
             this.lblZustandLager.AutoSize = true;
-            this.lblZustandLager.Location = new System.Drawing.Point(435, 16);
+            this.lblZustandLager.Location = new System.Drawing.Point(435, 21);
             this.lblZustandLager.Name = "lblZustandLager";
             this.lblZustandLager.Size = new System.Drawing.Size(77, 14);
             this.lblZustandLager.TabIndex = 43;
@@ -762,14 +762,14 @@
             // 
             // udteVerordnetBis
             // 
-            this.udteVerordnetBis.Location = new System.Drawing.Point(334, 44);
+            this.udteVerordnetBis.Location = new System.Drawing.Point(334, 47);
             this.udteVerordnetBis.Name = "udteVerordnetBis";
             this.udteVerordnetBis.Size = new System.Drawing.Size(92, 21);
             this.udteVerordnetBis.TabIndex = 3;
             // 
             // udteVerordnetAb
             // 
-            this.udteVerordnetAb.Location = new System.Drawing.Point(334, 14);
+            this.udteVerordnetAb.Location = new System.Drawing.Point(334, 19);
             this.udteVerordnetAb.Name = "udteVerordnetAb";
             this.udteVerordnetAb.Size = new System.Drawing.Size(92, 21);
             this.udteVerordnetAb.TabIndex = 2;
@@ -779,7 +779,7 @@
             appearance18.TextVAlignAsString = "Middle";
             this.lblVerordnetBis.Appearance = appearance18;
             this.lblVerordnetBis.AutoSize = true;
-            this.lblVerordnetBis.Location = new System.Drawing.Point(241, 46);
+            this.lblVerordnetBis.Location = new System.Drawing.Point(241, 49);
             this.lblVerordnetBis.Name = "lblVerordnetBis";
             this.lblVerordnetBis.Size = new System.Drawing.Size(71, 14);
             this.lblVerordnetBis.TabIndex = 18;
@@ -790,7 +790,7 @@
             appearance19.TextVAlignAsString = "Middle";
             this.lblVerordnetAb.Appearance = appearance19;
             this.lblVerordnetAb.AutoSize = true;
-            this.lblVerordnetAb.Location = new System.Drawing.Point(241, 16);
+            this.lblVerordnetAb.Location = new System.Drawing.Point(241, 21);
             this.lblVerordnetAb.Name = "lblVerordnetAb";
             this.lblVerordnetAb.Size = new System.Drawing.Size(75, 14);
             this.lblVerordnetAb.TabIndex = 17;
@@ -801,7 +801,7 @@
             appearance20.TextHAlignAsString = "Center";
             this.dropDownTyp.Appearance = appearance20;
             this.dropDownTyp.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-            this.dropDownTyp.Location = new System.Drawing.Point(9, 13);
+            this.dropDownTyp.Location = new System.Drawing.Point(9, 18);
             this.dropDownTyp.Name = "dropDownTyp";
             this.dropDownTyp.Size = new System.Drawing.Size(126, 22);
             this.dropDownTyp.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
@@ -812,7 +812,7 @@
             // 
             // chkNurAktuelle
             // 
-            this.chkNurAktuelle.Location = new System.Drawing.Point(146, 15);
+            this.chkNurAktuelle.Location = new System.Drawing.Point(146, 20);
             this.chkNurAktuelle.Name = "chkNurAktuelle";
             this.chkNurAktuelle.Size = new System.Drawing.Size(97, 18);
             this.chkNurAktuelle.TabIndex = 4;
@@ -824,7 +824,7 @@
             appearance21.TextHAlignAsString = "Center";
             this.dropDownPatienten.Appearance = appearance21;
             this.dropDownPatienten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-            this.dropDownPatienten.Location = new System.Drawing.Point(9, 43);
+            this.dropDownPatienten.Location = new System.Drawing.Point(9, 46);
             this.dropDownPatienten.Name = "dropDownPatienten";
             this.dropDownPatienten.Size = new System.Drawing.Size(126, 22);
             this.dropDownPatienten.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
@@ -840,10 +840,10 @@
             this.btnSearch.Appearance = appearance22;
             this.btnSearch.AutoWorkLayout = false;
             this.btnSearch.IsStandardControl = false;
-            this.btnSearch.Location = new System.Drawing.Point(705, 13);
+            this.btnSearch.Location = new System.Drawing.Point(705, 18);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(69, 54);
+            this.btnSearch.Size = new System.Drawing.Size(69, 49);
             this.btnSearch.TabIndex = 10;
             this.btnSearch.Tag = "";
             this.btnSearch.Text = "Suchen";

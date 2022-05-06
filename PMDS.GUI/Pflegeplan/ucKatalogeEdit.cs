@@ -318,9 +318,9 @@ namespace PMDS.GUI
             valueListItem1,
             valueListItem2,
             valueListItem3});
-            this.optEntferntJNSearch.Location = new System.Drawing.Point(745, 10);
+            this.optEntferntJNSearch.Location = new System.Drawing.Point(670, 10);
             this.optEntferntJNSearch.Name = "optEntferntJNSearch";
-            this.optEntferntJNSearch.Size = new System.Drawing.Size(192, 15);
+            this.optEntferntJNSearch.Size = new System.Drawing.Size(267, 18);
             this.optEntferntJNSearch.TabIndex = 20;
             this.optEntferntJNSearch.Text = "Nicht Entfernt";
             this.optEntferntJNSearch.ValueChanged += new System.EventHandler(this.optEntferntJNSearch_ValueChanged);
@@ -329,10 +329,11 @@ namespace PMDS.GUI
             // 
             appearance1.TextHAlignAsString = "Left";
             this.ASZLabel.Appearance = appearance1;
+            this.ASZLabel.AutoSize = true;
             this.ASZLabel.Location = new System.Drawing.Point(7, 7);
             this.ASZLabel.Name = "ASZLabel";
             this.ASZLabel.Padding = new System.Drawing.Size(0, 4);
-            this.ASZLabel.Size = new System.Drawing.Size(104, 24);
+            this.ASZLabel.Size = new System.Drawing.Size(158, 22);
             this.ASZLabel.TabIndex = 3;
             this.ASZLabel.Text = "Ätiologie/Risikofaktoren Wahl :";
             // 
@@ -343,10 +344,10 @@ namespace PMDS.GUI
             this.cbASZM.DISPLAY_TEXT = "GUI.SEARCH_MASSNAHME";
             this.cbASZM.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbASZM.GROUP = PMDS.Global.EintragGruppe.A;
-            this.cbASZM.Location = new System.Drawing.Point(127, 7);
+            this.cbASZM.Location = new System.Drawing.Point(184, 7);
             this.cbASZM.MaxDropDownItems = 30;
             this.cbASZM.Name = "cbASZM";
-            this.cbASZM.Size = new System.Drawing.Size(612, 21);
+            this.cbASZM.Size = new System.Drawing.Size(466, 21);
             this.cbASZM.TabIndex = 19;
             this.cbASZM.SelectionChanged += new System.EventHandler(this.cbASZM_SelectionChanged);
             this.cbASZM.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cbASZM_BeforeDropDown);
