@@ -1499,5 +1499,10 @@ namespace PMDS.GUI.Medikament
         {
 
         }
+
+        private void grpMedikamentBestellt_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

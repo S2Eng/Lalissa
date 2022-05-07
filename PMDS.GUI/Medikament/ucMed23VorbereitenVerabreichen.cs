@@ -416,7 +416,7 @@ namespace PMDS.GUI
 
             if (this.Visible)
             {
-                pnlEmpty.Visible = ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht ? true : false;
+                //pnlEmpty.Visible = ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht ? true : false;
                 RefreshMedikation();
             }
         }
@@ -756,7 +756,7 @@ namespace PMDS.GUI
         //Neu nach 25.01.2008 MDA
         private void HideOrShowGropMehrauswahl()
         {
-            this.pnlEmpty .Visible = ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht;
+            //this.pnlEmpty .Visible = ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht;
         }
 
         public void RefreshControl()
