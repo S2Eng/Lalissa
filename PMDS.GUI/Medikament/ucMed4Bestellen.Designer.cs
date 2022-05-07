@@ -29,39 +29,39 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMed4Bestellen));
-            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem13 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem14 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem10 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem11 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem12 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Gibt an, ob eine interne Rezeptanforderung bereits auf einer Rezeptanforderungsli" +
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Gibt an, ob eine interne Rezeptanforderung bereits auf einer Rezeptanforderungsli" +
         "ste an den Arzt oder auf einer Medikamentenbestellliste gedruckt wurde.", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem7 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem8 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem9 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Rückgängig machen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Rückgängig machen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("vRezeptBestellung2", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung");
@@ -176,7 +176,7 @@
             Infragistics.Win.ValueList valueList1 = new Infragistics.Win.ValueList(530040885);
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             this.panelTop = new System.Windows.Forms.Panel();
             this.grpSearch = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.panelSearchTop = new System.Windows.Forms.Panel();
@@ -327,8 +327,8 @@
             // 
             // lblStatusMedBestellung
             // 
-            appearance4.TextVAlignAsString = "Middle";
-            this.lblStatusMedBestellung.Appearance = appearance4;
+            appearance1.TextVAlignAsString = "Middle";
+            this.lblStatusMedBestellung.Appearance = appearance1;
             this.lblStatusMedBestellung.AutoSize = true;
             this.lblStatusMedBestellung.Location = new System.Drawing.Point(13, 25);
             this.lblStatusMedBestellung.Name = "lblStatusMedBestellung";
@@ -362,8 +362,8 @@
             // 
             // baseLabel5
             // 
-            appearance32.TextVAlignAsString = "Middle";
-            this.baseLabel5.Appearance = appearance32;
+            appearance2.TextVAlignAsString = "Middle";
+            this.baseLabel5.Appearance = appearance2;
             this.baseLabel5.AutoSize = true;
             this.baseLabel5.Location = new System.Drawing.Point(212, 61);
             this.baseLabel5.Name = "baseLabel5";
@@ -373,8 +373,8 @@
             // 
             // baseLabel8
             // 
-            appearance33.TextVAlignAsString = "Middle";
-            this.baseLabel8.Appearance = appearance33;
+            appearance3.TextVAlignAsString = "Middle";
+            this.baseLabel8.Appearance = appearance3;
             this.baseLabel8.AutoSize = true;
             this.baseLabel8.Location = new System.Drawing.Point(13, 61);
             this.baseLabel8.Name = "baseLabel8";
@@ -406,11 +406,11 @@
             // 
             // btnSearch
             // 
-            appearance31.BackColor = System.Drawing.Color.Transparent;
-            appearance31.Image = ((object)(resources.GetObject("appearance31.Image")));
-            appearance31.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance31.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSearch.Appearance = appearance31;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            appearance4.Image = ((object)(resources.GetObject("appearance4.Image")));
+            appearance4.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSearch.Appearance = appearance4;
             this.btnSearch.AutoWorkLayout = false;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnSearch.DoOnClick = true;
@@ -440,8 +440,8 @@
             // 
             // lblStatusRezeptanforderung
             // 
-            appearance34.TextVAlignAsString = "Middle";
-            this.lblStatusRezeptanforderung.Appearance = appearance34;
+            appearance5.TextVAlignAsString = "Middle";
+            this.lblStatusRezeptanforderung.Appearance = appearance5;
             this.lblStatusRezeptanforderung.AutoSize = true;
             this.lblStatusRezeptanforderung.Location = new System.Drawing.Point(11, 25);
             this.lblStatusRezeptanforderung.Name = "lblStatusRezeptanforderung";
@@ -497,8 +497,8 @@
             // 
             // lblTo
             // 
-            appearance35.TextVAlignAsString = "Middle";
-            this.lblTo.Appearance = appearance35;
+            appearance6.TextVAlignAsString = "Middle";
+            this.lblTo.Appearance = appearance6;
             this.lblTo.AutoSize = true;
             this.lblTo.Location = new System.Drawing.Point(216, 61);
             this.lblTo.Name = "lblTo";
@@ -508,8 +508,8 @@
             // 
             // lblFrom
             // 
-            appearance36.TextVAlignAsString = "Middle";
-            this.lblFrom.Appearance = appearance36;
+            appearance7.TextVAlignAsString = "Middle";
+            this.lblFrom.Appearance = appearance7;
             this.lblFrom.AutoSize = true;
             this.lblFrom.Location = new System.Drawing.Point(11, 59);
             this.lblFrom.Name = "lblFrom";
@@ -570,22 +570,22 @@
             // 
             // lblDruckstatus
             // 
-            appearance37.TextVAlignAsString = "Middle";
-            this.lblDruckstatus.Appearance = appearance37;
+            appearance8.TextVAlignAsString = "Middle";
+            this.lblDruckstatus.Appearance = appearance8;
             this.lblDruckstatus.AutoSize = true;
             this.lblDruckstatus.Location = new System.Drawing.Point(12, 27);
             this.lblDruckstatus.Name = "lblDruckstatus";
             this.lblDruckstatus.Size = new System.Drawing.Size(43, 17);
             this.lblDruckstatus.TabIndex = 112;
             this.lblDruckstatus.Text = "Status";
-            ultraToolTipInfo3.ToolTipText = "Gibt an, ob eine interne Rezeptanforderung bereits auf einer Rezeptanforderungsli" +
+            ultraToolTipInfo2.ToolTipText = "Gibt an, ob eine interne Rezeptanforderung bereits auf einer Rezeptanforderungsli" +
     "ste an den Arzt oder auf einer Medikamentenbestellliste gedruckt wurde.";
-            this.ultraToolTipManager1.SetUltraToolTip(this.lblDruckstatus, ultraToolTipInfo3);
+            this.ultraToolTipManager1.SetUltraToolTip(this.lblDruckstatus, ultraToolTipInfo2);
             // 
             // lblDringend
             // 
-            appearance38.TextVAlignAsString = "Middle";
-            this.lblDringend.Appearance = appearance38;
+            appearance26.TextVAlignAsString = "Middle";
+            this.lblDringend.Appearance = appearance26;
             this.lblDringend.AutoSize = true;
             this.lblDringend.Location = new System.Drawing.Point(12, 128);
             this.lblDringend.Name = "lblDringend";
@@ -641,8 +641,8 @@
             // 
             // baseLabel1
             // 
-            appearance39.TextVAlignAsString = "Middle";
-            this.baseLabel1.Appearance = appearance39;
+            appearance27.TextVAlignAsString = "Middle";
+            this.baseLabel1.Appearance = appearance27;
             this.baseLabel1.AutoSize = true;
             this.baseLabel1.Location = new System.Drawing.Point(232, 61);
             this.baseLabel1.Name = "baseLabel1";
@@ -652,8 +652,8 @@
             // 
             // baseLabel2
             // 
-            appearance40.TextVAlignAsString = "Middle";
-            this.baseLabel2.Appearance = appearance40;
+            appearance28.TextVAlignAsString = "Middle";
+            this.baseLabel2.Appearance = appearance28;
             this.baseLabel2.AutoSize = true;
             this.baseLabel2.Location = new System.Drawing.Point(10, 61);
             this.baseLabel2.Name = "baseLabel2";
@@ -664,8 +664,8 @@
             // 
             // lblAbteilung
             // 
-            appearance41.TextVAlignAsString = "Middle";
-            this.lblAbteilung.Appearance = appearance41;
+            appearance29.TextVAlignAsString = "Middle";
+            this.lblAbteilung.Appearance = appearance29;
             this.lblAbteilung.AutoSize = true;
             this.lblAbteilung.Location = new System.Drawing.Point(10, 94);
             this.lblAbteilung.Name = "lblAbteilung";
@@ -675,11 +675,11 @@
             // 
             // btnClearAbteilung
             // 
-            appearance42.BackColor = System.Drawing.Color.Transparent;
-            appearance42.Image = ((object)(resources.GetObject("appearance42.Image")));
-            appearance42.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance42.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnClearAbteilung.Appearance = appearance42;
+            appearance30.BackColor = System.Drawing.Color.Transparent;
+            appearance30.Image = ((object)(resources.GetObject("appearance30.Image")));
+            appearance30.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance30.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnClearAbteilung.Appearance = appearance30;
             this.btnClearAbteilung.AutoWorkLayout = false;
             this.btnClearAbteilung.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnClearAbteilung.DoOnClick = true;
@@ -703,7 +703,6 @@
             this.panelBottom.Controls.Add(this.btnMedikamentenbestellliste);
             this.panelBottom.Controls.Add(this.btnRezepteDrucken);
             this.panelBottom.Controls.Add(this.btnRezepteanforderungsliste);
-            this.panelBottom.Controls.Add(this.lblAllNone);
             this.panelBottom.Controls.Add(this.btnUndo);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottom.Location = new System.Drawing.Point(0, 532);
@@ -713,25 +712,25 @@
             // 
             // btnMedikamentenuebernahme
             // 
-            this.btnMedikamentenuebernahme.Location = new System.Drawing.Point(642, 17);
+            this.btnMedikamentenuebernahme.Location = new System.Drawing.Point(642, 12);
             this.btnMedikamentenuebernahme.Name = "btnMedikamentenuebernahme";
-            this.btnMedikamentenuebernahme.Size = new System.Drawing.Size(172, 31);
+            this.btnMedikamentenuebernahme.Size = new System.Drawing.Size(172, 36);
             this.btnMedikamentenuebernahme.TabIndex = 109;
             this.btnMedikamentenuebernahme.Text = "Medikamentenlieferung";
             this.btnMedikamentenuebernahme.Click += new System.EventHandler(this.btnMedikamentenuebernahme_Click);
             // 
             // btnTerminErstellen
             // 
-            appearance30.Image = ((object)(resources.GetObject("appearance30.Image")));
-            appearance30.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance30.TextHAlignAsString = "Left";
-            appearance30.TextVAlignAsString = "Middle";
-            this.btnTerminErstellen.Appearance = appearance30;
+            appearance24.Image = ((object)(resources.GetObject("appearance24.Image")));
+            appearance24.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance24.TextHAlignAsString = "Left";
+            appearance24.TextVAlignAsString = "Middle";
+            this.btnTerminErstellen.Appearance = appearance24;
             this.btnTerminErstellen.AutoWorkLayout = false;
             this.btnTerminErstellen.IsStandardControl = false;
-            this.btnTerminErstellen.Location = new System.Drawing.Point(10, 17);
+            this.btnTerminErstellen.Location = new System.Drawing.Point(10, 12);
             this.btnTerminErstellen.Name = "btnTerminErstellen";
-            this.btnTerminErstellen.Size = new System.Drawing.Size(124, 31);
+            this.btnTerminErstellen.Size = new System.Drawing.Size(124, 36);
             this.btnTerminErstellen.TabIndex = 108;
             this.btnTerminErstellen.Text = "Termin erstellen";
             this.btnTerminErstellen.Click += new System.EventHandler(this.btnTerminErstellen_Click);
@@ -739,9 +738,9 @@
             // btnAbort
             // 
             this.btnAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAbort.Location = new System.Drawing.Point(1000, 17);
+            this.btnAbort.Location = new System.Drawing.Point(1000, 12);
             this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Size = new System.Drawing.Size(94, 29);
+            this.btnAbort.Size = new System.Drawing.Size(94, 34);
             this.btnAbort.TabIndex = 107;
             this.btnAbort.Text = "Rückgängig";
             this.btnAbort.Click += new System.EventHandler(this.btnAbort_Click);
@@ -749,36 +748,36 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(1102, 17);
+            this.btnSave.Location = new System.Drawing.Point(1102, 12);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(88, 29);
+            this.btnSave.Size = new System.Drawing.Size(88, 34);
             this.btnSave.TabIndex = 106;
             this.btnSave.Text = "Speichern";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnMedikamentenbestellliste
             // 
-            this.btnMedikamentenbestellliste.Location = new System.Drawing.Point(313, 17);
+            this.btnMedikamentenbestellliste.Location = new System.Drawing.Point(313, 12);
             this.btnMedikamentenbestellliste.Name = "btnMedikamentenbestellliste";
-            this.btnMedikamentenbestellliste.Size = new System.Drawing.Size(177, 31);
+            this.btnMedikamentenbestellliste.Size = new System.Drawing.Size(177, 36);
             this.btnMedikamentenbestellliste.TabIndex = 102;
             this.btnMedikamentenbestellliste.Text = "Medikamentenbestellliste";
             this.btnMedikamentenbestellliste.Click += new System.EventHandler(this.btnMedikamentenbestellliste_Click);
             // 
             // btnRezepteDrucken
             // 
-            this.btnRezepteDrucken.Location = new System.Drawing.Point(500, 17);
+            this.btnRezepteDrucken.Location = new System.Drawing.Point(500, 12);
             this.btnRezepteDrucken.Name = "btnRezepteDrucken";
-            this.btnRezepteDrucken.Size = new System.Drawing.Size(134, 31);
+            this.btnRezepteDrucken.Size = new System.Drawing.Size(134, 36);
             this.btnRezepteDrucken.TabIndex = 101;
             this.btnRezepteDrucken.Text = "Rezepte drucken";
             this.btnRezepteDrucken.Click += new System.EventHandler(this.btnRezepteDrucken_Click);
             // 
             // btnRezepteanforderungsliste
             // 
-            this.btnRezepteanforderungsliste.Location = new System.Drawing.Point(140, 17);
+            this.btnRezepteanforderungsliste.Location = new System.Drawing.Point(140, 12);
             this.btnRezepteanforderungsliste.Name = "btnRezepteanforderungsliste";
-            this.btnRezepteanforderungsliste.Size = new System.Drawing.Size(165, 31);
+            this.btnRezepteanforderungsliste.Size = new System.Drawing.Size(165, 36);
             this.btnRezepteanforderungsliste.TabIndex = 100;
             this.btnRezepteanforderungsliste.Text = "Rezeptanforderungsliste";
             this.btnRezepteanforderungsliste.Click += new System.EventHandler(this.btnRezepteanforderungsliste_Click);
@@ -791,10 +790,10 @@
             this.lblAllNone.Appearance = appearance22;
             this.lblAllNone.AutoSize = true;
             this.lblAllNone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            appearance43.FontData.UnderlineAsString = "True";
-            this.lblAllNone.HotTrackAppearance = appearance43;
+            appearance23.FontData.UnderlineAsString = "True";
+            this.lblAllNone.HotTrackAppearance = appearance23;
             this.lblAllNone.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblAllNone.Location = new System.Drawing.Point(15, 2);
+            this.lblAllNone.Location = new System.Drawing.Point(36, 6);
             this.lblAllNone.Name = "lblAllNone";
             this.lblAllNone.Size = new System.Drawing.Size(27, 16);
             this.lblAllNone.TabIndex = 105;
@@ -807,25 +806,25 @@
             // btnUndo
             // 
             this.btnUndo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance44.BackColor = System.Drawing.Color.Transparent;
-            appearance44.Image = ((object)(resources.GetObject("appearance44.Image")));
-            appearance44.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance44.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnUndo.Appearance = appearance44;
+            appearance25.BackColor = System.Drawing.Color.Transparent;
+            appearance25.Image = ((object)(resources.GetObject("appearance25.Image")));
+            appearance25.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance25.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnUndo.Appearance = appearance25;
             this.btnUndo.AutoWorkLayout = false;
             this.btnUndo.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnUndo.DoOnClick = true;
             this.btnUndo.Enabled = false;
             this.btnUndo.IsStandardControl = true;
-            this.btnUndo.Location = new System.Drawing.Point(960, 17);
+            this.btnUndo.Location = new System.Drawing.Point(960, 12);
             this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(31, 29);
+            this.btnUndo.Size = new System.Drawing.Size(31, 34);
             this.btnUndo.TabIndex = 103;
             this.btnUndo.TabStop = false;
             this.btnUndo.TYPE = PMDS.GUI.ucButton.ButtonType.Undo;
             this.btnUndo.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
-            ultraToolTipInfo4.ToolTipText = "Rückgängig machen";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnUndo, ultraToolTipInfo4);
+            ultraToolTipInfo1.ToolTipText = "Rückgängig machen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnUndo, ultraToolTipInfo1);
             this.btnUndo.Visible = false;
             this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
             // 
@@ -834,6 +833,7 @@
             this.panelCenter.BackColor = System.Drawing.Color.Transparent;
             this.panelCenter.Controls.Add(this.gridMedikamenteBestellen);
             this.panelCenter.Controls.Add(this.btnDelete);
+            this.panelCenter.Controls.Add(this.lblAllNone);
             this.panelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCenter.Location = new System.Drawing.Point(0, 179);
             this.panelCenter.Name = "panelCenter";
@@ -1280,7 +1280,7 @@
             valueList1});
             this.gridMedikamenteBestellen.Location = new System.Drawing.Point(4, 27);
             this.gridMedikamenteBestellen.Name = "gridMedikamenteBestellen";
-            this.gridMedikamenteBestellen.Size = new System.Drawing.Size(1194, 325);
+            this.gridMedikamenteBestellen.Size = new System.Drawing.Size(1194, 332);
             this.gridMedikamenteBestellen.TabIndex = 0;
             this.gridMedikamenteBestellen.Text = "ultraGrid1";
             this.gridMedikamenteBestellen.AfterCellActivate += new System.EventHandler(this.gridMedikamenteBestellen_AfterCellActivate);
@@ -1317,11 +1317,11 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance25.BackColor = System.Drawing.Color.Transparent;
-            appearance25.Image = ((object)(resources.GetObject("appearance25.Image")));
-            appearance25.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance25.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDelete.Appearance = appearance25;
+            appearance21.BackColor = System.Drawing.Color.Transparent;
+            appearance21.Image = ((object)(resources.GetObject("appearance21.Image")));
+            appearance21.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance21.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDelete.Appearance = appearance21;
             this.btnDelete.AutoWorkLayout = false;
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDelete.DoOnClick = true;
@@ -1375,8 +1375,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.optGedrucktJN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datRezeptanforderungFrom)).EndInit();
             this.panelBottom.ResumeLayout(false);
-            this.panelBottom.PerformLayout();
             this.panelCenter.ResumeLayout(false);
+            this.panelCenter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMedikamenteBestellen)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vRezeptBestellung2BindingSource)).EndInit();
