@@ -45,8 +45,8 @@ namespace PMDS.Global
 
 		public static void ResetColors()
 		{
-            _ErrorBackColor = Color.DarkSalmon;
-            _ErrorForeColor = Color.Black;
+            _ErrorBackColor = Color.LightSalmon;
+            _ErrorForeColor = Color.Red;
 
 			_AColor 							= Color.Blue;
 			_SColor 							= Color.GreenYellow;

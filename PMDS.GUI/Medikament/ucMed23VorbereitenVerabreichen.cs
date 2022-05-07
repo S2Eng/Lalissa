@@ -350,9 +350,9 @@ namespace PMDS.GUI
                                 }
                             }
                         }
-                        //Zeilen enfärben
+                        //Zeilen einfärben
                         if (bAbgegeben)
-                            UltraGridTools.SetColors(r, Color.Black, Color.LightGreen);
+                            UltraGridTools.SetColors(r, Color.Black, Color.PaleTurquoise);
                         else if (bAbgabeWaehrendAbwesenheit)
                             UltraGridTools.SetColors(r, Color.Black, Color.LightBlue);
                         else

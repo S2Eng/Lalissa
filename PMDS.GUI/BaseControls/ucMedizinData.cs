@@ -295,19 +295,19 @@ namespace PMDS.GUI.BaseControls
                     }
                     else if (rS2_GetKlientenliste.Notfall == "Ja, kein Termin offen")
                     {
-                        maxNotfallColor = Color.Green;
+                        maxNotfallColor = Color.LightGreen;
                     }
                     else if (rS2_GetKlientenliste.Notfall == "Ja, Termin(e) offen")
                     {
-                        maxNotfallColor = Color.Yellow;
+                        maxNotfallColor = Color.LightYellow;
                     }
                     else if (rS2_GetKlientenliste.Notfall == "Ja, Termin(e) überfällig")
                     {
-                        maxNotfallColor = Color.Red;
+                        maxNotfallColor = Color.MistyRose;
                     }
                     else if (rS2_GetKlientenliste.Notfall == "Ja, Standardprozedur offen")
                     {
-                        maxNotfallColor = Color.Orange;
+                        maxNotfallColor = Color.PeachPuff;
                     }
                     else
                     {
@@ -357,7 +357,7 @@ namespace PMDS.GUI.BaseControls
             List<SPNextHelper> al = SP.AllOpenSPPos(IDSP);
             foreach (SPNextHelper n in al)
             {
-                maxNotfallColor = Color.Yellow;
+                maxNotfallColor = Color.LightYellow;
                 if (n._next < DateTime.Now)                             // Wenn Zeitpunkt abgelaufen, dann rot
                     maxNotfallColor = Color.Red;
                 sb.Append(Environment.NewLine);

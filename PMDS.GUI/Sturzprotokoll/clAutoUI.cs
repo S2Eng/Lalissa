@@ -169,25 +169,14 @@ namespace PMDS.GUI
                     IsLabel = true;
                     Infragistics.Win.Misc.UltraLabel newLabel = new QS2.Desktop.ControlManagment.BaseLabel();
                     ContToAdd = (Infragistics.Win.Misc.UltraLabel)newLabel;
-                    newLabel.UseAppStyling = false;
-                    //newLabel.Appearance.ForeColor = System.Drawing.Color.RoyalBlue;
-                    //newLabel.Appearance.BackColor = System.Drawing.Color.Yellow;
                     if (rUIElementFound.ElementHeigth > 5)
                     {
                         newLabel.AutoSize = true;
-                        //newLabel.AutoSize = false;
-                        //newLabel.Width = PanelToLoad.Width - clAutoUI.LeftSpace - clAutoUI.RigthSpace;
-                        //newLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-                        //ContToAdd.Height = rUIElementFound.ElementHeigth;
                     }
                     else
                     {
                         newLabel.AutoSize = true;
-                        //newLabel.Width = PanelToLoad.Width - clAutoUI.LeftSpace - clAutoUI.RigthSpace;
-                        //newLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-                        //ContToAdd.Height = 12;
                     }
-                    //newLabel.Text = rUIElementFound.LabelTxt.Trim();
                 }
                 else if (UIType.Trim().Equals("Double", StringComparison.CurrentCultureIgnoreCase))
                 {

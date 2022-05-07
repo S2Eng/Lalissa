@@ -1772,11 +1772,6 @@ Public Class contPlanungData
                                 appointment.Appearance.BackColor = System.Drawing.Color.DarkGreen
                                 appointment.Appearance.ForeColor = Color.White
                                 appointment.Appearance.FontData.Bold = DefaultableBoolean.False
-                                'If bEMailNotReaded Then
-                                '    appointment.Appearance.FontData.Bold = DefaultableBoolean.True
-                                'Else
-                                '    appointment.Appearance.FontData.Bold = DefaultableBoolean.False
-                                'End If
                             End If
 
                             If rPlan.IDArt = 1 Or rPlan.IDArt = 2 Then

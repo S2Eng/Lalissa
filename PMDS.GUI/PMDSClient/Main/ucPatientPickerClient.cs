@@ -150,25 +150,25 @@ namespace PMDS.GUI.PMDSClient
             ValueListItem itm1 = new ValueListItem();
             itm1.DisplayText = "Kein Termin offen";
             itm1.DataValue = "Ja, kein Termin offen";
-            itm1.Appearance.BackColor = System.Drawing.Color.Green;
+            itm1.Appearance.BackColor = System.Drawing.Color.PaleTurquoise;
             v.ValueListItems.Add(itm1);
 
             ValueListItem itm2 = new ValueListItem();
             itm2.DisplayText = "Termin(e) offen";
             itm2.DataValue = "Ja, Termin(e) offen";
-            itm2.Appearance.BackColor = System.Drawing.Color.Yellow;
+            itm2.Appearance.BackColor = System.Drawing.Color.LightYellow;
             v.ValueListItems.Add(itm2);
 
             ValueListItem itm3 = new ValueListItem();
             itm3.DisplayText = "Termin(e) überfällig";
             itm3.DataValue = "Ja, Termin(e) überfällig";
-            itm3.Appearance.BackColor = System.Drawing.Color.Red;
+            itm3.Appearance.BackColor = System.Drawing.Color.MistyRose;
             v.ValueListItems.Add(itm3);
 
             ValueListItem itm4 = new ValueListItem();
             itm4.DisplayText = "Standardprozedur offen";
             itm4.DataValue = "Ja, Standardprozedur offen";
-            itm4.Appearance.BackColor = System.Drawing.Color.Orange;
+            itm4.Appearance.BackColor = System.Drawing.Color.PeachPuff;
             v.ValueListItems.Add(itm4);
 
             this.dgEintrag.DisplayLayout.ValueLists.Add(v);

@@ -583,7 +583,7 @@ namespace PMDS.GUI
                 GuiWorkflow.HeaderMain.contPatientUserPicker1.initControl(PatientUserPicker.contPatientUserPicker.eTypeUIPicker.PatientSingle, true, eTypePatientenUserPickerChanged.MainPickerLeftTop);
                 GuiWorkflow.HeaderMain.contPatientUserPicker1.resetPicker(false, true);
                 GuiWorkflow.HeaderMain.clearPatientInfo();
-                //GuiWorkflow.HeaderMain.RefreshPatientInfo(true, true);
+                GuiWorkflow.HeaderMain.RefreshPatientInfo(true, true, false);
 
                 GuiWorkflow._guiworkflow.initInterventionenBereich(eUITypeTermine.Interventionen, TerminlisteAnsichtsmodi.Bereichsansicht);
                 GuiWorkflow._guiworkflow._SitemapTermineInterventionenBereich.RefreshTermin(false);

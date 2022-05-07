@@ -206,46 +206,54 @@ namespace PMDS.GUI
         {
             try
             {
-                if (PMDS.Global.historie.HistorieOn)
-                    RefreshControl(IDPatient, true, clickGridTermine);
-                else if (ENV.AnsichtsModus != _LastTerminlisteAnsichtsmodi)
-                    RefreshControl(IDPatient, true, clickGridTermine);
-                else if ((_LastIDPatient == IDPatient && !(_LastIDPatient == Guid.Empty && IDPatient == Guid.Empty)) || _PreventSelfRefreshing)
-                {
-                    //Patient pat = new Patient(IDPatient);
-                    RefreshControl(IDPatient, true, clickGridTermine);
-                }
-                else
-                {
-                    RefreshControl(IDPatient, true, clickGridTermine);
-                }
+                //os: Immer RefreshControl und Patientenpicker
+                RefreshControl(IDPatient, true, clickGridTermine);
 
-                if (refreshPicker)
+                if (this.contPatientUserPicker1.contSelectPatienten != null)
                 {
-                    //PMDSBusinessComm.checkMessageForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
-                    if (ucHeader.bKlinikChanged)
-                    {
-                        if (this.contPatientUserPicker1.contSelectPatienten != null)
-                        {
-                            this.contPatientUserPicker1.contSelectPatienten.initControlData();
-                        }
-                        ucHeader.bKlinikChanged = false;
-                    }
-                    this.contPatientUserPicker1.initControl(PatientUserPicker.contPatientUserPicker.eTypeUIPicker.PatientSingle, true, eTypePatientenUserPickerChanged.MainPickerLeftTop);
-                    this.contPatientUserPicker1.selectUserPatient(IDPATIENT);
+                    this.contPatientUserPicker1.contSelectPatienten.initControlData();
                 }
-                else
-                {
-                    bool NoRefresPicker = true;
-                }
-
+                ucHeader.bKlinikChanged = false;
+                this.contPatientUserPicker1.initControl(PatientUserPicker.contPatientUserPicker.eTypeUIPicker.PatientSingle, true, eTypePatientenUserPickerChanged.MainPickerLeftTop);
+                this.contPatientUserPicker1.selectUserPatient(IDPATIENT);
             }
+
+            //if (PMDS.Global.historie.HistorieOn)
+            //    RefreshControl(IDPatient, true, clickGridTermine);
+            //else if (ENV.AnsichtsModus != _LastTerminlisteAnsichtsmodi)
+            //    RefreshControl(IDPatient, true, clickGridTermine);
+            //else if ((_LastIDPatient == IDPatient && !(_LastIDPatient == Guid.Empty && IDPatient == Guid.Empty)) || _PreventSelfRefreshing)
+            //{
+            //    //Patient pat = new Patient(IDPatient);
+            //    RefreshControl(IDPatient, true, clickGridTermine);
+            //}
+            //else
+            //{
+            //    RefreshControl(IDPatient, true, clickGridTermine);
+            //}
+
+
+
+
+            //if (refreshPicker)
+            //    {
+            //        if (ucHeader.bKlinikChanged)
+            //        {
+            //            if (this.contPatientUserPicker1.contSelectPatienten != null)
+            //            {
+            //                this.contPatientUserPicker1.contSelectPatienten.initControlData();
+            //            }
+            //            ucHeader.bKlinikChanged = false;
+            //        }
+            //        this.contPatientUserPicker1.initControl(PatientUserPicker.contPatientUserPicker.eTypeUIPicker.PatientSingle, true, eTypePatientenUserPickerChanged.MainPickerLeftTop);
+            //        this.contPatientUserPicker1.selectUserPatient(IDPATIENT);
+            //    }
+            //}
             catch (Exception ex)
             {
                 throw new Exception("ucHeader.ENV_ENVPatientIDChanged: " + ex.ToString());
             }
         }
-
 
         void ucMedizinDaten2_NotfallSelected(Guid IDSP)
         {

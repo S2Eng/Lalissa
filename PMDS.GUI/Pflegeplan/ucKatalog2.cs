@@ -646,6 +646,7 @@ namespace PMDS.GUI
             this.lWarnhinweis = new QS2.Desktop.ControlManagment.BaseLabel();
             this.grpMain = new QS2.Desktop.ControlManagment.BaseGroupBoxWin();
             this.lblPflegestufeneinschaetzung = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cbPflegestufenEinschaetzung = new PMDS.GUI.BaseControls.PflegestufenEinschaetzung();
             this.chkEntferntJN = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.lvStProzeduren = new Infragistics.Win.UltraWinListView.UltraListView();
             this.lblStProzeduren = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -654,15 +655,14 @@ namespace PMDS.GUI
             this.btnShowDocument = new QS2.Desktop.ControlManagment.BaseButton();
             this.cbMOhnezeitbezug = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.lLinkDokument = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cbLinkDokument = new PMDS.GUI.BaseControls.LinkDokumenteCombo();
+            this.cbEintragTyp = new PMDS.GUI.BaseControls.EintragtypCombo();
             this.lblTyp = new QS2.Desktop.ControlManagment.BaseLabel();
             this.cbBedarfsmedikation = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.panelDropDownFormulare = new System.Windows.Forms.Panel();
             this.dropFormulare = new Infragistics.Win.Misc.UltraDropDownButton();
             this.UltraPopupControlContainer_Formulare = new Infragistics.Win.Misc.UltraPopupControlContainer(this.components);
             this.PanelFormulare = new QS2.Desktop.ControlManagment.BasePanel();
-            this.cbPflegestufenEinschaetzung = new PMDS.GUI.BaseControls.PflegestufenEinschaetzung();
-            this.cbLinkDokument = new PMDS.GUI.BaseControls.LinkDokumenteCombo();
-            this.cbEintragTyp = new PMDS.GUI.BaseControls.EintragtypCombo();
             this.gridFormulare = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.dsKlientenliste1 = new PMDS.Global.db.ERSystem.dsKlientenliste();
             this.dsEintrag1 = new PMDS.Global.db.Pflegeplan.dsEintrag();
@@ -672,15 +672,15 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.txtASZM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWarnhinweis)).BeginInit();
             this.grpMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPflegestufenEinschaetzung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEntferntJN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lvStProzeduren)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbMOhnezeitbezug)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbLinkDokument)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbEintragTyp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBedarfsmedikation)).BeginInit();
             this.panelDropDownFormulare.SuspendLayout();
             this.PanelFormulare.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbPflegestufenEinschaetzung)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbLinkDokument)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbEintragTyp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridFormulare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsKlientenliste1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsEintrag1)).BeginInit();
@@ -776,7 +776,7 @@ namespace PMDS.GUI
             this.grpMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.grpMain.Location = new System.Drawing.Point(16, 3);
             this.grpMain.Name = "grpMain";
-            this.grpMain.Size = new System.Drawing.Size(831, 354);
+            this.grpMain.Size = new System.Drawing.Size(831, 539);
             this.grpMain.TabIndex = 15;
             this.grpMain.TabStop = false;
             // 
@@ -788,6 +788,18 @@ namespace PMDS.GUI
             this.lblPflegestufeneinschaetzung.Size = new System.Drawing.Size(66, 23);
             this.lblPflegestufeneinschaetzung.TabIndex = 132;
             this.lblPflegestufeneinschaetzung.Text = "PSE-Krit.:";
+            // 
+            // cbPflegestufenEinschaetzung
+            // 
+            this.cbPflegestufenEinschaetzung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbPflegestufenEinschaetzung.Location = new System.Drawing.Point(584, 43);
+            this.cbPflegestufenEinschaetzung.Name = "cbPflegestufenEinschaetzung";
+            this.cbPflegestufenEinschaetzung.PSEKlasse = "";
+            this.cbPflegestufenEinschaetzung.Size = new System.Drawing.Size(231, 24);
+            this.cbPflegestufenEinschaetzung.strDefault = null;
+            this.cbPflegestufenEinschaetzung.TabIndex = 131;
+            this.cbPflegestufenEinschaetzung.ValueChanged += new System.EventHandler(this.cbPflegestufenEinschaetzung_ValueChanged);
             // 
             // chkEntferntJN
             // 
@@ -810,7 +822,7 @@ namespace PMDS.GUI
             this.lvStProzeduren.ItemSettings.SelectionType = Infragistics.Win.UltraWinListView.SelectionType.Single;
             this.lvStProzeduren.Location = new System.Drawing.Point(120, 191);
             this.lvStProzeduren.Name = "lvStProzeduren";
-            this.lvStProzeduren.Size = new System.Drawing.Size(695, 163);
+            this.lvStProzeduren.Size = new System.Drawing.Size(695, 348);
             this.lvStProzeduren.TabIndex = 9;
             this.lvStProzeduren.Text = "ultraListView1";
             this.lvStProzeduren.View = Infragistics.Win.UltraWinListView.UltraListViewStyle.List;
@@ -874,6 +886,26 @@ namespace PMDS.GUI
             this.lLinkDokument.TabIndex = 18;
             this.lLinkDokument.Text = "Dokument";
             // 
+            // cbLinkDokument
+            // 
+            this.cbLinkDokument.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cbLinkDokument.IDLinkDokument = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.cbLinkDokument.Location = new System.Drawing.Point(120, 141);
+            this.cbLinkDokument.Name = "cbLinkDokument";
+            this.cbLinkDokument.Size = new System.Drawing.Size(380, 24);
+            this.cbLinkDokument.TabIndex = 6;
+            this.cbLinkDokument.ValueChanged += new System.EventHandler(this.cbLinkDokument_ValueChanged);
+            // 
+            // cbEintragTyp
+            // 
+            this.cbEintragTyp.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cbEintragTyp.EintragTyp = PMDS.Global.EintragFlag.Einzelabzeichnung;
+            this.cbEintragTyp.Location = new System.Drawing.Point(339, 43);
+            this.cbEintragTyp.Name = "cbEintragTyp";
+            this.cbEintragTyp.Size = new System.Drawing.Size(160, 24);
+            this.cbEintragTyp.TabIndex = 2;
+            this.cbEintragTyp.ValueChanged += new System.EventHandler(this.cbEintragTyp_ValueChanged);
+            // 
             // lblTyp
             // 
             this.lblTyp.Location = new System.Drawing.Point(300, 42);
@@ -889,7 +921,7 @@ namespace PMDS.GUI
             this.cbBedarfsmedikation.Name = "cbBedarfsmedikation";
             this.cbBedarfsmedikation.Size = new System.Drawing.Size(424, 20);
             this.cbBedarfsmedikation.TabIndex = 8;
-            this.cbBedarfsmedikation.Text = "Diese Maﬂnahme dient zum Abzeichnen von Einzelverordnungen";
+            this.cbBedarfsmedikation.Text = "Maﬂnahme zum Abzeichnen von Einzelverordnungen";
             this.cbBedarfsmedikation.CheckedChanged += new System.EventHandler(this.cbBedarfsmedikation_CheckedChanged);
             // 
             // panelDropDownFormulare
@@ -924,38 +956,6 @@ namespace PMDS.GUI
             this.PanelFormulare.Size = new System.Drawing.Size(391, 339);
             this.PanelFormulare.TabIndex = 128;
             this.PanelFormulare.Visible = false;
-            // 
-            // cbPflegestufenEinschaetzung
-            // 
-            this.cbPflegestufenEinschaetzung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbPflegestufenEinschaetzung.Location = new System.Drawing.Point(584, 43);
-            this.cbPflegestufenEinschaetzung.Name = "cbPflegestufenEinschaetzung";
-            this.cbPflegestufenEinschaetzung.PSEKlasse = "";
-            this.cbPflegestufenEinschaetzung.Size = new System.Drawing.Size(231, 24);
-            this.cbPflegestufenEinschaetzung.strDefault = null;
-            this.cbPflegestufenEinschaetzung.TabIndex = 131;
-            this.cbPflegestufenEinschaetzung.ValueChanged += new System.EventHandler(this.cbPflegestufenEinschaetzung_ValueChanged);
-            // 
-            // cbLinkDokument
-            // 
-            this.cbLinkDokument.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cbLinkDokument.IDLinkDokument = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.cbLinkDokument.Location = new System.Drawing.Point(120, 141);
-            this.cbLinkDokument.Name = "cbLinkDokument";
-            this.cbLinkDokument.Size = new System.Drawing.Size(380, 24);
-            this.cbLinkDokument.TabIndex = 6;
-            this.cbLinkDokument.ValueChanged += new System.EventHandler(this.cbLinkDokument_ValueChanged);
-            // 
-            // cbEintragTyp
-            // 
-            this.cbEintragTyp.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cbEintragTyp.EintragTyp = PMDS.Global.EintragFlag.Einzelabzeichnung;
-            this.cbEintragTyp.Location = new System.Drawing.Point(339, 43);
-            this.cbEintragTyp.Name = "cbEintragTyp";
-            this.cbEintragTyp.Size = new System.Drawing.Size(160, 24);
-            this.cbEintragTyp.TabIndex = 2;
-            this.cbEintragTyp.ValueChanged += new System.EventHandler(this.cbEintragTyp_ValueChanged);
             // 
             // gridFormulare
             // 
@@ -1086,22 +1086,22 @@ namespace PMDS.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Controls.Add(this.grpMain);
             this.Name = "ucKatalog2";
-            this.Size = new System.Drawing.Size(880, 361);
+            this.Size = new System.Drawing.Size(880, 546);
             this.Load += new System.EventHandler(this.ucKatalog2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cbSicht)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtASZM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWarnhinweis)).EndInit();
             this.grpMain.ResumeLayout(false);
             this.grpMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPflegestufenEinschaetzung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEntferntJN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lvStProzeduren)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbMOhnezeitbezug)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbLinkDokument)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbEintragTyp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBedarfsmedikation)).EndInit();
             this.panelDropDownFormulare.ResumeLayout(false);
             this.PanelFormulare.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cbPflegestufenEinschaetzung)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbLinkDokument)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbEintragTyp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridFormulare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsKlientenliste1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsEintrag1)).EndInit();

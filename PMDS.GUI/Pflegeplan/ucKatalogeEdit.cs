@@ -14,7 +14,7 @@ using Infragistics.Win;
 using PMDS.Data.PflegePlan;
 using PMDS.Global.db.Patient;
 using PMDS.Global.db.Pflegeplan;
-
+using S2Extensions;
 
 namespace PMDS.GUI
 {
@@ -562,7 +562,7 @@ namespace PMDS.GUI
             this.btnRessourcen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRessourcen.ImageSize = new System.Drawing.Size(40, 40);
             this.btnRessourcen.IsStandardControl = false;
-            this.btnRessourcen.Location = new System.Drawing.Point(240, 6);
+            this.btnRessourcen.Location = new System.Drawing.Point(489, 6);
             this.btnRessourcen.Name = "btnRessourcen";
             this.btnRessourcen.ShowFocusRect = false;
             this.btnRessourcen.ShowOutline = false;
@@ -591,7 +591,7 @@ namespace PMDS.GUI
             this.btnMaßnahmen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaßnahmen.ImageSize = new System.Drawing.Size(40, 40);
             this.btnMaßnahmen.IsStandardControl = false;
-            this.btnMaßnahmen.Location = new System.Drawing.Point(474, 6);
+            this.btnMaßnahmen.Location = new System.Drawing.Point(723, 6);
             this.btnMaßnahmen.Name = "btnMaßnahmen";
             this.btnMaßnahmen.ShowFocusRect = false;
             this.btnMaßnahmen.ShowOutline = false;
@@ -620,7 +620,7 @@ namespace PMDS.GUI
             this.btnZiele.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnZiele.ImageSize = new System.Drawing.Size(40, 40);
             this.btnZiele.IsStandardControl = false;
-            this.btnZiele.Location = new System.Drawing.Point(357, 6);
+            this.btnZiele.Location = new System.Drawing.Point(606, 6);
             this.btnZiele.Name = "btnZiele";
             this.btnZiele.ShowFocusRect = false;
             this.btnZiele.ShowOutline = false;
@@ -649,7 +649,7 @@ namespace PMDS.GUI
             this.btnSympthome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSympthome.ImageSize = new System.Drawing.Size(40, 40);
             this.btnSympthome.IsStandardControl = false;
-            this.btnSympthome.Location = new System.Drawing.Point(123, 6);
+            this.btnSympthome.Location = new System.Drawing.Point(372, 6);
             this.btnSympthome.Name = "btnSympthome";
             this.btnSympthome.ShowFocusRect = false;
             this.btnSympthome.ShowOutline = false;
@@ -682,10 +682,10 @@ namespace PMDS.GUI
             this.btnÄthologien.Name = "btnÄthologien";
             this.btnÄthologien.ShowFocusRect = false;
             this.btnÄthologien.ShowOutline = false;
-            this.btnÄthologien.Size = new System.Drawing.Size(111, 28);
+            this.btnÄthologien.Size = new System.Drawing.Size(360, 28);
             this.btnÄthologien.TabIndex = 23;
             this.btnÄthologien.Tag = "A";
-            this.btnÄthologien.Text = "Ätiololgien / Risikofaktoren";
+            this.btnÄthologien.Text = "Ätiololgien / Risikofaktoren /  Beeinflussende Faktoren";
             this.btnÄthologien.UseAppStyling = false;
             this.btnÄthologien.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnÄthologien.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
@@ -1537,21 +1537,50 @@ namespace PMDS.GUI
 
         public void setButtonsAktivDeaktiv(SiteEvents aktivButton)
         {
-            if (aktivButton == SiteEvents.aszm_äthologien) { PMDS.Global.UIGlobal.setAktiv(this.btnÄthologien, -1, System.Drawing.Color.DarkRed, System.Drawing.Color.DarkRed, System.Drawing.Color.White   ); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnÄthologien, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.WhiteSmoke, UIElementButtonStyle.Button); }
+            if (aktivButton == SiteEvents.aszm_äthologien) 
+            { 
+                PMDS.Global.UIGlobal.setAktiv(this.btnÄthologien, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol); 
+            }
+            else 
+            { 
+                PMDS.Global.UIGlobal.setAktivDisable(this.btnÄthologien, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button); 
+            }
 
-            if (aktivButton == SiteEvents.aszm_sympthome) { PMDS.Global.UIGlobal.setAktiv(this.btnSympthome, -1, System.Drawing.Color.DarkRed, System.Drawing.Color.DarkRed, System.Drawing.Color.White); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnSympthome, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.WhiteSmoke, UIElementButtonStyle.Button); }
+            if (aktivButton == SiteEvents.aszm_sympthome) 
+            { 
+                PMDS.Global.UIGlobal.setAktiv(this.btnSympthome, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
+            }
+            else 
+            { 
+                PMDS.Global.UIGlobal.setAktivDisable(this.btnSympthome, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
+            }
 
-            if (aktivButton == SiteEvents.aszm_ziele) { PMDS.Global.UIGlobal.setAktiv(this.btnZiele, -1, System.Drawing.Color.DarkRed, System.Drawing.Color.DarkRed, System.Drawing.Color.White); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnZiele, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.WhiteSmoke, UIElementButtonStyle.Button); }
+            if (aktivButton == SiteEvents.aszm_ziele) 
+            { 
+                PMDS.Global.UIGlobal.setAktiv(this.btnZiele, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
+            }
+            else 
+            { 
+                PMDS.Global.UIGlobal.setAktivDisable(this.btnZiele, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
+            }
 
-            if (aktivButton == SiteEvents.aszm_maßnahmen) { PMDS.Global.UIGlobal.setAktiv(this.btnMaßnahmen, -1, System.Drawing.Color.DarkRed, System.Drawing.Color.DarkRed, System.Drawing.Color.White); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnMaßnahmen, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.WhiteSmoke , UIElementButtonStyle.Button); }
+            if (aktivButton == SiteEvents.aszm_maßnahmen) 
+            { 
+                PMDS.Global.UIGlobal.setAktiv(this.btnMaßnahmen, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
+            }
+            else 
+            { 
+                PMDS.Global.UIGlobal.setAktivDisable(this.btnMaßnahmen, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
+            }
 
-            if (aktivButton == SiteEvents.aszm_ressourcen) { PMDS.Global.UIGlobal.setAktiv(this.btnRessourcen, -1, System.Drawing.Color.DarkRed, System.Drawing.Color.DarkRed, System.Drawing.Color.White); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnRessourcen, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.WhiteSmoke, UIElementButtonStyle.Button); }
-
+            if (aktivButton == SiteEvents.aszm_ressourcen) 
+            { 
+                PMDS.Global.UIGlobal.setAktiv(this.btnRessourcen, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
+            }
+            else 
+            { 
+                PMDS.Global.UIGlobal.setAktivDisable(this.btnRessourcen, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
+            }
         }
 
         private void openASZM(string key )
@@ -1559,13 +1588,6 @@ namespace PMDS.GUI
             pnlKatalog2.Visible = false;
             _SelectedMod = 'e';
             this.cbASZM.EntferntJN = (int)this.optEntferntJNSearch.Value;
-
-            //foreach (UltraExplorerBarGroup g in ultraExplorerBar1.Groups.All) // alle außer die ausgewählte + Verwaltungs Gruppe schließen
-            //{
-            //    if (e.Group.Key != g.Key)
-            //        if (g.Key != "Verwaltung")
-            //            g.Expanded = false;
-            //}
 
             _SelectedGroup = key;
              ASZLabel.Text = ENV.String(_SelectedGroup + "_Select");

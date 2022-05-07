@@ -106,11 +106,11 @@ namespace PMDS.GUI
                 if ((ucKlient1.Klient != null && IDPatient != Guid.Empty && IDPatient != ucKlient1.Klient.ID) || ucSiteMapKlientenDetails.alwaysAskForSave)
                     AskForSave();
 
-                if (this.Visible && ENV.CurrentAnsichtinfo.Ansichtsmodus == TerminlisteAnsichtsmodi.Klientanansicht)
-                {
+                //if (this.Visible && ENV.CurrentAnsichtinfo.Ansichtsmodus == TerminlisteAnsichtsmodi.Klientanansicht)
+                //{
                     this.lockRefresh = true;
                     RefreshPatient();
-                }
+                //}
 
             }
             catch (Exception ex)
@@ -655,23 +655,26 @@ namespace PMDS.GUI
             try
             {
                 ucKlient1.SuspendLayout();
-                if ((ucKlient1.Klient.ID != ENV.CurrentIDPatient && ENV.CurrentIDPatient != Guid.Empty) || lockRefresh)
+                if ((ucKlient1.Klient.ID != ENV.CurrentIDPatient && ENV.CurrentIDPatient != Guid.Empty) || lockRefresh    )
                 {
-                    this.Cursor = Cursors.WaitCursor;
-                    
-                    ucKlient1.Visible = false;
+                    if (ENV.CurrentIDPatient != Guid.Empty)         //Aus Bereichsansicht kann der Klient leer sein!
+                    {
+                        this.Cursor = Cursors.WaitCursor;
 
-                    KlientDetails klient = new KlientDetails(ENV.CurrentIDPatient, Aufenthalt.LastByPatient(ENV.CurrentIDPatient), true);
-                    ucKlient1.Klient = klient;          //os-Performance !!!!!!
-                    CheckForRezeptgebührbefreiung(ucKlient1.Klient.ID);
-                    ucKlient1.ResumeLayout();
-                    ucKlient1.Visible = true;
- 
-                    UpdateActions();
-                    btnSave2.Enabled = false;
-                    btnundo2.Enabled = false;
+                        ucKlient1.Visible = false;
 
-                    _ContentChanged = false;
+                        KlientDetails klient = new KlientDetails(ENV.CurrentIDPatient, Aufenthalt.LastByPatient(ENV.CurrentIDPatient), true);
+                        ucKlient1.Klient = klient;          //os-Performance !!!!!!
+                        CheckForRezeptgebührbefreiung(ucKlient1.Klient.ID);
+                        ucKlient1.ResumeLayout();
+                        ucKlient1.Visible = true;
+
+                        UpdateActions();
+                        btnSave2.Enabled = false;
+                        btnundo2.Enabled = false;
+
+                        _ContentChanged = false;
+                    }
                 }
             }
             catch (Exception ex)

@@ -388,6 +388,7 @@ namespace PMDS.GUI
         {
             cbo.Appearance.BackColor = Color.Yellow;
         }
+
         public static void setColorTxt(UltraTextEditor txt)
         {
             txt.Appearance.BackColor = Color.Yellow;
