@@ -36,6 +36,7 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint3 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
@@ -129,7 +130,6 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
             this.pnlFilter = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraGridBagLayoutPanel3 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.pnlTopLeft = new QS2.Desktop.ControlManagment.BasePanel();
@@ -141,10 +141,13 @@ namespace PMDS.GUI
             this.lblBis = new QS2.Desktop.ControlManagment.BaseLableWin();
             this.pnlVorbereitung = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraGridBagLayoutPanel4 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
+            this.basePanel1 = new QS2.Desktop.ControlManagment.BasePanel();
+            this.basePanel3 = new QS2.Desktop.ControlManagment.BasePanel();
             this.gbMedPrint = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.cbAnmerkung = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.cbBedarf = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.btnPrint = new QS2.Desktop.ControlManagment.BaseButton();
+            this.basePanel2 = new QS2.Desktop.ControlManagment.BasePanel();
             this.gbAbzeichnen = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.btnAbzeichnen = new QS2.Desktop.ControlManagment.BaseButton();
             this.pnlTopMiddle = new QS2.Desktop.ControlManagment.BasePanel();
@@ -169,9 +172,6 @@ namespace PMDS.GUI
             this.dgMain = new QS2.Desktop.ControlManagment.BaseGrid();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.basePanel1 = new QS2.Desktop.ControlManagment.BasePanel();
-            this.basePanel2 = new QS2.Desktop.ControlManagment.BasePanel();
-            this.basePanel3 = new QS2.Desktop.ControlManagment.BasePanel();
             dsMedikationVonBis1xy = new PMDS.Global.db.Global.dsMedikationVonBis();
             ((System.ComponentModel.ISupportInitialize)(dsMedikationVonBis1xy)).BeginInit();
             this.pnlFilter.SuspendLayout();
@@ -183,10 +183,13 @@ namespace PMDS.GUI
             this.pnlVorbereitung.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel4)).BeginInit();
             this.ultraGridBagLayoutPanel4.SuspendLayout();
+            this.basePanel1.SuspendLayout();
+            this.basePanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gbMedPrint)).BeginInit();
             this.gbMedPrint.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbAnmerkung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBedarf)).BeginInit();
+            this.basePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gbAbzeichnen)).BeginInit();
             this.gbAbzeichnen.SuspendLayout();
             this.pnlTopMiddle.SuspendLayout();
@@ -207,9 +210,6 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.cbLangfristig)).BeginInit();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMain)).BeginInit();
-            this.basePanel1.SuspendLayout();
-            this.basePanel2.SuspendLayout();
-            this.basePanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dsMedikationVonBis1xy
@@ -224,7 +224,7 @@ namespace PMDS.GUI
             this.pnlFilter.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFilter.Location = new System.Drawing.Point(0, 0);
             this.pnlFilter.Name = "pnlFilter";
-            this.pnlFilter.Size = new System.Drawing.Size(1012, 120);
+            this.pnlFilter.Size = new System.Drawing.Size(1199, 120);
             this.pnlFilter.TabIndex = 0;
             // 
             // ultraGridBagLayoutPanel3
@@ -241,7 +241,7 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraGridBagLayoutPanel3.Location = new System.Drawing.Point(0, 3);
             this.ultraGridBagLayoutPanel3.Name = "ultraGridBagLayoutPanel3";
-            this.ultraGridBagLayoutPanel3.Size = new System.Drawing.Size(1009, 114);
+            this.ultraGridBagLayoutPanel3.Size = new System.Drawing.Size(1098, 114);
             this.ultraGridBagLayoutPanel3.TabIndex = 2;
             // 
             // pnlTopLeft
@@ -258,7 +258,7 @@ namespace PMDS.GUI
             this.pnlTopLeft.Location = new System.Drawing.Point(5, 5);
             this.pnlTopLeft.Name = "pnlTopLeft";
             this.ultraGridBagLayoutPanel3.SetPreferredSize(this.pnlTopLeft, new System.Drawing.Size(209, 0));
-            this.pnlTopLeft.Size = new System.Drawing.Size(209, 104);
+            this.pnlTopLeft.Size = new System.Drawing.Size(227, 104);
             this.pnlTopLeft.TabIndex = 9;
             // 
             // ultraGroupBoxMedZeitraum
@@ -273,7 +273,7 @@ namespace PMDS.GUI
             this.ultraGroupBoxMedZeitraum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGroupBoxMedZeitraum.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBoxMedZeitraum.Name = "ultraGroupBoxMedZeitraum";
-            this.ultraGroupBoxMedZeitraum.Size = new System.Drawing.Size(209, 104);
+            this.ultraGroupBoxMedZeitraum.Size = new System.Drawing.Size(227, 104);
             this.ultraGroupBoxMedZeitraum.TabIndex = 1;
             this.ultraGroupBoxMedZeitraum.Text = "Zeitraum";
             // 
@@ -281,7 +281,7 @@ namespace PMDS.GUI
             // 
             appearance2.BackColor = System.Drawing.Color.Transparent;
             this.btnTimes.Appearance = appearance2;
-            this.btnTimes.Location = new System.Drawing.Point(182, 19);
+            this.btnTimes.Location = new System.Drawing.Point(186, 20);
             this.btnTimes.Name = "btnTimes";
             this.btnTimes.ShowFocusRect = false;
             this.btnTimes.Size = new System.Drawing.Size(21, 20);
@@ -294,9 +294,9 @@ namespace PMDS.GUI
             // 
             this.dtpFrom.CustomFormat = "dd.MM.yyyy HH:mm";
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFrom.Location = new System.Drawing.Point(51, 21);
+            this.dtpFrom.Location = new System.Drawing.Point(40, 21);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(121, 22);
+            this.dtpFrom.Size = new System.Drawing.Size(142, 22);
             this.dtpFrom.TabIndex = 0;
             this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
@@ -304,9 +304,9 @@ namespace PMDS.GUI
             // 
             this.dtpTo.CustomFormat = "dd.MM.yyyy HH:mm";
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTo.Location = new System.Drawing.Point(52, 51);
+            this.dtpTo.Location = new System.Drawing.Point(41, 51);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(120, 22);
+            this.dtpTo.Size = new System.Drawing.Size(141, 22);
             this.dtpTo.TabIndex = 1;
             this.dtpTo.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
@@ -340,10 +340,10 @@ namespace PMDS.GUI
             gridBagConstraint3.OriginX = 5;
             gridBagConstraint3.OriginY = 0;
             this.ultraGridBagLayoutPanel3.SetGridBagConstraint(this.pnlVorbereitung, gridBagConstraint3);
-            this.pnlVorbereitung.Location = new System.Drawing.Point(772, 5);
+            this.pnlVorbereitung.Location = new System.Drawing.Point(839, 5);
             this.pnlVorbereitung.Name = "pnlVorbereitung";
             this.ultraGridBagLayoutPanel3.SetPreferredSize(this.pnlVorbereitung, new System.Drawing.Size(238, 0));
-            this.pnlVorbereitung.Size = new System.Drawing.Size(237, 104);
+            this.pnlVorbereitung.Size = new System.Drawing.Size(259, 104);
             this.pnlVorbereitung.TabIndex = 14;
             // 
             // ultraGridBagLayoutPanel4
@@ -355,8 +355,31 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.ultraGridBagLayoutPanel4.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.ultraGridBagLayoutPanel4.Name = "ultraGridBagLayoutPanel4";
-            this.ultraGridBagLayoutPanel4.Size = new System.Drawing.Size(237, 104);
+            this.ultraGridBagLayoutPanel4.Size = new System.Drawing.Size(259, 104);
             this.ultraGridBagLayoutPanel4.TabIndex = 2;
+            // 
+            // basePanel1
+            // 
+            this.basePanel1.Controls.Add(this.basePanel3);
+            this.basePanel1.Controls.Add(this.basePanel2);
+            gridBagConstraint2.Fill = Infragistics.Win.Layout.FillType.Both;
+            gridBagConstraint2.OriginX = 0;
+            gridBagConstraint2.OriginY = 0;
+            this.ultraGridBagLayoutPanel4.SetGridBagConstraint(this.basePanel1, gridBagConstraint2);
+            this.basePanel1.Location = new System.Drawing.Point(0, 0);
+            this.basePanel1.Name = "basePanel1";
+            this.ultraGridBagLayoutPanel4.SetPreferredSize(this.basePanel1, new System.Drawing.Size(106, 81));
+            this.basePanel1.Size = new System.Drawing.Size(259, 104);
+            this.basePanel1.TabIndex = 0;
+            // 
+            // basePanel3
+            // 
+            this.basePanel3.Controls.Add(this.gbMedPrint);
+            this.basePanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.basePanel3.Location = new System.Drawing.Point(108, 0);
+            this.basePanel3.Name = "basePanel3";
+            this.basePanel3.Size = new System.Drawing.Size(151, 104);
+            this.basePanel3.TabIndex = 15;
             // 
             // gbMedPrint
             // 
@@ -368,7 +391,7 @@ namespace PMDS.GUI
             this.gbMedPrint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbMedPrint.Location = new System.Drawing.Point(0, 0);
             this.gbMedPrint.Name = "gbMedPrint";
-            this.gbMedPrint.Size = new System.Drawing.Size(129, 104);
+            this.gbMedPrint.Size = new System.Drawing.Size(151, 104);
             this.gbMedPrint.TabIndex = 13;
             this.gbMedPrint.Text = "Drucken";
             // 
@@ -396,7 +419,7 @@ namespace PMDS.GUI
             this.cbBedarf.BackColorInternal = System.Drawing.Color.Transparent;
             this.cbBedarf.Location = new System.Drawing.Point(11, 57);
             this.cbBedarf.Name = "cbBedarf";
-            this.cbBedarf.Size = new System.Drawing.Size(114, 16);
+            this.cbBedarf.Size = new System.Drawing.Size(136, 16);
             this.cbBedarf.TabIndex = 9;
             this.cbBedarf.Text = "Einzelverordn.";
             // 
@@ -412,6 +435,15 @@ namespace PMDS.GUI
             this.btnPrint.TabIndex = 3;
             this.btnPrint.Text = "Drucken";
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click_1);
+            // 
+            // basePanel2
+            // 
+            this.basePanel2.Controls.Add(this.gbAbzeichnen);
+            this.basePanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.basePanel2.Location = new System.Drawing.Point(0, 0);
+            this.basePanel2.Name = "basePanel2";
+            this.basePanel2.Size = new System.Drawing.Size(108, 104);
+            this.basePanel2.TabIndex = 14;
             // 
             // gbAbzeichnen
             // 
@@ -433,7 +465,7 @@ namespace PMDS.GUI
             this.btnAbzeichnen.IsStandardControl = false;
             this.btnAbzeichnen.Location = new System.Drawing.Point(3, 21);
             this.btnAbzeichnen.Name = "btnAbzeichnen";
-            this.btnAbzeichnen.Size = new System.Drawing.Size(105, 30);
+            this.btnAbzeichnen.Size = new System.Drawing.Size(101, 30);
             this.btnAbzeichnen.TabIndex = 3;
             this.btnAbzeichnen.Text = "Abzeichnen";
             this.btnAbzeichnen.Click += new System.EventHandler(this.btnAbzeichnen_Click);
@@ -449,10 +481,10 @@ namespace PMDS.GUI
             gridBagConstraint4.OriginY = 0;
             gridBagConstraint4.SpanX = 2;
             this.ultraGridBagLayoutPanel3.SetGridBagConstraint(this.pnlTopMiddle, gridBagConstraint4);
-            this.pnlTopMiddle.Location = new System.Drawing.Point(519, 5);
+            this.pnlTopMiddle.Location = new System.Drawing.Point(563, 5);
             this.pnlTopMiddle.Name = "pnlTopMiddle";
             this.ultraGridBagLayoutPanel3.SetPreferredSize(this.pnlTopMiddle, new System.Drawing.Size(136, 0));
-            this.pnlTopMiddle.Size = new System.Drawing.Size(136, 104);
+            this.pnlTopMiddle.Size = new System.Drawing.Size(148, 104);
             this.pnlTopMiddle.TabIndex = 10;
             // 
             // ultraGroupBoxHandzeichen
@@ -465,7 +497,7 @@ namespace PMDS.GUI
             this.ultraGroupBoxHandzeichen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGroupBoxHandzeichen.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBoxHandzeichen.Name = "ultraGroupBoxHandzeichen";
-            this.ultraGroupBoxHandzeichen.Size = new System.Drawing.Size(136, 104);
+            this.ultraGroupBoxHandzeichen.Size = new System.Drawing.Size(148, 104);
             this.ultraGroupBoxHandzeichen.TabIndex = 0;
             this.ultraGroupBoxHandzeichen.Text = "Handzeichen";
             // 
@@ -515,10 +547,10 @@ namespace PMDS.GUI
             gridBagConstraint5.OriginX = 4;
             gridBagConstraint5.OriginY = 0;
             this.ultraGridBagLayoutPanel3.SetGridBagConstraint(this.pnlAusgabe, gridBagConstraint5);
-            this.pnlAusgabe.Location = new System.Drawing.Point(660, 5);
+            this.pnlAusgabe.Location = new System.Drawing.Point(716, 5);
             this.pnlAusgabe.Name = "pnlAusgabe";
             this.ultraGridBagLayoutPanel3.SetPreferredSize(this.pnlAusgabe, new System.Drawing.Size(108, 0));
-            this.pnlAusgabe.Size = new System.Drawing.Size(107, 104);
+            this.pnlAusgabe.Size = new System.Drawing.Size(118, 104);
             this.pnlAusgabe.TabIndex = 12;
             // 
             // gbPrintAusgabe
@@ -529,7 +561,7 @@ namespace PMDS.GUI
             this.gbPrintAusgabe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPrintAusgabe.Location = new System.Drawing.Point(0, 0);
             this.gbPrintAusgabe.Name = "gbPrintAusgabe";
-            this.gbPrintAusgabe.Size = new System.Drawing.Size(107, 104);
+            this.gbPrintAusgabe.Size = new System.Drawing.Size(118, 104);
             this.gbPrintAusgabe.TabIndex = 12;
             this.gbPrintAusgabe.Text = "Drucken";
             this.gbPrintAusgabe.Click += new System.EventHandler(this.gbPrintAusgabe_Click);
@@ -557,10 +589,10 @@ namespace PMDS.GUI
             gridBagConstraint6.OriginX = 1;
             gridBagConstraint6.OriginY = 0;
             this.ultraGridBagLayoutPanel3.SetGridBagConstraint(this.pnlTopRight, gridBagConstraint6);
-            this.pnlTopRight.Location = new System.Drawing.Point(219, 5);
+            this.pnlTopRight.Location = new System.Drawing.Point(237, 5);
             this.pnlTopRight.Name = "pnlTopRight";
             this.ultraGridBagLayoutPanel3.SetPreferredSize(this.pnlTopRight, new System.Drawing.Size(296, 0));
-            this.pnlTopRight.Size = new System.Drawing.Size(295, 104);
+            this.pnlTopRight.Size = new System.Drawing.Size(321, 104);
             this.pnlTopRight.TabIndex = 11;
             // 
             // ultraGroupBoxMedFilter
@@ -577,7 +609,7 @@ namespace PMDS.GUI
             this.ultraGroupBoxMedFilter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGroupBoxMedFilter.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBoxMedFilter.Name = "ultraGroupBoxMedFilter";
-            this.ultraGroupBoxMedFilter.Size = new System.Drawing.Size(295, 104);
+            this.ultraGroupBoxMedFilter.Size = new System.Drawing.Size(321, 104);
             this.ultraGroupBoxMedFilter.TabIndex = 8;
             this.ultraGroupBoxMedFilter.Text = "Filter";
             // 
@@ -679,7 +711,7 @@ namespace PMDS.GUI
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 120);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1012, 343);
+            this.pnlMain.Size = new System.Drawing.Size(1199, 343);
             this.pnlMain.TabIndex = 1;
             // 
             // btnTerminErstellen
@@ -1176,9 +1208,9 @@ namespace PMDS.GUI
             this.dgMain.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.dgMain.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.dgMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgMain.Location = new System.Drawing.Point(5, 17);
+            this.dgMain.Location = new System.Drawing.Point(0, 1);
             this.dgMain.Name = "dgMain";
-            this.dgMain.Size = new System.Drawing.Size(1002, 288);
+            this.dgMain.Size = new System.Drawing.Size(1199, 304);
             this.dgMain.TabIndex = 1;
             this.dgMain.Text = "ultraGrid1";
             this.dgMain.AfterRowActivate += new System.EventHandler(this.dgMain_AfterRowActivate);
@@ -1194,38 +1226,6 @@ namespace PMDS.GUI
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "ICO_Patient.ico");
             // 
-            // basePanel1
-            // 
-            this.basePanel1.Controls.Add(this.basePanel3);
-            this.basePanel1.Controls.Add(this.basePanel2);
-            gridBagConstraint2.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint2.OriginX = 0;
-            gridBagConstraint2.OriginY = 0;
-            this.ultraGridBagLayoutPanel4.SetGridBagConstraint(this.basePanel1, gridBagConstraint2);
-            this.basePanel1.Location = new System.Drawing.Point(0, 0);
-            this.basePanel1.Name = "basePanel1";
-            this.ultraGridBagLayoutPanel4.SetPreferredSize(this.basePanel1, new System.Drawing.Size(106, 81));
-            this.basePanel1.Size = new System.Drawing.Size(237, 104);
-            this.basePanel1.TabIndex = 0;
-            // 
-            // basePanel2
-            // 
-            this.basePanel2.Controls.Add(this.gbAbzeichnen);
-            this.basePanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.basePanel2.Location = new System.Drawing.Point(0, 0);
-            this.basePanel2.Name = "basePanel2";
-            this.basePanel2.Size = new System.Drawing.Size(108, 104);
-            this.basePanel2.TabIndex = 14;
-            // 
-            // basePanel3
-            // 
-            this.basePanel3.Controls.Add(this.gbMedPrint);
-            this.basePanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.basePanel3.Location = new System.Drawing.Point(108, 0);
-            this.basePanel3.Name = "basePanel3";
-            this.basePanel3.Size = new System.Drawing.Size(129, 104);
-            this.basePanel3.TabIndex = 15;
-            // 
             // ucMed23VorbereitenVerabreichen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1234,7 +1234,7 @@ namespace PMDS.GUI
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlFilter);
             this.Name = "ucMed23VorbereitenVerabreichen";
-            this.Size = new System.Drawing.Size(1012, 463);
+            this.Size = new System.Drawing.Size(1199, 463);
             this.Load += new System.EventHandler(this.ucMedikation_Load);
             this.VisibleChanged += new System.EventHandler(this.ucMedikation_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(dsMedikationVonBis1xy)).EndInit();
@@ -1248,11 +1248,14 @@ namespace PMDS.GUI
             this.pnlVorbereitung.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel4)).EndInit();
             this.ultraGridBagLayoutPanel4.ResumeLayout(false);
+            this.basePanel1.ResumeLayout(false);
+            this.basePanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gbMedPrint)).EndInit();
             this.gbMedPrint.ResumeLayout(false);
             this.gbMedPrint.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbAnmerkung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBedarf)).EndInit();
+            this.basePanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gbAbzeichnen)).EndInit();
             this.gbAbzeichnen.ResumeLayout(false);
             this.pnlTopMiddle.ResumeLayout(false);
@@ -1273,9 +1276,6 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.cbLangfristig)).EndInit();
             this.pnlMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgMain)).EndInit();
-            this.basePanel1.ResumeLayout(false);
-            this.basePanel2.ResumeLayout(false);
-            this.basePanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
