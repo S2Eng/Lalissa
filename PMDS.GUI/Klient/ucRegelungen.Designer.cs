@@ -30,7 +30,7 @@ namespace PMDS.GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
@@ -39,12 +39,10 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn79 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAufenthalt");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn80 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Grund");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn81 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Beginn");
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn82 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Dauer");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn83 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AngeordnetVon");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn84 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AngeordnetAm");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn85 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AufgehobenAm");
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn87 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GefahrFuerLebenGesundheitJN");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn88 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EingriffUnerlaesslichJN");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn89 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AufgehobenVon");
@@ -138,6 +136,8 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DauermedikationJN_2016");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Dauermedikation_2016");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EDI_BenutzerGesendet", 0);
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
@@ -148,32 +148,30 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucRegelungen));
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucRegelungen));
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Auswahl zur Ansicht öffnen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint3 = new Infragistics.Win.Layout.GridBagConstraint();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dtPatVerf = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
@@ -253,8 +251,8 @@ namespace PMDS.GUI
             // 
             // dtPatVerf
             // 
-            appearance26.BackColorDisabled = System.Drawing.Color.White;
-            this.dtPatVerf.Appearance = appearance26;
+            appearance24.BackColorDisabled = System.Drawing.Color.White;
+            this.dtPatVerf.Appearance = appearance24;
             this.dtPatVerf.DateTime = new System.DateTime(2006, 12, 14, 0, 0, 0, 0);
             this.dtPatVerf.FormatString = "";
             this.errorProvider1.SetIconAlignment(this.dtPatVerf, System.Windows.Forms.ErrorIconAlignment.TopRight);
@@ -286,8 +284,8 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel3.SetGridBagConstraint(this.grpHeimaufenthaltsges, gridBagConstraint2);
             this.grpHeimaufenthaltsges.Location = new System.Drawing.Point(5, 0);
             this.grpHeimaufenthaltsges.Name = "grpHeimaufenthaltsges";
-            this.ultraGridBagLayoutPanel3.SetPreferredSize(this.grpHeimaufenthaltsges, new System.Drawing.Size(258, 159));
-            this.grpHeimaufenthaltsges.Size = new System.Drawing.Size(796, 203);
+            this.ultraGridBagLayoutPanel3.SetPreferredSize(this.grpHeimaufenthaltsges, new System.Drawing.Size(258, 158));
+            this.grpHeimaufenthaltsges.Size = new System.Drawing.Size(1090, 307);
             this.grpHeimaufenthaltsges.TabIndex = 156;
             this.grpHeimaufenthaltsges.Text = "Heimaufenthalts- / Unterbringungsgesetz";
             // 
@@ -299,7 +297,7 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel1.ExpandToFitWidth = true;
             this.ultraGridBagLayoutPanel1.Location = new System.Drawing.Point(3, 49);
             this.ultraGridBagLayoutPanel1.Name = "ultraGridBagLayoutPanel1";
-            this.ultraGridBagLayoutPanel1.Size = new System.Drawing.Size(790, 151);
+            this.ultraGridBagLayoutPanel1.Size = new System.Drawing.Size(1084, 255);
             this.ultraGridBagLayoutPanel1.TabIndex = 40;
             // 
             // gridUnterbringung
@@ -323,9 +321,6 @@ namespace PMDS.GUI
             ultraGridColumn80.Header.VisiblePosition = 2;
             ultraGridColumn80.Hidden = true;
             ultraGridColumn81.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
-            ultraGridColumn81.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
-            appearance3.BackColor = System.Drawing.Color.Gainsboro;
-            ultraGridColumn81.CellAppearance = appearance3;
             ultraGridColumn81.Header.Editor = null;
             ultraGridColumn81.Header.VisiblePosition = 3;
             ultraGridColumn81.RowLayoutColumnInfo.OriginX = 0;
@@ -347,9 +342,6 @@ namespace PMDS.GUI
             ultraGridColumn84.Header.VisiblePosition = 6;
             ultraGridColumn84.Hidden = true;
             ultraGridColumn85.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
-            ultraGridColumn85.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
-            appearance4.BackColor = System.Drawing.Color.Gainsboro;
-            ultraGridColumn85.CellAppearance = appearance4;
             ultraGridColumn85.Header.Caption = "Aufgehoben am";
             ultraGridColumn85.Header.Editor = null;
             ultraGridColumn85.Header.VisiblePosition = 7;
@@ -771,55 +763,55 @@ namespace PMDS.GUI
             this.gridUnterbringung.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.gridUnterbringung.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.gridUnterbringung.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            appearance5.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance5.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance5.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance5.BorderColor = System.Drawing.SystemColors.Window;
-            this.gridUnterbringung.DisplayLayout.GroupByBox.Appearance = appearance5;
-            appearance6.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.gridUnterbringung.DisplayLayout.GroupByBox.BandLabelAppearance = appearance6;
+            appearance3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance3.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance3.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance3.BorderColor = System.Drawing.SystemColors.Window;
+            this.gridUnterbringung.DisplayLayout.GroupByBox.Appearance = appearance3;
+            appearance4.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.gridUnterbringung.DisplayLayout.GroupByBox.BandLabelAppearance = appearance4;
             this.gridUnterbringung.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.gridUnterbringung.DisplayLayout.GroupByBox.Hidden = true;
-            appearance7.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance7.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance7.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance7.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.gridUnterbringung.DisplayLayout.GroupByBox.PromptAppearance = appearance7;
+            appearance5.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance5.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance5.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance5.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.gridUnterbringung.DisplayLayout.GroupByBox.PromptAppearance = appearance5;
             this.gridUnterbringung.DisplayLayout.MaxColScrollRegions = 1;
             this.gridUnterbringung.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance8.BackColor = System.Drawing.SystemColors.Window;
-            appearance8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.gridUnterbringung.DisplayLayout.Override.ActiveCellAppearance = appearance8;
-            appearance9.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance9.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.gridUnterbringung.DisplayLayout.Override.ActiveRowAppearance = appearance9;
+            appearance6.BackColor = System.Drawing.SystemColors.Window;
+            appearance6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.gridUnterbringung.DisplayLayout.Override.ActiveCellAppearance = appearance6;
+            appearance7.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance7.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.gridUnterbringung.DisplayLayout.Override.ActiveRowAppearance = appearance7;
             this.gridUnterbringung.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
             this.gridUnterbringung.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance10.BackColor = System.Drawing.SystemColors.Window;
-            this.gridUnterbringung.DisplayLayout.Override.CardAreaAppearance = appearance10;
-            appearance11.BorderColor = System.Drawing.Color.Silver;
-            appearance11.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.gridUnterbringung.DisplayLayout.Override.CellAppearance = appearance11;
+            appearance8.BackColor = System.Drawing.SystemColors.Window;
+            this.gridUnterbringung.DisplayLayout.Override.CardAreaAppearance = appearance8;
+            appearance9.BorderColor = System.Drawing.Color.Silver;
+            appearance9.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.gridUnterbringung.DisplayLayout.Override.CellAppearance = appearance9;
             this.gridUnterbringung.DisplayLayout.Override.CellPadding = 0;
-            appearance12.BackColor = System.Drawing.SystemColors.Control;
-            appearance12.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance12.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance12.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance12.BorderColor = System.Drawing.SystemColors.Window;
-            this.gridUnterbringung.DisplayLayout.Override.GroupByRowAppearance = appearance12;
-            appearance13.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance13.TextHAlignAsString = "Left";
-            this.gridUnterbringung.DisplayLayout.Override.HeaderAppearance = appearance13;
+            appearance10.BackColor = System.Drawing.SystemColors.Control;
+            appearance10.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance10.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance10.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance10.BorderColor = System.Drawing.SystemColors.Window;
+            this.gridUnterbringung.DisplayLayout.Override.GroupByRowAppearance = appearance10;
+            appearance11.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance11.TextHAlignAsString = "Left";
+            this.gridUnterbringung.DisplayLayout.Override.HeaderAppearance = appearance11;
             this.gridUnterbringung.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.gridUnterbringung.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.Standard;
-            appearance14.BackColor = System.Drawing.SystemColors.Window;
-            appearance14.BorderColor = System.Drawing.Color.Silver;
-            this.gridUnterbringung.DisplayLayout.Override.RowAppearance = appearance14;
-            appearance15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gridUnterbringung.DisplayLayout.Override.RowSelectorAppearance = appearance15;
+            appearance12.BackColor = System.Drawing.SystemColors.Window;
+            appearance12.BorderColor = System.Drawing.Color.Silver;
+            this.gridUnterbringung.DisplayLayout.Override.RowAppearance = appearance12;
+            appearance13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridUnterbringung.DisplayLayout.Override.RowSelectorAppearance = appearance13;
             this.gridUnterbringung.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance16.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.gridUnterbringung.DisplayLayout.Override.TemplateAddRowAppearance = appearance16;
+            appearance14.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.gridUnterbringung.DisplayLayout.Override.TemplateAddRowAppearance = appearance14;
             this.gridUnterbringung.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.gridUnterbringung.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.gridUnterbringung.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
@@ -832,8 +824,8 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel1.SetGridBagConstraint(this.gridUnterbringung, gridBagConstraint1);
             this.gridUnterbringung.Location = new System.Drawing.Point(5, 2);
             this.gridUnterbringung.Name = "gridUnterbringung";
-            this.ultraGridBagLayoutPanel1.SetPreferredSize(this.gridUnterbringung, new System.Drawing.Size(291, 118));
-            this.gridUnterbringung.Size = new System.Drawing.Size(780, 144);
+            this.ultraGridBagLayoutPanel1.SetPreferredSize(this.gridUnterbringung, new System.Drawing.Size(291, 117));
+            this.gridUnterbringung.Size = new System.Drawing.Size(1074, 248);
             this.gridUnterbringung.TabIndex = 12;
             this.gridUnterbringung.Text = "ultraGrid22";
             this.gridUnterbringung.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.gridUnterbringung_AfterCellUpdate);
@@ -864,13 +856,13 @@ namespace PMDS.GUI
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelButtons.Location = new System.Drawing.Point(3, 19);
             this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(790, 30);
+            this.panelButtons.Size = new System.Drawing.Size(1084, 30);
             this.panelButtons.TabIndex = 39;
             // 
             // btnSendenUnterbringung
             // 
-            appearance17.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnSendenUnterbringung.Appearance = appearance17;
+            appearance15.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnSendenUnterbringung.Appearance = appearance15;
             this.btnSendenUnterbringung.AutoWorkLayout = false;
             this.btnSendenUnterbringung.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnSendenUnterbringung.IsStandardControl = false;
@@ -884,13 +876,13 @@ namespace PMDS.GUI
             // btnDelUnterbringung
             // 
             this.btnDelUnterbringung.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance18.Image = ((object)(resources.GetObject("appearance18.Image")));
-            appearance18.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnDelUnterbringung.Appearance = appearance18;
+            appearance16.Image = ((object)(resources.GetObject("appearance16.Image")));
+            appearance16.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnDelUnterbringung.Appearance = appearance16;
             this.btnDelUnterbringung.AutoWorkLayout = false;
             this.btnDelUnterbringung.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDelUnterbringung.IsStandardControl = false;
-            this.btnDelUnterbringung.Location = new System.Drawing.Point(402, 1);
+            this.btnDelUnterbringung.Location = new System.Drawing.Point(696, 1);
             this.btnDelUnterbringung.Name = "btnDelUnterbringung";
             this.btnDelUnterbringung.Size = new System.Drawing.Size(103, 26);
             this.btnDelUnterbringung.TabIndex = 39;
@@ -900,13 +892,13 @@ namespace PMDS.GUI
             // btnVerlaeng
             // 
             this.btnVerlaeng.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance19.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnVerlaeng.Appearance = appearance19;
+            appearance17.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnVerlaeng.Appearance = appearance17;
             this.btnVerlaeng.AutoWorkLayout = false;
             this.btnVerlaeng.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnVerlaeng.ImageSize = new System.Drawing.Size(12, 12);
             this.btnVerlaeng.IsStandardControl = false;
-            this.btnVerlaeng.Location = new System.Drawing.Point(508, 1);
+            this.btnVerlaeng.Location = new System.Drawing.Point(802, 1);
             this.btnVerlaeng.Name = "btnVerlaeng";
             this.btnVerlaeng.Size = new System.Drawing.Size(103, 26);
             this.btnVerlaeng.TabIndex = 16;
@@ -916,13 +908,13 @@ namespace PMDS.GUI
             // btnPreview
             // 
             this.btnPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance20.Image = ((object)(resources.GetObject("appearance20.Image")));
-            appearance20.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnPreview.Appearance = appearance20;
+            appearance18.Image = ((object)(resources.GetObject("appearance18.Image")));
+            appearance18.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnPreview.Appearance = appearance18;
             this.btnPreview.AutoWorkLayout = false;
             this.btnPreview.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnPreview.IsStandardControl = false;
-            this.btnPreview.Location = new System.Drawing.Point(703, 1);
+            this.btnPreview.Location = new System.Drawing.Point(997, 1);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(83, 26);
             this.btnPreview.TabIndex = 38;
@@ -932,17 +924,17 @@ namespace PMDS.GUI
             // btnAddUnterbringung
             // 
             this.btnAddUnterbringung.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance21.BackColor = System.Drawing.Color.Transparent;
-            appearance21.Image = ((object)(resources.GetObject("appearance21.Image")));
-            appearance21.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance21.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAddUnterbringung.Appearance = appearance21;
+            appearance19.BackColor = System.Drawing.Color.Transparent;
+            appearance19.Image = ((object)(resources.GetObject("appearance19.Image")));
+            appearance19.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance19.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAddUnterbringung.Appearance = appearance19;
             this.btnAddUnterbringung.AutoWorkLayout = false;
             this.btnAddUnterbringung.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnAddUnterbringung.DoOnClick = true;
             this.btnAddUnterbringung.ImageSize = new System.Drawing.Size(12, 12);
             this.btnAddUnterbringung.IsStandardControl = true;
-            this.btnAddUnterbringung.Location = new System.Drawing.Point(370, 1);
+            this.btnAddUnterbringung.Location = new System.Drawing.Point(664, 1);
             this.btnAddUnterbringung.Name = "btnAddUnterbringung";
             this.btnAddUnterbringung.Size = new System.Drawing.Size(26, 26);
             this.btnAddUnterbringung.TabIndex = 14;
@@ -954,12 +946,12 @@ namespace PMDS.GUI
             // btnHistorie
             // 
             this.btnHistorie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance22.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnHistorie.Appearance = appearance22;
+            appearance20.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnHistorie.Appearance = appearance20;
             this.btnHistorie.AutoWorkLayout = false;
             this.btnHistorie.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnHistorie.IsStandardControl = false;
-            this.btnHistorie.Location = new System.Drawing.Point(613, 1);
+            this.btnHistorie.Location = new System.Drawing.Point(907, 1);
             this.btnHistorie.Name = "btnHistorie";
             this.btnHistorie.Size = new System.Drawing.Size(87, 26);
             this.btnHistorie.TabIndex = 37;
@@ -970,8 +962,8 @@ namespace PMDS.GUI
             // 
             // grpPatientverfügung
             // 
-            appearance23.BackColor = System.Drawing.Color.Transparent;
-            this.grpPatientverfügung.Appearance = appearance23;
+            appearance21.BackColor = System.Drawing.Color.Transparent;
+            this.grpPatientverfügung.Appearance = appearance21;
             this.grpPatientverfügung.Controls.Add(this.optBeachtlich);
             this.grpPatientverfügung.Controls.Add(this.lblAnmerkung);
             this.grpPatientverfügung.Controls.Add(this.ultraLabel1);
@@ -1003,8 +995,8 @@ namespace PMDS.GUI
             // 
             // lblAnmerkung
             // 
-            appearance24.BackColor = System.Drawing.Color.Transparent;
-            this.lblAnmerkung.Appearance = appearance24;
+            appearance22.BackColor = System.Drawing.Color.Transparent;
+            this.lblAnmerkung.Appearance = appearance22;
             this.lblAnmerkung.AutoSize = true;
             this.lblAnmerkung.Location = new System.Drawing.Point(186, 22);
             this.lblAnmerkung.Name = "lblAnmerkung";
@@ -1014,8 +1006,8 @@ namespace PMDS.GUI
             // 
             // ultraLabel1
             // 
-            appearance25.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance25;
+            appearance23.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance23;
             this.ultraLabel1.AutoSize = true;
             this.ultraLabel1.Location = new System.Drawing.Point(28, 50);
             this.ultraLabel1.Name = "ultraLabel1";
@@ -1037,9 +1029,9 @@ namespace PMDS.GUI
             // 
             // cbpatVerf
             // 
-            appearance27.BackColor = System.Drawing.Color.Transparent;
-            appearance27.BackColorDisabled = System.Drawing.Color.White;
-            this.cbpatVerf.Appearance = appearance27;
+            appearance25.BackColor = System.Drawing.Color.Transparent;
+            appearance25.BackColorDisabled = System.Drawing.Color.White;
+            this.cbpatVerf.Appearance = appearance25;
             this.cbpatVerf.BackColor = System.Drawing.Color.Transparent;
             this.cbpatVerf.BackColorInternal = System.Drawing.Color.Transparent;
             this.cbpatVerf.Location = new System.Drawing.Point(6, 22);
@@ -1051,8 +1043,8 @@ namespace PMDS.GUI
             // 
             // ultraGroupBoxRelgiöseWünsche
             // 
-            appearance33.BackColor = System.Drawing.Color.Transparent;
-            this.ultraGroupBoxRelgiöseWünsche.Appearance = appearance33;
+            appearance31.BackColor = System.Drawing.Color.Transparent;
+            this.ultraGroupBoxRelgiöseWünsche.Appearance = appearance31;
             this.ultraGroupBoxRelgiöseWünsche.Controls.Add(this.lblAnmerkung2);
             this.ultraGroupBoxRelgiöseWünsche.Controls.Add(this.cbkrakSalbung);
             this.ultraGroupBoxRelgiöseWünsche.Controls.Add(this.cbKommunion);
@@ -1065,8 +1057,8 @@ namespace PMDS.GUI
             // 
             // lblAnmerkung2
             // 
-            appearance34.BackColor = System.Drawing.Color.Transparent;
-            this.lblAnmerkung2.Appearance = appearance34;
+            appearance32.BackColor = System.Drawing.Color.Transparent;
+            this.lblAnmerkung2.Appearance = appearance32;
             this.lblAnmerkung2.AutoSize = true;
             this.lblAnmerkung2.Location = new System.Drawing.Point(186, 20);
             this.lblAnmerkung2.Name = "lblAnmerkung2";
@@ -1076,8 +1068,8 @@ namespace PMDS.GUI
             // 
             // cbkrakSalbung
             // 
-            appearance35.BackColor = System.Drawing.Color.Transparent;
-            this.cbkrakSalbung.Appearance = appearance35;
+            appearance33.BackColor = System.Drawing.Color.Transparent;
+            this.cbkrakSalbung.Appearance = appearance33;
             this.cbkrakSalbung.BackColor = System.Drawing.Color.Transparent;
             this.cbkrakSalbung.BackColorInternal = System.Drawing.Color.Transparent;
             this.cbkrakSalbung.Location = new System.Drawing.Point(6, 45);
@@ -1089,8 +1081,8 @@ namespace PMDS.GUI
             // 
             // cbKommunion
             // 
-            appearance36.BackColor = System.Drawing.Color.Transparent;
-            this.cbKommunion.Appearance = appearance36;
+            appearance34.BackColor = System.Drawing.Color.Transparent;
+            this.cbKommunion.Appearance = appearance34;
             this.cbKommunion.BackColor = System.Drawing.Color.Transparent;
             this.cbKommunion.BackColorInternal = System.Drawing.Color.Transparent;
             this.cbKommunion.Location = new System.Drawing.Point(6, 22);
@@ -1116,8 +1108,8 @@ namespace PMDS.GUI
             // 
             this.grpRegelungen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance28.BackColor = System.Drawing.Color.Transparent;
-            this.grpRegelungen.Appearance = appearance28;
+            appearance26.BackColor = System.Drawing.Color.Transparent;
+            this.grpRegelungen.Appearance = appearance26;
             this.grpRegelungen.Controls.Add(this.panel3);
             this.grpRegelungen.Controls.Add(this.txtSonstRegel);
             this.grpRegelungen.Controls.Add(this.txtBesRegelung);
@@ -1129,7 +1121,7 @@ namespace PMDS.GUI
             this.grpRegelungen.Controls.Add(this.lblBesuchsregelung);
             this.grpRegelungen.Location = new System.Drawing.Point(524, 2);
             this.grpRegelungen.Name = "grpRegelungen";
-            this.grpRegelungen.Size = new System.Drawing.Size(260, 232);
+            this.grpRegelungen.Size = new System.Drawing.Size(554, 232);
             this.grpRegelungen.TabIndex = 158;
             this.grpRegelungen.Text = "Regelungen";
             // 
@@ -1150,7 +1142,7 @@ namespace PMDS.GUI
             this.txtSonstRegel.Multiline = true;
             this.txtSonstRegel.Name = "txtSonstRegel";
             this.txtSonstRegel.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtSonstRegel.Size = new System.Drawing.Size(140, 48);
+            this.txtSonstRegel.Size = new System.Drawing.Size(434, 48);
             this.txtSonstRegel.TabIndex = 11;
             this.txtSonstRegel.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -1164,7 +1156,7 @@ namespace PMDS.GUI
             this.txtBesRegelung.Multiline = true;
             this.txtBesRegelung.Name = "txtBesRegelung";
             this.txtBesRegelung.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBesRegelung.Size = new System.Drawing.Size(140, 54);
+            this.txtBesRegelung.Size = new System.Drawing.Size(434, 54);
             this.txtBesRegelung.TabIndex = 9;
             this.txtBesRegelung.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -1177,14 +1169,14 @@ namespace PMDS.GUI
             this.txtSterbeRegelung.Multiline = true;
             this.txtSterbeRegelung.Name = "txtSterbeRegelung";
             this.txtSterbeRegelung.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtSterbeRegelung.Size = new System.Drawing.Size(140, 54);
+            this.txtSterbeRegelung.Size = new System.Drawing.Size(434, 54);
             this.txtSterbeRegelung.TabIndex = 8;
             this.txtSterbeRegelung.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblSonstige
             // 
-            appearance29.BackColor = System.Drawing.Color.Transparent;
-            this.lblSonstige.Appearance = appearance29;
+            appearance27.BackColor = System.Drawing.Color.Transparent;
+            this.lblSonstige.Appearance = appearance27;
             this.lblSonstige.AutoSize = true;
             this.lblSonstige.Location = new System.Drawing.Point(6, 178);
             this.lblSonstige.Name = "lblSonstige";
@@ -1194,8 +1186,8 @@ namespace PMDS.GUI
             // 
             // lblSterberegelung
             // 
-            appearance30.BackColor = System.Drawing.Color.Transparent;
-            this.lblSterberegelung.Appearance = appearance30;
+            appearance28.BackColor = System.Drawing.Color.Transparent;
+            this.lblSterberegelung.Appearance = appearance28;
             this.lblSterberegelung.AutoSize = true;
             this.lblSterberegelung.Location = new System.Drawing.Point(6, 22);
             this.lblSterberegelung.Name = "lblSterberegelung";
@@ -1214,20 +1206,22 @@ namespace PMDS.GUI
             this.cmbPostregel.ExactMatch = false;
             this.cmbPostregel.Group = "PRG";
             this.cmbPostregel.ID_PEP = -1;
+            this.cmbPostregel.IgnoreUnterdruecken = true;
             this.cmbPostregel.Location = new System.Drawing.Point(111, 145);
             this.cmbPostregel.MaxLength = 255;
             this.cmbPostregel.Name = "cmbPostregel";
             this.cmbPostregel.PflichtJN = false;
+            this.cmbPostregel.SelectDistinct = false;
             this.cmbPostregel.ShowAddButton = true;
-            this.cmbPostregel.Size = new System.Drawing.Size(140, 24);
+            this.cmbPostregel.Size = new System.Drawing.Size(434, 24);
             this.cmbPostregel.sys = false;
             this.cmbPostregel.TabIndex = 10;
             this.cmbPostregel.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblPostregelung
             // 
-            appearance31.BackColor = System.Drawing.Color.Transparent;
-            this.lblPostregelung.Appearance = appearance31;
+            appearance29.BackColor = System.Drawing.Color.Transparent;
+            this.lblPostregelung.Appearance = appearance29;
             this.lblPostregelung.AutoSize = true;
             this.lblPostregelung.Location = new System.Drawing.Point(6, 144);
             this.lblPostregelung.Name = "lblPostregelung";
@@ -1237,8 +1231,8 @@ namespace PMDS.GUI
             // 
             // lblBesuchsregelung
             // 
-            appearance32.BackColor = System.Drawing.Color.Transparent;
-            this.lblBesuchsregelung.Appearance = appearance32;
+            appearance30.BackColor = System.Drawing.Color.Transparent;
+            this.lblBesuchsregelung.Appearance = appearance30;
             this.lblBesuchsregelung.AutoSize = true;
             this.lblBesuchsregelung.Location = new System.Drawing.Point(6, 84);
             this.lblBesuchsregelung.Name = "lblBesuchsregelung";
@@ -1256,7 +1250,7 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ultraGridBagLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.ultraGridBagLayoutPanel2.Name = "ultraGridBagLayoutPanel2";
-            this.ultraGridBagLayoutPanel2.Size = new System.Drawing.Size(806, 251);
+            this.ultraGridBagLayoutPanel2.Size = new System.Drawing.Size(1100, 251);
             this.ultraGridBagLayoutPanel2.TabIndex = 160;
             // 
             // panelOben
@@ -1272,8 +1266,8 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel2.SetGridBagConstraint(this.panelOben, gridBagConstraint3);
             this.panelOben.Location = new System.Drawing.Point(5, 5);
             this.panelOben.Name = "panelOben";
-            this.ultraGridBagLayoutPanel2.SetPreferredSize(this.panelOben, new System.Drawing.Size(199, 99));
-            this.panelOben.Size = new System.Drawing.Size(796, 241);
+            this.ultraGridBagLayoutPanel2.SetPreferredSize(this.panelOben, new System.Drawing.Size(198, 98));
+            this.panelOben.Size = new System.Drawing.Size(1090, 241);
             this.panelOben.TabIndex = 0;
             // 
             // ultraGridBagLayoutPanel3
@@ -1286,7 +1280,7 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ultraGridBagLayoutPanel3.Location = new System.Drawing.Point(0, 251);
             this.ultraGridBagLayoutPanel3.Name = "ultraGridBagLayoutPanel3";
-            this.ultraGridBagLayoutPanel3.Size = new System.Drawing.Size(806, 208);
+            this.ultraGridBagLayoutPanel3.Size = new System.Drawing.Size(1100, 312);
             this.ultraGridBagLayoutPanel3.TabIndex = 161;
             // 
             // ultraToolTipManager1
@@ -1302,9 +1296,9 @@ namespace PMDS.GUI
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.ultraGridBagLayoutPanel3);
             this.Controls.Add(this.ultraGridBagLayoutPanel2);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ucRegelungen";
-            this.Size = new System.Drawing.Size(806, 459);
+            this.Size = new System.Drawing.Size(1100, 563);
             this.Load += new System.EventHandler(this.ucRegelungen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtPatVerf)).EndInit();

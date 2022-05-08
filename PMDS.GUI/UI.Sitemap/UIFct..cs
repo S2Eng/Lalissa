@@ -34,15 +34,7 @@ namespace PMDS.UI.Sitemap
         public PMDS.BusinessLogic.Benutzer usr;
         public System.Collections.ArrayList listID;
 
-        private  System.Drawing.Color _foreCol;
-        private System.Drawing.Color _bordCol;
-        private System.Drawing.Color _backCol;
-        private System.Drawing.Color _hotTrackCol;
-        private System.Drawing.Color _backColDeakt;
         private Infragistics.Win.UIElementButtonStyle _styleButt;
-
-
-
 
         public UIFct()
         {
@@ -53,16 +45,6 @@ namespace PMDS.UI.Sitemap
                 this.sqlCalcLogic = new PMDS.Calc.Logic.Sql();
                 this.dbBill = new PMDS.Calc.Logic.dbBill();
 
-                this._foreCol = new System.Drawing.Color();
-                this._foreCol = System.Drawing.Color.Black;
-                this._bordCol = new System.Drawing.Color();
-                this._bordCol = System.Drawing.Color.Black;
-                this._backCol = new System.Drawing.Color();
-                this._backCol = System.Drawing.Color.White;
-                this._hotTrackCol = new System.Drawing.Color();
-                this._hotTrackCol = System.Drawing.Color.Gainsboro;
-                this._backColDeakt = new System.Drawing.Color();
-                this._backColDeakt = System.Drawing.Color.Transparent;
                 this._styleButt = new Infragistics.Win.UIElementButtonStyle();
                 this._styleButt = Infragistics.Win.UIElementButtonStyle.Flat;
             }
@@ -560,9 +542,9 @@ namespace PMDS.UI.Sitemap
             foreach (cButt itm in buttons)
             {
                 if (itm.on)
-                    PMDS.Global.UIGlobal.setAktiv(itm.butt, -1, this._foreCol, this._bordCol, this._backCol);
+                    PMDS.Global.UIGlobal.setAktiv(itm.butt, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                 else
-                    PMDS.Global.UIGlobal.setAktivDisable(itm.butt, -1, this._foreCol, this._hotTrackCol, this._bordCol, this._backColDeakt, this._styleButt);
+                    PMDS.Global.UIGlobal.setAktivDisable(itm.butt, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, this._styleButt);
             }
         }
 

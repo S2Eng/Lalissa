@@ -37,6 +37,8 @@ namespace PMDS.GUI
             InitializeComponent();
             if (!DesignMode && ENV.AppRunning)
                 RefreshValueList();
+            gridUnterbringung.DisplayLayout.Override.CellClickAction = CellClickAction.RowSelect;
+            gridUnterbringung.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
         }
 
         private void RefreshValueList()
