@@ -270,7 +270,7 @@ namespace Launcher
             dx = g.DpiX / 100;
             dy = g.DpiY / 100;
 
-            this.Height = (int) (this.heightButt * anzButtVis * dy) + (int) (160 * dy);
+            this.Height = (int) (this.heightButt * anzButtVis * dy) + (int) (250 * dy);
         }
 
         public void checkUpdate(ref bool StartFromShare, bool WithMsgBox, ref bool abort)
@@ -730,9 +730,22 @@ namespace Launcher
 
                 //Application.DoEvents();
             }
-
+            else if (e.KeyCode == Keys.Enter)   //Ersten Button starten wenn Enter gedrückt wurde
+            {
+                foreach (System.Windows.Forms.Button butt in this.panelButtons.Controls)
+                {
+                    foreach (dsConfig.configRow rConfig in Launcher.config.dsconfigAll.config)
+                    {
+                        string tgButt = rConfig.key.ToString();
+                        if (tgButt == rConfig.key.ToString())
+                        {
+                            this.startProg(tgButt, true, tgButt == "BUTTON_FORMS" ? true : false);
+                            return;
+                        }
+                    }
+                }
+            }
         }
     }
-
 }
 
