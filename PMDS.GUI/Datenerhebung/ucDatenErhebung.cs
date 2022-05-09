@@ -279,7 +279,7 @@ namespace PMDS.GUI
         {
             try
             {
-                if (_bForceRefresh)
+                if (_bForceRefresh || !IsInitialized)
                 {
                     lstCounterClickableImages.Clear();
 
