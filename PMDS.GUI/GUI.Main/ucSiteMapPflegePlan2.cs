@@ -17,8 +17,9 @@ namespace PMDS.GUI
 {
     public partial class ucSiteMapPflegePlan2 : QS2.Desktop.ControlManagment.BaseControl, IPMDSGUIObject
     {
-        private bool _ContentChanged = false;
-        private bool _ZusateintragChanged = false;
+        private bool _ContentChanged;
+        private bool _ZusateintragChanged;
+        private bool _ForceRefresh;
 
         public ucSiteMapPflegePlan2()
         {
@@ -66,7 +67,10 @@ namespace PMDS.GUI
         {
             AskforSave();
             if (this.Visible && ENV.CurrentAnsichtinfo.Ansichtsmodus == TerminlisteAnsichtsmodi.Klientanansicht)
+            {
+                _ForceRefresh = true;
                 ucSiteMapPflegePlan2_VisibleChanged(this, EventArgs.Empty);
+            }
         }
 
 
@@ -266,15 +270,20 @@ namespace PMDS.GUI
         /// Pflegeplan aktualisieren bei Änderung
         /// </summary>
         //----------------------------------------------------------------------------
-        private void RefreshPflegePlan()
+        private void RefreshPflegePlan(bool bForce)
         {
             if (ENV.CurrentIDPatient == Guid.Empty)
                 return;
             Patient pat = new Patient(ENV.CurrentIDPatient);
             Guid IDAufenthalt = pat.Aufenthalt.ID;
-            EnvPflegePlan.CurrentKlientenAbteilung = pat.Aufenthalt.Verlauf.IDAbteilung_Nach;
-            ucPflegeplan21.IDAUFENTHALT = IDAufenthalt;
-                     
+
+            //os: Refresh nur, wenn sich der Aufenthalt geändert hat oder bei Refresh-Button
+            if (bForce || ucPflegeplan21.IDAUFENTHALT == null || ucPflegeplan21.IDAUFENTHALT != IDAufenthalt)
+            {
+                EnvPflegePlan.CurrentKlientenAbteilung = pat.Aufenthalt.Verlauf.IDAbteilung_Nach;
+                ucPflegeplan21.IDAUFENTHALT = IDAufenthalt;
+            }
+
             //TO DO:
             //if (ENV.IDPFLEGEPLAN != Guid.Empty)
             //    ucPflegeplan21.MarkAllPDxForIDPflegePlan(ENV.IDPFLEGEPLAN);
@@ -329,7 +338,10 @@ namespace PMDS.GUI
         private void ucSiteMapPflegePlan2_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible)
-                RefreshPflegePlan();
+            {
+                RefreshPflegePlan(_ForceRefresh);
+                _ForceRefresh = false;
+            }
         }
 
         private void ucPflegeplan21_planungÄndern(string typ)

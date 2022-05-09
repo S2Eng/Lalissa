@@ -977,7 +977,9 @@ namespace PMDS.Global
         public static void sendPatientChanged(eCurrentPatientChange typ, bool refreshPicker, bool clickGridTermine)
         {
             if (ENVPatientIDChanged != null)
+            {
                 ENVPatientIDChanged(ENV.CurrentIDPatient, typ, refreshPicker, clickGridTermine);
+            }
         }
 
         public static bool DEMO

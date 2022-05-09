@@ -720,7 +720,6 @@
             this.btnPDx.Size = new System.Drawing.Size(181, 25);
             this.btnPDx.TabIndex = 30;
             this.btnPDx.Text = "&Pflegediagnosen hinzufügen";
-            this.btnPDx.UseAppStyling = false;
             this.btnPDx.Click += new System.EventHandler(this.btnPDx_Click);
             // 
             // pnlDef2

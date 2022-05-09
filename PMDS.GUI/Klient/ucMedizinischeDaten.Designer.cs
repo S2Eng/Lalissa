@@ -633,7 +633,7 @@ namespace PMDS.GUI
             this.lblBlutgruppe.Name = "lblBlutgruppe";
             this.lblBlutgruppe.Size = new System.Drawing.Size(57, 14);
             this.lblBlutgruppe.TabIndex = 163;
-            this.lblBlutgruppe.Text = "Blutgruppe";
+            this.lblBlutgruppe.Text = "Blutgrp.";
             // 
             // tbBlutgruppe
             // 
@@ -653,7 +653,7 @@ namespace PMDS.GUI
             this.lblRhesusfaktor.Name = "lblRhesusfaktor";
             this.lblRhesusfaktor.Size = new System.Drawing.Size(69, 14);
             this.lblRhesusfaktor.TabIndex = 165;
-            this.lblRhesusfaktor.Text = "Rhesusfaktor";
+            this.lblRhesusfaktor.Text = "Rhesusf.";
             // 
             // tbRhesusfaktur
             // 

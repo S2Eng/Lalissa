@@ -27,7 +27,7 @@ using System.Linq.Expressions;
 
 namespace PMDS.GUI
 {
-    
+
     public enum Modus
     {
         Anlegen = 0,
@@ -39,11 +39,12 @@ namespace PMDS.GUI
 
     public partial class ucDatenErhebung : QS2.Desktop.ControlManagment.BaseControl, IPMDSGUIObject
     {
-        private bool _ContentChanged = false;
+        private bool _bForceRefresh;
+        private bool _ContentChanged;
         private ArrayList _aAssenementMenu = new ArrayList();
         private ucClickableImages _clickableimages;
 
-        private bool mnuIsLoaded = false;
+        private bool mnuIsLoaded;
 
         public bool IsExternControl = false;
         public System.Collections.Generic.List<string> lstFormulare = new List<string>();
@@ -68,13 +69,6 @@ namespace PMDS.GUI
         public int FormulareCountedLast = -1;
         public PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
 
-
-
-
-
-
-
-
         public ucDatenErhebung()
         {
             InitializeComponent();
@@ -82,15 +76,14 @@ namespace PMDS.GUI
             this.ucAnamneseBiografie1.Dock = DockStyle.Fill;
         }
 
-
-
-
-
-
         public void ENV_ENVPatientIDChanged(Guid IDPatient, eCurrentPatientChange typ, bool refreshPicker, bool clickGridTermine)
         {
             AskForSave();
-            if (IDPatient != System.Guid.Empty && this.Visible) this.loadMainSite();
+            if (IDPatient != System.Guid.Empty && this.Visible)
+            {
+                _bForceRefresh = true;
+                this.loadMainSite();
+            }
         }
 
         private void RefreshAllAnamnesen()
@@ -105,14 +98,6 @@ namespace PMDS.GUI
 
                     if (IsPflegeModellVisible(control.Modell))
                         control.IDPatient = ENV.CurrentIDPatient;
-
-                    //if (c.GetType().ToString () ==  "PMDS.GUI.ucAnamneseBiografie"	)
-                    //{
-                    //((PMDS.GUI.ucAnamneseBiografie)c).IDPatient = ENV.CurrentIDPatient;
-                    // ((PMDS.GUI.ucAnamneseBiografie)c).loadDatenFürPatient();
-                    //}
-
-
                 }
             }
         }
@@ -294,32 +279,35 @@ namespace PMDS.GUI
         {
             try
             {
-                lstCounterClickableImages.Clear();
-
-                if (this.IsExternControl)
+                if (_bForceRefresh)
                 {
-                    if (this.mainWindowNotfall != null)
+                    lstCounterClickableImages.Clear();
+
+                    if (this.IsExternControl)
                     {
-                        this.mainWindowNotfall.SetUIDatenerhebung(false);
+                        if (this.mainWindowNotfall != null)
+                        {
+                            this.mainWindowNotfall.SetUIDatenerhebung(false);
+                        }
+                        if (this.mainWindowDatenerhebnungExtern != null)
+                        {
+                        }
                     }
-                    if (this.mainWindowDatenerhebnungExtern != null)
+                    this.UpdateActions();
+                    this.loadAuswahl();
+                    this.RefreshAllAnamnesen();
+
+                    this.ucAnamneseBiografie1.ucBiographie1.setControlsAktivDisable(PMDS.Global.historie.HistorieOn);
+
+                    if (cmbErhebung.Items.Count >= 1) this.cmbErhebung.SelectedItem = cmbErhebung.Items[0];
+
+                    if (this.mainWindowDatenerhebnungExtern != null && this.lstCounterClickableImages.Count == 1)
                     {
+                        ucClickableImage ucClickableImageFound = lstCounterClickableImages[0];
+                        this._clickableimages_DoubleClick(ucClickableImageFound.Index, ucClickableImageFound.Tag, ucClickableImageFound.XMLFile);
                     }
                 }
-                this.UpdateActions();
-                this.loadAuswahl();
-                this.RefreshAllAnamnesen();
-
-                this.ucAnamneseBiografie1.ucBiographie1.setControlsAktivDisable(PMDS.Global.historie.HistorieOn);
-
-                if (cmbErhebung.Items.Count >= 1) this.cmbErhebung.SelectedItem = cmbErhebung.Items[0];
-
-                if (this.mainWindowDatenerhebnungExtern != null && this.lstCounterClickableImages.Count == 1)
-                {
-                    ucClickableImage ucClickableImageFound = lstCounterClickableImages[0];
-                    //SetSelected(ucClickableImageFound);
-                    this._clickableimages_DoubleClick(ucClickableImageFound.Index, ucClickableImageFound.Tag, ucClickableImageFound.XMLFile);
-                }
+                _bForceRefresh = false;
 
             }
             catch (Exception ex)
