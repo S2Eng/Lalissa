@@ -109,7 +109,7 @@ namespace PMDS.GUI.BaseControls
                             b.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
 
                             b.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-                            PMDS.Global.UIGlobal.setAktivDisable(b, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                            PMDS.Global.UIGlobal.setAktivDisable(b, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
                             b.Appearance.BackColor = Color.Transparent;
                             b.Appearance.ForeColor = Color.Black;
 
@@ -616,17 +616,14 @@ namespace PMDS.GUI.BaseControls
 
                 if (args.IDQuickFilter == IDQuickFilter)
                 {
+                    PMDS.Global.UIGlobal.setAktiv(b, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                     b.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-                    PMDS.Global.UIGlobal.setAktiv(b, -1, System.Drawing.Color.White, System.Drawing.Color.Gray, System.Drawing.Color.Gray);
-                    b.HotTrackAppearance.BackColor = System.Drawing.Color.Gray;
-                    //b.Focus();
-                    //b.Appearance.BackColor =  Color.WhiteSmoke;
-                    //b.Appearance.ForeColor = Color.Black; 
+                    b.HotTrackAppearance.BackColor = ENVCOLOR.hoverBackCol;
                 }
                 else
                 {
                     b.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-                    PMDS.Global.UIGlobal.setAktivDisable(b, -1, System.Drawing.Color.Black, System.Drawing.Color.Gray, System.Drawing.Color.Transparent, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                    PMDS.Global.UIGlobal.setAktivDisable(b, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
                     b.Appearance.BackColor = Color.Transparent;
                     b.Appearance.ForeColor = Color.Black;
                 }

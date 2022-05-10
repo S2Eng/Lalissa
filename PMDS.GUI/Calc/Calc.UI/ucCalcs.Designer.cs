@@ -29,42 +29,42 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance49 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance50 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCalcs));
-            Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo7 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Status Zahlungsaufforderung für FSW zurücksetzen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Zahlungsaufforderung für FSW erstellen. Zum Erstellen und Senden Umschaltaste hal" +
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Status Zahlungsaufforderung für FSW zurücksetzen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Zahlungsaufforderung für FSW erstellen. Zum Erstellen und Senden Umschaltaste hal" +
         "ten und Klicken.", Infragistics.Win.ToolTipImage.Info, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Vorschau Rechnungen", Infragistics.Win.ToolTipImage.Default, "Vorschau", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Freigegebene Rechnungen anzeigen", Infragistics.Win.ToolTipImage.Default, "Freigegeben", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Vorschau Rechnungen", Infragistics.Win.ToolTipImage.Default, "Vorschau", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Freigegebene Rechnungen anzeigen", Infragistics.Win.ToolTipImage.Default, "Freigegeben", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Für Rechnungsversand = Umschalt-Taste | Für Rechnungskopie = Strg-Taste", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo6 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("STRG-Tase halten = Rollung gegen NICHT FREIGEGEBENE Rechnung", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo6 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Für Rechnungsversand = Umschalt-Taste | Für Rechnungskopie = Strg-Taste", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("STRG-Tase halten = Rollung gegen NICHT FREIGEGEBENE Rechnung", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance51 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance52 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance53 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("bills", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
@@ -261,8 +261,8 @@
             // 
             // grpAbrechnen
             // 
-            appearance35.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.grpAbrechnen.Appearance = appearance35;
+            appearance1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.grpAbrechnen.Appearance = appearance1;
             this.grpAbrechnen.Controls.Add(this.panelButtAbrechAuswahlTyp);
             this.grpAbrechnen.Controls.Add(this.panelAbrechnenDatum);
             this.grpAbrechnen.Location = new System.Drawing.Point(671, 3);
@@ -294,9 +294,9 @@
             // 
             // butAbrechnen
             // 
-            appearance45.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance45.ImageVAlign = Infragistics.Win.VAlign.Top;
-            this.butAbrechnen.Appearance = appearance45;
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Top;
+            this.butAbrechnen.Appearance = appearance2;
             this.butAbrechnen.AutoWorkLayout = false;
             this.butAbrechnen.ImageSize = new System.Drawing.Size(24, 24);
             this.butAbrechnen.IsStandardControl = false;
@@ -361,8 +361,8 @@
             // 
             // grpSuche
             // 
-            appearance2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.grpSuche.Appearance = appearance2;
+            appearance3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.grpSuche.Appearance = appearance3;
             this.grpSuche.Controls.Add(this.lblReNr);
             this.grpSuche.Controls.Add(this.txtReNr);
             this.grpSuche.Controls.Add(this.dtVon);
@@ -398,8 +398,8 @@
             // 
             // dtVon
             // 
-            appearance46.TextHAlignAsString = "Center";
-            this.dtVon.Appearance = appearance46;
+            appearance4.TextHAlignAsString = "Center";
+            this.dtVon.Appearance = appearance4;
             this.dtVon.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
             this.dtVon.Location = new System.Drawing.Point(159, 18);
             this.dtVon.MaskInput = "{LOC}mm.yyyy";
@@ -414,8 +414,8 @@
             // 
             // dtVonRechDatum
             // 
-            appearance47.TextHAlignAsString = "Center";
-            this.dtVonRechDatum.Appearance = appearance47;
+            appearance5.TextHAlignAsString = "Center";
+            this.dtVonRechDatum.Appearance = appearance5;
             this.dtVonRechDatum.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
             this.dtVonRechDatum.Location = new System.Drawing.Point(159, 49);
             this.dtVonRechDatum.MaskInput = "";
@@ -429,8 +429,8 @@
             // 
             // dtBisRechDatum
             // 
-            appearance48.TextHAlignAsString = "Center";
-            this.dtBisRechDatum.Appearance = appearance48;
+            appearance6.TextHAlignAsString = "Center";
+            this.dtBisRechDatum.Appearance = appearance6;
             this.dtBisRechDatum.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
             this.dtBisRechDatum.Location = new System.Drawing.Point(281, 49);
             this.dtBisRechDatum.MaskInput = "";
@@ -460,8 +460,8 @@
             // 
             // dtBis
             // 
-            appearance49.TextHAlignAsString = "Center";
-            this.dtBis.Appearance = appearance49;
+            appearance7.TextHAlignAsString = "Center";
+            this.dtBis.Appearance = appearance7;
             this.dtBis.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
             this.dtBis.Location = new System.Drawing.Point(281, 18);
             this.dtBis.MaskInput = "{LOC}mm.yyyy";
@@ -484,11 +484,11 @@
             // 
             // btnSearchxy
             // 
-            appearance50.BackColor = System.Drawing.Color.Transparent;
-            appearance50.Image = ((object)(resources.GetObject("appearance50.Image")));
-            appearance50.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance50.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSearchxy.Appearance = appearance50;
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            appearance8.Image = ((object)(resources.GetObject("appearance8.Image")));
+            appearance8.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance8.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSearchxy.Appearance = appearance8;
             this.btnSearchxy.AutoWorkLayout = false;
             this.btnSearchxy.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnSearchxy.DoOnClick = true;
@@ -550,9 +550,9 @@
             // 
             // btnFSWReset
             // 
-            appearance44.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance44.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnFSWReset.Appearance = appearance44;
+            appearance9.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance9.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnFSWReset.Appearance = appearance9;
             this.btnFSWReset.AutoWorkLayout = false;
             this.btnFSWReset.IsStandardControl = false;
             this.btnFSWReset.Location = new System.Drawing.Point(8, 8);
@@ -560,15 +560,15 @@
             this.btnFSWReset.Size = new System.Drawing.Size(49, 29);
             this.btnFSWReset.TabIndex = 101;
             this.btnFSWReset.Text = "FSW -";
-            ultraToolTipInfo7.ToolTipText = "Status Zahlungsaufforderung für FSW zurücksetzen";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnFSWReset, ultraToolTipInfo7);
+            ultraToolTipInfo2.ToolTipText = "Status Zahlungsaufforderung für FSW zurücksetzen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnFSWReset, ultraToolTipInfo2);
             this.btnFSWReset.Click += new System.EventHandler(this.btnFSWReset_Click);
             // 
             // btnFSW
             // 
-            appearance9.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance9.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnFSW.Appearance = appearance9;
+            appearance35.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance35.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnFSW.Appearance = appearance35;
             this.btnFSW.AutoWorkLayout = false;
             this.btnFSW.IsStandardControl = false;
             this.btnFSW.Location = new System.Drawing.Point(65, 8);
@@ -576,10 +576,10 @@
             this.btnFSW.Size = new System.Drawing.Size(87, 29);
             this.btnFSW.TabIndex = 100;
             this.btnFSW.Text = "ZAUF ( FSW)";
-            ultraToolTipInfo2.ToolTipImage = Infragistics.Win.ToolTipImage.Info;
-            ultraToolTipInfo2.ToolTipText = "Zahlungsaufforderung für FSW erstellen. Zum Erstellen und Senden Umschaltaste hal" +
+            ultraToolTipInfo3.ToolTipImage = Infragistics.Win.ToolTipImage.Info;
+            ultraToolTipInfo3.ToolTipText = "Zahlungsaufforderung für FSW erstellen. Zum Erstellen und Senden Umschaltaste hal" +
     "ten und Klicken.";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnFSW, ultraToolTipInfo2);
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnFSW, ultraToolTipInfo3);
             this.btnFSW.Click += new System.EventHandler(this.btnFSW_Click);
             // 
             // panelAuswahlFreigStornoAll
@@ -659,12 +659,12 @@
             // btnVorschau
             // 
             this.btnVorschau.AcceptsFocus = false;
-            appearance8.FontData.SizeInPoints = 8F;
-            appearance8.ForeColor = System.Drawing.Color.Black;
-            appearance8.Image = ((object)(resources.GetObject("appearance8.Image")));
-            appearance8.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance8.TextVAlignAsString = "Middle";
-            this.btnVorschau.Appearance = appearance8;
+            appearance36.FontData.SizeInPoints = 8F;
+            appearance36.ForeColor = System.Drawing.Color.Black;
+            appearance36.Image = ((object)(resources.GetObject("appearance36.Image")));
+            appearance36.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance36.TextVAlignAsString = "Middle";
+            this.btnVorschau.Appearance = appearance36;
             this.btnVorschau.AutoWorkLayout = false;
             this.btnVorschau.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Button;
             this.btnVorschau.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -678,9 +678,9 @@
             this.btnVorschau.TabIndex = 21;
             this.btnVorschau.Tag = "1";
             this.btnVorschau.Text = "Vorschau";
-            ultraToolTipInfo3.ToolTipText = "Vorschau Rechnungen";
-            ultraToolTipInfo3.ToolTipTitle = "Vorschau";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnVorschau, ultraToolTipInfo3);
+            ultraToolTipInfo4.ToolTipText = "Vorschau Rechnungen";
+            ultraToolTipInfo4.ToolTipTitle = "Vorschau";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnVorschau, ultraToolTipInfo4);
             this.btnVorschau.UseAppStyling = false;
             this.btnVorschau.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnVorschau.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
@@ -690,13 +690,13 @@
             // btnFreigeben
             // 
             this.btnFreigeben.AcceptsFocus = false;
-            appearance36.FontData.SizeInPoints = 8F;
-            appearance36.ForeColor = System.Drawing.Color.Black;
-            appearance36.Image = ((object)(resources.GetObject("appearance36.Image")));
-            appearance36.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance36.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance36.TextVAlignAsString = "Middle";
-            this.btnFreigeben.Appearance = appearance36;
+            appearance37.FontData.SizeInPoints = 8F;
+            appearance37.ForeColor = System.Drawing.Color.Black;
+            appearance37.Image = ((object)(resources.GetObject("appearance37.Image")));
+            appearance37.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance37.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance37.TextVAlignAsString = "Middle";
+            this.btnFreigeben.Appearance = appearance37;
             this.btnFreigeben.AutoWorkLayout = false;
             this.btnFreigeben.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Button;
             this.btnFreigeben.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -709,9 +709,9 @@
             this.btnFreigeben.TabIndex = 20;
             this.btnFreigeben.Tag = "2";
             this.btnFreigeben.Text = "Freigegeben";
-            ultraToolTipInfo4.ToolTipText = "Freigegebene Rechnungen anzeigen";
-            ultraToolTipInfo4.ToolTipTitle = "Freigegeben";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnFreigeben, ultraToolTipInfo4);
+            ultraToolTipInfo5.ToolTipText = "Freigegebene Rechnungen anzeigen";
+            ultraToolTipInfo5.ToolTipTitle = "Freigegeben";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnFreigeben, ultraToolTipInfo5);
             this.btnFreigeben.UseAppStyling = false;
             this.btnFreigeben.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnFreigeben.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
@@ -729,9 +729,9 @@
             // 
             // btnStorno
             // 
-            appearance37.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance37.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnStorno.Appearance = appearance37;
+            appearance38.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance38.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnStorno.Appearance = appearance38;
             this.btnStorno.AutoWorkLayout = false;
             this.btnStorno.IsStandardControl = false;
             this.btnStorno.Location = new System.Drawing.Point(2, 8);
@@ -752,12 +752,12 @@
             // 
             // btnDelete
             // 
-            appearance38.BackColor = System.Drawing.Color.Transparent;
-            appearance38.Image = ((object)(resources.GetObject("appearance38.Image")));
-            appearance38.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance38.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance38.TextVAlignAsString = "Middle";
-            this.btnDelete.Appearance = appearance38;
+            appearance39.BackColor = System.Drawing.Color.Transparent;
+            appearance39.Image = ((object)(resources.GetObject("appearance39.Image")));
+            appearance39.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance39.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance39.TextVAlignAsString = "Middle";
+            this.btnDelete.Appearance = appearance39;
             this.btnDelete.AutoWorkLayout = false;
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDelete.DoOnClick = true;
@@ -786,9 +786,9 @@
             // 
             // btnRollungSperreLöschen
             // 
-            appearance39.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance39.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnRollungSperreLöschen.Appearance = appearance39;
+            appearance40.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance40.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnRollungSperreLöschen.Appearance = appearance40;
             this.btnRollungSperreLöschen.AutoWorkLayout = false;
             this.btnRollungSperreLöschen.IsStandardControl = false;
             this.btnRollungSperreLöschen.Location = new System.Drawing.Point(1, 7);
@@ -800,9 +800,9 @@
             // 
             // btnExportAsPdf
             // 
-            appearance40.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance40.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnExportAsPdf.Appearance = appearance40;
+            appearance41.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance41.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnExportAsPdf.Appearance = appearance41;
             this.btnExportAsPdf.AutoWorkLayout = false;
             this.btnExportAsPdf.IsStandardControl = false;
             this.btnExportAsPdf.Location = new System.Drawing.Point(246, 7);
@@ -814,9 +814,9 @@
             // 
             // btnExportAsExcel
             // 
-            appearance41.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance41.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnExportAsExcel.Appearance = appearance41;
+            appearance42.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance42.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnExportAsExcel.Appearance = appearance42;
             this.btnExportAsExcel.AutoWorkLayout = false;
             this.btnExportAsExcel.IsStandardControl = false;
             this.btnExportAsExcel.Location = new System.Drawing.Point(211, 7);
@@ -828,10 +828,10 @@
             // 
             // btnPrint
             // 
-            appearance42.Image = ((object)(resources.GetObject("appearance42.Image")));
-            appearance42.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance42.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnPrint.Appearance = appearance42;
+            appearance43.Image = ((object)(resources.GetObject("appearance43.Image")));
+            appearance43.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance43.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnPrint.Appearance = appearance43;
             this.btnPrint.AutoWorkLayout = false;
             this.btnPrint.IsStandardControl = false;
             this.btnPrint.Location = new System.Drawing.Point(35, 7);
@@ -839,8 +839,8 @@
             this.btnPrint.Size = new System.Drawing.Size(169, 29);
             this.btnPrint.TabIndex = 101;
             this.btnPrint.Text = "Beleg öffnen";
-            ultraToolTipInfo5.ToolTipText = "Für Rechnungsversand = Umschalt-Taste | Für Rechnungskopie = Strg-Taste";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnPrint, ultraToolTipInfo5);
+            ultraToolTipInfo6.ToolTipText = "Für Rechnungsversand = Umschalt-Taste | Für Rechnungskopie = Strg-Taste";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnPrint, ultraToolTipInfo6);
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // panelBottom
@@ -860,9 +860,9 @@
             // 
             // btnRollung
             // 
-            appearance43.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance43.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnRollung.Appearance = appearance43;
+            appearance28.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance28.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnRollung.Appearance = appearance28;
             this.btnRollung.AutoWorkLayout = false;
             this.btnRollung.IsStandardControl = false;
             this.btnRollung.Location = new System.Drawing.Point(488, 1);
@@ -870,16 +870,16 @@
             this.btnRollung.Size = new System.Drawing.Size(86, 27);
             this.btnRollung.TabIndex = 105;
             this.btnRollung.Text = "Rollung";
-            ultraToolTipInfo6.ToolTipText = "STRG-Tase halten = Rollung gegen NICHT FREIGEGEBENE Rechnung";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnRollung, ultraToolTipInfo6);
+            ultraToolTipInfo1.ToolTipText = "STRG-Tase halten = Rollung gegen NICHT FREIGEGEBENE Rechnung";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnRollung, ultraToolTipInfo1);
             this.btnRollung.Click += new System.EventHandler(this.btnRollung_Click);
             // 
             // butRechFreigeb
             // 
-            appearance28.Image = ((object)(resources.GetObject("appearance28.Image")));
-            appearance28.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance28.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.butRechFreigeb.Appearance = appearance28;
+            appearance29.Image = ((object)(resources.GetObject("appearance29.Image")));
+            appearance29.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance29.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.butRechFreigeb.Appearance = appearance29;
             this.butRechFreigeb.AutoWorkLayout = false;
             this.butRechFreigeb.IsStandardControl = false;
             this.butRechFreigeb.Location = new System.Drawing.Point(68, 1);
@@ -891,9 +891,9 @@
             // 
             // lblSumm
             // 
-            appearance29.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance29.TextHAlignAsString = "Right";
-            this.lblSumm.Appearance = appearance29;
+            appearance30.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance30.TextHAlignAsString = "Right";
+            this.lblSumm.Appearance = appearance30;
             this.lblSumm.Location = new System.Drawing.Point(225, 8);
             this.lblSumm.Name = "lblSumm";
             this.lblSumm.Size = new System.Drawing.Size(89, 16);
@@ -902,16 +902,16 @@
             // 
             // numSum
             // 
-            appearance51.BackColor = System.Drawing.Color.White;
-            appearance51.BackColorDisabled = System.Drawing.Color.White;
-            appearance51.BackColorDisabled2 = System.Drawing.Color.White;
-            appearance51.ForeColor = System.Drawing.Color.Black;
-            appearance51.ForeColorDisabled = System.Drawing.Color.Black;
-            this.numSum.Appearance = appearance51;
+            appearance31.BackColor = System.Drawing.Color.White;
+            appearance31.BackColorDisabled = System.Drawing.Color.White;
+            appearance31.BackColorDisabled2 = System.Drawing.Color.White;
+            appearance31.ForeColor = System.Drawing.Color.Black;
+            appearance31.ForeColorDisabled = System.Drawing.Color.Black;
+            this.numSum.Appearance = appearance31;
             this.numSum.BackColor = System.Drawing.Color.White;
             this.numSum.Enabled = false;
             this.numSum.FormatString = "###,###,###,##0.00";
-            this.numSum.Location = new System.Drawing.Point(320, 5);
+            this.numSum.Location = new System.Drawing.Point(320, 4);
             this.numSum.Name = "numSum";
             this.numSum.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.numSum.ReadOnly = true;
@@ -921,14 +921,14 @@
             // 
             // btnRechEinAus
             // 
-            appearance52.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance52.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnRechEinAus.Appearance = appearance52;
+            appearance32.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance32.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnRechEinAus.Appearance = appearance32;
             this.btnRechEinAus.AutoWorkLayout = false;
             this.btnRechEinAus.IsStandardControl = false;
-            this.btnRechEinAus.Location = new System.Drawing.Point(763, 8);
+            this.btnRechEinAus.Location = new System.Drawing.Point(763, 1);
             this.btnRechEinAus.Name = "btnRechEinAus";
-            this.btnRechEinAus.Size = new System.Drawing.Size(137, 22);
+            this.btnRechEinAus.Size = new System.Drawing.Size(137, 26);
             this.btnRechEinAus.TabIndex = 102;
             this.btnRechEinAus.Tag = "0";
             this.btnRechEinAus.Text = "Rech-Erstellung ein/aus";
@@ -938,20 +938,20 @@
             // lblCount
             // 
             this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance32.FontData.SizeInPoints = 7.5F;
-            appearance32.TextHAlignAsString = "Right";
-            this.lblCount.Appearance = appearance32;
+            appearance33.FontData.SizeInPoints = 7.5F;
+            appearance33.TextHAlignAsString = "Right";
+            this.lblCount.Appearance = appearance33;
             this.lblCount.Location = new System.Drawing.Point(972, 1);
             this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(214, 15);
+            this.lblCount.Size = new System.Drawing.Size(214, 21);
             this.lblCount.TabIndex = 8;
             this.lblCount.Text = "Gefunden: 0";
             // 
             // butAlleKeine
             // 
-            appearance53.ImageHAlign = Infragistics.Win.HAlign.Left;
-            appearance53.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.butAlleKeine.Appearance = appearance53;
+            appearance34.ImageHAlign = Infragistics.Win.HAlign.Left;
+            appearance34.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.butAlleKeine.Appearance = appearance34;
             this.butAlleKeine.AutoWorkLayout = false;
             this.butAlleKeine.IsStandardControl = false;
             this.butAlleKeine.Location = new System.Drawing.Point(3, 1);
@@ -981,7 +981,6 @@
             this.editor.PageMargins.Top = 79.03D;
             this.editor.Size = new System.Drawing.Size(71, 48);
             this.editor.TabIndex = 100;
-            this.editor.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editor.UserNames = null;
             this.editor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textControl1_KeyPress);
             // 
@@ -1246,7 +1245,6 @@
             this.editorPrecalc.PageMargins.Top = 79.03D;
             this.editorPrecalc.Size = new System.Drawing.Size(71, 48);
             this.editorPrecalc.TabIndex = 102;
-            this.editorPrecalc.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editorPrecalc.UserNames = null;
             // 
             // contextMenuStrip1

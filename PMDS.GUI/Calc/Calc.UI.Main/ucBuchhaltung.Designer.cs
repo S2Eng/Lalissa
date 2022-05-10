@@ -1117,6 +1117,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.uGroupBoxHeader);
             gridBagConstraint21.Fill = Infragistics.Win.Layout.FillType.Both;

@@ -480,6 +480,8 @@
             appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
             appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.btnReload.Appearance = appearance3;
+            this.btnReload.AutoWorkLayout = false;
+            this.btnReload.IsStandardControl = false;
             this.btnReload.Location = new System.Drawing.Point(583, 0);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(88, 32);
@@ -492,7 +494,7 @@
             this.ucPrintStammDatenBlatt1.chkFreiHeitVisible = true;
             this.ucPrintStammDatenBlatt1.Location = new System.Drawing.Point(6, 2);
             this.ucPrintStammDatenBlatt1.Name = "ucPrintStammDatenBlatt1";
-            this.ucPrintStammDatenBlatt1.Size = new System.Drawing.Size(169, 30);
+            this.ucPrintStammDatenBlatt1.Size = new System.Drawing.Size(169, 29);
             this.ucPrintStammDatenBlatt1.TabIndex = 89;
             this.ucPrintStammDatenBlatt1.btnPrintStammdatenKlicked += new PMDS.GUI.BaseControls.ucPrintStammDatenBlatt.PrintStammdatenDelegate(this.ucPrintStammDatenBlatt1_btnPrintStammdatenKlicked);
             // 
@@ -504,13 +506,17 @@
             appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnUndo.Appearance = appearance4;
+            this.btnUndo.AutoWorkLayout = false;
+            this.btnUndo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnUndo.DoOnClick = true;
             this.btnUndo.Enabled = false;
+            this.btnUndo.IsStandardControl = true;
             this.btnUndo.Location = new System.Drawing.Point(673, 0);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(96, 32);
             this.btnUndo.TabIndex = 7;
             this.btnUndo.TabStop = false;
-            this.btnUndo.Text = "&Rückgängig";
+            this.btnUndo.Text = "Rückgängig";
             this.btnUndo.TYPE = PMDS.GUI.ucButton.ButtonType.Undo;
             this.btnUndo.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
@@ -523,13 +529,17 @@
             appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnSave.Appearance = appearance5;
+            this.btnSave.AutoWorkLayout = false;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnSave.DoOnClick = true;
             this.btnSave.Enabled = false;
+            this.btnSave.IsStandardControl = true;
             this.btnSave.Location = new System.Drawing.Point(770, 0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(89, 32);
             this.btnSave.TabIndex = 8;
             this.btnSave.TabStop = false;
-            this.btnSave.Text = "&Speichern";
+            this.btnSave.Text = "Speichern";
             this.btnSave.TYPE = PMDS.GUI.ucButton.ButtonType.Save;
             this.btnSave.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -628,10 +638,7 @@
             appearance7.BackColor = System.Drawing.Color.Transparent;
             this.uGroupBoxHeader.Appearance = appearance7;
             this.uGroupBoxHeader.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.None;
-            appearance8.BackColor = System.Drawing.Color.White;
-            appearance8.BackColor2 = System.Drawing.Color.Silver;
-            appearance8.BackGradientStyle = Infragistics.Win.GradientStyle.GlassTop37Bright;
-            appearance8.BackHatchStyle = Infragistics.Win.BackHatchStyle.Horizontal;
+            appearance8.BackColor = System.Drawing.Color.WhiteSmoke;
             this.uGroupBoxHeader.ContentAreaAppearance = appearance8;
             this.uGroupBoxHeader.Controls.Add(this.panelButtKlient2);
             this.uGroupBoxHeader.Controls.Add(this.panelButtCalc);
@@ -648,9 +655,9 @@
             // 
             this.panelButtKlient2.Controls.Add(this.panelButtKlient);
             this.panelButtKlient2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelButtKlient2.Location = new System.Drawing.Point(84, 0);
+            this.panelButtKlient2.Location = new System.Drawing.Point(83, 0);
             this.panelButtKlient2.Name = "panelButtKlient2";
-            this.panelButtKlient2.Size = new System.Drawing.Size(781, 63);
+            this.panelButtKlient2.Size = new System.Drawing.Size(783, 64);
             this.panelButtKlient2.TabIndex = 102;
             // 
             // panelButtKlient
@@ -667,7 +674,7 @@
             this.panelButtKlient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelButtKlient.Location = new System.Drawing.Point(0, 0);
             this.panelButtKlient.Name = "panelButtKlient";
-            this.panelButtKlient.Size = new System.Drawing.Size(781, 63);
+            this.panelButtKlient.Size = new System.Drawing.Size(783, 64);
             this.panelButtKlient.TabIndex = 101;
             // 
             // btnLeistungen
@@ -680,8 +687,10 @@
             appearance9.ImageHAlign = Infragistics.Win.HAlign.Left;
             appearance9.TextVAlignAsString = "Middle";
             this.btnLeistungen.Appearance = appearance9;
+            this.btnLeistungen.AutoWorkLayout = false;
             this.btnLeistungen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnLeistungen.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnLeistungen.IsStandardControl = false;
             this.btnLeistungen.Location = new System.Drawing.Point(13, 5);
             this.btnLeistungen.Name = "btnLeistungen";
             this.btnLeistungen.ShowFocusRect = false;
@@ -706,8 +715,10 @@
             appearance10.ImageHAlign = Infragistics.Win.HAlign.Left;
             appearance10.TextVAlignAsString = "Middle";
             this.btnAbwesenheiten.Appearance = appearance10;
+            this.btnAbwesenheiten.AutoWorkLayout = false;
             this.btnAbwesenheiten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnAbwesenheiten.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnAbwesenheiten.IsStandardControl = false;
             this.btnAbwesenheiten.Location = new System.Drawing.Point(121, 5);
             this.btnAbwesenheiten.Name = "btnAbwesenheiten";
             this.btnAbwesenheiten.ShowFocusRect = false;
@@ -732,8 +743,10 @@
             appearance11.ImageHAlign = Infragistics.Win.HAlign.Left;
             appearance11.TextVAlignAsString = "Middle";
             this.btnFreieRechnungen2.Appearance = appearance11;
+            this.btnFreieRechnungen2.AutoWorkLayout = false;
             this.btnFreieRechnungen2.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnFreieRechnungen2.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnFreieRechnungen2.IsStandardControl = false;
             this.btnFreieRechnungen2.Location = new System.Drawing.Point(218, 34);
             this.btnFreieRechnungen2.Name = "btnFreieRechnungen2";
             this.btnFreieRechnungen2.ShowFocusRect = false;
@@ -758,8 +771,10 @@
             appearance12.ImageHAlign = Infragistics.Win.HAlign.Left;
             appearance12.TextVAlignAsString = "Middle";
             this.btnTransferzahlungen2.Appearance = appearance12;
+            this.btnTransferzahlungen2.AutoWorkLayout = false;
             this.btnTransferzahlungen2.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnTransferzahlungen2.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnTransferzahlungen2.IsStandardControl = false;
             this.btnTransferzahlungen2.Location = new System.Drawing.Point(13, 34);
             this.btnTransferzahlungen2.Name = "btnTransferzahlungen2";
             this.btnTransferzahlungen2.ShowFocusRect = false;
@@ -783,8 +798,10 @@
             appearance13.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
             appearance13.TextVAlignAsString = "Middle";
             this.btnAbrechnungsdaten.Appearance = appearance13;
+            this.btnAbrechnungsdaten.AutoWorkLayout = false;
             this.btnAbrechnungsdaten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnAbrechnungsdaten.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnAbrechnungsdaten.IsStandardControl = false;
             this.btnAbrechnungsdaten.Location = new System.Drawing.Point(218, 5);
             this.btnAbrechnungsdaten.Name = "btnAbrechnungsdaten";
             this.btnAbrechnungsdaten.ShowFocusRect = false;
@@ -809,8 +826,10 @@
             appearance14.ImageHAlign = Infragistics.Win.HAlign.Left;
             appearance14.TextVAlignAsString = "Middle";
             this.btnManBuchungen2.Appearance = appearance14;
+            this.btnManBuchungen2.AutoWorkLayout = false;
             this.btnManBuchungen2.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnManBuchungen2.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnManBuchungen2.IsStandardControl = false;
             this.btnManBuchungen2.Location = new System.Drawing.Point(121, 34);
             this.btnManBuchungen2.Name = "btnManBuchungen2";
             this.btnManBuchungen2.ShowFocusRect = false;
@@ -837,9 +856,11 @@
             appearance15.ImageVAlign = Infragistics.Win.VAlign.Middle;
             appearance15.TextVAlignAsString = "Middle";
             this.btnKlientenakt.Appearance = appearance15;
+            this.btnKlientenakt.AutoWorkLayout = false;
             this.btnKlientenakt.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnKlientenakt.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnKlientenakt.Location = new System.Drawing.Point(737, 22);
+            this.btnKlientenakt.IsStandardControl = false;
+            this.btnKlientenakt.Location = new System.Drawing.Point(739, 22);
             this.btnKlientenakt.Name = "btnKlientenakt";
             this.btnKlientenakt.ShowFocusRect = false;
             this.btnKlientenakt.ShowOutline = false;
@@ -877,7 +898,7 @@
             this.lblInfoKlientSingle.Appearance = appearance17;
             this.lblInfoKlientSingle.Location = new System.Drawing.Point(392, 3);
             this.lblInfoKlientSingle.Name = "lblInfoKlientSingle";
-            this.lblInfoKlientSingle.Size = new System.Drawing.Size(382, 19);
+            this.lblInfoKlientSingle.Size = new System.Drawing.Size(384, 19);
             this.lblInfoKlientSingle.TabIndex = 99;
             this.lblInfoKlientSingle.Text = "Gewählt: Brixa Maria";
             // 
@@ -885,9 +906,9 @@
             // 
             this.panelButtCalc.Controls.Add(this.btnRechnungen);
             this.panelButtCalc.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelButtCalc.Location = new System.Drawing.Point(1, 0);
+            this.panelButtCalc.Location = new System.Drawing.Point(0, 0);
             this.panelButtCalc.Name = "panelButtCalc";
-            this.panelButtCalc.Size = new System.Drawing.Size(83, 63);
+            this.panelButtCalc.Size = new System.Drawing.Size(83, 64);
             this.panelButtCalc.TabIndex = 100;
             this.panelButtCalc.Visible = false;
             // 
@@ -903,8 +924,10 @@
             appearance18.ImageVAlign = Infragistics.Win.VAlign.Top;
             appearance18.TextVAlignAsString = "Middle";
             this.btnRechnungen.Appearance = appearance18;
+            this.btnRechnungen.AutoWorkLayout = false;
             this.btnRechnungen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnRechnungen.ImageSize = new System.Drawing.Size(36, 36);
+            this.btnRechnungen.IsStandardControl = false;
             this.btnRechnungen.Location = new System.Drawing.Point(4, 5);
             this.btnRechnungen.Name = "btnRechnungen";
             this.btnRechnungen.ShowFocusRect = false;
@@ -1038,8 +1061,6 @@
         private QS2.Desktop.ControlManagment.BasePanel panelDaten;
         private Infragistics.Win.Misc.UltraGridBagLayoutPanel uGridBagLayoutPanelControls;
         private QS2.Desktop.ControlManagment.BaseButton btnReload;
-        public Infragistics.Win.Misc.UltraLabel lblNoKlient;
-        public Infragistics.Win.UltraWinTabControl.UltraTabControl tabMainCalc;
         private QS2.Desktop.ControlManagment.BaseLabel line1;
         private QS2.Desktop.ControlManagment.BasePanel panelButtKlient;
         private QS2.Desktop.ControlManagment.BasePanel panelButtCalc;
@@ -1049,5 +1070,7 @@
         private QS2.Desktop.ControlManagment.BasePanel panelButtKlient2;
         public QS2.Desktop.ControlManagment.BasePanel panelAbrechnungsdaten;
         private QS2.Desktop.ControlManagment.BasePanel panelManBuchungen;
+        public QS2.Desktop.ControlManagment.BaseLabel lblNoKlient;
+        public QS2.Desktop.ControlManagment.BaseTabControl tabMainCalc;
     }
 }

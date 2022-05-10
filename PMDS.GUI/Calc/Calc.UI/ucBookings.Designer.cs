@@ -197,7 +197,7 @@
             this.ultraTabPageControl1.Controls.Add(this.panelGrid);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(1155, 256);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(1155, 250);
             // 
             // panelGrid
             // 
@@ -205,7 +205,7 @@
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGrid.Location = new System.Drawing.Point(0, 0);
             this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(1155, 256);
+            this.panelGrid.Size = new System.Drawing.Size(1155, 250);
             this.panelGrid.TabIndex = 100;
             // 
             // uGridBookings
@@ -479,7 +479,7 @@
             this.uGridBookings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uGridBookings.Location = new System.Drawing.Point(7, 3);
             this.uGridBookings.Name = "uGridBookings";
-            this.uGridBookings.Size = new System.Drawing.Size(1143, 250);
+            this.uGridBookings.Size = new System.Drawing.Size(1143, 244);
             this.uGridBookings.TabIndex = 0;
             this.uGridBookings.Text = "Abrechnungen";
             this.uGridBookings.AfterRowActivate += new System.EventHandler(this.uGridBookings_AfterRowActivate);
@@ -551,7 +551,7 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1159, 144);
+            this.panelTop.Size = new System.Drawing.Size(1159, 150);
             this.panelTop.TabIndex = 0;
             // 
             // contextMenuStripBooking
@@ -577,9 +577,9 @@
             this.btnExportExcel.Appearance = appearance12;
             this.btnExportExcel.AutoWorkLayout = false;
             this.btnExportExcel.IsStandardControl = false;
-            this.btnExportExcel.Location = new System.Drawing.Point(1122, 122);
+            this.btnExportExcel.Location = new System.Drawing.Point(1122, 119);
             this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(29, 22);
+            this.btnExportExcel.Size = new System.Drawing.Size(29, 27);
             this.btnExportExcel.TabIndex = 104;
             this.btnExportExcel.Tag = "P";
             ultraToolTipInfo1.ToolTipText = "Tabelle nach Excel exportieren";
@@ -592,9 +592,9 @@
             this.panelButtonsAddDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panelButtonsAddDel.Controls.Add(this.btnAdd);
             this.panelButtonsAddDel.Controls.Add(this.btnDelete);
-            this.panelButtonsAddDel.Location = new System.Drawing.Point(932, 123);
+            this.panelButtonsAddDel.Location = new System.Drawing.Point(914, 119);
             this.panelButtonsAddDel.Name = "panelButtonsAddDel";
-            this.panelButtonsAddDel.Size = new System.Drawing.Size(55, 20);
+            this.panelButtonsAddDel.Size = new System.Drawing.Size(63, 28);
             this.panelButtonsAddDel.TabIndex = 103;
             // 
             // btnAdd
@@ -612,7 +612,7 @@
             this.btnAdd.IsStandardControl = true;
             this.btnAdd.Location = new System.Drawing.Point(0, -1);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(25, 22);
+            this.btnAdd.Size = new System.Drawing.Size(27, 27);
             this.btnAdd.TabIndex = 102;
             this.btnAdd.TabStop = false;
             this.btnAdd.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
@@ -632,9 +632,9 @@
             this.btnDelete.DoOnClick = true;
             this.btnDelete.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDelete.IsStandardControl = true;
-            this.btnDelete.Location = new System.Drawing.Point(25, -1);
+            this.btnDelete.Location = new System.Drawing.Point(34, -1);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(25, 22);
+            this.btnDelete.Size = new System.Drawing.Size(27, 27);
             this.btnDelete.TabIndex = 99;
             this.btnDelete.TabStop = false;
             this.btnDelete.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
@@ -650,9 +650,9 @@
             this.btnPrint.Appearance = appearance20;
             this.btnPrint.AutoWorkLayout = false;
             this.btnPrint.IsStandardControl = false;
-            this.btnPrint.Location = new System.Drawing.Point(988, 122);
+            this.btnPrint.Location = new System.Drawing.Point(980, 119);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(134, 22);
+            this.btnPrint.Size = new System.Drawing.Size(139, 27);
             this.btnPrint.TabIndex = 101;
             this.btnPrint.Tag = "P";
             this.btnPrint.Text = "Buchungen drucken";
@@ -718,12 +718,12 @@
             // 
             // dtBis
             // 
-            this.dtBis.Location = new System.Drawing.Point(164, 24);
+            this.dtBis.Location = new System.Drawing.Point(169, 24);
             this.dtBis.MaskInput = "{LOC}mm.yyyy";
             this.dtBis.Name = "dtBis";
             this.dtBis.ownFormat = "";
             this.dtBis.ownMaskInput = "";
-            this.dtBis.Size = new System.Drawing.Size(79, 21);
+            this.dtBis.Size = new System.Drawing.Size(83, 21);
             this.dtBis.TabIndex = 1;
             this.dtBis.Enter += new System.EventHandler(this.dtBis_Enter);
             this.dtBis.Leave += new System.EventHandler(this.dtBis_Leave);
@@ -735,7 +735,7 @@
             this.dtVon.Name = "dtVon";
             this.dtVon.ownFormat = "";
             this.dtVon.ownMaskInput = "";
-            this.dtVon.Size = new System.Drawing.Size(79, 21);
+            this.dtVon.Size = new System.Drawing.Size(83, 21);
             this.dtVon.TabIndex = 0;
             this.dtVon.Enter += new System.EventHandler(this.dtVon_Enter);
             this.dtVon.Leave += new System.EventHandler(this.dtVon_Leave);
@@ -826,7 +826,7 @@
             // 
             // btnTimes
             // 
-            this.btnTimes.Location = new System.Drawing.Point(249, 23);
+            this.btnTimes.Location = new System.Drawing.Point(257, 23);
             this.btnTimes.Name = "btnTimes";
             this.btnTimes.ShowFocusRect = false;
             this.btnTimes.Size = new System.Drawing.Size(21, 24);
@@ -837,7 +837,7 @@
             // 
             // lblBis
             // 
-            this.lblBis.Location = new System.Drawing.Point(139, 27);
+            this.lblBis.Location = new System.Drawing.Point(143, 27);
             this.lblBis.Name = "lblBis";
             this.lblBis.Size = new System.Drawing.Size(27, 15);
             this.lblBis.TabIndex = 4;
@@ -910,7 +910,7 @@
             this.btnReload.IsStandardControl = false;
             this.btnReload.Location = new System.Drawing.Point(342, 1);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(88, 28);
+            this.btnReload.Size = new System.Drawing.Size(88, 27);
             this.btnReload.TabIndex = 105;
             this.btnReload.Text = "Neu laden";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
@@ -929,7 +929,7 @@
             this.btnSave.IsStandardControl = true;
             this.btnSave.Location = new System.Drawing.Point(524, 1);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(87, 28);
+            this.btnSave.Size = new System.Drawing.Size(87, 27);
             this.btnSave.TabIndex = 103;
             this.btnSave.TabStop = false;
             this.btnSave.Text = "Speichern";
@@ -951,7 +951,7 @@
             this.btnReset.IsStandardControl = true;
             this.btnReset.Location = new System.Drawing.Point(431, 1);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(92, 28);
+            this.btnReset.Size = new System.Drawing.Size(92, 27);
             this.btnReset.TabIndex = 104;
             this.btnReset.TabStop = false;
             this.btnReset.Text = "Rückgängig";
@@ -981,9 +981,9 @@
             // 
             this.panelBookings.Controls.Add(this.ultraTabControl1);
             this.panelBookings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelBookings.Location = new System.Drawing.Point(0, 144);
+            this.panelBookings.Location = new System.Drawing.Point(0, 150);
             this.panelBookings.Name = "panelBookings";
-            this.panelBookings.Size = new System.Drawing.Size(1159, 282);
+            this.panelBookings.Size = new System.Drawing.Size(1159, 276);
             this.panelBookings.TabIndex = 102;
             // 
             // ultraTabControl1
@@ -995,7 +995,7 @@
             this.ultraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.ultraTabControl1.Name = "ultraTabControl1";
             this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControl1.Size = new System.Drawing.Size(1159, 282);
+            this.ultraTabControl1.Size = new System.Drawing.Size(1159, 276);
             this.ultraTabControl1.TabIndex = 101;
             ultraTab1.Key = "Buchungen";
             ultraTab1.TabPage = this.ultraTabPageControl1;
@@ -1013,7 +1013,7 @@
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1155, 256);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1155, 250);
             // 
             // ultraGridBagLayoutPanel1
             // 

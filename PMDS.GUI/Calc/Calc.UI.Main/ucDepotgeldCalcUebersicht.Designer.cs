@@ -511,12 +511,14 @@
             // 
             // panelHeader
             // 
-            this.panelHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelHeader.BackColor = System.Drawing.Color.Transparent;
             this.panelHeader.Controls.Add(this.ultraGroupBoxHeader);
             gridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both;
             gridBagConstraint1.Insets.Left = 5;
             gridBagConstraint1.Insets.Right = 5;
             gridBagConstraint1.Insets.Top = 5;
+            gridBagConstraint1.OriginX = 0;
+            gridBagConstraint1.OriginY = 0;
             this.ultraGridBagLayoutPanelHeader.SetGridBagConstraint(this.panelHeader, gridBagConstraint1);
             this.panelHeader.Location = new System.Drawing.Point(5, 5);
             this.panelHeader.Name = "panelHeader";
@@ -533,7 +535,7 @@
             this.ultraGroupBoxHeader.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.ultraGroupBoxHeader.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBoxHeader.Name = "ultraGroupBoxHeader";
-            this.ultraGroupBoxHeader.Size = new System.Drawing.Size(750, 51);
+            this.ultraGroupBoxHeader.Size = new System.Drawing.Size(752, 53);
             this.ultraGroupBoxHeader.TabIndex = 49;
             // 
             // btnRechnungen
@@ -667,7 +669,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.panelTab);
             this.Controls.Add(this.panelOben);
             this.Name = "ucDepotgeldCalcÜbersicht";

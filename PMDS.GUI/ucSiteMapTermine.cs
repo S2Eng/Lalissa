@@ -694,10 +694,8 @@ namespace PMDS.GUI
                     TermineExTmp.panelStuhlbuttons.Controls.Add(pnl);
                 }
 
-                //PMDS.Global.UIGlobal.setAktiv(b, -1, System.Drawing.Color.White, System.Drawing.Color.Gray, System.Drawing.Color.Gray);
-                PMDS.Global.UIGlobal.setAktivDisable(b, -1, System.Drawing.Color.Black, System.Drawing.Color.Gray, System.Drawing.Color.Transparent, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setAktivDisable(b, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
 
-                //b.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Abgezeichnet, 32, 32);
                 b.Tag = menu;
                 b.Name = "stuhlButt_" + anz.ToString();
                 b.TabIndex = anz;

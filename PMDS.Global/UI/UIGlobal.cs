@@ -137,102 +137,54 @@ namespace PMDS.Global
 
         public static void setAktiv(UltraButton butt, int ineu, Color foreCol, Color aktivBorderCol, Color backCol)
         {
-            
-//            butt.Appearance.BorderColor = aktivBorderCol;
-            butt.Appearance.BorderColor2 = aktivBorderCol;
             butt.Appearance.FontData.Bold = DefaultableBoolean.False;
             butt.UseOsThemes = DefaultableBoolean.False;
             butt.Appearance.BackColor = backCol; 
-            butt.Appearance.BackColor2 = backCol; 
             butt.Appearance.ForeColor = foreCol;
-            butt.Appearance.BackGradientStyle = GradientStyle.GlassBottom50Bright;
             butt.PressedAppearance.BackColor = System.Drawing.Color.Gainsboro;
-            butt.PressedAppearance.BackColor2 = System.Drawing.Color.Gainsboro;
             butt.PressedAppearance.ForeColor = foreCol;
             butt.UseFlatMode = DefaultableBoolean.True;
-
             butt.ShowFocusRect = false;
-
         }
-        public static void setAktivDisable(UltraButton butt, int i, Color foreCol, Color hotTrackBackCol, Color bordColor,System.Drawing.Color backCol, UIElementButtonStyle styleButt )
+
+        public static void setAktivDisable(UltraButton butt, int i, Color foreCol, Color hotTrackBackCol, Color bordColor, Color backCol, UIElementButtonStyle styleButt )
         {
+            butt.Appearance.ForeColor = foreCol;
+            butt.Appearance.BackColor = backCol;
+            butt.Appearance.BorderColor = bordColor;
+            butt.HotTrackAppearance.BackColor = hotTrackBackCol;
+            butt.HotTrackAppearance.BorderColor = System.Drawing.Color.Transparent;
             butt.ButtonStyle = styleButt; 
-            // if (i != -1) { butt.Appearance.Image = _list[i]._Normal; }
             butt.UseOsThemes = DefaultableBoolean.False;
             butt.UseHotTracking = DefaultableBoolean.True;
-            butt.Appearance.BorderColor = bordColor;
-            butt.Appearance.BackColor2 = bordColor;
             butt.Appearance.FontData.Bold = DefaultableBoolean.False;
-            butt.Appearance.BackColor = backCol;
-            butt.Appearance.BackColor2 = backCol;
             butt.UseFlatMode = DefaultableBoolean.True;
-            butt.HotTrackAppearance.BackColor = hotTrackBackCol;
-            butt.HotTrackAppearance.BackColor2 = hotTrackBackCol;       // System.Drawing.Color.Orange;
-            //butt.HotTrackAppearance.ForeColor = System.Drawing.Color.Black;
-            //butt.HotTrackAppearance.BackGradientStyle = GradientStyle.GlassBottom50Bright;
-            butt.HotTrackAppearance.BorderColor = System.Drawing.Color.Transparent;
-            butt.Appearance.ForeColor = foreCol;
-            //butt.Appearance.BackGradientStyle = GradientStyle.None;
-
-            butt.ShowFocusRect = false;
-            
+            butt.ShowFocusRect = false;            
         }
+
         public static void setAktivDisableDropDown(UltraDropDownButton butt, int i, Color foreCol, Color hotTrackBackCol, Color bordColor, System.Drawing.Color backCol, UIElementButtonStyle styleButt)
         {
+            butt.Appearance.ForeColor = foreCol;
+            butt.Appearance.BackColor = backCol;
+            butt.Appearance.BorderColor = bordColor;
+            butt.HotTrackAppearance.BackColor = hotTrackBackCol;
+            butt.HotTrackAppearance.BorderColor = System.Drawing.Color.Transparent;
             butt.ButtonStyle = styleButt;
-            // if (i != -1) { butt.Appearance.Image = _list[i]._Normal; }
             butt.UseOsThemes = DefaultableBoolean.False;
             butt.UseHotTracking = DefaultableBoolean.True;
-            butt.Appearance.BorderColor = bordColor;
-            butt.Appearance.BackColor2 = bordColor;
             butt.Appearance.FontData.Bold = DefaultableBoolean.False;
-            butt.Appearance.BackColor = backCol;
-            butt.Appearance.BackColor2 = backCol;
             butt.UseFlatMode = DefaultableBoolean.True;
-            butt.HotTrackAppearance.BackColor = hotTrackBackCol;
-            butt.HotTrackAppearance.BackColor2 = hotTrackBackCol;       
-            //butt.HotTrackAppearance.ForeColor = System.Drawing.Color.Black;
-            //butt.HotTrackAppearance.BackGradientStyle = GradientStyle.GlassBottom50Bright;
-            butt.HotTrackAppearance.BorderColor = bordColor;
-            butt.Appearance.ForeColor = foreCol;
-            butt.Appearance.BackGradientStyle = GradientStyle.None;
-
             butt.ShowFocusRect = false;
         }
-
-
 
         public static void setStyleButton(Infragistics.Win.Misc.UltraButton butt)
         {
-            Color forCol = new Color();
-            Color aktBorderCol = new Color();
-            Color backGroundCol = new Color();
-            Color hotTrackCol = new Color();
-
-            forCol = System.Drawing.Color.Black;
-            aktBorderCol = System.Drawing.Color.Gray;
-            backGroundCol = Color.FromArgb(236, 236, 236);
-            hotTrackCol = System.Drawing.Color.Gainsboro;
-            Infragistics.Win.UIElementButtonStyle style = Infragistics.Win.UIElementButtonStyle.Button3DOldStyle;
-
-            PMDS.Global.UIGlobal.setAktivDisable(butt, -1, forCol, hotTrackCol, aktBorderCol, backGroundCol, style);                // Wunde
-
+            PMDS.Global.UIGlobal.setAktivDisable(butt, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);                // Wunde
         }
+
         public static void setStyleButtonDropDown(Infragistics.Win.Misc.UltraDropDownButton butt)
         {
-            Color forCol = new Color();
-            Color aktBorderCol = new Color();
-            Color backGroundCol = new Color();
-            Color hotTrackCol = new Color();
-
-            forCol = System.Drawing.Color.Black;
-            aktBorderCol = System.Drawing.Color.Gray;
-            backGroundCol = Color.FromArgb(236, 236, 236);
-            hotTrackCol = System.Drawing.Color.Gainsboro;
-            Infragistics.Win.UIElementButtonStyle style = Infragistics.Win.UIElementButtonStyle.Button3DOldStyle;
-
-            PMDS.Global.UIGlobal.setAktivDisableDropDown(butt, -1, forCol, hotTrackCol, aktBorderCol, backGroundCol, style);                // Wunde
-
+            PMDS.Global.UIGlobal.setAktivDisableDropDown(butt, -1, ENVCOLOR.inactiveBackCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveForeCol, UIElementButtonStyle.Button);                // Wunde
         }
 
 
@@ -253,27 +205,12 @@ namespace PMDS.Global
 
         public void setButtonStyleStandard(UltraButton butt, PMDS.Global.UIGlobal.ButtonPlacement TYPEPlacement)
         {
-
             if (TYPEPlacement == ButtonPlacement.grid)
             {
                 butt.Appearance.BackColor = System.Drawing.Color.White;
-                //butt.UseOsThemes = DefaultableBoolean.False;
-                //butt.UseFlatMode = DefaultableBoolean.True;
-                //butt.ButtonStyle = UIElementButtonStyle.Flat;
-                //butt.UseHotTracking = DefaultableBoolean.True;
-                //butt.HotTrackAppearance.BackColor = System.Drawing.Color.WhiteSmoke;
-                ////this.HotTrackAppearance.ForeColor  = System.Drawing.Color.PowderBlue;
-                //butt.ShowFocusRect = false;
-                //butt.ShowOutline = false;
-                //butt.Cursor = System.Windows.Forms.Cursors.Hand;
-            }
-            else
-            {
-                //butt.Appearance.BackColor = System.Drawing.Color.Transparent;
-                //System.Drawing.Size sizKleinIco = new System.Drawing.Size(12, 24);
-                //this.ImageSize = sizKleinIco;
             }
         }
+
         public static PMDS.Global.retFkt openInputForm(string titWindow, string descrEingabe1, string defaultValue1, bool pflicht1,
                       string descrEingabe2, string defaultValue2, bool pflicht2, System.Windows.Forms.Form frmParent)
         {

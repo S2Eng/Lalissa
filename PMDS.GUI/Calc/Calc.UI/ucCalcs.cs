@@ -9,6 +9,8 @@ using Infragistics.Win.UltraWinGrid;
 using PMDS.UI.Sitemap;
 using PMDS.GUI.Calc.Calc.UI;
 using System.Linq;
+using PMDS.Global;
+using Infragistics.Win;
 //using System.Windows.Input;
 
 namespace PMDS.Calc.UI
@@ -311,7 +313,8 @@ namespace PMDS.Calc.UI
                     case "F":
                         ActUIMode = PMDS.Calc.Logic.CalcUIMode.Freigegeben;
                         this.btnPrint.Text = "Rechnung(en) öffnen";
-                        PMDS.Global.UIGlobal.setAktiv(this.btnFreigeben, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.White);
+                        PMDS.Global.UIGlobal.setAktivDisable(this.btnVorschau, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
+                        PMDS.Global.UIGlobal.setAktiv(this.btnFreigeben, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                         ultraToolTipInfoF.ToolTipText = "\nFür Rechnungsversand = Umschalt-Taste\nFür Rechnungskopie = Strg-Taste";
                         this.btnRollung.Visible = false;
                         break;
@@ -319,7 +322,8 @@ namespace PMDS.Calc.UI
                     case "O":
                         ActUIMode = PMDS.Calc.Logic.CalcUIMode.Vorschau;
                         this.btnPrint.Text = "Vorschau(en) öffnen";
-                        PMDS.Global.UIGlobal.setAktiv(this.btnVorschau, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.White);
+                        PMDS.Global.UIGlobal.setAktivDisable(this.btnFreigeben, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
+                        PMDS.Global.UIGlobal.setAktiv(this.btnVorschau, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                         ultraToolTipInfoF.ToolTipText += "\nFür FSW-XLSX-Vorschau = Strg-Taste";
                         this.btnRollung.Visible = true;
                         break;
@@ -327,7 +331,7 @@ namespace PMDS.Calc.UI
                     default:
                         ActUIMode = PMDS.Calc.Logic.CalcUIMode.Belege;
                         this.btnPrint.Text = "Beleg(e) öffnen";
-                        PMDS.Global.UIGlobal.setAktivDisable(this.btnVorschau, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                        PMDS.Global.UIGlobal.setAktivDisable(this.btnVorschau, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
                         ultraToolTipInfoF.ToolTipText += "";
                         this.btnRollung.Visible = false;
                         break;

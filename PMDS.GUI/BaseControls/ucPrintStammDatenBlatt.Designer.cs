@@ -293,7 +293,7 @@
             this.btnPrintSettings.PopupItemKey = "pnlPrintStammDatenBlatt";
             this.btnPrintSettings.PopupItemProvider = this.ultraPopupControlContainer1;
             this.btnPrintSettings.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.btnPrintSettings.Size = new System.Drawing.Size(153, 32);
+            this.btnPrintSettings.Size = new System.Drawing.Size(153, 28);
             this.btnPrintSettings.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.btnPrintSettings.TabIndex = 89;
             this.btnPrintSettings.Text = "&Stammdatenblatt";
