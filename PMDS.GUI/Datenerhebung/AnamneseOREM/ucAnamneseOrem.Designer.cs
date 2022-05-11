@@ -84,42 +84,63 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(725, 3);
+            this.btnPrint.Location = new System.Drawing.Point(967, 4);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(5);
             // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDelete.Location = new System.Drawing.Point(27, 0);
+            this.btnDelete.Location = new System.Drawing.Point(36, 0);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(5);
             // 
             // btnNew
             // 
             this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNew.Location = new System.Drawing.Point(0, 0);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(5);
             // 
             // btnUndo
             // 
             this.btnUndo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnUndo.Location = new System.Drawing.Point(8, 3);
+            this.btnUndo.Location = new System.Drawing.Point(11, 4);
+            this.btnUndo.Margin = new System.Windows.Forms.Padding(5);
             // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSave.Location = new System.Drawing.Point(105, 3);
+            this.btnSave.Location = new System.Drawing.Point(140, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(5);
+            // 
+            // dtpErstelltAm
+            // 
+            this.dtpErstelltAm.Margin = new System.Windows.Forms.Padding(5);
+            // 
+            // cmbErstelltAm
+            // 
+            this.cmbErstelltAm.Margin = new System.Windows.Forms.Padding(5);
+            // 
+            // cmbPfleger
+            // 
+            this.cmbPfleger.Margin = new System.Windows.Forms.Padding(5);
             // 
             // tabPagePersoenlicheDaten
             // 
             this.tabPagePersoenlicheDaten.Controls.Add(this.ucPersoenlicheDaten1);
-            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(228, 1);
+            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(229, 2);
+            this.tabPagePersoenlicheDaten.Margin = new System.Windows.Forms.Padding(4);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
-            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(581, 457);
+            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(852, 563);
             // 
             // ucPersoenlicheDaten1
             // 
+            this.ucPersoenlicheDaten1.AutoScroll = true;
             this.ucPersoenlicheDaten1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucPersoenlicheDaten1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucPersoenlicheDaten1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ucPersoenlicheDaten1.Location = new System.Drawing.Point(0, 0);
+            this.ucPersoenlicheDaten1.Margin = new System.Windows.Forms.Padding(5);
             this.ucPersoenlicheDaten1.Name = "ucPersoenlicheDaten1";
-            this.ucPersoenlicheDaten1.Size = new System.Drawing.Size(581, 457);
+            this.ucPersoenlicheDaten1.Size = new System.Drawing.Size(852, 563);
             this.ucPersoenlicheDaten1.TabIndex = 0;
             this.ucPersoenlicheDaten1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -128,23 +149,27 @@
             this.ultraTabPageControl2.Controls.Add(this.ucLuft1);
             this.ultraTabPageControl2.Controls.Add(this.lblVorname);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(581, 457);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(852, 563);
             // 
             // ucLuft1
             // 
+            this.ucLuft1.AutoScroll = true;
             this.ucLuft1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucLuft1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucLuft1.Location = new System.Drawing.Point(0, 0);
+            this.ucLuft1.Margin = new System.Windows.Forms.Padding(4);
             this.ucLuft1.Name = "ucLuft1";
-            this.ucLuft1.Size = new System.Drawing.Size(581, 457);
+            this.ucLuft1.Size = new System.Drawing.Size(852, 563);
             this.ucLuft1.TabIndex = 0;
             this.ucLuft1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // lblVorname
             // 
             this.lblVorname.AutoSize = true;
-            this.lblVorname.Location = new System.Drawing.Point(12, 201);
+            this.lblVorname.Location = new System.Drawing.Point(16, 247);
+            this.lblVorname.Margin = new System.Windows.Forms.Padding(4);
             this.lblVorname.Name = "lblVorname";
             this.lblVorname.Size = new System.Drawing.Size(0, 0);
             this.lblVorname.TabIndex = 8;
@@ -153,16 +178,19 @@
             // 
             this.ultraTabPageControl1.Controls.Add(this.ucWasser1);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(581, 457);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(852, 563);
             // 
             // ucWasser1
             // 
+            this.ucWasser1.AutoScroll = true;
             this.ucWasser1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucWasser1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucWasser1.Location = new System.Drawing.Point(0, 0);
+            this.ucWasser1.Margin = new System.Windows.Forms.Padding(4);
             this.ucWasser1.Name = "ucWasser1";
-            this.ucWasser1.Size = new System.Drawing.Size(581, 457);
+            this.ucWasser1.Size = new System.Drawing.Size(852, 563);
             this.ucWasser1.TabIndex = 0;
             this.ucWasser1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -170,16 +198,19 @@
             // 
             this.ultraTabPageControl3.Controls.Add(this.ucNahrung1);
             this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl3.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
-            this.ultraTabPageControl3.Size = new System.Drawing.Size(581, 457);
+            this.ultraTabPageControl3.Size = new System.Drawing.Size(852, 563);
             // 
             // ucNahrung1
             // 
+            this.ucNahrung1.AutoScroll = true;
             this.ucNahrung1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucNahrung1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucNahrung1.Location = new System.Drawing.Point(0, 0);
+            this.ucNahrung1.Margin = new System.Windows.Forms.Padding(4);
             this.ucNahrung1.Name = "ucNahrung1";
-            this.ucNahrung1.Size = new System.Drawing.Size(581, 457);
+            this.ucNahrung1.Size = new System.Drawing.Size(852, 563);
             this.ucNahrung1.TabIndex = 0;
             this.ucNahrung1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -187,16 +218,19 @@
             // 
             this.ultraTabPageControl4.Controls.Add(this.ucAusscheidung1);
             this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl4.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
-            this.ultraTabPageControl4.Size = new System.Drawing.Size(581, 457);
+            this.ultraTabPageControl4.Size = new System.Drawing.Size(852, 563);
             // 
             // ucAusscheidung1
             // 
+            this.ucAusscheidung1.AutoScroll = true;
             this.ucAusscheidung1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucAusscheidung1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucAusscheidung1.Location = new System.Drawing.Point(0, 0);
+            this.ucAusscheidung1.Margin = new System.Windows.Forms.Padding(4);
             this.ucAusscheidung1.Name = "ucAusscheidung1";
-            this.ucAusscheidung1.Size = new System.Drawing.Size(581, 457);
+            this.ucAusscheidung1.Size = new System.Drawing.Size(852, 563);
             this.ucAusscheidung1.TabIndex = 0;
             this.ucAusscheidung1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -204,16 +238,19 @@
             // 
             this.ultraTabPageControl5.Controls.Add(this.ucAktivitaetUndRuhe1);
             this.ultraTabPageControl5.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl5.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl5.Name = "ultraTabPageControl5";
-            this.ultraTabPageControl5.Size = new System.Drawing.Size(581, 457);
+            this.ultraTabPageControl5.Size = new System.Drawing.Size(852, 563);
             // 
             // ucAktivitaetUndRuhe1
             // 
+            this.ucAktivitaetUndRuhe1.AutoScroll = true;
             this.ucAktivitaetUndRuhe1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucAktivitaetUndRuhe1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucAktivitaetUndRuhe1.Location = new System.Drawing.Point(0, 0);
+            this.ucAktivitaetUndRuhe1.Margin = new System.Windows.Forms.Padding(4);
             this.ucAktivitaetUndRuhe1.Name = "ucAktivitaetUndRuhe1";
-            this.ucAktivitaetUndRuhe1.Size = new System.Drawing.Size(581, 457);
+            this.ucAktivitaetUndRuhe1.Size = new System.Drawing.Size(852, 563);
             this.ucAktivitaetUndRuhe1.TabIndex = 0;
             this.ucAktivitaetUndRuhe1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -221,16 +258,19 @@
             // 
             this.ultraTabPageControl6.Controls.Add(this.ucSozialeInteraktion1);
             this.ultraTabPageControl6.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl6.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl6.Name = "ultraTabPageControl6";
-            this.ultraTabPageControl6.Size = new System.Drawing.Size(581, 457);
+            this.ultraTabPageControl6.Size = new System.Drawing.Size(852, 563);
             // 
             // ucSozialeInteraktion1
             // 
+            this.ucSozialeInteraktion1.AutoScroll = true;
             this.ucSozialeInteraktion1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucSozialeInteraktion1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucSozialeInteraktion1.Location = new System.Drawing.Point(0, 0);
+            this.ucSozialeInteraktion1.Margin = new System.Windows.Forms.Padding(4);
             this.ucSozialeInteraktion1.Name = "ucSozialeInteraktion1";
-            this.ucSozialeInteraktion1.Size = new System.Drawing.Size(581, 457);
+            this.ucSozialeInteraktion1.Size = new System.Drawing.Size(852, 563);
             this.ucSozialeInteraktion1.TabIndex = 0;
             this.ucSozialeInteraktion1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -238,16 +278,19 @@
             // 
             this.ultraTabPageControl7.Controls.Add(this.ucAbwendenVonGefahren1);
             this.ultraTabPageControl7.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl7.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl7.Name = "ultraTabPageControl7";
-            this.ultraTabPageControl7.Size = new System.Drawing.Size(581, 457);
+            this.ultraTabPageControl7.Size = new System.Drawing.Size(852, 563);
             // 
             // ucAbwendenVonGefahren1
             // 
+            this.ucAbwendenVonGefahren1.AutoScroll = true;
             this.ucAbwendenVonGefahren1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucAbwendenVonGefahren1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucAbwendenVonGefahren1.Location = new System.Drawing.Point(0, 0);
+            this.ucAbwendenVonGefahren1.Margin = new System.Windows.Forms.Padding(4);
             this.ucAbwendenVonGefahren1.Name = "ucAbwendenVonGefahren1";
-            this.ucAbwendenVonGefahren1.Size = new System.Drawing.Size(581, 457);
+            this.ucAbwendenVonGefahren1.Size = new System.Drawing.Size(852, 563);
             this.ucAbwendenVonGefahren1.TabIndex = 0;
             this.ucAbwendenVonGefahren1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -255,24 +298,27 @@
             // 
             this.ultraTabPageControl8.Controls.Add(this.ucPersonIntegritaet1);
             this.ultraTabPageControl8.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl8.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl8.Name = "ultraTabPageControl8";
-            this.ultraTabPageControl8.Size = new System.Drawing.Size(581, 457);
+            this.ultraTabPageControl8.Size = new System.Drawing.Size(852, 563);
             // 
             // ucPersonIntegritaet1
             // 
+            this.ucPersonIntegritaet1.AutoScroll = true;
             this.ucPersonIntegritaet1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucPersonIntegritaet1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucPersonIntegritaet1.Location = new System.Drawing.Point(0, 0);
+            this.ucPersonIntegritaet1.Margin = new System.Windows.Forms.Padding(4);
             this.ucPersonIntegritaet1.Name = "ucPersonIntegritaet1";
-            this.ucPersonIntegritaet1.Size = new System.Drawing.Size(581, 457);
+            this.ucPersonIntegritaet1.Size = new System.Drawing.Size(852, 563);
             this.ucPersonIntegritaet1.TabIndex = 0;
             this.ucPersonIntegritaet1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // tabAnamneseOrem
             // 
-            this.tabAnamneseOrem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabAnamneseOrem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance1.BackColor = System.Drawing.Color.White;
             appearance1.TextHAlignAsString = "Left";
             this.tabAnamneseOrem.Appearance = appearance1;
@@ -286,10 +332,11 @@
             this.tabAnamneseOrem.Controls.Add(this.ultraTabPageControl7);
             this.tabAnamneseOrem.Controls.Add(this.ultraTabPageControl8);
             this.tabAnamneseOrem.Controls.Add(this.tabPagePersoenlicheDaten);
-            this.tabAnamneseOrem.Location = new System.Drawing.Point(4, 36);
+            this.tabAnamneseOrem.Location = new System.Drawing.Point(5, 44);
+            this.tabAnamneseOrem.Margin = new System.Windows.Forms.Padding(4);
             this.tabAnamneseOrem.Name = "tabAnamneseOrem";
             this.tabAnamneseOrem.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.tabAnamneseOrem.Size = new System.Drawing.Size(812, 461);
+            this.tabAnamneseOrem.Size = new System.Drawing.Size(1083, 567);
             this.tabAnamneseOrem.TabIndex = 3;
             this.tabAnamneseOrem.TabLayoutStyle = Infragistics.Win.UltraWinTabs.TabLayoutStyle.SingleRowFixed;
             this.tabAnamneseOrem.TabOrientation = Infragistics.Win.UltraWinTabs.TabOrientation.LeftTop;
@@ -341,13 +388,14 @@
             ultraTab9});
             this.tabAnamneseOrem.TabSize = new System.Drawing.Size(25, 225);
             this.tabAnamneseOrem.TextOrientation = Infragistics.Win.UltraWinTabs.TextOrientation.Horizontal;
-            this.tabAnamneseOrem.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
+            this.tabAnamneseOrem.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             // 
             // ultraTabSharedControlsPage2
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabSharedControlsPage2.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(581, 457);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(852, 563);
             // 
             // errorProvider1
             // 
@@ -358,9 +406,10 @@
             this.panelButtonUnten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panelButtonUnten.Controls.Add(this.btnSave);
             this.panelButtonUnten.Controls.Add(this.btnUndo);
-            this.panelButtonUnten.Location = new System.Drawing.Point(615, 498);
+            this.panelButtonUnten.Location = new System.Drawing.Point(820, 613);
+            this.panelButtonUnten.Margin = new System.Windows.Forms.Padding(4);
             this.panelButtonUnten.Name = "panelButtonUnten";
-            this.panelButtonUnten.Size = new System.Drawing.Size(206, 39);
+            this.panelButtonUnten.Size = new System.Drawing.Size(275, 48);
             this.panelButtonUnten.TabIndex = 122;
             // 
             // panelButtonOben
@@ -368,22 +417,27 @@
             this.panelButtonOben.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelButtonOben.Controls.Add(this.btnDelete);
             this.panelButtonOben.Controls.Add(this.btnNew);
-            this.panelButtonOben.Location = new System.Drawing.Point(760, 3);
+            this.panelButtonOben.Location = new System.Drawing.Point(1013, 4);
+            this.panelButtonOben.Margin = new System.Windows.Forms.Padding(4);
             this.panelButtonOben.Name = "panelButtonOben";
-            this.panelButtonOben.Size = new System.Drawing.Size(57, 31);
+            this.panelButtonOben.Size = new System.Drawing.Size(76, 38);
             this.panelButtonOben.TabIndex = 123;
             // 
             // ucAnamneseOrem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.panelButtonOben);
             this.Controls.Add(this.panelButtonUnten);
             this.Controls.Add(this.tabAnamneseOrem);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ucAnamneseOrem";
-            this.Size = new System.Drawing.Size(822, 540);
+            this.Size = new System.Drawing.Size(1096, 665);
             this.Load += new System.EventHandler(this.ucAnamneseOrem_Load);
+            this.Controls.SetChildIndex(this.btnCopy, 0);
+            this.Controls.SetChildIndex(this.baseButton1, 0);
             this.Controls.SetChildIndex(this.btnPrint, 0);
             this.Controls.SetChildIndex(this.tabAnamneseOrem, 0);
             this.Controls.SetChildIndex(this.panelButtonUnten, 0);

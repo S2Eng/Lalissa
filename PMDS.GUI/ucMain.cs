@@ -1456,20 +1456,20 @@ namespace PMDS.GUI
         {
             try
             {
+                PMDS.Global.UIGlobal.setAktivDisable(this.btnDokumenteBenutzer, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
                 if (ENV.CurrentIDAbteilung == null)   // || ENV.CurrentIDAbteilung == System.Guid.Empty
                 {
-                    PMDS.Global.UIGlobal.setAktivDisable(this.btnDokumenteBenutzer, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
                     this.btnDokumenteBenutzer.Visible = false;
                 }
                 else
                 {
-                    PMDS.Global.UIGlobal.setAktiv(this.btnDokumenteBenutzer, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                     this.dsKlientenliste1.Clear();
                     Global.db.ERSystem.sqlManange sqlManange1 = new Global.db.ERSystem.sqlManange();
                     sqlManange1.initControl();
                     sqlManange1.loadDokumenteBenutzer(ref this.dsKlientenliste1, ENV.CurrentIDAbteilung);
                     if (this.dsKlientenliste1.Dokumente2.Rows.Count > 0)
                     {
+                        //PMDS.Global.UIGlobal.setAktiv(this.btnDokumenteBenutzer, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
                         this.btnDokumenteBenutzer.Text = "Anleitungen (" + this.dsKlientenliste1.Dokumente2.Rows.Count.ToString() + ")";
                         this.btnDokumenteBenutzer.Visible = true;
                     }

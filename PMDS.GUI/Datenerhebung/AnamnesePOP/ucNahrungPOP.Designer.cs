@@ -124,8 +124,9 @@
             // 
             // tabPagePersoenlicheDaten
             // 
+            this.tabPagePersoenlicheDaten.AutoScroll = true;
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox1);
-            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
+            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
             this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(962, 566);
             // 
@@ -160,7 +161,7 @@
             this.ultraGroupBox1.Controls.Add(this.ultraLabel1);
             this.ultraGroupBox1.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(952, 511);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(952, 530);
             this.ultraGroupBox1.TabIndex = 117;
             // 
             // tbStillgewohnheiten
@@ -250,7 +251,7 @@
             this.opErnaehrungParenteralEnteral.ItemSpacingHorizontal = 15;
             this.opErnaehrungParenteralEnteral.Location = new System.Drawing.Point(15, 311);
             this.opErnaehrungParenteralEnteral.Name = "opErnaehrungParenteralEnteral";
-            this.opErnaehrungParenteralEnteral.Size = new System.Drawing.Size(438, 16);
+            this.opErnaehrungParenteralEnteral.Size = new System.Drawing.Size(480, 17);
             this.opErnaehrungParenteralEnteral.TabIndex = 8;
             this.opErnaehrungParenteralEnteral.Text = "Ernährung parenteral";
             this.opErnaehrungParenteralEnteral.ValueChanged += new System.EventHandler(this.control_ValueChanged);
@@ -345,11 +346,11 @@
             this.tbErnaehrungArt.Appearance = appearance12;
             this.tbErnaehrungArt.AutoSize = false;
             this.tbErnaehrungArt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbErnaehrungArt.Location = new System.Drawing.Point(513, 307);
+            this.tbErnaehrungArt.Location = new System.Drawing.Point(566, 307);
             this.tbErnaehrungArt.MaxLength = 25;
             this.tbErnaehrungArt.Name = "tbErnaehrungArt";
             this.tbErnaehrungArt.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.tbErnaehrungArt.Size = new System.Drawing.Size(260, 21);
+            this.tbErnaehrungArt.Size = new System.Drawing.Size(207, 21);
             this.tbErnaehrungArt.TabIndex = 9;
             this.tbErnaehrungArt.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -358,7 +359,7 @@
             appearance13.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel11.Appearance = appearance13;
             this.ultraLabel11.AutoSize = true;
-            this.ultraLabel11.Location = new System.Drawing.Point(459, 311);
+            this.ultraLabel11.Location = new System.Drawing.Point(497, 311);
             this.ultraLabel11.Name = "ultraLabel11";
             this.ultraLabel11.Size = new System.Drawing.Size(48, 14);
             this.ultraLabel11.TabIndex = 146;
@@ -560,9 +561,10 @@
             // 
             // ultraTabPageControl2
             // 
+            this.ultraTabPageControl2.AutoScroll = true;
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBox2);
             this.ultraTabPageControl2.Controls.Add(this.lblVorname);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(962, 566);
             // 
@@ -576,7 +578,7 @@
             this.ultraGroupBox2.Controls.Add(this.ucAnamnesePDX1);
             this.ultraGroupBox2.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox2.Name = "ultraGroupBox2";
-            this.ultraGroupBox2.Size = new System.Drawing.Size(946, 389);
+            this.ultraGroupBox2.Size = new System.Drawing.Size(946, 530);
             this.ultraGroupBox2.TabIndex = 114;
             // 
             // ucAnamnesePDX1
@@ -588,7 +590,7 @@
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
             this.ucAnamnesePDX1.ReadOnly = false;
-            this.ucAnamnesePDX1.Size = new System.Drawing.Size(930, 369);
+            this.ucAnamnesePDX1.Size = new System.Drawing.Size(930, 510);
             this.ucAnamnesePDX1.TabIndex = 0;
             this.ucAnamnesePDX1.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -641,6 +643,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.tabLuft);
             this.Name = "ucNahrungPOP";
             this.Size = new System.Drawing.Size(966, 592);

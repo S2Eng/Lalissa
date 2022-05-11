@@ -79,6 +79,7 @@
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
@@ -134,7 +135,6 @@
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox3 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.ultraLabel138 = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -165,6 +165,7 @@
             this.txtWannWieOftSpatzieren = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.ultraLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraGroupBox5 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.ultraLabel144 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraLabel145 = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -199,7 +200,6 @@
             this.ucAnamnesePDX1 = new PMDS.GUI.ucAnamnesePDX();
             this.tabSichBewegen = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
-            this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tabPagePersoenlicheDaten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
             this.ultraGroupBox3.SuspendLayout();
@@ -244,6 +244,7 @@
             // 
             // tabPagePersoenlicheDaten
             // 
+            this.tabPagePersoenlicheDaten.AutoScroll = true;
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox3);
             this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
@@ -282,7 +283,7 @@
             this.ultraGroupBox3.Controls.Add(this.ultraLabel1);
             this.ultraGroupBox3.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox3.Name = "ultraGroupBox3";
-            this.ultraGroupBox3.Size = new System.Drawing.Size(952, 479);
+            this.ultraGroupBox3.Size = new System.Drawing.Size(952, 530);
             this.ultraGroupBox3.TabIndex = 136;
             this.ultraGroupBox3.Text = "Ressourcen, Wünsche, Gewohnheiten";
             this.ultraGroupBox3.Click += new System.EventHandler(this.ultraGroupBox3_Click);
@@ -721,12 +722,24 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.AutoScroll = true;
             this.ultraTabPageControl1.Controls.Add(this.baseLabel1);
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox5);
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox6);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(962, 566);
+            // 
+            // baseLabel1
+            // 
+            appearance29.BackColor = System.Drawing.Color.Transparent;
+            appearance29.FontData.SizeInPoints = 8F;
+            this.baseLabel1.Appearance = appearance29;
+            this.baseLabel1.Location = new System.Drawing.Point(13, 545);
+            this.baseLabel1.Name = "baseLabel1";
+            this.baseLabel1.Size = new System.Drawing.Size(340, 18);
+            this.baseLabel1.TabIndex = 136;
+            this.baseLabel1.Text = "A = Anleitung, TÜ = Teilübernahme, vÜ = Vollübernahme";
             // 
             // ultraGroupBox5
             // 
@@ -1206,6 +1219,7 @@
             // 
             // ultraTabPageControl2
             // 
+            this.ultraTabPageControl2.AutoScroll = true;
             this.ultraTabPageControl2.Controls.Add(this.grpPDX);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
@@ -1276,21 +1290,11 @@
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
             this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(962, 566);
             // 
-            // baseLabel1
-            // 
-            appearance29.BackColor = System.Drawing.Color.Transparent;
-            appearance29.FontData.SizeInPoints = 8F;
-            this.baseLabel1.Appearance = appearance29;
-            this.baseLabel1.Location = new System.Drawing.Point(13, 545);
-            this.baseLabel1.Name = "baseLabel1";
-            this.baseLabel1.Size = new System.Drawing.Size(340, 18);
-            this.baseLabel1.TabIndex = 136;
-            this.baseLabel1.Text = "A = Anleitung, TÜ = Teilübernahme, vÜ = Vollübernahme";
-            // 
             // ucSichBewegen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.tabSichBewegen);
             this.Name = "ucSichBewegen";
             this.Size = new System.Drawing.Size(966, 592);

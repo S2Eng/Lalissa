@@ -49,6 +49,7 @@
             Infragistics.Win.ValueListItem valueListItem7 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem8 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
@@ -103,7 +104,6 @@
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox8 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.ultraLabel6 = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -118,6 +118,7 @@
             this.opZimmertemperatur = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.txtMedikamente = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraGroupBox10 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.ultraLabel123 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraLabel122 = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -145,7 +146,6 @@
             this.ucAnamnesePDX1 = new PMDS.GUI.ucAnamnesePDX();
             this.tabVitaleFunktionen = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
-            this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tabPagePersoenlicheDaten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox8)).BeginInit();
             this.ultraGroupBox8.SuspendLayout();
@@ -175,6 +175,7 @@
             // 
             // tabPagePersoenlicheDaten
             // 
+            this.tabPagePersoenlicheDaten.AutoScroll = true;
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox8);
             this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
@@ -197,7 +198,7 @@
             this.ultraGroupBox8.Controls.Add(this.txtMedikamente);
             this.ultraGroupBox8.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox8.Name = "ultraGroupBox8";
-            this.ultraGroupBox8.Size = new System.Drawing.Size(952, 314);
+            this.ultraGroupBox8.Size = new System.Drawing.Size(952, 530);
             this.ultraGroupBox8.TabIndex = 107;
             this.ultraGroupBox8.Text = "Ressourcen, Wünsche, Gewohnheiten";
             // 
@@ -374,11 +375,23 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.AutoScroll = true;
             this.ultraTabPageControl1.Controls.Add(this.baseLabel1);
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox10);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(962, 566);
+            // 
+            // baseLabel1
+            // 
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            appearance13.FontData.SizeInPoints = 8F;
+            this.baseLabel1.Appearance = appearance13;
+            this.baseLabel1.Location = new System.Drawing.Point(22, 545);
+            this.baseLabel1.Name = "baseLabel1";
+            this.baseLabel1.Size = new System.Drawing.Size(340, 18);
+            this.baseLabel1.TabIndex = 137;
+            this.baseLabel1.Text = "A = Anleitung, TÜ = Teilübernahme, vÜ = Vollübernahme";
             // 
             // ultraGroupBox10
             // 
@@ -773,6 +786,7 @@
             // 
             // ultraTabPageControl2
             // 
+            this.ultraTabPageControl2.AutoScroll = true;
             this.ultraTabPageControl2.Controls.Add(this.grpPDX);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
@@ -843,21 +857,11 @@
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
             this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(962, 566);
             // 
-            // baseLabel1
-            // 
-            appearance13.BackColor = System.Drawing.Color.Transparent;
-            appearance13.FontData.SizeInPoints = 8F;
-            this.baseLabel1.Appearance = appearance13;
-            this.baseLabel1.Location = new System.Drawing.Point(22, 545);
-            this.baseLabel1.Name = "baseLabel1";
-            this.baseLabel1.Size = new System.Drawing.Size(340, 18);
-            this.baseLabel1.TabIndex = 137;
-            this.baseLabel1.Text = "A = Anleitung, TÜ = Teilübernahme, vÜ = Vollübernahme";
-            // 
             // ucVitaleFunktionen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.tabVitaleFunktionen);
             this.Name = "ucVitaleFunktionen";
             this.Size = new System.Drawing.Size(966, 592);

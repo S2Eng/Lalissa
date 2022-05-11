@@ -65,7 +65,7 @@ namespace PMDS.GUI
             this.dtpStart = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.pnlStartZeitpunkte = new QS2.Desktop.ControlManagment.BasePanel();
             this.dgZP = new QS2.Desktop.ControlManagment.BaseGrid();
-            this.dsPflegePlanZeitpunkte1 = new dsPflegePlanZeitpunkte();
+            this.dsPflegePlanZeitpunkte1 = new PMDS.Global.db.Pflegeplan.dsPflegePlanZeitpunkte();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ultraGridBagLayoutManager1 = new Infragistics.Win.Misc.UltraGridBagLayoutManager(this.components);
             this.ucPflegePlanSingleEdit21 = new PMDS.GUI.ucPflegePlanSingleEdit2();
@@ -142,9 +142,9 @@ namespace PMDS.GUI
             appearance1.FontData.SizeInPoints = 10F;
             this.cbZeitbereichSerie.Appearance = appearance1;
             this.cbZeitbereichSerie.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cbZeitbereichSerie.Location = new System.Drawing.Point(321, 10);
+            this.cbZeitbereichSerie.Location = new System.Drawing.Point(366, 10);
             this.cbZeitbereichSerie.Name = "cbZeitbereichSerie";
-            this.cbZeitbereichSerie.Size = new System.Drawing.Size(173, 24);
+            this.cbZeitbereichSerie.Size = new System.Drawing.Size(205, 24);
             this.cbZeitbereichSerie.TabIndex = 30;
             this.cbZeitbereichSerie.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cbZeitbereichSerie_BeforeDropDown);
             this.cbZeitbereichSerie.ValueChanged += new System.EventHandler(this.cbZeitbereichSerie_ValueChanged);
@@ -156,9 +156,9 @@ namespace PMDS.GUI
             this.cbMohneZeitbezug.Appearance = appearance2;
             this.cbMohneZeitbezug.Location = new System.Drawing.Point(189, 13);
             this.cbMohneZeitbezug.Name = "cbMohneZeitbezug";
-            this.cbMohneZeitbezug.Size = new System.Drawing.Size(126, 16);
+            this.cbMohneZeitbezug.Size = new System.Drawing.Size(171, 19);
             this.cbMohneZeitbezug.TabIndex = 34;
-            this.cbMohneZeitbezug.Text = "Ohne Zeitbezug!";
+            this.cbMohneZeitbezug.Text = "Zu geplanten Zeiten:";
             this.cbMohneZeitbezug.CheckedChanged += new System.EventHandler(this.cbMohneZeitbezug_CheckedChanged);
             // 
             // pnlFixZeit

@@ -160,16 +160,14 @@ namespace PMDS.GUI
         {
             if (_datenErhebung == null)
             {
-
-                System.Windows.Forms.Cursor .Current  = System.Windows.Forms.Cursors.WaitCursor;
                 _datenErhebung = new ucDatenErhebungMain();
-                System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 GuiWorkflow.mainWindow.AddObject(_datenErhebung);
                 _datenErhebung.AttachFramework();
                 _datenErhebung.ucDatenErhebung1.AttachFramework();
                 _datenErhebung.ENV_ENVPatientIDChanged(ENV.CurrentIDPatient, eCurrentPatientChange.keiner , true, false);   
             }
         }
+
         public void initMedikamentierungsbereich()
         {
             if (_SitemapMedikamenteStammdaten == null)

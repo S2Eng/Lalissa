@@ -836,6 +836,7 @@ namespace PMDS.GUI
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.AutoScroll = true;
             this.ultraTabPageControl1.Controls.Add(this.pnlUhrzeit);
             this.ultraTabPageControl1.Controls.Add(this.pnlM);
             this.ultraTabPageControl1.Controls.Add(this.pnlInfo);
@@ -846,6 +847,7 @@ namespace PMDS.GUI
             // 
             // pnlUhrzeit
             // 
+            this.pnlUhrzeit.AutoScroll = true;
             this.pnlUhrzeit.Controls.Add(this.cbZeitbereich);
             this.pnlUhrzeit.Controls.Add(this.dtpTime);
             this.pnlUhrzeit.Controls.Add(this.osZeit);
@@ -909,6 +911,7 @@ namespace PMDS.GUI
             // 
             // pnlM
             // 
+            this.pnlM.AutoScroll = true;
             this.pnlM.Controls.Add(this.pnlNaechsteEvaluierung);
             this.pnlM.Controls.Add(this.pnlLokalisierung);
             this.pnlM.Controls.Add(this.pnlBerufsstand);
@@ -923,6 +926,7 @@ namespace PMDS.GUI
             // 
             this.pnlNaechsteEvaluierung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlNaechsteEvaluierung.AutoScroll = true;
             this.pnlNaechsteEvaluierung.Controls.Add(this.tbNaechsteEvaluierungBemerkung);
             this.pnlNaechsteEvaluierung.Controls.Add(this.dtpNaechsteEvaluierung);
             this.pnlNaechsteEvaluierung.Controls.Add(this.ultraLabel14);
@@ -979,6 +983,7 @@ namespace PMDS.GUI
             // 
             this.pnlLokalisierung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlLokalisierung.AutoScroll = true;
             this.pnlLokalisierung.Controls.Add(this.baseLabel2);
             this.pnlLokalisierung.Controls.Add(this.cbSide);
             this.pnlLokalisierung.Controls.Add(this.ultraLabel6);
@@ -1063,6 +1068,7 @@ namespace PMDS.GUI
             // 
             this.pnlBerufsstand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBerufsstand.AutoScroll = true;
             this.pnlBerufsstand.Controls.Add(this.baseLabel1);
             this.pnlBerufsstand.Controls.Add(this.cbBerufsstand);
             this.pnlBerufsstand.Controls.Add(this.tbDauer);
@@ -1143,6 +1149,7 @@ namespace PMDS.GUI
             // 
             this.pnlIntervall.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlIntervall.AutoScroll = true;
             this.pnlIntervall.Controls.Add(this.ucWochenTage11);
             this.pnlIntervall.Controls.Add(this.ultraLabel4);
             this.pnlIntervall.Controls.Add(this.ultraLabel10);
@@ -1320,6 +1327,7 @@ namespace PMDS.GUI
             // 
             this.pnlInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlInfo.AutoScroll = true;
             this.pnlInfo.Controls.Add(this.cbChanged);
             this.pnlInfo.Controls.Add(this.lblInfoCreated);
             this.pnlInfo.Controls.Add(this.lblInfoChanged);
@@ -1376,6 +1384,7 @@ namespace PMDS.GUI
             // 
             this.pnlGenerell.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlGenerell.AutoScroll = true;
             this.pnlGenerell.Controls.Add(this.pnlDokument);
             this.pnlGenerell.Controls.Add(this.pnlAnm);
             this.pnlGenerell.Controls.Add(this.pnlBez);
@@ -1387,6 +1396,7 @@ namespace PMDS.GUI
             // 
             // pnlDokument
             // 
+            this.pnlDokument.AllowDrop = true;
             this.pnlDokument.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlDokument.BackColor = System.Drawing.Color.Transparent;
@@ -1440,6 +1450,7 @@ namespace PMDS.GUI
             // 
             this.pnlAnm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlAnm.AutoScroll = true;
             this.pnlAnm.BackColor = System.Drawing.Color.Transparent;
             this.pnlAnm.Controls.Add(this.ultraLabel3);
             this.pnlAnm.Controls.Add(this.tbAnmerkung);
@@ -1476,6 +1487,7 @@ namespace PMDS.GUI
             // 
             this.pnlBez.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBez.AutoScroll = true;
             this.pnlBez.Controls.Add(this.tbText);
             this.pnlBez.Controls.Add(this.cbTermin);
             this.pnlBez.Controls.Add(this.lblBezeichnung);
@@ -1493,7 +1505,7 @@ namespace PMDS.GUI
             this.tbText.Multiline = true;
             this.tbText.Name = "tbText";
             this.tbText.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbText.Size = new System.Drawing.Size(549, 33);
+            this.tbText.Size = new System.Drawing.Size(532, 33);
             this.tbText.TabIndex = 1;
             this.tbText.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -1532,6 +1544,7 @@ namespace PMDS.GUI
             // 
             this.pnlW.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlW.AutoScroll = true;
             this.pnlW.BackColor = System.Drawing.Color.Transparent;
             this.pnlW.Controls.Add(this.ultraLabel2);
             this.pnlW.Controls.Add(this.tbWarnung);
@@ -1573,6 +1586,7 @@ namespace PMDS.GUI
             // 
             // ucZusatzeintrag1
             // 
+            this.ucZusatzeintrag1.AutoScroll = true;
             this.ucZusatzeintrag1.BackColor = System.Drawing.Color.White;
             this.ucZusatzeintrag1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucZusatzeintrag1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1627,6 +1641,7 @@ namespace PMDS.GUI
             // ucPflegePlanSingleEdit2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tabMain);
             this.Name = "ucPflegePlanSingleEdit2";

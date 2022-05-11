@@ -252,11 +252,7 @@ namespace PMDS.GUI
                     _framework.HEADER.action(false);
                     _framework.HEADER.ShowOnlyHeader(true);
                     ENV.UserLoggedOn += new EventHandler(ENV_UserLoggedOn);
-
-                    //if (ENV.CurrentIDPatient  != System.Guid.Empty && this.Visible && ENV.AnsichtsModus == TerminlisteAnsichtsmodi .Bereichsansicht ) 
-                    //            this.loadMainSite();
                 }
-
             }
             catch (Exception ex)
             {
@@ -279,7 +275,7 @@ namespace PMDS.GUI
         {
             try
             {
-                if (_bForceRefresh || !IsInitialized)
+//                if (_bForceRefresh || !IsInitialized)         //os: immer neu laden, weil man sonst nicht aus den Details zur Übersicht zurückkommt
                 {
                     lstCounterClickableImages.Clear();
 
