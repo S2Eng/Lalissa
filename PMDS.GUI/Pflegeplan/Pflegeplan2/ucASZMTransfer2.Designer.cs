@@ -69,6 +69,8 @@ namespace PMDS.GUI
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ultraGridBagLayoutManager1 = new Infragistics.Win.Misc.UltraGridBagLayoutManager(this.components);
             this.ucPflegePlanSingleEdit21 = new PMDS.GUI.ucPflegePlanSingleEdit2();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.basePanel1 = new QS2.Desktop.ControlManagment.BasePanel();
             ((System.ComponentModel.ISupportInitialize)(this.dtp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbZeitbereich)).BeginInit();
             this.pnlStartDatum.SuspendLayout();
@@ -84,13 +86,18 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.dsPflegePlanZeitpunkte1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.basePanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtp
             // 
             this.dtp.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtp.DropDownButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Never;
-            this.dtp.Location = new System.Drawing.Point(422, 3);
+            this.dtp.Location = new System.Drawing.Point(566, 13);
             this.dtp.MaskInput = "hh:mm";
             this.dtp.Name = "dtp";
             this.dtp.ownFormat = "";
@@ -103,7 +110,7 @@ namespace PMDS.GUI
             // cbZeitbereich
             // 
             this.cbZeitbereich.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cbZeitbereich.Location = new System.Drawing.Point(208, -4);
+            this.cbZeitbereich.Location = new System.Drawing.Point(575, 11);
             this.cbZeitbereich.Name = "cbZeitbereich";
             this.cbZeitbereich.Size = new System.Drawing.Size(177, 21);
             this.cbZeitbereich.TabIndex = 5;
@@ -111,18 +118,21 @@ namespace PMDS.GUI
             // 
             // pnlStartDatum
             // 
-            this.pnlStartDatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlStartDatum.AutoSize = true;
             this.pnlStartDatum.BackColor = System.Drawing.Color.White;
             this.pnlStartDatum.Controls.Add(this.grbStartdatum);
-            this.pnlStartDatum.Location = new System.Drawing.Point(3, 3);
+            this.pnlStartDatum.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlStartDatum.Location = new System.Drawing.Point(0, 0);
             this.pnlStartDatum.Name = "pnlStartDatum";
-            this.pnlStartDatum.Size = new System.Drawing.Size(663, 262);
+            this.pnlStartDatum.Size = new System.Drawing.Size(1045, 252);
             this.pnlStartDatum.TabIndex = 45;
             this.pnlStartDatum.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlStartDatum_Paint);
             // 
             // grbStartdatum
             // 
+            this.grbStartdatum.AutoSize = true;
+            this.grbStartdatum.Controls.Add(this.dtp);
+            this.grbStartdatum.Controls.Add(this.cbZeitbereich);
             this.grbStartdatum.Controls.Add(this.cbZeitbereichSerie);
             this.grbStartdatum.Controls.Add(this.cbMohneZeitbezug);
             this.grbStartdatum.Controls.Add(this.pnlFixZeit);
@@ -132,7 +142,7 @@ namespace PMDS.GUI
             this.grbStartdatum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbStartdatum.Location = new System.Drawing.Point(0, 0);
             this.grbStartdatum.Name = "grbStartdatum";
-            this.grbStartdatum.Size = new System.Drawing.Size(663, 262);
+            this.grbStartdatum.Size = new System.Drawing.Size(1045, 252);
             this.grbStartdatum.TabIndex = 14;
             this.grbStartdatum.TabStop = false;
             // 
@@ -142,7 +152,7 @@ namespace PMDS.GUI
             appearance1.FontData.SizeInPoints = 10F;
             this.cbZeitbereichSerie.Appearance = appearance1;
             this.cbZeitbereichSerie.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cbZeitbereichSerie.Location = new System.Drawing.Point(366, 10);
+            this.cbZeitbereichSerie.Location = new System.Drawing.Point(355, 10);
             this.cbZeitbereichSerie.Name = "cbZeitbereichSerie";
             this.cbZeitbereichSerie.Size = new System.Drawing.Size(205, 24);
             this.cbZeitbereichSerie.TabIndex = 30;
@@ -164,7 +174,7 @@ namespace PMDS.GUI
             // pnlFixZeit
             // 
             this.pnlFixZeit.Controls.Add(this.pnlUhrzeit);
-            this.pnlFixZeit.Location = new System.Drawing.Point(182, 31);
+            this.pnlFixZeit.Location = new System.Drawing.Point(755, 10);
             this.pnlFixZeit.Name = "pnlFixZeit";
             this.pnlFixZeit.Size = new System.Drawing.Size(240, 27);
             this.pnlFixZeit.TabIndex = 31;
@@ -231,19 +241,14 @@ namespace PMDS.GUI
             this.pnlStartZeitpunkte.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlStartZeitpunkte.Controls.Add(this.cbZeitbereich);
-            this.pnlStartZeitpunkte.Controls.Add(this.dtp);
             this.pnlStartZeitpunkte.Controls.Add(this.dgZP);
             this.pnlStartZeitpunkte.Location = new System.Drawing.Point(6, 38);
             this.pnlStartZeitpunkte.Name = "pnlStartZeitpunkte";
-            this.pnlStartZeitpunkte.Size = new System.Drawing.Size(654, 220);
+            this.pnlStartZeitpunkte.Size = new System.Drawing.Size(1025, 210);
             this.pnlStartZeitpunkte.TabIndex = 28;
             // 
             // dgZP
             // 
-            this.dgZP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgZP.AutoWork = true;
             this.dgZP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgZP.DataMember = "PflegePlanZeitpunkte";
@@ -325,10 +330,11 @@ namespace PMDS.GUI
             appearance15.ForeColor = System.Drawing.Color.White;
             this.dgZP.DisplayLayout.Override.SelectedRowAppearance = appearance15;
             this.dgZP.DisplayLayout.Override.SupportDataErrorInfo = Infragistics.Win.UltraWinGrid.SupportDataErrorInfo.CellsOnly;
+            this.dgZP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgZP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgZP.Location = new System.Drawing.Point(1, 2);
+            this.dgZP.Location = new System.Drawing.Point(0, 0);
             this.dgZP.Name = "dgZP";
-            this.dgZP.Size = new System.Drawing.Size(648, 217);
+            this.dgZP.Size = new System.Drawing.Size(1025, 210);
             this.dgZP.TabIndex = 6;
             this.dgZP.Tag = "Dontpatch";
             this.dgZP.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.dgZP_CellChange);
@@ -346,34 +352,61 @@ namespace PMDS.GUI
             // 
             // ucPflegePlanSingleEdit21
             // 
-            this.ucPflegePlanSingleEdit21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucPflegePlanSingleEdit21.AutoScroll = true;
+            this.ucPflegePlanSingleEdit21.AutoSize = true;
             this.ucPflegePlanSingleEdit21.BackColor = System.Drawing.Color.White;
+            this.ucPflegePlanSingleEdit21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucPflegePlanSingleEdit21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ucPflegePlanSingleEdit21.Location = new System.Drawing.Point(3, 269);
+            this.ucPflegePlanSingleEdit21.Location = new System.Drawing.Point(0, 0);
             this.ucPflegePlanSingleEdit21.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ucPflegePlanSingleEdit21.Name = "ucPflegePlanSingleEdit21";
             this.ucPflegePlanSingleEdit21.ReadOnly = false;
-            this.ucPflegePlanSingleEdit21.Size = new System.Drawing.Size(660, 372);
+            this.ucPflegePlanSingleEdit21.Size = new System.Drawing.Size(1045, 544);
             this.ucPflegePlanSingleEdit21.TabIndex = 7;
             this.ucPflegePlanSingleEdit21.TransferMode = true;
             this.ucPflegePlanSingleEdit21.ASZMValueChanged += new System.EventHandler(this.Control_ValueChanged);
             this.ucPflegePlanSingleEdit21.Load += new System.EventHandler(this.ucPflegePlanSingleEdit21_Load);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.pnlStartDatum);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.basePanel1);
+            this.splitContainer1.Size = new System.Drawing.Size(1045, 800);
+            this.splitContainer1.SplitterDistance = 252;
+            this.splitContainer1.TabIndex = 47;
+            // 
+            // basePanel1
+            // 
+            this.basePanel1.Controls.Add(this.ucPflegePlanSingleEdit21);
+            this.basePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.basePanel1.Location = new System.Drawing.Point(0, 0);
+            this.basePanel1.Name = "basePanel1";
+            this.basePanel1.Size = new System.Drawing.Size(1045, 544);
+            this.basePanel1.TabIndex = 0;
             // 
             // ucASZMTransfer2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.ucPflegePlanSingleEdit21);
-            this.Controls.Add(this.pnlStartDatum);
+            this.Controls.Add(this.splitContainer1);
             this.Name = "ucASZMTransfer2";
-            this.Size = new System.Drawing.Size(668, 645);
+            this.Size = new System.Drawing.Size(1045, 800);
             this.Load += new System.EventHandler(this.ucASZMTransfer2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbZeitbereich)).EndInit();
             this.pnlStartDatum.ResumeLayout(false);
+            this.pnlStartDatum.PerformLayout();
             this.grbStartdatum.ResumeLayout(false);
             this.grbStartdatum.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbZeitbereichSerie)).EndInit();
@@ -384,11 +417,17 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.tbUhrzeit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpStart)).EndInit();
             this.pnlStartZeitpunkte.ResumeLayout(false);
-            this.pnlStartZeitpunkte.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgZP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsPflegePlanZeitpunkte1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutManager1)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.basePanel1.ResumeLayout(false);
+            this.basePanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -413,5 +452,7 @@ namespace PMDS.GUI
         private PMDS.GUI.BaseControls.ZeitbereicheZeitbereichSerienCombo cbZeitbereichSerie;
         private Infragistics.Win.Misc.UltraGridBagLayoutManager ultraGridBagLayoutManager1;
         public QS2.Desktop.ControlManagment.BaseCheckBox cbMohneZeitbezug;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private QS2.Desktop.ControlManagment.BasePanel basePanel1;
     }
 }

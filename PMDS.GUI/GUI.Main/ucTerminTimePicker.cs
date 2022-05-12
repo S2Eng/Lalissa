@@ -160,13 +160,13 @@ namespace PMDS.GUI
             this.pAll.Controls.Add(this.dtpTo);
             this.pAll.Location = new System.Drawing.Point(8, 40);
             this.pAll.Name = "pAll";
-            this.pAll.Size = new System.Drawing.Size(200, 269);
+            this.pAll.Size = new System.Drawing.Size(200, 329);
             this.pAll.TabIndex = 1;
             this.pAll.Visible = false;
             // 
             // chkZeitraumFixierenJN
             // 
-            this.chkZeitraumFixierenJN.Location = new System.Drawing.Point(48, 143);
+            this.chkZeitraumFixierenJN.Location = new System.Drawing.Point(48, 189);
             this.chkZeitraumFixierenJN.Name = "chkZeitraumFixierenJN";
             this.chkZeitraumFixierenJN.Size = new System.Drawing.Size(133, 20);
             this.chkZeitraumFixierenJN.TabIndex = 14;
@@ -179,7 +179,7 @@ namespace PMDS.GUI
             this.panelButtonsUnten.Controls.Add(this.panelClose);
             this.panelButtonsUnten.Controls.Add(this.panelAktualisieren);
             this.panelButtonsUnten.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtonsUnten.Location = new System.Drawing.Point(0, 229);
+            this.panelButtonsUnten.Location = new System.Drawing.Point(0, 289);
             this.panelButtonsUnten.Name = "panelButtonsUnten";
             this.panelButtonsUnten.Size = new System.Drawing.Size(198, 38);
             this.panelButtonsUnten.TabIndex = 13;
@@ -233,7 +233,7 @@ namespace PMDS.GUI
             // lblDienstzeiten
             // 
             this.lblDienstzeiten.AutoSize = true;
-            this.lblDienstzeiten.Location = new System.Drawing.Point(12, 183);
+            this.lblDienstzeiten.Location = new System.Drawing.Point(12, 225);
             this.lblDienstzeiten.Name = "lblDienstzeiten";
             this.lblDienstzeiten.Size = new System.Drawing.Size(67, 14);
             this.lblDienstzeiten.TabIndex = 12;
@@ -245,7 +245,7 @@ namespace PMDS.GUI
             this.cbDienstZeiten.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbDienstZeiten.Enabled = false;
             this.cbDienstZeiten.ID = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.cbDienstZeiten.Location = new System.Drawing.Point(10, 200);
+            this.cbDienstZeiten.Location = new System.Drawing.Point(12, 248);
             this.cbDienstZeiten.Name = "cbDienstZeiten";
             this.cbDienstZeiten.Size = new System.Drawing.Size(171, 21);
             this.cbDienstZeiten.TabIndex = 11;
@@ -271,9 +271,9 @@ namespace PMDS.GUI
             valueListItem3,
             valueListItem4,
             valueListItem5});
-            this.optZeitraumauswahl.Location = new System.Drawing.Point(8, 5);
+            this.optZeitraumauswahl.Location = new System.Drawing.Point(12, 5);
             this.optZeitraumauswahl.Name = "optZeitraumauswahl";
-            this.optZeitraumauswahl.Size = new System.Drawing.Size(144, 72);
+            this.optZeitraumauswahl.Size = new System.Drawing.Size(183, 117);
             this.optZeitraumauswahl.TabIndex = 5;
             this.optZeitraumauswahl.Text = "Heute";
             this.optZeitraumauswahl.ValueChanged += new System.EventHandler(this.ultraOptionSet1_ValueChanged);
@@ -281,7 +281,7 @@ namespace PMDS.GUI
             // lblVon
             // 
             this.lblVon.AutoSize = true;
-            this.lblVon.Location = new System.Drawing.Point(8, 92);
+            this.lblVon.Location = new System.Drawing.Point(12, 128);
             this.lblVon.Name = "lblVon";
             this.lblVon.Size = new System.Drawing.Size(24, 14);
             this.lblVon.TabIndex = 6;
@@ -290,9 +290,11 @@ namespace PMDS.GUI
             // dtpFrom
             // 
             this.dtpFrom.DateTime = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
-            this.dtpFrom.Location = new System.Drawing.Point(48, 92);
+            this.dtpFrom.Location = new System.Drawing.Point(48, 128);
             this.dtpFrom.MaskInput = "dd.mm.yyyy hh:mm";
             this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.ownFormat = "";
+            this.dtpFrom.ownMaskInput = "";
             this.dtpFrom.Size = new System.Drawing.Size(134, 21);
             this.dtpFrom.TabIndex = 7;
             this.dtpFrom.Value = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
@@ -301,7 +303,7 @@ namespace PMDS.GUI
             // lblBis
             // 
             this.lblBis.AutoSize = true;
-            this.lblBis.Location = new System.Drawing.Point(8, 116);
+            this.lblBis.Location = new System.Drawing.Point(12, 157);
             this.lblBis.Name = "lblBis";
             this.lblBis.Size = new System.Drawing.Size(20, 14);
             this.lblBis.TabIndex = 8;
@@ -310,9 +312,11 @@ namespace PMDS.GUI
             // dtpTo
             // 
             this.dtpTo.DateTime = new System.DateTime(2002, 1, 1, 0, 0, 0, 0);
-            this.dtpTo.Location = new System.Drawing.Point(48, 116);
+            this.dtpTo.Location = new System.Drawing.Point(48, 157);
             this.dtpTo.MaskInput = "dd.mm.yyyy hh:mm";
             this.dtpTo.Name = "dtpTo";
+            this.dtpTo.ownFormat = "";
+            this.dtpTo.ownMaskInput = "";
             this.dtpTo.Size = new System.Drawing.Size(134, 21);
             this.dtpTo.TabIndex = 9;
             this.dtpTo.Value = new System.DateTime(2002, 1, 1, 0, 0, 0, 0);
@@ -325,7 +329,7 @@ namespace PMDS.GUI
             this.Controls.Add(this.pAll);
             this.Controls.Add(this.btn);
             this.Name = "ucTerminTimePicker";
-            this.Size = new System.Drawing.Size(216, 312);
+            this.Size = new System.Drawing.Size(216, 372);
             this.Load += new System.EventHandler(this.ucTerminTimePicker_Load);
             this.pAll.ResumeLayout(false);
             this.pAll.PerformLayout();

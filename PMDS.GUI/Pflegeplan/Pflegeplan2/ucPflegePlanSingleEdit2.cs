@@ -843,7 +843,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl1.Controls.Add(this.pnlGenerell);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(678, 430);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(681, 417);
             // 
             // pnlUhrzeit
             // 
@@ -1325,8 +1325,6 @@ namespace PMDS.GUI
             // 
             // pnlInfo
             // 
-            this.pnlInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlInfo.AutoScroll = true;
             this.pnlInfo.Controls.Add(this.cbChanged);
             this.pnlInfo.Controls.Add(this.lblInfoCreated);
@@ -1391,7 +1389,7 @@ namespace PMDS.GUI
             this.pnlGenerell.Controls.Add(this.pnlW);
             this.pnlGenerell.Location = new System.Drawing.Point(4, 2);
             this.pnlGenerell.Name = "pnlGenerell";
-            this.pnlGenerell.Size = new System.Drawing.Size(672, 151);
+            this.pnlGenerell.Size = new System.Drawing.Size(675, 151);
             this.pnlGenerell.TabIndex = 1;
             // 
             // pnlDokument
@@ -1405,7 +1403,7 @@ namespace PMDS.GUI
             this.pnlDokument.Controls.Add(this.cbLinkDokument);
             this.pnlDokument.Location = new System.Drawing.Point(2, 121);
             this.pnlDokument.Name = "pnlDokument";
-            this.pnlDokument.Size = new System.Drawing.Size(667, 29);
+            this.pnlDokument.Size = new System.Drawing.Size(670, 29);
             this.pnlDokument.TabIndex = 25;
             // 
             // btnShow
@@ -1413,7 +1411,7 @@ namespace PMDS.GUI
             this.btnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShow.AutoWorkLayout = false;
             this.btnShow.IsStandardControl = false;
-            this.btnShow.Location = new System.Drawing.Point(585, 2);
+            this.btnShow.Location = new System.Drawing.Point(573, 2);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(75, 25);
             this.btnShow.TabIndex = 22;
@@ -1439,7 +1437,7 @@ namespace PMDS.GUI
             this.cbLinkDokument.IDLinkDokument = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.cbLinkDokument.Location = new System.Drawing.Point(113, 2);
             this.cbLinkDokument.Name = "cbLinkDokument";
-            this.cbLinkDokument.Size = new System.Drawing.Size(466, 22);
+            this.cbLinkDokument.Size = new System.Drawing.Size(450, 22);
             this.cbLinkDokument.TabIndex = 20;
             this.cbLinkDokument.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.cbLinkDokument.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
@@ -1456,7 +1454,7 @@ namespace PMDS.GUI
             this.pnlAnm.Controls.Add(this.tbAnmerkung);
             this.pnlAnm.Location = new System.Drawing.Point(3, 79);
             this.pnlAnm.Name = "pnlAnm";
-            this.pnlAnm.Size = new System.Drawing.Size(665, 41);
+            this.pnlAnm.Size = new System.Drawing.Size(668, 41);
             this.pnlAnm.TabIndex = 24;
             // 
             // ultraLabel3
@@ -1479,7 +1477,7 @@ namespace PMDS.GUI
             this.tbAnmerkung.Multiline = true;
             this.tbAnmerkung.Name = "tbAnmerkung";
             this.tbAnmerkung.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbAnmerkung.Size = new System.Drawing.Size(549, 37);
+            this.tbAnmerkung.Size = new System.Drawing.Size(535, 37);
             this.tbAnmerkung.TabIndex = 3;
             this.tbAnmerkung.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -1493,19 +1491,19 @@ namespace PMDS.GUI
             this.pnlBez.Controls.Add(this.lblBezeichnung);
             this.pnlBez.Location = new System.Drawing.Point(3, 2);
             this.pnlBez.Name = "pnlBez";
-            this.pnlBez.Size = new System.Drawing.Size(665, 38);
+            this.pnlBez.Size = new System.Drawing.Size(668, 38);
             this.pnlBez.TabIndex = 22;
             // 
             // tbText
             // 
             this.tbText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbText.Location = new System.Drawing.Point(112, 3);
+            this.tbText.Location = new System.Drawing.Point(112, 7);
             this.tbText.MaxLength = 255;
             this.tbText.Multiline = true;
             this.tbText.Name = "tbText";
             this.tbText.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbText.Size = new System.Drawing.Size(532, 33);
+            this.tbText.Size = new System.Drawing.Size(535, 33);
             this.tbText.TabIndex = 1;
             this.tbText.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -1550,7 +1548,7 @@ namespace PMDS.GUI
             this.pnlW.Controls.Add(this.tbWarnung);
             this.pnlW.Location = new System.Drawing.Point(3, 41);
             this.pnlW.Name = "pnlW";
-            this.pnlW.Size = new System.Drawing.Size(665, 38);
+            this.pnlW.Size = new System.Drawing.Size(668, 38);
             this.pnlW.TabIndex = 23;
             // 
             // ultraLabel2
@@ -1573,7 +1571,7 @@ namespace PMDS.GUI
             this.tbWarnung.Multiline = true;
             this.tbWarnung.Name = "tbWarnung";
             this.tbWarnung.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbWarnung.Size = new System.Drawing.Size(549, 34);
+            this.tbWarnung.Size = new System.Drawing.Size(535, 34);
             this.tbWarnung.TabIndex = 2;
             this.tbWarnung.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -1608,7 +1606,7 @@ namespace PMDS.GUI
             this.tabMain.Location = new System.Drawing.Point(2, 2);
             this.tabMain.Name = "tabMain";
             this.tabMain.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.tabMain.Size = new System.Drawing.Size(682, 457);
+            this.tabMain.Size = new System.Drawing.Size(685, 444);
             this.tabMain.TabIndex = 7;
             ultraTab1.Key = "Details";
             ultraTab1.TabPage = this.ultraTabPageControl1;
@@ -1624,7 +1622,7 @@ namespace PMDS.GUI
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(678, 430);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(681, 417);
             // 
             // ultraTabPageControl2
             // 
@@ -1642,10 +1640,11 @@ namespace PMDS.GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScroll = true;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tabMain);
             this.Name = "ucPflegePlanSingleEdit2";
-            this.Size = new System.Drawing.Size(687, 462);
+            this.Size = new System.Drawing.Size(690, 449);
             this.Load += new System.EventHandler(this.ucPflegePlanSingleEdit2_Load);
             this.ultraTabPageControl1.ResumeLayout(false);
             this.pnlUhrzeit.ResumeLayout(false);
