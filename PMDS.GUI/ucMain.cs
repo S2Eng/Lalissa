@@ -62,6 +62,9 @@ namespace PMDS.GUI
             this.panelButtonleisteUnten.Visible = false;
             this.btnKlient.Visible = false;
             btnBereich.Visible = false;
+
+            this.btnMessages.Visible = ENV.WCFServiceOnOff;
+
             this.btnDokumenteBenutzer.Visible = false;
             this.btnDokumenteBenutzer.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Oeffnen, QS2.Resources.getRes.ePicTyp.ico);
             this.btnMessages.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Message, QS2.Resources.getRes.ePicTyp.ico);
