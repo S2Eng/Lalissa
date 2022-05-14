@@ -30,21 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem7 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("tMessages", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDProtocoll");
@@ -165,8 +165,8 @@
             // 
             // lblTitle
             // 
-            appearance26.TextVAlignAsString = "Middle";
-            this.lblTitle.Appearance = appearance26;
+            appearance20.TextVAlignAsString = "Middle";
+            this.lblTitle.Appearance = appearance20;
             this.lblTitle.Location = new System.Drawing.Point(9, 44);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4);
             this.lblTitle.Name = "lblTitle";
@@ -298,8 +298,8 @@
             // 
             // lblTo
             // 
-            appearance27.TextVAlignAsString = "Middle";
-            this.lblTo.Appearance = appearance27;
+            appearance34.TextVAlignAsString = "Middle";
+            this.lblTo.Appearance = appearance34;
             this.lblTo.AutoSize = true;
             this.lblTo.Location = new System.Drawing.Point(766, 6);
             this.lblTo.Margin = new System.Windows.Forms.Padding(4);
@@ -310,8 +310,8 @@
             // 
             // lblFrom
             // 
-            appearance28.TextVAlignAsString = "Middle";
-            this.lblFrom.Appearance = appearance28;
+            appearance35.TextVAlignAsString = "Middle";
+            this.lblFrom.Appearance = appearance35;
             this.lblFrom.AutoSize = true;
             this.lblFrom.Location = new System.Drawing.Point(584, 7);
             this.lblFrom.Margin = new System.Windows.Forms.Padding(4);
@@ -340,8 +340,8 @@
             // 
             this.lblSender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance29.TextVAlignAsString = "Middle";
-            this.lblSender.Appearance = appearance29;
+            appearance36.TextVAlignAsString = "Middle";
+            this.lblSender.Appearance = appearance36;
             this.lblSender.Location = new System.Drawing.Point(9, 5);
             this.lblSender.Margin = new System.Windows.Forms.Padding(4);
             this.lblSender.Name = "lblSender";
@@ -388,8 +388,8 @@
             // 
             this.lblInfoMessageBottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance30.TextVAlignAsString = "Middle";
-            this.lblInfoMessageBottom.Appearance = appearance30;
+            appearance37.TextVAlignAsString = "Middle";
+            this.lblInfoMessageBottom.Appearance = appearance37;
             this.lblInfoMessageBottom.Location = new System.Drawing.Point(47, 7);
             this.lblInfoMessageBottom.Margin = new System.Windows.Forms.Padding(4);
             this.lblInfoMessageBottom.Name = "lblInfoMessageBottom";
@@ -442,8 +442,8 @@
             // 
             this.ultraPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ultraPanel1.Appearance = appearance31;
+            appearance38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ultraPanel1.Appearance = appearance38;
             // 
             // ultraPanel1.ClientArea
             // 
@@ -471,8 +471,8 @@
             // 
             // optPostEinAusgang
             // 
-            appearance32.TextVAlignAsString = "Middle";
-            this.optPostEinAusgang.Appearance = appearance32;
+            appearance39.TextVAlignAsString = "Middle";
+            this.optPostEinAusgang.Appearance = appearance39;
             this.optPostEinAusgang.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             this.optPostEinAusgang.CheckedIndex = 0;
             valueListItem3.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -515,12 +515,12 @@
             // 
             // lblNewMessages
             // 
-            appearance21.FontData.BoldAsString = "True";
-            appearance21.FontData.SizeInPoints = 10F;
-            appearance21.ForeColor = System.Drawing.Color.SteelBlue;
-            appearance21.TextHAlignAsString = "Center";
-            appearance21.TextVAlignAsString = "Middle";
-            this.lblNewMessages.Appearance = appearance21;
+            appearance31.FontData.BoldAsString = "True";
+            appearance31.FontData.SizeInPoints = 10F;
+            appearance31.ForeColor = System.Drawing.Color.SteelBlue;
+            appearance31.TextHAlignAsString = "Center";
+            appearance31.TextVAlignAsString = "Middle";
+            this.lblNewMessages.Appearance = appearance31;
             this.lblNewMessages.Location = new System.Drawing.Point(0, 84);
             this.lblNewMessages.Margin = new System.Windows.Forms.Padding(4);
             this.lblNewMessages.Name = "lblNewMessages";
@@ -532,9 +532,9 @@
             // btnPrint
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance33.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance33.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnPrint.Appearance = appearance33;
+            appearance40.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance40.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnPrint.Appearance = appearance40;
             this.btnPrint.AutoWorkLayout = false;
             this.btnPrint.IsStandardControl = false;
             this.btnPrint.Location = new System.Drawing.Point(944, 49);
@@ -548,9 +548,9 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance19.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance19.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDelete.Appearance = appearance19;
+            appearance33.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance33.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDelete.Appearance = appearance33;
             this.btnDelete.AutoWorkLayout = false;
             this.btnDelete.IsStandardControl = false;
             this.btnDelete.Location = new System.Drawing.Point(889, 49);
@@ -720,7 +720,6 @@
             this.Controls.Add(this.panelGrid);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1000, 700);
             this.Name = "contMessenger";
             this.Size = new System.Drawing.Size(1000, 700);
             ((System.ComponentModel.ISupportInitialize)(this.txtTitle)).EndInit();

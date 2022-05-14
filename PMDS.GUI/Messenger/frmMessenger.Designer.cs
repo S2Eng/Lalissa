@@ -69,7 +69,9 @@
             this.Controls.Add(this.ultraStatusBar1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(950, 650);
             this.Name = "frmMessenger";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Internes Nachrichtensystem";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMessenger_FormClosing);
