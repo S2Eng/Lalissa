@@ -1233,5 +1233,9 @@ namespace PMDS.GUI.Messenger
             }
         }
 
+        private void panelMessage_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
