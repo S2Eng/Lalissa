@@ -14,34 +14,20 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace PMDS.GUI
-{
-
-    
+{   
 	public class ucSiteMapTermine :  IPMDSGUIObject
 	{
-        public ucTermineEx _TermineEx = new ucTermineEx();
-
+        public static bool FirstCallDoRefreshKlienten { get; set; } = true;
+        public bool FirstCallRefresh = true;
+        public ucTermineEx _TermineEx;
         public TerminlisteAnsichtsmodi _ansichtmodi = TerminlisteAnsichtsmodi.none;
         public PMDS.Global.eUITypeTermine _UITypeTermine = eUITypeTermine.None;
 
         private Guid LastSelectedPatient = Guid.Empty;
-
         private string _AREA = ENV.String("GUI_AREA_TERMINLISTE");
-
-        public bool FirstCallRefresh = true;
-        
-
+       
         public delegate void PatientSelectionChangedDelegate(Guid IDPatient, Guid IDAufenthalt);
         public event PatientSelectionChangedDelegate PatientSelectionChanged;
-
-        public static bool FirstCallDoRefreshKlienten = true;
-
-
-
-
-
-
-
 
         public void initControl()
 		{
