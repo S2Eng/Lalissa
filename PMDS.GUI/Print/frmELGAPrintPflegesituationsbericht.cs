@@ -106,31 +106,7 @@ namespace PMDS.GUI.Print
                 this.Cursor = Cursors.Default;
             }
         }
-
-        private void CDAPflegesituationsberichtToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-
-                if (!validateCboEinrichtung())
-                    return;
-
-                //WCFServiceClient s = new WCFServiceClient();
-                //s.genCDA2(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht, (Guid)this.cbETo.Value, System.Guid.NewGuid(),
-                //            System.Guid.NewGuid().ToString(), 0, "ELGA_Stylesheet_v1.0.xsl", ENV.CurrentIDPatient, ENV.IDAUFENTHALT, "Test Pflegesituationsbericht", null);
-
-            }
-            catch (Exception ex)
-            {
-                ENV.HandleException(ex);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
-        }
-
+       
         private void cbETo_ValueChanged(object sender, EventArgs e)
         {
             Application.DoEvents();

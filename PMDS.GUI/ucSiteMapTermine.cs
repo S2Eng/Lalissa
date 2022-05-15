@@ -19,7 +19,7 @@ namespace PMDS.GUI
     
 	public class ucSiteMapTermine :  IPMDSGUIObject
 	{
-        public ucTermineEx _TermineEx = null;
+        public ucTermineEx _TermineEx = new ucTermineEx();
 
         public TerminlisteAnsichtsmodi _ansichtmodi = TerminlisteAnsichtsmodi.none;
         public PMDS.Global.eUITypeTermine _UITypeTermine = eUITypeTermine.None;

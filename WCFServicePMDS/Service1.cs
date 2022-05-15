@@ -515,10 +515,6 @@ namespace WCFServicePMDS
             }
         }
 
-
-
-
-
         public WCFServicePMDS.BAL.DTO.MessagesDto messagesSent(string ClientsMessage, string TypeMessage, Guid UserId, DateTime dFromTmp, DateTime dToTmp, Guid IDClient)
         {
             try
@@ -530,6 +526,7 @@ namespace WCFServicePMDS
             {
                 throw new Exception("WCFServicePMDS.Service1.messagesSent: " + ex.ToString());
             }
+
         }
         public WCFServicePMDS.BAL.DTO.MessagesDto messagesUnreadedUsr(string ClientsMessage, string TypeMessage, Guid UserId, DateTime dFromTmp, DateTime dToTmp, Guid IDClient)
         {
@@ -543,6 +540,7 @@ namespace WCFServicePMDS
                 throw new Exception("WCFServicePMDS.Service1.messagesUnreadedUsr: " + ex.ToString());
             }
         }
+
         public WCFServicePMDS.BAL.DTO.MessagesDto messagesAllUsr(string ClientsMessage, string TypeMessage, Guid UserId, DateTime dFromTmp, DateTime dToTmp, Guid IDClient)
         {
             try

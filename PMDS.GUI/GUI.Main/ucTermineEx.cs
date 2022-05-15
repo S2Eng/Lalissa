@@ -561,7 +561,7 @@ namespace PMDS.GUI
             this.ucTerminFilterPicker1.BackColor = System.Drawing.Color.Gainsboro;
             this.ucTerminFilterPicker1.Berufsstand = ((System.Collections.Generic.List<System.Guid>)(resources.GetObject("ucTerminFilterPicker1.Berufsstand")));
             this.ucTerminFilterPicker1.HerkunftPlanungsEintrag = ((System.Collections.Generic.List<int>)(resources.GetObject("ucTerminFilterPicker1.HerkunftPlanungsEintrag")));
-            this.ucTerminFilterPicker1.IDBezug = new System.Guid("00000000-0000-0000-0000-000000000000");
+            //this.ucTerminFilterPicker1.IDBezug = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.ucTerminFilterPicker1.IDMassnahme = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.ucTerminFilterPicker1.Location = new System.Drawing.Point(40, 6);
             this.ucTerminFilterPicker1.MASSNAHMEN = new System.Guid[0];
@@ -1698,8 +1698,8 @@ namespace PMDS.GUI
                 // FilterPicker
                 settings.IDMassnahme = ucTerminFilterPicker1.IDMassnahme;
 
-                settings.BezugJN = ucTerminFilterPicker1.ShowBezug;
-                settings.IDBezug = ucTerminFilterPicker1.IDBezug;
+                //settings.BezugJN = ucTerminFilterPicker1.ShowBezug;
+                //settings.IDBezug = ucTerminFilterPicker1.IDBezug;
 
                 settings.Massnahmen = ucTerminFilterPicker1.MASSNAHMEN;
 
@@ -1830,7 +1830,7 @@ namespace PMDS.GUI
                 ucTerminFilterPicker1.IDMassnahme = set.IDMassnahme;
 
                 ucTerminFilterPicker1.ShowBezug = set.BezugJN;
-                ucTerminFilterPicker1.IDBezug = set.IDBezug;
+                //ucTerminFilterPicker1.IDBezug = set.IDBezug;
 
                 ucTerminFilterPicker1.ShowBerufsstand = set.BerufsstandJN;
                 ucTerminFilterPicker1.Berufsstand = set.Berufsstand;

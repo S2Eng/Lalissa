@@ -249,11 +249,10 @@ namespace PMDS
                     {
                         string TxtMessaged = QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachrichten");
                         PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.btnMessages.Invoke((MethodInvoker)delegate { PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.btnMessages.Text = TxtMessaged; });
-                        //this._SitemapStart.btnMessages.Appearance.ForeColor = Color.Black;
                         this.ultraStatusBar1.Invoke((MethodInvoker)delegate { this.ultraStatusBar1.Panels["UnreadedMessages"].Text = ""; });
                         if (PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1 != null)
                         {
-                            PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1.ultraStatusBar1.Invoke((MethodInvoker)delegate { PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1.ultraStatusBar1.Panels["UnreadedMessages"].Text = ""; });
+                            PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1.ultraStatusBar1.Invoke( (MethodInvoker) delegate { PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1.ultraStatusBar1.Panels["UnreadedMessages"].Text = ""; });
                         }
                     }
                 }

@@ -1582,7 +1582,7 @@ namespace PMDS.GUI
             this.ucTerminFilterPicker1.BackColor = System.Drawing.Color.Gainsboro;
             this.ucTerminFilterPicker1.Berufsstand = ((System.Collections.Generic.List<System.Guid>)(resources.GetObject("ucTerminFilterPicker1.Berufsstand")));
             this.ucTerminFilterPicker1.HerkunftPlanungsEintrag = ((System.Collections.Generic.List<int>)(resources.GetObject("ucTerminFilterPicker1.HerkunftPlanungsEintrag")));
-            this.ucTerminFilterPicker1.IDBezug = new System.Guid("00000000-0000-0000-0000-000000000000");
+            //this.ucTerminFilterPicker1.IDBezug = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.ucTerminFilterPicker1.IDMassnahme = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.ucTerminFilterPicker1.Location = new System.Drawing.Point(548, 2);
             this.ucTerminFilterPicker1.Margin = new System.Windows.Forms.Padding(4);
@@ -1761,10 +1761,10 @@ namespace PMDS.GUI
             else
                 ucTerminFilterPicker1.IDMassnahme = Guid.Empty;
 
-            if(r.BezugspersonJN)
-                ucTerminFilterPicker1.IDBezug = r.IDBenutzer;
-            else
-                ucTerminFilterPicker1.IDBezug = Guid.Empty;
+            //if(r.BezugspersonJN)
+            //    ucTerminFilterPicker1.IDBezug = r.IDBenutzer;
+            //else
+            //    ucTerminFilterPicker1.IDBezug = Guid.Empty;
 
             tbToolTip.Text = r.Tooltip.Trim();
 
@@ -1952,12 +1952,13 @@ namespace PMDS.GUI
                 r.IDEintrag = ucTerminFilterPicker1.IDMassnahme;
             else
                 r.SetIDEintragNull();
-            
-            r.BezugspersonJN			= ucTerminFilterPicker1.IDBezug  == Guid.Empty ? false : true;
-            if(r.BezugspersonJN)
-                r.IDBenutzer = ucTerminFilterPicker1.IDBezug;
-            else
-                r.SetIDBenutzerNull();
+
+            r.SetIDBenutzerNull();
+            //r.BezugspersonJN			= ucTerminFilterPicker1.IDBezug  == Guid.Empty ? false : true;
+            //if(r.BezugspersonJN)
+            //    r.IDBenutzer = ucTerminFilterPicker1.IDBezug;
+            //else
+            //    r.SetIDBenutzerNull();
             
             r.Tooltip		= tbToolTip.Text.Trim();
 

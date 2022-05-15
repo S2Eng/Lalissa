@@ -35,7 +35,7 @@ namespace PMDS.GUI
 		private Infragistics.Win.Misc.UltraPopupControlContainer popupContainer;
         public QS2.Desktop.ControlManagment.BasePanel pAll;
         public Infragistics.Win.Misc.UltraDropDownButton btn;
-        private PMDS.GUI.BaseControls.PflegerCombo cbBezug;
+        //private PMDS.GUI.BaseControls.PflegerCombo cbBezug;
         private QS2.Desktop.ControlManagment.BaseCheckBox chkBezugJN;
 		private QS2.Desktop.ControlManagment.BaseCheckBox chkMaﬂnahme;
 		private QS2.Desktop.ControlManagment.BaseButton btnClose;
@@ -124,8 +124,8 @@ namespace PMDS.GUI
             this.btn = new Infragistics.Win.Misc.UltraDropDownButton();
             this.popupContainer = new Infragistics.Win.Misc.UltraPopupControlContainer(this.components);
             this.pAll = new QS2.Desktop.ControlManagment.BasePanel();
-            this.cboZeitbezugJNAMulti = new PMDS.GUI.BaseControls.AuswahlGruppeComboMulti();
             this.panelCombos = new System.Windows.Forms.Panel();
+            this.cboZeitbezugJNAMulti = new PMDS.GUI.BaseControls.AuswahlGruppeComboMulti();
             this.cboHerkunftPlanungseintrag = new PMDS.GUI.BaseControls.AuswahlGruppeComboMulti();
             this.chkZeitbezugJN = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.cboShowCC = new QS2.Desktop.ControlManagment.BaseComboEditor();
@@ -141,7 +141,6 @@ namespace PMDS.GUI
             this.cboWichtigF¸rMulti = new PMDS.GUI.BaseControls.AuswahlGruppeComboMulti();
             this.chkWichtigF¸rJN = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.chkBerufsgruppeJN = new QS2.Desktop.ControlManagment.BaseCheckBox();
-            this.chkBezugJN = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.panelMaﬂnahme = new System.Windows.Forms.Panel();
             this.btnDelMaﬂnahme = new QS2.Desktop.ControlManagment.BaseButton();
             this.chkMaﬂnahme = new QS2.Desktop.ControlManagment.BaseCheckBox();
@@ -157,6 +156,7 @@ namespace PMDS.GUI
             this.btnClose2 = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelAktualisieren = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnClose = new QS2.Desktop.ControlManagment.BaseButton();
+            this.chkBezugJN = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.pAll.SuspendLayout();
             this.panelCombos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkZeitbezugJN)).BeginInit();
@@ -167,8 +167,6 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.chkPlanungsEintr‰geJN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkWichtigF¸rJN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkBerufsgruppeJN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbBezug)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkBezugJN)).BeginInit();
             this.panelMaﬂnahme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkMaﬂnahme)).BeginInit();
             this.pMassnahme.SuspendLayout();
@@ -176,6 +174,7 @@ namespace PMDS.GUI
             this.panelButtonsUnten.SuspendLayout();
             this.panelClose.SuspendLayout();
             this.panelAktualisieren.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkBezugJN)).BeginInit();
             this.SuspendLayout();
             // 
             // btn
@@ -215,18 +214,6 @@ namespace PMDS.GUI
             this.pAll.TabIndex = 1;
             this.pAll.Visible = false;
             // 
-            // cboZeitbezugJNAMulti
-            // 
-            this.cboZeitbezugJNAMulti.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboZeitbezugJNAMulti.BackColor = System.Drawing.Color.Transparent;
-            this.cboZeitbezugJNAMulti.Enabled = false;
-            this.cboZeitbezugJNAMulti.Location = new System.Drawing.Point(193, 230);
-            this.cboZeitbezugJNAMulti.Name = "cboZeitbezugJNAMulti";
-            this.cboZeitbezugJNAMulti.Size = new System.Drawing.Size(403, 23);
-            this.cboZeitbezugJNAMulti.TabIndex = 13;
-            this.cboZeitbezugJNAMulti.TypeMulti = PMDS.GUI.BaseControls.AuswahlGruppeComboMulti.eTypeMulti.ZeitbezugJNA;
-            // 
             // panelCombos
             // 
             this.panelCombos.BackColor = System.Drawing.Color.Transparent;
@@ -246,13 +233,23 @@ namespace PMDS.GUI
             this.panelCombos.Controls.Add(this.cboWichtigF¸rMulti);
             this.panelCombos.Controls.Add(this.chkWichtigF¸rJN);
             this.panelCombos.Controls.Add(this.chkBerufsgruppeJN);
-            this.panelCombos.Controls.Add(this.cbBezug);
-            this.panelCombos.Controls.Add(this.chkBezugJN);
             this.panelCombos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelCombos.Location = new System.Drawing.Point(0, 145);
+            this.panelCombos.Location = new System.Drawing.Point(0, 147);
             this.panelCombos.Name = "panelCombos";
             this.panelCombos.Size = new System.Drawing.Size(603, 339);
             this.panelCombos.TabIndex = 1;
+            // 
+            // cboZeitbezugJNAMulti
+            // 
+            this.cboZeitbezugJNAMulti.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboZeitbezugJNAMulti.BackColor = System.Drawing.Color.Transparent;
+            this.cboZeitbezugJNAMulti.Enabled = false;
+            this.cboZeitbezugJNAMulti.Location = new System.Drawing.Point(193, 230);
+            this.cboZeitbezugJNAMulti.Name = "cboZeitbezugJNAMulti";
+            this.cboZeitbezugJNAMulti.Size = new System.Drawing.Size(403, 23);
+            this.cboZeitbezugJNAMulti.TabIndex = 13;
+            this.cboZeitbezugJNAMulti.TypeMulti = PMDS.GUI.BaseControls.AuswahlGruppeComboMulti.eTypeMulti.ZeitbezugJNA;
             // 
             // cboHerkunftPlanungseintrag
             // 
@@ -431,29 +428,6 @@ namespace PMDS.GUI
             this.chkBerufsgruppeJN.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.chkBerufsgruppeJN.CheckedChanged += new System.EventHandler(this.chkBerufsgruppeJN_CheckedChanged);
             // 
-            // cbBezug
-            // 
-            this.cbBezug.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbBezug.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cbBezug.Enabled = false;
-            this.cbBezug.Location = new System.Drawing.Point(193, 11);
-            this.cbBezug.MaxDropDownItems = 30;
-            this.cbBezug.Name = "cbBezug";
-            this.cbBezug.Size = new System.Drawing.Size(403, 21);
-            this.cbBezug.TabIndex = 1;
-            this.cbBezug.ValueChanged += new System.EventHandler(this.cb_ValueChanged);
-            // 
-            // chkBezugJN
-            // 
-            this.chkBezugJN.Location = new System.Drawing.Point(8, 10);
-            this.chkBezugJN.Name = "chkBezugJN";
-            this.chkBezugJN.Size = new System.Drawing.Size(177, 20);
-            this.chkBezugJN.TabIndex = 0;
-            this.chkBezugJN.Text = "F¸r Bezugsperson";
-            this.chkBezugJN.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
-            this.chkBezugJN.CheckedChanged += new System.EventHandler(this.chk_CheckedChanged);
-            // 
             // panelMaﬂnahme
             // 
             this.panelMaﬂnahme.BackColor = System.Drawing.Color.Transparent;
@@ -464,7 +438,7 @@ namespace PMDS.GUI
             this.panelMaﬂnahme.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMaﬂnahme.Location = new System.Drawing.Point(0, 0);
             this.panelMaﬂnahme.Name = "panelMaﬂnahme";
-            this.panelMaﬂnahme.Size = new System.Drawing.Size(603, 145);
+            this.panelMaﬂnahme.Size = new System.Drawing.Size(603, 147);
             this.panelMaﬂnahme.TabIndex = 0;
             // 
             // btnDelMaﬂnahme
@@ -627,6 +601,13 @@ namespace PMDS.GUI
             this.btnClose.Text = "Aktualisieren";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // chkBezugJN
+            // 
+            this.chkBezugJN.Location = new System.Drawing.Point(0, 0);
+            this.chkBezugJN.Name = "chkBezugJN";
+            this.chkBezugJN.Size = new System.Drawing.Size(120, 20);
+            this.chkBezugJN.TabIndex = 0;
+            // 
             // ucTerminFilterPicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -648,8 +629,6 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.chkPlanungsEintr‰geJN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkWichtigF¸rJN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkBerufsgruppeJN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbBezug)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkBezugJN)).EndInit();
             this.panelMaﬂnahme.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chkMaﬂnahme)).EndInit();
             this.pMassnahme.ResumeLayout(false);
@@ -657,6 +636,7 @@ namespace PMDS.GUI
             this.panelButtonsUnten.ResumeLayout(false);
             this.panelClose.ResumeLayout(false);
             this.panelAktualisieren.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkBezugJN)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -776,16 +756,17 @@ namespace PMDS.GUI
             }
         }
 
-        public void ShowBezugsPflegePersonxy(bool bShow)
-        {
-            this.chkBezugJN.Visible = bShow;
-            this.cbBezug.Visible = bShow;
-        }
+        //public void ShowBezugsPflegePersonxy(bool bShow)
+        //{
+        //    //this.chkBezugJN.Visible = bShow;
+        //    //this.cbBezug.Visible = bShow;
+        //}
+
 		public void RefreshGUI()
 		{
-			object o = cbBezug.Value;
-            this.cbBezug.RefreshList();
-            this.cbBezug.Value = o;
+			//object o = cbBezug.Value;
+            //this.cbBezug.RefreshList();
+            //this.cbBezug.Value = o;
 
             this.ucPicker1.DataSource = new PDx().KATALOGE['M'].EINTRAEGE;
             this.UpdateText();
@@ -1198,22 +1179,22 @@ namespace PMDS.GUI
 			}
 		}
 
-		public Guid IDBezug
-		{
-			get
-			{
-                if (!this.chkBezugJN.Checked || (cbBezug.Value == null))
-					return Guid.Empty;
+		//public Guid IDBezug
+		//{
+		//	get
+		//	{
+  //              if (!this.chkBezugJN.Checked || (cbBezug.Value == null))
+		//			return Guid.Empty;
 
-				return (Guid)cbBezug.Value;
-			}
-			set
-			{
-				chkBezugJN.Checked = (value != Guid.Empty);
-				if (chkBezugJN.Checked)
-					cbBezug.Value = value;
-			}
-		}
+		//		return (Guid)cbBezug.Value;
+		//	}
+		//	set
+		//	{
+		//		chkBezugJN.Checked = (value != Guid.Empty);
+		//		if (chkBezugJN.Checked)
+		//			cbBezug.Value = value;
+		//	}
+		//}
 
 		private void UpdateText()
 		{
@@ -1247,8 +1228,8 @@ namespace PMDS.GUI
             this.cbAbzeichnen.Value = -1;
             this.chkMaﬂnahme.Checked = false;
 
-            this.chkBezugJN.Checked = false;
-            this.cbBezug.SelectedItem = null;
+            //this.chkBezugJN.Checked = false;
+            //this.cbBezug.SelectedItem = null;
 
             this.chkBerufsgruppeJN.Checked = false;
             this.cboBerufsstandMulti.clearSelectedNodes();
@@ -1295,7 +1276,7 @@ namespace PMDS.GUI
                 Cursor.Current = Cursors.WaitCursor;
 
                 btnEintragMaﬂnahme.Enabled = chkMaﬂnahme.Checked;
-                cbBezug.Enabled = chkBezugJN.Checked;
+                //cbBezug.Enabled = chkBezugJN.Checked;
                 ShowHideDelButton();
                 UpdateText();
 

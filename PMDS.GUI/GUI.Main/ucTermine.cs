@@ -360,8 +360,8 @@ namespace PMDS.GUI
                 dbPar.WichtigFürJN = this.MainWindow.ucTerminFilterPicker1.WichtigFürJN;
                 dbPar.WichtigFür = this.MainWindow.ucTerminFilterPicker1.WichtigFür;
 
-                dbPar.BezugJN = this.MainWindow.ucTerminFilterPicker1.ShowBezug;
-                dbPar.IDBezug = this.MainWindow.ucTerminFilterPicker1.IDBezug;
+                //dbPar.BezugJN = this.MainWindow.ucTerminFilterPicker1.ShowBezug;
+                //dbPar.IDBezug = this.MainWindow.ucTerminFilterPicker1.IDBezug;
 
                 //setZeitfilter
                 dbPar.IDMaßnahme = this.MainWindow.ucTerminFilterPicker1.IDMassnahme;
