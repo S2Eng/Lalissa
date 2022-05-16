@@ -128,18 +128,20 @@ namespace PMDS.GUI
             this.labInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.labInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labInfo.Location = new System.Drawing.Point(0, 0);
+            this.labInfo.Margin = new System.Windows.Forms.Padding(4);
             this.labInfo.Name = "labInfo";
-            this.labInfo.Size = new System.Drawing.Size(642, 48);
+            this.labInfo.Size = new System.Drawing.Size(856, 59);
             this.labInfo.TabIndex = 4;
             this.labInfo.Text = "Termin";
             // 
             // ucPflegePlanSingleEdit1
             // 
             this.ucPflegePlanSingleEdit1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ucPflegePlanSingleEdit1.Location = new System.Drawing.Point(0, 88);
+            this.ucPflegePlanSingleEdit1.Location = new System.Drawing.Point(0, 108);
+            this.ucPflegePlanSingleEdit1.Margin = new System.Windows.Forms.Padding(4);
             this.ucPflegePlanSingleEdit1.Name = "ucPflegePlanSingleEdit1";
             this.ucPflegePlanSingleEdit1.ReadOnly = false;
-            this.ucPflegePlanSingleEdit1.Size = new System.Drawing.Size(630, 491);
+            this.ucPflegePlanSingleEdit1.Size = new System.Drawing.Size(840, 604);
             this.ucPflegePlanSingleEdit1.TabIndex = 1;
             this.ucPflegePlanSingleEdit1.TransferMode = false;
             // 
@@ -156,9 +158,10 @@ namespace PMDS.GUI
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(479, 598);
+            this.btnCancel.Location = new System.Drawing.Point(639, 736);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(88, 28);
+            this.btnCancel.Size = new System.Drawing.Size(117, 34);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "Abbrechen";
@@ -179,9 +182,10 @@ namespace PMDS.GUI
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(569, 598);
+            this.btnOK.Location = new System.Drawing.Point(759, 736);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(61, 28);
+            this.btnOK.Size = new System.Drawing.Size(81, 34);
             this.btnOK.TabIndex = 2;
             this.btnOK.TabStop = false;
             this.btnOK.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
@@ -206,22 +210,23 @@ namespace PMDS.GUI
             // 
             appearance4.TextVAlignAsString = "Middle";
             this.lblZeitpunkt.Appearance = appearance4;
-            this.lblZeitpunkt.Location = new System.Drawing.Point(16, 56);
+            this.lblZeitpunkt.Location = new System.Drawing.Point(21, 69);
+            this.lblZeitpunkt.Margin = new System.Windows.Forms.Padding(4);
             this.lblZeitpunkt.Name = "lblZeitpunkt";
-            this.lblZeitpunkt.Size = new System.Drawing.Size(100, 23);
+            this.lblZeitpunkt.Size = new System.Drawing.Size(133, 28);
             this.lblZeitpunkt.TabIndex = 8;
             this.lblZeitpunkt.Text = "Zeitpunkt";
-            this.lblZeitpunkt.Visible = false;
             // 
             // dtpZeitpunkt
             // 
             this.dtpZeitpunkt.FormatString = "";
-            this.dtpZeitpunkt.Location = new System.Drawing.Point(120, 56);
+            this.dtpZeitpunkt.Location = new System.Drawing.Point(160, 69);
+            this.dtpZeitpunkt.Margin = new System.Windows.Forms.Padding(4);
             this.dtpZeitpunkt.MaskInput = "dd.mm.yyyy hh:mm";
             this.dtpZeitpunkt.Name = "dtpZeitpunkt";
             this.dtpZeitpunkt.ownFormat = "";
             this.dtpZeitpunkt.ownMaskInput = "";
-            this.dtpZeitpunkt.Size = new System.Drawing.Size(144, 21);
+            this.dtpZeitpunkt.Size = new System.Drawing.Size(192, 24);
             this.dtpZeitpunkt.TabIndex = 0;
             // 
             // btnOpenBefund
@@ -230,9 +235,10 @@ namespace PMDS.GUI
             appearance5.BorderColor = System.Drawing.Color.Black;
             this.btnOpenBefund.Appearance = appearance5;
             this.btnOpenBefund.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnOpenBefund.Location = new System.Drawing.Point(293, 598);
+            this.btnOpenBefund.Location = new System.Drawing.Point(391, 736);
+            this.btnOpenBefund.Margin = new System.Windows.Forms.Padding(4);
             this.btnOpenBefund.Name = "btnOpenBefund";
-            this.btnOpenBefund.Size = new System.Drawing.Size(54, 28);
+            this.btnOpenBefund.Size = new System.Drawing.Size(113, 34);
             this.btnOpenBefund.TabIndex = 71;
             this.btnOpenBefund.Tag = "";
             this.btnOpenBefund.Text = "Befund";
@@ -245,9 +251,10 @@ namespace PMDS.GUI
             appearance6.BorderColor = System.Drawing.Color.Black;
             this.btnDekursErstellen.Appearance = appearance6;
             this.btnDekursErstellen.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDekursErstellen.Location = new System.Drawing.Point(6, 598);
+            this.btnDekursErstellen.Location = new System.Drawing.Point(8, 736);
+            this.btnDekursErstellen.Margin = new System.Windows.Forms.Padding(4);
             this.btnDekursErstellen.Name = "btnDekursErstellen";
-            this.btnDekursErstellen.Size = new System.Drawing.Size(104, 28);
+            this.btnDekursErstellen.Size = new System.Drawing.Size(139, 34);
             this.btnDekursErstellen.TabIndex = 73;
             this.btnDekursErstellen.Tag = "";
             this.btnDekursErstellen.Text = "Dekurs erstellen";
@@ -263,9 +270,10 @@ namespace PMDS.GUI
             this.PanelDekursEntwürfe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelDekursEntwürfe.Controls.Add(this.btnDekursEntwurfErstellenAs);
             this.PanelDekursEntwürfe.Controls.Add(this.btnDekursEntwurfErstellen);
-            this.PanelDekursEntwürfe.Location = new System.Drawing.Point(435, 75);
+            this.PanelDekursEntwürfe.Location = new System.Drawing.Point(580, 92);
+            this.PanelDekursEntwürfe.Margin = new System.Windows.Forms.Padding(4);
             this.PanelDekursEntwürfe.Name = "PanelDekursEntwürfe";
-            this.PanelDekursEntwürfe.Size = new System.Drawing.Size(103, 54);
+            this.PanelDekursEntwürfe.Size = new System.Drawing.Size(137, 66);
             this.PanelDekursEntwürfe.TabIndex = 94;
             this.PanelDekursEntwürfe.Visible = false;
             // 
@@ -278,9 +286,10 @@ namespace PMDS.GUI
             this.btnDekursEntwurfErstellenAs.Appearance = appearance7;
             this.btnDekursEntwurfErstellenAs.AutoWorkLayout = false;
             this.btnDekursEntwurfErstellenAs.IsStandardControl = false;
-            this.btnDekursEntwurfErstellenAs.Location = new System.Drawing.Point(4, 27);
+            this.btnDekursEntwurfErstellenAs.Location = new System.Drawing.Point(5, 33);
+            this.btnDekursEntwurfErstellenAs.Margin = new System.Windows.Forms.Padding(4);
             this.btnDekursEntwurfErstellenAs.Name = "btnDekursEntwurfErstellenAs";
-            this.btnDekursEntwurfErstellenAs.Size = new System.Drawing.Size(94, 24);
+            this.btnDekursEntwurfErstellenAs.Size = new System.Drawing.Size(125, 30);
             this.btnDekursEntwurfErstellenAs.TabIndex = 96;
             this.btnDekursEntwurfErstellenAs.Text = "Erstellen als";
             this.btnDekursEntwurfErstellenAs.Click += new System.EventHandler(this.btnDekursEntwurfErstellenAs_Click);
@@ -294,9 +303,10 @@ namespace PMDS.GUI
             this.btnDekursEntwurfErstellen.Appearance = appearance8;
             this.btnDekursEntwurfErstellen.AutoWorkLayout = false;
             this.btnDekursEntwurfErstellen.IsStandardControl = false;
-            this.btnDekursEntwurfErstellen.Location = new System.Drawing.Point(4, 3);
+            this.btnDekursEntwurfErstellen.Location = new System.Drawing.Point(5, 4);
+            this.btnDekursEntwurfErstellen.Margin = new System.Windows.Forms.Padding(4);
             this.btnDekursEntwurfErstellen.Name = "btnDekursEntwurfErstellen";
-            this.btnDekursEntwurfErstellen.Size = new System.Drawing.Size(94, 24);
+            this.btnDekursEntwurfErstellen.Size = new System.Drawing.Size(125, 30);
             this.btnDekursEntwurfErstellen.TabIndex = 95;
             this.btnDekursEntwurfErstellen.Text = "Erstellen";
             this.btnDekursEntwurfErstellen.Click += new System.EventHandler(this.btnDekursEntwurfErstellen_Click);
@@ -307,12 +317,13 @@ namespace PMDS.GUI
             appearance9.Image = ((object)(resources.GetObject("appearance9.Image")));
             appearance9.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.uDropDownDekursEntwürfe.Appearance = appearance9;
-            this.uDropDownDekursEntwürfe.Location = new System.Drawing.Point(113, 599);
+            this.uDropDownDekursEntwürfe.Location = new System.Drawing.Point(151, 737);
+            this.uDropDownDekursEntwürfe.Margin = new System.Windows.Forms.Padding(4);
             this.uDropDownDekursEntwürfe.Name = "uDropDownDekursEntwürfe";
             this.uDropDownDekursEntwürfe.PopupItemKey = "PanelDekursEntwürfe";
             this.uDropDownDekursEntwürfe.PopupItemProvider = this.ultraPopupControlContainerDekursEntwürfe;
             this.uDropDownDekursEntwürfe.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.uDropDownDekursEntwürfe.Size = new System.Drawing.Size(122, 26);
+            this.uDropDownDekursEntwürfe.Size = new System.Drawing.Size(163, 32);
             this.uDropDownDekursEntwürfe.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.uDropDownDekursEntwürfe.TabIndex = 93;
             this.uDropDownDekursEntwürfe.Text = "Dekurs Entwurf";
@@ -321,10 +332,10 @@ namespace PMDS.GUI
             // 
             // frmTerminEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(642, 633);
+            this.ClientSize = new System.Drawing.Size(856, 779);
             this.Controls.Add(this.PanelDekursEntwürfe);
             this.Controls.Add(this.uDropDownDekursEntwürfe);
             this.Controls.Add(this.btnDekursErstellen);
@@ -335,7 +346,9 @@ namespace PMDS.GUI
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.ucPflegePlanSingleEdit1);
             this.Controls.Add(this.labInfo);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTerminEdit";
             this.ShowInTaskbar = false;
             this.Text = "Termin";
