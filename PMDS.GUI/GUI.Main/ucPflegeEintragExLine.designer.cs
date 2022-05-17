@@ -60,7 +60,7 @@
             // 
             // lblWichtigFür
             // 
-            this.lblWichtigFür.Location = new System.Drawing.Point(512, 7);
+            this.lblWichtigFür.Location = new System.Drawing.Point(514, 7);
             this.lblWichtigFür.Size = new System.Drawing.Size(70, 25);
             this.lblWichtigFür.Visible = false;
             // 
@@ -97,13 +97,15 @@
             // 
             // chkDone
             // 
+            this.chkDone.BackColor = System.Drawing.Color.Transparent;
+            this.chkDone.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkDone.Location = new System.Drawing.Point(590, 37);
             this.chkDone.Size = new System.Drawing.Size(119, 17);
             // 
             // dtpZeitpunkt
             // 
-            this.dtpZeitpunkt.Location = new System.Drawing.Point(327, 5);
-            this.dtpZeitpunkt.Size = new System.Drawing.Size(143, 24);
+            this.dtpZeitpunkt.Location = new System.Drawing.Point(325, 4);
+            this.dtpZeitpunkt.Size = new System.Drawing.Size(143, 22);
             this.dtpZeitpunkt.ValueChanged += new System.EventHandler(this.dtpZeitpunkt_ValueChanged);
             // 
             // lblDauer
@@ -135,11 +137,13 @@
             // auswahlGruppeComboMulti1
             // 
             this.auswahlGruppeComboMulti1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.auswahlGruppeComboMulti1.Location = new System.Drawing.Point(590, 5);
-            this.auswahlGruppeComboMulti1.Size = new System.Drawing.Size(494, 24);
+            this.auswahlGruppeComboMulti1.Location = new System.Drawing.Point(590, 4);
+            this.auswahlGruppeComboMulti1.Size = new System.Drawing.Size(494, 27);
             // 
             // chkAlsDekursKopieren
             // 
+            this.chkAlsDekursKopieren.BackColor = System.Drawing.Color.Transparent;
+            this.chkAlsDekursKopieren.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkAlsDekursKopieren.Location = new System.Drawing.Point(751, 58);
             this.chkAlsDekursKopieren.Size = new System.Drawing.Size(149, 17);
             // 
@@ -153,6 +157,8 @@
             // 
             // chkGegenzeichnen
             // 
+            this.chkGegenzeichnen.BackColor = System.Drawing.Color.Transparent;
+            this.chkGegenzeichnen.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkGegenzeichnen.Location = new System.Drawing.Point(751, 37);
             this.chkGegenzeichnen.Size = new System.Drawing.Size(192, 17);
             // 
@@ -209,7 +215,7 @@
             // 
             // ucDateSelect1
             // 
-            this.ucDateSelect1.Location = new System.Drawing.Point(472, 1);
+            this.ucDateSelect1.Location = new System.Drawing.Point(474, 4);
             this.ucDateSelect1.Margin = new System.Windows.Forms.Padding(4);
             this.ucDateSelect1.Name = "ucDateSelect1";
             this.ucDateSelect1.Size = new System.Drawing.Size(40, 25);
@@ -250,6 +256,8 @@
             // 
             // chkIgnoreLine
             // 
+            this.chkIgnoreLine.BackColor = System.Drawing.Color.Transparent;
+            this.chkIgnoreLine.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkIgnoreLine.Location = new System.Drawing.Point(954, 33);
             this.chkIgnoreLine.Margin = new System.Windows.Forms.Padding(4);
             this.chkIgnoreLine.Name = "chkIgnoreLine";
@@ -260,6 +268,8 @@
             // 
             // chkMorgenWieder
             // 
+            this.chkMorgenWieder.BackColor = System.Drawing.Color.Transparent;
+            this.chkMorgenWieder.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkMorgenWieder.Location = new System.Drawing.Point(954, 58);
             this.chkMorgenWieder.Margin = new System.Windows.Forms.Padding(4);
             this.chkMorgenWieder.Name = "chkMorgenWieder";
@@ -272,7 +282,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.chkMorgenWieder);
             this.Controls.Add(this.chkIgnoreLine);
             this.Controls.Add(this.lblZeitpunkt);

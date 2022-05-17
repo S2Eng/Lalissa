@@ -279,11 +279,10 @@ namespace PMDS.GUI.BaseControls
                 try
                 {
                     _group = value;
-                    if (value.Trim().Length == 0)
+                    if (String.IsNullOrWhiteSpace(value))
                         return;
 
-                    if (!DesignMode) 
-                        RefreshList();
+                    RefreshList();
                 }
                 catch(Exception ex)
                 {
@@ -301,7 +300,7 @@ namespace PMDS.GUI.BaseControls
                 {
                     _ignoreUnterdruecken = value;
                     if (!DesignMode)
-                        RefreshList();
+                       RefreshList();
                 }
                 catch (Exception ex)
                 {

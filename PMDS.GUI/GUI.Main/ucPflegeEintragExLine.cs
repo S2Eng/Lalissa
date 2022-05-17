@@ -81,7 +81,7 @@ namespace PMDS.GUI
                 this.BackColor = System.Drawing.Color.WhiteSmoke;
             }
 
-            ucZusatzWert1.Width = 412;
+            ucZusatzWert1.Width = 500;
             if (!ucZusatzWert1.HAS_ADDITIONAL_VALUES)
             {
                 this.HeigthPflegeEintragControl = txtBeschreibungLine.Bottom + 5;// auswahlGruppeComboMulti1.Top + auswahlGruppeComboMulti1.Height + 5;
@@ -90,8 +90,8 @@ namespace PMDS.GUI
             }
             else
             {
-                this.HeigthZusatzwerte = 24 * ucZusatzWert1.ADDITIONAL_VALUES_COUNT;
-                this.HeigthPflegeEintragControl = this.ucZusatzWert1.Top + this.HeigthZusatzwerte + 6;
+                this.HeigthZusatzwerte = 30 * ucZusatzWert1.ADDITIONAL_VALUES_COUNT;
+                this.HeigthPflegeEintragControl = this.ucZusatzWert1.Top + this.HeigthZusatzwerte + 3;
                 this.ZusatzwerteVisible = true;
                 this.Height = this.HeigthPflegeEintragControl;
             }
