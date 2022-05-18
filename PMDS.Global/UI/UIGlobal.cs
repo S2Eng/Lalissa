@@ -184,7 +184,7 @@ namespace PMDS.Global
 
         public static void setStyleButtonDropDown(Infragistics.Win.Misc.UltraDropDownButton butt)
         {
-            PMDS.Global.UIGlobal.setAktivDisableDropDown(butt, -1, ENVCOLOR.inactiveBackCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveForeCol, UIElementButtonStyle.Button);                // Wunde
+            PMDS.Global.UIGlobal.setAktivDisableDropDown(butt, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);                // Wunde
         }
 
 

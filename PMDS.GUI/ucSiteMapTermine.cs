@@ -110,6 +110,9 @@ namespace PMDS.GUI
                 PMDS.Global.UIGlobal.setStyleButtonDropDown(TermineExTmp.uDropDownDekursEntwürfe);
                 PMDS.Global.UIGlobal.setStyleButtonDropDown(TermineExTmp.uDropDownDrucken);
 
+                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnEndTask1);
+
+
                 TermineExTmp.TerminSelected += new EventHandler(_termine_TerminSelected);
                 TermineExTmp.TerminDoubleClick += new EventHandler(_termine_TerminDoubleClick);
 

@@ -330,7 +330,7 @@
 </value>
   </data>
   <metadata name="ultraPopupControlContainerDekursEntwürfe.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>184, 56</value>
+    <value>17, 56</value>
   </metadata>
   <data name="appearance32.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -506,7 +506,7 @@
     <value>504, 17</value>
   </metadata>
   <metadata name="contextMenuStripSys.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
+    <value>1132, 17</value>
   </metadata>
   <metadata name="layFilterObenRechts.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>172, 17</value>

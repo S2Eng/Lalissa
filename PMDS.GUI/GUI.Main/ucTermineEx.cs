@@ -531,8 +531,8 @@ namespace PMDS.GUI
             this.ucTerminTimePicker1.Location = new System.Drawing.Point(64, 6);
             this.ucTerminTimePicker1.Mode = PMDS.GUI.EFilter.HEUTE;
             this.ucTerminTimePicker1.Name = "ucTerminTimePicker1";
-            this.ucTerminTimePicker1.RangeFrom = new System.DateTime(2022, 5, 15, 0, 0, 0, 0);
-            this.ucTerminTimePicker1.RangeTo = new System.DateTime(2022, 5, 15, 23, 59, 59, 0);
+            this.ucTerminTimePicker1.RangeFrom = new System.DateTime(2022, 5, 18, 0, 0, 0, 0);
+            this.ucTerminTimePicker1.RangeTo = new System.DateTime(2022, 5, 18, 23, 59, 59, 0);
             this.ucTerminTimePicker1.Size = new System.Drawing.Size(189, 24);
             this.ucTerminTimePicker1.TabIndex = 39;
             // 
@@ -682,7 +682,7 @@ namespace PMDS.GUI
             // 
             appearance15.BackColor = System.Drawing.Color.Transparent;
             appearance15.Image = ((object)(resources.GetObject("appearance15.Image")));
-            appearance15.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance15.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance15.ImageVAlign = Infragistics.Win.VAlign.Middle;
             appearance15.TextHAlignAsString = "Left";
             appearance15.TextVAlignAsString = "Middle";
@@ -696,6 +696,7 @@ namespace PMDS.GUI
             this.btnPrintTermine.Size = new System.Drawing.Size(155, 26);
             this.btnPrintTermine.TabIndex = 6;
             this.btnPrintTermine.TabStop = false;
+            this.btnPrintTermine.Text = "Drucken";
             this.btnPrintTermine.TYPE = PMDS.GUI.ucButton.ButtonType.Print;
             this.btnPrintTermine.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnPrintTermine.Click += new System.EventHandler(this.btnPrintTermine_Click);
