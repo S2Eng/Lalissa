@@ -1537,50 +1537,11 @@ namespace PMDS.GUI
 
         public void setButtonsAktivDeaktiv(SiteEvents aktivButton)
         {
-            if (aktivButton == SiteEvents.aszm_‰thologien) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnƒthologien, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol); 
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnƒthologien, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button); 
-            }
-
-            if (aktivButton == SiteEvents.aszm_sympthome) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnSympthome, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnSympthome, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
-            }
-
-            if (aktivButton == SiteEvents.aszm_ziele) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnZiele, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnZiele, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
-            }
-
-            if (aktivButton == SiteEvents.aszm_maﬂnahmen) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnMaﬂnahmen, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnMaﬂnahmen, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
-            }
-
-            if (aktivButton == SiteEvents.aszm_ressourcen) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnRessourcen, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnRessourcen, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
-            }
+            PMDS.Global.UIGlobal.setUIButton(this.btnƒthologien, aktivButton == SiteEvents.aszm_‰thologien);
+            PMDS.Global.UIGlobal.setUIButton(this.btnSympthome, aktivButton == SiteEvents.aszm_sympthome);
+            PMDS.Global.UIGlobal.setUIButton(this.btnZiele, aktivButton == SiteEvents.aszm_ziele);
+            PMDS.Global.UIGlobal.setUIButton(this.btnMaﬂnahmen, aktivButton == SiteEvents.aszm_maﬂnahmen);
+            PMDS.Global.UIGlobal.setUIButton(this.btnRessourcen, aktivButton == SiteEvents.aszm_ressourcen);
         }
 
         private void openASZM(string key )

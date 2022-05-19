@@ -290,7 +290,7 @@ namespace PMDS.GUI
             if (!singleOnOff)
             {
                 el.isOn = true;
-                PMDS.Global.UIGlobal.setAktivDisable(el.btnClick, anzKlienten, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setUIButton(el.btnClick, false);
                 el.btnClick.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32);
             }
             else
@@ -314,7 +314,7 @@ namespace PMDS.GUI
             if (!singleOnOff)
             {
                 el.isOn = false;
-                PMDS.Global.UIGlobal.setAktivDisable(el.btnClick, anzKlienten, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setUIButton(el.btnClick, false);
                 el.btnClick.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Transparent, 32, 32);
             }
             else
@@ -584,7 +584,7 @@ namespace PMDS.GUI
                         el.btnClick.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Transparent, 32, 32);
                         el.Dock = DockStyle.Top;
                         el.Height = 31;
-                        PMDS.Global.UIGlobal.setAktivDisable(el.btnClick, anzKlienten, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
+                        PMDS.Global.UIGlobal.setUIButton(el.btnClick, false);
                         this.panelButtons.Controls.Add(el);
 
                         if (this.typ == eSendMain.abrechnung)

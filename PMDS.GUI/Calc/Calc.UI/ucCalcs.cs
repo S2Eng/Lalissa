@@ -313,8 +313,8 @@ namespace PMDS.Calc.UI
                     case "F":
                         ActUIMode = PMDS.Calc.Logic.CalcUIMode.Freigegeben;
                         this.btnPrint.Text = "Rechnung(en) öffnen";
-                        PMDS.Global.UIGlobal.setAktivDisable(this.btnVorschau, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
-                        PMDS.Global.UIGlobal.setAktiv(this.btnFreigeben, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
+                        PMDS.Global.UIGlobal.setUIButton(this.btnVorschau, false);
+                        PMDS.Global.UIGlobal.setUIButton(this.btnFreigeben, true);
                         ultraToolTipInfoF.ToolTipText = "\nFür Rechnungsversand = Umschalt-Taste\nFür Rechnungskopie = Strg-Taste";
                         this.btnRollung.Visible = false;
                         break;
@@ -322,8 +322,8 @@ namespace PMDS.Calc.UI
                     case "O":
                         ActUIMode = PMDS.Calc.Logic.CalcUIMode.Vorschau;
                         this.btnPrint.Text = "Vorschau(en) öffnen";
-                        PMDS.Global.UIGlobal.setAktivDisable(this.btnFreigeben, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
-                        PMDS.Global.UIGlobal.setAktiv(this.btnVorschau, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
+                        PMDS.Global.UIGlobal.setUIButton(this.btnFreigeben, false);
+                        PMDS.Global.UIGlobal.setUIButton(this.btnVorschau, true);
                         ultraToolTipInfoF.ToolTipText += "\nFür FSW-XLSX-Vorschau = Strg-Taste";
                         this.btnRollung.Visible = true;
                         break;
@@ -331,7 +331,7 @@ namespace PMDS.Calc.UI
                     default:
                         ActUIMode = PMDS.Calc.Logic.CalcUIMode.Belege;
                         this.btnPrint.Text = "Beleg(e) öffnen";
-                        PMDS.Global.UIGlobal.setAktivDisable(this.btnVorschau, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveForeCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);
+                        PMDS.Global.UIGlobal.setUIButton(this.btnVorschau, false);
                         ultraToolTipInfoF.ToolTipText += "";
                         this.btnRollung.Visible = false;
                         break;

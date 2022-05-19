@@ -104,15 +104,9 @@ namespace PMDS.GUI.BaseControls
                             b = new  QuickFilterButton();
                             b.Click += new EventHandler(button_Click);
 
-                            //b.UseAppStyling = false;
-                            b.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
-                            b.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+                            b.UseAppStyling = true;
 
-                            b.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-                            PMDS.Global.UIGlobal.setAktivDisable(b, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-                            b.Appearance.BackColor = Color.Transparent;
-                            b.Appearance.ForeColor = Color.Black;
-
+                            PMDS.Global.UIGlobal.setUIButton(b, false);
                             b.initControl();
                             pnlMain.Controls.Add(b);
                         }
@@ -614,19 +608,19 @@ namespace PMDS.GUI.BaseControls
                 QuickFilterButtonArgs args;
                 args = (QuickFilterButtonArgs)b.Tag;
 
+                b.UseAppStyling = true;
                 if (args.IDQuickFilter == IDQuickFilter)
                 {
-                    PMDS.Global.UIGlobal.setAktiv(b, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-                    b.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
+                    PMDS.Global.UIGlobal.setUIButton(b, true);
+                    //b.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
                     b.HotTrackAppearance.BackColor = ENVCOLOR.hoverBackCol;
                 }
                 else
                 {
-                    b.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-                    PMDS.Global.UIGlobal.setAktivDisable(b, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-                    b.Appearance.BackColor = Color.Transparent;
-                    b.Appearance.ForeColor = Color.Black;
+                    PMDS.Global.UIGlobal.setUIButton(b, false);
                 }
+                b.HotTrackAppearance.BackColor = ENVCOLOR.hoverBackCol;
+
             }
         }
 

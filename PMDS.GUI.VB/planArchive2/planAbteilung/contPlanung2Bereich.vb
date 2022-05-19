@@ -772,7 +772,7 @@ Public Class contPlanung2Bereich
 
     Public Sub setLayoutButton2(btn As UltraButton)
         Try
-            PMDS.Global.UIGlobal.setAktiv(btn, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol)
+            PMDS.Global.UIGlobal.setUIButton(btn, True)
             Me._lastQuickbutton = btn.Tag.ToString().Trim()
 
         Catch ex As Exception
@@ -781,9 +781,9 @@ Public Class contPlanung2Bereich
     End Sub
     Public Sub resetLayoutButtons()
         Try
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_AbtBereichPlan, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_KatAbtBereichPlan, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_Plan, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
+            PMDS.Global.UIGlobal.setUIButton(Me.btnLayout_AbtBereichPlan, False)
+            PMDS.Global.UIGlobal.setUIButton(Me.btnLayout_KatAbtBereichPlan, False)
+            PMDS.Global.UIGlobal.setUIButton(Me.btnLayout_Plan, False)
 
         Catch ex As Exception
             Throw New Exception("contPlanung2Bereich.resetLayoutButtons: " + ex.ToString())

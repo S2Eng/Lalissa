@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using PMDS.Global;
 
 namespace PMDS.GUI.BaseControls
 {
@@ -17,7 +18,8 @@ namespace PMDS.GUI.BaseControls
 
         public ucPrintStammDatenBlatt()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            PMDS.Global.UIGlobal.setUIButton(this.btnPrintStammdaten, false);
         }
         //-----------------------------------------------------------------------------------------------------
         /// <summary>

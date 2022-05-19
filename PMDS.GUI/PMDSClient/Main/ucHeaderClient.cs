@@ -138,12 +138,10 @@ namespace PMDS.GUI.PMDSClient
             for (int i = 0; i < 5; i++)
             {
                 _buttons[i].ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-              //  _buttons[i].Appearance.Image = _list[i]._Normal;
-              //  _buttons[i].HotTrackAppearance.Image = _list[i]._Hoover;
                 _buttons[i].Tag = i;
             }
             this.btnRefresh.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-            PMDS.Global.UIGlobal.setAktivDisable(this.btnRefresh, 1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
+            PMDS.Global.UIGlobal.setUIButton(this.btnRefresh, false);
 
             btnKlient.Tag = HeaderButtons.Details;      
             btnKlientenliste.Tag = HeaderButtons.Klienten;     
@@ -159,8 +157,6 @@ namespace PMDS.GUI.PMDSClient
 
             ultraToolTipManager1.AutoPopDelay = ENV._PPToolTipDuration;
             ultraToolTipManager1.InitialDelay = ENV._PPToolTipDelay;
-
-            //this.contPatientUserPicker1.MainWindowHeader2 = this;     //lthnew
         }
 
         void ENV_KlientChanged(object sender, EventArgs e)
@@ -1667,40 +1663,39 @@ namespace PMDS.GUI.PMDSClient
                 this.setButtonsDeaktive();
                 
                 if (ineu < 6)
-                    PMDS.Global.UIGlobal.setAktiv(_buttons[ineu], ineu, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
+                    PMDS.Global.UIGlobal.setUIButton(_buttons[ineu], true);
                 else if (ineu == (int)HeaderButtons.Details)      // Details soll auch markiert bleiben
-                    PMDS.Global.UIGlobal.setAktiv(btnKlient, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
+                    PMDS.Global.UIGlobal.setUIButton(btnKlient, true);
                 else if (ineu == (int)HeaderButtons.Berichte)      // Berichte soll auch markiert bleiben
-                    PMDS.Global.UIGlobal.setAktiv(btnBerichte, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
+                    PMDS.Global.UIGlobal.setUIButton(btnBerichte, true);
                 else if (ineu == (int)HeaderButtons.Medikamente)      // Medikamente soll auch markiert bleiben
-                    PMDS.Global.UIGlobal.setAktiv(btnMitverantwortlicherBereich, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
+                    PMDS.Global.UIGlobal.setUIButton(btnMitverantwortlicherBereich, true);
                 else if (ineu == (int)HeaderButtons.Wunde)      // Wunde soll auch markiert bleiben
-                    PMDS.Global.UIGlobal.setAktiv(btnWunddoku, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-                
+                    PMDS.Global.UIGlobal.setUIButton(btnWunddoku, true);                
             }
             catch (Exception ex)
             {
                 throw new Exception("ProcessButton1_5: " + ex.ToString());
             }
         }
+
         public void setButtonsDeaktive()
         {
             try
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    PMDS.Global.UIGlobal.setAktivDisable(_buttons[i], i, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
+                    PMDS.Global.UIGlobal.setUIButton(_buttons[i], false);
                 }
 
-                PMDS.Global.UIGlobal.setAktivDisable(btnKlientenliste, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
-                PMDS.Global.UIGlobal.setAktivDisable(btnKlient, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);                // Details button
-                PMDS.Global.UIGlobal.setAktivDisable(btnBerichte, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);                // Berichte Button
-                PMDS.Global.UIGlobal.setAktivDisable(btnMitverantwortlicherBereich, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);                // Mitverantwortlicher Bereich Button
-                PMDS.Global.UIGlobal.setAktivDisable(btnWunddoku, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);                // Wunde
-                PMDS.Global.UIGlobal.setAktivDisable(btnArchiv, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
-                PMDS.Global.UIGlobal.setAktivDisable(btnTermine, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
-                PMDS.Global.UIGlobal.setAktivDisable(btnArztabrechnung, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Flat);
-
+                PMDS.Global.UIGlobal.setUIButton(btnKlientenliste, false);
+                PMDS.Global.UIGlobal.setUIButton(btnKlient, false);                // Details button
+                PMDS.Global.UIGlobal.setUIButton(btnBerichte, false);                // Berichte Button
+                PMDS.Global.UIGlobal.setUIButton(btnMitverantwortlicherBereich, false);                // Mitverantwortlicher Bereich Button
+                PMDS.Global.UIGlobal.setUIButton(btnWunddoku, false);                // Wunde
+                PMDS.Global.UIGlobal.setUIButton(btnArchiv, false);
+                PMDS.Global.UIGlobal.setUIButton(btnTermine, false);
+                PMDS.Global.UIGlobal.setUIButton(btnArztabrechnung, false);
             }
             catch (Exception ex)
             {
@@ -1886,7 +1881,7 @@ namespace PMDS.GUI.PMDSClient
             try
             {
                 this.setButtonsDeaktive();
-                PMDS.Global.UIGlobal.setAktiv(btnTermine, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
+                PMDS.Global.UIGlobal.setUIButton(btnTermine, true);
                 GuiAction.archivTerminMail(false, false, false, false);
             }
             catch (Exception ex)
@@ -1900,7 +1895,7 @@ namespace PMDS.GUI.PMDSClient
             try
             {
                 this.setButtonsDeaktive();
-                PMDS.Global.UIGlobal.setAktiv(this.btnArchiv , -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
+                PMDS.Global.UIGlobal.setUIButton(this.btnArchiv, true);
                 GuiAction.archivTerminMail(false, false, true, false);
             }
             catch (Exception ex)

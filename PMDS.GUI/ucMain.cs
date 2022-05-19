@@ -103,10 +103,10 @@ namespace PMDS.GUI
             this.ucPatientGroup1.mainWindow = this;
 
             this.btnReports.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Drucken, QS2.Resources.getRes.ePicTyp.ico);
-            PMDS.Global.UIGlobal.setAktivDisable(this.btnReports, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
+            //PMDS.Global.UIGlobal.setAktivDisable(this.btnReports, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
 
             this.btnBereich.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Klientenliste.ico_Bereichsuebersicht, QS2.Resources.getRes.ePicTyp.ico);
-            PMDS.Global.UIGlobal.setAktivDisable(this.btnBereich, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
+            //PMDS.Global.UIGlobal.setAktivDisable(this.btnBereich, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
 
             this.btnAufnahmexyxy.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Klientenakt.ico_ArchivTerminemail, QS2.Resources.getRes.ePicTyp.ico);
             //QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Klientenliste.ico_Aufnahme, QS2.Resources.getRes.ePicTyp.ico);
@@ -1081,77 +1081,19 @@ namespace PMDS.GUI
             
         public void setButtonsAktivDeaktiv(SiteEvents aktivButton)
         {
-            if (aktivButton == SiteEvents.Entlassen) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnEntlassen, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol); 
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnEntlassen, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat); 
-            }
+            PMDS.Global.UIGlobal.setUIButton(this.btnEntlassen, aktivButton == SiteEvents.Entlassen); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnVersetzen, aktivButton == SiteEvents.Versetzen);
+            PMDS.Global.UIGlobal.setUIButton(this.btnAbwesenheiten, aktivButton == SiteEvents.Urlaub);
+            PMDS.Global.UIGlobal.setUIButton(this.btnBezugspersonen, aktivButton == SiteEvents.Bezugsperson);
 
-            if (aktivButton == SiteEvents.Versetzen) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnVersetzen, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnVersetzen, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-            }
-
-            if (aktivButton == SiteEvents.Urlaub) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnAbwesenheiten, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnAbwesenheiten, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-            }
-
-            if (aktivButton == SiteEvents.Bezugsperson) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnBezugspersonen, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnBezugspersonen, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-            }
-
-            if (aktivButton == SiteEvents.BereichsauswahlKlientenliste) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnBereich, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnBereich, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-            }
-
-            if (aktivButton == SiteEvents.KlientenauswahlKlientenliste) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnKlient, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnKlient, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-            }
-
-            if (aktivButton == SiteEvents.listeOffeneTermine) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnKliententermineArchive, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnKliententermineArchive, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-            }
-
-            if (aktivButton == SiteEvents.listeOffeneTermine) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnAufnahmexyxy, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnAufnahmexyxy, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-            }
+            PMDS.Global.UIGlobal.setUIButton(this.btnKliententermineArchive, false);
+            PMDS.Global.UIGlobal.setUIButton(this.btnMessages, false);
+            PMDS.Global.UIGlobal.setUIButton(this.btnKlient, false);
+            PMDS.Global.UIGlobal.setUIButton(this.btnTermineBereich, false);
+            PMDS.Global.UIGlobal.setUIButton(this.btnReports, false);
+            PMDS.Global.UIGlobal.setUIButton(this.btnAufnahmexyxy, false);
+            PMDS.Global.UIGlobal.setUIButton(this.btnDokumenteBenutzer, false);
+            PMDS.Global.UIGlobal.setUIButton(this.btnBereich, false);
         }
 
         private void setRightButtonleisteUnten()
@@ -1459,7 +1401,7 @@ namespace PMDS.GUI
         {
             try
             {
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnDokumenteBenutzer, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setUIButton(this.btnDokumenteBenutzer, false);
                 if (ENV.CurrentIDAbteilung == null)   // || ENV.CurrentIDAbteilung == System.Guid.Empty
                 {
                     this.btnDokumenteBenutzer.Visible = false;

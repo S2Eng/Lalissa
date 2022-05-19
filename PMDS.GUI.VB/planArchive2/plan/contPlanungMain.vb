@@ -1335,7 +1335,7 @@ Public Class contPlanung2
 
     Public Sub setLayoutButton2(btn As UltraButton)
         Try
-            PMDS.Global.UIGlobal.setAktiv(btn, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol)
+            PMDS.Global.UIGlobal.setUIButton(btn, True)
             Me._lastQuickbutton = btn.Tag.ToString().Trim()
 
         Catch ex As Exception
@@ -1344,10 +1344,10 @@ Public Class contPlanung2
     End Sub
     Public Sub resetLayoutButtons()
         Try
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_PatientBeginn, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_PatientKategorie, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_KategoriePatient, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
-            PMDS.Global.UIGlobal.setAktivDisable(Me.btnLayout_Beginn, -1, ENVCOLOR.activeForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.activeFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat)
+            PMDS.Global.UIGlobal.setUIButton(Me.btnLayout_PatientBeginn, False)
+            PMDS.Global.UIGlobal.setUIButton(Me.btnLayout_PatientKategorie, False)
+            PMDS.Global.UIGlobal.setUIButton(Me.btnLayout_KategoriePatient, False)
+            PMDS.Global.UIGlobal.setUIButton(Me.btnLayout_Beginn, False)
 
         Catch ex As Exception
             Throw New Exception("contPlanung2.resetLayoutButtons: " + ex.ToString())

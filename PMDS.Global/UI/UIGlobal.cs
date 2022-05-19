@@ -118,90 +118,125 @@ namespace PMDS.Global
                 }
             }
         }
-        
-        //public static void checkActivityUser()
-        //{
-        //    try
-        //    {
-                  
-        //        System.Windows .Forms.Application.
 
 
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("UIGlobal.checkActivityUser: " + ex.ToString());
-        //    }
-        //}
-
-        public static void setAktiv(UltraButton butt, int ineu, Color foreCol, Color aktivBorderCol, Color backCol)
+        public static void setUIButton(UltraButton butt, bool bAktiv)
         {
             butt.Appearance.FontData.Bold = DefaultableBoolean.False;
             butt.UseOsThemes = DefaultableBoolean.False;
-            butt.Appearance.BackColor = backCol; 
-            butt.Appearance.ForeColor = foreCol;
-            butt.PressedAppearance.BackColor = System.Drawing.Color.Gainsboro;
-            butt.PressedAppearance.ForeColor = foreCol;
             butt.UseFlatMode = DefaultableBoolean.True;
             butt.ShowFocusRect = false;
-        }
-
-        public static void setAktivDisable(UltraButton butt, int i, Color foreCol, Color hotTrackBackCol, Color bordColor, Color backCol, UIElementButtonStyle styleButt )
-        {
-            butt.Appearance.ForeColor = foreCol;
-            butt.Appearance.BackColor = backCol;
-            butt.Appearance.BorderColor = bordColor;
-            butt.HotTrackAppearance.BackColor = hotTrackBackCol;
-            butt.HotTrackAppearance.BorderColor = System.Drawing.Color.Transparent;
-            butt.ButtonStyle = styleButt; 
-            butt.UseOsThemes = DefaultableBoolean.False;
             butt.UseHotTracking = DefaultableBoolean.True;
-            butt.Appearance.FontData.Bold = DefaultableBoolean.False;
-            butt.UseFlatMode = DefaultableBoolean.True;
-            butt.ShowFocusRect = false;            
-        }
+            butt.HotTrackAppearance.BackColor = ENVCOLOR.hoverBackCol;
+            butt.HotTrackAppearance.BorderColor = ENVCOLOR.hoverFrameCol;
 
-        public static void setAktivDisableDropDown(UltraDropDownButton butt, int i, Color foreCol, Color hotTrackBackCol, Color bordColor, System.Drawing.Color backCol, UIElementButtonStyle styleButt)
-        {
-            butt.Appearance.ForeColor = foreCol;
-            butt.Appearance.BackColor = backCol;
-            butt.Appearance.BorderColor = bordColor;
-            butt.HotTrackAppearance.BackColor = hotTrackBackCol;
-            butt.HotTrackAppearance.BorderColor = System.Drawing.Color.Transparent;
-            butt.ButtonStyle = styleButt;
-            butt.UseOsThemes = DefaultableBoolean.False;
-            butt.UseHotTracking = DefaultableBoolean.True;
-            butt.Appearance.FontData.Bold = DefaultableBoolean.False;
-            butt.UseFlatMode = DefaultableBoolean.True;
-            butt.ShowFocusRect = false;
-        }
-
-        public static void setStyleButton(Infragistics.Win.Misc.UltraButton butt)
-        {
-            PMDS.Global.UIGlobal.setAktivDisable(butt, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);                // Wunde
-        }
-
-        public static void setStyleButtonDropDown(Infragistics.Win.Misc.UltraDropDownButton butt)
-        {
-            PMDS.Global.UIGlobal.setAktivDisableDropDown(butt, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);                // Wunde
-        }
-
-
-        public void setUISelektAlleKeine(bool alle, Infragistics.Win.UltraWinGrid.BandsCollection coll, UltraGrid grid)
-        {
-            foreach (Infragistics.Win.UltraWinGrid.UltraGridBand b in coll)
+            if (bAktiv)
             {
-                foreach (Infragistics.Win.UltraWinGrid.UltraGridRow r in grid.Rows)
-                {
-                    if (!r.IsGroupByRow && !r.IsFilteredOut)
-                    {
-                        r.Selected = alle;
-                        r.Activated = alle;
-                    }
-                }
+                butt.Appearance.BackColor = ENVCOLOR.activeBackCol;
+                butt.Appearance.ForeColor = ENVCOLOR.activeForeCol;
+                butt.Appearance.BorderColor = ENVCOLOR.activeFrameCol;
+            }
+            else
+            {
+                butt.Appearance.BackColor = ENVCOLOR.inactiveBackCol;
+                butt.Appearance.ForeColor = ENVCOLOR.inactiveForeCol;
+                butt.Appearance.BorderColor = ENVCOLOR.inactiveFrameCol;
             }
         }
+
+        public static void setUIButton(UltraDropDownButton butt, bool bAktiv)
+        {
+            butt.Appearance.FontData.Bold = DefaultableBoolean.False;
+            butt.UseOsThemes = DefaultableBoolean.False;
+            butt.UseFlatMode = DefaultableBoolean.True;
+            butt.ShowFocusRect = false;
+
+            butt.HotTrackAppearance.BackColor = ENVCOLOR.hoverBackCol;
+            butt.HotTrackAppearance.BorderColor = ENVCOLOR.hoverFrameCol;
+
+            if (bAktiv)
+            {
+                butt.Appearance.BackColor = ENVCOLOR.activeBackCol;
+                butt.Appearance.ForeColor = ENVCOLOR.activeForeCol;
+                butt.Appearance.BorderColor = ENVCOLOR.activeFrameCol;
+            }
+            else
+            {
+                butt.Appearance.BackColor = ENVCOLOR.inactiveBackCol;
+                butt.Appearance.ForeColor = ENVCOLOR.inactiveForeCol;
+                butt.Appearance.BorderColor = ENVCOLOR.inactiveFrameCol;
+            }
+        }
+
+        //public static void setAktivXX(UltraButton butt, int ineu, Color foreCol, Color bordCol, Color backCol)
+        //{
+        //    butt.Appearance.FontData.Bold = DefaultableBoolean.False;
+        //    butt.UseOsThemes = DefaultableBoolean.False;
+        //    butt.Appearance.BackColor = backCol; 
+        //    butt.Appearance.ForeColor = foreCol;
+        //    butt.Appearance.BorderColor = bordCol;
+        //    butt.PressedAppearance.BackColor = System.Drawing.Color.Gainsboro;
+        //    butt.PressedAppearance.ForeColor = foreCol;
+        //    butt.HotTrackAppearance.BackColor = ENVCOLOR.hoverBackCol;
+        //    butt.UseFlatMode = DefaultableBoolean.True;
+        //    butt.ShowFocusRect = false;
+        //}
+
+        //public static void setAktivDisableXX(UltraButton butt, int i, Color foreCol, Color hotTrackBackCol, Color bordColor, Color backCol, UIElementButtonStyle styleButt )
+        //{
+        //    butt.Appearance.ForeColor = foreCol;
+        //    butt.Appearance.BackColor = backCol;
+        //    butt.Appearance.BorderColor = bordColor;
+        //    butt.HotTrackAppearance.BackColor = hotTrackBackCol;
+        //    butt.HotTrackAppearance.BorderColor = ENVCOLOR.hoverFrameCol;
+        //    butt.ButtonStyle = styleButt; 
+        //    butt.UseOsThemes = DefaultableBoolean.False;
+        //    butt.UseHotTracking = DefaultableBoolean.True;
+        //    butt.Appearance.FontData.Bold = DefaultableBoolean.False;
+        //    butt.UseFlatMode = DefaultableBoolean.True;
+        //    butt.ShowFocusRect = false;            
+        //}
+
+        //public static void setAktivDisableDropDown(UltraDropDownButton butt, int i, Color foreCol, Color hotTrackBackCol, Color bordColor, System.Drawing.Color backCol, UIElementButtonStyle styleButt)
+        //{
+        //    butt.Appearance.ForeColor = foreCol;
+        //    butt.Appearance.BackColor = backCol;
+        //    butt.Appearance.BorderColor = bordColor;
+        //    butt.HotTrackAppearance.BackColor = hotTrackBackCol;
+        //    butt.HotTrackAppearance.BorderColor = System.Drawing.Color.Transparent;
+        //    butt.ButtonStyle = styleButt;
+        //    butt.UseOsThemes = DefaultableBoolean.False;
+        //    butt.UseHotTracking = DefaultableBoolean.True;
+        //    butt.Appearance.FontData.Bold = DefaultableBoolean.False;
+        //    butt.UseFlatMode = DefaultableBoolean.True;
+        //    butt.ShowFocusRect = false;
+        //}
+
+        //public static void setStyleButton(Infragistics.Win.Misc.UltraButton butt)
+        //{
+        //    PMDS.Global.UIGlobal.setAktivDisable(butt, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);                // Wunde
+        //}
+
+        //public static void setStyleButtonDropDown(Infragistics.Win.Misc.UltraDropDownButton butt)
+        //{
+        //    PMDS.Global.UIGlobal.setAktivDisableDropDown(butt, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, UIElementButtonStyle.Button);                // Wunde
+        //}
+
+
+        //public void setUISelektAlleKeine(bool alle, Infragistics.Win.UltraWinGrid.BandsCollection coll, UltraGrid grid)
+        //{
+        //    foreach (Infragistics.Win.UltraWinGrid.UltraGridBand b in coll)
+        //    {
+        //        foreach (Infragistics.Win.UltraWinGrid.UltraGridRow r in grid.Rows)
+        //        {
+        //            if (!r.IsGroupByRow && !r.IsFilteredOut)
+        //            {
+        //                r.Selected = alle;
+        //                r.Activated = alle;
+        //            }
+        //        }
+        //    }
+        //}
 
         public void setButtonStyleStandard(UltraButton butt, PMDS.Global.UIGlobal.ButtonPlacement TYPEPlacement)
         {

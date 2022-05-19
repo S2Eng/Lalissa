@@ -894,59 +894,17 @@ namespace PMDS.Itscont
             try
             {
                 this._lastAktivButton = aktivButton;
-
-                if (aktivButton == 0) 
-                {
-                    PMDS.Global.UIGlobal.setAktiv(this.btnArchiv, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-                }
-                else
-                {
-                    PMDS.Global.UIGlobal.setAktivDisable(this.btnArchiv, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-                }
-
-                if (aktivButton == 1) 
-                {
-                    PMDS.Global.UIGlobal.setAktiv(this.btnTermineKlientenansicht, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-                }
-                else
-                {
-                    PMDS.Global.UIGlobal.setAktivDisable(this.btnTermineKlientenansicht, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-                }
-
-                if (aktivButton == 2) 
-                {
-                    PMDS.Global.UIGlobal.setAktiv(this.btnMyTermine, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-                }
-                else
-                {
-                    PMDS.Global.UIGlobal.setAktivDisable(this.btnMyTermine, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-                }
-
-                if (aktivButton == 3)
-                {
-                    PMDS.Global.UIGlobal.setAktiv(this.btnTermineAll, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-                }
-                else
-                {
-                    PMDS.Global.UIGlobal.setAktivDisable(this.btnTermineAll, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-                }
-
-                if (aktivButton == 4)
-                {
-                    PMDS.Global.UIGlobal.setAktiv(this.btnEMail, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-                }
-                else
-                {
-                    PMDS.Global.UIGlobal.setAktivDisable(this.btnEMail, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-                }
+                PMDS.Global.UIGlobal.setUIButton(this.btnArchiv, aktivButton == 0);
+                PMDS.Global.UIGlobal.setUIButton(this.btnTermineKlientenansicht, aktivButton == 1);
+                PMDS.Global.UIGlobal.setUIButton(this.btnMyTermine, aktivButton == 2);
+                PMDS.Global.UIGlobal.setUIButton(this.btnTermineAll, aktivButton == 3);
+                PMDS.Global.UIGlobal.setUIButton(this.btnEMail, aktivButton == 4);
             }
             catch (Exception ex)
             {
                 throw new Exception("ucArchivPlanung.setButtonsAktivDeaktiv: " + ex.ToString());
             }
         }
-
     }
-
 }
 

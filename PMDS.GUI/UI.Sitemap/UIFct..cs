@@ -541,10 +541,7 @@ namespace PMDS.UI.Sitemap
         {
             foreach (cButt itm in buttons)
             {
-                if (itm.on)
-                    PMDS.Global.UIGlobal.setAktiv(itm.butt, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-                else
-                    PMDS.Global.UIGlobal.setAktivDisable(itm.butt, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, this._styleButt);
+                PMDS.Global.UIGlobal.setUIButton(itm.butt, itm.on);
             }
         }
 

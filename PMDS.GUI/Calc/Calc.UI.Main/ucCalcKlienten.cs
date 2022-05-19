@@ -562,82 +562,14 @@ namespace PMDS.Calc.UI.Admin
 
         public void setButtonsAktivDeaktiv(int aktivButton)
         {
-
-            Infragistics.Win.UIElementButtonStyle styleButt = new Infragistics.Win.UIElementButtonStyle();
-            styleButt = Infragistics.Win.UIElementButtonStyle.Flat;
-
-            if (aktivButton == 0) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnAbrechnungsdaten, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol); 
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnAbrechnungsdaten, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, styleButt); 
-            }
-
-            if (aktivButton == 1) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnLeistungen, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol); 
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnLeistungen, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, styleButt);
-            }
-
-            if (aktivButton == 2) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnAbwesenheiten, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol); 
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnAbwesenheiten, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, styleButt);
-            }
-
-            if (aktivButton == 3) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnManBuchungen2, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol); 
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnManBuchungen2, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, styleButt);
-            }
-
-            if (aktivButton == 4) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnTransferzahlungen2, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol); 
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnTransferzahlungen2, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, styleButt);
-            }
-
-            if (aktivButton == 5) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnFreieRechnungen2, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol); 
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnFreieRechnungen2, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, styleButt);
-            }
-            
-            if (aktivButton == 6) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnRechnungen, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol); 
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnRechnungen, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, styleButt);
-            }
-
-            if 
-                (aktivButton == 7) 
-            { 
-                PMDS.Global.UIGlobal.setAktiv(this.btnKlientenakt, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol); 
-            }
-            else 
-            { 
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnKlientenakt, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, styleButt);
-            }
+            PMDS.Global.UIGlobal.setUIButton(this.btnAbrechnungsdaten, aktivButton == 0); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnLeistungen, aktivButton == 1); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnAbwesenheiten, aktivButton == 2); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnManBuchungen2, aktivButton == 3); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnTransferzahlungen2, aktivButton == 4); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnFreieRechnungen2, aktivButton == 5); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnRechnungen, aktivButton == 6); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnKlientenakt, aktivButton == 7); 
         }
 
         public void InitTabControl(ErfassungMode mode)
