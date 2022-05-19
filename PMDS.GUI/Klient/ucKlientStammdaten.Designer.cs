@@ -209,9 +209,6 @@ namespace PMDS.GUI
             PMDS.GUI.VB.buildUI buildUI1 = new PMDS.GUI.VB.buildUI();
             PMDS.GUI.PMDSBusinessUI pmdsBusinessUI3 = new PMDS.GUI.PMDSBusinessUI();
             PMDS.Global.UIGlobal uiGlobal1 = new PMDS.Global.UIGlobal();
-            //PMDS.DB.PMDSBusiness pmdsBusiness2 = new PMDS.DB.PMDSBusiness();
-            //PMDS.Global.UIGlobal uiGlobal2 = new PMDS.Global.UIGlobal();
-            //WCFServiceClient wcfServiceClient1 = new WCFServiceClient();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
@@ -1238,7 +1235,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBoxAllgemein1);
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBoxPersonebescheibung);
             this.ultraTabPageControl2.Controls.Add(this.lblVorname);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(1028, 673);
             this.ultraTabPageControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.ultraTabPageControl2_Paint);
@@ -3139,7 +3136,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl7.Controls.Add(this.lblAnmerkung);
             this.ultraTabPageControl7.Controls.Add(this.editorRezGebBef_Anmerkung);
             this.ultraTabPageControl7.Controls.Add(this.baseGroupBox1);
-            this.ultraTabPageControl7.Location = new System.Drawing.Point(1, 24);
+            this.ultraTabPageControl7.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl7.Name = "ultraTabPageControl7";
             this.ultraTabPageControl7.Size = new System.Drawing.Size(1028, 673);
             // 
@@ -3544,8 +3541,6 @@ namespace PMDS.GUI
             // 
             // contELGAKlient1
             // 
-            //pmdsBusiness2.isinitialized = false;
-            //this.contELGAKlient1.b = pmdsBusiness2;
             this.contELGAKlient1.BackColor = System.Drawing.Color.White;
             this.contELGAKlient1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contELGAKlient1.IDAufenthalt = new System.Guid("00000000-0000-0000-0000-000000000000");
@@ -3553,14 +3548,11 @@ namespace PMDS.GUI
             this.contELGAKlient1.IsInitialized = false;
             this.contELGAKlient1.IsNeuaufnahme = false;
             this.contELGAKlient1.Location = new System.Drawing.Point(0, 0);
-            //this.contELGAKlient1.mainWindow = null;
             this.contELGAKlient1.mainWindowAufnahme = null;
             this.contELGAKlient1.Margin = new System.Windows.Forms.Padding(4);
             this.contELGAKlient1.Name = "contELGAKlient1";
             this.contELGAKlient1.Size = new System.Drawing.Size(1028, 673);
             this.contELGAKlient1.TabIndex = 0;
-            //this.contELGAKlient1.UIGlobal1 = uiGlobal2;
-            //this.contELGAKlient1.WCFServiceClient1 = new WCFServiceClient();
             // 
             // ultraTabPageControl11
             // 

@@ -135,10 +135,10 @@ namespace PMDS.GUI
             this.initKlientenstammdatenDokumente();
             this.ucVOErfassen1.initControl(PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenKlientStammdaten, true, false, null);
 
-            this.tabStammdaten.Tabs["VOErfassen"].Visible = PMDS.Global.ENV.lic_VO;
-            this.tabStammdaten.Tabs["STAMP"].Visible = PMDS.Global.ENV.lic_STAMP  && ENV.HasRight(UserRights.STAMPMeldung);
-            lblSTAMPSynonym.Visible = PMDS.Global.ENV.lic_STAMP;
-            txtSTAMPSynonym.Visible = PMDS.Global.ENV.lic_STAMP;
+            this.tabStammdaten.Tabs["VOErfassen"].Visible = !this._isBewerberJN && !this._isAbrechnung  && PMDS.Global.ENV.lic_VO;
+            this.tabStammdaten.Tabs["STAMP"].Visible = !this._isBewerberJN && !this._isAbrechnung && PMDS.Global.ENV.lic_STAMP  && ENV.HasRight(UserRights.STAMPMeldung);
+            lblSTAMPSynonym.Visible = this.tabStammdaten.Tabs["STAMP"].Visible;
+            txtSTAMPSynonym.Visible = this.tabStammdaten.Tabs["STAMP"].Visible;
 
             this.setTabELGAOnIff();
             if (ENV.lic_ELGA)
