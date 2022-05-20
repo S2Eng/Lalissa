@@ -55,6 +55,7 @@ namespace PMDS.GUI.STAMP
             btnCheck.Enabled = true;
             btnMelden.Enabled = false;
             btnSenden.Enabled = false;
+            btnAbschluss.Enabled = false;
 
             if (lBew.sbLog.Length != 0)
             {
@@ -95,6 +96,7 @@ namespace PMDS.GUI.STAMP
         {
             this.btnMelden.Enabled = false;
             this.btnSenden.Enabled = false;
+            this.btnAbschluss.Enabled = false;
 
             rtbLog.Text = "";
 
@@ -130,11 +132,13 @@ namespace PMDS.GUI.STAMP
                 this.rtbLog.Text = lBew.sbLog.ToString();   //unerwarteter Fehler (Exception)
                 this.btnMelden.Enabled = false;
                 this.btnSenden.Enabled = false;
+                this.btnAbschluss.Enabled = false;
             }
             else
             {
                 this.btnMelden.Enabled = true;
                 this.btnSenden.Enabled = true;
+                this.btnAbschluss.Enabled = true;
 
                 lBew.sbLog.Clear();
                 lBew.sbLogOk.Clear();
@@ -155,6 +159,7 @@ namespace PMDS.GUI.STAMP
                         {
                             lBew.sbLogNoSynonym.Append(bew.nachname + " " + bew.vorname + "\n");
                             btnSenden.Enabled = isTest;
+                            btnAbschluss.Enabled = isTest;
                         }
                         else
                         {
@@ -177,9 +182,10 @@ namespace PMDS.GUI.STAMP
 
             btnMelden.Enabled = false;
             btnSenden.Enabled = false;
+            btnAbschluss.Enabled = false;
             ShowLog();
 
-            Task<bool> res = STAMP.CallService(Global.db.cSTAMPInterfaceDB.ServiceCallType.bewohnermelden, lBew);
+            Task<bool> res = STAMP.CallService(Global.db.cSTAMPInterfaceDB.ServiceCallType.bewohnermelden, lBew, this.dtMonat.DateTime);
         }
 
         private void btnSenden_Click(object sender, EventArgs e)
@@ -187,13 +193,14 @@ namespace PMDS.GUI.STAMP
             btnCheck.Enabled = true;
             btnMelden.Enabled = false;
             btnSenden.Enabled = false;
+            btnAbschluss.Enabled = false;
 
             lBew.sbLog.Clear();
             lBew.sbLogNoSynonym.Clear();
             lBew.sbLogOk.Clear();
             lBew.sbLogServiceCalls.Clear();
             lBew.HasErrors = false;
-            Task<bool> res = STAMP.CallService(Global.db.cSTAMPInterfaceDB.ServiceCallType.bewohnerupdate, lBew);
+            Task<bool> res = STAMP.CallService(Global.db.cSTAMPInterfaceDB.ServiceCallType.bewohnerupdate, lBew, this.dtMonat.DateTime);
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -248,6 +255,21 @@ namespace PMDS.GUI.STAMP
             {
                 lines[i++] = s.TrimEnd(trimParam);
             }
+        }
+
+        private void btnAbschluss_Click(object sender, EventArgs e)
+        {
+            btnCheck.Enabled = true;
+            btnMelden.Enabled = false;
+            btnSenden.Enabled = false;
+            btnAbschluss.Enabled = false;
+
+            lBew.sbLog.Clear();
+            lBew.sbLogNoSynonym.Clear();
+            lBew.sbLogOk.Clear();
+            lBew.sbLogServiceCalls.Clear();
+            lBew.HasErrors = false;
+            Task<bool> res = STAMP.CallService(Global.db.cSTAMPInterfaceDB.ServiceCallType.monatsmeldung, lBew, this.dtMonat.DateTime);
         }
     }
 }

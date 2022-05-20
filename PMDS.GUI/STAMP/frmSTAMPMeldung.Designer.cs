@@ -35,6 +35,7 @@ namespace PMDS.GUI.STAMP
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             this.rtbLog = new System.Windows.Forms.RichTextBox();
             this.btnCheck = new QS2.Desktop.ControlManagment.BaseButton();
             this.dtMonat = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
@@ -54,6 +55,7 @@ namespace PMDS.GUI.STAMP
             this.pnlLog = new QS2.Desktop.ControlManagment.BasePanel();
             this.pnlOhneSynonym = new System.Windows.Forms.Panel();
             this.pnlOK = new System.Windows.Forms.Panel();
+            this.btnAbschluss = new QS2.Desktop.ControlManagment.BaseButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtMonat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlTop.ClientArea.SuspendLayout();
@@ -81,7 +83,7 @@ namespace PMDS.GUI.STAMP
             this.btnCheck.AutoWorkLayout = false;
             this.btnCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheck.IsStandardControl = false;
-            this.btnCheck.Location = new System.Drawing.Point(329, 38);
+            this.btnCheck.Location = new System.Drawing.Point(275, 38);
             this.btnCheck.Margin = new System.Windows.Forms.Padding(5);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(185, 43);
@@ -111,12 +113,12 @@ namespace PMDS.GUI.STAMP
             this.btnSenden.Enabled = false;
             this.btnSenden.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSenden.IsStandardControl = false;
-            this.btnSenden.Location = new System.Drawing.Point(715, 38);
+            this.btnSenden.Location = new System.Drawing.Point(661, 38);
             this.btnSenden.Margin = new System.Windows.Forms.Padding(5);
             this.btnSenden.Name = "btnSenden";
             this.btnSenden.Size = new System.Drawing.Size(185, 43);
             this.btnSenden.TabIndex = 3;
-            this.btnSenden.Text = "Daten senden";
+            this.btnSenden.Text = "Daten hochladen";
             this.btnSenden.UseAppStyling = false;
             this.btnSenden.Click += new System.EventHandler(this.btnSenden_Click);
             // 
@@ -129,7 +131,7 @@ namespace PMDS.GUI.STAMP
             this.btnMelden.Enabled = false;
             this.btnMelden.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMelden.IsStandardControl = false;
-            this.btnMelden.Location = new System.Drawing.Point(522, 38);
+            this.btnMelden.Location = new System.Drawing.Point(468, 38);
             this.btnMelden.Margin = new System.Windows.Forms.Padding(5);
             this.btnMelden.Name = "btnMelden";
             this.btnMelden.Size = new System.Drawing.Size(185, 43);
@@ -238,6 +240,7 @@ namespace PMDS.GUI.STAMP
             // 
             // pnlTop.ClientArea
             // 
+            this.pnlTop.ClientArea.Controls.Add(this.btnAbschluss);
             this.pnlTop.ClientArea.Controls.Add(this.pictureBox1);
             this.pnlTop.ClientArea.Controls.Add(this.btnCheck);
             this.pnlTop.ClientArea.Controls.Add(this.dtMonat);
@@ -284,6 +287,24 @@ namespace PMDS.GUI.STAMP
             this.pnlOK.Size = new System.Drawing.Size(360, 1001);
             this.pnlOK.TabIndex = 17;
             this.pnlOK.Visible = false;
+            // 
+            // btnAbschluss
+            // 
+            appearance6.FontData.Name = "Segoe UI";
+            appearance6.FontData.SizeInPoints = 10F;
+            this.btnAbschluss.Appearance = appearance6;
+            this.btnAbschluss.AutoWorkLayout = false;
+            this.btnAbschluss.Enabled = false;
+            this.btnAbschluss.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbschluss.IsStandardControl = false;
+            this.btnAbschluss.Location = new System.Drawing.Point(855, 38);
+            this.btnAbschluss.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAbschluss.Name = "btnAbschluss";
+            this.btnAbschluss.Size = new System.Drawing.Size(185, 43);
+            this.btnAbschluss.TabIndex = 14;
+            this.btnAbschluss.Text = "Monatsdaten senden";
+            this.btnAbschluss.UseAppStyling = false;
+            this.btnAbschluss.Click += new System.EventHandler(this.btnAbschluss_Click);
             // 
             // frmSTAMPMeldung
             // 
@@ -333,5 +354,6 @@ namespace PMDS.GUI.STAMP
         private QS2.Desktop.ControlManagment.BasePanel pnlLog;
         private System.Windows.Forms.Panel pnlOhneSynonym;
         private System.Windows.Forms.Panel pnlOK;
+        private QS2.Desktop.ControlManagment.BaseButton btnAbschluss;
     }
 }
