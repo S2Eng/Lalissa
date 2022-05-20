@@ -1386,7 +1386,7 @@ namespace PMDS.GUI
             }
             else
             {
-                txtIstDauer.Appearance.BackColor = ENVCOLOR.EINTRAG_CURRENT_BACK_COLOR;
+                txtIstDauer.Appearance.ResetBackColor();
             }
 
             if (!TXTBESCHREIBUNG_OPTIONAL)
@@ -1396,7 +1396,7 @@ namespace PMDS.GUI
             }
             else
             {
-                txtBeschreibungLine.Appearance.BackColor = ENVCOLOR.EINTRAG_CURRENT_BACK_COLOR;
+                txtBeschreibungLine.Appearance.ResetBackColor();
             }
         }
         public void ClearErrorProvider()

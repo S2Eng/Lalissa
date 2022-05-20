@@ -58,7 +58,7 @@ namespace PMDS.GUI
 
         public void ResetDauerBackColor()
         {
-            this.txtIstDauer.Appearance.BackColor = Color.White;
+            this.txtIstDauer.Appearance.ResetBackColor();
         }
 
 

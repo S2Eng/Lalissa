@@ -898,6 +898,7 @@ namespace PMDS.GUI
                     if (iCounter < frmPatientRueckmeldungLine.GetMaxLines())
                     {
                         //if (!r.Status)
+                        //r.RMOptionalJN = true;
                         ar.Add(r);
                         lstInterventionenGuid.Add(r.IDPflegeplan);
                     }
