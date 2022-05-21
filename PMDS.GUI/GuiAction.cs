@@ -1073,7 +1073,8 @@ namespace PMDS.GUI
                     frmRücmeldung.SetucPflegeEintrag1auswahlGruppeComboMulti1Visible(false);
                     frmRücmeldung.SetUIÜbergabe(rÜbergabe);
                 }
-
+                frmRücmeldung.BringToFront();
+                
                 ret = frmRücmeldung.ShowDialog();
                 bool abort = frmRücmeldung.GetAbortStatus();
                 if (!abort)

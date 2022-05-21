@@ -120,13 +120,13 @@ namespace PMDS.GUI
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             this.labInfo = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ucPflegeEintrag1 = new PMDS.GUI.ucPflegeEintrag();
             this.btnCancel2 = new QS2.Desktop.ControlManagment.BaseButton();
@@ -146,10 +146,10 @@ namespace PMDS.GUI
             // 
             // labInfo
             // 
-            appearance8.ForeColor = System.Drawing.Color.White;
-            appearance8.TextHAlignAsString = "Center";
-            appearance8.TextVAlignAsString = "Middle";
-            this.labInfo.Appearance = appearance8;
+            appearance1.ForeColor = System.Drawing.Color.White;
+            appearance1.TextHAlignAsString = "Center";
+            appearance1.TextVAlignAsString = "Middle";
+            this.labInfo.Appearance = appearance1;
             this.labInfo.BackColorInternal = System.Drawing.SystemColors.ControlDark;
             this.labInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.labInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -185,14 +185,15 @@ namespace PMDS.GUI
             this.btnCancel2.Size = new System.Drawing.Size(88, 32);
             this.btnCancel2.TabIndex = 11;
             this.btnCancel2.Text = "Abbrechen";
+            this.btnCancel2.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnCancel2.Click += new System.EventHandler(this.btnCancel2_Click);
             // 
             // btnOK2
             // 
             this.btnOK2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance9.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance9.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOK2.Appearance = appearance9;
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOK2.Appearance = appearance2;
             this.btnOK2.AutoWorkLayout = false;
             this.btnOK2.contextMenuStrip1 = this.contextMenuStripSave;
             this.btnOK2.IsStandardControl = false;
@@ -200,6 +201,7 @@ namespace PMDS.GUI
             this.btnOK2.Name = "btnOK2";
             this.btnOK2.Size = new System.Drawing.Size(48, 32);
             this.btnOK2.TabIndex = 12;
+            this.btnOK2.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnOK2.Click += new System.EventHandler(this.btnOK2_Click);
             // 
             // contextMenuStripSave
@@ -218,9 +220,9 @@ namespace PMDS.GUI
             // btnSonderterminErstellen2
             // 
             this.btnSonderterminErstellen2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSonderterminErstellen2.Appearance = appearance2;
+            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSonderterminErstellen2.Appearance = appearance3;
             this.btnSonderterminErstellen2.AutoWorkLayout = false;
             this.btnSonderterminErstellen2.IsStandardControl = false;
             this.btnSonderterminErstellen2.Location = new System.Drawing.Point(7, 555);
@@ -228,14 +230,15 @@ namespace PMDS.GUI
             this.btnSonderterminErstellen2.Size = new System.Drawing.Size(108, 33);
             this.btnSonderterminErstellen2.TabIndex = 0;
             this.btnSonderterminErstellen2.Text = "Termin erstellen";
+            this.btnSonderterminErstellen2.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnSonderterminErstellen2.Click += new System.EventHandler(this.btnSonderterminErstellen2_Click);
             // 
             // btnSaveDekursAsEntwurf
             // 
             this.btnSaveDekursAsEntwurf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSaveDekursAsEntwurf.Appearance = appearance3;
+            appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSaveDekursAsEntwurf.Appearance = appearance4;
             this.btnSaveDekursAsEntwurf.AutoWorkLayout = false;
             this.btnSaveDekursAsEntwurf.contextMenuStrip1 = null;
             this.btnSaveDekursAsEntwurf.IsStandardControl = false;
@@ -244,15 +247,16 @@ namespace PMDS.GUI
             this.btnSaveDekursAsEntwurf.Size = new System.Drawing.Size(127, 32);
             this.btnSaveDekursAsEntwurf.TabIndex = 10;
             this.btnSaveDekursAsEntwurf.Text = "Als Entwurf speichern";
+            this.btnSaveDekursAsEntwurf.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnSaveDekursAsEntwurf.Visible = false;
             this.btnSaveDekursAsEntwurf.Click += new System.EventHandler(this.btnSaveEntwurfAsDekurs_Click);
             // 
             // btnLetzteDekurse
             // 
             this.btnLetzteDekurse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnLetzteDekurse.Appearance = appearance4;
+            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnLetzteDekurse.Appearance = appearance5;
             this.btnLetzteDekurse.AutoWorkLayout = false;
             this.btnLetzteDekurse.IsStandardControl = false;
             this.btnLetzteDekurse.Location = new System.Drawing.Point(117, 555);
@@ -260,6 +264,7 @@ namespace PMDS.GUI
             this.btnLetzteDekurse.Size = new System.Drawing.Size(105, 33);
             this.btnLetzteDekurse.TabIndex = 1;
             this.btnLetzteDekurse.Text = "Dekurse der letzten 14 Tage";
+            this.btnLetzteDekurse.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnLetzteDekurse.Click += new System.EventHandler(this.btnLetzteDekurse_Click);
             // 
             // textControl1
@@ -271,6 +276,7 @@ namespace PMDS.GUI
             this.textControl1.Size = new System.Drawing.Size(50, 35);
             this.textControl1.TabIndex = 5;
             this.textControl1.Text = "textControl1";
+            this.textControl1.UserNames = null;
             // 
             // panel1
             // 
@@ -284,9 +290,9 @@ namespace PMDS.GUI
             // btnKlientenMehrfachauswahl
             // 
             this.btnKlientenMehrfachauswahl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnKlientenMehrfachauswahl.Appearance = appearance5;
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance6.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnKlientenMehrfachauswahl.Appearance = appearance6;
             this.btnKlientenMehrfachauswahl.AutoWorkLayout = false;
             this.btnKlientenMehrfachauswahl.IsStandardControl = false;
             this.btnKlientenMehrfachauswahl.Location = new System.Drawing.Point(224, 555);
@@ -294,15 +300,15 @@ namespace PMDS.GUI
             this.btnKlientenMehrfachauswahl.Size = new System.Drawing.Size(127, 33);
             this.btnKlientenMehrfachauswahl.TabIndex = 2;
             this.btnKlientenMehrfachauswahl.Text = "Klienten Mehrfachauswahl";
-            this.btnKlientenMehrfachauswahl.UseAppStyling = false;
+            this.btnKlientenMehrfachauswahl.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnKlientenMehrfachauswahl.Click += new System.EventHandler(this.btnKlientenMehrfachauswahl_Click);
             // 
             // btnListEntwürfeAlias
             // 
             this.btnListEntwürfeAlias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance6.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance6.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnListEntwürfeAlias.Appearance = appearance6;
+            appearance7.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance7.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnListEntwürfeAlias.Appearance = appearance7;
             this.btnListEntwürfeAlias.AutoWorkLayout = false;
             this.btnListEntwürfeAlias.IsStandardControl = false;
             this.btnListEntwürfeAlias.Location = new System.Drawing.Point(353, 555);
@@ -310,6 +316,7 @@ namespace PMDS.GUI
             this.btnListEntwürfeAlias.Size = new System.Drawing.Size(105, 33);
             this.btnListEntwürfeAlias.TabIndex = 3;
             this.btnListEntwürfeAlias.Text = "Liste Entwürfe Alias";
+            this.btnListEntwürfeAlias.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnListEntwürfeAlias.Visible = false;
             this.btnListEntwürfeAlias.Click += new System.EventHandler(this.btnListEntwürfeAlias_Click);
             // 
@@ -322,6 +329,7 @@ namespace PMDS.GUI
             this.textControlTmp.Size = new System.Drawing.Size(48, 35);
             this.textControlTmp.TabIndex = 13;
             this.textControlTmp.Text = "textControl2";
+            this.textControlTmp.UserNames = null;
             // 
             // frmPatientVermerk
             // 

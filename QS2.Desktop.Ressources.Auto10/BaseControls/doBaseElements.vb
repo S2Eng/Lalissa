@@ -3,35 +3,27 @@
 
 Public Class doBaseElements
 
-    Public ControlManagment1 As New qs2.Desktop.ControlManagment.ControlManagment()
-
+    Public ControlManagment1 As New QS2.Desktop.ControlManagment.ControlManagment()
     Public InfoControl As New cInfoControl()
+
     Public Class cInfoControl
         Public LastLoadedLayout As New QS2.core.vb.compLayout.cLoadedLayout()
-        Public _IsQuickFilter As Boolean = False
-        Public SaveLastQuickfilter As Boolean = False
-        Public grid As BaseGrid = Nothing
+        Public _IsQuickFilter As Boolean
+        Public SaveLastQuickfilter As Boolean
+        Public grid As BaseGrid
         Public defaultLayoutNamexy As String = ""
         Public QuickFilterKey As String = ""
         Public KeyLayoutFromQuickfilter As String = ""
-
         Public dGetLastClickedQuickfilter As GetLastClickedQuickfilter
         Public Delegate Function GetLastClickedQuickfilter() As retGetQuickfilter
-
-        Public IDQuickfilterToSave As System.Guid = Nothing
+        Public IDQuickfilterToSave As System.Guid
 
         Public Class retGetQuickfilter
             Public LastClickedQuickfilter As String = ""
             Public NameDefaultQuickfilter As String = ""
-            Public IDQuickFilterToSave As System.Guid = Nothing
+            Public IDQuickFilterToSave As System.Guid
         End Class
     End Class
-
-
-
-
-
-
 
     Public Function runControlManagment(ByRef IDRes As String, cont As System.Windows.Forms.Control, ContextMenuStripNew As System.Windows.Forms.ContextMenuStrip, _
                                           ByRef IsLoaded As Boolean, _
@@ -47,9 +39,9 @@ Public Class doBaseElements
             If Not IsLoaded And qs2.core.ENV.SystemIsInitialized Then
                 If TypeOf cont Is Infragistics.Win.UltraWinGrid.UltraGrid Then
                     Dim grd As Infragistics.Win.UltraWinGrid.UltraGrid = cont
-                    grd.DisplayLayout.Override.RowSpacingAfter = 0
-                    grd.DisplayLayout.Override.RowSpacingBefore = 0
-                    grd.DisplayLayout.Override.DefaultRowHeight = 18
+                    'grd.DisplayLayout.Override.RowSpacingAfter = 0
+                    'grd.DisplayLayout.Override.RowSpacingBefore = 0
+                    'grd.DisplayLayout.Override.DefaultRowHeight = 18
                     'grd.DisplayLayout.Appearance.FontData.SizeInPoints = 12
                     'grd.DisplayLayout.Override.CellAppearance.FontData.SizeInPoints = 12
 

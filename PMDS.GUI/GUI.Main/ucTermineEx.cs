@@ -460,7 +460,7 @@ namespace PMDS.GUI
             // 
             // quickFilterButtons1
             // 
-            this.quickFilterButtons1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.quickFilterButtons1.BackColor = System.Drawing.Color.Gainsboro;
             this.quickFilterButtons1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             gridBagConstraint3.Fill = Infragistics.Win.Layout.FillType.Both;
             gridBagConstraint3.Insets.Right = 5;
@@ -477,7 +477,7 @@ namespace PMDS.GUI
             // 
             // panelTop
             // 
-            this.panelTop.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelTop.BackColor = System.Drawing.Color.Gainsboro;
             this.panelTop.Controls.Add(this.txtSearchInGrid);
             this.panelTop.Controls.Add(this.lblSearch);
             this.panelTop.Controls.Add(this.panelFilterOben2);
@@ -531,8 +531,8 @@ namespace PMDS.GUI
             this.ucTerminTimePicker1.Location = new System.Drawing.Point(64, 6);
             this.ucTerminTimePicker1.Mode = PMDS.GUI.EFilter.HEUTE;
             this.ucTerminTimePicker1.Name = "ucTerminTimePicker1";
-            this.ucTerminTimePicker1.RangeFrom = new System.DateTime(2022, 5, 18, 0, 0, 0, 0);
-            this.ucTerminTimePicker1.RangeTo = new System.DateTime(2022, 5, 18, 23, 59, 59, 0);
+            this.ucTerminTimePicker1.RangeFrom = new System.DateTime(2022, 5, 21, 0, 0, 0, 0);
+            this.ucTerminTimePicker1.RangeTo = new System.DateTime(2022, 5, 21, 23, 59, 59, 0);
             this.ucTerminTimePicker1.Size = new System.Drawing.Size(189, 24);
             this.ucTerminTimePicker1.TabIndex = 39;
             // 
@@ -1198,6 +1198,7 @@ namespace PMDS.GUI
             this.btnOpenBefundÜbergabe.TabIndex = 111;
             this.btnOpenBefundÜbergabe.Text = "Befund";
             this.btnOpenBefundÜbergabe.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnOpenBefundÜbergabe.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnOpenBefundÜbergabe.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnOpenBefundÜbergabe.Visible = false;
             this.btnOpenBefundÜbergabe.Click += new System.EventHandler(this.btnOpenBefundÜbergabe_Click);
@@ -1217,6 +1218,7 @@ namespace PMDS.GUI
             this.btnGegenzeichnen.TabIndex = 110;
             this.btnGegenzeichnen.Text = "Gegenzeichnen";
             this.btnGegenzeichnen.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnGegenzeichnen.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnGegenzeichnen.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnGegenzeichnen.Click += new System.EventHandler(this.btnGegenzeichnen_Click);
             // 
@@ -1235,6 +1237,7 @@ namespace PMDS.GUI
             this.btnLesenÜbergabeDekurs.TabIndex = 94;
             this.btnLesenÜbergabeDekurs.Text = "Lesen";
             this.btnLesenÜbergabeDekurs.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnLesenÜbergabeDekurs.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnLesenÜbergabeDekurs.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnLesenÜbergabeDekurs.Click += new System.EventHandler(this.btnLesenÜbergabeDekurs_Click);
             // 
@@ -1324,6 +1327,7 @@ namespace PMDS.GUI
             this.btnPDxRückmelden.TabIndex = 109;
             this.btnPDxRückmelden.Text = "PDx rückmelden";
             this.btnPDxRückmelden.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnPDxRückmelden.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnPDxRückmelden.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnPDxRückmelden.Click += new System.EventHandler(this.btnPDxRückmelden_Click);
             // 
@@ -1341,6 +1345,7 @@ namespace PMDS.GUI
             this.btnLesenInterventionen.TabIndex = 108;
             this.btnLesenInterventionen.Text = "Lesen";
             this.btnLesenInterventionen.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnLesenInterventionen.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnLesenInterventionen.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnLesenInterventionen.Visible = false;
             this.btnLesenInterventionen.Click += new System.EventHandler(this.btnLesenInterventionen_Click);
@@ -1587,6 +1592,7 @@ namespace PMDS.GUI
             this.uDropDownDrucken.TabIndex = 91;
             this.uDropDownDrucken.Text = "Drucken";
             this.uDropDownDrucken.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.uDropDownDrucken.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.uDropDownDrucken.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.uDropDownDrucken.Click += new System.EventHandler(this.uDropDownDrucken_Click);
             // 
@@ -1659,7 +1665,6 @@ namespace PMDS.GUI
             // 
             this.panelDatenWerdenAktualisiert.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelDatenWerdenAktualisiert.Controls.Add(this.lblDatenWerdenAktualisiert);
-            gridBagConstraint4.Fill = Infragistics.Win.Layout.FillType.Both;
             gridBagConstraint4.Insets.Bottom = 2;
             gridBagConstraint4.Insets.Left = 2;
             gridBagConstraint4.Insets.Right = 2;
@@ -1667,10 +1672,10 @@ namespace PMDS.GUI
             gridBagConstraint4.OriginX = 0;
             gridBagConstraint4.OriginY = 0;
             this.gridBagDatenWerdenAktualisiert.SetGridBagConstraint(this.panelDatenWerdenAktualisiert, gridBagConstraint4);
-            this.panelDatenWerdenAktualisiert.Location = new System.Drawing.Point(2, 2);
+            this.panelDatenWerdenAktualisiert.Location = new System.Drawing.Point(-25, -31);
             this.panelDatenWerdenAktualisiert.Name = "panelDatenWerdenAktualisiert";
             this.gridBagDatenWerdenAktualisiert.SetPreferredSize(this.panelDatenWerdenAktualisiert, new System.Drawing.Size(200, 100));
-            this.panelDatenWerdenAktualisiert.Size = new System.Drawing.Size(146, 33);
+            this.panelDatenWerdenAktualisiert.Size = new System.Drawing.Size(200, 100);
             this.panelDatenWerdenAktualisiert.TabIndex = 0;
             // 
             // lblDatenWerdenAktualisiert
@@ -1684,13 +1689,15 @@ namespace PMDS.GUI
             appearance19.TextHAlignAsString = "Center";
             appearance19.TextVAlignAsString = "Middle";
             this.lblDatenWerdenAktualisiert.Appearance = appearance19;
+            this.lblDatenWerdenAktualisiert.AutoSize = true;
             this.lblDatenWerdenAktualisiert.BorderStyleInner = Infragistics.Win.UIElementBorderStyle.Solid;
             this.lblDatenWerdenAktualisiert.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDatenWerdenAktualisiert.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDatenWerdenAktualisiert.Location = new System.Drawing.Point(0, 0);
             this.lblDatenWerdenAktualisiert.Name = "lblDatenWerdenAktualisiert";
-            this.lblDatenWerdenAktualisiert.Size = new System.Drawing.Size(146, 33);
+            this.lblDatenWerdenAktualisiert.Size = new System.Drawing.Size(200, 100);
             this.lblDatenWerdenAktualisiert.TabIndex = 41;
-            this.lblDatenWerdenAktualisiert.Text = "Die Daten werden gerade neu geladen ...";
+            this.lblDatenWerdenAktualisiert.Text = "Die Daten werden neu geladen ...";
             // 
             // imageList1
             // 
@@ -1746,6 +1753,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.gridBagDatenWerdenAktualisiert)).EndInit();
             this.gridBagDatenWerdenAktualisiert.ResumeLayout(false);
             this.panelDatenWerdenAktualisiert.ResumeLayout(false);
+            this.panelDatenWerdenAktualisiert.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -2247,19 +2255,13 @@ namespace PMDS.GUI
                             frmVOErfassen1.initControl(PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenPlanungOnlyShow, true, false, null);
                             frmVOErfassen1.ucVOErfassen1.search2(base.CurTerminRowIntervention.IDAufenthalt, base.CurTerminRowIntervention.IDPflegeplan, null, null);
                             frmVOErfassen1.ShowDialog(this);
-                            if (!frmVOErfassen1.ucVOErfassen1.abort)
-                            {
-                                
-                            }
                         }
                     }
                     else
                     {
                         throw new Exception("btnPrintTermine_Click: Print Verordnungen not allowed for Übergabe!");
                     }
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -2279,7 +2281,6 @@ namespace PMDS.GUI
 
                 this.quickFilterButtons1.drawButtons(this.dgTermine, this, ref  this.UITypeTermine);
                 bool LayoutFound = false;
-                PMDS.Global.db.ERSystem.dsTermine ds = new Global.db.ERSystem.dsTermine();
                 base.getTermine(this.MainWindow.UITypeTermine, ref LayoutFound, true);
             }
             catch (Exception ex)
@@ -2291,6 +2292,7 @@ namespace PMDS.GUI
                 Cursor.Current = Cursors.Default;
             }
         }
+
         private void btnSonderterminBearbeiten_Click(object sender, EventArgs e)
         {
             try

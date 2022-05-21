@@ -43,7 +43,7 @@
             this.lblLoadingData.Appearance = appearance1;
             this.lblLoadingData.Location = new System.Drawing.Point(18, 14);
             this.lblLoadingData.Name = "lblLoadingData";
-            this.lblLoadingData.Size = new System.Drawing.Size(213, 25);
+            this.lblLoadingData.Size = new System.Drawing.Size(407, 25);
             this.lblLoadingData.TabIndex = 0;
             this.lblLoadingData.Text = "Daten werden geladen";
             // 
@@ -54,7 +54,7 @@
             this.lblPleaseWait.Appearance = appearance2;
             this.lblPleaseWait.Location = new System.Drawing.Point(18, 45);
             this.lblPleaseWait.Name = "lblPleaseWait";
-            this.lblPleaseWait.Size = new System.Drawing.Size(213, 25);
+            this.lblPleaseWait.Size = new System.Drawing.Size(407, 25);
             this.lblPleaseWait.TabIndex = 1;
             this.lblPleaseWait.Text = "Bitte warten ...";
             // 
@@ -66,7 +66,7 @@
             this.panelLoading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelLoading.Location = new System.Drawing.Point(0, 0);
             this.panelLoading.Name = "panelLoading";
-            this.panelLoading.Size = new System.Drawing.Size(254, 86);
+            this.panelLoading.Size = new System.Drawing.Size(438, 86);
             this.panelLoading.TabIndex = 2;
             // 
             // frmLoadingWait
@@ -74,7 +74,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(254, 86);
+            this.ClientSize = new System.Drawing.Size(438, 86);
             this.ControlBox = false;
             this.Controls.Add(this.panelLoading);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

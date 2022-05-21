@@ -67,6 +67,7 @@
             this.ucArztEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucArztEdit1.CanModify = true;
             this.ucArztEdit1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ucArztEdit1.Location = new System.Drawing.Point(3, 2);
             this.ucArztEdit1.Margin = new System.Windows.Forms.Padding(4);
@@ -95,6 +96,7 @@
             this.btnOk.TabStop = false;
             this.btnOk.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
             this.btnOk.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
+            this.btnOk.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnKlientenMehrfachauswahl
@@ -110,7 +112,7 @@
             this.btnKlientenMehrfachauswahl.Size = new System.Drawing.Size(150, 38);
             this.btnKlientenMehrfachauswahl.TabIndex = 6;
             this.btnKlientenMehrfachauswahl.Text = "Klienten Mehrfachauswahl";
-            this.btnKlientenMehrfachauswahl.UseAppStyling = true;
+            this.btnKlientenMehrfachauswahl.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnKlientenMehrfachauswahl.Click += new System.EventHandler(this.btnKlientenMehrfachauswahl_Click);
             // 
             // frmAerzteEdit
