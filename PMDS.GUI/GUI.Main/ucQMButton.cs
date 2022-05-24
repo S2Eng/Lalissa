@@ -198,6 +198,7 @@ namespace PMDS.GUI
                     UltraButton b = (UltraButton)pnlButtons.Controls[lastIndex];
                     //UltraButton b = new UltraButton();
                     b.Visible = true;
+                    b.UseAppStyling = false;
                     
                    // b.Appearance.BackColor = Color.WhiteSmoke;
                     b.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -206,7 +207,7 @@ namespace PMDS.GUI
                     if (!PflegepläneProButton.r.IsIDZeitbereichNull())
                     {
                         b.Text = Zeitbereich.GetText(PflegepläneProButton.r.IDZeitbereich);
-                        b.Font = new System.Drawing.Font("Arial", 7.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                        b.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     }
                     else
                     {
@@ -228,6 +229,7 @@ namespace PMDS.GUI
                 {
                     anzPerLine += 1;
                     UltraButton b = new UltraButton();
+                    b.UseAppStyling = false;
                     b.Width = 40;
                     b.Height = 40;
 
@@ -242,7 +244,7 @@ namespace PMDS.GUI
                     if (!PflegepläneProButton.r.IsIDZeitbereichNull())
                     {
                         b.Text = Zeitbereich.GetText(PflegepläneProButton.r.IDZeitbereich);
-                        b.Font = new System.Drawing.Font("Arial", 7.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                        b.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     }
                     else
                     {
