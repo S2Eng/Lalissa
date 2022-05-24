@@ -56,6 +56,9 @@
             this.lblTxt.Name = "lblTxt";
             this.lblTxt.Size = new System.Drawing.Size(18, 18);
             this.lblTxt.TabIndex = 1;
+            this.lblTxt.UseAppStyling = false;
+            this.lblTxt.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.lblTxt.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.lblTxt.Visible = false;
             // 
             // ultraToolTipManager1
@@ -72,7 +75,7 @@
             appearance2.BorderColor = System.Drawing.Color.Silver;
             appearance2.BorderColor2 = System.Drawing.Color.Silver;
             this.ultraPictureBox1.Appearance = appearance2;
-            this.ultraPictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.ultraPictureBox1.BackColor = System.Drawing.Color.White;
             this.ultraPictureBox1.BorderShadowColor = System.Drawing.Color.Empty;
             this.ultraPictureBox1.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.ultraPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -80,6 +83,9 @@
             this.ultraPictureBox1.Name = "ultraPictureBox1";
             this.ultraPictureBox1.Size = new System.Drawing.Size(18, 18);
             this.ultraPictureBox1.TabIndex = 2;
+            this.ultraPictureBox1.UseAppStyling = false;
+            this.ultraPictureBox1.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraPictureBox1.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.ultraPictureBox1.Visible = false;
             this.ultraPictureBox1.MouseEnter += new System.EventHandler(this.ultraPictureBox1_MouseEnter);
             // 

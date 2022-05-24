@@ -841,7 +841,7 @@ namespace PMDS.GUI.BaseControls
                 ucMedizinData1.Visible = true;
 
                 ucMedizinData1.SuspendLayout();
-                ucMedizinData1.ultraPictureBox1.BackColor = System.Drawing.Color.Transparent;
+                ucMedizinData1.ultraPictureBox1.BackColor = System.Drawing.Color.White;
                 ucMedizinData1.ultraPictureBox1.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
                 if (ucMedizinData1.imgIcoOff == null)
                 {
@@ -862,7 +862,7 @@ namespace PMDS.GUI.BaseControls
                 //ucMedizinData1.lblTxt.BringToFront();
                 ucMedizinData1.ultraPictureBox1.BringToFront();
 
-                ucMedizinData1.BackColor = System.Drawing.Color.Transparent;
+                ucMedizinData1.BackColor = System.Drawing.Color.White;
                 UltraToolTipInfo info = new UltraToolTipInfo();
                 info.ToolTipText = "";
                 info.ToolTipTitle = "";
