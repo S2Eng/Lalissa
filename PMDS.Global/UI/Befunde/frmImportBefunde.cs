@@ -499,7 +499,7 @@ namespace PMDS.Global.UI.Befunde
                             rSelRow.Klient = Befund.rPatient.Nachname + " " + Befund.rPatient.Vorname;
                     }
 
-                    if (txtBeschreibung.Value.ToString() != "")
+                    if (txtBeschreibung.Value != null)
                         Befund.Hinweis = (string)this.txtBeschreibung.Value;
 
                     rSelRow.obj = Befund;
