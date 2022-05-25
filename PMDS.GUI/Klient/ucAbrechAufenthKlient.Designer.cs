@@ -58,6 +58,7 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
@@ -83,7 +84,6 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -99,6 +99,8 @@ namespace PMDS.GUI
             this.gridPatPflegestufen = new QS2.Desktop.ControlManagment.BaseGrid();
             this.dsKlientPflegestufe1 = new PMDS.GUI.Klient.dsKlientPflegestufe();
             this.ultraGroupBox9 = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.txtKliNr = new QS2.Desktop.ControlManagment.BaseTextEditor();
+            this.lblKlientNr = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblPensionsteilungsantragDatum = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblBetreueungsstufeBis = new QS2.Desktop.ControlManagment.BaseLabel();
             this.cmbBetreuungsstufe = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
@@ -135,8 +137,6 @@ namespace PMDS.GUI
             this.btnHistorie = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelMitte = new QS2.Desktop.ControlManagment.BasePanel();
             this.baseGroupBox1 = new QS2.Desktop.ControlManagment.BaseGroupBox();
-            this.txtKliNr = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.lblKlientNr = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ucVersichrungsdaten12 = new PMDS.GUI.ucVersichrungsdaten();
             this.panelUnten = new QS2.Desktop.ControlManagment.BasePanel();
             this.numTageAbweseneheitOhneKuerzung = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
@@ -160,6 +160,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.dsKlientPflegestufe1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox9)).BeginInit();
             this.ultraGroupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKliNr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBetreuungsstufe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteBetreuungsstufBis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteBetreuungsstufeAb)).BeginInit();
@@ -182,7 +183,6 @@ namespace PMDS.GUI
             this.panelMitte.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseGroupBox1)).BeginInit();
             this.baseGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKliNr)).BeginInit();
             this.panelUnten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTageAbweseneheitOhneKuerzung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkKürzungLetzterTagAnwesenheit)).BeginInit();
@@ -504,6 +504,27 @@ namespace PMDS.GUI
             this.ultraGroupBox9.Size = new System.Drawing.Size(625, 233);
             this.ultraGroupBox9.TabIndex = 120;
             this.ultraGroupBox9.Text = "Abrechnungs-Informationen";
+            // 
+            // txtKliNr
+            // 
+            this.txtKliNr.Location = new System.Drawing.Point(424, 144);
+            this.txtKliNr.MaxLength = 20;
+            this.txtKliNr.Name = "txtKliNr";
+            this.txtKliNr.Size = new System.Drawing.Size(141, 24);
+            this.txtKliNr.TabIndex = 10;
+            this.txtKliNr.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // lblKlientNr
+            // 
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            this.lblKlientNr.Appearance = appearance16;
+            this.lblKlientNr.AutoSize = true;
+            this.lblKlientNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblKlientNr.Location = new System.Drawing.Point(344, 147);
+            this.lblKlientNr.Name = "lblKlientNr";
+            this.lblKlientNr.Size = new System.Drawing.Size(74, 17);
+            this.lblKlientNr.TabIndex = 224;
+            this.lblKlientNr.Text = "FiBu-Konto";
             // 
             // lblPensionsteilungsantragDatum
             // 
@@ -994,26 +1015,6 @@ namespace PMDS.GUI
             this.baseGroupBox1.Size = new System.Drawing.Size(1142, 137);
             this.baseGroupBox1.TabIndex = 137;
             // 
-            // txtKliNr
-            // 
-            this.txtKliNr.Location = new System.Drawing.Point(424, 144);
-            this.txtKliNr.MaxLength = 20;
-            this.txtKliNr.Name = "txtKliNr";
-            this.txtKliNr.Size = new System.Drawing.Size(141, 24);
-            this.txtKliNr.TabIndex = 10;
-            // 
-            // lblKlientNr
-            // 
-            appearance16.BackColor = System.Drawing.Color.Transparent;
-            this.lblKlientNr.Appearance = appearance16;
-            this.lblKlientNr.AutoSize = true;
-            this.lblKlientNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblKlientNr.Location = new System.Drawing.Point(344, 147);
-            this.lblKlientNr.Name = "lblKlientNr";
-            this.lblKlientNr.Size = new System.Drawing.Size(74, 17);
-            this.lblKlientNr.TabIndex = 224;
-            this.lblKlientNr.Text = "FiBu-Konto";
-            // 
             // ucVersichrungsdaten12
             // 
             this.ucVersichrungsdaten12.BackColor = System.Drawing.Color.Transparent;
@@ -1216,6 +1217,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox9)).EndInit();
             this.ultraGroupBox9.ResumeLayout(false);
             this.ultraGroupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKliNr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBetreuungsstufe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteBetreuungsstufBis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteBetreuungsstufeAb)).EndInit();
@@ -1240,7 +1242,6 @@ namespace PMDS.GUI
             this.panelMitte.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.baseGroupBox1)).EndInit();
             this.baseGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtKliNr)).EndInit();
             this.panelUnten.ResumeLayout(false);
             this.panelUnten.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTageAbweseneheitOhneKuerzung)).EndInit();
