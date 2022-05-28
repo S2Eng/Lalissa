@@ -136,7 +136,7 @@ namespace PMDS.GUI
             // 
             this.lblNachgenendeBehandlung.AutoSize = true;
             this.lblNachgenendeBehandlung.Location = new System.Drawing.Point(332, 47);
-            this.lblNachgenendeBehandlung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblNachgenendeBehandlung.Margin = new System.Windows.Forms.Padding(4);
             this.lblNachgenendeBehandlung.Name = "lblNachgenendeBehandlung";
             this.lblNachgenendeBehandlung.Size = new System.Drawing.Size(100, 17);
             this.lblNachgenendeBehandlung.TabIndex = 2;
@@ -157,7 +157,7 @@ namespace PMDS.GUI
             this.txtBemerkung.Appearance = appearance4;
             this.txtBemerkung.BackColor = System.Drawing.Color.White;
             this.txtBemerkung.Location = new System.Drawing.Point(151, 121);
-            this.txtBemerkung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBemerkung.Margin = new System.Windows.Forms.Padding(4);
             this.txtBemerkung.Multiline = true;
             this.txtBemerkung.Name = "txtBemerkung";
             this.txtBemerkung.Size = new System.Drawing.Size(699, 234);
@@ -167,7 +167,7 @@ namespace PMDS.GUI
             // 
             this.lblBemerkung.AutoSize = true;
             this.lblBemerkung.Location = new System.Drawing.Point(11, 124);
-            this.lblBemerkung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblBemerkung.Margin = new System.Windows.Forms.Padding(4);
             this.lblBemerkung.Name = "lblBemerkung";
             this.lblBemerkung.Size = new System.Drawing.Size(73, 17);
             this.lblBemerkung.TabIndex = 4;
@@ -177,7 +177,7 @@ namespace PMDS.GUI
             // 
             this.lblEntlassungsdatum.AutoSize = true;
             this.lblEntlassungsdatum.Location = new System.Drawing.Point(11, 14);
-            this.lblEntlassungsdatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblEntlassungsdatum.Margin = new System.Windows.Forms.Padding(4);
             this.lblEntlassungsdatum.Name = "lblEntlassungsdatum";
             this.lblEntlassungsdatum.Size = new System.Drawing.Size(115, 17);
             this.lblEntlassungsdatum.TabIndex = 0;
@@ -195,7 +195,7 @@ namespace PMDS.GUI
             this.dtpDatum.BackColor = System.Drawing.Color.White;
             this.dtpDatum.FormatString = "";
             this.dtpDatum.Location = new System.Drawing.Point(149, 10);
-            this.dtpDatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpDatum.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDatum.MaskInput = "dd.mm.yyyy hh:mm";
             this.dtpDatum.Name = "dtpDatum";
             this.dtpDatum.ownFormat = "";
@@ -211,7 +211,7 @@ namespace PMDS.GUI
             this.chkVerstorben.BackColor = System.Drawing.Color.Transparent;
             this.chkVerstorben.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkVerstorben.Location = new System.Drawing.Point(149, 44);
-            this.chkVerstorben.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkVerstorben.Margin = new System.Windows.Forms.Padding(4);
             this.chkVerstorben.Name = "chkVerstorben";
             this.chkVerstorben.Size = new System.Drawing.Size(168, 25);
             this.chkVerstorben.TabIndex = 2;
@@ -222,7 +222,7 @@ namespace PMDS.GUI
             // 
             this.lblTodeszeitpunkt.AutoSize = true;
             this.lblTodeszeitpunkt.Location = new System.Drawing.Point(332, 47);
-            this.lblTodeszeitpunkt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblTodeszeitpunkt.Margin = new System.Windows.Forms.Padding(4);
             this.lblTodeszeitpunkt.Name = "lblTodeszeitpunkt";
             this.lblTodeszeitpunkt.Size = new System.Drawing.Size(96, 17);
             this.lblTodeszeitpunkt.TabIndex = 11;
@@ -240,7 +240,7 @@ namespace PMDS.GUI
             this.uceTodeszeitpunkt.BackColor = System.Drawing.Color.White;
             this.uceTodeszeitpunkt.FormatString = "";
             this.uceTodeszeitpunkt.Location = new System.Drawing.Point(465, 43);
-            this.uceTodeszeitpunkt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.uceTodeszeitpunkt.Margin = new System.Windows.Forms.Padding(4);
             this.uceTodeszeitpunkt.MaskInput = "dd.mm.yyyy hh:mm";
             this.uceTodeszeitpunkt.Name = "uceTodeszeitpunkt";
             this.uceTodeszeitpunkt.ownFormat = "";
@@ -276,7 +276,7 @@ namespace PMDS.GUI
             this.cbEinrichtung.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbEinrichtung.IsInitialized = false;
             this.cbEinrichtung.Location = new System.Drawing.Point(465, 43);
-            this.cbEinrichtung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbEinrichtung.Margin = new System.Windows.Forms.Padding(4);
             this.cbEinrichtung.Name = "cbEinrichtung";
             this.cbEinrichtung.NotKrankenkasse = true;
             this.cbEinrichtung.PSBOnly = false;
@@ -286,10 +286,12 @@ namespace PMDS.GUI
             // 
             // pnlSTAMP
             // 
+            this.pnlSTAMP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlSTAMP.Controls.Add(this.lblAustrittWohin);
             this.pnlSTAMP.Controls.Add(this.cmbSTAMP_AustrittWohin);
             this.pnlSTAMP.Location = new System.Drawing.Point(151, 80);
-            this.pnlSTAMP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlSTAMP.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSTAMP.Name = "pnlSTAMP";
             this.pnlSTAMP.Size = new System.Drawing.Size(697, 30);
             this.pnlSTAMP.TabIndex = 18;
@@ -298,7 +300,7 @@ namespace PMDS.GUI
             // 
             this.lblAustrittWohin.AutoSize = true;
             this.lblAustrittWohin.Location = new System.Drawing.Point(4, 6);
-            this.lblAustrittWohin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblAustrittWohin.Margin = new System.Windows.Forms.Padding(4);
             this.lblAustrittWohin.Name = "lblAustrittWohin";
             this.lblAustrittWohin.Size = new System.Drawing.Size(144, 17);
             this.lblAustrittWohin.TabIndex = 17;
@@ -316,7 +318,7 @@ namespace PMDS.GUI
             this.cmbSTAMP_AustrittWohin.ID_PEP = -1;
             this.cmbSTAMP_AustrittWohin.IgnoreUnterdruecken = true;
             this.cmbSTAMP_AustrittWohin.Location = new System.Drawing.Point(181, 1);
-            this.cmbSTAMP_AustrittWohin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbSTAMP_AustrittWohin.Margin = new System.Windows.Forms.Padding(4);
             this.cmbSTAMP_AustrittWohin.Name = "cmbSTAMP_AustrittWohin";
             this.cmbSTAMP_AustrittWohin.PflichtJN = false;
             this.cmbSTAMP_AustrittWohin.SelectDistinct = false;
@@ -339,7 +341,7 @@ namespace PMDS.GUI
             this.Controls.Add(this.lblTodeszeitpunkt);
             this.Controls.Add(this.lblNachgenendeBehandlung);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucEntlassung";
             this.Size = new System.Drawing.Size(861, 364);
             this.Load += new System.EventHandler(this.ucVersetzung_Load);
@@ -444,7 +446,11 @@ namespace PMDS.GUI
 		{
 			GuiUtil.ValidateRequired(dtpDatum);
 			GuiUtil.ValidateRequired(cbEinrichtung);
-		}
+            if (PMDS.Global.ENV.lic_STAMP)
+            {
+                GuiUtil.ValidateRequired(cmbSTAMP_AustrittWohin);
+            }
+        }
 
 		//----------------------------------------------------------------------------
 		/// <summary>
