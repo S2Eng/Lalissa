@@ -14,6 +14,8 @@ using Infragistics.Win.UltraWinGrid;
 using PMDS.DB.Global;
 using S2Extensions;
 
+using System.Data.Entity;
+
 namespace PMDS.GUI.STAMP
 {
     public partial class ucSTAMPData : UserControl
@@ -25,6 +27,7 @@ namespace PMDS.GUI.STAMP
         public bool IsDirty { get; set; }
 
         private Guid IDAufenthalt = Guid.Empty;
+        private string LetzteHWSGemeinde = "";
 
         private DBSTAMP_Kostentragungen _db = new DBSTAMP_Kostentragungen();
         private Global.dsSTAMP_Kostentragungen.STAMP_KostentragungenDataTable _dt = new Global.dsSTAMP_Kostentragungen.STAMP_KostentragungenDataTable();
@@ -127,7 +130,18 @@ namespace PMDS.GUI.STAMP
             {
                 _dt = _db.Read(IDAufenthalt);
                 this.bindingSource.DataSource = _dt;
+                LetzteHWSGemeinde = "";
 
+                if (_dt.Any())
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        var hws = (from a in db.Aufenthalt
+                                            where a.ID == IDAufenthalt
+                                            select new { hws = a.Hauptwohnsitzgemeinde }).FirstOrDefault();
+                        LetzteHWSGemeinde = hws.hws;
+                    }
+                }
                 return true;
             }
             catch (Exception ex)
@@ -253,6 +267,10 @@ namespace PMDS.GUI.STAMP
             else if (cmbFinanzierung.Text.sEquals("§13(1) SHG") || cmbFinanzierung.Text.sEquals("§13(1) SHG iVm. §2(1) LEVO-SHG") || cmbFinanzierung.Text.sEquals("§19 StBHG"))
             {
                 SetUI(false, false, true, true, true);
+                if (String.IsNullOrWhiteSpace(cmbGemeinde.Text) && !String.IsNullOrWhiteSpace(LetzteHWSGemeinde))
+                {
+                    cmbGemeinde.Text = LetzteHWSGemeinde;
+                }
             }
             else if(cmbFinanzierung.Text.sEquals("Anderes Bundesland"))
             {

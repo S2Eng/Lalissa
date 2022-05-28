@@ -5243,6 +5243,7 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.getAufenthalt: " + ex.ToString());
             }
         }
+
         public PMDS.db.Entities.Aufenthalt getAufenthalt(Guid IDAufenthalt, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
@@ -5255,6 +5256,20 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.getAufenthalt: " + ex.ToString());
             }
         }
+
+        public List<PMDS.db.Entities.STAMP_Kostentragungen> getSTAMP_Kostentragungen(Guid IDAufenthalt, PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                List<STAMP_Kostentragungen> tSTAMP_Kostentragung = db.STAMP_Kostentragungen.Where(o => o.IDAufenthalt == IDAufenthalt && o.GueltigBis == null).ToList();
+                return tSTAMP_Kostentragung;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.getAufenthalt: " + ex.ToString());
+            }
+        }
+
         public PMDS.db.Entities.Aufenthalt getLastAufenthaltEntlassen(Guid IDPatient, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try

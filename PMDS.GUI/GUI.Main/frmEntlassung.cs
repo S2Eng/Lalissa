@@ -239,16 +239,20 @@ namespace PMDS.GUI
             // 
             // lblHinweisROT
             // 
-            this.lblHinweisROT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblHinweisROT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance6.BackColor = System.Drawing.Color.Red;
             appearance6.ForeColor = System.Drawing.Color.White;
+            appearance6.TextHAlignAsString = "Center";
+            appearance6.TextVAlignAsString = "Middle";
             this.lblHinweisROT.Appearance = appearance6;
             this.lblHinweisROT.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHinweisROT.Location = new System.Drawing.Point(12, 53);
             this.lblHinweisROT.Name = "lblHinweisROT";
-            this.lblHinweisROT.Size = new System.Drawing.Size(740, 35);
+            this.lblHinweisROT.Size = new System.Drawing.Size(842, 35);
             this.lblHinweisROT.TabIndex = 18;
             this.lblHinweisROT.Text = "ACHTUNG: Dies ist der Dialog für die E N T L A S S U N G!";
+            this.lblHinweisROT.UseAppStyling = false;
             // 
             // frmEntlassung
             // 
