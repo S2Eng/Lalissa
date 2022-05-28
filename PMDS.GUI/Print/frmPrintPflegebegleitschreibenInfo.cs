@@ -419,12 +419,12 @@ namespace PMDS.Print
             this.cbETo.DischLotcnOnly = false;
             this.cbETo.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbETo.IsInitialized = false;
-            this.cbETo.Location = new System.Drawing.Point(128, 10);
+            this.cbETo.Location = new System.Drawing.Point(53, 10);
             this.cbETo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbETo.Name = "cbETo";
             this.cbETo.NotKrankenkasse = false;
             this.cbETo.PSBOnly = false;
-            this.cbETo.Size = new System.Drawing.Size(872, 24);
+            this.cbETo.Size = new System.Drawing.Size(938, 24);
             this.cbETo.TabIndex = 0;
             // 
             // lblAnEinrichtung
@@ -449,7 +449,7 @@ namespace PMDS.Print
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(796, 783);
+            this.btnCancel.Location = new System.Drawing.Point(796, 779);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(117, 31);
@@ -472,7 +472,7 @@ namespace PMDS.Print
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(921, 783);
+            this.btnOK.Location = new System.Drawing.Point(921, 779);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(64, 31);
@@ -550,7 +550,7 @@ namespace PMDS.Print
             this.tableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.653846F));
             this.tableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.10256F));
             this.tableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.07692F));
-            this.tableLayoutPanelCenter.Size = new System.Drawing.Size(978, 625);
+            this.tableLayoutPanelCenter.Size = new System.Drawing.Size(978, 621);
             this.tableLayoutPanelCenter.TabIndex = 7;
             // 
             // panelAusscheidung
@@ -559,10 +559,10 @@ namespace PMDS.Print
             this.panelAusscheidung.Controls.Add(this.g7);
             this.panelAusscheidung.Controls.Add(this.lblAusscheidung);
             this.panelAusscheidung.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAusscheidung.Location = new System.Drawing.Point(1, 480);
+            this.panelAusscheidung.Location = new System.Drawing.Point(1, 477);
             this.panelAusscheidung.Margin = new System.Windows.Forms.Padding(0);
             this.panelAusscheidung.Name = "panelAusscheidung";
-            this.panelAusscheidung.Size = new System.Drawing.Size(277, 144);
+            this.panelAusscheidung.Size = new System.Drawing.Size(277, 143);
             this.panelAusscheidung.TabIndex = 18;
             // 
             // g7
@@ -591,10 +591,10 @@ namespace PMDS.Print
             this.panelErklärung.Controls.Add(this.g61);
             this.panelErklärung.Controls.Add(this.lblErnährung);
             this.panelErklärung.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelErklärung.Location = new System.Drawing.Point(1, 393);
+            this.panelErklärung.Location = new System.Drawing.Point(1, 391);
             this.panelErklärung.Margin = new System.Windows.Forms.Padding(0);
             this.panelErklärung.Name = "panelErklärung";
-            this.panelErklärung.Size = new System.Drawing.Size(277, 86);
+            this.panelErklärung.Size = new System.Drawing.Size(277, 85);
             this.panelErklärung.TabIndex = 15;
             // 
             // g62
@@ -631,10 +631,10 @@ namespace PMDS.Print
             this.panelAnAuskleiden.Controls.Add(this.g5);
             this.panelAnAuskleiden.Controls.Add(this.lblAnAuskleiden);
             this.panelAnAuskleiden.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAnAuskleiden.Location = new System.Drawing.Point(1, 339);
+            this.panelAnAuskleiden.Location = new System.Drawing.Point(1, 338);
             this.panelAnAuskleiden.Margin = new System.Windows.Forms.Padding(0);
             this.panelAnAuskleiden.Name = "panelAnAuskleiden";
-            this.panelAnAuskleiden.Size = new System.Drawing.Size(277, 53);
+            this.panelAnAuskleiden.Size = new System.Drawing.Size(277, 52);
             this.panelAnAuskleiden.TabIndex = 12;
             // 
             // g5
@@ -666,7 +666,7 @@ namespace PMDS.Print
             this.panelKörperpflege.Location = new System.Drawing.Point(1, 254);
             this.panelKörperpflege.Margin = new System.Windows.Forms.Padding(0);
             this.panelKörperpflege.Name = "panelKörperpflege";
-            this.panelKörperpflege.Size = new System.Drawing.Size(277, 84);
+            this.panelKörperpflege.Size = new System.Drawing.Size(277, 83);
             this.panelKörperpflege.TabIndex = 9;
             // 
             // g42
@@ -794,10 +794,10 @@ namespace PMDS.Print
             // 
             this.panelRight4.Controls.Add(this.k7);
             this.panelRight4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRight4.Location = new System.Drawing.Point(693, 480);
+            this.panelRight4.Location = new System.Drawing.Point(693, 477);
             this.panelRight4.Margin = new System.Windows.Forms.Padding(0);
             this.panelRight4.Name = "panelRight4";
-            this.panelRight4.Size = new System.Drawing.Size(284, 144);
+            this.panelRight4.Size = new System.Drawing.Size(284, 143);
             this.panelRight4.TabIndex = 20;
             // 
             // k7
@@ -807,7 +807,7 @@ namespace PMDS.Print
             this.k7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.k7.Multiline = true;
             this.k7.Name = "k7";
-            this.k7.Size = new System.Drawing.Size(284, 144);
+            this.k7.Size = new System.Drawing.Size(284, 143);
             this.k7.TabIndex = 0;
             // 
             // panelCheckBoxes7
@@ -821,10 +821,10 @@ namespace PMDS.Print
             this.panelCheckBoxes7.Controls.Add(this.v72);
             this.panelCheckBoxes7.Controls.Add(this.v71);
             this.panelCheckBoxes7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCheckBoxes7.Location = new System.Drawing.Point(279, 480);
+            this.panelCheckBoxes7.Location = new System.Drawing.Point(279, 477);
             this.panelCheckBoxes7.Margin = new System.Windows.Forms.Padding(0);
             this.panelCheckBoxes7.Name = "panelCheckBoxes7";
-            this.panelCheckBoxes7.Size = new System.Drawing.Size(413, 144);
+            this.panelCheckBoxes7.Size = new System.Drawing.Size(413, 143);
             this.panelCheckBoxes7.TabIndex = 19;
             // 
             // v78
@@ -861,7 +861,7 @@ namespace PMDS.Print
             this.v77.Name = "v77";
             this.v77.Size = new System.Drawing.Size(160, 49);
             this.v77.TabIndex = 6;
-            this.v77.Text = "Stuhlinkontinenz ? letzter Stuhlgang ?";
+            this.v77.Text = "Stuhlinkontinenz? Letzter Stuhlgang ?";
             // 
             // v76
             // 
@@ -870,7 +870,7 @@ namespace PMDS.Print
             this.v76.Name = "v76";
             this.v76.Size = new System.Drawing.Size(198, 46);
             this.v76.TabIndex = 5;
-            this.v76.Text = "Dauerkatheter ? letzter Wechsel ?";
+            this.v76.Text = "Dauerkatheter? Letzter Wechsel ?";
             // 
             // v73
             // 
@@ -886,7 +886,7 @@ namespace PMDS.Print
             this.v72.Location = new System.Drawing.Point(4, 31);
             this.v72.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.v72.Name = "v72";
-            this.v72.Size = new System.Drawing.Size(160, 25);
+            this.v72.Size = new System.Drawing.Size(188, 25);
             this.v72.TabIndex = 1;
             this.v72.Text = "regelm. Leibstuhl";
             // 
@@ -897,16 +897,16 @@ namespace PMDS.Print
             this.v71.Name = "v71";
             this.v71.Size = new System.Drawing.Size(160, 25);
             this.v71.TabIndex = 0;
-            this.v71.Text = "Begl. zum WC";
+            this.v71.Text = "Begleitung zum WC";
             // 
             // panelRight3
             // 
             this.panelRight3.Controls.Add(this.k6);
             this.panelRight3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRight3.Location = new System.Drawing.Point(693, 393);
+            this.panelRight3.Location = new System.Drawing.Point(693, 391);
             this.panelRight3.Margin = new System.Windows.Forms.Padding(0);
             this.panelRight3.Name = "panelRight3";
-            this.panelRight3.Size = new System.Drawing.Size(284, 86);
+            this.panelRight3.Size = new System.Drawing.Size(284, 85);
             this.panelRight3.TabIndex = 17;
             // 
             // k6
@@ -916,7 +916,7 @@ namespace PMDS.Print
             this.k6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.k6.Multiline = true;
             this.k6.Name = "k6";
-            this.k6.Size = new System.Drawing.Size(284, 86);
+            this.k6.Size = new System.Drawing.Size(284, 85);
             this.k6.TabIndex = 0;
             // 
             // panelCheckBoxes6
@@ -928,15 +928,15 @@ namespace PMDS.Print
             this.panelCheckBoxes6.Controls.Add(this.v62);
             this.panelCheckBoxes6.Controls.Add(this.v61);
             this.panelCheckBoxes6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCheckBoxes6.Location = new System.Drawing.Point(279, 393);
+            this.panelCheckBoxes6.Location = new System.Drawing.Point(279, 391);
             this.panelCheckBoxes6.Margin = new System.Windows.Forms.Padding(0);
             this.panelCheckBoxes6.Name = "panelCheckBoxes6";
-            this.panelCheckBoxes6.Size = new System.Drawing.Size(413, 86);
+            this.panelCheckBoxes6.Size = new System.Drawing.Size(413, 85);
             this.panelCheckBoxes6.TabIndex = 16;
             // 
             // v66
             // 
-            this.v66.Location = new System.Drawing.Point(212, 59);
+            this.v66.Location = new System.Drawing.Point(212, 55);
             this.v66.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.v66.Name = "v66";
             this.v66.Size = new System.Drawing.Size(160, 25);
@@ -945,7 +945,7 @@ namespace PMDS.Print
             // 
             // v65
             // 
-            this.v65.Location = new System.Drawing.Point(212, 33);
+            this.v65.Location = new System.Drawing.Point(212, 29);
             this.v65.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.v65.Name = "v65";
             this.v65.Size = new System.Drawing.Size(160, 25);
@@ -954,7 +954,7 @@ namespace PMDS.Print
             // 
             // v64
             // 
-            this.v64.Location = new System.Drawing.Point(212, 7);
+            this.v64.Location = new System.Drawing.Point(212, 3);
             this.v64.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.v64.Name = "v64";
             this.v64.Size = new System.Drawing.Size(160, 25);
@@ -963,7 +963,7 @@ namespace PMDS.Print
             // 
             // v63
             // 
-            this.v63.Location = new System.Drawing.Point(4, 60);
+            this.v63.Location = new System.Drawing.Point(4, 56);
             this.v63.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.v63.Name = "v63";
             this.v63.Size = new System.Drawing.Size(160, 25);
@@ -972,7 +972,7 @@ namespace PMDS.Print
             // 
             // v62
             // 
-            this.v62.Location = new System.Drawing.Point(4, 34);
+            this.v62.Location = new System.Drawing.Point(4, 30);
             this.v62.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.v62.Name = "v62";
             this.v62.Size = new System.Drawing.Size(160, 25);
@@ -981,7 +981,7 @@ namespace PMDS.Print
             // 
             // v61
             // 
-            this.v61.Location = new System.Drawing.Point(4, 9);
+            this.v61.Location = new System.Drawing.Point(4, 5);
             this.v61.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.v61.Name = "v61";
             this.v61.Size = new System.Drawing.Size(160, 25);
@@ -992,10 +992,10 @@ namespace PMDS.Print
             // 
             this.panelRight2.Controls.Add(this.k5);
             this.panelRight2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRight2.Location = new System.Drawing.Point(693, 339);
+            this.panelRight2.Location = new System.Drawing.Point(693, 338);
             this.panelRight2.Margin = new System.Windows.Forms.Padding(0);
             this.panelRight2.Name = "panelRight2";
-            this.panelRight2.Size = new System.Drawing.Size(284, 53);
+            this.panelRight2.Size = new System.Drawing.Size(284, 52);
             this.panelRight2.TabIndex = 14;
             // 
             // k5
@@ -1005,7 +1005,7 @@ namespace PMDS.Print
             this.k5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.k5.Multiline = true;
             this.k5.Name = "k5";
-            this.k5.Size = new System.Drawing.Size(284, 53);
+            this.k5.Size = new System.Drawing.Size(284, 52);
             this.k5.TabIndex = 0;
             // 
             // panelCheckBoxes5
@@ -1013,10 +1013,10 @@ namespace PMDS.Print
             this.panelCheckBoxes5.Controls.Add(this.v52);
             this.panelCheckBoxes5.Controls.Add(this.v51);
             this.panelCheckBoxes5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCheckBoxes5.Location = new System.Drawing.Point(279, 339);
+            this.panelCheckBoxes5.Location = new System.Drawing.Point(279, 338);
             this.panelCheckBoxes5.Margin = new System.Windows.Forms.Padding(0);
             this.panelCheckBoxes5.Name = "panelCheckBoxes5";
-            this.panelCheckBoxes5.Size = new System.Drawing.Size(413, 53);
+            this.panelCheckBoxes5.Size = new System.Drawing.Size(413, 52);
             this.panelCheckBoxes5.TabIndex = 13;
             // 
             // v52
@@ -1044,7 +1044,7 @@ namespace PMDS.Print
             this.panelRight1.Location = new System.Drawing.Point(693, 254);
             this.panelRight1.Margin = new System.Windows.Forms.Padding(0);
             this.panelRight1.Name = "panelRight1";
-            this.panelRight1.Size = new System.Drawing.Size(284, 84);
+            this.panelRight1.Size = new System.Drawing.Size(284, 83);
             this.panelRight1.TabIndex = 11;
             // 
             // k4
@@ -1054,7 +1054,7 @@ namespace PMDS.Print
             this.k4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.k4.Multiline = true;
             this.k4.Name = "k4";
-            this.k4.Size = new System.Drawing.Size(284, 84);
+            this.k4.Size = new System.Drawing.Size(284, 83);
             this.k4.TabIndex = 0;
             // 
             // panelCheckBoxes4
@@ -1068,15 +1068,15 @@ namespace PMDS.Print
             this.panelCheckBoxes4.Location = new System.Drawing.Point(279, 254);
             this.panelCheckBoxes4.Margin = new System.Windows.Forms.Padding(0);
             this.panelCheckBoxes4.Name = "panelCheckBoxes4";
-            this.panelCheckBoxes4.Size = new System.Drawing.Size(413, 84);
+            this.panelCheckBoxes4.Size = new System.Drawing.Size(413, 83);
             this.panelCheckBoxes4.TabIndex = 10;
             // 
             // v45
             // 
-            this.v45.Location = new System.Drawing.Point(212, 31);
+            this.v45.Location = new System.Drawing.Point(209, 31);
             this.v45.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.v45.Name = "v45";
-            this.v45.Size = new System.Drawing.Size(186, 43);
+            this.v45.Size = new System.Drawing.Size(197, 25);
             this.v45.TabIndex = 4;
             this.v45.Text = "Hautschäden ? Größe? wo ?";
             // 
@@ -1346,9 +1346,9 @@ namespace PMDS.Print
             this.v15.Location = new System.Drawing.Point(212, 30);
             this.v15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.v15.Name = "v15";
-            this.v15.Size = new System.Drawing.Size(160, 25);
+            this.v15.Size = new System.Drawing.Size(194, 25);
             this.v15.TabIndex = 3;
-            this.v15.Text = "z. Pers. desor.";
+            this.v15.Text = "zur Person desorientiert";
             // 
             // v14
             // 
@@ -1357,7 +1357,7 @@ namespace PMDS.Print
             this.v14.Name = "v14";
             this.v14.Size = new System.Drawing.Size(160, 25);
             this.v14.TabIndex = 1;
-            this.v14.Text = "situativ desor.";
+            this.v14.Text = "situativ desorientier";
             // 
             // v13
             // 
@@ -1373,18 +1373,18 @@ namespace PMDS.Print
             this.v12.Location = new System.Drawing.Point(4, 31);
             this.v12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.v12.Name = "v12";
-            this.v12.Size = new System.Drawing.Size(160, 25);
+            this.v12.Size = new System.Drawing.Size(200, 25);
             this.v12.TabIndex = 2;
-            this.v12.Text = "zeitl. desor.";
+            this.v12.Text = "zeitlich desorientiert";
             // 
             // v11
             // 
             this.v11.Location = new System.Drawing.Point(4, 5);
             this.v11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.v11.Name = "v11";
-            this.v11.Size = new System.Drawing.Size(160, 25);
+            this.v11.Size = new System.Drawing.Size(188, 25);
             this.v11.TabIndex = 0;
-            this.v11.Text = "örtlich desor.";
+            this.v11.Text = "örtlich desorientiert";
             // 
             // grpPersönlicheSachen
             // 
@@ -1395,11 +1395,11 @@ namespace PMDS.Print
             this.grpPersönlicheSachen.Controls.Add(this.lblHörgerät);
             this.grpPersönlicheSachen.Controls.Add(this.lblZahnprotOK);
             this.grpPersönlicheSachen.Controls.Add(this.lblZahnprotUK);
-            this.grpPersönlicheSachen.Location = new System.Drawing.Point(14, 738);
+            this.grpPersönlicheSachen.Location = new System.Drawing.Point(11, 735);
             this.grpPersönlicheSachen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpPersönlicheSachen.Name = "grpPersönlicheSachen";
             this.grpPersönlicheSachen.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpPersönlicheSachen.Size = new System.Drawing.Size(774, 81);
+            this.grpPersönlicheSachen.Size = new System.Drawing.Size(777, 81);
             this.grpPersönlicheSachen.TabIndex = 1;
             this.grpPersönlicheSachen.TabStop = false;
             this.grpPersönlicheSachen.Text = "Persönliche Sachen";
@@ -1414,7 +1414,7 @@ namespace PMDS.Print
             this.txtSonstiges.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSonstiges.Multiline = true;
             this.txtSonstiges.Name = "txtSonstiges";
-            this.txtSonstiges.Size = new System.Drawing.Size(629, 28);
+            this.txtSonstiges.Size = new System.Drawing.Size(632, 28);
             this.txtSonstiges.TabIndex = 7;
             // 
             // lblSonstiges
@@ -1423,13 +1423,13 @@ namespace PMDS.Print
             this.lblSonstiges.Location = new System.Drawing.Point(8, 53);
             this.lblSonstiges.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblSonstiges.Name = "lblSonstiges";
-            this.lblSonstiges.Size = new System.Drawing.Size(61, 17);
+            this.lblSonstiges.Size = new System.Drawing.Size(64, 17);
             this.lblSonstiges.TabIndex = 6;
-            this.lblSonstiges.Text = "sonstiges";
+            this.lblSonstiges.Text = "Sonstiges";
             // 
             // lblBrille
             // 
-            this.lblBrille.Location = new System.Drawing.Point(468, 16);
+            this.lblBrille.Location = new System.Drawing.Point(632, 17);
             this.lblBrille.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblBrille.Name = "lblBrille";
             this.lblBrille.Size = new System.Drawing.Size(81, 25);
@@ -1438,7 +1438,7 @@ namespace PMDS.Print
             // 
             // lblInsulinPE
             // 
-            this.lblInsulinPE.Location = new System.Drawing.Point(259, 16);
+            this.lblInsulinPE.Location = new System.Drawing.Point(390, 17);
             this.lblInsulinPE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblInsulinPE.Name = "lblInsulinPE";
             this.lblInsulinPE.Size = new System.Drawing.Size(106, 25);
@@ -1447,37 +1447,38 @@ namespace PMDS.Print
             // 
             // lblHörgerät
             // 
-            this.lblHörgerät.Location = new System.Drawing.Point(373, 16);
+            this.lblHörgerät.Location = new System.Drawing.Point(519, 17);
             this.lblHörgerät.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblHörgerät.Name = "lblHörgerät";
             this.lblHörgerät.Size = new System.Drawing.Size(87, 25);
             this.lblHörgerät.TabIndex = 3;
             this.lblHörgerät.Text = "Hörgerät";
+            this.lblHörgerät.CheckedChanged += new System.EventHandler(this.lblHörgerät_CheckedChanged);
             // 
             // lblZahnprotOK
             // 
-            this.lblZahnprotOK.Location = new System.Drawing.Point(137, 16);
+            this.lblZahnprotOK.Location = new System.Drawing.Point(199, 17);
             this.lblZahnprotOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblZahnprotOK.Name = "lblZahnprotOK";
-            this.lblZahnprotOK.Size = new System.Drawing.Size(114, 25);
+            this.lblZahnprotOK.Size = new System.Drawing.Size(180, 25);
             this.lblZahnprotOK.TabIndex = 2;
-            this.lblZahnprotOK.Text = "Zahnprot. OK";
+            this.lblZahnprotOK.Text = "Zahnprothese Oberkiefer";
             this.lblZahnprotOK.CheckedChanged += new System.EventHandler(this.v82_CheckedChanged);
             // 
             // lblZahnprotUK
             // 
-            this.lblZahnprotUK.Location = new System.Drawing.Point(8, 16);
+            this.lblZahnprotUK.Location = new System.Drawing.Point(8, 17);
             this.lblZahnprotUK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblZahnprotUK.Name = "lblZahnprotUK";
-            this.lblZahnprotUK.Size = new System.Drawing.Size(121, 25);
+            this.lblZahnprotUK.Size = new System.Drawing.Size(180, 25);
             this.lblZahnprotUK.TabIndex = 1;
-            this.lblZahnprotUK.Text = "Zahnprot. UK";
+            this.lblZahnprotUK.Text = "Zahnprothese Unterkiefer";
             // 
             // frmPrintPflegebegleitschreibenInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1000, 827);
+            this.ClientSize = new System.Drawing.Size(1000, 821);
             this.ControlBox = false;
             this.Controls.Add(this.grpWichtigeInformationen);
             this.Controls.Add(this.grpPersönlicheSachen);
@@ -1692,5 +1693,10 @@ namespace PMDS.Print
         {
 
         }
-	}
+
+        private void lblHörgerät_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
