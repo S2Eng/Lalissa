@@ -28,11 +28,14 @@ namespace PMDS.GUI.STAMP
 
         private Guid IDAufenthalt = Guid.Empty;
         private string LetzteHWSGemeinde = "";
+        private DateTime AufenthaltVon = DateTime.Now;
+        private DateTime? AufenthaltBis;
 
         private DBSTAMP_Kostentragungen _db = new DBSTAMP_Kostentragungen();
         private Global.dsSTAMP_Kostentragungen.STAMP_KostentragungenDataTable _dt = new Global.dsSTAMP_Kostentragungen.STAMP_KostentragungenDataTable();
         private Global.dsSTAMP_Kostentragungen.STAMP_KostentragungenRow _r;
         private Global.dsSTAMP_Kostentragungen.STAMP_KostentragungenRow _rNew;
+
 
         private enum RowStatus
         {
@@ -94,6 +97,7 @@ namespace PMDS.GUI.STAMP
         {
             try
             {
+                
                 gbDetails.Visible = false;
                 this.IDAufenthalt = IDAufenthalt;
                 cmbFinanzierung.initControl();
@@ -132,16 +136,16 @@ namespace PMDS.GUI.STAMP
                 this.bindingSource.DataSource = _dt;
                 LetzteHWSGemeinde = "";
 
-                if (_dt.Any())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
-                    {
-                        var hws = (from a in db.Aufenthalt
-                                            where a.ID == IDAufenthalt
-                                            select new { hws = a.Hauptwohnsitzgemeinde }).FirstOrDefault();
-                        LetzteHWSGemeinde = hws.hws;
-                    }
+                    var hws = (from a in db.Aufenthalt
+                                        where a.ID == IDAufenthalt
+                                        select new { hws = a.Hauptwohnsitzgemeinde, AufenthaltVon = a.Aufnahmezeitpunkt, AufenthaltBis = a.Entlassungszeitpunkt }).FirstOrDefault();
+                    LetzteHWSGemeinde = hws.hws;
+                    AufenthaltVon = (DateTime) hws.AufenthaltVon;
+                    AufenthaltBis = hws.AufenthaltBis;
                 }
+
                 return true;
             }
             catch (Exception ex)
@@ -253,8 +257,6 @@ namespace PMDS.GUI.STAMP
             }
         }
 
-
-
         private void cmbFinanzierung_ValueChanged(object sender, EventArgs e)
         {
             if (_r == null)
@@ -312,8 +314,15 @@ namespace PMDS.GUI.STAMP
             _rNew.ID = Guid.NewGuid();
             _rNew.Finanzierung = "";
             _rNew.FinanzierungSonstige = "";
-            _rNew.GueltigVon = DateTime.Now;
-            _rNew.SetGueltigBisNull();
+            _rNew.GueltigVon = AufenthaltVon;
+            if (AufenthaltBis != null)
+            {
+                _rNew.GueltigBis = (DateTime) AufenthaltBis;
+            }
+            else
+            {
+                _rNew.SetGueltigBisNull();
+            }
             _rNew.Deleted = false;
             _rNew.IDAufenthalt = IDAufenthalt;
             _rNew.CreatedUser = Guid.NewGuid();
