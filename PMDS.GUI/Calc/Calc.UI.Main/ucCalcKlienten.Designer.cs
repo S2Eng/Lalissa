@@ -34,7 +34,6 @@
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint3 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint4 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint5 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab9 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -49,9 +48,9 @@
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint6 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint5 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint7 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint6 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
@@ -79,7 +78,6 @@
             this.ultraGridBagLayoutPanel4 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.panelTransferzahlungen = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraTabPageControl8 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.ultraGridBagLayoutPanel6 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.panelFreieRechnungen = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraTabPageControl6 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGridBagLayoutPanel7 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
@@ -132,8 +130,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel4)).BeginInit();
             this.ultraGridBagLayoutPanel4.SuspendLayout();
             this.ultraTabPageControl8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel6)).BeginInit();
-            this.ultraGridBagLayoutPanel6.SuspendLayout();
             this.ultraTabPageControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel7)).BeginInit();
             this.ultraGridBagLayoutPanel7.SuspendLayout();
@@ -164,7 +160,7 @@
             // uTabPageControlAbrechnung
             // 
             this.uTabPageControlAbrechnung.Controls.Add(this.panelAbrechnungsdaten);
-            this.uTabPageControlAbrechnung.Location = new System.Drawing.Point(1, 23);
+            this.uTabPageControlAbrechnung.Location = new System.Drawing.Point(-10000, -10000);
             this.uTabPageControlAbrechnung.Name = "uTabPageControlAbrechnung";
             this.uTabPageControlAbrechnung.Size = new System.Drawing.Size(862, 383);
             // 
@@ -250,6 +246,7 @@
             // 
             // panelManBuchungen
             // 
+            this.panelManBuchungen.BackColor = System.Drawing.Color.Transparent;
             this.panelManBuchungen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelManBuchungen.Location = new System.Drawing.Point(0, 0);
             this.panelManBuchungen.Name = "panelManBuchungen";
@@ -293,35 +290,18 @@
             // 
             // ultraTabPageControl8
             // 
-            this.ultraTabPageControl8.Controls.Add(this.ultraGridBagLayoutPanel6);
-            this.ultraTabPageControl8.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl8.Controls.Add(this.panelFreieRechnungen);
+            this.ultraTabPageControl8.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl8.Name = "ultraTabPageControl8";
             this.ultraTabPageControl8.Size = new System.Drawing.Size(862, 383);
             // 
-            // ultraGridBagLayoutPanel6
-            // 
-            this.ultraGridBagLayoutPanel6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ultraGridBagLayoutPanel6.Controls.Add(this.panelFreieRechnungen);
-            this.ultraGridBagLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraGridBagLayoutPanel6.ExpandToFitHeight = true;
-            this.ultraGridBagLayoutPanel6.ExpandToFitWidth = true;
-            this.ultraGridBagLayoutPanel6.Location = new System.Drawing.Point(0, 0);
-            this.ultraGridBagLayoutPanel6.Name = "ultraGridBagLayoutPanel6";
-            this.ultraGridBagLayoutPanel6.Size = new System.Drawing.Size(862, 383);
-            this.ultraGridBagLayoutPanel6.TabIndex = 1;
-            // 
             // panelFreieRechnungen
             // 
-            gridBagConstraint4.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint4.Insets.Bottom = 5;
-            gridBagConstraint4.Insets.Left = 5;
-            gridBagConstraint4.Insets.Right = 5;
-            gridBagConstraint4.Insets.Top = 5;
-            this.ultraGridBagLayoutPanel6.SetGridBagConstraint(this.panelFreieRechnungen, gridBagConstraint4);
-            this.panelFreieRechnungen.Location = new System.Drawing.Point(5, 5);
+            this.panelFreieRechnungen.BackColor = System.Drawing.Color.Transparent;
+            this.panelFreieRechnungen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFreieRechnungen.Location = new System.Drawing.Point(0, 0);
             this.panelFreieRechnungen.Name = "panelFreieRechnungen";
-            this.ultraGridBagLayoutPanel6.SetPreferredSize(this.panelFreieRechnungen, new System.Drawing.Size(368, 168));
-            this.panelFreieRechnungen.Size = new System.Drawing.Size(852, 373);
+            this.panelFreieRechnungen.Size = new System.Drawing.Size(862, 383);
             this.panelFreieRechnungen.TabIndex = 0;
             // 
             // ultraTabPageControl6
@@ -345,8 +325,8 @@
             // 
             // panelAbrechnungen
             // 
-            gridBagConstraint5.Fill = Infragistics.Win.Layout.FillType.Both;
-            this.ultraGridBagLayoutPanel7.SetGridBagConstraint(this.panelAbrechnungen, gridBagConstraint5);
+            gridBagConstraint4.Fill = Infragistics.Win.Layout.FillType.Both;
+            this.ultraGridBagLayoutPanel7.SetGridBagConstraint(this.panelAbrechnungen, gridBagConstraint4);
             this.panelAbrechnungen.Location = new System.Drawing.Point(0, 0);
             this.panelAbrechnungen.Name = "panelAbrechnungen";
             this.ultraGridBagLayoutPanel7.SetPreferredSize(this.panelAbrechnungen, new System.Drawing.Size(200, 100));
@@ -572,9 +552,9 @@
             this.panelDaten.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelDaten.Controls.Add(this.tabMainCalc);
             this.panelDaten.Controls.Add(this.lblNoKlient);
-            gridBagConstraint6.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint6.Insets.Bottom = 5;
-            this.uGridBagLayoutPanelControls.SetGridBagConstraint(this.panelDaten, gridBagConstraint6);
+            gridBagConstraint5.Fill = Infragistics.Win.Layout.FillType.Both;
+            gridBagConstraint5.Insets.Bottom = 5;
+            this.uGridBagLayoutPanelControls.SetGridBagConstraint(this.panelDaten, gridBagConstraint5);
             this.panelDaten.Location = new System.Drawing.Point(0, 0);
             this.panelDaten.Name = "panelDaten";
             this.uGridBagLayoutPanelControls.SetPreferredSize(this.panelDaten, new System.Drawing.Size(143, 106));
@@ -622,11 +602,11 @@
             this.panelHeader.BackColor = System.Drawing.Color.Transparent;
             this.panelHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHeader.Controls.Add(this.uGroupBoxHeader);
-            gridBagConstraint7.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint7.Insets.Bottom = 5;
-            gridBagConstraint7.OriginX = 0;
-            gridBagConstraint7.OriginY = 0;
-            this.uGridBagLayoutPanelHeader.SetGridBagConstraint(this.panelHeader, gridBagConstraint7);
+            gridBagConstraint6.Fill = Infragistics.Win.Layout.FillType.Both;
+            gridBagConstraint6.Insets.Bottom = 5;
+            gridBagConstraint6.OriginX = 0;
+            gridBagConstraint6.OriginY = 0;
+            this.uGridBagLayoutPanelHeader.SetGridBagConstraint(this.panelHeader, gridBagConstraint6);
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
             this.uGridBagLayoutPanelHeader.SetPreferredSize(this.panelHeader, new System.Drawing.Size(200, 100));
@@ -984,8 +964,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel4)).EndInit();
             this.ultraGridBagLayoutPanel4.ResumeLayout(false);
             this.ultraTabPageControl8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel6)).EndInit();
-            this.ultraGridBagLayoutPanel6.ResumeLayout(false);
             this.ultraTabPageControl6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel7)).EndInit();
             this.ultraGridBagLayoutPanel7.ResumeLayout(false);
@@ -1046,7 +1024,6 @@
         private QS2.Desktop.ControlManagment.BaseButton btnRechnungen;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl8;
         private QS2.Desktop.ControlManagment.BasePanel panelFreieRechnungen;
-        private Infragistics.Win.Misc.UltraGridBagLayoutPanel ultraGridBagLayoutPanel6;
         private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
         private QS2.Desktop.ControlManagment.BaseButton btnManBuchungen2;
         private QS2.Desktop.ControlManagment.BaseButton btnTransferzahlungen2;

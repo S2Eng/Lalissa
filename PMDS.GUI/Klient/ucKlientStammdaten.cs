@@ -687,11 +687,12 @@ namespace PMDS.GUI
             //----------------------------------------------------
             // STAMP-Kostentragungen
             //----------------------------------------------------
-            if (ENV.lic_STAMP)
+            if (ENV.lic_STAMP && _mainSystem)
             {
                 this.ucSTAMPData1.Init(ENV.IDAUFENTHALT);
             }
         }
+
         public void UpdateGridSachwalter()
         {
             this.gridSachwalter.DataSource = Klient.KLIENT_SACHWALTER;

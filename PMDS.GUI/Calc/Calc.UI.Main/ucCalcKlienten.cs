@@ -613,7 +613,7 @@ namespace PMDS.Calc.UI.Admin
         private void initManBuchungen()
         {
             this.ucManBuch1 = new PMDS.Calc.UI.Admin.ucManFreiBuch();
-            this.ucManBuch1.BackColor = System.Drawing.Color.WhiteSmoke;
+            //this.ucManBuch1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucManBuch1.typ = PMDS.Calc.Logic.eCalcRun.manBill ;
             this.ucManBuch1.Dock = DockStyle.Fill;
             this.ucManBuch1.ValueChanged += new System.EventHandler(this.uc_ValueChanged);
@@ -626,11 +626,12 @@ namespace PMDS.Calc.UI.Admin
         {
             this.ucFreiRech1 = new PMDS.Calc.UI.Admin.ucManFreiBuch();
             this.ucFreiRech1.typ = PMDS.Calc.Logic.eCalcRun.freeBill ;
-            this.ucFreiRech1.BackColor = System.Drawing.Color.WhiteSmoke;
+            //this.ucFreiRech1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucFreiRech1.Dock = DockStyle.Fill;
             this.ucFreiRech1.ValueChanged += new System.EventHandler(this.uc_ValueChanged);
             this.panelFreieRechnungen.Controls.Add(this.ucFreiRech1);
             this.ucFreiRech1.initControl();
+            this.ucFreiRech1.Controls["grdManBuchungen3"].Refresh();
             Application.DoEvents();
             this.panelFreieRechnungen.Visible = true;
         }

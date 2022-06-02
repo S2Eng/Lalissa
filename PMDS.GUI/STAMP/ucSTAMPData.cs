@@ -141,9 +141,12 @@ namespace PMDS.GUI.STAMP
                     var hws = (from a in db.Aufenthalt
                                         where a.ID == IDAufenthalt
                                         select new { hws = a.Hauptwohnsitzgemeinde, AufenthaltVon = a.Aufnahmezeitpunkt, AufenthaltBis = a.Entlassungszeitpunkt }).FirstOrDefault();
-                    LetzteHWSGemeinde = hws.hws;
-                    AufenthaltVon = (DateTime) hws.AufenthaltVon;
-                    AufenthaltBis = hws.AufenthaltBis;
+                    if (hws != null)
+                    {
+                        LetzteHWSGemeinde = hws.hws;
+                        AufenthaltVon = (DateTime)hws.AufenthaltVon;
+                        AufenthaltBis = hws.AufenthaltBis;
+                    }
                 }
 
                 return true;

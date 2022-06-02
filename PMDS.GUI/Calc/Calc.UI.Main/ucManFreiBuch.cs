@@ -23,20 +23,15 @@ namespace PMDS.Calc.UI.Admin
     public partial class ucManFreiBuch : QS2.Desktop.ControlManagment.BaseControl
     {
         public event EventHandler ValueChanged;
-        private bool _manBuchungenChanged = false;
 
+        private readonly PMDS.UI.Sitemap.UIFct sitemap = new PMDS.UI.Sitemap.UIFct();
+        private bool _manBuchungenChanged = false;
         private bool _loaded = false;
         private System.Guid _IDPatient;
-
-        //private Infragistics.Win.ValueList valBerechGruppe = new Infragistics.Win.ValueList();
         private PMDS.DB.Global.DBManBuchungen _db = new PMDS.DB.Global.DBManBuchungen();
         public PMDS.Calc.Logic.eCalcRun typ = new PMDS.Calc.Logic.eCalcRun();
         private Infragistics.Win.UltraWinGrid.UltraGridCell cellPrev;
-
-        public PMDS.UI.Sitemap.UIFct sitemap = new PMDS.UI.Sitemap.UIFct();
-
-
-
+        private int DefaultRowHeight = 30;      //Standard aus ISL wird bei Freier Buchung nicht erkannt???, deshalb Höhe für 10 Punkt-Schrift setzen
 
         public ucManFreiBuch()
         {
@@ -173,7 +168,9 @@ namespace PMDS.Calc.UI.Admin
             this.dsManBuch1.manBuch.Rows.Clear();
 
             this._db.allManBuchungen(this.dsManBuch1, _IDPatient, (object)udteVon.Value, (object)udteBis.Value, this.cbAbgerechnet.Checked, this.typ, " ORDER BY datum asc, am asc ", ENV.IDKlinik);
+            this.grdManBuchungen3.DisplayLayout.Override.DefaultRowHeight = DefaultRowHeight;
             this.grdManBuchungen3.Refresh();
+           
             _manBuchungenChanged = false;
 
             if (typ == PMDS.Calc.Logic.eCalcRun.manBill )
@@ -240,12 +237,6 @@ namespace PMDS.Calc.UI.Admin
                     this.grdManBuchungen3.DisplayLayout.ValueLists[1].ValueListItems.Add(r.IDKostenträger, r.Kostenträger);
             }
           }
-
-        private void grdManBuchungen_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
-        {
-
-        }
-
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -442,8 +433,6 @@ namespace PMDS.Calc.UI.Admin
             }
        
         }
-
-       
     
         private bool  updateGridData()
         {
@@ -458,8 +447,6 @@ namespace PMDS.Calc.UI.Admin
                 return false;
             }
         }
-
-
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -476,8 +463,6 @@ namespace PMDS.Calc.UI.Admin
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
-
             }
             catch (Exception ex)
             {
@@ -487,9 +472,7 @@ namespace PMDS.Calc.UI.Admin
             {
                 this.Cursor = Cursors.Default ;
             }
-        }
-
-        
+        }        
 
         private void grdManBuchungen3_AfterRowActivate(object sender, EventArgs e)
         {
@@ -601,6 +584,12 @@ namespace PMDS.Calc.UI.Admin
         {
             if (grdManBuchungen3.Focused)
                 e.Cancel = true;
+        }
+
+        private void grdManBuchungen3_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+        {
+           // this.grdManBuchungen3.DisplayLayout.Override.RowAppearance.FontData.SizeInPoints = 12;
+           // Application.DoEvents();
         }
     }
 }
