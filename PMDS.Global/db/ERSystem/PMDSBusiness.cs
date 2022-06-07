@@ -4845,12 +4845,28 @@ namespace PMDS.DB
                     int x = tMedDaten.Count();
 
                     MedizinischeDaten rMedDaten = tMedDaten.First();
-                    if (System.Convert.ToDecimal(rMedDaten.Groesse.ToString()) < System.Convert.ToDecimal(BefundNummer))
+
+                    decimal VersionNeu;
+                    decimal VersionAlt;
+
+                    if (Decimal.TryParse(rMedDaten.Groesse.ToString(), out VersionAlt) && Decimal.TryParse(BefundNummer, out VersionNeu))
                     {
-                        sBeschreibung += QS2.Desktop.ControlManagment.ControlManagment.getRes("\n\rErgänzung / Änderung: Ersetzt Version ") + rMedDaten.Modell.ToString() + "-" + rMedDaten.Groesse.ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(", importiert am ") + rMedDaten.Von.ToString();
+                        if (System.Convert.ToDecimal(rMedDaten.Groesse.ToString()) < System.Convert.ToDecimal(BefundNummer))
+                        {
+                            sBeschreibung += QS2.Desktop.ControlManagment.ControlManagment.getRes("\n\rErgänzung / Änderung: Ersetzt Version ") + rMedDaten.Modell.ToString() + "-" + rMedDaten.Groesse.ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(", importiert am ") + rMedDaten.Von.ToString();
+                        }
+                        else
+                            AddNewRecord = false;
                     }
                     else
-                        AddNewRecord = false; 
+                    {
+                        if (String.Compare(rMedDaten.Groesse, BefundNummer) < 0 )
+                        {
+                            sBeschreibung += QS2.Desktop.ControlManagment.ControlManagment.getRes("\n\rErgänzung / Änderung: Ersetzt Version ") + rMedDaten.Modell.ToString() + "-" + rMedDaten.Groesse.ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(", importiert am ") + rMedDaten.Von.ToString();
+                        }
+                        else
+                            AddNewRecord = false;
+                    }
                 }
 
                 if (AddNewRecord)
