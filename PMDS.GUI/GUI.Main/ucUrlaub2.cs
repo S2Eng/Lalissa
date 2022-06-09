@@ -49,6 +49,8 @@ namespace PMDS.GUI.GUI.Main
                 this.btnSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32);
 
                 this.pnlSTAMP.Visible = PMDS.Global.ENV.lic_STAMP;
+                this.pnlBeschreibung.Visible = !PMDS.Global.ENV.lic_STAMP;
+
             }
             catch (Exception ex)
             {
@@ -159,39 +161,54 @@ namespace PMDS.GUI.GUI.Main
             try
             {
                 this.ClearErrorProvider();
-                
+                string ErrMsg = "";
+                bool bOk = true;
+
                 if (this.IsAbwesend)
                 {
                     if (this.dtpEnde.Value == null)
                     {
                         this.errorProvider1.SetError(this.dtpEnde, "Error");
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Endedatum: Eingabe erforderlich!", "", MessageBoxButtons.OK);
-                        return false;
+                        ErrMsg += "Endedatum: Eingabe erforderlich.\n";
+                        bOk = false;
                     }
+
                     if (this.dtpEnde.DateTime > DateTime.Now)
                     {
                         this.errorProvider1.SetError(this.dtpEnde, "Error");
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Endedatum darf nicht in der Zukunft liegen!", "", MessageBoxButtons.OK);
-                        return false;
+                        ErrMsg += "Endedatum darf nicht in der Zukunft liegen.\n";
+                        bOk = false;
                     }
                 }
                 else
                 {
                     if (this.dtpBeginn.Value == null)
                     {
-                        this.errorProvider1.SetError(this.dtpEnde, "Error");
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Beginndatum: Eingabe erforderlich!", "", MessageBoxButtons.OK);
-                        return false;
+                        this.errorProvider1.SetError(this.dtpBeginn, "Error");
+                        ErrMsg += "Beginndatum: Eingabe erforderlich!\n";
+                        bOk = false;
                     }
-                    if (this.txtUrlaub.Text == null || this.txtUrlaub.Text == "")
+
+                    if (!ENV.lic_STAMP && String.IsNullOrWhiteSpace(this.txtUrlaub.Text))
                     {
                         this.errorProvider1.SetError(this.dtpEnde, "Error");
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Beschreibung: Eingabe erforderlich!", "", MessageBoxButtons.OK);
-                        return false;
+                        ErrMsg += "Beschreibung: Eingabe erforderlich!";
+                        bOk = false;
+                    }
+
+                    if (ENV.lic_STAMP && String.IsNullOrWhiteSpace(this.auswahlSTAMP_Awesenheitsgrund.Text))
+                    {
+                        this.errorProvider1.SetError(this.auswahlSTAMP_Awesenheitsgrund, "Error");
+                        ErrMsg += "Grund (STAMP): Eingabe erforderlich!";
+                        bOk = false;
                     }
                 }
 
-                return true;
+                if (!bOk)
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ErrMsg, "", MessageBoxButtons.OK);
+                }
+                return bOk;
             }
             catch (Exception ex)
             {
@@ -228,7 +245,6 @@ namespace PMDS.GUI.GUI.Main
                     newUrlaubVerlauf.ID = System.Guid.NewGuid();
                     newUrlaubVerlauf.IDAufenthalt = this.rAufenthaltAct.ID;
                     newUrlaubVerlauf.StartDatum = this.dtpBeginn.DateTime;
-                    newUrlaubVerlauf.Text = this.txtUrlaub.Text;
                     newUrlaubVerlauf.EndeDatum = null;
                     newUrlaubVerlauf.IDBenutzer_Erstellt = ENV.USERID;
                     newUrlaubVerlauf.IDBenutzer_Geaendert = ENV.USERID;
@@ -240,16 +256,12 @@ namespace PMDS.GUI.GUI.Main
 
                     if (ENV.lic_STAMP)
                     {
-                        //Abwesenheitsgrund muss ausgewählt werden
-                        if (auswahlSTAMP_Awesenheitsgrund.Value == null || String.IsNullOrWhiteSpace(auswahlSTAMP_Awesenheitsgrund.Value.ToString()))
-                        {
-                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bitte wählen Sie einen Abwesenheitsgrund aus der Liste aus.");
-                            return false;
-                        }
-                        else
-                        {
-                            newUrlaubVerlauf.STAMP_Abwesenheitsgrund = auswahlSTAMP_Awesenheitsgrund.Text;
-                        }
+                        newUrlaubVerlauf.STAMP_Abwesenheitsgrund = auswahlSTAMP_Awesenheitsgrund.Text;
+                        newUrlaubVerlauf.Text = auswahlSTAMP_Awesenheitsgrund.Text;
+                    }
+                    else
+                    {
+                        newUrlaubVerlauf.Text = this.txtUrlaub.Text;
                     }
 
                     this.db2.UrlaubVerlauf.Add(newUrlaubVerlauf);

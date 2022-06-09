@@ -1034,7 +1034,7 @@ namespace PMDS.GUI
             Guid IDAufenthaltSelected = ((PMDS.Global.db.ERSystem.dsKlientenliste.vKlientenlisteRow)((System.Data.DataRowView)this.ucPatientPicker1.GRID.ActiveRow.ListObject).Row).IDAufenthalt;
             args.IDAufenthalt = IDAufenthaltSelected;
 
-            if (this.chkHistorie.Checked && !ENV.HasRight(UserRights.AbwesendeKlientenVerwalten))               //os211222
+            if (this.chkHistorie.Checked && !ENV.HasRight(UserRights.AbwesendeKlientenVerwalten))              
             {
                 return;
             }
