@@ -61,9 +61,10 @@ namespace PMDS.Calc.UI.Admin
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(853, 435);
+            this.btnCancel.Location = new System.Drawing.Point(995, 569);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(88, 32);
+            this.btnCancel.Size = new System.Drawing.Size(103, 42);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "Abbrechen";
@@ -84,9 +85,10 @@ namespace PMDS.Calc.UI.Admin
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(942, 435);
+            this.btnOK.Location = new System.Drawing.Point(1099, 569);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(48, 32);
+            this.btnOK.Size = new System.Drawing.Size(56, 42);
             this.btnOK.TabIndex = 3;
             this.btnOK.TabStop = false;
             this.btnOK.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
@@ -100,21 +102,24 @@ namespace PMDS.Calc.UI.Admin
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucPatientkostentraegerEdit1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucPatientkostentraegerEdit1.Location = new System.Drawing.Point(0, 0);
+            this.ucPatientkostentraegerEdit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucPatientkostentraegerEdit1.Name = "ucPatientkostentraegerEdit1";
-            this.ucPatientkostentraegerEdit1.Size = new System.Drawing.Size(998, 428);
+            this.ucPatientkostentraegerEdit1.Size = new System.Drawing.Size(1164, 560);
             this.ucPatientkostentraegerEdit1.TabIndex = 5;
             // 
             // frmKostenträger
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(997, 473);
+            this.ClientSize = new System.Drawing.Size(1163, 619);
             this.Controls.Add(this.ucPatientkostentraegerEdit1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(896, 512);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1043, 658);
             this.Name = "frmKostenträger";
             this.Text = "Kostenträger verwalten";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmKostentraeger_FormClosing);
@@ -176,12 +181,12 @@ namespace PMDS.Calc.UI.Admin
 		{
             if (ucPatientkostentraegerEdit1.ValidateFields())
             {
-                _CanClose = true;
-                ucPatientkostentraegerEdit1.UpdateData();
-                this.Close();
+                _CanClose = ucPatientkostentraegerEdit1.UpdateData();
+                if (_CanClose)
+                {
+                    this.Close();
+                }
             }
-            else
-                _CanClose = false;
 		}
 
         private void frmKostentraeger_FormClosing(object sender, FormClosingEventArgs e)
