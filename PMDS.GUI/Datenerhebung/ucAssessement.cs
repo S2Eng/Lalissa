@@ -22,6 +22,7 @@ using Patagames.Pdf.Enums;
 using Patagames.Pdf.Net.BasicTypes;
 using Patagames.Pdf.Net.Controls.WinForms;
 using System.Drawing.Printing;
+using S2Extensions;
 
 
 
@@ -49,13 +50,101 @@ namespace PMDS.GUI
         public static System.Collections.Generic.List<PMDS.db.Entities.AuswahlListe> tAuswahllisteFieldsDekurs = null;
         public PMDS.DB.PMDSBusiness b = new PMDSBusiness();
 
+        private QS2.Desktop.Txteditor.doEditor doEditor1 = new QS2.Desktop.Txteditor.doEditor();
+        private QS2.Desktop.Txteditor.contTXTField contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
+        private QS2.Desktop.Txteditor.doBookmarks doBookmarks = new QS2.Desktop.Txteditor.doBookmarks();
+        private eFormMode _FormMode = eFormMode.none;
+        private bool bEditable;
 
+        private eFormMode FormMode
+        {
+            get
+            {
+                return _FormMode;
+            }
+            set
+            {
+                _FormMode = value;
+                this.panelDoc.Visible = _FormMode == eFormMode.rtf;
+                this.panelGird.Visible = _FormMode == eFormMode.pdf;
+                this.panelDoc.Left = panelGird.Left;
+                this.panelDoc.Top = panelGird.Top;
+                this.panelDoc.Width = panelGird.Width;
+                this.panelDoc.Height = panelGird.Height;
 
+                this.btnPrint2.Visible = (value == eFormMode.pdf);
+                this.btnAbdocken.Visible = (value == eFormMode.pdf);
+            }
+        }
 
+        private enum eFormMode
+        {
+            none = 0,
+            pdf = 1,
+            rtf = 2
 
+        }
 
+        public void valueChanged()
+        {
+            object o = new object();
+            EventArgs ev = new EventArgs();
+//            this.OnValueChanged(o, ev);
+        }
 
+        public void valueChangedBeschreibungTxtControl()
+        {
+            try
+            {
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            //if (this.chkAlsDekursKopieren.Visible)
+            //{
+            //    if (!String.IsNullOrWhiteSpace(this.contTXTFieldBeschreibung.TXTControlField.Text))
+            //    {
+            //        this.chkAlsDekursKopieren.Checked = true;
+            //        setWichtigFuerDefaults(eDekursDefaults.Intervention.ToString(), false);
+            //    }
+            //    else
+            //    {
+            //        this.chkAlsDekursKopieren.Checked = false;
+            //        setWichtigFuerDefaults(eDekursDefaults.Intervention.ToString(), true);
+            //    }
+            //}
+            //else
+            //{
 
+            //}
+        }
+
+        private void BeschreibungKeyUp(object sender, KeyEventArgs e)
+        {
+            if (bEditable)
+            {
+                this.btnSave.Enabled = true;
+                this.btnAbbrechen.Enabled = true;
+            }
+                else
+            {
+                this.btnSave.Enabled = false;
+                this.btnAbbrechen.Enabled = true;
+            }
+
+            try
+            {
+                if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F3)
+                {
+                    //this.clickLoadTextbausteine(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+        }
 
 
         public ucAssessement()
@@ -66,7 +155,6 @@ namespace PMDS.GUI
             //this.pdfToolStripMain1.Items[0].Visible = false;
             //this.pdfToolStripMain1.Items[1].Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Drucken, 32, 32);
         }
-
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -123,17 +211,6 @@ namespace PMDS.GUI
                     item.Tag = r.ID;	
                     item.Settings.AppearancesSmall.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Table, 32, 32);
                     anz += 1;
-                }
-
-                //uDropDownButtVorhandenFormulare.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Vorhandene Formulare");
-                if (anz > 0)
-                {
-                    //uDropDownButtVorhandenFormulare.Text += " (" + anz.ToString() + ")";
-                    //uDropDownButtVorhandenFormulare.Visible = true;
-                }
-                else
-                {
-                    //uDropDownButtVorhandenFormulare.Visible = false;
                 }
 
                 SetActiveItemBackground();
@@ -206,7 +283,7 @@ namespace PMDS.GUI
                 if (_group.Items.Count > 0)
                 {
                     UltraExplorerBarItem item = _group.Items[0];
-                    this.loadPdf((Guid)item.Tag);
+                    this.loadFormulardaten((Guid)item.Tag);
                 }
 
                 this.pdfViewer1.Focus();
@@ -221,7 +298,8 @@ namespace PMDS.GUI
                 }
             }
         }
-        private void loadPdf(Guid IDFormularData)
+
+        private void loadFormulardaten(Guid IDFormularData)
         {
             try
             {
@@ -255,30 +333,46 @@ namespace PMDS.GUI
                         return;
                     }
 
-                    this.pdfViewer1.LoadDocument(rFormular.PDF_BLOP);
-                    formFDF = pdfViewer1.Document.FormFill;
-                    formFDF.InterForm.ImportFromFdf(FdfDocument.Load(rFormularDaten.PDF_BLOP));
-                    Application.DoEvents();
-
                     this.tFormularDatenFelderOrig = this.b.loadFormularDatenFelderForAssesstment(rFormularDaten.ID, db);
-                }
-          
+
+                    if (rFormular.Name.sEquals(".s2frm", S2Extensions.Enums.eCompareMode.EndsWith))
+                    {
+                        FormMode = eFormMode.pdf;
+                        this.pdfViewer1.LoadDocument(rFormular.PDF_BLOP);
+                        formFDF = pdfViewer1.Document.FormFill;
+                        formFDF.InterForm.ImportFromFdf(FdfDocument.Load(rFormularDaten.PDF_BLOP));
+                        this.pdfViewer1.Visible = true;
+                        this.pdfToolStripViewModes1.Visible = true;
+                        this.pdfToolStripZoomEx1.Visible = true;
+                        this.pdfViewer1.Focus();
+
+                        Application.DoEvents();
+
+                    }
+                    else if (rFormular.Name.sEquals(".s2frmRTF", S2Extensions.Enums.eCompareMode.EndsWith))
+                    {
+                        FormMode = eFormMode.rtf;
+                        panelDoc.Controls.Clear();
+                        this.contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
+                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.FloatingText, true, true, false, true, true, false);
+                        this.contTXTFieldBeschreibung.Dock = DockStyle.Fill;
+                        this.panelDoc.Controls.Add(contTXTFieldBeschreibung);
+                        Application.DoEvents();
+                        this.contTXTFieldBeschreibung.TXTControlField.Load(rFormularDaten.PDF_BLOP, TXTextControl.BinaryStreamType.InternalUnicodeFormat);
+
+                        bEditable = bEditable = ((r == null || r.Datumerstellt.AddHours(ENV.AssessmentModifyTime) > DateTime.Now && ENV.HasRight(UserRights.DatenerhebungAendern)) || ENV.adminSecure);
+                        this.contTXTFieldBeschreibung.delOnKeyUp += new QS2.Desktop.Txteditor.contTXTField.onKeyUp(this.BeschreibungKeyUp);
+                    }
+                }          
 
                 _IDData = IDData;
                 SetActiveItemBackground();
 
-                this.pdfViewer1.Visible = true;
                 this.panelUnten.Visible = true;
                 EnableDisableMenus();
-                this.btnAbdocken.Visible = true;
                 this.btnAbbrechen.Enabled = false;
                 this.btnPrint2.Enabled = true;
                 this.LockPDFViewer = false;
-                this.pdfToolStripViewModes1.Visible = true;
-                this.pdfToolStripZoomEx1.Visible = true;
-
-                this.pdfViewer1.Focus();
-
             }
             catch (Exception ex)
             {
@@ -316,28 +410,39 @@ namespace PMDS.GUI
                         rFormularDaten = tFormularDaten.First();
                     }
 
-                    PdfForms form = pdfViewer1.Document.FormFill;
-                    form.ForceToKillFocus();
-                    FdfDocument fdfOut = form.InterForm.ExportToFdf("");
-                    Byte[] bFDF = Encoding.Default.GetBytes(fdfOut.Content);
-                    rFormularDaten.PDF_BLOP = bFDF;
+                    if (FormMode == eFormMode.pdf)
+                    {
+                        PdfForms form = pdfViewer1.Document.FormFill;
+                        form.ForceToKillFocus();
+                        FdfDocument fdfOut = form.InterForm.ExportToFdf("");
+                        Byte[] bFDF = Encoding.Default.GetBytes(fdfOut.Content);
+                        rFormularDaten.PDF_BLOP = bFDF;
+                        this.pdfToolStripViewModes1.Visible = true;
+                        this.pdfToolStripZoomEx1.Visible = true;
+                    }
+                    else if (FormMode == eFormMode.rtf)
+                    {
+                        this.contTXTFieldBeschreibung.TXTControlField.Save(out byte[] binaryData, TXTextControl.BinaryStreamType.InternalUnicodeFormat);
+                        rFormularDaten.PDF_BLOP = binaryData;
+                    }
 
                     db.SaveChanges();
-                    this.saveFormualDataToDB(rFormularDaten);
+                    if (FormMode == eFormMode.pdf)
+                    {
+                        this.saveFormualDataToDB(rFormularDaten);
+                    }
 
                     RefreshItems();
                     btnSave.Enabled = false;
-                    //this.pdfViewer1.Enabled = PageMode.Readonly;  
+                    btnAbbrechen.Enabled = false;
+
                     EnableDisableMenus();
-                    this.btnAbdocken.Visible = true;
-                    this.btnPrint2.Enabled = true;
-                    this.pdfToolStripViewModes1.Visible = true;
-                    this.pdfToolStripZoomEx1.Visible = true;
+                    this.btnAbdocken.Visible = (FormMode == eFormMode.pdf);
+                    this.btnPrint2.Enabled = (FormMode == eFormMode.pdf);
 
                     this.b.writeDekursForAssesstment(rFormularDaten, db, this.tFormularDatenFelderOrig, ucAssessement.tAuswahllisteFieldsDekurs, IsNew);
                     this.tFormularDatenFelderOrig = this.b.loadFormularDatenFelderForAssesstment(rFormularDaten.ID, db);
                 }
-
             }
             catch (Exception ex)
             {
@@ -435,15 +540,13 @@ namespace PMDS.GUI
                 this.LockPDFViewer = true;
                 this.panelUnten.Visible = true;
                 CreateNewEmptyFormular();
-                //EnableDisableMenus();
                 this.btnSave.Enabled = true;
                 this.bntLöschen.Enabled = false;
                 this.pdfViewer1.Visible = true;
                 EnableDisableMenus();
+
                 this.btnAbdocken.Visible = false;
                 this.btnPrint2.Enabled = false;
-                this.pdfToolStripViewModes1.Visible = true;
-                this.pdfToolStripZoomEx1.Visible = true;
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
@@ -455,46 +558,57 @@ namespace PMDS.GUI
                     }
                     PMDS.db.Entities.Formular rFormular = tFormular.First();
 
-                    this.pdfViewer1.LoadDocument(rFormular.PDF_BLOP);
-                    PdfForms form = pdfViewer1.Document.FormFill;
-
                     Patient pat = new Patient(_IDPatient);
-
                     string txt = "";
                     txt += rFormular.Name.ToUpper().Replace(".S2FRM", "");
                     txt += " / " + pat.Nachname + " " + pat.Vorname;
                     txt += " / " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
-
                     DateTime GebDat = (DateTime)pat.Geburtsdatum;
-/*
-                    SetHeader("#KLIENT#", pat.Nachname + " " + pat.Vorname, form.InterForm.Fields, "Text");
-                    SetHeader("#KLIENTGEBDAT#", GebDat.ToString("dd.MM.yyyy"), form.InterForm.Fields, "Text");
-                    SetHeader("#BENUTZERERSTELLT#", ENV.LoginInNameFrei, form.InterForm.Fields, "Text");
-                    SetHeader("#DATUMERSTELLT#", DateTime.Now.ToString("dd.MM.yyyy HH:mm"), form.InterForm.Fields, "Text");
-                    SetHeader("#DATUMERSTELLTDATE#", DateTime.Now.ToString("dd.MM.yyyy"), form.InterForm.Fields, "Text");
-                    SetHeader("#DOCINFO#", txt, form.InterForm.Fields, "DocInfo");
 
-                    SetValue("#KLIENT#", pat.Nachname + " " + pat.Vorname, form);
-                    SetValue("#KLIENTGEBDAT#", GebDat.ToString("dd.MM.yyyy"), form);
-                    SetValue("#BENUTZERERSTELLT#", ENV.LoginInNameFrei, form);
-                    SetValue("#DATUMERSTELLT#", DateTime.Now.ToString("dd.MM.yyyy HH:mm"), form);
-                    SetValue("#DATUMERSTELLTDATE#", DateTime.Now.ToString("dd.MM.yyyy"), form);
-                    SetValue("#DOCINFO#", txt, form);
-*/
-                    PMDS.Global.print.FDF fDF = new Global.print.FDF();
-                    fDF.SetAllFDFFields(ENV.IDAUFENTHALT, form);
-                    PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF();
-                    frmPDF.SetValue("#KLIENT#", pat.Nachname + " " + pat.Vorname, form);
-                    frmPDF.SetValue("#KLIENTGEBDAT#", GebDat.ToString("dd.MM.yyyy"), form);
-                    frmPDF.SetValue("#BENUTZERERSTELLT#", ENV.LoginInNameFrei, form);
-                    frmPDF.SetValue("#DATUMERSTELLT#", DateTime.Now.ToString("dd.MM.yyyy HH:mm"), form);
-                    frmPDF.SetValue("#DATUMERSTELLTDATE#", DateTime.Now.ToString("dd.MM.yyyy"), form);
-                    frmPDF.SetValue("#DOCINFO#", txt, form);
+                    if (rFormular.Name.sEquals(".s2frm", S2Extensions.Enums.eCompareMode.EndsWith))
+                    {
+                        this.pdfToolStripViewModes1.Visible = true;
+                        this.pdfToolStripZoomEx1.Visible = true;
 
-                    Application.DoEvents();
-                    this.LockPDFViewer = false;
+                        FormMode = eFormMode.pdf;
+                        this.pdfViewer1.LoadDocument(rFormular.PDF_BLOP);
+                        PdfForms form = pdfViewer1.Document.FormFill;
+
+                        PMDS.Global.print.FDF fDF = new Global.print.FDF();
+                        fDF.SetAllFDFFields(ENV.IDAUFENTHALT, form);
+                        PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF();
+                        frmPDF.SetValue("#KLIENT#", pat.Nachname + " " + pat.Vorname, form);
+                        frmPDF.SetValue("#KLIENTGEBDAT#", GebDat.ToString("dd.MM.yyyy"), form);
+                        frmPDF.SetValue("#BENUTZERERSTELLT#", ENV.LoginInNameFrei, form);
+                        frmPDF.SetValue("#DATUMERSTELLT#", DateTime.Now.ToString("dd.MM.yyyy HH:mm"), form);
+                        frmPDF.SetValue("#DATUMERSTELLTDATE#", DateTime.Now.ToString("dd.MM.yyyy"), form);
+                        frmPDF.SetValue("#DOCINFO#", txt, form);
+                        this.LockPDFViewer = false;
+                        Application.DoEvents();
+                    }
+                    else if (rFormular.Name.sEquals(".s2frmRTF", S2Extensions.Enums.eCompareMode.EndsWith))
+                    {
+                        FormMode = eFormMode.rtf;
+                        panelDoc.Controls.Clear();
+                        this.contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
+                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.FloatingText, true, true, false, false, true, false);
+                        this.contTXTFieldBeschreibung.Dock = DockStyle.Fill;
+                        this.panelDoc.Controls.Add(contTXTFieldBeschreibung);
+                        Application.DoEvents();
+                        this.contTXTFieldBeschreibung.TXTControlField.Load(rFormular.PDF_BLOP, TXTextControl.BinaryStreamType.InternalUnicodeFormat);
+
+                        bEditable = true;
+                        this.contTXTFieldBeschreibung.delOnKeyUp += new QS2.Desktop.Txteditor.contTXTField.onKeyUp(this.BeschreibungKeyUp);
+
+                        //Felder ersetzen
+                        TXTextControl.TextControl editor = this.contTXTFieldBeschreibung.TXTControlField;
+                        this.doBookmarks.setBookmark("[Name]", "Oskar Staudinger", ref editor);
+
+
+
+
+                    }
                 }
-
             }
             catch (Exception ex)
             {
@@ -528,7 +642,7 @@ namespace PMDS.GUI
                 this.pdfToolStripViewModes1.Visible = false;
                 this.pdfToolStripZoomEx1.Visible = false;
                 RefreshItems();
-
+                FormMode = eFormMode.none;
             }
             catch (Exception ex)
             {
@@ -606,8 +720,10 @@ namespace PMDS.GUI
 
         private void EnableDisableMenus()
         {
-            bool b = this.pdfViewer1.Visible ? true : false;
-            this.bntLöschen.Enabled = b && !btnSave.Enabled;
+            bool bPDF = this.pdfViewer1.Visible ? true : false;
+            bool bRTF = this.contTXTFieldBeschreibung.Visible ? true : false;
+
+            this.bntLöschen.Enabled = (bPDF || bRTF) && !btnSave.Enabled;
         }
 
         private void ProcessRights()
@@ -772,7 +888,7 @@ namespace PMDS.GUI
                 Cursor.Current = Cursors.WaitCursor;
                 
                 Guid IDData = (Guid)e.Item.Tag;
-                this.loadPdf(IDData);
+                this.loadFormulardaten(IDData);
 
             }
             catch (Exception ex)
@@ -851,7 +967,7 @@ namespace PMDS.GUI
                 this.abort();
                 if (!this._IDData.Equals(Guid.Empty))
                 {
-                    this.loadPdf(this._IDData);
+                    this.loadFormulardaten(this._IDData);
                 }
       
             }
@@ -1088,7 +1204,14 @@ namespace PMDS.GUI
             }
         }
 
-
+        private void panelDoc_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!this.LockPDFViewer)
+            {
+                dsFormularDaten.FormularDatenRow r = _data.FindByID(_IDData);
+                bEditable = ((r == null || r.Datumerstellt.AddHours(ENV.AssessmentModifyTime) > DateTime.Now && ENV.HasRight(UserRights.DatenerhebungAendern)) || ENV.adminSecure);
+            }
+        }
     }
     
 }

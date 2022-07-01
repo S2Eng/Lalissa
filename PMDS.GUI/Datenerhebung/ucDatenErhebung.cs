@@ -379,28 +379,6 @@ namespace PMDS.GUI
 
         private void loadAuswahl()
         {
-
-            /*
-                        if (this.mnuIsLoaded)
-                        {
-                            foreach (Control c in pnlPflegeAnamnese.Controls)
-                            {
-                                if (c is ucAssessement)
-                                {
-                                    c.Tag = null;
-                                }
-                            }
-
-                            cmbErhebung.SelectedItem = cmbErhebung.Items[0];
-                            _clickableimages.Visible = true;
-            //                return;
-                        }
-
-            //            else
-
-            //            {
-            */
-
             _aAssenementMenu.Clear();
             FormularManager manager = new FormularManager();
             dsFormular.FormularDataTable dt = manager.Read();

@@ -27,7 +27,7 @@ namespace PMDS.GUI.GUI.Main
         public PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
 
         private QS2.Desktop.Txteditor.doEditor doEditor1 = new QS2.Desktop.Txteditor.doEditor();
-        private QS2.Desktop.Txteditor.contTXTField contTXTFieldBeschreibung;
+        private QS2.Desktop.Txteditor.contTXTField contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
         private eFormMode _FormMode;
         private eFormMode FormMode
         {
@@ -44,7 +44,6 @@ namespace PMDS.GUI.GUI.Main
                 this.panelDoc.Top = panelGird.Top;
                 this.panelDoc.Width = panelGird.Width;
                 this.panelDoc.Height = panelGird.Height;
-                this.panelDoc.Dock = this.panelGird.Dock;
             }
         }
 
@@ -192,6 +191,12 @@ namespace PMDS.GUI.GUI.Main
                     else if (rFormular.Name.sEquals(".s2frmRTF", Enums.eCompareMode.EndsWith))
                     {
                         FormMode = eFormMode.rtf;
+                        panelDoc.Controls.Clear();
+                        this.contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
+                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.FloatingText, true, true, false, false, true, false);
+                        this.contTXTFieldBeschreibung.Dock = DockStyle.Fill;
+                        this.panelDoc.Controls.Add(contTXTFieldBeschreibung);
+                        Application.DoEvents();
                         this.contTXTFieldBeschreibung.TXTControlField.Load(rFormular.PDF_BLOP, TXTextControl.BinaryStreamType.InternalUnicodeFormat);
                     }
 
@@ -345,6 +350,7 @@ namespace PMDS.GUI.GUI.Main
                     else if (FileExtension.sEquals(".rtf", Enums.eCompareMode.EndsWith))
                     {
                         FormMode = eFormMode.rtf;
+                        panelDoc.Controls.Clear();
                         this.txtFormularname2.Text = FileName.Trim() + ".s2frmRTF";
 
                         this.contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
@@ -392,8 +398,19 @@ namespace PMDS.GUI.GUI.Main
 
                         this.clearUI();
                         this.PDFDocumentIsLocked = false;
-                        this.pdfViewer1.Document = null;
-                        this.pdfViewer1.ClearRenderBuffer();
+
+                        if (FormMode == eFormMode.pdf)
+                        {
+                            this.pdfViewer1.Document = null;
+                            this.pdfViewer1.ClearRenderBuffer();
+                            this.pdfViewer1.Enabled = true;
+                        }
+                        else if (FormMode == eFormMode.rtf)
+                        {
+                            this.contTXTFieldBeschreibung.TXTControlField.Clear();
+                        }
+
+                        FormMode = eFormMode.none;
                         this.loadAllFormularFromDB(null);
 
                         this.btnAdd.Visible = true;
@@ -402,11 +419,9 @@ namespace PMDS.GUI.GUI.Main
                         this.btnSave.Enabled = false;
                         this.btnPrint2.Visible = false;
                         this.PDFDocumentIsLocked = true;
-                        this.pdfViewer1.Enabled = true;
                         this.cboFormulare.ReadOnly = false;
                     }
                 }
-
                 return true;
 
             }
