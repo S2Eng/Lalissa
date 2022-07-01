@@ -60,6 +60,7 @@
             this.chkNeuanlageSperren = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.cboBerufsgruppen = new PMDS.GUI.Klient.cboAuswahllisteMulti();
             this.lblBerufsgruppen = new Infragistics.Win.Misc.UltraLabel();
+            this.panelDoc = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelGird.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboFormulare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkInNotfallAnzeigenJN)).BeginInit();
@@ -78,10 +79,11 @@
             this.panelGird.Controls.Add(this.pdfToolStripZoomEx1);
             this.panelGird.Controls.Add(this.pdfViewer1);
             this.panelGird.Location = new System.Drawing.Point(5, 178);
-            this.panelGird.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelGird.Margin = new System.Windows.Forms.Padding(4);
             this.panelGird.Name = "panelGird";
             this.panelGird.Size = new System.Drawing.Size(1014, 424);
             this.panelGird.TabIndex = 15;
+            this.panelGird.Visible = false;
             // 
             // pdfToolStripViewModes1
             // 
@@ -106,7 +108,7 @@
             this.pdfViewer1.FormsBlendMode = Patagames.Pdf.Enums.BlendTypes.FXDIB_BLEND_MULTIPLY;
             this.pdfViewer1.LoadingIconText = "Loading...";
             this.pdfViewer1.Location = new System.Drawing.Point(4, 38);
-            this.pdfViewer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pdfViewer1.Margin = new System.Windows.Forms.Padding(4);
             this.pdfViewer1.MouseMode = Patagames.Pdf.Net.Controls.WinForms.MouseModes.Default;
             this.pdfViewer1.Name = "pdfViewer1";
             this.pdfViewer1.OptimizedLoadThreshold = 1000;
@@ -166,7 +168,7 @@
             this.btnSave.AutoWorkLayout = false;
             this.btnSave.IsStandardControl = false;
             this.btnSave.Location = new System.Drawing.Point(888, 608);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(117, 38);
             this.btnSave.TabIndex = 1001;
@@ -183,7 +185,7 @@
             this.btnDel.AutoWorkLayout = false;
             this.btnDel.IsStandardControl = false;
             this.btnDel.Location = new System.Drawing.Point(982, 140);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(5);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(34, 29);
             this.btnDel.TabIndex = 101;
@@ -196,7 +198,7 @@
             this.cboFormulare.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cboFormulare.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cboFormulare.Location = new System.Drawing.Point(165, 11);
-            this.cboFormulare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboFormulare.Margin = new System.Windows.Forms.Padding(4);
             this.cboFormulare.Name = "cboFormulare";
             this.cboFormulare.Size = new System.Drawing.Size(601, 24);
             this.cboFormulare.TabIndex = 0;
@@ -205,7 +207,7 @@
             // lblFormulare
             // 
             this.lblFormulare.Location = new System.Drawing.Point(20, 15);
-            this.lblFormulare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblFormulare.Margin = new System.Windows.Forms.Padding(4);
             this.lblFormulare.Name = "lblFormulare";
             this.lblFormulare.Size = new System.Drawing.Size(104, 26);
             this.lblFormulare.TabIndex = 137;
@@ -220,7 +222,7 @@
             this.btnAdd.AutoWorkLayout = false;
             this.btnAdd.IsStandardControl = false;
             this.btnAdd.Location = new System.Drawing.Point(940, 140);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(5);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(33, 29);
             this.btnAdd.TabIndex = 100;
@@ -239,7 +241,7 @@
             this.chkInNotfallAnzeigenJN.BackColor = System.Drawing.Color.Transparent;
             this.chkInNotfallAnzeigenJN.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkInNotfallAnzeigenJN.Location = new System.Drawing.Point(611, 148);
-            this.chkInNotfallAnzeigenJN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkInNotfallAnzeigenJN.Margin = new System.Windows.Forms.Padding(4);
             this.chkInNotfallAnzeigenJN.Name = "chkInNotfallAnzeigenJN";
             this.chkInNotfallAnzeigenJN.Size = new System.Drawing.Size(155, 22);
             this.chkInNotfallAnzeigenJN.TabIndex = 13;
@@ -264,7 +266,7 @@
             this.chkGUI.BackColor = System.Drawing.Color.Transparent;
             this.chkGUI.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkGUI.Location = new System.Drawing.Point(165, 148);
-            this.chkGUI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkGUI.Margin = new System.Windows.Forms.Padding(4);
             this.chkGUI.Name = "chkGUI";
             this.chkGUI.Size = new System.Drawing.Size(225, 22);
             this.chkGUI.TabIndex = 12;
@@ -285,7 +287,7 @@
             // txtFormularname2
             // 
             this.txtFormularname2.Location = new System.Drawing.Point(165, 41);
-            this.txtFormularname2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFormularname2.Margin = new System.Windows.Forms.Padding(4);
             this.txtFormularname2.Name = "txtFormularname2";
             this.txtFormularname2.ReadOnly = true;
             this.txtFormularname2.Size = new System.Drawing.Size(388, 24);
@@ -295,7 +297,7 @@
             // txtBezeichnung2
             // 
             this.txtBezeichnung2.Location = new System.Drawing.Point(165, 72);
-            this.txtBezeichnung2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBezeichnung2.Margin = new System.Windows.Forms.Padding(4);
             this.txtBezeichnung2.Name = "txtBezeichnung2";
             this.txtBezeichnung2.Size = new System.Drawing.Size(388, 24);
             this.txtBezeichnung2.TabIndex = 11;
@@ -306,7 +308,7 @@
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
             this.btnAbort.Location = new System.Drawing.Point(780, 608);
-            this.btnAbort.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnAbort.Margin = new System.Windows.Forms.Padding(5);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(108, 38);
             this.btnAbort.TabIndex = 1000;
@@ -323,7 +325,7 @@
             this.btnPrint2.AutoWorkLayout = false;
             this.btnPrint2.IsStandardControl = false;
             this.btnPrint2.Location = new System.Drawing.Point(901, 140);
-            this.btnPrint2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPrint2.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint2.Name = "btnPrint2";
             this.btnPrint2.Size = new System.Drawing.Size(32, 29);
             this.btnPrint2.TabIndex = 102;
@@ -336,7 +338,7 @@
             this.chkNeuanlageSperren.BackColor = System.Drawing.Color.Transparent;
             this.chkNeuanlageSperren.BackColorInternal = System.Drawing.Color.Transparent;
             this.chkNeuanlageSperren.Location = new System.Drawing.Point(398, 148);
-            this.chkNeuanlageSperren.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkNeuanlageSperren.Margin = new System.Windows.Forms.Padding(4);
             this.chkNeuanlageSperren.Name = "chkNeuanlageSperren";
             this.chkNeuanlageSperren.Size = new System.Drawing.Size(164, 22);
             this.chkNeuanlageSperren.TabIndex = 1002;
@@ -345,7 +347,7 @@
             // cboBerufsgruppen
             // 
             this.cboBerufsgruppen.Location = new System.Drawing.Point(165, 106);
-            this.cboBerufsgruppen.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cboBerufsgruppen.Margin = new System.Windows.Forms.Padding(5);
             this.cboBerufsgruppen.Name = "cboBerufsgruppen";
             this.cboBerufsgruppen.Size = new System.Drawing.Size(601, 33);
             this.cboBerufsgruppen.TabIndex = 1004;
@@ -355,17 +357,27 @@
             appearance9.TextVAlignAsString = "Middle";
             this.lblBerufsgruppen.Appearance = appearance9;
             this.lblBerufsgruppen.Location = new System.Drawing.Point(20, 107);
-            this.lblBerufsgruppen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblBerufsgruppen.Margin = new System.Windows.Forms.Padding(4);
             this.lblBerufsgruppen.Name = "lblBerufsgruppen";
             this.lblBerufsgruppen.Size = new System.Drawing.Size(135, 27);
             this.lblBerufsgruppen.TabIndex = 1003;
             this.lblBerufsgruppen.Text = "Berufsgruppen";
+            // 
+            // panelDoc
+            // 
+            this.panelDoc.BackColor = System.Drawing.Color.RosyBrown;
+            this.panelDoc.Location = new System.Drawing.Point(774, 11);
+            this.panelDoc.Name = "panelDoc";
+            this.panelDoc.Size = new System.Drawing.Size(242, 101);
+            this.panelDoc.TabIndex = 1005;
+            this.panelDoc.Visible = false;
             // 
             // frmFormularManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1022, 653);
+            this.Controls.Add(this.panelDoc);
             this.Controls.Add(this.cboBerufsgruppen);
             this.Controls.Add(this.lblBerufsgruppen);
             this.Controls.Add(this.chkNeuanlageSperren);
@@ -384,7 +396,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panelGird);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmFormularManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Formularmanager";
@@ -425,5 +437,6 @@
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkNeuanlageSperren;
         public Klient.cboAuswahllisteMulti cboBerufsgruppen;
         private Infragistics.Win.Misc.UltraLabel lblBerufsgruppen;
+        private QS2.Desktop.ControlManagment.BasePanel panelDoc;
     }
 }
