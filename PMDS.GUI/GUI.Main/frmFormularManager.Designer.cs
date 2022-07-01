@@ -365,10 +365,13 @@
             // 
             // panelDoc
             // 
-            this.panelDoc.BackColor = System.Drawing.Color.RosyBrown;
-            this.panelDoc.Location = new System.Drawing.Point(774, 11);
+            this.panelDoc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelDoc.BackColor = System.Drawing.Color.DarkGray;
+            this.panelDoc.Location = new System.Drawing.Point(822, 11);
             this.panelDoc.Name = "panelDoc";
-            this.panelDoc.Size = new System.Drawing.Size(242, 101);
+            this.panelDoc.Size = new System.Drawing.Size(194, 103);
             this.panelDoc.TabIndex = 1005;
             this.panelDoc.Visible = false;
             // 

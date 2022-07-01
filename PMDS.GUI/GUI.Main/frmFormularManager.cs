@@ -38,8 +38,13 @@ namespace PMDS.GUI.GUI.Main
             set
             {
                 _FormMode = value;
-                this.panelDoc.Visible = _FormMode == eFormMode.doc;
+                this.panelDoc.Visible = _FormMode == eFormMode.rtf;
                 this.panelGird.Visible = _FormMode == eFormMode.pdf;
+                this.panelDoc.Left = panelGird.Left;
+                this.panelDoc.Top = panelGird.Top;
+                this.panelDoc.Width = panelGird.Width;
+                this.panelDoc.Height = panelGird.Height;
+                this.panelDoc.Dock = this.panelGird.Dock;
             }
         }
 
@@ -59,7 +64,7 @@ namespace PMDS.GUI.GUI.Main
         {
             none = 0,
             pdf = 1,
-            doc = 2
+            rtf = 2
             
         }
 
@@ -180,14 +185,14 @@ namespace PMDS.GUI.GUI.Main
 
                     if (rFormular.Name.sEquals(".s2frm", Enums.eCompareMode.EndsWith))
                     {
-                        this.panelGird.Visible = true;
+                        FormMode = eFormMode.pdf;
                         this.PDFDocumentIsLocked = false;
                         this.pdfViewer1.LoadDocument(rFormular.PDF_BLOP);
-                        FormMode = eFormMode.pdf;
                     }
-                    else if (rFormular.Name.sEquals(".s2frmDOC", Enums.eCompareMode.EndsWith))
+                    else if (rFormular.Name.sEquals(".s2frmRTF", Enums.eCompareMode.EndsWith))
                     {
-                        FormMode = eFormMode.doc;
+                        FormMode = eFormMode.rtf;
+                        this.contTXTFieldBeschreibung.TXTControlField.Load(rFormular.PDF_BLOP, TXTextControl.BinaryStreamType.InternalUnicodeFormat);
                     }
 
                     this.btnAdd.Visible = true;
@@ -256,20 +261,28 @@ namespace PMDS.GUI.GUI.Main
                         return false;
                     }
 
-                    using (MemoryStream ms = new MemoryStream())
+                    if (FormMode == eFormMode.pdf)
                     {
-                        this.pdfViewer1.Document.FormFill.InterForm.ResetForm();
-                        this.pdfViewer1.Document.Save(ms, SaveFlags.RemoveSecurity);
-                        Byte[] bPDF = ms.ToArray();
-                        rFormular.PDF_BLOP = bPDF;
-                    }
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        this.pdfViewer1.Document.Save(ms, SaveFlags.RemoveSecurity);
-                        Byte[] bPDF = ms.ToArray();
-                        rFormular.PDF_BLOP = bPDF;
-                    }
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            this.pdfViewer1.Document.FormFill.InterForm.ResetForm();
+                            this.pdfViewer1.Document.Save(ms, SaveFlags.RemoveSecurity);
+                            Byte[] bPDF = ms.ToArray();
+                            rFormular.PDF_BLOP = bPDF;
+                        }
 
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            this.pdfViewer1.Document.Save(ms, SaveFlags.RemoveSecurity);
+                            Byte[] bPDF = ms.ToArray();
+                            rFormular.PDF_BLOP = bPDF;
+                        }
+                    }
+                    else if (FormMode == eFormMode.rtf)
+                    {
+                        this.contTXTFieldBeschreibung.TXTControlField.Save(out byte[] binaryData, TXTextControl.BinaryStreamType.InternalUnicodeFormat);
+                        rFormular.PDF_BLOP = binaryData;
+                    }
                     db.SaveChanges();
 
                     this.clearUI();
@@ -291,7 +304,7 @@ namespace PMDS.GUI.GUI.Main
         {
             try
             {
-                this.openFileDialog1.Filter  = "Formular-Dateien (pdf, rtf, docx)|*.pdf;*.rtf;*.docx";
+                this.openFileDialog1.Filter = "PDF-Dateien|*.pdf|RTF-Dateien|*.rtf";
                 DialogResult result = this.openFileDialog1.ShowDialog();
                 if (result == DialogResult.OK)
                 {
@@ -329,27 +342,17 @@ namespace PMDS.GUI.GUI.Main
                             FormMode = eFormMode.pdf;
                         }
                     }
-                    else if (FileExtension.sEquals(".docx", Enums.eCompareMode.EndsWith) || FileExtension.sEquals(".rtf", Enums.eCompareMode.EndsWith))
+                    else if (FileExtension.sEquals(".rtf", Enums.eCompareMode.EndsWith))
                     {
-                        this.txtFormularname2.Text = FileName.Trim() + ".s2frmDOC";
-                        this.panelDoc.Visible = true;
-                        this.panelGird.Visible = false;
+                        FormMode = eFormMode.rtf;
+                        this.txtFormularname2.Text = FileName.Trim() + ".s2frmRTF";
 
                         this.contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
                         this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.FloatingText, true, true, false, false, true, false);
-                        this.contTXTFieldBeschreibung.TXTControlField.Text = "Hallo";
-                        //this.contTXTFieldBeschreibung.delonValueChanged += new QS2.Desktop.Txteditor.contTXTField.onValueChanged(this.valueChanged);
-                        //this.contTXTFieldBeschreibung.delonValueChanged += new QS2.Desktop.Txteditor.contTXTField.onValueChanged(this.valueChangedBeschreibungTxtControl);
-                        //this.contTXTFieldBeschreibung.delOnKeyUp += new QS2.Desktop.Txteditor.contTXTField.onKeyUp(this.BeschreibungKeyUp);
-
-                        this.panelDoc.Left = panelGird.Left;
-                        this.panelDoc.Top = panelGird.Top;
-                        this.panelDoc.Width = panelGird.Width;
-                        this.panelDoc.Height = panelGird.Height;                        
-
                         this.contTXTFieldBeschreibung.Dock = DockStyle.Fill;
                         this.panelDoc.Controls.Add(contTXTFieldBeschreibung);
-                        FormMode = eFormMode.doc;
+                        Application.DoEvents();
+                        this.contTXTFieldBeschreibung.TXTControlField.Load(file, TXTextControl.StreamType.RichTextFormat);
                     }
 
                     Application.DoEvents();
