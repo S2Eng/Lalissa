@@ -81,7 +81,7 @@
             this.panelGird.Location = new System.Drawing.Point(5, 178);
             this.panelGird.Margin = new System.Windows.Forms.Padding(4);
             this.panelGird.Name = "panelGird";
-            this.panelGird.Size = new System.Drawing.Size(1014, 424);
+            this.panelGird.Size = new System.Drawing.Size(1112, 432);
             this.panelGird.TabIndex = 15;
             this.panelGird.Visible = false;
             // 
@@ -123,7 +123,7 @@
             this.pdfViewer1.ShowCurrentPageHighlight = true;
             this.pdfViewer1.ShowLoadingIcon = true;
             this.pdfViewer1.ShowPageSeparator = true;
-            this.pdfViewer1.Size = new System.Drawing.Size(1009, 384);
+            this.pdfViewer1.Size = new System.Drawing.Size(1107, 392);
             this.pdfViewer1.SizeMode = Patagames.Pdf.Net.Controls.WinForms.SizeModes.FitToWidth;
             this.pdfViewer1.TabIndex = 4;
             this.pdfViewer1.TextSelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
@@ -167,7 +167,7 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.AutoWorkLayout = false;
             this.btnSave.IsStandardControl = false;
-            this.btnSave.Location = new System.Drawing.Point(888, 608);
+            this.btnSave.Location = new System.Drawing.Point(986, 616);
             this.btnSave.Margin = new System.Windows.Forms.Padding(5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(117, 38);
@@ -184,7 +184,7 @@
             this.btnDel.Appearance = appearance1;
             this.btnDel.AutoWorkLayout = false;
             this.btnDel.IsStandardControl = false;
-            this.btnDel.Location = new System.Drawing.Point(982, 140);
+            this.btnDel.Location = new System.Drawing.Point(1080, 140);
             this.btnDel.Margin = new System.Windows.Forms.Padding(5);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(34, 29);
@@ -221,7 +221,7 @@
             this.btnAdd.Appearance = appearance2;
             this.btnAdd.AutoWorkLayout = false;
             this.btnAdd.IsStandardControl = false;
-            this.btnAdd.Location = new System.Drawing.Point(940, 140);
+            this.btnAdd.Location = new System.Drawing.Point(1038, 140);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(5);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(33, 29);
@@ -307,7 +307,7 @@
             this.btnAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(780, 608);
+            this.btnAbort.Location = new System.Drawing.Point(878, 616);
             this.btnAbort.Margin = new System.Windows.Forms.Padding(5);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(108, 38);
@@ -324,7 +324,7 @@
             this.btnPrint2.Appearance = appearance7;
             this.btnPrint2.AutoWorkLayout = false;
             this.btnPrint2.IsStandardControl = false;
-            this.btnPrint2.Location = new System.Drawing.Point(901, 140);
+            this.btnPrint2.Location = new System.Drawing.Point(999, 140);
             this.btnPrint2.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint2.Name = "btnPrint2";
             this.btnPrint2.Size = new System.Drawing.Size(32, 29);
@@ -371,7 +371,7 @@
             this.panelDoc.BackColor = System.Drawing.Color.DarkGray;
             this.panelDoc.Location = new System.Drawing.Point(822, 11);
             this.panelDoc.Name = "panelDoc";
-            this.panelDoc.Size = new System.Drawing.Size(194, 103);
+            this.panelDoc.Size = new System.Drawing.Size(292, 111);
             this.panelDoc.TabIndex = 1005;
             this.panelDoc.Visible = false;
             // 
@@ -379,7 +379,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 653);
+            this.ClientSize = new System.Drawing.Size(1120, 661);
             this.Controls.Add(this.panelDoc);
             this.Controls.Add(this.cboBerufsgruppen);
             this.Controls.Add(this.lblBerufsgruppen);

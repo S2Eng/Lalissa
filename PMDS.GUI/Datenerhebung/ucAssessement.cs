@@ -134,7 +134,7 @@ namespace PMDS.GUI
             }
 
             try
-            {
+              {
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F3)
                 {
                     //this.clickLoadTextbausteine(false);
@@ -600,13 +600,9 @@ namespace PMDS.GUI
                         bEditable = true;
                         this.contTXTFieldBeschreibung.delOnKeyUp += new QS2.Desktop.Txteditor.contTXTField.onKeyUp(this.BeschreibungKeyUp);
 
-                        //Felder ersetzen
+                        //Felder ersetzen "[Feldname] laut Liste
                         TXTextControl.TextControl editor = this.contTXTFieldBeschreibung.TXTControlField;
-                        this.doBookmarks.setBookmark("[Name]", "Oskar Staudinger", ref editor);
-
-
-
-
+                        SetAllRTFFields(ENV.IDAUFENTHALT, editor);
                     }
                 }
             }
@@ -616,6 +612,7 @@ namespace PMDS.GUI
                 throw new Exception("ucAssessement.NewFormular: " + ex.ToString());
             }
         }
+
         private void DelFormular()
         {
             try
@@ -924,7 +921,8 @@ namespace PMDS.GUI
             {
                 Cursor.Current = Cursors.WaitCursor;
                 this.NewFormular();
-
+                this.btnSave.Enabled = true;
+                this.btnAbbrechen.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -969,7 +967,7 @@ namespace PMDS.GUI
                 {
                     this.loadFormulardaten(this._IDData);
                 }
-      
+                FormMode = eFormMode.none;
             }
             catch (Exception ex1)
             {
@@ -1212,6 +1210,164 @@ namespace PMDS.GUI
                 bEditable = ((r == null || r.Datumerstellt.AddHours(ENV.AssessmentModifyTime) > DateTime.Now && ENV.HasRight(UserRights.DatenerhebungAendern)) || ENV.adminSecure);
             }
         }
+
+        public void SetAllRTFFields(Guid? IDAufenthalt, TXTextControl.TextControl editor)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                {
+                    Guid IDPatient = Guid.Empty;
+                    PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
+
+                    PMDS.db.Entities.Patient p = new PMDS.db.Entities.Patient();
+                    PMDS.db.Entities.Aufenthalt a = new PMDS.db.Entities.Aufenthalt();
+                    PMDS.db.Entities.Adresse adr = new PMDS.db.Entities.Adresse();
+                    PMDS.db.Entities.Klinik kli = new PMDS.db.Entities.Klinik();
+                    PMDS.db.Entities.Abteilung abt = new PMDS.db.Entities.Abteilung();
+                    PMDS.db.Entities.Bereich ber = new PMDS.db.Entities.Bereich();
+
+                    if (IDAufenthalt == null)
+                    {
+                        IDPatient = ENV.CurrentIDPatient;
+                    }
+                    else
+                    {
+                        a = PMDSBusiness1.getAufenthalt((Guid)IDAufenthalt, db);
+                        IDPatient = (Guid)a.IDPatient;
+                    }
+
+                    p = PMDSBusiness1.getPatient(IDPatient, db);
+                    Patient pat = new Patient(IDPatient);
+                    a = PMDSBusiness1.getAufenthalt(pat.Aufenthalt.ID, db);
+
+                    if (pat.Vorname != null) doBookmarks.setBookmark("[KLIENTVORNAME]", pat.Vorname, ref editor);
+                    if (p.Nachname != null) doBookmarks.setBookmark("[KLIENTNACHNAME]", p.Nachname, ref editor);
+                    if ((p.Vorname != null) && (p.Nachname != null)) doBookmarks.setBookmark("[KLIENT]", p.Nachname + " " + p.Vorname, ref editor);
+                    if (p.Anrede != null) doBookmarks.setBookmark("[KLIENTANREDE]", p.Anrede, ref editor);
+
+                    if (p.Geburtsdatum != null) doBookmarks.setBookmark("[KLIENTGEBDAT]", System.Convert.ToDateTime(p.Geburtsdatum).ToShortDateString(), ref editor);
+                    if (p.SterbeDatum != null) doBookmarks.setBookmark("[KLIENTSTERBEDATUM]", System.Convert.ToDateTime(p.SterbeDatum).ToShortDateString(), ref editor);
+                    doBookmarks.setBookmark("[KLIENTVERSTORBEN]", (p.Verstorben == true) ? "Ja" : "Nein", ref editor);
+                    if (p.Klientennummer != null) doBookmarks.setBookmark("[KLIENTNUMMER]", p.Klientennummer, ref editor);
+                    if (p.Titel != null) doBookmarks.setBookmark("[KLIENTTITEL]", p.Titel, ref editor);
+                    if (p.TitelPost != null) doBookmarks.setBookmark("[KLIENTTITELPOST]", p.TitelPost, ref editor);
+                    if (p.Kosename != null) doBookmarks.setBookmark("[KLIENTKOSENAME]", p.Kosename, ref editor);
+
+                    if (p.Sexus != null) doBookmarks.setBookmark("[KLIENTGESCHLECHT]", p.Sexus, ref editor);
+                    if (p.Familienstand != null) doBookmarks.setBookmark("[KLIENTFAMILIENSTAND]", p.Familienstand, ref editor);
+                    if (p.Staatsb != null) doBookmarks.setBookmark("[KLIENTSTAATSBUERGERSCHAFT]", p.Staatsb, ref editor);
+                    if (p.Klasse != null) doBookmarks.setBookmark("[KLIENTVERSICHERUNGKLASSE]", p.Klasse, ref editor);
+                    if (p.KrankenKasse != null) doBookmarks.setBookmark("[KLIENTKRANKENKASSE]", p.KrankenKasse, ref editor);
+                    if (p.BlutGruppe != null) doBookmarks.setBookmark("[KLIENTBLUTGRUPPE]", p.BlutGruppe, ref editor);
+                    if (p.Resusfaktor != null) doBookmarks.setBookmark("[KLIENTRHESUSFAKTOR]", p.Resusfaktor, ref editor);
+                    if (p.LedigerName != null) doBookmarks.setBookmark("[KLIENTLEDIGERNAME]", p.LedigerName, ref editor);
+                    if (p.Geburtsort != null) doBookmarks.setBookmark("[KLIENTGEBORT]", p.Geburtsort, ref editor);
+                    if (p.VersicherungsNr != null) doBookmarks.setBookmark("[KLIENTSVNR]", p.VersicherungsNr, ref editor);
+                    if (p.Privatversicherung != null) doBookmarks.setBookmark("[KLIENTPRIVATVERSICHERUNG]", p.Privatversicherung, ref editor);
+                    if (p.PrivPolNr != null) doBookmarks.setBookmark("[KLIENTPRIVATVERSICHERUNGPOLNR]", p.PrivPolNr, ref editor);
+
+                    if (p.ErlernterBeruf != null) doBookmarks.setBookmark("[KLIENTERLERNTERBERUF]", p.ErlernterBeruf, ref editor);
+                    if (p.Besonderheit != null) doBookmarks.setBookmark("[KLIENTBESONDERHEIT]", p.Besonderheit, ref editor);
+                    if (p.SterbeRegel != null) doBookmarks.setBookmark("[KLIENTSTERBEREGELUNG]", p.SterbeRegel, ref editor);
+                    doBookmarks.setBookmark("[KLIENTPFLEGEGELDANTRAG]", (p.PflegegeldantragJN == true) ? "Ja" : "Nein", ref editor);
+                    if (p.DatumPflegegeldantrag != null) doBookmarks.setBookmark("[KLIENTPFLEGEGELDANTRAGDATUM]", System.Convert.ToDateTime(p.DatumPflegegeldantrag).ToShortDateString(), ref editor);
+                    doBookmarks.setBookmark("[KLIENTPENSIONSTEILUNGSANTRAG]", (p.PensionsteilungsantragJN == true) ? "Ja" : "Nein", ref editor);
+                    if (p.DatumPensionsteilungsantrag != null) doBookmarks.setBookmark("[KLIENTPFLEGEGELDANTRAGDATUM]", System.Convert.ToDateTime(p.DatumPensionsteilungsantrag).ToShortDateString(), ref editor);
+                    if (p.Konfision != null) doBookmarks.setBookmark("[KLIENTKONFESSION]", p.Konfision, ref editor);
+                    doBookmarks.setBookmark("[KLIENTANATOMIE]", (p.Anatomie == true) ? "Ja" : "Nein", ref editor);
+                    doBookmarks.setBookmark("[KLIENTDNR]", (p.DNR == true) ? "Ja" : "Nein", ref editor);
+                    doBookmarks.setBookmark("[KLIENTPALLIATIV]", (p.Palliativ == true) ? "Ja" : "Nein", ref editor);
+                    doBookmarks.setBookmark("[KLIENTHOLOCAUST]", (p.KZUeberlebender == true) ? "Ja" : "Nein", ref editor);
+                    if (p.PatientenverfuegungJN != null) doBookmarks.setBookmark("[KLIENTPATIENTENVERFÜGUNG]", (p.PatientenverfuegungJN == true) ? "Ja" : "Nein", ref editor);
+                    if (p.PatientenverfuegungBeachtlichJN != null) doBookmarks.setBookmark("[KLIENTPATIENTENVERFÜGUNGBEACHTLICH]", (p.PatientenverfuegungBeachtlichJN == true) ? "Ja" : "Nein", ref editor);
+                    if (p.PatientverfuegungDatum != null) doBookmarks.setBookmark("[KLIENTPATIENTENVERFÜGUNGDATUM]", System.Convert.ToDateTime(p.PatientverfuegungDatum).ToShortDateString(), ref editor);
+                    if (p.PatientverfuegungAnmerkung != null) doBookmarks.setBookmark("[KLIENTPATIENTENVERFÜGUNGANMERKUNG]", p.PatientverfuegungAnmerkung, ref editor);
+
+                    doBookmarks.setBookmark("[KLIENTMILIEUBETREUUNG]", (p.Milieubetreuung == true) ? "Ja" : "Nein", ref editor);
+                    doBookmarks.setBookmark("[KLIENTDATENSCHUTZ]", (p.Datenschutz == true) ? "Ja" : "Nein", ref editor);
+                    if (p.lstSprachen != null) doBookmarks.setBookmark("[KLIENTSPRACHEN]", p.lstSprachen, ref editor);
+
+                    if (p.Haarfarbe != null) doBookmarks.setBookmark("[KLIENTHAARFARBE]", p.Haarfarbe, ref editor);
+                    if (p.Augenfarbe != null) doBookmarks.setBookmark("[KLIENTAUGENFARBE]", p.Augenfarbe, ref editor);
+                    if (p.Groesse != null) doBookmarks.setBookmark("[KLIENTGROESSE]", p.Groesse.ToString(), ref editor);
+                    if (p.Statur != null) doBookmarks.setBookmark("[KLIENTSTATUR]", p.Statur.ToString(), ref editor);
+
+                    doBookmarks.setBookmark("[KLIENTAMPUTATIONPROZENT]", p.Amputation_Prozent.ToString(), ref editor);
+                    if (p.Kennwort != null) doBookmarks.setBookmark("[KLIENTKENNWORT]", p.Kennwort, ref editor);
+
+                    doBookmarks.setBookmark("[KLIENTREZEPTGEBUEHRENBEFREIUNG]", (p.RezeptgebuehrbefreiungJN == true) ? "Ja" : "Nein", ref editor);
+                    doBookmarks.setBookmark("[KLIENTREZEPTGEBUEHRENBEFREIUNGREGO]", (p.RezGebBef_RegoJN == true) ? "Ja" : "Nein", ref editor);
+                    if (p.RezGebBef_RegoAb != null) doBookmarks.setBookmark("[KLIENTREZEPTGEBUEHRENBEFREIUNGREGOAB]", System.Convert.ToDateTime(p.RezGebBef_RegoAb).ToShortDateString(), ref editor);
+                    if (p.RezGebBef_RegoBis != null) doBookmarks.setBookmark("[KLIENTREZEPTGEBUEHRENBEFREIUNGREGOBIS]", System.Convert.ToDateTime(p.RezGebBef_RegoBis).ToShortDateString(), ref editor);
+                    doBookmarks.setBookmark("[KLIENTREZEPTGEBUEHRENBEFREIUNGBEFRISTET]", (p.RezGebBef_BefristetJN == true) ? "Ja" : "Nein", ref editor);
+                    if (p.RezGebBef_BefristetAb != null) doBookmarks.setBookmark("[KLIENTREZEPTGEBUEHRENBEFREIUNGBEFRISTETAB]", System.Convert.ToDateTime(p.RezGebBef_BefristetAb).ToShortDateString(), ref editor);
+                    if (p.RezGebBef_BefristetBis != null) doBookmarks.setBookmark("[KLIENTREZEPTGEBUEHRENBEFREIUNGBEFRISTETBIS]", System.Convert.ToDateTime(p.RezGebBef_BefristetBis).ToShortDateString(), ref editor);
+                    doBookmarks.setBookmark("[KLIENTREZEPTGEBUEHRENBEFREIUNGUNBEFRISTET]", (p.RezGebBef_UnbefristetJN == true) ? "Ja" : "Nein", ref editor);
+                    doBookmarks.setBookmark("[KLIENTREZEPTGEBUEHRENBEFREIUNGWIDERRUF]", (p.RezGebBef_WiderrufJN == true) ? "Ja" : "Nein", ref editor);
+                    if (p.RezGebBef_WiderrufGrund != null) doBookmarks.setBookmark("[KLIENTREZEPTGEBUEHRENBEFREIUNGWIDERRUFGRUND]", p.RezGebBef_WiderrufGrund, ref editor);
+                    doBookmarks.setBookmark("[KLIENTREZEPTGEBUEHRENBEFREIUNGSACHWALTER]", (p.RezGebBef_SachwalterJN == true) ? "Ja" : "Nein", ref editor);
+                    doBookmarks.setBookmark("[KLIENTREZEPTGEBUEHRENBEFREIUNGANMERKUNG]", p.RezGebBef_Anmerkung, ref editor);
+
+                    if (p.Betreuungsstufe != null) doBookmarks.setBookmark("[KLIENTBETREUUNGSSTUFE]", p.Betreuungsstufe, ref editor);
+                    if (p.BetreuungsstufeAb != null) doBookmarks.setBookmark("[KLIENTBETREUUNGSSTUFEAB]", System.Convert.ToDateTime(p.BetreuungsstufeAb).ToShortDateString(), ref editor);
+                    if (p.BetreuungsstufeBis != null) doBookmarks.setBookmark("[KLIENTBETREUUNGSSTUFEBIS]", System.Convert.ToDateTime(p.BetreuungsstufeBis).ToShortDateString(), ref editor);
+                    doBookmarks.setBookmark("[KLIENTSOZIALCARD]", (p.Sozialcard == true) ? "Ja" : "Nein", ref editor);
+                    doBookmarks.setBookmark("[KLIENTBEHINDERTENAUSWEIS]", (p.Behindertenausweis == true) ? "Ja" : "Nein", ref editor);
+
+                    doBookmarks.setBookmark("[KLIENTWOHNUNGABGEMELDET]", (pat.WohnungAbgemeldetJN == true) ? "Ja" : "Nein", ref editor);
+
+                    kli = PMDSBusiness1.getKlinik(pat.Aufenthalt.IDKlinik != null ? pat.Aufenthalt.IDKlinik : Guid.Empty, db);
+                    if (!pat.WohnungAbgemeldetJN)
+                    {
+                        adr = PMDSBusiness1.getAdresse2(pat.Adresse.ID != null ? pat.IDAdresse : Guid.Empty, db);
+                    }
+                    else
+                    {
+                        adr = PMDSBusiness1.getAdresse2(kli.IDAdresse != null ? (Guid)kli.IDAdresse : Guid.Empty, db);
+                    }
+                    if (adr.Strasse != null) doBookmarks.setBookmark("[KLIENTADRESSESTRASSE]", adr.Strasse, ref editor);
+                    if (adr.Plz != null) doBookmarks.setBookmark("[KLIENTADRESSEPLZ]", adr.Plz, ref editor);
+                    if (adr.Ort != null) doBookmarks.setBookmark("[KLIENTADRESSEORT]", adr.Ort, ref editor);
+                    if (adr.LandKZ != null) doBookmarks.setBookmark("[KLIENTADRESSELAND]", adr.LandKZ, ref editor);
+
+                    if (pat.Aufenthalt.ID != null)
+                    {
+                        if (a.Aufnahmezeitpunkt != null) doBookmarks.setBookmark("[AUFENTHALTAUFNAHMEDATUM]", Convert.ToDateTime(a.Aufnahmezeitpunkt).ToShortDateString(), ref editor);
+                        if (a.Fallnummer != null) doBookmarks.setBookmark("[AUFENTHALTFALLNUMMER]", a.Fallnummer.ToString(), ref editor);
+                        if (a.Gruppenkennzahl != null) doBookmarks.setBookmark("[AUFENTHALTGRUPPENKENNZAHL]", a.Gruppenkennzahl, ref editor);
+                        if (a.Postregelung != null) doBookmarks.setBookmark("[AUFENTHALTPOSTREGELUNG]", a.Postregelung, ref editor);
+                    }
+
+                    if (pat.Aufenthalt.IDKlinik != null)
+                    {
+                        adr = PMDSBusiness1.getAdresse2(kli.IDAdresse != null ? (Guid)kli.IDAdresse : Guid.Empty, db);
+                        if (adr.Strasse != null) doBookmarks.setBookmark("[EINRICHTUNGADRESSESTRASSE]", adr.Strasse, ref editor);
+                        if (adr.Plz != null) doBookmarks.setBookmark("[EINRICHTUNGADRESSEPLZ]", adr.Plz, ref editor);
+                        if (adr.Ort != null) doBookmarks.setBookmark("[EINRICHTUNGADRESSEORT]", adr.Ort, ref editor);
+                        if (adr.LandKZ != null) doBookmarks.setBookmark("[EINRICHTUNGADRESSELAND]", adr.LandKZ, ref editor);
+
+                        if (kli.Bezeichnung != null) doBookmarks.setBookmark("[AUFENTHALTEINRICHTUNG]", kli.Bezeichnung, ref editor);
+                        if (kli.Bezeichnung != null) doBookmarks.setBookmark("[EINRICHTUNGNAME]", kli.Bezeichnung, ref editor);
+                    }
+
+                    if (pat.Aufenthalt.IDAbteilung != null)
+                    {
+                        abt = PMDSBusiness1.getAbteilung(pat.Aufenthalt.IDAbteilung, db);
+                        if (abt.Bezeichnung != null) doBookmarks.setBookmark("[AUFENTHALTABTEILUNG]", abt.Bezeichnung, ref editor);
+                    }
+
+                    if (pat.Aufenthalt.IDBereich != null)
+                    {
+                        ber = PMDSBusiness1.getBereich(pat.Aufenthalt.IDBereich, db);
+                        if (ber.Bezeichnung != null) doBookmarks.setBookmark("[AUFENTHALTBEREICH]", ber.Bezeichnung, ref editor);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in FDF.SetAllFDFFields:" + ex.ToString());
+            }
+        }
     }
-    
 }

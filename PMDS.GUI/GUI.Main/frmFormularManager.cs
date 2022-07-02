@@ -193,7 +193,8 @@ namespace PMDS.GUI.GUI.Main
                         FormMode = eFormMode.rtf;
                         panelDoc.Controls.Clear();
                         this.contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
-                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.FloatingText, true, true, false, false, true, false);
+                        this.contTXTFieldBeschreibung.TXTControlField.ZoomFactor = 150;
+                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.PageView, true, true, false, false, true, false);
                         this.contTXTFieldBeschreibung.Dock = DockStyle.Fill;
                         this.panelDoc.Controls.Add(contTXTFieldBeschreibung);
                         Application.DoEvents();
@@ -354,7 +355,8 @@ namespace PMDS.GUI.GUI.Main
                         this.txtFormularname2.Text = FileName.Trim() + ".s2frmRTF";
 
                         this.contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
-                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.FloatingText, true, true, false, false, true, false);
+                        this.contTXTFieldBeschreibung.TXTControlField.ZoomFactor = 150;
+                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.PageView, true, true, false, false, true, false);
                         this.contTXTFieldBeschreibung.Dock = DockStyle.Fill;
                         this.panelDoc.Controls.Add(contTXTFieldBeschreibung);
                         Application.DoEvents();
@@ -365,8 +367,9 @@ namespace PMDS.GUI.GUI.Main
 
                     this.btnAbort.Enabled = true;
                     this.btnSave.Enabled = true;
-                    this.btnPrint2.Visible = true;
+                    this.btnPrint2.Visible = (FormMode == eFormMode.pdf);
                     this.cboFormulare.ReadOnly = true;
+                    Application.DoEvents();
                 }
                 return true;
             }
@@ -588,8 +591,17 @@ namespace PMDS.GUI.GUI.Main
 
                 this.PDFDocumentIsLocked = false;
                 this.clearUI();
-                this.pdfViewer1.Document = null;
-                this.pdfViewer1.ClearRenderBuffer();
+
+                if (FormMode == eFormMode.pdf)
+                {
+                    this.pdfViewer1.Document = null;
+                    this.pdfViewer1.ClearRenderBuffer();
+                }
+                else
+                {
+                    this.contTXTFieldBeschreibung.TXTControlField.Clear();
+                }
+                FormMode = eFormMode.none;
                 this.loadAllFormularFromDB(null);
 
                 this.btnAdd.Visible = true;
