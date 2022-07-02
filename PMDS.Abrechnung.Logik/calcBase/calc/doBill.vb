@@ -99,7 +99,13 @@ Public Class doBill
                 If rKost.ZahlungsbetragBrutto - rKost.sumBrutto <> 0 Then
                     If AndereKostenträgerNetto <> 0 Then
                         Dim IDBillRtfRZ2 As System.Guid = System.Guid.NewGuid()
-                        bill.setPrintColumn(IDBillRtfRZ2, eTypProt.AbzüglAndererKost, 0, "abzüglich andere Kostenträger", AndereKostenträgerNetto, 0, 0, 0, billFormat)
+
+                        Dim Zeilentext As String = "abzüglich andere Kostenträger"
+                        If AndereKostenträgerNetto = 0.1 Then
+                            Zeilentext = "Rundungsdifferenz"
+                        End If
+
+                        bill.setPrintColumn(IDBillRtfRZ2, eTypProt.AbzüglAndererKost, 0, Zeilentext, AndereKostenträgerNetto, 0, 0, 0, billFormat)
                         bill.add(IDBillRtfRZ2, eTypProt.AbzüglAndererKost, billFormat, calc.dbCalc, rKost.IDKostIntern, rKost.IDKost, Me.rowKlient(calc.dbCalc).calcTyp, 0, 0, 0, "", editor)
                     End If
                 End If
@@ -735,7 +741,7 @@ Public Class doBill
                             Dim rLeistZeile As dbPMDS.LeistungzeileRow = Me.newLeistZeilen(rLeist, Nr, tLeistZeile, calc)
                             rLeistZeile.Menge = TageVoll
                             rLeistZeile.BetragNettoEH = rLeist.TagespreisNetto
-                            rLeistZeile.BetragNetto = Math.Round(rLeistZeile.Menge * rLeistZeile.BetragNettoEH, 2)
+                            rLeistZeile.BetragNetto = Math.Round(rLeistZeile.Menge * rLeistZeile.BetragNettoEH, 2, MidpointRounding.AwayFromZero)
                             rLeistZeile.FIBU = rLeist.FIBU.Trim()
                             rLeistZeile.IDLeistungsKatalog = rLeist.IDLeistungskatalog
                             rLeistZeile.IDSonderLeistungskatalog = rLeist.IDSonderleistung
@@ -749,7 +755,7 @@ Public Class doBill
                             Dim rLeistZeile As dbPMDS.LeistungzeileRow = Me.newLeistZeilen(rLeist, Nr, tLeistZeile, calc)
                             rLeistZeile.Menge = TageReduziert
                             rLeistZeile.BetragNettoEH = rLeist.TagespreisReduziertNetto
-                            rLeistZeile.BetragNetto = Math.Round(rLeistZeile.Menge * rLeistZeile.BetragNettoEH, 2)
+                            rLeistZeile.BetragNetto = Math.Round(rLeistZeile.Menge * rLeistZeile.BetragNettoEH, 2, MidpointRounding.AwayFromZero)
                             rLeistZeile.FIBU = rLeist.FIBU.Trim()
                             rLeistZeile.IDLeistungsKatalog = rLeist.IDLeistungskatalog
                             rLeistZeile.IDSonderLeistungskatalog = rLeist.IDSonderleistung
@@ -775,13 +781,12 @@ Public Class doBill
                         If rLeistZeile.Leistungsgruppe = 3 Then     'Sonderleistung
                             rLeistZeile.Menge = rLeistZeile.Menge
                             rLeistZeile.BetragNettoEH = rLeist.TagespreisNetto
-                            rLeistZeile.BetragNetto = Math.Round(rLeist.MonatspreisNetto, 2)
+                            rLeistZeile.BetragNetto = Math.Round(rLeist.MonatspreisNetto, 2, MidpointRounding.AwayFromZero)
 
                         Else                                        'Grund- und Periodische Leistungen
                             rLeistZeile.BetragNettoEH = rLeist.MonatspreisNetto
-                            rLeistZeile.BetragNetto = Math.Round(rLeistZeile.BetragNettoEH, 2)
+                            rLeistZeile.BetragNetto = Math.Round(rLeistZeile.BetragNettoEH, 2, MidpointRounding.AwayFromZero)
                             rLeistZeile.Menge = 1
-
                         End If
                     End If
                 End If
