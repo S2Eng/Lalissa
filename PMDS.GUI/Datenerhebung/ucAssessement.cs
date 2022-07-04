@@ -55,6 +55,7 @@ namespace PMDS.GUI
         private QS2.Desktop.Txteditor.doBookmarks doBookmarks = new QS2.Desktop.Txteditor.doBookmarks();
         private eFormMode _FormMode = eFormMode.none;
         private bool bEditable;
+        private uint iEditableHours = ENV.AssessmentModifyTime;
 
         private eFormMode FormMode
         {
@@ -73,7 +74,8 @@ namespace PMDS.GUI
                 this.panelDoc.Height = panelGird.Height;
 
                 this.btnPrint2.Visible = (value == eFormMode.pdf);
-                this.btnAbdocken.Visible = (value == eFormMode.pdf);
+                this.btnAbdocken.Visible = false;
+                //this.btnAbdocken.Visible = (value == eFormMode.pdf);
             }
         }
 
@@ -91,53 +93,18 @@ namespace PMDS.GUI
             EventArgs ev = new EventArgs();
 //            this.OnValueChanged(o, ev);
         }
-
-        public void valueChangedBeschreibungTxtControl()
-        {
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-                PMDS.Global.ENV.HandleException(ex);
-            }
-            //if (this.chkAlsDekursKopieren.Visible)
-            //{
-            //    if (!String.IsNullOrWhiteSpace(this.contTXTFieldBeschreibung.TXTControlField.Text))
-            //    {
-            //        this.chkAlsDekursKopieren.Checked = true;
-            //        setWichtigFuerDefaults(eDekursDefaults.Intervention.ToString(), false);
-            //    }
-            //    else
-            //    {
-            //        this.chkAlsDekursKopieren.Checked = false;
-            //        setWichtigFuerDefaults(eDekursDefaults.Intervention.ToString(), true);
-            //    }
-            //}
-            //else
-            //{
-
-            //}
-        }
+//}
 
         private void BeschreibungKeyUp(object sender, KeyEventArgs e)
         {
-            if (bEditable)
-            {
-                this.btnSave.Enabled = true;
-                this.btnAbbrechen.Enabled = true;
-            }
-                else
-            {
-                this.btnSave.Enabled = false;
-                this.btnAbbrechen.Enabled = true;
-            }
+            this.btnSave.Enabled = bEditable;
+            this.btnAbbrechen.Enabled = bEditable;
 
             try
-              {
+            {
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F3)
                 {
-                    //this.clickLoadTextbausteine(false);
+                    this.clickLoadTextbausteine();
                 }
             }
             catch (Exception ex)
@@ -214,7 +181,7 @@ namespace PMDS.GUI
                 }
 
                 SetActiveItemBackground();
-                this.btnAbdocken.Visible = false;
+                //this.btnAbdocken.Visible = false;
                 this.btnPrint2.Enabled = false;
                 this.pdfToolStripViewModes1.Visible = false;
                 this.pdfToolStripZoomEx1.Visible = false;
@@ -251,7 +218,7 @@ namespace PMDS.GUI
                 _row = dt[0];
                 this.pdfViewer1.Visible = false;
                 this.panelUnten.Visible = false;
-                this.btnAbdocken.Visible = false;
+                //this.btnAbdocken.Visible = false;
                 this.pdfToolStripViewModes1.Visible = false;
                 this.pdfToolStripZoomEx1.Visible = false;
                 this.btnPrint2.Enabled = false;
@@ -335,6 +302,9 @@ namespace PMDS.GUI
 
                     this.tFormularDatenFelderOrig = this.b.loadFormularDatenFelderForAssesstment(rFormularDaten.ID, db);
 
+                    iEditableHours = (rFormular.EditHours < 0 ? iEditableHours = ENV.AssessmentModifyTime : (uint)rFormular.EditHours);
+                    bEditable = ((r == null || r.Datumerstellt.AddHours(iEditableHours) > DateTime.Now && ENV.HasRight(UserRights.DatenerhebungAendern)) || ENV.adminSecure);
+
                     if (rFormular.Name.sEquals(".s2frm", S2Extensions.Enums.eCompareMode.EndsWith))
                     {
                         FormMode = eFormMode.pdf;
@@ -345,22 +315,18 @@ namespace PMDS.GUI
                         this.pdfToolStripViewModes1.Visible = true;
                         this.pdfToolStripZoomEx1.Visible = true;
                         this.pdfViewer1.Focus();
-
                         Application.DoEvents();
-
                     }
                     else if (rFormular.Name.sEquals(".s2frmRTF", S2Extensions.Enums.eCompareMode.EndsWith))
                     {
                         FormMode = eFormMode.rtf;
                         panelDoc.Controls.Clear();
                         this.contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
-                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.FloatingText, true, true, false, true, true, false);
+                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.FloatingText, false, true, false, true, true, true);
                         this.contTXTFieldBeschreibung.Dock = DockStyle.Fill;
                         this.panelDoc.Controls.Add(contTXTFieldBeschreibung);
                         Application.DoEvents();
                         this.contTXTFieldBeschreibung.TXTControlField.Load(rFormularDaten.PDF_BLOP, TXTextControl.BinaryStreamType.InternalUnicodeFormat);
-
-                        bEditable = bEditable = ((r == null || r.Datumerstellt.AddHours(ENV.AssessmentModifyTime) > DateTime.Now && ENV.HasRight(UserRights.DatenerhebungAendern)) || ENV.adminSecure);
                         this.contTXTFieldBeschreibung.delOnKeyUp += new QS2.Desktop.Txteditor.contTXTField.onKeyUp(this.BeschreibungKeyUp);
                     }
                 }          
@@ -437,7 +403,7 @@ namespace PMDS.GUI
                     btnAbbrechen.Enabled = false;
 
                     EnableDisableMenus();
-                    this.btnAbdocken.Visible = (FormMode == eFormMode.pdf);
+                    //this.btnAbdocken.Visible = (FormMode == eFormMode.pdf);
                     this.btnPrint2.Enabled = (FormMode == eFormMode.pdf);
 
                     this.b.writeDekursForAssesstment(rFormularDaten, db, this.tFormularDatenFelderOrig, ucAssessement.tAuswahllisteFieldsDekurs, IsNew);
@@ -545,7 +511,7 @@ namespace PMDS.GUI
                 this.pdfViewer1.Visible = true;
                 EnableDisableMenus();
 
-                this.btnAbdocken.Visible = false;
+                //this.btnAbdocken.Visible = false;
                 this.btnPrint2.Enabled = false;
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
@@ -591,13 +557,11 @@ namespace PMDS.GUI
                         FormMode = eFormMode.rtf;
                         panelDoc.Controls.Clear();
                         this.contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
-                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.FloatingText, true, true, false, false, true, false);
+                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.FloatingText, false, true, true, true, true, true);
                         this.contTXTFieldBeschreibung.Dock = DockStyle.Fill;
                         this.panelDoc.Controls.Add(contTXTFieldBeschreibung);
                         Application.DoEvents();
                         this.contTXTFieldBeschreibung.TXTControlField.Load(rFormular.PDF_BLOP, TXTextControl.BinaryStreamType.InternalUnicodeFormat);
-
-                        bEditable = true;
                         this.contTXTFieldBeschreibung.delOnKeyUp += new QS2.Desktop.Txteditor.contTXTField.onKeyUp(this.BeschreibungKeyUp);
 
                         //Felder ersetzen "[Feldname] laut Liste
@@ -634,7 +598,7 @@ namespace PMDS.GUI
                 this.tFormularDatenFelderOrig = new List<PMDS.db.Entities.FormularDatenFelder>();
                 this.panelUnten.Visible = false;
                 this.pdfViewer1.Visible = false;
-                this.btnAbdocken.Visible = false;
+                //this.btnAbdocken.Visible = false;
                 this.btnPrint2.Enabled = false;
                 this.pdfToolStripViewModes1.Visible = false;
                 this.pdfToolStripZoomEx1.Visible = false;
@@ -921,8 +885,7 @@ namespace PMDS.GUI
             {
                 Cursor.Current = Cursors.WaitCursor;
                 this.NewFormular();
-                this.btnSave.Enabled = true;
-                this.btnAbbrechen.Enabled = true;
+                this.bEditable = true;
             }
             catch (Exception ex)
             {
@@ -989,7 +952,7 @@ namespace PMDS.GUI
                 this.RefreshItems();
                 this.btnSave.Enabled = false;
                 this.bntLöschen.Enabled = false;
-                this.btnAbdocken.Visible = false;
+                //this.btnAbdocken.Visible = false;
                 this.btnPrint2.Enabled = false;
                 this.pdfToolStripViewModes1.Visible = false;
                 this.pdfToolStripZoomEx1.Visible = false;
@@ -1013,7 +976,6 @@ namespace PMDS.GUI
             }
         }
 
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             try
@@ -1031,7 +993,6 @@ namespace PMDS.GUI
                     {
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -1042,7 +1003,6 @@ namespace PMDS.GUI
                 this.Cursor = Cursors.Default;
             }
         }
-
 
         private void formularAlsDatasetSpeichernToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1065,7 +1025,6 @@ namespace PMDS.GUI
                 this.Cursor = Cursors.Default;
             }
         }
-
 
         private void ucAssessement_VisibleChanged(object sender, EventArgs e)
         {
@@ -1158,21 +1117,10 @@ namespace PMDS.GUI
             if (!this.LockPDFViewer)
             {
                 dsFormularDaten.FormularDatenRow r = _data.FindByID(_IDData);
-
-                if ((r == null || r.Datumerstellt.AddHours(ENV.AssessmentModifyTime) > DateTime.Now && ENV.HasRight(UserRights.DatenerhebungAendern)) || ENV.adminSecure)
-                {
-                    this.btnSave.Enabled = true;
-                    this.btnAbbrechen.Enabled = true;
-                    this.btnPrint2.Enabled = false;
-                    this.btnAbdocken.Visible = false;
-                }
-                else
-                {
-                    this.btnSave.Enabled = false;
-                    this.btnAbbrechen.Enabled = true;
-                    this.btnPrint2.Enabled = false;
-                    this.btnAbdocken.Visible = false;
-                }
+                this.btnSave.Enabled = bEditable;
+                this.btnAbbrechen.Enabled = bEditable;
+                this.btnPrint2.Enabled = false;
+                //this.btnAbdocken.Visible = false;
             }            
         }
 
@@ -1202,12 +1150,22 @@ namespace PMDS.GUI
             }
         }
 
-        private void panelDoc_MouseClick(object sender, MouseEventArgs e)
+        public void clickLoadTextbausteine()
         {
-            if (!this.LockPDFViewer)
+            try
             {
-                dsFormularDaten.FormularDatenRow r = _data.FindByID(_IDData);
-                bEditable = ((r == null || r.Datumerstellt.AddHours(ENV.AssessmentModifyTime) > DateTime.Now && ENV.HasRight(UserRights.DatenerhebungAendern)) || ENV.adminSecure);
+                PMDS.GUI.GUI.Main.frmTextbausteinAuswahl frmTextbausteinAuswahl1 = new GUI.Main.frmTextbausteinAuswahl();
+                frmTextbausteinAuswahl1.initControl();
+                frmTextbausteinAuswahl1.ShowDialog(this);
+                if (!frmTextbausteinAuswahl1.abort)
+                {
+                    this.contTXTFieldBeschreibung.TXTControlField.Selection.Text = frmTextbausteinAuswahl1.TextbausteinAsPlainText;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("loadTextbausteine: " + ex.ToString());
             }
         }
 

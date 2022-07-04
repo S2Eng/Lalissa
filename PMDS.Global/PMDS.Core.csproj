@@ -572,6 +572,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppException.cs" />
+    <Compile Include="DataSetFormularTmp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetFormularTmp.xsd</DependentUpon>
+    </Compile>
     <Compile Include="db\cPflegestufenEinschaetzung.cs" />
     <Compile Include="Calc\FSWAbrechnung.cs" />
     <Compile Include="db\cEBInterfaceDB.cs" />
@@ -2471,6 +2476,17 @@
   <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetFormularTmp.xsc">
+      <DependentUpon>DataSetFormularTmp.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetFormularTmp.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetFormularTmp.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetFormularTmp.xss">
+      <DependentUpon>DataSetFormularTmp.xsd</DependentUpon>
     </None>
     <None Include="db\ERSystem\dsAsyncCommData.xsc">
       <DependentUpon>dsAsyncCommData.xsd</DependentUpon>

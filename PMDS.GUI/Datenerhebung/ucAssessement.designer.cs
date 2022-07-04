@@ -419,7 +419,6 @@
             this.panelDoc.Size = new System.Drawing.Size(194, 103);
             this.panelDoc.TabIndex = 1006;
             this.panelDoc.Visible = false;
-            this.panelDoc.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panelDoc_MouseClick);
             // 
             // panelTree
             // 

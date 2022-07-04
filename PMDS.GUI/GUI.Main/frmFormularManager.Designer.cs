@@ -39,6 +39,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFormularManager));
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             this.panelGird = new QS2.Desktop.ControlManagment.BasePanel();
             this.pdfToolStripViewModes1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripViewModes();
             this.pdfViewer1 = new Patagames.Pdf.Net.Controls.WinForms.PdfViewer();
@@ -61,6 +62,8 @@
             this.cboBerufsgruppen = new PMDS.GUI.Klient.cboAuswahllisteMulti();
             this.lblBerufsgruppen = new Infragistics.Win.Misc.UltraLabel();
             this.panelDoc = new QS2.Desktop.ControlManagment.BasePanel();
+            this.numEditHours = new QS2.Desktop.ControlManagment.BaseNumericEditor();
+            this.lblEditHours = new QS2.Desktop.ControlManagment.BaseLabel();
             this.panelGird.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboFormulare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkInNotfallAnzeigenJN)).BeginInit();
@@ -68,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFormularname2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBezeichnung2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkNeuanlageSperren)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEditHours)).BeginInit();
             this.SuspendLayout();
             // 
             // panelGird
@@ -188,7 +192,7 @@
             this.btnDel.Margin = new System.Windows.Forms.Padding(5);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(34, 29);
-            this.btnDel.TabIndex = 101;
+            this.btnDel.TabIndex = 11;
             this.btnDel.Tag = "";
             this.btnDel.Visible = false;
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
@@ -240,11 +244,11 @@
             this.chkInNotfallAnzeigenJN.Appearance = appearance3;
             this.chkInNotfallAnzeigenJN.BackColor = System.Drawing.Color.Transparent;
             this.chkInNotfallAnzeigenJN.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkInNotfallAnzeigenJN.Location = new System.Drawing.Point(611, 148);
+            this.chkInNotfallAnzeigenJN.Location = new System.Drawing.Point(520, 148);
             this.chkInNotfallAnzeigenJN.Margin = new System.Windows.Forms.Padding(4);
             this.chkInNotfallAnzeigenJN.Name = "chkInNotfallAnzeigenJN";
-            this.chkInNotfallAnzeigenJN.Size = new System.Drawing.Size(155, 22);
-            this.chkInNotfallAnzeigenJN.TabIndex = 13;
+            this.chkInNotfallAnzeigenJN.Size = new System.Drawing.Size(134, 22);
+            this.chkInNotfallAnzeigenJN.TabIndex = 7;
             this.chkInNotfallAnzeigenJN.Text = "Notfall anzeigen";
             // 
             // lblFormularname
@@ -268,8 +272,8 @@
             this.chkGUI.Location = new System.Drawing.Point(165, 148);
             this.chkGUI.Margin = new System.Windows.Forms.Padding(4);
             this.chkGUI.Name = "chkGUI";
-            this.chkGUI.Size = new System.Drawing.Size(225, 22);
-            this.chkGUI.TabIndex = 12;
+            this.chkGUI.Size = new System.Drawing.Size(195, 22);
+            this.chkGUI.TabIndex = 5;
             this.chkGUI.Text = "Als Assessment anzeigen";
             // 
             // lblBezeichnung
@@ -291,7 +295,7 @@
             this.txtFormularname2.Name = "txtFormularname2";
             this.txtFormularname2.ReadOnly = true;
             this.txtFormularname2.Size = new System.Drawing.Size(388, 24);
-            this.txtFormularname2.TabIndex = 10;
+            this.txtFormularname2.TabIndex = 1;
             this.txtFormularname2.ValueChanged += new System.EventHandler(this.txtFormularname2_ValueChanged);
             // 
             // txtBezeichnung2
@@ -300,7 +304,7 @@
             this.txtBezeichnung2.Margin = new System.Windows.Forms.Padding(4);
             this.txtBezeichnung2.Name = "txtBezeichnung2";
             this.txtBezeichnung2.Size = new System.Drawing.Size(388, 24);
-            this.txtBezeichnung2.TabIndex = 11;
+            this.txtBezeichnung2.TabIndex = 2;
             // 
             // btnAbort
             // 
@@ -328,7 +332,7 @@
             this.btnPrint2.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint2.Name = "btnPrint2";
             this.btnPrint2.Size = new System.Drawing.Size(32, 29);
-            this.btnPrint2.TabIndex = 102;
+            this.btnPrint2.TabIndex = 9;
             this.btnPrint2.Click += new System.EventHandler(this.btnPrint2_Click);
             // 
             // chkNeuanlageSperren
@@ -337,11 +341,11 @@
             this.chkNeuanlageSperren.Appearance = appearance8;
             this.chkNeuanlageSperren.BackColor = System.Drawing.Color.Transparent;
             this.chkNeuanlageSperren.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkNeuanlageSperren.Location = new System.Drawing.Point(398, 148);
+            this.chkNeuanlageSperren.Location = new System.Drawing.Point(368, 148);
             this.chkNeuanlageSperren.Margin = new System.Windows.Forms.Padding(4);
             this.chkNeuanlageSperren.Name = "chkNeuanlageSperren";
-            this.chkNeuanlageSperren.Size = new System.Drawing.Size(164, 22);
-            this.chkNeuanlageSperren.TabIndex = 1002;
+            this.chkNeuanlageSperren.Size = new System.Drawing.Size(142, 22);
+            this.chkNeuanlageSperren.TabIndex = 6;
             this.chkNeuanlageSperren.Text = "Neuanlage sperren";
             // 
             // cboBerufsgruppen
@@ -350,7 +354,7 @@
             this.cboBerufsgruppen.Margin = new System.Windows.Forms.Padding(5);
             this.cboBerufsgruppen.Name = "cboBerufsgruppen";
             this.cboBerufsgruppen.Size = new System.Drawing.Size(601, 33);
-            this.cboBerufsgruppen.TabIndex = 1004;
+            this.cboBerufsgruppen.TabIndex = 4;
             // 
             // lblBerufsgruppen
             // 
@@ -375,11 +379,34 @@
             this.panelDoc.TabIndex = 1005;
             this.panelDoc.Visible = false;
             // 
+            // numEditHours
+            // 
+            this.numEditHours.Location = new System.Drawing.Point(778, 146);
+            this.numEditHours.MinValue = -1;
+            this.numEditHours.Name = "numEditHours";
+            this.numEditHours.Size = new System.Drawing.Size(86, 24);
+            this.numEditHours.TabIndex = 8;
+            this.numEditHours.Value = -1;
+            // 
+            // lblEditHours
+            // 
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            this.lblEditHours.Appearance = appearance10;
+            this.lblEditHours.AutoSize = true;
+            this.lblEditHours.Location = new System.Drawing.Point(650, 150);
+            this.lblEditHours.Margin = new System.Windows.Forms.Padding(9, 7, 9, 7);
+            this.lblEditHours.Name = "lblEditHours";
+            this.lblEditHours.Size = new System.Drawing.Size(125, 17);
+            this.lblEditHours.TabIndex = 1007;
+            this.lblEditHours.Text = "Editierbar (Stunden)";
+            // 
             // frmFormularManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1120, 661);
+            this.Controls.Add(this.lblEditHours);
+            this.Controls.Add(this.numEditHours);
             this.Controls.Add(this.panelDoc);
             this.Controls.Add(this.cboBerufsgruppen);
             this.Controls.Add(this.lblBerufsgruppen);
@@ -412,6 +439,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFormularname2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBezeichnung2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkNeuanlageSperren)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEditHours)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,5 +469,7 @@
         public Klient.cboAuswahllisteMulti cboBerufsgruppen;
         private Infragistics.Win.Misc.UltraLabel lblBerufsgruppen;
         private QS2.Desktop.ControlManagment.BasePanel panelDoc;
+        private QS2.Desktop.ControlManagment.BaseNumericEditor numEditHours;
+        public QS2.Desktop.ControlManagment.BaseLabel lblEditHours;
     }
 }

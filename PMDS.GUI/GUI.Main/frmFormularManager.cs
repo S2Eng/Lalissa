@@ -106,6 +106,7 @@ namespace PMDS.GUI.GUI.Main
                 this.chkGUI.Checked = false;
                 this.chkInNotfallAnzeigenJN.Checked = false;
                 this.chkNeuanlageSperren.Checked = false;
+                this.numEditHours.Value = -1;
                 FormMode = eFormMode.none;
             }
             catch (Exception ex)
@@ -181,6 +182,7 @@ namespace PMDS.GUI.GUI.Main
                     this.chkGUI.Checked = rFormular.GUI;
                     this.chkInNotfallAnzeigenJN.Checked = rFormular.InNotfallAnzeigenJN;
                     this.chkNeuanlageSperren.Checked = rFormular.NeuanlageSperren;
+                    this.numEditHours.Value = rFormular.EditHours;
 
                     if (rFormular.Name.sEquals(".s2frm", Enums.eCompareMode.EndsWith))
                     {
@@ -258,6 +260,7 @@ namespace PMDS.GUI.GUI.Main
                     rFormular.InNotfallAnzeigenJN = this.chkInNotfallAnzeigenJN.Checked;
                     rFormular.GUI = this.chkGUI.Checked;
                     rFormular.NeuanlageSperren = this.chkNeuanlageSperren.Checked;
+                    rFormular.EditHours = (int)this.numEditHours.Value;
                     rFormular.lstIDBerufsgruppe = this.cboBerufsgruppen.getSelectedRowsID();
 
                     System.Linq.IQueryable<Formular> tFormularCheck = db.Formular.Where(o => o.ID != rFormular.ID && o.Name == rFormular.Name.Trim());
