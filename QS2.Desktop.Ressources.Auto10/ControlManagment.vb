@@ -603,7 +603,7 @@ Public Class ControlManagment
         End Try
     End Function
     Public Shared Function MessageBox(Txt As String, Caption As String, Buttons As MessageBoxButtons, ico As MessageBoxIcon,
-                                        Optional NoTranslation As Boolean = False) As DialogResult
+                                        Optional NoTranslation As Boolean = False, Optional Password As String = "") As DialogResult
         Try
             If ENV._IntDeactivated Or NoTranslation Then
                 Return MsgBox(Txt.Trim(), Buttons, Caption.Trim())
@@ -780,7 +780,7 @@ Public Class ControlManagment
             Throw New Exception("doRessources.MessageBox: " + ex.ToString())
         End Try
     End Function
-    Public Shared Function MessageBox(Txt As String, Caption As String, Buttons As MessageBoxButtons, Optional NoTranslation As Boolean = False) As DialogResult
+    Public Shared Function MessageBox(Txt As String, Caption As String, Buttons As MessageBoxButtons, Optional NoTranslation As Boolean = False, Optional Password As String = "") As DialogResult
         Try
             Dim ico As MessageBoxIcon = MessageBoxIcon.Information
             Return ControlManagment.MessageBox(Txt, Caption, Buttons, ico, NoTranslation)
