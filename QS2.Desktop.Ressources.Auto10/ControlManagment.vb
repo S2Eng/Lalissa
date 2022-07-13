@@ -1727,8 +1727,8 @@ Public Class HandleEvent
             If frmRes.ShowDialog() = DialogResult.OK Then
             End If
 
-            Me.doBaseElements1.runControlManagment(Me._IDRes, Me._forControl, Me._ContextMenuStrip, False, Me._rRes, False, Me._IsStandardControl, _
-                                                    Me._DoIDResAuto, False)
+            Me.doBaseElements1.runControlManagment(Me._IDRes, Me._forControl, Me._ContextMenuStrip, False, Me._rRes, False, Me._IsStandardControl,
+                                                    Me._DoIDResAuto)
             Return True
 
         Catch ex As Exception
@@ -1745,8 +1745,8 @@ Public Class HandleEvent
             frmCrit.defaultApplication = ENV._Application
             If frmCrit.ShowDialog() = DialogResult.OK Then
             End If
-            Me.doBaseElements1.runControlManagment(Me._IDRes, Me._forControl, Me._ContextMenuStrip, False, Me._rRes, False, Me._IsStandardControl, _
-                                                   Me._DoIDResAuto, False)
+            Me.doBaseElements1.runControlManagment(Me._IDRes, Me._forControl, Me._ContextMenuStrip, False, Me._rRes, False, Me._IsStandardControl,
+                                                   Me._DoIDResAuto)
             Return True
 
         Catch ex As Exception

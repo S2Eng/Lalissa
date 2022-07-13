@@ -35,8 +35,7 @@ Public Class BaseGrid
             If Not DesignMode And ENV._ApplicationIsRunning Then
                 Me.initControl()
 
-                Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Me.contextMenuStrip1, Me.IsLoaded, rRes, True, True, Me.DoIDResAuto,
-                                                       DesignMode)
+                Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Me.contextMenuStrip1, Me.IsLoaded, rRes, True, True, Me.DoIDResAuto)
                 Me.DoLayoutGrid()
                 doFormatDateTime(Me)
             Else

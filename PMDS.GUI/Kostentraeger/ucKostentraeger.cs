@@ -493,9 +493,9 @@ namespace PMDS.Calc.UI.Admin
             ultraGridColumn7.Header.VisiblePosition = 6;
             ultraGridColumn8.Header.Editor = null;
             ultraGridColumn8.Header.VisiblePosition = 7;
+            ultraGridColumn9.Header.Caption = "eMail";
             ultraGridColumn9.Header.Editor = null;
             ultraGridColumn9.Header.VisiblePosition = 8;
-            ultraGridColumn9.Hidden = true;
             ultraGridColumn10.Header.Caption = "Rechnungsempfänger";
             ultraGridColumn10.Header.Editor = null;
             ultraGridColumn10.Header.VisiblePosition = 9;
@@ -1227,7 +1227,7 @@ namespace PMDS.Calc.UI.Admin
             _KostentraegerChenged = false;
 
             HideOrShowPatienTransferColumns();
-            dgMainSetColumnOrder();
+            //dgMainSetColumnOrder();
         }
 
         public bool ReadOnly
@@ -1318,7 +1318,6 @@ namespace PMDS.Calc.UI.Admin
             {
                 dgMain.DisplayLayout.Bands[0].Columns[_dt.TaschengeldJNColumn.ColumnName].Hidden = true;
             }
-            
             dgMain.DisplayLayout.Bands[0].Columns[_dt.PatientbezogenJNColumn.ColumnName].Hidden = hidePatient;
           
             dgMain.DisplayLayout.Bands[0].Columns[_dt.TransferleistungJNColumn.ColumnName].Hidden = hideTransfer;
@@ -1328,66 +1327,6 @@ namespace PMDS.Calc.UI.Admin
 
             dgMain.Selected.Rows.Clear();
             dgMain.ActiveRow = null;
-        }
-
-        private void dgMainSetColumnOrder()
-        {
-            dgMain.SuspendLayout();
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.FIBUKontoColumn.ColumnName].Header.VisiblePosition = 0;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.NameColumn.ColumnName].Header.VisiblePosition = 1;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.VornameColumn.ColumnName].Header.VisiblePosition = 2;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.AnredeColumn.ColumnName].Header.VisiblePosition = 3;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.StrasseColumn.ColumnName].Header.VisiblePosition = 4;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.PLZColumn.ColumnName].Header.VisiblePosition = 5;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.OrtColumn.ColumnName].Header.VisiblePosition = 6;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.RechnungsanschriftColumn.ColumnName].Header.VisiblePosition = 7;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.RechnungsempfaengerColumn.ColumnName].Header.VisiblePosition = 8;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.IDKostentraegerSubColumn.ColumnName].Header.VisiblePosition = 9;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.UIDNrColumn.ColumnName].Header.VisiblePosition = 10;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.IDKlinikColumn.ColumnName].Header.VisiblePosition = 11;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.SammelabrechnungJNColumn.ColumnName].Header.VisiblePosition = 12;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.GSBGColumn.ColumnName].Header.VisiblePosition = 13;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.ZahlartColumn.ColumnName].Header.VisiblePosition = 14;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.ErlagscheingebuehrJNColumn.ColumnName].Header.VisiblePosition = 15;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.BetragColumn.ColumnName].Header.VisiblePosition = 16;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.BankColumn.ColumnName].Header.VisiblePosition = 17;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.KontonrColumn.ColumnName].Header.VisiblePosition = 18;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.BLZColumn.ColumnName].Header.VisiblePosition = 19;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.TaschengeldJNColumn.ColumnName].Header.VisiblePosition = 20;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.PatientbezogenJNColumn.ColumnName].Header.VisiblePosition = 21;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.TransferleistungJNColumn.ColumnName].Header.VisiblePosition = 22;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.FIBUKontoColumn.ColumnName].Width = 80;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.NameColumn.ColumnName].Width = 200;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.VornameColumn.ColumnName].Width = 80;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.AnredeColumn.ColumnName].Width = 80;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.StrasseColumn.ColumnName].Width = 150;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.PLZColumn.ColumnName].Width = 60;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.OrtColumn.ColumnName].Width = 150;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.RechnungsanschriftColumn.ColumnName].Width = 130;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.RechnungsempfaengerColumn.ColumnName].Width = 300;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.IDKostentraegerSubColumn.ColumnName].Width = 150;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.UIDNrColumn.ColumnName].Width = 150;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.IDKlinikColumn.ColumnName].Width = 120;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.SammelabrechnungJNColumn.ColumnName].Width = 50;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.GSBGColumn.ColumnName].Width = 50;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.ZahlartColumn.ColumnName].Width = 100;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.ErlagscheingebuehrJNColumn.ColumnName].Width = 50;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.BetragColumn.ColumnName].Width = 50;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.BankColumn.ColumnName].Width = 150;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.KontonrColumn.ColumnName].Width = 150;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.BLZColumn.ColumnName].Width = 150;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.TaschengeldJNColumn.ColumnName].Width = 50;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.PatientbezogenJNColumn.ColumnName].Width = 50;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.TransferleistungJNColumn.ColumnName].Width = 50;
-            dgMain.ResumeLayout();
         }
 
         private bool ValidateField(UltraGridCell cell)
@@ -1403,34 +1342,27 @@ namespace PMDS.Calc.UI.Admin
 
             r.SetColumnError(cell.Column.Index, "");
 
-            //if (this.bKlientenzuordnung)
-            //{
-            //    bool bNoValidatePLZ = true;
-            //}
-            //else
-            //{
-                if (cell.Column.Key == dt.FIBUKontoColumn.ColumnName || cell.Column.Key == dt.NameColumn.ColumnName ||
-                        cell.Column.Key == dt.StrasseColumn.ColumnName || cell.Column.Key == dt.PLZColumn.ColumnName ||
-                        cell.Column.Key == dt.OrtColumn.ColumnName
-                       )
+            if (cell.Column.Key == dt.FIBUKontoColumn.ColumnName || cell.Column.Key == dt.NameColumn.ColumnName ||
+                    cell.Column.Key == dt.StrasseColumn.ColumnName || cell.Column.Key == dt.PLZColumn.ColumnName ||
+                    cell.Column.Key == dt.OrtColumn.ColumnName
+                    )
+            {
+                GuiUtil.ValidateField(dgMain, cell.Text.Trim().Length > 0,
+                                        QS2.Desktop.ControlManagment.ControlManagment.getRes("Kostenträger") + " " + cell.Row.Cells["Name"].Value + " - " + cell.Column.Header.Caption.Trim() + ": " + ENV.String("GUI.E_NO_TEXT"), ref bError, false, null);
+                if (bError)
+                    r.SetColumnError(cell.Column.Index, ENV.String("GUI.E_NO_TEXT"));
+
+                if (!bError && cell.Column.Key == dt.FIBUKontoColumn.ColumnName && ENV.ForceUniqueFiBu)  //Fibu Konto muss eindeutig sein, wenn ForceUniqueFiBu gesetzt ist (=Standard)
                 {
-                    GuiUtil.ValidateField(dgMain, cell.Text.Trim().Length > 0,
-                                            QS2.Desktop.ControlManagment.ControlManagment.getRes("Kostenträger") + " " + cell.Row.Cells["Name"].Value + " - " + cell.Column.Header.Caption.Trim() + ": " + ENV.String("GUI.E_NO_TEXT"), ref bError, false, null);
+                    Guid id = (Guid)cell.Row.Cells[dt.IDColumn.ColumnName].Value;
+                    dsKostentraeger.KostentraegerRow[] kRows = (dsKostentraeger.KostentraegerRow[])dt.Select("ID <> '" + id.ToString() + "' and FIBUKonto = '" + cell.Text.Trim() + "'");
+
+                    string msg = QS2.Desktop.ControlManagment.ControlManagment.getRes("Konto (FIBU): ") + cell.Text.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes(" existiert bereits. Bitte ändern.");
+                    GuiUtil.ValidateField(dgMain, kRows.Length == 0, msg, ref bError, false, null);
                     if (bError)
-                        r.SetColumnError(cell.Column.Index, ENV.String("GUI.E_NO_TEXT"));
-
-                    if (!bError && cell.Column.Key == dt.FIBUKontoColumn.ColumnName && ENV.ForceUniqueFiBu)  //Fibu Konto muss eindeutig sein, wenn ForceUniqueFiBu gesetzt ist (=Standard)
-                    {
-                        Guid id = (Guid)cell.Row.Cells[dt.IDColumn.ColumnName].Value;
-                        dsKostentraeger.KostentraegerRow[] kRows = (dsKostentraeger.KostentraegerRow[])dt.Select("ID <> '" + id.ToString() + "' and FIBUKonto = '" + cell.Text.Trim() + "'");
-
-                        string msg = QS2.Desktop.ControlManagment.ControlManagment.getRes("Konto (FIBU): ") + cell.Text.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes(" existiert bereits. Bitte ändern.");
-                        GuiUtil.ValidateField(dgMain, kRows.Length == 0, msg, ref bError, false, null);
-                        if (bError)
-                            r.SetColumnError(cell.Column.Index, msg);
-                    }
+                        r.SetColumnError(cell.Column.Index, msg);
                 }
-            //}
+            }
 
             if (!ForPatientExclusive && !cbAlgemein.Checked && cbPatbezK.Checked && !cbTransferKt.Checked && cell.Column.Key == dt.PatientbezogenJNColumn.ColumnName)
             {
@@ -1443,7 +1375,6 @@ namespace PMDS.Calc.UI.Admin
                 dgMain.ActiveCell = cell;
                 dgMain.PerformAction(UltraGridAction.EnterEditMode);
             }
-
             return !bError;
         }
 
@@ -1495,11 +1426,6 @@ namespace PMDS.Calc.UI.Admin
                     this.dgKlienten.Refresh();
                 }
             }
-
-            //if (sb.Length > 0)
-            //{
-            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Folgende Kostenträger (" + sb.ToString() + ") ist(sind) zu Klienten zugeordenet, Daher kann(können) nicht gelöscht werden.", "Kostenträger löschen", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
         }
 
         public void SelectKostentraeger(Guid idKostentraeger)
@@ -1518,9 +1444,6 @@ namespace PMDS.Calc.UI.Admin
         }
         public void notEditable( )
         {
-            //this.dgMain.DisplayLayout.Override.CellClickAction = CellClickAction.RowSelect;
-            //dgMain.DisplayLayout.Bands[0].Override.CellClickAction = CellClickAction.RowSelect;
-
             panelButtonsOben.Visible = false;
         }
 
@@ -1544,9 +1467,6 @@ namespace PMDS.Calc.UI.Admin
 
         private void AddKostentraeger()
         {
-            //string sNewFIBUKonto = "";
-            //this.getFIBUKontoAuto(ENV.IDKlinik, ref sNewFIBUKonto);
-
             tbSearch.Text = "";
             dsKostentraeger.KostentraegerRow r = null;
             switch ((int)opAuswahl.Value)
@@ -1838,8 +1758,6 @@ namespace PMDS.Calc.UI.Admin
                 dgKlienten.DisplayLayout.ValueLists.Clear();
                 GuiTools.AddKostentraegerArtValueList(dgKlienten, "enumKostentraegerart");
                 PMDS.GUI.UltraGridTools.AddBenutzerValueList(dgKlienten, "IDBenutzer");
-                //UltraGridTools.AddPatientenValueList(dgKlienten, "IDPatient");
-                //PMDS.GUI.UltraGridTools.AddPatientenValueListFromAbteilungen(dgKlienten, "IDPatient", new List<Guid>().ToArray(), true);
                 PMDS.UI.Sitemap.UIFct.getAllPatientsFromAllKliniken(dgKlienten, "IDPatient");
             }
             catch (Exception ex)
@@ -1878,18 +1796,8 @@ namespace PMDS.Calc.UI.Admin
 
             PMDS.GUI.UltraGridTools.SelectFieldInLastRowForEdit(dgKlienten, "IDPatient");
 
-            //frmKostentraegerKlienten frm = new frmKostentraegerKlienten(new Patient().AllEntries(), "TEXT", "ID");
-            //dsPatientStation.PatientDataTable dt = Patient.ByFilter("", false, new List<Guid>().ToArray(), Guid.Empty, false);
-            //DateTime datum = new DateTime(1900, 1, 1);
-            //dsPatientStation.PatientDataTable dt = Patient.GetPatienten("", false, new List<Guid>().ToArray(), Guid.Empty,
-            //    datum, datum, datum, datum);
-
             dsPatientStation.PatientDataTable dt = new dsPatientStation.PatientDataTable();
-
-            //frmKostentraegerKlienten frm = new frmKostentraegerKlienten(new Patient().AllEntries(), "TEXT", "ID");
             frmKostenträgerKlienten frm = new frmKostenträgerKlienten();
-            //frm.Show();
-            //Application.DoEvents();
             if (!ActivRow.IsIDKlinikNull())
             {
                 PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik();
@@ -1915,8 +1823,7 @@ namespace PMDS.Calc.UI.Admin
             DialogResult res = frm.ShowDialog();
 
             if (res == DialogResult.OK)
-            {
-                
+            {                
                 ValidateField(dgKlienten.ActiveRow);
                 _KostentraegerChenged = true;
                 if (ValueChanged != null)
@@ -2045,57 +1952,22 @@ namespace PMDS.Calc.UI.Admin
                 return;
             
             dsPatientKostentraeger.PatientKostentraegerDataTable dt = new dsPatientKostentraeger.PatientKostentraegerDataTable();
-            //ArrayList al2xy = new ArrayList();
             bool del = false;
-            //bool gefundenxy;
             DateTime guetigAb, gueltigBis;
             foreach (UltraGridRow r in ra)
             {
-                //if (r.Cells[dt.AbgerechnetBisColumn.ColumnName].Value == DBNull.Value)
-                //{
-                    //Nur bei TransferLeistung:Ist der Kostenträger zur Tabelle PatientEinkommen zugeordenet?. Wenn ja nicht löschen
-                    if (TransferKostentraegerJN)
-                    {
-                        guetigAb = (DateTime)r.Cells[dt.GueltigAbColumn.ColumnName].Value;
-                        gueltigBis = (DateTime)r.Cells[dt.GueltigBisColumn.ColumnName].Value;
-                        //gefunden = false;
-                        //foreach (dsPatientEinkommen.PatientEinkommenRow pr in pedt)
-                        //{
-                        //    if (pr.IsIDKostentraegerNull() || pr.IDKostentraeger != (Guid)r.Cells["IDKostentraeger"].Value)
-                        //        continue;
-                        //    if (pr.IsGueltigBisNull())
-                        //    {
-                        //        if (pr.GueltigAb >= guetigAb && pr.GueltigAb <= gueltigBis)
-                        //        {
-                        //            gefunden = true;
-                        //            break;
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        if (!((pr.GueltigAb.Date < guetigAb.Date && pr.GueltigBis.Date < guetigAb.Date) || (pr.GueltigAb.Date > gueltigBis.Date && pr.GueltigBis.Date > gueltigBis.Date)))
-                        //        {
-                        //            gefunden = true;
-                        //            break;
-                        //        }
-                        //    }
-                        //}
-                        //if (gefunden)
-                        //    al2.Add(r);
-                        //else
-                        //{
-                            r.Delete(false);
-                            del = true;
-                        //}
-                    }
-                    else
-                    {
-                        r.Delete(false);
-                        del = true;
-                    }
-                //}
-                //else
-                //    al2.Add(r);
+                if (TransferKostentraegerJN)
+                {
+                    guetigAb = (DateTime)r.Cells[dt.GueltigAbColumn.ColumnName].Value;
+                    gueltigBis = (DateTime)r.Cells[dt.GueltigBisColumn.ColumnName].Value;
+                    r.Delete(false);
+                    del = true;
+                }
+                else
+                {
+                    r.Delete(false);
+                    del = true;
+                }
             }
 
             if (del)
@@ -2106,22 +1978,9 @@ namespace PMDS.Calc.UI.Admin
                     ValueChanged(this, null);
             }
 
-            //ra = (UltraGridRow[])al2.ToArray(typeof(UltraGridRow));
-
-            //StringBuilder sb = new StringBuilder();
-            //sb.Append("Für folgende Datensätze sind Abrechnungen erstellt worden oder sind zu Transferleistungen des Klienten zugeordnet, daher können sie nicht gelöscht werden.\n\t");
-
-            //foreach (UltraGridRow r in ra)
-            //{
-            //    sb.Append("- " + r.Cells[dt.IDPatientColumn.ColumnName].Text);
-            //    sb.Append(", " + r.Cells[dt.GueltigAbColumn.ColumnName].Text);
-            //    sb.Append(" - " + r.Cells[dt.GueltigBisColumn.ColumnName].Text);
-            //    sb.Append(", " + r.Cells[dt.enumKostentraegerartColumn.ColumnName].Text + "\n\t");
-            //}
-            //if (ra.Length > 0)
-            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sb.ToString(), "Löschen", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            if (!del) return;
+            if (!del) 
+                return;
+            
             if (dgKlienten.Rows.GetFilteredInNonGroupByRows().Length > 0)
             {
                 dgKlienten.ActiveRow = dgKlienten.Rows.GetFilteredInNonGroupByRows()[0];
@@ -2151,35 +2010,7 @@ namespace PMDS.Calc.UI.Admin
                 PMDS.Global.ENV.HandleException(ex);
             }
         }
-        private void dgMain_CellListSelect(object sender, CellEventArgs e)
-        {
-            try
-            {
-                //if (e.Cell.Column.ToString() == "IDKlinik")
-                //{
-                //    this.dgMainIDKlinikChanged(e.Cell.Row);
-                //}
-            }
-            catch (Exception ex)
-            {
-                PMDS.Global.ENV.HandleException(ex);
-            }
-        }
 
-        private void dgMain_AfterCellUpdate(object sender, CellEventArgs e)
-        {
-            try
-            {
-                //if (e.Cell.Column.ToString() == "IDKlinik")
-                //{
-                //    this.dgMainIDKlinikChanged(e.Cell.Row);
-                //}
-            }
-            catch (Exception ex)
-            {
-                PMDS.Global.ENV.HandleException(ex);
-            }
-        }
         public void dgMainIDKlinikChanged(Infragistics.Win.UltraWinGrid.UltraGridRow GridRow)
         {
             try
@@ -2252,47 +2083,6 @@ namespace PMDS.Calc.UI.Admin
             {
                 InitKlienten();
 
-                //OS 211004: Nur mehr Klient und von - bis für alle Kostenträgerarten anzeigen
-                //Spalte RechnungJN nur für Klientbezogene Kostenträger anzeigen
-                //if (ActivRow != null)
-                //{
-                //    if (dgMain.ActiveRow != null)
-                //    {
-                //        if ((bool )dgMain.ActiveRow.Cells["TransferleistungJN"].Value == true )
-                //        {
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.BetragErrechnetJNColumn.ColumnName].Hidden = true; 
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.BetragColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.VorauszahlungJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.enumKostentraegerartColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungTypColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.IDPatientIstZahlerColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungsdruckTypColumn.ColumnName].Hidden = true;
-                //        }
-                //        else if ((bool)dgMain.ActiveRow.Cells["TransferleistungJN"].Value == false && (bool)dgMain.ActiveRow.Cells["PatientbezogenJN"].Value == false)
-                //        {
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.BetragErrechnetJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.BetragColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.VorauszahlungJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.enumKostentraegerartColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungTypColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.IDPatientIstZahlerColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungsdruckTypColumn.ColumnName].Hidden = true;
-                //        }
-                //        else if ((bool)dgMain.ActiveRow.Cells["PatientbezogenJN"].Value == true)
-                //        {
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.BetragErrechnetJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.BetragColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.VorauszahlungJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.enumKostentraegerartColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungTypColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.IDPatientIstZahlerColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungsdruckTypColumn.ColumnName].Hidden = true;
-                //        }
-                //    }
-                //}
                 if (AfterRowActivate != null)
                     AfterRowActivate(sender, e);
 
@@ -2323,7 +2113,6 @@ namespace PMDS.Calc.UI.Admin
                     _Filtergesetzt = false;
                     SetFilter();
                 }
-
             }
             catch (Exception ex)
             {
@@ -2365,7 +2154,6 @@ namespace PMDS.Calc.UI.Admin
             AddKostentraeger();
         }
 
-
         private void btnAddKlienten_Click(object sender, EventArgs e)
         {
             if (ActivRow == null) return;
@@ -2381,10 +2169,6 @@ namespace PMDS.Calc.UI.Admin
         {
             if (ReadOnly || ActivRow == null) return;
             UpdateKlientdaten();
-        }
-
-        private void dgMain_BeforeRowActivate(object sender, RowEventArgs e)
-        {
         }
 
         private void dgMain_BeforeSelectChange(object sender, BeforeSelectChangeEventArgs e)
@@ -2489,11 +2273,6 @@ namespace PMDS.Calc.UI.Admin
                 e.Cancel = true;
         }
 
-        private void dgMain_InitializeLayout(object sender, InitializeLayoutEventArgs e)
-        {
-
-        }
-
         private void btnKostPrüfenDB_Click(object sender, EventArgs e)
         {
             try
@@ -2528,10 +2307,72 @@ namespace PMDS.Calc.UI.Admin
 
         private void dgMain_InitializeLayout_1(object sender, InitializeLayoutEventArgs e)
         {
+            dgMain.SuspendLayout();
+            dgMain.DisplayLayout.Bands[0].Columns["FIBUKonto"].Header.VisiblePosition = 0;
+            dgMain.DisplayLayout.Bands[0].Columns["Name"].Header.VisiblePosition = 1;
+            dgMain.DisplayLayout.Bands[0].Columns["Vorname"].Header.VisiblePosition = 2;
+            dgMain.DisplayLayout.Bands[0].Columns["Anrede"].Header.VisiblePosition = 3;
+            dgMain.DisplayLayout.Bands[0].Columns["Strasse"].Header.VisiblePosition = 4;
+            dgMain.DisplayLayout.Bands[0].Columns["PLZ"].Header.VisiblePosition = 5;
+            dgMain.DisplayLayout.Bands[0].Columns["Ort"].Header.VisiblePosition = 6;
+            dgMain.DisplayLayout.Bands[0].Columns["Rechnungsanschrift"].Header.VisiblePosition = 7;
+            dgMain.DisplayLayout.Bands[0].Columns["Rechnungsempfaenger"].Header.VisiblePosition = 8;
+            dgMain.DisplayLayout.Bands[0].Columns["IDKostentraegerSub"].Header.VisiblePosition = 9;
+            dgMain.DisplayLayout.Bands[0].Columns["UIDNr"].Header.VisiblePosition = 10;
+
+            dgMain.DisplayLayout.Bands[0].Columns["IDKlinik"].Header.VisiblePosition = 11;
+
+            dgMain.DisplayLayout.Bands[0].Columns["SammelabrechnungJN"].Header.VisiblePosition = 12;
+            dgMain.DisplayLayout.Bands[0].Columns["GSBG"].Header.VisiblePosition = 13;
+            dgMain.DisplayLayout.Bands[0].Columns["Zahlart"].Header.VisiblePosition = 14;
+            dgMain.DisplayLayout.Bands[0].Columns["ErlagscheingebuehrJN"].Header.VisiblePosition = 15;
+            dgMain.DisplayLayout.Bands[0].Columns["Betrag"].Header.VisiblePosition = 16;
+
+            dgMain.DisplayLayout.Bands[0].Columns["Bank"].Header.VisiblePosition = 17;
+            dgMain.DisplayLayout.Bands[0].Columns["Kontonr"].Header.VisiblePosition = 18;
+            dgMain.DisplayLayout.Bands[0].Columns["BLZ"].Header.VisiblePosition = 19;
+            dgMain.DisplayLayout.Bands[0].Columns["TaschengeldJN"].Header.VisiblePosition = 20;
+
+            dgMain.DisplayLayout.Bands[0].Columns["PatientbezogenJN"].Header.VisiblePosition = 21;
+            dgMain.DisplayLayout.Bands[0].Columns["TransferleistungJN"].Header.VisiblePosition = 22;
+
+            dgMain.DisplayLayout.Bands[0].Columns["FIBUKonto"].Width = 80;
+            dgMain.DisplayLayout.Bands[0].Columns["Name"].Width = 200;
+            dgMain.DisplayLayout.Bands[0].Columns["Vorname"].Width = 80;
+            dgMain.DisplayLayout.Bands[0].Columns["Anrede"].Width = 80;
+            dgMain.DisplayLayout.Bands[0].Columns["Strasse"].Width = 150;
+            dgMain.DisplayLayout.Bands[0].Columns["PLZ"].Width = 60;
+            dgMain.DisplayLayout.Bands[0].Columns["Ort"].Width = 150;
+            dgMain.DisplayLayout.Bands[0].Columns["Rechnungsanschrift"].Width = 130;
+            dgMain.DisplayLayout.Bands[0].Columns["Rechnungsempfaenger"].Width = 300;
+            dgMain.DisplayLayout.Bands[0].Columns["IDKostentraegerSub"].Width = 150;
+            dgMain.DisplayLayout.Bands[0].Columns["UIDNr"].Width = 150;
+
+            dgMain.DisplayLayout.Bands[0].Columns["IDKlinik"].Width = 120;
+
+            dgMain.DisplayLayout.Bands[0].Columns["SammelabrechnungJN"].Width = 50;
+            dgMain.DisplayLayout.Bands[0].Columns["GSBG"].Width = 50;
+            dgMain.DisplayLayout.Bands[0].Columns["Zahlart"].Width = 100;
+            dgMain.DisplayLayout.Bands[0].Columns["ErlagscheingebuehrJN"].Width = 50;
+            dgMain.DisplayLayout.Bands[0].Columns["Betrag"].Width = 50;
+            dgMain.DisplayLayout.Bands[0].Columns["Bank"].Width = 150;
+            dgMain.DisplayLayout.Bands[0].Columns["Kontonr"].Width = 150;
+            dgMain.DisplayLayout.Bands[0].Columns["BLZ"].Width = 150;
+
+            dgMain.DisplayLayout.Bands[0].Columns["TaschengeldJN"].Width = 50;
+            dgMain.DisplayLayout.Bands[0].Columns["PatientbezogenJN"].Width = 50;
+            dgMain.DisplayLayout.Bands[0].Columns["TransferleistungJN"].Width = 50;
+
+            dgMain.DisplayLayout.Bands[0].Columns["Rechnungsanschrift"].Header.Caption = "eMail";
+            dgMain.DisplayLayout.Bands[0].Columns["Rechnungsanschrift"].Hidden = false;
+            dgMain.ResumeLayout();
         }
 
         private void dgMain_VisibleChanged(object sender, EventArgs e)
         {
+            UltraGridLayout ugl = new UltraGridLayout();
+            InitializeLayoutEventArgs en = new InitializeLayoutEventArgs(ugl);
+            dgMain_InitializeLayout_1(sender, en);
         }
     }
 }

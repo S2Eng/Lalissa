@@ -40,7 +40,6 @@
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
@@ -52,6 +51,8 @@
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             this.txtBank = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblBank = new Infragistics.Win.Misc.UltraLabel();
             this.txtKontonr = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -75,6 +76,7 @@
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelKostenträger = new System.Windows.Forms.Panel();
+            this.txtAnrede = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.chkVorauszahlungJN = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.numErlagscheingebuehr = new QS2.Desktop.ControlManagment.BaseMaskEdit();
             this.basePanel1 = new QS2.Desktop.ControlManagment.BasePanel();
@@ -100,7 +102,8 @@
             this.txtStrasse = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblStrasse = new Infragistics.Win.Misc.UltraLabel();
             this.cboZahlart = new QS2.Desktop.ControlManagment.BaseComboEditor();
-            this.txtAnrede = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.txtRechnungsanschrift = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.lblRechnungsanschrift = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKontonr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBLZ)).BeginInit();
@@ -112,6 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.udteGueltigBis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelKostenträger.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAnrede)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVorauszahlungJN)).BeginInit();
             this.basePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udteErfasstAm)).BeginInit();
@@ -124,76 +128,84 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStrasse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboZahlart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAnrede)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRechnungsanschrift)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBank
             // 
-            this.txtBank.Location = new System.Drawing.Point(96, 128);
+            this.txtBank.Location = new System.Drawing.Point(112, 203);
+            this.txtBank.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBank.Name = "txtBank";
-            this.txtBank.Size = new System.Drawing.Size(313, 21);
-            this.txtBank.TabIndex = 5;
+            this.txtBank.Size = new System.Drawing.Size(365, 26);
+            this.txtBank.TabIndex = 6;
             // 
             // lblBank
             // 
             appearance1.TextVAlignAsString = "Middle";
             this.lblBank.Appearance = appearance1;
-            this.lblBank.Location = new System.Drawing.Point(8, 127);
+            this.lblBank.Location = new System.Drawing.Point(9, 201);
+            this.lblBank.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblBank.Name = "lblBank";
-            this.lblBank.Size = new System.Drawing.Size(76, 23);
+            this.lblBank.Size = new System.Drawing.Size(89, 30);
             this.lblBank.TabIndex = 1;
             this.lblBank.Text = "Bank";
             // 
             // txtKontonr
             // 
-            this.txtKontonr.Location = new System.Drawing.Point(96, 159);
+            this.txtKontonr.Location = new System.Drawing.Point(112, 243);
+            this.txtKontonr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtKontonr.MaxLength = 24;
             this.txtKontonr.Name = "txtKontonr";
-            this.txtKontonr.Size = new System.Drawing.Size(313, 21);
-            this.txtKontonr.TabIndex = 6;
+            this.txtKontonr.Size = new System.Drawing.Size(365, 26);
+            this.txtKontonr.TabIndex = 7;
             // 
             // lblKontoNr
             // 
             appearance2.TextVAlignAsString = "Middle";
             this.lblKontoNr.Appearance = appearance2;
-            this.lblKontoNr.Location = new System.Drawing.Point(8, 158);
+            this.lblKontoNr.Location = new System.Drawing.Point(9, 242);
+            this.lblKontoNr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblKontoNr.Name = "lblKontoNr";
-            this.lblKontoNr.Size = new System.Drawing.Size(76, 23);
+            this.lblKontoNr.Size = new System.Drawing.Size(89, 30);
             this.lblKontoNr.TabIndex = 3;
             this.lblKontoNr.Text = "IBAN";
             // 
             // txtBLZ
             // 
-            this.txtBLZ.Location = new System.Drawing.Point(96, 186);
+            this.txtBLZ.Location = new System.Drawing.Point(112, 279);
+            this.txtBLZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBLZ.MaxLength = 8;
             this.txtBLZ.Name = "txtBLZ";
-            this.txtBLZ.Size = new System.Drawing.Size(313, 21);
-            this.txtBLZ.TabIndex = 7;
+            this.txtBLZ.Size = new System.Drawing.Size(365, 26);
+            this.txtBLZ.TabIndex = 8;
             // 
             // lblBLZ
             // 
             appearance3.TextVAlignAsString = "Middle";
             this.lblBLZ.Appearance = appearance3;
-            this.lblBLZ.Location = new System.Drawing.Point(8, 185);
+            this.lblBLZ.Location = new System.Drawing.Point(9, 277);
+            this.lblBLZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblBLZ.Name = "lblBLZ";
-            this.lblBLZ.Size = new System.Drawing.Size(76, 23);
+            this.lblBLZ.Size = new System.Drawing.Size(89, 30);
             this.lblBLZ.TabIndex = 5;
             this.lblBLZ.Text = "BIC";
             // 
             // txtFIBUKonto
             // 
-            this.txtFIBUKonto.Location = new System.Drawing.Point(96, 44);
+            this.txtFIBUKonto.Location = new System.Drawing.Point(112, 58);
+            this.txtFIBUKonto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFIBUKonto.Name = "txtFIBUKonto";
-            this.txtFIBUKonto.Size = new System.Drawing.Size(195, 21);
+            this.txtFIBUKonto.Size = new System.Drawing.Size(227, 26);
             this.txtFIBUKonto.TabIndex = 1;
             // 
             // lblFIBU
             // 
             appearance4.TextVAlignAsString = "Middle";
             this.lblFIBU.Appearance = appearance4;
-            this.lblFIBU.Location = new System.Drawing.Point(8, 42);
+            this.lblFIBU.Location = new System.Drawing.Point(9, 55);
+            this.lblFIBU.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblFIBU.Name = "lblFIBU";
-            this.lblFIBU.Size = new System.Drawing.Size(70, 23);
+            this.lblFIBU.Size = new System.Drawing.Size(82, 30);
             this.lblFIBU.TabIndex = 7;
             this.lblFIBU.Text = "FiBu";
             // 
@@ -201,18 +213,20 @@
             // 
             appearance5.TextVAlignAsString = "Middle";
             this.lblZahlart.Appearance = appearance5;
-            this.lblZahlart.Location = new System.Drawing.Point(8, 241);
+            this.lblZahlart.Location = new System.Drawing.Point(9, 350);
+            this.lblZahlart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblZahlart.Name = "lblZahlart";
-            this.lblZahlart.Size = new System.Drawing.Size(70, 23);
+            this.lblZahlart.Size = new System.Drawing.Size(82, 30);
             this.lblZahlart.TabIndex = 9;
             this.lblZahlart.Text = "Zahlart";
             // 
             // chkErlagscheingebuehrJN
             // 
-            this.chkErlagscheingebuehrJN.Location = new System.Drawing.Point(8, 270);
+            this.chkErlagscheingebuehrJN.Location = new System.Drawing.Point(9, 388);
+            this.chkErlagscheingebuehrJN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkErlagscheingebuehrJN.Name = "chkErlagscheingebuehrJN";
-            this.chkErlagscheingebuehrJN.Size = new System.Drawing.Size(140, 23);
-            this.chkErlagscheingebuehrJN.TabIndex = 10;
+            this.chkErlagscheingebuehrJN.Size = new System.Drawing.Size(163, 30);
+            this.chkErlagscheingebuehrJN.TabIndex = 11;
             this.chkErlagscheingebuehrJN.Text = "Erlagscheingebühr J/N";
             this.chkErlagscheingebuehrJN.CheckedChanged += new System.EventHandler(this.chkErlagscheingebuehrJN_CheckedChanged);
             // 
@@ -223,17 +237,19 @@
             this.cboEnumKostentraegerart.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cboEnumKostentraegerart.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cboEnumKostentraegerart.BackColor = System.Drawing.Color.White;
-            this.cboEnumKostentraegerart.Location = new System.Drawing.Point(96, 215);
+            this.cboEnumKostentraegerart.Location = new System.Drawing.Point(112, 316);
+            this.cboEnumKostentraegerart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboEnumKostentraegerart.Name = "cboEnumKostentraegerart";
-            this.cboEnumKostentraegerart.Size = new System.Drawing.Size(313, 21);
-            this.cboEnumKostentraegerart.TabIndex = 8;
+            this.cboEnumKostentraegerart.Size = new System.Drawing.Size(365, 26);
+            this.cboEnumKostentraegerart.TabIndex = 9;
             // 
             // lblKostenträgerart
             // 
             this.lblKostenträgerart.AutoSize = true;
-            this.lblKostenträgerart.Location = new System.Drawing.Point(8, 218);
+            this.lblKostenträgerart.Location = new System.Drawing.Point(9, 320);
+            this.lblKostenträgerart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblKostenträgerart.Name = "lblKostenträgerart";
-            this.lblKostenträgerart.Size = new System.Drawing.Size(82, 14);
+            this.lblKostenträgerart.Size = new System.Drawing.Size(97, 19);
             this.lblKostenträgerart.TabIndex = 12;
             this.lblKostenträgerart.Text = "Kostenträgerart";
             // 
@@ -244,18 +260,20 @@
             this.cboIDBenutzer.BackColor = System.Drawing.Color.White;
             this.cboIDBenutzer.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cboIDBenutzer.Enabled = false;
-            this.cboIDBenutzer.Location = new System.Drawing.Point(109, 172);
+            this.cboIDBenutzer.Location = new System.Drawing.Point(127, 225);
+            this.cboIDBenutzer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboIDBenutzer.Name = "cboIDBenutzer";
             this.cboIDBenutzer.ReadOnly = true;
-            this.cboIDBenutzer.Size = new System.Drawing.Size(313, 21);
+            this.cboIDBenutzer.Size = new System.Drawing.Size(365, 26);
             this.cboIDBenutzer.TabIndex = 8;
             // 
             // lblGültigAb
             // 
             this.lblGültigAb.AutoSize = true;
-            this.lblGültigAb.Location = new System.Drawing.Point(9, 10);
+            this.lblGültigAb.Location = new System.Drawing.Point(10, 13);
+            this.lblGültigAb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblGültigAb.Name = "lblGültigAb";
-            this.lblGültigAb.Size = new System.Drawing.Size(50, 14);
+            this.lblGültigAb.Size = new System.Drawing.Size(59, 19);
             this.lblGültigAb.TabIndex = 8;
             this.lblGültigAb.Text = "Gültig ab";
             // 
@@ -265,19 +283,21 @@
             this.udteGueltigAb.Appearance = appearance8;
             this.udteGueltigAb.BackColor = System.Drawing.Color.White;
             this.udteGueltigAb.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.udteGueltigAb.Location = new System.Drawing.Point(110, 5);
+            this.udteGueltigAb.Location = new System.Drawing.Point(128, 7);
+            this.udteGueltigAb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.udteGueltigAb.Name = "udteGueltigAb";
             this.udteGueltigAb.ownFormat = "";
             this.udteGueltigAb.ownMaskInput = "";
-            this.udteGueltigAb.Size = new System.Drawing.Size(95, 21);
+            this.udteGueltigAb.Size = new System.Drawing.Size(111, 26);
             this.udteGueltigAb.TabIndex = 0;
             this.udteGueltigAb.Value = null;
             // 
             // lblBenutzer
             // 
-            this.lblBenutzer.Location = new System.Drawing.Point(9, 175);
+            this.lblBenutzer.Location = new System.Drawing.Point(10, 229);
+            this.lblBenutzer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblBenutzer.Name = "lblBenutzer";
-            this.lblBenutzer.Size = new System.Drawing.Size(77, 14);
+            this.lblBenutzer.Size = new System.Drawing.Size(90, 18);
             this.lblBenutzer.TabIndex = 21;
             this.lblBenutzer.Text = "Angelegt von";
             // 
@@ -287,20 +307,22 @@
             this.udteGueltigBis.Appearance = appearance9;
             this.udteGueltigBis.BackColor = System.Drawing.Color.White;
             this.udteGueltigBis.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.udteGueltigBis.Location = new System.Drawing.Point(319, 6);
+            this.udteGueltigBis.Location = new System.Drawing.Point(372, 8);
+            this.udteGueltigBis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.udteGueltigBis.Name = "udteGueltigBis";
             this.udteGueltigBis.ownFormat = "";
             this.udteGueltigBis.ownMaskInput = "";
-            this.udteGueltigBis.Size = new System.Drawing.Size(102, 21);
+            this.udteGueltigBis.Size = new System.Drawing.Size(119, 26);
             this.udteGueltigBis.TabIndex = 1;
             this.udteGueltigBis.Value = null;
             // 
             // lblGültigBis
             // 
             this.lblGültigBis.AutoSize = true;
-            this.lblGültigBis.Location = new System.Drawing.Point(229, 9);
+            this.lblGültigBis.Location = new System.Drawing.Point(267, 12);
+            this.lblGültigBis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblGültigBis.Name = "lblGültigBis";
-            this.lblGültigBis.Size = new System.Drawing.Size(51, 14);
+            this.lblGültigBis.Size = new System.Drawing.Size(61, 19);
             this.lblGültigBis.TabIndex = 10;
             this.lblGültigBis.Text = "Gültig bis";
             // 
@@ -312,10 +334,10 @@
             this.btnAbort.Appearance = appearance10;
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(700, 322);
-            this.btnAbort.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAbort.Location = new System.Drawing.Point(817, 429);
+            this.btnAbort.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Size = new System.Drawing.Size(75, 28);
+            this.btnAbort.Size = new System.Drawing.Size(88, 37);
             this.btnAbort.TabIndex = 1000;
             this.btnAbort.Tag = "";
             this.btnAbort.Text = "Abbrechen";
@@ -329,10 +351,10 @@
             this.btnSave.Appearance = appearance11;
             this.btnSave.AutoWorkLayout = false;
             this.btnSave.IsStandardControl = false;
-            this.btnSave.Location = new System.Drawing.Point(775, 322);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Location = new System.Drawing.Point(904, 429);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(83, 28);
+            this.btnSave.Size = new System.Drawing.Size(97, 37);
             this.btnSave.TabIndex = 1001;
             this.btnSave.Tag = "";
             this.btnSave.Text = "Speichern";
@@ -351,6 +373,8 @@
             this.panelKostenträger.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelKostenträger.BackColor = System.Drawing.Color.Transparent;
+            this.panelKostenträger.Controls.Add(this.txtRechnungsanschrift);
+            this.panelKostenträger.Controls.Add(this.lblRechnungsanschrift);
             this.panelKostenträger.Controls.Add(this.txtAnrede);
             this.panelKostenträger.Controls.Add(this.chkVorauszahlungJN);
             this.panelKostenträger.Controls.Add(this.numErlagscheingebuehr);
@@ -377,17 +401,27 @@
             this.panelKostenträger.Controls.Add(this.lblBLZ);
             this.panelKostenträger.Controls.Add(this.lblKontoNr);
             this.panelKostenträger.Controls.Add(this.lblBank);
-            this.panelKostenträger.Location = new System.Drawing.Point(5, 3);
+            this.panelKostenträger.Location = new System.Drawing.Point(6, 4);
+            this.panelKostenträger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelKostenträger.Name = "panelKostenträger";
-            this.panelKostenträger.Size = new System.Drawing.Size(860, 312);
+            this.panelKostenträger.Size = new System.Drawing.Size(1003, 420);
             this.panelKostenträger.TabIndex = 1002;
             this.panelKostenträger.Paint += new System.Windows.Forms.PaintEventHandler(this.panelKostenträger_Paint);
             // 
+            // txtAnrede
+            // 
+            this.txtAnrede.Location = new System.Drawing.Point(112, 22);
+            this.txtAnrede.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAnrede.Name = "txtAnrede";
+            this.txtAnrede.Size = new System.Drawing.Size(107, 26);
+            this.txtAnrede.TabIndex = 0;
+            // 
             // chkVorauszahlungJN
             // 
-            this.chkVorauszahlungJN.Location = new System.Drawing.Point(501, 38);
+            this.chkVorauszahlungJN.Location = new System.Drawing.Point(584, 50);
+            this.chkVorauszahlungJN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkVorauszahlungJN.Name = "chkVorauszahlungJN";
-            this.chkVorauszahlungJN.Size = new System.Drawing.Size(117, 23);
+            this.chkVorauszahlungJN.Size = new System.Drawing.Size(136, 30);
             this.chkVorauszahlungJN.TabIndex = 37;
             this.chkVorauszahlungJN.Text = "Vorauszahlung";
             this.chkVorauszahlungJN.Visible = false;
@@ -396,11 +430,12 @@
             // numErlagscheingebuehr
             // 
             this.numErlagscheingebuehr.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
-            this.numErlagscheingebuehr.Location = new System.Drawing.Point(228, 271);
+            this.numErlagscheingebuehr.Location = new System.Drawing.Point(266, 390);
+            this.numErlagscheingebuehr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numErlagscheingebuehr.Name = "numErlagscheingebuehr";
             this.numErlagscheingebuehr.NonAutoSizeHeight = 20;
-            this.numErlagscheingebuehr.Size = new System.Drawing.Size(102, 20);
-            this.numErlagscheingebuehr.TabIndex = 11;
+            this.numErlagscheingebuehr.Size = new System.Drawing.Size(119, 25);
+            this.numErlagscheingebuehr.TabIndex = 12;
             // 
             // basePanel1
             // 
@@ -423,49 +458,54 @@
             this.basePanel1.Controls.Add(this.lblGültigBis);
             this.basePanel1.Controls.Add(this.udteGueltigBis);
             this.basePanel1.Controls.Add(this.lblGültigAb);
-            this.basePanel1.Location = new System.Drawing.Point(425, 67);
+            this.basePanel1.Location = new System.Drawing.Point(496, 88);
+            this.basePanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.basePanel1.Name = "basePanel1";
-            this.basePanel1.Size = new System.Drawing.Size(428, 229);
+            this.basePanel1.Size = new System.Drawing.Size(499, 299);
             this.basePanel1.TabIndex = 13;
             // 
             // lblANgeelegtAm
             // 
-            this.lblANgeelegtAm.Location = new System.Drawing.Point(9, 203);
+            this.lblANgeelegtAm.Location = new System.Drawing.Point(10, 265);
+            this.lblANgeelegtAm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblANgeelegtAm.Name = "lblANgeelegtAm";
-            this.lblANgeelegtAm.Size = new System.Drawing.Size(77, 14);
+            this.lblANgeelegtAm.Size = new System.Drawing.Size(90, 18);
             this.lblANgeelegtAm.TabIndex = 41;
             this.lblANgeelegtAm.Text = "Angelegt am";
             // 
             // udteErfasstAm
             // 
-            appearance12.BackColor = System.Drawing.Color.White;
-            this.udteErfasstAm.Appearance = appearance12;
+            appearance13.BackColor = System.Drawing.Color.White;
+            this.udteErfasstAm.Appearance = appearance13;
             this.udteErfasstAm.BackColor = System.Drawing.Color.White;
             this.udteErfasstAm.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.udteErfasstAm.Enabled = false;
-            this.udteErfasstAm.Location = new System.Drawing.Point(109, 199);
+            this.udteErfasstAm.Location = new System.Drawing.Point(127, 260);
+            this.udteErfasstAm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.udteErfasstAm.Name = "udteErfasstAm";
             this.udteErfasstAm.ownFormat = "";
             this.udteErfasstAm.ownMaskInput = "";
             this.udteErfasstAm.ReadOnly = true;
-            this.udteErfasstAm.Size = new System.Drawing.Size(102, 21);
+            this.udteErfasstAm.Size = new System.Drawing.Size(119, 26);
             this.udteErfasstAm.TabIndex = 9;
             this.udteErfasstAm.Value = null;
             // 
             // numBetrag
             // 
             this.numBetrag.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
-            this.numBetrag.Location = new System.Drawing.Point(188, 34);
+            this.numBetrag.Location = new System.Drawing.Point(219, 44);
+            this.numBetrag.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numBetrag.Name = "numBetrag";
             this.numBetrag.NonAutoSizeHeight = 20;
-            this.numBetrag.Size = new System.Drawing.Size(91, 20);
+            this.numBetrag.Size = new System.Drawing.Size(106, 25);
             this.numBetrag.TabIndex = 3;
             // 
             // chkBetragErrechnetJN
             // 
-            this.chkBetragErrechnetJN.Location = new System.Drawing.Point(9, 33);
+            this.chkBetragErrechnetJN.Location = new System.Drawing.Point(10, 43);
+            this.chkBetragErrechnetJN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkBetragErrechnetJN.Name = "chkBetragErrechnetJN";
-            this.chkBetragErrechnetJN.Size = new System.Drawing.Size(96, 23);
+            this.chkBetragErrechnetJN.Size = new System.Drawing.Size(112, 30);
             this.chkBetragErrechnetJN.TabIndex = 2;
             this.chkBetragErrechnetJN.Text = "Restzahler";
             this.chkBetragErrechnetJN.CheckedChanged += new System.EventHandler(this.chkBetragErrechnetJN_CheckedChanged);
@@ -473,194 +513,227 @@
             // lblRestzahlerBetrag
             // 
             this.lblRestzahlerBetrag.AutoSize = true;
-            this.lblRestzahlerBetrag.Location = new System.Drawing.Point(111, 37);
+            this.lblRestzahlerBetrag.Location = new System.Drawing.Point(130, 48);
+            this.lblRestzahlerBetrag.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblRestzahlerBetrag.Name = "lblRestzahlerBetrag";
-            this.lblRestzahlerBetrag.Size = new System.Drawing.Size(65, 14);
+            this.lblRestzahlerBetrag.Size = new System.Drawing.Size(75, 19);
             this.lblRestzahlerBetrag.TabIndex = 40;
             this.lblRestzahlerBetrag.Text = "Max. Betrag";
             // 
             // chkRechnungJN
             // 
-            this.chkRechnungJN.Location = new System.Drawing.Point(9, 62);
+            this.chkRechnungJN.Location = new System.Drawing.Point(10, 81);
+            this.chkRechnungJN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkRechnungJN.Name = "chkRechnungJN";
-            this.chkRechnungJN.Size = new System.Drawing.Size(140, 23);
+            this.chkRechnungJN.Size = new System.Drawing.Size(163, 30);
             this.chkRechnungJN.TabIndex = 4;
             this.chkRechnungJN.Text = "Rechnung J/N";
             // 
             // cboRechnungTyp
             // 
-            appearance13.BackColor = System.Drawing.Color.White;
-            this.cboRechnungTyp.Appearance = appearance13;
+            appearance14.BackColor = System.Drawing.Color.White;
+            this.cboRechnungTyp.Appearance = appearance14;
             this.cboRechnungTyp.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cboRechnungTyp.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cboRechnungTyp.BackColor = System.Drawing.Color.White;
-            this.cboRechnungTyp.Location = new System.Drawing.Point(109, 91);
+            this.cboRechnungTyp.Location = new System.Drawing.Point(127, 119);
+            this.cboRechnungTyp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboRechnungTyp.Name = "cboRechnungTyp";
-            this.cboRechnungTyp.Size = new System.Drawing.Size(313, 21);
+            this.cboRechnungTyp.Size = new System.Drawing.Size(365, 26);
             this.cboRechnungTyp.TabIndex = 5;
             // 
             // lblRechnungTyp
             // 
-            appearance14.TextVAlignAsString = "Middle";
-            this.lblRechnungTyp.Appearance = appearance14;
-            this.lblRechnungTyp.Location = new System.Drawing.Point(9, 90);
+            appearance15.TextVAlignAsString = "Middle";
+            this.lblRechnungTyp.Appearance = appearance15;
+            this.lblRechnungTyp.Location = new System.Drawing.Point(10, 118);
+            this.lblRechnungTyp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblRechnungTyp.Name = "lblRechnungTyp";
-            this.lblRechnungTyp.Size = new System.Drawing.Size(90, 23);
+            this.lblRechnungTyp.Size = new System.Drawing.Size(105, 30);
             this.lblRechnungTyp.TabIndex = 35;
             this.lblRechnungTyp.Text = "Rechnungstyp";
             // 
             // cboRechnungsdruckTyp1
             // 
-            appearance15.BackColor = System.Drawing.Color.White;
-            this.cboRechnungsdruckTyp1.Appearance = appearance15;
+            appearance16.BackColor = System.Drawing.Color.White;
+            this.cboRechnungsdruckTyp1.Appearance = appearance16;
             this.cboRechnungsdruckTyp1.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cboRechnungsdruckTyp1.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cboRechnungsdruckTyp1.BackColor = System.Drawing.Color.White;
-            this.cboRechnungsdruckTyp1.Location = new System.Drawing.Point(109, 118);
+            this.cboRechnungsdruckTyp1.Location = new System.Drawing.Point(127, 154);
+            this.cboRechnungsdruckTyp1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboRechnungsdruckTyp1.Name = "cboRechnungsdruckTyp1";
-            this.cboRechnungsdruckTyp1.Size = new System.Drawing.Size(313, 21);
+            this.cboRechnungsdruckTyp1.Size = new System.Drawing.Size(365, 26);
             this.cboRechnungsdruckTyp1.TabIndex = 6;
             // 
             // cboIDKostentraegerSub
             // 
-            appearance16.BackColor = System.Drawing.Color.White;
-            this.cboIDKostentraegerSub.Appearance = appearance16;
+            appearance17.BackColor = System.Drawing.Color.White;
+            this.cboIDKostentraegerSub.Appearance = appearance17;
             this.cboIDKostentraegerSub.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cboIDKostentraegerSub.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cboIDKostentraegerSub.BackColor = System.Drawing.Color.White;
-            this.cboIDKostentraegerSub.Location = new System.Drawing.Point(109, 145);
+            this.cboIDKostentraegerSub.Location = new System.Drawing.Point(127, 190);
+            this.cboIDKostentraegerSub.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboIDKostentraegerSub.Name = "cboIDKostentraegerSub";
-            this.cboIDKostentraegerSub.Size = new System.Drawing.Size(313, 21);
+            this.cboIDKostentraegerSub.Size = new System.Drawing.Size(365, 26);
             this.cboIDKostentraegerSub.TabIndex = 7;
             // 
             // lblRechnungsdruckTyp
             // 
-            appearance17.TextVAlignAsString = "Middle";
-            this.lblRechnungsdruckTyp.Appearance = appearance17;
-            this.lblRechnungsdruckTyp.Location = new System.Drawing.Point(9, 117);
+            appearance18.TextVAlignAsString = "Middle";
+            this.lblRechnungsdruckTyp.Appearance = appearance18;
+            this.lblRechnungsdruckTyp.Location = new System.Drawing.Point(10, 153);
+            this.lblRechnungsdruckTyp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblRechnungsdruckTyp.Name = "lblRechnungsdruckTyp";
-            this.lblRechnungsdruckTyp.Size = new System.Drawing.Size(96, 23);
+            this.lblRechnungsdruckTyp.Size = new System.Drawing.Size(112, 30);
             this.lblRechnungsdruckTyp.TabIndex = 32;
             this.lblRechnungsdruckTyp.Text = "Re-Druck-Typ";
             // 
             // lblRechnungsempfaenger
             // 
-            this.lblRechnungsempfaenger.Location = new System.Drawing.Point(9, 150);
+            this.lblRechnungsempfaenger.Location = new System.Drawing.Point(10, 196);
+            this.lblRechnungsempfaenger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblRechnungsempfaenger.Name = "lblRechnungsempfaenger";
-            this.lblRechnungsempfaenger.Size = new System.Drawing.Size(74, 14);
+            this.lblRechnungsempfaenger.Size = new System.Drawing.Size(86, 18);
             this.lblRechnungsempfaenger.TabIndex = 29;
             this.lblRechnungsempfaenger.Text = "Rechnung an";
             // 
             // lblErlagscheingebuehr
             // 
             this.lblErlagscheingebuehr.AutoSize = true;
-            this.lblErlagscheingebuehr.Location = new System.Drawing.Point(170, 274);
+            this.lblErlagscheingebuehr.Location = new System.Drawing.Point(198, 394);
+            this.lblErlagscheingebuehr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblErlagscheingebuehr.Name = "lblErlagscheingebuehr";
-            this.lblErlagscheingebuehr.Size = new System.Drawing.Size(42, 14);
+            this.lblErlagscheingebuehr.Size = new System.Drawing.Size(49, 19);
             this.lblErlagscheingebuehr.TabIndex = 36;
             this.lblErlagscheingebuehr.Text = "Gebühr";
             // 
             // txtKostentraeger
             // 
-            appearance18.FontData.BoldAsString = "True";
-            appearance18.TextVAlignAsString = "Middle";
-            this.txtKostentraeger.Appearance = appearance18;
-            this.txtKostentraeger.Location = new System.Drawing.Point(194, 17);
+            appearance19.FontData.BoldAsString = "True";
+            appearance19.TextVAlignAsString = "Middle";
+            this.txtKostentraeger.Appearance = appearance19;
+            this.txtKostentraeger.Location = new System.Drawing.Point(226, 22);
+            this.txtKostentraeger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtKostentraeger.Name = "txtKostentraeger";
-            this.txtKostentraeger.Size = new System.Drawing.Size(652, 23);
+            this.txtKostentraeger.Size = new System.Drawing.Size(761, 30);
             this.txtKostentraeger.TabIndex = 31;
             // 
             // lblKostentraeger
             // 
-            appearance19.TextVAlignAsString = "Middle";
-            this.lblKostentraeger.Appearance = appearance19;
-            this.lblKostentraeger.Location = new System.Drawing.Point(8, 17);
+            appearance20.TextVAlignAsString = "Middle";
+            this.lblKostentraeger.Appearance = appearance20;
+            this.lblKostentraeger.Location = new System.Drawing.Point(9, 22);
+            this.lblKostentraeger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblKostentraeger.Name = "lblKostentraeger";
-            this.lblKostentraeger.Size = new System.Drawing.Size(82, 23);
+            this.lblKostentraeger.Size = new System.Drawing.Size(96, 30);
             this.lblKostentraeger.TabIndex = 30;
             this.lblKostentraeger.Text = "Kostenträger";
             // 
             // txtOrt
             // 
-            this.txtOrt.Location = new System.Drawing.Point(203, 100);
+            this.txtOrt.Location = new System.Drawing.Point(237, 131);
+            this.txtOrt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtOrt.Name = "txtOrt";
-            this.txtOrt.Size = new System.Drawing.Size(206, 21);
+            this.txtOrt.Size = new System.Drawing.Size(240, 26);
             this.txtOrt.TabIndex = 4;
             // 
             // lblOrt
             // 
-            appearance20.TextVAlignAsString = "Middle";
-            this.lblOrt.Appearance = appearance20;
-            this.lblOrt.Location = new System.Drawing.Point(172, 99);
+            appearance21.TextVAlignAsString = "Middle";
+            this.lblOrt.Appearance = appearance21;
+            this.lblOrt.Location = new System.Drawing.Point(201, 129);
+            this.lblOrt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblOrt.Name = "lblOrt";
-            this.lblOrt.Size = new System.Drawing.Size(28, 23);
+            this.lblOrt.Size = new System.Drawing.Size(33, 30);
             this.lblOrt.TabIndex = 27;
             this.lblOrt.Text = "Ort";
             // 
             // txtPLZ
             // 
-            this.txtPLZ.Location = new System.Drawing.Point(96, 100);
+            this.txtPLZ.Location = new System.Drawing.Point(112, 131);
+            this.txtPLZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPLZ.Name = "txtPLZ";
-            this.txtPLZ.Size = new System.Drawing.Size(64, 21);
+            this.txtPLZ.Size = new System.Drawing.Size(75, 26);
             this.txtPLZ.TabIndex = 3;
             // 
             // lblPLZ
             // 
-            appearance21.TextVAlignAsString = "Middle";
-            this.lblPLZ.Appearance = appearance21;
-            this.lblPLZ.Location = new System.Drawing.Point(8, 99);
+            appearance22.TextVAlignAsString = "Middle";
+            this.lblPLZ.Appearance = appearance22;
+            this.lblPLZ.Location = new System.Drawing.Point(9, 129);
+            this.lblPLZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblPLZ.Name = "lblPLZ";
-            this.lblPLZ.Size = new System.Drawing.Size(76, 23);
+            this.lblPLZ.Size = new System.Drawing.Size(89, 30);
             this.lblPLZ.TabIndex = 25;
             this.lblPLZ.Text = "PLZ";
             // 
             // txtStrasse
             // 
-            this.txtStrasse.Location = new System.Drawing.Point(96, 72);
+            this.txtStrasse.Location = new System.Drawing.Point(112, 94);
+            this.txtStrasse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStrasse.Name = "txtStrasse";
-            this.txtStrasse.Size = new System.Drawing.Size(313, 21);
+            this.txtStrasse.Size = new System.Drawing.Size(365, 26);
             this.txtStrasse.TabIndex = 2;
             // 
             // lblStrasse
             // 
-            appearance22.TextVAlignAsString = "Middle";
-            this.lblStrasse.Appearance = appearance22;
-            this.lblStrasse.Location = new System.Drawing.Point(8, 71);
+            appearance23.TextVAlignAsString = "Middle";
+            this.lblStrasse.Appearance = appearance23;
+            this.lblStrasse.Location = new System.Drawing.Point(9, 93);
+            this.lblStrasse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblStrasse.Name = "lblStrasse";
-            this.lblStrasse.Size = new System.Drawing.Size(76, 23);
+            this.lblStrasse.Size = new System.Drawing.Size(89, 30);
             this.lblStrasse.TabIndex = 23;
             this.lblStrasse.Text = "Strasse";
             // 
             // cboZahlart
             // 
-            appearance23.BackColor = System.Drawing.Color.White;
-            this.cboZahlart.Appearance = appearance23;
+            appearance24.BackColor = System.Drawing.Color.White;
+            this.cboZahlart.Appearance = appearance24;
             this.cboZahlart.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cboZahlart.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cboZahlart.BackColor = System.Drawing.Color.White;
-            this.cboZahlart.Location = new System.Drawing.Point(96, 241);
+            this.cboZahlart.Location = new System.Drawing.Point(112, 350);
+            this.cboZahlart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboZahlart.Name = "cboZahlart";
-            this.cboZahlart.Size = new System.Drawing.Size(313, 21);
-            this.cboZahlart.TabIndex = 9;
+            this.cboZahlart.Size = new System.Drawing.Size(365, 26);
+            this.cboZahlart.TabIndex = 10;
             this.cboZahlart.ValueChanged += new System.EventHandler(this.cboZahlart_ValueChanged);
             // 
-            // txtAnrede
+            // txtRechnungsanschrift
             // 
-            this.txtAnrede.Location = new System.Drawing.Point(96, 17);
-            this.txtAnrede.Name = "txtAnrede";
-            this.txtAnrede.Size = new System.Drawing.Size(92, 21);
-            this.txtAnrede.TabIndex = 0;
+            this.txtRechnungsanschrift.Location = new System.Drawing.Point(112, 167);
+            this.txtRechnungsanschrift.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRechnungsanschrift.MaxLength = 100;
+            this.txtRechnungsanschrift.Name = "txtRechnungsanschrift";
+            this.txtRechnungsanschrift.Size = new System.Drawing.Size(365, 26);
+            this.txtRechnungsanschrift.TabIndex = 5;
+            // 
+            // lblRechnungsanschrift
+            // 
+            appearance12.TextVAlignAsString = "Middle";
+            this.lblRechnungsanschrift.Appearance = appearance12;
+            this.lblRechnungsanschrift.Location = new System.Drawing.Point(9, 166);
+            this.lblRechnungsanschrift.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblRechnungsanschrift.Name = "lblRechnungsanschrift";
+            this.lblRechnungsanschrift.Size = new System.Drawing.Size(89, 30);
+            this.lblRechnungsanschrift.TabIndex = 39;
+            this.lblRechnungsanschrift.Text = "eMail";
             // 
             // ucKostentraegerKlientEditSingle
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panelKostenträger);
             this.Controls.Add(this.btnAbort);
             this.Controls.Add(this.btnSave);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ucKostentraegerKlientEditSingle";
-            this.Size = new System.Drawing.Size(869, 361);
+            this.Size = new System.Drawing.Size(1014, 472);
             this.Load += new System.EventHandler(this.ucKostentraegerKlientEditSingle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtBank)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKontonr)).EndInit();
@@ -674,6 +747,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panelKostenträger.ResumeLayout(false);
             this.panelKostenträger.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAnrede)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVorauszahlungJN)).EndInit();
             this.basePanel1.ResumeLayout(false);
             this.basePanel1.PerformLayout();
@@ -687,7 +761,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStrasse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboZahlart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAnrede)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRechnungsanschrift)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -743,5 +817,7 @@
         private QS2.Desktop.ControlManagment.BaseDateTimeEditor udteErfasstAm;
         private QS2.Desktop.ControlManagment.BaseLabel lblANgeelegtAm;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtAnrede;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtRechnungsanschrift;
+        private Infragistics.Win.Misc.UltraLabel lblRechnungsanschrift;
     }
 }

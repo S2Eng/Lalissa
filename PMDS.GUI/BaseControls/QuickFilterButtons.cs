@@ -302,7 +302,7 @@ namespace PMDS.GUI.BaseControls
                             baseButt.contextMenuStrip1.Items.Clear();
                             baseButt.doBaseElements1.runControlManagment(ref baseButt.IDRes, baseButt, baseButt.contextMenuStrip1,
                                                                             ref baseButt.IsLoaded, ref baseButt.rRes, ref doContextMenü,
-                                                                            ref IsStandardControl, ref DoIDResAuto, false);
+                                                                            ref IsStandardControl, ref DoIDResAuto);
 
                             if (r.IsStandard && this.QButtonClicked == null)
                             {

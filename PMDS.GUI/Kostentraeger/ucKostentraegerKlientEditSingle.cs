@@ -119,6 +119,7 @@ namespace PMDS.GUI.Kostentraeger
                 this.txtStrasse.Text = "";
                 this.txtPLZ.Text = "";
                 this.txtOrt.Text = "";
+                this.txtRechnungsanschrift.Text = "";
 
             }
             catch (Exception ex)
@@ -229,6 +230,9 @@ namespace PMDS.GUI.Kostentraeger
                         rAdresse = this.b.getAdresse(rKlinik.IDAdresse.Value, this._db);
                     }
                 }
+                
+                PMDS.db.Entities.Kontakt rKontakt = null;
+                rKontakt = this.b.getKontakt(rPatient.IDKontakt.Value, this._db);
 
                 if (isNew)
                 {                    
@@ -251,6 +255,7 @@ namespace PMDS.GUI.Kostentraeger
                     this._rKostenträger.PLZ = rAdresse.Plz.Trim();
                     this._rKostenträger.Ort = rAdresse.Ort.Trim();
                     this._rKostenträger.Strasse = rAdresse.Strasse.Trim();
+                    this._rKostenträger.Rechnungsanschrift = rKontakt.Email.Trim();
                     this._rKostenträger.IDPatientIstZahler = null;
                     this._rKostenträger.GSBG = 0;
                     this._rKostenträger.ErlagscheingebuehrJN = false;
@@ -297,6 +302,7 @@ namespace PMDS.GUI.Kostentraeger
                                            PLZ = rAdd.Plz.Trim(),
                                            Ort = rAdd.Ort.Trim(),
                                            Strasse = rAdd.Strasse.Trim(),
+                                           eMail = rKon.Email.Trim(),
                                            GueltigAb = rSach.Von,
                                            Belange = rSach.Belange.Trim(),
                                            Gericht = rSach.Gericht.Trim(),
@@ -317,6 +323,7 @@ namespace PMDS.GUI.Kostentraeger
                                 this._rKostenträger.PLZ = lEV.First().PLZ.Trim();
                                 this._rKostenträger.Ort = lEV.First().Ort.Trim();
                                 this._rKostenträger.Strasse = lEV.First().Strasse.Trim();
+                                this._rKostenträger.Rechnungsanschrift = lEV.First().eMail.Trim();
                                 this._rKostenträger.IDPatientIstZahler = null;
                                 this._rKostenträger.GSBG = 0;
                                 this._rKostenträger.IDKostentraegerSub = null;
@@ -424,6 +431,7 @@ namespace PMDS.GUI.Kostentraeger
                 this.txtPLZ.Text = this._rKostenträger.PLZ.Trim();
                 this.txtOrt.Text = this._rKostenträger.Ort.Trim();
                 this.txtStrasse.Text = this._rKostenträger.Strasse.Trim();
+                this.txtRechnungsanschrift.Text = this._rKostenträger.Rechnungsanschrift.Trim();
                 this.cboZahlart.Value = this._rKostenträger.Zahlart ??  null;
                 this.cboRechnungsdruckTyp1.Value = this._rPatientKostentraeger.RechnungsdruckTyp;
 
@@ -677,6 +685,7 @@ namespace PMDS.GUI.Kostentraeger
                 this._rKostenträger.PLZ = this.txtPLZ.Text.Trim();
                 this._rKostenträger.Ort = this.txtOrt.Text.Trim();
                 this._rKostenträger.Strasse = this.txtStrasse.Text.Trim();
+                this._rKostenträger.Rechnungsanschrift = this.txtRechnungsanschrift.Text.Trim();
 
                 this._rKostenträger.Zahlart = (int)this.cboZahlart.Value;
                 this._rKostenträger.ErlagscheingebuehrJN = this.chkErlagscheingebuehrJN.Checked;

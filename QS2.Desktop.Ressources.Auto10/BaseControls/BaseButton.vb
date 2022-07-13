@@ -37,8 +37,7 @@ Public Class BaseButton
         Try
             Me.initControl()
             If Not Me.IsStandardControl Then
-                Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Me.contextMenuStrip1, Me.IsLoaded, rRes, True, Me.IsStandardControl, Me.DoIDResAuto,
-                                                       DesignMode)
+                Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Me.contextMenuStrip1, Me.IsLoaded, rRes, True, Me.IsStandardControl, Me.DoIDResAuto)
             Else
                 Dim str As String = ""
             End If
@@ -77,8 +76,7 @@ Public Class BaseButton
             If Not Me.doBaseElements1.InfoControl._IsQuickFilter Then
                 Me.IDRes = IDResStandardControl
                 'Me.IsLoaded = False
-                Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Me.contextMenuStrip1, Me.IsLoaded, rRes, True, True, Me.DoIDResAuto,
-                                                       DesignMode)
+                Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Me.contextMenuStrip1, Me.IsLoaded, rRes, True, True, Me.DoIDResAuto)
             Else
                 Dim str As String = ""
             End If

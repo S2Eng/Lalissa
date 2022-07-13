@@ -25,18 +25,18 @@ Public Class doBaseElements
         End Class
     End Class
 
-    Public Function runControlManagment(ByRef IDRes As String, cont As System.Windows.Forms.Control, ContextMenuStripNew As System.Windows.Forms.ContextMenuStrip, _
-                                          ByRef IsLoaded As Boolean, _
-                                          ByRef rRes As QS2.core.language.dsLanguage.RessourcenRow, _
-                                          ByRef doContextMenü As Boolean, ByRef IsStandardControl As Boolean, _
-                                          ByRef DoIDResAuto As Boolean, bDesignMode As Boolean) As cInfoControl
+    Public Function runControlManagment(ByRef IDRes As String, cont As System.Windows.Forms.Control, ContextMenuStripNew As System.Windows.Forms.ContextMenuStrip,
+                                          ByRef IsLoaded As Boolean,
+                                          ByRef rRes As QS2.core.language.dsLanguage.RessourcenRow,
+                                          ByRef doContextMenü As Boolean, ByRef IsStandardControl As Boolean,
+                                          ByRef DoIDResAuto As Boolean) As cInfoControl
 
         Try
             If System.Diagnostics.Process.GetCurrentProcess().ProcessName = "devenv" Then
                 Exit Function
             End If
 
-            If Not IsLoaded And qs2.core.ENV.SystemIsInitialized Then
+            If Not IsLoaded And QS2.core.ENV.SystemIsInitialized Then
                 If TypeOf cont Is Infragistics.Win.UltraWinGrid.UltraGrid Then
                     Dim grd As Infragistics.Win.UltraWinGrid.UltraGrid = cont
                     'grd.DisplayLayout.Override.RowSpacingAfter = 0
@@ -84,19 +84,19 @@ Public Class doBaseElements
                 ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
                     Exit Function
                 Else
-                    Throw New Exception("doBaseElements.runControlManagment: ENV._TypeRessourcesRun.Trim() '" + qs2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim() + "' not supported!")
+                    Throw New Exception("doBaseElements.runControlManagment: ENV._TypeRessourcesRun.Trim() '" + QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim() + "' not supported!")
                 End If
 
                 Dim bControlIsDone As Integer = -1
-                Dim rActControl As qs2.Desktop.ControlManagment.dsControls.ControlsRow = Nothing
+                Dim rActControl As QS2.Desktop.ControlManagment.dsControls.ControlsRow = Nothing
                 Dim Description As String = ""
                 Dim TxtEnglish As String = ""
                 Dim TxtGerman As String = ""
 
                 Me.ControlManagment1.doControl(IDRes, Description, cont, Nothing,
-                                        qs2.Desktop.ControlManagment.ControlManagment.eControlGroup.MainSystem,
-                                        bControlIsDone, rActControl, ContextMenüStripToTake, qs2.core.Enums.eResourceType.Label, _
-                                        TxtEnglish, TxtGerman, rRes, doContextMenü, IsStandardControl, _
+                                        QS2.Desktop.ControlManagment.ControlManagment.eControlGroup.MainSystem,
+                                        bControlIsDone, rActControl, ContextMenüStripToTake, QS2.core.Enums.eResourceType.Label,
+                                        TxtEnglish, TxtGerman, rRes, doContextMenü, IsStandardControl,
                                         Me.InfoControl, DoIDResAuto, ENV._ExtendedView)
 
                 IsLoaded = True
@@ -137,7 +137,7 @@ Public Class doBaseElements
             baseGrid.doBaseElements1.InfoControl.defaultLayoutNamexy = NameDefaultLayout.Trim()
             Me.runControlManagment(baseGrid.IDRes, grid, baseGrid.contextMenuStrip1,
                                                                        baseGrid.IsLoaded, baseGrid.rRes, doContextMenü,
-                                                                       IsStandardControl, DoIDResAuto, False)
+                                                                       IsStandardControl, DoIDResAuto)
 
         Catch ex As Exception
             Throw New Exception("doBaseElements.runControlManagmentBaseGrid: " + ex.ToString())
