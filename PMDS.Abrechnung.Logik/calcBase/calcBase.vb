@@ -1,5 +1,6 @@
 ﻿Option Strict Off
 Option Explicit On
+Imports System.Collections.Generic
 Imports VB = Microsoft.VisualBasic
 
 
@@ -22,13 +23,12 @@ Public Class calcBase
     Public Shared TageOhneKuerzungGrundleistung As Integer = 0
     Public Shared KuerzungGrundleistungLetzterTag As Boolean = False
 
-    Public Shared RechErwAbwesenheit As Boolean = False
+    Public Shared RechErwAbwesenheit As Integer = 0
+    Public Shared RechErwAbwesenheitListe As New List(Of String)    'Enthält entweder eine Negait- oder eine Positivlsite (abhängig von RechErwAbwesenheit)
+
     Public Shared SrErwAbwesenheit As Boolean = False
 
     Public sql As New Sql
-
-
-
 
 
 

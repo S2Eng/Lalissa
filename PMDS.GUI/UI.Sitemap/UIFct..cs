@@ -890,6 +890,19 @@ namespace PMDS.UI.Sitemap
         {
             try
             {
+
+                List<string> RechErwAbwesenheitListe = new List<string>();
+
+                if (PMDS.Global.ENV.RechErwAbwesenheit == 2 || PMDS.Global.ENV.RechErwAbwesenheit == 3)
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        RechErwAbwesenheitListe = (from a in db.AuswahlListe
+                                                   where a.IDAuswahlListeGruppe.Equals("KEA")
+                                                   select a.Bezeichnung).ToList();
+                    }
+                }
+
                 calculation calc = new calculation();
                 calc.Init(RBU.DataBase.CONNECTION, PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
                                                 PMDS.Global.ENV.ReportPath,
@@ -906,7 +919,9 @@ namespace PMDS.UI.Sitemap
                                                 PMDS.Global.ENV.pathConfig,
                                                 PMDS.Global.ENV.TageOhneKuerzungGrundleistung,
                                                 PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
-                                                PMDS.Global.ENV.RechErwAbwesenheit, PMDS.Global.ENV.SrErwAbwesenheit, 
+                                                PMDS.Global.ENV.RechErwAbwesenheit,
+                                                RechErwAbwesenheitListe,                                                
+                                                PMDS.Global.ENV.SrErwAbwesenheit, 
                                                 PMDS.Global.ENV.ZahlKondBankeinzug, PMDS.Global.ENV.ZahlKondErlagschein, PMDS.Global.ENV.ZahlKondÜberweisung, PMDS.Global.ENV.ZahlKondBar, 
                                                 PMDS.Global.ENV.ZahlKondFSW, 
                                                 PMDS.Global.ENV.AbwesenheitenAnzeigen, 

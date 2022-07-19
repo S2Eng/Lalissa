@@ -75,6 +75,17 @@ namespace PMDS.Calc.UI
 
                 if (initEnv)
                 {
+                    List<string> RechErwAbwesenheitListe = new List<string>();
+                    if (PMDS.Global.ENV.RechErwAbwesenheit == 2 || PMDS.Global.ENV.RechErwAbwesenheit == 3)
+                    {
+                        using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                        {
+                            RechErwAbwesenheitListe = (from a in db.AuswahlListe
+                                                       where a.IDAuswahlListeGruppe.Equals("KEA")
+                                                       select a.Bezeichnung).ToList();
+                        }
+                    }
+
                     this.calculation.Init(RBU.DataBase.CONNECTION, PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
                                 PMDS.Global.ENV.ReportPath,
                                 PMDS.Global.ENV.bookingJN,
@@ -90,7 +101,9 @@ namespace PMDS.Calc.UI
                                 PMDS.Global.ENV.pathConfig,
                                 PMDS.Global.ENV.TageOhneKuerzungGrundleistung,
                                 PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
-                                PMDS.Global.ENV.RechErwAbwesenheit, PMDS.Global.ENV.SrErwAbwesenheit,
+                                PMDS.Global.ENV.RechErwAbwesenheit,
+                                RechErwAbwesenheitListe,
+                                PMDS.Global.ENV.SrErwAbwesenheit,
                                 PMDS.Global.ENV.ZahlKondBankeinzug, PMDS.Global.ENV.ZahlKondErlagschein,
                                 PMDS.Global.ENV.ZahlKondÜberweisung, PMDS.Global.ENV.ZahlKondBar, ENV.ZahlKondFSW, ENV.AbwesenheitenAnzeigen, 
                                 ENV.RechTitelDepotGeld,

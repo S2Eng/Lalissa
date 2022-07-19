@@ -503,7 +503,7 @@ namespace PMDS.Calc.UI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            this.doAction(eAction.delete, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die markeirten Zeilen wirklich löschen?"), "", PMDS.Calc.Logic.eModify.nichts, true, null, null, false);
+            this.doAction(eAction.delete, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die markierten Zeilen wirklich löschen?"), "", PMDS.Calc.Logic.eModify.nichts, true, null, null, false);
         }
 
         private void uOptSetAbrechTyp_ValueChanged(object sender, EventArgs e)

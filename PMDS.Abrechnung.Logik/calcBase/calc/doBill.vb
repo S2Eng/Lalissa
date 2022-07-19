@@ -4,7 +4,7 @@ Imports VB = Microsoft.VisualBasic
 
 Imports QS2.Desktop.Txteditor
 Imports S2Extensions
-
+Imports System.Collections.Generic
 
 Public Class doBill
     Inherits calcBase
@@ -41,7 +41,8 @@ Public Class doBill
 
 
 
-    Public Sub run(ByRef calc As calcData, ByRef editor As TXTextControl.TextControl, IDKlinik As System.Guid, Bereich As String, ByRef Prot As String, ByRef iCounterProt As Integer)
+    Public Sub run(ByRef calc As calcData, ByRef editor As TXTextControl.TextControl, IDKlinik As System.Guid, Bereich As String, ByRef Prot As String, ByRef iCounterProt As Integer,
+                   RechErwAbwesenheitListe As List(Of String))
         Try
             ' Deklarierung bill (format, columns)
             Dim billFormat As New QS2.Desktop.Txteditor.formatAttr With {
@@ -66,7 +67,6 @@ Public Class doBill
             Dim listAbwSimple As New ArrayList()
             Dim listAbwExtended As New ArrayList()
             Dim rOffLeist As dbPMDS.OffeneLeistungenRow = Me.doBillPrepare(calc.dbCalc, listAbwSimple, listAbwExtended, editor, calcBase.RechErwAbwesenheit)
-
             'Kostenträger auflisten
             Dim arrKostenträger() As dbCalc.KostenträgerRow = calc.dbCalc.Kostenträger.Select("", "Rang asc")
             For Each rKost As dbCalc.KostenträgerRow In arrKostenträger
@@ -202,19 +202,28 @@ Public Class doBill
                 End If
 
                 If rKost.RechnungTyp <> CInt(eBillTyp.Beilage) Then
-                    ' Liste Abwesenheiten drucken
-                    If listAbwExtended.Count > 0 And rKost.RechnungTyp <> CInt(eBillTyp.Zahlungsbestätigung) Then
+                    ' Wenn erforderlich Liste "Erweiterte Abwesenheiten" drucken
+                    Dim ShowExtTable As Boolean = False
+                    If calcBase.RechErwAbwesenheit = 1 Then         'Alle
+                        ShowExtTable = True
+                    ElseIf calcBase.RechErwAbwesenheit = 2 Then         'Negativliste
+                        ShowExtTable = Not RechErwAbwesenheitListe.Contains(rKost.FIBU)
+                    ElseIf calcBase.RechErwAbwesenheit = 3 Then     'Psoitivliste
+                        ShowExtTable = RechErwAbwesenheitListe.Contains(rKost.FIBU)
+                    End If
+                    ShowExtTable = ShowExtTable And listAbwExtended.Count > 0 And rKost.RechnungTyp <> CInt(eBillTyp.Zahlungsbestätigung)
+
+                    If ShowExtTable Then
                         For Each abwFound As cAbw In listAbwExtended
                             bill.setPrintColumnAbwExtended(abwFound, billFormatAbwExtended)
                             Me.print.addCollumn(Nothing, billFormatAbwExtended, editor, False, IIf(abwFound.NewPatient, True, False))
                         Next
                         Me.doBookmarks.insertPageBreakBeforeTable(editor, 2)
                     Else
+                            print.removeTable(2, editor)
+                        End If
+                    Else
                         print.removeTable(2, editor)
-                        'Me.doBookmarks.ClearEmptyPage(editor, 2)
-                    End If
-                Else
-                    print.removeTable(2, editor)
                 End If
 
                 Dim bDeleteAbwesenheiten As Boolean = False
@@ -264,7 +273,7 @@ Public Class doBill
     End Sub
 
     Public Function doBillPrepare(ByRef dbCalc As dbCalc, ByRef listAbwSimple As ArrayList, ByRef listAbwExtended As ArrayList,
-                                  ByRef editor As TXTextControl.TextControl, erwListeOnOff As Boolean) As dbPMDS.OffeneLeistungenRow
+                                  ByRef editor As TXTextControl.TextControl, erwListeOnOff As Integer) As dbPMDS.OffeneLeistungenRow
         Try
             Dim sAbrechVon As String = Me.rowMonat(dbCalc).Beginn.ToString(Me.dateFormat)
             Dim sAbrechBis As String = Me.rowMonat(dbCalc).Ende.ToString(Me.dateFormat)
@@ -280,12 +289,7 @@ Public Class doBill
                         listAbwSimple.Add(cAbwNew)
                     Next
 
-                    If erwListeOnOff Then
-                        'Dim AbwPatName As New cAbw()
-                        'AbwPatName.Text = Me.rowKlient(dbCalc).Nachname.Trim() + " " + Me.rowKlient(dbCalc).Vorname.Trim()
-                        'AbwPatName.NewPatient = True
-                        'listAbwExtended.Add(AbwPatName)
-
+                    If erwListeOnOff > 0 Then
                         Dim lastTag As dbCalc.TageRow = Nothing
                         Dim AbwesenheitsstatusAktuell As Integer = 0
                         Dim tageNichtGekürzt As Integer = 0
@@ -294,8 +298,6 @@ Public Class doBill
                         Dim lastAbwesenheitsstatus As Integer = -999
                         Dim IDAbwesenheit As String = ""
                         Dim countLine As Integer = 0
-
-
                         Dim beginnBlock As Date = abrechMonat.Date
                         Dim endBlock As Date = Nothing
 
@@ -450,7 +452,7 @@ Public Class doBill
 
                 Dim nextMonth As Date = Me.rowMonat(calc.dbCalc).Beginn.AddMonths(1)
                 Dim calculation As New calculation()
-                Dim calcVorausz As calcData = calculation.run(Me.rowKlient(calc.dbCalc).ID, nextMonth,
+                Dim calcVorausz As calcData = calculation.Run(Me.rowKlient(calc.dbCalc).ID, nextMonth,
                                                                Me.monatsende(Me.rowMonat(calc.dbCalc).Beginn.AddMonths(1)),
                                                               Me.rowMonat(calc.dbCalc).RechDatum, False,
                                                               PMDS.Calc.Logic.eCalcTyp.vorauszahlung, eCalcRun.month, calculation.editorPrecalc, IDKlinik, Bereich, Prot, iCounterProt)

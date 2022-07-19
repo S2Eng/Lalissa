@@ -343,7 +343,7 @@ namespace PMDS.Global
         private static string _ZAHLUNG_TAGE;
         private static bool _bookingJN;
         private static int _TageOhneKuerzungGrundleistung;
-        public static bool RechErwAbwesenheit;
+        public static int RechErwAbwesenheit;   //Liste An- und Abwesenheiten am Re-Ende: 0 .. kein Andruck, 1 .. bei allen Kostenträgern andrucken, 2 ..Auswahlliste KEA 2 = Negativliste, 3 = Positiv-Liste 
         public static bool SrErwAbwesenheit;
 
         public static string GSBGTxt = "";

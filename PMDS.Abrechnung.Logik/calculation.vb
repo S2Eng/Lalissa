@@ -4,7 +4,7 @@ Imports System.Text
 Imports VB = Microsoft.VisualBasic
 Imports System.Linq
 Imports System.Data.DataSetExtensions
-
+Imports System.Collections.Generic
 
 Public Class calculation
     Inherits calcBase
@@ -45,6 +45,7 @@ Public Class calculation
     Public Shared ZahlKondFSW As String = ""
 
     Public Shared AbwesenheitenAnzeigen As Boolean = True
+    Public Shared RechErwAbwesenheitListe As List(Of String) = New List(Of String)()
 
 
     Public Class cBill
@@ -74,7 +75,9 @@ Public Class calculation
                         ByVal pathConfig As String,
                         ByVal TageOhneKuerzungGrundleistung As Integer,
                         ByVal KuerzungGrundleistungLetzterTag As Boolean,
-                        ByVal RechErwAbwesenheit As Boolean, ByVal SrErwAbwesenheit As Boolean,
+                        ByVal RechErwAbwesenheit As Integer,
+                        ByVal RechErwAbwesenheitListe As List(Of String),
+                        ByVal SrErwAbwesenheit As Boolean,
                         ZahlKondBankeinzug As String, ZahlKondErlagschein As String, ZahlKond‹berweisung As String, ZahlKondBar As String, ZahlKondFSW As String,
                         AbwesenheitenAnzeigen As Boolean, RechTitelDepotGeld As String, bankdaten As Boolean)
         Try
@@ -108,6 +111,7 @@ Public Class calculation
             calculation.ZahlKondBar = ZahlKondBar
             calculation.ZahlKondFSW = ZahlKondFSW
             calculation.AbwesenheitenAnzeigen = AbwesenheitenAnzeigen
+            calculation.RechErwAbwesenheitListe = RechErwAbwesenheitListe
 
             MWSTS‰tze.loadMWSTS‰tzeFromFile()
 
@@ -158,7 +162,7 @@ Public Class calculation
                     doCalc.run(calc)
                 End If
 
-                doBill.run(calc, editor, IDKlinik, Bereich, Prot, iCounterProt)
+                doBill.run(calc, editor, IDKlinik, Bereich, Prot, iCounterProt, calculation.RechErwAbwesenheitListe)
 
                 If Me.rowKlient(calc.dbCalc).calcTyp = CInt(eCalcTyp.abrechnung) Then
                     doBill.save(eBillStatus.offen, calc, IDKlinik)
