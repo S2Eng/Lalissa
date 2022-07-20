@@ -29,7 +29,7 @@ namespace PMDS.GUI
 		{
             this._OnlyAbteilungBereiche = OnlyAbteilungBereiche;
 			InitializeComponent();
-            if (!DesignMode)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);

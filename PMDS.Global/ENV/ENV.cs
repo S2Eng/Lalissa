@@ -2625,7 +2625,7 @@ namespace PMDS.Global
         [Description("Klienten enlassen")]
         Entlassung = 13,		                            // Patienten enlassen
         [Description("Benutzer verwalten")]
-        ManageUserxyxy = 14,		                        // Benutzer verwalten
+        ManageUser = 14,		                        // Benutzer verwalten
         [Description("Klienten verwalten")]
         PatientenVerwalten = 15,		                    // Patienten verwalten
         [Description("Auswahl-Listen verwalten")]
