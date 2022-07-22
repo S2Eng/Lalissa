@@ -932,6 +932,7 @@ namespace PMDS.Global.db
 
                 if (sc == ServiceCallType.bewohnermelden)
                 {
+                    bool ServiceReurnsWithMessage = false;
                     foreach (Bewohnerdaten bew in lBew.bewohnerdaten)
                     {
                         if (String.IsNullOrWhiteSpace(bew.synonym) && !bew.HasError)
@@ -941,11 +942,12 @@ namespace PMDS.Global.db
                             {
                                 lBew.sbLog.Append(sb);
                                 ShowLog();
+                                ServiceReurnsWithMessage = true;
                             }
                         }
                     }
 
-                    if (!lBew.HasErrors)
+                    if (!ServiceReurnsWithMessage)
                     {
                         LoadAll();  //Daten neu laden, sonst Fehlermeldung anzeigen
                     }
@@ -1124,7 +1126,7 @@ namespace PMDS.Global.db
                         }
                         else
                         {
-                            //Fehlermeldung protokollieren
+                            //Andere Fehlermeldung protokollieren
                             sbResult.Append("Statuscode = " + resp.StatusCode.ToString() + "\n");
                             foreach (KeyValuePair<String, JToken> app in res)
                             {
@@ -1197,8 +1199,6 @@ namespace PMDS.Global.db
                         }
                     }
                 }
-
-
                 return sbResult;
             }
             catch (Exception ex)

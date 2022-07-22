@@ -2266,7 +2266,7 @@ namespace PMDS
             ultraToolbarsManager1.Tools["BenutzerVerwaltung"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
             ultraToolbarsManager1.Tools["Gruppenrechte"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
             ultraToolbarsManager1.Tools["btnVerwaltungKlinikenUser"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
-            ultraToolbarsManager1.Tools["VbtnVerwaltungFortbildungen"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
+            ultraToolbarsManager1.Tools["btnVerwaltungFortbildungen"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
         }
 
         private void ucQuickNavigator1_SiteMapEvent(PMDS.Global.SiteEvents e, ref bool used)
