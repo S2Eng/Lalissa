@@ -656,7 +656,11 @@ namespace PMDS.Global.db
                     }
 
                     jauf.eintrittsdatum = auf.eintrittsdatum.ToString(dFormat);
-                    
+                    if (auf.austrittsdatum != DateTime.MinValue)
+                    {
+                        jauf.austrittsdatum = auf.austrittsdatum.ToString(dFormat);
+                    }
+
                     jauf.austrittWohin = LookupAuswahllisteBezeichnung("AWO", auf.austrittWohin, AuswahllisteSucheTyp.Beschreibung, true);
                     if (auf.austrittsdatum != DateTime.MinValue && String.IsNullOrWhiteSpace(jauf.austrittWohin))
                     {
