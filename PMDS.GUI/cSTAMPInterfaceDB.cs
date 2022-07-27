@@ -500,7 +500,7 @@ namespace PMDS.Global.db
                         foreach (var ps in lPST)
                         {
                             Pflegegeldstufe pst = new Pflegegeldstufe();
-                            pst.pflegegeldstufe = ps.pflegegeldstufe == 0 ? "keine" : ps.pflegegeldstufe.ToString();
+                            pst.pflegegeldstufe = ps.pflegegeldstufe <= 0 ? "keine" : ps.pflegegeldstufe.ToString();
                             pst.gueltigVon = ps.gueltigVon;
 
                             if (ps.gueltigBis != null)
@@ -528,7 +528,7 @@ namespace PMDS.Global.db
                         {
                             Pflegegeldverfahren pgv = new Pflegegeldverfahren();
                             pgv.beantragtAm = (DateTime)psv.beantragtAm;
-                            pgv.vorlaeufigePflegegeldstufePersonal = psv.vorlaeufigePflegegeldstufePersonal == 0 ? "keine" : psv.vorlaeufigePflegegeldstufePersonal.ToString();
+                            pgv.vorlaeufigePflegegeldstufePersonal = psv.vorlaeufigePflegegeldstufePersonal <= 0 ? "keine" : psv.vorlaeufigePflegegeldstufePersonal.ToString();
                             if (psv.kenntnisnahmeDatumBescheid != null)
                             {
                                 pgv.kenntnisnahmeDatumBescheid = (DateTime)psv.kenntnisnahmeDatumBescheid;
