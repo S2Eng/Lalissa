@@ -500,7 +500,7 @@ namespace PMDS.Global.db
                         foreach (var ps in lPST)
                         {
                             Pflegegeldstufe pst = new Pflegegeldstufe();
-                            pst.pflegegeldstufe = ps.pflegegeldstufe.ToString();
+                            pst.pflegegeldstufe = ps.pflegegeldstufe == 0 ? "keine" : ps.pflegegeldstufe.ToString();
                             pst.gueltigVon = ps.gueltigVon;
 
                             if (ps.gueltigBis != null)

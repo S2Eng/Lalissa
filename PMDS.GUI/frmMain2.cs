@@ -840,9 +840,9 @@ namespace PMDS
             // splitter1
             // 
             this.splitter1.BackColor = System.Drawing.Color.Gainsboro;
-            this.splitter1.Location = new System.Drawing.Point(0, 49);
+            this.splitter1.Location = new System.Drawing.Point(0, 20);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(1, 641);
+            this.splitter1.Size = new System.Drawing.Size(1, 670);
             this.splitter1.TabIndex = 9;
             this.splitter1.TabStop = false;
             // 
@@ -882,9 +882,9 @@ namespace PMDS
             this._frmBase_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.WhiteSmoke;
             this._frmBase_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
             this._frmBase_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.Color.Black;
-            this._frmBase_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 49);
+            this._frmBase_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 20);
             this._frmBase_Toolbars_Dock_Area_Left.Name = "_frmBase_Toolbars_Dock_Area_Left";
-            this._frmBase_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 641);
+            this._frmBase_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 670);
             this._frmBase_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // ultraToolbarsManager1
@@ -1316,9 +1316,9 @@ namespace PMDS
             this._frmBase_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.WhiteSmoke;
             this._frmBase_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
             this._frmBase_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.Color.Black;
-            this._frmBase_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1008, 49);
+            this._frmBase_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1008, 20);
             this._frmBase_Toolbars_Dock_Area_Right.Name = "_frmBase_Toolbars_Dock_Area_Right";
-            this._frmBase_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 641);
+            this._frmBase_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 670);
             this._frmBase_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _frmBase_Toolbars_Dock_Area_Top
@@ -1329,7 +1329,7 @@ namespace PMDS
             this._frmBase_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.Color.Black;
             this._frmBase_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._frmBase_Toolbars_Dock_Area_Top.Name = "_frmBase_Toolbars_Dock_Area_Top";
-            this._frmBase_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1008, 49);
+            this._frmBase_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1008, 20);
             this._frmBase_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _frmBase_Toolbars_Dock_Area_Bottom
