@@ -46,6 +46,9 @@ namespace PMDS.DB.Patient
 
         public void getBenutzerEinrichtung(System.Guid ID, dsBenutzerEinrichtung ds, eTypSelBenEinrichtung typSel)
         {
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
+                return;
+
             this.daBenutzerEinrichtung.SelectCommand.CommandText = DBBenutzerEinrichtung.seldaBenutzerEinrichtung;
             this.daBenutzerEinrichtung.SelectCommand.Parameters.Clear();
             PMDS.Global.dbBase.setConnection(this.daBenutzerEinrichtung, DataBase.CONNECTION);
