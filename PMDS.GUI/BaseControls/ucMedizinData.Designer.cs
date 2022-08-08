@@ -87,7 +87,6 @@
             this.ultraPictureBox1.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.ultraPictureBox1.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.ultraPictureBox1.Visible = false;
-            this.ultraPictureBox1.MouseEnter += new System.EventHandler(this.ultraPictureBox1_MouseEnter);
             // 
             // ucMedizinData
             // 

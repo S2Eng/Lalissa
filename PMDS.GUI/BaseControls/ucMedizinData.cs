@@ -261,9 +261,6 @@ namespace PMDS.GUI.BaseControls
             {
                 timer2.Enabled = false;
 
-
-
-
                 ultraPictureBox1.ContextMenu = null;
                 this.ContextMenu = null;
                 Color maxNotfallColor = Color.Transparent;
@@ -318,25 +315,20 @@ namespace PMDS.GUI.BaseControls
                     dsSP.SPDataTable dt = sp.AllOpen(_IDAufenthalt);
                     foreach (dsSP.SPRow r in dt.Rows)
                     {
-                        //maxNotfallColor = Color.Orange;
-                        //if (txtTitle.Trim() == "")
-                        //{
-                        //    txtTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("Standardprozedur offen");
-                        //}
                         bool IsNotfall = SP.NotfallJN(r);
                         if (IsNotfall)
                         {
-                            //maxNotfallColor = Color.Green;
                             txtTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("Notfälle");
+                            txtTitle += ": Klicken Sie mit dr rechten Maustaste, um eienen Notfall auszuwählen";
                         }
 
                         StringBuilder sb = new StringBuilder();
                         sb.Append(SP.ToStringFromRow(r));
                         AddContextmenu(menu, r.ID, sb.ToString());
                         AddOpenPosTextAndSetColor(r.ID, sb, ref maxNotfallColor);               // offen Prozeduren listen und die Blinkfarbe vermerken
-                        sb.Append("-----------------------------------------------\n\r");
+                        sb.Append("\n\r");
                         sb1.Append(sb.ToString());
-                        sb1.Append(QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzen Sie die rechte Maustaste, um den Vorfall zu öffnen."));
+                        //sb1.Append(QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzen Sie die rechte Maustaste, um den Vorfall zu öffnen."));
 
                         timer2.Enabled = true;
                         ultraPictureBox1.ContextMenu = menu;
@@ -624,13 +616,6 @@ namespace PMDS.GUI.BaseControls
                 throw new Exception("Error vucMedizinData.timer2_Tick: " + ex.ToString());
             }
         }
-
-        private void ultraPictureBox1_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
     }
-
 }
 
