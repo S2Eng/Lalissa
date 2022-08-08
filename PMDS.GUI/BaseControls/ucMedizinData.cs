@@ -344,11 +344,39 @@ namespace PMDS.GUI.BaseControls
                     }
                 }
 
-                this.BackColor = maxNotfallColor;
-                this.ultraToolTipManager1.SetUltraToolTip(ultraPictureBox1, info);
-                //toolTip1.SetToolTip(pbMain, sb1.ToString());
-                info.ToolTipTitle = txtTitle;
-                info.ToolTipText = sb1.ToString();
+                this.setNotfallIcon("N", maxNotfallColor, System.Drawing.Color.White, sb1.ToString(), txtTitle, System.Drawing.Color.White);           
+            }
+        }
+
+        public void setNotfallIcon(string txtMedDatenIcon, System.Drawing.Color BackColorTxt, System.Drawing.Color ForeColorTxt,
+                            string ToolTipTitle, string ToolTipText,
+                            System.Drawing.Color BackColor)
+        {
+            try
+            {
+
+                this.Visible = true;
+                this.BackColor = BackColor;
+                //this.ultraPictureBox1.BackColor = BackColor;
+
+                using (UltraToolTipInfo info = new UltraToolTipInfo())
+                {
+                    info.ToolTipTitle = ToolTipTitle;
+                    info.ToolTipText = ToolTipText;
+                    this.ultraToolTipManager1.SetUltraToolTip(this.lblTxt, info);
+
+                    this.ultraPictureBox1.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+                    this.ultraPictureBox1.Visible = false;
+                    this.lblTxt.Visible = true;
+                    this.lblTxt.BringToFront();
+                    this.lblTxt.Text = txtMedDatenIcon;
+                    this.lblTxt.Appearance.BackColor = BackColorTxt;
+                    this.lblTxt.Appearance.ForeColor = ForeColorTxt;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucMedizinData.setNotfallIcon: " + ex.ToString());
             }
         }
 
