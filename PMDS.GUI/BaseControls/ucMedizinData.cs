@@ -319,7 +319,7 @@ namespace PMDS.GUI.BaseControls
                         if (IsNotfall)
                         {
                             txtTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("Notfälle");
-                            txtTitle += ": Klicken Sie mit dr rechten Maustaste, um eienen Notfall auszuwählen";
+                            txtTitle += ": Klicken Sie mit der rechten Maustaste, um einen Notfall auszuwählen";
                         }
 
                         StringBuilder sb = new StringBuilder();
@@ -336,7 +336,7 @@ namespace PMDS.GUI.BaseControls
                     }
                 }
 
-                this.setNotfallIcon("N", maxNotfallColor, System.Drawing.Color.White, sb1.ToString(), txtTitle, System.Drawing.Color.White);           
+                this.setNotfallIcon("NF", maxNotfallColor, System.Drawing.Color.White, txtTitle, sb1.ToString(), System.Drawing.Color.White);           
             }
         }
 
@@ -349,16 +349,18 @@ namespace PMDS.GUI.BaseControls
 
                 this.Visible = true;
                 this.BackColor = BackColor;
-                //this.ultraPictureBox1.BackColor = BackColor;
+                this.ultraPictureBox1.BackColor = BackColor;
 
                 using (UltraToolTipInfo info = new UltraToolTipInfo())
                 {
                     info.ToolTipTitle = ToolTipTitle;
                     info.ToolTipText = ToolTipText;
+                    info.ToolTipTextStyle = Infragistics.Win.ToolTipTextStyle.Default;
+                    this.ultraToolTipManager1.ToolTipImage = Infragistics.Win.ToolTipImage.None;
                     this.ultraToolTipManager1.SetUltraToolTip(this.lblTxt, info);
 
                     this.ultraPictureBox1.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-                    this.ultraPictureBox1.Visible = false;
+                    this.ultraPictureBox1.Visible = true;
                     this.lblTxt.Visible = true;
                     this.lblTxt.BringToFront();
                     this.lblTxt.Text = txtMedDatenIcon;

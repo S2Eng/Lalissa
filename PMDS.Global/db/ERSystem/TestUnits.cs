@@ -1771,7 +1771,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("\n(Kopie von Aufenthalt mit Aufnahmedatum ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("\n(Kopie von Aufenthalt mit Aufnahmedatum ");
 
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Es bestehen offene Freiheitsbeschränkungen für den Patienten! (Anzahl: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Es bestehen offene Freiheitsbeschränkungen für den Klienten! (Anzahl: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes(" ist fällig am ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes(" um ");
 

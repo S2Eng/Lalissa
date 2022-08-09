@@ -1521,7 +1521,7 @@ namespace PMDS.DB
             }
             if (ret.txt1 != "")
             {
-                ret.title   = QS2.Desktop.ControlManagment.ControlManagment.getRes("Es bestehen offene Freiheitsbeschränkungen für den Patienten! (Anzahl: ") + dt.Rows.Count.ToString() + ")";    
+                ret.title   = QS2.Desktop.ControlManagment.ControlManagment.getRes("Es bestehen offene Freiheitsbeschränkungen für den Klienten! (Anzahl: ") + dt.Rows.Count.ToString() + ")";    
             }
             return ret;
         }
