@@ -211,7 +211,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl1.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(1153, 299);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(1153, 281);
             // 
             // panelGrundleistung
             // 
@@ -219,7 +219,7 @@ namespace PMDS.GUI
             this.panelGrundleistung.Location = new System.Drawing.Point(0, 0);
             this.panelGrundleistung.Margin = new System.Windows.Forms.Padding(4);
             this.panelGrundleistung.Name = "panelGrundleistung";
-            this.panelGrundleistung.Size = new System.Drawing.Size(1153, 299);
+            this.panelGrundleistung.Size = new System.Drawing.Size(1153, 281);
             this.panelGrundleistung.TabIndex = 0;
             // 
             // ultraTabPageControl2
@@ -461,7 +461,7 @@ namespace PMDS.GUI
             this.gridPatPflegestufen.Location = new System.Drawing.Point(8, 32);
             this.gridPatPflegestufen.Margin = new System.Windows.Forms.Padding(4);
             this.gridPatPflegestufen.Name = "gridPatPflegestufen";
-            this.gridPatPflegestufen.Size = new System.Drawing.Size(1126, 98);
+            this.gridPatPflegestufen.Size = new System.Drawing.Size(1126, 122);
             this.gridPatPflegestufen.TabIndex = 4;
             this.gridPatPflegestufen.Text = "ultraGrid16";
             this.gridPatPflegestufen.DoubleClickCell += new Infragistics.Win.UltraWinGrid.DoubleClickCellEventHandler(this.gridPatPflegestufen_DoubleClickCell);
@@ -498,10 +498,10 @@ namespace PMDS.GUI
             this.ultraGroupBox9.Controls.Add(this.lblSozialhilfebescheidDatum);
             this.ultraGroupBox9.Controls.Add(this.cbFernsehBefr);
             this.ultraGroupBox9.Controls.Add(this.cbSozilhBesch);
-            this.ultraGroupBox9.Location = new System.Drawing.Point(526, 5);
+            this.ultraGroupBox9.Location = new System.Drawing.Point(526, -2);
             this.ultraGroupBox9.Margin = new System.Windows.Forms.Padding(4);
             this.ultraGroupBox9.Name = "ultraGroupBox9";
-            this.ultraGroupBox9.Size = new System.Drawing.Size(625, 233);
+            this.ultraGroupBox9.Size = new System.Drawing.Size(625, 240);
             this.ultraGroupBox9.TabIndex = 120;
             this.ultraGroupBox9.Text = "Abrechnungs-Informationen";
             // 
@@ -1002,17 +1002,19 @@ namespace PMDS.GUI
             this.panelMitte.Location = new System.Drawing.Point(0, 0);
             this.panelMitte.Margin = new System.Windows.Forms.Padding(4);
             this.panelMitte.Name = "panelMitte";
-            this.panelMitte.Size = new System.Drawing.Size(1157, 391);
+            this.panelMitte.Size = new System.Drawing.Size(1157, 410);
             this.panelMitte.TabIndex = 136;
             // 
             // baseGroupBox1
             // 
+            this.baseGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.baseGroupBox1.Controls.Add(this.gridPatPflegestufen);
             this.baseGroupBox1.Controls.Add(this.panelButtons);
             this.baseGroupBox1.Location = new System.Drawing.Point(9, 245);
             this.baseGroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.baseGroupBox1.Name = "baseGroupBox1";
-            this.baseGroupBox1.Size = new System.Drawing.Size(1142, 137);
+            this.baseGroupBox1.Size = new System.Drawing.Size(1142, 161);
             this.baseGroupBox1.TabIndex = 137;
             // 
             // ucVersichrungsdaten12
@@ -1101,7 +1103,7 @@ namespace PMDS.GUI
             this.panelZahler.Location = new System.Drawing.Point(0, 0);
             this.panelZahler.Margin = new System.Windows.Forms.Padding(4);
             this.panelZahler.Name = "panelZahler";
-            this.panelZahler.Size = new System.Drawing.Size(1157, 326);
+            this.panelZahler.Size = new System.Drawing.Size(1157, 308);
             this.panelZahler.TabIndex = 139;
             // 
             // ultraTabControlZahler
@@ -1114,7 +1116,7 @@ namespace PMDS.GUI
             this.ultraTabControlZahler.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabControlZahler.Name = "ultraTabControlZahler";
             this.ultraTabControlZahler.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControlZahler.Size = new System.Drawing.Size(1157, 326);
+            this.ultraTabControlZahler.Size = new System.Drawing.Size(1157, 308);
             this.ultraTabControlZahler.TabIndex = 11;
             ultraTab1.TabPage = this.ultraTabPageControl1;
             ultraTab1.Text = "Zahler";
@@ -1129,7 +1131,7 @@ namespace PMDS.GUI
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1153, 299);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1153, 281);
             // 
             // errorProvider1
             // 
@@ -1151,7 +1153,7 @@ namespace PMDS.GUI
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.splitContainerBottom);
             this.splitContainerMain.Size = new System.Drawing.Size(1157, 800);
-            this.splitContainerMain.SplitterDistance = 430;
+            this.splitContainerMain.SplitterDistance = 450;
             this.splitContainerMain.TabIndex = 140;
             // 
             // splitContainerTop
@@ -1170,8 +1172,8 @@ namespace PMDS.GUI
             // splitContainerTop.Panel2
             // 
             this.splitContainerTop.Panel2.Controls.Add(this.panelMitte);
-            this.splitContainerTop.Size = new System.Drawing.Size(1157, 430);
-            this.splitContainerTop.SplitterDistance = 35;
+            this.splitContainerTop.Size = new System.Drawing.Size(1157, 450);
+            this.splitContainerTop.SplitterDistance = 36;
             this.splitContainerTop.TabIndex = 0;
             // 
             // splitContainerBottom
@@ -1190,8 +1192,8 @@ namespace PMDS.GUI
             // splitContainerBottom.Panel2
             // 
             this.splitContainerBottom.Panel2.Controls.Add(this.panelZahler);
-            this.splitContainerBottom.Size = new System.Drawing.Size(1157, 366);
-            this.splitContainerBottom.SplitterDistance = 36;
+            this.splitContainerBottom.Size = new System.Drawing.Size(1157, 346);
+            this.splitContainerBottom.SplitterDistance = 34;
             this.splitContainerBottom.TabIndex = 0;
             // 
             // ucAbrechAufenthKlient

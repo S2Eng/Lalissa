@@ -100,7 +100,10 @@ namespace PMDS.GUI
                 this.panelUnten.Visible = false;
             }
             else
+            {
                 this.panelZahler.Visible = false;
+                splitContainerMain.SplitterDistance = Convert.ToInt32(splitContainerMain.Height * 0.8);
+            }
 
             this.isLoaded = true;
         }
