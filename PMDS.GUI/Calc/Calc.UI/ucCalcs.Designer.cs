@@ -41,8 +41,7 @@
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Status Zahlungsaufforderung für FSW zurücksetzen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Zahlungsaufforderung für FSW erstellen. Zum Erstellen und Senden Umschaltaste hal" +
-        "ten und Klicken.", Infragistics.Win.ToolTipImage.Info, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("eZAUFF für FSW Erstellen und Speichern.\nUmschaltaste halten und klicken = Erstellen, Speichern und Senden.\nAlt-Taste halten und klicken = Gespeicherten eZAUFF per sFTP senden", Infragistics.Win.ToolTipImage.Info, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();

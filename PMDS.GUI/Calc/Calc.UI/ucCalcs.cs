@@ -1002,9 +1002,9 @@ namespace PMDS.Calc.UI
 
                 if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftAlt) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightAlt))
                 {
-                    action = eAction.fswreset;
-                    MsgBoxTite = "Wollen Sie den Status der Zahlungsaufforderung für den FSW zurücksetzen?";
-                    ReturnText = "Status für FSW-Zahlungsaufforderung wurde zurückgesetzt.";
+                    action = eAction.fswsFTPOnly;
+                    MsgBoxTite = "Wollen Sie eine eZAUFF per sFTP an den FSW senden?";
+                    ReturnText = "FSW-Zahlungsaufforderung wurde per sFTP an den FSW gesendet.";
                 }
 
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;

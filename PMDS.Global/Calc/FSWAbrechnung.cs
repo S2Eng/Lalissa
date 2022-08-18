@@ -95,7 +95,8 @@ namespace PMDS.Global
             fsw = 7,
             fswreset = 8,
             fswNoUpload = 9,
-            fswXlsVorschau = 10
+            fswXlsVorschau = 10,
+            fswsFTPOnly = 11
         }
 
         //------------------------ ebInterface / Abrechnungsschittstelle zum FSW -----------------------------
@@ -131,6 +132,32 @@ namespace PMDS.Global
                             break;
                         case eAction.fswXlsVorschau:
                             MsgBoxTitle = "Excel-Vorschau für FSW-Abrechnung erstellen";
+                            break;
+                        case eAction.fswsFTPOnly:
+                            OpenFileDialog fd = new OpenFileDialog();
+                            fd.InitialDirectory = ENV.FSW_EZAUF;
+                            fd.Title = "Bitte wählen Sie eine XML-Datei für das Hochladen per SFTP an den FSW aus";
+                            fd.Filter = "eZAUFF-Files|*.xml";
+                            fd.CheckFileExists = true;
+                            fd.CheckPathExists = true;
+                            fd.Multiselect = false;
+
+                            if (fd.ShowDialog() == DialogResult.OK)
+                            {
+                                if (File.Exists(fd.FileName))
+                                {
+                                    string retsFTP = Upload(Path.GetFileNameWithoutExtension(fd.FileName), fd.FileName);
+                                    if (retsFTP.Length > 0)
+                                    {
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Hochladen der Zahlungsaufforderung: " + retsFTP, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    }
+                                    else
+                                    {
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Die eZAUFF wurde per sFTP hochgeladen: " + fd.FileName, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    }
+                                }
+                            }
+                            return;
                             break;
                     }
 
@@ -169,11 +196,13 @@ namespace PMDS.Global
                             decimal dPflegeNetto = 0;
                             decimal dBWNetto = 0;
                             decimal dMwSt = 0;
+
+                            decimal dSumLeistNetto = 0;
                             foreach (dbCalc.KostenKostenträgerRow Rechnungszeile in dbCalc.KostenKostenträger)
                             {
                                 if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !LeistungszeileBereitsVerrechnet(new Guid(Rechnungszeile.ID), new Guid(rBill.ID)))
                                 {
-                                    if (Rechnungszeile.Kennung.sEquals("LZ"))
+                                    if (Rechnungszeile.Kennung.sEquals(eTypProt.LZ.ToString()))
                                     {
                                         foreach (string sBW in lBW_Leistungen)
                                         {
@@ -187,13 +216,30 @@ namespace PMDS.Global
                                             }
                                         }
                                     }
-                                    else if (Rechnungszeile.Kennung.sEquals("MWstSatz"))   //zur Kontrolle
+                                    else if (Rechnungszeile.Kennung.sEquals(eTypProt.MWStSatz.ToString()))   //zur Kontrolle
                                     {
                                         dMwSt += Rechnungszeile.Netto;
                                     }
+
+                                    if (Rechnungszeile.Kennung.sEquals(eTypProt.SumLeistNetto.ToString()))
+                                    {
+                                        dSumLeistNetto = Rechnungszeile.Netto;
+                                    }
                                 }
                             }
-                            decimal dPercentPflege = (dPflegeNetto != 0 ? (dPflegeNetto) / (dPflegeNetto + dBWNetto)  : 0);  //Aufteilungsschlüssel für MwsT, GSBG und Gesamt zwischen Pflege und Betreutes Wohnen
+
+                            //Prüfen, ob auf der Rechung andere Zahler enthalten sind. Wenn ja -> Nettosummen händisch erfassen lassen.
+                            if (dBWNetto + dPflegeNetto != dSumLeistNetto)
+                            {
+                                frmFSWOverwriteData frm = new frmFSWOverwriteData();
+                                frm.Init(rBill.KlientName, dPflegeNetto, dBWNetto, dSumLeistNetto);
+                                frm.ShowDialog();
+                                dPflegeNetto = frm.dPflegeNetto;
+                                dBWNetto = frm.dBWNetto;
+                                frm.Dispose();
+                            } 
+
+                            decimal dPercentPflege = (dPflegeNetto != 0 ? (dPflegeNetto) / (dPflegeNetto + dBWNetto)  : 0);  //Aufteilungsschlüssel für MWSt, GSBG und Gesamt zwischen Pflege und Betreutes Wohnen
 
                             Invoice.InvoiceNumber = rBill.RechNr;
                             Invoice.InvoiceDate = (DateTime)rBill.RechDatum;

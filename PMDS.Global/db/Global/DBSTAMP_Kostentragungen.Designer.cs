@@ -90,16 +90,16 @@
             new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, "IDAufenthalt"),
             new System.Data.OleDb.OleDbParameter("Finanzierung", System.Data.OleDb.OleDbType.VarChar, 0, "Finanzierung"),
             new System.Data.OleDb.OleDbParameter("FinanzierungSonstige", System.Data.OleDb.OleDbType.VarChar, 0, "FinanzierungSonstige"),
-            new System.Data.OleDb.OleDbParameter("GueltigVon", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigVon"),
-            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigBis"),
+            new System.Data.OleDb.OleDbParameter("GueltigVon", System.Data.OleDb.OleDbType.Date, 16, "GueltigVon"),
+            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.Date, 16, "GueltigBis"),
             new System.Data.OleDb.OleDbParameter("Gemeinde", System.Data.OleDb.OleDbType.VarChar, 0, "Gemeinde"),
             new System.Data.OleDb.OleDbParameter("Bundesland", System.Data.OleDb.OleDbType.VarChar, 0, "Bundesland"),
             new System.Data.OleDb.OleDbParameter("Land", System.Data.OleDb.OleDbType.VarChar, 0, "Land"),
             new System.Data.OleDb.OleDbParameter("Deleted", System.Data.OleDb.OleDbType.Boolean, 0, "Deleted"),
             new System.Data.OleDb.OleDbParameter("CreatedUser", System.Data.OleDb.OleDbType.Guid, 0, "CreatedUser"),
-            new System.Data.OleDb.OleDbParameter("CreatedDate", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "CreatedDate"),
+            new System.Data.OleDb.OleDbParameter("CreatedDate", System.Data.OleDb.OleDbType.Date, 16, "CreatedDate"),
             new System.Data.OleDb.OleDbParameter("UpdatedUser", System.Data.OleDb.OleDbType.Guid, 0, "UpdatedUser"),
-            new System.Data.OleDb.OleDbParameter("LastUpdateDate", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "LastUpdateDate")});
+            new System.Data.OleDb.OleDbParameter("LastUpdateDate", System.Data.OleDb.OleDbType.Date, 16, "LastUpdateDate")});
             // 
             // oleDbUpdateCommand
             // 
@@ -110,16 +110,16 @@
             new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, "IDAufenthalt"),
             new System.Data.OleDb.OleDbParameter("Finanzierung", System.Data.OleDb.OleDbType.VarChar, 0, "Finanzierung"),
             new System.Data.OleDb.OleDbParameter("FinanzierungSonstige", System.Data.OleDb.OleDbType.VarChar, 0, "FinanzierungSonstige"),
-            new System.Data.OleDb.OleDbParameter("GueltigVon", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigVon"),
-            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigBis"),
+            new System.Data.OleDb.OleDbParameter("GueltigVon", System.Data.OleDb.OleDbType.Date, 16, "GueltigVon"),
+            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.Date, 16, "GueltigBis"),
             new System.Data.OleDb.OleDbParameter("Gemeinde", System.Data.OleDb.OleDbType.VarChar, 0, "Gemeinde"),
             new System.Data.OleDb.OleDbParameter("Bundesland", System.Data.OleDb.OleDbType.VarChar, 0, "Bundesland"),
             new System.Data.OleDb.OleDbParameter("Land", System.Data.OleDb.OleDbType.VarChar, 0, "Land"),
             new System.Data.OleDb.OleDbParameter("Deleted", System.Data.OleDb.OleDbType.Boolean, 0, "Deleted"),
             new System.Data.OleDb.OleDbParameter("CreatedUser", System.Data.OleDb.OleDbType.Guid, 0, "CreatedUser"),
-            new System.Data.OleDb.OleDbParameter("CreatedDate", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "CreatedDate"),
+            new System.Data.OleDb.OleDbParameter("CreatedDate", System.Data.OleDb.OleDbType.Date, 16, "CreatedDate"),
             new System.Data.OleDb.OleDbParameter("UpdatedUser", System.Data.OleDb.OleDbType.Guid, 0, "UpdatedUser"),
-            new System.Data.OleDb.OleDbParameter("LastUpdateDate", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "LastUpdateDate"),
+            new System.Data.OleDb.OleDbParameter("LastUpdateDate", System.Data.OleDb.OleDbType.Date, 16, "LastUpdateDate"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // dsSTAMP_Kostentragungen

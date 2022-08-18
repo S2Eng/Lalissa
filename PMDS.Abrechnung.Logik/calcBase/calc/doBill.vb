@@ -115,8 +115,8 @@ Public Class doBill
                 If BetragNettoKostenträger <> rKost.sumNetto Then
                     'Netto Leistungen pro Kostenträger
                     Dim IDBillRtfRZ2 As System.Guid = System.Guid.NewGuid()
-                    bill.setPrintColumn(IDBillRtfRZ2, eTypProt.AbzüglAndererKost, 0, "Summe Ihrer Leistungen netto", BetragNettoKostenträger, 0, 0, 0, billFormat)
-                    bill.add(IDBillRtfRZ2, eTypProt.AbzüglAndererKost, billFormat, calc.dbCalc, rKost.IDKostIntern, rKost.IDKost, Me.rowKlient(calc.dbCalc).calcTyp, 0, 0, 0, "", editor, True)
+                    bill.setPrintColumn(IDBillRtfRZ2, eTypProt.SumLeistNetto, 0, "Summe Ihrer Leistungen netto", BetragNettoKostenträger, 0, 0, 0, billFormat)
+                    bill.add(IDBillRtfRZ2, eTypProt.SumLeistNetto, billFormat, calc.dbCalc, rKost.IDKostIntern, rKost.IDKost, Me.rowKlient(calc.dbCalc).calcTyp, 0, 0, 0, "", editor, True)
                 End If
 
                 'MWSTSätze andrucken 
