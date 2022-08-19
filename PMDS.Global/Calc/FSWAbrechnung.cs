@@ -612,7 +612,7 @@ namespace PMDS.Global
                                     ret = SetIDSR(ListIDs, FilenameXML, db);
                                     if (ret.Length == 0)
                                     {
-                                        string sTxt = ListIDs.Count().sIntToWords("e") + " Rechnung".sMehrzahlText(ListIDs.Count(), "en") + "wurde".sMehrzahlText(ListIDs.Count(),"n");
+                                        string sTxt = ListIDs.Count().sIntToWords("e") + " Rechnung".sMehrzahlText(ListIDs.Count(), "en") + " wurde".sMehrzahlText(ListIDs.Count(),"n");
                                         string sBWExt = f.Transaction.bIsPflegeZAUFF ? "" : "(BW) ";
                                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung " + sBWExt + "für " + sTxt + " an den FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     }
