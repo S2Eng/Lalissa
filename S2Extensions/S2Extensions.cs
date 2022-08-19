@@ -26,6 +26,7 @@ namespace S2Extensions
         // This is the extension method.
         // The first parameter takes the "this" modifier
         // and specifies the type for which the method is defined.
+
         public static int WordCount(this String str)
         {
             return str.Split(new char[] { ' ', '.', '?' }, StringSplitOptions.RemoveEmptyEntries).Length;
@@ -123,6 +124,48 @@ namespace S2Extensions
             return s1.sEquals(s2, Enums.eCompareMode.Contains, trim, IgnoreCase);
         }
 
+        public static string sMehrzahlText(this string str, int count = 1, string EndungInMehrzahl = "")
+        {
+            if (count != 1)
+            {
+                return str + EndungInMehrzahl;
+            }
+            else
+            {
+                return str;
+            }
+        }
+
+        public static string UpperFirstChar(this string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return null;
+            }
+            return char.ToUpper(input[0]) + input.Substring(1);
+        }
+    }
+
+    public static class NumExtension
+    {
+        private static string[] EinerArray = { "null", "ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf" };
+
+        public static string sIntToWords(this int i, string Deklintation = "", bool InitCaps = false )
+        {
+
+            string retVal = i.ToString(); ;
+
+            if (i >= 0 && i <= 12)
+            {
+                retVal = EinerArray[i];
+
+                if (i == 1)
+                {
+                    retVal += Deklintation;
+                }
+            }
+            return (InitCaps ? retVal.UpperFirstChar() : retVal);
+        }
     }
 
     public static class DateExtension

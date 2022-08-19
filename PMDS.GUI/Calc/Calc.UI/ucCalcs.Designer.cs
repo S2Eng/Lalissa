@@ -576,8 +576,7 @@
             this.btnFSW.TabIndex = 100;
             this.btnFSW.Text = "ZAUF ( FSW)";
             ultraToolTipInfo3.ToolTipImage = Infragistics.Win.ToolTipImage.Info;
-            ultraToolTipInfo3.ToolTipText = "Zahlungsaufforderung für FSW erstellen. Zum Erstellen und Senden Umschaltaste hal" +
-    "ten und Klicken.";
+            ultraToolTipInfo3.ToolTipText = "eZAUFF für FSW\nKlicken = Erstellen, speichern, NICHT senden\nUmschaltaste halten und klicken: Erstellen, speichern, SENDEN\nAlt-Taste halten und klicken: Gespeicherte eZAUFF per sFTP senden.";
             this.ultraToolTipManager1.SetUltraToolTip(this.btnFSW, ultraToolTipInfo3);
             this.btnFSW.Click += new System.EventHandler(this.btnFSW_Click);
             // 

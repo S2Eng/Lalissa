@@ -117,6 +117,7 @@ namespace PMDS.Global
                                           select aw.Bezeichnung.Trim() ).ToList();
                     }
 
+                    string ret = "";
                     string MsgBoxTitle = "";
                     
                     switch (Action)
@@ -128,8 +129,29 @@ namespace PMDS.Global
                             MsgBoxTitle = "FSW-Zahlungsaufforderung erstellen und NICHT senden";
                             break;
                         case eAction.fswreset:
-                            MsgBoxTitle = "FSW-Status für Zahlungsaufforderung zurücksetzen";
-                            break;
+                            //Sammelrechnung-ID (eZAUFF) zurücksetzen
+                            if (ListIDBills.Count() > 0)
+                            {
+                                MsgBoxTitle = "FSW-Status für Zahlungsaufforderung zurücksetzen";
+                                ret = SetIDSR(ListIDBills, "", db);
+                                if (ret.Length == 0)
+                                {
+                                    string sTxt = ListIDBills.Count().sIntToWords("e") + " Rechnung".sMehrzahlText(ListIDBills.Count(), "en"); 
+
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der eZAUFF-Zustatus wurde für " + sTxt + " zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+
+                                }
+                                else
+                                {
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Zurücksetzen des eZAUFF-Status: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                }
+                            }
+                            else
+                            {
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keine Rechnungen ausgewählt. Es wurde nichts zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                            }
+
+                            return;
                         case eAction.fswXlsVorschau:
                             MsgBoxTitle = "Excel-Vorschau für FSW-Abrechnung erstellen";
                             break;
@@ -158,7 +180,6 @@ namespace PMDS.Global
                                 }
                             }
                             return;
-                            break;
                     }
 
                     decimal Rechnungsbetrag = 0;
@@ -503,7 +524,7 @@ namespace PMDS.Global
                     XMLInfoBW.bIsvalid = TransactionBW.ArDocument.Anzahl_Rechnungen > 0;
                     ListXMLInfos.Add(XMLInfoBW);
 
-                    string ret = "";
+
                     if (ListIDBillsFSW.Count > 0 || ListIDBillsFSWBW.Count > 0)
                     {
                         List<string> ListIDs = new List<string>();
@@ -552,7 +573,7 @@ namespace PMDS.Global
 
                             if (RunAction == eAction.fswNoUpload)
                             {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ZAUF im XML-Export-Format wurde erstellt und gespeichert, aber nicht gesendet. ", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("eZAUFF im XML-Export-Format wurde erstellt und gespeichert, aber nicht gesendet. ", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                             }
 
                             if (ENV.FSW_SaveXLSX)
@@ -565,7 +586,7 @@ namespace PMDS.Global
                                 }
                                 if (!SaveXLSX(_FSWXlsx, ref FQFileXLSX, out Msg))   //Xlsx Speichern
                                 {
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exceldatei für ZAUF wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exceldatei für eZAUFF wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     return;
                                 }
                             }
@@ -591,27 +612,16 @@ namespace PMDS.Global
                                     ret = SetIDSR(ListIDs, FilenameXML, db);
                                     if (ret.Length == 0)
                                     {
+                                        string sTxt = ListIDs.Count().sIntToWords("e") + " Rechnung".sMehrzahlText(ListIDs.Count(), "en") + "wurde".sMehrzahlText(ListIDs.Count(),"n");
                                         string sBWExt = f.Transaction.bIsPflegeZAUFF ? "" : "(BW) ";
-                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung " + sBWExt + "für " + ListIDs.Count.ToString() + " Rechnung(en) an FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung " + sBWExt + "für " + sTxt + " an den FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     }
                                     else
                                     {
-                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung wurde gesendet, aber beim Sichern des ZAUF-Zustands (Kennung Sammelrechnung) ist ein Fehler aufgetreten: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung wurde gesendet, aber beim Sichern des eZAUFF-Zustands (Kennung Sammelrechnung) ist ein Fehler aufgetreten: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                         return;
                                     }
                                 }
-                            }
-                        }
-                        else
-                        {
-                            //Sammelrechnung-ID (ZAUF) setzen
-                            ret = SetIDSR(ListIDBills, "", db);
-                            if (ret.Length == 0)
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Status Zahlungsaufforderung für " + ListIDBills.Count.ToString() + " Rechnung(en) zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                            else
-                            {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Zurücksetzen des ZAUF-Zustands: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                return;
                             }
                         }
                     }
@@ -670,7 +680,7 @@ namespace PMDS.Global
                             res.IDSR = IDSR.Substring(IDSR.Length - 21, 21);
                         else
                         {
-                            return "Ungültige eZAUF-Nummer: " + IDSR;
+                            return "Ungültige eZAUFF-Nummer: " + IDSR;
                         }
                     }
                 }
