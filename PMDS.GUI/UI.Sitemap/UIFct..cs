@@ -22,6 +22,7 @@ using PMDS.Global.db.Patient;
 using PMDS.Global.db.Global;
 
 using System.Linq;
+using S2Extensions;
 
 namespace PMDS.UI.Sitemap
 {

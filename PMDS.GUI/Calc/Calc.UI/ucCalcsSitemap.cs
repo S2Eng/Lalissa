@@ -451,7 +451,7 @@ namespace PMDS.Calc.UI
                 }
                 else
                 {
-                    res = this.sitemap.doAction22(typ, txtQuestion, QS2.Desktop.ControlManagment.ControlManagment.getRes("Rechnung/en"), txtInfo, grid, ref lblCount, ref arrSelected, msgBox);
+                    res = this.sitemap.doAction22(typ, txtQuestion, "", txtInfo, grid, ref lblCount, ref arrSelected, msgBox);
                 }
 
                 if (res == DialogResult.Yes)
