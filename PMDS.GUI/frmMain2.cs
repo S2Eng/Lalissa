@@ -110,6 +110,47 @@ namespace PMDS
             public bool STAMP;
         }
 
+        public class cRightsStammdaten
+        {
+            public bool Einrichtung = false;
+            public bool Benutzer = false;
+            public bool Gruppenrechte = false;
+            public bool VerwaltungEinrichtungUndBenutzer = false;
+            public bool VerwaltungFortbildungen = false;
+
+            public bool Auswahllisten = false;
+            public bool Zusatzeinträge = false;
+            public bool Textbausteine = false;
+            public bool Dokumentenverwaltung = false;
+            public bool ExterneEinrichtungen = false;
+
+            public bool Standardprozeduren = false;
+            public bool Assessments = false;
+            public bool Medikamente = false;
+            public bool Pflegerichtlinien = false;
+            public bool Ärzteverwaltung = false;
+            public bool Arztabrechnung = false;
+            public bool ÄrzteZusammenführen = false;
+            public bool Befundimport = false;
+
+            public bool Quickfilter = false;
+            public bool LayoutManager = false;
+            public bool MedizinischeTypen = false;
+            public bool MedizinscheDialoge = false;
+            public bool WundbilderSaklieren = false;
+
+            public bool QS2 = false;
+            public bool QS2AbfragebVerwaltenAdmin = false;
+            public bool QS2Ressourcen = false;
+            public bool QS2InformationenFelderSQLServer = false;
+            public bool QS2Kriterien = false;
+            public bool QS2Auswahllisten = false;
+
+            public bool Archiveinstellungen = false;
+            public bool EMailKonten = false;
+            public bool LogManager = false;
+        }
+
         public ELGABusiness bElga = new ELGABusiness();
         private Timer timerELGA;
         public static bool IsInitialized = false;
@@ -211,6 +252,132 @@ namespace PMDS
                 ultraToolbarsManager1.Tools["btnELGAPasswortÄndern"].SharedProps.Visible = ENV.lic_ELGA && ben.Elgaactive && !ben.IsGeneric;
                 IsInitialized = true;
             }
+        }
+
+        public void setRightsStammdaten(out bool AnyMenüItemStammdaten, out bool AllMenüItemsStammdaten, out cRightsStammdaten RightsStammdaten)
+        {
+
+            AnyMenüItemStammdaten = false;
+            AllMenüItemsStammdaten = false;
+            RightsStammdaten = new cRightsStammdaten();
+
+            RightsStammdaten.Einrichtung = ENV.HasRight(UserRights.EinrichtungVerwalten);
+            RightsStammdaten.Benutzer = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;
+            RightsStammdaten.Gruppenrechte = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;                    //ultraToolbarsManager1.Tools["Gruppenrechte"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
+            RightsStammdaten.VerwaltungEinrichtungUndBenutzer = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure; //ultraToolbarsManager1.Tools["btnVerwaltungKlinikenUser"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
+            RightsStammdaten.VerwaltungFortbildungen = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;          //ultraToolbarsManager1.Tools["btnVerwaltungFortbildungen"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
+
+            RightsStammdaten.Auswahllisten = ENV.HasRight(UserRights.AuswahllistenVerwalten);
+            RightsStammdaten.Zusatzeinträge = ENV.HasRight(UserRights.ZusatzEintraegeVerwalten);
+            RightsStammdaten.Textbausteine = ENV.HasRight(UserRights.TextbausteineVerwalten);
+            RightsStammdaten.Dokumentenverwaltung = ENV.HasRight(UserRights.Dokumentenverwaltung);
+            RightsStammdaten.ExterneEinrichtungen = ENV.HasRight(UserRights.ExterneEinrichungenVerwalten);
+
+            RightsStammdaten.Standardprozeduren = ENV.HasRight(UserRights.StandardprozedurenVerwalten);
+            RightsStammdaten.Assessments = ENV.HasRight(UserRights.AssessmentsVerwalten);
+            RightsStammdaten.Medikamente = ENV.HasRight(UserRights.MedikamenteVerwalten);
+            RightsStammdaten.Pflegerichtlinien = ENV.HasRight(UserRights.MedikamenteVerwalten);
+            RightsStammdaten.Ärzteverwaltung = ENV.HasRight(UserRights.AerzteVerwalten);
+            RightsStammdaten.Arztabrechnung = ENV.HasRight(UserRights.Arztabrechnung);
+            RightsStammdaten.ÄrzteZusammenführen = ENV.HasRight(UserRights.ÄrzteZusammenführen);
+            RightsStammdaten.Befundimport = ENV.HasRight(UserRights.Befundimport);
+
+            RightsStammdaten.Quickfilter = ENV.HasRight(UserRights.QuickfilterVerwalten);
+            RightsStammdaten.LayoutManager = ENV.HasRight(UserRights.LayoutmanagerVerwalten);
+            RightsStammdaten.MedizinischeTypen = ENV.HasRight(UserRights.MedizinischeTypenVerwalten);
+            RightsStammdaten.MedizinscheDialoge = ENV.HasRight(UserRights.MedizinischeDialogeVerwalten);
+            RightsStammdaten.WundbilderSaklieren = ENV.HasRight(UserRights.WundbilderSkalieren);
+
+            RightsStammdaten.QS2 = ENV.HasRight(UserRights.QS2Verwalten);
+            RightsStammdaten.QS2AbfragebVerwaltenAdmin = ENV.HasRight(UserRights.QS2Verwalten);
+            RightsStammdaten.QS2Ressourcen = ENV.HasRight(UserRights.QS2Verwalten);
+            RightsStammdaten.QS2InformationenFelderSQLServer = ENV.HasRight(UserRights.QS2Verwalten);
+            RightsStammdaten.QS2Kriterien = ENV.HasRight(UserRights.QS2Verwalten);
+            RightsStammdaten.QS2Auswahllisten = ENV.HasRight(UserRights.QS2Verwalten);
+
+            RightsStammdaten.Archiveinstellungen = ENV.HasRight(UserRights.ArchiveinstellungenVerwalten);
+            RightsStammdaten.EMailKonten = ENV.HasRight(UserRights.EMailKontenVerwalten);
+            RightsStammdaten.LogManager = false;
+
+            AnyMenüItemStammdaten =
+            (
+                RightsStammdaten.Einrichtung ||
+                RightsStammdaten.Benutzer ||
+                RightsStammdaten.Gruppenrechte ||
+                RightsStammdaten.VerwaltungEinrichtungUndBenutzer ||
+                RightsStammdaten.VerwaltungFortbildungen ||
+
+                RightsStammdaten.Auswahllisten ||
+                RightsStammdaten.Zusatzeinträge ||
+                RightsStammdaten.Textbausteine ||
+                RightsStammdaten.Dokumentenverwaltung ||
+                RightsStammdaten.ExterneEinrichtungen ||
+
+                RightsStammdaten.Standardprozeduren ||
+                RightsStammdaten.Assessments ||
+                RightsStammdaten.Medikamente ||
+                RightsStammdaten.Pflegerichtlinien ||
+                RightsStammdaten.Ärzteverwaltung ||
+                RightsStammdaten.Arztabrechnung ||
+                RightsStammdaten.ÄrzteZusammenführen ||
+                RightsStammdaten.Befundimport ||
+
+                RightsStammdaten.Quickfilter ||
+                RightsStammdaten.LayoutManager ||
+                RightsStammdaten.MedizinischeTypen ||
+                RightsStammdaten.MedizinscheDialoge ||
+                RightsStammdaten.WundbilderSaklieren ||
+
+                RightsStammdaten.QS2 ||
+                RightsStammdaten.QS2AbfragebVerwaltenAdmin ||
+                RightsStammdaten.QS2Ressourcen ||
+                RightsStammdaten.QS2InformationenFelderSQLServer ||
+                RightsStammdaten.QS2Kriterien ||
+                RightsStammdaten.QS2Auswahllisten ||
+
+                RightsStammdaten.Archiveinstellungen ||
+                RightsStammdaten.EMailKonten ||
+                RightsStammdaten.LogManager
+            );
+
+            AllMenüItemsStammdaten =
+            (
+                !RightsStammdaten.Einrichtung &&        
+                
+                //Benutzer-Items immer extra
+
+                //!RightsStammdaten.Auswahllisten &&    //bestehendes Recht vor 08/22-kann das Menü nicht steuern
+                !RightsStammdaten.Zusatzeinträge &&
+                !RightsStammdaten.Textbausteine &&
+                !RightsStammdaten.Dokumentenverwaltung &&
+                !RightsStammdaten.ExterneEinrichtungen &&
+
+                !RightsStammdaten.Standardprozeduren &&
+                !RightsStammdaten.Assessments &&
+                !RightsStammdaten.Medikamente &&
+                !RightsStammdaten.Pflegerichtlinien &&
+                !RightsStammdaten.Ärzteverwaltung &&
+                !RightsStammdaten.Arztabrechnung &&
+                !RightsStammdaten.ÄrzteZusammenführen &&
+                !RightsStammdaten.Befundimport &&
+
+                !RightsStammdaten.Quickfilter &&
+                !RightsStammdaten.LayoutManager &&
+                !RightsStammdaten.MedizinischeTypen &&
+                !RightsStammdaten.MedizinscheDialoge &&
+                !RightsStammdaten.WundbilderSaklieren &&
+
+                !RightsStammdaten.QS2 &&
+                !RightsStammdaten.QS2AbfragebVerwaltenAdmin &&
+                !RightsStammdaten.QS2Ressourcen &&
+                !RightsStammdaten.QS2InformationenFelderSQLServer &&
+                !RightsStammdaten.QS2Kriterien &&
+                !RightsStammdaten.QS2Auswahllisten &&
+
+                !RightsStammdaten.Archiveinstellungen &&
+                !RightsStammdaten.EMailKonten           
+                //LogManager nicht relevant (immer ausgeblendet)
+            ) || ENV.adminSecure;
         }
 
         public void action(bool bOnOff)
@@ -395,12 +562,8 @@ namespace PMDS
             this.setRights(ref AnyMenüItemVerwaltung);
             bool bShowVerwaltung = AnyMenüItemVerwaltung && bKlientenListeOnTop;
             ultraToolbarsManager1.Tools["Verwaltung"].SharedProps.Visible = bShowVerwaltung;     
-
             ultraToolbarsManager1.Tools["mnuKlient"].SharedProps.Visible = !ultraToolbarsManager1.Tools["Verwaltung"].SharedProps.Visible;
-
-            //ultraToolbarsManager1.Tools["Klientenliste"].SharedProps.Visible = ultraToolbarsManager1.Tools["mnuKlient"].SharedProps.Visible;
             ultraToolbarsManager1.Tools["Klientenliste"].SharedProps.Visible = true;
-            ultraToolbarsManager1.Tools["btnÄrzteMergen"].SharedProps.Visible = ENV.HasRight(UserRights.ÄrzteZusammenführen);
 
             if (PMDS.Global.historie.HistorieOn)
             {
@@ -2258,15 +2421,55 @@ namespace PMDS
             ultraToolbarsManager1.Tools["btnTransferCalcData"].SharedProps.Visible = ENV.HasRight(UserRights.AbrechnungenÜberspielen) || ENV.adminSecure;
             ultraToolbarsManager1.Tools["btnExportCalculations"].SharedProps.Visible = ENV.HasRight(UserRights.AbrechnungenExportieren) || ENV.adminSecure;
 
+            //Menü Verwaltung
             bool AnyMenüItemVerwaltung = false;
             this.setRights(ref AnyMenüItemVerwaltung);
             ultraToolbarsManager1.Tools["Verwaltung"].SharedProps.Visible = AnyMenüItemVerwaltung;
 
+            //Menü Grundaten
             ultraToolbarsManager1.Tools["Grunddaten"].SharedProps.Visible = ENV.HasRight(UserRights.Stammdatenverwaltung);
-            ultraToolbarsManager1.Tools["BenutzerVerwaltung"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
-            ultraToolbarsManager1.Tools["Gruppenrechte"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
-            ultraToolbarsManager1.Tools["btnVerwaltungKlinikenUser"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
-            ultraToolbarsManager1.Tools["btnVerwaltungFortbildungen"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
+            
+            //Menü-Item Stammdaten
+            this.setRightsStammdaten(out bool AnyMenüItemStammdaten, out bool AllMenüItemsStammdaten, out cRightsStammdaten RightsStammaten);
+            ultraToolbarsManager1.Tools["mnuStammdaten"].SharedProps.Visible = AnyMenüItemStammdaten || AllMenüItemsStammdaten || ENV.HasRight(UserRights.MenüStammdaten);
+
+            ultraToolbarsManager1.Tools["KlinikVerwaltung"].SharedProps.Visible = RightsStammaten.Einrichtung || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["BenutzerVerwaltung"].SharedProps.Visible = RightsStammaten.Benutzer;
+            ultraToolbarsManager1.Tools["Gruppenrechte"].SharedProps.Visible = RightsStammaten.Gruppenrechte;
+            ultraToolbarsManager1.Tools["btnVerwaltungKlinikenUser"].SharedProps.Visible = RightsStammaten.VerwaltungEinrichtungUndBenutzer;
+            ultraToolbarsManager1.Tools["btnVerwaltungFortbildungen"].SharedProps.Visible = RightsStammaten.VerwaltungFortbildungen;
+
+            ultraToolbarsManager1.Tools["Auswahllisten"].SharedProps.Visible = RightsStammaten.Auswahllisten || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["Zusatzeintraege"].SharedProps.Visible = RightsStammaten.Zusatzeinträge || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnTextbausteine"].SharedProps.Visible = RightsStammaten.Textbausteine || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnManageDocuments"].SharedProps.Visible = RightsStammaten.Dokumentenverwaltung || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["EinrichtungenVerwaltung"].SharedProps.Visible = RightsStammaten.ExterneEinrichtungen || AllMenüItemsStammdaten;
+
+            ultraToolbarsManager1.Tools["Standardprozeduren"].SharedProps.Visible = RightsStammaten.Standardprozeduren || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["Formulare"].SharedProps.Visible = RightsStammaten.Assessments || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["MedikamenteVerwalten"].SharedProps.Visible = RightsStammaten.Medikamente || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["LinkDokumenteVerwaltung"].SharedProps.Visible = RightsStammaten.Pflegerichtlinien || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnÄrzteverwaltung"].SharedProps.Visible = RightsStammaten.Ärzteverwaltung || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnArztabrechnung"].SharedProps.Visible = RightsStammaten.Arztabrechnung || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnÄrzteMergen"].SharedProps.Visible = RightsStammaten.ÄrzteZusammenführen || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnImportBefunde"].SharedProps.Visible = RightsStammaten.Befundimport || AllMenüItemsStammdaten;
+
+            ultraToolbarsManager1.Tools["QuickFilter"].SharedProps.Visible = RightsStammaten.Quickfilter || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnLayoutManager"].SharedProps.Visible = RightsStammaten.LayoutManager || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["MedizinischetypenVerwaltung"].SharedProps.Visible = RightsStammaten.MedizinischeTypen || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["Medizinische_Dialoge"].SharedProps.Visible = RightsStammaten.MedizinscheDialoge || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnWundBilderScale"].SharedProps.Visible = RightsStammaten.WundbilderSaklieren || AllMenüItemsStammdaten;
+
+            ultraToolbarsManager1.Tools["btnQS2Main"].SharedProps.Visible = RightsStammaten.QS2 || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnQS2ManageQueries"].SharedProps.Visible = RightsStammaten.QS2AbfragebVerwaltenAdmin || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnQS2Ressourcen"].SharedProps.Visible = RightsStammaten.QS2Ressourcen || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnQS2InformationFieldsSqlServer"].SharedProps.Visible = RightsStammaten.QS2InformationenFelderSQLServer || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnQS2Criterias"].SharedProps.Visible = RightsStammaten.QS2Kriterien || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnQS2SelLists"].SharedProps.Visible = RightsStammaten.QS2Auswahllisten || AllMenüItemsStammdaten;
+
+            ultraToolbarsManager1.Tools["ArchivStammdaten"].SharedProps.Visible = RightsStammaten.Archiveinstellungen || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnUserAccounts"].SharedProps.Visible = RightsStammaten.EMailKonten || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnQS2LogManager"].SharedProps.Visible = RightsStammaten.LogManager;
         }
 
         private void ucQuickNavigator1_SiteMapEvent(PMDS.Global.SiteEvents e, ref bool used)
