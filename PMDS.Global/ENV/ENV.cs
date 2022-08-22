@@ -2799,6 +2799,8 @@ namespace PMDS.Global
         AerzteVerwalten = 128,
         [Description("Arztabrechnung")]
         Arztabrechnung = 129,
+        [Description("Pflegerichtlinien verwalten")]
+        PflegerichtlinienVerwalten = 130,
         [Description("Befundimport verwalten")]
         Befundimport = 131,
         [Description("Quickfilter verwalten")]

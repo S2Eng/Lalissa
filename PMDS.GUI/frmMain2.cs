@@ -137,7 +137,7 @@ namespace PMDS
             public bool LayoutManager = false;
             public bool MedizinischeTypen = false;
             public bool MedizinscheDialoge = false;
-            public bool WundbilderSaklieren = false;
+            public bool WundbilderSkalieren = false;
 
             public bool QS2 = false;
             public bool QS2AbfragebVerwaltenAdmin = false;
@@ -276,7 +276,7 @@ namespace PMDS
             RightsStammdaten.Standardprozeduren = ENV.HasRight(UserRights.StandardprozedurenVerwalten);
             RightsStammdaten.Assessments = ENV.HasRight(UserRights.AssessmentsVerwalten);
             RightsStammdaten.Medikamente = ENV.HasRight(UserRights.MedikamenteVerwalten);
-            RightsStammdaten.Pflegerichtlinien = ENV.HasRight(UserRights.MedikamenteVerwalten);
+            RightsStammdaten.Pflegerichtlinien = ENV.HasRight(UserRights.PflegerichtlinienVerwalten);
             RightsStammdaten.Ärzteverwaltung = ENV.HasRight(UserRights.AerzteVerwalten);
             RightsStammdaten.Arztabrechnung = ENV.HasRight(UserRights.Arztabrechnung);
             RightsStammdaten.ÄrzteZusammenführen = ENV.HasRight(UserRights.ÄrzteZusammenführen);
@@ -286,7 +286,7 @@ namespace PMDS
             RightsStammdaten.LayoutManager = ENV.HasRight(UserRights.LayoutmanagerVerwalten);
             RightsStammdaten.MedizinischeTypen = ENV.HasRight(UserRights.MedizinischeTypenVerwalten);
             RightsStammdaten.MedizinscheDialoge = ENV.HasRight(UserRights.MedizinischeDialogeVerwalten);
-            RightsStammdaten.WundbilderSaklieren = ENV.HasRight(UserRights.WundbilderSkalieren);
+            RightsStammdaten.WundbilderSkalieren = ENV.HasRight(UserRights.WundbilderSkalieren);
 
             RightsStammdaten.QS2 = ENV.HasRight(UserRights.QS2Verwalten);
             RightsStammdaten.QS2AbfragebVerwaltenAdmin = ENV.HasRight(UserRights.QS2Verwalten);
@@ -326,7 +326,7 @@ namespace PMDS
                 RightsStammdaten.LayoutManager ||
                 RightsStammdaten.MedizinischeTypen ||
                 RightsStammdaten.MedizinscheDialoge ||
-                RightsStammdaten.WundbilderSaklieren ||
+                RightsStammdaten.WundbilderSkalieren ||
 
                 RightsStammdaten.QS2 ||
                 RightsStammdaten.QS2AbfragebVerwaltenAdmin ||
@@ -362,10 +362,10 @@ namespace PMDS
                 !RightsStammdaten.Befundimport &&
 
                 !RightsStammdaten.Quickfilter &&
-                !RightsStammdaten.LayoutManager &&
+                //!RightsStammdaten.LayoutManager &&    //bestehendes Recht vor 08/22-kann das Menü nicht steuern
                 !RightsStammdaten.MedizinischeTypen &&
                 !RightsStammdaten.MedizinscheDialoge &&
-                !RightsStammdaten.WundbilderSaklieren &&
+                !RightsStammdaten.WundbilderSkalieren &&
 
                 !RightsStammdaten.QS2 &&
                 !RightsStammdaten.QS2AbfragebVerwaltenAdmin &&
@@ -2458,7 +2458,7 @@ namespace PMDS
             ultraToolbarsManager1.Tools["btnLayoutManager"].SharedProps.Visible = RightsStammaten.LayoutManager || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["MedizinischetypenVerwaltung"].SharedProps.Visible = RightsStammaten.MedizinischeTypen || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["Medizinische_Dialoge"].SharedProps.Visible = RightsStammaten.MedizinscheDialoge || AllMenüItemsStammdaten;
-            ultraToolbarsManager1.Tools["btnWundBilderScale"].SharedProps.Visible = RightsStammaten.WundbilderSaklieren || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnWundBilderScale"].SharedProps.Visible = RightsStammaten.WundbilderSkalieren || AllMenüItemsStammdaten;
 
             ultraToolbarsManager1.Tools["btnQS2Main"].SharedProps.Visible = RightsStammaten.QS2 || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnQS2ManageQueries"].SharedProps.Visible = RightsStammaten.QS2AbfragebVerwaltenAdmin || AllMenüItemsStammdaten;
