@@ -1,4 +1,5 @@
 ﻿Imports System.Data.OleDb
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports VB = Microsoft.VisualBasic
 
 Public Class Sql
@@ -211,13 +212,20 @@ Public Class Sql
                 da.SelectCommand = cmd
                 da.SelectCommand.Connection = Sql.CONNECTION
 
-                da.SelectCommand.Parameters.AddWithValue("Datum", von)
-                da.SelectCommand.Parameters.AddWithValue("Datum", bis)
+                Dim pVon As New OleDbParameter With {.ParameterName = "Datum", .OleDbType = OleDbType.Date, .Value = von}
+                da.SelectCommand.Parameters.Add(pVon)
+
+                Dim pBis As New OleDbParameter With {.ParameterName = "Datum", .OleDbType = OleDbType.Date, .Value = bis}
+                da.SelectCommand.Parameters.Add(pBis)
+
                 If (Not vonRechDatum Is Nothing) Then
-                    da.SelectCommand.Parameters.AddWithValue("RechDatum", vonRechDatum.Value.Date)
+                    Dim pVonRechDatum As New OleDbParameter With {.ParameterName = "RechDatum", .OleDbType = OleDbType.Date, .Value = vonRechDatum.Value.Date}
+                    da.SelectCommand.Parameters.Add(pVonRechDatum)
                 End If
+
                 If (Not bisRechDatum Is Nothing) Then
-                    da.SelectCommand.Parameters.AddWithValue("RechDatum", bisRechDatum.Value.Date)
+                    Dim pBisRechDatum As New OleDbParameter With {.ParameterName = "RechDatum", .OleDbType = OleDbType.Date, .Value = bisRechDatum.Value.Date}
+                    da.SelectCommand.Parameters.Add(pBisRechDatum)
                 End If
 
                 da.SelectCommand.CommandTimeout = 0
@@ -831,16 +839,14 @@ Public Class Sql
                 If von <> Nothing And von <> calcBase.dat1900 Then
                     str = " Buchungsdatum >= ? "
                     where += IIf(where = "", " where " + str, " and " + str)
-                    'cmd.Parameters.AddWithValue("Buchungsdatum", OleDbType.DBTimeStamp).Value = von.Date
-                    cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("Buchungsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Buchungsdatum")).Value = von.Date
+                    cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("Buchungsdatum", System.Data.OleDb.OleDbType.Date, 16, "Buchungsdatum")).Value = von.Date
 
                 End If
 
                 If bis <> Nothing And bis <> calcBase.dat2999 Then
                     str = " Buchungsdatum <= ? "
                     where += IIf(where = "", " where " + str, " and " + str)
-                    'cmd.Parameters.AddWithValue("Buchungsdatum", OleDbType.DBTimeStamp).Value = bis.Date
-                    cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("Buchungsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Buchungsdatum")).Value = bis.Date
+                    cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("Buchungsdatum", System.Data.OleDb.OleDbType.Date, 16, "Buchungsdatum")).Value = bis.Date
                 End If
 
                 cmd.CommandText += where

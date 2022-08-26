@@ -136,8 +136,9 @@ Public Class compPlan
             ElseIf typSel = eTypSelPlan.EmpfangenAmBigger Then
                 Dim sWhere As String = " where empfangenAm >= ? "
                 Me.daPlan.SelectCommand.CommandText += sWhere
-                Me.daPlan.SelectCommand.Parameters.AddWithValue("empfangenAm", dat.Date)
 
+                Dim pempfangenAm As New OleDbParameter With {.ParameterName = "empfangenAm", .OleDbType = OleDbType.Date, .Value = dat.Date}
+                Me.daPlan.SelectCommand.Parameters.Add(pempfangenAm)
             Else
                 Throw New Exception("getPlan: typSel '" + typSel.ToString() + "' not allowed!")
             End If
@@ -184,7 +185,10 @@ Public Class compPlan
             Dim cmd As New OleDb.OleDbCommand
             cmd.CommandText = "update  [plan] set gesendetAm = ?  WHERE ID = ? "
             cmd.Connection = Me.database.getConnDB()
-            cmd.Parameters.AddWithValue("gesendetAm", gesendetAm)
+
+            Dim pgesendetAm As New OleDbParameter With {.ParameterName = "gesendetAm", .OleDbType = OleDbType.Date, .Value = gesendetAm}
+            cmd.Parameters.Add(pgesendetAm)
+
             cmd.Parameters.AddWithValue("ID", idPlan)
             cmd.ExecuteNonQuery()
             Return True
@@ -199,7 +203,10 @@ Public Class compPlan
             Dim cmd As New OleDb.OleDbCommand
             cmd.CommandText = "update  [plan] set empfangenAm = ?  WHERE ID = ? "
             cmd.Connection = Me.database.getConnDB()
-            cmd.Parameters.AddWithValue("empfangenAm", empfangenAm)
+
+            Dim pempfangenAm As New OleDbParameter With {.ParameterName = "empfangenAm", .OleDbType = OleDbType.Date, .Value = empfangenAm}
+            cmd.Parameters.Add(pempfangenAm)
+
             cmd.Parameters.AddWithValue("ID", idPlan)
             cmd.ExecuteNonQuery()
             Return True
@@ -215,8 +222,13 @@ Public Class compPlan
             cmd.CommandText = "update  [plan] set LastChangeITSCont=?, LastSyncToExchange=?  WHERE ID='" + idPlan.ToString() + "' "
             cmd.Connection = Me.database.getConnDB()
             Dim dNow As Date = Now.AddSeconds(2)
-            cmd.Parameters.AddWithValue("LastChangeITSCont", dNow)
-            cmd.Parameters.AddWithValue("LastSyncToExchange", dNow)
+
+            Dim pLastChangeITSCont As New OleDbParameter With {.ParameterName = "LastChangeITSCont", .OleDbType = OleDbType.Date, .Value = dNow}
+            cmd.Parameters.Add(pLastChangeITSCont)
+
+            Dim pLastSyncToExchange As New OleDbParameter With {.ParameterName = "LastSyncToExchange", .OleDbType = OleDbType.Date, .Value = dNow}
+            cmd.Parameters.Add(pLastSyncToExchange)
+
             cmd.CommandTimeout = 0
             cmd.ExecuteNonQuery()
             Return True

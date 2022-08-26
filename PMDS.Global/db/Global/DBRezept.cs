@@ -14,6 +14,7 @@ using RBU;
 using PMDS.Global;
 using PMDS.Data.Global;
 using PMDS.Global.db.Global;
+using System.Data.SqlClient;
 
 namespace PMDS.DB
 {
@@ -321,7 +322,7 @@ namespace PMDS.DB
             this.oleDbCommand2.Connection = this.oleDbConnection1;
             this.oleDbCommand2.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("IDMedikament", System.Data.OleDb.OleDbType.Guid, 16, "IDMedikament"),
-            new System.Data.OleDb.OleDbParameter("AbzugebenBis", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "AbzugebenBis"),
+            new System.Data.OleDb.OleDbParameter("AbzugebenBis", System.Data.OleDb.OleDbType.Date, 16, "AbzugebenBis"),
             new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 16, "IDAufenthalt")});
             // 
             // dsKlientenListeByMedikament1
@@ -628,8 +629,13 @@ namespace PMDS.DB
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.CommandText = sCommand;
                 cmd.Parameters.AddWithValue("@ID", IDAufenthalt);
-                cmd.Parameters.AddWithValue("@von", Tag);
-                cmd.Parameters.AddWithValue("@bis", Tag);
+
+                OleDbParameter von = new OleDbParameter {ParameterName = "@von", OleDbType = OleDbType.Date, Value = Tag};
+                cmd.Parameters.Add(von);
+
+                OleDbParameter bis = new OleDbParameter {ParameterName = "@bis", OleDbType = OleDbType.Date, Value = Tag};
+                cmd.Parameters.Add(bis);
+
                 cmd.Connection = PMDS.Global.dbBase.getConn();
                 using (DataTable dtSelect = new DataTable())
                 {

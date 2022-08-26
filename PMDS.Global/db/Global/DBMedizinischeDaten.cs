@@ -71,7 +71,10 @@ namespace PMDS.DB.Global
         {
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandText = "Update MedizinischeDaten set bis = ?, Beendigungsgrund = ?, Beschreibung = ? where IDPatient = ? and Medizinischertyp = ? and not von is null and bis is null";
-            cmd.Parameters.AddWithValue("bis", dtEnde);
+
+            OleDbParameter bis = new OleDbParameter { ParameterName = "bis", OleDbType = OleDbType.Date, Value = dtEnde };
+            cmd.Parameters.Add(bis);
+
             cmd.Parameters.AddWithValue("Beendigungsgrund", sEndegrund);
             cmd.Parameters.AddWithValue("Beschreibung", sBeschreibung);
             cmd.Parameters.AddWithValue("IDPatient", IDPatient);

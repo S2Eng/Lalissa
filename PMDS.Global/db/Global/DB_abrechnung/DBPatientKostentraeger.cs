@@ -769,22 +769,21 @@ namespace PMDS.Calc.Admin.DB
                 cmd.CommandText = sb.ToString();
                 OleDbDataAdapter da = new OleDbDataAdapter(cmd);
                 da.SelectCommand.Parameters.AddWithValue("IDKostentraeger", IDKostentraeger);
-                da.SelectCommand.Parameters.AddWithValue("GueltigAb", gueltigBis);
-                da.SelectCommand.Parameters.AddWithValue("GueltigAb1", gueltigab);
-                da.SelectCommand.Parameters.AddWithValue("GueltigBis", gueltigab);
-                da.SelectCommand.Parameters.AddWithValue("GueltigAb2", gueltigBis);
-                da.SelectCommand.Parameters.AddWithValue("GueltigBis1", gueltigBis);
+
+                OleDbParameter pGueltigAb = new OleDbParameter { ParameterName = "GueltigAb", OleDbType = OleDbType.Date, Value = gueltigBis };
+                da.SelectCommand.Parameters.Add(pGueltigAb);
+                OleDbParameter pGueltigAb1 = new OleDbParameter { ParameterName = "GueltigAb1", OleDbType = OleDbType.Date, Value = gueltigab };
+                da.SelectCommand.Parameters.Add(pGueltigAb1);
+                OleDbParameter pGueltigBis = new OleDbParameter { ParameterName = "GueltigBis", OleDbType = OleDbType.Date, Value = gueltigab };
+                da.SelectCommand.Parameters.Add(pGueltigBis);
+                OleDbParameter pGueltigAb2 = new OleDbParameter { ParameterName = "GueltigAb2", OleDbType = OleDbType.Date, Value = gueltigBis };
+                da.SelectCommand.Parameters.Add(pGueltigAb2);
+                OleDbParameter pGueltigBis1 = new OleDbParameter { ParameterName = "GueltigBis1", OleDbType = OleDbType.Date, Value = gueltigBis };
+                da.SelectCommand.Parameters.Add(pGueltigBis1);
+
                 return da;
             }
         }
-
-        //public dsPatientStation.PatientDataTable KlientenByKostentraeger(Guid IDKostentraeger, DateTime von, DateTime bis)
-        //{
-        //    dsPatientStation.PatientDataTable dt = new dsPatientStation.PatientDataTable();
-        //    daPatientStation.SelectCommand.Parameters[0].Value = IDKostentraeger;
-        //    DataBase.Fill(daPatientStation, dt);
-        //    return dt;
-        //}
 
         public bool deletePatientKostenträger(Guid IDKost)
         {

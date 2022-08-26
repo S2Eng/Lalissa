@@ -136,7 +136,9 @@ Public Class compUserAccounts
             Dim cmd As New OleDb.OleDbCommand
             cmd.CommandText = "update  tblUserAccounts set lastReceive = ?  WHERE ID = ? "
             cmd.Connection = Me.database.getConnDB()
-            cmd.Parameters.AddWithValue("gesendetAm", lastReceive)
+
+            Dim pgesendetAm As New OleDbParameter With {.ParameterName = "gesendetAm", .OleDbType = OleDbType.Date, .Value = lastReceive}
+            cmd.Parameters.Add(pgesendetAm)
             cmd.Parameters.AddWithValue("ID", idUserAccount)
             cmd.ExecuteNonQuery()
             Return True

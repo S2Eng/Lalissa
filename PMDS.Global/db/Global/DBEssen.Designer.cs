@@ -47,8 +47,8 @@
     "FROM         Essen\r\nWHERE     (Tag >= ?) AND (Tag <= ?)";
             this.oleDbSelectCommand1.Connection = oleDbConnection1;
             this.oleDbSelectCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("Tag", System.Data.OleDb.OleDbType.DBTimeStamp, 8, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Tag", System.Data.DataRowVersion.Current, "01.01.2000"),
-            new System.Data.OleDb.OleDbParameter("Tag1", System.Data.OleDb.OleDbType.DBTimeStamp, 8, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Tag", System.Data.DataRowVersion.Current, "31.12.2020")});
+            new System.Data.OleDb.OleDbParameter("Tag", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Tag", System.Data.DataRowVersion.Current, "01.01.2000"),
+            new System.Data.OleDb.OleDbParameter("Tag1", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Tag", System.Data.DataRowVersion.Current, "31.12.2020")});
             // 
             // oleDbInsertCommand1
             // 

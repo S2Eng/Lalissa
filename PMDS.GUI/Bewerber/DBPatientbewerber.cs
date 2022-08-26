@@ -94,28 +94,36 @@ namespace PMDS.DB.Global
             {
                 sbWhere.Append(" AND ");
                 sbWhere.Append("BewerbungDatum >= ?");
-                cmd.Parameters.AddWithValue("BewerbungDatum", bewerberVon);
+
+                OleDbParameter pBewerbungDatum = new OleDbParameter { ParameterName = "BewerbungDatum", OleDbType = OleDbType.Date, Value = bewerberVon };
+                cmd.Parameters.Add(pBewerbungDatum);
             }
 
             if (bewerberBis != DateTime.MinValue)
             {
                 sbWhere.Append(" AND ");
                 sbWhere.Append("BewerbungDatum <= ?");
-                cmd.Parameters.AddWithValue("BewerbungDatum", bewerberBis);
+
+                OleDbParameter pBewerbungDatumBis = new OleDbParameter { ParameterName = "BewerbungDatum", OleDbType = OleDbType.Date, Value = bewerberBis };
+                cmd.Parameters.Add(pBewerbungDatumBis);
             }
 
             if (einzzugswuschVon != DateTime.MinValue)
             {
                 sbWhere.Append(" AND ");
                 sbWhere.Append("EinzugswunschDatum >= ?");
-                cmd.Parameters.AddWithValue("EinzugswunschDatum", einzzugswuschVon);
+
+                OleDbParameter pEinzugswunschDatum = new OleDbParameter { ParameterName = "EinzugswunschDatum", OleDbType = OleDbType.Date, Value = einzzugswuschVon };
+                cmd.Parameters.Add(pEinzugswunschDatum);
             }
 
             if (einzzugswuschBis != DateTime.MinValue)
             {
                 sbWhere.Append(" AND ");
                 sbWhere.Append("EinzugswunschDatum <= ?");
-                cmd.Parameters.AddWithValue("EinzugswunschDatum", einzzugswuschBis);
+
+                OleDbParameter peinzzugswuschBis = new OleDbParameter { ParameterName = "EinzugswunschDatum", OleDbType = OleDbType.Date, Value = einzzugswuschBis };
+                cmd.Parameters.Add(peinzzugswuschBis);
             }
 
             if (prioritaet != null && prioritaet != "")

@@ -590,11 +590,18 @@ namespace PMDS.DB.Global
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             da.SelectCommand.Parameters.AddWithValue("enumKostentraegerart", (int)Kostentraegerart.Transferleistung);
             da.SelectCommand.Parameters.AddWithValue("IDPatien", IDPatien);
-            da.SelectCommand.Parameters.AddWithValue("GueltigAb", gueltigab);
-            da.SelectCommand.Parameters.AddWithValue("GueltigAb1", gueltigab);
-            da.SelectCommand.Parameters.AddWithValue("GueltigBis", gueltigab);
-            da.SelectCommand.Parameters.AddWithValue("GueltigAb2", gueltigBis);
-            da.SelectCommand.Parameters.AddWithValue("GueltigBis1", gueltigBis);
+
+            OleDbParameter pGueltigAb = new OleDbParameter { ParameterName = "GueltigAb", OleDbType = OleDbType.Date, Value = gueltigab };
+            da.SelectCommand.Parameters.Add(pGueltigAb);
+            OleDbParameter pGueltigAb1 = new OleDbParameter { ParameterName = "GueltigAb1", OleDbType = OleDbType.Date, Value = gueltigab };
+            da.SelectCommand.Parameters.Add(pGueltigAb1);
+            OleDbParameter pGueltigBis = new OleDbParameter { ParameterName = "GueltigBis", OleDbType = OleDbType.Date, Value = gueltigab };
+            da.SelectCommand.Parameters.Add(pGueltigBis);
+            OleDbParameter pGueltigAb2 = new OleDbParameter { ParameterName = "GueltigAb2", OleDbType = OleDbType.Date, Value = gueltigBis };
+            da.SelectCommand.Parameters.Add(pGueltigAb2);
+            OleDbParameter pGueltigBis1 = new OleDbParameter { ParameterName = "GueltigBis1", OleDbType = OleDbType.Date, Value = gueltigab };
+            da.SelectCommand.Parameters.Add(pGueltigBis1);
+
             DataBase.Fill(da, ds.Kostentraeger);
             return ds;
         }

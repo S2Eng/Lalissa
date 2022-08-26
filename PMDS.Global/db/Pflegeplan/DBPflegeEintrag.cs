@@ -818,8 +818,13 @@ namespace PMDS.DB
                 string sSql = "select ID from Pflegeeintrag where IDPflegePlan = ? and  Zeitpunkt > ? and Zeitpunkt < ?";
                 OleDbCommand cmd = new OleDbCommand(sSql);
                 cmd.Parameters.AddWithValue("IDPflegePlan", IDPflegePlan);
-                cmd.Parameters.AddWithValue("t1", DateTime.Now.Date);
-                cmd.Parameters.AddWithValue("t2", DateTime.Now.Date.AddDays(1));
+
+                OleDbParameter pt1 = new OleDbParameter { ParameterName = "t1", OleDbType = OleDbType.Date, Value = DateTime.Now.Date };
+                cmd.Parameters.Add(pt1);
+
+                OleDbParameter pt2 = new OleDbParameter { ParameterName = "t2", OleDbType = OleDbType.Date, Value = DateTime.Now.Date.AddDays(1) };
+                cmd.Parameters.Add(pt2);
+
                 bool bRet = false;
                 cmd.Connection = PMDS.Global.dbBase.getConn();
                 System.Data.DataTable dtSelect = new System.Data.DataTable();

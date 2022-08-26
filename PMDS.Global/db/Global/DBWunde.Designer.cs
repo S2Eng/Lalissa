@@ -420,15 +420,15 @@
             this.oleDbUpdateCommand4.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 16, "ID"),
             new System.Data.OleDb.OleDbParameter("IDWundeKopf", System.Data.OleDb.OleDbType.Guid, 16, "IDWundeKopf"),
-            new System.Data.OleDb.OleDbParameter("VerordnetAm", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "VerordnetAm"),
-            new System.Data.OleDb.OleDbParameter("AbgesetztAm", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "AbgesetztAm"),
+            new System.Data.OleDb.OleDbParameter("VerordnetAm", System.Data.OleDb.OleDbType.Date, 16, "VerordnetAm"),
+            new System.Data.OleDb.OleDbParameter("AbgesetztAm", System.Data.OleDb.OleDbType.Date, 16, "AbgesetztAm"),
             new System.Data.OleDb.OleDbParameter("Therapie", System.Data.OleDb.OleDbType.Char, 2048, "Therapie"),
             new System.Data.OleDb.OleDbParameter("AngeordnetVon", System.Data.OleDb.OleDbType.Char, 255, "AngeordnetVon"),
             new System.Data.OleDb.OleDbParameter("AbgesetztVon", System.Data.OleDb.OleDbType.Char, 255, "AbgesetztVon"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Geaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "DatumErstellt"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 16, "DatumErstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 16, "DatumGeaendert"),
             new System.Data.OleDb.OleDbParameter("Debridement", System.Data.OleDb.OleDbType.Char, 255, "Debridement"),
             new System.Data.OleDb.OleDbParameter("Reinigung", System.Data.OleDb.OleDbType.Char, 255, "Reinigung"),
             new System.Data.OleDb.OleDbParameter("Wundauflage", System.Data.OleDb.OleDbType.Char, 255, "Wundauflage"),
@@ -444,7 +444,7 @@
             new System.Data.OleDb.OleDbParameter("VWIntervall", System.Data.OleDb.OleDbType.Char, 100, "VWIntervall"),
             new System.Data.OleDb.OleDbParameter("VidiertJN", System.Data.OleDb.OleDbType.Boolean, 1, "VidiertJN"),
             new System.Data.OleDb.OleDbParameter("VidiertVon", System.Data.OleDb.OleDbType.WChar, 100, "VidiertVon"),
-            new System.Data.OleDb.OleDbParameter("VidiertAm", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "VidiertAm"),
+            new System.Data.OleDb.OleDbParameter("VidiertAm", System.Data.OleDb.OleDbType.Date, 16, "VidiertAm"),
             new System.Data.OleDb.OleDbParameter("VorgeschlagenVon", System.Data.OleDb.OleDbType.Char, 100, "VorgeschlagenVon"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MARC.Everest.DataTypes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.OleDb;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -136,8 +138,11 @@ namespace PMDS.Global.db.ERSystem
                     string sOrderBy = " order by Zeitpunkt desc";
                     this.daPflegeEintrag.SelectCommand.CommandText += sqlWhere + " " + sOrderBy;
 
-                    this.daPflegeEintrag.SelectCommand.Parameters.AddWithValue("@Zeitpunkt1", dFrom);
-                    this.daPflegeEintrag.SelectCommand.Parameters.AddWithValue("@Zeitpunkt2", dTo);
+                    OleDbParameter pZeitpunkt1 = new OleDbParameter { ParameterName = "@Zeitpunkt1", OleDbType = OleDbType.Date, Value = dFrom };
+                    this.daPflegeEintrag.SelectCommand.Parameters.Add(pZeitpunkt1);
+
+                    OleDbParameter pZeitpunkt2 = new OleDbParameter { ParameterName = "@Zeitpunkt2", OleDbType = OleDbType.Date, Value = dTo};
+                    this.daPflegeEintrag.SelectCommand.Parameters.Add(pZeitpunkt2);
                 }
                 else if (SelTypePflegeplan == eSelTypePflegeEintrag.IDAufenthalt)
                 {

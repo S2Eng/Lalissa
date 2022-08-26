@@ -24,6 +24,7 @@ using PMDS.DB;
 using System.Net.NetworkInformation;
 using System.Net;
 using System.Net.Sockets;
+using MARC.Everest.DataTypes;
 
 
 namespace PMDS.DB
@@ -230,7 +231,9 @@ namespace PMDS.DB
                 string strSQlUpdate = "delete from CommAsync where CreatedDay<=@CreatedDay and ClientsMessage='" + ClientsMessage.ToString() + "'";
                 System.Data.SqlClient.SqlCommand cmdUpdate = new System.Data.SqlClient.SqlCommand();
                 cmdUpdate.CommandText = strSQlUpdate;
-                cmdUpdate.Parameters.AddWithValue("@CreatedDay", dDat);
+                OleDbParameter pCreatedDay = new OleDbParameter { ParameterName = "@CreatedDay", OleDbType = OleDbType.Date, Value = dDat };
+                cmdUpdate.Parameters.Add(pCreatedDay);
+
                 if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
                     RBU.DataBase.CONNECTION.Open();
                 cmdUpdate.Connection = RBU.DataBase.CONNECTIONSqlClient;
