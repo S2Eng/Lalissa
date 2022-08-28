@@ -141,13 +141,22 @@ namespace PMDS.GUI
                 PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
 
                 string extension = System.IO.Path.GetExtension(ReportFile).ToLower();
-                if (extension == ".pdf")
+                if (extension.sEquals(".pdf"))
                 {
                     PMDS.Global.print.FDF fdf = new Global.print.FDF();
                     fdf.Print(ReportFile, null);
                     return;
                 }
-                else if (extension != ".rpt")
+                else if (extension.sEquals(".qry"))
+                {
+                    //qry-File öffnen
+                    //Parameter anwenden
+                    //SQL ausführen und Ergebnis in Excel öffnen
+
+                    MessageBox.Show("Query ausführen und anzeigen");
+                    return;
+                }
+                else if (!extension.sEquals(".rpt"))
                 {
                     string DefaultApp = PMDS.Global.Tools.AssocQueryString(PMDS.Global.Tools.AssocStr.ASSOCSTR_EXECUTABLE, extension);
 
