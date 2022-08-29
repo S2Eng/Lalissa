@@ -27,6 +27,7 @@ using System.Linq;
 using PMDS.Global.db.ERSystem;
 using PMDSClient.Sitemap;
 using S2Extensions;
+using System.Data.OleDb;
 
 namespace PMDS.GUI
 {
@@ -152,6 +153,19 @@ namespace PMDS.GUI
                     //qry-File öffnen
                     //Parameter anwenden
                     //SQL ausführen und Ergebnis in Excel öffnen
+
+                    string sqlQuery = "SELECT * FROM vAufenthaltsliste WHERE Nachname = ? AND Vorname = ?";
+
+                    //SQL-Command aus qry nehmen
+                    System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
+                    OleDbConnection conn = new OleDbConnection(RBU.DataBase.CONNECTION.ConnectionString);
+                    conn.Open();
+                    cmd = new OleDbCommand(sqlQuery, conn);
+                    cmd.CommandText = sqlQuery;
+                    cmd.Parameters.Add("Nachname", OleDbType.VarChar).Value = "da Silva";
+                    cmd.Parameters.Add("Vorname", OleDbType.VarChar).Value = "Sandra";
+                    OleDbDataReader r = cmd.ExecuteReader();
+                    conn.Close();
 
                     MessageBox.Show("Query ausführen und anzeigen");
                     return;
