@@ -230,6 +230,7 @@
             // 
             // pnlImport
             // 
+            this.pnlImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             // 
             // pnlImport.ClientArea
             // 

@@ -348,7 +348,7 @@ namespace PMDS.DB
 
                 foreach (OleDbParameter arFound in lstPar)
                 {
-                    if (arFound.OleDbType == OleDbType.Date)
+                    if (arFound.OleDbType == OleDbType.Date || arFound.OleDbType == OleDbType.DBTimeStamp)
                     {
                         this.sqlTermine1.davInterventionen.SelectCommand.Parameters.Add(new System.Data.OleDb.OleDbParameter(arFound.ParameterName, System.Data.OleDb.OleDbType.Date, 16, arFound.ParameterName)).Value = arFound.Value;
                     }
