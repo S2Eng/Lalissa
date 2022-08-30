@@ -28,6 +28,9 @@ using PMDS.Global.db.ERSystem;
 using PMDSClient.Sitemap;
 using S2Extensions;
 using System.Data.OleDb;
+using Infragistics.Documents.Excel;
+using SqlKata;
+using SqlKata.Compilers;
 
 namespace PMDS.GUI
 {
@@ -154,20 +157,61 @@ namespace PMDS.GUI
                     //Parameter anwenden
                     //SQL ausführen und Ergebnis in Excel öffnen
 
-                    string sqlQuery = "SELECT * FROM vAufenthaltsliste WHERE Nachname = ? AND Vorname = ?";
+                    var compiler = new SqlServerCompiler();
+                    var query = new Query("Anmeldungen")
+                        .Select("Vorname", "Nachname", "Benutzer", "LogInNameFrei", "LogInDatum", "LogOutDatum")
+                        .WhereDate("LoginDatum", ">=", "2021-01-01")
+                        .WhereDate("LoginDatum", "<=", "2022-12-31")
+                        .WhereLike("Benutzer", "%");
 
-                    //SQL-Command aus qry nehmen
+                    //SqlKata.AbstractClause c = query.Clauses[7];
+
+                    //var qx = new Query();
+                    //SqlKata.Clause cFrom =  new SqlKata.AbstractClause();
+
+                    //qx.Clauses.Add(cFrom);
+                        //.Where("Vorname", "Sandra")
+                        //.Where("Entlassen",0)
+                        //.WhereDate("Aufnahmedatum", "<", DateTime.Now).Where(q => q.WhereRaw("1 = ?", 1).OrWhereTrue("RezeptgebuehrbefreiungJN").OrWhereTrue("Sozialhilfebescheid"));
+
                     System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
                     OleDbConnection conn = new OleDbConnection(RBU.DataBase.CONNECTION.ConnectionString);
                     conn.Open();
-                    cmd = new OleDbCommand(sqlQuery, conn);
-                    cmd.CommandText = sqlQuery;
-                    cmd.Parameters.Add("Nachname", OleDbType.VarChar).Value = "da Silva";
-                    cmd.Parameters.Add("Vorname", OleDbType.VarChar).Value = "Sandra";
+                    cmd = new OleDbCommand(compiler.Compile(query).ToString(), conn);
                     OleDbDataReader r = cmd.ExecuteReader();
-                    conn.Close();
 
-                    MessageBox.Show("Query ausführen und anzeigen");
+                    var dataTable = new DataTable();
+                    dataTable.Load(r);
+                    Workbook workbook1 = new Workbook();
+                    Worksheet worksheet1 = workbook1.Worksheets.Add("Sheet 1");
+
+                    for (int columnIndex = 0; columnIndex < dataTable.Columns.Count; columnIndex++)
+                    {
+                        worksheet1.Rows[0].Cells[columnIndex].Value = dataTable.Columns[columnIndex].ColumnName;
+                    }
+
+                    int rowIndex = 1;
+                    foreach (DataRow dataRow in dataTable.Rows)
+                    {
+                        Infragistics.Documents.Excel.WorksheetRow row = worksheet1.Rows[rowIndex++];
+                        for (int columnIndex = 0; columnIndex < dataRow.ItemArray.Length; columnIndex++)
+                        {
+                            row.Cells[columnIndex].Value = dataRow.ItemArray[columnIndex];
+                        }
+                    }
+
+                    workbook1.Save("C:\\Temp\\Workbook1.xls");
+                    
+
+                    conn.Close();
+                    string DefaultApp = PMDS.Global.Tools.AssocQueryString(PMDS.Global.Tools.AssocStr.ASSOCSTR_EXECUTABLE, ".xls");
+
+                    System.Diagnostics.Process myProcess = new System.Diagnostics.Process();
+                    myProcess.StartInfo.FileName = DefaultApp;
+
+                    myProcess.StartInfo.Arguments = "C:\\Temp\\Workbook1.xls";
+                    myProcess.Start();
+
                     return;
                 }
                 else if (!extension.sEquals(".rpt"))

@@ -501,6 +501,9 @@
     <Reference Include="RestSharp, Version=107.3.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.107.3.0\lib\netstandard2.0\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="SqlKata, Version=2.3.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SqlKata.2.3.7\lib\netstandard2.0\SqlKata.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Compression.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Syncfusion.Compression.Base.dll</HintPath>

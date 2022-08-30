@@ -2481,6 +2481,34 @@ namespace PMDS.DB
             }
         }
 
+        public PMDS.db.Entities.AuswahlListe GetAuswahllisteByReihenfolge(PMDS.db.Entities.ERModellPMDSEntities db, string GruppeID, int Reihenfolge, bool ExactMatch = false)
+        {
+            try
+            {
+                IQueryable<PMDS.db.Entities.AuswahlListe> tAuswahlliste = db.AuswahlListe.Where(a => a.IDAuswahlListeGruppe == GruppeID && a.Reihenfolge == Reihenfolge);
+                if (!tAuswahlliste.Any() || tAuswahlliste.Count() != 1)
+                {
+                    if (ExactMatch)
+                    {
+                        throw new Exception("PMDSBusiness.GetAuswahllisteByReihenfolge: tAuswahlliste.Count() <> 1 not allowed for Reihenfolge = " + Reihenfolge.ToString());
+                    }
+                    else
+                    { 
+                        return new AuswahlListe();
+                    }
+                }
+                else 
+                {
+                    PMDS.db.Entities.AuswahlListe rAuswahlListe = tAuswahlliste.First();
+                    return rAuswahlListe;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.GetAuswahllisteByID: " + ex.ToString());
+            }
+        }
+
         public IQueryable<PMDS.db.Entities.AuswahlListe> GetAuswahllisteByAuswahllisteGruppe(string AuswahllisteGruppe, PMDS.db.Entities.ERModellPMDSEntities db, bool OrderByBezeichnung)
         {
             try
@@ -2507,9 +2535,6 @@ namespace PMDS.DB
         {
             try
             {
-                retBusiness retBusiness1 = new retBusiness();
-                PMDS.DB.PMDSBusiness PMDSBusiness1 = new PMDS.DB.PMDSBusiness();
-
                 IQueryable<PMDS.db.Entities.AuswahlListe> tAuswahlliste = db.AuswahlListe.Where(a => a.IDAuswahlListeGruppe == GruppeID && a.Bezeichnung == Bezeichnung.Trim()).OrderBy(a => a.Bezeichnung);
                 if (!tAuswahlliste.Any())
                 {
