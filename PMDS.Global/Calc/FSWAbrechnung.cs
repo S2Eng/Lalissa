@@ -46,6 +46,11 @@ namespace PMDS.Global
 
         private List<Leistungszeile> lstZeilen = new List<Leistungszeile>();
         private List<Chilkat.Xml> ListFSWXml = new List<Chilkat.Xml>();
+        
+        private int iAnzahlDays = 0;
+        private int iBWAnzahlDays = 0;
+        private decimal dPflegeNetto = 0;
+        private decimal dBWNetto = 0;
 
         private db.cEBInterfaceDB.Transaction Transaction { get; set; } = db.cEBInterfaceDB.NewTransaction(true);
         private db.cEBInterfaceDB.Transaction TransactionBW { get; set; } = db.cEBInterfaceDB.NewTransaction(false);
@@ -66,10 +71,12 @@ namespace PMDS.Global
             public double Netto;
             public double MwStSatz;
             public int Anzahl;
+            public int BWAnzahl;
             public string FiBu;
             public DateTime ReDatum;
             public DateTime Monat;
             public string SVNr;
+            public bool Pflege;
         }
 
         public eAction RunAction
@@ -214,9 +221,10 @@ namespace PMDS.Global
                             PMDS.Global.db.cEBInterfaceDB.Invoice InvoiceBW = PMDS.Global.db.cEBInterfaceDB.Init(IDKlinik, new Guid(rBill.IDKlient));
 
                             //Verhältnis Pflege / Betreuung auf der Rechnung ermitteln
-                            decimal dPflegeNetto = 0;
-                            decimal dBWNetto = 0;
+
                             decimal dMwSt = 0;
+                            int iPflegeTage = 0;
+                            int iBWTage = 0;
 
                             decimal dSumLeistNetto = 0;
                             foreach (dbCalc.KostenKostenträgerRow Rechnungszeile in dbCalc.KostenKostenträger)
@@ -230,10 +238,12 @@ namespace PMDS.Global
                                             if (Rechnungszeile.Bezeichnung.sEquals(sBW, S2Extensions.Enums.eCompareMode.StartsWith))
                                             {
                                                 dBWNetto += Rechnungszeile.Netto;
+                                                iBWTage += Rechnungszeile.Anzahl;
                                             }
                                             else
                                             {
                                                 dPflegeNetto += Rechnungszeile.Netto;
+                                                iPflegeTage += Rechnungszeile.Anzahl;
                                             }
                                         }
                                     }
@@ -249,15 +259,22 @@ namespace PMDS.Global
                                 }
                             }
 
+                            bool bOverride = false;
+                            int iOverrideDays = 0;
+                            int iBWOverrideDays = 0;
                             //Prüfen, ob auf der Rechung andere Zahler enthalten sind. Wenn ja -> Nettosummen händisch erfassen lassen.
                             if (dBWNetto + dPflegeNetto != dSumLeistNetto)
                             {
+                                string ID = rBill.IDKlient.ToString() + "_" + dbCalc.Tage.First().Datum.ToString("yyyyMM");
                                 frmFSWOverwriteData frm = new frmFSWOverwriteData();
-                                frm.Init(rBill.KlientName, dPflegeNetto, dBWNetto, dSumLeistNetto);
+                                frm.Init(ID, rBill.KlientName, dPflegeNetto, iPflegeTage, dBWNetto, iBWTage, dSumLeistNetto, dbCalc.Tage.First().Datum);
                                 frm.ShowDialog();
                                 dPflegeNetto = frm.dPflegeNetto;
                                 dBWNetto = frm.dBWNetto;
+                                iOverrideDays = frm.iOverrideDays;
+                                iBWOverrideDays = frm.iBWOverrideDays;
                                 frm.Dispose();
+                                bOverride = true;
                             } 
 
                             decimal dPercentPflege = (dPflegeNetto != 0 ? (dPflegeNetto) / (dPflegeNetto + dBWNetto)  : 0);  //Aufteilungsschlüssel für MWSt, GSBG und Gesamt zwischen Pflege und Betreutes Wohnen
@@ -311,22 +328,24 @@ namespace PMDS.Global
                                             }                                             
                                         }                                        
 
+                                        iAnzahlDays = bOverride ? iOverrideDays : Rechnungszeile.Anzahl;
+                                        iBWAnzahlDays = bOverride ? iBWOverrideDays : Rechnungszeile.Anzahl;
+
                                         if (rBill.Status == -10)    //Bei Storno Tage negativ angeben und Basipreis positiv
                                         {
                                             if (bLZIsPflege)
-                                                Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl * -1, Math.Abs(Rechnungszeile.Netto / Rechnungszeile.Anzahl), Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
+                                                Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)iAnzahlDays * -1, Math.Abs(dPflegeNetto / iAnzahlDays), dPflegeNetto, dPflegeNetto, Rechnungszeile.MWSt));
                                             else if (bLZIsBetreutesWohnen)
-                                                InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl * -1, Math.Abs(Rechnungszeile.Netto / Rechnungszeile.Anzahl), Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
+                                                InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)iBWAnzahlDays * -1, Math.Abs(dBWNetto / iBWAnzahlDays), dBWNetto, dBWNetto, Rechnungszeile.MWSt));
                                         }
                                         else
                                         {
                                             if (bLZIsPflege)
-                                                Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
+                                                Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)iAnzahlDays, dPflegeNetto / iAnzahlDays, dPflegeNetto, dPflegeNetto, Rechnungszeile.MWSt));
                                             else if (bLZIsBetreutesWohnen)
-                                                InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
+                                                InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)iBWAnzahlDays, dBWNetto / iBWAnzahlDays, dBWNetto, dBWNetto, Rechnungszeile.MWSt));
                                         }
                                         lstZeilen.Add(new Leistungszeile() { IDRechnungszeile = new Guid(Rechnungszeile.ID), IDRechnung = new Guid(rBill.ID) });      // new Guid(Rechnungszeile.ID), new Guid(rBill.ID));
-
 
                                         lstXlsVorschauZeilen.Add(new XlsVorschauZeile()
                                         {
@@ -336,12 +355,14 @@ namespace PMDS.Global
                                             Text = Rechnungszeile.Bezeichnung,
                                             Netto = (double)Rechnungszeile.Netto,
                                             MwStSatz = (double)Rechnungszeile.MWSt,
-                                            Anzahl = Rechnungszeile.Anzahl,
+                                            Anzahl = iAnzahlDays,
+                                            BWAnzahl = iBWAnzahlDays,
                                             FiBu = Rechnungszeile.FIBU,
                                             ReDatum = (DateTime)rBill.RechDatum,
                                             Monat = Rechnungszeile.KostenträgerRow.von,
-                                            SVNr = VersicherungsNr
-                                        });
+                                            SVNr = VersicherungsNr,
+                                            Pflege = bLZIsPflege
+                                        }); 
                                     }
 
                                     else if (Rechnungszeile.Kennung.sEquals("MWstSatz"))
@@ -434,15 +455,13 @@ namespace PMDS.Global
                                 workSheet.Range[i, 1].Text = lz.Nachname;
                                 workSheet.Range[i, 2].Text = lz.SVNr;
                                 workSheet.Range[i, 3].Text = lz.Text;
-                                workSheet.Range[i, 4].Number = lz.Netto;
+                                workSheet.Range[i, 4].Number = lz.Pflege ? (double)dPflegeNetto : (double)dBWNetto;
                                 workSheet.Range[i, 4].NumberFormat = "€#,##0.00";
                                 workSheet.Range[i, 5].Number =  lz.MwStSatz;
-                                workSheet.Range[i, 6].Number = lz.Anzahl;
+                                workSheet.Range[i, 6].Number = lz.Pflege ? iAnzahlDays : iBWAnzahlDays;
                                 workSheet.Range[i, 7].Text = lz.FiBu;
-                                workSheet.Range[i, 8].DateTime = lz.ReDatum;
-                                workSheet.Range[i, 8].NumberFormat = "dd.mm.yyyy";
-                                workSheet.Range[i, 9].DateTime = lz.Monat;
-                                workSheet.Range[i, 9].NumberFormat = "mm/yyyy";
+                                workSheet.Range[i, 8].Text = lz.ReDatum.ToString("dd.MM.yyyy");
+                                workSheet.Range[i, 9].Text = lz.Monat.ToString("MM/yyyy");
                             }
                             workbook.SetPaletteColor(8, Color.FromArgb(255, 174, 33));
 
