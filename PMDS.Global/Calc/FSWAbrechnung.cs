@@ -265,7 +265,7 @@ namespace PMDS.Global
                             //Prüfen, ob auf der Rechung andere Zahler enthalten sind. Wenn ja -> Nettosummen händisch erfassen lassen.
                             if (dBWNetto + dPflegeNetto != dSumLeistNetto)
                             {
-                                string ID = rBill.IDKlient.ToString() + "_" + dbCalc.Tage.First().Datum.ToString("yyyyMM");
+                                string ID = rBill.IDKlient.ToString() + "_" + dbCalc.Tage.First().Datum.ToString("yyyyMM") + rBill.Status.ToString();
                                 frmFSWOverwriteData frm = new frmFSWOverwriteData();
                                 frm.Init(ID, rBill.KlientName, dPflegeNetto, iPflegeTage, dBWNetto, iBWTage, dSumLeistNetto, dbCalc.Tage.First().Datum);
                                 frm.ShowDialog();
@@ -333,17 +333,26 @@ namespace PMDS.Global
 
                                         if (rBill.Status == -10)    //Bei Storno Tage negativ angeben und Basipreis positiv
                                         {
-                                            if (bLZIsPflege)
+                                            if (bLZIsPflege && iAnzahlDays != 0)
+                                            {
                                                 Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)iAnzahlDays * -1, Math.Abs(dPflegeNetto / iAnzahlDays), dPflegeNetto, dPflegeNetto, Rechnungszeile.MWSt));
-                                            else if (bLZIsBetreutesWohnen)
+                                            }
+                                            else if (bLZIsBetreutesWohnen && iBWAnzahlDays != 0)
+                                            {
                                                 InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)iBWAnzahlDays * -1, Math.Abs(dBWNetto / iBWAnzahlDays), dBWNetto, dBWNetto, Rechnungszeile.MWSt));
+                                            }
                                         }
                                         else
                                         {
-                                            if (bLZIsPflege)
+                                            if (bLZIsPflege && iAnzahlDays != 0)
+                                            {
                                                 Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)iAnzahlDays, dPflegeNetto / iAnzahlDays, dPflegeNetto, dPflegeNetto, Rechnungszeile.MWSt));
-                                            else if (bLZIsBetreutesWohnen)
+                                            }
+                                            else if (bLZIsBetreutesWohnen && iBWAnzahlDays != 0)
+                                            {
                                                 InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)iBWAnzahlDays, dBWNetto / iBWAnzahlDays, dBWNetto, dBWNetto, Rechnungszeile.MWSt));
+                                            }
+
                                         }
                                         lstZeilen.Add(new Leistungszeile() { IDRechnungszeile = new Guid(Rechnungszeile.ID), IDRechnung = new Guid(rBill.ID) });      // new Guid(Rechnungszeile.ID), new Guid(rBill.ID));
 

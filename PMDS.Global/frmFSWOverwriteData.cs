@@ -47,6 +47,7 @@ namespace PMDS.Global
             public int iBWTage;
             public DateTime Timestamp;
             public string Description;
+            public DateTime Abrechungsmonat;
         }
 
         public void Init (string inID, string insTitle, decimal indPflegeNetto, int iniPflegeTage, decimal indBWNetto, int iniBWTage, decimal indGesamtNetto, DateTime indtMonth) 
@@ -167,6 +168,7 @@ namespace PMDS.Global
                 cPars.iBWTage = iBWTage;
                 cPars.Timestamp = DateTime.Now;
                 cPars.Description = this.sTitle;
+                cPars.Abrechungsmonat = dtMonth;
 
                 TextWriter writer = null;
                 try
