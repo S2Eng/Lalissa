@@ -14,6 +14,8 @@ using System.Drawing;
 using Syncfusion.XlsIO;
 using System.Linq;
 using S2Extensions;
+using static PMDS.Global.db.cEBInterfaceDB;
+using Infragistics.Documents.Excel;
 
 namespace PMDS.Global
 {
@@ -46,11 +48,7 @@ namespace PMDS.Global
 
         private List<Leistungszeile> lstZeilen = new List<Leistungszeile>();
         private List<Chilkat.Xml> ListFSWXml = new List<Chilkat.Xml>();
-        
-        private int iAnzahlDays = 0;
-        private int iBWAnzahlDays = 0;
-        private decimal dPflegeNetto = 0;
-        private decimal dBWNetto = 0;
+       
 
         private db.cEBInterfaceDB.Transaction Transaction { get; set; } = db.cEBInterfaceDB.NewTransaction(true);
         private db.cEBInterfaceDB.Transaction TransactionBW { get; set; } = db.cEBInterfaceDB.NewTransaction(false);
@@ -71,13 +69,28 @@ namespace PMDS.Global
             public double Netto;
             public double MwStSatz;
             public int Anzahl;
-            public int BWAnzahl;
             public string FiBu;
             public DateTime ReDatum;
             public DateTime Monat;
             public string SVNr;
             public bool Pflege;
         }
+
+        private List<TmpLineItem> lTmpLineItems = new List<TmpLineItem>();
+
+        private class TmpLineItem
+        {
+            public string Rechungsnummer = "";
+            public string Description = "";
+            public int Quantity = 0;
+            public decimal PreisProEinheit = 0;
+            public decimal LineItemAmount = 0;
+            public decimal TaxableAmount = 0;
+            public int TaxPercent = 0;
+            public bool IsPflege = true;
+            public string IDLeistung = "";
+        }
+
 
         public eAction RunAction
         {
@@ -220,64 +233,77 @@ namespace PMDS.Global
                             PMDS.Global.db.cEBInterfaceDB.Invoice Invoice = PMDS.Global.db.cEBInterfaceDB.Init(IDKlinik, new Guid(rBill.IDKlient));
                             PMDS.Global.db.cEBInterfaceDB.Invoice InvoiceBW = PMDS.Global.db.cEBInterfaceDB.Init(IDKlinik, new Guid(rBill.IDKlient));
 
-                            //Verhältnis Pflege / Betreuung auf der Rechnung ermitteln
 
-                            decimal dMwSt = 0;
-                            int iPflegeTage = 0;
-                            int iBWTage = 0;
+                            // ----------------- Leistungen für den FSW ermitteln und wenn nötig anpassen  --------------------
+                            lTmpLineItems = new List<TmpLineItem>();
+                            List<dbCalc.ZahlerRow> lZahlungenFSW = new List<dbCalc.ZahlerRow>();
+                            List<dbCalc.ZahlerRow> lZahlungenNoFSW = new List<dbCalc.ZahlerRow>();
+                            List<string> lSplitLeistungen = new List<string>();                                                        
 
-                            decimal dSumLeistNetto = 0;
-                            foreach (dbCalc.KostenKostenträgerRow Rechnungszeile in dbCalc.KostenKostenträger)
+                            foreach (dbCalc.ZahlerRow z in dbCalc.Zahler)
                             {
-                                if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !LeistungszeileBereitsVerrechnet(new Guid(Rechnungszeile.ID), new Guid(rBill.ID)))
-                                {
-                                    if (Rechnungszeile.Kennung.sEquals(eTypProt.LZ.ToString()))
-                                    {
-                                        foreach (string sBW in lBW_Leistungen)
-                                        {
-                                            if (Rechnungszeile.Bezeichnung.sEquals(sBW, S2Extensions.Enums.eCompareMode.StartsWith))
-                                            {
-                                                dBWNetto += Rechnungszeile.Netto;
-                                                iBWTage += Rechnungszeile.Anzahl;
-                                            }
-                                            else
-                                            {
-                                                dPflegeNetto += Rechnungszeile.Netto;
-                                                iPflegeTage += Rechnungszeile.Anzahl;
-                                            }
-                                        }
-                                    }
-                                    else if (Rechnungszeile.Kennung.sEquals(eTypProt.MWStSatz.ToString()))   //zur Kontrolle
-                                    {
-                                        dMwSt += Rechnungszeile.Netto;
-                                    }
+                                Guid IDKostIntern = new Guid(z.IDKostIntern);
+                                var rKost = (from kt in dbCalc.Kostenträger
+                                                               where kt.IDKostIntern == IDKostIntern.ToString()
+                                                               select kt).First();
 
-                                    if (Rechnungszeile.Kennung.sEquals(eTypProt.SumLeistNetto.ToString()))
+                                if (FSWIsZahler(new Guid(rKost.IDKost.ToString()), ENV.FSW_IDIntern))
+                                {
+                                    lZahlungenFSW.Add(z);      //Leistungen, bei denen der FSW zahlt
+                                }
+                                else
+                                {
+                                    lZahlungenNoFSW.Add(z);    //Leistungen, bei denen der FSW NICHT zahlt
+                                }
+                            }
+
+                            foreach (dbCalc.ZahlerRow z in lZahlungenFSW)
+                            {
+                                foreach (dbCalc.ZahlerRow nz in lZahlungenNoFSW)
+                                {
+                                    if (z.IDLeistung == nz.IDLeistung)
                                     {
-                                        dSumLeistNetto = Rechnungszeile.Netto;
+                                        lSplitLeistungen.Add(z.IDLeistung);
                                     }
                                 }
                             }
 
-                            bool bOverride = false;
-                            int iOverrideDays = 0;
-                            int iBWOverrideDays = 0;
-                            //Prüfen, ob auf der Rechung andere Zahler enthalten sind. Wenn ja -> Nettosummen händisch erfassen lassen.
-                            if (dBWNetto + dPflegeNetto != dSumLeistNetto)
+                            foreach (dbCalc.LeistungenRow l in dbCalc.Leistungen)
                             {
-                                string ID = rBill.IDKlient.ToString() + "_" + dbCalc.Tage.First().Datum.ToString("yyyyMM") + rBill.Status.ToString();
-                                frmFSWOverwriteData frm = new frmFSWOverwriteData();
-                                frm.Init(ID, rBill.KlientName, dPflegeNetto, iPflegeTage, dBWNetto, iBWTage, dSumLeistNetto, dbCalc.Tage.First().Datum);
-                                frm.ShowDialog();
-                                dPflegeNetto = frm.dPflegeNetto;
-                                dBWNetto = frm.dBWNetto;
-                                iOverrideDays = frm.iOverrideDays;
-                                iBWOverrideDays = frm.iBWOverrideDays;
-                                frm.Dispose();
-                                bOverride = true;
-                            } 
+                                foreach (dbCalc.ZahlerRow zFSW in lZahlungenFSW)
+                                {
+                                    if (l.ID != zFSW.IDLeistung)
+                                    {
+                                        continue;
+                                    }
 
-                            decimal dPercentPflege = (dPflegeNetto != 0 ? (dPflegeNetto) / (dPflegeNetto + dBWNetto)  : 0);  //Aufteilungsschlüssel für MWSt, GSBG und Gesamt zwischen Pflege und Betreutes Wohnen
+                                    decimal TageGesamt = Convert.ToDecimal(Math.Round((l.Bis.Date - l.Von).TotalDays, 0)) + 1;
+                                    decimal Tage = Convert.ToDecimal(Math.Round((l.Bis.Date - l.Von).TotalDays, 0)) + 1;
+                                    decimal dStornoFaktor = (rBill.Status == -10 ? -1 : 1);
+
+                                    //Korrekte Tage werden benötigt, weil FSW Tage * Kosten/Tag rechnet
+                                    //Wenn eine Leistung von FSW und anderen bezahlt wird -> Leistungstage nach Betrag Anteil FSW / Gesamtbetrag aliquotieren
+                                    if (lSplitLeistungen.Contains(l.ID))       
+                                    {
+                                        decimal AnteilFSW = zFSW.NettoBetragProLeistung / l.Kosten;
+                                        Tage = Tage * AnteilFSW;
+                                    }
+
+                                    TmpLineItem lz = new TmpLineItem 
+                                    {
+                                        Rechungsnummer = rBill.RechNr,
+                                        Description = l.LeistungBezeichnung,
+                                        Quantity = (int)Tage * (int)dStornoFaktor,
+                                        PreisProEinheit = l.Kosten / TageGesamt,        //muss gerechnet werden, weil nirgends verfügbar (reduzierte Kosten oder nicht gekürzt)
+                                        TaxPercent = l.MWStSatz,
+                                        LineItemAmount = zFSW.NettoBetragProLeistung * dStornoFaktor,
+                                        TaxableAmount = zFSW.NettoBetragProLeistung * dStornoFaktor,
+                                        IsPflege = CheckIsPflege(l.LeistungBezeichnung, lBW_Leistungen),
+                                        IDLeistung = l.ID
+                                    };
+                                    lTmpLineItems.Add(lz);
+                                }
+                            }
 
                             Invoice.InvoiceNumber = rBill.RechNr;
                             Invoice.InvoiceDate = (DateTime)rBill.RechDatum;
@@ -301,223 +327,183 @@ namespace PMDS.Global
                                 InvoiceBW.Details.HeaderDescription = "Zahlungsaufforderung Zeitraum " + rBill.datum.ToString("MMMM") + " " + rBill.datum.ToString("yyyy");
                             }
 
-                            int Zeile = 0;
-                            int ZeileBW = 0;
+                            // ------------------------------------------------------------------------------------------
+                            int PositionNumber = 0;
+                            int PositionNumberBW = 0;
 
                             foreach (dbCalc.KostenKostenträgerRow Rechnungszeile in dbCalc.KostenKostenträger)
                             {
-                                //Prüfen, ob die Rechung an FSW oder Stellvertert geht (Kostenträger Sub in rBill) 
-                                //if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !lstZeilen.Contains(new Guid(Rechnungszeile.ID)))
                                 if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !LeistungszeileBereitsVerrechnet(new Guid(Rechnungszeile.ID), new Guid(rBill.ID)))
                                 {
                                     if (Rechnungszeile.Kennung.sEquals("LZ"))
-                                    {
-                                        bool bLZIsPflege = false;
-                                        bool bLZIsBetreutesWohnen = false;
-                                        foreach (string sBW in lBW_Leistungen)      //Art der Leistung ermitteln
+                                    {                                        
+                                        TmpLineItem lz = lTmpLineItems.Find(p => p.IDLeistung == Rechnungszeile.IDLeistung);    //berechnete (und korrigierte) Daten aus lTmpLineItems nehmen (lTMpLineItems.IDLeistung == Rechungszeile.IDLeistung)
+                                        if (lz == null)         //Leistungszeile auf der Rechnung wird nicht vom FSW bezahlt -> weiter
                                         {
-                                            if (Rechnungszeile.Bezeichnung.sEquals(sBW, S2Extensions.Enums.eCompareMode.StartsWith))
-                                            {
-                                                bLZIsBetreutesWohnen = bLZIsBetreutesWohnen || true;
-                                                ZeileBW++;
-                                            }
-                                            else
-                                            {
-                                                bLZIsPflege = bLZIsPflege || true;
-                                                Zeile++;
-                                            }                                             
-                                        }                                        
-
-                                        iAnzahlDays = bOverride ? iOverrideDays : Rechnungszeile.Anzahl;
-                                        iBWAnzahlDays = bOverride ? iBWOverrideDays : Rechnungszeile.Anzahl;
-
-                                        if (rBill.Status == -10)    //Bei Storno Tage negativ angeben und Basipreis positiv
-                                        {
-                                            if (bLZIsPflege && iAnzahlDays != 0)
-                                            {
-                                                Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)iAnzahlDays * -1, Math.Abs(dPflegeNetto / iAnzahlDays), dPflegeNetto, dPflegeNetto, Rechnungszeile.MWSt));
-                                            }
-                                            else if (bLZIsBetreutesWohnen && iBWAnzahlDays != 0)
-                                            {
-                                                InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)iBWAnzahlDays * -1, Math.Abs(dBWNetto / iBWAnzahlDays), dBWNetto, dBWNetto, Rechnungszeile.MWSt));
-                                            }
+                                            continue;
                                         }
-                                        else
-                                        {
-                                            if (bLZIsPflege && iAnzahlDays != 0)
-                                            {
-                                                Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)iAnzahlDays, dPflegeNetto / iAnzahlDays, dPflegeNetto, dPflegeNetto, Rechnungszeile.MWSt));
-                                            }
-                                            else if (bLZIsBetreutesWohnen && iBWAnzahlDays != 0)
-                                            {
-                                                InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)iBWAnzahlDays, dBWNetto / iBWAnzahlDays, dBWNetto, dBWNetto, Rechnungszeile.MWSt));
-                                            }
+                                        
+                                        decimal Tax = Math.Round(lz.TaxableAmount * lz.TaxPercent / 100, 2, MidpointRounding.AwayFromZero);     //MwSt wird als Surcharge verrechnet!!!!
 
+                                        if (lz.IsPflege)      
+                                        {
+                                            PositionNumber++;           //Muss bei jeder Rechnung mit 1 beginnen (unabhängig von der Orginal-Zeilennummer) 
+                                            Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, PositionNumber, Rechnungszeile.Bezeichnung, lz.Quantity, lz.PreisProEinheit, lz.LineItemAmount, lz.TaxableAmount, lz.TaxPercent));
+
+                                            Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount += lz.LineItemAmount;
+                                            Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage = lz.TaxPercent;
+                                            Invoice.ReductionAndSurchargeDetails.Surcharge.Amount += Tax;
+                                            Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount += lz.TaxableAmount;
+
+                                            Invoice.TotalGrossAmount += lz.LineItemAmount + Tax;
+                                            Invoice.PayableAmount = Invoice.TotalGrossAmount;
+                                            Invoice.Tax = Tax;
+
+                                            Invoice.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFID;
                                         }
+                                        else 
+                                        {
+                                            PositionNumberBW++;           //Muss bei jeder Rechnung mit 1 beginnen (unabhängig von der Orginal-Zeilennummer) 
+                                            InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, PositionNumber, Rechnungszeile.Bezeichnung, lz.Quantity, lz.PreisProEinheit, lz.LineItemAmount, lz.TaxableAmount, lz.TaxPercent));
+
+                                            InvoiceBW.ReductionAndSurchargeDetails.Surcharge.BaseAmount += lz.LineItemAmount;
+                                            InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Percentage = lz.TaxPercent;
+                                            InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Amount += Tax;
+                                            InvoiceBW.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount += lz.TaxableAmount;
+
+                                            InvoiceBW.TotalGrossAmount += lz.LineItemAmount + Tax;
+                                            InvoiceBW.PayableAmount = InvoiceBW.TotalGrossAmount;
+                                            Invoice.Tax = Tax;
+
+                                            InvoiceBW.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFIDBW;
+                                        }
+
                                         lstZeilen.Add(new Leistungszeile() { IDRechnungszeile = new Guid(Rechnungszeile.ID), IDRechnung = new Guid(rBill.ID) });      // new Guid(Rechnungszeile.ID), new Guid(rBill.ID));
 
                                         lstXlsVorschauZeilen.Add(new XlsVorschauZeile()
                                         {
                                             Nachname = rBill.KlientName,
                                             Vorname = "",
-                                            //Text = (from la in dbCalc.Leistungen where la.IDLeistungskatalog == Rechnungszeile.IDLeistungsKatalog select la.LeistungBezeichnung).FirstOrDefault(),
                                             Text = Rechnungszeile.Bezeichnung,
-                                            Netto = (double)Rechnungszeile.Netto,
-                                            MwStSatz = (double)Rechnungszeile.MWSt,
-                                            Anzahl = iAnzahlDays,
-                                            BWAnzahl = iBWAnzahlDays,
+                                            Netto = (double)lz.TaxableAmount,
+                                            MwStSatz = lz.TaxPercent,
+                                            Anzahl = lz.Quantity,
                                             FiBu = Rechnungszeile.FIBU,
                                             ReDatum = (DateTime)rBill.RechDatum,
                                             Monat = Rechnungszeile.KostenträgerRow.von,
                                             SVNr = VersicherungsNr,
-                                            Pflege = bLZIsPflege
-                                        }); 
+                                            Pflege = lz.IsPflege
+                                        });
                                     }
-
-                                    else if (Rechnungszeile.Kennung.sEquals("MWstSatz"))
-                                    {
-                                        //Steuern werden als Surcharge verrechnet!!!!
-                                        decimal Tax = Math.Round(Rechnungszeile.Netto * dPercentPflege, 2, MidpointRounding.AwayFromZero);
-                                        Invoice.Tax += Tax;
-
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount = dPflegeNetto;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage = Rechnungszeile.MWStSatz;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Amount = Tax;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = dPflegeNetto;
-
-                                        decimal TaxBW = Math.Round(Rechnungszeile.Netto * (1 - dPercentPflege), 2, MidpointRounding.AwayFromZero);
-                                        InvoiceBW.Tax += TaxBW;
-
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.BaseAmount = dBWNetto;
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Percentage = Rechnungszeile.MWStSatz;
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Amount = TaxBW;
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = dBWNetto;
-                                    }
-
-                                    else if (Rechnungszeile.Kennung.sEquals("GSGB"))
-                                    {
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount = dPflegeNetto;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage = ENV.FSW_Prozent;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Amount = Math.Round(dPflegeNetto * (ENV.FSW_Prozent / 100), 2, MidpointRounding.AwayFromZero);
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = Invoice.ReductionAndSurchargeDetails.Surcharge.Amount;
-
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.BaseAmount = dBWNetto;
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Percentage = ENV.FSW_Prozent;
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Amount = Math.Round(dBWNetto * (ENV.FSW_Prozent / 100), 2, MidpointRounding.AwayFromZero);
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Amount;
-
-                                        lstZeilen.Add(new Leistungszeile() { IDRechnungszeile = new Guid(Rechnungszeile.ID), IDRechnung = new Guid(rBill.ID) });      // new Guid(Rechnungszeile.ID), new Guid(rBill.ID));
-                                    }
-                                    
                                 }
                             }
-                            if (Zeile > 0)                     //Wenn mindestens eine Rechnungszeile vom FSW bezahlt wird -> Rechnungsnummer in neuer Liste merken (fürs Update)
+
+                            if (Invoice.Details.ItemList.Count > 0)                      //Wenn mindestens eine Rechnungszeile vom FSW bezahlt wird -> Rechnungsnummer in neuer Liste merken (fürs Update){
+                            {
                                 ListIDBillsFSW.Add(IDBill);
+                                Steuern += Invoice.Tax;
+                                Rechnungsbetrag += Invoice.PayableAmount;
+                                Transaction.ArDocument.AddInvoiceToList(Invoice);
+                            }
 
-                            if (ZeileBW > 0)                     //Wenn mindestens eine Rechnungszeile vom FSW bezahlt wird -> Rechnungsnummer in neuer Liste merken (fürs Update)
+                            if (InvoiceBW.Details.ItemList.Count > 0)                     //Wenn mindestens eine Rechnungszeile vom FSW bezahlt wird -> Rechnungsnummer in neuer Liste merken (fürs Update)
+                            {
                                 ListIDBillsFSWBW.Add(IDBill);
-
-
-                            Invoice.TotalGrossAmount = Math.Round(rBill.betrag * dPercentPflege, 2, MidpointRounding.AwayFromZero);
-                            Invoice.PayableAmount = Invoice.TotalGrossAmount;
-                            Steuern += Invoice.Tax;
-                            Rechnungsbetrag += Invoice.PayableAmount;
-                            Invoice.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFID;
-                            Transaction.ArDocument.AddInvoiceToList(Invoice);
-
-                            InvoiceBW.TotalGrossAmount = Math.Round(rBill.betrag * (1 - dPercentPflege), 2, MidpointRounding.AwayFromZero);
-                            InvoiceBW.PayableAmount = InvoiceBW.TotalGrossAmount;
-                            SteuernBW += InvoiceBW.Tax;
-                            RechnungsbetragBW += InvoiceBW.PayableAmount;
-                            InvoiceBW.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFIDBW;
-                            TransactionBW.ArDocument.AddInvoiceToList(InvoiceBW);
+                                SteuernBW += InvoiceBW.Tax;
+                                RechnungsbetragBW += InvoiceBW.PayableAmount;
+                                TransactionBW.ArDocument.AddInvoiceToList(InvoiceBW);
+                            }
                         }
                     }
 
                     if (Action == eAction.fswXlsVorschau && lstXlsVorschauZeilen.Count > 0)
                     {
-                    //Excel anlegen
                         string xlsWorking = System.IO.Path.Combine(ENV.FSW_EZAUF, "FSW_Vorschau_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".xlsx");
-                        using (ExcelEngine excelEngine = new ExcelEngine())
+
+                        Infragistics.Documents.Excel.Workbook wb = new Infragistics.Documents.Excel.Workbook(WorkbookFormat.Excel2007);
+                        Infragistics.Documents.Excel.Worksheet ws = wb.Worksheets.Add("Übersicht FSW-Abrechnung");
+                        ws.Rows[0].Cells[0].Value = "Name";
+                        ws.Rows[0].Cells[1].Value = "SV-Nr";
+                        ws.Rows[0].Cells[2].Value = "Leistung";
+                        ws.Rows[0].Cells[3].Value = "Netto";
+                        ws.Rows[0].Cells[4].Value = "MwSt-Satz";
+                        ws.Rows[0].Cells[5].Value = "Anzahl Tage";
+                        ws.Rows[0].Cells[6].Value = "FiBu";
+                        ws.Rows[0].Cells[7].Value = "Datum erstellt";
+                        ws.Rows[0].Cells[8].Value = "Monat/Jahr";
+
+                        ws.Columns[0].Width = 7000;
+                        ws.Columns[0].CellFormat.WrapText = Infragistics.Documents.Excel.ExcelDefaultableBoolean.True;
+                        ws.Columns[1].Width = 3000;
+                        ws.Columns[2].Width = 14000;
+                        ws.Columns[2].CellFormat.WrapText = Infragistics.Documents.Excel.ExcelDefaultableBoolean.True;
+                        ws.Columns[3].Width = 3000;
+                        ws.Columns[4].Width = 3000;
+                        ws.Columns[5].Width = 3000;
+                        ws.Columns[6].Width = 3000;
+                        ws.Columns[7].Width = 4000;
+                        ws.Columns[8].Width = 3000;
+
+                        for (int c = 0; c <= 8; c++)
                         {
+                            ws.Rows[0].Cells[c].CellFormat.Fill = CellFill.CreateSolidFill(Color.LightSalmon);
+                            ws.Rows[0].Cells[c].CellFormat.LeftBorderStyle = CellBorderLineStyle.Thin;
+                            ws.Rows[0].Cells[c].CellFormat.RightBorderStyle = CellBorderLineStyle.Thin;
+                        }
 
-                            IApplication application = excelEngine.Excel;
-                            application.DefaultVersion = ExcelVersion.Xlsx;
-                            IWorkbook workbook = application.Workbooks.Create(1);
-                            IWorksheet workSheet = workbook.Worksheets.Create("Übersicht");
-                            workbook.Worksheets[0].Remove();  //Standard-Worksheet entfernen
+                        int z = 0;
+                        var dec = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                        var thousend = CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator;
+                        var curency = CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol;
 
-                            workSheet.Range[1, 1].Text = "Name";
-                            workSheet.Range[1, 2].Text = "SV-Nr";
-                            workSheet.Range[1, 3].Text = "Leistung";
-                            workSheet.Range[1, 4].Text = "Netto";
-                            workSheet.Range[1, 5].Text ="MwSt-Satz";
-                            workSheet.Range[1, 6].Text = "Anzahl Tage";
-                            workSheet.Range[1, 7].Text = "FiBu";
-                            workSheet.Range[1, 8].Text = "Datum erstellt";
-                            workSheet.Range[1, 9].Text = "Monat/Jahr";
+                        foreach (XlsVorschauZeile lz in lstXlsVorschauZeilen)
+                        {
+                            z++;
+                            ws.Rows[z].Cells[0].Value = lz.Nachname;
+                            ws.Rows[z].Cells[1].Value = lz.SVNr;
+                            ws.Rows[z].Cells[2].Value = lz.Text;
+                            ws.Rows[z].Cells[2].CellFormat.ShrinkToFit = ExcelDefaultableBoolean.True;
 
-                            int i = 1;
-                            foreach(XlsVorschauZeile lz in lstXlsVorschauZeilen)
+                            ws.Rows[z].Cells[3].Value = lz.Netto;
+                            ws.Rows[z].Cells[3].CellFormat.FormatString = "#" + thousend + "##0" + dec + "00 [$€-x-euro2]; -#" + thousend + "##" + dec + "00 [$€-x-euro2]; 0,00 [$€-x-euro2]";
+
+                            ws.Rows[z].Cells[4].Value = lz.MwStSatz;
+                            ws.Rows[z].Cells[5].Value = lz.Anzahl;
+                            ws.Rows[z].Cells[6].Value = lz.FiBu;
+
+
+                            ws.Rows[z].Cells[7].Value = lz.ReDatum.Date;
+                            ws.Rows[z].Cells[7].CellFormat.FormatString = "dd.MM.yyyy";
+
+                            ws.Rows[z].Cells[8].Value = lz.Monat.Date;
+                            ws.Rows[z].Cells[8].CellFormat.FormatString = "MM-yyyy";
+                        }
+
+                        //Summe einfügen
+                        Infragistics.Documents.Excel.Formula grandTotalFormula = Infragistics.Documents.Excel.Formula.Parse("=SUM($D$1:$D$" + (z+1).ToString() + ")", Infragistics.Documents.Excel.CellReferenceMode.A1);
+                        grandTotalFormula.ApplyTo(ws.Rows[z+2].Cells[3]);
+                        ws.Rows[z+2].Cells[3].CellFormat.FormatString = "#" + thousend + "##0" + dec + "00 [$€-x-euro2]; -#" + thousend + "##" + dec + "00 [$€-x-euro2]; 0,00 [$€-x-euro2]";
+                        ws.Rows[z + 2].Cells[2].Value = "Gesamtsumme";
+
+                        wb.Save(xlsWorking);
+                        if (File.Exists(xlsWorking))
+                        {
+                            if (generic.IsExcelInstalled())
                             {
-                                i++;
-                                workSheet.Range[i, 1].Text = lz.Nachname;
-                                workSheet.Range[i, 2].Text = lz.SVNr;
-                                workSheet.Range[i, 3].Text = lz.Text;
-                                workSheet.Range[i, 4].Number = lz.Pflege ? (double)dPflegeNetto : (double)dBWNetto;
-                                workSheet.Range[i, 4].NumberFormat = "€#,##0.00";
-                                workSheet.Range[i, 5].Number =  lz.MwStSatz;
-                                workSheet.Range[i, 6].Number = lz.Pflege ? iAnzahlDays : iBWAnzahlDays;
-                                workSheet.Range[i, 7].Text = lz.FiBu;
-                                workSheet.Range[i, 8].Text = lz.ReDatum.ToString("dd.MM.yyyy");
-                                workSheet.Range[i, 9].Text = lz.Monat.ToString("MM/yyyy");
-                            }
-                            workbook.SetPaletteColor(8, Color.FromArgb(255, 174, 33));
-
-                            //Header style
-                            IStyle headerStyle = workbook.Styles.Add("HeaderStyle");
-                            headerStyle.BeginUpdate();
-                            headerStyle.Color = Color.FromArgb(255, 174, 33);
-                            headerStyle.Font.Bold = true;
-                            headerStyle.Borders[ExcelBordersIndex.EdgeLeft].LineStyle = ExcelLineStyle.Thin;
-                            headerStyle.Borders[ExcelBordersIndex.EdgeRight].LineStyle = ExcelLineStyle.Thin;
-                            headerStyle.Borders[ExcelBordersIndex.EdgeTop].LineStyle = ExcelLineStyle.Thin;
-                            headerStyle.Borders[ExcelBordersIndex.EdgeBottom].LineStyle = ExcelLineStyle.Thin;
-                            headerStyle.EndUpdate();
-
-                            //Body style
-                            IStyle bodyStyle = workbook.Styles.Add("BodyStyle");
-                            bodyStyle.BeginUpdate();
-                            bodyStyle.Color = Color.FromArgb(239, 243, 247);
-                            bodyStyle.Borders[ExcelBordersIndex.EdgeLeft].LineStyle = ExcelLineStyle.Thin;
-                            bodyStyle.Borders[ExcelBordersIndex.EdgeRight].LineStyle = ExcelLineStyle.Thin;
-                            bodyStyle.EndUpdate();
-
-                            workSheet.Rows[0].CellStyle = headerStyle;
-                            workSheet.Range["A2:I" +i.ToString()].CellStyle = bodyStyle;
-
-                            workSheet.UsedRange.AutofitColumns();
-
-                            workbook.SaveAs(xlsWorking);
-                            if (File.Exists(xlsWorking))
-                            {
-                                if (generic.IsExcelInstalled())
-                                {
-                                    System.Diagnostics.Process.Start(xlsWorking);
-                                    return;
-                                }
-                                else
-                                {
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datei wurde gespeichert (" + xlsWorking + "), kann aber nicht geöffnet werden, weil Excel nicht installiert ist.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                    return;
-                                }
+                                System.Diagnostics.Process.Start(xlsWorking);
+                                return;
                             }
                             else
-                            {                                                               
-                                {
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datei " + xlsWorking + "konnte nicht gespeichert werden.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                    return;
-                                }
+                            {
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datei wurde gespeichert (" + xlsWorking + "), kann aber nicht geöffnet werden, weil Excel nicht installiert ist.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            {
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datei " + xlsWorking + "konnte nicht gespeichert werden.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                return;
                             }
                         }
                     }
@@ -540,9 +526,6 @@ namespace PMDS.Global
                     TransactionBW.ArDocument.Rechnungsbetrag = RechnungsbetragBW;
                     TransactionBW.ArDocument.Anzahl_Rechnungen = ListIDBillsFSWBW.Count;
 
-                    //lTransactions.Add(Transaction);
-                    //lTransactions.Add(TransactionBW);
-
                     List<XMLInfo> ListXMLInfos = new List<XMLInfo>();
                     XMLInfo XMLInfoPflege = new XMLInfo() { Transaction = Transaction };
                     XMLInfoPflege.bIsvalid = Transaction.ArDocument.Anzahl_Rechnungen > 0;
@@ -551,7 +534,6 @@ namespace PMDS.Global
                     XMLInfo XMLInfoBW = new XMLInfo() { Transaction = TransactionBW };
                     XMLInfoBW.bIsvalid = TransactionBW.ArDocument.Anzahl_Rechnungen > 0;
                     ListXMLInfos.Add(XMLInfoBW);
-
 
                     if (ListIDBillsFSW.Count > 0 || ListIDBillsFSWBW.Count > 0)
                     {
@@ -1044,7 +1026,7 @@ namespace PMDS.Global
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
                     bool b =  (from kt in db.Kostentraeger
-                            select kt).Where(kt => kt.ID == IDKostentraeger && kt.IDKostentraegerSub == IDFSW).Any();
+                            select kt).Where(kt => kt.ID == IDKostentraeger && (kt.IDKostentraegerSub == IDFSW || kt.ID == IDFSW)).Any();
 
                     if (b)
                     {
@@ -1163,6 +1145,24 @@ namespace PMDS.Global
                 throw new Exception("FSWAbrechnung.cs.WriteLogToFile: " + ex.Message);
             }
 
+        }
+
+        private bool CheckIsPflege(string LeistungBezeichnung, List<string> lBW_Leistungen)
+        {
+            bool bLZIsPflege = false;
+            bool bLZIsBetreutesWohnen = false;
+            foreach (string sBW in lBW_Leistungen)      //Art der Leistung ermitteln
+            {
+                if (LeistungBezeichnung.sEquals(sBW, S2Extensions.Enums.eCompareMode.StartsWith))
+                {
+                    bLZIsBetreutesWohnen = bLZIsBetreutesWohnen || true;
+                }
+                else
+                {
+                    bLZIsPflege = bLZIsPflege || true;
+                }
+            }
+            return bLZIsPflege;
         }
 
         private static string CopyXSLT(string sFileName)

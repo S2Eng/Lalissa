@@ -41,7 +41,9 @@
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Status Zahlungsaufforderung für FSW zurücksetzen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("eZAUFF für FSW Erstellen und Speichern.\nUmschaltaste halten und klicken = Erstellen, Speichern und Senden.\nAlt-Taste halten und klicken = Gespeicherten eZAUFF per sFTP senden", Infragistics.Win.ToolTipImage.Info, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("eZAUFF für FSW\nKlicken = Erstellen, speichern, NICHT senden\nUmschaltaste halten u" +
+        "nd klicken: Erstellen, speichern, SENDEN\nAlt-Taste halten und klicken: Gespeiche" +
+        "rte eZAUFF per sFTP senden.", Infragistics.Win.ToolTipImage.Info, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
@@ -233,8 +235,9 @@
             this.panelTopSr.Controls.Add(this.panelTop2);
             this.panelTopSr.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopSr.Location = new System.Drawing.Point(0, 0);
+            this.panelTopSr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelTopSr.Name = "panelTopSr";
-            this.panelTopSr.Size = new System.Drawing.Size(1192, 130);
+            this.panelTopSr.Size = new System.Drawing.Size(1391, 170);
             this.panelTopSr.TabIndex = 0;
             // 
             // panelSucheAbrech
@@ -245,16 +248,18 @@
             this.panelSucheAbrech.Controls.Add(this.grpSuche);
             this.panelSucheAbrech.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSucheAbrech.Location = new System.Drawing.Point(0, 0);
+            this.panelSucheAbrech.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSucheAbrech.Name = "panelSucheAbrech";
-            this.panelSucheAbrech.Size = new System.Drawing.Size(1192, 86);
+            this.panelSucheAbrech.Size = new System.Drawing.Size(1391, 112);
             this.panelSucheAbrech.TabIndex = 107;
             // 
             // ucKlinikDropDown1
             // 
             this.ucKlinikDropDown1.BackColor = System.Drawing.Color.Silver;
-            this.ucKlinikDropDown1.Location = new System.Drawing.Point(900, 4);
+            this.ucKlinikDropDown1.Location = new System.Drawing.Point(1050, 5);
+            this.ucKlinikDropDown1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucKlinikDropDown1.Name = "ucKlinikDropDown1";
-            this.ucKlinikDropDown1.Size = new System.Drawing.Size(33, 20);
+            this.ucKlinikDropDown1.Size = new System.Drawing.Size(34, 15);
             this.ucKlinikDropDown1.TabIndex = 163;
             this.ucKlinikDropDown1.Visible = false;
             // 
@@ -264,9 +269,10 @@
             this.grpAbrechnen.Appearance = appearance1;
             this.grpAbrechnen.Controls.Add(this.panelButtAbrechAuswahlTyp);
             this.grpAbrechnen.Controls.Add(this.panelAbrechnenDatum);
-            this.grpAbrechnen.Location = new System.Drawing.Point(671, 3);
+            this.grpAbrechnen.Location = new System.Drawing.Point(783, 4);
+            this.grpAbrechnen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpAbrechnen.Name = "grpAbrechnen";
-            this.grpAbrechnen.Size = new System.Drawing.Size(514, 85);
+            this.grpAbrechnen.Size = new System.Drawing.Size(600, 101);
             this.grpAbrechnen.TabIndex = 103;
             this.grpAbrechnen.Text = "Abrechnen";
             // 
@@ -275,9 +281,10 @@
             this.panelButtAbrechAuswahlTyp.Controls.Add(this.uOptSetAbrechTyp);
             this.panelButtAbrechAuswahlTyp.Controls.Add(this.butAbrechnen);
             this.panelButtAbrechAuswahlTyp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelButtAbrechAuswahlTyp.Location = new System.Drawing.Point(179, 16);
+            this.panelButtAbrechAuswahlTyp.Location = new System.Drawing.Point(208, 21);
+            this.panelButtAbrechAuswahlTyp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelButtAbrechAuswahlTyp.Name = "panelButtAbrechAuswahlTyp";
-            this.panelButtAbrechAuswahlTyp.Size = new System.Drawing.Size(332, 66);
+            this.panelButtAbrechAuswahlTyp.Size = new System.Drawing.Size(389, 77);
             this.panelButtAbrechAuswahlTyp.TabIndex = 105;
             // 
             // uOptSetAbrechTyp
@@ -285,9 +292,10 @@
             this.uOptSetAbrechTyp.BackColor = System.Drawing.Color.Transparent;
             this.uOptSetAbrechTyp.BackColorInternal = System.Drawing.Color.Transparent;
             this.uOptSetAbrechTyp.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
-            this.uOptSetAbrechTyp.Location = new System.Drawing.Point(88, 6);
+            this.uOptSetAbrechTyp.Location = new System.Drawing.Point(187, 8);
+            this.uOptSetAbrechTyp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.uOptSetAbrechTyp.Name = "uOptSetAbrechTyp";
-            this.uOptSetAbrechTyp.Size = new System.Drawing.Size(241, 46);
+            this.uOptSetAbrechTyp.Size = new System.Drawing.Size(197, 60);
             this.uOptSetAbrechTyp.TabIndex = 100;
             this.uOptSetAbrechTyp.ValueChanged += new System.EventHandler(this.uOptSetAbrechTyp_ValueChanged);
             // 
@@ -299,9 +307,10 @@
             this.butAbrechnen.AutoWorkLayout = false;
             this.butAbrechnen.ImageSize = new System.Drawing.Size(24, 24);
             this.butAbrechnen.IsStandardControl = false;
-            this.butAbrechnen.Location = new System.Drawing.Point(6, 7);
+            this.butAbrechnen.Location = new System.Drawing.Point(7, 3);
+            this.butAbrechnen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.butAbrechnen.Name = "butAbrechnen";
-            this.butAbrechnen.Size = new System.Drawing.Size(75, 46);
+            this.butAbrechnen.Size = new System.Drawing.Size(159, 65);
             this.butAbrechnen.TabIndex = 5;
             this.butAbrechnen.Text = "Abrechnen";
             this.butAbrechnen.Click += new System.EventHandler(this.butAbrechnen_Click);
@@ -313,48 +322,53 @@
             this.panelAbrechnenDatum.Controls.Add(this.lblRechDatum);
             this.panelAbrechnenDatum.Controls.Add(this.dtAbrechMonat);
             this.panelAbrechnenDatum.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelAbrechnenDatum.Location = new System.Drawing.Point(3, 16);
+            this.panelAbrechnenDatum.Location = new System.Drawing.Point(3, 21);
+            this.panelAbrechnenDatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelAbrechnenDatum.Name = "panelAbrechnenDatum";
-            this.panelAbrechnenDatum.Size = new System.Drawing.Size(176, 66);
+            this.panelAbrechnenDatum.Size = new System.Drawing.Size(205, 77);
             this.panelAbrechnenDatum.TabIndex = 104;
             // 
             // dtRechDatum
             // 
             this.dtRechDatum.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
-            this.dtRechDatum.Location = new System.Drawing.Point(82, 32);
+            this.dtRechDatum.Location = new System.Drawing.Point(96, 42);
+            this.dtRechDatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtRechDatum.MaskInput = "";
             this.dtRechDatum.Name = "dtRechDatum";
             this.dtRechDatum.ownFormat = "";
             this.dtRechDatum.ownMaskInput = "";
-            this.dtRechDatum.Size = new System.Drawing.Size(86, 21);
+            this.dtRechDatum.Size = new System.Drawing.Size(100, 26);
             this.dtRechDatum.TabIndex = 101;
             this.dtRechDatum.Value = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
             // 
             // lblMonat
             // 
-            this.lblMonat.Location = new System.Drawing.Point(4, 6);
+            this.lblMonat.Location = new System.Drawing.Point(5, 8);
+            this.lblMonat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblMonat.Name = "lblMonat";
-            this.lblMonat.Size = new System.Drawing.Size(76, 16);
+            this.lblMonat.Size = new System.Drawing.Size(89, 21);
             this.lblMonat.TabIndex = 3;
             this.lblMonat.Text = "Monat";
             // 
             // lblRechDatum
             // 
-            this.lblRechDatum.Location = new System.Drawing.Point(4, 34);
+            this.lblRechDatum.Location = new System.Drawing.Point(5, 44);
+            this.lblRechDatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblRechDatum.Name = "lblRechDatum";
-            this.lblRechDatum.Size = new System.Drawing.Size(78, 18);
+            this.lblRechDatum.Size = new System.Drawing.Size(91, 24);
             this.lblRechDatum.TabIndex = 102;
             this.lblRechDatum.Text = "Rech.Datum";
             // 
             // dtAbrechMonat
             // 
             this.dtAbrechMonat.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
-            this.dtAbrechMonat.Location = new System.Drawing.Point(82, 2);
+            this.dtAbrechMonat.Location = new System.Drawing.Point(96, 3);
+            this.dtAbrechMonat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtAbrechMonat.MaskInput = "{LOC}mm.yyyy";
             this.dtAbrechMonat.Name = "dtAbrechMonat";
             this.dtAbrechMonat.ownFormat = "";
             this.dtAbrechMonat.ownMaskInput = "";
-            this.dtAbrechMonat.Size = new System.Drawing.Size(86, 21);
+            this.dtAbrechMonat.Size = new System.Drawing.Size(100, 26);
             this.dtAbrechMonat.TabIndex = 0;
             this.dtAbrechMonat.Value = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
             // 
@@ -374,25 +388,28 @@
             this.grpSuche.Controls.Add(this.btnSearchxy);
             this.grpSuche.Controls.Add(this.btnTimes);
             this.grpSuche.Controls.Add(this.lblVon);
-            this.grpSuche.Location = new System.Drawing.Point(5, 4);
+            this.grpSuche.Location = new System.Drawing.Point(6, 5);
+            this.grpSuche.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpSuche.Name = "grpSuche";
-            this.grpSuche.Size = new System.Drawing.Size(663, 80);
+            this.grpSuche.Size = new System.Drawing.Size(774, 100);
             this.grpSuche.TabIndex = 6;
             this.grpSuche.Text = "Suche";
             // 
             // lblReNr
             // 
-            this.lblReNr.Location = new System.Drawing.Point(407, 21);
+            this.lblReNr.Location = new System.Drawing.Point(475, 27);
+            this.lblReNr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblReNr.Name = "lblReNr";
-            this.lblReNr.Size = new System.Drawing.Size(63, 15);
+            this.lblReNr.Size = new System.Drawing.Size(74, 20);
             this.lblReNr.TabIndex = 10;
             this.lblReNr.Text = "Rech. Nr.";
             // 
             // txtReNr
             // 
-            this.txtReNr.Location = new System.Drawing.Point(473, 18);
+            this.txtReNr.Location = new System.Drawing.Point(552, 24);
+            this.txtReNr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtReNr.Name = "txtReNr";
-            this.txtReNr.Size = new System.Drawing.Size(137, 21);
+            this.txtReNr.Size = new System.Drawing.Size(160, 26);
             this.txtReNr.TabIndex = 4;
             // 
             // dtVon
@@ -400,12 +417,13 @@
             appearance4.TextHAlignAsString = "Center";
             this.dtVon.Appearance = appearance4;
             this.dtVon.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
-            this.dtVon.Location = new System.Drawing.Point(159, 18);
+            this.dtVon.Location = new System.Drawing.Point(186, 24);
+            this.dtVon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtVon.MaskInput = "{LOC}mm.yyyy";
             this.dtVon.Name = "dtVon";
             this.dtVon.ownFormat = "";
             this.dtVon.ownMaskInput = "";
-            this.dtVon.Size = new System.Drawing.Size(90, 21);
+            this.dtVon.Size = new System.Drawing.Size(105, 26);
             this.dtVon.TabIndex = 0;
             this.dtVon.Value = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
             this.dtVon.Enter += new System.EventHandler(this.dtVon_Enter);
@@ -416,12 +434,13 @@
             appearance5.TextHAlignAsString = "Center";
             this.dtVonRechDatum.Appearance = appearance5;
             this.dtVonRechDatum.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
-            this.dtVonRechDatum.Location = new System.Drawing.Point(159, 49);
+            this.dtVonRechDatum.Location = new System.Drawing.Point(186, 64);
+            this.dtVonRechDatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtVonRechDatum.MaskInput = "";
             this.dtVonRechDatum.Name = "dtVonRechDatum";
             this.dtVonRechDatum.ownFormat = "";
             this.dtVonRechDatum.ownMaskInput = "";
-            this.dtVonRechDatum.Size = new System.Drawing.Size(90, 21);
+            this.dtVonRechDatum.Size = new System.Drawing.Size(105, 26);
             this.dtVonRechDatum.TabIndex = 2;
             this.dtVonRechDatum.Value = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
             this.dtVonRechDatum.Enter += new System.EventHandler(this.dtVonErstelltAm_Enter);
@@ -431,29 +450,32 @@
             appearance6.TextHAlignAsString = "Center";
             this.dtBisRechDatum.Appearance = appearance6;
             this.dtBisRechDatum.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
-            this.dtBisRechDatum.Location = new System.Drawing.Point(281, 49);
+            this.dtBisRechDatum.Location = new System.Drawing.Point(328, 64);
+            this.dtBisRechDatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtBisRechDatum.MaskInput = "";
             this.dtBisRechDatum.Name = "dtBisRechDatum";
             this.dtBisRechDatum.ownFormat = "";
             this.dtBisRechDatum.ownMaskInput = "";
-            this.dtBisRechDatum.Size = new System.Drawing.Size(90, 21);
+            this.dtBisRechDatum.Size = new System.Drawing.Size(105, 26);
             this.dtBisRechDatum.TabIndex = 3;
             this.dtBisRechDatum.Value = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
             this.dtBisRechDatum.Enter += new System.EventHandler(this.dtBisErstelltAm_Enter);
             // 
             // baseLabel1
             // 
-            this.baseLabel1.Location = new System.Drawing.Point(253, 52);
+            this.baseLabel1.Location = new System.Drawing.Point(295, 68);
+            this.baseLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.baseLabel1.Name = "baseLabel1";
-            this.baseLabel1.Size = new System.Drawing.Size(27, 15);
+            this.baseLabel1.Size = new System.Drawing.Size(31, 20);
             this.baseLabel1.TabIndex = 9;
             this.baseLabel1.Text = "bis";
             // 
             // lblVonBisRechDatum
             // 
-            this.lblVonBisRechDatum.Location = new System.Drawing.Point(6, 49);
+            this.lblVonBisRechDatum.Location = new System.Drawing.Point(7, 64);
+            this.lblVonBisRechDatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblVonBisRechDatum.Name = "lblVonBisRechDatum";
-            this.lblVonBisRechDatum.Size = new System.Drawing.Size(147, 21);
+            this.lblVonBisRechDatum.Size = new System.Drawing.Size(172, 27);
             this.lblVonBisRechDatum.TabIndex = 7;
             this.lblVonBisRechDatum.Text = "Rechnungsdatum von";
             // 
@@ -462,12 +484,13 @@
             appearance7.TextHAlignAsString = "Center";
             this.dtBis.Appearance = appearance7;
             this.dtBis.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
-            this.dtBis.Location = new System.Drawing.Point(281, 18);
+            this.dtBis.Location = new System.Drawing.Point(328, 24);
+            this.dtBis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtBis.MaskInput = "{LOC}mm.yyyy";
             this.dtBis.Name = "dtBis";
             this.dtBis.ownFormat = "";
             this.dtBis.ownMaskInput = "";
-            this.dtBis.Size = new System.Drawing.Size(90, 21);
+            this.dtBis.Size = new System.Drawing.Size(105, 26);
             this.dtBis.TabIndex = 1;
             this.dtBis.Value = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
             this.dtBis.Enter += new System.EventHandler(this.dtBis_Enter);
@@ -475,9 +498,10 @@
             // 
             // lblBis
             // 
-            this.lblBis.Location = new System.Drawing.Point(253, 21);
+            this.lblBis.Location = new System.Drawing.Point(295, 27);
+            this.lblBis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblBis.Name = "lblBis";
-            this.lblBis.Size = new System.Drawing.Size(27, 15);
+            this.lblBis.Size = new System.Drawing.Size(31, 20);
             this.lblBis.TabIndex = 8;
             this.lblBis.Text = "bis";
             // 
@@ -493,9 +517,10 @@
             this.btnSearchxy.DoOnClick = true;
             this.btnSearchxy.ImageSize = new System.Drawing.Size(12, 12);
             this.btnSearchxy.IsStandardControl = true;
-            this.btnSearchxy.Location = new System.Drawing.Point(613, 16);
+            this.btnSearchxy.Location = new System.Drawing.Point(715, 21);
+            this.btnSearchxy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearchxy.Name = "btnSearchxy";
-            this.btnSearchxy.Size = new System.Drawing.Size(32, 27);
+            this.btnSearchxy.Size = new System.Drawing.Size(37, 35);
             this.btnSearchxy.TabIndex = 5;
             this.btnSearchxy.TabStop = false;
             this.btnSearchxy.TYPE = PMDS.GUI.ucButton.ButtonType.Search;
@@ -504,10 +529,11 @@
             // 
             // btnTimes
             // 
-            this.btnTimes.Location = new System.Drawing.Point(377, 18);
+            this.btnTimes.Location = new System.Drawing.Point(440, 24);
+            this.btnTimes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTimes.Name = "btnTimes";
             this.btnTimes.ShowFocusRect = false;
-            this.btnTimes.Size = new System.Drawing.Size(21, 24);
+            this.btnTimes.Size = new System.Drawing.Size(24, 31);
             this.btnTimes.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.btnTimes.TabIndex = 8;
             this.btnTimes.Click += new System.EventHandler(this.btnTimes_Click);
@@ -515,9 +541,10 @@
             // 
             // lblVon
             // 
-            this.lblVon.Location = new System.Drawing.Point(6, 21);
+            this.lblVon.Location = new System.Drawing.Point(7, 27);
+            this.lblVon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblVon.Name = "lblVon";
-            this.lblVon.Size = new System.Drawing.Size(147, 22);
+            this.lblVon.Size = new System.Drawing.Size(172, 29);
             this.lblVon.TabIndex = 6;
             this.lblVon.Text = "Leistungszeitraum von";
             // 
@@ -532,9 +559,10 @@
             this.panelTop2.Controls.Add(this.panelDelete);
             this.panelTop2.Controls.Add(this.panelPrint);
             this.panelTop2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelTop2.Location = new System.Drawing.Point(0, 87);
+            this.panelTop2.Location = new System.Drawing.Point(0, 114);
+            this.panelTop2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelTop2.Name = "panelTop2";
-            this.panelTop2.Size = new System.Drawing.Size(1192, 43);
+            this.panelTop2.Size = new System.Drawing.Size(1391, 56);
             this.panelTop2.TabIndex = 3;
             // 
             // panelFSW
@@ -542,9 +570,10 @@
             this.panelFSW.Controls.Add(this.btnFSWReset);
             this.panelFSW.Controls.Add(this.btnFSW);
             this.panelFSW.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelFSW.Location = new System.Drawing.Point(637, 0);
+            this.panelFSW.Location = new System.Drawing.Point(744, 0);
+            this.panelFSW.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelFSW.Name = "panelFSW";
-            this.panelFSW.Size = new System.Drawing.Size(164, 43);
+            this.panelFSW.Size = new System.Drawing.Size(191, 56);
             this.panelFSW.TabIndex = 111;
             // 
             // btnFSWReset
@@ -554,9 +583,10 @@
             this.btnFSWReset.Appearance = appearance9;
             this.btnFSWReset.AutoWorkLayout = false;
             this.btnFSWReset.IsStandardControl = false;
-            this.btnFSWReset.Location = new System.Drawing.Point(8, 8);
+            this.btnFSWReset.Location = new System.Drawing.Point(9, 10);
+            this.btnFSWReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFSWReset.Name = "btnFSWReset";
-            this.btnFSWReset.Size = new System.Drawing.Size(49, 29);
+            this.btnFSWReset.Size = new System.Drawing.Size(57, 38);
             this.btnFSWReset.TabIndex = 101;
             this.btnFSWReset.Text = "FSW -";
             ultraToolTipInfo2.ToolTipText = "Status Zahlungsaufforderung für FSW zurücksetzen";
@@ -570,13 +600,16 @@
             this.btnFSW.Appearance = appearance35;
             this.btnFSW.AutoWorkLayout = false;
             this.btnFSW.IsStandardControl = false;
-            this.btnFSW.Location = new System.Drawing.Point(65, 8);
+            this.btnFSW.Location = new System.Drawing.Point(76, 10);
+            this.btnFSW.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFSW.Name = "btnFSW";
-            this.btnFSW.Size = new System.Drawing.Size(87, 29);
+            this.btnFSW.Size = new System.Drawing.Size(102, 38);
             this.btnFSW.TabIndex = 100;
             this.btnFSW.Text = "ZAUF ( FSW)";
             ultraToolTipInfo3.ToolTipImage = Infragistics.Win.ToolTipImage.Info;
-            ultraToolTipInfo3.ToolTipText = "eZAUFF für FSW\nKlicken = Erstellen, speichern, NICHT senden\nUmschaltaste halten und klicken: Erstellen, speichern, SENDEN\nAlt-Taste halten und klicken: Gespeicherte eZAUFF per sFTP senden.";
+            ultraToolTipInfo3.ToolTipText = "eZAUFF für FSW\nKlicken = Erstellen, speichern, NICHT senden\nUmschaltaste halten u" +
+    "nd klicken: Erstellen, speichern, SENDEN\nAlt-Taste halten und klicken: Gespeiche" +
+    "rte eZAUFF per sFTP senden.";
             this.ultraToolTipManager1.SetUltraToolTip(this.btnFSW, ultraToolTipInfo3);
             this.btnFSW.Click += new System.EventHandler(this.btnFSW_Click);
             // 
@@ -585,9 +618,10 @@
             this.panelAuswahlFreigStornoAll.Controls.Add(this.cboBillStatus);
             this.panelAuswahlFreigStornoAll.Controls.Add(this.lblBillStatus);
             this.panelAuswahlFreigStornoAll.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelAuswahlFreigStornoAll.Location = new System.Drawing.Point(461, 0);
+            this.panelAuswahlFreigStornoAll.Location = new System.Drawing.Point(538, 0);
+            this.panelAuswahlFreigStornoAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelAuswahlFreigStornoAll.Name = "panelAuswahlFreigStornoAll";
-            this.panelAuswahlFreigStornoAll.Size = new System.Drawing.Size(182, 43);
+            this.panelAuswahlFreigStornoAll.Size = new System.Drawing.Size(212, 56);
             this.panelAuswahlFreigStornoAll.TabIndex = 110;
             // 
             // cboBillStatus
@@ -603,17 +637,19 @@
             valueListItem1,
             valueListItem3,
             valueListItem5});
-            this.cboBillStatus.Location = new System.Drawing.Point(44, 14);
+            this.cboBillStatus.Location = new System.Drawing.Point(51, 18);
+            this.cboBillStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboBillStatus.Name = "cboBillStatus";
-            this.cboBillStatus.Size = new System.Drawing.Size(126, 21);
+            this.cboBillStatus.Size = new System.Drawing.Size(147, 26);
             this.cboBillStatus.TabIndex = 115;
             this.cboBillStatus.ValueChanged += new System.EventHandler(this.cboBillType_ValueChanged);
             // 
             // lblBillStatus
             // 
-            this.lblBillStatus.Location = new System.Drawing.Point(3, 18);
+            this.lblBillStatus.Location = new System.Drawing.Point(8, 22);
+            this.lblBillStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblBillStatus.Name = "lblBillStatus";
-            this.lblBillStatus.Size = new System.Drawing.Size(32, 15);
+            this.lblBillStatus.Size = new System.Drawing.Size(37, 20);
             this.lblBillStatus.TabIndex = 114;
             this.lblBillStatus.Text = "Typ";
             // 
@@ -622,25 +658,28 @@
             this.panelAuswahlRechTyp.Controls.Add(this.cboRechTyp);
             this.panelAuswahlRechTyp.Controls.Add(this.lblRechTyp);
             this.panelAuswahlRechTyp.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelAuswahlRechTyp.Location = new System.Drawing.Point(240, 0);
+            this.panelAuswahlRechTyp.Location = new System.Drawing.Point(280, 0);
+            this.panelAuswahlRechTyp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelAuswahlRechTyp.Name = "panelAuswahlRechTyp";
-            this.panelAuswahlRechTyp.Size = new System.Drawing.Size(221, 43);
+            this.panelAuswahlRechTyp.Size = new System.Drawing.Size(258, 56);
             this.panelAuswahlRechTyp.TabIndex = 109;
             // 
             // cboRechTyp
             // 
             this.cboRechTyp.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboRechTyp.Location = new System.Drawing.Point(59, 14);
+            this.cboRechTyp.Location = new System.Drawing.Point(55, 18);
+            this.cboRechTyp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboRechTyp.Name = "cboRechTyp";
-            this.cboRechTyp.Size = new System.Drawing.Size(156, 21);
+            this.cboRechTyp.Size = new System.Drawing.Size(191, 26);
             this.cboRechTyp.TabIndex = 113;
             this.cboRechTyp.ValueChanged += new System.EventHandler(this.cboRechTyp_ValueChanged);
             // 
             // lblRechTyp
             // 
-            this.lblRechTyp.Location = new System.Drawing.Point(1, 16);
+            this.lblRechTyp.Location = new System.Drawing.Point(1, 21);
+            this.lblRechTyp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblRechTyp.Name = "lblRechTyp";
-            this.lblRechTyp.Size = new System.Drawing.Size(56, 15);
+            this.lblRechTyp.Size = new System.Drawing.Size(65, 20);
             this.lblRechTyp.TabIndex = 112;
             this.lblRechTyp.Text = "Beleg:";
             // 
@@ -650,8 +689,9 @@
             this.panelHistorie2.Controls.Add(this.btnFreigeben);
             this.panelHistorie2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelHistorie2.Location = new System.Drawing.Point(0, 0);
+            this.panelHistorie2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelHistorie2.Name = "panelHistorie2";
-            this.panelHistorie2.Size = new System.Drawing.Size(240, 43);
+            this.panelHistorie2.Size = new System.Drawing.Size(280, 56);
             this.panelHistorie2.TabIndex = 108;
             // 
             // btnVorschau
@@ -668,11 +708,12 @@
             this.btnVorschau.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVorschau.ImageSize = new System.Drawing.Size(24, 24);
             this.btnVorschau.IsStandardControl = false;
-            this.btnVorschau.Location = new System.Drawing.Point(8, 7);
+            this.btnVorschau.Location = new System.Drawing.Point(9, 9);
+            this.btnVorschau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnVorschau.Name = "btnVorschau";
             this.btnVorschau.ShowFocusRect = false;
             this.btnVorschau.ShowOutline = false;
-            this.btnVorschau.Size = new System.Drawing.Size(106, 30);
+            this.btnVorschau.Size = new System.Drawing.Size(124, 39);
             this.btnVorschau.TabIndex = 21;
             this.btnVorschau.Tag = "1";
             this.btnVorschau.Text = "Vorschau";
@@ -699,11 +740,12 @@
             this.btnFreigeben.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Button;
             this.btnFreigeben.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFreigeben.IsStandardControl = false;
-            this.btnFreigeben.Location = new System.Drawing.Point(119, 7);
+            this.btnFreigeben.Location = new System.Drawing.Point(139, 9);
+            this.btnFreigeben.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFreigeben.Name = "btnFreigeben";
             this.btnFreigeben.ShowFocusRect = false;
             this.btnFreigeben.ShowOutline = false;
-            this.btnFreigeben.Size = new System.Drawing.Size(115, 30);
+            this.btnFreigeben.Size = new System.Drawing.Size(134, 39);
             this.btnFreigeben.TabIndex = 20;
             this.btnFreigeben.Tag = "2";
             this.btnFreigeben.Text = "Freigegeben";
@@ -720,9 +762,10 @@
             // 
             this.paneStorno.Controls.Add(this.btnStorno);
             this.paneStorno.Dock = System.Windows.Forms.DockStyle.Right;
-            this.paneStorno.Location = new System.Drawing.Point(801, 0);
+            this.paneStorno.Location = new System.Drawing.Point(935, 0);
+            this.paneStorno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.paneStorno.Name = "paneStorno";
-            this.paneStorno.Size = new System.Drawing.Size(65, 43);
+            this.paneStorno.Size = new System.Drawing.Size(76, 56);
             this.paneStorno.TabIndex = 107;
             // 
             // btnStorno
@@ -732,9 +775,10 @@
             this.btnStorno.Appearance = appearance38;
             this.btnStorno.AutoWorkLayout = false;
             this.btnStorno.IsStandardControl = false;
-            this.btnStorno.Location = new System.Drawing.Point(2, 8);
+            this.btnStorno.Location = new System.Drawing.Point(2, 10);
+            this.btnStorno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStorno.Name = "btnStorno";
-            this.btnStorno.Size = new System.Drawing.Size(59, 29);
+            this.btnStorno.Size = new System.Drawing.Size(69, 38);
             this.btnStorno.TabIndex = 100;
             this.btnStorno.Text = "Storno";
             this.btnStorno.Click += new System.EventHandler(this.btnStorno_Click);
@@ -743,9 +787,10 @@
             // 
             this.panelDelete.Controls.Add(this.btnDelete);
             this.panelDelete.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelDelete.Location = new System.Drawing.Point(866, 0);
+            this.panelDelete.Location = new System.Drawing.Point(1011, 0);
+            this.panelDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelDelete.Name = "panelDelete";
-            this.panelDelete.Size = new System.Drawing.Size(43, 43);
+            this.panelDelete.Size = new System.Drawing.Size(50, 56);
             this.panelDelete.TabIndex = 106;
             // 
             // btnDelete
@@ -761,9 +806,10 @@
             this.btnDelete.DoOnClick = true;
             this.btnDelete.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDelete.IsStandardControl = true;
-            this.btnDelete.Location = new System.Drawing.Point(3, 7);
+            this.btnDelete.Location = new System.Drawing.Point(4, 9);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(34, 29);
+            this.btnDelete.Size = new System.Drawing.Size(40, 38);
             this.btnDelete.TabIndex = 99;
             this.btnDelete.TabStop = false;
             this.btnDelete.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
@@ -777,9 +823,10 @@
             this.panelPrint.Controls.Add(this.btnExportAsExcel);
             this.panelPrint.Controls.Add(this.btnPrint);
             this.panelPrint.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelPrint.Location = new System.Drawing.Point(909, 0);
+            this.panelPrint.Location = new System.Drawing.Point(1061, 0);
+            this.panelPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelPrint.Name = "panelPrint";
-            this.panelPrint.Size = new System.Drawing.Size(283, 43);
+            this.panelPrint.Size = new System.Drawing.Size(330, 56);
             this.panelPrint.TabIndex = 105;
             // 
             // btnRollungSperreLöschen
@@ -789,9 +836,10 @@
             this.btnRollungSperreLöschen.Appearance = appearance40;
             this.btnRollungSperreLöschen.AutoWorkLayout = false;
             this.btnRollungSperreLöschen.IsStandardControl = false;
-            this.btnRollungSperreLöschen.Location = new System.Drawing.Point(1, 7);
+            this.btnRollungSperreLöschen.Location = new System.Drawing.Point(1, 9);
+            this.btnRollungSperreLöschen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRollungSperreLöschen.Name = "btnRollungSperreLöschen";
-            this.btnRollungSperreLöschen.Size = new System.Drawing.Size(30, 29);
+            this.btnRollungSperreLöschen.Size = new System.Drawing.Size(35, 38);
             this.btnRollungSperreLöschen.TabIndex = 165;
             this.btnRollungSperreLöschen.Tag = "0";
             this.btnRollungSperreLöschen.Click += new System.EventHandler(this.btnRollungSperreLöschen_Click);
@@ -803,9 +851,10 @@
             this.btnExportAsPdf.Appearance = appearance41;
             this.btnExportAsPdf.AutoWorkLayout = false;
             this.btnExportAsPdf.IsStandardControl = false;
-            this.btnExportAsPdf.Location = new System.Drawing.Point(246, 7);
+            this.btnExportAsPdf.Location = new System.Drawing.Point(287, 9);
+            this.btnExportAsPdf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExportAsPdf.Name = "btnExportAsPdf";
-            this.btnExportAsPdf.Size = new System.Drawing.Size(30, 29);
+            this.btnExportAsPdf.Size = new System.Drawing.Size(35, 38);
             this.btnExportAsPdf.TabIndex = 164;
             this.btnExportAsPdf.Tag = "0";
             this.btnExportAsPdf.Click += new System.EventHandler(this.btnExportAsPdf_Click);
@@ -817,9 +866,10 @@
             this.btnExportAsExcel.Appearance = appearance42;
             this.btnExportAsExcel.AutoWorkLayout = false;
             this.btnExportAsExcel.IsStandardControl = false;
-            this.btnExportAsExcel.Location = new System.Drawing.Point(211, 7);
+            this.btnExportAsExcel.Location = new System.Drawing.Point(246, 9);
+            this.btnExportAsExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExportAsExcel.Name = "btnExportAsExcel";
-            this.btnExportAsExcel.Size = new System.Drawing.Size(30, 29);
+            this.btnExportAsExcel.Size = new System.Drawing.Size(35, 38);
             this.btnExportAsExcel.TabIndex = 105;
             this.btnExportAsExcel.Tag = "0";
             this.btnExportAsExcel.Click += new System.EventHandler(this.btnExportAsExcel_Click);
@@ -832,9 +882,10 @@
             this.btnPrint.Appearance = appearance43;
             this.btnPrint.AutoWorkLayout = false;
             this.btnPrint.IsStandardControl = false;
-            this.btnPrint.Location = new System.Drawing.Point(35, 7);
+            this.btnPrint.Location = new System.Drawing.Point(41, 9);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(169, 29);
+            this.btnPrint.Size = new System.Drawing.Size(197, 38);
             this.btnPrint.TabIndex = 101;
             this.btnPrint.Text = "Beleg öffnen";
             ultraToolTipInfo6.ToolTipText = "Für Rechnungsversand = Umschalt-Taste | Für Rechnungskopie = Strg-Taste";
@@ -851,21 +902,24 @@
             this.panelBottom.Controls.Add(this.lblCount);
             this.panelBottom.Controls.Add(this.butAlleKeine);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 535);
+            this.panelBottom.Location = new System.Drawing.Point(0, 689);
+            this.panelBottom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(1192, 30);
+            this.panelBottom.Size = new System.Drawing.Size(1391, 50);
             this.panelBottom.TabIndex = 1;
             // 
             // btnRollung
             // 
+            this.btnRollung.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             appearance28.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance28.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnRollung.Appearance = appearance28;
             this.btnRollung.AutoWorkLayout = false;
             this.btnRollung.IsStandardControl = false;
-            this.btnRollung.Location = new System.Drawing.Point(488, 1);
+            this.btnRollung.Location = new System.Drawing.Point(544, 3);
+            this.btnRollung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRollung.Name = "btnRollung";
-            this.btnRollung.Size = new System.Drawing.Size(86, 27);
+            this.btnRollung.Size = new System.Drawing.Size(100, 43);
             this.btnRollung.TabIndex = 105;
             this.btnRollung.Text = "Rollung";
             ultraToolTipInfo1.ToolTipText = "STRG-Tase halten = Rollung gegen NICHT FREIGEGEBENE Rechnung";
@@ -874,32 +928,37 @@
             // 
             // butRechFreigeb
             // 
+            this.butRechFreigeb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             appearance29.Image = ((object)(resources.GetObject("appearance29.Image")));
             appearance29.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance29.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.butRechFreigeb.Appearance = appearance29;
             this.butRechFreigeb.AutoWorkLayout = false;
             this.butRechFreigeb.IsStandardControl = false;
-            this.butRechFreigeb.Location = new System.Drawing.Point(68, 1);
+            this.butRechFreigeb.Location = new System.Drawing.Point(82, 4);
+            this.butRechFreigeb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.butRechFreigeb.Name = "butRechFreigeb";
-            this.butRechFreigeb.Size = new System.Drawing.Size(151, 27);
+            this.butRechFreigeb.Size = new System.Drawing.Size(176, 42);
             this.butRechFreigeb.TabIndex = 7;
             this.butRechFreigeb.Text = "Rechnungen freigeben";
             this.butRechFreigeb.Click += new System.EventHandler(this.butRechFreigeb_Click);
             // 
             // lblSumm
             // 
+            this.lblSumm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             appearance30.ImageHAlign = Infragistics.Win.HAlign.Center;
             appearance30.TextHAlignAsString = "Right";
             this.lblSumm.Appearance = appearance30;
-            this.lblSumm.Location = new System.Drawing.Point(225, 8);
+            this.lblSumm.Location = new System.Drawing.Point(266, 16);
+            this.lblSumm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblSumm.Name = "lblSumm";
-            this.lblSumm.Size = new System.Drawing.Size(89, 16);
+            this.lblSumm.Size = new System.Drawing.Size(104, 21);
             this.lblSumm.TabIndex = 104;
             this.lblSumm.Text = "Summe";
             // 
             // numSum
             // 
+            this.numSum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             appearance31.BackColor = System.Drawing.Color.White;
             appearance31.BackColorDisabled = System.Drawing.Color.White;
             appearance31.BackColorDisabled2 = System.Drawing.Color.White;
@@ -909,24 +968,27 @@
             this.numSum.BackColor = System.Drawing.Color.White;
             this.numSum.Enabled = false;
             this.numSum.FormatString = "###,###,###,##0.00";
-            this.numSum.Location = new System.Drawing.Point(320, 4);
+            this.numSum.Location = new System.Drawing.Point(378, 11);
+            this.numSum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numSum.Name = "numSum";
             this.numSum.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.numSum.ReadOnly = true;
-            this.numSum.Size = new System.Drawing.Size(94, 21);
+            this.numSum.Size = new System.Drawing.Size(136, 26);
             this.numSum.TabIndex = 103;
             this.numSum.UseFlatMode = Infragistics.Win.DefaultableBoolean.False;
             // 
             // btnRechEinAus
             // 
+            this.btnRechEinAus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             appearance32.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance32.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnRechEinAus.Appearance = appearance32;
             this.btnRechEinAus.AutoWorkLayout = false;
             this.btnRechEinAus.IsStandardControl = false;
-            this.btnRechEinAus.Location = new System.Drawing.Point(763, 1);
+            this.btnRechEinAus.Location = new System.Drawing.Point(962, 4);
+            this.btnRechEinAus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRechEinAus.Name = "btnRechEinAus";
-            this.btnRechEinAus.Size = new System.Drawing.Size(137, 26);
+            this.btnRechEinAus.Size = new System.Drawing.Size(160, 42);
             this.btnRechEinAus.TabIndex = 102;
             this.btnRechEinAus.Tag = "0";
             this.btnRechEinAus.Text = "Rech-Erstellung ein/aus";
@@ -935,26 +997,29 @@
             // 
             // lblCount
             // 
-            this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             appearance33.FontData.SizeInPoints = 7.5F;
             appearance33.TextHAlignAsString = "Right";
             this.lblCount.Appearance = appearance33;
-            this.lblCount.Location = new System.Drawing.Point(972, 1);
+            this.lblCount.Location = new System.Drawing.Point(1129, 7);
+            this.lblCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(214, 21);
+            this.lblCount.Size = new System.Drawing.Size(250, 30);
             this.lblCount.TabIndex = 8;
             this.lblCount.Text = "Gefunden: 0";
             // 
             // butAlleKeine
             // 
+            this.butAlleKeine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             appearance34.ImageHAlign = Infragistics.Win.HAlign.Left;
             appearance34.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.butAlleKeine.Appearance = appearance34;
             this.butAlleKeine.AutoWorkLayout = false;
             this.butAlleKeine.IsStandardControl = false;
-            this.butAlleKeine.Location = new System.Drawing.Point(3, 1);
+            this.butAlleKeine.Location = new System.Drawing.Point(6, 5);
+            this.butAlleKeine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.butAlleKeine.Name = "butAlleKeine";
-            this.butAlleKeine.Size = new System.Drawing.Size(59, 26);
+            this.butAlleKeine.Size = new System.Drawing.Size(69, 41);
             this.butAlleKeine.TabIndex = 6;
             this.butAlleKeine.Tag = "A";
             this.butAlleKeine.Text = "Alle";
@@ -971,14 +1036,16 @@
             // 
             this.editor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editor.Font = new System.Drawing.Font("Arial", 10F);
-            this.editor.Location = new System.Drawing.Point(19, 38);
+            this.editor.Location = new System.Drawing.Point(22, 50);
+            this.editor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.editor.Name = "editor";
             this.editor.PageMargins.Bottom = 79.03D;
             this.editor.PageMargins.Left = 79.03D;
             this.editor.PageMargins.Right = 79.03D;
             this.editor.PageMargins.Top = 79.03D;
-            this.editor.Size = new System.Drawing.Size(71, 48);
+            this.editor.Size = new System.Drawing.Size(83, 63);
             this.editor.TabIndex = 100;
+            this.editor.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editor.UserNames = null;
             this.editor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textControl1_KeyPress);
             // 
@@ -990,8 +1057,9 @@
             this.panelAll.Controls.Add(this.panelTopSr);
             this.panelAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAll.Location = new System.Drawing.Point(0, 0);
+            this.panelAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelAll.Name = "panelAll";
-            this.panelAll.Size = new System.Drawing.Size(1192, 565);
+            this.panelAll.Size = new System.Drawing.Size(1391, 739);
             this.panelAll.TabIndex = 4;
             // 
             // panelGrid
@@ -1000,9 +1068,10 @@
             this.panelGrid.Controls.Add(this.editor);
             this.panelGrid.Controls.Add(this.editorPrecalc);
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGrid.Location = new System.Drawing.Point(0, 130);
+            this.panelGrid.Location = new System.Drawing.Point(0, 170);
+            this.panelGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(1192, 405);
+            this.panelGrid.Size = new System.Drawing.Size(1391, 519);
             this.panelGrid.TabIndex = 100;
             // 
             // uGridAbrech2
@@ -1215,8 +1284,9 @@
             this.uGridAbrech2.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.uGridAbrech2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uGridAbrech2.Location = new System.Drawing.Point(0, 0);
+            this.uGridAbrech2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.uGridAbrech2.Name = "uGridAbrech2";
-            this.uGridAbrech2.Size = new System.Drawing.Size(1192, 405);
+            this.uGridAbrech2.Size = new System.Drawing.Size(1391, 519);
             this.uGridAbrech2.TabIndex = 165;
             this.uGridAbrech2.Text = "Abrechnungen";
             this.uGridAbrech2.BeforeRowActivate += new Infragistics.Win.UltraWinGrid.RowEventHandler(this.uGridAbrech2_BeforeRowActivate);
@@ -1235,14 +1305,16 @@
             // 
             this.editorPrecalc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editorPrecalc.Font = new System.Drawing.Font("Arial", 10F);
-            this.editorPrecalc.Location = new System.Drawing.Point(19, 92);
+            this.editorPrecalc.Location = new System.Drawing.Point(22, 120);
+            this.editorPrecalc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.editorPrecalc.Name = "editorPrecalc";
             this.editorPrecalc.PageMargins.Bottom = 79.03D;
             this.editorPrecalc.PageMargins.Left = 79.03D;
             this.editorPrecalc.PageMargins.Right = 79.03D;
             this.editorPrecalc.PageMargins.Top = 79.03D;
-            this.editorPrecalc.Size = new System.Drawing.Size(71, 48);
+            this.editorPrecalc.Size = new System.Drawing.Size(83, 63);
             this.editorPrecalc.TabIndex = 102;
+            this.editorPrecalc.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editorPrecalc.UserNames = null;
             // 
             // contextMenuStrip1
@@ -1319,8 +1391,9 @@
             this.panelAll2.Controls.Add(this.panelAll);
             this.panelAll2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAll2.Location = new System.Drawing.Point(0, 0);
+            this.panelAll2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelAll2.Name = "panelAll2";
-            this.panelAll2.Size = new System.Drawing.Size(1192, 565);
+            this.panelAll2.Size = new System.Drawing.Size(1391, 739);
             this.panelAll2.TabIndex = 102;
             // 
             // errorProvider1
@@ -1329,12 +1402,14 @@
             // 
             // ucCalcs
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.panelAll2);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ucCalcs";
-            this.Size = new System.Drawing.Size(1192, 565);
+            this.Size = new System.Drawing.Size(1391, 739);
             this.VisibleChanged += new System.EventHandler(this.ucCalcs_VisibleChanged);
             this.Resize += new System.EventHandler(this.ucCalcs_Resize);
             this.panelTopSr.ResumeLayout(false);

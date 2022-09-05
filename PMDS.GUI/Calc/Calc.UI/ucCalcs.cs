@@ -305,7 +305,7 @@ namespace PMDS.Calc.UI
         }
 
         public void setUI(string aktivButton)
-        {
+        {            
             using (Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfoF = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Info, "Hinweis", Infragistics.Win.DefaultableBoolean.True))
             {
                 switch (aktivButton)
@@ -496,9 +496,26 @@ namespace PMDS.Calc.UI
             if (this.btnRechEinAus.Tag.ToString() == "1")
                 this.setUICalc(this.editorVis);
 
+            //Panels werden nach dem Wiederherstellen nicht korrekt gezeichnet -> neuzeichnen forcieren
+            panelPrint.Height -= 1;
+            panelDelete.Height -= 1;
+            paneStorno.Height -= 1;
+            panelFSW.Height -= 1;
+            panelAuswahlRechTyp.Height -= 1;
+            panelAuswahlFreigStornoAll.Height -= 1;
+            panelHistorie2.Height -= 1;
+            panelBottom.Height -= 1;
+
+            panelPrint.Height += 1;
+            panelDelete.Height += 1;
+            paneStorno.Height += 1;
+            panelFSW.Height += 1;
+            panelAuswahlRechTyp.Height += 1;
+            panelAuswahlFreigStornoAll.Height += 1;
+            panelHistorie2.Height += 1;
+            panelBottom.Height += 1;
+
             Application.DoEvents();
-            //this.ucProtokoll1.setWithHeight(this.Width, this.Height);
-            //this.grpAbrechnen.Left =  this.grpAbrechnen.Width 
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
