@@ -425,12 +425,13 @@ namespace PMDS.Global
                         ws.Rows[0].Cells[0].Value = "Name";
                         ws.Rows[0].Cells[1].Value = "SV-Nr";
                         ws.Rows[0].Cells[2].Value = "Leistung";
-                        ws.Rows[0].Cells[3].Value = "Netto";
-                        ws.Rows[0].Cells[4].Value = "MwSt-Satz";
-                        ws.Rows[0].Cells[5].Value = "Anzahl Tage";
-                        ws.Rows[0].Cells[6].Value = "FiBu";
-                        ws.Rows[0].Cells[7].Value = "Datum erstellt";
-                        ws.Rows[0].Cells[8].Value = "Monat/Jahr";
+                        ws.Rows[0].Cells[3].Value = "Netto Pflege";
+                        ws.Rows[0].Cells[4].Value = "Netto BW";
+                        ws.Rows[0].Cells[5].Value = "MwSt-Satz";
+                        ws.Rows[0].Cells[6].Value = "Anzahl Tage";
+                        ws.Rows[0].Cells[7].Value = "FiBu";
+                        ws.Rows[0].Cells[8].Value = "Datum erstellt";
+                        ws.Rows[0].Cells[9].Value = "Monat/Jahr";
 
                         ws.Columns[0].Width = 7000;
                         ws.Columns[0].CellFormat.WrapText = Infragistics.Documents.Excel.ExcelDefaultableBoolean.True;
@@ -441,10 +442,11 @@ namespace PMDS.Global
                         ws.Columns[4].Width = 3000;
                         ws.Columns[5].Width = 3000;
                         ws.Columns[6].Width = 3000;
-                        ws.Columns[7].Width = 4000;
-                        ws.Columns[8].Width = 3000;
+                        ws.Columns[7].Width = 3000;
+                        ws.Columns[8].Width = 4000;
+                        ws.Columns[9].Width = 3000;
 
-                        for (int c = 0; c <= 8; c++)
+                        for (int c = 0; c <= 9; c++)
                         {
                             ws.Rows[0].Cells[c].CellFormat.Fill = CellFill.CreateSolidFill(Color.LightSalmon);
                             ws.Rows[0].Cells[c].CellFormat.LeftBorderStyle = CellBorderLineStyle.Thin;
@@ -455,6 +457,7 @@ namespace PMDS.Global
                         var dec = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
                         var thousend = CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator;
                         var curency = CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol;
+                        string EuroString = "#" + thousend + "##0" + dec + "00 [$€-x-euro2]; -#" + thousend + "##" + dec + "00 [$€-x-euro2]; 0,00 [$€-x-euro2]";
 
                         foreach (XlsVorschauZeile lz in lstXlsVorschauZeilen)
                         {
@@ -464,26 +467,47 @@ namespace PMDS.Global
                             ws.Rows[z].Cells[2].Value = lz.Text;
                             ws.Rows[z].Cells[2].CellFormat.ShrinkToFit = ExcelDefaultableBoolean.True;
 
-                            ws.Rows[z].Cells[3].Value = lz.Netto;
-                            ws.Rows[z].Cells[3].CellFormat.FormatString = "#" + thousend + "##0" + dec + "00 [$€-x-euro2]; -#" + thousend + "##" + dec + "00 [$€-x-euro2]; 0,00 [$€-x-euro2]";
+                            if (lz.Pflege)
+                            {
+                                ws.Rows[z].Cells[3].Value = lz.Netto;
+                                ws.Rows[z].Cells[3].CellFormat.FormatString = EuroString;
+                                ws.Rows[z].Cells[4].CellFormat.FormatString = EuroString;
+                                ws.Rows[z].Cells[4].Value = "";
+                            }
+                            else
+                            {
+                                ws.Rows[z].Cells[4].Value = lz.Netto;
+                                ws.Rows[z].Cells[4].CellFormat.FormatString = EuroString;
+                                ws.Rows[z].Cells[3].CellFormat.FormatString = EuroString;
+                                ws.Rows[z].Cells[3].Value = "";
+                            }
+                            ws.Rows[z].Cells[5].Value = lz.MwStSatz;
+                            ws.Rows[z].Cells[6].Value = lz.Anzahl;
+                            ws.Rows[z].Cells[7].Value = lz.FiBu;
 
-                            ws.Rows[z].Cells[4].Value = lz.MwStSatz;
-                            ws.Rows[z].Cells[5].Value = lz.Anzahl;
-                            ws.Rows[z].Cells[6].Value = lz.FiBu;
 
+                            ws.Rows[z].Cells[8].Value = lz.ReDatum.Date;
+                            ws.Rows[z].Cells[8].CellFormat.FormatString = "dd.MM.yyyy";
 
-                            ws.Rows[z].Cells[7].Value = lz.ReDatum.Date;
-                            ws.Rows[z].Cells[7].CellFormat.FormatString = "dd.MM.yyyy";
-
-                            ws.Rows[z].Cells[8].Value = lz.Monat.Date;
-                            ws.Rows[z].Cells[8].CellFormat.FormatString = "MM-yyyy";
+                            ws.Rows[z].Cells[9].Value = lz.Monat.Date;
+                            ws.Rows[z].Cells[9].CellFormat.FormatString = "MM-yyyy";
                         }
 
                         //Summe einfügen
-                        Infragistics.Documents.Excel.Formula grandTotalFormula = Infragistics.Documents.Excel.Formula.Parse("=SUM($D$1:$D$" + (z+1).ToString() + ")", Infragistics.Documents.Excel.CellReferenceMode.A1);
-                        grandTotalFormula.ApplyTo(ws.Rows[z+2].Cells[3]);
-                        ws.Rows[z+2].Cells[3].CellFormat.FormatString = "#" + thousend + "##0" + dec + "00 [$€-x-euro2]; -#" + thousend + "##" + dec + "00 [$€-x-euro2]; 0,00 [$€-x-euro2]";
-                        ws.Rows[z + 2].Cells[2].Value = "Gesamtsumme";
+                        ws.Rows[z + 2].Cells[2].Value = "Summen";
+
+                        Infragistics.Documents.Excel.Formula SummePflege = Infragistics.Documents.Excel.Formula.Parse("=SUM($D$1:$D$" + (z + 1).ToString() + ")", Infragistics.Documents.Excel.CellReferenceMode.A1);
+                        SummePflege.ApplyTo(ws.Rows[z + 2].Cells[3]);
+                        ws.Rows[z + 2].Cells[3].CellFormat.FormatString = EuroString;
+
+                        Infragistics.Documents.Excel.Formula SummeBW = Infragistics.Documents.Excel.Formula.Parse("=SUM($E$1:$E$" + (z + 1).ToString() + ")", Infragistics.Documents.Excel.CellReferenceMode.A1);
+                        SummeBW.ApplyTo(ws.Rows[z + 2].Cells[4]);
+                        ws.Rows[z + 2].Cells[4].CellFormat.FormatString = EuroString;
+
+                        ws.Rows[z + 4].Cells[2].Value = "GESAMTSUMME";
+                        Infragistics.Documents.Excel.Formula Summe = Infragistics.Documents.Excel.Formula.Parse("=$D$" + (z + 3).ToString() + " + $E$" + (z + 3).ToString(), Infragistics.Documents.Excel.CellReferenceMode.A1);
+                        Summe.ApplyTo(ws.Rows[z + 4].Cells[3]);
+                        ws.Rows[z + 4].Cells[3].CellFormat.FormatString = EuroString;
 
                         wb.Save(xlsWorking);
                         if (File.Exists(xlsWorking))
