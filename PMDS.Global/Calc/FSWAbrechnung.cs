@@ -607,7 +607,15 @@ namespace PMDS.Global
 
                             if (RunAction == eAction.fswNoUpload)
                             {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("eZAUFF im XML-Export-Format wurde erstellt und gespeichert, aber nicht gesendet. ", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("eZAUFF im XML-Export-Format wurde erstellt und gespeichert, aber nicht gesendet.\n\nWollen Sie die Dateien anzeigen?", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.YesNo);
+                                if (res == DialogResult.Yes)
+                                {
+                                    string resShow = ShowXMLContent(ListXMLInfos);
+                                    if (!String.IsNullOrWhiteSpace(resShow))
+                                    {
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Anzeigen der Dateiinhalte:\n" + resShow, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    }
+                                }
                             }
 
                             if (ENV.FSW_SaveXLSX)
@@ -648,7 +656,16 @@ namespace PMDS.Global
                                     {
                                         string sTxt = ListIDs.Count().sIntToWords("e") + " Rechnung".sMehrzahlText(ListIDs.Count(), "en") + " wurde".sMehrzahlText(ListIDs.Count(),"n");
                                         string sBWExt = f.Transaction.bIsPflegeZAUFF ? "" : "(BW) ";
-                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung " + sBWExt + "für " + sTxt + " an den FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                        DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung " + sBWExt + "für " + sTxt + " an den FSW gesendet.\n\nWollen Sie die Dateien anzeigen?", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.YesNo);
+                                        if (res == DialogResult.Yes)
+                                        {
+                                            string resShow = ShowXMLContent(ListXMLInfos);
+                                            if (!String.IsNullOrWhiteSpace(resShow))
+                                            {
+                                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Anzeigen der Dateiinhalte:\n" + resShow, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                            }
+
+                                        }
                                     }
                                     else
                                     {
@@ -673,6 +690,36 @@ namespace PMDS.Global
             finally
             {
                 
+            }
+        }
+
+        public string ShowXMLContent(List<XMLInfo> ListXMLInfos)
+        {
+            try
+            {
+                StringBuilder sbFileContent = new StringBuilder();
+                foreach (XMLInfo xmlInfo in ListXMLInfos)
+                {
+                    sbFileContent.Append("<<<<< BEGINN" + xmlInfo.FQFileXML + " >>>>>\n");
+                    sbFileContent.Append(xmlInfo.Xml.ToString());
+                    sbFileContent.Append("<<<<< ENDE " + xmlInfo.FQFileXML + ">>>>>\n\n");
+                }
+
+                using (QS2.Desktop.Txteditor.frmTxtEditorField frmEditor = new QS2.Desktop.Txteditor.frmTxtEditorField())
+                {
+                    frmEditor.ContTXTField1.initControl(TXTextControl.ViewMode.FloatingText, true, true, true, true, false, false);
+                    frmEditor.Show();
+                    frmEditor.ContTXTField1.TXTControlField.ViewMode = TXTextControl.ViewMode.PageView;
+                    frmEditor.ContTXTField1.TXTControlField.EditMode = TXTextControl.EditMode.ReadOnly;
+                    frmEditor.ContTXTField1.TXTControlField.Text = sbFileContent.ToString();
+                    frmEditor.Text = "FSW-eZAUFF - Anzeige";
+                }
+                Application.DoEvents();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
 
@@ -918,6 +965,7 @@ namespace PMDS.Global
         public static bool SaveXML(ref List<XMLInfo> ListXMLInfos, out string Message)
         {
             Message = "";
+
             try
             {
                 foreach (XMLInfo XmlInfo in ListXMLInfos)
@@ -933,6 +981,7 @@ namespace PMDS.Global
                         if (dlg.ShowDialog() == DialogResult.OK)
                         {
                             XmlInfo.FQFileXML = dlg.FileName;
+
                             if (!XmlInfo.Xml.SaveXml(dlg.FileName))
                             {
                                 throw new Exception("Fehler beim Speichern der Zahlungsaufforderung: " + XmlInfo.Xml.LastErrorText);
