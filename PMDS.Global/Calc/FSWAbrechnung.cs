@@ -16,6 +16,7 @@ using System.Linq;
 using S2Extensions;
 using static PMDS.Global.db.cEBInterfaceDB;
 using Infragistics.Documents.Excel;
+using static PMDS.Global.FSWAbrechnung;
 
 namespace PMDS.Global
 {
@@ -44,7 +45,7 @@ namespace PMDS.Global
 
         public bool UseUploadToFSW { get; set; } = true;
         private List<string> ListIDBillsFSW { get; set; } = new List<string>();                   //Sammelt die Rechungen des FSW
-        private List<string> ListIDBillsFSWBW { get; set; } = new List<string>();                   //Sammelt die Rechungen des FSW für betreutes Wohnen
+        private List<string> ListIDBillsFSWBW { get; set; } = new List<string>();                 //Sammelt die Rechungen des FSW für betreutes Wohnen
 
         private List<Leistungszeile> lstZeilen = new List<Leistungszeile>();
         private List<Chilkat.Xml> ListFSWXml = new List<Chilkat.Xml>();
@@ -52,13 +53,8 @@ namespace PMDS.Global
 
         private db.cEBInterfaceDB.Transaction Transaction { get; set; } = db.cEBInterfaceDB.NewTransaction(true);
         private db.cEBInterfaceDB.Transaction TransactionBW { get; set; } = db.cEBInterfaceDB.NewTransaction(false);
-
-        //private List<db.cEBInterfaceDB.Transaction> lTransactions = new List<db.cEBInterfaceDB.Transaction>();
-        public bool UseXlsxExport { get; set; }
         private ExcelEngine _FSWXlsx = new ExcelEngine();
-
         private eAction _RunAction;
-
         private List<XlsVorschauZeile> lstXlsVorschauZeilen = new List<XlsVorschauZeile>();
 
         private class XlsVorschauZeile
@@ -98,18 +94,6 @@ namespace PMDS.Global
             set { _RunAction = value; }
         }
 
-        //public Chilkat.Xml FSWXml
-        //{
-        //    get { return _FSWXml; }
-        //    set { _FSWXml = value; }
-        //}
-
-        public ExcelEngine FSWXlsx
-        {
-            get { return _FSWXlsx; }
-            set { _FSWXlsx = value; }
-        }
-
         public enum eAction
         {
             fsw = 7,
@@ -124,7 +108,6 @@ namespace PMDS.Global
         {
             try
             {
-
                 RunAction = Action;
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = calculation.delgetDBContext.Invoke())
@@ -159,7 +142,6 @@ namespace PMDS.Global
                                     string sTxt = ListIDBills.Count().sIntToWords("e") + " Rechnung".sMehrzahlText(ListIDBills.Count(), "en"); 
 
                                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der eZAUFF-Zustatus wurde für " + sTxt + " zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-
                                 }
                                 else
                                 {
@@ -170,11 +152,12 @@ namespace PMDS.Global
                             {
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keine Rechnungen ausgewählt. Es wurde nichts zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                             }
-
                             return;
+
                         case eAction.fswXlsVorschau:
                             MsgBoxTitle = "Excel-Vorschau für FSW-Abrechnung erstellen";
                             break;
+
                         case eAction.fswsFTPOnly:
                             OpenFileDialog fd = new OpenFileDialog();
                             fd.InitialDirectory = ENV.FSW_EZAUF;
@@ -188,7 +171,7 @@ namespace PMDS.Global
                             {
                                 if (File.Exists(fd.FileName))
                                 {
-                                    string retsFTP = Upload(Path.GetFileNameWithoutExtension(fd.FileName), fd.FileName);
+                                    string retsFTP = Upload(Path.GetFileNameWithoutExtension(fd.FileName), fd.FileName, out string Log);
                                     if (retsFTP.Length > 0)
                                     {
                                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Hochladen der Zahlungsaufforderung: " + retsFTP, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
@@ -203,9 +186,8 @@ namespace PMDS.Global
                     }
 
                     decimal Rechnungsbetrag = 0;
-                    decimal RechnungsbetragBW = 0;
-
                     decimal Steuern = 0;
+                    decimal RechnungsbetragBW = 0;
                     decimal SteuernBW = 0;
 
                     foreach (string IDBill in ListIDBills ?? new List<string>())
@@ -493,7 +475,7 @@ namespace PMDS.Global
                             ws.Rows[z].Cells[9].CellFormat.FormatString = "MM-yyyy";
                         }
 
-                        //Summe einfügen
+                        //Summen einfügen
                         ws.Rows[z + 2].Cells[2].Value = "Summen";
 
                         Infragistics.Documents.Excel.Formula SummePflege = Infragistics.Documents.Excel.Formula.Parse("=SUM($D$1:$D$" + (z + 1).ToString() + ")", Infragistics.Documents.Excel.CellReferenceMode.A1);
@@ -602,7 +584,6 @@ namespace PMDS.Global
                                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("XML-Exportdatei wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     return;
                                 }
-                                //FSWXml = _FSWXml;
                             }
 
                             if (RunAction == eAction.fswNoUpload)
@@ -635,6 +616,7 @@ namespace PMDS.Global
                             
                             if (RunAction == eAction.fsw)    //Hochladen. Wenn nein -> nur XML erstellen (z.B. für Test)
                             {
+                                string Log = "";
                                 foreach(XMLInfo f in ListXMLInfos)
                                 {
                                     if (!f.bIsvalid)
@@ -644,33 +626,32 @@ namespace PMDS.Global
                                     FilenameXML = f.Transaction.bIsPflegeZAUFF ? FilenameXML : FilenameXMLBW;
                                     ListIDs = f.Transaction.bIsPflegeZAUFF ? ListIDBillsFSW : ListIDBillsFSWBW;
 
-                                    ret = Upload(FilenameXML, f.FQFileXML);
+                                    ret = Upload(FilenameXML, f.FQFileXML, out string LogsFTP);
+                                    Log += "\n" + LogsFTP;
+
                                     if (ret.Length > 0)
                                     {
                                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Hochladen der Zahlungsaufforderung: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                         return;
                                     }
-                                    //Sammelrechnung-ID (ZAUF) setzen
-                                    ret = SetIDSR(ListIDs, FilenameXML, db);
-                                    if (ret.Length == 0)
-                                    {
-                                        string sTxt = ListIDs.Count().sIntToWords("e") + " Rechnung".sMehrzahlText(ListIDs.Count(), "en") + " wurde".sMehrzahlText(ListIDs.Count(),"n");
-                                        string sBWExt = f.Transaction.bIsPflegeZAUFF ? "" : "(BW) ";
-                                        DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung " + sBWExt + "für " + sTxt + " an den FSW gesendet.\n\nWollen Sie die Dateien anzeigen?", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.YesNo);
-                                        if (res == DialogResult.Yes)
-                                        {
-                                            string resShow = ShowXMLContent(ListXMLInfos);
-                                            if (!String.IsNullOrWhiteSpace(resShow))
-                                            {
-                                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Anzeigen der Dateiinhalte:\n" + resShow, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                            }
-
-                                        }
-                                    }
-                                    else
+                                    
+                                    ret = SetIDSR(ListIDs, FilenameXML, db);    //Sammelrechnung-ID (ZAUF) setzen
+                                    if (ret.Length != 0)
                                     {
                                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung wurde gesendet, aber beim Sichern des eZAUFF-Zustands (Kennung Sammelrechnung) ist ein Fehler aufgetreten: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                         return;
+                                    }
+                                }
+
+                                string sTxtZAUFFS = ListXMLInfos.Count().sIntToWords("e ") + "Zahlungsaufforderung".sMehrzahlText(ListXMLInfos.Count(), "en");
+                                string sTxtRechnungen = ListIDs.Count().sIntToWords("e") + " Rechnung".sMehrzahlText(ListIDs.Count(), "en") + " wurde".sMehrzahlText(ListIDs.Count(), "n");
+                                DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sTxtZAUFFS + " für " + sTxtRechnungen + " an den FSW gesendet.\n\nWollen Sie die Dateien anzeigen?", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.YesNo);
+                                if (res == DialogResult.Yes)
+                                {
+                                    string resShow = ShowXMLContent(ListXMLInfos, Log);
+                                    if (!String.IsNullOrWhiteSpace(resShow))
+                                    {
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Anzeigen der Dateiinhalte:\n" + resShow, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     }
                                 }
                             }
@@ -693,26 +674,47 @@ namespace PMDS.Global
             }
         }
 
-        public string ShowXMLContent(List<XMLInfo> ListXMLInfos)
+        public string ShowXMLContent(List<XMLInfo> ListXMLInfos, string Log = "")
         {
             try
             {
                 StringBuilder sbFileContent = new StringBuilder();
+
+                sbFileContent.Append("Diese Datei enthält " + ListXMLInfos.Count().sIntToWords("e") + " eZAUFF".sMehrzahlText(ListXMLInfos.Count(), "s"));
+
+
+                if (!String.IsNullOrWhiteSpace(Log))
+                {
+                    sbFileContent.Append(" und eine Log-Datei für die SFTP-Übertragung\n");
+
+                    sbFileContent.Append("<<<<< BEGINN sFTP-Log-File >>>>>\n");
+                    sbFileContent.Append(Log);
+                    sbFileContent.Append("<<<<< ENDE sFTP-Log-File >>>>>");
+                }
+
                 foreach (XMLInfo xmlInfo in ListXMLInfos)
                 {
-                    sbFileContent.Append("<<<<< BEGINN" + xmlInfo.FQFileXML + " >>>>>\n");
+                    sbFileContent.Append("\n\n<<<<< BEGINN von " + xmlInfo.FQFileXML + " >>>>>\n");
                     sbFileContent.Append(xmlInfo.Xml.ToString());
-                    sbFileContent.Append("<<<<< ENDE " + xmlInfo.FQFileXML + ">>>>>\n\n");
+                    sbFileContent.Append("<<<<< ENDE von " + xmlInfo.FQFileXML + ">>>>>");
                 }
 
                 using (QS2.Desktop.Txteditor.frmTxtEditorField frmEditor = new QS2.Desktop.Txteditor.frmTxtEditorField())
                 {
+                    Font font = new Font(
+                       new FontFamily("Courier New"),
+                       12,
+                       FontStyle.Regular,
+                       GraphicsUnit.Point);
+
                     frmEditor.ContTXTField1.initControl(TXTextControl.ViewMode.FloatingText, true, true, true, true, false, false);
-                    frmEditor.Show();
-                    frmEditor.ContTXTField1.TXTControlField.ViewMode = TXTextControl.ViewMode.PageView;
+                    frmEditor.WindowState = FormWindowState.Maximized;
+                    frmEditor.ContTXTField1.TXTControlField.ViewMode = TXTextControl.ViewMode.FloatingText;
                     frmEditor.ContTXTField1.TXTControlField.EditMode = TXTextControl.EditMode.ReadOnly;
+                    frmEditor.ContTXTField1.TXTControlField.Font = font;
                     frmEditor.ContTXTField1.TXTControlField.Text = sbFileContent.ToString();
                     frmEditor.Text = "FSW-eZAUFF - Anzeige";
+                    frmEditor.ShowDialog();
                 }
                 Application.DoEvents();
                 return "";
@@ -1138,10 +1140,11 @@ namespace PMDS.Global
             }
         }
 
-        private static string Upload (string RemoteFilename, string LocalFQFilename)
+        private static string Upload (string RemoteFilename, string LocalFQFilename, out string Log)
         {
             try
             {
+                Log = "";
                 bool success;
                 using (Chilkat.SFtp sftp = new Chilkat.SFtp())
                 {
@@ -1160,7 +1163,7 @@ namespace PMDS.Global
 //                                    if (sftp.UploadFileByName(RemoteFilename, LocalFQFilename))
                                     if (sftp.UploadFileByName( ENV.FSW_FTPMode.ToLower() + "/put/" + RemoteFilename, LocalFQFilename))
                                     {
-                                        WriteLogToFile(sftp.LastErrorText);
+                                        //WriteLogToFile(sftp.LastErrorText);
                                         if (sftp.LastErrorXml.Contains("failed status"))
                                         {
                                             WriteLogToFile(sftp.LastErrorText);
@@ -1169,6 +1172,7 @@ namespace PMDS.Global
                                         else
                                         {
                                             WriteLogToFile(sftp.LastErrorText);
+                                            Log = sftp.LastErrorText;
                                             return "";
                                         }
                                     }
@@ -1193,8 +1197,6 @@ namespace PMDS.Global
                             return "sFTP-Client-Connect fehlgeschlagen: " + sftp.LastErrorText;
                         }
                     }
-                    WriteLogToFile(sftp.LastErrorText);
-                    return "Undefiniertes Ende der Funktion erkannt.";
                 }
             }
             catch (Exception ex)
