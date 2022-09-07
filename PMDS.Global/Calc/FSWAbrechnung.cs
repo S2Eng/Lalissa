@@ -302,7 +302,7 @@ namespace PMDS.Global
                                         {
                                             Rechungsnummer = rBill.RechNr,
                                             Description = l.LeistungBezeichnung,
-                                            Quantity = lTagesleistungenNichtReduziert.Where(tl => tl.TagespreisNetto == r.Tagespreise[0]).Count(),
+                                            Quantity = lTagesleistungenNichtReduziert.Where(tl => tl.TagespreisNetto == r.Tagespreise[0]).Count() * (int)dStornoFaktor,
                                             PreisProEinheit = r.Tagespreise[0],
                                             TaxPercent = l.MWStSatz,
                                             LineItemAmount = (decimal)r.Tagespreise.Count() * r.Tagespreise[0] * dStornoFaktor,
@@ -327,7 +327,7 @@ namespace PMDS.Global
                                         {
                                             Rechungsnummer = rBill.RechNr,
                                             Description = l.LeistungBezeichnung,
-                                            Quantity = lTagesleistungenReduziert.Where(tl => tl.TagespreisReduziertNetto == r.TagespreisReduziertNetto[0]).Count(),
+                                            Quantity = lTagesleistungenReduziert.Where(tl => tl.TagespreisReduziertNetto == r.TagespreisReduziertNetto[0]).Count() * (int)dStornoFaktor,
                                             PreisProEinheit = r.TagespreisReduziertNetto[0],
                                             TaxPercent = l.MWStSatz,
                                             LineItemAmount = (decimal)r.TagespreisReduziertNetto.Count() * r.TagespreisReduziertNetto[0] * dStornoFaktor,
