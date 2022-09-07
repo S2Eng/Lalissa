@@ -680,7 +680,11 @@ namespace PMDS.Global
             {
                 StringBuilder sbFileContent = new StringBuilder();
 
-                sbFileContent.Append("Diese Datei enthält " + ListXMLInfos.Count().sIntToWords("e") + " eZAUFF".sMehrzahlText(ListXMLInfos.Count(), "s"));
+                int ieZAUFFs = (from aw in ListXMLInfos
+                         where aw.bIsvalid == true
+                         select aw.bIsvalid).ToList().Count();
+
+                sbFileContent.Append("Diese Datei enthält " + ieZAUFFs.sIntToWords("e") + " eZAUFF".sMehrzahlText(ieZAUFFs, "s"));
 
 
                 if (!String.IsNullOrWhiteSpace(Log))
@@ -694,9 +698,12 @@ namespace PMDS.Global
 
                 foreach (XMLInfo xmlInfo in ListXMLInfos)
                 {
-                    sbFileContent.Append("\n\n<<<<< BEGINN von " + xmlInfo.FQFileXML + " >>>>>\n");
-                    sbFileContent.Append(xmlInfo.Xml.ToString());
-                    sbFileContent.Append("<<<<< ENDE von " + xmlInfo.FQFileXML + ">>>>>");
+                    if (xmlInfo.bIsvalid)
+                    {
+                        sbFileContent.Append("\n\n<<<<< BEGINN von " + xmlInfo.FQFileXML + " >>>>>\n");
+                        sbFileContent.Append(xmlInfo.Xml.ToString());
+                        sbFileContent.Append("<<<<< ENDE von " + xmlInfo.FQFileXML + ">>>>>");
+                    }
                 }
 
                 using (QS2.Desktop.Txteditor.frmTxtEditorField frmEditor = new QS2.Desktop.Txteditor.frmTxtEditorField())
