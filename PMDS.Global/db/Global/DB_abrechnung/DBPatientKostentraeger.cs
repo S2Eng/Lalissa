@@ -770,16 +770,11 @@ namespace PMDS.Calc.Admin.DB
                 OleDbDataAdapter da = new OleDbDataAdapter(cmd);
                 da.SelectCommand.Parameters.AddWithValue("IDKostentraeger", IDKostentraeger);
 
-                OleDbParameter pGueltigAb = new OleDbParameter { ParameterName = "GueltigAb", OleDbType = OleDbType.Date, Value = gueltigBis };
-                da.SelectCommand.Parameters.Add(pGueltigAb);
-                OleDbParameter pGueltigAb1 = new OleDbParameter { ParameterName = "GueltigAb1", OleDbType = OleDbType.Date, Value = gueltigab };
-                da.SelectCommand.Parameters.Add(pGueltigAb1);
-                OleDbParameter pGueltigBis = new OleDbParameter { ParameterName = "GueltigBis", OleDbType = OleDbType.Date, Value = gueltigab };
-                da.SelectCommand.Parameters.Add(pGueltigBis);
-                OleDbParameter pGueltigAb2 = new OleDbParameter { ParameterName = "GueltigAb2", OleDbType = OleDbType.Date, Value = gueltigBis };
-                da.SelectCommand.Parameters.Add(pGueltigAb2);
-                OleDbParameter pGueltigBis1 = new OleDbParameter { ParameterName = "GueltigBis1", OleDbType = OleDbType.Date, Value = gueltigBis };
-                da.SelectCommand.Parameters.Add(pGueltigBis1);
+                da.SelectCommand.Parameters.Add(new OleDbParameter { ParameterName = "GueltigAb", OleDbType = OleDbType.Date, Value = gueltigBis });
+                da.SelectCommand.Parameters.Add(new OleDbParameter { ParameterName = "GueltigAb1", OleDbType = OleDbType.Date, Value = gueltigab });
+                da.SelectCommand.Parameters.Add(new OleDbParameter { ParameterName = "GueltigBis", OleDbType = OleDbType.Date, Value = gueltigab });
+                da.SelectCommand.Parameters.Add(new OleDbParameter { ParameterName = "GueltigAb2", OleDbType = OleDbType.Date, Value = gueltigBis });
+                da.SelectCommand.Parameters.Add(new OleDbParameter { ParameterName = "GueltigBis1", OleDbType = OleDbType.Date, Value = gueltigBis });
 
                 return da;
             }

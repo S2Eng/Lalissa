@@ -629,12 +629,8 @@ namespace PMDS.DB
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.CommandText = sCommand;
                 cmd.Parameters.AddWithValue("@ID", IDAufenthalt);
-
-                OleDbParameter von = new OleDbParameter {ParameterName = "@von", OleDbType = OleDbType.Date, Value = Tag};
-                cmd.Parameters.Add(von);
-
-                OleDbParameter bis = new OleDbParameter {ParameterName = "@bis", OleDbType = OleDbType.Date, Value = Tag};
-                cmd.Parameters.Add(bis);
+                cmd.Parameters.Add(new OleDbParameter { ParameterName = "@von", OleDbType = OleDbType.Date, Value = Tag });
+                cmd.Parameters.Add(new OleDbParameter { ParameterName = "@bis", OleDbType = OleDbType.Date, Value = Tag });
 
                 cmd.Connection = PMDS.Global.dbBase.getConn();
                 using (DataTable dtSelect = new DataTable())

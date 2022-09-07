@@ -819,11 +819,8 @@ namespace PMDS.DB
                 OleDbCommand cmd = new OleDbCommand(sSql);
                 cmd.Parameters.AddWithValue("IDPflegePlan", IDPflegePlan);
 
-                OleDbParameter pt1 = new OleDbParameter { ParameterName = "t1", OleDbType = OleDbType.Date, Value = DateTime.Now.Date };
-                cmd.Parameters.Add(pt1);
-
-                OleDbParameter pt2 = new OleDbParameter { ParameterName = "t2", OleDbType = OleDbType.Date, Value = DateTime.Now.Date.AddDays(1) };
-                cmd.Parameters.Add(pt2);
+                cmd.Parameters.Add(new OleDbParameter { ParameterName = "t1", OleDbType = OleDbType.Date, Value = DateTime.Now.Date });
+                cmd.Parameters.Add(new OleDbParameter { ParameterName = "t2", OleDbType = OleDbType.Date, Value = DateTime.Now.Date.AddDays(1) });
 
                 bool bRet = false;
                 cmd.Connection = PMDS.Global.dbBase.getConn();

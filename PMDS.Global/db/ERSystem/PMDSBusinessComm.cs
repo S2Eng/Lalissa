@@ -228,11 +228,11 @@ namespace PMDS.DB
                 db.SaveChanges();
 
                 DateTime dDat = DateTime.Now.AddDays(-5).Date;
-                string strSQlUpdate = "delete from CommAsync where CreatedDay<=@CreatedDay and ClientsMessage='" + ClientsMessage.ToString() + "'";
+                string strSQlUpdate = "DELETE FROM CommAsync WHERE CreatedDay <= @CreatedDay and ClientsMessage = @ClientMessage";
                 System.Data.SqlClient.SqlCommand cmdUpdate = new System.Data.SqlClient.SqlCommand();
                 cmdUpdate.CommandText = strSQlUpdate;
-                OleDbParameter pCreatedDay = new OleDbParameter { ParameterName = "@CreatedDay", OleDbType = OleDbType.Date, Value = dDat };
-                cmdUpdate.Parameters.Add(pCreatedDay);
+                cmdUpdate.Parameters.Add(new SqlParameter { ParameterName = "@CreatedDay", SqlDbType = SqlDbType.Date, Value = dDat });
+                cmdUpdate.Parameters.Add(new SqlParameter { ParameterName = "@ClientMessage", SqlDbType = SqlDbType.VarChar, Value = ClientsMessage.ToString() });
 
                 if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
                     RBU.DataBase.CONNECTION.Open();

@@ -94,36 +94,28 @@ namespace PMDS.DB.Global
             {
                 sbWhere.Append(" AND ");
                 sbWhere.Append("BewerbungDatum >= ?");
-
-                OleDbParameter pBewerbungDatum = new OleDbParameter { ParameterName = "BewerbungDatum", OleDbType = OleDbType.Date, Value = bewerberVon };
-                cmd.Parameters.Add(pBewerbungDatum);
+                cmd.Parameters.Add(new OleDbParameter { ParameterName = "BewerbungDatum", OleDbType = OleDbType.Date, Value = bewerberVon });
             }
 
             if (bewerberBis != DateTime.MinValue)
             {
                 sbWhere.Append(" AND ");
                 sbWhere.Append("BewerbungDatum <= ?");
-
-                OleDbParameter pBewerbungDatumBis = new OleDbParameter { ParameterName = "BewerbungDatum", OleDbType = OleDbType.Date, Value = bewerberBis };
-                cmd.Parameters.Add(pBewerbungDatumBis);
+                cmd.Parameters.Add(new OleDbParameter { ParameterName = "BewerbungDatum", OleDbType = OleDbType.Date, Value = bewerberBis });
             }
 
             if (einzzugswuschVon != DateTime.MinValue)
             {
                 sbWhere.Append(" AND ");
                 sbWhere.Append("EinzugswunschDatum >= ?");
-
-                OleDbParameter pEinzugswunschDatum = new OleDbParameter { ParameterName = "EinzugswunschDatum", OleDbType = OleDbType.Date, Value = einzzugswuschVon };
-                cmd.Parameters.Add(pEinzugswunschDatum);
+                cmd.Parameters.Add(new OleDbParameter { ParameterName = "EinzugswunschDatum", OleDbType = OleDbType.Date, Value = einzzugswuschVon });
             }
 
             if (einzzugswuschBis != DateTime.MinValue)
             {
                 sbWhere.Append(" AND ");
                 sbWhere.Append("EinzugswunschDatum <= ?");
-
-                OleDbParameter peinzzugswuschBis = new OleDbParameter { ParameterName = "EinzugswunschDatum", OleDbType = OleDbType.Date, Value = einzzugswuschBis };
-                cmd.Parameters.Add(peinzzugswuschBis);
+                cmd.Parameters.Add(new OleDbParameter { ParameterName = "EinzugswunschDatum", OleDbType = OleDbType.Date, Value = einzzugswuschBis });
             }
 
             if (prioritaet != null && prioritaet != "")

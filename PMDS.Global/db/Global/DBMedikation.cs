@@ -133,12 +133,9 @@ namespace PMDS.DB.Global
                 daMedikationVonBis.SelectCommand.Parameters.Clear();
                 daMedikationVonBis.SelectCommand.Parameters.AddWithValue("IDAufenthalt", IDAufenthalt);
 
-                OleDbParameter pv1 = new OleDbParameter { ParameterName = "@v1", OleDbType = OleDbType.Date, Value = dtvon };
-                daMedikationVonBis.SelectCommand.Parameters.Add(pv1);
-                OleDbParameter pv2 = new OleDbParameter { ParameterName = "@v2", OleDbType = OleDbType.Date, Value = dtvon };
-                daMedikationVonBis.SelectCommand.Parameters.Add(pv2);
-                OleDbParameter pv3 = new OleDbParameter { ParameterName = "@v3", OleDbType = OleDbType.Date, Value = dtbis };
-                daMedikationVonBis.SelectCommand.Parameters.Add(pv3);
+                daMedikationVonBis.SelectCommand.Parameters.Add(new OleDbParameter { ParameterName = "@v1", OleDbType = OleDbType.Date, Value = dtvon });
+                daMedikationVonBis.SelectCommand.Parameters.Add(new OleDbParameter { ParameterName = "@v2", OleDbType = OleDbType.Date, Value = dtvon });
+                daMedikationVonBis.SelectCommand.Parameters.Add(new OleDbParameter { ParameterName = "@v3", OleDbType = OleDbType.Date, Value = dtbis });
 
                 DataBase.Fill(daMedikationVonBis, dt);
                 return dt;

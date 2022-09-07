@@ -136,9 +136,7 @@ Public Class compPlan
             ElseIf typSel = eTypSelPlan.EmpfangenAmBigger Then
                 Dim sWhere As String = " where empfangenAm >= ? "
                 Me.daPlan.SelectCommand.CommandText += sWhere
-
-                Dim pempfangenAm As New OleDbParameter With {.ParameterName = "empfangenAm", .OleDbType = OleDbType.Date, .Value = dat.Date}
-                Me.daPlan.SelectCommand.Parameters.Add(pempfangenAm)
+                Me.daPlan.SelectCommand.Parameters.Add(New OleDbParameter With {.ParameterName = "empfangenAm", .OleDbType = OleDbType.Date, .Value = dat.Date})
             Else
                 Throw New Exception("getPlan: typSel '" + typSel.ToString() + "' not allowed!")
             End If
@@ -185,10 +183,7 @@ Public Class compPlan
             Dim cmd As New OleDb.OleDbCommand
             cmd.CommandText = "update  [plan] set gesendetAm = ?  WHERE ID = ? "
             cmd.Connection = Me.database.getConnDB()
-
-            Dim pgesendetAm As New OleDbParameter With {.ParameterName = "gesendetAm", .OleDbType = OleDbType.Date, .Value = gesendetAm}
-            cmd.Parameters.Add(pgesendetAm)
-
+            cmd.Parameters.Add(New OleDbParameter With {.ParameterName = "gesendetAm", .OleDbType = OleDbType.Date, .Value = gesendetAm})
             cmd.Parameters.AddWithValue("ID", idPlan)
             cmd.ExecuteNonQuery()
             Return True
@@ -203,10 +198,7 @@ Public Class compPlan
             Dim cmd As New OleDb.OleDbCommand
             cmd.CommandText = "update  [plan] set empfangenAm = ?  WHERE ID = ? "
             cmd.Connection = Me.database.getConnDB()
-
-            Dim pempfangenAm As New OleDbParameter With {.ParameterName = "empfangenAm", .OleDbType = OleDbType.Date, .Value = empfangenAm}
-            cmd.Parameters.Add(pempfangenAm)
-
+            cmd.Parameters.Add(New OleDbParameter With {.ParameterName = "empfangenAm", .OleDbType = OleDbType.Date, .Value = empfangenAm})
             cmd.Parameters.AddWithValue("ID", idPlan)
             cmd.ExecuteNonQuery()
             Return True

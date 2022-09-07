@@ -94,9 +94,7 @@ namespace PMDS.Calc.Admin.DB
 
             cmd.CommandText = string.Format(txt, sb.ToString());
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
-            OleDbParameter pGueltigAb = new OleDbParameter { ParameterName = "GueltigAb", OleDbType = OleDbType.Date, Value = GueltigAb };
-            da.SelectCommand.Parameters.Add(pGueltigAb);
-
+            da.SelectCommand.Parameters.Add(new OleDbParameter { ParameterName = "GueltigAb", OleDbType = OleDbType.Date, Value = GueltigAb });
             da.SelectCommand.Parameters.AddWithValue("IDKlinik", IDKlinik);
             da.SelectCommand.Parameters.AddWithValue("IDKostentraeger", IDKostentraeger);
             DataBase.Fill(da, dt);
