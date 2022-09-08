@@ -472,6 +472,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QueryExpress.dll</HintPath>
     </Reference>
+    <Reference Include="ScintillaNET, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Compression.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Syncfusion.Compression.Base.dll</HintPath>
@@ -836,6 +839,12 @@
     <Compile Include="Other\Config.cs" />
     <Compile Include="Other\Impersonation.cs" />
     <Compile Include="print\FDF.cs" />
+    <Compile Include="ScintillaTextEditor\TextEditMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScintillaTextEditor\TextEditMainForm.designer.cs">
+      <DependentUpon>TextEditMainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Ansichtinfo.cs" />
     <Compile Include="Pdx_Aszm\ASZMSelectionArgs.cs" />
     <Compile Include="print\BerichtParameter.cs" />
@@ -2395,6 +2404,9 @@
       <DependentUpon>frmFSWOverwriteData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pdf.Net.SDK.licx" />
+    <EmbeddedResource Include="ScintillaTextEditor\TextEditMainForm.resx">
+      <DependentUpon>TextEditMainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Befunde\contEdiFactViewer.resx">
       <DependentUpon>contEdiFactViewer.cs</DependentUpon>
     </EmbeddedResource>

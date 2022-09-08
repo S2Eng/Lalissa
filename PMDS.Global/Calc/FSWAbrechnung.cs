@@ -19,6 +19,7 @@ using Infragistics.Documents.Excel;
 using static PMDS.Global.FSWAbrechnung;
 using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
 using Elga.core.ServiceReferenceELGA;
+using ScintillaNET.Demo;
 
 namespace PMDS.Global
 {
@@ -748,23 +749,26 @@ namespace PMDS.Global
                     }
                 }
 
-                using (QS2.Desktop.Txteditor.frmTxtEditorField frmEditor = new QS2.Desktop.Txteditor.frmTxtEditorField())
-                {
-                    Font font = new Font(
-                       new FontFamily("Courier New"),
-                       12,
-                       FontStyle.Regular,
-                       GraphicsUnit.Point);
+                TextEditMainForm frm = new TextEditMainForm("eZAUFF-Export Übersicht", sbFileContent);
+                frm.Show();
 
-                    frmEditor.ContTXTField1.initControl(TXTextControl.ViewMode.FloatingText, true, true, true, true, false, false);
-                    frmEditor.WindowState = FormWindowState.Maximized;
-                    frmEditor.ContTXTField1.TXTControlField.ViewMode = TXTextControl.ViewMode.FloatingText;
-                    frmEditor.ContTXTField1.TXTControlField.EditMode = TXTextControl.EditMode.ReadOnly;
-                    frmEditor.ContTXTField1.TXTControlField.Font = font;
-                    frmEditor.ContTXTField1.TXTControlField.Text = sbFileContent.ToString();
-                    frmEditor.Text = "FSW-eZAUFF - Anzeige";
-                    frmEditor.ShowDialog();
-                }
+                //using (QS2.Desktop.Txteditor.frmTxtEditorField frmEditor = new QS2.Desktop.Txteditor.frmTxtEditorField())
+                //{
+                //    Font font = new Font(
+                //       new FontFamily("Courier New"),
+                //       12,
+                //       FontStyle.Regular,
+                //       GraphicsUnit.Point);
+
+                //    frmEditor.ContTXTField1.initControl(TXTextControl.ViewMode.FloatingText, true, true, true, true, false, false);
+                //    frmEditor.WindowState = FormWindowState.Maximized;
+                //    frmEditor.ContTXTField1.TXTControlField.ViewMode = TXTextControl.ViewMode.FloatingText;
+                //    frmEditor.ContTXTField1.TXTControlField.EditMode = TXTextControl.EditMode.ReadOnly;
+                //    frmEditor.ContTXTField1.TXTControlField.Font = font;
+                //    frmEditor.ContTXTField1.TXTControlField.Text = sbFileContent.ToString();
+                //    frmEditor.Text = "FSW-eZAUFF - Anzeige";
+                //    frmEditor.ShowDialog();
+                //}
                 Application.DoEvents();
                 return "";
             }
