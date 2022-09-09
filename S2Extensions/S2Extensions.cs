@@ -136,13 +136,31 @@ namespace S2Extensions
             }
         }
 
-        public static string UpperFirstChar(this string input)
+        public static string sUpperFirstChar(this string input)
         {
             if (string.IsNullOrEmpty(input))
             {
                 return null;
             }
             return char.ToUpper(input[0]) + input.Substring(1);
+        }
+
+        public static string sAddRandomString(this string input, int len = 6)
+        {
+            {
+                StringBuilder str_build = new StringBuilder();
+                Random random = new Random();
+                char letter;
+
+                for (int i = 0; i < Math.Min(6,len); i++)
+                {
+                    double flt = random.NextDouble();
+                    int shift = Convert.ToInt32(Math.Floor(25 * flt));
+                    letter = Convert.ToChar(shift + 65);
+                    str_build.Append(letter);
+                }
+                return input += "_" +str_build.ToString();
+            }
         }
     }
 
@@ -164,7 +182,7 @@ namespace S2Extensions
                     retVal += Deklintation;
                 }
             }
-            return (InitCaps ? retVal.UpperFirstChar() : retVal);
+            return (InitCaps ? retVal.sUpperFirstChar() : retVal);
         }
     }
 
