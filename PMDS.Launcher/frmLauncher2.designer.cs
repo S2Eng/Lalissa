@@ -44,6 +44,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelButtons = new System.Windows.Forms.Panel();
+            this.btn_RemovePMDS = new System.Windows.Forms.Button();
             this.btn_OF = new System.Windows.Forms.Button();
             this.btn_Peps = new System.Windows.Forms.Button();
             this.btn_QM = new System.Windows.Forms.Button();
@@ -161,24 +162,24 @@
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Controls.Add(this.panel2);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(278, 402);
+            this.panel4.Size = new System.Drawing.Size(278, 401);
             this.panel4.TabIndex = 10;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.panelButtons);
             this.panel3.Location = new System.Drawing.Point(16, 116);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(247, 275);
             this.panel3.TabIndex = 12;
             // 
             // panelButtons
             // 
+            this.panelButtons.Controls.Add(this.btn_RemovePMDS);
             this.panelButtons.Controls.Add(this.btn_OF);
             this.panelButtons.Controls.Add(this.btn_Peps);
             this.panelButtons.Controls.Add(this.btn_QM);
@@ -186,21 +187,39 @@
             this.panelButtons.Controls.Add(this.btn_PMDS);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelButtons.Location = new System.Drawing.Point(0, 0);
-            this.panelButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelButtons.Margin = new System.Windows.Forms.Padding(4);
             this.panelButtons.Name = "panelButtons";
             this.panelButtons.Size = new System.Drawing.Size(247, 275);
             this.panelButtons.TabIndex = 11;
             this.panelButtons.Paint += new System.Windows.Forms.PaintEventHandler(this.panelButtons_Paint);
             // 
+            // btn_RemovePMDS
+            // 
+            this.btn_RemovePMDS.BackColor = System.Drawing.Color.Transparent;
+            this.btn_RemovePMDS.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_RemovePMDS.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_RemovePMDS.ForeColor = System.Drawing.Color.Red;
+            this.btn_RemovePMDS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_RemovePMDS.Location = new System.Drawing.Point(0, 225);
+            this.btn_RemovePMDS.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_RemovePMDS.Name = "btn_RemovePMDS";
+            this.btn_RemovePMDS.Size = new System.Drawing.Size(247, 45);
+            this.btn_RemovePMDS.TabIndex = 11;
+            this.btn_RemovePMDS.Tag = "BUTTON_PMDS_REMOVE";
+            this.btn_RemovePMDS.Text = "PMDS entfernen";
+            this.btn_RemovePMDS.UseVisualStyleBackColor = false;
+            this.btn_RemovePMDS.Visible = false;
+            this.btn_RemovePMDS.Click += new System.EventHandler(this.buttClick);
+            // 
             // btn_OF
             // 
             this.btn_OF.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_OF.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_OF.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_OF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_OF.Location = new System.Drawing.Point(0, 219);
-            this.btn_OF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_OF.Location = new System.Drawing.Point(0, 180);
+            this.btn_OF.Margin = new System.Windows.Forms.Padding(4);
             this.btn_OF.Name = "btn_OF";
-            this.btn_OF.Size = new System.Drawing.Size(247, 55);
+            this.btn_OF.Size = new System.Drawing.Size(247, 45);
             this.btn_OF.TabIndex = 10;
             this.btn_OF.Tag = "BUTTON_FORMS";
             this.btn_OF.Text = "Online-Formulare";
@@ -211,12 +230,12 @@
             // btn_Peps
             // 
             this.btn_Peps.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Peps.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Peps.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Peps.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Peps.Location = new System.Drawing.Point(0, 164);
-            this.btn_Peps.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Peps.Location = new System.Drawing.Point(0, 135);
+            this.btn_Peps.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Peps.Name = "btn_Peps";
-            this.btn_Peps.Size = new System.Drawing.Size(247, 55);
+            this.btn_Peps.Size = new System.Drawing.Size(247, 45);
             this.btn_Peps.TabIndex = 9;
             this.btn_Peps.Tag = "BUTTON_PEPS";
             this.btn_Peps.Text = "PEPS";
@@ -227,12 +246,12 @@
             // btn_QM
             // 
             this.btn_QM.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_QM.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_QM.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_QM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_QM.Location = new System.Drawing.Point(0, 109);
-            this.btn_QM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_QM.Location = new System.Drawing.Point(0, 90);
+            this.btn_QM.Margin = new System.Windows.Forms.Padding(4);
             this.btn_QM.Name = "btn_QM";
-            this.btn_QM.Size = new System.Drawing.Size(247, 55);
+            this.btn_QM.Size = new System.Drawing.Size(247, 45);
             this.btn_QM.TabIndex = 8;
             this.btn_QM.Tag = "BUTTON_TOUCHDOKU";
             this.btn_QM.Text = "Touchdoku";
@@ -243,12 +262,12 @@
             // btn_Abrechnung
             // 
             this.btn_Abrechnung.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Abrechnung.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Abrechnung.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Abrechnung.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Abrechnung.Location = new System.Drawing.Point(0, 54);
-            this.btn_Abrechnung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Abrechnung.Location = new System.Drawing.Point(0, 45);
+            this.btn_Abrechnung.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Abrechnung.Name = "btn_Abrechnung";
-            this.btn_Abrechnung.Size = new System.Drawing.Size(247, 55);
+            this.btn_Abrechnung.Size = new System.Drawing.Size(247, 45);
             this.btn_Abrechnung.TabIndex = 5;
             this.btn_Abrechnung.Tag = "BUTTON_ABRECHNUNG";
             this.btn_Abrechnung.Text = "Abrechnung";
@@ -259,15 +278,15 @@
             // btn_PMDS
             // 
             this.btn_PMDS.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_PMDS.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_PMDS.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_PMDS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_PMDS.Location = new System.Drawing.Point(0, 0);
-            this.btn_PMDS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_PMDS.Margin = new System.Windows.Forms.Padding(4);
             this.btn_PMDS.Name = "btn_PMDS";
-            this.btn_PMDS.Size = new System.Drawing.Size(247, 54);
+            this.btn_PMDS.Size = new System.Drawing.Size(247, 45);
             this.btn_PMDS.TabIndex = 4;
             this.btn_PMDS.Tag = "BUTTON_PMDS";
-            this.btn_PMDS.Text = "PMDS";
+            this.btn_PMDS.Text = "PMDS starten";
             this.btn_PMDS.UseVisualStyleBackColor = true;
             this.btn_PMDS.Visible = false;
             this.btn_PMDS.Click += new System.EventHandler(this.buttClick);
@@ -281,9 +300,9 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(278, 107);
+            this.panel2.Size = new System.Drawing.Size(278, 97);
             this.panel2.TabIndex = 0;
             // 
             // tbPasswort
@@ -291,7 +310,7 @@
             this.tbPasswort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbPasswort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPasswort.Location = new System.Drawing.Point(106, 61);
-            this.tbPasswort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbPasswort.Margin = new System.Windows.Forms.Padding(4);
             this.tbPasswort.Name = "tbPasswort";
             this.tbPasswort.Size = new System.Drawing.Size(158, 24);
             this.tbPasswort.TabIndex = 1;
@@ -303,7 +322,7 @@
             this.tbUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.tbUser.Location = new System.Drawing.Point(106, 25);
-            this.tbUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbUser.Margin = new System.Windows.Forms.Padding(4);
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(158, 24);
             this.tbUser.TabIndex = 0;
@@ -346,7 +365,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmLauncher2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -392,7 +411,7 @@
         private System.Windows.Forms.ToolStripMenuItem logViewerToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem beendenToolStripMenuItem3;
-
+        private System.Windows.Forms.Button btn_RemovePMDS;
     }
 }
 

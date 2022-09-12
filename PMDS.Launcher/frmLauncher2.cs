@@ -11,9 +11,8 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using System.IO;
-
-
 using QS2.Resources;
+using System.Linq;
 
 namespace Launcher
 {
@@ -89,6 +88,7 @@ namespace Launcher
             this.btn_QM.Image = getRes.getImage(getRes.Launcher.ico_Touchdoku, 32, 32);
             this.btn_Peps.Image = getRes.getImage(getRes.Launcher.ico_PEPS, 32, 32);
             this.btn_OF.Image = getRes.getImage(getRes.Launcher.ico_Onlineformulare, 32, 32);
+            this.btn_RemovePMDS.Image = getRes.getImage(getRes.Allgemein.ico_Loeschen, 32, 32);
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -345,24 +345,38 @@ namespace Launcher
 
                 bool StartFromShare = false;
                 bool abort = false;
-                this.checkUpdate(ref StartFromShare, true, ref abort);
-                if (abort)
+
+                if (!tg.ToString().Equals("BUTTON_PMDS_REMOVE", StringComparison.OrdinalIgnoreCase))
                 {
-                    if (!uiIsOn)
+                    this.checkUpdate(ref StartFromShare, true, ref abort);
+                    if (abort)
                     {
-                        Process.GetCurrentProcess().Kill();
-                    }
-                    else
-                    {
-                        return;
+                        if (!uiIsOn)
+                        {
+                            Process.GetCurrentProcess().Kill();
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
                 }
 
                 if (!String.IsNullOrWhiteSpace(update.sProgramPath))
                 {
-                    if (onlineForm)
+                    if (tg.ToString().Equals("PMDS_FORMS", StringComparison.OrdinalIgnoreCase))
                     {
                         Process.Start(System.IO.Path.Combine(this.config.getProgramRootRoot(update.sProgramPath), "OnlineFormulare", "OnlineForms.exe"));
+                    }
+                    else if (tg.ToString().Equals("BUTTON_PMDS_REMOVE", StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (this.DeleteDirectory (config.dsconfigAll.Tables["config"].AsEnumerable().ToList().Where(myRow => myRow.Field<string>("key") == "ClientProgramPath").First().Field<string>("val")) && 
+                            this.DeleteDirectory (config.dsconfigAll.Tables["config"].AsEnumerable().ToList().Where(myRow => myRow.Field<string>("key") == "ClientConfigPath").First().Field<string>("val")))
+
+                        {
+                            System.Windows.Forms.MessageBox.Show("Sie können PMDS jetzt neu starten.", "Hinweis", System.Windows.Forms.MessageBoxButtons.OK);
+                        }
+                        return;
                     }
                     else
                     {
@@ -705,6 +719,23 @@ namespace Launcher
         private void panelButtons_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private bool DeleteDirectory (string dir)
+        {
+            if (Directory.Exists(dir))
+            {
+                try
+                {
+                    System.IO.Directory.Delete(dir, true);
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("Beim Entfernen des Verzeichnisses " + dir + " ist ein Fehler aufgetreten:\n\n" + ex.Message + "\n\nBitte verständigen Sie Ihren Administrator.", "Fehler!", MessageBoxButtons.OK);
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void tbPasswort_KeyDown(object sender, KeyEventArgs e)
