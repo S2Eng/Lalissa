@@ -1014,14 +1014,14 @@ namespace PMDS.Calc.UI
                 {
                     action = eAction.fsw;
                     MsgBoxTite = "Wollen Sie eine FSW-Zahlungsaufforderung erstellen, speichern und senden?";
-                    ReturnText = "Zahlungsaufforderung wurde erstellt und an den FSW gesendet.";
+                    ReturnText = "Zielumgebung = " + ENV.FSW_FTPMode + "\nZahlungsaufforderung wurde erstellt und an den FSW gesendet.";
                 }
 
                 if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftAlt) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightAlt))
                 {
                     action = eAction.fswsFTPOnly;
                     MsgBoxTite = "Wollen Sie eine eZAUFF per sFTP an den FSW senden?";
-                    ReturnText = "FSW-Zahlungsaufforderung wurde per sFTP an den FSW gesendet.";
+                    ReturnText = "Zielumgebung = " + ENV.FSW_FTPMode + "\nFSW-Zahlungsaufforderung wurde per sFTP an den FSW gesendet.";
                 }
 
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;

@@ -178,14 +178,14 @@ namespace PMDS.Global
                             {
                                 if (File.Exists(fd.FileName))
                                 {
-                                    string retsFTP = Upload(Path.GetFileNameWithoutExtension(fd.FileName), fd.FileName, out string Log);
+                                    string retsFTP = Upload(Path.GetFileNameWithoutExtension(fd.FileName) + Path.GetExtension(fd.FileName)  , fd.FileName, out string Log);
                                     if (retsFTP.Length > 0)
                                     {
                                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Hochladen der Zahlungsaufforderung: " + retsFTP, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     }
                                     else
                                     {
-                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Die eZAUFF wurde per sFTP hochgeladen: " + fd.FileName, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zielumgebung = " + ENV.FSW_FTPMode + "\nDie eZAUFF wurde per sFTP hochgeladen: " + fd.FileName, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     }
                                 }
                             }
