@@ -138,10 +138,10 @@ FROM            vKlientenliste</value>
     <value>False</value>
   </metadata>
   <data name="oleDbSelectCommand1.CommandText" xml:space="preserve">
-    <value>SELECT        PatientName, Geburtsdatum, Klinik, Abteilung, Bereich, MT1, MT2, MT3, MT4, MT5, MT6, MT7, MT8, MT9, MT10, MT11, MT12, MT13, MT14, [Nächste Evaluierung], Notfall, Abwesenheit, BezugspersonenIDs, IDKlinik, 
+    <value>SELECT        PatientName, Geburtsdatum, Klinik, Abteilung, Bereich, MT1, MT2, MT3, MT4, MT5, MT6, MT7, MT8, MT9, MT10, MT11, MT12, MT13, MT14, "Nächste Evaluierung", Notfall, Abwesenheit, BezugspersonenIDs, IDKlinik, 
                          IDAbteilung, IDBereich, IDKlient, IDAufenthalt, GesamtesHausJN, MT15, WundeJN, HAG_VoraussichtichesEnde, DNR, Verstorben, Todeszeitpunkt, AbwesenheitBeendet, Datenschutz, Anatomie, KZUeberlebender, Palliativ, 
-                         Klientennummer, SofortmassnahmeJN
-FROM            vKlientenliste</value>
+                         Klientennummer, SofortmassnahmeJN, Pflegestufe
+FROM            dbo.vKlientenliste</value>
   </data>
   <metadata name="oleDbConnection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 95</value>
@@ -557,7 +557,7 @@ FROM            FormularDaten INNER JOIN
     <value>UPDATE [Eintrag] SET [ID] = ?, [EintragGruppe] = ?, [EntferntJN] = ?, [Sicht] = ?, [Warnhinweis] = ?, [Text] = ?, [flag] = ?, [IDLinkDokument] = ?, [BedarfsMedikationJN] = ?, [OhneZeitBezug] = ?, [lstFormulare] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="daMedizinischeDaten.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 680</value>
+    <value>17, 719</value>
   </metadata>
   <metadata name="oleDbCommand38.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -607,7 +607,7 @@ FROM            MedizinischeDaten</value>
     <value>UPDATE [MedizinischeDaten] SET [ID] = ?, [IDPatient] = ?, [IDBenutzergeaendert] = ?, [MedizinischerTyp] = ?, [Beschreibung] = ?, [ICDCode] = ?, [Von] = ?, [Bis] = ?, [Beendigungsgrund] = ?, [AufnahmediagnoseJN] = ?, [Bemerkung] = ?, [Therapie] = ?, [Anzahl] = ?, [NuechternJN] = ?, [AntikoaguliertJN] = ?, [Handling] = ?, [LetzteVersorgung] = ?, [NaechsteVersorgung] = ?, [Modell] = ?, [Groesse] = ?, [Typ] = ?, [IDBefund] = ?, [Verordnungen] = ?, [lstRezepteinträge] = ?, [NumberRezepteinträge] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="daWundePosBilder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 719</value>
+    <value>17, 758</value>
   </metadata>
   <metadata name="oleDbCommand42.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -656,7 +656,7 @@ FROM            WundePosBilder</value>
     <value>UPDATE [WundePosBilder] SET [ID] = ?, [IDWundePos] = ?, [Bild] = ?, [Thumbnail] = ?, [Reihenfolge] = ?, [druckenJN] = ?, [Beschreibung] = ?, [ZeitpunktBild] = ?, [IDBenutzer_Erstellt] = ?, [IDBenutzer_Geaendert] = ?, [DatumErstellt] = ?, [DatumGeaendert] = ?, [BildOrig] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="daRecht.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 758</value>
+    <value>17, 797</value>
   </metadata>
   <metadata name="oleDbCommand46.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -695,7 +695,7 @@ FROM            WundePosBilder</value>
     <value>False</value>
   </metadata>
   <metadata name="daELGAProtocoll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 797</value>
+    <value>17, 836</value>
   </metadata>
   <metadata name="oleDbCommand50.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -740,7 +740,7 @@ FROM            WundePosBilder</value>
     <value>UPDATE [ELGAProtocoll] SET [ID] = ?, [Type] = ?, [Title] = ?, [Protocoll] = ?, [ELGAFunctions] = ?, [ELGAErrors] = ?, [Characteristics] = ?, [CreatedAt] = ?, [CreatedUser] = ?, [IDPatient] = ?, [IDAufenthalt] = ?, [IDBenutzer] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="daMessages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 641</value>
+    <value>17, 680</value>
   </metadata>
   <metadata name="oleDbCommand54.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -776,7 +776,7 @@ FROM            WundePosBilder</value>
     <value>False</value>
   </metadata>
   <metadata name="oleDbCommand57.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>485, 758</value>
+    <value>17, 17</value>
   </metadata>
   <metadata name="oleDbCommand57.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -785,7 +785,7 @@ FROM            WundePosBilder</value>
     <value>UPDATE [Messages] SET [ID] = ?, [Title] = ?, [Text] = ?, [UserFrom] = ?, [Created] = ?, [UserFromID] = ?, [ClientsMessage] = ?, [TypeMessage] = ?, [Progress] = ?, [Db] = ?, [IDGuidObject] = ?, [Classification] = ?, [sKey] = ?, [CreatedDay] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="daMessagesToUsers.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 836</value>
+    <value>17, 875</value>
   </metadata>
   <metadata name="oleDbCommand58.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -800,7 +800,7 @@ FROM            WundePosBilder</value>
     <value>False</value>
   </metadata>
   <metadata name="oleDbCommand59.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>799, 758</value>
+    <value>17, 17</value>
   </metadata>
   <metadata name="oleDbCommand59.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -809,7 +809,7 @@ FROM            WundePosBilder</value>
     <value>False</value>
   </metadata>
   <metadata name="oleDbCommand60.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>953, 758</value>
+    <value>17, 17</value>
   </metadata>
   <metadata name="oleDbCommand60.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -818,13 +818,13 @@ FROM            WundePosBilder</value>
     <value>False</value>
   </metadata>
   <metadata name="oleDbCommand61.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1107, 758</value>
+    <value>17, 17</value>
   </metadata>
   <metadata name="oleDbCommand61.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
   <metadata name="daMedizinischeDatenLayout.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>203, 596</value>
+    <value>17, 641</value>
   </metadata>
   <metadata name="oleDbCommand64.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>

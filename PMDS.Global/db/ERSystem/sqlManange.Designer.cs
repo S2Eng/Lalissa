@@ -127,8 +127,8 @@
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Persist Security Info=True;Password=NiwQ" +
-    "s21+!;User ID=hl;Initial Catalog=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=MSOLEDBSQL.1;Data Source=sty041\\MSSQL2019;Integrated Security=SSPI;Initi" +
+    "al Catalog=PMDS_DemoGross";
             // 
             // davGetKlientenliste
             // 
@@ -176,7 +176,8 @@
                         new System.Data.Common.DataColumnMapping("KZUeberlebender", "KZUeberlebender"),
                         new System.Data.Common.DataColumnMapping("Palliativ", "Palliativ"),
                         new System.Data.Common.DataColumnMapping("Klientennummer", "Klientennummer"),
-                        new System.Data.Common.DataColumnMapping("SofortmassnahmeJN", "SofortmassnahmeJN")})});
+                        new System.Data.Common.DataColumnMapping("SofortmassnahmeJN", "SofortmassnahmeJN"),
+                        new System.Data.Common.DataColumnMapping("Pflegestufe", "Pflegestufe")})});
             // 
             // daAnmeldungen
             // 
