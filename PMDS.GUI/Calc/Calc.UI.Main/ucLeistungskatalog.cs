@@ -462,17 +462,17 @@ namespace PMDS.Calc.UI.Admin
             // 
             // lblLeistungskatalog
             // 
-            this.lblLeistungskatalog.Location = new System.Drawing.Point(13, 102);
+            this.lblLeistungskatalog.Location = new System.Drawing.Point(13, 129);
             this.lblLeistungskatalog.Name = "lblLeistungskatalog";
-            this.lblLeistungskatalog.Size = new System.Drawing.Size(160, 16);
+            this.lblLeistungskatalog.Size = new System.Drawing.Size(160, 24);
             this.lblLeistungskatalog.TabIndex = 6;
             this.lblLeistungskatalog.Text = "Leistungskatalog";
             // 
             // lblLeistungskatalogGruppe
             // 
-            this.lblLeistungskatalogGruppe.Location = new System.Drawing.Point(13, 10);
+            this.lblLeistungskatalogGruppe.Location = new System.Drawing.Point(13, 6);
             this.lblLeistungskatalogGruppe.Name = "lblLeistungskatalogGruppe";
-            this.lblLeistungskatalogGruppe.Size = new System.Drawing.Size(176, 16);
+            this.lblLeistungskatalogGruppe.Size = new System.Drawing.Size(176, 23);
             this.lblLeistungskatalogGruppe.TabIndex = 7;
             this.lblLeistungskatalogGruppe.Text = "Leistungskataloggruppe";
             // 
@@ -493,9 +493,9 @@ namespace PMDS.Calc.UI.Admin
             this.btnDel.DoOnClick = true;
             this.btnDel.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDel.IsStandardControl = true;
-            this.btnDel.Location = new System.Drawing.Point(645, 97);
+            this.btnDel.Location = new System.Drawing.Point(645, 129);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(115, 24);
+            this.btnDel.Size = new System.Drawing.Size(115, 27);
             this.btnDel.TabIndex = 9;
             this.btnDel.TabStop = false;
             this.btnDel.Text = "Entfernen";
@@ -506,7 +506,7 @@ namespace PMDS.Calc.UI.Admin
             // ucKlinikDropDown1
             // 
             this.ucKlinikDropDown1.BackColor = System.Drawing.Color.Silver;
-            this.ucKlinikDropDown1.Location = new System.Drawing.Point(179, 97);
+            this.ucKlinikDropDown1.Location = new System.Drawing.Point(179, 129);
             this.ucKlinikDropDown1.Name = "ucKlinikDropDown1";
             this.ucKlinikDropDown1.Size = new System.Drawing.Size(33, 20);
             this.ucKlinikDropDown1.TabIndex = 163;
@@ -671,9 +671,9 @@ namespace PMDS.Calc.UI.Admin
             this.dgMain2.DisplayLayout.Override.TemplateAddRowAppearance = appearance19;
             this.dgMain2.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.dgMain2.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.dgMain2.Location = new System.Drawing.Point(13, 123);
+            this.dgMain2.Location = new System.Drawing.Point(13, 162);
             this.dgMain2.Name = "dgMain2";
-            this.dgMain2.Size = new System.Drawing.Size(1012, 327);
+            this.dgMain2.Size = new System.Drawing.Size(1012, 288);
             this.dgMain2.TabIndex = 164;
             this.dgMain2.Text = "ultraGrid1";
             this.dgMain2.AfterRowActivate += new System.EventHandler(this.dgMain2_AfterRowActivate);
@@ -690,10 +690,10 @@ namespace PMDS.Calc.UI.Admin
             // 
             this.optionsGruppe.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             this.optionsGruppe.ItemSpacingVertical = 4;
-            this.optionsGruppe.Location = new System.Drawing.Point(34, 27);
+            this.optionsGruppe.Location = new System.Drawing.Point(34, 32);
             this.optionsGruppe.Name = "optionsGruppe";
             this.optionsGruppe.Option = -1;
-            this.optionsGruppe.Size = new System.Drawing.Size(526, 60);
+            this.optionsGruppe.Size = new System.Drawing.Size(726, 91);
             this.optionsGruppe.TabIndex = 4;
             this.optionsGruppe.ValueChanged += new System.EventHandler(this.optionsGruppe_ValueChanged);
             // 
@@ -703,9 +703,9 @@ namespace PMDS.Calc.UI.Admin
             this.btnAddNew.Appearance = appearance2;
             this.btnAddNew.AutoWorkLayout = false;
             this.btnAddNew.IsStandardControl = false;
-            this.btnAddNew.Location = new System.Drawing.Point(389, 97);
+            this.btnAddNew.Location = new System.Drawing.Point(389, 129);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(122, 23);
+            this.btnAddNew.Size = new System.Drawing.Size(122, 27);
             this.btnAddNew.TabIndex = 165;
             this.btnAddNew.Text = "Leistung hinzufügen";
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
@@ -716,9 +716,9 @@ namespace PMDS.Calc.UI.Admin
             this.btnAddPriceNew.Appearance = appearance1;
             this.btnAddPriceNew.AutoWorkLayout = false;
             this.btnAddPriceNew.IsStandardControl = false;
-            this.btnAddPriceNew.Location = new System.Drawing.Point(517, 97);
+            this.btnAddPriceNew.Location = new System.Drawing.Point(517, 129);
             this.btnAddPriceNew.Name = "btnAddPriceNew";
-            this.btnAddPriceNew.Size = new System.Drawing.Size(122, 23);
+            this.btnAddPriceNew.Size = new System.Drawing.Size(122, 27);
             this.btnAddPriceNew.TabIndex = 166;
             this.btnAddPriceNew.Text = "Preis hinzufügen";
             this.btnAddPriceNew.Click += new System.EventHandler(this.btnAddPriceNew_Click);

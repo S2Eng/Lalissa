@@ -14,34 +14,20 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace PMDS.GUI
-{
-
-    
+{   
 	public class ucSiteMapTermine :  IPMDSGUIObject
 	{
-        public ucTermineEx _TermineEx = null;
-
+        public static bool FirstCallDoRefreshKlienten { get; set; } = true;
+        public bool FirstCallRefresh = true;
+        public ucTermineEx _TermineEx;
         public TerminlisteAnsichtsmodi _ansichtmodi = TerminlisteAnsichtsmodi.none;
         public PMDS.Global.eUITypeTermine _UITypeTermine = eUITypeTermine.None;
 
         private Guid LastSelectedPatient = Guid.Empty;
-
         private string _AREA = ENV.String("GUI_AREA_TERMINLISTE");
-
-        public bool FirstCallRefresh = true;
-        
-
+       
         public delegate void PatientSelectionChangedDelegate(Guid IDPatient, Guid IDAufenthalt);
         public event PatientSelectionChangedDelegate PatientSelectionChanged;
-
-        public static bool FirstCallDoRefreshKlienten = true;
-
-
-
-
-
-
-
 
         public void initControl()
 		{
@@ -99,30 +85,33 @@ namespace PMDS.GUI
                 TermineExTmp.ucTerminTimePicker1.panelAktualisieren.Visible = true;
                 TermineExTmp.ucTerminTimePicker1.panelClose.Visible = false;
 
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnSchnellrückmeldung);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnUngeplMaßnahmenRückemelden);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnFreierBericht);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnFreierBericht2);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnBedarfsmedikation);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnSchnellrückmeldung, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnUngeplMaßnahmenRückemelden, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnFreierBericht, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnFreierBericht2, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnBedarfsmedikation, false);
 
                 //this.setStyleButton(this._termine.uButtonAlleAuswählen);
 
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnAlleAuswählen);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnOpenBefundIntervention);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnPDxRückmelden);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnLesenInterventionen);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnOpenBefundÜbergabe);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnGegenzeichnen);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnLesenÜbergabeDekurs);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnAlleAuswählen, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnOpenBefundIntervention, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnPDxRückmelden, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnLesenInterventionen, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnOpenBefundÜbergabe, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnGegenzeichnen, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnLesenÜbergabeDekurs, false);
                 
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnSonderterminBearbeiten);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnSonderterminBeenden);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnSonderterminErstellen);
-                PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnSonderterminLöschen);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnSonderterminBearbeiten, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnSonderterminBeenden, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnSonderterminErstellen, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnSonderterminLöschen, false);
 
-                PMDS.Global.UIGlobal.setStyleButtonDropDown(TermineExTmp.uDropDownSondertermine);
-                PMDS.Global.UIGlobal.setStyleButtonDropDown(TermineExTmp.uDropDownDekursEntwürfe);
-                PMDS.Global.UIGlobal.setStyleButtonDropDown(TermineExTmp.uDropDownDrucken);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.uDropDownSondertermine, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.uDropDownDekursEntwürfe, false);
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.uDropDownDrucken, false);
+
+                PMDS.Global.UIGlobal.setUIButton(TermineExTmp.btnEndTask1, false);
+
 
                 TermineExTmp.TerminSelected += new EventHandler(_termine_TerminSelected);
                 TermineExTmp.TerminDoubleClick += new EventHandler(_termine_TerminDoubleClick);
@@ -680,9 +669,8 @@ namespace PMDS.GUI
                     b.Appearance.Image = menu.bmp;
                     b.AutoSize = true;
 
-                    PMDS.Global.UIGlobal.setStyleButton(b);
+                    PMDS.Global.UIGlobal.setUIButton(b, false);
                     b.Click += new System.EventHandler(this.stuhlbuttons_click);
-                    //b.Appearance.Image = global::PMDS.GUI.Properties.Resources.ICO_Prüfung_alleAbgeschlossenen;
                     TermineExTmp.panelStuhlbuttons.Controls.Add(b);
 
                     pnl = new QS2.Desktop.ControlManagment.BasePanel
@@ -694,10 +682,8 @@ namespace PMDS.GUI
                     TermineExTmp.panelStuhlbuttons.Controls.Add(pnl);
                 }
 
-                //PMDS.Global.UIGlobal.setAktiv(b, -1, System.Drawing.Color.White, System.Drawing.Color.Gray, System.Drawing.Color.Gray);
-                PMDS.Global.UIGlobal.setAktivDisable(b, -1, System.Drawing.Color.Black, System.Drawing.Color.Gray, System.Drawing.Color.Transparent, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                PMDS.Global.UIGlobal.setUIButton(b, false);
 
-                //b.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Abgezeichnet, 32, 32);
                 b.Tag = menu;
                 b.Name = "stuhlButt_" + anz.ToString();
                 b.TabIndex = anz;
@@ -801,7 +787,7 @@ namespace PMDS.GUI
                                 frm.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dekurs");
                                 frm._rvÜbergabe = this._TermineEx.CurTerminRowÜbergabe;
 
-                                frm._IsDekurs = this._TermineEx.CurTerminRowÜbergabe.Eintragstyp == 0;
+                                frm.IsDekurs = this._TermineEx.CurTerminRowÜbergabe.Eintragstyp == 0;
                                 frm.ShowDialog();
                                 if (!frm.abort)
                                 {

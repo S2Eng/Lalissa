@@ -198,12 +198,12 @@ namespace PMDS.Calc.UI.Admin
             }
         }
 
-        public void UpdateData()
+        public bool UpdateData()
         {
             if (rKost == null)
             {
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Kein Kostenträger ausgewählt.", "Hinweis", MessageBoxButtons.OK);
-                return;
+                return false;
             }
 
             ucKostenträger2.Save();
@@ -225,6 +225,8 @@ namespace PMDS.Calc.UI.Admin
             _PatientKostentraegerRow.RechnungTyp = (int)this.cboRechnungTyp.Value;
             _PatientKostentraegerRow.RechnungsdruckTyp = (int)this.cboRechnungsdruckTyp.Value;
             _PatientKostentraegerRow.VorauszahlungJN = cbVorauszahlungJN.Checked;
+
+            return true;
        }
 
         private void SetReadOnly()

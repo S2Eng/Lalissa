@@ -261,9 +261,6 @@ namespace PMDS.GUI.BaseControls
             {
                 timer2.Enabled = false;
 
-
-
-
                 ultraPictureBox1.ContextMenu = null;
                 this.ContextMenu = null;
                 Color maxNotfallColor = Color.Transparent;
@@ -295,19 +292,19 @@ namespace PMDS.GUI.BaseControls
                     }
                     else if (rS2_GetKlientenliste.Notfall == "Ja, kein Termin offen")
                     {
-                        maxNotfallColor = Color.Green;
+                        maxNotfallColor = Color.LightGreen;
                     }
                     else if (rS2_GetKlientenliste.Notfall == "Ja, Termin(e) offen")
                     {
-                        maxNotfallColor = Color.Yellow;
+                        maxNotfallColor = Color.LightYellow;
                     }
                     else if (rS2_GetKlientenliste.Notfall == "Ja, Termin(e) überfällig")
                     {
-                        maxNotfallColor = Color.Red;
+                        maxNotfallColor = Color.MistyRose;
                     }
                     else if (rS2_GetKlientenliste.Notfall == "Ja, Standardprozedur offen")
                     {
-                        maxNotfallColor = Color.Orange;
+                        maxNotfallColor = Color.PeachPuff;
                     }
                     else
                     {
@@ -318,25 +315,20 @@ namespace PMDS.GUI.BaseControls
                     dsSP.SPDataTable dt = sp.AllOpen(_IDAufenthalt);
                     foreach (dsSP.SPRow r in dt.Rows)
                     {
-                        //maxNotfallColor = Color.Orange;
-                        //if (txtTitle.Trim() == "")
-                        //{
-                        //    txtTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("Standardprozedur offen");
-                        //}
                         bool IsNotfall = SP.NotfallJN(r);
                         if (IsNotfall)
                         {
-                            //maxNotfallColor = Color.Green;
                             txtTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("Notfälle");
+                            txtTitle += ": Klicken Sie mit der rechten Maustaste, um einen Notfall auszuwählen";
                         }
 
                         StringBuilder sb = new StringBuilder();
                         sb.Append(SP.ToStringFromRow(r));
                         AddContextmenu(menu, r.ID, sb.ToString());
                         AddOpenPosTextAndSetColor(r.ID, sb, ref maxNotfallColor);               // offen Prozeduren listen und die Blinkfarbe vermerken
-                        sb.Append("-----------------------------------------------\n\r");
+                        sb.Append("\n\r");
                         sb1.Append(sb.ToString());
-                        sb1.Append(QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzen Sie die rechte Maustaste, um den Vorfall zu öffnen."));
+                        //sb1.Append(QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzen Sie die rechte Maustaste, um den Vorfall zu öffnen."));
 
                         timer2.Enabled = true;
                         ultraPictureBox1.ContextMenu = menu;
@@ -344,11 +336,41 @@ namespace PMDS.GUI.BaseControls
                     }
                 }
 
-                this.BackColor = maxNotfallColor;
-                this.ultraToolTipManager1.SetUltraToolTip(ultraPictureBox1, info);
-                //toolTip1.SetToolTip(pbMain, sb1.ToString());
-                info.ToolTipTitle = txtTitle;
-                info.ToolTipText = sb1.ToString();
+                this.setNotfallIcon("NF", maxNotfallColor, System.Drawing.Color.White, txtTitle, sb1.ToString(), System.Drawing.Color.White);           
+            }
+        }
+
+        public void setNotfallIcon(string txtMedDatenIcon, System.Drawing.Color BackColorTxt, System.Drawing.Color ForeColorTxt,
+                            string ToolTipTitle, string ToolTipText,
+                            System.Drawing.Color BackColor)
+        {
+            try
+            {
+
+                this.Visible = true;
+                this.BackColor = BackColor;
+                this.ultraPictureBox1.BackColor = BackColor;
+
+                using (UltraToolTipInfo info = new UltraToolTipInfo())
+                {
+                    info.ToolTipTitle = ToolTipTitle;
+                    info.ToolTipText = ToolTipText;
+                    info.ToolTipTextStyle = Infragistics.Win.ToolTipTextStyle.Default;
+                    this.ultraToolTipManager1.ToolTipImage = Infragistics.Win.ToolTipImage.None;
+                    this.ultraToolTipManager1.SetUltraToolTip(this.lblTxt, info);
+
+                    this.ultraPictureBox1.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+                    this.ultraPictureBox1.Visible = true;
+                    this.lblTxt.Visible = true;
+                    this.lblTxt.BringToFront();
+                    this.lblTxt.Text = txtMedDatenIcon;
+                    this.lblTxt.Appearance.BackColor = BackColorTxt;
+                    this.lblTxt.Appearance.ForeColor = ForeColorTxt;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucMedizinData.setNotfallIcon: " + ex.ToString());
             }
         }
 
@@ -357,7 +379,7 @@ namespace PMDS.GUI.BaseControls
             List<SPNextHelper> al = SP.AllOpenSPPos(IDSP);
             foreach (SPNextHelper n in al)
             {
-                maxNotfallColor = Color.Yellow;
+                maxNotfallColor = Color.LightYellow;
                 if (n._next < DateTime.Now)                             // Wenn Zeitpunkt abgelaufen, dann rot
                     maxNotfallColor = Color.Red;
                 sb.Append(Environment.NewLine);
@@ -596,13 +618,6 @@ namespace PMDS.GUI.BaseControls
                 throw new Exception("Error vucMedizinData.timer2_Tick: " + ex.ToString());
             }
         }
-
-        private void ultraPictureBox1_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
     }
-
 }
 

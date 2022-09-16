@@ -19,16 +19,16 @@ namespace PMDS.GUI.ELGA
 {
     public partial class contELGAKlient : UserControl
     {
-        public ucKlient mainWindow { get; set; }
         public bool IsInitialized { get; set; }
-
         public Guid IDKlient { get; set; }
         public Guid IDAufenthalt { get; set; }
         public bool IsNeuaufnahme { get; set; }
 
-        public UIGlobal UIGlobal1 { get; set; } = new UIGlobal();
-        public WCFServiceClient WCFServiceClient1 { get; set; } = new WCFServiceClient();
-        public PMDSBusiness b { get; set; } = new PMDSBusiness();
+        private WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
+
+        //public ucKlient mainWindow { get; set; }
+        //public UIGlobal UIGlobal1 { get; set; } = new UIGlobal();
+        //public PMDSBusiness b  = new PMDSBusiness();
 
         public frmELGAKlient mainWindowAufnahme { get; set; }
 
@@ -38,6 +38,7 @@ namespace PMDS.GUI.ELGA
         {
             InitializeComponent();
         }
+
         private void contELGAKlient_Load(object sender, EventArgs e)
         {
 

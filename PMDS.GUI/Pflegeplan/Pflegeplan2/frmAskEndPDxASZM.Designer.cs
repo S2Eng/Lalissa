@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAskEndPDxASZM));
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.btnCancel = new PMDS.GUI.ucButton(this.components);
             this.btnOK = new PMDS.GUI.ucButton(this.components);
             this.pnlEndDatum = new QS2.Desktop.ControlManagment.BasePanel();
@@ -56,31 +56,46 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance1.Image = 5;
+            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
             appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnCancel.Appearance = appearance1;
+            this.btnCancel.AutoWorkLayout = false;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(610, 0);
+            this.btnCancel.DoOnClick = true;
+            this.btnCancel.IsStandardControl = true;
+            this.btnCancel.Location = new System.Drawing.Point(712, 0);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(88, 32);
+            this.btnCancel.Size = new System.Drawing.Size(103, 42);
             this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "&Abbrechen";
+            this.btnCancel.TabStop = false;
+            this.btnCancel.Text = "Abbrechen";
             this.btnCancel.TYPE = PMDS.GUI.ucButton.ButtonType.Cancel;
+            this.btnCancel.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance2.Image = 4;
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnOK.Appearance = appearance2;
+            this.btnOK.AutoWorkLayout = false;
+            this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(701, 0);
+            this.btnOK.DoOnClick = true;
+            this.btnOK.IsStandardControl = true;
+            this.btnOK.Location = new System.Drawing.Point(818, 0);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(48, 32);
+            this.btnOK.Size = new System.Drawing.Size(56, 42);
             this.btnOK.TabIndex = 5;
-            this.btnOK.Text = "&OK";
+            this.btnOK.TabStop = false;
             this.btnOK.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
+            this.btnOK.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // pnlEndDatum
@@ -89,24 +104,29 @@
             this.pnlEndDatum.Controls.Add(this.dtpEnd);
             this.pnlEndDatum.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlEndDatum.Location = new System.Drawing.Point(0, 0);
+            this.pnlEndDatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlEndDatum.Name = "pnlEndDatum";
-            this.pnlEndDatum.Size = new System.Drawing.Size(756, 22);
+            this.pnlEndDatum.Size = new System.Drawing.Size(882, 29);
             this.pnlEndDatum.TabIndex = 25;
             // 
             // ultraLabel4
             // 
-            this.ultraLabel4.Location = new System.Drawing.Point(0, 4);
+            this.ultraLabel4.Location = new System.Drawing.Point(0, 5);
+            this.ultraLabel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraLabel4.Name = "ultraLabel4";
-            this.ultraLabel4.Size = new System.Drawing.Size(64, 16);
+            this.ultraLabel4.Size = new System.Drawing.Size(75, 21);
             this.ultraLabel4.TabIndex = 18;
             this.ultraLabel4.Text = "Endedatum";
             // 
             // dtpEnd
             // 
-            this.dtpEnd.Location = new System.Drawing.Point(72, 0);
+            this.dtpEnd.Location = new System.Drawing.Point(84, 0);
+            this.dtpEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpEnd.MaskInput = "dd.mm.yyyy";
             this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(96, 21);
+            this.dtpEnd.ownFormat = "";
+            this.dtpEnd.ownMaskInput = "";
+            this.dtpEnd.Size = new System.Drawing.Size(112, 26);
             this.dtpEnd.TabIndex = 17;
             this.dtpEnd.ValueChanged += new System.EventHandler(this.dtpEnd_ValueChanged);
             // 
@@ -114,36 +134,40 @@
             // 
             this.grpEndASZM.Controls.Add(this.ucAskEndASZM1);
             this.grpEndASZM.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grpEndASZM.Location = new System.Drawing.Point(0, 366);
+            this.grpEndASZM.Location = new System.Drawing.Point(0, 479);
+            this.grpEndASZM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpEndASZM.Name = "grpEndASZM";
-            this.grpEndASZM.Size = new System.Drawing.Size(756, 288);
+            this.grpEndASZM.Size = new System.Drawing.Size(882, 377);
             this.grpEndASZM.TabIndex = 27;
             this.grpEndASZM.Text = "A/S/Z/R/M beenden";
             // 
             // ucAskEndASZM1
             // 
             this.ucAskEndASZM1.HiedeEndDate = true;
-            this.ucAskEndASZM1.Location = new System.Drawing.Point(5, 16);
+            this.ucAskEndASZM1.Location = new System.Drawing.Point(6, 21);
+            this.ucAskEndASZM1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucAskEndASZM1.Name = "ucAskEndASZM1";
-            this.ucAskEndASZM1.Size = new System.Drawing.Size(734, 266);
+            this.ucAskEndASZM1.Size = new System.Drawing.Size(856, 348);
             this.ucAskEndASZM1.TabIndex = 0;
             // 
             // grpEndPDX
             // 
             this.grpEndPDX.Controls.Add(this.ucAskEndPDX1);
             this.grpEndPDX.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grpEndPDX.Location = new System.Drawing.Point(0, 22);
+            this.grpEndPDX.Location = new System.Drawing.Point(0, 29);
+            this.grpEndPDX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpEndPDX.Name = "grpEndPDX";
-            this.grpEndPDX.Size = new System.Drawing.Size(756, 344);
+            this.grpEndPDX.Size = new System.Drawing.Size(882, 450);
             this.grpEndPDX.TabIndex = 26;
             this.grpEndPDX.Text = "Pflegeproblem beenden";
             // 
             // ucAskEndPDX1
             // 
             this.ucAskEndPDX1.HiedeEndDate = true;
-            this.ucAskEndPDX1.Location = new System.Drawing.Point(5, 14);
+            this.ucAskEndPDX1.Location = new System.Drawing.Point(6, 18);
+            this.ucAskEndPDX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucAskEndPDX1.Name = "ucAskEndPDX1";
-            this.ucAskEndPDX1.Size = new System.Drawing.Size(734, 324);
+            this.ucAskEndPDX1.Size = new System.Drawing.Size(856, 424);
             this.ucAskEndPDX1.TabIndex = 0;
             // 
             // pnlButtons
@@ -151,9 +175,10 @@
             this.pnlButtons.Controls.Add(this.btnCancel);
             this.pnlButtons.Controls.Add(this.btnOK);
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlButtons.Location = new System.Drawing.Point(0, 657);
+            this.pnlButtons.Location = new System.Drawing.Point(0, 859);
+            this.pnlButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(756, 32);
+            this.pnlButtons.Size = new System.Drawing.Size(882, 42);
             this.pnlButtons.TabIndex = 28;
             // 
             // errorProvider1
@@ -163,25 +188,26 @@
             // frmAskEndPDxASZM
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(756, 689);
+            this.ClientSize = new System.Drawing.Size(882, 901);
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.grpEndASZM);
             this.Controls.Add(this.grpEndPDX);
             this.Controls.Add(this.pnlEndDatum);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(764, 441);
+            this.MinimumSize = new System.Drawing.Size(889, 565);
             this.Name = "frmAskEndPDxASZM";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Beenden eines Pflegeproblemes";
-            this.Load += new System.EventHandler(this.frmAskEndPDxASZM_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAskEndPDxASZM_FormClosing);
+            this.Load += new System.EventHandler(this.frmAskEndPDxASZM_Load);
             this.pnlEndDatum.ResumeLayout(false);
             this.pnlEndDatum.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEnd)).EndInit();

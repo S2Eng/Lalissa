@@ -9,18 +9,40 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="dsFormular" msdata:IsDataSet="true" msdata:Locale="de-DE" msprop:Generator_DataSetName="dsFormular" msprop:Generator_UserDSName="dsFormular">
+  <xs:element name="dsFormular" msdata:IsDataSet="true" msdata:Locale="de-DE" msprop:Generator_UserDSName="dsFormular" msprop:Generator_DataSetName="dsFormular">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Formular" msprop:Generator_TableClassName="FormularDataTable" msprop:Generator_TableVarName="tableFormular" msprop:Generator_TablePropName="Formular" msprop:Generator_RowDeletingName="FormularRowDeleting" msprop:Generator_RowChangingName="FormularRowChanging" msprop:Generator_RowEvHandlerName="FormularRowChangeEventHandler" msprop:Generator_RowDeletedName="FormularRowDeleted" msprop:Generator_UserTableName="Formular" msprop:Generator_RowChangedName="FormularRowChanged" msprop:Generator_RowEvArgName="FormularRowChangeEvent" msprop:Generator_RowClassName="FormularRow">
+        <xs:element name="Formular" msprop:Generator_RowEvHandlerName="FormularRowChangeEventHandler" msprop:Generator_RowDeletedName="FormularRowDeleted" msprop:Generator_RowDeletingName="FormularRowDeleting" msprop:Generator_RowEvArgName="FormularRowChangeEvent" msprop:Generator_TablePropName="Formular" msprop:Generator_RowChangedName="FormularRowChanged" msprop:Generator_RowChangingName="FormularRowChanging" msprop:Generator_TableClassName="FormularDataTable" msprop:Generator_RowClassName="FormularRow" msprop:Generator_TableVarName="tableFormular" msprop:Generator_UserTableName="Formular">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
-              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" />
-              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung" type="xs:string" />
-              <xs:element name="BLOP" msprop:Generator_ColumnVarNameInTable="columnBLOP" msprop:Generator_ColumnPropNameInRow="BLOP" msprop:Generator_ColumnPropNameInTable="BLOPColumn" msprop:Generator_UserColumnName="BLOP" type="xs:string" />
-              <xs:element name="GUI" msprop:Generator_ColumnVarNameInTable="columnGUI" msprop:Generator_ColumnPropNameInRow="GUI" msprop:Generator_ColumnPropNameInTable="GUIColumn" msprop:Generator_UserColumnName="GUI" type="xs:boolean" />
-              <xs:element name="InNotfallAnzeigenJN" msprop:Generator_ColumnVarNameInTable="columnInNotfallAnzeigenJN" msprop:Generator_ColumnPropNameInRow="InNotfallAnzeigenJN" msprop:Generator_ColumnPropNameInTable="InNotfallAnzeigenJNColumn" msprop:Generator_UserColumnName="InNotfallAnzeigenJN" type="xs:boolean" />
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_UserColumnName="Bezeichnung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BLOP" msprop:Generator_ColumnPropNameInRow="BLOP" msprop:Generator_ColumnPropNameInTable="BLOPColumn" msprop:Generator_ColumnVarNameInTable="columnBLOP" msprop:Generator_UserColumnName="BLOP">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GUI" msprop:Generator_ColumnPropNameInRow="GUI" msprop:Generator_ColumnPropNameInTable="GUIColumn" msprop:Generator_ColumnVarNameInTable="columnGUI" msprop:Generator_UserColumnName="GUI" type="xs:boolean" />
+              <xs:element name="InNotfallAnzeigenJN" msprop:Generator_ColumnPropNameInRow="InNotfallAnzeigenJN" msprop:Generator_ColumnPropNameInTable="InNotfallAnzeigenJNColumn" msprop:Generator_ColumnVarNameInTable="columnInNotfallAnzeigenJN" msprop:Generator_UserColumnName="InNotfallAnzeigenJN" type="xs:boolean" />
+              <xs:element name="PDF_BLOP" msprop:Generator_ColumnPropNameInRow="PDF_BLOP" msprop:Generator_ColumnPropNameInTable="PDF_BLOPColumn" msprop:Generator_ColumnVarNameInTable="columnPDF_BLOP" msprop:Generator_UserColumnName="PDF_BLOP" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="NeuanlageSperren" msprop:Generator_ColumnPropNameInRow="NeuanlageSperren" msprop:Generator_ColumnPropNameInTable="NeuanlageSperrenColumn" msprop:Generator_ColumnVarNameInTable="columnNeuanlageSperren" msprop:Generator_UserColumnName="NeuanlageSperren" type="xs:boolean" />
+              <xs:element name="lstIDBerufsgruppe" msprop:Generator_ColumnPropNameInRow="lstIDBerufsgruppe" msprop:Generator_ColumnPropNameInTable="lstIDBerufsgruppeColumn" msprop:Generator_ColumnVarNameInTable="columnlstIDBerufsgruppe" msprop:Generator_UserColumnName="lstIDBerufsgruppe" type="xs:string" />
+              <xs:element name="EditHours" msprop:Generator_ColumnPropNameInRow="EditHours" msprop:Generator_ColumnPropNameInTable="EditHoursColumn" msprop:Generator_ColumnVarNameInTable="columnEditHours" msprop:Generator_UserColumnName="EditHours" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

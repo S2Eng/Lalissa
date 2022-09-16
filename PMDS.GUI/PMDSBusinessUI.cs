@@ -986,7 +986,6 @@ namespace PMDS.GUI
             }
         }
 
-
         public static bool checkCboBox(PMDS.GUI.BaseControls.AuswahlGruppeCombo cbo, string TitleMsg, bool getOnlyMsgTxt, ref string MsgTxtBack, bool useColorWrong = false)
         {
             try
@@ -997,8 +996,7 @@ namespace PMDS.GUI
                     {
                         if (useColorWrong)
                         {
-                            cbo.Appearance.BackColor = Color.Yellow;
-                            cbo.UseAppStyling = false;
+                            cbo.Appearance.ForeColor = ENVCOLOR.ERROR_FORE_COLOR;
                         }
                         string MsgTxtTmp = TitleMsg.Trim() + ": " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte wählen Sie einen gültigen Listeneintrag.");
                         if (getOnlyMsgTxt)
@@ -1017,8 +1015,7 @@ namespace PMDS.GUI
                     {
                         if (useColorWrong)
                         {
-                            cbo.Appearance.BackColor = Color.Yellow;
-                            cbo.UseAppStyling = false;
+                            cbo.Appearance.ForeColor = ENVCOLOR.ERROR_FORE_COLOR;
                         }
                         string MsgTxtTmp = TitleMsg.Trim() + ": " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Auswahl erforderlich!");
                         if (getOnlyMsgTxt)
@@ -1034,11 +1031,13 @@ namespace PMDS.GUI
                     }
                     else
                     {
+                        cbo.Appearance.ForeColor = ENVCOLOR.activeForeCol;
                         return true;
                     }
                 }
                 else
                 {
+                    cbo.Appearance.ForeColor = ENVCOLOR.activeForeCol;
                     return true;
                 }
 
@@ -1048,6 +1047,7 @@ namespace PMDS.GUI
                 throw new Exception("PMDSBusinessUI.checkCboBox: " + ex.ToString());
             }
         }
+
         public static bool checkCboBoxWrongInput(UltraComboEditor cbo, string TitleMsg, bool getOnlyMsgTxt, ref string MsgTxtBack, bool useColorWrong = false)
         {
             try
@@ -1056,8 +1056,7 @@ namespace PMDS.GUI
                 {
                     if (useColorWrong)
                     {
-                        cbo.Appearance.BackColor = Color.Yellow;
-                        cbo.UseAppStyling = false;
+                        cbo.Appearance.ForeColor = ENVCOLOR.ERROR_FORE_COLOR;
                     }
 
                     string MsgTxtTmp = TitleMsg.Trim() + ": " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Falsche Eingabe!");
@@ -1075,6 +1074,7 @@ namespace PMDS.GUI
                 }
                 else
                 {
+                    cbo.Appearance.ForeColor = ENVCOLOR.activeForeCol;
                     return true;
                 }
 
@@ -1392,9 +1392,8 @@ namespace PMDS.GUI
             {
                 bool showTabAufenthalt = false;
                 if (!ucVersichrungsdaten1.validateVerNr(ucVersichrungsdaten1.txtVersNr.Text, true))
-                {
-                    ucVersichrungsdaten1.txtVersNr.Appearance.BackColor = Color.Yellow;
-                    ucVersichrungsdaten1.txtVersNr.UseAppStyling = false;
+                {                    
+                    ucVersichrungsdaten1.txtVersNr.Appearance.ForeColor = ENVCOLOR.ERROR_FORE_COLOR;
                     ucVersichrungsdaten1.txtVersNr.Focus();
                     showTabAufenthalt = true;
                     return false;
@@ -1405,8 +1404,7 @@ namespace PMDS.GUI
                 {
                     if (ucVersichrungsdaten1.cboSozVersStatus.Text.Trim() == "")
                     {
-                        ucVersichrungsdaten1.cboSozVersStatus.Appearance.BackColor = Color.Yellow;
-                        ucVersichrungsdaten1.cboSozVersStatus.UseAppStyling = false;
+                        ucVersichrungsdaten1.cboSozVersStatus.Appearance.ForeColor = ENVCOLOR.ERROR_FORE_COLOR;
                         MsgTxt += QS2.Desktop.ControlManagment.ControlManagment.getRes("SV Status: Feld darf nicht leer sein!") + "\r\n";
                         ucVersichrungsdaten1.cboSozVersStatus.Focus();
                         showTabAufenthalt = true;
@@ -1416,12 +1414,12 @@ namespace PMDS.GUI
                         PMDSBusinessUI.checkCboBoxWrongInput(ucVersichrungsdaten1.cboSozVersStatus, QS2.Desktop.ControlManagment.ControlManagment.getRes("SV Status"), true, ref MsgTxt, true);
                     }
                 }
+
                 if (ucVersichrungsdaten1.txtVersNr.Text.Trim() == "")
                 {
                     if (ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim() == "")
                     {
-                        ucVersichrungsdaten1.cboSozVersLeerGrund.Appearance.BackColor = Color.Yellow;
-                        ucVersichrungsdaten1.cboSozVersLeerGrund.UseAppStyling = false;
+                        ucVersichrungsdaten1.cboSozVersLeerGrund.Appearance.ForeColor = ENVCOLOR.ERROR_FORE_COLOR;
                         MsgTxt += QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr leer weil: Feld darf nicht leer sein!") + "\r\n";
                         ucVersichrungsdaten1.cboSozVersLeerGrund.Focus();
                         showTabAufenthalt = true;
@@ -1431,12 +1429,12 @@ namespace PMDS.GUI
                         PMDSBusinessUI.checkCboBoxWrongInput(ucVersichrungsdaten1.cboSozVersLeerGrund, QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr leer weil"), true, ref MsgTxt, true);
                     }
                 }
+
                 if (ucVersichrungsdaten1.txtVersNr.Text.Trim() != "" && ucVersichrungsdaten1.cboSozVersStatus.Text.Trim().ToLower() == ("mitversichert").Trim().ToLower())
                 {
                     if (ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim() == "")
                     {
-                        ucVersichrungsdaten1.txtSozVersMitversichertBei.Appearance.BackColor = Color.Yellow;
-                        ucVersichrungsdaten1.txtSozVersMitversichertBei.UseAppStyling = false;
+                        ucVersichrungsdaten1.txtSozVersMitversichertBei.Appearance.ForeColor = ENVCOLOR.ERROR_FORE_COLOR;
                         MsgTxt += QS2.Desktop.ControlManagment.ControlManagment.getRes("SV Mitversichert bei: Feld darf nicht leer sein!") + "\r\n";
                         ucVersichrungsdaten1.txtSozVersMitversichertBei.Focus();
                         showTabAufenthalt = true;
@@ -1445,6 +1443,7 @@ namespace PMDS.GUI
 
                 bool cbEinrichtungenOK = PMDSBusinessUI.checkCboBoxWrongInput(ucVersichrungsdaten1.cboEinrichtungen, QS2.Desktop.ControlManagment.ControlManagment.getRes("Krankenkasse"), true, ref MsgTxt, true);
                 bool cbKlasseOK = PMDSBusinessUI.checkCboBox(ucVersichrungsdaten1.cmbKlasse, QS2.Desktop.ControlManagment.ControlManagment.getRes("Klasse"), true, ref MsgTxt, true);
+                
                 if (MsgTxt.Trim() != "" || !cbKlasseOK || !cbEinrichtungenOK)
                 {
                     if (showTabAufenthalt)
@@ -1480,11 +1479,11 @@ namespace PMDS.GUI
                         rPatient.SozVersLeerGrund = ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim();
                         rPatient.SozVersMitversichertBei = ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim();
 
-                        if (String.IsNullOrWhiteSpace(ucVersichrungsdaten1.txtVersNr.Text))
+                        if (!String.IsNullOrWhiteSpace(ucVersichrungsdaten1.txtVersNr.Text))
                         {
                             rPatient.SozVersLeerGrund = "";
                             ucVersichrungsdaten1.cboSozVersLeerGrund.Text = "";
-                            if (ucVersichrungsdaten1.cboSozVersStatus.Text.sEquals("mitversichert"))
+                            if (!ucVersichrungsdaten1.cboSozVersStatus.Text.sEquals("mitversichert"))
                             {
                                 rPatient.SozVersMitversichertBei = "";
                                 ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = "";

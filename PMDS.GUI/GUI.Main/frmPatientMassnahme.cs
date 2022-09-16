@@ -137,6 +137,7 @@ namespace PMDS.GUI
             this.btnOK2.Name = "btnOK2";
             this.btnOK2.Size = new System.Drawing.Size(48, 34);
             this.btnOK2.TabIndex = 15;
+            this.btnOK2.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnOK2.Click += new System.EventHandler(this.btnOK2_Click);
             // 
             // btnCancel2
@@ -150,6 +151,7 @@ namespace PMDS.GUI
             this.btnCancel2.Size = new System.Drawing.Size(88, 34);
             this.btnCancel2.TabIndex = 14;
             this.btnCancel2.Text = "Abbrechen";
+            this.btnCancel2.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnCancel2.Click += new System.EventHandler(this.btnCancel2_Click);
             // 
             // ucPflegeEintrag1
@@ -177,10 +179,10 @@ namespace PMDS.GUI
             this.btnKlientenMehrfachauswahl.IsStandardControl = false;
             this.btnKlientenMehrfachauswahl.Location = new System.Drawing.Point(113, 623);
             this.btnKlientenMehrfachauswahl.Name = "btnKlientenMehrfachauswahl";
-            this.btnKlientenMehrfachauswahl.Size = new System.Drawing.Size(127, 34);
+            this.btnKlientenMehrfachauswahl.Size = new System.Drawing.Size(198, 34);
             this.btnKlientenMehrfachauswahl.TabIndex = 16;
             this.btnKlientenMehrfachauswahl.Text = "Klienten Mehrfachauswahl";
-            this.btnKlientenMehrfachauswahl.UseAppStyling = false;
+            this.btnKlientenMehrfachauswahl.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnKlientenMehrfachauswahl.Click += new System.EventHandler(this.btnKlientenMehrfachauswahl_Click);
             // 
             // btnSonderterminErstellen2
@@ -196,6 +198,7 @@ namespace PMDS.GUI
             this.btnSonderterminErstellen2.Size = new System.Drawing.Size(108, 33);
             this.btnSonderterminErstellen2.TabIndex = 109;
             this.btnSonderterminErstellen2.Text = "Termin erstellen";
+            this.btnSonderterminErstellen2.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnSonderterminErstellen2.Click += new System.EventHandler(this.btnSonderterminErstellen2_Click);
             // 
             // frmPatientMassnahme

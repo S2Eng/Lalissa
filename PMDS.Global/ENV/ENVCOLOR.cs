@@ -12,7 +12,7 @@ using System.ComponentModel;
 
 namespace PMDS.Global
 {
-	public class ENVCOLOR 
+	public static class ENVCOLOR 
 	{
 		private static Color _ErrorBackColor;
 		private static Color _ErrorForeColor;
@@ -45,8 +45,8 @@ namespace PMDS.Global
 
 		public static void ResetColors()
 		{
-            _ErrorBackColor = Color.DarkSalmon;
-            _ErrorForeColor = Color.Black;
+            _ErrorBackColor = Color.LightSalmon;
+            _ErrorForeColor = Color.Red;
 
 			_AColor 							= Color.Blue;
 			_SColor 							= Color.GreenYellow;
@@ -82,33 +82,14 @@ namespace PMDS.Global
 	
 		public static Color EINTRAG_ENDED_BACK_COLOR	{get {return _EintragEndedBackColor;}	set {_EintragEndedBackColor = value;} } 
 		public static Color EINTRAG_ENDED_FORE_COLOR	{get {return _EintragEndedForeColor;}	set {_EintragEndedForeColor = value;} }
-
 		public static Color EINTRAG_CURRENT_BACK_COLOR	{get {return _EintragCurrentBackColor;}	set {_EintragCurrentBackColor = value;} } 
 		public static Color EINTRAG_CURRENT_FORE_COLOR	{get {return _EintragCurrentForeColor;}	set {_EintragCurrentForeColor = value;} }
-
 		public static Color EINTRAG_DELETED_BACK_COLOR	{get {return _EintragDeletedBackColor;}	set {_EintragDeletedBackColor = value;} } 
 		public static Color EINTRAG_DELETED_FORE_COLOR	{get {return _EintragDeletedForeColor;}	set {_EintragDeletedForeColor = value;} }
-
-
 		public static Color EINTRAG_CURRENT_NOT_ORIGINAL_FORE_COLOR	{get {return _EintragCurrentNotOriginalForeColor;}	set {_EintragCurrentNotOriginalForeColor = value;} } 
 		public static Color EINTRAG_CURRENT_NOT_ORIGINAL_BACK_COLOR	{get {return _EintragCurrentNotOriginalBackColor;}	set {_EintragCurrentNotOriginalBackColor = value;} }
-
-
 		public static Color ERROR_BACK_COLOR	{get {return _ErrorBackColor;}	set {_ErrorBackColor = value;} } 
 		public static Color ERROR_FORE_COLOR	{get {return _ErrorForeColor;}	set {_ErrorForeColor = value;} }
-
-		public static Color TERMIN_UNEXMASSNAHME_COLORxy
-		{
-			get {	return _TerminUnexMassnahmeColor;	}	
-			set {	_TerminUnexMassnahmeColor = value;	}
-		}
-
-		public static Color TERMIN_UEBERFAELLIG_COLOR
-		{
-			get {	return _TerminUeberfaelligColor;	}	
-			set {	_TerminUeberfaelligColor = value;	}
-		}
-
 
 		public static Color GetColorForGroup(char chGroup) 
 		{
@@ -127,6 +108,17 @@ namespace PMDS.Global
 			}
 		}
 
-	}
+		//Colors for UI-Buttons
+		public static System.Drawing.Color activeBackCol = System.Drawing.Color.NavajoWhite;
+		public static System.Drawing.Color activeForeCol = System.Drawing.Color.Black;
+		public static System.Drawing.Color activeFrameCol = System.Drawing.Color.DarkGray;
 
+		public static System.Drawing.Color inactiveBackCol = System.Drawing.Color.Transparent;
+		public static System.Drawing.Color inactiveForeCol = System.Drawing.Color.DarkBlue;
+		public static System.Drawing.Color inactiveFrameCol = System.Drawing.Color.Transparent;
+
+		public static System.Drawing.Color hoverBackCol = System.Drawing.Color.PapayaWhip;
+		public static System.Drawing.Color hoverForeCol = System.Drawing.Color.Black;
+		public static System.Drawing.Color hoverFrameCol = System.Drawing.Color.DarkGray;
+	}
 }

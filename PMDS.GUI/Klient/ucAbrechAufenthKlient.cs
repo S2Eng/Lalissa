@@ -14,6 +14,7 @@ using PMDS.Abrechnung.Global;
 using PMDS.Data.Global;
 using System.Linq;
 using Infragistics.Win.UltraWinEditors;
+using System.Threading.Tasks;
 
 namespace PMDS.GUI
 {
@@ -99,7 +100,10 @@ namespace PMDS.GUI
                 this.panelUnten.Visible = false;
             }
             else
+            {
                 this.panelZahler.Visible = false;
+                splitContainerMain.SplitterDistance = Convert.ToInt32(splitContainerMain.Height * 0.8);
+            }
 
             this.isLoaded = true;
         }
@@ -130,7 +134,6 @@ namespace PMDS.GUI
                 this.abrechnungHasChanged = false;
                 _valueChangeEnabled = true;
                 InitErrorProvider();
-                HideOrShowControls();
             }
         }
 
@@ -209,12 +212,10 @@ namespace PMDS.GUI
             dtPensTeilAntrag.Value = Klient.DatumPensionsteilungsantrag;
             cbTelBefr.Checked = Klient.TelefongebuehrbefreiungJN;
             cbFernsehBefr.Checked = Klient.FernsehgebuehrbefreiungJN;
-            
-
-            //this.cmbBetreuungsstufe.Value = Klient.bet
-
 
             //Grig Patient Pflegestufen
+            txtKliNr.Text = Klient.Klientennummer;
+
             gridPatPflegestufen.DataSource = Klient.PATIENTPFLEGESTUFE.ALL;
             RefreshPflegeStufeValueList();
 
@@ -252,60 +253,64 @@ namespace PMDS.GUI
             //if (!this._isBewerberJN)
             //{
             using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+            {
+                if (this.b.checkPatientExists(Klient.ID, db))
                 {
-                    if (this.b.checkPatientExists(Klient.ID, db))
-                    {
-                    //os191224
+                //os191224
                     var rPatInfo = (from p in db.Patient
-                                    where p.ID == Klient.ID
-                                    select new
-                                    { p.Nachname, 
-                                        p.Vorname,
-                                        p.Betreuungsstufe,
-                                        p.BetreuungsstufeAb,
-                                        p.BetreuungsstufeBis,
-                                        p.TageAbweseneheitOhneKuerzung}
-                                       ).First();
-                    //PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
-                        if (rPatInfo.Betreuungsstufe.Trim() != "")
-                        {
-                            this.cmbBetreuungsstufe.Text = rPatInfo.Betreuungsstufe.Trim();
-                        }
-                        else
-                        {
-                            this.cmbBetreuungsstufe.Value = null;
-                        }
-                        if (rPatInfo.BetreuungsstufeAb != null)
-                        {
-                            this.udteBetreuungsstufeAb.DateTime = rPatInfo.BetreuungsstufeAb.Value;
-                        }
-                        else
-                        {
-                            this.udteBetreuungsstufeAb.Value = null;
-                        }
-                        if (rPatInfo.BetreuungsstufeBis != null)
-                        {
-                            this.udteBetreuungsstufBis.DateTime = rPatInfo.BetreuungsstufeBis.Value;
-                        }
-                        else
-                        {
-                            this.udteBetreuungsstufBis.Value = null;
-                        }
+                                where p.ID == Klient.ID
+                                select new
+                                { p.Nachname, 
+                                    p.Vorname,
+                                    p.Betreuungsstufe,
+                                    p.BetreuungsstufeAb,
+                                    p.BetreuungsstufeBis,
+                                    p.TageAbweseneheitOhneKuerzung,
+                                    p.ForensischerHintergrund}
+                                    ).First();
 
-                        this.numTageAbweseneheitOhneKuerzung.Value = rPatInfo.TageAbweseneheitOhneKuerzung;
+                    this.cmbBetreuungsstufe.Value = null;
+                    this.udteBetreuungsstufeAb.Value = null;
+                    this.udteBetreuungsstufBis.Value = null;
+                    this.chkForensicherHintergrund.Checked = false;
 
-                        if (PMDS.Global.historie.HistorieOn)
-                        {
-                            PMDS.db.Entities.Aufenthalt rAufenthaltEntlassen = this.b.getAufenthalt(PMDS.Global.ENV.IDAUFENTHALT, db);
-                            this.dtpEntlassungszeitpunkt.DateTime = rAufenthaltEntlassen.Entlassungszeitpunkt.Value;
-                            this.dEntlassungszeitpunktOrig = this.dtpEntlassungszeitpunkt.DateTime;
-                            this.lblEntlassungszeitpunkt.Visible = true;
-                            this.dtpEntlassungszeitpunkt.Visible = true;
-                            this.IDAufenthaltEntlassen = rAufenthaltEntlassen.ID;
+                    if (!String.IsNullOrWhiteSpace(rPatInfo.Betreuungsstufe))
+                    {
+                        this.cmbBetreuungsstufe.Text = rPatInfo.Betreuungsstufe.Trim();
+                    }
+
+                    if (rPatInfo.BetreuungsstufeAb != null)
+                    {
+                        this.udteBetreuungsstufeAb.DateTime = rPatInfo.BetreuungsstufeAb.Value;
+                    }
+
+                    if (rPatInfo.BetreuungsstufeBis != null)
+                    {
+                        this.udteBetreuungsstufBis.DateTime = rPatInfo.BetreuungsstufeBis.Value;
+                    }
+
+                    if (rPatInfo.ForensischerHintergrund != null)
+                    {
+                        this.chkForensicherHintergrund.Checked = (bool) rPatInfo.ForensischerHintergrund;
+                    }
+                    else
+                    {
+                        this.chkForensicherHintergrund.Checked = false;
+                    }
+
+                    this.numTageAbweseneheitOhneKuerzung.Value = rPatInfo.TageAbweseneheitOhneKuerzung;
+
+                    if (PMDS.Global.historie.HistorieOn)
+                    {
+                        PMDS.db.Entities.Aufenthalt rAufenthaltEntlassen = this.b.getAufenthalt(PMDS.Global.ENV.IDAUFENTHALT, db);
+                        this.dtpEntlassungszeitpunkt.DateTime = rAufenthaltEntlassen.Entlassungszeitpunkt.Value;
+                        this.dEntlassungszeitpunktOrig = this.dtpEntlassungszeitpunkt.DateTime;
+                        this.lblEntlassungszeitpunkt.Visible = true;
+                        this.dtpEntlassungszeitpunkt.Visible = true;
+                        this.IDAufenthaltEntlassen = rAufenthaltEntlassen.ID;
                     }
                 }
-                }
-            //}
+            }
 
             if (PMDS.Global.historie.HistorieOn)
             {
@@ -360,12 +365,10 @@ namespace PMDS.GUI
                 }  
             }
 
-            //Befreiungen
-
             Klient.PensionsteilungsantragJN = cbPensionTeilAntrag.Checked;
             Klient.DatumPensionsteilungsantrag = dtPensTeilAntrag.Value;
             Klient.TelefongebuehrbefreiungJN = cbTelBefr.Checked;
-            Klient.FernsehgebuehrbefreiungJN = cbFernsehBefr.Checked;
+            Klient.FernsehgebuehrbefreiungJN = cbFernsehBefr.Checked;                           
 
             if (Klient.AufenthaltZusatz.Count > 0)
             {
@@ -390,13 +393,9 @@ namespace PMDS.GUI
             Klient.KürzungLetzterTagAnwesenheit = this.chkKürzungLetzterTagAnwesenheit.Checked;
             Klient.Behindertenausweis = this.chkBehindertenausweis.Checked;
             Klient.Sozialcard = this.chkSozialcard.Checked;
-            //Klient.IDAdresseSub = Nullable<Guid> IDAdresseSub;
+            Klient.Klientennummer = txtKliNr.Text.Trim();
 
             ucVersichrungsdaten12.UpdateDATA();
-
-            //Patient pat = new Patient();
-            //pat.updatePatient(Klient.ID , this.uCheckEditorAbwesenheitenHändischBerech.Checked);
-
         }
         public bool save(bool mainSystm, bool isAbrechnung, bool isBewerberJN )
         {
@@ -439,24 +438,7 @@ namespace PMDS.GUI
                         GuiUtil.ValidateField(dtpAufnahmedatum, (dtpAufnahmedatum.DateTime <= DateTime.Now),
                                  QS2.Desktop.ControlManagment.ControlManagment.getRes("Das Datum darf nicht in der Zukunft liegen."), ref bError, bInfo, errorProvider1, ref isWrong);
                     }
-
-                    //Gibt es Leistunen die vor dem Aufnahmedatum liegen, wenn ja Fehler
-                    if (!bError)
-                    {
-                        //PatientLeistungsplan pl = new PatientLeistungsplan();
-                        //dsPatientLeistungsplan.PatientLeistungsplanDataTable dt = pl.Read(Klient.ID);
-
-                        //dsPatientLeistungsplan.PatientLeistungsplanRow[] rows = (dsPatientLeistungsplan.PatientLeistungsplanRow[])dt.Select(dt.GueltigAbColumn.ColumnName + " < '" + dtpAufnahmedatum.DateTime.Date.ToString() + "'");
-
-                        //GuiUtil.ValidateField(dtpAufnahmedatum, (rows == null || rows.Length == 0),
-                        //"Es wurden bereits Leistungen vor dem " + dtpAufnahmedatum.DateTime.ToString("dd.MM.yyyy") + " abgerechnet. Das Aufnahmedatum kann nicht nach diesem Datum liegen.", ref bError, bInfo, errorProvider1);
-
-                    } 
                 }
-
-                // Versicherungsdaten
-                //if (!bError)
-                //    bError = ucVersichrungsdaten1.ValidateFields();
 
                 if (this._isAbrechnungControlAlone)
                 {
@@ -515,7 +497,8 @@ namespace PMDS.GUI
             cbFernsehBefr.Enabled = !ReadOnly;
             cbPensionTeilAntrag.Enabled = !ReadOnly;
             cbTelBefr.Enabled = !ReadOnly;
-           // Klient.AbwesenheitenHändischBerech = !ReadOnly;
+            txtKliNr.Enabled = !ReadOnly;
+            // Klient.AbwesenheitenHändischBerech = !ReadOnly;
             dtPensTeilAntrag.ReadOnly = ReadOnly;
             btnAddPflStufe.Enabled = !ReadOnly;
             btnDelPflStufe.Enabled = !ReadOnly;
@@ -537,8 +520,6 @@ namespace PMDS.GUI
                 frmPflegestufe frm = new frmPflegestufe();
                 DialogResult res = frm.ShowDialog();
 
-                //Neu nach 23.05.2007 MDA
-                //Wenn eine neue Pflegestufe definiert wurde, dann ValueLists des Grids akltualisieren
                 if (frm.NEUE_PFLEGESTUFE)
                 {
                     gridPatPflegestufen.BeginUpdate();
@@ -575,8 +556,6 @@ namespace PMDS.GUI
                 frm.PFLEGESTUFE_ROW = CurrentPatientPflegestufeRow;
                 DialogResult res = frm.ShowDialog();
 
-                //Neu nach 23.05.2007 MDA
-                //Wenn eine neue Pflegestufe definiert wurde, dann ValueLists des Grids akltualisieren
                 if (frm.NEUE_PFLEGESTUFE)
                 {
                     gridPatPflegestufen.BeginUpdate();
@@ -605,10 +584,8 @@ namespace PMDS.GUI
 
             if (rows != null)
             {
-                //
-                //Sicherheitfrage
-                DialogResult res = KlientGuiAction.DelDialogResult(rows.Length);
 
+                DialogResult res = KlientGuiAction.DelDialogResult(rows.Length);
                 if (res == DialogResult.Yes)
                 {
                     foreach (DataRow r in rows)
@@ -618,15 +595,7 @@ namespace PMDS.GUI
                     return true;
                 }
             }
-
             return false;
-        }
-
-        private void HideOrShowControls()
-        {
-            //lblAufnahmedatum.Visible = Klient.Aufenthalt != null;
-            //dtpAufnahmedatum.Visible = Klient.Aufenthalt != null;
-            //ultraGroupBox2.Visible = Klient.Aufenthalt != null;
         }
 
         protected void OnValueChanged(object sender, EventArgs args)
@@ -674,15 +643,15 @@ namespace PMDS.GUI
             if (_valueChangeEnabled && (ValueChanged != null))
                 ValueChanged(sender, e);
         }
-        public void setControlsAktivDisable2(bool bOn)
+
+        public async Task<bool> setControlsAktivDisable2(bool bOn)
         {
             if (this._isMainSystem)
             {
-                PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn);
-                PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBox9, bOn);
-                PMDS.GUI.BaseControls.historie.OnOffControls(this.ucVersichrungsdaten12.ultraGroupBoxVersicherungsdaten, bOn);
-
-                PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn);
+                PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn).ConfigureAwait(false);
+                PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBox9, bOn).ConfigureAwait(false);
+                PMDS.GUI.BaseControls.historie.OnOffControls(this.ucVersichrungsdaten12.ultraGroupBoxVersicherungsdaten, bOn).ConfigureAwait(false);
+                PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn).ConfigureAwait(false);
 
                 if (PMDS.Global.ENV.HasRight(PMDS.Global.UserRights.KlientenAktStammdatenAendern))
                 {
@@ -699,6 +668,7 @@ namespace PMDS.GUI
                     btnUpdatePaPflegestufen.Visible = !bOn;
                 }
             }
+            return true;
         }
 
         private void btnAddPflStufe_Click(object sender, EventArgs e)
@@ -767,6 +737,11 @@ namespace PMDS.GUI
             {
                 this.Cursor = Cursors.Default;
             }
+        }
+
+        private void ucVersichrungsdaten12_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

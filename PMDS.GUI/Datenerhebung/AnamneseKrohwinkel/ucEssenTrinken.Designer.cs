@@ -46,6 +46,7 @@
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
@@ -97,6 +98,7 @@
             Infragistics.Win.ValueListItem valueListItem32 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
@@ -104,8 +106,6 @@
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox16 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -123,6 +123,7 @@
             this.txtSpeisenGetraenke = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.ultraLabel53 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.baseLabel2 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraGroupBox14 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.ultraLabel123 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraLabel122 = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -144,6 +145,7 @@
             this.opNotwendigkeitEsssenTrinken = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.ultraLabel44 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraLabel45 = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.ultraLabel46 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraLabel47 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraLabel48 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
@@ -151,8 +153,6 @@
             this.ucAnamnesePDX1 = new PMDS.GUI.ucAnamnesePDX();
             this.tabLuft = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
-            this.baseLabel2 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.ultraLabel46 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tabPagePersoenlicheDaten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox16)).BeginInit();
             this.ultraGroupBox16.SuspendLayout();
@@ -183,8 +183,9 @@
             // 
             // tabPagePersoenlicheDaten
             // 
+            this.tabPagePersoenlicheDaten.AutoScroll = true;
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox16);
-            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
             this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(962, 566);
             // 
@@ -208,7 +209,7 @@
             this.ultraGroupBox16.Controls.Add(this.ultraLabel53);
             this.ultraGroupBox16.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox16.Name = "ultraGroupBox16";
-            this.ultraGroupBox16.Size = new System.Drawing.Size(952, 557);
+            this.ultraGroupBox16.Size = new System.Drawing.Size(952, 530);
             this.ultraGroupBox16.TabIndex = 113;
             this.ultraGroupBox16.Text = "Ressourcen, Wünsche, Gewohnheiten";
             // 
@@ -403,11 +404,23 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.AutoScroll = true;
             this.ultraTabPageControl1.Controls.Add(this.baseLabel2);
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox14);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(962, 566);
+            // 
+            // baseLabel2
+            // 
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            appearance16.FontData.SizeInPoints = 8F;
+            this.baseLabel2.Appearance = appearance16;
+            this.baseLabel2.Location = new System.Drawing.Point(22, 545);
+            this.baseLabel2.Name = "baseLabel2";
+            this.baseLabel2.Size = new System.Drawing.Size(340, 18);
+            this.baseLabel2.TabIndex = 138;
+            this.baseLabel2.Text = "A = Anleitung, TÜ = Teilübernahme, vÜ = Vollübernahme";
             // 
             // ultraGroupBox14
             // 
@@ -790,6 +803,18 @@
             this.ultraLabel45.TabIndex = 96;
             this.ultraLabel45.Text = "Mundgerechtes Zubereiten der Nahrung";
             // 
+            // ultraLabel46
+            // 
+            appearance38.BackColor = System.Drawing.Color.Transparent;
+            appearance38.FontData.SizeInPoints = 8F;
+            this.ultraLabel46.Appearance = appearance38;
+            this.ultraLabel46.AutoSize = true;
+            this.ultraLabel46.Location = new System.Drawing.Point(15, 131);
+            this.ultraLabel46.Name = "ultraLabel46";
+            this.ultraLabel46.Size = new System.Drawing.Size(90, 14);
+            this.ultraLabel46.TabIndex = 95;
+            this.ultraLabel46.Text = "Isst sehr langsam";
+            // 
             // ultraLabel47
             // 
             appearance39.BackColor = System.Drawing.Color.Transparent;
@@ -816,6 +841,7 @@
             // 
             // ultraTabPageControl2
             // 
+            this.ultraTabPageControl2.AutoScroll = true;
             this.ultraTabPageControl2.Controls.Add(this.grpPDX);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
@@ -886,33 +912,11 @@
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
             this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(962, 566);
             // 
-            // baseLabel2
-            // 
-            appearance16.BackColor = System.Drawing.Color.Transparent;
-            appearance16.FontData.SizeInPoints = 8F;
-            this.baseLabel2.Appearance = appearance16;
-            this.baseLabel2.Location = new System.Drawing.Point(22, 545);
-            this.baseLabel2.Name = "baseLabel2";
-            this.baseLabel2.Size = new System.Drawing.Size(340, 18);
-            this.baseLabel2.TabIndex = 138;
-            this.baseLabel2.Text = "A = Anleitung, TÜ = Teilübernahme, vÜ = Vollübernahme";
-            // 
-            // ultraLabel46
-            // 
-            appearance38.BackColor = System.Drawing.Color.Transparent;
-            appearance38.FontData.SizeInPoints = 8F;
-            this.ultraLabel46.Appearance = appearance38;
-            this.ultraLabel46.AutoSize = true;
-            this.ultraLabel46.Location = new System.Drawing.Point(15, 131);
-            this.ultraLabel46.Name = "ultraLabel46";
-            this.ultraLabel46.Size = new System.Drawing.Size(90, 14);
-            this.ultraLabel46.TabIndex = 95;
-            this.ultraLabel46.Text = "Isst sehr langsam";
-            // 
             // ucEssenTrinken
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.tabLuft);
             this.Name = "ucEssenTrinken";
             this.Size = new System.Drawing.Size(966, 592);

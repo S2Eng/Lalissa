@@ -112,12 +112,33 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ultraToolTipManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="appearance1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMzSURBVFhH1ZdLSytBEIX9I/7N+IivRAkqxERQNChIQkCJ
+        CxEUsghBJCQ7XQguXBgRF4KCQgxoEOv2V3QPfec6l8l4H1hwmM7UOacr3dXJzEg45ubmRg1qBs8GvT8E
+        vPActdNEhyHtG8hfwr6dJjoMiWpVMDU1JWNjY5JKpRIBLR7OD287TXQYUh/yzMyMbG5uysnJiZyeniYC
+        WjzwsgX07TTRYUgvVF0sFuXh4UG+Go+Pj+plV+LFThMdkCYmJqRcLluLrwdeeH6fAiYnJ2V7e1s+Pj6s
+        xdcCLzxjF0DTLCwsSLvdlre3N3l/f08EtJ1OR71sI8YrwEBmZ2cRyNLSkiwvLycCWt8LbztNdECyZBVS
+        +fT0dCKg9SYfvgDA3o2Pj/tnWYExjQVCkygXjd13H8MXUK1W5eDgQHK5XDAR12w2K7VaTcHYz8FFg9b3
+        MohfANXv7u7KYDDQTm61WsHPKrnj42M9JYCx+7Zw4BJo8fBWIn4BLGGz2VQj4ubmJiiA3Pn5uc2IjrlH
+        Dg5cF3i4HN52muiABJl9LBQKcnV1Jff391KpVLSxyHHd2NiQ29tbBWM/BxcNWjy8/hmuBxBmMhmZn5//
+        pQn5zN6Dz3Jo0IZywzdhOp3WPQx3Op+5/7scWv++wfArsLKyImtra/rZn4jx6uqqInyfKxq0iVeAZiqV
+        Svp3+vr6KoeHh0ETcuWI9Xo9BWM/BxcNWjxcDm87TXRAgszTDA8ULu7u7gIjuvri4sJmRMf+KYDrAg+8
+        yOFtp4kOSM5oa2tLnp6e9DwfHR0FBXDlfPf7fQVjPwcXDVo8XA5vO010QLJk3T/2mMcqOjq81+vr64rw
+        fbho0H7/U+C+kfuh8XOfjQFct2KJVwBhPp+Xy8tLbaqdnZ2ffu04ZtfX1wrGfg4uGrR4eEXEL4CubjQa
+        tpdFut1u0Ezkzs7ObEZ07J8CuC7wcDm87TTRAQkye8hfLY9WBI9WrgBy9Xpd7xOMuUcODlwCLR4uh7ed
+        JjoMSV9MHPb29vRYLS4uBkvJ3vJbz38+YOwaEQ5cNGh9L4NYLybBqxmgepYw1Ew6YYInolivZv/95fQf
+        vp6PjPwA0+VzgmFzjxwAAAAASUVORK5CYII=
+</value>
+  </data>
+  <metadata name="ultraToolTipManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>172, 17</value>
   </metadata>
 </root>

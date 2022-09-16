@@ -113,7 +113,8 @@ namespace PMDS.Calc.UI.Admin
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucKostenträger));
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo6 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Kostenträger entfernen", Infragistics.Win.ToolTipImage.Default, "Entfernen", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
@@ -121,7 +122,7 @@ namespace PMDS.Calc.UI.Admin
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Kostentraeger", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FIBUKonto");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FIBUKonto", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Name");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Vorname");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Anrede");
@@ -160,8 +161,8 @@ namespace PMDS.Calc.UI.Admin
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Tabelle nach Excel exportieren", Infragistics.Win.ToolTipImage.Default, "ExportE xcel", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Kostenträger hinzufügen", Infragistics.Win.ToolTipImage.Default, "Hinzufügen", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("PatientKostentraeger", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatient");
@@ -179,7 +180,6 @@ namespace PMDS.Calc.UI.Admin
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn39 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RechnungTyp");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatientIstZahler");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn41 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RechnungsdruckTyp");
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
@@ -190,12 +190,13 @@ namespace PMDS.Calc.UI.Admin
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.ValueList valueList1 = new Infragistics.Win.ValueList(954439811);
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Hinzufügen", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.ValueList valueList1 = new Infragistics.Win.ValueList(954439811);
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Hinzufügen", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Entfernen", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
             this.lblKostentraeger = new QS2.Desktop.ControlManagment.BaseLabel();
             this.btnDel = new QS2.Desktop.ControlManagment.BaseButton();
@@ -264,7 +265,7 @@ namespace PMDS.Calc.UI.Admin
             this.lblKostentraeger.Name = "lblKostentraeger";
             this.lblKostentraeger.Size = new System.Drawing.Size(34, 16);
             this.lblKostentraeger.TabIndex = 6;
-            this.lblKostentraeger.Text = "Filter:";
+            this.lblKostentraeger.Text = "Filter";
             // 
             // btnDel
             // 
@@ -275,7 +276,7 @@ namespace PMDS.Calc.UI.Admin
             this.btnDel.AutoWorkLayout = false;
             this.btnDel.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDel.IsStandardControl = false;
-            this.btnDel.Location = new System.Drawing.Point(336, 3);
+            this.btnDel.Location = new System.Drawing.Point(336, 9);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(24, 24);
             this.btnDel.TabIndex = 6;
@@ -286,7 +287,7 @@ namespace PMDS.Calc.UI.Admin
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(44, 6);
+            this.tbSearch.Location = new System.Drawing.Point(65, 6);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(261, 21);
             this.tbSearch.TabIndex = 1;
@@ -311,7 +312,7 @@ namespace PMDS.Calc.UI.Admin
             this.pnlSerch.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSerch.Location = new System.Drawing.Point(0, 0);
             this.pnlSerch.Name = "pnlSerch";
-            this.pnlSerch.Size = new System.Drawing.Size(941, 31);
+            this.pnlSerch.Size = new System.Drawing.Size(1252, 31);
             this.pnlSerch.TabIndex = 15;
             // 
             // cboGridKostenträger1
@@ -325,7 +326,7 @@ namespace PMDS.Calc.UI.Admin
             // lblKonto
             // 
             this.lblKonto.AutoSize = true;
-            this.lblKonto.Location = new System.Drawing.Point(311, 9);
+            this.lblKonto.Location = new System.Drawing.Point(371, 9);
             this.lblKonto.Name = "lblKonto";
             this.lblKonto.Size = new System.Drawing.Size(66, 14);
             this.lblKonto.TabIndex = 152;
@@ -333,7 +334,7 @@ namespace PMDS.Calc.UI.Admin
             // 
             // txtKonto
             // 
-            this.txtKonto.Location = new System.Drawing.Point(383, 6);
+            this.txtKonto.Location = new System.Drawing.Point(463, 6);
             this.txtKonto.Name = "txtKonto";
             this.txtKonto.Size = new System.Drawing.Size(155, 21);
             this.txtKonto.TabIndex = 151;
@@ -341,14 +342,16 @@ namespace PMDS.Calc.UI.Admin
             // 
             // cbPatbezK
             // 
-            appearance18.BorderColor = System.Drawing.Color.Black;
-            this.cbPatbezK.Appearance = appearance18;
+            appearance19.BorderColor = System.Drawing.Color.Black;
+            appearance19.FontData.Name = "Segoe UI";
+            appearance19.FontData.SizeInPoints = 10F;
+            this.cbPatbezK.Appearance = appearance19;
             this.cbPatbezK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(220)))));
             this.cbPatbezK.BackColorInternal = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(220)))));
             this.cbPatbezK.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-            this.cbPatbezK.Location = new System.Drawing.Point(142, 4);
+            this.cbPatbezK.Location = new System.Drawing.Point(187, 4);
             this.cbPatbezK.Name = "cbPatbezK";
-            this.cbPatbezK.Size = new System.Drawing.Size(117, 29);
+            this.cbPatbezK.Size = new System.Drawing.Size(140, 36);
             this.cbPatbezK.TabIndex = 3;
             this.cbPatbezK.Text = "Klientenbezogene Kostenträger";
             this.cbPatbezK.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
@@ -356,11 +359,14 @@ namespace PMDS.Calc.UI.Admin
             // 
             // cbAlgemein
             // 
+            appearance17.FontData.Name = "Segoe UI";
+            appearance17.FontData.SizeInPoints = 10F;
+            this.cbAlgemein.Appearance = appearance17;
             this.cbAlgemein.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbAlgemein.BackColorInternal = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cbAlgemein.Location = new System.Drawing.Point(42, 4);
+            this.cbAlgemein.Location = new System.Drawing.Point(67, 4);
             this.cbAlgemein.Name = "cbAlgemein";
-            this.cbAlgemein.Size = new System.Drawing.Size(95, 29);
+            this.cbAlgemein.Size = new System.Drawing.Size(111, 36);
             this.cbAlgemein.TabIndex = 2;
             this.cbAlgemein.Text = "Allgemeine Kostenträger";
             this.cbAlgemein.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
@@ -373,7 +379,7 @@ namespace PMDS.Calc.UI.Admin
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTop.Location = new System.Drawing.Point(0, 31);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(941, 594);
+            this.panelTop.Size = new System.Drawing.Size(1252, 594);
             this.panelTop.TabIndex = 16;
             // 
             // splitContainer1
@@ -391,8 +397,8 @@ namespace PMDS.Calc.UI.Admin
             // 
             this.splitContainer1.Panel2.Controls.Add(this.basePanel2);
             this.splitContainer1.Panel2.Controls.Add(this.basePanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(941, 594);
-            this.splitContainer1.SplitterDistance = 701;
+            this.splitContainer1.Size = new System.Drawing.Size(1252, 594);
+            this.splitContainer1.SplitterDistance = 932;
             this.splitContainer1.TabIndex = 95;
             // 
             // panelGrid
@@ -400,9 +406,9 @@ namespace PMDS.Calc.UI.Admin
             this.panelGrid.Controls.Add(this.pnlKostentraegerArt);
             this.panelGrid.Controls.Add(this.dgMain);
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGrid.Location = new System.Drawing.Point(0, 37);
+            this.panelGrid.Location = new System.Drawing.Point(0, 48);
             this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(701, 557);
+            this.panelGrid.Size = new System.Drawing.Size(932, 546);
             this.panelGrid.TabIndex = 97;
             // 
             // pnlKostentraegerArt
@@ -487,9 +493,9 @@ namespace PMDS.Calc.UI.Admin
             ultraGridColumn7.Header.VisiblePosition = 6;
             ultraGridColumn8.Header.Editor = null;
             ultraGridColumn8.Header.VisiblePosition = 7;
+            ultraGridColumn9.Header.Caption = "eMail";
             ultraGridColumn9.Header.Editor = null;
             ultraGridColumn9.Header.VisiblePosition = 8;
-            ultraGridColumn9.Hidden = true;
             ultraGridColumn10.Header.Caption = "Rechnungsempfänger";
             ultraGridColumn10.Header.Editor = null;
             ultraGridColumn10.Header.VisiblePosition = 9;
@@ -624,7 +630,7 @@ namespace PMDS.Calc.UI.Admin
             this.dgMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgMain.Location = new System.Drawing.Point(0, 0);
             this.dgMain.Name = "dgMain";
-            this.dgMain.Size = new System.Drawing.Size(701, 557);
+            this.dgMain.Size = new System.Drawing.Size(932, 546);
             this.dgMain.TabIndex = 7;
             this.dgMain.UpdateMode = Infragistics.Win.UltraWinGrid.UpdateMode.OnUpdate;
             this.dgMain.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.dgMain_InitializeLayout_1);
@@ -654,7 +660,7 @@ namespace PMDS.Calc.UI.Admin
             this.panelObenAuswahl.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelObenAuswahl.Location = new System.Drawing.Point(0, 0);
             this.panelObenAuswahl.Name = "panelObenAuswahl";
-            this.panelObenAuswahl.Size = new System.Drawing.Size(701, 37);
+            this.panelObenAuswahl.Size = new System.Drawing.Size(932, 48);
             this.panelObenAuswahl.TabIndex = 95;
             // 
             // panelButtonsOben
@@ -666,16 +672,16 @@ namespace PMDS.Calc.UI.Admin
             this.panelButtonsOben.Controls.Add(this.btnDel);
             this.panelButtonsOben.Controls.Add(this.btnAddTrKt);
             this.panelButtonsOben.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelButtonsOben.Location = new System.Drawing.Point(304, 0);
+            this.panelButtonsOben.Location = new System.Drawing.Point(536, 0);
             this.panelButtonsOben.Name = "panelButtonsOben";
-            this.panelButtonsOben.Size = new System.Drawing.Size(397, 37);
+            this.panelButtonsOben.Size = new System.Drawing.Size(396, 48);
             this.panelButtonsOben.TabIndex = 95;
             // 
             // btnKostPrüfenDB
             // 
-            this.btnKostPrüfenDB.Location = new System.Drawing.Point(57, 3);
+            this.btnKostPrüfenDB.Location = new System.Drawing.Point(48, 9);
             this.btnKostPrüfenDB.Name = "btnKostPrüfenDB";
-            this.btnKostPrüfenDB.Size = new System.Drawing.Size(65, 22);
+            this.btnKostPrüfenDB.Size = new System.Drawing.Size(74, 24);
             this.btnKostPrüfenDB.TabIndex = 97;
             this.btnKostPrüfenDB.Text = "Prüfen";
             this.btnKostPrüfenDB.Click += new System.EventHandler(this.btnKostPrüfenDB_Click);
@@ -683,7 +689,7 @@ namespace PMDS.Calc.UI.Admin
             // ucKlinikDropDown1
             // 
             this.ucKlinikDropDown1.BackColor = System.Drawing.Color.Silver;
-            this.ucKlinikDropDown1.Location = new System.Drawing.Point(9, 8);
+            this.ucKlinikDropDown1.Location = new System.Drawing.Point(9, 14);
             this.ucKlinikDropDown1.Name = "ucKlinikDropDown1";
             this.ucKlinikDropDown1.Size = new System.Drawing.Size(33, 20);
             this.ucKlinikDropDown1.TabIndex = 162;
@@ -697,7 +703,7 @@ namespace PMDS.Calc.UI.Admin
             this.btnExportExcel.Appearance = appearance15;
             this.btnExportExcel.AutoWorkLayout = false;
             this.btnExportExcel.IsStandardControl = false;
-            this.btnExportExcel.Location = new System.Drawing.Point(364, 3);
+            this.btnExportExcel.Location = new System.Drawing.Point(364, 9);
             this.btnExportExcel.Name = "btnExportExcel";
             this.btnExportExcel.Size = new System.Drawing.Size(24, 24);
             this.btnExportExcel.TabIndex = 161;
@@ -715,7 +721,7 @@ namespace PMDS.Calc.UI.Admin
             appearance16.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.btnKostentraeger.Appearance = appearance16;
             this.btnKostentraeger.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-            this.btnKostentraeger.Location = new System.Drawing.Point(128, 3);
+            this.btnKostentraeger.Location = new System.Drawing.Point(128, 9);
             this.btnKostentraeger.Name = "btnKostentraeger";
             this.btnKostentraeger.PopupItemKey = "pnlKostentraegerArt";
             this.btnKostentraeger.PopupItemProvider = this.ultraPopupControlContainer1;
@@ -740,7 +746,7 @@ namespace PMDS.Calc.UI.Admin
             this.btnAddTrKt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddTrKt.AutoWorkLayout = false;
             this.btnAddTrKt.IsStandardControl = false;
-            this.btnAddTrKt.Location = new System.Drawing.Point(219, 3);
+            this.btnAddTrKt.Location = new System.Drawing.Point(218, 9);
             this.btnAddTrKt.Name = "btnAddTrKt";
             this.btnAddTrKt.Size = new System.Drawing.Size(140, 24);
             this.btnAddTrKt.TabIndex = 5;
@@ -750,14 +756,16 @@ namespace PMDS.Calc.UI.Admin
             // 
             // cbTransferKt
             // 
-            appearance17.BorderColor = System.Drawing.Color.Black;
-            this.cbTransferKt.Appearance = appearance17;
+            appearance18.BorderColor = System.Drawing.Color.Black;
+            appearance18.FontData.Name = "Segoe UI";
+            appearance18.FontData.SizeInPoints = 10F;
+            this.cbTransferKt.Appearance = appearance18;
             this.cbTransferKt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(231)))), ((int)(((byte)(147)))));
             this.cbTransferKt.BackColorInternal = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(231)))), ((int)(((byte)(147)))));
             this.cbTransferKt.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-            this.cbTransferKt.Location = new System.Drawing.Point(265, 4);
+            this.cbTransferKt.Location = new System.Drawing.Point(335, 4);
             this.cbTransferKt.Name = "cbTransferKt";
-            this.cbTransferKt.Size = new System.Drawing.Size(91, 29);
+            this.cbTransferKt.Size = new System.Drawing.Size(106, 36);
             this.cbTransferKt.TabIndex = 4;
             this.cbTransferKt.Text = "Transfer Kostenträger";
             this.cbTransferKt.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
@@ -767,9 +775,9 @@ namespace PMDS.Calc.UI.Admin
             // 
             this.basePanel2.Controls.Add(this.dgKlienten);
             this.basePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.basePanel2.Location = new System.Drawing.Point(0, 37);
+            this.basePanel2.Location = new System.Drawing.Point(0, 48);
             this.basePanel2.Name = "basePanel2";
-            this.basePanel2.Size = new System.Drawing.Size(236, 557);
+            this.basePanel2.Size = new System.Drawing.Size(316, 546);
             this.basePanel2.TabIndex = 13;
             // 
             // dgKlienten
@@ -777,11 +785,11 @@ namespace PMDS.Calc.UI.Admin
             this.dgKlienten.AutoWork = true;
             this.dgKlienten.DataMember = "PatientKostentraeger";
             this.dgKlienten.DataSource = this.dsPatientKostentraeger1;
-            appearance19.BackColor = System.Drawing.Color.White;
-            appearance19.BackColor2 = System.Drawing.Color.WhiteSmoke;
-            appearance19.BorderColor = System.Drawing.Color.Black;
-            appearance19.FontData.SizeInPoints = 10F;
-            this.dgKlienten.DisplayLayout.Appearance = appearance19;
+            appearance20.BackColor = System.Drawing.Color.White;
+            appearance20.BackColor2 = System.Drawing.Color.WhiteSmoke;
+            appearance20.BorderColor = System.Drawing.Color.Black;
+            appearance20.FontData.SizeInPoints = 10F;
+            this.dgKlienten.DisplayLayout.Appearance = appearance20;
             ultraGridColumn26.Header.Editor = null;
             ultraGridColumn26.Header.VisiblePosition = 0;
             ultraGridColumn26.Hidden = true;
@@ -850,57 +858,57 @@ namespace PMDS.Calc.UI.Admin
             this.dgKlienten.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.dgKlienten.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.dgKlienten.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            appearance20.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance20.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance20.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance20.BorderColor = System.Drawing.SystemColors.Window;
-            this.dgKlienten.DisplayLayout.GroupByBox.Appearance = appearance20;
-            appearance21.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.dgKlienten.DisplayLayout.GroupByBox.BandLabelAppearance = appearance21;
+            appearance21.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance21.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance21.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance21.BorderColor = System.Drawing.SystemColors.Window;
+            this.dgKlienten.DisplayLayout.GroupByBox.Appearance = appearance21;
+            appearance22.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.dgKlienten.DisplayLayout.GroupByBox.BandLabelAppearance = appearance22;
             this.dgKlienten.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.dgKlienten.DisplayLayout.GroupByBox.Prompt = "Einen Spaltenkopf hier hereinziehen, um zu gruppieren.";
-            appearance22.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance22.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance22.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance22.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.dgKlienten.DisplayLayout.GroupByBox.PromptAppearance = appearance22;
+            appearance23.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance23.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance23.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance23.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.dgKlienten.DisplayLayout.GroupByBox.PromptAppearance = appearance23;
             this.dgKlienten.DisplayLayout.MaxColScrollRegions = 1;
             this.dgKlienten.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance23.BackColor = System.Drawing.SystemColors.Window;
-            appearance23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgKlienten.DisplayLayout.Override.ActiveCellAppearance = appearance23;
-            appearance24.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance24.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgKlienten.DisplayLayout.Override.ActiveRowAppearance = appearance24;
+            appearance24.BackColor = System.Drawing.SystemColors.Window;
+            appearance24.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgKlienten.DisplayLayout.Override.ActiveCellAppearance = appearance24;
+            appearance25.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance25.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgKlienten.DisplayLayout.Override.ActiveRowAppearance = appearance25;
             this.dgKlienten.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Solid;
             this.dgKlienten.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance25.BackColor = System.Drawing.SystemColors.Window;
-            this.dgKlienten.DisplayLayout.Override.CardAreaAppearance = appearance25;
-            appearance26.BackColor = System.Drawing.Color.White;
-            appearance26.BorderColor = System.Drawing.Color.Silver;
-            appearance26.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.dgKlienten.DisplayLayout.Override.CellAppearance = appearance26;
+            appearance26.BackColor = System.Drawing.SystemColors.Window;
+            this.dgKlienten.DisplayLayout.Override.CardAreaAppearance = appearance26;
+            appearance27.BackColor = System.Drawing.Color.White;
+            appearance27.BorderColor = System.Drawing.Color.Silver;
+            appearance27.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.dgKlienten.DisplayLayout.Override.CellAppearance = appearance27;
             this.dgKlienten.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             this.dgKlienten.DisplayLayout.Override.CellPadding = 0;
-            appearance27.BackColor = System.Drawing.SystemColors.Control;
-            appearance27.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance27.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance27.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance27.BorderColor = System.Drawing.SystemColors.Window;
-            this.dgKlienten.DisplayLayout.Override.GroupByRowAppearance = appearance27;
-            appearance28.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance28.TextHAlignAsString = "Left";
-            this.dgKlienten.DisplayLayout.Override.HeaderAppearance = appearance28;
+            appearance28.BackColor = System.Drawing.SystemColors.Control;
+            appearance28.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance28.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance28.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance28.BorderColor = System.Drawing.SystemColors.Window;
+            this.dgKlienten.DisplayLayout.Override.GroupByRowAppearance = appearance28;
+            appearance29.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance29.TextHAlignAsString = "Left";
+            this.dgKlienten.DisplayLayout.Override.HeaderAppearance = appearance29;
             this.dgKlienten.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.dgKlienten.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.Standard;
-            appearance29.BackColor = System.Drawing.SystemColors.Window;
-            appearance29.BorderColor = System.Drawing.Color.Silver;
-            this.dgKlienten.DisplayLayout.Override.RowAppearance = appearance29;
+            appearance30.BackColor = System.Drawing.SystemColors.Window;
+            appearance30.BorderColor = System.Drawing.Color.Silver;
+            this.dgKlienten.DisplayLayout.Override.RowAppearance = appearance30;
             this.dgKlienten.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
             this.dgKlienten.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.dgKlienten.DisplayLayout.Override.SupportDataErrorInfo = Infragistics.Win.UltraWinGrid.SupportDataErrorInfo.CellsOnly;
-            appearance30.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.dgKlienten.DisplayLayout.Override.TemplateAddRowAppearance = appearance30;
+            appearance31.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.dgKlienten.DisplayLayout.Override.TemplateAddRowAppearance = appearance31;
             this.dgKlienten.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.dgKlienten.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.dgKlienten.DisplayLayout.ValueLists.AddRange(new Infragistics.Win.ValueList[] {
@@ -909,7 +917,7 @@ namespace PMDS.Calc.UI.Admin
             this.dgKlienten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgKlienten.Location = new System.Drawing.Point(0, 0);
             this.dgKlienten.Name = "dgKlienten";
-            this.dgKlienten.Size = new System.Drawing.Size(236, 557);
+            this.dgKlienten.Size = new System.Drawing.Size(316, 546);
             this.dgKlienten.TabIndex = 8;
             this.dgKlienten.Text = "ultraGrid1";
             this.dgKlienten.BeforeRowsDeleted += new Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventHandler(this.dgKlienten_BeforeRowsDeleted);
@@ -930,20 +938,20 @@ namespace PMDS.Calc.UI.Admin
             this.basePanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.basePanel1.Location = new System.Drawing.Point(0, 0);
             this.basePanel1.Name = "basePanel1";
-            this.basePanel1.Size = new System.Drawing.Size(236, 37);
+            this.basePanel1.Size = new System.Drawing.Size(316, 48);
             this.basePanel1.TabIndex = 12;
             // 
             // btnAddKlienten
             // 
             this.btnAddKlienten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance31.Image = ((object)(resources.GetObject("appearance31.Image")));
-            appearance31.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance31.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAddKlienten.Appearance = appearance31;
+            appearance32.Image = ((object)(resources.GetObject("appearance32.Image")));
+            appearance32.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance32.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAddKlienten.Appearance = appearance32;
             this.btnAddKlienten.AutoWorkLayout = false;
             this.btnAddKlienten.ImageSize = new System.Drawing.Size(12, 12);
             this.btnAddKlienten.IsStandardControl = false;
-            this.btnAddKlienten.Location = new System.Drawing.Point(154, 5);
+            this.btnAddKlienten.Location = new System.Drawing.Point(227, 10);
             this.btnAddKlienten.Name = "btnAddKlienten";
             this.btnAddKlienten.Size = new System.Drawing.Size(24, 24);
             this.btnAddKlienten.TabIndex = 9;
@@ -954,14 +962,14 @@ namespace PMDS.Calc.UI.Admin
             // btnUpdateKlient
             // 
             this.btnUpdateKlient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance32.Image = ((object)(resources.GetObject("appearance32.Image")));
-            appearance32.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance32.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnUpdateKlient.Appearance = appearance32;
+            appearance33.Image = ((object)(resources.GetObject("appearance33.Image")));
+            appearance33.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance33.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnUpdateKlient.Appearance = appearance33;
             this.btnUpdateKlient.AutoWorkLayout = false;
             this.btnUpdateKlient.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnUpdateKlient.IsStandardControl = false;
-            this.btnUpdateKlient.Location = new System.Drawing.Point(202, 5);
+            this.btnUpdateKlient.Location = new System.Drawing.Point(285, 10);
             this.btnUpdateKlient.Name = "btnUpdateKlient";
             this.btnUpdateKlient.Size = new System.Drawing.Size(24, 24);
             this.btnUpdateKlient.TabIndex = 11;
@@ -972,14 +980,14 @@ namespace PMDS.Calc.UI.Admin
             // btnDelKlienten
             // 
             this.btnDelKlienten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance33.Image = ((object)(resources.GetObject("appearance33.Image")));
-            appearance33.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance33.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDelKlienten.Appearance = appearance33;
+            appearance34.Image = ((object)(resources.GetObject("appearance34.Image")));
+            appearance34.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance34.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDelKlienten.Appearance = appearance34;
             this.btnDelKlienten.AutoWorkLayout = false;
             this.btnDelKlienten.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDelKlienten.IsStandardControl = false;
-            this.btnDelKlienten.Location = new System.Drawing.Point(178, 5);
+            this.btnDelKlienten.Location = new System.Drawing.Point(256, 10);
             this.btnDelKlienten.Name = "btnDelKlienten";
             this.btnDelKlienten.Size = new System.Drawing.Size(24, 24);
             this.btnDelKlienten.TabIndex = 10;
@@ -1002,7 +1010,7 @@ namespace PMDS.Calc.UI.Admin
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.pnlSerch);
             this.Name = "ucKostenträger";
-            this.Size = new System.Drawing.Size(941, 625);
+            this.Size = new System.Drawing.Size(1252, 625);
             ((System.ComponentModel.ISupportInitialize)(this.tbSearch)).EndInit();
             this.pnlSerch.ResumeLayout(false);
             this.pnlSerch.PerformLayout();
@@ -1219,7 +1227,7 @@ namespace PMDS.Calc.UI.Admin
             _KostentraegerChenged = false;
 
             HideOrShowPatienTransferColumns();
-            dgMainSetColumnOrder();
+            //dgMainSetColumnOrder();
         }
 
         public bool ReadOnly
@@ -1310,7 +1318,6 @@ namespace PMDS.Calc.UI.Admin
             {
                 dgMain.DisplayLayout.Bands[0].Columns[_dt.TaschengeldJNColumn.ColumnName].Hidden = true;
             }
-            
             dgMain.DisplayLayout.Bands[0].Columns[_dt.PatientbezogenJNColumn.ColumnName].Hidden = hidePatient;
           
             dgMain.DisplayLayout.Bands[0].Columns[_dt.TransferleistungJNColumn.ColumnName].Hidden = hideTransfer;
@@ -1320,66 +1327,6 @@ namespace PMDS.Calc.UI.Admin
 
             dgMain.Selected.Rows.Clear();
             dgMain.ActiveRow = null;
-        }
-
-        private void dgMainSetColumnOrder()
-        {
-            dgMain.SuspendLayout();
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.FIBUKontoColumn.ColumnName].Header.VisiblePosition = 0;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.NameColumn.ColumnName].Header.VisiblePosition = 1;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.VornameColumn.ColumnName].Header.VisiblePosition = 2;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.AnredeColumn.ColumnName].Header.VisiblePosition = 3;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.StrasseColumn.ColumnName].Header.VisiblePosition = 4;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.PLZColumn.ColumnName].Header.VisiblePosition = 5;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.OrtColumn.ColumnName].Header.VisiblePosition = 6;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.RechnungsanschriftColumn.ColumnName].Header.VisiblePosition = 7;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.RechnungsempfaengerColumn.ColumnName].Header.VisiblePosition = 8;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.IDKostentraegerSubColumn.ColumnName].Header.VisiblePosition = 9;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.UIDNrColumn.ColumnName].Header.VisiblePosition = 10;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.IDKlinikColumn.ColumnName].Header.VisiblePosition = 11;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.SammelabrechnungJNColumn.ColumnName].Header.VisiblePosition = 12;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.GSBGColumn.ColumnName].Header.VisiblePosition = 13;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.ZahlartColumn.ColumnName].Header.VisiblePosition = 14;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.ErlagscheingebuehrJNColumn.ColumnName].Header.VisiblePosition = 15;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.BetragColumn.ColumnName].Header.VisiblePosition = 16;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.BankColumn.ColumnName].Header.VisiblePosition = 17;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.KontonrColumn.ColumnName].Header.VisiblePosition = 18;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.BLZColumn.ColumnName].Header.VisiblePosition = 19;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.TaschengeldJNColumn.ColumnName].Header.VisiblePosition = 20;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.PatientbezogenJNColumn.ColumnName].Header.VisiblePosition = 21;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.TransferleistungJNColumn.ColumnName].Header.VisiblePosition = 22;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.FIBUKontoColumn.ColumnName].Width = 80;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.NameColumn.ColumnName].Width = 200;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.VornameColumn.ColumnName].Width = 80;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.AnredeColumn.ColumnName].Width = 80;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.StrasseColumn.ColumnName].Width = 150;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.PLZColumn.ColumnName].Width = 60;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.OrtColumn.ColumnName].Width = 150;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.RechnungsanschriftColumn.ColumnName].Width = 130;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.RechnungsempfaengerColumn.ColumnName].Width = 300;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.IDKostentraegerSubColumn.ColumnName].Width = 150;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.UIDNrColumn.ColumnName].Width = 150;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.IDKlinikColumn.ColumnName].Width = 120;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.SammelabrechnungJNColumn.ColumnName].Width = 50;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.GSBGColumn.ColumnName].Width = 50;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.ZahlartColumn.ColumnName].Width = 100;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.ErlagscheingebuehrJNColumn.ColumnName].Width = 50;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.BetragColumn.ColumnName].Width = 50;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.BankColumn.ColumnName].Width = 150;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.KontonrColumn.ColumnName].Width = 150;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.BLZColumn.ColumnName].Width = 150;
-
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.TaschengeldJNColumn.ColumnName].Width = 50;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.PatientbezogenJNColumn.ColumnName].Width = 50;
-            dgMain.DisplayLayout.Bands[0].Columns[_dt.TransferleistungJNColumn.ColumnName].Width = 50;
-            dgMain.ResumeLayout();
         }
 
         private bool ValidateField(UltraGridCell cell)
@@ -1395,34 +1342,27 @@ namespace PMDS.Calc.UI.Admin
 
             r.SetColumnError(cell.Column.Index, "");
 
-            //if (this.bKlientenzuordnung)
-            //{
-            //    bool bNoValidatePLZ = true;
-            //}
-            //else
-            //{
-                if (cell.Column.Key == dt.FIBUKontoColumn.ColumnName || cell.Column.Key == dt.NameColumn.ColumnName ||
-                        cell.Column.Key == dt.StrasseColumn.ColumnName || cell.Column.Key == dt.PLZColumn.ColumnName ||
-                        cell.Column.Key == dt.OrtColumn.ColumnName
-                       )
+            if (cell.Column.Key == dt.FIBUKontoColumn.ColumnName || cell.Column.Key == dt.NameColumn.ColumnName ||
+                    cell.Column.Key == dt.StrasseColumn.ColumnName || cell.Column.Key == dt.PLZColumn.ColumnName ||
+                    cell.Column.Key == dt.OrtColumn.ColumnName
+                    )
+            {
+                GuiUtil.ValidateField(dgMain, cell.Text.Trim().Length > 0,
+                                        QS2.Desktop.ControlManagment.ControlManagment.getRes("Kostenträger") + " " + cell.Row.Cells["Name"].Value + " - " + cell.Column.Header.Caption.Trim() + ": " + ENV.String("GUI.E_NO_TEXT"), ref bError, false, null);
+                if (bError)
+                    r.SetColumnError(cell.Column.Index, ENV.String("GUI.E_NO_TEXT"));
+
+                if (!bError && cell.Column.Key == dt.FIBUKontoColumn.ColumnName && ENV.ForceUniqueFiBu)  //Fibu Konto muss eindeutig sein, wenn ForceUniqueFiBu gesetzt ist (=Standard)
                 {
-                    GuiUtil.ValidateField(dgMain, cell.Text.Trim().Length > 0,
-                                            QS2.Desktop.ControlManagment.ControlManagment.getRes("Kostenträger") + " " + cell.Row.Cells["Name"].Value + " - " + cell.Column.Header.Caption.Trim() + ": " + ENV.String("GUI.E_NO_TEXT"), ref bError, false, null);
+                    Guid id = (Guid)cell.Row.Cells[dt.IDColumn.ColumnName].Value;
+                    dsKostentraeger.KostentraegerRow[] kRows = (dsKostentraeger.KostentraegerRow[])dt.Select("ID <> '" + id.ToString() + "' and FIBUKonto = '" + cell.Text.Trim() + "'");
+
+                    string msg = QS2.Desktop.ControlManagment.ControlManagment.getRes("Konto (FIBU): ") + cell.Text.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes(" existiert bereits. Bitte ändern.");
+                    GuiUtil.ValidateField(dgMain, kRows.Length == 0, msg, ref bError, false, null);
                     if (bError)
-                        r.SetColumnError(cell.Column.Index, ENV.String("GUI.E_NO_TEXT"));
-
-                    if (!bError && cell.Column.Key == dt.FIBUKontoColumn.ColumnName && ENV.ForceUniqueFiBu)  //Fibu Konto muss eindeutig sein, wenn ForceUniqueFiBu gesetzt ist (=Standard)
-                    {
-                        Guid id = (Guid)cell.Row.Cells[dt.IDColumn.ColumnName].Value;
-                        dsKostentraeger.KostentraegerRow[] kRows = (dsKostentraeger.KostentraegerRow[])dt.Select("ID <> '" + id.ToString() + "' and FIBUKonto = '" + cell.Text.Trim() + "'");
-
-                        string msg = QS2.Desktop.ControlManagment.ControlManagment.getRes("Konto (FIBU): ") + cell.Text.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes(" existiert bereits. Bitte ändern.");
-                        GuiUtil.ValidateField(dgMain, kRows.Length == 0, msg, ref bError, false, null);
-                        if (bError)
-                            r.SetColumnError(cell.Column.Index, msg);
-                    }
+                        r.SetColumnError(cell.Column.Index, msg);
                 }
-            //}
+            }
 
             if (!ForPatientExclusive && !cbAlgemein.Checked && cbPatbezK.Checked && !cbTransferKt.Checked && cell.Column.Key == dt.PatientbezogenJNColumn.ColumnName)
             {
@@ -1435,7 +1375,6 @@ namespace PMDS.Calc.UI.Admin
                 dgMain.ActiveCell = cell;
                 dgMain.PerformAction(UltraGridAction.EnterEditMode);
             }
-
             return !bError;
         }
 
@@ -1487,11 +1426,6 @@ namespace PMDS.Calc.UI.Admin
                     this.dgKlienten.Refresh();
                 }
             }
-
-            //if (sb.Length > 0)
-            //{
-            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Folgende Kostenträger (" + sb.ToString() + ") ist(sind) zu Klienten zugeordenet, Daher kann(können) nicht gelöscht werden.", "Kostenträger löschen", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
         }
 
         public void SelectKostentraeger(Guid idKostentraeger)
@@ -1510,9 +1444,6 @@ namespace PMDS.Calc.UI.Admin
         }
         public void notEditable( )
         {
-            //this.dgMain.DisplayLayout.Override.CellClickAction = CellClickAction.RowSelect;
-            //dgMain.DisplayLayout.Bands[0].Override.CellClickAction = CellClickAction.RowSelect;
-
             panelButtonsOben.Visible = false;
         }
 
@@ -1536,9 +1467,6 @@ namespace PMDS.Calc.UI.Admin
 
         private void AddKostentraeger()
         {
-            //string sNewFIBUKonto = "";
-            //this.getFIBUKontoAuto(ENV.IDKlinik, ref sNewFIBUKonto);
-
             tbSearch.Text = "";
             dsKostentraeger.KostentraegerRow r = null;
             switch ((int)opAuswahl.Value)
@@ -1830,8 +1758,6 @@ namespace PMDS.Calc.UI.Admin
                 dgKlienten.DisplayLayout.ValueLists.Clear();
                 GuiTools.AddKostentraegerArtValueList(dgKlienten, "enumKostentraegerart");
                 PMDS.GUI.UltraGridTools.AddBenutzerValueList(dgKlienten, "IDBenutzer");
-                //UltraGridTools.AddPatientenValueList(dgKlienten, "IDPatient");
-                //PMDS.GUI.UltraGridTools.AddPatientenValueListFromAbteilungen(dgKlienten, "IDPatient", new List<Guid>().ToArray(), true);
                 PMDS.UI.Sitemap.UIFct.getAllPatientsFromAllKliniken(dgKlienten, "IDPatient");
             }
             catch (Exception ex)
@@ -1870,18 +1796,8 @@ namespace PMDS.Calc.UI.Admin
 
             PMDS.GUI.UltraGridTools.SelectFieldInLastRowForEdit(dgKlienten, "IDPatient");
 
-            //frmKostentraegerKlienten frm = new frmKostentraegerKlienten(new Patient().AllEntries(), "TEXT", "ID");
-            //dsPatientStation.PatientDataTable dt = Patient.ByFilter("", false, new List<Guid>().ToArray(), Guid.Empty, false);
-            //DateTime datum = new DateTime(1900, 1, 1);
-            //dsPatientStation.PatientDataTable dt = Patient.GetPatienten("", false, new List<Guid>().ToArray(), Guid.Empty,
-            //    datum, datum, datum, datum);
-
             dsPatientStation.PatientDataTable dt = new dsPatientStation.PatientDataTable();
-
-            //frmKostentraegerKlienten frm = new frmKostentraegerKlienten(new Patient().AllEntries(), "TEXT", "ID");
             frmKostenträgerKlienten frm = new frmKostenträgerKlienten();
-            //frm.Show();
-            //Application.DoEvents();
             if (!ActivRow.IsIDKlinikNull())
             {
                 PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik();
@@ -1907,8 +1823,7 @@ namespace PMDS.Calc.UI.Admin
             DialogResult res = frm.ShowDialog();
 
             if (res == DialogResult.OK)
-            {
-                
+            {                
                 ValidateField(dgKlienten.ActiveRow);
                 _KostentraegerChenged = true;
                 if (ValueChanged != null)
@@ -2037,57 +1952,22 @@ namespace PMDS.Calc.UI.Admin
                 return;
             
             dsPatientKostentraeger.PatientKostentraegerDataTable dt = new dsPatientKostentraeger.PatientKostentraegerDataTable();
-            //ArrayList al2xy = new ArrayList();
             bool del = false;
-            //bool gefundenxy;
             DateTime guetigAb, gueltigBis;
             foreach (UltraGridRow r in ra)
             {
-                //if (r.Cells[dt.AbgerechnetBisColumn.ColumnName].Value == DBNull.Value)
-                //{
-                    //Nur bei TransferLeistung:Ist der Kostenträger zur Tabelle PatientEinkommen zugeordenet?. Wenn ja nicht löschen
-                    if (TransferKostentraegerJN)
-                    {
-                        guetigAb = (DateTime)r.Cells[dt.GueltigAbColumn.ColumnName].Value;
-                        gueltigBis = (DateTime)r.Cells[dt.GueltigBisColumn.ColumnName].Value;
-                        //gefunden = false;
-                        //foreach (dsPatientEinkommen.PatientEinkommenRow pr in pedt)
-                        //{
-                        //    if (pr.IsIDKostentraegerNull() || pr.IDKostentraeger != (Guid)r.Cells["IDKostentraeger"].Value)
-                        //        continue;
-                        //    if (pr.IsGueltigBisNull())
-                        //    {
-                        //        if (pr.GueltigAb >= guetigAb && pr.GueltigAb <= gueltigBis)
-                        //        {
-                        //            gefunden = true;
-                        //            break;
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        if (!((pr.GueltigAb.Date < guetigAb.Date && pr.GueltigBis.Date < guetigAb.Date) || (pr.GueltigAb.Date > gueltigBis.Date && pr.GueltigBis.Date > gueltigBis.Date)))
-                        //        {
-                        //            gefunden = true;
-                        //            break;
-                        //        }
-                        //    }
-                        //}
-                        //if (gefunden)
-                        //    al2.Add(r);
-                        //else
-                        //{
-                            r.Delete(false);
-                            del = true;
-                        //}
-                    }
-                    else
-                    {
-                        r.Delete(false);
-                        del = true;
-                    }
-                //}
-                //else
-                //    al2.Add(r);
+                if (TransferKostentraegerJN)
+                {
+                    guetigAb = (DateTime)r.Cells[dt.GueltigAbColumn.ColumnName].Value;
+                    gueltigBis = (DateTime)r.Cells[dt.GueltigBisColumn.ColumnName].Value;
+                    r.Delete(false);
+                    del = true;
+                }
+                else
+                {
+                    r.Delete(false);
+                    del = true;
+                }
             }
 
             if (del)
@@ -2098,22 +1978,9 @@ namespace PMDS.Calc.UI.Admin
                     ValueChanged(this, null);
             }
 
-            //ra = (UltraGridRow[])al2.ToArray(typeof(UltraGridRow));
-
-            //StringBuilder sb = new StringBuilder();
-            //sb.Append("Für folgende Datensätze sind Abrechnungen erstellt worden oder sind zu Transferleistungen des Klienten zugeordnet, daher können sie nicht gelöscht werden.\n\t");
-
-            //foreach (UltraGridRow r in ra)
-            //{
-            //    sb.Append("- " + r.Cells[dt.IDPatientColumn.ColumnName].Text);
-            //    sb.Append(", " + r.Cells[dt.GueltigAbColumn.ColumnName].Text);
-            //    sb.Append(" - " + r.Cells[dt.GueltigBisColumn.ColumnName].Text);
-            //    sb.Append(", " + r.Cells[dt.enumKostentraegerartColumn.ColumnName].Text + "\n\t");
-            //}
-            //if (ra.Length > 0)
-            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sb.ToString(), "Löschen", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            if (!del) return;
+            if (!del) 
+                return;
+            
             if (dgKlienten.Rows.GetFilteredInNonGroupByRows().Length > 0)
             {
                 dgKlienten.ActiveRow = dgKlienten.Rows.GetFilteredInNonGroupByRows()[0];
@@ -2143,35 +2010,7 @@ namespace PMDS.Calc.UI.Admin
                 PMDS.Global.ENV.HandleException(ex);
             }
         }
-        private void dgMain_CellListSelect(object sender, CellEventArgs e)
-        {
-            try
-            {
-                //if (e.Cell.Column.ToString() == "IDKlinik")
-                //{
-                //    this.dgMainIDKlinikChanged(e.Cell.Row);
-                //}
-            }
-            catch (Exception ex)
-            {
-                PMDS.Global.ENV.HandleException(ex);
-            }
-        }
 
-        private void dgMain_AfterCellUpdate(object sender, CellEventArgs e)
-        {
-            try
-            {
-                //if (e.Cell.Column.ToString() == "IDKlinik")
-                //{
-                //    this.dgMainIDKlinikChanged(e.Cell.Row);
-                //}
-            }
-            catch (Exception ex)
-            {
-                PMDS.Global.ENV.HandleException(ex);
-            }
-        }
         public void dgMainIDKlinikChanged(Infragistics.Win.UltraWinGrid.UltraGridRow GridRow)
         {
             try
@@ -2244,47 +2083,6 @@ namespace PMDS.Calc.UI.Admin
             {
                 InitKlienten();
 
-                //OS 211004: Nur mehr Klient und von - bis für alle Kostenträgerarten anzeigen
-                //Spalte RechnungJN nur für Klientbezogene Kostenträger anzeigen
-                //if (ActivRow != null)
-                //{
-                //    if (dgMain.ActiveRow != null)
-                //    {
-                //        if ((bool )dgMain.ActiveRow.Cells["TransferleistungJN"].Value == true )
-                //        {
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.BetragErrechnetJNColumn.ColumnName].Hidden = true; 
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.BetragColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.VorauszahlungJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.enumKostentraegerartColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungTypColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.IDPatientIstZahlerColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungsdruckTypColumn.ColumnName].Hidden = true;
-                //        }
-                //        else if ((bool)dgMain.ActiveRow.Cells["TransferleistungJN"].Value == false && (bool)dgMain.ActiveRow.Cells["PatientbezogenJN"].Value == false)
-                //        {
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.BetragErrechnetJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.BetragColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.VorauszahlungJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.enumKostentraegerartColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungTypColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.IDPatientIstZahlerColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungsdruckTypColumn.ColumnName].Hidden = true;
-                //        }
-                //        else if ((bool)dgMain.ActiveRow.Cells["PatientbezogenJN"].Value == true)
-                //        {
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.BetragErrechnetJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.BetragColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.VorauszahlungJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.enumKostentraegerartColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungJNColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungTypColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.IDPatientIstZahlerColumn.ColumnName].Hidden = true;
-                //            dgKlienten.DisplayLayout.Bands[0].Columns[_dsPatientKostentraeger.PatientKostentraeger.RechnungsdruckTypColumn.ColumnName].Hidden = true;
-                //        }
-                //    }
-                //}
                 if (AfterRowActivate != null)
                     AfterRowActivate(sender, e);
 
@@ -2315,7 +2113,6 @@ namespace PMDS.Calc.UI.Admin
                     _Filtergesetzt = false;
                     SetFilter();
                 }
-
             }
             catch (Exception ex)
             {
@@ -2357,7 +2154,6 @@ namespace PMDS.Calc.UI.Admin
             AddKostentraeger();
         }
 
-
         private void btnAddKlienten_Click(object sender, EventArgs e)
         {
             if (ActivRow == null) return;
@@ -2373,10 +2169,6 @@ namespace PMDS.Calc.UI.Admin
         {
             if (ReadOnly || ActivRow == null) return;
             UpdateKlientdaten();
-        }
-
-        private void dgMain_BeforeRowActivate(object sender, RowEventArgs e)
-        {
         }
 
         private void dgMain_BeforeSelectChange(object sender, BeforeSelectChangeEventArgs e)
@@ -2481,11 +2273,6 @@ namespace PMDS.Calc.UI.Admin
                 e.Cancel = true;
         }
 
-        private void dgMain_InitializeLayout(object sender, InitializeLayoutEventArgs e)
-        {
-
-        }
-
         private void btnKostPrüfenDB_Click(object sender, EventArgs e)
         {
             try
@@ -2520,10 +2307,72 @@ namespace PMDS.Calc.UI.Admin
 
         private void dgMain_InitializeLayout_1(object sender, InitializeLayoutEventArgs e)
         {
+            dgMain.SuspendLayout();
+            dgMain.DisplayLayout.Bands[0].Columns["FIBUKonto"].Header.VisiblePosition = 0;
+            dgMain.DisplayLayout.Bands[0].Columns["Name"].Header.VisiblePosition = 1;
+            dgMain.DisplayLayout.Bands[0].Columns["Vorname"].Header.VisiblePosition = 2;
+            dgMain.DisplayLayout.Bands[0].Columns["Anrede"].Header.VisiblePosition = 3;
+            dgMain.DisplayLayout.Bands[0].Columns["Strasse"].Header.VisiblePosition = 4;
+            dgMain.DisplayLayout.Bands[0].Columns["PLZ"].Header.VisiblePosition = 5;
+            dgMain.DisplayLayout.Bands[0].Columns["Ort"].Header.VisiblePosition = 6;
+            dgMain.DisplayLayout.Bands[0].Columns["Rechnungsanschrift"].Header.VisiblePosition = 7;
+            dgMain.DisplayLayout.Bands[0].Columns["Rechnungsempfaenger"].Header.VisiblePosition = 8;
+            dgMain.DisplayLayout.Bands[0].Columns["IDKostentraegerSub"].Header.VisiblePosition = 9;
+            dgMain.DisplayLayout.Bands[0].Columns["UIDNr"].Header.VisiblePosition = 10;
+
+            dgMain.DisplayLayout.Bands[0].Columns["IDKlinik"].Header.VisiblePosition = 11;
+
+            dgMain.DisplayLayout.Bands[0].Columns["SammelabrechnungJN"].Header.VisiblePosition = 12;
+            dgMain.DisplayLayout.Bands[0].Columns["GSBG"].Header.VisiblePosition = 13;
+            dgMain.DisplayLayout.Bands[0].Columns["Zahlart"].Header.VisiblePosition = 14;
+            dgMain.DisplayLayout.Bands[0].Columns["ErlagscheingebuehrJN"].Header.VisiblePosition = 15;
+            dgMain.DisplayLayout.Bands[0].Columns["Betrag"].Header.VisiblePosition = 16;
+
+            dgMain.DisplayLayout.Bands[0].Columns["Bank"].Header.VisiblePosition = 17;
+            dgMain.DisplayLayout.Bands[0].Columns["Kontonr"].Header.VisiblePosition = 18;
+            dgMain.DisplayLayout.Bands[0].Columns["BLZ"].Header.VisiblePosition = 19;
+            dgMain.DisplayLayout.Bands[0].Columns["TaschengeldJN"].Header.VisiblePosition = 20;
+
+            dgMain.DisplayLayout.Bands[0].Columns["PatientbezogenJN"].Header.VisiblePosition = 21;
+            dgMain.DisplayLayout.Bands[0].Columns["TransferleistungJN"].Header.VisiblePosition = 22;
+
+            dgMain.DisplayLayout.Bands[0].Columns["FIBUKonto"].Width = 80;
+            dgMain.DisplayLayout.Bands[0].Columns["Name"].Width = 200;
+            dgMain.DisplayLayout.Bands[0].Columns["Vorname"].Width = 80;
+            dgMain.DisplayLayout.Bands[0].Columns["Anrede"].Width = 80;
+            dgMain.DisplayLayout.Bands[0].Columns["Strasse"].Width = 150;
+            dgMain.DisplayLayout.Bands[0].Columns["PLZ"].Width = 60;
+            dgMain.DisplayLayout.Bands[0].Columns["Ort"].Width = 150;
+            dgMain.DisplayLayout.Bands[0].Columns["Rechnungsanschrift"].Width = 130;
+            dgMain.DisplayLayout.Bands[0].Columns["Rechnungsempfaenger"].Width = 300;
+            dgMain.DisplayLayout.Bands[0].Columns["IDKostentraegerSub"].Width = 150;
+            dgMain.DisplayLayout.Bands[0].Columns["UIDNr"].Width = 150;
+
+            dgMain.DisplayLayout.Bands[0].Columns["IDKlinik"].Width = 120;
+
+            dgMain.DisplayLayout.Bands[0].Columns["SammelabrechnungJN"].Width = 50;
+            dgMain.DisplayLayout.Bands[0].Columns["GSBG"].Width = 50;
+            dgMain.DisplayLayout.Bands[0].Columns["Zahlart"].Width = 100;
+            dgMain.DisplayLayout.Bands[0].Columns["ErlagscheingebuehrJN"].Width = 50;
+            dgMain.DisplayLayout.Bands[0].Columns["Betrag"].Width = 50;
+            dgMain.DisplayLayout.Bands[0].Columns["Bank"].Width = 150;
+            dgMain.DisplayLayout.Bands[0].Columns["Kontonr"].Width = 150;
+            dgMain.DisplayLayout.Bands[0].Columns["BLZ"].Width = 150;
+
+            dgMain.DisplayLayout.Bands[0].Columns["TaschengeldJN"].Width = 50;
+            dgMain.DisplayLayout.Bands[0].Columns["PatientbezogenJN"].Width = 50;
+            dgMain.DisplayLayout.Bands[0].Columns["TransferleistungJN"].Width = 50;
+
+            dgMain.DisplayLayout.Bands[0].Columns["Rechnungsanschrift"].Header.Caption = "eMail";
+            dgMain.DisplayLayout.Bands[0].Columns["Rechnungsanschrift"].Hidden = false;
+            dgMain.ResumeLayout();
         }
 
         private void dgMain_VisibleChanged(object sender, EventArgs e)
         {
+            UltraGridLayout ugl = new UltraGridLayout();
+            InitializeLayoutEventArgs en = new InitializeLayoutEventArgs(ugl);
+            dgMain_InitializeLayout_1(sender, en);
         }
     }
 }

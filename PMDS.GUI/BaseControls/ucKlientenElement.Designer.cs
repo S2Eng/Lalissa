@@ -68,7 +68,7 @@
             this.picButtSingle.Size = new System.Drawing.Size(20, 23);
             this.picButtSingle.TabIndex = 38;
             this.picButtSingle.Tag = "";
-            this.picButtSingle.UseAppStyling = false;
+            //this.picButtSingle.UseAppStyling = false;
             this.picButtSingle.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.picButtSingle.Visible = false;
             this.picButtSingle.Click += new System.EventHandler(this.picButtSingle_Click);

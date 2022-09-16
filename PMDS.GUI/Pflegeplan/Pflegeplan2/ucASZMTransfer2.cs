@@ -853,7 +853,7 @@ namespace PMDS.GUI
             }
             else
             {
-                this.dtpStart.Appearance.BackColor = System.Drawing.Color.Transparent;  
+                this.dtpStart.Appearance.ResetBackColor();  
             }
         }
 
@@ -988,6 +988,8 @@ namespace PMDS.GUI
                     _isChanged = true;
                     MarkdtpStart();
                     ucPflegePlanSingleEdit21.MassnahmeOhneZeitbezug = cbMohneZeitbezug.Checked;
+                    cbMohneZeitbezug.Text = (cbMohneZeitbezug.Checked ? "Ohne geplante Zeiten" : "Mit geplanten Zeiten:");
+
                     ShowHideFields();
                     if (ASZMValueChanged != null)
                         ASZMValueChanged(sender, e);

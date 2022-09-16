@@ -13,8 +13,7 @@ Public Class BaseDateTimeEditorWin
 
     Private Sub BaseDateTimeEditorWin_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
         Try
-            Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Me.contextMenuStrip1, Me.IsLoaded, rRes, True, False, Me.DoIDResAuto,
-                                                   DesignMode)
+            Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Me.contextMenuStrip1, Me.IsLoaded, rRes, True, False, Me.DoIDResAuto)
             doBaseElements.SetRightContextMenü(Me)
         Catch ex As Exception
             QS2.core.generic.getExep(ex.ToString(), "")

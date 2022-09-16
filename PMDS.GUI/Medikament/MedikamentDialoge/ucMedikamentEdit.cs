@@ -344,5 +344,10 @@ namespace PMDS.GUI
         {
 
         }
+
+        private void baseLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

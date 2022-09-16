@@ -70,12 +70,10 @@
             Infragistics.Win.ValueListItem valueListItem15 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueList valueList6 = new Infragistics.Win.ValueList(101231296);
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem20 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem21 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem22 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem23 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
@@ -88,7 +86,6 @@
             this.lblLeistungen = new QS2.Desktop.ControlManagment.BaseLabel();
             this.sqlManange1 = new PMDS.Global.db.ERSystem.sqlManange(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnClose = new QS2.Desktop.ControlManagment.BaseButton();
             this.lblBenutzer = new QS2.Desktop.ControlManagment.BaseLabel();
             this.cboBenutzer = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.txtAnmerkung = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -99,7 +96,6 @@
             this.lblBis = new QS2.Desktop.ControlManagment.BaseLabel();
             this.grpSuche = new Infragistics.Win.Misc.UltraGroupBox();
             this.lblPatient = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.lblResetSearch = new QS2.Desktop.ControlManagment.BaseLabel();
             this.contPatientUserPicker1 = new PMDS.GUI.PatientUserPicker.contPatientUserPicker();
             this.lblFound = new QS2.Desktop.ControlManagment.BaseLabel();
             ((System.ComponentModel.ISupportInitialize)(this.gridArztabrechnung)).BeginInit();
@@ -337,7 +333,7 @@
             this.btnSearch.Appearance = appearance7;
             this.btnSearch.AutoWorkLayout = false;
             this.btnSearch.IsStandardControl = false;
-            this.btnSearch.Location = new System.Drawing.Point(916, 55);
+            this.btnSearch.Location = new System.Drawing.Point(925, 55);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(56, 37);
@@ -369,26 +365,10 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance12.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance12.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnClose.Appearance = appearance12;
-            this.btnClose.AutoWorkLayout = false;
-            this.btnClose.IsStandardControl = false;
-            this.btnClose.Location = new System.Drawing.Point(1036, 588);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(51, 36);
-            this.btnClose.TabIndex = 1000;
-            this.btnClose.Tag = "";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // lblBenutzer
             // 
             this.lblBenutzer.AutoSize = true;
-            this.lblBenutzer.Location = new System.Drawing.Point(11, 57);
+            this.lblBenutzer.Location = new System.Drawing.Point(11, 59);
             this.lblBenutzer.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblBenutzer.Name = "lblBenutzer";
             this.lblBenutzer.Size = new System.Drawing.Size(60, 17);
@@ -412,7 +392,7 @@
             valueListItem21,
             valueListItem22,
             valueListItem23});
-            this.cboBenutzer.Location = new System.Drawing.Point(103, 53);
+            this.cboBenutzer.Location = new System.Drawing.Point(103, 55);
             this.cboBenutzer.Margin = new System.Windows.Forms.Padding(5);
             this.cboBenutzer.Name = "cboBenutzer";
             this.cboBenutzer.Size = new System.Drawing.Size(381, 24);
@@ -426,7 +406,7 @@
             this.txtAnmerkung.Margin = new System.Windows.Forms.Padding(5);
             this.txtAnmerkung.MaxLength = 200;
             this.txtAnmerkung.Name = "txtAnmerkung";
-            this.txtAnmerkung.Size = new System.Drawing.Size(388, 25);
+            this.txtAnmerkung.Size = new System.Drawing.Size(389, 25);
             this.txtAnmerkung.TabIndex = 3;
             // 
             // lblAnmerkung
@@ -441,16 +421,16 @@
             // 
             // dteVon
             // 
-            appearance11.BackColor = System.Drawing.Color.White;
-            appearance11.BackColor2 = System.Drawing.Color.White;
-            appearance11.BackColorDisabled = System.Drawing.Color.White;
-            appearance11.BackColorDisabled2 = System.Drawing.Color.White;
-            appearance11.ForeColor = System.Drawing.Color.Black;
-            appearance11.ForeColorDisabled = System.Drawing.Color.Black;
-            this.dteVon.Appearance = appearance11;
+            appearance10.BackColor = System.Drawing.Color.White;
+            appearance10.BackColor2 = System.Drawing.Color.White;
+            appearance10.BackColorDisabled = System.Drawing.Color.White;
+            appearance10.BackColorDisabled2 = System.Drawing.Color.White;
+            appearance10.ForeColor = System.Drawing.Color.Black;
+            appearance10.ForeColorDisabled = System.Drawing.Color.Black;
+            this.dteVon.Appearance = appearance10;
             this.dteVon.BackColor = System.Drawing.Color.White;
             this.dteVon.FormatString = "";
-            this.dteVon.Location = new System.Drawing.Point(592, 53);
+            this.dteVon.Location = new System.Drawing.Point(592, 55);
             this.dteVon.Margin = new System.Windows.Forms.Padding(5);
             this.dteVon.MaskInput = "dd.mm.yyyy";
             this.dteVon.Name = "dteVon";
@@ -462,7 +442,7 @@
             // lblVon
             // 
             this.lblVon.AutoSize = true;
-            this.lblVon.Location = new System.Drawing.Point(500, 57);
+            this.lblVon.Location = new System.Drawing.Point(500, 59);
             this.lblVon.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblVon.Name = "lblVon";
             this.lblVon.Size = new System.Drawing.Size(29, 17);
@@ -471,16 +451,16 @@
             // 
             // dteBis
             // 
-            appearance10.BackColor = System.Drawing.Color.White;
-            appearance10.BackColor2 = System.Drawing.Color.White;
-            appearance10.BackColorDisabled = System.Drawing.Color.White;
-            appearance10.BackColorDisabled2 = System.Drawing.Color.White;
-            appearance10.ForeColor = System.Drawing.Color.Black;
-            appearance10.ForeColorDisabled = System.Drawing.Color.Black;
-            this.dteBis.Appearance = appearance10;
+            appearance9.BackColor = System.Drawing.Color.White;
+            appearance9.BackColor2 = System.Drawing.Color.White;
+            appearance9.BackColorDisabled = System.Drawing.Color.White;
+            appearance9.BackColorDisabled2 = System.Drawing.Color.White;
+            appearance9.ForeColor = System.Drawing.Color.Black;
+            appearance9.ForeColorDisabled = System.Drawing.Color.Black;
+            this.dteBis.Appearance = appearance9;
             this.dteBis.BackColor = System.Drawing.Color.White;
             this.dteBis.FormatString = "";
-            this.dteBis.Location = new System.Drawing.Point(764, 53);
+            this.dteBis.Location = new System.Drawing.Point(764, 55);
             this.dteBis.Margin = new System.Windows.Forms.Padding(5);
             this.dteBis.MaskInput = "dd.mm.yyyy";
             this.dteBis.Name = "dteBis";
@@ -492,7 +472,7 @@
             // lblBis
             // 
             this.lblBis.AutoSize = true;
-            this.lblBis.Location = new System.Drawing.Point(728, 57);
+            this.lblBis.Location = new System.Drawing.Point(728, 59);
             this.lblBis.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblBis.Name = "lblBis";
             this.lblBis.Size = new System.Drawing.Size(24, 17);
@@ -503,7 +483,6 @@
             // 
             this.grpSuche.Controls.Add(this.lblPatient);
             this.grpSuche.Controls.Add(this.btnSearch);
-            this.grpSuche.Controls.Add(this.lblResetSearch);
             this.grpSuche.Controls.Add(this.txtLeistungen);
             this.grpSuche.Controls.Add(this.lblBis);
             this.grpSuche.Controls.Add(this.lblLeistungen);
@@ -532,21 +511,6 @@
             this.lblPatient.TabIndex = 2155;
             this.lblPatient.Text = "Patient";
             // 
-            // lblResetSearch
-            // 
-            appearance9.FontData.SizeInPoints = 7.5F;
-            appearance9.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblResetSearch.Appearance = appearance9;
-            this.lblResetSearch.AutoSize = true;
-            this.lblResetSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblResetSearch.Location = new System.Drawing.Point(915, 96);
-            this.lblResetSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblResetSearch.Name = "lblResetSearch";
-            this.lblResetSearch.Size = new System.Drawing.Size(66, 13);
-            this.lblResetSearch.TabIndex = 2153;
-            this.lblResetSearch.Text = "Zurücksetzen";
-            this.lblResetSearch.Click += new System.EventHandler(this.lblResetSearch_Click);
-            // 
             // contPatientUserPicker1
             // 
             this.contPatientUserPicker1.BackColor = System.Drawing.Color.White;
@@ -565,12 +529,12 @@
             this.lblFound.Appearance = appearance8;
             this.lblFound.AutoSize = true;
             this.lblFound.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.lblFound.Location = new System.Drawing.Point(8, 588);
+            this.lblFound.Location = new System.Drawing.Point(8, 594);
             this.lblFound.Margin = new System.Windows.Forms.Padding(4);
             this.lblFound.Name = "lblFound";
-            this.lblFound.Size = new System.Drawing.Size(66, 13);
+            this.lblFound.Size = new System.Drawing.Size(187, 13);
             this.lblFound.TabIndex = 1001;
-            this.lblFound.Text = "Gefunden: 10";
+            this.lblFound.Text = "Bisher wurde keine Suche durchgeführt.";
             // 
             // contArztabrechnungManage
             // 
@@ -579,7 +543,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblFound);
             this.Controls.Add(this.grpSuche);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.gridArztabrechnung);
@@ -615,7 +578,6 @@
         private Global.db.ERSystem.dsKlientenliste dsKlientenliste1;
         private Global.db.ERSystem.sqlManange sqlManange1;
         protected System.Windows.Forms.ErrorProvider errorProvider1;
-        public QS2.Desktop.ControlManagment.BaseButton btnClose;
         public QS2.Desktop.ControlManagment.BaseLabel lblBenutzer;
         private Infragistics.Win.UltraWinEditors.UltraComboEditor cboBenutzer;
         private QS2.Desktop.ControlManagment.BaseTextEditor txtAnmerkung;
@@ -625,9 +587,8 @@
         public QS2.Desktop.ControlManagment.BaseLabel lblVon;
         public QS2.Desktop.ControlManagment.BaseDateTimeEditor dteVon;
         private Infragistics.Win.Misc.UltraGroupBox grpSuche;
-        public QS2.Desktop.ControlManagment.BaseLabel lblResetSearch;
-        private QS2.Desktop.ControlManagment.BaseLabel lblFound;
         public QS2.Desktop.ControlManagment.BaseLabel lblPatient;
         private PatientUserPicker.contPatientUserPicker contPatientUserPicker1;
+        private QS2.Desktop.ControlManagment.BaseLabel lblFound;
     }
 }

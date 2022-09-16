@@ -306,6 +306,7 @@ namespace PMDS.BusinessLogic
 			get	{	return DB_ROW.Aufnahmezeitpunkt;	}
 			set	{	DB_ROW.Aufnahmezeitpunkt = value;	}
 		}
+
 		public object Entlassungszeitpunkt
 		{
 			get	

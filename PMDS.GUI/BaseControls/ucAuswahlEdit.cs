@@ -193,10 +193,12 @@ namespace PMDS.GUI
 				string oldGroup = Group;
 
                 this.ucAuswahl1.mainWindow = this;
-				_verwaltung = new EngineVerwaltung(cbGruppe, ucAuswahl1, 
-					null, null, btnUndo, btnSave);
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
+                {
+                    _verwaltung = new EngineVerwaltung(cbGruppe, ucAuswahl1, null, null, btnUndo, btnSave);
+                }
 
-				if ((oldGroup != null) && (oldGroup != ""))
+                if (!String.IsNullOrWhiteSpace(oldGroup))
 					Group = oldGroup;
 			}
 			catch(Exception ex)

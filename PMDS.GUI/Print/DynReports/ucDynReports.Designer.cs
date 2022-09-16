@@ -201,7 +201,6 @@
             this.ultraGridBagLayoutPanelLeft.SetPreferredSize(this.ClickableImages, new System.Drawing.Size(262, 310));
             this.ClickableImages.Size = new System.Drawing.Size(261, 402);
             this.ClickableImages.TabIndex = 14;
-            this.ClickableImages.DoubleClick += new PMDS.GUI.BaseControls.ClickableImagesClickDelegate(this.ClickableImages_DoubleClick);
             this.ClickableImages.Click += new PMDS.GUI.BaseControls.ClickableImagesClickDelegate(this.ClickableImages_Click);
             this.ClickableImages.Load += new System.EventHandler(this.ClickableImages_Load);
             // 

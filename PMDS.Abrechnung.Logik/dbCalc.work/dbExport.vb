@@ -53,6 +53,7 @@ Public Class dbExport
 
         rNew.IDKostSub = Guid.Empty
         rNew.FiBuKostSub = ""
+        rNew.koperiode = ""
         ds.ExportBMD.Rows.Add(rNew)
         Return rNew
     End Function

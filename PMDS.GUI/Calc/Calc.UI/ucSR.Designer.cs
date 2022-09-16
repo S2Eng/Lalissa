@@ -98,9 +98,9 @@
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint5 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSR));
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSR));
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Neu laden", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
@@ -530,7 +530,7 @@
             this.uGridKostKlienten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uGridKostKlienten.Location = new System.Drawing.Point(0, 0);
             this.uGridKostKlienten.Name = "uGridKostKlienten";
-            this.uGridKostKlienten.Size = new System.Drawing.Size(1022, 133);
+            this.uGridKostKlienten.Size = new System.Drawing.Size(1022, 123);
             this.uGridKostKlienten.TabIndex = 147;
             this.uGridKostKlienten.Text = "ultraGrid1";
             this.uGridKostKlienten.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.uGridKostKlienten_BeforeCellActivate);
@@ -597,7 +597,6 @@
             appearance15.BackColor = System.Drawing.Color.Transparent;
             appearance15.FontData.SizeInPoints = 8F;
             appearance15.ForeColor = System.Drawing.Color.Black;
-            appearance15.Image = ((object)(resources.GetObject("appearance15.Image")));
             appearance15.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
             appearance15.ImageHAlign = Infragistics.Win.HAlign.Center;
             appearance15.ImageVAlign = Infragistics.Win.VAlign.Top;
@@ -632,19 +631,18 @@
             this.grpCalcSR.Controls.Add(this.lblMonat);
             this.grpCalcSR.Location = new System.Drawing.Point(305, 5);
             this.grpCalcSR.Name = "grpCalcSR";
-            this.grpCalcSR.Size = new System.Drawing.Size(447, 56);
+            this.grpCalcSR.Size = new System.Drawing.Size(543, 56);
             this.grpCalcSR.TabIndex = 106;
             this.grpCalcSR.Text = "Abrechnen";
             // 
             // butAbrechnen
             // 
-            appearance16.Image = ((object)(resources.GetObject("appearance16.Image")));
             appearance16.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance16.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.butAbrechnen.Appearance = appearance16;
             this.butAbrechnen.AutoWorkLayout = false;
             this.butAbrechnen.IsStandardControl = false;
-            this.butAbrechnen.Location = new System.Drawing.Point(293, 15);
+            this.butAbrechnen.Location = new System.Drawing.Point(392, 14);
             this.butAbrechnen.Name = "butAbrechnen";
             this.butAbrechnen.Size = new System.Drawing.Size(145, 36);
             this.butAbrechnen.TabIndex = 103;
@@ -653,30 +651,30 @@
             // 
             // dtRechDatum
             // 
-            this.dtRechDatum.Location = new System.Drawing.Point(199, 23);
+            this.dtRechDatum.Location = new System.Drawing.Point(288, 23);
             this.dtRechDatum.MaskInput = "";
             this.dtRechDatum.Name = "dtRechDatum";
             this.dtRechDatum.ownFormat = "";
             this.dtRechDatum.ownMaskInput = "";
-            this.dtRechDatum.Size = new System.Drawing.Size(86, 21);
+            this.dtRechDatum.Size = new System.Drawing.Size(98, 21);
             this.dtRechDatum.TabIndex = 104;
             // 
             // lblRechDatum
             // 
-            this.lblRechDatum.Location = new System.Drawing.Point(132, 26);
+            this.lblRechDatum.Location = new System.Drawing.Point(188, 28);
             this.lblRechDatum.Name = "lblRechDatum";
-            this.lblRechDatum.Size = new System.Drawing.Size(70, 15);
+            this.lblRechDatum.Size = new System.Drawing.Size(94, 19);
             this.lblRechDatum.TabIndex = 105;
             this.lblRechDatum.Text = "Rech.Datum";
             // 
             // dtMonat
             // 
-            this.dtMonat.Location = new System.Drawing.Point(47, 23);
+            this.dtMonat.Location = new System.Drawing.Point(78, 23);
             this.dtMonat.MaskInput = "{LOC}mm.yyyy";
             this.dtMonat.Name = "dtMonat";
             this.dtMonat.ownFormat = "";
             this.dtMonat.ownMaskInput = "";
-            this.dtMonat.Size = new System.Drawing.Size(79, 21);
+            this.dtMonat.Size = new System.Drawing.Size(104, 21);
             this.dtMonat.TabIndex = 101;
             this.dtMonat.ValueChanged += new System.EventHandler(this.dtMonat_ValueChanged);
             this.dtMonat.AfterCloseUp += new System.EventHandler(this.dtMonat_AfterCloseUp);
@@ -685,7 +683,7 @@
             // 
             this.lblMonat.Location = new System.Drawing.Point(10, 26);
             this.lblMonat.Name = "lblMonat";
-            this.lblMonat.Size = new System.Drawing.Size(40, 15);
+            this.lblMonat.Size = new System.Drawing.Size(62, 18);
             this.lblMonat.TabIndex = 58;
             this.lblMonat.Text = "Monat";
             // 
@@ -732,7 +730,7 @@
             this.btnRefresh.IsStandardControl = false;
             this.btnRefresh.Location = new System.Drawing.Point(274, 30);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(25, 22);
+            this.btnRefresh.Size = new System.Drawing.Size(25, 25);
             this.btnRefresh.TabIndex = 102;
             this.btnRefresh.Text = "Storno";
             ultraToolTipInfo1.ToolTipText = "Neu laden";
@@ -768,9 +766,9 @@
             // 
             this.panel3.Controls.Add(this.uGridKostKlienten);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 16);
+            this.panel3.Location = new System.Drawing.Point(0, 26);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1022, 133);
+            this.panel3.Size = new System.Drawing.Size(1022, 123);
             this.panel3.TabIndex = 150;
             // 
             // panel2
@@ -780,7 +778,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1022, 16);
+            this.panel2.Size = new System.Drawing.Size(1022, 26);
             this.panel2.TabIndex = 149;
             // 
             // panelCalcs

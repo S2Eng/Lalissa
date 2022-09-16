@@ -79,28 +79,11 @@ namespace PMDS.GUI.BaseControls
 
                 this._gridxy = gridTmp;
 
-
 			    dsQuickFilter.QuickFilterDataTable dt = new dsQuickFilter.QuickFilterDataTable();
-                //toolTip1.RemoveAll();
-                      
-                //if (ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht)
-                //{
-                //    dt = _manager.ReadAll(ENV.CurrentIDAbteilung, ENV.IQuickNurAbt);
-                //}
-                //else if (ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Klientanansicht)
-                //{
-                //    Patient pat = new Patient(ENV.CurrentIDPatient);
-                //    dt = _manager.ReadAll(ENV.ABTEILUNG = pat.Aufenthalt.Verlauf.IDAbteilung_Nach, ENV.IQuickNurAbt);
-                //}
-
-                //Patient pat = new Patient(ENV.CurrentIDPatient);
-                //dt = _manager.ReadAll( pat.Aufenthalt.Verlauf.IDAbteilung_Nach, ENV.IQuickNurAbt);
 
                 dt = _manager.ReadAll(ENV.CurrentIDAbteilung, ENV.IDKlinik);
                 
                 int y = pnlMain.Width;
-                //if (dt.Rows.Count == 0 && ENV.IQuickNurAbt)
-                //    dt = _manager.ReadAllNurGesHaus(ENV.IDKlinik);
 
                 this._MainWindow.IDKlinikLast = ENV.IDKlinik;
                 this._MainWindow.IDAbteilungLast = ENV.CurrentIDAbteilung;
@@ -121,19 +104,11 @@ namespace PMDS.GUI.BaseControls
                             b = new  QuickFilterButton();
                             b.Click += new EventHandler(button_Click);
 
-                            b.UseAppStyling = false;
-                            b.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
-                            b.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+                            b.UseAppStyling = true;
 
-                            b.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-                            PMDS.Global.UIGlobal.setAktivDisable(b, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
-                            b.Appearance.BackColor = Color.Transparent;
-                            b.Appearance.ForeColor = Color.Black;
-
+                            PMDS.Global.UIGlobal.setUIButton(b, false);
                             b.initControl();
                             pnlMain.Controls.Add(b);
-                                                        
-                            //PMDS.Global.UIGlobal.setAktivDisable(b, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
                         }
 
                         b.MainWindow = this;
@@ -327,7 +302,7 @@ namespace PMDS.GUI.BaseControls
                             baseButt.contextMenuStrip1.Items.Clear();
                             baseButt.doBaseElements1.runControlManagment(ref baseButt.IDRes, baseButt, baseButt.contextMenuStrip1,
                                                                             ref baseButt.IsLoaded, ref baseButt.rRes, ref doContextMenü,
-                                                                            ref IsStandardControl, ref DoIDResAuto, false);
+                                                                            ref IsStandardControl, ref DoIDResAuto);
 
                             if (r.IsStandard && this.QButtonClicked == null)
                             {
@@ -633,22 +608,19 @@ namespace PMDS.GUI.BaseControls
                 QuickFilterButtonArgs args;
                 args = (QuickFilterButtonArgs)b.Tag;
 
+                b.UseAppStyling = true;
                 if (args.IDQuickFilter == IDQuickFilter)
                 {
-                    b.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-                    PMDS.Global.UIGlobal.setAktiv(b, -1, System.Drawing.Color.White, System.Drawing.Color.Gray, System.Drawing.Color.Gray);
-                    b.HotTrackAppearance.BackColor = System.Drawing.Color.Gray;
-                    //b.Focus();
-                    //b.Appearance.BackColor =  Color.WhiteSmoke;
-                    //b.Appearance.ForeColor = Color.Black; 
+                    PMDS.Global.UIGlobal.setUIButton(b, true);
+                    //b.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
+                    b.HotTrackAppearance.BackColor = ENVCOLOR.hoverBackCol;
                 }
                 else
                 {
-                    b.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-                    PMDS.Global.UIGlobal.setAktivDisable(b, -1, System.Drawing.Color.Black, System.Drawing.Color.Gray, System.Drawing.Color.Transparent, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
-                    b.Appearance.BackColor = Color.Transparent;
-                    b.Appearance.ForeColor = Color.Black;
+                    PMDS.Global.UIGlobal.setUIButton(b, false);
                 }
+                b.HotTrackAppearance.BackColor = ENVCOLOR.hoverBackCol;
+
             }
         }
 

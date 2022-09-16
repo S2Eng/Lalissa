@@ -58,7 +58,7 @@
             this.pnlErhebung.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlErhebung.Location = new System.Drawing.Point(0, 0);
             this.pnlErhebung.Name = "pnlErhebung";
-            this.pnlErhebung.Size = new System.Drawing.Size(1020, 30);
+            this.pnlErhebung.Size = new System.Drawing.Size(1020, 29);
             this.pnlErhebung.TabIndex = 0;
             this.pnlErhebung.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlErhebung_Paint);
             // 
@@ -82,23 +82,24 @@
             // 
             // pnlPflegeAnamnese
             // 
+            this.pnlPflegeAnamnese.AutoScroll = true;
             this.pnlPflegeAnamnese.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlPflegeAnamnese.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlPflegeAnamnese.Controls.Add(this.pnlAnamnesePOP);
             this.pnlPflegeAnamnese.Controls.Add(this.pnlAnamneseKrohwinkel);
             this.pnlPflegeAnamnese.Controls.Add(this.pnlAnamneseOrem);
             this.pnlPflegeAnamnese.Controls.Add(this.ucAnamneseBiografie1);
             this.pnlPflegeAnamnese.Controls.Add(this.panelKeinRecht);
+            this.pnlPflegeAnamnese.Dock = System.Windows.Forms.DockStyle.Fill;
             gridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both;
             gridBagConstraint1.Insets.Bottom = 5;
             gridBagConstraint1.Insets.Left = 5;
             gridBagConstraint1.Insets.Right = 5;
             gridBagConstraint1.Insets.Top = 5;
             this.ultraGridBagLayoutPanel1.SetGridBagConstraint(this.pnlPflegeAnamnese, gridBagConstraint1);
-            this.pnlPflegeAnamnese.Location = new System.Drawing.Point(5, 5);
+            this.pnlPflegeAnamnese.Location = new System.Drawing.Point(0, 0);
             this.pnlPflegeAnamnese.Name = "pnlPflegeAnamnese";
             this.ultraGridBagLayoutPanel1.SetPreferredSize(this.pnlPflegeAnamnese, new System.Drawing.Size(1020, 535));
-            this.pnlPflegeAnamnese.Size = new System.Drawing.Size(1010, 525);
+            this.pnlPflegeAnamnese.Size = new System.Drawing.Size(1020, 536);
             this.pnlPflegeAnamnese.TabIndex = 1;
             this.pnlPflegeAnamnese.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlPflegeAnamnese_Paint);
             // 
@@ -132,8 +133,10 @@
             // ucAnamneseBiografie1
             // 
             this.ucAnamneseBiografie1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ucAnamneseBiografie1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ucAnamneseBiografie1.ISTOSAVE = false;
             this.ucAnamneseBiografie1.Location = new System.Drawing.Point(474, 23);
+            this.ucAnamneseBiografie1.Margin = new System.Windows.Forms.Padding(4);
             this.ucAnamneseBiografie1.Modell = PMDS.Global.PflegeModelle.Biografie;
             this.ucAnamneseBiografie1.Name = "ucAnamneseBiografie1";
             this.ucAnamneseBiografie1.ReadOnly = false;
@@ -151,7 +154,7 @@
             this.panelKeinRecht.Controls.Add(this.ultraLabel2);
             this.panelKeinRecht.Location = new System.Drawing.Point(474, 350);
             this.panelKeinRecht.Name = "panelKeinRecht";
-            this.panelKeinRecht.Size = new System.Drawing.Size(300, 120);
+            this.panelKeinRecht.Size = new System.Drawing.Size(312, 133);
             this.panelKeinRecht.TabIndex = 105;
             this.panelKeinRecht.Visible = false;
             // 
@@ -174,9 +177,9 @@
             this.ultraGridBagLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGridBagLayoutPanel1.ExpandToFitHeight = true;
             this.ultraGridBagLayoutPanel1.ExpandToFitWidth = true;
-            this.ultraGridBagLayoutPanel1.Location = new System.Drawing.Point(0, 30);
+            this.ultraGridBagLayoutPanel1.Location = new System.Drawing.Point(0, 29);
             this.ultraGridBagLayoutPanel1.Name = "ultraGridBagLayoutPanel1";
-            this.ultraGridBagLayoutPanel1.Size = new System.Drawing.Size(1020, 535);
+            this.ultraGridBagLayoutPanel1.Size = new System.Drawing.Size(1020, 536);
             this.ultraGridBagLayoutPanel1.TabIndex = 2;
             // 
             // ucDatenErhebung

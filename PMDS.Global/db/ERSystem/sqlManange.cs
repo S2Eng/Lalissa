@@ -207,7 +207,7 @@ namespace PMDS.Global.db.ERSystem
                     }
                 }
 
-                sqlTxt = sqlTxt.Replace("vKlientenliste", "dbo.s2_GetKlientenliste");
+                sqlTxt = sqlTxt.Replace("vKlientenliste", "s2_GetKlientenliste");
                 cmd.CommandText = sqlTxt + " " + sqlPar;
                 da.Fill(ds.vKlientenliste);
 

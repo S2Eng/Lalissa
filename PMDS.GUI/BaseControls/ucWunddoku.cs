@@ -1119,53 +1119,53 @@ namespace PMDS.GUI.BaseControls
         //----------------------------------------------------------------------------
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            dsWunde.WundePosRow r = dsWunde1.WundePos.NewWundePosRow();
-            r.ID = Guid.NewGuid();
-            r.IDWundeKopf = dsWunde1.WundeKopf[0].ID;
-            r.Erhebungszeitpunkt = DateTime.Now;
-            r.DatumErstellt = r.Erhebungszeitpunkt; //os 190417: hinzugefügt
-            r.IDBenutzer_Erstellt = ENV.USERID;     //os 190417: hinzugefügt
-            r.NekroseJN = false;
-            r.EpithelisierungProz = 0;
-            r.FistelnTaschen = "nein";              //-IntVers=NoTranslation
-            r.GranulationProz = 0;
-            r.B = 0;
-            r.H = 0;
-            r.Heilungstext = "";
-            r.Infektionszeichen = "keine";
-            r.L = 0;
-            r.Schmerzintensitaet = 0;
-            r.Schmerzqualitaet = "";
-            r.Sekretionsmenge = "0";
-            r.Wundbelag = "keiner";
-            r.WundeFreiliegendeStrukturen = "keine";
-            r.Wundgeruch = "";
-            r.WundrandGeroetet = false;
-            r.WundrandHyperkeratose = false;
-            r.WundrandIntakt = true;
-            r.WundrandMazeriert = false;
-            r.WundrandOedemoesWulstig = "nein";
-            r.WundrandUnterminiertZerklueftet = "nein";
-            r.Wundsekretion = "keine";
-            r.Wundumgebung = "";
-            r.WundumgebungEkzemOedemRoetung = "nein";
-            r.WundumgebungIntakt = true;
-            r.WundumgebungSpannungsblase = false;
-            r.WundumgebungTrockenPergamentartig = "trocken";
-            r.Wundzustand = "";
-            r.Wundheilungsphase = "";
-            r.Wundgrund = "";
 
-            dsWunde1.WundePos.AddWundePosRow(r);
-            //dsWunde1.WundePos.Rows.InsertAt(r, 12); 
-
+            PMDS.DB.PMDSBusiness PMDSBusiness1 = new PMDS.DB.PMDSBusiness();
+            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+            {
+                dsWunde.WundePosRow r = dsWunde1.WundePos.NewWundePosRow();
+                r.ID = Guid.NewGuid();
+                r.IDWundeKopf = dsWunde1.WundeKopf[0].ID;
+                r.Erhebungszeitpunkt = DateTime.Now;
+                r.DatumErstellt = r.Erhebungszeitpunkt; //os 190417: hinzugefügt
+                r.IDBenutzer_Erstellt = ENV.USERID;     //os 190417: hinzugefügt
+                r.NekroseJN = false;
+                r.EpithelisierungProz = 0;
+                r.FistelnTaschen = PMDSBusiness1.GetAuswahllisteByReihenfolge(db, "WFT", 0).Bezeichnung;            
+                r.GranulationProz = 0;
+                r.B = 0;
+                r.H = 0;
+                r.Heilungstext = "";
+                r.Infektionszeichen = PMDSBusiness1.GetAuswahllisteByReihenfolge(db, "INZ", 0).Bezeichnung;
+                r.L = 0;
+                r.Schmerzintensitaet = 0;
+                r.Schmerzqualitaet = "";
+                r.Sekretionsmenge = PMDSBusiness1.GetAuswahllisteByReihenfolge(db, "WSM", 1).Bezeichnung;
+                r.Wundbelag = PMDSBusiness1.GetAuswahllisteByReihenfolge(db, "WBL", 1).Bezeichnung;
+                r.WundeFreiliegendeStrukturen = PMDSBusiness1.GetAuswahllisteByReihenfolge(db, "WFS", 0).Bezeichnung;
+                r.Wundgeruch = PMDSBusiness1.GetAuswahllisteByReihenfolge(db, "WGR", 1).Bezeichnung;
+                r.WundrandGeroetet = false;
+                r.WundrandHyperkeratose = false;
+                r.WundrandIntakt = true;
+                r.WundrandMazeriert = false;
+                r.WundrandOedemoesWulstig = PMDSBusiness1.GetAuswahllisteByReihenfolge(db, "WOM", 0).Bezeichnung;
+                r.WundrandUnterminiertZerklueftet = PMDSBusiness1.GetAuswahllisteByReihenfolge(db, "WUZ", 0).Bezeichnung;
+                r.Wundsekretion = PMDSBusiness1.GetAuswahllisteByReihenfolge(db, "WSK", 0).Bezeichnung;
+                r.Wundumgebung = "";
+                r.WundumgebungEkzemOedemRoetung = PMDSBusiness1.GetAuswahllisteByReihenfolge(db, "WEO", 0).Bezeichnung;
+                r.WundumgebungIntakt = true;
+                r.WundumgebungSpannungsblase = false;
+                r.WundumgebungTrockenPergamentartig = PMDSBusiness1.GetAuswahllisteByReihenfolge(db, "WTP", 0).Bezeichnung;
+                r.Wundzustand = "";
+                r.Wundheilungsphase = "";
+                r.Wundgrund = "";
+                dsWunde1.WundePos.AddWundePosRow(r);
+            }
             SignalValueChanged();
 
             this.dgWundverlauf.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToLastItem;
-
             this.dgWundverlauf.DisplayLayout.Bands[0].SortedColumns.Clear();
             this.dgWundverlauf.DisplayLayout.Bands[0].SortedColumns.Add("Erhebungszeitpunkt", true);
-
         }
 
         private void cbWundart_ValueChanged(object sender, EventArgs e)

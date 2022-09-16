@@ -466,6 +466,8 @@ namespace PMDS.GUI
             this.dtpZeitpunkt.ownMaskInput = "";
             this.dtpZeitpunkt.Size = new System.Drawing.Size(171, 24);
             this.dtpZeitpunkt.TabIndex = 0;
+            this.dtpZeitpunkt.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.dtpZeitpunkt.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.dtpZeitpunkt.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblDauer
@@ -613,6 +615,7 @@ namespace PMDS.GUI
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelBeschreibungTXTEditor.BackColor = System.Drawing.Color.Transparent;
+            this.panelBeschreibungTXTEditor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelBeschreibungTXTEditor.Location = new System.Drawing.Point(9, 215);
             this.panelBeschreibungTXTEditor.Margin = new System.Windows.Forms.Padding(4);
             this.panelBeschreibungTXTEditor.Name = "panelBeschreibungTXTEditor";
@@ -694,10 +697,12 @@ namespace PMDS.GUI
             this.cbImportant.ExactMatch = false;
             this.cbImportant.Group = "BER";
             this.cbImportant.ID_PEP = -1;
+            this.cbImportant.IgnoreUnterdruecken = true;
             this.cbImportant.Location = new System.Drawing.Point(95, 37);
             this.cbImportant.Margin = new System.Windows.Forms.Padding(4);
             this.cbImportant.Name = "cbImportant";
             this.cbImportant.PflichtJN = false;
+            this.cbImportant.SelectDistinct = false;
             this.cbImportant.ShowAddButton = true;
             this.cbImportant.Size = new System.Drawing.Size(76, 24);
             this.cbImportant.sys = false;
@@ -959,15 +964,6 @@ namespace PMDS.GUI
                     this.auswahlGruppeComboMulti1.setSelected(lstBerufsgruppeSelected, lstInt, lstString);
 
                     this.frmPatientVermerkMainWindow.lstPatienteSelected2.Clear();
-                    //System.Collections.Generic.List<string> lstSelStrPatients = qs2.core.generic.readStrVariables(rPflegeEintragEntwurf.lstSelectedPatient.Trim());
-                    //foreach (string sIDPatient in lstSelStrPatients)
-                    //{
-                    //    PMDS.Global.UIGlobal.eSelectedNodes newSelPatientNode = new UIGlobal.eSelectedNodes();
-                    //    newSelPatientNode.IDKlient = new System.Guid(sIDPatient.Trim());
-                    //    PMDS.db.Entities.Aufenthalt rAufenthaltAct = PMDSBusiness2.getAktuellerAufenthaltPatient(newSelPatientNode.IDKlient.Value, false, db);
-                    //    newSelPatientNode.IDAufenthalt = rAufenthaltAct.ID;
-                    //    this.frmPatientVermerkMainWindow.lstPatienteSelected2.Add(newSelPatientNode);
-                    //}
 
                     PMDS.Global.UIGlobal UIGlobal1 = new UIGlobal();
                     UIGlobal1.removeDoubledPatients(this.frmPatientVermerkMainWindow.lstPatienteSelected2);
@@ -976,9 +972,6 @@ namespace PMDS.GUI
 
             this.textControlOriginal.Text = "";
             this.textControChanges.Text = "";
-
-            //doEditor1.appendPlainTxt()
-            //    Me.doEditor.appendPlainTxt(txtInfoAddTop, frmNewPlan.ContTxtEditor1.textControl1)
 
             this.ucZusatzWert1.IDAufenthalt = Eintrag.IDAufenthalt;
             this.ucZusatzWert1.IZusatz = (IZusatz)Eintrag;
@@ -1001,10 +994,8 @@ namespace PMDS.GUI
                 this.dtpZeitpunkt.Value = DateTime.Now;
             }
 
-
             this.chkDone.Checked = Eintrag.DurchgefuehrtJN;
             this.txtIstDauer.Value = Eintrag.IstDauer.ToString();
-
 
             byte[] b = null;
             if (!this._IsSchnellrückmeldung)
@@ -1144,14 +1135,6 @@ namespace PMDS.GUI
                 rPflegeEintragEntwurf.DatumErstellt = this.Eintrag.DatumErstellt;
                 rPflegeEintragEntwurf.Zeitpunkt = this.Eintrag.Zeitpunkt;
                 rPflegeEintragEntwurf.LogInNameFrei = this.Eintrag.LogInNameFrei;
-                //if (this.Eintrag.IDBefund != Guid.Empty)
-                //{
-                //    rPflegeEintragEntwurf.IDBefund = this.Eintrag.IDBefund;
-                //}
-                //else
-                //{
-                //    rPflegeEintragEntwurf.IDBefund = null;
-                //}
                 rPflegeEintragEntwurf.PflegeplanText = this.Eintrag.PflegeplanText;
                 rPflegeEintragEntwurf.Text = this.Eintrag.Text;
                 rPflegeEintragEntwurf.TextRtf = this.Eintrag.TextRtf;
@@ -1194,11 +1177,6 @@ namespace PMDS.GUI
                 }
 
                 rPflegeEintragEntwurf.lstSelectedPatient = "";
-                //foreach (PMDS.Global.UIGlobal.eSelectedNodes SelectedNodes in lstPatienteSelected2)
-                //{
-                //    rPflegeEintragEntwurf.lstSelectedPatient += SelectedNodes.IDKlient.ToString() + ";";
-                //}
-
             }
             catch (Exception ex)
             {
@@ -1237,7 +1215,6 @@ namespace PMDS.GUI
             bool bIsDekurs = Eintrag.IsDekurs();
             bool bIsEinzelverordnung = Eintrag.IsUnexpMassnahme() && _Medikation;
 
-            //dtpZeitpunkt.Enabled	= !bIsPflegeplan;
             chkDone.Enabled = bIsMassnahme || bIsTermin || bIsMedi;
             chkDone.Visible = chkDone.Enabled;
             cbMassnahme.Enabled = bIsUnexpMassnahme || bIsEinzelverordnung;
@@ -1247,13 +1224,8 @@ namespace PMDS.GUI
             this.lblZusatzwerte.Visible = bIsMassnahme || bIsUnexpMassnahme || bIsTermin;
             ucZusatzWert1.Visible = bIsMassnahme || bIsUnexpMassnahme || bIsTermin;
             chkAlsDekursKopieren.Visible = (bIsMassnahme || (bIsUnexpMassnahme && !_Medikation) || bIsTermin || bIsMedi) && ENV.UseDekursKopieren;     //Nicht bei: Einzelverordnung und bei Dekursen
-//            chkAlsDekursKopieren.Visible = (bIsUnexpMassnahme || bIsTermin) && ENV.UseDekursKopieren;             //Nur bei Ungeplanten Maßnahmen und Terminen
             lblWichtigFür.Visible = bIsMassnahme || bIsUnexpMassnahme || bIsTermin || bIsMedi || bIsDekurs || bIsEinzelverordnung;   //WichtigFür
             lblAnmerkung.Visible = bIsMassnahme || bIsUnexpMassnahme || bIsTermin || bIsMedi || bIsDekurs || bIsEinzelverordnung;       //Anmerkung
-
-
-            
-
 
             chkGegenzeichnen.Visible = true;
             if (bIsEinzelverordnung)
@@ -1266,20 +1238,9 @@ namespace PMDS.GUI
                     cbImportant.ID = (Guid)IDBerufsstandDefault;
             }
 
-            //if (this._IsDekurs)
-            //{
-            //    chkGegenzeichnen.Top = this.cbImportant.Top + 24;
-            //}
-            //else
-            //{
-            //    chkGegenzeichnen.Top = this.lblAnmerkung.Top;
-            //}
-
             if (!ENV.AppRunning)
                 return;
         }
-
-
 
         public void UpdateDATA()
         {
@@ -1425,7 +1386,7 @@ namespace PMDS.GUI
             }
             else
             {
-                txtIstDauer.Appearance.BackColor = ENVCOLOR.EINTRAG_CURRENT_BACK_COLOR;
+                txtIstDauer.Appearance.ResetBackColor();
             }
 
             if (!TXTBESCHREIBUNG_OPTIONAL)
@@ -1435,7 +1396,7 @@ namespace PMDS.GUI
             }
             else
             {
-                txtBeschreibungLine.Appearance.BackColor = ENVCOLOR.EINTRAG_CURRENT_BACK_COLOR;
+                txtBeschreibungLine.Appearance.ResetBackColor();
             }
         }
         public void ClearErrorProvider()

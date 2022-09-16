@@ -472,37 +472,14 @@ namespace PMDS.GUI
 		//----------------------------------------------------------------------------
 		public void UpdateGUI()
 		{
-
 				ucEntlassung1.Aufenthalt = Aufenthalt;
-
-
 				dgVersetzung.DataSource = AufenthaltVerlauf.VersetzungByAufenthalt(Aufenthalt.ID);
 				dgUrlaube.DataSource = UrlaubVerlauf.ByAufenthalt(Aufenthalt.ID);
-
 		}
-
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// GUI nach Daten übertragen
-		/// </summary>
-		//----------------------------------------------------------------------------
-		public void UpdateDATA()
-		{
-
-				ucEntlassung1.UpdateDATA();
-		}
-
 
         private void ultraTabControl1_SelectedTabChanged(object sender, Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventArgs e)
         {
 
         }
-
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Zusatzwerte speichern
-		/// </summary>
-		//----------------------------------------------------------------------------
-
 	}
 }

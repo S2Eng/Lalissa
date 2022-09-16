@@ -344,6 +344,7 @@
             // 
             // tabPagePersoenlicheDaten
             // 
+            this.tabPagePersoenlicheDaten.AutoScroll = true;
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox1);
             this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
@@ -384,7 +385,7 @@
             this.ultraGroupBox1.Controls.Add(this.ultraLabel1);
             this.ultraGroupBox1.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(952, 434);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(952, 530);
             this.ultraGroupBox1.TabIndex = 119;
             this.ultraGroupBox1.Click += new System.EventHandler(this.ultraGroupBox1_Click);
             // 
@@ -797,6 +798,7 @@
             // 
             // ultraTabPageControl2
             // 
+            this.ultraTabPageControl2.AutoScroll = true;
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBox2);
             this.ultraTabPageControl2.Controls.Add(this.lblVorname);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
@@ -847,7 +849,7 @@
             this.ultraGroupBox2.Controls.Add(this.ultraLabel31);
             this.ultraGroupBox2.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox2.Name = "ultraGroupBox2";
-            this.ultraGroupBox2.Size = new System.Drawing.Size(952, 391);
+            this.ultraGroupBox2.Size = new System.Drawing.Size(952, 530);
             this.ultraGroupBox2.TabIndex = 121;
             // 
             // tbUrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachts
@@ -1358,8 +1360,9 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.AutoScroll = true;
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox4);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(962, 566);
             // 
@@ -1408,7 +1411,7 @@
             this.ultraGroupBox4.Controls.Add(this.ultraLabel59);
             this.ultraGroupBox4.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox4.Name = "ultraGroupBox4";
-            this.ultraGroupBox4.Size = new System.Drawing.Size(952, 507);
+            this.ultraGroupBox4.Size = new System.Drawing.Size(952, 530);
             this.ultraGroupBox4.TabIndex = 124;
             // 
             // baseLabel7
@@ -1995,8 +1998,9 @@
             // 
             // ultraTabPageControl3
             // 
+            this.ultraTabPageControl3.AutoScroll = true;
             this.ultraTabPageControl3.Controls.Add(this.ultraGroupBox7);
-            this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
             this.ultraTabPageControl3.Size = new System.Drawing.Size(962, 566);
             // 
@@ -2010,7 +2014,7 @@
             this.ultraGroupBox7.Controls.Add(this.ucAnamnesePDX1);
             this.ultraGroupBox7.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox7.Name = "ultraGroupBox7";
-            this.ultraGroupBox7.Size = new System.Drawing.Size(946, 389);
+            this.ultraGroupBox7.Size = new System.Drawing.Size(952, 557);
             this.ultraGroupBox7.TabIndex = 115;
             // 
             // ucAnamnesePDX1
@@ -2018,11 +2022,11 @@
             this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
+            this.ucAnamnesePDX1.Location = new System.Drawing.Point(0, 0);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
             this.ucAnamnesePDX1.ReadOnly = false;
-            this.ucAnamnesePDX1.Size = new System.Drawing.Size(1676, 648);
+            this.ucAnamnesePDX1.Size = new System.Drawing.Size(956, 551);
             this.ucAnamnesePDX1.TabIndex = 0;
             this.ucAnamnesePDX1.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -2079,6 +2083,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.tabAusscheidungen);
             this.Name = "ucAusscheidung";
             this.Size = new System.Drawing.Size(966, 592);

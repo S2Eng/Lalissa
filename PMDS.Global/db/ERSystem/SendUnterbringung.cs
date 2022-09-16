@@ -431,6 +431,17 @@ namespace PMDS.Global.db.ERSystem
             string fileName = ENV.pathConfig + "\\" + "HAGZertifikat.pfx";
             try
             {
+                if (DateTime.Now >= new DateTime(2022, 10, 1))
+                {
+                    try
+                    {
+                        System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Error at using TLS 1.2 in SendUnterbringung.CallService: " + ex.Message);
+                    }
+                }
 
                 BIDS_EDIService.BIDS_EDI_Service wsEDI = new BIDS_EDIService.BIDS_EDI_Service();
                 wsEDI.Url = "https://edi-v1.bewohnervertretung.at/BIDS_EDIService.asmx";
@@ -1075,6 +1086,18 @@ namespace PMDS.Global.db.ERSystem
 
                         try
                         {
+                            if (DateTime.Now >= new DateTime(2022, 10, 1))
+                            {
+                                try
+                                {
+                                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                                }
+                                catch (Exception ex)
+                                {
+                                    throw new Exception("Error at using TLS 1.2 in SendUnterbringung.CSendMeldungHttp: " + ex.Message);
+                                }
+                            }
+
                             var pairs = new List<KeyValuePair<string, string>>
                             {
                                 new KeyValuePair<string, string>("", meldung)

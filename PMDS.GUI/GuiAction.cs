@@ -831,6 +831,7 @@ namespace PMDS.GUI
                 }
 
                 pat.Write();
+                p0.UpdateDataER();  //Daten aus dem Control in die DB per EF übertragen (für die die Datasets nicht erweitert wurden)
                 LastAufnahmePatientID = pat.ID;
 
                 PMDSBusinessUI bUI = new PMDSBusinessUI();
@@ -897,6 +898,7 @@ namespace PMDS.GUI
                     if (iCounter < frmPatientRueckmeldungLine.GetMaxLines())
                     {
                         //if (!r.Status)
+                        //r.RMOptionalJN = true;
                         ar.Add(r);
                         lstInterventionenGuid.Add(r.IDPflegeplan);
                     }
@@ -1071,7 +1073,8 @@ namespace PMDS.GUI
                     frmRücmeldung.SetucPflegeEintrag1auswahlGruppeComboMulti1Visible(false);
                     frmRücmeldung.SetUIÜbergabe(rÜbergabe);
                 }
-
+                frmRücmeldung.BringToFront();
+                
                 ret = frmRücmeldung.ShowDialog();
                 bool abort = frmRücmeldung.GetAbortStatus();
                 if (!abort)

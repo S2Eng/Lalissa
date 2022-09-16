@@ -113,6 +113,16 @@ namespace PMDS.GUI.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LandSteiermark {
+            get {
+                object obj = ResourceManager.GetObject("LandSteiermark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Wichtig {
             get {
                 object obj = ResourceManager.GetObject("Wichtig", resourceCulture);

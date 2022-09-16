@@ -88,7 +88,7 @@ namespace PMDS.GUI
         public ucBenutzer()
         {
             InitializeComponent();
-            if (DesignMode || !ENV.AppRunning)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 return;
             Benutzer = new Benutzer();
             RequiredFields();
@@ -107,17 +107,11 @@ namespace PMDS.GUI
         {
             // Recht notwendig
             ultraTabControl1.Tabs["Rechte"].Visible = true;
-            //if (!ENV.HasRight(UserRights.ManageUserRights))
-            //{
-            //    ultraTabControl1.Tabs["Rechte"].Visible = false;
-            //}
-
             if (!ENV.HasRight(UserRights.PasswordAendern))
             {
                 btnPassword.Visible = false;
             }
         }
-
 
         protected override void Dispose(bool disposing)
         {
@@ -234,7 +228,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(925, 544);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(925, 543);
             // 
             // grpBenutzer
             // 
@@ -285,9 +279,11 @@ namespace PMDS.GUI
             this.cboELGA_AuthorSpeciality.ExactMatch = true;
             this.cboELGA_AuthorSpeciality.Group = "FAR";
             this.cboELGA_AuthorSpeciality.ID_PEP = -1;
+            this.cboELGA_AuthorSpeciality.IgnoreUnterdruecken = true;
             this.cboELGA_AuthorSpeciality.Location = new System.Drawing.Point(90, 290);
             this.cboELGA_AuthorSpeciality.Name = "cboELGA_AuthorSpeciality";
             this.cboELGA_AuthorSpeciality.PflichtJN = false;
+            this.cboELGA_AuthorSpeciality.SelectDistinct = false;
             this.cboELGA_AuthorSpeciality.ShowAddButton = false;
             this.cboELGA_AuthorSpeciality.Size = new System.Drawing.Size(232, 24);
             this.cboELGA_AuthorSpeciality.sys = false;
@@ -463,9 +459,11 @@ namespace PMDS.GUI
             this.cbBerufsstand.ExactMatch = false;
             this.cbBerufsstand.Group = "BER";
             this.cbBerufsstand.ID_PEP = -1;
+            this.cbBerufsstand.IgnoreUnterdruecken = true;
             this.cbBerufsstand.Location = new System.Drawing.Point(90, 111);
             this.cbBerufsstand.Name = "cbBerufsstand";
             this.cbBerufsstand.PflichtJN = false;
+            this.cbBerufsstand.SelectDistinct = false;
             this.cbBerufsstand.ShowAddButton = true;
             this.cbBerufsstand.Size = new System.Drawing.Size(235, 24);
             this.cbBerufsstand.sys = false;
@@ -530,7 +528,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(925, 544);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(925, 543);
             // 
             // ucBenutzerGruppe1
             // 
@@ -543,18 +541,18 @@ namespace PMDS.GUI
             benutzer1.ELGAAutoLogin = false;
             benutzer1.ELGAAutostartSession = false;
             benutzer1.ELGAPatID = "";
-            benutzer1.ELGAPwd = "";
+            benutzer1.ELGAPwd = "lh+mUhExy7i/MSli7hQ3XQ==";
             benutzer1.ELGAPwdLastChange = new System.DateTime(2021, 2, 28, 15, 38, 34, 573);
             benutzer1.ELGAUser = "";
             benutzer1.ELGAValidTrough = new System.DateTime(2019, 6, 19, 13, 53, 19, 11);
-            benutzer1.ID = new System.Guid("4233ec14-b25f-4f7d-8d0b-e8408001d780");
+            benutzer1.ID = new System.Guid("7fa538cf-41fb-48e1-807d-87c2ac82f037");
             benutzer1.IDAdresse = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer1.IDArzt = null;
             benutzer1.IDBerufsstand = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer1.IDKontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer1.IsGeneric = false;
             benutzer1.Nachname = "";
-            benutzer1.Passwort = "26BAD4DACB4B2C9FBB36C70A41C1B39F";
+            benutzer1.Passwort = "86D6437C09937B548D01308F0BAA2B8C";
             benutzer1.PflegerJN = false;
             benutzer1.Vorname = "";
             this.ucBenutzerGruppe1.Benutzer = benutzer1;
@@ -563,7 +561,7 @@ namespace PMDS.GUI
             this.ucBenutzerGruppe1.Location = new System.Drawing.Point(0, 0);
             this.ucBenutzerGruppe1.Margin = new System.Windows.Forms.Padding(5);
             this.ucBenutzerGruppe1.Name = "ucBenutzerGruppe1";
-            this.ucBenutzerGruppe1.Size = new System.Drawing.Size(925, 544);
+            this.ucBenutzerGruppe1.Size = new System.Drawing.Size(925, 543);
             this.ucBenutzerGruppe1.TabIndex = 0;
             this.ucBenutzerGruppe1.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -572,7 +570,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl6.Controls.Add(this.ucRechtBenutzer1);
             this.ultraTabPageControl6.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl6.Name = "ultraTabPageControl6";
-            this.ultraTabPageControl6.Size = new System.Drawing.Size(925, 544);
+            this.ultraTabPageControl6.Size = new System.Drawing.Size(925, 543);
             // 
             // ucRechtBenutzer1
             // 
@@ -584,7 +582,7 @@ namespace PMDS.GUI
             this.ucRechtBenutzer1.Margin = new System.Windows.Forms.Padding(4);
             this.ucRechtBenutzer1.Name = "ucRechtBenutzer1";
             this.ucRechtBenutzer1.ReadOnly = false;
-            this.ucRechtBenutzer1.Size = new System.Drawing.Size(917, 536);
+            this.ucRechtBenutzer1.Size = new System.Drawing.Size(917, 535);
             this.ucRechtBenutzer1.TabIndex = 0;
             this.ucRechtBenutzer1.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -593,7 +591,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl5.Controls.Add(this.ucBenutzerEinrichtung1);
             this.ultraTabPageControl5.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl5.Name = "ultraTabPageControl5";
-            this.ultraTabPageControl5.Size = new System.Drawing.Size(925, 544);
+            this.ultraTabPageControl5.Size = new System.Drawing.Size(925, 543);
             // 
             // ucBenutzerEinrichtung1
             // 
@@ -604,7 +602,7 @@ namespace PMDS.GUI
             this.ucBenutzerEinrichtung1.Location = new System.Drawing.Point(0, 0);
             this.ucBenutzerEinrichtung1.Margin = new System.Windows.Forms.Padding(5);
             this.ucBenutzerEinrichtung1.Name = "ucBenutzerEinrichtung1";
-            this.ucBenutzerEinrichtung1.Size = new System.Drawing.Size(925, 544);
+            this.ucBenutzerEinrichtung1.Size = new System.Drawing.Size(925, 543);
             this.ucBenutzerEinrichtung1.TabIndex = 0;
             this.ucBenutzerEinrichtung1.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -613,7 +611,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl3.Controls.Add(this.ucBenutzerAbteilung1);
             this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
-            this.ultraTabPageControl3.Size = new System.Drawing.Size(925, 544);
+            this.ultraTabPageControl3.Size = new System.Drawing.Size(925, 543);
             // 
             // ucBenutzerAbteilung1
             // 
@@ -625,18 +623,18 @@ namespace PMDS.GUI
             benutzer2.ELGAAutoLogin = false;
             benutzer2.ELGAAutostartSession = false;
             benutzer2.ELGAPatID = "";
-            benutzer2.ELGAPwd = "";
+            benutzer2.ELGAPwd = "lh+mUhExy7i/MSli7hQ3XQ==";
             benutzer2.ELGAPwdLastChange = new System.DateTime(2021, 2, 28, 15, 38, 34, 575);
             benutzer2.ELGAUser = "";
             benutzer2.ELGAValidTrough = new System.DateTime(2019, 6, 19, 13, 53, 19, 13);
-            benutzer2.ID = new System.Guid("85a9705d-1a08-4443-9937-440904d18222");
+            benutzer2.ID = new System.Guid("1d9a380c-ffd3-48f6-a89d-85c52cc81ab9");
             benutzer2.IDAdresse = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer2.IDArzt = null;
             benutzer2.IDBerufsstand = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer2.IDKontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer2.IsGeneric = false;
             benutzer2.Nachname = "";
-            benutzer2.Passwort = "C91604E594B34198A9388D417C123B12";
+            benutzer2.Passwort = "A69EC0A400ADBDAF29594261AF09FE7C";
             benutzer2.PflegerJN = false;
             benutzer2.Vorname = "";
             this.ucBenutzerAbteilung1.Benutzer = benutzer2;
@@ -644,16 +642,16 @@ namespace PMDS.GUI
             this.ucBenutzerAbteilung1.Location = new System.Drawing.Point(0, 0);
             this.ucBenutzerAbteilung1.Margin = new System.Windows.Forms.Padding(5);
             this.ucBenutzerAbteilung1.Name = "ucBenutzerAbteilung1";
-            this.ucBenutzerAbteilung1.Size = new System.Drawing.Size(925, 544);
+            this.ucBenutzerAbteilung1.Size = new System.Drawing.Size(925, 543);
             this.ucBenutzerAbteilung1.TabIndex = 0;
             this.ucBenutzerAbteilung1.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // ultraTabPageControl4
             // 
             this.ultraTabPageControl4.Controls.Add(this.groupBoxSMTPAngaben);
-            this.ultraTabPageControl4.Location = new System.Drawing.Point(2, 24);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
-            this.ultraTabPageControl4.Size = new System.Drawing.Size(925, 544);
+            this.ultraTabPageControl4.Size = new System.Drawing.Size(925, 543);
             // 
             // groupBoxSMTPAngaben
             // 
@@ -762,9 +760,9 @@ namespace PMDS.GUI
             // ultraTabPageControl7
             // 
             this.ultraTabPageControl7.Controls.Add(this.panelELGA);
-            this.ultraTabPageControl7.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl7.Location = new System.Drawing.Point(2, 25);
             this.ultraTabPageControl7.Name = "ultraTabPageControl7";
-            this.ultraTabPageControl7.Size = new System.Drawing.Size(925, 544);
+            this.ultraTabPageControl7.Size = new System.Drawing.Size(925, 543);
             // 
             // panelELGA
             // 
@@ -772,12 +770,12 @@ namespace PMDS.GUI
             this.panelELGA.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelELGA.Location = new System.Drawing.Point(0, 0);
             this.panelELGA.Name = "panelELGA";
-            this.panelELGA.Size = new System.Drawing.Size(925, 544);
+            this.panelELGA.Size = new System.Drawing.Size(925, 543);
             this.panelELGA.TabIndex = 0;
             // 
             // ultraTabControl1
             // 
-            appearance2.FontData.SizeInPoints = 8.25F;
+            appearance2.FontData.SizeInPoints = 10F;
             this.ultraTabControl1.Appearance = appearance2;
             this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl1);
@@ -830,7 +828,7 @@ namespace PMDS.GUI
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(925, 544);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(925, 543);
             // 
             // errorProvider1
             // 
@@ -839,6 +837,7 @@ namespace PMDS.GUI
             // ucBenutzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.ultraTabControl1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucBenutzer";
@@ -1089,6 +1088,7 @@ namespace PMDS.GUI
         {
             using (frmEditPassword frm = new frmEditPassword(false, false))
             {
+                frm.Text = "Neue Benutzerdaten erfassen";
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     // Benutzer Informationen setzen

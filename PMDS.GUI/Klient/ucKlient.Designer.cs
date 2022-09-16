@@ -56,10 +56,12 @@
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ucKlientStammdaten1 = new PMDS.GUI.ucKlientStammdaten();
             this.ultraTabPageControl8 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
@@ -220,9 +222,9 @@
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.ucKlientStammdaten1);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(1032, 472);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(1032, 475);
             // 
             // ucKlientStammdaten1
             // 
@@ -231,13 +233,13 @@
             this.ucKlientStammdaten1.Location = new System.Drawing.Point(0, 0);
             this.ucKlientStammdaten1.Margin = new System.Windows.Forms.Padding(4);
             this.ucKlientStammdaten1.Name = "ucKlientStammdaten1";
-            this.ucKlientStammdaten1.Size = new System.Drawing.Size(1032, 472);
+            this.ucKlientStammdaten1.Size = new System.Drawing.Size(1032, 475);
             this.ucKlientStammdaten1.TabIndex = 0;
             // 
             // ultraTabPageControl8
             // 
             this.ultraTabPageControl8.Controls.Add(this.panelMedizinDaten2);
-            this.ultraTabPageControl8.Location = new System.Drawing.Point(1, 24);
+            this.ultraTabPageControl8.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl8.Name = "ultraTabPageControl8";
             this.ultraTabPageControl8.Size = new System.Drawing.Size(1032, 472);
             // 
@@ -386,7 +388,7 @@
             this.tabKlientenakt.Location = new System.Drawing.Point(0, 0);
             this.tabKlientenakt.Name = "tabKlientenakt";
             this.tabKlientenakt.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.tabKlientenakt.Size = new System.Drawing.Size(1036, 499);
+            this.tabKlientenakt.Size = new System.Drawing.Size(1036, 502);
             appearance5.BackColor = System.Drawing.Color.Transparent;
             appearance5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabKlientenakt.TabHeaderAreaAppearance = appearance5;
@@ -419,7 +421,7 @@
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1032, 472);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1032, 475);
             // 
             // ultraLabel38
             // 
@@ -916,20 +918,22 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.uGroupBoxHeader);
-            this.panel2.Location = new System.Drawing.Point(0, 2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1038, 37);
+            this.panel2.Size = new System.Drawing.Size(1038, 38);
             this.panel2.TabIndex = 2;
             // 
             // uGroupBoxHeader
             // 
+            appearance18.BackColor = System.Drawing.Color.Transparent;
+            this.uGroupBoxHeader.Appearance = appearance18;
             this.uGroupBoxHeader.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.None;
-            appearance18.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.uGroupBoxHeader.ContentAreaAppearance = appearance18;
+            appearance19.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.uGroupBoxHeader.ContentAreaAppearance = appearance19;
             this.uGroupBoxHeader.Controls.Add(this.panelRehabilitation);
             this.uGroupBoxHeader.Controls.Add(this.panelDokGegen);
             this.uGroupBoxHeader.Controls.Add(this.panelRegelungen);
@@ -937,12 +941,14 @@
             this.uGroupBoxHeader.Controls.Add(this.panelKlientenakt);
             this.uGroupBoxHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uGroupBoxHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.uGroupBoxHeader.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            appearance25.BackColor = System.Drawing.Color.Transparent;
+            this.uGroupBoxHeader.HeaderAppearance = appearance25;
             this.uGroupBoxHeader.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.uGroupBoxHeader.Location = new System.Drawing.Point(0, 0);
             this.uGroupBoxHeader.Name = "uGroupBoxHeader";
-            this.uGroupBoxHeader.Size = new System.Drawing.Size(1036, 35);
+            this.uGroupBoxHeader.Size = new System.Drawing.Size(1036, 36);
             this.uGroupBoxHeader.TabIndex = 47;
-            this.uGroupBoxHeader.UseAppStyling = false;
             // 
             // panelRehabilitation
             // 
@@ -951,19 +957,19 @@
             this.panelRehabilitation.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelRehabilitation.Location = new System.Drawing.Point(680, 2);
             this.panelRehabilitation.Name = "panelRehabilitation";
-            this.panelRehabilitation.Size = new System.Drawing.Size(170, 33);
+            this.panelRehabilitation.Size = new System.Drawing.Size(170, 34);
             this.panelRehabilitation.TabIndex = 104;
             // 
             // btnRehabilitation
             // 
             this.btnRehabilitation.AcceptsFocus = false;
-            appearance19.BackColor = System.Drawing.Color.Transparent;
-            appearance19.FontData.Name = "Microsoft Sans Serif";
-            appearance19.FontData.SizeInPoints = 10F;
-            appearance19.ForeColor = System.Drawing.Color.Black;
-            appearance19.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance19.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnRehabilitation.Appearance = appearance19;
+            appearance20.BackColor = System.Drawing.Color.Transparent;
+            appearance20.FontData.Name = "Microsoft Sans Serif";
+            appearance20.FontData.SizeInPoints = 10F;
+            appearance20.ForeColor = System.Drawing.Color.Black;
+            appearance20.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance20.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnRehabilitation.Appearance = appearance20;
             this.btnRehabilitation.AutoWorkLayout = false;
             this.btnRehabilitation.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnRehabilitation.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -990,19 +996,19 @@
             this.panelDokGegen.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelDokGegen.Location = new System.Drawing.Point(510, 2);
             this.panelDokGegen.Name = "panelDokGegen";
-            this.panelDokGegen.Size = new System.Drawing.Size(170, 33);
+            this.panelDokGegen.Size = new System.Drawing.Size(170, 34);
             this.panelDokGegen.TabIndex = 103;
             // 
             // btnDokGegen
             // 
             this.btnDokGegen.AcceptsFocus = false;
-            appearance20.BackColor = System.Drawing.Color.Transparent;
-            appearance20.FontData.Name = "Microsoft Sans Serif";
-            appearance20.FontData.SizeInPoints = 10F;
-            appearance20.ForeColor = System.Drawing.Color.Black;
-            appearance20.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance20.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDokGegen.Appearance = appearance20;
+            appearance21.BackColor = System.Drawing.Color.Transparent;
+            appearance21.FontData.Name = "Microsoft Sans Serif";
+            appearance21.FontData.SizeInPoints = 10F;
+            appearance21.ForeColor = System.Drawing.Color.Black;
+            appearance21.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance21.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDokGegen.Appearance = appearance21;
             this.btnDokGegen.AutoWorkLayout = false;
             this.btnDokGegen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnDokGegen.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1029,19 +1035,19 @@
             this.panelRegelungen.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelRegelungen.Location = new System.Drawing.Point(340, 2);
             this.panelRegelungen.Name = "panelRegelungen";
-            this.panelRegelungen.Size = new System.Drawing.Size(170, 33);
+            this.panelRegelungen.Size = new System.Drawing.Size(170, 34);
             this.panelRegelungen.TabIndex = 102;
             // 
             // btnRegelungen
             // 
             this.btnRegelungen.AcceptsFocus = false;
-            appearance21.BackColor = System.Drawing.Color.Transparent;
-            appearance21.FontData.Name = "Microsoft Sans Serif";
-            appearance21.FontData.SizeInPoints = 10F;
-            appearance21.ForeColor = System.Drawing.Color.Black;
-            appearance21.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance21.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnRegelungen.Appearance = appearance21;
+            appearance22.BackColor = System.Drawing.Color.Transparent;
+            appearance22.FontData.Name = "Microsoft Sans Serif";
+            appearance22.FontData.SizeInPoints = 10F;
+            appearance22.ForeColor = System.Drawing.Color.Black;
+            appearance22.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance22.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnRegelungen.Appearance = appearance22;
             this.btnRegelungen.AutoWorkLayout = false;
             this.btnRegelungen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnRegelungen.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1068,19 +1074,19 @@
             this.panelMedizinischeDaten.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMedizinischeDaten.Location = new System.Drawing.Point(170, 2);
             this.panelMedizinischeDaten.Name = "panelMedizinischeDaten";
-            this.panelMedizinischeDaten.Size = new System.Drawing.Size(170, 33);
+            this.panelMedizinischeDaten.Size = new System.Drawing.Size(170, 34);
             this.panelMedizinischeDaten.TabIndex = 100;
             // 
             // btnMedizinischeDaten
             // 
             this.btnMedizinischeDaten.AcceptsFocus = false;
-            appearance22.BackColor = System.Drawing.Color.Transparent;
-            appearance22.FontData.Name = "Microsoft Sans Serif";
-            appearance22.FontData.SizeInPoints = 10F;
-            appearance22.ForeColor = System.Drawing.Color.Black;
-            appearance22.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance22.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnMedizinischeDaten.Appearance = appearance22;
+            appearance23.BackColor = System.Drawing.Color.Transparent;
+            appearance23.FontData.Name = "Microsoft Sans Serif";
+            appearance23.FontData.SizeInPoints = 10F;
+            appearance23.ForeColor = System.Drawing.Color.Black;
+            appearance23.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance23.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnMedizinischeDaten.Appearance = appearance23;
             this.btnMedizinischeDaten.AutoWorkLayout = false;
             this.btnMedizinischeDaten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnMedizinischeDaten.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1107,19 +1113,19 @@
             this.panelKlientenakt.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelKlientenakt.Location = new System.Drawing.Point(0, 2);
             this.panelKlientenakt.Name = "panelKlientenakt";
-            this.panelKlientenakt.Size = new System.Drawing.Size(170, 33);
+            this.panelKlientenakt.Size = new System.Drawing.Size(170, 34);
             this.panelKlientenakt.TabIndex = 99;
             // 
             // btnKlientenakt
             // 
             this.btnKlientenakt.AcceptsFocus = false;
-            appearance23.BackColor = System.Drawing.Color.Transparent;
-            appearance23.FontData.Name = "Microsoft Sans Serif";
-            appearance23.FontData.SizeInPoints = 10F;
-            appearance23.ForeColor = System.Drawing.Color.Black;
-            appearance23.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance23.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnKlientenakt.Appearance = appearance23;
+            appearance24.BackColor = System.Drawing.Color.Transparent;
+            appearance24.FontData.Name = "Microsoft Sans Serif";
+            appearance24.FontData.SizeInPoints = 10F;
+            appearance24.ForeColor = System.Drawing.Color.Black;
+            appearance24.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance24.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnKlientenakt.Appearance = appearance24;
             this.btnKlientenakt.AutoWorkLayout = false;
             this.btnKlientenakt.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnKlientenakt.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1147,7 +1153,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1038, 41);
+            this.panel1.Size = new System.Drawing.Size(1038, 38);
             this.panel1.TabIndex = 5;
             // 
             // panelDaten
@@ -1156,139 +1162,199 @@
             this.panelDaten.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelDaten.Controls.Add(this.tabKlientenakt);
             this.panelDaten.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDaten.Location = new System.Drawing.Point(0, 41);
+            this.panelDaten.Location = new System.Drawing.Point(0, 38);
             this.panelDaten.Name = "panelDaten";
-            this.panelDaten.Size = new System.Drawing.Size(1038, 501);
+            this.panelDaten.Size = new System.Drawing.Size(1038, 504);
             this.panelDaten.TabIndex = 6;
             // 
             // auswahlGruppeCombo9
             // 
             this.auswahlGruppeCombo9.AddEmptyEntry = false;
             this.auswahlGruppeCombo9.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.auswahlGruppeCombo9.AutoOpenCBO = false;
             this.auswahlGruppeCombo9.BerufsstandGruppeJNA = -1;
+            this.auswahlGruppeCombo9.ExactMatch = false;
             this.auswahlGruppeCombo9.Group = "ANR";
             this.auswahlGruppeCombo9.ID_PEP = -1;
+            this.auswahlGruppeCombo9.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo9.Location = new System.Drawing.Point(456, 33);
             this.auswahlGruppeCombo9.Name = "auswahlGruppeCombo9";
+            this.auswahlGruppeCombo9.PflichtJN = false;
+            this.auswahlGruppeCombo9.SelectDistinct = false;
             this.auswahlGruppeCombo9.ShowAddButton = true;
             this.auswahlGruppeCombo9.Size = new System.Drawing.Size(137, 21);
+            this.auswahlGruppeCombo9.sys = false;
             this.auswahlGruppeCombo9.TabIndex = 88;
             // 
             // auswahlGruppeCombo10
             // 
             this.auswahlGruppeCombo10.AddEmptyEntry = false;
             this.auswahlGruppeCombo10.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.auswahlGruppeCombo10.AutoOpenCBO = false;
             this.auswahlGruppeCombo10.BerufsstandGruppeJNA = -1;
+            this.auswahlGruppeCombo10.ExactMatch = false;
             this.auswahlGruppeCombo10.Group = "TIT";
             this.auswahlGruppeCombo10.ID_PEP = -1;
+            this.auswahlGruppeCombo10.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo10.Location = new System.Drawing.Point(301, 33);
             this.auswahlGruppeCombo10.Name = "auswahlGruppeCombo10";
+            this.auswahlGruppeCombo10.PflichtJN = false;
+            this.auswahlGruppeCombo10.SelectDistinct = false;
             this.auswahlGruppeCombo10.ShowAddButton = true;
             this.auswahlGruppeCombo10.Size = new System.Drawing.Size(120, 21);
+            this.auswahlGruppeCombo10.sys = false;
             this.auswahlGruppeCombo10.TabIndex = 87;
             // 
             // auswahlGruppeCombo11
             // 
             this.auswahlGruppeCombo11.AddEmptyEntry = false;
             this.auswahlGruppeCombo11.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.auswahlGruppeCombo11.AutoOpenCBO = false;
             this.auswahlGruppeCombo11.BerufsstandGruppeJNA = -1;
+            this.auswahlGruppeCombo11.ExactMatch = false;
             this.auswahlGruppeCombo11.Group = "HFR";
             this.auswahlGruppeCombo11.ID_PEP = -1;
+            this.auswahlGruppeCombo11.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo11.Location = new System.Drawing.Point(533, 121);
             this.auswahlGruppeCombo11.Name = "auswahlGruppeCombo11";
+            this.auswahlGruppeCombo11.PflichtJN = false;
+            this.auswahlGruppeCombo11.SelectDistinct = false;
             this.auswahlGruppeCombo11.ShowAddButton = true;
             this.auswahlGruppeCombo11.Size = new System.Drawing.Size(229, 21);
+            this.auswahlGruppeCombo11.sys = false;
             this.auswahlGruppeCombo11.TabIndex = 90;
             // 
             // auswahlGruppeCombo12
             // 
             this.auswahlGruppeCombo12.AddEmptyEntry = false;
             this.auswahlGruppeCombo12.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.auswahlGruppeCombo12.AutoOpenCBO = false;
             this.auswahlGruppeCombo12.BerufsstandGruppeJNA = -1;
+            this.auswahlGruppeCombo12.ExactMatch = false;
             this.auswahlGruppeCombo12.Group = "AFR";
             this.auswahlGruppeCombo12.ID_PEP = -1;
+            this.auswahlGruppeCombo12.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo12.Location = new System.Drawing.Point(533, 97);
             this.auswahlGruppeCombo12.Name = "auswahlGruppeCombo12";
+            this.auswahlGruppeCombo12.PflichtJN = false;
+            this.auswahlGruppeCombo12.SelectDistinct = false;
             this.auswahlGruppeCombo12.ShowAddButton = true;
             this.auswahlGruppeCombo12.Size = new System.Drawing.Size(229, 21);
+            this.auswahlGruppeCombo12.sys = false;
             this.auswahlGruppeCombo12.TabIndex = 89;
             // 
             // auswahlGruppeCombo13
             // 
             this.auswahlGruppeCombo13.AddEmptyEntry = false;
             this.auswahlGruppeCombo13.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.auswahlGruppeCombo13.AutoOpenCBO = false;
             this.auswahlGruppeCombo13.BerufsstandGruppeJNA = -1;
+            this.auswahlGruppeCombo13.ExactMatch = false;
             this.auswahlGruppeCombo13.Group = "LND";
             this.auswahlGruppeCombo13.ID_PEP = -1;
+            this.auswahlGruppeCombo13.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo13.Location = new System.Drawing.Point(245, 122);
             this.auswahlGruppeCombo13.Name = "auswahlGruppeCombo13";
+            this.auswahlGruppeCombo13.PflichtJN = false;
+            this.auswahlGruppeCombo13.SelectDistinct = false;
             this.auswahlGruppeCombo13.ShowAddButton = true;
             this.auswahlGruppeCombo13.Size = new System.Drawing.Size(176, 21);
+            this.auswahlGruppeCombo13.sys = false;
             this.auswahlGruppeCombo13.TabIndex = 86;
             // 
             // auswahlGruppeCombo14
             // 
             this.auswahlGruppeCombo14.AddEmptyEntry = false;
             this.auswahlGruppeCombo14.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.auswahlGruppeCombo14.AutoOpenCBO = false;
             this.auswahlGruppeCombo14.BerufsstandGruppeJNA = -1;
+            this.auswahlGruppeCombo14.ExactMatch = false;
             this.auswahlGruppeCombo14.Group = "KON";
             this.auswahlGruppeCombo14.ID_PEP = -1;
+            this.auswahlGruppeCombo14.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo14.Location = new System.Drawing.Point(73, 145);
             this.auswahlGruppeCombo14.Name = "auswahlGruppeCombo14";
+            this.auswahlGruppeCombo14.PflichtJN = false;
+            this.auswahlGruppeCombo14.SelectDistinct = false;
             this.auswahlGruppeCombo14.ShowAddButton = true;
             this.auswahlGruppeCombo14.Size = new System.Drawing.Size(96, 21);
+            this.auswahlGruppeCombo14.sys = false;
             this.auswahlGruppeCombo14.TabIndex = 85;
             // 
             // auswahlGruppeCombo15
             // 
             this.auswahlGruppeCombo15.AddEmptyEntry = false;
             this.auswahlGruppeCombo15.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.auswahlGruppeCombo15.AutoOpenCBO = false;
             this.auswahlGruppeCombo15.BerufsstandGruppeJNA = -1;
+            this.auswahlGruppeCombo15.ExactMatch = false;
             this.auswahlGruppeCombo15.Group = "FAM";
             this.auswahlGruppeCombo15.ID_PEP = -1;
+            this.auswahlGruppeCombo15.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo15.Location = new System.Drawing.Point(73, 121);
             this.auswahlGruppeCombo15.Name = "auswahlGruppeCombo15";
+            this.auswahlGruppeCombo15.PflichtJN = false;
+            this.auswahlGruppeCombo15.SelectDistinct = false;
             this.auswahlGruppeCombo15.ShowAddButton = true;
             this.auswahlGruppeCombo15.Size = new System.Drawing.Size(96, 21);
+            this.auswahlGruppeCombo15.sys = false;
             this.auswahlGruppeCombo15.TabIndex = 84;
             // 
             // auswahlGruppeCombo16
             // 
             this.auswahlGruppeCombo16.AddEmptyEntry = false;
             this.auswahlGruppeCombo16.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.auswahlGruppeCombo16.AutoOpenCBO = false;
             this.auswahlGruppeCombo16.BerufsstandGruppeJNA = -1;
+            this.auswahlGruppeCombo16.ExactMatch = false;
             this.auswahlGruppeCombo16.Group = "SEX";
             this.auswahlGruppeCombo16.ID_PEP = -1;
+            this.auswahlGruppeCombo16.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo16.Location = new System.Drawing.Point(73, 97);
             this.auswahlGruppeCombo16.Name = "auswahlGruppeCombo16";
+            this.auswahlGruppeCombo16.PflichtJN = false;
+            this.auswahlGruppeCombo16.SelectDistinct = false;
             this.auswahlGruppeCombo16.ShowAddButton = true;
             this.auswahlGruppeCombo16.Size = new System.Drawing.Size(96, 21);
+            this.auswahlGruppeCombo16.sys = false;
             this.auswahlGruppeCombo16.TabIndex = 83;
             // 
             // auswahlGruppeCombo17
             // 
             this.auswahlGruppeCombo17.AddEmptyEntry = false;
             this.auswahlGruppeCombo17.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.auswahlGruppeCombo17.AutoOpenCBO = false;
             this.auswahlGruppeCombo17.BerufsstandGruppeJNA = -1;
+            this.auswahlGruppeCombo17.ExactMatch = false;
             this.auswahlGruppeCombo17.Group = "KLA";
             this.auswahlGruppeCombo17.ID_PEP = -1;
+            this.auswahlGruppeCombo17.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo17.Location = new System.Drawing.Point(108, 259);
             this.auswahlGruppeCombo17.Name = "auswahlGruppeCombo17";
+            this.auswahlGruppeCombo17.PflichtJN = false;
+            this.auswahlGruppeCombo17.SelectDistinct = false;
             this.auswahlGruppeCombo17.ShowAddButton = true;
             this.auswahlGruppeCombo17.Size = new System.Drawing.Size(122, 21);
+            this.auswahlGruppeCombo17.sys = false;
             this.auswahlGruppeCombo17.TabIndex = 68;
             // 
             // auswahlGruppeCombo18
             // 
             this.auswahlGruppeCombo18.AddEmptyEntry = false;
             this.auswahlGruppeCombo18.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.auswahlGruppeCombo18.AutoOpenCBO = false;
             this.auswahlGruppeCombo18.BerufsstandGruppeJNA = -1;
+            this.auswahlGruppeCombo18.ExactMatch = false;
             this.auswahlGruppeCombo18.Group = "KRK";
             this.auswahlGruppeCombo18.ID_PEP = -1;
+            this.auswahlGruppeCombo18.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo18.Location = new System.Drawing.Point(108, 211);
             this.auswahlGruppeCombo18.Name = "auswahlGruppeCombo18";
+            this.auswahlGruppeCombo18.PflichtJN = false;
+            this.auswahlGruppeCombo18.SelectDistinct = false;
             this.auswahlGruppeCombo18.ShowAddButton = true;
             this.auswahlGruppeCombo18.Size = new System.Drawing.Size(313, 21);
+            this.auswahlGruppeCombo18.sys = false;
             this.auswahlGruppeCombo18.TabIndex = 64;
             // 
             // line5

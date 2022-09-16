@@ -268,7 +268,9 @@
             // 
             // tabPagePersoenlicheDaten
             // 
+            this.tabPagePersoenlicheDaten.AutoScroll = true;
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox1);
+            this.tabPagePersoenlicheDaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
             this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(962, 566);
@@ -298,7 +300,7 @@
             this.ultraGroupBox1.Controls.Add(this.ultraLabel1);
             this.ultraGroupBox1.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(956, 262);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(956, 530);
             this.ultraGroupBox1.TabIndex = 120;
             // 
             // tbBeobachtungenKoerperTemp
@@ -310,7 +312,7 @@
             appearance2.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbBeobachtungenKoerperTemp.Appearance = appearance2;
             this.tbBeobachtungenKoerperTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBeobachtungenKoerperTemp.Location = new System.Drawing.Point(157, 201);
+            this.tbBeobachtungenKoerperTemp.Location = new System.Drawing.Point(157, 251);
             this.tbBeobachtungenKoerperTemp.MaxLength = 0;
             this.tbBeobachtungenKoerperTemp.Multiline = true;
             this.tbBeobachtungenKoerperTemp.Name = "tbBeobachtungenKoerperTemp";
@@ -323,7 +325,7 @@
             appearance3.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel27.Appearance = appearance3;
             this.ultraLabel27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel27.Location = new System.Drawing.Point(14, 204);
+            this.ultraLabel27.Location = new System.Drawing.Point(14, 254);
             this.ultraLabel27.Name = "ultraLabel27";
             this.ultraLabel27.Size = new System.Drawing.Size(137, 50);
             this.ultraLabel27.TabIndex = 269;
@@ -336,12 +338,12 @@
             this.dtpdtErniedKoerpTempVeraenSeit.Appearance = appearance4;
             this.dtpdtErniedKoerpTempVeraenSeit.DateTime = new System.DateTime(2006, 12, 14, 0, 0, 0, 0);
             this.dtpdtErniedKoerpTempVeraenSeit.FormatString = "";
-            this.dtpdtErniedKoerpTempVeraenSeit.Location = new System.Drawing.Point(526, 174);
+            this.dtpdtErniedKoerpTempVeraenSeit.Location = new System.Drawing.Point(535, 208);
             this.dtpdtErniedKoerpTempVeraenSeit.MaskInput = "{date}";
             this.dtpdtErniedKoerpTempVeraenSeit.Name = "dtpdtErniedKoerpTempVeraenSeit";
             this.dtpdtErniedKoerpTempVeraenSeit.ownFormat = "";
             this.dtpdtErniedKoerpTempVeraenSeit.ownMaskInput = "";
-            this.dtpdtErniedKoerpTempVeraenSeit.Size = new System.Drawing.Size(101, 21);
+            this.dtpdtErniedKoerpTempVeraenSeit.Size = new System.Drawing.Size(101, 24);
             this.dtpdtErniedKoerpTempVeraenSeit.TabIndex = 9;
             this.dtpdtErniedKoerpTempVeraenSeit.Value = new System.DateTime(2006, 12, 14, 0, 0, 0, 0);
             this.dtpdtErniedKoerpTempVeraenSeit.ValueChanged += new System.EventHandler(this.control_ValueChanged);
@@ -351,9 +353,9 @@
             appearance5.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel23.Appearance = appearance5;
             this.ultraLabel23.AutoSize = true;
-            this.ultraLabel23.Location = new System.Drawing.Point(465, 178);
+            this.ultraLabel23.Location = new System.Drawing.Point(465, 212);
             this.ultraLabel23.Name = "ultraLabel23";
-            this.ultraLabel23.Size = new System.Drawing.Size(57, 14);
+            this.ultraLabel23.Size = new System.Drawing.Size(67, 17);
             this.ultraLabel23.TabIndex = 146;
             this.ultraLabel23.Text = "Seit wann:";
             // 
@@ -364,12 +366,12 @@
             this.dtErhKoerpTempVeraenSeit.Appearance = appearance6;
             this.dtErhKoerpTempVeraenSeit.DateTime = new System.DateTime(2006, 12, 14, 0, 0, 0, 0);
             this.dtErhKoerpTempVeraenSeit.FormatString = "";
-            this.dtErhKoerpTempVeraenSeit.Location = new System.Drawing.Point(526, 150);
+            this.dtErhKoerpTempVeraenSeit.Location = new System.Drawing.Point(535, 184);
             this.dtErhKoerpTempVeraenSeit.MaskInput = "{date}";
             this.dtErhKoerpTempVeraenSeit.Name = "dtErhKoerpTempVeraenSeit";
             this.dtErhKoerpTempVeraenSeit.ownFormat = "";
             this.dtErhKoerpTempVeraenSeit.ownMaskInput = "";
-            this.dtErhKoerpTempVeraenSeit.Size = new System.Drawing.Size(101, 21);
+            this.dtErhKoerpTempVeraenSeit.Size = new System.Drawing.Size(101, 24);
             this.dtErhKoerpTempVeraenSeit.TabIndex = 7;
             this.dtErhKoerpTempVeraenSeit.Value = new System.DateTime(2006, 12, 14, 0, 0, 0, 0);
             this.dtErhKoerpTempVeraenSeit.ValueChanged += new System.EventHandler(this.control_ValueChanged);
@@ -379,9 +381,9 @@
             appearance7.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel22.Appearance = appearance7;
             this.ultraLabel22.AutoSize = true;
-            this.ultraLabel22.Location = new System.Drawing.Point(465, 154);
+            this.ultraLabel22.Location = new System.Drawing.Point(465, 188);
             this.ultraLabel22.Name = "ultraLabel22";
-            this.ultraLabel22.Size = new System.Drawing.Size(57, 14);
+            this.ultraLabel22.Size = new System.Drawing.Size(67, 17);
             this.ultraLabel22.TabIndex = 144;
             this.ultraLabel22.Text = "Seit wann:";
             // 
@@ -390,9 +392,9 @@
             appearance8.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel21.Appearance = appearance8;
             this.ultraLabel21.AutoSize = true;
-            this.ultraLabel21.Location = new System.Drawing.Point(411, 178);
+            this.ultraLabel21.Location = new System.Drawing.Point(411, 212);
             this.ultraLabel21.Name = "ultraLabel21";
-            this.ultraLabel21.Size = new System.Drawing.Size(20, 14);
+            this.ultraLabel21.Size = new System.Drawing.Size(23, 17);
             this.ultraLabel21.TabIndex = 142;
             this.ultraLabel21.Text = "° C";
             // 
@@ -401,9 +403,9 @@
             appearance9.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel20.Appearance = appearance9;
             this.ultraLabel20.AutoSize = true;
-            this.ultraLabel20.Location = new System.Drawing.Point(411, 154);
+            this.ultraLabel20.Location = new System.Drawing.Point(411, 188);
             this.ultraLabel20.Name = "ultraLabel20";
-            this.ultraLabel20.Size = new System.Drawing.Size(20, 14);
+            this.ultraLabel20.Size = new System.Drawing.Size(23, 17);
             this.ultraLabel20.TabIndex = 141;
             this.ultraLabel20.Text = "° C";
             // 
@@ -413,10 +415,10 @@
             appearance10.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbKoerperTempErniedrigt.Appearance = appearance10;
             this.tbKoerperTempErniedrigt.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
-            this.tbKoerperTempErniedrigt.Location = new System.Drawing.Point(334, 175);
+            this.tbKoerperTempErniedrigt.Location = new System.Drawing.Point(337, 209);
             this.tbKoerperTempErniedrigt.Name = "tbKoerperTempErniedrigt";
             this.tbKoerperTempErniedrigt.NonAutoSizeHeight = 20;
-            this.tbKoerperTempErniedrigt.Size = new System.Drawing.Size(73, 20);
+            this.tbKoerperTempErniedrigt.Size = new System.Drawing.Size(73, 22);
             this.tbKoerperTempErniedrigt.TabIndex = 8;
             this.tbKoerperTempErniedrigt.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -426,10 +428,10 @@
             appearance11.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbKoerperTempErhoeht.Appearance = appearance11;
             this.tbKoerperTempErhoeht.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
-            this.tbKoerperTempErhoeht.Location = new System.Drawing.Point(334, 151);
+            this.tbKoerperTempErhoeht.Location = new System.Drawing.Point(337, 185);
             this.tbKoerperTempErhoeht.Name = "tbKoerperTempErhoeht";
             this.tbKoerperTempErhoeht.NonAutoSizeHeight = 20;
-            this.tbKoerperTempErhoeht.Size = new System.Drawing.Size(73, 20);
+            this.tbKoerperTempErhoeht.Size = new System.Drawing.Size(73, 22);
             this.tbKoerperTempErhoeht.TabIndex = 6;
             this.tbKoerperTempErhoeht.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -449,9 +451,9 @@
             valueListItem1,
             valueListItem2});
             this.opKoerperTempVeraenderung.ItemSpacingVertical = 10;
-            this.opKoerperTempVeraenderung.Location = new System.Drawing.Point(261, 149);
+            this.opKoerperTempVeraenderung.Location = new System.Drawing.Point(261, 183);
             this.opKoerperTempVeraenderung.Name = "opKoerperTempVeraenderung";
-            this.opKoerperTempVeraenderung.Size = new System.Drawing.Size(72, 46);
+            this.opKoerperTempVeraenderung.Size = new System.Drawing.Size(72, 57);
             this.opKoerperTempVeraenderung.TabIndex = 5;
             this.opKoerperTempVeraenderung.ValueChanged += new System.EventHandler(this.opKoerperTempVeraenderung_ValueChanged);
             // 
@@ -470,9 +472,9 @@
             this.opKoerperTempVeraendertJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem3,
             valueListItem4});
-            this.opKoerperTempVeraendertJN.Location = new System.Drawing.Point(157, 154);
+            this.opKoerperTempVeraendertJN.Location = new System.Drawing.Point(157, 188);
             this.opKoerperTempVeraendertJN.Name = "opKoerperTempVeraendertJN";
-            this.opKoerperTempVeraendertJN.Size = new System.Drawing.Size(80, 14);
+            this.opKoerperTempVeraendertJN.Size = new System.Drawing.Size(138, 17);
             this.opKoerperTempVeraendertJN.TabIndex = 4;
             this.opKoerperTempVeraendertJN.ValueMember = "";
             this.opKoerperTempVeraendertJN.ValueChanged += new System.EventHandler(this.opKoerperTempVeraendertJN_ValueChanged);
@@ -483,7 +485,7 @@
             this.ultraLabel8.Appearance = appearance14;
             this.ultraLabel8.AutoEllipsis = false;
             this.ultraLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel8.Location = new System.Drawing.Point(15, 154);
+            this.ultraLabel8.Location = new System.Drawing.Point(15, 188);
             this.ultraLabel8.Name = "ultraLabel8";
             this.ultraLabel8.Size = new System.Drawing.Size(132, 25);
             this.ultraLabel8.TabIndex = 117;
@@ -506,7 +508,7 @@
             valueListItem6});
             this.opKoerperTempGefaehrdungJN.Location = new System.Drawing.Point(158, 106);
             this.opKoerperTempGefaehrdungJN.Name = "opKoerperTempGefaehrdungJN";
-            this.opKoerperTempGefaehrdungJN.Size = new System.Drawing.Size(80, 14);
+            this.opKoerperTempGefaehrdungJN.Size = new System.Drawing.Size(138, 17);
             this.opKoerperTempGefaehrdungJN.TabIndex = 3;
             this.opKoerperTempGefaehrdungJN.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -517,7 +519,7 @@
             this.ultraLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel4.Location = new System.Drawing.Point(15, 106);
             this.ultraLabel4.Name = "ultraLabel4";
-            this.ultraLabel4.Size = new System.Drawing.Size(133, 42);
+            this.ultraLabel4.Size = new System.Drawing.Size(133, 61);
             this.ultraLabel4.TabIndex = 115;
             this.ultraLabel4.Text = "Gefährdung der normalen Regulierung der Körpertemperatur:";
             // 
@@ -567,7 +569,7 @@
             valueListItem8});
             this.opInfektionsgefahrJN.Location = new System.Drawing.Point(179, 17);
             this.opInfektionsgefahrJN.Name = "opInfektionsgefahrJN";
-            this.opInfektionsgefahrJN.Size = new System.Drawing.Size(80, 14);
+            this.opInfektionsgefahrJN.Size = new System.Drawing.Size(138, 17);
             this.opInfektionsgefahrJN.TabIndex = 1;
             this.opInfektionsgefahrJN.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -585,6 +587,7 @@
             // 
             // ultraTabPageControl2
             // 
+            this.ultraTabPageControl2.AutoScroll = true;
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBox3);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
@@ -608,7 +611,7 @@
             this.ultraGroupBox3.Controls.Add(this.ultraLabel3);
             this.ultraGroupBox3.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox3.Name = "ultraGroupBox3";
-            this.ultraGroupBox3.Size = new System.Drawing.Size(952, 275);
+            this.ultraGroupBox3.Size = new System.Drawing.Size(952, 530);
             this.ultraGroupBox3.TabIndex = 123;
             // 
             // tbBeobachtungenAspirationsrisiko
@@ -796,6 +799,7 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.AutoScroll = true;
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox5);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
@@ -823,7 +827,7 @@
             this.ultraGroupBox5.Controls.Add(this.ultraLabel9);
             this.ultraGroupBox5.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox5.Name = "ultraGroupBox5";
-            this.ultraGroupBox5.Size = new System.Drawing.Size(952, 351);
+            this.ultraGroupBox5.Size = new System.Drawing.Size(952, 530);
             this.ultraGroupBox5.TabIndex = 124;
             // 
             // tbBlutzirkulationStoerungen
@@ -1059,8 +1063,9 @@
             // 
             // ultraTabPageControl3
             // 
+            this.ultraTabPageControl3.AutoScroll = true;
             this.ultraTabPageControl3.Controls.Add(this.ultraGroupBox7);
-            this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
             this.ultraTabPageControl3.Size = new System.Drawing.Size(962, 566);
             // 
@@ -1092,7 +1097,7 @@
             this.ultraGroupBox7.Controls.Add(this.ultraLabel17);
             this.ultraGroupBox7.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox7.Name = "ultraGroupBox7";
-            this.ultraGroupBox7.Size = new System.Drawing.Size(952, 385);
+            this.ultraGroupBox7.Size = new System.Drawing.Size(952, 530);
             this.ultraGroupBox7.TabIndex = 126;
             // 
             // tbBeobachtungenSchmerzen
@@ -1401,8 +1406,9 @@
             // 
             // ultraTabPageControl4
             // 
+            this.ultraTabPageControl4.AutoScroll = true;
             this.ultraTabPageControl4.Controls.Add(this.ultraGroupBox2);
-            this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
             this.ultraTabPageControl4.Size = new System.Drawing.Size(962, 566);
             // 
@@ -1416,7 +1422,7 @@
             this.ultraGroupBox2.Controls.Add(this.ucAnamnesePDX1);
             this.ultraGroupBox2.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox2.Name = "ultraGroupBox2";
-            this.ultraGroupBox2.Size = new System.Drawing.Size(946, 389);
+            this.ultraGroupBox2.Size = new System.Drawing.Size(953, 557);
             this.ultraGroupBox2.TabIndex = 115;
             // 
             // ucAnamnesePDX1
@@ -1424,11 +1430,11 @@
             this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
+            this.ucAnamnesePDX1.Location = new System.Drawing.Point(0, 6);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
             this.ucAnamnesePDX1.ReadOnly = false;
-            this.ucAnamnesePDX1.Size = new System.Drawing.Size(930, 369);
+            this.ucAnamnesePDX1.Size = new System.Drawing.Size(947, 545);
             this.ucAnamnesePDX1.TabIndex = 0;
             this.ucAnamnesePDX1.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -1491,6 +1497,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.tabAbwendenVonGefahren);
             this.Name = "ucAbwendenVonGefahren";
             this.Size = new System.Drawing.Size(966, 592);

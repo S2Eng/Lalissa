@@ -350,9 +350,9 @@ namespace PMDS.GUI
                                 }
                             }
                         }
-                        //Zeilen enfärben
+                        //Zeilen einfärben
                         if (bAbgegeben)
-                            UltraGridTools.SetColors(r, Color.Black, Color.LightGreen);
+                            UltraGridTools.SetColors(r, Color.Black, Color.PaleTurquoise);
                         else if (bAbgabeWaehrendAbwesenheit)
                             UltraGridTools.SetColors(r, Color.Black, Color.LightBlue);
                         else
@@ -416,7 +416,7 @@ namespace PMDS.GUI
 
             if (this.Visible)
             {
-                pnlEmpty.Visible = ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht ? true : false;
+                //pnlEmpty.Visible = ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht ? true : false;
                 RefreshMedikation();
             }
         }
@@ -756,7 +756,7 @@ namespace PMDS.GUI
         //Neu nach 25.01.2008 MDA
         private void HideOrShowGropMehrauswahl()
         {
-            this.pnlEmpty .Visible = ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht;
+            //this.pnlEmpty .Visible = ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht;
         }
 
         public void RefreshControl()

@@ -22,6 +22,7 @@ using PMDS.Global.db.Patient;
 using PMDS.Global.db.Global;
 
 using System.Linq;
+using S2Extensions;
 
 namespace PMDS.UI.Sitemap
 {
@@ -34,15 +35,7 @@ namespace PMDS.UI.Sitemap
         public PMDS.BusinessLogic.Benutzer usr;
         public System.Collections.ArrayList listID;
 
-        private  System.Drawing.Color _foreCol;
-        private System.Drawing.Color _bordCol;
-        private System.Drawing.Color _backCol;
-        private System.Drawing.Color _hotTrackCol;
-        private System.Drawing.Color _backColDeakt;
         private Infragistics.Win.UIElementButtonStyle _styleButt;
-
-
-
 
         public UIFct()
         {
@@ -53,16 +46,6 @@ namespace PMDS.UI.Sitemap
                 this.sqlCalcLogic = new PMDS.Calc.Logic.Sql();
                 this.dbBill = new PMDS.Calc.Logic.dbBill();
 
-                this._foreCol = new System.Drawing.Color();
-                this._foreCol = System.Drawing.Color.Black;
-                this._bordCol = new System.Drawing.Color();
-                this._bordCol = System.Drawing.Color.Black;
-                this._backCol = new System.Drawing.Color();
-                this._backCol = System.Drawing.Color.White;
-                this._hotTrackCol = new System.Drawing.Color();
-                this._hotTrackCol = System.Drawing.Color.Gainsboro;
-                this._backColDeakt = new System.Drawing.Color();
-                this._backColDeakt = System.Drawing.Color.Transparent;
                 this._styleButt = new Infragistics.Win.UIElementButtonStyle();
                 this._styleButt = Infragistics.Win.UIElementButtonStyle.Flat;
             }
@@ -559,10 +542,7 @@ namespace PMDS.UI.Sitemap
         {
             foreach (cButt itm in buttons)
             {
-                if (itm.on)
-                    PMDS.Global.UIGlobal.setAktiv(itm.butt, -1, this._foreCol, this._bordCol, this._backCol);
-                else
-                    PMDS.Global.UIGlobal.setAktivDisable(itm.butt, -1, this._foreCol, this._hotTrackCol, this._bordCol, this._backColDeakt, this._styleButt);
+                PMDS.Global.UIGlobal.setUIButton(itm.butt, itm.on);
             }
         }
 
@@ -911,6 +891,19 @@ namespace PMDS.UI.Sitemap
         {
             try
             {
+
+                List<string> RechErwAbwesenheitListe = new List<string>();
+
+                if (PMDS.Global.ENV.RechErwAbwesenheit == 2 || PMDS.Global.ENV.RechErwAbwesenheit == 3)
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        RechErwAbwesenheitListe = (from a in db.AuswahlListe
+                                                   where a.IDAuswahlListeGruppe.Equals("KEA")
+                                                   select a.Bezeichnung).ToList();
+                    }
+                }
+
                 calculation calc = new calculation();
                 calc.Init(RBU.DataBase.CONNECTION, PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
                                                 PMDS.Global.ENV.ReportPath,
@@ -927,7 +920,9 @@ namespace PMDS.UI.Sitemap
                                                 PMDS.Global.ENV.pathConfig,
                                                 PMDS.Global.ENV.TageOhneKuerzungGrundleistung,
                                                 PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
-                                                PMDS.Global.ENV.RechErwAbwesenheit, PMDS.Global.ENV.SrErwAbwesenheit, 
+                                                PMDS.Global.ENV.RechErwAbwesenheit,
+                                                RechErwAbwesenheitListe,                                                
+                                                PMDS.Global.ENV.SrErwAbwesenheit, 
                                                 PMDS.Global.ENV.ZahlKondBankeinzug, PMDS.Global.ENV.ZahlKondErlagschein, PMDS.Global.ENV.ZahlKondÜberweisung, PMDS.Global.ENV.ZahlKondBar, 
                                                 PMDS.Global.ENV.ZahlKondFSW, 
                                                 PMDS.Global.ENV.AbwesenheitenAnzeigen, 

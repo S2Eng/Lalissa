@@ -107,19 +107,20 @@ namespace PMDS.Global
 
         }
 
+        public static string IGStyle = "pmds";
         public static string StartupMode = "pmds";
         public static bool VisualStudioMode = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
         public static Guid VersionNr = new Guid("10000000-1009-1000-0000-000000000001");
-        
+
         //public const string PdfiumKey = "52433553494d50032923be84e16cd6ae0bce153446af7918d52303038286fd2b0597de34bf5bb65e2a161a268e74107bd7da7c1adb202edff3e8c55a13bff7afa38569c96e45ff0cdef48e36b8df77e907676788cae00126f52c5eaadbb3c424062e8e0e5feb6faf89900306ee469aa40664bdf84b2e4fce7497c19f3f9d2d877dc1be192cb695f4";  //Version 3.10.5
-        public const string PdfiumKey = "EEF63308-0101E307-06060B50-44464955-4D5F434F-52501500-6F734073-322D656E-67696E65-6572696E-672E636F-6D40006E-50A02F72-7589BDC9-FA775FFE-E4C11070-8AECCB91-AA05BDDC-9064397A-0128DB07-08CA4E9D-1701E8DB-F0CAEA1E-386F13D9-6F207B8F-4FFCD647-D4BDA0FC-669139";        
+        public const string PdfiumKey = "EEF63308-0101E307-06060B50-44464955-4D5F434F-52501500-6F734073-322D656E-67696E65-6572696E-672E636F-6D40006E-50A02F72-7589BDC9-FA775FFE-E4C11070-8AECCB91-AA05BDDC-9064397A-0128DB07-08CA4E9D-1701E8DB-F0CAEA1E-386F13D9-6F207B8F-4FFCD647-D4BDA0FC-669139";
         public const string ChilkatKey = "S2ENGN.CB1022023_XfLzJ7t36L5K";  //Version 9.5.0.89 - 29.11.2021
 
         public static System.Data.OleDb.OleDbConnection conGiboDat;
         public static string IDApplication = qs2.core.license.doLicense.eApp.PMDS.ToString();
 
-        public static string pmdsRelease = "Release 4";
-        public static int pmdsDBVersion = 41000;
+        public static string pmdsRelease = "Release 5";
+        public static int pmdsDBVersion = 51000;
         public static string StartupTyp = "";                       //Mit welchem Paramter ?typ wurde gestartet
         public static string typRechNr = "Standard";
         public static string MainCaption = "PMDS";
@@ -201,6 +202,10 @@ namespace PMDS.Global
         public static string HAG_USER = "";
         public static string HAG_PASSWORD = "";
         public static string HAG_PASSWORD_TMP = "";         //Passwort, das der User für die HAG-Meldung eingegeben hat. Merken, damit es nicht mehrfach eingegeben werden muss
+
+        public static string STAMP_PFX_Path = "";
+        public static string STAMP_LOG_Path = "";
+        public static string STAMP_URL = "https://sterz3test.stmk.gv.at/at.gv.stmk.stamp-t/api";
 
         public static string ZahlKondBankeinzug = "Wir haben uns erlaubt, obigen Rechnungsbetrag von Ihrem Konto {0} einzuziehen.";
         public static string ZahlKondErlagschein = "Wir ersuchen um Überweisung des Rechnungsbetrags mittels beiliegendem Erlagschein auf unser Konto.";
@@ -338,7 +343,7 @@ namespace PMDS.Global
         private static string _ZAHLUNG_TAGE;
         private static bool _bookingJN;
         private static int _TageOhneKuerzungGrundleistung;
-        public static bool RechErwAbwesenheit;
+        public static int RechErwAbwesenheit;   //Liste An- und Abwesenheiten am Re-Ende: 0 .. kein Andruck, 1 .. bei allen Kostenträgern andrucken, 2 ..Auswahlliste KEA 2 = Negativliste, 3 = Positiv-Liste 
         public static bool SrErwAbwesenheit;
 
         public static string GSBGTxt = "";
@@ -539,7 +544,7 @@ namespace PMDS.Global
         public static Guid IDBereich
         {
             get { return ENV._IDBereich; }
-         
+
         }
         public static Guid setIDBereich
         {
@@ -604,8 +609,8 @@ namespace PMDS.Global
             get { return ENV._IDKlinikNoKlinikSelected; }
         }
 
-        
-                     
+
+
 
 
 
@@ -775,14 +780,14 @@ namespace PMDS.Global
 
         public static string[] WochentagekurzMoBeginnend
         {
-            get {return _WeekDaysMoStart; }
+            get { return _WeekDaysMoStart; }
         }
 
         public static List<Guid> CurrentUserAbteilungen
         {
             get { return ENV._CurrentUserAbteilungen; }
         }
-        
+
         public static PflegeModelle[] PflegeModell
         {
             get { return ENV._aPflegeModell; }
@@ -837,8 +842,8 @@ namespace PMDS.Global
 
             Infragistics.Win.AppStyling.StyleManager.Reset();
 
-            if (bOn && System.IO.File.Exists(System.IO.Path.Combine(ENV.pathConfig, "PMDS.isl")))
-                    Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(ENV.pathConfig, "pmds.isl")); 
+            if (bOn && System.IO.File.Exists(System.IO.Path.Combine(ENV.pathConfig, ENV.IGStyle + ".isl")))
+                Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(ENV.pathConfig, ENV.IGStyle + ".isl"));
         }
 
         //-------------------------------- Properties -------------------------------------
@@ -858,7 +863,7 @@ namespace PMDS.Global
 
         public static string DynReportPath
         {
-            get { return ENV._DynReportPath;  }
+            get { return ENV._DynReportPath; }
             set { ENV._DynReportPath = value; }
         }
 
@@ -869,7 +874,7 @@ namespace PMDS.Global
                 if (_LOGPATH.Length == 0)
                 {
                     string sPath = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "pmdsLog");
-                    if (!System.IO.Directory.Exists(sPath)) 
+                    if (!System.IO.Directory.Exists(sPath))
                         System.IO.Directory.CreateDirectory(sPath);
                     return sPath;
                 }
@@ -899,13 +904,13 @@ namespace PMDS.Global
 
         public static string DynReportNotfallBasePath
         {
-            get { return ENV._DynReportNotfallBasePath;  }
+            get { return ENV._DynReportNotfallBasePath; }
             set { ENV._DynReportNotfallBasePath = value; }
         }
 
         public static string ReportPath
         {
-            get { return ENV._ReportPath;  }
+            get { return ENV._ReportPath; }
             set { ENV._ReportPath = value; }
         }
         public static string ReportPathDatenerhebung
@@ -916,7 +921,7 @@ namespace PMDS.Global
 
         public static string ReportConfigPath
         {
-            get { return ENV._ReportConfigPath;  }
+            get { return ENV._ReportConfigPath; }
             set { ENV._ReportConfigPath = value; }
         }
 
@@ -972,7 +977,9 @@ namespace PMDS.Global
         public static void sendPatientChanged(eCurrentPatientChange typ, bool refreshPicker, bool clickGridTermine)
         {
             if (ENVPatientIDChanged != null)
+            {
                 ENVPatientIDChanged(ENV.CurrentIDPatient, typ, refreshPicker, clickGridTermine);
+            }
         }
 
         public static bool DEMO
@@ -985,7 +992,7 @@ namespace PMDS.Global
             DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("VERWALTUNG.QUESTION_SAVECHANGES"),
                                                                                         ENV.String("VERWALTUNG.DIALOGTITLE_SAVECHANGES"),
                                                                                         MessageBoxButtons.YesNo,
-                                                                                        MessageBoxIcon.Question, true);    
+                                                                                        MessageBoxIcon.Question, true);
             return res;
         }
 
@@ -1098,7 +1105,8 @@ namespace PMDS.Global
 
         public static string getPmdsDB
         {
-            get {
+            get
+            {
                 string DBInfo = "PMDS Database: " + DataBase.CONNECTION.DataSource + ":" + DataBase.CONNECTION.Database + "\r\n";
                 DBInfo += "QS2 Database: " + qs2.core.dbBase.Server.Trim() + ":" + qs2.core.dbBase.Database.Trim() + "\r\n";
                 if (ENV.DB_SERVER_PEP != null)
@@ -1107,7 +1115,7 @@ namespace PMDS.Global
                 {
                     DBInfo += "GiboDat Database: " + ENV.conGiboDat.DataSource.Trim() + "." + ENV.conGiboDat.Database.Trim() + "";
                 }
-                
+
                 return DBInfo;
             }
         }
@@ -1225,36 +1233,36 @@ namespace PMDS.Global
             try
             {
                 string sLizenz = PMDS.DB.DBUtil.GetDBLizenz().Lizenz;
-                    if (sLizenz != "")
-                    {
-                   
-                        sLizenz = RBUSF.Decrypt(sLizenz.Trim(), "12345678");
-                        
-                        string[] sa = sLizenz.Split(';');
-                        if (sa.Length != 2)
-                        {
-                            ShowLicenseMessage();
-                            return false;
-                        }
+                if (sLizenz != "")
+                {
 
-                        _demoversion = sa[0] == "Y" ? true : false;
-                        DateTime dt = new DateTime((long)Convert.ToInt64(sa[1]));
-                        if (dt < DateTime.Now)
-                        {
-                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Diese Version ist abgelaufen,\r\nbitte setzten Sie sich mit ihrem lokalen Administrator in Verbindung");
-                            return false;
-                        }
+                    sLizenz = RBUSF.Decrypt(sLizenz.Trim(), "12345678");
 
-                        if (_demoversion)
-                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox(string.Format(QS2.Desktop.ControlManagment.ControlManagment.getRes("Diese Demoversion läuft am {0} ab"), dt.ToShortDateString()), true);
-
-                        return true;
-                    }
-                    else
+                    string[] sa = sLizenz.Split(';');
+                    if (sa.Length != 2)
                     {
                         ShowLicenseMessage();
                         return false;
                     }
+
+                    _demoversion = sa[0] == "Y" ? true : false;
+                    DateTime dt = new DateTime((long)Convert.ToInt64(sa[1]));
+                    if (dt < DateTime.Now)
+                    {
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Diese Version ist abgelaufen,\r\nbitte setzten Sie sich mit ihrem lokalen Administrator in Verbindung");
+                        return false;
+                    }
+
+                    if (_demoversion)
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(string.Format(QS2.Desktop.ControlManagment.ControlManagment.getRes("Diese Demoversion läuft am {0} ab"), dt.ToShortDateString()), true);
+
+                    return true;
+                }
+                else
+                {
+                    ShowLicenseMessage();
+                    return false;
+                }
             }
             catch (OleDbException ex)
             {
@@ -1263,7 +1271,7 @@ namespace PMDS.Global
                 return false;
             }
         }
-        
+
         public static bool Init()
         {
             return Init(false);
@@ -1307,7 +1315,7 @@ namespace PMDS.Global
                 }
                 _dbUser = c["user id"];
                 _dbPassword = c["password"];
-                if (_dbPassword != null && (_dbPassword.EndsWith("=") || (_dbPassword.StartsWith("[[[") &&_dbPassword.EndsWith("]]]"))))      //os: Verschlüsseltes Passwort berücksichtigen
+                if (_dbPassword != null && (_dbPassword.EndsWith("=") || (_dbPassword.StartsWith("[[[") && _dbPassword.EndsWith("]]]"))))      //os: Verschlüsseltes Passwort berücksichtigen
                 {
                     if (_dbPassword.StartsWith("[[[") && _dbPassword.EndsWith("]]]"))
                     {
@@ -1326,7 +1334,7 @@ namespace PMDS.Global
 
                 //Connection-Settings aktualisieren (app.config)
                 InsertERConnections();
-            
+
                 bool ERConnectOK = false;
                 PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
@@ -1371,6 +1379,7 @@ namespace PMDS.Global
                 }
 
                 //------------------------------------------------------- ENV-Variablen aus Config lesen -------------------
+                SetENVValue("IGStyle", ref ENV.IGStyle);
                 SetENVValue("adminSecure", ref ENV.adminSecure);
                 SetENVValue("License", ref ENV.License, eTrim.yes, eDecrypt.PMDSMode);
                 SetENVValue("TypeRessourcesRun", ref ENV.TypeRessourcesRun);
@@ -1485,7 +1494,7 @@ namespace PMDS.Global
                 else
                 {
                     System.Windows.Forms.MessageBox.Show("Der Wert RptConfigPath in der Config-Datei muss angegeben werden!");
-                    return false;                
+                    return false;
                 }
 
                 SetENVValue("PathDokumente", ref ENV.PathDokumente);
@@ -1525,8 +1534,8 @@ namespace PMDS.Global
                 SetENVValue("AbwesenheitenMinimalUI", ref ENV.AbwesenheitenMinimalUI);
                 SetENVValue("DicomViewerFileOnly", ref ENV.DicomViewerFileOnly, "0");
 
-                SetENVValue("FSW_IDIntern", ref ENV.FSW_IDIntern);                                                          
-                SetENVValue("FSW_SenderAdresse", ref ENV.FSW_SenderAdresse, eTrim.yes, eDecrypt.no, eLengthType.fix, 9);    
+                SetENVValue("FSW_IDIntern", ref ENV.FSW_IDIntern);
+                SetENVValue("FSW_SenderAdresse", ref ENV.FSW_SenderAdresse, eTrim.yes, eDecrypt.no, eLengthType.fix, 9);
                 SetENVValue("FSW_EZAUF", ref ENV.FSW_EZAUF);
                 SetENVValue("FSW_Prozent", ref ENV.FSW_Prozent);
                 SetENVValue("FSW_SaveXLSX", ref ENV.FSW_SaveXLSX);
@@ -1539,6 +1548,10 @@ namespace PMDS.Global
                 SetENVValue("HAG_Zertifikat", ref ENV.HAG_Zertifikat);
                 SetENVValue("HAG_User", ref ENV.HAG_USER);
                 SetENVValue("HAG_Password", ref ENV.HAG_PASSWORD, eTrim.no, eDecrypt.PMDSMode);
+
+                SetENVValue("STAMP_PFX_Path", ref ENV.STAMP_PFX_Path);
+                SetENVValue("STAMP_LOG_Path", ref ENV.STAMP_LOG_Path);
+                SetENVValue("STAMP_URL", ref ENV.STAMP_URL);
 
                 SetENVValue("CheckConnectionAndPassword", ref ENV.CheckConnectionAndPassword);
                 SetENVValue("DekursRegex", ref ENV.DekursRegex);
@@ -1580,7 +1593,7 @@ namespace PMDS.Global
                 ENV.lic_STAMP = setLicValue("lic_STAMP");
 
                 QS2.Logging.ENV.init(ENV._LOGPATH, true, ENV.adminSecure);
-                QS2.Desktop.ControlManagment.ENV.init(ref PMDS.Global.ENV.IDApplication, ref PMDS.Global.ENV.TypeRessourcesRun, ENV.adminSecure, ENV.DoNotShowRessources, ENV.AutoAddNewRessources, ENV.IntDeactivated, DataBase.CONNECTIONSqlClient);  
+                QS2.Desktop.ControlManagment.ENV.init(ref PMDS.Global.ENV.IDApplication, ref PMDS.Global.ENV.TypeRessourcesRun, ENV.adminSecure, ENV.DoNotShowRessources, ENV.AutoAddNewRessources, ENV.IntDeactivated, DataBase.CONNECTIONSqlClient);
                 QS2.Desktop.Txteditor.ENV.init(ENV.path_Temp, ENV._LOGPATH, true, ENV.adminSecure);
                 PMDSClient.PMDSClientWrapper.init();
 
@@ -1730,7 +1743,7 @@ namespace PMDS.Global
             try
             {
                 if (ENV.adminSecure)
-                    return intAdminSecure;   
+                    return intAdminSecure;
 
                 int num;
                 string candidate = PMDS.BusinessLogic.BUtil.GetLicenseValues(strCheck);
@@ -2027,7 +2040,7 @@ namespace PMDS.Global
                 {
                     try
                     {
-                        lPM.Add((PflegeModelle)Enum.Parse(typeof(PflegeModelle), s, true));                        
+                        lPM.Add((PflegeModelle)Enum.Parse(typeof(PflegeModelle), s, true));
                     }
                     catch (Exception ex)
                     {
@@ -2040,7 +2053,7 @@ namespace PMDS.Global
             return lPM.ToArray();
         }
 
-         //----------------------------------------------------------------------------
+        //----------------------------------------------------------------------------
         /// <summary>
         /// Farben aus der Config Datei auslesen
         /// </summary>
@@ -2190,7 +2203,7 @@ namespace PMDS.Global
             {
                 string sExcept = ex2.ToString();
             }
-           
+
             string sUsrLoggedIn = "";
             try
             {
@@ -2234,9 +2247,9 @@ namespace PMDS.Global
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    string sExcept6 = "Host: " + sHostName.Trim() + ", IPAdress: " + IPAdress.Trim() + ", User: " + sUsrLoggedIn.Trim() + ", Type:" + sType.Trim() + "\r\n" + "\r\n" + e.ToString() + 
+                    string sExcept6 = "Host: " + sHostName.Trim() + ", IPAdress: " + IPAdress.Trim() + ", User: " + sUsrLoggedIn.Trim() + ", Type:" + sType.Trim() + "\r\n" + "\r\n" + e.ToString() +
                                         "\r\n" + "\r\n" + (string.IsNullOrEmpty(TitleAlternative) ? "" : TitleAlternative.Trim());
-                    
+
                     PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
                     b.saveProtocol(db, "ExceptionPMDS", sExcept6.Trim());
                 }
@@ -2251,16 +2264,16 @@ namespace PMDS.Global
             {
                 //if (!PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2())
                 //{
-                    ENV ENV1 = new ENV();
-                    cParsSendException ParsSendException = new cParsSendException();
-                    ParsSendException.sException = e.ToString() + "\r\n" + "\r\n" + (string.IsNullOrEmpty(TitleAlternative) ? "" : TitleAlternative.Trim());
-                    ParsSendException.client = sHostName + "::" + IPAdress;
-                    ParsSendException.user = sUsrLoggedIn;
-                    ParsSendException.haus = KlinikBezeichnung;
-                    ParsSendException.At = dNow;
-                    Thread threadSendExcept = new Thread(ENV1.thread_sendExceptionAsSMTPEMail);
-                    threadSendExcept.IsBackground = true;
-                    threadSendExcept.Start(ParsSendException);
+                ENV ENV1 = new ENV();
+                cParsSendException ParsSendException = new cParsSendException();
+                ParsSendException.sException = e.ToString() + "\r\n" + "\r\n" + (string.IsNullOrEmpty(TitleAlternative) ? "" : TitleAlternative.Trim());
+                ParsSendException.client = sHostName + "::" + IPAdress;
+                ParsSendException.user = sUsrLoggedIn;
+                ParsSendException.haus = KlinikBezeichnung;
+                ParsSendException.At = dNow;
+                Thread threadSendExcept = new Thread(ENV1.thread_sendExceptionAsSMTPEMail);
+                threadSendExcept.IsBackground = true;
+                threadSendExcept.Start(ParsSendException);
                 //}
             }
             if (e.GetType().Equals(typeof(AppException)))
@@ -2510,7 +2523,7 @@ namespace PMDS.Global
 
         public static void checkExceptionOutOfMemory(string except)
         {
-            if (except.sEquals("OutOfMemoryException", S2Extensions.Enums.eCompareMode.Contains))             
+            if (except.sEquals("OutOfMemoryException", S2Extensions.Enums.eCompareMode.Contains))
             {
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der max. Speicherverbrauch für PMDS wurde überschritten! (32 Bit Version)" + "\r\n" +
                                                                             "PMDS muss neu gestartet werden!", "PMDS", MessageBoxButtons.OK);
@@ -2558,7 +2571,7 @@ namespace PMDS.Global
 
         public static string CheckReportExists(string sKey)
         {
-            string sPath = System.IO.Path.Combine(ReportPath, sKey);         
+            string sPath = System.IO.Path.Combine(ReportPath, sKey);
 
             if (!System.IO.File.Exists(sPath))
                 throw new Exception(string.Format("Report File <{0}> ({1}) not found!", sPath, sKey));
@@ -2586,9 +2599,9 @@ namespace PMDS.Global
     public delegate bool selKlientenDelegate(eSendMain typ, System.Collections.Generic.List<string> filterString, bool suche, object obj);
     public delegate void klinikChanged(dsKlinik.KlinikRow rKlinikSelected, bool allKliniken);
     public delegate void dPatientenUersPickerValueChanged(Nullable<Guid> IDKlinik, Nullable<Guid> IDAbteilung, Nullable<Guid> IDBereich, System.Collections.Generic.List<Guid> lstSelectedUsersPatients, UltraTreeNode treeNode, eTypePatientenUserPickerChanged TypePatientenUserPickerChanged);
-    public delegate void dAbtBereichPickerValueChanged(Nullable<Guid> IDKlinik, Nullable<Guid> IDAbteilung, Nullable<Guid> IDBereich,  UltraTreeNode treeNode);
+    public delegate void dAbtBereichPickerValueChanged(Nullable<Guid> IDKlinik, Nullable<Guid> IDAbteilung, Nullable<Guid> IDBereich, UltraTreeNode treeNode);
 
-    public enum UserRights      
+    public enum UserRights
     {
         //-IntVers=NoTranslation
 
@@ -2613,7 +2626,7 @@ namespace PMDS.Global
         [Description("Klienten enlassen")]
         Entlassung = 13,		                            // Patienten enlassen
         [Description("Benutzer verwalten")]
-        ManageUserxyxy = 14,		                        // Benutzer verwalten
+        ManageUser = 14,		                        // Benutzer verwalten
         [Description("Klienten verwalten")]
         PatientenVerwalten = 15,		                    // Patienten verwalten
         [Description("Auswahl-Listen verwalten")]
@@ -2699,7 +2712,7 @@ namespace PMDS.Global
         [Description("Medikamentenbestelliste drucken")]
         MedikamentenbestellisteDrucken = 72,
         [Description("Berichte korrigieren (nur eigene)")]
-        RueckmeldungEigeneAendern = 73,    
+        RueckmeldungEigeneAendern = 73,
         [Description("HAG-Meldungen")]
         HAGMeldungen = 74,
         [Description("Ärzte zusammenführen")]
@@ -2762,6 +2775,51 @@ namespace PMDS.Global
         AbrechnungInkoProdukte = 117,
         [Description("STAMP Meldung")]
         STAMPMeldung = 118,
+
+        //----------------------------------------
+        [Description("Einrichtung verwalten")]
+        EinrichtungVerwalten = 119,
+        [Description("Zusatzeinträge verwalten")]
+        ZusatzEintraegeVerwalten = 120,
+        [Description("Textbausteine verwalten")]
+        TextbausteineVerwalten = 121,
+        [Description("Dokumentenverwaltung verwalten")]
+        Dokumentenverwaltung = 122,
+        [Description("Externe Einrichtungen verwalten")]
+        ExterneEinrichungenVerwalten = 123,
+        [Description("Standardprozeduren verwalten")]
+        StandardprozedureVerwaltenn = 124,
+        [Description("Assessments verwalten")]
+        AssessmentsVerwalten = 125,
+        [Description("Standardprozeduren verwalten")]
+        StandardprozedurenVerwalten = 126,
+        [Description("Medikamente verwalten")]
+        MedikamenteVerwalten = 127,
+        [Description("Ärzte verwalten")]
+        AerzteVerwalten = 128,
+        [Description("Arztabrechnung")]
+        Arztabrechnung = 129,
+        [Description("Pflegerichtlinien verwalten")]
+        PflegerichtlinienVerwalten = 130,
+        [Description("Befundimport verwalten")]
+        Befundimport = 131,
+        [Description("Quickfilter verwalten")]
+        QuickfilterVerwalten = 132,
+        [Description("Layoutmanager verwalten")]
+        LayoutmanagerVerwalten = 133,
+        [Description("Medizinische Typen verwalten")]
+        MedizinischeTypenVerwalten = 134,
+        [Description("Medizinische Dialoge verwalten")]
+        MedizinischeDialogeVerwalten = 135,
+        [Description("Wundbilder skalieren")]
+        WundbilderSkalieren = 136,
+        [Description("QS2 verwalten")]
+        QS2Verwalten = 137,
+        [Description("Archiveinstellungen verwalten")]
+        ArchiveinstellungenVerwalten = 138,
+        [Description("EMailKonten verwalten")]
+        EMailKontenVerwalten = 139,
+
     }
 
     public enum UserRightsELGA
@@ -2819,5 +2877,5 @@ namespace PMDS.Global
         public string usr = "";
         public string pwd = "";
     }
-    
+
 }

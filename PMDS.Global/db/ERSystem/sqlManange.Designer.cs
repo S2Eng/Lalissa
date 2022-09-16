@@ -127,8 +127,8 @@
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Persist Security Info=True;Password=NiwQ" +
-    "s21+!;User ID=hl;Initial Catalog=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=MSOLEDBSQL.1;Data Source=sty041\\MSSQL2019;Integrated Security=SSPI;Initi" +
+    "al Catalog=PMDS_DemoGross";
             // 
             // davGetKlientenliste
             // 
@@ -176,7 +176,8 @@
                         new System.Data.Common.DataColumnMapping("KZUeberlebender", "KZUeberlebender"),
                         new System.Data.Common.DataColumnMapping("Palliativ", "Palliativ"),
                         new System.Data.Common.DataColumnMapping("Klientennummer", "Klientennummer"),
-                        new System.Data.Common.DataColumnMapping("SofortmassnahmeJN", "SofortmassnahmeJN")})});
+                        new System.Data.Common.DataColumnMapping("SofortmassnahmeJN", "SofortmassnahmeJN"),
+                        new System.Data.Common.DataColumnMapping("Pflegestufe", "Pflegestufe")})});
             // 
             // daAnmeldungen
             // 
@@ -1127,7 +1128,7 @@
             new System.Data.OleDb.OleDbParameter("Title", System.Data.OleDb.OleDbType.VarWChar, 0, "Title"),
             new System.Data.OleDb.OleDbParameter("Text", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Text"),
             new System.Data.OleDb.OleDbParameter("UserFrom", System.Data.OleDb.OleDbType.VarWChar, 0, "UserFrom"),
-            new System.Data.OleDb.OleDbParameter("Created", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Created"),
+            new System.Data.OleDb.OleDbParameter("Created", System.Data.OleDb.OleDbType.Date, 16, "Created"),
             new System.Data.OleDb.OleDbParameter("UserFromID", System.Data.OleDb.OleDbType.Guid, 0, "UserFromID"),
             new System.Data.OleDb.OleDbParameter("ClientsMessage", System.Data.OleDb.OleDbType.VarWChar, 0, "ClientsMessage"),
             new System.Data.OleDb.OleDbParameter("TypeMessage", System.Data.OleDb.OleDbType.VarWChar, 0, "TypeMessage"),
@@ -1136,7 +1137,7 @@
             new System.Data.OleDb.OleDbParameter("IDGuidObject", System.Data.OleDb.OleDbType.Guid, 0, "IDGuidObject"),
             new System.Data.OleDb.OleDbParameter("Classification", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Classification"),
             new System.Data.OleDb.OleDbParameter("sKey", System.Data.OleDb.OleDbType.VarWChar, 0, "sKey"),
-            new System.Data.OleDb.OleDbParameter("CreatedDay", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "CreatedDay")});
+            new System.Data.OleDb.OleDbParameter("CreatedDay", System.Data.OleDb.OleDbType.Date, 16, "CreatedDay")});
             // 
             // oleDbCommand56
             // 
@@ -1154,7 +1155,7 @@
             new System.Data.OleDb.OleDbParameter("Title", System.Data.OleDb.OleDbType.VarWChar, 0, "Title"),
             new System.Data.OleDb.OleDbParameter("Text", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Text"),
             new System.Data.OleDb.OleDbParameter("UserFrom", System.Data.OleDb.OleDbType.VarWChar, 0, "UserFrom"),
-            new System.Data.OleDb.OleDbParameter("Created", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Created"),
+            new System.Data.OleDb.OleDbParameter("Created", System.Data.OleDb.OleDbType.Date, 16, "Created"),
             new System.Data.OleDb.OleDbParameter("UserFromID", System.Data.OleDb.OleDbType.Guid, 0, "UserFromID"),
             new System.Data.OleDb.OleDbParameter("ClientsMessage", System.Data.OleDb.OleDbType.VarWChar, 0, "ClientsMessage"),
             new System.Data.OleDb.OleDbParameter("TypeMessage", System.Data.OleDb.OleDbType.VarWChar, 0, "TypeMessage"),
@@ -1163,7 +1164,7 @@
             new System.Data.OleDb.OleDbParameter("IDGuidObject", System.Data.OleDb.OleDbType.Guid, 0, "IDGuidObject"),
             new System.Data.OleDb.OleDbParameter("Classification", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Classification"),
             new System.Data.OleDb.OleDbParameter("sKey", System.Data.OleDb.OleDbType.VarWChar, 0, "sKey"),
-            new System.Data.OleDb.OleDbParameter("CreatedDay", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "CreatedDay"),
+            new System.Data.OleDb.OleDbParameter("CreatedDay", System.Data.OleDb.OleDbType.Date, 16, "CreatedDay"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // daMessagesToUsers
@@ -1197,7 +1198,7 @@
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
             new System.Data.OleDb.OleDbParameter("IDMessages", System.Data.OleDb.OleDbType.Guid, 0, "IDMessages"),
             new System.Data.OleDb.OleDbParameter("Readed", System.Data.OleDb.OleDbType.Boolean, 0, "Readed"),
-            new System.Data.OleDb.OleDbParameter("ReadedAt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ReadedAt"),
+            new System.Data.OleDb.OleDbParameter("ReadedAt", System.Data.OleDb.OleDbType.Date, 16, "ReadedAt"),
             new System.Data.OleDb.OleDbParameter("IDUser", System.Data.OleDb.OleDbType.Guid, 0, "IDUser"),
             new System.Data.OleDb.OleDbParameter("Username", System.Data.OleDb.OleDbType.VarWChar, 0, "Username")});
             // 
@@ -1216,7 +1217,7 @@
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
             new System.Data.OleDb.OleDbParameter("IDMessages", System.Data.OleDb.OleDbType.Guid, 0, "IDMessages"),
             new System.Data.OleDb.OleDbParameter("Readed", System.Data.OleDb.OleDbType.Boolean, 0, "Readed"),
-            new System.Data.OleDb.OleDbParameter("ReadedAt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ReadedAt"),
+            new System.Data.OleDb.OleDbParameter("ReadedAt", System.Data.OleDb.OleDbType.Date, 16, "ReadedAt"),
             new System.Data.OleDb.OleDbParameter("IDUser", System.Data.OleDb.OleDbType.Guid, 0, "IDUser"),
             new System.Data.OleDb.OleDbParameter("Username", System.Data.OleDb.OleDbType.VarWChar, 0, "Username"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});

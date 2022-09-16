@@ -12,7 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using S2Extensions;
 
 
 namespace PMDS.GUI.GUI.Main
@@ -21,12 +21,31 @@ namespace PMDS.GUI.GUI.Main
 
     public partial class frmFormularManager : Form
     {
+        
         public bool IsNew = true;
         public bool PDFDocumentIsLocked = true;
         public PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
 
-
-
+        private QS2.Desktop.Txteditor.doEditor doEditor1 = new QS2.Desktop.Txteditor.doEditor();
+        private QS2.Desktop.Txteditor.contTXTField contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
+        private eFormMode _FormMode;
+        private eFormMode FormMode
+        {
+            get
+            {
+                return _FormMode;
+            }
+            set
+            {
+                _FormMode = value;
+                this.panelDoc.Visible = _FormMode == eFormMode.rtf;
+                this.panelGird.Visible = _FormMode == eFormMode.pdf;
+                this.panelDoc.Left = panelGird.Left;
+                this.panelDoc.Top = panelGird.Top;
+                this.panelDoc.Width = panelGird.Width;
+                this.panelDoc.Height = panelGird.Height;
+            }
+        }
 
         public frmFormularManager()
         {
@@ -40,6 +59,13 @@ namespace PMDS.GUI.GUI.Main
           
         }
 
+        private enum eFormMode
+        {
+            none = 0,
+            pdf = 1,
+            rtf = 2
+            
+        }
 
         public void initControl()
         {
@@ -80,14 +106,14 @@ namespace PMDS.GUI.GUI.Main
                 this.chkGUI.Checked = false;
                 this.chkInNotfallAnzeigenJN.Checked = false;
                 this.chkNeuanlageSperren.Checked = false;
-
+                this.numEditHours.Value = -1;
+                FormMode = eFormMode.none;
             }
             catch (Exception ex)
             {
                 throw new Exception("frmFormularManager.clearUI: " + ex.ToString());
             }
         }
-
 
         public void loadAllFormularFromDB(Nullable<Guid> IDFormulaToSelect)
         {
@@ -128,13 +154,13 @@ namespace PMDS.GUI.GUI.Main
                         }
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception("frmFormularManager.loadAllFormularFromDB: " + ex.ToString());
             }
         }
+
         public void loadFormular(Guid IDFormular)
         {
             try
@@ -156,25 +182,36 @@ namespace PMDS.GUI.GUI.Main
                     this.chkGUI.Checked = rFormular.GUI;
                     this.chkInNotfallAnzeigenJN.Checked = rFormular.InNotfallAnzeigenJN;
                     this.chkNeuanlageSperren.Checked = rFormular.NeuanlageSperren;
+                    this.numEditHours.Value = rFormular.EditHours;
 
-                    this.PDFDocumentIsLocked = false;
-                    this.pdfViewer1.LoadDocument(rFormular.PDF_BLOP);
-                    Application.DoEvents();
+                    if (rFormular.Name.sEquals(".s2frm", Enums.eCompareMode.EndsWith))
+                    {
+                        FormMode = eFormMode.pdf;
+                        this.PDFDocumentIsLocked = false;
+                        this.pdfViewer1.LoadDocument(rFormular.PDF_BLOP);
+                    }
+                    else if (rFormular.Name.sEquals(".s2frmRTF", Enums.eCompareMode.EndsWith))
+                    {
+                        FormMode = eFormMode.rtf;
+                        panelDoc.Controls.Clear();
+                        this.contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
+                        this.contTXTFieldBeschreibung.TXTControlField.ZoomFactor = 150;
+                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.PageView, true, true, false, false, true, false);
+                        this.contTXTFieldBeschreibung.Dock = DockStyle.Fill;
+                        this.panelDoc.Controls.Add(contTXTFieldBeschreibung);
+                        Application.DoEvents();
+                        this.contTXTFieldBeschreibung.TXTControlField.Load(rFormular.PDF_BLOP, TXTextControl.BinaryStreamType.InternalUnicodeFormat);
+                    }
 
                     this.btnAdd.Visible = true;
                     this.btnDel.Visible = true;
                     this.btnAbort.Enabled = true;
                     this.btnSave.Enabled = true;
                     this.btnPrint2.Visible = true;
-                    this.PDFDocumentIsLocked = true;
-                    this.pdfViewer1.Enabled = true;
                     this.cboFormulare.ReadOnly = false;
-                    //this.txtBezeichnung2.Focus();
-
                     this.cboBerufsgruppen.setSelectedRowsID(rFormular.lstIDBerufsgruppe.Trim());
+                    Application.DoEvents();
                 }
-      
-
             }
             catch (Exception ex)
             {
@@ -182,6 +219,7 @@ namespace PMDS.GUI.GUI.Main
                 throw new Exception("frmFormularManager.loadFormular: " + ex.ToString());
             }
         }
+
         public bool saveData(Nullable<Guid> IDFormular)
         {
             try
@@ -222,6 +260,7 @@ namespace PMDS.GUI.GUI.Main
                     rFormular.InNotfallAnzeigenJN = this.chkInNotfallAnzeigenJN.Checked;
                     rFormular.GUI = this.chkGUI.Checked;
                     rFormular.NeuanlageSperren = this.chkNeuanlageSperren.Checked;
+                    rFormular.EditHours = (int)this.numEditHours.Value;
                     rFormular.lstIDBerufsgruppe = this.cboBerufsgruppen.getSelectedRowsID();
 
                     System.Linq.IQueryable<Formular> tFormularCheck = db.Formular.Where(o => o.ID != rFormular.ID && o.Name == rFormular.Name.Trim());
@@ -231,20 +270,28 @@ namespace PMDS.GUI.GUI.Main
                         return false;
                     }
 
-                    using (MemoryStream ms = new MemoryStream())
+                    if (FormMode == eFormMode.pdf)
                     {
-                        this.pdfViewer1.Document.FormFill.InterForm.ResetForm();
-                        this.pdfViewer1.Document.Save(ms, SaveFlags.RemoveSecurity);
-                        Byte[] bPDF = ms.ToArray();
-                        rFormular.PDF_BLOP = bPDF;
-                    }
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        this.pdfViewer1.Document.Save(ms, SaveFlags.RemoveSecurity);
-                        Byte[] bPDF = ms.ToArray();
-                        rFormular.PDF_BLOP = bPDF;
-                    }
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            this.pdfViewer1.Document.FormFill.InterForm.ResetForm();
+                            this.pdfViewer1.Document.Save(ms, SaveFlags.RemoveSecurity);
+                            Byte[] bPDF = ms.ToArray();
+                            rFormular.PDF_BLOP = bPDF;
+                        }
 
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            this.pdfViewer1.Document.Save(ms, SaveFlags.RemoveSecurity);
+                            Byte[] bPDF = ms.ToArray();
+                            rFormular.PDF_BLOP = bPDF;
+                        }
+                    }
+                    else if (FormMode == eFormMode.rtf)
+                    {
+                        this.contTXTFieldBeschreibung.TXTControlField.Save(out byte[] binaryData, TXTextControl.BinaryStreamType.InternalUnicodeFormat);
+                        rFormular.PDF_BLOP = binaryData;
+                    }
                     db.SaveChanges();
 
                     this.clearUI();
@@ -266,7 +313,7 @@ namespace PMDS.GUI.GUI.Main
         {
             try
             {
-                this.openFileDialog1.Filter  = "Pdf Files|*.pdf";
+                this.openFileDialog1.Filter = "PDF-Dateien|*.pdf|RTF-Dateien|*.rtf";
                 DialogResult result = this.openFileDialog1.ShowDialog();
                 if (result == DialogResult.OK)
                 {
@@ -279,36 +326,55 @@ namespace PMDS.GUI.GUI.Main
 
                     this.btnAdd.Visible = false;
                     this.btnDel.Visible = false;
+                    this.PDFDocumentIsLocked = false;
 
                     FileInfo info = new FileInfo(file);
                     FileAttributes attributes = info.Attributes;
                     string FileName = System.IO.Path.GetFileNameWithoutExtension(file);
-                    this.txtFormularname2.Text = FileName.Trim() + ".s2frm";
+                    string FileExtension = Path.GetExtension(file);
+
                     this.txtBezeichnung2.Text = FileName.Trim();
 
-                    this.PDFDocumentIsLocked = false;
- //                   PdfDocument docu = PdfDocument.Load(file);
+                    if (FileExtension.sEquals(".pdf"))
+                    {
+                        this.txtFormularname2.Text = FileName.Trim() + ".s2frm";
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            var form = new PdfForms();
+                            var docu = PdfDocument.Load(file, form);
+                            docu.Save(ms, SaveFlags.RemoveSecurity);
+                            this.pdfViewer1.Document = docu;
+                            this.PDFDocumentIsLocked = true;
+                            this.panelDoc.Visible = false;
+                            this.panelGird.Visible = true;
+                            this.pdfViewer1.Enabled = true;
+                            FormMode = eFormMode.pdf;
+                        }
+                    }
+                    else if (FileExtension.sEquals(".rtf", Enums.eCompareMode.EndsWith))
+                    {
+                        FormMode = eFormMode.rtf;
+                        panelDoc.Controls.Clear();
+                        this.txtFormularname2.Text = FileName.Trim() + ".s2frmRTF";
 
-                    MemoryStream ms = new MemoryStream();
-                    var form = new PdfForms();
-                    var docu = PdfDocument.Load(file, form);
-                    docu.Save(ms, SaveFlags.RemoveSecurity);
+                        this.contTXTFieldBeschreibung = new QS2.Desktop.Txteditor.contTXTField();
+                        this.contTXTFieldBeschreibung.TXTControlField.ZoomFactor = 150;
+                        this.contTXTFieldBeschreibung.initControl(TXTextControl.ViewMode.PageView, true, true, false, false, true, false);
+                        this.contTXTFieldBeschreibung.Dock = DockStyle.Fill;
+                        this.panelDoc.Controls.Add(contTXTFieldBeschreibung);
+                        Application.DoEvents();
+                        this.contTXTFieldBeschreibung.TXTControlField.Load(file, TXTextControl.StreamType.RichTextFormat);
+                    }
 
-                    this.pdfViewer1.Document = docu;
-                    //this.pdfViewer1.LoadDocument(file);
                     Application.DoEvents();
 
                     this.btnAbort.Enabled = true;
                     this.btnSave.Enabled = true;
-                    this.btnPrint2.Visible = true;
-                    this.PDFDocumentIsLocked = true;
-                    this.pdfViewer1.Enabled = true;
+                    this.btnPrint2.Visible = (FormMode == eFormMode.pdf);
                     this.cboFormulare.ReadOnly = true;
-                    //this.txtBezeichnung2.Focus();
+                    Application.DoEvents();
                 }
-
                 return true;
-
             }
             catch (Exception ex)
             {
@@ -338,8 +404,19 @@ namespace PMDS.GUI.GUI.Main
 
                         this.clearUI();
                         this.PDFDocumentIsLocked = false;
-                        this.pdfViewer1.Document = null;
-                        this.pdfViewer1.ClearRenderBuffer();
+
+                        if (FormMode == eFormMode.pdf)
+                        {
+                            this.pdfViewer1.Document = null;
+                            this.pdfViewer1.ClearRenderBuffer();
+                            this.pdfViewer1.Enabled = true;
+                        }
+                        else if (FormMode == eFormMode.rtf)
+                        {
+                            this.contTXTFieldBeschreibung.TXTControlField.Clear();
+                        }
+
+                        FormMode = eFormMode.none;
                         this.loadAllFormularFromDB(null);
 
                         this.btnAdd.Visible = true;
@@ -348,11 +425,9 @@ namespace PMDS.GUI.GUI.Main
                         this.btnSave.Enabled = false;
                         this.btnPrint2.Visible = false;
                         this.PDFDocumentIsLocked = true;
-                        this.pdfViewer1.Enabled = true;
                         this.cboFormulare.ReadOnly = false;
                     }
                 }
-
                 return true;
 
             }
@@ -519,8 +594,17 @@ namespace PMDS.GUI.GUI.Main
 
                 this.PDFDocumentIsLocked = false;
                 this.clearUI();
-                this.pdfViewer1.Document = null;
-                this.pdfViewer1.ClearRenderBuffer();
+
+                if (FormMode == eFormMode.pdf)
+                {
+                    this.pdfViewer1.Document = null;
+                    this.pdfViewer1.ClearRenderBuffer();
+                }
+                else
+                {
+                    this.contTXTFieldBeschreibung.TXTControlField.Clear();
+                }
+                FormMode = eFormMode.none;
                 this.loadAllFormularFromDB(null);
 
                 this.btnAdd.Visible = true;
@@ -597,6 +681,10 @@ namespace PMDS.GUI.GUI.Main
             }
         }
 
+        private void txtFormularname2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -10,8 +10,7 @@ using Infragistics.Win.UltraWinTabControl;
 using PMDS.Global;
 using PMDS.BusinessLogic;
 using PMDS.Klient;
-
-
+using System.Threading.Tasks;
 
 
 
@@ -474,11 +473,12 @@ namespace PMDS.GUI
 
         }
 
-        public void setControlsAktivDisable(bool bOn)
+        public async Task<bool> setControlsAktivDisable(bool bOn)
         {
             PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn);
             this.panelButtons.Visible = !bOn;
             this.panelButtons1.Visible = !bOn;
+            return true;
             //this.ucKontaktPersonen.panelButtons.Visible = !bOn;
         }
 

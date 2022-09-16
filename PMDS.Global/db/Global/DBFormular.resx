@@ -118,16 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="oleDbConnection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>296, 134</value>
+    <value>17, 95</value>
   </metadata>
   <metadata name="dsFormular1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 134</value>
+    <value>17, 173</value>
   </metadata>
   <metadata name="daFormularAll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>14, 95</value>
+    <value>17, 134</value>
   </metadata>
   <metadata name="oleDbDeleteCommand.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
+  </metadata>
+  <metadata name="oleDbDeleteCommand.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
   <metadata name="oleDbDeleteCommand.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -141,11 +144,14 @@
   <metadata name="oleDbCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="oleDbCommand1.CommandText" xml:space="preserve">
+    <value>INSERT INTO "PMDS_DemoGross"."dbo"."Formular" ("ID", "Name", "Bezeichnung", "BLOP", "GUI", "InNotfallAnzeigenJN", "PDF_BLOP", "NeuanlageSperren", "lstIDBerufsgruppe", "EditHours") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+  </data>
   <metadata name="oleDbCommand4.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
   <metadata name="oleDbCommand4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>170, 173</value>
+    <value>17, 17</value>
   </metadata>
   <metadata name="oleDbCommand4.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -153,11 +159,17 @@
   <metadata name="oleDbUpdateCommand.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <metadata name="oleDbUpdateCommand.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="oleDbUpdateCommand.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="oleDbUpdateCommand.CommandText" xml:space="preserve">
+    <value>UPDATE "PMDS_DemoGross"."dbo"."Formular" SET "ID" = ?, "Name" = ?, "Bezeichnung" = ?, "BLOP" = ?, "GUI" = ?, "InNotfallAnzeigenJN" = ?, "PDF_BLOP" = ?, "NeuanlageSperren" = ?, "lstIDBerufsgruppe" = ?, "EditHours" = ? WHERE (("ID" = ?))</value>
+  </data>
   <metadata name="daFormularOne.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>28, 41</value>
+    <value>17, 56</value>
   </metadata>
   <metadata name="oleDbCommand5.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -177,6 +189,9 @@
   <metadata name="oleDbCommand6.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="oleDbCommand6.CommandText" xml:space="preserve">
+    <value>INSERT INTO "PMDS_DemoGross"."dbo"."Formular" ("ID", "Name", "Bezeichnung", "BLOP", "GUI", "InNotfallAnzeigenJN", "PDF_BLOP", "NeuanlageSperren", "lstIDBerufsgruppe", "EditHours") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+  </data>
   <metadata name="oleDbCommand7.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
@@ -195,6 +210,9 @@
   <metadata name="oleDbCommand8.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="oleDbCommand8.CommandText" xml:space="preserve">
+    <value>UPDATE "PMDS_DemoGross"."dbo"."Formular" SET "ID" = ?, "Name" = ?, "Bezeichnung" = ?, "BLOP" = ?, "GUI" = ?, "InNotfallAnzeigenJN" = ?, "PDF_BLOP" = ?, "NeuanlageSperren" = ?, "lstIDBerufsgruppe" = ?, "EditHours" = ? WHERE (("ID" = ?))</value>
+  </data>
   <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>

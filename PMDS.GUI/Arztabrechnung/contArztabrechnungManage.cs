@@ -64,9 +64,6 @@ namespace PMDS.GUI.Arztabrechnung
                 this.btnSearch.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
                 this.btnAdd.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Plus, 32, 32);
                 this.btnDel.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Minus, 32, 32);
-                this.btnClose.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Beenden, 32, 32);
-
-                this.mainWindow.CancelButton = this.btnClose;
 
                 this.sqlManange1.initControl();
 
@@ -97,7 +94,6 @@ namespace PMDS.GUI.Arztabrechnung
                 this.gridArztabrechnung.DisplayLayout.Bands[0].Columns[this.dsKlientenliste1.Arztabrechnung.AnmerkungColumn.ColumnName].Header.VisiblePosition = 6;
                 this.gridArztabrechnung.DisplayLayout.Bands[0].Columns[this.dsKlientenliste1.Arztabrechnung.KrankenkasseColumn.ColumnName].Header.VisiblePosition = 7;
                 this.gridArztabrechnung.DisplayLayout.Bands[0].Columns[this.dsKlientenliste1.Arztabrechnung.SVNrColumn.ColumnName].Header.VisiblePosition = 8;
-
             }
             catch (Exception ex)
             {

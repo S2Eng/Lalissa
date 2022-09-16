@@ -229,7 +229,7 @@ namespace PMDS.GUI.Messenger
                         }
                     }
 
-                    if (lM.lMessages.Count() >= 1)
+                    if (lM.lMessages.Any())
                     {
                         foreach (var rM in lM.lMessages)
                         {
@@ -301,7 +301,7 @@ namespace PMDS.GUI.Messenger
                             }
                         }
                     }
-                    this.gridMessages.Refresh();
+                    //this.gridMessages.Refresh();
 
                     foreach (UltraGridRow rSelGridRow in this.gridMessages.Rows)
                     {
@@ -1233,5 +1233,9 @@ namespace PMDS.GUI.Messenger
             }
         }
 
+        private void panelMessage_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

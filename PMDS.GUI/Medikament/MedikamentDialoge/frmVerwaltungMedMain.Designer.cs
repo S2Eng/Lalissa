@@ -122,7 +122,7 @@
             this.cboImportType.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem6,
             valueListItem7});
-            this.cboImportType.Location = new System.Drawing.Point(76, 10);
+            this.cboImportType.Location = new System.Drawing.Point(88, 10);
             this.cboImportType.Name = "cboImportType";
             this.cboImportType.Size = new System.Drawing.Size(182, 21);
             this.cboImportType.TabIndex = 15;
@@ -150,9 +150,10 @@
             // chkELGATranslate
             // 
             this.chkELGATranslate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.chkELGATranslate.Location = new System.Drawing.Point(575, 12);
+            this.chkELGATranslate.AutoSize = true;
+            this.chkELGATranslate.Location = new System.Drawing.Point(581, 12);
             this.chkELGATranslate.Name = "chkELGATranslate";
-            this.chkELGATranslate.Size = new System.Drawing.Size(137, 19);
+            this.chkELGATranslate.Size = new System.Drawing.Size(130, 17);
             this.chkELGATranslate.TabIndex = 19;
             this.chkELGATranslate.Text = "ELGA-MEH benutzen";
             // 
@@ -181,15 +182,16 @@
             valueListItem5});
             this.cboMonat.Location = new System.Drawing.Point(68, 2);
             this.cboMonat.Name = "cboMonat";
-            this.cboMonat.Size = new System.Drawing.Size(216, 21);
+            this.cboMonat.Size = new System.Drawing.Size(184, 21);
             this.cboMonat.TabIndex = 20;
             // 
             // lblImportTyp
             // 
             this.lblImportTyp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblImportTyp.AutoSize = true;
             this.lblImportTyp.Location = new System.Drawing.Point(3, 14);
             this.lblImportTyp.Name = "lblImportTyp";
-            this.lblImportTyp.Size = new System.Drawing.Size(67, 17);
+            this.lblImportTyp.Size = new System.Drawing.Size(59, 14);
             this.lblImportTyp.TabIndex = 16;
             this.lblImportTyp.Text = "Import-Typ";
             // 
@@ -210,9 +212,9 @@
             // 
             this.pnlMonat.ClientArea.Controls.Add(this.cboMonat);
             this.pnlMonat.ClientArea.Controls.Add(this.lblMonat);
-            this.pnlMonat.Location = new System.Drawing.Point(273, 9);
+            this.pnlMonat.Location = new System.Drawing.Point(300, 8);
             this.pnlMonat.Name = "pnlMonat";
-            this.pnlMonat.Size = new System.Drawing.Size(287, 27);
+            this.pnlMonat.Size = new System.Drawing.Size(259, 27);
             this.pnlMonat.TabIndex = 22;
             // 
             // ucVerwaltungMedTabelle1
@@ -228,6 +230,7 @@
             // 
             // pnlImport
             // 
+            this.pnlImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             // 
             // pnlImport.ClientArea
             // 

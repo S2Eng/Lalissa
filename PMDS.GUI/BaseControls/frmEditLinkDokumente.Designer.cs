@@ -34,6 +34,8 @@ namespace PMDS.GUI.BaseControls
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditLinkDokumente));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.beschreibungDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,15 +51,15 @@ namespace PMDS.GUI.BaseControls
             this.iconLöschenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dsLinkDokumente1 = new PMDS.Global.db.Global.dsLinkDokumente();
-            this.btnAdd = new QS2.Desktop.ControlManagment.BaseButtonWin();
-            this.btnDelete = new QS2.Desktop.ControlManagment.BaseButtonWin();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label1 = new QS2.Desktop.ControlManagment.BaseLableWin();
-            this.btnShow = new QS2.Desktop.ControlManagment.BaseButtonWin();
-            this.btnSave = new QS2.Desktop.ControlManagment.BaseButtonWin();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnCancel = new PMDS.GUI.ucButton(this.components);
             this.btnOK = new PMDS.GUI.ucButton(this.components);
+            this.label1 = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.btnDel = new PMDS.GUI.ucButton(this.components);
+            this.ucButton1 = new PMDS.GUI.ucButton(this.components);
+            this.btnShow = new QS2.Desktop.ControlManagment.BaseButton();
+            this.btnSave = new QS2.Desktop.ControlManagment.BaseButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -84,10 +86,10 @@ namespace PMDS.GUI.BaseControls
             this.iDBenutzerGeaendertDataGridViewTextBoxColumn});
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.DataSource = this.bindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 27);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 66);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1045, 544);
-            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.Size = new System.Drawing.Size(1045, 512);
+            this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // iDDataGridViewTextBoxColumn
@@ -185,28 +187,6 @@ namespace PMDS.GUI.BaseControls
             this.dsLinkDokumente1.DataSetName = "dsLinkDokumente";
             this.dsLinkDokumente1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdd.Location = new System.Drawing.Point(13, 577);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(28, 23);
-            this.btnAdd.TabIndex = 7;
-            this.btnAdd.Text = "+";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDelete.Location = new System.Drawing.Point(47, 577);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(28, 23);
-            this.btnDelete.TabIndex = 8;
-            this.btnDelete.Text = "-";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "*.doc";
@@ -215,39 +195,6 @@ namespace PMDS.GUI.BaseControls
             this.openFileDialog1.RestoreDirectory = true;
             this.openFileDialog1.Title = "Dokument laden";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(753, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Verwalten Sie hier die Dokumente. Nutzen Sie die rechte Maustaste, um Dokumente h" +
-    "ochzuladen oder geben Sie in der Spalte LinkName einen Hyperlink ein.";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
-            // 
-            // btnShow
-            // 
-            this.btnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnShow.Location = new System.Drawing.Point(81, 577);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(83, 23);
-            this.btnShow.TabIndex = 10;
-            this.btnShow.Text = "anzeigen";
-            this.btnShow.UseVisualStyleBackColor = true;
-            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSave.Location = new System.Drawing.Point(170, 577);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(131, 23);
-            this.btnSave.TabIndex = 11;
-            this.btnSave.Text = "als Datei speichern";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // saveFileDialog1
             // 
@@ -266,10 +213,10 @@ namespace PMDS.GUI.BaseControls
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(912, 580);
+            this.btnCancel.Location = new System.Drawing.Point(912, 584);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
-            this.btnCancel.TabIndex = 4;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "Abbrechen";
             this.btnCancel.TYPE = PMDS.GUI.ucButton.ButtonType.Cancel;
@@ -287,14 +234,90 @@ namespace PMDS.GUI.BaseControls
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(1008, 580);
+            this.btnOK.Location = new System.Drawing.Point(1008, 584);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(48, 32);
-            this.btnOK.TabIndex = 5;
+            this.btnOK.TabIndex = 6;
             this.btnOK.TabStop = false;
             this.btnOK.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
             this.btnOK.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(797, 14);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Verwalten Sie hier die Dokumente. Nutzen Sie die rechte Maustaste, um Dokumente h" +
+    "ochzuladen oder geben Sie in der Spalte LinkName einen Hyperlink ein.";
+            // 
+            // btnDel
+            // 
+            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
+            appearance3.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDel.Appearance = appearance3;
+            this.btnDel.AutoWorkLayout = false;
+            this.btnDel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnDel.DoOnClick = true;
+            this.btnDel.ImageSize = new System.Drawing.Size(12, 12);
+            this.btnDel.IsStandardControl = true;
+            this.btnDel.Location = new System.Drawing.Point(999, 38);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(25, 22);
+            this.btnDel.TabIndex = 0;
+            this.btnDel.TabStop = false;
+            this.btnDel.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
+            this.btnDel.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
+            // ucButton1
+            // 
+            this.ucButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            appearance4.Image = ((object)(resources.GetObject("appearance4.Image")));
+            appearance4.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.ucButton1.Appearance = appearance4;
+            this.ucButton1.AutoWorkLayout = false;
+            this.ucButton1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ucButton1.DoOnClick = true;
+            this.ucButton1.ImageSize = new System.Drawing.Size(12, 12);
+            this.ucButton1.IsStandardControl = true;
+            this.ucButton1.Location = new System.Drawing.Point(1028, 38);
+            this.ucButton1.Name = "ucButton1";
+            this.ucButton1.Size = new System.Drawing.Size(25, 22);
+            this.ucButton1.TabIndex = 11;
+            this.ucButton1.TabStop = false;
+            this.ucButton1.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
+            this.ucButton1.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
+            this.ucButton1.Click += new System.EventHandler(this.ucButton1_Click);
+            // 
+            // btnShow
+            // 
+            this.btnShow.AutoWorkLayout = false;
+            this.btnShow.IsStandardControl = false;
+            this.btnShow.Location = new System.Drawing.Point(656, 584);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(100, 32);
+            this.btnShow.TabIndex = 3;
+            this.btnShow.Text = "Anzeigen";
+            this.btnShow.Click += new System.EventHandler(this.baseButton1_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.AutoWorkLayout = false;
+            this.btnSave.IsStandardControl = false;
+            this.btnSave.Location = new System.Drawing.Point(762, 584);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(144, 32);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Als Datei speichern";
+            this.btnSave.Click += new System.EventHandler(this.baseButton2_Click);
             // 
             // frmEditLinkDokumente
             // 
@@ -303,9 +326,9 @@ namespace PMDS.GUI.BaseControls
             this.ClientSize = new System.Drawing.Size(1065, 624);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnShow);
+            this.Controls.Add(this.btnDel);
+            this.Controls.Add(this.ucButton1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.dataGridView1);
@@ -331,13 +354,10 @@ namespace PMDS.GUI.BaseControls
         private ucButton btnOK;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private QS2.Desktop.ControlManagment.BaseButtonWin btnAdd;
-        private QS2.Desktop.ControlManagment.BaseButtonWin btnDelete;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem iconHochladenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iconLöschenToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private QS2.Desktop.ControlManagment.BaseLableWin label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn beschreibungDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn linkNameDataGridViewTextBoxColumn;
@@ -348,8 +368,11 @@ namespace PMDS.GUI.BaseControls
         private System.Windows.Forms.DataGridViewTextBoxColumn iDBenutzerErstelltDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDBenutzerGeaendertDataGridViewTextBoxColumn;
         private dsLinkDokumente dsLinkDokumente1;
-        private QS2.Desktop.ControlManagment.BaseButtonWin btnShow;
-        private QS2.Desktop.ControlManagment.BaseButtonWin btnSave;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private QS2.Desktop.ControlManagment.BaseLabel label1;
+        private ucButton btnDel;
+        private ucButton ucButton1;
+        private QS2.Desktop.ControlManagment.BaseButton btnShow;
+        private QS2.Desktop.ControlManagment.BaseButton btnSave;
     }
 }

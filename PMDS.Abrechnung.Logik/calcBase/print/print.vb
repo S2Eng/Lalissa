@@ -468,7 +468,7 @@ Public Class print
                                                        Join Adr In db.Adresse On Adr.ID Equals kp.IDAdresse
                                                        Join Kon In db.Kontakt On Kon.ID Equals kp.IDKontakt
                                                        Where kp.IDPatient.ToString() = rBill.IDKlient And Kon.Zusatz3 = "RECHNUNGSDRUCK"
-                                                       Select New With {kp.Titel, kp.Nachname, kp.Vorname, Adr.Plz, Adr.Ort, Adr.Strasse, Adr.LandKZ, kp.Verwandtschaft}).ToList()
+                                                       Select New With {kp.Titel, kp.Nachname, kp.Vorname, Adr.Plz, Adr.Ort, Adr.Strasse, Adr.LandKZ, kp.Verwandtschaft, Kon.Email}).ToList()
 
                         'NurZahler = 0,                 [Description("Nur Zahler (Standard)")]  .. public enum RechnungsdruckTyp liegt außerhalb des Zugriffs
                         'KeinRechnungsdruck = 1,        [Description("Kein Rechnungsdruck")]
@@ -515,7 +515,7 @@ Public Class print
                             For Each rKopie As Object In lRechungskopeEmpfaenger
 
                                 If rBill.Freigegeben Then
-                                    cBill.SetRechnungsadresseVersand(rBill, editor, rKopie.Titel, rKopie.Nachname, rKopie.Vorname, rKopie.Plz, rKopie.Ort, rKopie.Strasse, rKopie.LandKZ, "", Betreff)
+                                    cBill.SetRechnungsadresseVersand(rBill, editor, rKopie.Titel, rKopie.Nachname, rKopie.Vorname, rKopie.Plz, rKopie.Ort, rKopie.Strasse, rKopie.LandKZ, "", Betreff, rKopie.Email)
                                 End If
                                 Me.doAutoSiteNummbering(editor, True)
                                 Me.doEditor.showText(Me.doEditor.getText(TXTextControl.StringStreamType.RichTextFormat, editor), TXTextControl.StreamType.RichTextFormat, False, TXTextControl.ViewMode.PageView, editor)

@@ -150,25 +150,25 @@ namespace PMDS.GUI.PMDSClient
             ValueListItem itm1 = new ValueListItem();
             itm1.DisplayText = "Kein Termin offen";
             itm1.DataValue = "Ja, kein Termin offen";
-            itm1.Appearance.BackColor = System.Drawing.Color.Green;
+            itm1.Appearance.BackColor = System.Drawing.Color.PaleTurquoise;
             v.ValueListItems.Add(itm1);
 
             ValueListItem itm2 = new ValueListItem();
             itm2.DisplayText = "Termin(e) offen";
             itm2.DataValue = "Ja, Termin(e) offen";
-            itm2.Appearance.BackColor = System.Drawing.Color.Yellow;
+            itm2.Appearance.BackColor = System.Drawing.Color.LightYellow;
             v.ValueListItems.Add(itm2);
 
             ValueListItem itm3 = new ValueListItem();
             itm3.DisplayText = "Termin(e) überfällig";
             itm3.DataValue = "Ja, Termin(e) überfällig";
-            itm3.Appearance.BackColor = System.Drawing.Color.Red;
+            itm3.Appearance.BackColor = System.Drawing.Color.MistyRose;
             v.ValueListItems.Add(itm3);
 
             ValueListItem itm4 = new ValueListItem();
             itm4.DisplayText = "Standardprozedur offen";
             itm4.DataValue = "Ja, Standardprozedur offen";
-            itm4.Appearance.BackColor = System.Drawing.Color.Orange;
+            itm4.Appearance.BackColor = System.Drawing.Color.PeachPuff;
             v.ValueListItems.Add(itm4);
 
             this.dgEintrag.DisplayLayout.ValueLists.Add(v);
@@ -467,8 +467,8 @@ namespace PMDS.GUI.PMDSClient
             this.dgEintrag.DisplayLayout.GroupByBox.Prompt = "Zu gruppierende Spalten hier herein ziehen.";
             this.dgEintrag.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             this.dgEintrag.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            this.dgEintrag.DisplayLayout.Override.RowSpacingAfter = 1;
-            this.dgEintrag.DisplayLayout.Override.RowSpacingBefore = 2;
+            this.dgEintrag.DisplayLayout.Override.RowSpacingAfter = 0;
+            this.dgEintrag.DisplayLayout.Override.RowSpacingBefore = 0;
             this.dgEintrag.DisplayLayout.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.dgEintrag.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.dgEintrag.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;

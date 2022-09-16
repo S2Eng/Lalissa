@@ -65,9 +65,10 @@
             // lblBearbeiten
             // 
             this.lblBearbeiten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblBearbeiten.Location = new System.Drawing.Point(7, 506);
+            this.lblBearbeiten.Location = new System.Drawing.Point(9, 633);
+            this.lblBearbeiten.Margin = new System.Windows.Forms.Padding(4);
             this.lblBearbeiten.Name = "lblBearbeiten";
-            this.lblBearbeiten.Size = new System.Drawing.Size(488, 28);
+            this.lblBearbeiten.Size = new System.Drawing.Size(785, 33);
             this.lblBearbeiten.TabIndex = 116;
             this.lblBearbeiten.Text = "Diese Anamnese kann nicht mehr bearbeitet werden weil der Zeitraum von {0} Stunde" +
     "n für die Bearbeitung abgelaufen ist.";
@@ -85,9 +86,10 @@
             this.btnPrint.DoOnClick = true;
             this.btnPrint.Enabled = false;
             this.btnPrint.IsStandardControl = true;
-            this.btnPrint.Location = new System.Drawing.Point(736, 4);
+            this.btnPrint.Location = new System.Drawing.Point(996, 5);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(26, 29);
+            this.btnPrint.Size = new System.Drawing.Size(25, 26);
             this.btnPrint.TabIndex = 113;
             this.btnPrint.TabStop = false;
             this.btnPrint.TYPE = PMDS.GUI.ucButton.ButtonType.Print;
@@ -111,9 +113,10 @@
             this.btnDelete.Enabled = false;
             this.btnDelete.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDelete.IsStandardControl = true;
-            this.btnDelete.Location = new System.Drawing.Point(798, 4);
+            this.btnDelete.Location = new System.Drawing.Point(1079, 5);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(26, 29);
+            this.btnDelete.Size = new System.Drawing.Size(25, 26);
             this.btnDelete.TabIndex = 112;
             this.btnDelete.TabStop = false;
             this.btnDelete.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
@@ -133,9 +136,10 @@
             this.btnNew.DoOnClick = true;
             this.btnNew.ImageSize = new System.Drawing.Size(12, 12);
             this.btnNew.IsStandardControl = true;
-            this.btnNew.Location = new System.Drawing.Point(771, 4);
+            this.btnNew.Location = new System.Drawing.Point(1043, 5);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(26, 29);
+            this.btnNew.Size = new System.Drawing.Size(25, 26);
             this.btnNew.TabIndex = 111;
             this.btnNew.TabStop = false;
             this.btnNew.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
@@ -154,9 +158,10 @@
             this.btnUndo.DoOnClick = true;
             this.btnUndo.Enabled = false;
             this.btnUndo.IsStandardControl = true;
-            this.btnUndo.Location = new System.Drawing.Point(635, 501);
+            this.btnUndo.Location = new System.Drawing.Point(853, 634);
+            this.btnUndo.Margin = new System.Windows.Forms.Padding(4);
             this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(92, 32);
+            this.btnUndo.Size = new System.Drawing.Size(123, 31);
             this.btnUndo.TabIndex = 114;
             this.btnUndo.TabStop = false;
             this.btnUndo.Text = "Abbrechen";
@@ -176,9 +181,10 @@
             this.btnSave.DoOnClick = true;
             this.btnSave.Enabled = false;
             this.btnSave.IsStandardControl = true;
-            this.btnSave.Location = new System.Drawing.Point(728, 501);
+            this.btnSave.Location = new System.Drawing.Point(977, 634);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(96, 32);
+            this.btnSave.Size = new System.Drawing.Size(128, 31);
             this.btnSave.TabIndex = 115;
             this.btnSave.TabStop = false;
             this.btnSave.Text = "Speichern";
@@ -190,12 +196,13 @@
             // 
             this.dtpErstelltAm.DateTime = new System.DateTime(2006, 12, 14, 0, 0, 0, 0);
             this.dtpErstelltAm.FormatString = "";
-            this.dtpErstelltAm.Location = new System.Drawing.Point(160, 2);
+            this.dtpErstelltAm.Location = new System.Drawing.Point(213, 2);
+            this.dtpErstelltAm.Margin = new System.Windows.Forms.Padding(4);
             this.dtpErstelltAm.MaskInput = "{date} {time}";
             this.dtpErstelltAm.Name = "dtpErstelltAm";
             this.dtpErstelltAm.ownFormat = "";
             this.dtpErstelltAm.ownMaskInput = "";
-            this.dtpErstelltAm.Size = new System.Drawing.Size(126, 21);
+            this.dtpErstelltAm.Size = new System.Drawing.Size(168, 24);
             this.dtpErstelltAm.TabIndex = 117;
             this.dtpErstelltAm.Value = new System.DateTime(2006, 12, 14, 0, 0, 0, 0);
             this.dtpErstelltAm.Visible = false;
@@ -203,9 +210,10 @@
             // cmbErstelltAm
             // 
             this.cmbErstelltAm.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cmbErstelltAm.Location = new System.Drawing.Point(160, 2);
+            this.cmbErstelltAm.Location = new System.Drawing.Point(213, 2);
+            this.cmbErstelltAm.Margin = new System.Windows.Forms.Padding(4);
             this.cmbErstelltAm.Name = "cmbErstelltAm";
-            this.cmbErstelltAm.Size = new System.Drawing.Size(207, 21);
+            this.cmbErstelltAm.Size = new System.Drawing.Size(276, 24);
             this.cmbErstelltAm.TabIndex = 118;
             this.cmbErstelltAm.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cmbErstelltAm_BeforeDropDown);
             this.cmbErstelltAm.ValueChanged += new System.EventHandler(this.cmbErstelltAm_ValueChanged);
@@ -216,9 +224,10 @@
             appearance4.ForeColorDisabled = System.Drawing.Color.Black;
             this.cmbPfleger.Appearance = appearance4;
             this.cmbPfleger.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cmbPfleger.Location = new System.Drawing.Point(410, 2);
+            this.cmbPfleger.Location = new System.Drawing.Point(551, 2);
+            this.cmbPfleger.Margin = new System.Windows.Forms.Padding(4);
             this.cmbPfleger.Name = "cmbPfleger";
-            this.cmbPfleger.Size = new System.Drawing.Size(228, 21);
+            this.cmbPfleger.Size = new System.Drawing.Size(304, 24);
             this.cmbPfleger.TabIndex = 119;
             this.cmbPfleger.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -228,7 +237,8 @@
             appearance5.FontData.SizeInPoints = 8F;
             this.ultraLabel6.Appearance = appearance5;
             this.ultraLabel6.AutoSize = true;
-            this.ultraLabel6.Location = new System.Drawing.Point(377, 6);
+            this.ultraLabel6.Location = new System.Drawing.Point(507, 7);
+            this.ultraLabel6.Margin = new System.Windows.Forms.Padding(4);
             this.ultraLabel6.Name = "ultraLabel6";
             this.ultraLabel6.Size = new System.Drawing.Size(27, 14);
             this.ultraLabel6.TabIndex = 121;
@@ -240,7 +250,8 @@
             appearance6.FontData.SizeInPoints = 8F;
             this.lblErstelltAm.Appearance = appearance6;
             this.lblErstelltAm.AutoSize = true;
-            this.lblErstelltAm.Location = new System.Drawing.Point(3, 6);
+            this.lblErstelltAm.Location = new System.Drawing.Point(4, 7);
+            this.lblErstelltAm.Margin = new System.Windows.Forms.Padding(4);
             this.lblErstelltAm.Name = "lblErstelltAm";
             this.lblErstelltAm.Size = new System.Drawing.Size(151, 14);
             this.lblErstelltAm.TabIndex = 120;
@@ -263,10 +274,10 @@
             this.btnCopy.Appearance = appearance3;
             this.btnCopy.AutoWorkLayout = false;
             this.btnCopy.IsStandardControl = false;
-            this.btnCopy.Location = new System.Drawing.Point(701, 4);
-            this.btnCopy.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCopy.Location = new System.Drawing.Point(950, 5);
+            this.btnCopy.Margin = new System.Windows.Forms.Padding(5);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(26, 29);
+            this.btnCopy.Size = new System.Drawing.Size(25, 26);
             this.btnCopy.TabIndex = 122;
             this.btnCopy.Tag = "15";
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
@@ -279,16 +290,16 @@
             this.baseButton1.Appearance = appearance2;
             this.baseButton1.AutoWorkLayout = false;
             this.baseButton1.IsStandardControl = false;
-            this.baseButton1.Location = new System.Drawing.Point(574, 506);
-            this.baseButton1.Margin = new System.Windows.Forms.Padding(4);
+            this.baseButton1.Location = new System.Drawing.Point(809, 633);
+            this.baseButton1.Margin = new System.Windows.Forms.Padding(5);
             this.baseButton1.Name = "baseButton1";
-            this.baseButton1.Size = new System.Drawing.Size(26, 29);
+            this.baseButton1.Size = new System.Drawing.Size(35, 28);
             this.baseButton1.TabIndex = 123;
             this.baseButton1.Tag = "15";
             // 
             // ucAnamneseBase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.baseButton1);
             this.Controls.Add(this.btnCopy);
@@ -303,8 +314,10 @@
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnUndo);
             this.Controls.Add(this.btnSave);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucAnamneseBase";
-            this.Size = new System.Drawing.Size(839, 540);
+            this.Size = new System.Drawing.Size(1119, 670);
             ((System.ComponentModel.ISupportInitialize)(this.dtpErstelltAm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbErstelltAm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPfleger)).EndInit();

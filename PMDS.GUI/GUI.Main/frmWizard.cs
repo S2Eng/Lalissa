@@ -72,10 +72,10 @@ namespace PMDS.GUI
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWizard));
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.grpBottom = new QS2.Desktop.ControlManagment.BaseGroupBoxWin();
             this.panelButtons = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnPrev = new QS2.Desktop.ControlManagment.BaseButton();
@@ -91,9 +91,9 @@ namespace PMDS.GUI
             // grpBottom
             // 
             this.grpBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grpBottom.Location = new System.Drawing.Point(0, 495);
+            this.grpBottom.Location = new System.Drawing.Point(0, 581);
             this.grpBottom.Name = "grpBottom";
-            this.grpBottom.Size = new System.Drawing.Size(400, 8);
+            this.grpBottom.Size = new System.Drawing.Size(625, 8);
             this.grpBottom.TabIndex = 3;
             this.grpBottom.TabStop = false;
             // 
@@ -104,9 +104,9 @@ namespace PMDS.GUI
             this.panelButtons.Controls.Add(this.btnOk);
             this.panelButtons.Controls.Add(this.btnNext);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtons.Location = new System.Drawing.Point(0, 503);
+            this.panelButtons.Location = new System.Drawing.Point(0, 589);
             this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(400, 48);
+            this.panelButtons.Size = new System.Drawing.Size(625, 48);
             this.panelButtons.TabIndex = 4;
             // 
             // btnPrev
@@ -114,7 +114,7 @@ namespace PMDS.GUI
             this.btnPrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrev.AutoWorkLayout = false;
             this.btnPrev.IsStandardControl = false;
-            this.btnPrev.Location = new System.Drawing.Point(3, 8);
+            this.btnPrev.Location = new System.Drawing.Point(228, 8);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(96, 32);
             this.btnPrev.TabIndex = 0;
@@ -125,16 +125,16 @@ namespace PMDS.GUI
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
-            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnCancel.Appearance = appearance1;
+            appearance4.Image = ((object)(resources.GetObject("appearance4.Image")));
+            appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnCancel.Appearance = appearance4;
             this.btnCancel.AutoWorkLayout = false;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(207, 8);
+            this.btnCancel.Location = new System.Drawing.Point(432, 8);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
             this.btnCancel.TabIndex = 3;
@@ -147,16 +147,16 @@ namespace PMDS.GUI
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOk.Appearance = appearance2;
+            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOk.Appearance = appearance1;
             this.btnOk.AutoWorkLayout = false;
             this.btnOk.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.DoOnClick = true;
             this.btnOk.IsStandardControl = true;
-            this.btnOk.Location = new System.Drawing.Point(301, 8);
+            this.btnOk.Location = new System.Drawing.Point(526, 8);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(96, 32);
             this.btnOk.TabIndex = 2;
@@ -171,7 +171,7 @@ namespace PMDS.GUI
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.AutoWorkLayout = false;
             this.btnNext.IsStandardControl = false;
-            this.btnNext.Location = new System.Drawing.Point(105, 8);
+            this.btnNext.Location = new System.Drawing.Point(330, 8);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(96, 32);
             this.btnNext.TabIndex = 1;
@@ -181,9 +181,9 @@ namespace PMDS.GUI
             // lblKlickenSieWeiter
             // 
             this.lblKlickenSieWeiter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblKlickenSieWeiter.Location = new System.Drawing.Point(0, 479);
+            this.lblKlickenSieWeiter.Location = new System.Drawing.Point(0, 565);
             this.lblKlickenSieWeiter.Name = "lblKlickenSieWeiter";
-            this.lblKlickenSieWeiter.Size = new System.Drawing.Size(400, 16);
+            this.lblKlickenSieWeiter.Size = new System.Drawing.Size(625, 16);
             this.lblKlickenSieWeiter.TabIndex = 2;
             this.lblKlickenSieWeiter.Text = "klicken Sie auf \"Weiter\", um den Vorgang fortzusetzen";
             this.lblKlickenSieWeiter.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -193,21 +193,21 @@ namespace PMDS.GUI
             this.panelPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPage.Location = new System.Drawing.Point(0, 70);
             this.panelPage.Name = "panelPage";
-            this.panelPage.Size = new System.Drawing.Size(400, 409);
+            this.panelPage.Size = new System.Drawing.Size(625, 495);
             this.panelPage.TabIndex = 0;
             // 
             // labInfo
             // 
-            appearance3.ForeColor = System.Drawing.Color.White;
-            appearance3.TextHAlignAsString = "Center";
-            appearance3.TextVAlignAsString = "Middle";
-            this.labInfo.Appearance = appearance3;
+            appearance2.ForeColor = System.Drawing.Color.White;
+            appearance2.TextHAlignAsString = "Center";
+            appearance2.TextVAlignAsString = "Middle";
+            this.labInfo.Appearance = appearance2;
             this.labInfo.BackColorInternal = System.Drawing.SystemColors.ControlDark;
             this.labInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.labInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labInfo.Location = new System.Drawing.Point(0, 0);
             this.labInfo.Name = "labInfo";
-            this.labInfo.Size = new System.Drawing.Size(400, 70);
+            this.labInfo.Size = new System.Drawing.Size(625, 70);
             this.labInfo.TabIndex = 0;
             this.labInfo.Text = "Informationen ... ";
             // 
@@ -216,7 +216,7 @@ namespace PMDS.GUI
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(400, 551);
+            this.ClientSize = new System.Drawing.Size(625, 637);
             this.ControlBox = false;
             this.Controls.Add(this.panelPage);
             this.Controls.Add(this.labInfo);

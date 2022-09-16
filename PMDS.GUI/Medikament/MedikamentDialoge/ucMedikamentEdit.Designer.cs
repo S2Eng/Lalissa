@@ -40,17 +40,17 @@
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             this.tbExtID = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lblExterneID = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tbZulassungsnummer = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -74,8 +74,6 @@
             this.cbPackungsanzahl = new QS2.Desktop.ControlManagment.BaseComboEditor();
             this.datImportiertAm = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.chkImportiert = new QS2.Desktop.ControlManagment.BaseCheckBox();
-            this.lblImportiertAm = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.lblGültigkeitsdatum = new QS2.Desktop.ControlManagment.BaseLabel();
             this.datGültigkeitsdatum = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.txtLagervorschrift = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lblLagervorschrift = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -93,6 +91,8 @@
             this.cmbApplikationsform = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.cbEinheit = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.cbGroup = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.lblImportiertAm = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblGültigkeitsdatum = new QS2.Desktop.ControlManagment.BaseLabel();
             ((System.ComponentModel.ISupportInitialize)(this.tbExtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbZulassungsnummer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbBarcode)).BeginInit();
@@ -280,10 +280,10 @@
             // 
             // cbAerztVorbereitung
             // 
-            this.cbAerztVorbereitung.Location = new System.Drawing.Point(973, 232);
+            this.cbAerztVorbereitung.Location = new System.Drawing.Point(821, 232);
             this.cbAerztVorbereitung.Margin = new System.Windows.Forms.Padding(4);
             this.cbAerztVorbereitung.Name = "cbAerztVorbereitung";
-            this.cbAerztVorbereitung.Size = new System.Drawing.Size(141, 60);
+            this.cbAerztVorbereitung.Size = new System.Drawing.Size(293, 26);
             this.cbAerztVorbereitung.TabIndex = 24;
             this.cbAerztVorbereitung.Text = "Ärztliche Vorbereitung";
             this.cbAerztVorbereitung.Visible = false;
@@ -327,9 +327,9 @@
             // 
             // txtPackGr
             // 
-            appearance10.BackColorDisabled = System.Drawing.Color.White;
-            appearance10.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtPackGr.Appearance = appearance10;
+            appearance12.BackColorDisabled = System.Drawing.Color.White;
+            appearance12.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtPackGr.Appearance = appearance12;
             this.txtPackGr.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
             this.txtPackGr.InputMask = "           nnnnn";
             this.txtPackGr.Location = new System.Drawing.Point(181, 166);
@@ -365,50 +365,23 @@
             // datImportiertAm
             // 
             this.datImportiertAm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.datImportiertAm.Location = new System.Drawing.Point(440, 455);
+            this.datImportiertAm.Location = new System.Drawing.Point(475, 455);
             this.datImportiertAm.Margin = new System.Windows.Forms.Padding(4);
             this.datImportiertAm.Name = "datImportiertAm";
             this.datImportiertAm.ownFormat = "";
             this.datImportiertAm.ownMaskInput = "";
-            this.datImportiertAm.Size = new System.Drawing.Size(129, 24);
+            this.datImportiertAm.Size = new System.Drawing.Size(94, 24);
             this.datImportiertAm.TabIndex = 15;
             // 
             // chkImportiert
             // 
             this.chkImportiert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.chkImportiert.Location = new System.Drawing.Point(181, 459);
+            this.chkImportiert.Location = new System.Drawing.Point(181, 460);
             this.chkImportiert.Margin = new System.Windows.Forms.Padding(4);
             this.chkImportiert.Name = "chkImportiert";
             this.chkImportiert.Size = new System.Drawing.Size(117, 21);
             this.chkImportiert.TabIndex = 14;
             this.chkImportiert.Text = "Importiert";
-            // 
-            // lblImportiertAm
-            // 
-            this.lblImportiertAm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance15.FontData.SizeInPoints = 8F;
-            this.lblImportiertAm.Appearance = appearance15;
-            this.lblImportiertAm.AutoSize = true;
-            this.lblImportiertAm.Location = new System.Drawing.Point(327, 461);
-            this.lblImportiertAm.Margin = new System.Windows.Forms.Padding(4);
-            this.lblImportiertAm.Name = "lblImportiertAm";
-            this.lblImportiertAm.Size = new System.Drawing.Size(69, 14);
-            this.lblImportiertAm.TabIndex = 198;
-            this.lblImportiertAm.Text = "Importiert am";
-            // 
-            // lblGültigkeitsdatum
-            // 
-            this.lblGültigkeitsdatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            appearance14.FontData.SizeInPoints = 8F;
-            this.lblGültigkeitsdatum.Appearance = appearance14;
-            this.lblGültigkeitsdatum.AutoSize = true;
-            this.lblGültigkeitsdatum.Location = new System.Drawing.Point(882, 460);
-            this.lblGültigkeitsdatum.Margin = new System.Windows.Forms.Padding(4);
-            this.lblGültigkeitsdatum.Name = "lblGültigkeitsdatum";
-            this.lblGültigkeitsdatum.Size = new System.Drawing.Size(86, 14);
-            this.lblGültigkeitsdatum.TabIndex = 199;
-            this.lblGültigkeitsdatum.Text = "Gültigkeitsdatum";
             // 
             // datGültigkeitsdatum
             // 
@@ -437,9 +410,9 @@
             // 
             // lblLagervorschrift
             // 
-            appearance13.TextHAlignAsString = "Left";
-            appearance13.TextVAlignAsString = "Middle";
-            this.lblLagervorschrift.Appearance = appearance13;
+            appearance15.TextHAlignAsString = "Left";
+            appearance15.TextVAlignAsString = "Middle";
+            this.lblLagervorschrift.Appearance = appearance15;
             this.lblLagervorschrift.Location = new System.Drawing.Point(28, 263);
             this.lblLagervorschrift.Margin = new System.Windows.Forms.Padding(4);
             this.lblLagervorschrift.Name = "lblLagervorschrift";
@@ -468,9 +441,9 @@
             // 
             // lblErstattungscode
             // 
-            appearance12.TextHAlignAsString = "Left";
-            appearance12.TextVAlignAsString = "Middle";
-            this.lblErstattungscode.Appearance = appearance12;
+            appearance14.TextHAlignAsString = "Left";
+            appearance14.TextVAlignAsString = "Middle";
+            this.lblErstattungscode.Appearance = appearance14;
             this.lblErstattungscode.Location = new System.Drawing.Point(28, 232);
             this.lblErstattungscode.Margin = new System.Windows.Forms.Padding(4);
             this.lblErstattungscode.Name = "lblErstattungscode";
@@ -481,7 +454,7 @@
             // 
             // txtKassenzeichen
             // 
-            this.txtKassenzeichen.Location = new System.Drawing.Point(456, 232);
+            this.txtKassenzeichen.Location = new System.Drawing.Point(475, 232);
             this.txtKassenzeichen.Margin = new System.Windows.Forms.Padding(4);
             this.txtKassenzeichen.MaxLength = 3;
             this.txtKassenzeichen.Name = "txtKassenzeichen";
@@ -490,13 +463,13 @@
             // 
             // lblKassenkennzeichen
             // 
-            appearance11.TextHAlignAsString = "Left";
-            appearance11.TextVAlignAsString = "Middle";
-            this.lblKassenkennzeichen.Appearance = appearance11;
+            appearance13.TextHAlignAsString = "Left";
+            appearance13.TextVAlignAsString = "Middle";
+            this.lblKassenkennzeichen.Appearance = appearance13;
             this.lblKassenkennzeichen.Location = new System.Drawing.Point(327, 232);
             this.lblKassenkennzeichen.Margin = new System.Windows.Forms.Padding(4);
             this.lblKassenkennzeichen.Name = "lblKassenkennzeichen";
-            this.lblKassenkennzeichen.Size = new System.Drawing.Size(149, 26);
+            this.lblKassenkennzeichen.Size = new System.Drawing.Size(140, 26);
             this.lblKassenkennzeichen.TabIndex = 206;
             this.lblKassenkennzeichen.Text = "Kassenkennzeichen";
             // 
@@ -514,9 +487,9 @@
             // lblLieferant
             // 
             this.lblLieferant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance9.TextHAlignAsString = "Left";
-            appearance9.TextVAlignAsString = "Middle";
-            this.lblLieferant.Appearance = appearance9;
+            appearance11.TextHAlignAsString = "Left";
+            appearance11.TextVAlignAsString = "Middle";
+            this.lblLieferant.Appearance = appearance11;
             this.lblLieferant.Location = new System.Drawing.Point(26, 521);
             this.lblLieferant.Margin = new System.Windows.Forms.Padding(4);
             this.lblLieferant.Name = "lblLieferant";
@@ -526,9 +499,9 @@
             // 
             // lblPEH
             // 
-            appearance8.TextHAlignAsString = "Left";
-            appearance8.TextVAlignAsString = "Middle";
-            this.lblPEH.Appearance = appearance8;
+            appearance10.TextHAlignAsString = "Left";
+            appearance10.TextVAlignAsString = "Middle";
+            this.lblPEH.Appearance = appearance10;
             this.lblPEH.Location = new System.Drawing.Point(327, 165);
             this.lblPEH.Margin = new System.Windows.Forms.Padding(4);
             this.lblPEH.Name = "lblPEH";
@@ -549,14 +522,14 @@
             this.cbPackungsEinheit.Group = "MEH";
             this.cbPackungsEinheit.ID_PEP = -1;
             this.cbPackungsEinheit.IgnoreUnterdruecken = false;
-            this.cbPackungsEinheit.Location = new System.Drawing.Point(456, 165);
+            this.cbPackungsEinheit.Location = new System.Drawing.Point(475, 165);
             this.cbPackungsEinheit.Margin = new System.Windows.Forms.Padding(4);
             this.cbPackungsEinheit.MaxLength = 15;
             this.cbPackungsEinheit.Name = "cbPackungsEinheit";
             this.cbPackungsEinheit.PflichtJN = false;
             this.cbPackungsEinheit.SelectDistinct = false;
             this.cbPackungsEinheit.ShowAddButton = true;
-            this.cbPackungsEinheit.Size = new System.Drawing.Size(676, 24);
+            this.cbPackungsEinheit.Size = new System.Drawing.Size(657, 24);
             this.cbPackungsEinheit.sys = false;
             this.cbPackungsEinheit.TabIndex = 8;
             // 
@@ -658,10 +631,39 @@
             this.cbGroup.TabIndex = 1;
             this.cbGroup.ValueChanged += new System.EventHandler(this.cbEinheit_ValueChanged);
             // 
+            // lblImportiertAm
+            // 
+            this.lblImportiertAm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            appearance9.TextHAlignAsString = "Left";
+            appearance9.TextVAlignAsString = "Middle";
+            this.lblImportiertAm.Appearance = appearance9;
+            this.lblImportiertAm.Location = new System.Drawing.Point(327, 453);
+            this.lblImportiertAm.Margin = new System.Windows.Forms.Padding(4);
+            this.lblImportiertAm.Name = "lblImportiertAm";
+            this.lblImportiertAm.Size = new System.Drawing.Size(111, 26);
+            this.lblImportiertAm.TabIndex = 210;
+            this.lblImportiertAm.Text = "Importiert am";
+            this.lblImportiertAm.Click += new System.EventHandler(this.baseLabel1_Click);
+            // 
+            // lblGültigkeitsdatum
+            // 
+            this.lblGültigkeitsdatum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            appearance8.TextHAlignAsString = "Left";
+            appearance8.TextVAlignAsString = "Middle";
+            this.lblGültigkeitsdatum.Appearance = appearance8;
+            this.lblGültigkeitsdatum.Location = new System.Drawing.Point(821, 455);
+            this.lblGültigkeitsdatum.Margin = new System.Windows.Forms.Padding(4);
+            this.lblGültigkeitsdatum.Name = "lblGültigkeitsdatum";
+            this.lblGültigkeitsdatum.Size = new System.Drawing.Size(157, 26);
+            this.lblGültigkeitsdatum.TabIndex = 211;
+            this.lblGültigkeitsdatum.Text = "Gültigkeitsdatum";
+            // 
             // ucMedikamentEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblGültigkeitsdatum);
+            this.Controls.Add(this.lblImportiertAm);
             this.Controls.Add(this.lblPEH);
             this.Controls.Add(this.txtLieferant);
             this.Controls.Add(this.lblLieferant);
@@ -675,8 +677,6 @@
             this.Controls.Add(this.txtLagervorschrift);
             this.Controls.Add(this.lblLagervorschrift);
             this.Controls.Add(this.datGültigkeitsdatum);
-            this.Controls.Add(this.lblGültigkeitsdatum);
-            this.Controls.Add(this.lblImportiertAm);
             this.Controls.Add(this.chkImportiert);
             this.Controls.Add(this.datImportiertAm);
             this.Controls.Add(this.cbPackungsEinheit);
@@ -766,8 +766,6 @@
         private QS2.Desktop.ControlManagment.BaseCheckBox chkImportiert;
         private QS2.Desktop.ControlManagment.BaseDateTimeEditor datImportiertAm;
         private QS2.Desktop.ControlManagment.BaseDateTimeEditor datGültigkeitsdatum;
-        private QS2.Desktop.ControlManagment.BaseLabel lblGültigkeitsdatum;
-        private QS2.Desktop.ControlManagment.BaseLabel lblImportiertAm;
         private QS2.Desktop.ControlManagment.BaseTextEditor txtLagervorschrift;
         private QS2.Desktop.ControlManagment.BaseLabel lblLagervorschrift;
         private QS2.Desktop.ControlManagment.BaseCheckBox chkAktuell;
@@ -778,5 +776,7 @@
         private QS2.Desktop.ControlManagment.BaseTextEditor txtLieferant;
         private QS2.Desktop.ControlManagment.BaseLabel lblLieferant;
         private QS2.Desktop.ControlManagment.BaseLabel lblPEH;
+        private QS2.Desktop.ControlManagment.BaseLabel lblImportiertAm;
+        private QS2.Desktop.ControlManagment.BaseLabel lblGültigkeitsdatum;
     }
 }

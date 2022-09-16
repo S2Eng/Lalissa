@@ -105,13 +105,14 @@ namespace PMDS.DB
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DBFormular));
             this.oleDbConnection1 = new System.Data.OleDb.OleDbConnection();
             this.dsFormular1 = new PMDS.Global.db.Global.dsFormular();
             this.daFormularAll = new System.Data.OleDb.OleDbDataAdapter();
+            this.oleDbDeleteCommand = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand4 = new System.Data.OleDb.OleDbCommand();
             this.oleDbUpdateCommand = new System.Data.OleDb.OleDbCommand();
-            this.oleDbDeleteCommand = new System.Data.OleDb.OleDbCommand();
             this.daFormularOne = new System.Data.OleDb.OleDbDataAdapter();
             this.oleDbCommand5 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand6 = new System.Data.OleDb.OleDbCommand();
@@ -121,8 +122,8 @@ namespace PMDS.DB
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initi" +
-    "al Catalog=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=MSOLEDBSQL.1;Data Source=sty041\\MSSQL2019;Integrated Security=SSPI;Initi" +
+    "al Catalog=PMDS_DemoGross";
             // 
             // dsFormular1
             // 
@@ -142,13 +143,23 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("Bezeichnung", "Bezeichnung"),
                         new System.Data.Common.DataColumnMapping("BLOP", "BLOP"),
                         new System.Data.Common.DataColumnMapping("GUI", "GUI"),
-                        new System.Data.Common.DataColumnMapping("InNotfallAnzeigenJN", "InNotfallAnzeigenJN")})});
+                        new System.Data.Common.DataColumnMapping("InNotfallAnzeigenJN", "InNotfallAnzeigenJN"),
+                        new System.Data.Common.DataColumnMapping("PDF_BLOP", "PDF_BLOP"),
+                        new System.Data.Common.DataColumnMapping("NeuanlageSperren", "NeuanlageSperren"),
+                        new System.Data.Common.DataColumnMapping("lstIDBerufsgruppe", "lstIDBerufsgruppe"),
+                        new System.Data.Common.DataColumnMapping("EditHours", "EditHours")})});
             this.daFormularAll.UpdateCommand = this.oleDbUpdateCommand;
+            // 
+            // oleDbDeleteCommand
+            // 
+            this.oleDbDeleteCommand.CommandText = "DELETE FROM \"PMDS_DemoGross\".\"dbo\".\"Formular\" WHERE ((\"ID\" = ?))";
+            this.oleDbDeleteCommand.Connection = this.oleDbConnection1;
+            this.oleDbDeleteCommand.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbCommand1
             // 
-            this.oleDbCommand1.CommandText = "INSERT INTO [Formular] ([ID], [Name], [Bezeichnung], [BLOP], [GUI], [InNotfallAnz" +
-    "eigenJN]) VALUES (?, ?, ?, ?, ?, ?)";
+            this.oleDbCommand1.CommandText = resources.GetString("oleDbCommand1.CommandText");
             this.oleDbCommand1.Connection = this.oleDbConnection1;
             this.oleDbCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -156,18 +167,22 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("Bezeichnung", System.Data.OleDb.OleDbType.VarChar, 0, "Bezeichnung"),
             new System.Data.OleDb.OleDbParameter("BLOP", System.Data.OleDb.OleDbType.LongVarChar, 0, "BLOP"),
             new System.Data.OleDb.OleDbParameter("GUI", System.Data.OleDb.OleDbType.Boolean, 0, "GUI"),
-            new System.Data.OleDb.OleDbParameter("InNotfallAnzeigenJN", System.Data.OleDb.OleDbType.Boolean, 0, "InNotfallAnzeigenJN")});
+            new System.Data.OleDb.OleDbParameter("InNotfallAnzeigenJN", System.Data.OleDb.OleDbType.Boolean, 0, "InNotfallAnzeigenJN"),
+            new System.Data.OleDb.OleDbParameter("PDF_BLOP", System.Data.OleDb.OleDbType.LongVarBinary, 0, "PDF_BLOP"),
+            new System.Data.OleDb.OleDbParameter("NeuanlageSperren", System.Data.OleDb.OleDbType.Boolean, 0, "NeuanlageSperren"),
+            new System.Data.OleDb.OleDbParameter("lstIDBerufsgruppe", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstIDBerufsgruppe"),
+            new System.Data.OleDb.OleDbParameter("EditHours", System.Data.OleDb.OleDbType.Integer, 0, "EditHours")});
             // 
             // oleDbCommand4
             // 
-            this.oleDbCommand4.CommandText = "SELECT        ID, Name, Bezeichnung, BLOP, GUI, InNotfallAnzeigenJN\r\nFROM        " +
-    "    Formular\r\nORDER BY Name";
+            this.oleDbCommand4.CommandText = "SELECT        ID, Name, Bezeichnung, BLOP, GUI, InNotfallAnzeigenJN, PDF_BLOP, Ne" +
+    "uanlageSperren, lstIDBerufsgruppe, EditHours\r\nFROM            dbo.Formular\r\nORDE" +
+    "R BY Name";
             this.oleDbCommand4.Connection = this.oleDbConnection1;
             // 
             // oleDbUpdateCommand
             // 
-            this.oleDbUpdateCommand.CommandText = "UPDATE [Formular] SET [ID] = ?, [Name] = ?, [Bezeichnung] = ?, [BLOP] = ?, [GUI] " +
-    "= ?, [InNotfallAnzeigenJN] = ? WHERE (([ID] = ?))";
+            this.oleDbUpdateCommand.CommandText = resources.GetString("oleDbUpdateCommand.CommandText");
             this.oleDbUpdateCommand.Connection = this.oleDbConnection1;
             this.oleDbUpdateCommand.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -176,13 +191,10 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("BLOP", System.Data.OleDb.OleDbType.LongVarChar, 0, "BLOP"),
             new System.Data.OleDb.OleDbParameter("GUI", System.Data.OleDb.OleDbType.Boolean, 0, "GUI"),
             new System.Data.OleDb.OleDbParameter("InNotfallAnzeigenJN", System.Data.OleDb.OleDbType.Boolean, 0, "InNotfallAnzeigenJN"),
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
-            // 
-            // oleDbDeleteCommand
-            // 
-            this.oleDbDeleteCommand.CommandText = "DELETE FROM [Formular] WHERE (([ID] = ?))";
-            this.oleDbDeleteCommand.Connection = this.oleDbConnection1;
-            this.oleDbDeleteCommand.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("PDF_BLOP", System.Data.OleDb.OleDbType.LongVarBinary, 0, "PDF_BLOP"),
+            new System.Data.OleDb.OleDbParameter("NeuanlageSperren", System.Data.OleDb.OleDbType.Boolean, 0, "NeuanlageSperren"),
+            new System.Data.OleDb.OleDbParameter("lstIDBerufsgruppe", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstIDBerufsgruppe"),
+            new System.Data.OleDb.OleDbParameter("EditHours", System.Data.OleDb.OleDbType.Integer, 0, "EditHours"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // daFormularOne
@@ -197,20 +209,23 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("Bezeichnung", "Bezeichnung"),
                         new System.Data.Common.DataColumnMapping("BLOP", "BLOP"),
                         new System.Data.Common.DataColumnMapping("GUI", "GUI"),
-                        new System.Data.Common.DataColumnMapping("InNotfallAnzeigenJN", "InNotfallAnzeigenJN")})});
+                        new System.Data.Common.DataColumnMapping("InNotfallAnzeigenJN", "InNotfallAnzeigenJN"),
+                        new System.Data.Common.DataColumnMapping("PDF_BLOP", "PDF_BLOP"),
+                        new System.Data.Common.DataColumnMapping("NeuanlageSperren", "NeuanlageSperren"),
+                        new System.Data.Common.DataColumnMapping("lstIDBerufsgruppe", "lstIDBerufsgruppe"),
+                        new System.Data.Common.DataColumnMapping("EditHours", "EditHours")})});
             this.daFormularOne.UpdateCommand = this.oleDbCommand8;
             // 
             // oleDbCommand5
             // 
-            this.oleDbCommand5.CommandText = "DELETE FROM [Formular] WHERE (([ID] = ?))";
+            this.oleDbCommand5.CommandText = "DELETE FROM \"PMDS_DemoGross\".\"dbo\".\"Formular\" WHERE ((\"ID\" = ?))";
             this.oleDbCommand5.Connection = this.oleDbConnection1;
             this.oleDbCommand5.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbCommand6
             // 
-            this.oleDbCommand6.CommandText = "INSERT INTO [Formular] ([ID], [Name], [Bezeichnung], [BLOP], [GUI], [InNotfallAnz" +
-    "eigenJN]) VALUES (?, ?, ?, ?, ?, ?)";
+            this.oleDbCommand6.CommandText = resources.GetString("oleDbCommand6.CommandText");
             this.oleDbCommand6.Connection = this.oleDbConnection1;
             this.oleDbCommand6.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -218,20 +233,24 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("Bezeichnung", System.Data.OleDb.OleDbType.VarChar, 0, "Bezeichnung"),
             new System.Data.OleDb.OleDbParameter("BLOP", System.Data.OleDb.OleDbType.LongVarChar, 0, "BLOP"),
             new System.Data.OleDb.OleDbParameter("GUI", System.Data.OleDb.OleDbType.Boolean, 0, "GUI"),
-            new System.Data.OleDb.OleDbParameter("InNotfallAnzeigenJN", System.Data.OleDb.OleDbType.Boolean, 0, "InNotfallAnzeigenJN")});
+            new System.Data.OleDb.OleDbParameter("InNotfallAnzeigenJN", System.Data.OleDb.OleDbType.Boolean, 0, "InNotfallAnzeigenJN"),
+            new System.Data.OleDb.OleDbParameter("PDF_BLOP", System.Data.OleDb.OleDbType.LongVarBinary, 0, "PDF_BLOP"),
+            new System.Data.OleDb.OleDbParameter("NeuanlageSperren", System.Data.OleDb.OleDbType.Boolean, 0, "NeuanlageSperren"),
+            new System.Data.OleDb.OleDbParameter("lstIDBerufsgruppe", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstIDBerufsgruppe"),
+            new System.Data.OleDb.OleDbParameter("EditHours", System.Data.OleDb.OleDbType.Integer, 0, "EditHours")});
             // 
             // oleDbCommand7
             // 
-            this.oleDbCommand7.CommandText = "SELECT        ID, Name, Bezeichnung, BLOP, GUI, InNotfallAnzeigenJN\r\nFROM        " +
-    "    Formular\r\nWHERE        (ID = ?)\r\nORDER BY Name";
+            this.oleDbCommand7.CommandText = "SELECT        ID, Name, Bezeichnung, BLOP, GUI, InNotfallAnzeigenJN, PDF_BLOP, Ne" +
+    "uanlageSperren, lstIDBerufsgruppe, EditHours\r\nFROM            dbo.Formular\r\nWHER" +
+    "E        (ID = ?)\r\nORDER BY Name";
             this.oleDbCommand7.Connection = this.oleDbConnection1;
             this.oleDbCommand7.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 16, "ID")});
+            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 1024, "ID")});
             // 
             // oleDbCommand8
             // 
-            this.oleDbCommand8.CommandText = "UPDATE [Formular] SET [ID] = ?, [Name] = ?, [Bezeichnung] = ?, [BLOP] = ?, [GUI] " +
-    "= ?, [InNotfallAnzeigenJN] = ? WHERE (([ID] = ?))";
+            this.oleDbCommand8.CommandText = resources.GetString("oleDbCommand8.CommandText");
             this.oleDbCommand8.Connection = this.oleDbConnection1;
             this.oleDbCommand8.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -240,6 +259,10 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("BLOP", System.Data.OleDb.OleDbType.LongVarChar, 0, "BLOP"),
             new System.Data.OleDb.OleDbParameter("GUI", System.Data.OleDb.OleDbType.Boolean, 0, "GUI"),
             new System.Data.OleDb.OleDbParameter("InNotfallAnzeigenJN", System.Data.OleDb.OleDbType.Boolean, 0, "InNotfallAnzeigenJN"),
+            new System.Data.OleDb.OleDbParameter("PDF_BLOP", System.Data.OleDb.OleDbType.LongVarBinary, 0, "PDF_BLOP"),
+            new System.Data.OleDb.OleDbParameter("NeuanlageSperren", System.Data.OleDb.OleDbType.Boolean, 0, "NeuanlageSperren"),
+            new System.Data.OleDb.OleDbParameter("lstIDBerufsgruppe", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstIDBerufsgruppe"),
+            new System.Data.OleDb.OleDbParameter("EditHours", System.Data.OleDb.OleDbType.Integer, 0, "EditHours"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             ((System.ComponentModel.ISupportInitialize)(this.dsFormular1)).EndInit();
 

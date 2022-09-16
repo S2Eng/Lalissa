@@ -7,8 +7,8 @@ Imports System.Drawing
 Imports Infragistics.Win.UltraWinDock
 Imports Infragistics.Shared
 Imports Infragistics.Win.UltraWinGrid
-
-
+Imports System.Windows.Forms.Design
+Imports S2Extensions
 
 Public Class gridExport
 
@@ -42,17 +42,18 @@ Public Class gridExport
             ElseIf typ = eTyp.csv Then
                 filName = clFold.SelectSaveFileDialog(False, "Csv Dateien (*.csv)|*.csv", ExportPath)
             End If
-            If filName <> "" Then
-                'If columnCheckIfRowExport.Trim() <> "" Then
-                '    For Each rGrid As UltraGridRow In grid.Rows
-                '        If rGrid.Cells(columnCheckIfRowExport.Trim()).Value = False Then
-                '            rGrid.Hidden = True
-                '            rGrid.Tag = "NoExport"
-                '        End If
-                '    Next
-                'End If
 
-                'grid.DataSource = dsToExport
+            If filName <> "" Then
+                filName = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(filName), System.IO.Path.GetFileNameWithoutExtension(filName) + DateTime.Now.ToString("_yyyyMMdd_HHmmssfff") + System.IO.Path.GetExtension(filName))
+                If System.IO.File.Exists(filName) Then
+                    Try
+                        System.IO.File.Delete(filName)
+                    Catch ex As Exception
+                        If System.IO.File.Exists(filName) Then      'filName is in Use or Protected
+                            filName = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(filName), System.IO.Path.GetFileNameWithoutExtension(filName) + filName.sAddRandomString() + System.IO.Path.GetExtension(filName))
+                        End If
+                    End Try
+                End If
 
                 If typ = eTyp.excel Then
                     Me.UltraGridExcelExporter1.Export(grid, filName)
@@ -66,19 +67,13 @@ Public Class gridExport
                                 TableNameToExport, lstColsNotExport, columnCheckIfRowExport)
                 End If
 
-                'If columnCheckIfRowExport.Trim() <> "" Then
-                '    For Each rGrid As UltraGridRow In grid.Rows
-                '        If rGrid.Tag = "NoExport" Then
-                '            rGrid.Hidden = False
-                '        End If
-                '    Next
-                'End If
-
                 If QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Daten wurden exportiert!" + vbNewLine +
                         "Soll die Datei geöffnet werden?", MsgBoxStyle.YesNo, "Export") = MsgBoxResult.Yes Then
-                    If filName <> "" Then
+                    If filName <> "" And System.IO.File.Exists(filName) Then
                         Dim clOpenFile As New clFolder()
                         clOpenFile.openFile(filName, False)
+                    Else
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Datei " + filName + " wurde nicht gefunden.", MsgBoxStyle.OkOnly, "Export")
                     End If
                 End If
                 Return True

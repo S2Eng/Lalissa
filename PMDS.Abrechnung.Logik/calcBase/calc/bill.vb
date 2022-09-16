@@ -69,6 +69,8 @@ Public Class bill
                         Me.doBookmarks.setBookmark("[KostStrasse]", rKlinikDat.Strasse, editor)
                         Me.doBookmarks.setBookmark("[KostAnschrift]", rKlinikDat.Plz + " " + rKlinikDat.Ort, editor)
                     End If
+                    'Me.doBookmarks.setBookmark("[KostEMail]", rKlientDat.Rechnungsanschrift, editor)
+
                 End If
                 strExcep += "4;"
                 Me.doBookmarks.setBookmark("[KostAnrede2]", "", editor)
@@ -96,6 +98,8 @@ Public Class bill
 
                 Me.doBookmarks.setBookmark("[KostStrasse]", rKostDat.Strasse, editor)
                 Me.doBookmarks.setBookmark("[KostAnschrift]", rKostDat.PLZ + " " + rKostDat.Ort, editor)
+                Me.doBookmarks.setBookmark("[KostEMail]", rKostDat.Rechnungsanschrift, editor)
+
                 strExcep += "6.2;"
                 Me.doBookmarks.setBookmark("[Zahlkond]", Me.getZahlart(rKostDat.ID), editor)
                 If rKlinikDat.Zusatz1 <> "" Then
@@ -113,6 +117,7 @@ Public Class bill
                         Me.doBookmarks.setBookmark("[KostEmpf2]", rKostDat2.Rechnungsempfaenger, editor)
                         Me.doBookmarks.setBookmark("[KostStrasse2]", rKostDat2.Strasse, editor)
                         Me.doBookmarks.setBookmark("[KostAnschrift2]", rKostDat2.PLZ + " " + rKostDat2.Ort, editor)
+                        Me.doBookmarks.setBookmark("[KostEMail]", rKostDat2.Rechnungsanschrift, editor)
                     End If
                 Else
                     strExcep += "6.5;"

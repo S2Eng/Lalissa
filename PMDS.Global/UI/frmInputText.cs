@@ -26,7 +26,7 @@ namespace PMDS.GUI.BaseControls
 
         private void frmInputText_Load(object sender, EventArgs e)
         {
-            if (!DesignMode)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
@@ -34,8 +34,16 @@ namespace PMDS.GUI.BaseControls
         }
 
         public void setData(string titWindow, string descrEingabe1, string defaultValue1, bool pflicht1,
-                                string descrEingabe2, string defaultValue2, bool pflicht2 )
+                                string descrEingabe2, string defaultValue2, bool pflicht2, bool bShowText1 = true, bool bShowText2 = true )
         {
+
+            this.panelText1.Visible = bShowText1;
+            this.panelText2.Visible = bShowText2;
+            if (!bShowText1)
+            {
+                panelText2.Top = panelText1.Top;
+            }
+
             this._pflicht1 = pflicht1;
             this._pflicht2 = pflicht2;
 
@@ -59,7 +67,7 @@ namespace PMDS.GUI.BaseControls
                     return;
                 }
             }
-            if (this._pflicht1)
+            if (this._pflicht2)
             {
                 if (this.lblDescription2.Text == "")
                 {

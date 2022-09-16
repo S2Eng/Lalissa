@@ -81,7 +81,7 @@ namespace PMDS.GUI
                     dtpZeitpunkt.Enabled = false;
                 }
 
-                this.InitSturz();
+                //this.InitSturz();     //Erweitertes Sturzprotokoll wird nicht mehr unterstützt.
             }
         }
 

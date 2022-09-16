@@ -348,7 +348,7 @@ namespace PMDS.DB
 
                 foreach (OleDbParameter arFound in lstPar)
                 {
-                    if (arFound.OleDbType == OleDbType.DBTimeStamp)
+                    if (arFound.OleDbType == OleDbType.Date || arFound.OleDbType == OleDbType.DBTimeStamp)
                     {
                         this.sqlTermine1.davInterventionen.SelectCommand.Parameters.Add(new System.Data.OleDb.OleDbParameter(arFound.ParameterName, System.Data.OleDb.OleDbType.Date, 16, arFound.ParameterName)).Value = arFound.Value;
                     }
@@ -2481,6 +2481,34 @@ namespace PMDS.DB
             }
         }
 
+        public PMDS.db.Entities.AuswahlListe GetAuswahllisteByReihenfolge(PMDS.db.Entities.ERModellPMDSEntities db, string GruppeID, int Reihenfolge, bool ExactMatch = false)
+        {
+            try
+            {
+                IQueryable<PMDS.db.Entities.AuswahlListe> tAuswahlliste = db.AuswahlListe.Where(a => a.IDAuswahlListeGruppe == GruppeID && a.Reihenfolge == Reihenfolge);
+                if (!tAuswahlliste.Any() || tAuswahlliste.Count() != 1)
+                {
+                    if (ExactMatch)
+                    {
+                        throw new Exception("PMDSBusiness.GetAuswahllisteByReihenfolge: tAuswahlliste.Count() <> 1 not allowed for Reihenfolge = " + Reihenfolge.ToString());
+                    }
+                    else
+                    { 
+                        return new AuswahlListe();
+                    }
+                }
+                else 
+                {
+                    PMDS.db.Entities.AuswahlListe rAuswahlListe = tAuswahlliste.First();
+                    return rAuswahlListe;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.GetAuswahllisteByID: " + ex.ToString());
+            }
+        }
+
         public IQueryable<PMDS.db.Entities.AuswahlListe> GetAuswahllisteByAuswahllisteGruppe(string AuswahllisteGruppe, PMDS.db.Entities.ERModellPMDSEntities db, bool OrderByBezeichnung)
         {
             try
@@ -2507,9 +2535,6 @@ namespace PMDS.DB
         {
             try
             {
-                retBusiness retBusiness1 = new retBusiness();
-                PMDS.DB.PMDSBusiness PMDSBusiness1 = new PMDS.DB.PMDSBusiness();
-
                 IQueryable<PMDS.db.Entities.AuswahlListe> tAuswahlliste = db.AuswahlListe.Where(a => a.IDAuswahlListeGruppe == GruppeID && a.Bezeichnung == Bezeichnung.Trim()).OrderBy(a => a.Bezeichnung);
                 if (!tAuswahlliste.Any())
                 {
@@ -4845,12 +4870,28 @@ namespace PMDS.DB
                     int x = tMedDaten.Count();
 
                     MedizinischeDaten rMedDaten = tMedDaten.First();
-                    if (System.Convert.ToDecimal(rMedDaten.Groesse.ToString()) < System.Convert.ToDecimal(BefundNummer))
+
+                    decimal VersionNeu;
+                    decimal VersionAlt;
+
+                    if (Decimal.TryParse(rMedDaten.Groesse.ToString(), out VersionAlt) && Decimal.TryParse(BefundNummer, out VersionNeu))
                     {
-                        sBeschreibung += QS2.Desktop.ControlManagment.ControlManagment.getRes("\n\rErgänzung / Änderung: Ersetzt Version ") + rMedDaten.Modell.ToString() + "-" + rMedDaten.Groesse.ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(", importiert am ") + rMedDaten.Von.ToString();
+                        if (System.Convert.ToDecimal(rMedDaten.Groesse.ToString()) < System.Convert.ToDecimal(BefundNummer))
+                        {
+                            sBeschreibung += QS2.Desktop.ControlManagment.ControlManagment.getRes("\n\rErgänzung / Änderung: Ersetzt Version ") + rMedDaten.Modell.ToString() + "-" + rMedDaten.Groesse.ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(", importiert am ") + rMedDaten.Von.ToString();
+                        }
+                        else
+                            AddNewRecord = false;
                     }
                     else
-                        AddNewRecord = false; 
+                    {
+                        if (String.Compare(rMedDaten.Groesse, BefundNummer) < 0 )
+                        {
+                            sBeschreibung += QS2.Desktop.ControlManagment.ControlManagment.getRes("\n\rErgänzung / Änderung: Ersetzt Version ") + rMedDaten.Modell.ToString() + "-" + rMedDaten.Groesse.ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(", importiert am ") + rMedDaten.Von.ToString();
+                        }
+                        else
+                            AddNewRecord = false;
+                    }
                 }
 
                 if (AddNewRecord)
@@ -5243,6 +5284,7 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.getAufenthalt: " + ex.ToString());
             }
         }
+
         public PMDS.db.Entities.Aufenthalt getAufenthalt(Guid IDAufenthalt, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
@@ -5255,6 +5297,20 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.getAufenthalt: " + ex.ToString());
             }
         }
+
+        public List<PMDS.db.Entities.STAMP_Kostentragungen> getSTAMP_Kostentragungen(Guid IDAufenthalt, PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                List<STAMP_Kostentragungen> tSTAMP_Kostentragung = db.STAMP_Kostentragungen.Where(o => o.IDAufenthalt == IDAufenthalt && o.GueltigBis == null).ToList();
+                return tSTAMP_Kostentragung;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.getAufenthalt: " + ex.ToString());
+            }
+        }
+
         public PMDS.db.Entities.Aufenthalt getLastAufenthaltEntlassen(Guid IDPatient, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try

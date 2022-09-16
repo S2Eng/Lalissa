@@ -7,6 +7,7 @@ using PMDS.Data.Global;
 using System.Data.OleDb;
 using RBU;
 using PMDS.Global.db.Global;
+using MARC.Everest.DataTypes;
 
 
 namespace PMDS.DB.Global
@@ -131,9 +132,11 @@ namespace PMDS.DB.Global
                 dsMedikationVonBis.MedikationDataTable dt = new dsMedikationVonBis.MedikationDataTable();
                 daMedikationVonBis.SelectCommand.Parameters.Clear();
                 daMedikationVonBis.SelectCommand.Parameters.AddWithValue("IDAufenthalt", IDAufenthalt);
-                daMedikationVonBis.SelectCommand.Parameters.AddWithValue("v1", dtvon);
-                daMedikationVonBis.SelectCommand.Parameters.AddWithValue("v2", dtvon);
-                daMedikationVonBis.SelectCommand.Parameters.AddWithValue("v3", dtbis);
+
+                daMedikationVonBis.SelectCommand.Parameters.Add(new OleDbParameter { ParameterName = "@v1", OleDbType = OleDbType.Date, Value = dtvon });
+                daMedikationVonBis.SelectCommand.Parameters.Add(new OleDbParameter { ParameterName = "@v2", OleDbType = OleDbType.Date, Value = dtvon });
+                daMedikationVonBis.SelectCommand.Parameters.Add(new OleDbParameter { ParameterName = "@v3", OleDbType = OleDbType.Date, Value = dtbis });
+
                 DataBase.Fill(daMedikationVonBis, dt);
                 return dt;
 

@@ -836,16 +836,18 @@ namespace PMDS.GUI
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.AutoScroll = true;
             this.ultraTabPageControl1.Controls.Add(this.pnlUhrzeit);
             this.ultraTabPageControl1.Controls.Add(this.pnlM);
             this.ultraTabPageControl1.Controls.Add(this.pnlInfo);
             this.ultraTabPageControl1.Controls.Add(this.pnlGenerell);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(678, 430);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(681, 417);
             // 
             // pnlUhrzeit
             // 
+            this.pnlUhrzeit.AutoScroll = true;
             this.pnlUhrzeit.Controls.Add(this.cbZeitbereich);
             this.pnlUhrzeit.Controls.Add(this.dtpTime);
             this.pnlUhrzeit.Controls.Add(this.osZeit);
@@ -909,6 +911,7 @@ namespace PMDS.GUI
             // 
             // pnlM
             // 
+            this.pnlM.AutoScroll = true;
             this.pnlM.Controls.Add(this.pnlNaechsteEvaluierung);
             this.pnlM.Controls.Add(this.pnlLokalisierung);
             this.pnlM.Controls.Add(this.pnlBerufsstand);
@@ -923,6 +926,7 @@ namespace PMDS.GUI
             // 
             this.pnlNaechsteEvaluierung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlNaechsteEvaluierung.AutoScroll = true;
             this.pnlNaechsteEvaluierung.Controls.Add(this.tbNaechsteEvaluierungBemerkung);
             this.pnlNaechsteEvaluierung.Controls.Add(this.dtpNaechsteEvaluierung);
             this.pnlNaechsteEvaluierung.Controls.Add(this.ultraLabel14);
@@ -979,6 +983,7 @@ namespace PMDS.GUI
             // 
             this.pnlLokalisierung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlLokalisierung.AutoScroll = true;
             this.pnlLokalisierung.Controls.Add(this.baseLabel2);
             this.pnlLokalisierung.Controls.Add(this.cbSide);
             this.pnlLokalisierung.Controls.Add(this.ultraLabel6);
@@ -1005,12 +1010,14 @@ namespace PMDS.GUI
             this.cbSide.BerufsstandGruppeJNA = -1;
             this.cbSide.Enabled = false;
             this.cbSide.ExactMatch = false;
-            this.cbSide.Group = "";
+            this.cbSide.Group = "LOS";
             this.cbSide.ID_PEP = -1;
+            this.cbSide.IgnoreUnterdruecken = true;
             this.cbSide.Location = new System.Drawing.Point(365, 3);
             this.cbSide.MaxLength = 50;
             this.cbSide.Name = "cbSide";
             this.cbSide.PflichtJN = false;
+            this.cbSide.SelectDistinct = false;
             this.cbSide.ShowAddButton = true;
             this.cbSide.Size = new System.Drawing.Size(122, 24);
             this.cbSide.sys = false;
@@ -1034,12 +1041,14 @@ namespace PMDS.GUI
             this.cbArea.BerufsstandGruppeJNA = -1;
             this.cbArea.Enabled = false;
             this.cbArea.ExactMatch = false;
-            this.cbArea.Group = "";
+            this.cbArea.Group = "LOA";
             this.cbArea.ID_PEP = -1;
+            this.cbArea.IgnoreUnterdruecken = true;
             this.cbArea.Location = new System.Drawing.Point(189, 3);
             this.cbArea.MaxLength = 50;
             this.cbArea.Name = "cbArea";
             this.cbArea.PflichtJN = false;
+            this.cbArea.SelectDistinct = false;
             this.cbArea.ShowAddButton = true;
             this.cbArea.Size = new System.Drawing.Size(124, 24);
             this.cbArea.sys = false;
@@ -1059,6 +1068,7 @@ namespace PMDS.GUI
             // 
             this.pnlBerufsstand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBerufsstand.AutoScroll = true;
             this.pnlBerufsstand.Controls.Add(this.baseLabel1);
             this.pnlBerufsstand.Controls.Add(this.cbBerufsstand);
             this.pnlBerufsstand.Controls.Add(this.tbDauer);
@@ -1087,11 +1097,13 @@ namespace PMDS.GUI
             this.cbBerufsstand.BerufsstandGruppeJNA = -1;
             this.cbBerufsstand.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbBerufsstand.ExactMatch = false;
-            this.cbBerufsstand.Group = "";
+            this.cbBerufsstand.Group = "BER";
             this.cbBerufsstand.ID_PEP = -1;
+            this.cbBerufsstand.IgnoreUnterdruecken = true;
             this.cbBerufsstand.Location = new System.Drawing.Point(326, 3);
             this.cbBerufsstand.Name = "cbBerufsstand";
             this.cbBerufsstand.PflichtJN = false;
+            this.cbBerufsstand.SelectDistinct = false;
             this.cbBerufsstand.ShowAddButton = true;
             this.cbBerufsstand.Size = new System.Drawing.Size(161, 24);
             this.cbBerufsstand.sys = false;
@@ -1137,6 +1149,7 @@ namespace PMDS.GUI
             // 
             this.pnlIntervall.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlIntervall.AutoScroll = true;
             this.pnlIntervall.Controls.Add(this.ucWochenTage11);
             this.pnlIntervall.Controls.Add(this.ultraLabel4);
             this.pnlIntervall.Controls.Add(this.ultraLabel10);
@@ -1312,8 +1325,7 @@ namespace PMDS.GUI
             // 
             // pnlInfo
             // 
-            this.pnlInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlInfo.AutoScroll = true;
             this.pnlInfo.Controls.Add(this.cbChanged);
             this.pnlInfo.Controls.Add(this.lblInfoCreated);
             this.pnlInfo.Controls.Add(this.lblInfoChanged);
@@ -1370,17 +1382,19 @@ namespace PMDS.GUI
             // 
             this.pnlGenerell.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlGenerell.AutoScroll = true;
             this.pnlGenerell.Controls.Add(this.pnlDokument);
             this.pnlGenerell.Controls.Add(this.pnlAnm);
             this.pnlGenerell.Controls.Add(this.pnlBez);
             this.pnlGenerell.Controls.Add(this.pnlW);
             this.pnlGenerell.Location = new System.Drawing.Point(4, 2);
             this.pnlGenerell.Name = "pnlGenerell";
-            this.pnlGenerell.Size = new System.Drawing.Size(672, 151);
+            this.pnlGenerell.Size = new System.Drawing.Size(675, 151);
             this.pnlGenerell.TabIndex = 1;
             // 
             // pnlDokument
             // 
+            this.pnlDokument.AllowDrop = true;
             this.pnlDokument.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlDokument.BackColor = System.Drawing.Color.Transparent;
@@ -1389,7 +1403,7 @@ namespace PMDS.GUI
             this.pnlDokument.Controls.Add(this.cbLinkDokument);
             this.pnlDokument.Location = new System.Drawing.Point(2, 121);
             this.pnlDokument.Name = "pnlDokument";
-            this.pnlDokument.Size = new System.Drawing.Size(667, 29);
+            this.pnlDokument.Size = new System.Drawing.Size(670, 29);
             this.pnlDokument.TabIndex = 25;
             // 
             // btnShow
@@ -1397,7 +1411,7 @@ namespace PMDS.GUI
             this.btnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShow.AutoWorkLayout = false;
             this.btnShow.IsStandardControl = false;
-            this.btnShow.Location = new System.Drawing.Point(585, 2);
+            this.btnShow.Location = new System.Drawing.Point(573, 2);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(75, 25);
             this.btnShow.TabIndex = 22;
@@ -1423,8 +1437,10 @@ namespace PMDS.GUI
             this.cbLinkDokument.IDLinkDokument = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.cbLinkDokument.Location = new System.Drawing.Point(113, 2);
             this.cbLinkDokument.Name = "cbLinkDokument";
-            this.cbLinkDokument.Size = new System.Drawing.Size(466, 24);
+            this.cbLinkDokument.Size = new System.Drawing.Size(450, 22);
             this.cbLinkDokument.TabIndex = 20;
+            this.cbLinkDokument.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.cbLinkDokument.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.cbLinkDokument.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cbLinkDokument_BeforeDropDown);
             this.cbLinkDokument.ValueChanged += new System.EventHandler(this.cbLinkDokument_ValueChanged);
             // 
@@ -1432,12 +1448,13 @@ namespace PMDS.GUI
             // 
             this.pnlAnm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlAnm.AutoScroll = true;
             this.pnlAnm.BackColor = System.Drawing.Color.Transparent;
             this.pnlAnm.Controls.Add(this.ultraLabel3);
             this.pnlAnm.Controls.Add(this.tbAnmerkung);
             this.pnlAnm.Location = new System.Drawing.Point(3, 79);
             this.pnlAnm.Name = "pnlAnm";
-            this.pnlAnm.Size = new System.Drawing.Size(665, 41);
+            this.pnlAnm.Size = new System.Drawing.Size(668, 41);
             this.pnlAnm.TabIndex = 24;
             // 
             // ultraLabel3
@@ -1460,7 +1477,7 @@ namespace PMDS.GUI
             this.tbAnmerkung.Multiline = true;
             this.tbAnmerkung.Name = "tbAnmerkung";
             this.tbAnmerkung.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbAnmerkung.Size = new System.Drawing.Size(549, 37);
+            this.tbAnmerkung.Size = new System.Drawing.Size(535, 37);
             this.tbAnmerkung.TabIndex = 3;
             this.tbAnmerkung.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -1468,24 +1485,25 @@ namespace PMDS.GUI
             // 
             this.pnlBez.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBez.AutoScroll = true;
             this.pnlBez.Controls.Add(this.tbText);
             this.pnlBez.Controls.Add(this.cbTermin);
             this.pnlBez.Controls.Add(this.lblBezeichnung);
             this.pnlBez.Location = new System.Drawing.Point(3, 2);
             this.pnlBez.Name = "pnlBez";
-            this.pnlBez.Size = new System.Drawing.Size(665, 38);
+            this.pnlBez.Size = new System.Drawing.Size(668, 38);
             this.pnlBez.TabIndex = 22;
             // 
             // tbText
             // 
             this.tbText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbText.Location = new System.Drawing.Point(112, 3);
+            this.tbText.Location = new System.Drawing.Point(112, 7);
             this.tbText.MaxLength = 255;
             this.tbText.Multiline = true;
             this.tbText.Name = "tbText";
             this.tbText.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbText.Size = new System.Drawing.Size(549, 33);
+            this.tbText.Size = new System.Drawing.Size(535, 33);
             this.tbText.TabIndex = 1;
             this.tbText.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -1497,9 +1515,11 @@ namespace PMDS.GUI
             this.cbTermin.ExactMatch = false;
             this.cbTermin.Group = "TRM";
             this.cbTermin.ID_PEP = -1;
+            this.cbTermin.IgnoreUnterdruecken = true;
             this.cbTermin.Location = new System.Drawing.Point(131, 43);
             this.cbTermin.Name = "cbTermin";
             this.cbTermin.PflichtJN = false;
+            this.cbTermin.SelectDistinct = false;
             this.cbTermin.ShowAddButton = true;
             this.cbTermin.Size = new System.Drawing.Size(408, 24);
             this.cbTermin.sys = false;
@@ -1522,12 +1542,13 @@ namespace PMDS.GUI
             // 
             this.pnlW.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlW.AutoScroll = true;
             this.pnlW.BackColor = System.Drawing.Color.Transparent;
             this.pnlW.Controls.Add(this.ultraLabel2);
             this.pnlW.Controls.Add(this.tbWarnung);
             this.pnlW.Location = new System.Drawing.Point(3, 41);
             this.pnlW.Name = "pnlW";
-            this.pnlW.Size = new System.Drawing.Size(665, 38);
+            this.pnlW.Size = new System.Drawing.Size(668, 38);
             this.pnlW.TabIndex = 23;
             // 
             // ultraLabel2
@@ -1550,7 +1571,7 @@ namespace PMDS.GUI
             this.tbWarnung.Multiline = true;
             this.tbWarnung.Name = "tbWarnung";
             this.tbWarnung.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbWarnung.Size = new System.Drawing.Size(549, 34);
+            this.tbWarnung.Size = new System.Drawing.Size(535, 34);
             this.tbWarnung.TabIndex = 2;
             this.tbWarnung.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -1563,6 +1584,7 @@ namespace PMDS.GUI
             // 
             // ucZusatzeintrag1
             // 
+            this.ucZusatzeintrag1.AutoScroll = true;
             this.ucZusatzeintrag1.BackColor = System.Drawing.Color.White;
             this.ucZusatzeintrag1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucZusatzeintrag1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1584,7 +1606,7 @@ namespace PMDS.GUI
             this.tabMain.Location = new System.Drawing.Point(2, 2);
             this.tabMain.Name = "tabMain";
             this.tabMain.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.tabMain.Size = new System.Drawing.Size(682, 457);
+            this.tabMain.Size = new System.Drawing.Size(685, 444);
             this.tabMain.TabIndex = 7;
             ultraTab1.Key = "Details";
             ultraTab1.TabPage = this.ultraTabPageControl1;
@@ -1600,7 +1622,7 @@ namespace PMDS.GUI
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(678, 430);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(681, 417);
             // 
             // ultraTabPageControl2
             // 
@@ -1617,10 +1639,12 @@ namespace PMDS.GUI
             // ucPflegePlanSingleEdit2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScroll = true;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tabMain);
             this.Name = "ucPflegePlanSingleEdit2";
-            this.Size = new System.Drawing.Size(687, 462);
+            this.Size = new System.Drawing.Size(690, 449);
             this.Load += new System.EventHandler(this.ucPflegePlanSingleEdit2_Load);
             this.ultraTabPageControl1.ResumeLayout(false);
             this.pnlUhrzeit.ResumeLayout(false);

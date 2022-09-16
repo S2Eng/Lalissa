@@ -63,7 +63,7 @@ namespace PMDS.BusinessLogic
             sb.Append(r.EreignisZeitpunkt.ToShortDateString());
             sb.Append(" ");
             sb.Append(r.EreignisZeitpunkt.ToShortTimeString());
-            sb.Append(" : ");
+            sb.Append(": ");
             sb.Append(r.Anmerkung.Trim());
             return sb.ToString();
         }

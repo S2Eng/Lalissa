@@ -79,8 +79,8 @@
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinEditors.EditorButton editorButton1 = new Infragistics.Win.UltraWinEditors.EditorButton("Add");
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
@@ -92,23 +92,22 @@
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("VO", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAufenthalt");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn58 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDMedikament");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Typ", -1, 686348204, 1, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn61 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Menge");
+            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn62 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Einheit");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn64 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Hinweis");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn66 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DatumVerordnetAb", -1, null, 2, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DatumVerordnetBis");
+            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn71 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("BestaetigtVon");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn72 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DatumErstellt");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn73 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDBenutzerErstellt");
@@ -135,17 +134,17 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn91 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn92 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDVerordnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn93 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GueltigAb");
+            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn94 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GueltigBis");
+            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn95 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Typ", -1, 686348204, 1, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn96 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDMedikament");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn97 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EigentumKlient");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn98 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Menge");
+            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn148 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Einheit");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn149 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Lieferant", -1, 337493844);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn150 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("HinweisLieferant");
@@ -158,8 +157,8 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn157 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DatumGeaendert");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn158 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Dauerbestellung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn159 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DatumNaechsterAnspruch");
+            Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn160 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SerienterminEndetAm");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn161 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SerienterminType");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn162 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("WiedWertJeden");
@@ -170,14 +169,15 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn180 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EinmaligeAnforderung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn181 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Klient", 0, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn182 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Medikament", 1, null, 2, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueList valueList3 = new Infragistics.Win.ValueList(686348204);
             Infragistics.Win.ValueList valueList4 = new Infragistics.Win.ValueList(337493844);
-            Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            PMDS.DB.PMDSBusiness pmdsBusiness1 = new PMDS.DB.PMDSBusiness();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.panelVOBestelldatenGrid = new System.Windows.Forms.Panel();
             this.gridVOBestelldaten = new QS2.Desktop.ControlManagment.BaseGrid();
@@ -275,7 +275,7 @@
             this.ultraTabPageControl1.Controls.Add(this.panelVOBestelldatenGrid);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(1063, 207);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(1063, 199);
             // 
             // panelVOBestelldatenGrid
             // 
@@ -287,7 +287,7 @@
             this.panelVOBestelldatenGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelVOBestelldatenGrid.Location = new System.Drawing.Point(0, 0);
             this.panelVOBestelldatenGrid.Name = "panelVOBestelldatenGrid";
-            this.panelVOBestelldatenGrid.Size = new System.Drawing.Size(1063, 207);
+            this.panelVOBestelldatenGrid.Size = new System.Drawing.Size(1063, 199);
             this.panelVOBestelldatenGrid.TabIndex = 14;
             // 
             // gridVOBestelldaten
@@ -463,7 +463,7 @@
             this.gridVOBestelldaten.Location = new System.Drawing.Point(3, 29);
             this.gridVOBestelldaten.Margin = new System.Windows.Forms.Padding(4);
             this.gridVOBestelldaten.Name = "gridVOBestelldaten";
-            this.gridVOBestelldaten.Size = new System.Drawing.Size(1058, 164);
+            this.gridVOBestelldaten.Size = new System.Drawing.Size(1058, 156);
             this.gridVOBestelldaten.TabIndex = 20;
             this.gridVOBestelldaten.Text = "Bestelldaten";
             this.gridVOBestelldaten.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.gridVOBestelldaten_BeforeCellActivate);
@@ -543,7 +543,7 @@
             this.ultraTabPageControl2.Controls.Add(this.ucLager1);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(1063, 207);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(1063, 199);
             // 
             // ucLager1
             // 
@@ -551,7 +551,7 @@
             this.ucLager1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucLager1.Location = new System.Drawing.Point(0, 0);
             this.ucLager1.Name = "ucLager1";
-            this.ucLager1.Size = new System.Drawing.Size(1063, 207);
+            this.ucLager1.Size = new System.Drawing.Size(1063, 199);
             this.ucLager1.TabIndex = 0;
             // 
             // btnDel
@@ -737,72 +737,71 @@
             // 
             // cboZustand
             // 
-            appearance16.BackColor = System.Drawing.Color.White;
-            this.cboZustand.Appearance = appearance16;
             this.cboZustand.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cboZustand.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
-            this.cboZustand.BackColor = System.Drawing.Color.White;
-            appearance17.Image = global::PMDS.GUI.Properties.Resources.ico_Plus;
-            editorButton1.Appearance = appearance17;
+            appearance16.Image = global::PMDS.GUI.Properties.Resources.ico_Plus;
+            editorButton1.Appearance = appearance16;
             editorButton1.Key = "Add";
             this.cboZustand.ButtonsRight.Add(editorButton1);
-            this.cboZustand.Location = new System.Drawing.Point(516, 18);
+            this.cboZustand.Location = new System.Drawing.Point(529, 19);
             this.cboZustand.Name = "cboZustand";
-            this.cboZustand.Size = new System.Drawing.Size(184, 21);
+            this.cboZustand.Size = new System.Drawing.Size(171, 21);
             this.cboZustand.TabIndex = 42;
             this.cboZustand.EditorButtonClick += new Infragistics.Win.UltraWinEditors.EditorButtonEventHandler(this.cboZustand_EditorButtonClick);
             // 
             // lblZustandLager
             // 
-            appearance18.TextVAlignAsString = "Middle";
-            this.lblZustandLager.Appearance = appearance18;
-            this.lblZustandLager.Location = new System.Drawing.Point(435, 20);
+            appearance17.TextVAlignAsString = "Middle";
+            this.lblZustandLager.Appearance = appearance17;
+            this.lblZustandLager.AutoSize = true;
+            this.lblZustandLager.Location = new System.Drawing.Point(435, 21);
             this.lblZustandLager.Name = "lblZustandLager";
-            this.lblZustandLager.Size = new System.Drawing.Size(89, 17);
+            this.lblZustandLager.Size = new System.Drawing.Size(77, 14);
             this.lblZustandLager.TabIndex = 43;
             this.lblZustandLager.Text = "Lager Zustand";
             // 
             // udteVerordnetBis
             // 
-            this.udteVerordnetBis.Location = new System.Drawing.Point(334, 42);
+            this.udteVerordnetBis.Location = new System.Drawing.Point(334, 47);
             this.udteVerordnetBis.Name = "udteVerordnetBis";
             this.udteVerordnetBis.Size = new System.Drawing.Size(92, 21);
             this.udteVerordnetBis.TabIndex = 3;
             // 
             // udteVerordnetAb
             // 
-            this.udteVerordnetAb.Location = new System.Drawing.Point(334, 18);
+            this.udteVerordnetAb.Location = new System.Drawing.Point(334, 19);
             this.udteVerordnetAb.Name = "udteVerordnetAb";
             this.udteVerordnetAb.Size = new System.Drawing.Size(92, 21);
             this.udteVerordnetAb.TabIndex = 2;
             // 
             // lblVerordnetBis
             // 
-            appearance19.TextVAlignAsString = "Middle";
-            this.lblVerordnetBis.Appearance = appearance19;
-            this.lblVerordnetBis.Location = new System.Drawing.Point(254, 44);
+            appearance18.TextVAlignAsString = "Middle";
+            this.lblVerordnetBis.Appearance = appearance18;
+            this.lblVerordnetBis.AutoSize = true;
+            this.lblVerordnetBis.Location = new System.Drawing.Point(241, 49);
             this.lblVerordnetBis.Name = "lblVerordnetBis";
-            this.lblVerordnetBis.Size = new System.Drawing.Size(83, 16);
+            this.lblVerordnetBis.Size = new System.Drawing.Size(71, 14);
             this.lblVerordnetBis.TabIndex = 18;
             this.lblVerordnetBis.Text = "Verordnet bis";
             // 
             // lblVerordnetAb
             // 
-            appearance20.TextVAlignAsString = "Middle";
-            this.lblVerordnetAb.Appearance = appearance20;
-            this.lblVerordnetAb.Location = new System.Drawing.Point(254, 20);
+            appearance19.TextVAlignAsString = "Middle";
+            this.lblVerordnetAb.Appearance = appearance19;
+            this.lblVerordnetAb.AutoSize = true;
+            this.lblVerordnetAb.Location = new System.Drawing.Point(241, 21);
             this.lblVerordnetAb.Name = "lblVerordnetAb";
-            this.lblVerordnetAb.Size = new System.Drawing.Size(83, 16);
+            this.lblVerordnetAb.Size = new System.Drawing.Size(75, 14);
             this.lblVerordnetAb.TabIndex = 17;
             this.lblVerordnetAb.Text = "Verordnet von";
             // 
             // dropDownTyp
             // 
-            appearance21.BorderColor = System.Drawing.Color.Black;
-            appearance21.TextHAlignAsString = "Center";
-            this.dropDownTyp.Appearance = appearance21;
+            appearance20.TextHAlignAsString = "Center";
+            this.dropDownTyp.Appearance = appearance20;
             this.dropDownTyp.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-            this.dropDownTyp.Location = new System.Drawing.Point(17, 17);
+            this.dropDownTyp.Location = new System.Drawing.Point(9, 18);
             this.dropDownTyp.Name = "dropDownTyp";
             this.dropDownTyp.Size = new System.Drawing.Size(126, 22);
             this.dropDownTyp.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
@@ -813,7 +812,7 @@
             // 
             // chkNurAktuelle
             // 
-            this.chkNurAktuelle.Location = new System.Drawing.Point(159, 19);
+            this.chkNurAktuelle.Location = new System.Drawing.Point(146, 20);
             this.chkNurAktuelle.Name = "chkNurAktuelle";
             this.chkNurAktuelle.Size = new System.Drawing.Size(97, 18);
             this.chkNurAktuelle.TabIndex = 4;
@@ -822,11 +821,10 @@
             // 
             // dropDownPatienten
             // 
-            appearance22.BorderColor = System.Drawing.Color.Black;
-            appearance22.TextHAlignAsString = "Center";
-            this.dropDownPatienten.Appearance = appearance22;
+            appearance21.TextHAlignAsString = "Center";
+            this.dropDownPatienten.Appearance = appearance21;
             this.dropDownPatienten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-            this.dropDownPatienten.Location = new System.Drawing.Point(17, 41);
+            this.dropDownPatienten.Location = new System.Drawing.Point(9, 46);
             this.dropDownPatienten.Name = "dropDownPatienten";
             this.dropDownPatienten.Size = new System.Drawing.Size(126, 22);
             this.dropDownPatienten.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
@@ -837,15 +835,15 @@
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance23.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance23.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSearch.Appearance = appearance23;
+            appearance22.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance22.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSearch.Appearance = appearance22;
             this.btnSearch.AutoWorkLayout = false;
             this.btnSearch.IsStandardControl = false;
-            this.btnSearch.Location = new System.Drawing.Point(705, 17);
+            this.btnSearch.Location = new System.Drawing.Point(705, 18);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(69, 34);
+            this.btnSearch.Size = new System.Drawing.Size(69, 49);
             this.btnSearch.TabIndex = 10;
             this.btnSearch.Tag = "";
             this.btnSearch.Text = "Suchen";
@@ -853,9 +851,9 @@
             // 
             // btnPrint
             // 
-            appearance24.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance24.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnPrint.Appearance = appearance24;
+            appearance23.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance23.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnPrint.Appearance = appearance23;
             this.btnPrint.AutoWorkLayout = false;
             this.btnPrint.ContextMenuStrip = this.contextMenuStripDrucken;
             this.btnPrint.contextMenuStrip1 = this.contextMenuStripDrucken;
@@ -874,12 +872,12 @@
             this.contextMenuStripDrucken.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportDSToolStripMenuItem});
             this.contextMenuStripDrucken.Name = "contextMenuStripDrucken";
-            this.contextMenuStripDrucken.Size = new System.Drawing.Size(125, 26);
+            this.contextMenuStripDrucken.Size = new System.Drawing.Size(126, 26);
             // 
             // exportDSToolStripMenuItem
             // 
             this.exportDSToolStripMenuItem.Name = "exportDSToolStripMenuItem";
-            this.exportDSToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.exportDSToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.exportDSToolStripMenuItem.Text = "Export DS";
             this.exportDSToolStripMenuItem.Click += new System.EventHandler(this.exportDSToolStripMenuItem_Click);
             // 
@@ -918,12 +916,12 @@
             // btnAbort
             // 
             this.btnAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance25.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance25.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAbort.Appearance = appearance25;
+            appearance24.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance24.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAbort.Appearance = appearance24;
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(830, 11);
+            this.btnAbort.Location = new System.Drawing.Point(828, 11);
             this.btnAbort.Margin = new System.Windows.Forms.Padding(4);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(81, 30);
@@ -936,8 +934,8 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance26.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSave.Appearance = appearance26;
+            appearance25.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSave.Appearance = appearance25;
             this.btnSave.AutoWorkLayout = false;
             this.btnSave.IsStandardControl = false;
             this.btnSave.Location = new System.Drawing.Point(911, 11);
@@ -953,9 +951,9 @@
             // lblFound
             // 
             this.lblFound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance27.TextVAlignAsString = "Middle";
-            this.lblFound.Appearance = appearance27;
-            this.lblFound.Location = new System.Drawing.Point(6, 206);
+            appearance26.TextVAlignAsString = "Middle";
+            this.lblFound.Appearance = appearance26;
+            this.lblFound.Location = new System.Drawing.Point(6, 201);
             this.lblFound.Name = "lblFound";
             this.lblFound.Size = new System.Drawing.Size(137, 16);
             this.lblFound.TabIndex = 22;
@@ -988,7 +986,7 @@
             this.splitContainerCenter.Panel2.BackColor = System.Drawing.Color.White;
             this.splitContainerCenter.Panel2.Controls.Add(this.ultraTabControl1);
             this.splitContainerCenter.Size = new System.Drawing.Size(1067, 449);
-            this.splitContainerCenter.SplitterDistance = 213;
+            this.splitContainerCenter.SplitterDistance = 221;
             this.splitContainerCenter.SplitterWidth = 3;
             this.splitContainerCenter.TabIndex = 13;
             // 
@@ -1000,7 +998,7 @@
             this.panelVOGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelVOGrid.Location = new System.Drawing.Point(0, 0);
             this.panelVOGrid.Name = "panelVOGrid";
-            this.panelVOGrid.Size = new System.Drawing.Size(1067, 213);
+            this.panelVOGrid.Size = new System.Drawing.Size(1067, 221);
             this.panelVOGrid.TabIndex = 13;
             // 
             // gridVO
@@ -1013,9 +1011,9 @@
             this.gridVO.contextMenuStrip1 = this.contextMenuStripGrid;
             this.gridVO.DataMember = "VO";
             this.gridVO.DataSource = this.dsVO1;
-            appearance28.BackColor = System.Drawing.Color.White;
-            appearance28.FontData.SizeInPoints = 10F;
-            this.gridVO.DisplayLayout.Appearance = appearance28;
+            appearance27.BackColor = System.Drawing.Color.White;
+            appearance27.FontData.SizeInPoints = 10F;
+            this.gridVO.DisplayLayout.Appearance = appearance27;
             ultraGridColumn56.Header.Editor = null;
             ultraGridColumn56.Header.VisiblePosition = 7;
             ultraGridColumn56.Hidden = true;
@@ -1030,10 +1028,10 @@
             ultraGridColumn59.Header.VisiblePosition = 4;
             ultraGridColumn59.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ultraGridColumn59.Width = 247;
+            appearance28.TextHAlignAsString = "Right";
+            ultraGridColumn61.CellAppearance = appearance28;
             appearance29.TextHAlignAsString = "Right";
-            ultraGridColumn61.CellAppearance = appearance29;
-            appearance30.TextHAlignAsString = "Right";
-            ultraGridColumn61.Header.Appearance = appearance30;
+            ultraGridColumn61.Header.Appearance = appearance29;
             ultraGridColumn61.Header.Editor = null;
             ultraGridColumn61.Header.VisiblePosition = 10;
             ultraGridColumn61.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoublePositiveWithSpin;
@@ -1043,18 +1041,18 @@
             ultraGridColumn64.Header.Editor = null;
             ultraGridColumn64.Header.VisiblePosition = 11;
             ultraGridColumn64.Width = 289;
+            appearance30.TextHAlignAsString = "Center";
+            ultraGridColumn66.CellAppearance = appearance30;
             appearance31.TextHAlignAsString = "Center";
-            ultraGridColumn66.CellAppearance = appearance31;
-            appearance32.TextHAlignAsString = "Center";
-            ultraGridColumn66.Header.Appearance = appearance32;
+            ultraGridColumn66.Header.Appearance = appearance31;
             ultraGridColumn66.Header.Caption = "Verordnet ab";
             ultraGridColumn66.Header.Editor = null;
             ultraGridColumn66.Header.VisiblePosition = 6;
             ultraGridColumn66.Width = 105;
+            appearance32.TextHAlignAsString = "Center";
+            ultraGridColumn70.CellAppearance = appearance32;
             appearance33.TextHAlignAsString = "Center";
-            ultraGridColumn70.CellAppearance = appearance33;
-            appearance34.TextHAlignAsString = "Center";
-            ultraGridColumn70.Header.Appearance = appearance34;
+            ultraGridColumn70.Header.Appearance = appearance33;
             ultraGridColumn70.Header.Caption = "Verordnet bis";
             ultraGridColumn70.Header.Editor = null;
             ultraGridColumn70.Header.VisiblePosition = 8;
@@ -1174,17 +1172,17 @@
             ultraGridColumn92.Header.Editor = null;
             ultraGridColumn92.Header.VisiblePosition = 4;
             ultraGridColumn92.Hidden = true;
+            appearance34.TextHAlignAsString = "Center";
+            ultraGridColumn93.CellAppearance = appearance34;
             appearance35.TextHAlignAsString = "Center";
-            ultraGridColumn93.CellAppearance = appearance35;
-            appearance36.TextHAlignAsString = "Center";
-            ultraGridColumn93.Header.Appearance = appearance36;
+            ultraGridColumn93.Header.Appearance = appearance35;
             ultraGridColumn93.Header.Caption = "Gültig ab";
             ultraGridColumn93.Header.Editor = null;
             ultraGridColumn93.Header.VisiblePosition = 5;
+            appearance36.TextHAlignAsString = "Center";
+            ultraGridColumn94.CellAppearance = appearance36;
             appearance37.TextHAlignAsString = "Center";
-            ultraGridColumn94.CellAppearance = appearance37;
-            appearance38.TextHAlignAsString = "Center";
-            ultraGridColumn94.Header.Appearance = appearance38;
+            ultraGridColumn94.Header.Appearance = appearance37;
             ultraGridColumn94.Header.Caption = "Gültig bis";
             ultraGridColumn94.Header.Editor = null;
             ultraGridColumn94.Header.VisiblePosition = 6;
@@ -1198,10 +1196,10 @@
             ultraGridColumn97.Header.Caption = "Eigentum Klient";
             ultraGridColumn97.Header.Editor = null;
             ultraGridColumn97.Header.VisiblePosition = 13;
+            appearance38.TextHAlignAsString = "Right";
+            ultraGridColumn98.CellAppearance = appearance38;
             appearance39.TextHAlignAsString = "Right";
-            ultraGridColumn98.CellAppearance = appearance39;
-            appearance40.TextHAlignAsString = "Right";
-            ultraGridColumn98.Header.Appearance = appearance40;
+            ultraGridColumn98.Header.Appearance = appearance39;
             ultraGridColumn98.Header.Editor = null;
             ultraGridColumn98.Header.VisiblePosition = 8;
             ultraGridColumn148.Header.Editor = null;
@@ -1238,10 +1236,10 @@
             ultraGridColumn158.Header.Editor = null;
             ultraGridColumn158.Header.VisiblePosition = 20;
             ultraGridColumn158.Hidden = true;
+            appearance40.TextHAlignAsString = "Center";
+            ultraGridColumn159.CellAppearance = appearance40;
             appearance41.TextHAlignAsString = "Center";
-            ultraGridColumn159.CellAppearance = appearance41;
-            appearance42.TextHAlignAsString = "Center";
-            ultraGridColumn159.Header.Appearance = appearance42;
+            ultraGridColumn159.Header.Appearance = appearance41;
             ultraGridColumn159.Header.Caption = "Datum nächster Anspruch";
             ultraGridColumn159.Header.Editor = null;
             ultraGridColumn159.Header.VisiblePosition = 21;
@@ -1318,12 +1316,12 @@
             this.gridVO.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.gridVO.DisplayLayout.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.gridVO.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Extended;
+            appearance42.BorderColor = System.Drawing.Color.White;
+            this.gridVO.DisplayLayout.Override.SummaryFooterAppearance = appearance42;
             appearance43.BorderColor = System.Drawing.Color.White;
-            this.gridVO.DisplayLayout.Override.SummaryFooterAppearance = appearance43;
-            appearance44.BorderColor = System.Drawing.Color.White;
-            this.gridVO.DisplayLayout.Override.SummaryFooterCaptionAppearance = appearance44;
-            appearance45.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridVO.DisplayLayout.Override.SummaryValueAppearance = appearance45;
+            this.gridVO.DisplayLayout.Override.SummaryFooterCaptionAppearance = appearance43;
+            appearance44.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gridVO.DisplayLayout.Override.SummaryValueAppearance = appearance44;
             this.gridVO.DisplayLayout.Override.SupportDataErrorInfo = Infragistics.Win.UltraWinGrid.SupportDataErrorInfo.CellsOnly;
             valueList3.Key = "Typ";
             valueList4.Key = "Lieferant";
@@ -1335,7 +1333,7 @@
             this.gridVO.Location = new System.Drawing.Point(3, 3);
             this.gridVO.Margin = new System.Windows.Forms.Padding(4);
             this.gridVO.Name = "gridVO";
-            this.gridVO.Size = new System.Drawing.Size(1061, 200);
+            this.gridVO.Size = new System.Drawing.Size(1061, 191);
             this.gridVO.TabIndex = 0;
             this.gridVO.Text = "Dokumente";
             this.gridVO.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.gridVOErfBestell_BeforeCellActivate);
@@ -1397,8 +1395,8 @@
             // 
             // ultraTabControl1
             // 
-            appearance46.BackColor = System.Drawing.Color.White;
-            this.ultraTabControl1.Appearance = appearance46;
+            appearance45.BackColor = System.Drawing.Color.White;
+            this.ultraTabControl1.Appearance = appearance45;
             this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl2);
@@ -1406,7 +1404,7 @@
             this.ultraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.ultraTabControl1.Name = "ultraTabControl1";
             this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControl1.Size = new System.Drawing.Size(1067, 233);
+            this.ultraTabControl1.Size = new System.Drawing.Size(1067, 225);
             this.ultraTabControl1.TabIndex = 15;
             ultraTab1.Key = "Bestelldaten";
             ultraTab1.TabPage = this.ultraTabPageControl1;
@@ -1422,7 +1420,7 @@
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1063, 207);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1063, 199);
             // 
             // ultraToolTipManager1
             // 
@@ -1431,6 +1429,16 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // sqlVO1
+            // 
+            pmdsBusiness1.isinitialized = false;
+            this.sqlVO1.b = pmdsBusiness1;
+            this.sqlVO1.IsInitialized = false;
+            this.sqlVO1.SelVO = "";
+            this.sqlVO1.SelVOBestelldaten = "";
+            this.sqlVO1.SelVOBestellpostitionen = "";
+            this.sqlVO1.SelVOLager = "";
             // 
             // ucVOErfassen
             // 

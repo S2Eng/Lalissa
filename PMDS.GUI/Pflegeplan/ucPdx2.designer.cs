@@ -69,7 +69,7 @@ namespace PMDS.GUI
             this.btnAdd = new PMDS.GUI.ucButton(this.components);
             this.cbPDX = new QS2.Desktop.ControlManagment.BaseComboEditor();
             this.lblAuswahl = new QS2.Desktop.ControlManagment.BaseLableWin();
-            this.dsPDxEintrag1 = new dsPDxEintrag();
+            this.dsPDxEintrag1 = new PMDS.Global.db.Pflegeplan.dsPDxEintrag();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.tabPageAlleAbteilungen.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -247,7 +247,7 @@ namespace PMDS.GUI
             this.legZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.legZ.COLOR = System.Drawing.Color.Silver;
             this.legZ.LEGEND = "Ziele";
-            this.legZ.Location = new System.Drawing.Point(154, 13);
+            this.legZ.Location = new System.Drawing.Point(243, 13);
             this.legZ.Name = "legZ";
             this.legZ.Size = new System.Drawing.Size(56, 12);
             this.legZ.TabIndex = 16;
@@ -281,9 +281,9 @@ namespace PMDS.GUI
             this.legS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.legS.COLOR = System.Drawing.Color.Silver;
             this.legS.LEGEND = "Symptome";
-            this.legS.Location = new System.Drawing.Point(76, 13);
+            this.legS.Location = new System.Drawing.Point(142, 13);
             this.legS.Name = "legS";
-            this.legS.Size = new System.Drawing.Size(80, 12);
+            this.legS.Size = new System.Drawing.Size(89, 12);
             this.legS.TabIndex = 17;
             this.legS.Visible = false;
             // 
@@ -292,7 +292,7 @@ namespace PMDS.GUI
             this.legM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.legM.COLOR = System.Drawing.Color.Silver;
             this.legM.LEGEND = "Maßnahmen";
-            this.legM.Location = new System.Drawing.Point(212, 13);
+            this.legM.Location = new System.Drawing.Point(334, 13);
             this.legM.Name = "legM";
             this.legM.Size = new System.Drawing.Size(88, 12);
             this.legM.TabIndex = 15;
@@ -301,11 +301,12 @@ namespace PMDS.GUI
             // legA
             // 
             this.legA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.legA.AutoSize = true;
             this.legA.COLOR = System.Drawing.Color.Silver;
             this.legA.LEGEND = "Ätiol./Ris.Fakt.";
-            this.legA.Location = new System.Drawing.Point(11, 13);
+            this.legA.Location = new System.Drawing.Point(11, 11);
             this.legA.Name = "legA";
-            this.legA.Size = new System.Drawing.Size(72, 12);
+            this.legA.Size = new System.Drawing.Size(125, 14);
             this.legA.TabIndex = 18;
             this.legA.Visible = false;
             // 
@@ -467,6 +468,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.tabPDX)).EndInit();
             this.tabPDX.ResumeLayout(false);
             this.pnlButton.ResumeLayout(false);
+            this.pnlButton.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optActiveJN)).EndInit();

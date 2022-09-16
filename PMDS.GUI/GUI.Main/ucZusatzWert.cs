@@ -60,7 +60,14 @@ namespace PMDS.GUI
 
 		public bool IgnoreNotOptional 
 		{
-			get {return _bIgnoreNotOptional;} set {_bIgnoreNotOptional = value;}
+			get 
+            {
+                return _bIgnoreNotOptional;
+            } 
+            set 
+            {
+                _bIgnoreNotOptional = value;
+            }
 		}
 
 		public bool HAS_ADDITIONAL_VALUES 
@@ -210,10 +217,8 @@ namespace PMDS.GUI
                             if (rZusatzEintrag.Typ != null)
                                 ZusatzWertPara1.Type = (ZusatzEintragTyp)rZusatzEintrag.Typ;
 
-                            if (rZusatzEintrag.MinValue != null)
-                                ZusatzWertPara1.MinValue = rZusatzEintrag.MinValue;
-                            if (rZusatzEintrag.MaxValue != null)
-                                ZusatzWertPara1.MaxValue = rZusatzEintrag.MaxValue;
+                            ZusatzWertPara1.MinValue = rZusatzEintrag.MinValue;
+                            ZusatzWertPara1.MaxValue = rZusatzEintrag.MaxValue;
                             
                             dsINTListe dsINTListe1 = new dsINTListe();
                             foreach (string str in rZusatzEintrag.ListenEintraege.Split(Delimter.ToCharArray()))
@@ -246,19 +251,15 @@ namespace PMDS.GUI
                     panelItems.Controls.Add(ctrl);
                     panelItems.Controls.SetChildIndex(ctrl, 0);
 
-                    //if (ZusatzWertPara1.ID != Guid.Empty)
-                    //{
-                        if (!_hash.ContainsKey(ZusatzWertPara1.ID))
-                        {
-                            _hash.Add(ZusatzWertPara1.ID, ctrl);
-                        }
-                    //}
+                    if (!_hash.ContainsKey(ZusatzWertPara1.ID))
+                    {
+                        _hash.Add(ZusatzWertPara1.ID, ctrl);
+                    }
 
                     if (ZusatzWertPara1.IDZusatzwert != null)
                         DBZusatzWert1.readByID(ZusatzWertPara1.IDZusatzwert.Value);
 
                     dsZusatzWert.ZusatzWertRow rZusatzWert = (dsZusatzWert.ZusatzWertRow)DBZusatzWert1.dsZusatzWert1.ZusatzWert.Rows[0];
-
                     dsZusatzWert.ZusatzWertRow rNewZusatzEintragCtrl = (dsZusatzWert.ZusatzWertRow)dsZusatzWertCtrl.ZusatzWert.NewRow();
                     rNewZusatzEintragCtrl.ItemArray = rZusatzWert.ItemArray;
                     dsZusatzWertCtrl.ZusatzWert.Rows.Add(rNewZusatzEintragCtrl);
@@ -266,57 +267,6 @@ namespace PMDS.GUI
                     ctrl.IDAufenthalt = IDAufenthalt;
                     ctrl.Value = rNewZusatzEintragCtrl;
                 }
-
-
-
-
-                //foreach (dsZusatzWert.ZusatzWertRow r in zw.ZusatzWerte)
-                //{
-                //    ucZusatzWertCtrl ctrl = (ucZusatzWertCtrl)_hash[r.IDZusatzGruppeEintrag];
-                //    if (ctrl != null)
-                //    {
-                //        ctrl.IDAufenthalt = IDAufenthalt;
-                //        ctrl.Value = r;
-                //    }
-                //}
-
-                //IQueryable<db.Entities.ZusatzWert> tZusatzWert = db.ZusatzWert.Where(b => b.IDZusatzGruppeEintrag == rZusatzGruppeEintrag.ID);
-                //foreach (db.Entities.ZusatzWert rZusatzWert in tZusatzWert)
-                //{
-                //    ZusatzWertPara ZusatzWertPara1 = new ZusatzWertPara(rZusatzGruppeEintrag.ID);
-                //    ZusatzWertPara1.IsOptional = rZusatzGruppeEintrag.OptionalJN.Value;
-                //    ZusatzWertPara1.IsPrintable = rZusatzGruppeEintrag.DruckenJN.Value;
-                //    ZusatzWertPara1.Bezeichnung = rZusatzEintrag.Bezeichnung;
-                //    ZusatzWertPara1.Type = (ZusatzEintragTyp)rZusatzEintrag.Typ;
-
-                //    ZusatzWertPara1.MinValue = rZusatzEintrag.MinValue;
-                //    ZusatzWertPara1.MaxValue = rZusatzEintrag.MaxValue;
-
-                //    dsINTListe dsINTListe1 = new dsINTListe();
-                //    foreach (string str in rZusatzEintrag.ListenEintraege.Split(Delimter.ToCharArray()))
-                //    {
-                //        if (str != "")
-                //            dsINTListe1.INTListe.AddINTListeRow(dsINTListe1.INTListe.Rows.Count, str);
-                //    }
-                //    ZusatzWertPara1.Liste = dsINTListe1.INTListe;
-                //    ZusatzWertPara1.Value = rZusatzWert.Wert;
-
-                //    al.Add(ZusatzWertPara1);
-                //}
-                //ucZusatzWertCtrl ctrl;
-                //foreach (dsZusatzWert.ZusatzWertRow r in zw.ZusatzWerte)
-                //{
-                //    ctrl = (ucZusatzWertCtrl)_hash[r.IDZusatzGruppeEintrag];
-                //    if (ctrl != null)
-                //    {
-                //        ctrl.IDAufenthalt = IDAufenthalt;
-                //        ctrl.Value = r;
-                //    }
-                //}
-
-                //UpdateItems(_zwDefault, this.IDAufenthalt);
-                //UpdateItems(_zwENVAbt, this.IDAufenthalt);
-
             }
             catch (Exception ex)
             {

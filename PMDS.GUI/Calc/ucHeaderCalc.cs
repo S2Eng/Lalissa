@@ -14,11 +14,9 @@ using PMDS.Global.db.Patient;
 namespace PMDS.Calc.UI.Admin
 {
     public partial class ucHeaderCalc : QS2.Desktop.ControlManagment.BaseControl
-    {
-
+    {       
         public ucMainCalc mainWindow;
         System.Drawing.Color actColor = new System.Drawing.Color();
-
 
         public ucHeaderCalc()
         {
@@ -27,27 +25,14 @@ namespace PMDS.Calc.UI.Admin
 
         }
 
-
         public void setButtonsAktivDeaktiv(SiteEvents aktivButton)
         {
-            if (aktivButton == SiteEvents.abrech_patient) { PMDS.Global.UIGlobal.setAktiv(this.btnAbrechnungPatient, -1, System.Drawing.Color.Black, this.actColor, System.Drawing.Color.White); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnAbrechnungPatient, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat); }
-
-            if (aktivButton == SiteEvents.abrech_sammelabrechnung2) { PMDS.Global.UIGlobal.setAktiv(this.btnSammelabrechnung2, -1, System.Drawing.Color.Black, this.actColor, System.Drawing.Color.White); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnSammelabrechnung2, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat); }
-
-            if (aktivButton == SiteEvents.abrech_Depotgeld) { PMDS.Global.UIGlobal.setAktiv(this.btnDepot, -1, System.Drawing.Color.Black, this.actColor, System.Drawing.Color.White); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnDepot, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat); }
-
-            if (aktivButton == SiteEvents.abrech_buchhaltung) { PMDS.Global.UIGlobal.setAktiv(this.btnBuchhaltung, -1, System.Drawing.Color.Black, this.actColor, System.Drawing.Color.White); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnBuchhaltung, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat); }
-
-            if (aktivButton == SiteEvents.abrech_stammdten) { PMDS.Global.UIGlobal.setAktiv(this.btnStammdaten, -1, System.Drawing.Color.Black, this.actColor, System.Drawing.Color.White); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnStammdaten, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat); }
-
-            if (aktivButton == SiteEvents.abrech_berichte) { PMDS.Global.UIGlobal.setAktiv(this.btnBerichte, -1, System.Drawing.Color.Black, this.actColor, System.Drawing.Color.White); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnBerichte, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat); }
-
+            PMDS.Global.UIGlobal.setUIButton(this.btnAbrechnungPatient, aktivButton == SiteEvents.abrech_patient);
+            PMDS.Global.UIGlobal.setUIButton(this.btnSammelabrechnung2, aktivButton == SiteEvents.abrech_sammelabrechnung2);
+            PMDS.Global.UIGlobal.setUIButton(this.btnDepot, aktivButton == SiteEvents.abrech_Depotgeld);
+            PMDS.Global.UIGlobal.setUIButton(this.btnBuchhaltung, aktivButton == SiteEvents.abrech_buchhaltung);
+            PMDS.Global.UIGlobal.setUIButton(this.btnStammdaten, aktivButton == SiteEvents.abrech_stammdten);
+            PMDS.Global.UIGlobal.setUIButton(this.btnBerichte, aktivButton == SiteEvents.abrech_berichte);
         }
 
         private void btnAbrechnungPatient_Click(object sender, EventArgs e)

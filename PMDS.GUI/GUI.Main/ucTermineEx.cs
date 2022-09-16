@@ -147,13 +147,18 @@ namespace PMDS.GUI
         public Infragistics.Win.Misc.UltraDropDownButton uDropDownDekursEntwürfe2;
         public Infragistics.Win.Misc.UltraDropDownButton ultraDropDownButtonTermine;
         public QS2.Desktop.ControlManagment.BaseButton btnDekursEntwurfErstellenAs;
-        public QS2.Desktop.ControlManagment.BaseButton btnEndTask;
+        public QS2.Desktop.ControlManagment.BaseButton btnEndTask1;
+        private QS2.Desktop.ControlManagment.BasePanel panelSpace3;
+        private QS2.Desktop.ControlManagment.BasePanel panelSpace2;
+        private QS2.Desktop.ControlManagment.BasePanel panleSpace1;
+        private QS2.Desktop.ControlManagment.BasePanel panelSpace5;
+        private QS2.Desktop.ControlManagment.BasePanel panelSpace6;
+        private QS2.Desktop.ControlManagment.BasePanel panelSpace11;
+        private QS2.Desktop.ControlManagment.BasePanel panelSpace8;
+        private QS2.Desktop.ControlManagment.BasePanel panelSpace7;
+        private QS2.Desktop.ControlManagment.BasePanel panelSpace10;
+        private QS2.Desktop.ControlManagment.BasePanel panelSpace9;
         private System.ComponentModel.IContainer components = null;
-
-
-
-
-
 
 
 
@@ -199,23 +204,24 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTermineEx));
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint3 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Interventionsliste neu laden", Infragistics.Win.ToolTipImage.Default, "Neu laden", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTermineEx));
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Default, "Alle", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
@@ -238,8 +244,8 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint3 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint4 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             this.quickFilterButtons1 = new PMDS.GUI.BaseControls.QuickFilterButtons();
             this.panelTop = new QS2.Desktop.ControlManagment.BasePanel();
             this.txtSearchInGrid = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -294,6 +300,9 @@ namespace PMDS.GUI
             this.pButtonsAllDyn = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelQuickButtons5 = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelButtonsÜbergabe = new QS2.Desktop.ControlManagment.BasePanel();
+            this.panelSpace11 = new QS2.Desktop.ControlManagment.BasePanel();
+            this.panelSpace8 = new QS2.Desktop.ControlManagment.BasePanel();
+            this.panelSpace7 = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraDropDownButtonTermine = new Infragistics.Win.Misc.UltraDropDownButton();
             this.ultraPopupControlContainerSondertermine = new Infragistics.Win.Misc.UltraPopupControlContainer(this.components);
             this.uDropDownDekursEntwürfe2 = new Infragistics.Win.Misc.UltraDropDownButton();
@@ -303,17 +312,24 @@ namespace PMDS.GUI
             this.btnLesenÜbergabeDekurs = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnFreierBericht2 = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelButtonsIntervention = new QS2.Desktop.ControlManagment.BasePanel();
-            this.btnEndTask = new QS2.Desktop.ControlManagment.BaseButton();
+            this.panelSpace10 = new QS2.Desktop.ControlManagment.BasePanel();
+            this.panelSpace9 = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnOpenBefundIntervention = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnPDxRückmelden = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnLesenInterventionen = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelIButtonLeiste = new QS2.Desktop.ControlManagment.BasePanel();
-            this.uDropDownSondertermine = new Infragistics.Win.Misc.UltraDropDownButton();
             this.panelSondertermine = new QS2.Desktop.ControlManagment.BasePanel();
+            this.btnEndTask1 = new QS2.Desktop.ControlManagment.BaseButton();
+            this.panelSpace6 = new QS2.Desktop.ControlManagment.BasePanel();
+            this.uDropDownSondertermine = new Infragistics.Win.Misc.UltraDropDownButton();
+            this.panelSpace5 = new QS2.Desktop.ControlManagment.BasePanel();
+            this.panelSpace3 = new QS2.Desktop.ControlManagment.BasePanel();
+            this.panelSpace2 = new QS2.Desktop.ControlManagment.BasePanel();
+            this.panleSpace1 = new QS2.Desktop.ControlManagment.BasePanel();
             this.uDropDownDekursEntwürfe = new Infragistics.Win.Misc.UltraDropDownButton();
             this.btnFreierBericht = new QS2.Desktop.ControlManagment.BaseButton();
-            this.btnUngeplMaßnahmenRückemelden = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnBedarfsmedikation = new QS2.Desktop.ControlManagment.BaseButton();
+            this.btnUngeplMaßnahmenRückemelden = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelSpace = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnSchnellrückmeldung = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelButtonsStuhlDrucken = new QS2.Desktop.ControlManagment.BasePanel();
@@ -417,8 +433,8 @@ namespace PMDS.GUI
             appearance11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgTermine.DisplayLayout.Override.RowAppearance = appearance11;
             this.dgTermine.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            this.dgTermine.DisplayLayout.Override.RowSpacingAfter = 3;
-            this.dgTermine.DisplayLayout.Override.RowSpacingBefore = 2;
+            this.dgTermine.DisplayLayout.Override.RowSpacingAfter = 0;
+            this.dgTermine.DisplayLayout.Override.RowSpacingBefore = 0;
             appearance12.BackColor = System.Drawing.Color.LightGray;
             appearance12.ForeColor = System.Drawing.Color.Black;
             this.dgTermine.DisplayLayout.Override.SelectedRowAppearance = appearance12;
@@ -429,31 +445,32 @@ namespace PMDS.GUI
             this.dgTermine.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.dgTermine.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.dgTermine.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-            gridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint1.Insets.Bottom = 3;
-            gridBagConstraint1.Insets.Left = 5;
-            gridBagConstraint1.Insets.Right = 5;
-            gridBagConstraint1.OriginX = 0;
-            gridBagConstraint1.OriginY = 0;
-            this.gridPanelGrid.SetGridBagConstraint(this.dgTermine, gridBagConstraint1);
+            gridBagConstraint2.Fill = Infragistics.Win.Layout.FillType.Both;
+            gridBagConstraint2.Insets.Bottom = 3;
+            gridBagConstraint2.Insets.Left = 5;
+            gridBagConstraint2.Insets.Right = 5;
+            gridBagConstraint2.OriginX = 0;
+            gridBagConstraint2.OriginY = 0;
+            this.gridPanelGrid.SetGridBagConstraint(this.dgTermine, gridBagConstraint2);
             this.dgTermine.Location = new System.Drawing.Point(5, 0);
             this.gridPanelGrid.SetPreferredSize(this.dgTermine, new System.Drawing.Size(315, 203));
-            this.dgTermine.Size = new System.Drawing.Size(1219, 455);
+            this.dgTermine.Size = new System.Drawing.Size(1244, 455);
             this.dgTermine.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
             this.dgTermine.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.dgTermine_BeforeCellActivate);
             // 
             // quickFilterButtons1
             // 
+            this.quickFilterButtons1.BackColor = System.Drawing.Color.Gainsboro;
             this.quickFilterButtons1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            gridBagConstraint2.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint2.Insets.Right = 5;
-            gridBagConstraint2.OriginX = 0;
-            gridBagConstraint2.OriginY = 0;
-            this.ultraGridBagLayoutPanelTop.SetGridBagConstraint(this.quickFilterButtons1, gridBagConstraint2);
+            gridBagConstraint3.Fill = Infragistics.Win.Layout.FillType.Both;
+            gridBagConstraint3.Insets.Right = 5;
+            gridBagConstraint3.OriginX = 0;
+            gridBagConstraint3.OriginY = 0;
+            this.ultraGridBagLayoutPanelTop.SetGridBagConstraint(this.quickFilterButtons1, gridBagConstraint3);
             this.quickFilterButtons1.Location = new System.Drawing.Point(0, 0);
             this.quickFilterButtons1.Name = "quickFilterButtons1";
             this.ultraGridBagLayoutPanelTop.SetPreferredSize(this.quickFilterButtons1, new System.Drawing.Size(114, 31));
-            this.quickFilterButtons1.Size = new System.Drawing.Size(1224, 26);
+            this.quickFilterButtons1.Size = new System.Drawing.Size(1249, 26);
             this.quickFilterButtons1.TabIndex = 41;
             this.quickFilterButtons1.QuickFilterButtonClick += new PMDS.GUI.BaseControls.QuickFilterButtonPressDelegate(this.quickFilterButtons1_QuickFilterButtonClick);
             this.quickFilterButtons1.VisibleChanged += new System.EventHandler(this.quickFilterButtons1_VisibleChanged);
@@ -467,12 +484,12 @@ namespace PMDS.GUI
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1229, 39);
+            this.panelTop.Size = new System.Drawing.Size(1254, 39);
             this.panelTop.TabIndex = 38;
             // 
             // txtSearchInGrid
             // 
-            this.txtSearchInGrid.Location = new System.Drawing.Point(120, 8);
+            this.txtSearchInGrid.Location = new System.Drawing.Point(168, 7);
             this.txtSearchInGrid.MaxLength = 50;
             this.txtSearchInGrid.Name = "txtSearchInGrid";
             this.txtSearchInGrid.Size = new System.Drawing.Size(176, 21);
@@ -483,7 +500,7 @@ namespace PMDS.GUI
             // 
             this.lblSearch.Location = new System.Drawing.Point(3, 11);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(120, 14);
+            this.lblSearch.Size = new System.Drawing.Size(151, 17);
             this.lblSearch.TabIndex = 92;
             this.lblSearch.Text = "Suche in der Liste [F3]";
             // 
@@ -493,7 +510,7 @@ namespace PMDS.GUI
             this.panelFilterOben2.Controls.Add(this.panelFilter);
             this.panelFilterOben2.Controls.Add(this.panelTopRight);
             this.panelFilterOben2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelFilterOben2.Location = new System.Drawing.Point(603, 0);
+            this.panelFilterOben2.Location = new System.Drawing.Point(628, 0);
             this.panelFilterOben2.Name = "panelFilterOben2";
             this.panelFilterOben2.Size = new System.Drawing.Size(626, 39);
             this.panelFilterOben2.TabIndex = 52;
@@ -514,16 +531,16 @@ namespace PMDS.GUI
             this.ucTerminTimePicker1.Location = new System.Drawing.Point(64, 6);
             this.ucTerminTimePicker1.Mode = PMDS.GUI.EFilter.HEUTE;
             this.ucTerminTimePicker1.Name = "ucTerminTimePicker1";
-            this.ucTerminTimePicker1.RangeFrom = new System.DateTime(2021, 11, 3, 0, 0, 0, 0);
-            this.ucTerminTimePicker1.RangeTo = new System.DateTime(2021, 11, 3, 23, 59, 59, 0);
+            this.ucTerminTimePicker1.RangeFrom = new System.DateTime(2022, 5, 21, 0, 0, 0, 0);
+            this.ucTerminTimePicker1.RangeTo = new System.DateTime(2022, 5, 21, 23, 59, 59, 0);
             this.ucTerminTimePicker1.Size = new System.Drawing.Size(189, 24);
             this.ucTerminTimePicker1.TabIndex = 39;
             // 
             // lblZeitraum
             // 
-            appearance14.Image = "ICO_sachbearbeiterverwaltung.ico";
-            appearance14.TextHAlignAsString = "Right";
-            this.lblZeitraum.Appearance = appearance14;
+            appearance16.Image = "ICO_sachbearbeiterverwaltung.ico";
+            appearance16.TextHAlignAsString = "Right";
+            this.lblZeitraum.Appearance = appearance16;
             this.lblZeitraum.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblZeitraum.ImageSize = new System.Drawing.Size(12, 12);
             this.lblZeitraum.Location = new System.Drawing.Point(-2, 10);
@@ -545,8 +562,8 @@ namespace PMDS.GUI
             // 
             // lblFilter
             // 
-            appearance15.TextHAlignAsString = "Right";
-            this.lblFilter.Appearance = appearance15;
+            appearance17.TextHAlignAsString = "Right";
+            this.lblFilter.Appearance = appearance17;
             this.lblFilter.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFilter.ImageSize = new System.Drawing.Size(12, 12);
             this.lblFilter.Location = new System.Drawing.Point(-9, 10);
@@ -561,7 +578,6 @@ namespace PMDS.GUI
             this.ucTerminFilterPicker1.BackColor = System.Drawing.Color.Gainsboro;
             this.ucTerminFilterPicker1.Berufsstand = ((System.Collections.Generic.List<System.Guid>)(resources.GetObject("ucTerminFilterPicker1.Berufsstand")));
             this.ucTerminFilterPicker1.HerkunftPlanungsEintrag = ((System.Collections.Generic.List<int>)(resources.GetObject("ucTerminFilterPicker1.HerkunftPlanungsEintrag")));
-            this.ucTerminFilterPicker1.IDBezug = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.ucTerminFilterPicker1.IDMassnahme = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.ucTerminFilterPicker1.Location = new System.Drawing.Point(40, 6);
             this.ucTerminFilterPicker1.MASSNAHMEN = new System.Guid[0];
@@ -592,9 +608,9 @@ namespace PMDS.GUI
             // 
             // btnNeuLaden
             // 
-            appearance16.Image = ((object)(resources.GetObject("appearance16.Image")));
-            appearance16.ImageHAlign = Infragistics.Win.HAlign.Center;
-            this.btnNeuLaden.Appearance = appearance16;
+            appearance18.Image = ((object)(resources.GetObject("appearance18.Image")));
+            appearance18.ImageHAlign = Infragistics.Win.HAlign.Center;
+            this.btnNeuLaden.Appearance = appearance18;
             this.btnNeuLaden.AutoWorkLayout = false;
             this.btnNeuLaden.IsStandardControl = false;
             this.btnNeuLaden.Location = new System.Drawing.Point(7, 6);
@@ -613,9 +629,13 @@ namespace PMDS.GUI
             this.pnlPrintTermine.Controls.Add(this.uOptSetDruckauswahl);
             this.pnlPrintTermine.Controls.Add(this.ultraLabel2);
             this.pnlPrintTermine.Controls.Add(this.btnPrintTermine);
-            this.pnlPrintTermine.Location = new System.Drawing.Point(19, 214);
+            gridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both;
+            this.gridPanelGrid.SetGridBagConstraint(this.pnlPrintTermine, gridBagConstraint1);
+            this.gridPanelGrid.SetIncludeInLayout(this.pnlPrintTermine, false);
+            this.pnlPrintTermine.Location = new System.Drawing.Point(41, 71);
             this.pnlPrintTermine.Name = "pnlPrintTermine";
-            this.pnlPrintTermine.Size = new System.Drawing.Size(170, 123);
+            this.gridPanelGrid.SetPreferredSize(this.pnlPrintTermine, new System.Drawing.Size(300, 200));
+            this.pnlPrintTermine.Size = new System.Drawing.Size(180, 184);
             this.pnlPrintTermine.TabIndex = 89;
             this.pnlPrintTermine.Visible = false;
             // 
@@ -637,20 +657,22 @@ namespace PMDS.GUI
             valueListItem2,
             valueListItem4,
             valueListItem3});
+            this.uOptSetDruckauswahl.ItemSpacingHorizontal = 50;
+            this.uOptSetDruckauswahl.ItemSpacingVertical = 10;
             this.uOptSetDruckauswahl.Location = new System.Drawing.Point(6, 27);
             this.uOptSetDruckauswahl.Name = "uOptSetDruckauswahl";
-            this.uOptSetDruckauswahl.Size = new System.Drawing.Size(159, 61);
+            this.uOptSetDruckauswahl.Size = new System.Drawing.Size(159, 112);
             this.uOptSetDruckauswahl.TabIndex = 87;
             this.uOptSetDruckauswahl.Text = "Interventionsliste";
             this.uOptSetDruckauswahl.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             // 
             // ultraLabel2
             // 
-            appearance22.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance22;
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance14;
             this.ultraLabel2.AutoSize = true;
             this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel2.Location = new System.Drawing.Point(7, 6);
+            this.ultraLabel2.Location = new System.Drawing.Point(7, 5);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(76, 14);
             this.ultraLabel2.TabIndex = 86;
@@ -658,22 +680,23 @@ namespace PMDS.GUI
             // 
             // btnPrintTermine
             // 
-            appearance23.BackColor = System.Drawing.Color.Transparent;
-            appearance23.Image = ((object)(resources.GetObject("appearance23.Image")));
-            appearance23.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance23.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance23.TextHAlignAsString = "Left";
-            appearance23.TextVAlignAsString = "Middle";
-            this.btnPrintTermine.Appearance = appearance23;
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            appearance15.Image = ((object)(resources.GetObject("appearance15.Image")));
+            appearance15.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance15.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance15.TextHAlignAsString = "Left";
+            appearance15.TextVAlignAsString = "Middle";
+            this.btnPrintTermine.Appearance = appearance15;
             this.btnPrintTermine.AutoWorkLayout = false;
             this.btnPrintTermine.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnPrintTermine.DoOnClick = true;
             this.btnPrintTermine.IsStandardControl = true;
-            this.btnPrintTermine.Location = new System.Drawing.Point(7, 91);
+            this.btnPrintTermine.Location = new System.Drawing.Point(10, 145);
             this.btnPrintTermine.Name = "btnPrintTermine";
-            this.btnPrintTermine.Size = new System.Drawing.Size(73, 26);
+            this.btnPrintTermine.Size = new System.Drawing.Size(155, 26);
             this.btnPrintTermine.TabIndex = 6;
             this.btnPrintTermine.TabStop = false;
+            this.btnPrintTermine.Text = "Drucken";
             this.btnPrintTermine.TYPE = PMDS.GUI.ucButton.ButtonType.Print;
             this.btnPrintTermine.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnPrintTermine.Click += new System.EventHandler(this.btnPrintTermine_Click);
@@ -694,11 +717,11 @@ namespace PMDS.GUI
             // 
             // btnSonderterminBeenden
             // 
-            appearance18.Image = ((object)(resources.GetObject("appearance18.Image")));
-            appearance18.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance18.TextHAlignAsString = "Left";
-            appearance18.TextVAlignAsString = "Middle";
-            this.btnSonderterminBeenden.Appearance = appearance18;
+            appearance20.Image = ((object)(resources.GetObject("appearance20.Image")));
+            appearance20.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance20.TextHAlignAsString = "Left";
+            appearance20.TextVAlignAsString = "Middle";
+            this.btnSonderterminBeenden.Appearance = appearance20;
             this.btnSonderterminBeenden.AutoWorkLayout = false;
             this.btnSonderterminBeenden.IsStandardControl = false;
             this.btnSonderterminBeenden.Location = new System.Drawing.Point(4, 51);
@@ -710,11 +733,11 @@ namespace PMDS.GUI
             // 
             // btnSonderterminErstellen
             // 
-            appearance19.Image = ((object)(resources.GetObject("appearance19.Image")));
-            appearance19.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance19.TextHAlignAsString = "Left";
-            appearance19.TextVAlignAsString = "Middle";
-            this.btnSonderterminErstellen.Appearance = appearance19;
+            appearance21.Image = ((object)(resources.GetObject("appearance21.Image")));
+            appearance21.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance21.TextHAlignAsString = "Left";
+            appearance21.TextVAlignAsString = "Middle";
+            this.btnSonderterminErstellen.Appearance = appearance21;
             this.btnSonderterminErstellen.AutoWorkLayout = false;
             this.btnSonderterminErstellen.IsStandardControl = false;
             this.btnSonderterminErstellen.Location = new System.Drawing.Point(4, 3);
@@ -726,11 +749,11 @@ namespace PMDS.GUI
             // 
             // btnSonderterminLöschen
             // 
-            appearance20.Image = ((object)(resources.GetObject("appearance20.Image")));
-            appearance20.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance20.TextHAlignAsString = "Left";
-            appearance20.TextVAlignAsString = "Middle";
-            this.btnSonderterminLöschen.Appearance = appearance20;
+            appearance22.Image = ((object)(resources.GetObject("appearance22.Image")));
+            appearance22.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance22.TextHAlignAsString = "Left";
+            appearance22.TextVAlignAsString = "Middle";
+            this.btnSonderterminLöschen.Appearance = appearance22;
             this.btnSonderterminLöschen.AutoWorkLayout = false;
             this.btnSonderterminLöschen.IsStandardControl = false;
             this.btnSonderterminLöschen.Location = new System.Drawing.Point(4, 75);
@@ -742,11 +765,11 @@ namespace PMDS.GUI
             // 
             // btnSonderterminBearbeiten
             // 
-            appearance21.Image = ((object)(resources.GetObject("appearance21.Image")));
-            appearance21.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance21.TextHAlignAsString = "Left";
-            appearance21.TextVAlignAsString = "Middle";
-            this.btnSonderterminBearbeiten.Appearance = appearance21;
+            appearance23.Image = ((object)(resources.GetObject("appearance23.Image")));
+            appearance23.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance23.TextHAlignAsString = "Left";
+            appearance23.TextVAlignAsString = "Middle";
+            this.btnSonderterminBearbeiten.Appearance = appearance23;
             this.btnSonderterminBearbeiten.AutoWorkLayout = false;
             this.btnSonderterminBearbeiten.IsStandardControl = false;
             this.btnSonderterminBearbeiten.Location = new System.Drawing.Point(4, 27);
@@ -820,13 +843,16 @@ namespace PMDS.GUI
             // 
             this.gridPanelGrid.BackColor = System.Drawing.Color.Gainsboro;
             this.gridPanelGrid.Controls.Add(this.dgTermine);
+            this.gridPanelGrid.Controls.Add(this.pnlPrintTermine);
             this.gridPanelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridPanelGrid.ExpandToFitHeight = true;
             this.gridPanelGrid.ExpandToFitWidth = true;
             this.gridPanelGrid.Location = new System.Drawing.Point(0, 0);
             this.gridPanelGrid.Name = "gridPanelGrid";
-            this.gridPanelGrid.Size = new System.Drawing.Size(1229, 458);
+            this.gridPanelGrid.Size = new System.Drawing.Size(1254, 458);
             this.gridPanelGrid.TabIndex = 49;
+            this.gridPanelGrid.Controls.SetChildIndex(this.pnlPrintTermine, 0);
+            this.gridPanelGrid.Controls.SetChildIndex(this.dgTermine, 0);
             // 
             // layFilterObenRechts
             // 
@@ -839,9 +865,9 @@ namespace PMDS.GUI
             this.panelEinAusGesamt.Controls.Add(this.panelTextControl);
             this.panelEinAusGesamt.Controls.Add(this.textControl1);
             this.panelEinAusGesamt.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelEinAusGesamt.Location = new System.Drawing.Point(1195, 0);
+            this.panelEinAusGesamt.Location = new System.Drawing.Point(1244, 0);
             this.panelEinAusGesamt.Name = "panelEinAusGesamt";
-            this.panelEinAusGesamt.Size = new System.Drawing.Size(34, 78);
+            this.panelEinAusGesamt.Size = new System.Drawing.Size(10, 78);
             this.panelEinAusGesamt.TabIndex = 51;
             // 
             // panelTextControl
@@ -875,7 +901,7 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanelTop.ExpandToFitWidth = true;
             this.ultraGridBagLayoutPanelTop.Location = new System.Drawing.Point(0, 0);
             this.ultraGridBagLayoutPanelTop.Name = "ultraGridBagLayoutPanelTop";
-            this.ultraGridBagLayoutPanelTop.Size = new System.Drawing.Size(1229, 26);
+            this.ultraGridBagLayoutPanelTop.Size = new System.Drawing.Size(1254, 26);
             this.ultraGridBagLayoutPanelTop.TabIndex = 54;
             // 
             // ultraToolTipManager1
@@ -913,7 +939,7 @@ namespace PMDS.GUI
             this.panelAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAll.Location = new System.Drawing.Point(0, 0);
             this.panelAll.Name = "panelAll";
-            this.panelAll.Size = new System.Drawing.Size(1229, 601);
+            this.panelAll.Size = new System.Drawing.Size(1254, 601);
             this.panelAll.TabIndex = 60;
             // 
             // panelGrid2
@@ -923,19 +949,18 @@ namespace PMDS.GUI
             this.panelGrid2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGrid2.Location = new System.Drawing.Point(0, 65);
             this.panelGrid2.Name = "panelGrid2";
-            this.panelGrid2.Size = new System.Drawing.Size(1229, 536);
+            this.panelGrid2.Size = new System.Drawing.Size(1254, 536);
             this.panelGrid2.TabIndex = 65;
             // 
             // panelGrid
             // 
             this.panelGrid.Controls.Add(this.gridPanelGrid);
             this.panelGrid.Controls.Add(this.panelSondertermin);
-            this.panelGrid.Controls.Add(this.pnlPrintTermine);
             this.panelGrid.Controls.Add(this.PanelDekursEntwürfe);
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGrid.Location = new System.Drawing.Point(0, 0);
             this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(1229, 458);
+            this.panelGrid.Size = new System.Drawing.Size(1254, 458);
             this.panelGrid.TabIndex = 52;
             // 
             // PanelDekursEntwürfe
@@ -1009,7 +1034,7 @@ namespace PMDS.GUI
             this.pButtonsAll.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pButtonsAll.Location = new System.Drawing.Point(0, 458);
             this.pButtonsAll.Name = "pButtonsAll";
-            this.pButtonsAll.Size = new System.Drawing.Size(1229, 78);
+            this.pButtonsAll.Size = new System.Drawing.Size(1254, 78);
             this.pButtonsAll.TabIndex = 51;
             // 
             // panelStuhlbuttonsFläche
@@ -1020,16 +1045,16 @@ namespace PMDS.GUI
             this.panelStuhlbuttonsFläche.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelStuhlbuttonsFläche.Location = new System.Drawing.Point(55, 50);
             this.panelStuhlbuttonsFläche.Name = "panelStuhlbuttonsFläche";
-            this.panelStuhlbuttonsFläche.Size = new System.Drawing.Size(1140, 24);
+            this.panelStuhlbuttonsFläche.Size = new System.Drawing.Size(1189, 24);
             this.panelStuhlbuttonsFläche.TabIndex = 106;
             // 
             // panelStuhlbuttons
             // 
             this.panelStuhlbuttons.BackColor = System.Drawing.Color.Transparent;
             this.panelStuhlbuttons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelStuhlbuttons.Location = new System.Drawing.Point(154, 0);
+            this.panelStuhlbuttons.Location = new System.Drawing.Point(134, 0);
             this.panelStuhlbuttons.Name = "panelStuhlbuttons";
-            this.panelStuhlbuttons.Size = new System.Drawing.Size(986, 24);
+            this.panelStuhlbuttons.Size = new System.Drawing.Size(1055, 24);
             this.panelStuhlbuttons.TabIndex = 1;
             // 
             // panelLeer2
@@ -1038,7 +1063,7 @@ namespace PMDS.GUI
             this.panelLeer2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeer2.Location = new System.Drawing.Point(0, 0);
             this.panelLeer2.Name = "panelLeer2";
-            this.panelLeer2.Size = new System.Drawing.Size(154, 24);
+            this.panelLeer2.Size = new System.Drawing.Size(134, 24);
             this.panelLeer2.TabIndex = 0;
             // 
             // panelStuhlbuttonsLeer
@@ -1046,7 +1071,7 @@ namespace PMDS.GUI
             this.panelStuhlbuttonsLeer.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelStuhlbuttonsLeer.Location = new System.Drawing.Point(55, 47);
             this.panelStuhlbuttonsLeer.Name = "panelStuhlbuttonsLeer";
-            this.panelStuhlbuttonsLeer.Size = new System.Drawing.Size(1140, 3);
+            this.panelStuhlbuttonsLeer.Size = new System.Drawing.Size(1189, 3);
             this.panelStuhlbuttonsLeer.TabIndex = 105;
             // 
             // pButtonsAllDyn
@@ -1056,7 +1081,7 @@ namespace PMDS.GUI
             this.pButtonsAllDyn.Dock = System.Windows.Forms.DockStyle.Top;
             this.pButtonsAllDyn.Location = new System.Drawing.Point(55, 0);
             this.pButtonsAllDyn.Name = "pButtonsAllDyn";
-            this.pButtonsAllDyn.Size = new System.Drawing.Size(1140, 47);
+            this.pButtonsAllDyn.Size = new System.Drawing.Size(1189, 47);
             this.pButtonsAllDyn.TabIndex = 101;
             // 
             // panelQuickButtons5
@@ -1066,12 +1091,15 @@ namespace PMDS.GUI
             this.panelQuickButtons5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelQuickButtons5.Location = new System.Drawing.Point(0, 0);
             this.panelQuickButtons5.Name = "panelQuickButtons5";
-            this.panelQuickButtons5.Size = new System.Drawing.Size(1055, 47);
+            this.panelQuickButtons5.Size = new System.Drawing.Size(1110, 47);
             this.panelQuickButtons5.TabIndex = 101;
             // 
             // panelButtonsÜbergabe
             // 
             this.panelButtonsÜbergabe.BackColor = System.Drawing.Color.Transparent;
+            this.panelButtonsÜbergabe.Controls.Add(this.panelSpace11);
+            this.panelButtonsÜbergabe.Controls.Add(this.panelSpace8);
+            this.panelButtonsÜbergabe.Controls.Add(this.panelSpace7);
             this.panelButtonsÜbergabe.Controls.Add(this.ultraDropDownButtonTermine);
             this.panelButtonsÜbergabe.Controls.Add(this.uDropDownDekursEntwürfe2);
             this.panelButtonsÜbergabe.Controls.Add(this.btnOpenBefundÜbergabe);
@@ -1081,26 +1109,51 @@ namespace PMDS.GUI
             this.panelButtonsÜbergabe.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelButtonsÜbergabe.Location = new System.Drawing.Point(0, 23);
             this.panelButtonsÜbergabe.Name = "panelButtonsÜbergabe";
-            this.panelButtonsÜbergabe.Size = new System.Drawing.Size(1055, 23);
+            this.panelButtonsÜbergabe.Size = new System.Drawing.Size(1110, 23);
             this.panelButtonsÜbergabe.TabIndex = 97;
             this.panelButtonsÜbergabe.Visible = false;
+            // 
+            // panelSpace11
+            // 
+            this.panelSpace11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelSpace11.BackColor = System.Drawing.Color.Transparent;
+            this.panelSpace11.Location = new System.Drawing.Point(1049, 0);
+            this.panelSpace11.Name = "panelSpace11";
+            this.panelSpace11.Size = new System.Drawing.Size(5, 23);
+            this.panelSpace11.TabIndex = 69;
+            // 
+            // panelSpace8
+            // 
+            this.panelSpace8.BackColor = System.Drawing.Color.Transparent;
+            this.panelSpace8.Location = new System.Drawing.Point(220, 0);
+            this.panelSpace8.Name = "panelSpace8";
+            this.panelSpace8.Size = new System.Drawing.Size(5, 23);
+            this.panelSpace8.TabIndex = 66;
+            // 
+            // panelSpace7
+            // 
+            this.panelSpace7.BackColor = System.Drawing.Color.Transparent;
+            this.panelSpace7.Location = new System.Drawing.Point(77, 1);
+            this.panelSpace7.Name = "panelSpace7";
+            this.panelSpace7.Size = new System.Drawing.Size(5, 23);
+            this.panelSpace7.TabIndex = 65;
             // 
             // ultraDropDownButtonTermine
             // 
             appearance27.Image = ((object)(resources.GetObject("appearance27.Image")));
             appearance27.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.ultraDropDownButtonTermine.Appearance = appearance27;
-            this.ultraDropDownButtonTermine.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ultraDropDownButtonTermine.Location = new System.Drawing.Point(222, 0);
+            this.ultraDropDownButtonTermine.Location = new System.Drawing.Point(224, 0);
             this.ultraDropDownButtonTermine.Name = "ultraDropDownButtonTermine";
             this.ultraDropDownButtonTermine.PopupItemKey = "panelSondertermin";
             this.ultraDropDownButtonTermine.PopupItemProvider = this.ultraPopupControlContainerSondertermine;
             this.ultraDropDownButtonTermine.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.ultraDropDownButtonTermine.Size = new System.Drawing.Size(88, 23);
+            this.ultraDropDownButtonTermine.Size = new System.Drawing.Size(104, 23);
             this.ultraDropDownButtonTermine.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.ultraDropDownButtonTermine.TabIndex = 113;
             this.ultraDropDownButtonTermine.Text = "Termine";
             this.ultraDropDownButtonTermine.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraDropDownButtonTermine.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.ultraDropDownButtonTermine.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.ultraDropDownButtonTermine.Click += new System.EventHandler(this.ultraDropDownButtonTermine_Click);
             // 
@@ -1113,17 +1166,17 @@ namespace PMDS.GUI
             appearance28.Image = ((object)(resources.GetObject("appearance28.Image")));
             appearance28.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.uDropDownDekursEntwürfe2.Appearance = appearance28;
-            this.uDropDownDekursEntwürfe2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uDropDownDekursEntwürfe2.Location = new System.Drawing.Point(99, 0);
+            this.uDropDownDekursEntwürfe2.Location = new System.Drawing.Point(82, 0);
             this.uDropDownDekursEntwürfe2.Name = "uDropDownDekursEntwürfe2";
             this.uDropDownDekursEntwürfe2.PopupItemKey = "PanelDekursEntwürfe";
             this.uDropDownDekursEntwürfe2.PopupItemProvider = this.ultraPopupControlContainerDekursEntwürfe;
             this.uDropDownDekursEntwürfe2.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.uDropDownDekursEntwürfe2.Size = new System.Drawing.Size(123, 23);
+            this.uDropDownDekursEntwürfe2.Size = new System.Drawing.Size(138, 23);
             this.uDropDownDekursEntwürfe2.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.uDropDownDekursEntwürfe2.TabIndex = 112;
             this.uDropDownDekursEntwürfe2.Text = "Dekurs Entwurf";
             this.uDropDownDekursEntwürfe2.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.uDropDownDekursEntwürfe2.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.uDropDownDekursEntwürfe2.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             // 
             // ultraPopupControlContainerDekursEntwürfe
@@ -1138,46 +1191,54 @@ namespace PMDS.GUI
             appearance29.TextVAlignAsString = "Middle";
             this.btnOpenBefundÜbergabe.Appearance = appearance29;
             this.btnOpenBefundÜbergabe.AutoWorkLayout = false;
-            this.btnOpenBefundÜbergabe.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnOpenBefundÜbergabe.IsStandardControl = false;
-            this.btnOpenBefundÜbergabe.Location = new System.Drawing.Point(858, 0);
+            this.btnOpenBefundÜbergabe.Location = new System.Drawing.Point(844, 0);
             this.btnOpenBefundÜbergabe.Name = "btnOpenBefundÜbergabe";
-            this.btnOpenBefundÜbergabe.Size = new System.Drawing.Size(50, 23);
+            this.btnOpenBefundÜbergabe.Size = new System.Drawing.Size(66, 23);
             this.btnOpenBefundÜbergabe.TabIndex = 111;
             this.btnOpenBefundÜbergabe.Text = "Befund";
+            this.btnOpenBefundÜbergabe.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnOpenBefundÜbergabe.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnOpenBefundÜbergabe.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnOpenBefundÜbergabe.Visible = false;
             this.btnOpenBefundÜbergabe.Click += new System.EventHandler(this.btnOpenBefundÜbergabe_Click);
             // 
             // btnGegenzeichnen
             // 
+            this.btnGegenzeichnen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             appearance30.ImageHAlign = Infragistics.Win.HAlign.Center;
             appearance30.TextHAlignAsString = "Left";
             appearance30.TextVAlignAsString = "Middle";
             this.btnGegenzeichnen.Appearance = appearance30;
             this.btnGegenzeichnen.AutoWorkLayout = false;
-            this.btnGegenzeichnen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnGegenzeichnen.IsStandardControl = false;
-            this.btnGegenzeichnen.Location = new System.Drawing.Point(908, 0);
+            this.btnGegenzeichnen.Location = new System.Drawing.Point(944, 0);
             this.btnGegenzeichnen.Name = "btnGegenzeichnen";
-            this.btnGegenzeichnen.Size = new System.Drawing.Size(101, 23);
+            this.btnGegenzeichnen.Size = new System.Drawing.Size(110, 23);
             this.btnGegenzeichnen.TabIndex = 110;
             this.btnGegenzeichnen.Text = "Gegenzeichnen";
+            this.btnGegenzeichnen.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnGegenzeichnen.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnGegenzeichnen.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnGegenzeichnen.Click += new System.EventHandler(this.btnGegenzeichnen_Click);
             // 
             // btnLesenÜbergabeDekurs
             // 
+            this.btnLesenÜbergabeDekurs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             appearance31.ImageHAlign = Infragistics.Win.HAlign.Center;
             appearance31.TextHAlignAsString = "Left";
             appearance31.TextVAlignAsString = "Middle";
             this.btnLesenÜbergabeDekurs.Appearance = appearance31;
             this.btnLesenÜbergabeDekurs.AutoWorkLayout = false;
-            this.btnLesenÜbergabeDekurs.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnLesenÜbergabeDekurs.IsStandardControl = false;
-            this.btnLesenÜbergabeDekurs.Location = new System.Drawing.Point(1009, 0);
+            this.btnLesenÜbergabeDekurs.Location = new System.Drawing.Point(1054, 0);
             this.btnLesenÜbergabeDekurs.Name = "btnLesenÜbergabeDekurs";
-            this.btnLesenÜbergabeDekurs.Size = new System.Drawing.Size(46, 23);
+            this.btnLesenÜbergabeDekurs.Size = new System.Drawing.Size(56, 23);
             this.btnLesenÜbergabeDekurs.TabIndex = 94;
             this.btnLesenÜbergabeDekurs.Text = "Lesen";
+            this.btnLesenÜbergabeDekurs.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnLesenÜbergabeDekurs.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnLesenÜbergabeDekurs.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnLesenÜbergabeDekurs.Click += new System.EventHandler(this.btnLesenÜbergabeDekurs_Click);
             // 
             // btnFreierBericht2
@@ -1192,15 +1253,19 @@ namespace PMDS.GUI
             this.btnFreierBericht2.IsStandardControl = false;
             this.btnFreierBericht2.Location = new System.Drawing.Point(0, 0);
             this.btnFreierBericht2.Name = "btnFreierBericht2";
-            this.btnFreierBericht2.Size = new System.Drawing.Size(99, 23);
+            this.btnFreierBericht2.Size = new System.Drawing.Size(78, 23);
             this.btnFreierBericht2.TabIndex = 62;
             this.btnFreierBericht2.Text = "Dekurs";
+            this.btnFreierBericht2.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnFreierBericht2.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnFreierBericht2.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnFreierBericht2.Click += new System.EventHandler(this.btnFreierBericht2_Click);
             // 
             // panelButtonsIntervention
             // 
             this.panelButtonsIntervention.BackColor = System.Drawing.Color.Transparent;
-            this.panelButtonsIntervention.Controls.Add(this.btnEndTask);
+            this.panelButtonsIntervention.Controls.Add(this.panelSpace10);
+            this.panelButtonsIntervention.Controls.Add(this.panelSpace9);
             this.panelButtonsIntervention.Controls.Add(this.btnOpenBefundIntervention);
             this.panelButtonsIntervention.Controls.Add(this.btnPDxRückmelden);
             this.panelButtonsIntervention.Controls.Add(this.btnLesenInterventionen);
@@ -1210,196 +1275,280 @@ namespace PMDS.GUI
             this.panelButtonsIntervention.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelButtonsIntervention.Location = new System.Drawing.Point(0, 0);
             this.panelButtonsIntervention.Name = "panelButtonsIntervention";
-            this.panelButtonsIntervention.Size = new System.Drawing.Size(1055, 23);
+            this.panelButtonsIntervention.Size = new System.Drawing.Size(1110, 23);
             this.panelButtonsIntervention.TabIndex = 54;
             // 
-            // btnEndTask
+            // panelSpace10
             // 
-            appearance33.Image = ((object)(resources.GetObject("appearance33.Image")));
-            appearance33.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance33.TextHAlignAsString = "Left";
-            appearance33.TextVAlignAsString = "Middle";
-            this.btnEndTask.Appearance = appearance33;
-            this.btnEndTask.AutoWorkLayout = false;
-            this.btnEndTask.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnEndTask.IsStandardControl = false;
-            this.btnEndTask.Location = new System.Drawing.Point(696, 0);
-            this.btnEndTask.Name = "btnEndTask";
-            this.btnEndTask.Size = new System.Drawing.Size(91, 23);
-            this.btnEndTask.TabIndex = 111;
-            this.btnEndTask.Text = "M beenden";
-            this.btnEndTask.Click += new System.EventHandler(this.btnEndTask_Click);
+            this.panelSpace10.BackColor = System.Drawing.Color.Transparent;
+            this.panelSpace10.Location = new System.Drawing.Point(1043, 0);
+            this.panelSpace10.Name = "panelSpace10";
+            this.panelSpace10.Size = new System.Drawing.Size(5, 23);
+            this.panelSpace10.TabIndex = 68;
+            // 
+            // panelSpace9
+            // 
+            this.panelSpace9.BackColor = System.Drawing.Color.Transparent;
+            this.panelSpace9.Location = new System.Drawing.Point(1104, 0);
+            this.panelSpace9.Name = "panelSpace9";
+            this.panelSpace9.Size = new System.Drawing.Size(5, 23);
+            this.panelSpace9.TabIndex = 67;
             // 
             // btnOpenBefundIntervention
             // 
-            appearance34.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance34.TextHAlignAsString = "Left";
-            appearance34.TextVAlignAsString = "Middle";
-            this.btnOpenBefundIntervention.Appearance = appearance34;
+            appearance33.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance33.TextHAlignAsString = "Left";
+            appearance33.TextVAlignAsString = "Middle";
+            this.btnOpenBefundIntervention.Appearance = appearance33;
             this.btnOpenBefundIntervention.AutoWorkLayout = false;
-            this.btnOpenBefundIntervention.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnOpenBefundIntervention.IsStandardControl = false;
-            this.btnOpenBefundIntervention.Location = new System.Drawing.Point(858, 0);
+            this.btnOpenBefundIntervention.Location = new System.Drawing.Point(844, 0);
             this.btnOpenBefundIntervention.Name = "btnOpenBefundIntervention";
-            this.btnOpenBefundIntervention.Size = new System.Drawing.Size(50, 23);
+            this.btnOpenBefundIntervention.Size = new System.Drawing.Size(66, 23);
             this.btnOpenBefundIntervention.TabIndex = 110;
             this.btnOpenBefundIntervention.Text = "Befund";
+            this.btnOpenBefundIntervention.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnOpenBefundIntervention.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnOpenBefundIntervention.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnOpenBefundIntervention.Visible = false;
             this.btnOpenBefundIntervention.Click += new System.EventHandler(this.btnOpenBefundIntervention_Click);
             // 
             // btnPDxRückmelden
             // 
-            appearance35.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance35.TextHAlignAsString = "Left";
-            appearance35.TextVAlignAsString = "Middle";
-            this.btnPDxRückmelden.Appearance = appearance35;
+            appearance34.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance34.TextHAlignAsString = "Left";
+            appearance34.TextVAlignAsString = "Middle";
+            this.btnPDxRückmelden.Appearance = appearance34;
             this.btnPDxRückmelden.AutoWorkLayout = false;
-            this.btnPDxRückmelden.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnPDxRückmelden.IsStandardControl = false;
-            this.btnPDxRückmelden.Location = new System.Drawing.Point(908, 0);
+            this.btnPDxRückmelden.Location = new System.Drawing.Point(928, 0);
             this.btnPDxRückmelden.Name = "btnPDxRückmelden";
-            this.btnPDxRückmelden.Size = new System.Drawing.Size(101, 23);
+            this.btnPDxRückmelden.Size = new System.Drawing.Size(115, 23);
             this.btnPDxRückmelden.TabIndex = 109;
             this.btnPDxRückmelden.Text = "PDx rückmelden";
+            this.btnPDxRückmelden.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnPDxRückmelden.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnPDxRückmelden.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnPDxRückmelden.Click += new System.EventHandler(this.btnPDxRückmelden_Click);
             // 
             // btnLesenInterventionen
             // 
-            appearance36.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance36.TextHAlignAsString = "Left";
-            appearance36.TextVAlignAsString = "Middle";
-            this.btnLesenInterventionen.Appearance = appearance36;
+            appearance35.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance35.TextHAlignAsString = "Left";
+            appearance35.TextVAlignAsString = "Middle";
+            this.btnLesenInterventionen.Appearance = appearance35;
             this.btnLesenInterventionen.AutoWorkLayout = false;
-            this.btnLesenInterventionen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnLesenInterventionen.IsStandardControl = false;
-            this.btnLesenInterventionen.Location = new System.Drawing.Point(1009, 0);
+            this.btnLesenInterventionen.Location = new System.Drawing.Point(1048, 0);
             this.btnLesenInterventionen.Name = "btnLesenInterventionen";
-            this.btnLesenInterventionen.Size = new System.Drawing.Size(46, 23);
+            this.btnLesenInterventionen.Size = new System.Drawing.Size(56, 23);
             this.btnLesenInterventionen.TabIndex = 108;
             this.btnLesenInterventionen.Text = "Lesen";
+            this.btnLesenInterventionen.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnLesenInterventionen.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnLesenInterventionen.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnLesenInterventionen.Visible = false;
             this.btnLesenInterventionen.Click += new System.EventHandler(this.btnLesenInterventionen_Click);
             // 
             // panelIButtonLeiste
             // 
             this.panelIButtonLeiste.BackColor = System.Drawing.Color.Transparent;
-            this.panelIButtonLeiste.Controls.Add(this.uDropDownSondertermine);
             this.panelIButtonLeiste.Controls.Add(this.panelSondertermine);
-            this.panelIButtonLeiste.Controls.Add(this.btnFreierBericht);
-            this.panelIButtonLeiste.Controls.Add(this.btnUngeplMaßnahmenRückemelden);
-            this.panelIButtonLeiste.Controls.Add(this.btnBedarfsmedikation);
             this.panelIButtonLeiste.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelIButtonLeiste.Location = new System.Drawing.Point(143, 0);
+            this.panelIButtonLeiste.Location = new System.Drawing.Point(133, 0);
             this.panelIButtonLeiste.Name = "panelIButtonLeiste";
-            this.panelIButtonLeiste.Size = new System.Drawing.Size(553, 23);
+            this.panelIButtonLeiste.Size = new System.Drawing.Size(692, 23);
             this.panelIButtonLeiste.TabIndex = 107;
-            // 
-            // uDropDownSondertermine
-            // 
-            appearance37.Image = ((object)(resources.GetObject("appearance37.Image")));
-            appearance37.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.uDropDownSondertermine.Appearance = appearance37;
-            this.uDropDownSondertermine.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uDropDownSondertermine.Location = new System.Drawing.Point(467, 0);
-            this.uDropDownSondertermine.Name = "uDropDownSondertermine";
-            this.uDropDownSondertermine.PopupItemKey = "panelSondertermin";
-            this.uDropDownSondertermine.PopupItemProvider = this.ultraPopupControlContainerSondertermine;
-            this.uDropDownSondertermine.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.uDropDownSondertermine.Size = new System.Drawing.Size(86, 23);
-            this.uDropDownSondertermine.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
-            this.uDropDownSondertermine.TabIndex = 106;
-            this.uDropDownSondertermine.Text = "Termine";
-            this.uDropDownSondertermine.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
-            this.uDropDownSondertermine.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             // 
             // panelSondertermine
             // 
             this.panelSondertermine.BackColor = System.Drawing.Color.Transparent;
+            this.panelSondertermine.Controls.Add(this.btnEndTask1);
+            this.panelSondertermine.Controls.Add(this.panelSpace6);
+            this.panelSondertermine.Controls.Add(this.uDropDownSondertermine);
+            this.panelSondertermine.Controls.Add(this.panelSpace5);
+            this.panelSondertermine.Controls.Add(this.panelSpace3);
+            this.panelSondertermine.Controls.Add(this.panelSpace2);
+            this.panelSondertermine.Controls.Add(this.panleSpace1);
             this.panelSondertermine.Controls.Add(this.uDropDownDekursEntwürfe);
+            this.panelSondertermine.Controls.Add(this.btnFreierBericht);
+            this.panelSondertermine.Controls.Add(this.btnBedarfsmedikation);
+            this.panelSondertermine.Controls.Add(this.btnUngeplMaßnahmenRückemelden);
             this.panelSondertermine.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSondertermine.Location = new System.Drawing.Point(343, 0);
+            this.panelSondertermine.Location = new System.Drawing.Point(0, 0);
             this.panelSondertermine.Name = "panelSondertermine";
-            this.panelSondertermine.Size = new System.Drawing.Size(124, 23);
+            this.panelSondertermine.Size = new System.Drawing.Size(690, 23);
             this.panelSondertermine.TabIndex = 105;
+            // 
+            // btnEndTask1
+            // 
+            appearance36.BackColor2 = System.Drawing.Color.Transparent;
+            appearance36.Image = ((object)(resources.GetObject("appearance36.Image")));
+            appearance36.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance36.TextHAlignAsString = "Left";
+            appearance36.TextVAlignAsString = "Middle";
+            this.btnEndTask1.Appearance = appearance36;
+            this.btnEndTask1.AutoWorkLayout = false;
+            this.btnEndTask1.IsStandardControl = false;
+            this.btnEndTask1.Location = new System.Drawing.Point(572, 0);
+            this.btnEndTask1.Name = "btnEndTask1";
+            this.btnEndTask1.Size = new System.Drawing.Size(107, 23);
+            this.btnEndTask1.TabIndex = 65;
+            this.btnEndTask1.Text = "M beenden";
+            this.btnEndTask1.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnEndTask1.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnEndTask1.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            this.btnEndTask1.Click += new System.EventHandler(this.btnEndTask_Click);
+            // 
+            // panelSpace6
+            // 
+            this.panelSpace6.BackColor = System.Drawing.Color.Transparent;
+            this.panelSpace6.Location = new System.Drawing.Point(568, 0);
+            this.panelSpace6.Name = "panelSpace6";
+            this.panelSpace6.Size = new System.Drawing.Size(5, 23);
+            this.panelSpace6.TabIndex = 64;
+            // 
+            // uDropDownSondertermine
+            // 
+            appearance37.BackColor = System.Drawing.Color.Transparent;
+            appearance37.Image = ((object)(resources.GetObject("appearance37.Image")));
+            appearance37.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.uDropDownSondertermine.Appearance = appearance37;
+            this.uDropDownSondertermine.Location = new System.Drawing.Point(464, 0);
+            this.uDropDownSondertermine.Name = "uDropDownSondertermine";
+            this.uDropDownSondertermine.PopupItemKey = "panelSondertermin";
+            this.uDropDownSondertermine.PopupItemProvider = this.ultraPopupControlContainerSondertermine;
+            this.uDropDownSondertermine.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
+            this.uDropDownSondertermine.Size = new System.Drawing.Size(104, 23);
+            this.uDropDownSondertermine.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
+            this.uDropDownSondertermine.TabIndex = 63;
+            this.uDropDownSondertermine.Text = "Termine";
+            this.uDropDownSondertermine.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.uDropDownSondertermine.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.uDropDownSondertermine.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            // 
+            // panelSpace5
+            // 
+            this.panelSpace5.BackColor = System.Drawing.Color.Transparent;
+            this.panelSpace5.Location = new System.Drawing.Point(459, 1);
+            this.panelSpace5.Name = "panelSpace5";
+            this.panelSpace5.Size = new System.Drawing.Size(5, 23);
+            this.panelSpace5.TabIndex = 62;
+            // 
+            // panelSpace3
+            // 
+            this.panelSpace3.BackColor = System.Drawing.Color.Transparent;
+            this.panelSpace3.Location = new System.Drawing.Point(317, 0);
+            this.panelSpace3.Name = "panelSpace3";
+            this.panelSpace3.Size = new System.Drawing.Size(5, 23);
+            this.panelSpace3.TabIndex = 60;
+            // 
+            // panelSpace2
+            // 
+            this.panelSpace2.BackColor = System.Drawing.Color.Transparent;
+            this.panelSpace2.Location = new System.Drawing.Point(234, 0);
+            this.panelSpace2.Name = "panelSpace2";
+            this.panelSpace2.Size = new System.Drawing.Size(5, 23);
+            this.panelSpace2.TabIndex = 58;
+            // 
+            // panleSpace1
+            // 
+            this.panleSpace1.BackColor = System.Drawing.Color.Transparent;
+            this.panleSpace1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panleSpace1.Location = new System.Drawing.Point(123, 0);
+            this.panleSpace1.Name = "panleSpace1";
+            this.panleSpace1.Size = new System.Drawing.Size(5, 23);
+            this.panleSpace1.TabIndex = 56;
             // 
             // uDropDownDekursEntwürfe
             // 
+            appearance38.BackColor = System.Drawing.Color.Transparent;
             appearance38.Image = ((object)(resources.GetObject("appearance38.Image")));
             appearance38.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.uDropDownDekursEntwürfe.Appearance = appearance38;
-            this.uDropDownDekursEntwürfe.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uDropDownDekursEntwürfe.Location = new System.Drawing.Point(0, 0);
+            this.uDropDownDekursEntwürfe.Location = new System.Drawing.Point(321, 0);
             this.uDropDownDekursEntwürfe.Name = "uDropDownDekursEntwürfe";
             this.uDropDownDekursEntwürfe.PopupItemKey = "PanelDekursEntwürfe";
             this.uDropDownDekursEntwürfe.PopupItemProvider = this.ultraPopupControlContainerDekursEntwürfe;
             this.uDropDownDekursEntwürfe.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.uDropDownDekursEntwürfe.Size = new System.Drawing.Size(123, 23);
+            this.uDropDownDekursEntwürfe.Size = new System.Drawing.Size(138, 23);
             this.uDropDownDekursEntwürfe.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
-            this.uDropDownDekursEntwürfe.TabIndex = 90;
+            this.uDropDownDekursEntwürfe.TabIndex = 61;
             this.uDropDownDekursEntwürfe.Text = "Dekurs Entwurf";
             this.uDropDownDekursEntwürfe.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.uDropDownDekursEntwürfe.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.uDropDownDekursEntwürfe.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             // 
             // btnFreierBericht
             // 
+            appearance39.BackColor = System.Drawing.Color.Transparent;
             appearance39.Image = ((object)(resources.GetObject("appearance39.Image")));
             appearance39.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance39.TextHAlignAsString = "Left";
             appearance39.TextVAlignAsString = "Middle";
             this.btnFreierBericht.Appearance = appearance39;
             this.btnFreierBericht.AutoWorkLayout = false;
-            this.btnFreierBericht.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnFreierBericht.IsStandardControl = false;
-            this.btnFreierBericht.Location = new System.Drawing.Point(244, 0);
+            this.btnFreierBericht.Location = new System.Drawing.Point(239, 0);
             this.btnFreierBericht.Name = "btnFreierBericht";
             this.btnFreierBericht.ShowFocusRect = false;
-            this.btnFreierBericht.Size = new System.Drawing.Size(99, 23);
-            this.btnFreierBericht.TabIndex = 56;
+            this.btnFreierBericht.Size = new System.Drawing.Size(78, 23);
+            this.btnFreierBericht.TabIndex = 59;
             this.btnFreierBericht.Text = "Dekurs";
+            this.btnFreierBericht.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnFreierBericht.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnFreierBericht.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnFreierBericht.Click += new System.EventHandler(this.btnFreierBericht_Click);
             // 
-            // btnUngeplMaßnahmenRückemelden
+            // btnBedarfsmedikation
             // 
+            appearance40.BackColor = System.Drawing.Color.Transparent;
             appearance40.Image = ((object)(resources.GetObject("appearance40.Image")));
             appearance40.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance40.TextHAlignAsString = "Left";
             appearance40.TextVAlignAsString = "Middle";
-            this.btnUngeplMaßnahmenRückemelden.Appearance = appearance40;
-            this.btnUngeplMaßnahmenRückemelden.AutoWorkLayout = false;
-            this.btnUngeplMaßnahmenRückemelden.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnUngeplMaßnahmenRückemelden.IsStandardControl = false;
-            this.btnUngeplMaßnahmenRückemelden.Location = new System.Drawing.Point(125, 0);
-            this.btnUngeplMaßnahmenRückemelden.Name = "btnUngeplMaßnahmenRückemelden";
-            this.btnUngeplMaßnahmenRückemelden.Size = new System.Drawing.Size(119, 23);
-            this.btnUngeplMaßnahmenRückemelden.TabIndex = 54;
-            this.btnUngeplMaßnahmenRückemelden.Text = "Ungepl. M abz.";
-            this.btnUngeplMaßnahmenRückemelden.Click += new System.EventHandler(this.btnUngeplMaßnahmenRückemelden_Click);
-            // 
-            // btnBedarfsmedikation
-            // 
-            appearance41.Image = ((object)(resources.GetObject("appearance41.Image")));
-            appearance41.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance41.TextHAlignAsString = "Left";
-            appearance41.TextVAlignAsString = "Middle";
-            this.btnBedarfsmedikation.Appearance = appearance41;
+            this.btnBedarfsmedikation.Appearance = appearance40;
             this.btnBedarfsmedikation.AutoWorkLayout = false;
             this.btnBedarfsmedikation.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnBedarfsmedikation.IsStandardControl = false;
             this.btnBedarfsmedikation.Location = new System.Drawing.Point(0, 0);
             this.btnBedarfsmedikation.Name = "btnBedarfsmedikation";
-            this.btnBedarfsmedikation.Size = new System.Drawing.Size(125, 23);
+            this.btnBedarfsmedikation.Size = new System.Drawing.Size(123, 23);
             this.btnBedarfsmedikation.TabIndex = 55;
             this.btnBedarfsmedikation.Text = "Einzelverordnung";
+            this.btnBedarfsmedikation.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnBedarfsmedikation.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnBedarfsmedikation.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnBedarfsmedikation.Click += new System.EventHandler(this.btnBedarfsmedikation_Click);
+            // 
+            // btnUngeplMaßnahmenRückemelden
+            // 
+            appearance41.BackColor = System.Drawing.Color.Transparent;
+            appearance41.Image = ((object)(resources.GetObject("appearance41.Image")));
+            appearance41.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance41.TextHAlignAsString = "Left";
+            appearance41.TextVAlignAsString = "Middle";
+            this.btnUngeplMaßnahmenRückemelden.Appearance = appearance41;
+            this.btnUngeplMaßnahmenRückemelden.AutoWorkLayout = false;
+            this.btnUngeplMaßnahmenRückemelden.IsStandardControl = false;
+            this.btnUngeplMaßnahmenRückemelden.Location = new System.Drawing.Point(128, 0);
+            this.btnUngeplMaßnahmenRückemelden.Name = "btnUngeplMaßnahmenRückemelden";
+            this.btnUngeplMaßnahmenRückemelden.Size = new System.Drawing.Size(106, 23);
+            this.btnUngeplMaßnahmenRückemelden.TabIndex = 57;
+            this.btnUngeplMaßnahmenRückemelden.Text = "Ungepl. M abz.";
+            this.btnUngeplMaßnahmenRückemelden.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnUngeplMaßnahmenRückemelden.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnUngeplMaßnahmenRückemelden.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            this.btnUngeplMaßnahmenRückemelden.Click += new System.EventHandler(this.btnUngeplMaßnahmenRückemelden_Click);
             // 
             // panelSpace
             // 
             this.panelSpace.BackColor = System.Drawing.Color.Transparent;
             this.panelSpace.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSpace.Location = new System.Drawing.Point(134, 0);
+            this.panelSpace.Location = new System.Drawing.Point(128, 0);
             this.panelSpace.Name = "panelSpace";
-            this.panelSpace.Size = new System.Drawing.Size(9, 23);
-            this.panelSpace.TabIndex = 106;
+            this.panelSpace.Size = new System.Drawing.Size(5, 23);
+            this.panelSpace.TabIndex = 54;
             // 
             // btnSchnellrückmeldung
             // 
@@ -1413,9 +1562,12 @@ namespace PMDS.GUI
             this.btnSchnellrückmeldung.IsStandardControl = false;
             this.btnSchnellrückmeldung.Location = new System.Drawing.Point(0, 0);
             this.btnSchnellrückmeldung.Name = "btnSchnellrückmeldung";
-            this.btnSchnellrückmeldung.Size = new System.Drawing.Size(134, 23);
+            this.btnSchnellrückmeldung.Size = new System.Drawing.Size(128, 23);
             this.btnSchnellrückmeldung.TabIndex = 53;
             this.btnSchnellrückmeldung.Text = "Schnell abzeichnen";
+            this.btnSchnellrückmeldung.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnSchnellrückmeldung.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnSchnellrückmeldung.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnSchnellrückmeldung.Click += new System.EventHandler(this.btnSchnellrückmeldung_Click);
             // 
             // panelButtonsStuhlDrucken
@@ -1423,9 +1575,9 @@ namespace PMDS.GUI
             this.panelButtonsStuhlDrucken.BackColor = System.Drawing.Color.Transparent;
             this.panelButtonsStuhlDrucken.Controls.Add(this.uDropDownDrucken);
             this.panelButtonsStuhlDrucken.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelButtonsStuhlDrucken.Location = new System.Drawing.Point(1055, 0);
+            this.panelButtonsStuhlDrucken.Location = new System.Drawing.Point(1110, 0);
             this.panelButtonsStuhlDrucken.Name = "panelButtonsStuhlDrucken";
-            this.panelButtonsStuhlDrucken.Size = new System.Drawing.Size(85, 47);
+            this.panelButtonsStuhlDrucken.Size = new System.Drawing.Size(79, 47);
             this.panelButtonsStuhlDrucken.TabIndex = 100;
             // 
             // uDropDownDrucken
@@ -1435,11 +1587,12 @@ namespace PMDS.GUI
             this.uDropDownDrucken.PopupItemKey = "pnlPrintStammDatenBlatt";
             this.uDropDownDrucken.PopupItemProvider = this.ultraPopupControlContainerPrint;
             this.uDropDownDrucken.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.uDropDownDrucken.Size = new System.Drawing.Size(67, 23);
+            this.uDropDownDrucken.Size = new System.Drawing.Size(77, 23);
             this.uDropDownDrucken.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.uDropDownDrucken.TabIndex = 91;
             this.uDropDownDrucken.Text = "Drucken";
             this.uDropDownDrucken.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.uDropDownDrucken.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.uDropDownDrucken.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.uDropDownDrucken.Click += new System.EventHandler(this.uDropDownDrucken_Click);
             // 
@@ -1459,7 +1612,7 @@ namespace PMDS.GUI
             this.panelLeisteQuickButtons.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLeisteQuickButtons.Location = new System.Drawing.Point(0, 39);
             this.panelLeisteQuickButtons.Name = "panelLeisteQuickButtons";
-            this.panelLeisteQuickButtons.Size = new System.Drawing.Size(1229, 26);
+            this.panelLeisteQuickButtons.Size = new System.Drawing.Size(1254, 26);
             this.panelLeisteQuickButtons.TabIndex = 64;
             // 
             // ultraGridBagLayoutPanel2
@@ -1512,36 +1665,39 @@ namespace PMDS.GUI
             // 
             this.panelDatenWerdenAktualisiert.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelDatenWerdenAktualisiert.Controls.Add(this.lblDatenWerdenAktualisiert);
-            gridBagConstraint3.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint3.Insets.Bottom = 2;
-            gridBagConstraint3.Insets.Left = 2;
-            gridBagConstraint3.Insets.Right = 2;
-            gridBagConstraint3.Insets.Top = 2;
-            this.gridBagDatenWerdenAktualisiert.SetGridBagConstraint(this.panelDatenWerdenAktualisiert, gridBagConstraint3);
-            this.panelDatenWerdenAktualisiert.Location = new System.Drawing.Point(2, 2);
+            gridBagConstraint4.Insets.Bottom = 2;
+            gridBagConstraint4.Insets.Left = 2;
+            gridBagConstraint4.Insets.Right = 2;
+            gridBagConstraint4.Insets.Top = 2;
+            gridBagConstraint4.OriginX = 0;
+            gridBagConstraint4.OriginY = 0;
+            this.gridBagDatenWerdenAktualisiert.SetGridBagConstraint(this.panelDatenWerdenAktualisiert, gridBagConstraint4);
+            this.panelDatenWerdenAktualisiert.Location = new System.Drawing.Point(-25, -31);
             this.panelDatenWerdenAktualisiert.Name = "panelDatenWerdenAktualisiert";
             this.gridBagDatenWerdenAktualisiert.SetPreferredSize(this.panelDatenWerdenAktualisiert, new System.Drawing.Size(200, 100));
-            this.panelDatenWerdenAktualisiert.Size = new System.Drawing.Size(146, 33);
+            this.panelDatenWerdenAktualisiert.Size = new System.Drawing.Size(200, 100);
             this.panelDatenWerdenAktualisiert.TabIndex = 0;
             // 
             // lblDatenWerdenAktualisiert
             // 
-            appearance17.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance17.BackColor2 = System.Drawing.Color.WhiteSmoke;
-            appearance17.BackColorDisabled = System.Drawing.Color.WhiteSmoke;
-            appearance17.BackColorDisabled2 = System.Drawing.Color.WhiteSmoke;
-            appearance17.ForeColor = System.Drawing.Color.Black;
-            appearance17.ForeColorDisabled = System.Drawing.Color.Black;
-            appearance17.TextHAlignAsString = "Center";
-            appearance17.TextVAlignAsString = "Middle";
-            this.lblDatenWerdenAktualisiert.Appearance = appearance17;
+            appearance19.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance19.BackColor2 = System.Drawing.Color.WhiteSmoke;
+            appearance19.BackColorDisabled = System.Drawing.Color.WhiteSmoke;
+            appearance19.BackColorDisabled2 = System.Drawing.Color.WhiteSmoke;
+            appearance19.ForeColor = System.Drawing.Color.Black;
+            appearance19.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance19.TextHAlignAsString = "Center";
+            appearance19.TextVAlignAsString = "Middle";
+            this.lblDatenWerdenAktualisiert.Appearance = appearance19;
+            this.lblDatenWerdenAktualisiert.AutoSize = true;
             this.lblDatenWerdenAktualisiert.BorderStyleInner = Infragistics.Win.UIElementBorderStyle.Solid;
             this.lblDatenWerdenAktualisiert.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDatenWerdenAktualisiert.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDatenWerdenAktualisiert.Location = new System.Drawing.Point(0, 0);
             this.lblDatenWerdenAktualisiert.Name = "lblDatenWerdenAktualisiert";
-            this.lblDatenWerdenAktualisiert.Size = new System.Drawing.Size(146, 33);
+            this.lblDatenWerdenAktualisiert.Size = new System.Drawing.Size(200, 100);
             this.lblDatenWerdenAktualisiert.TabIndex = 41;
-            this.lblDatenWerdenAktualisiert.Text = "Daten werden aktualisiert. Bitte warten ...";
+            this.lblDatenWerdenAktualisiert.Text = "Die Daten werden neu geladen ...";
             // 
             // imageList1
             // 
@@ -1555,7 +1711,7 @@ namespace PMDS.GUI
             this.Controls.Add(this.panelLoading);
             this.Controls.Add(this.panelAll);
             this.Name = "ucTermineEx";
-            this.Size = new System.Drawing.Size(1229, 601);
+            this.Size = new System.Drawing.Size(1254, 601);
             this.Load += new System.EventHandler(this.ucTermineEx_Load);
             this.VisibleChanged += new System.EventHandler(this.ucTermineEx_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgTermine)).EndInit();
@@ -1597,6 +1753,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.gridBagDatenWerdenAktualisiert)).EndInit();
             this.gridBagDatenWerdenAktualisiert.ResumeLayout(false);
             this.panelDatenWerdenAktualisiert.ResumeLayout(false);
+            this.panelDatenWerdenAktualisiert.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -1664,8 +1821,8 @@ namespace PMDS.GUI
                 // FilterPicker
                 settings.IDMassnahme = ucTerminFilterPicker1.IDMassnahme;
 
-                settings.BezugJN = ucTerminFilterPicker1.ShowBezug;
-                settings.IDBezug = ucTerminFilterPicker1.IDBezug;
+                //settings.BezugJN = ucTerminFilterPicker1.ShowBezug;
+                //settings.IDBezug = ucTerminFilterPicker1.IDBezug;
 
                 settings.Massnahmen = ucTerminFilterPicker1.MASSNAHMEN;
 
@@ -1796,7 +1953,7 @@ namespace PMDS.GUI
                 ucTerminFilterPicker1.IDMassnahme = set.IDMassnahme;
 
                 ucTerminFilterPicker1.ShowBezug = set.BezugJN;
-                ucTerminFilterPicker1.IDBezug = set.IDBezug;
+                //ucTerminFilterPicker1.IDBezug = set.IDBezug;
 
                 ucTerminFilterPicker1.ShowBerufsstand = set.BerufsstandJN;
                 ucTerminFilterPicker1.Berufsstand = set.Berufsstand;
@@ -2098,19 +2255,13 @@ namespace PMDS.GUI
                             frmVOErfassen1.initControl(PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenPlanungOnlyShow, true, false, null);
                             frmVOErfassen1.ucVOErfassen1.search2(base.CurTerminRowIntervention.IDAufenthalt, base.CurTerminRowIntervention.IDPflegeplan, null, null);
                             frmVOErfassen1.ShowDialog(this);
-                            if (!frmVOErfassen1.ucVOErfassen1.abort)
-                            {
-                                
-                            }
                         }
                     }
                     else
                     {
                         throw new Exception("btnPrintTermine_Click: Print Verordnungen not allowed for Übergabe!");
                     }
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -2130,7 +2281,6 @@ namespace PMDS.GUI
 
                 this.quickFilterButtons1.drawButtons(this.dgTermine, this, ref  this.UITypeTermine);
                 bool LayoutFound = false;
-                PMDS.Global.db.ERSystem.dsTermine ds = new Global.db.ERSystem.dsTermine();
                 base.getTermine(this.MainWindow.UITypeTermine, ref LayoutFound, true);
             }
             catch (Exception ex)
@@ -2142,6 +2292,7 @@ namespace PMDS.GUI
                 Cursor.Current = Cursors.Default;
             }
         }
+
         private void btnSonderterminBearbeiten_Click(object sender, EventArgs e)
         {
             try
@@ -2390,6 +2541,7 @@ namespace PMDS.GUI
                 Cursor.Current = Cursors.Default;
             }
         }
+
         private void btnUngeplMaßnahmenRückemelden_Click(object sender, EventArgs e)
         {
             try
@@ -3467,6 +3619,51 @@ namespace PMDS.GUI
         }
 
         private void btnEndTask_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (!IsPatientSelected(true)) return;
+                if (!this.rowSelected(true)) return;
+
+                //ID des Benutzer suchen, der den Termin angelegt hat und dessen Berufsgruppe prüfen
+                if (PMDS.Global.ENV.HasRight(PMDS.Global.UserRights.PflegePlanungAendern))
+                {
+                    if (this.MainWindow.UITypeTermine == eUITypeTermine.Interventionen && base.CurTerminRowIntervention.Eintragstyp == 1)
+                    {
+                        if (this.CheckPEHasIDPflegeplan(base.CurTerminRowIntervention, null))
+                        {
+                            DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Wollen Sie diese Maßnahme jetzt wklich beenden?", MessageBoxButtons.YesNo, "Maßnahme direkt beenden");
+                            if (res == DialogResult.Yes)
+                            {
+                                Cursor.Current = Cursors.WaitCursor;
+                                string sTextForPE = "Maßnahme wurde direkt aus der Interventionsliste beendet.";
+                                PMDSBusiness1.EndPflegePlan((System.Guid)base.CurTerminRowIntervention.IDPflegeplan, sTextForPE, DateTime.Now, true, true, false);
+                                this.ucSiteMapTermine1.RefreshTermin(false);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Die ausgewählte Zeile ist kein Maßnahmen-Eintrag im Pflegeplan.", MessageBoxButtons.OK, "Maßnahme kann nicht direkt beendet werden");
+                    }
+                }
+                else
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Sie sind für die Aktion nicht berechtigt.", MessageBoxButtons.OK, "Maßnahme kann nicht direkt beendet werden");
+                }
+            }
+            catch (Exception ex)
+            {
+                //Do nothing
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void btnEndTask_Click_1(object sender, EventArgs e)
         {
             try
             {

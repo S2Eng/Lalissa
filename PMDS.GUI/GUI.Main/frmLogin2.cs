@@ -245,60 +245,60 @@ namespace PMDS.GUI
             // lblBenutzer
             // 
             this.lblBenutzer.AutoSize = true;
-            this.lblBenutzer.Location = new System.Drawing.Point(9, 100);
-            this.lblBenutzer.Margin = new System.Windows.Forms.Padding(4);
+            this.lblBenutzer.Location = new System.Drawing.Point(10, 131);
+            this.lblBenutzer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblBenutzer.Name = "lblBenutzer";
-            this.lblBenutzer.Size = new System.Drawing.Size(60, 17);
+            this.lblBenutzer.Size = new System.Drawing.Size(70, 24);
             this.lblBenutzer.TabIndex = 9;
             this.lblBenutzer.Text = "Benutzer";
             // 
             // lblPasswort
             // 
             this.lblPasswort.AutoSize = true;
-            this.lblPasswort.Location = new System.Drawing.Point(9, 130);
-            this.lblPasswort.Margin = new System.Windows.Forms.Padding(4);
+            this.lblPasswort.Location = new System.Drawing.Point(10, 171);
+            this.lblPasswort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblPasswort.Name = "lblPasswort";
-            this.lblPasswort.Size = new System.Drawing.Size(61, 17);
+            this.lblPasswort.Size = new System.Drawing.Size(70, 24);
             this.lblPasswort.TabIndex = 10;
             this.lblPasswort.Text = "Passwort";
             // 
             // txtBenutzer
             // 
-            this.txtBenutzer.Location = new System.Drawing.Point(105, 96);
-            this.txtBenutzer.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBenutzer.Location = new System.Drawing.Point(118, 126);
+            this.txtBenutzer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBenutzer.MaxLength = 25;
             this.txtBenutzer.Name = "txtBenutzer";
-            this.txtBenutzer.Size = new System.Drawing.Size(205, 24);
+            this.txtBenutzer.Size = new System.Drawing.Size(231, 31);
             this.txtBenutzer.TabIndex = 11;
             this.txtBenutzer.ValueChanged += new System.EventHandler(this.txtBenutzer_ValueChanged);
             // 
             // txtPasswort
             // 
-            this.txtPasswort.Location = new System.Drawing.Point(105, 126);
-            this.txtPasswort.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPasswort.Location = new System.Drawing.Point(118, 165);
+            this.txtPasswort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPasswort.MaxLength = 25;
             this.txtPasswort.Name = "txtPasswort";
             this.txtPasswort.PasswordChar = '*';
-            this.txtPasswort.Size = new System.Drawing.Size(205, 24);
+            this.txtPasswort.Size = new System.Drawing.Size(231, 31);
             this.txtPasswort.TabIndex = 12;
             this.txtPasswort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPasswort_KeyDown);
             // 
             // btnCancel
             // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
+            appearance1.BackColor = System.Drawing.Color.WhiteSmoke;
             appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
             appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnCancel.Appearance = appearance1;
             this.btnCancel.AutoWorkLayout = false;
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(105, 163);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Location = new System.Drawing.Point(118, 214);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(97, 34);
+            this.btnCancel.Size = new System.Drawing.Size(109, 45);
             this.btnCancel.TabIndex = 14;
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "Abbrechen";
@@ -310,20 +310,21 @@ namespace PMDS.GUI
             // 
             // btnOK
             // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
+            appearance2.BackColor = System.Drawing.Color.WhiteSmoke;
             appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
             appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnOK.Appearance = appearance2;
             this.btnOK.AutoWorkLayout = false;
-            this.btnOK.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(210, 163);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOK.Location = new System.Drawing.Point(236, 214);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(100, 34);
+            this.btnOK.ShowOutline = false;
+            this.btnOK.Size = new System.Drawing.Size(112, 45);
             this.btnOK.TabIndex = 15;
             this.btnOK.TabStop = false;
             this.btnOK.Text = "OK";
@@ -340,25 +341,26 @@ namespace PMDS.GUI
             // lblInfo
             // 
             appearance4.ForeColor = System.Drawing.Color.Black;
+            appearance4.TextHAlignAsString = "Center";
             this.lblInfo.Appearance = appearance4;
-            this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo.Location = new System.Drawing.Point(9, 25);
-            this.lblInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.lblInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfo.Location = new System.Drawing.Point(10, 33);
+            this.lblInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(301, 22);
+            this.lblInfo.Size = new System.Drawing.Size(339, 29);
             this.lblInfo.TabIndex = 17;
-            this.lblInfo.Text = "Anmeldung an PMDS";
+            this.lblInfo.Text = "Bitte melden Sie sich an PMDS an";
             // 
             // lblConnection
             // 
-            appearance3.BackColor = System.Drawing.Color.White;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
             appearance3.ForeColor = System.Drawing.Color.Gray;
             this.lblConnection.Appearance = appearance3;
             this.lblConnection.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.lblConnection.Location = new System.Drawing.Point(9, 55);
-            this.lblConnection.Margin = new System.Windows.Forms.Padding(4);
+            this.lblConnection.Location = new System.Drawing.Point(10, 72);
+            this.lblConnection.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblConnection.Name = "lblConnection";
-            this.lblConnection.Size = new System.Drawing.Size(301, 27);
+            this.lblConnection.Size = new System.Drawing.Size(339, 35);
             this.lblConnection.TabIndex = 18;
             this.lblConnection.Visible = false;
             // 
@@ -369,10 +371,11 @@ namespace PMDS.GUI
             // frmLogin
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.BackColor = System.Drawing.Color.Snow;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(337, 218);
+            this.ClientSize = new System.Drawing.Size(367, 275);
+            this.ControlBox = false;
             this.Controls.Add(this.lblConnection);
             this.Controls.Add(this.lblBenutzer);
             this.Controls.Add(this.lblPasswort);
@@ -381,9 +384,9 @@ namespace PMDS.GUI
             this.Controls.Add(this.txtPasswort);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLogin";

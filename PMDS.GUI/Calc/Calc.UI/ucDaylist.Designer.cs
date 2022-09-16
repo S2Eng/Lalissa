@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDaylist));
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Tagsatzliste erstellen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
             this.panelOben = new QS2.Desktop.ControlManagment.BasePanel();
@@ -62,18 +63,20 @@
             // 
             // dtMonat
             // 
-            this.dtMonat.Location = new System.Drawing.Point(48, 11);
+            this.dtMonat.Location = new System.Drawing.Point(60, 10);
             this.dtMonat.MaskInput = "{LOC}mm.yyyy";
             this.dtMonat.Name = "dtMonat";
+            this.dtMonat.ownFormat = "";
+            this.dtMonat.ownMaskInput = "";
             this.dtMonat.Size = new System.Drawing.Size(71, 21);
             this.dtMonat.TabIndex = 0;
             // 
             // btnTimes
             // 
-            this.btnTimes.Location = new System.Drawing.Point(121, 10);
+            this.btnTimes.Location = new System.Drawing.Point(137, 8);
             this.btnTimes.Name = "btnTimes";
             this.btnTimes.ShowFocusRect = false;
-            this.btnTimes.Size = new System.Drawing.Size(21, 24);
+            this.btnTimes.Size = new System.Drawing.Size(21, 27);
             this.btnTimes.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.btnTimes.TabIndex = 100;
             this.btnTimes.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnTimes_MouseUp);
@@ -88,11 +91,13 @@
             // 
             // btnErstellen
             // 
-            appearance22.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Abrechnung.ico_Abrechnung, 32, 32);
-            appearance22.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance22.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnErstellen.Appearance = appearance22;
-            this.btnErstellen.Location = new System.Drawing.Point(147, 8);
+            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnErstellen.Appearance = appearance1;
+            this.btnErstellen.AutoWorkLayout = false;
+            this.btnErstellen.IsStandardControl = false;
+            this.btnErstellen.Location = new System.Drawing.Point(177, 8);
             this.btnErstellen.Name = "btnErstellen";
             this.btnErstellen.Size = new System.Drawing.Size(86, 27);
             this.btnErstellen.TabIndex = 2;
@@ -171,11 +176,11 @@
         private QS2.Desktop.ControlManagment.BasePanel panelOben;
         private Infragistics.Win.Misc.UltraGridBagLayoutPanel ultraGridBagLayoutPanel1;
         private PMDS.Calc.Logic.ucprint ucbill1;
-        public Infragistics.Win.UltraWinEditors.UltraDateTimeEditor dtMonat;
         private Infragistics.Win.Misc.UltraDropDownButton btnTimes;
         private QS2.Desktop.ControlManagment.BaseLabel lblVon;
         private QS2.Desktop.ControlManagment.BaseButton btnErstellen;
         private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
         private QS2.Desktop.ControlManagment.BasePanel panelDaylist;
+        public QS2.Desktop.ControlManagment.BaseDateTimeEditor dtMonat;
     }
 }

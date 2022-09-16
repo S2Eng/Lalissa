@@ -66,6 +66,7 @@ namespace PMDS.Global.print
                         frmPDF.SetValue("#KLIENTVERSTORBEN#", (p.Verstorben == true) ? "J" : "N", form);
                         if (p.Klientennummer != null) frmPDF.SetValue("#KLIENTNUMMER#", p.Klientennummer, form);
                         if (p.Titel != null) frmPDF.SetValue("#KLIENTTITEL#", p.Titel, form);
+                        if (p.TitelPost != null) frmPDF.SetValue("#KLIENTTITELPOST#", p.TitelPost, form);
                         if (p.Kosename != null) frmPDF.SetValue("#KLIENTKOSENAME#", p.Kosename, form);
 
                         if (p.Sexus != null) frmPDF.SetValue("#KLIENTGESCHLECHT#", p.Sexus, form);

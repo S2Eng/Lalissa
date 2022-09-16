@@ -945,7 +945,7 @@ Public Class contArchivSuch
         UltraTab1.TabPage = Me.UltraTabPageControl6
         UltraTab1.Text = "Explorer"
         Me.UTabDokumenteGefunden.Tabs.AddRange(New Infragistics.Win.UltraWinTabControl.UltraTab() {UltraTab2, UltraTab1})
-        Me.UTabDokumenteGefunden.UseAppStyling = False
+        Me.UTabDokumenteGefunden.UseAppStyling = True
         Me.UTabDokumenteGefunden.UseHotTracking = Infragistics.Win.DefaultableBoolean.[True]
         '
         'UltraTabSharedControlsPage2

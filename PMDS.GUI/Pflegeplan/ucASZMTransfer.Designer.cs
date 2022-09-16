@@ -71,7 +71,7 @@
             this.pnlStartDatum.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlStartDatum.Location = new System.Drawing.Point(0, 0);
             this.pnlStartDatum.Name = "pnlStartDatum";
-            this.pnlStartDatum.Size = new System.Drawing.Size(553, 85);
+            this.pnlStartDatum.Size = new System.Drawing.Size(652, 85);
             this.pnlStartDatum.TabIndex = 45;
             // 
             // grbStartdatum
@@ -102,6 +102,8 @@
             this.tbUhrzeit.Location = new System.Drawing.Point(48, 2);
             this.tbUhrzeit.MaskInput = "hh:mm";
             this.tbUhrzeit.Name = "tbUhrzeit";
+            this.tbUhrzeit.ownFormat = "";
+            this.tbUhrzeit.ownMaskInput = "";
             this.tbUhrzeit.Size = new System.Drawing.Size(40, 21);
             this.tbUhrzeit.TabIndex = 29;
             this.tbUhrzeit.Value = null;
@@ -128,6 +130,8 @@
             this.dtpStart.Location = new System.Drawing.Point(82, 12);
             this.dtpStart.MaskInput = "dd.mm.yyyy";
             this.dtpStart.Name = "dtpStart";
+            this.dtpStart.ownFormat = "";
+            this.dtpStart.ownMaskInput = "";
             this.dtpStart.Size = new System.Drawing.Size(96, 21);
             this.dtpStart.TabIndex = 18;
             this.dtpStart.Value = new System.DateTime(2007, 3, 13, 0, 0, 0, 0);
@@ -167,6 +171,8 @@
             this.zp3.Location = new System.Drawing.Point(144, 16);
             this.zp3.MaskInput = "hh:mm";
             this.zp3.Name = "zp3";
+            this.zp3.ownFormat = "";
+            this.zp3.ownMaskInput = "";
             this.zp3.Size = new System.Drawing.Size(40, 21);
             this.zp3.TabIndex = 22;
             this.zp3.Value = null;
@@ -178,6 +184,8 @@
             this.zp1.Location = new System.Drawing.Point(48, 16);
             this.zp1.MaskInput = "hh:mm";
             this.zp1.Name = "zp1";
+            this.zp1.ownFormat = "";
+            this.zp1.ownMaskInput = "";
             this.zp1.Size = new System.Drawing.Size(40, 21);
             this.zp1.TabIndex = 20;
             this.zp1.Value = null;
@@ -189,6 +197,8 @@
             this.zp4.Location = new System.Drawing.Point(192, 16);
             this.zp4.MaskInput = "hh:mm";
             this.zp4.Name = "zp4";
+            this.zp4.ownFormat = "";
+            this.zp4.ownMaskInput = "";
             this.zp4.Size = new System.Drawing.Size(40, 21);
             this.zp4.TabIndex = 23;
             this.zp4.Value = null;
@@ -200,6 +210,8 @@
             this.zp6.Location = new System.Drawing.Point(288, 16);
             this.zp6.MaskInput = "hh:mm";
             this.zp6.Name = "zp6";
+            this.zp6.ownFormat = "";
+            this.zp6.ownMaskInput = "";
             this.zp6.Size = new System.Drawing.Size(40, 21);
             this.zp6.TabIndex = 25;
             this.zp6.Value = null;
@@ -211,6 +223,8 @@
             this.zp5.Location = new System.Drawing.Point(240, 16);
             this.zp5.MaskInput = "hh:mm";
             this.zp5.Name = "zp5";
+            this.zp5.ownFormat = "";
+            this.zp5.ownMaskInput = "";
             this.zp5.Size = new System.Drawing.Size(40, 21);
             this.zp5.TabIndex = 24;
             this.zp5.Value = null;
@@ -222,6 +236,8 @@
             this.zp2.Location = new System.Drawing.Point(96, 16);
             this.zp2.MaskInput = "hh:mm";
             this.zp2.Name = "zp2";
+            this.zp2.ownFormat = "";
+            this.zp2.ownMaskInput = "";
             this.zp2.Size = new System.Drawing.Size(40, 21);
             this.zp2.TabIndex = 21;
             this.zp2.Value = null;
@@ -241,6 +257,8 @@
             this.zp0.Location = new System.Drawing.Point(0, 16);
             this.zp0.MaskInput = "hh:mm";
             this.zp0.Name = "zp0";
+            this.zp0.ownFormat = "";
+            this.zp0.ownMaskInput = "";
             this.zp0.Size = new System.Drawing.Size(40, 21);
             this.zp0.TabIndex = 19;
             this.zp0.Value = null;
@@ -256,7 +274,7 @@
             this.ucPflegePlanSingleEdit1.Location = new System.Drawing.Point(0, 85);
             this.ucPflegePlanSingleEdit1.Name = "ucPflegePlanSingleEdit1";
             this.ucPflegePlanSingleEdit1.ReadOnly = false;
-            this.ucPflegePlanSingleEdit1.Size = new System.Drawing.Size(553, 741);
+            this.ucPflegePlanSingleEdit1.Size = new System.Drawing.Size(652, 741);
             this.ucPflegePlanSingleEdit1.TabIndex = 46;
             this.ucPflegePlanSingleEdit1.TransferMode = true;
             // 
@@ -268,7 +286,7 @@
             this.Controls.Add(this.ucPflegePlanSingleEdit1);
             this.Controls.Add(this.pnlStartDatum);
             this.Name = "ucASZMTransfer";
-            this.Size = new System.Drawing.Size(553, 826);
+            this.Size = new System.Drawing.Size(652, 826);
             this.pnlStartDatum.ResumeLayout(false);
             this.grbStartdatum.ResumeLayout(false);
             this.grbStartdatum.PerformLayout();

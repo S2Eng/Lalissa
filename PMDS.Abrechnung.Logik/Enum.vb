@@ -114,6 +114,13 @@ Public Enum eTypeModifyBill
     StornoSR = 1
 End Enum
 
+Public Enum CalcUIMode
+    Vorschau = 1
+    Freigegeben = 2
+    Belege = 3
+    Undefiniert = 99
+End Enum
+
 Public Class anwAbw
     Public anw As Integer = 0
     Public abw As Integer = 0

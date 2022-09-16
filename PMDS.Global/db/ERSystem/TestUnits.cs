@@ -618,6 +618,7 @@ namespace PMDS.Global.db.ERSystem
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Titel nachgestellt: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Bereichsspez. Personenkennz.: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("STAMP ID: ");
 
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Für den Patienten existiert bereits ein ELGA-Hausarzt!" + "\r\n" +
                                                                                 "Soll dieser als Hausarzt gespeichert werden und der neue Arzt als ELGA-Hausarzt gespeichert werden?", "", MessageBoxButtons.YesNo);
@@ -1770,7 +1771,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("\n(Kopie von Aufenthalt mit Aufnahmedatum ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("\n(Kopie von Aufenthalt mit Aufnahmedatum ");
 
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Es bestehen offene Freiheitsbeschränkungen für den Patienten! (Anzahl: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Es bestehen offene Freiheitsbeschränkungen für den Klienten! (Anzahl: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes(" ist fällig am ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes(" um ");
 
@@ -1999,8 +2000,8 @@ namespace PMDS.Global.db.ERSystem
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Buchungen drucken");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Zurück");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Monatsabrechnung");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Freie Rechnung");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Monat");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Frei erstellte");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Abgerechnet bis");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die selektierten Rechnungen wirklich löschen?");
 

@@ -826,8 +826,8 @@ Public Class contPlanungData
         Appearance7.BackColor = System.Drawing.Color.White
         Appearance7.BackColor2 = System.Drawing.Color.White
         Me.gridPlans.DisplayLayout.Override.RowAlternateAppearance = Appearance7
-        Me.gridPlans.DisplayLayout.Override.RowSpacingAfter = 1
-        Me.gridPlans.DisplayLayout.Override.RowSpacingBefore = 2
+        Me.gridPlans.DisplayLayout.Override.RowSpacingAfter = 0
+        Me.gridPlans.DisplayLayout.Override.RowSpacingBefore = 0
         Appearance8.BackColor = System.Drawing.Color.DarkGray
         Appearance8.ForeColor = System.Drawing.Color.White
         Me.gridPlans.DisplayLayout.Override.SelectedRowAppearance = Appearance8
@@ -1772,11 +1772,6 @@ Public Class contPlanungData
                                 appointment.Appearance.BackColor = System.Drawing.Color.DarkGreen
                                 appointment.Appearance.ForeColor = Color.White
                                 appointment.Appearance.FontData.Bold = DefaultableBoolean.False
-                                'If bEMailNotReaded Then
-                                '    appointment.Appearance.FontData.Bold = DefaultableBoolean.True
-                                'Else
-                                '    appointment.Appearance.FontData.Bold = DefaultableBoolean.False
-                                'End If
                             End If
 
                             If rPlan.IDArt = 1 Or rPlan.IDArt = 2 Then

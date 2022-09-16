@@ -81,7 +81,7 @@ namespace PMDS.Calc.UI.Admin
                         PMDS.db.Entities.Patient rPatient = this.b.getPatient(IDKlient, db);
                         rPatient.TageAbweseneheitOhneKuerzung = (int)this.ucAbrechnungsdatenKlient1.numTageAbweseneheitOhneKuerzung.Value;
 
-                        if (this.ucAbrechnungsdatenKlient1.cmbBetreuungsstufe.Text != "")
+                        if (!String.IsNullOrWhiteSpace(this.ucAbrechnungsdatenKlient1.cmbBetreuungsstufe.Text))
                         {
                             rPatient.Betreuungsstufe = this.ucAbrechnungsdatenKlient1.cmbBetreuungsstufe.Text;
                         }
@@ -111,6 +111,10 @@ namespace PMDS.Calc.UI.Admin
                             PMDS.db.Entities.Aufenthalt rAufenthalt = this.b.getAktuellerAufenthaltPatient(IDKlient, false, db);
                         }
 
+                        if (this.ucAbrechnungsdatenKlient1.chkForensicherHintergrund != null)
+                        {
+                            rPatient.ForensischerHintergrund = ucAbrechnungsdatenKlient1.chkForensicherHintergrund.Checked;
+                        }
                         db.SaveChanges();
                     }
                 }
@@ -558,45 +562,14 @@ namespace PMDS.Calc.UI.Admin
 
         public void setButtonsAktivDeaktiv(int aktivButton)
         {
-            System.Drawing.Color foreCol = new System.Drawing.Color();
-            foreCol = System.Drawing.Color.Black;
-            System.Drawing.Color bordCol = new System.Drawing.Color();
-            bordCol = System.Drawing.Color.Black;
-            System.Drawing.Color backCol = new System.Drawing.Color();
-            backCol = System.Drawing.Color.White;
-            System.Drawing.Color hotTrackCol = new System.Drawing.Color();
-            hotTrackCol = System.Drawing.Color.Orange;
-
-            System.Drawing.Color backColDeakt = new System.Drawing.Color();
-            backColDeakt = System.Drawing.Color.Transparent;
-
-            Infragistics.Win.UIElementButtonStyle styleButt = new Infragistics.Win.UIElementButtonStyle();
-            styleButt = Infragistics.Win.UIElementButtonStyle.Flat;
-
-            if (aktivButton == 0) { PMDS.Global.UIGlobal.setAktiv(this.btnAbrechnungsdaten, -1, foreCol, bordCol, backCol); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnAbrechnungsdaten, -1, foreCol, hotTrackCol, bordCol, backColDeakt, styleButt); }
-
-            if (aktivButton == 1) { PMDS.Global.UIGlobal.setAktiv(this.btnLeistungen, -1, foreCol, bordCol, backCol); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnLeistungen, -1, foreCol, hotTrackCol, bordCol, backColDeakt, styleButt); }
-
-            if (aktivButton == 2) { PMDS.Global.UIGlobal.setAktiv(this.btnAbwesenheiten, -1, foreCol, bordCol, backCol); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnAbwesenheiten, -1, foreCol, hotTrackCol, bordCol, backColDeakt, styleButt); }
-
-            if (aktivButton == 3) { PMDS.Global.UIGlobal.setAktiv(this.btnManBuchungen2, -1, foreCol, bordCol, backCol); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnManBuchungen2, -1, foreCol, hotTrackCol, bordCol, backColDeakt, styleButt); }
-
-            if (aktivButton == 4) { PMDS.Global.UIGlobal.setAktiv(this.btnTransferzahlungen2, -1, foreCol, bordCol, backCol); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnTransferzahlungen2, -1, foreCol, hotTrackCol, bordCol, backColDeakt, styleButt); }
-
-            if (aktivButton == 5) { PMDS.Global.UIGlobal.setAktiv(this.btnFreieRechnungen2, -1, foreCol, bordCol, backCol); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnFreieRechnungen2, -1, foreCol, hotTrackCol, bordCol, backColDeakt, styleButt); }
-            
-            if (aktivButton == 6) { PMDS.Global.UIGlobal.setAktiv(this.btnRechnungen, -1, foreCol, bordCol, backCol); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnRechnungen, -1, foreCol, hotTrackCol, bordCol, backColDeakt, styleButt); }
-
-            if (aktivButton == 7) { PMDS.Global.UIGlobal.setAktiv(this.btnKlientenakt, -1, foreCol, bordCol, backCol); }
-            else { PMDS.Global.UIGlobal.setAktivDisable(this.btnKlientenakt, -1, foreCol, hotTrackCol, bordCol, backColDeakt, styleButt); }
-
+            PMDS.Global.UIGlobal.setUIButton(this.btnAbrechnungsdaten, aktivButton == 0); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnLeistungen, aktivButton == 1); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnAbwesenheiten, aktivButton == 2); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnManBuchungen2, aktivButton == 3); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnTransferzahlungen2, aktivButton == 4); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnFreieRechnungen2, aktivButton == 5); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnRechnungen, aktivButton == 6); 
+            PMDS.Global.UIGlobal.setUIButton(this.btnKlientenakt, aktivButton == 7); 
         }
 
         public void InitTabControl(ErfassungMode mode)
@@ -640,7 +613,7 @@ namespace PMDS.Calc.UI.Admin
         private void initManBuchungen()
         {
             this.ucManBuch1 = new PMDS.Calc.UI.Admin.ucManFreiBuch();
-            this.ucManBuch1.BackColor = System.Drawing.Color.WhiteSmoke;
+            //this.ucManBuch1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucManBuch1.typ = PMDS.Calc.Logic.eCalcRun.manBill ;
             this.ucManBuch1.Dock = DockStyle.Fill;
             this.ucManBuch1.ValueChanged += new System.EventHandler(this.uc_ValueChanged);
@@ -653,11 +626,12 @@ namespace PMDS.Calc.UI.Admin
         {
             this.ucFreiRech1 = new PMDS.Calc.UI.Admin.ucManFreiBuch();
             this.ucFreiRech1.typ = PMDS.Calc.Logic.eCalcRun.freeBill ;
-            this.ucFreiRech1.BackColor = System.Drawing.Color.WhiteSmoke;
+            //this.ucFreiRech1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucFreiRech1.Dock = DockStyle.Fill;
             this.ucFreiRech1.ValueChanged += new System.EventHandler(this.uc_ValueChanged);
             this.panelFreieRechnungen.Controls.Add(this.ucFreiRech1);
             this.ucFreiRech1.initControl();
+            this.ucFreiRech1.Controls["grdManBuchungen3"].Refresh();
             Application.DoEvents();
             this.panelFreieRechnungen.Visible = true;
         }

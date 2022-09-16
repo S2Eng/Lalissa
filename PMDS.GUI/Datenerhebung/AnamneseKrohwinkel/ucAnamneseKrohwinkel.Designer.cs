@@ -101,272 +101,321 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(1084, 4);
+            this.btnPrint.Location = new System.Drawing.Point(1445, 5);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDelete.Location = new System.Drawing.Point(27, 2);
+            this.btnDelete.Location = new System.Drawing.Point(36, 2);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             // 
             // btnNew
             // 
             this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNew.Location = new System.Drawing.Point(0, 2);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             // 
             // btnUndo
             // 
             this.btnUndo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnUndo.Location = new System.Drawing.Point(12, 1);
+            this.btnUndo.Location = new System.Drawing.Point(16, 1);
+            this.btnUndo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
             // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSave.Location = new System.Drawing.Point(109, 1);
+            this.btnSave.Location = new System.Drawing.Point(145, 1);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            // 
+            // dtpErstelltAm
+            // 
+            this.dtpErstelltAm.Location = new System.Drawing.Point(241, 2);
+            this.dtpErstelltAm.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            // 
+            // cmbErstelltAm
+            // 
+            this.cmbErstelltAm.Location = new System.Drawing.Point(241, 2);
+            this.cmbErstelltAm.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            // 
+            // cmbPfleger
+            // 
+            this.cmbPfleger.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             // 
             // btnCopy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(1101, 4);
+            this.btnCopy.Location = new System.Drawing.Point(1468, 5);
+            this.btnCopy.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             // 
             // baseButton1
             // 
-            this.baseButton1.Location = new System.Drawing.Point(974, 506);
+            this.baseButton1.Location = new System.Drawing.Point(1299, 623);
+            this.baseButton1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             // 
             // ultraTabPageControl2
             // 
             this.ultraTabPageControl2.Controls.Add(this.ucKommunizieren1);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(228, 1);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(938, 458);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucKommunizieren1
             // 
             this.ucKommunizieren1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucKommunizieren1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucKommunizieren1.Location = new System.Drawing.Point(0, 0);
+            this.ucKommunizieren1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucKommunizieren1.Name = "ucKommunizieren1";
-            this.ucKommunizieren1.Size = new System.Drawing.Size(938, 458);
+            this.ucKommunizieren1.Size = new System.Drawing.Size(1328, 565);
             this.ucKommunizieren1.TabIndex = 0;
             this.ucKommunizieren1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.ucSichBewegen1);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-13333, -12308);
+            this.ultraTabPageControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucSichBewegen1
             // 
             this.ucSichBewegen1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucSichBewegen1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucSichBewegen1.Location = new System.Drawing.Point(0, 0);
+            this.ucSichBewegen1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucSichBewegen1.Name = "ucSichBewegen1";
-            this.ucSichBewegen1.Size = new System.Drawing.Size(538, 458);
+            this.ucSichBewegen1.Size = new System.Drawing.Size(1328, 565);
             this.ucSichBewegen1.TabIndex = 0;
             this.ucSichBewegen1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl3
             // 
             this.ultraTabPageControl3.Controls.Add(this.ucVitaleFunktionen1);
-            this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl3.Location = new System.Drawing.Point(-13333, -12308);
+            this.ultraTabPageControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
-            this.ultraTabPageControl3.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl3.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucVitaleFunktionen1
             // 
             this.ucVitaleFunktionen1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucVitaleFunktionen1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucVitaleFunktionen1.Location = new System.Drawing.Point(0, 0);
+            this.ucVitaleFunktionen1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucVitaleFunktionen1.Name = "ucVitaleFunktionen1";
-            this.ucVitaleFunktionen1.Size = new System.Drawing.Size(538, 458);
+            this.ucVitaleFunktionen1.Size = new System.Drawing.Size(1328, 565);
             this.ucVitaleFunktionen1.TabIndex = 0;
             this.ucVitaleFunktionen1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl4
             // 
             this.ultraTabPageControl4.Controls.Add(this.ucSichPflegen1);
-            this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(-13333, -12308);
+            this.ultraTabPageControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
-            this.ultraTabPageControl4.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl4.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucSichPflegen1
             // 
             this.ucSichPflegen1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucSichPflegen1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucSichPflegen1.Location = new System.Drawing.Point(0, 0);
+            this.ucSichPflegen1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucSichPflegen1.Name = "ucSichPflegen1";
-            this.ucSichPflegen1.Size = new System.Drawing.Size(538, 458);
+            this.ucSichPflegen1.Size = new System.Drawing.Size(1328, 565);
             this.ucSichPflegen1.TabIndex = 0;
             this.ucSichPflegen1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl5
             // 
             this.ultraTabPageControl5.Controls.Add(this.ucEssenTrinken1);
-            this.ultraTabPageControl5.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl5.Location = new System.Drawing.Point(-13333, -12308);
+            this.ultraTabPageControl5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl5.Name = "ultraTabPageControl5";
-            this.ultraTabPageControl5.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl5.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucEssenTrinken1
             // 
             this.ucEssenTrinken1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucEssenTrinken1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucEssenTrinken1.Location = new System.Drawing.Point(0, 0);
+            this.ucEssenTrinken1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucEssenTrinken1.Name = "ucEssenTrinken1";
-            this.ucEssenTrinken1.Size = new System.Drawing.Size(538, 458);
+            this.ucEssenTrinken1.Size = new System.Drawing.Size(1328, 565);
             this.ucEssenTrinken1.TabIndex = 0;
             this.ucEssenTrinken1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl6
             // 
             this.ultraTabPageControl6.Controls.Add(this.ucAusscheiden1);
-            this.ultraTabPageControl6.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl6.Location = new System.Drawing.Point(-13333, -12308);
+            this.ultraTabPageControl6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl6.Name = "ultraTabPageControl6";
-            this.ultraTabPageControl6.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl6.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucAusscheiden1
             // 
             this.ucAusscheiden1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucAusscheiden1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucAusscheiden1.Location = new System.Drawing.Point(0, 0);
+            this.ucAusscheiden1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucAusscheiden1.Name = "ucAusscheiden1";
-            this.ucAusscheiden1.Size = new System.Drawing.Size(538, 458);
+            this.ucAusscheiden1.Size = new System.Drawing.Size(1328, 565);
             this.ucAusscheiden1.TabIndex = 0;
             this.ucAusscheiden1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl7
             // 
             this.ultraTabPageControl7.Controls.Add(this.ucSichKleiden1);
-            this.ultraTabPageControl7.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl7.Location = new System.Drawing.Point(-13333, -12308);
+            this.ultraTabPageControl7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl7.Name = "ultraTabPageControl7";
-            this.ultraTabPageControl7.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl7.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucSichKleiden1
             // 
             this.ucSichKleiden1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucSichKleiden1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucSichKleiden1.Location = new System.Drawing.Point(0, 0);
+            this.ucSichKleiden1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucSichKleiden1.Name = "ucSichKleiden1";
-            this.ucSichKleiden1.Size = new System.Drawing.Size(538, 458);
+            this.ucSichKleiden1.Size = new System.Drawing.Size(1328, 565);
             this.ucSichKleiden1.TabIndex = 0;
             this.ucSichKleiden1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl8
             // 
             this.ultraTabPageControl8.Controls.Add(this.ucRuhenSchlafen1);
-            this.ultraTabPageControl8.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl8.Location = new System.Drawing.Point(-13333, -12308);
+            this.ultraTabPageControl8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl8.Name = "ultraTabPageControl8";
-            this.ultraTabPageControl8.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl8.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucRuhenSchlafen1
             // 
             this.ucRuhenSchlafen1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucRuhenSchlafen1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucRuhenSchlafen1.Location = new System.Drawing.Point(0, 0);
+            this.ucRuhenSchlafen1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucRuhenSchlafen1.Name = "ucRuhenSchlafen1";
-            this.ucRuhenSchlafen1.Size = new System.Drawing.Size(538, 458);
+            this.ucRuhenSchlafen1.Size = new System.Drawing.Size(1328, 565);
             this.ucRuhenSchlafen1.TabIndex = 0;
             this.ucRuhenSchlafen1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl9
             // 
             this.ultraTabPageControl9.Controls.Add(this.ucSichBeschaeftigen1);
-            this.ultraTabPageControl9.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl9.Location = new System.Drawing.Point(-13333, -12308);
+            this.ultraTabPageControl9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl9.Name = "ultraTabPageControl9";
-            this.ultraTabPageControl9.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl9.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucSichBeschaeftigen1
             // 
             this.ucSichBeschaeftigen1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucSichBeschaeftigen1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucSichBeschaeftigen1.Location = new System.Drawing.Point(0, 0);
+            this.ucSichBeschaeftigen1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucSichBeschaeftigen1.Name = "ucSichBeschaeftigen1";
-            this.ucSichBeschaeftigen1.Size = new System.Drawing.Size(538, 458);
+            this.ucSichBeschaeftigen1.Size = new System.Drawing.Size(1328, 565);
             this.ucSichBeschaeftigen1.TabIndex = 0;
             this.ucSichBeschaeftigen1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl10
             // 
             this.ultraTabPageControl10.Controls.Add(this.ucSichAlsManFrauFuehlen1);
-            this.ultraTabPageControl10.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl10.Location = new System.Drawing.Point(229, 2);
+            this.ultraTabPageControl10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl10.Name = "ultraTabPageControl10";
-            this.ultraTabPageControl10.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl10.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucSichAlsManFrauFuehlen1
             // 
             this.ucSichAlsManFrauFuehlen1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucSichAlsManFrauFuehlen1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucSichAlsManFrauFuehlen1.Location = new System.Drawing.Point(0, 0);
+            this.ucSichAlsManFrauFuehlen1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucSichAlsManFrauFuehlen1.Name = "ucSichAlsManFrauFuehlen1";
-            this.ucSichAlsManFrauFuehlen1.Size = new System.Drawing.Size(538, 458);
+            this.ucSichAlsManFrauFuehlen1.Size = new System.Drawing.Size(1328, 565);
             this.ucSichAlsManFrauFuehlen1.TabIndex = 0;
             this.ucSichAlsManFrauFuehlen1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl11
             // 
             this.ultraTabPageControl11.Controls.Add(this.ucUmgebung1);
-            this.ultraTabPageControl11.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl11.Location = new System.Drawing.Point(-13333, -12308);
+            this.ultraTabPageControl11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl11.Name = "ultraTabPageControl11";
-            this.ultraTabPageControl11.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl11.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucUmgebung1
             // 
             this.ucUmgebung1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucUmgebung1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucUmgebung1.Location = new System.Drawing.Point(0, 0);
+            this.ucUmgebung1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucUmgebung1.Name = "ucUmgebung1";
-            this.ucUmgebung1.Size = new System.Drawing.Size(538, 458);
+            this.ucUmgebung1.Size = new System.Drawing.Size(1328, 565);
             this.ucUmgebung1.TabIndex = 0;
             this.ucUmgebung1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl12
             // 
             this.ultraTabPageControl12.Controls.Add(this.ucSozialeBereiche1);
-            this.ultraTabPageControl12.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl12.Location = new System.Drawing.Point(-13333, -12308);
+            this.ultraTabPageControl12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl12.Name = "ultraTabPageControl12";
-            this.ultraTabPageControl12.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl12.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucSozialeBereiche1
             // 
             this.ucSozialeBereiche1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucSozialeBereiche1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucSozialeBereiche1.Location = new System.Drawing.Point(0, 0);
+            this.ucSozialeBereiche1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucSozialeBereiche1.Name = "ucSozialeBereiche1";
-            this.ucSozialeBereiche1.Size = new System.Drawing.Size(538, 458);
+            this.ucSozialeBereiche1.Size = new System.Drawing.Size(1328, 565);
             this.ucSozialeBereiche1.TabIndex = 0;
             this.ucSozialeBereiche1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl13
             // 
             this.ultraTabPageControl13.Controls.Add(this.ucLebensErfahrungen1);
-            this.ultraTabPageControl13.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl13.Location = new System.Drawing.Point(-13333, -12308);
+            this.ultraTabPageControl13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl13.Name = "ultraTabPageControl13";
-            this.ultraTabPageControl13.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl13.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucLebensErfahrungen1
             // 
             this.ucLebensErfahrungen1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucLebensErfahrungen1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucLebensErfahrungen1.Location = new System.Drawing.Point(0, 0);
+            this.ucLebensErfahrungen1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucLebensErfahrungen1.Name = "ucLebensErfahrungen1";
-            this.ucLebensErfahrungen1.Size = new System.Drawing.Size(538, 458);
+            this.ucLebensErfahrungen1.Size = new System.Drawing.Size(1328, 565);
             this.ucLebensErfahrungen1.TabIndex = 0;
             this.ucLebensErfahrungen1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
             // ultraTabPageControl14
             // 
             this.ultraTabPageControl14.Controls.Add(this.ucBiographie1);
-            this.ultraTabPageControl14.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl14.Location = new System.Drawing.Point(-13333, -12308);
+            this.ultraTabPageControl14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabPageControl14.Name = "ultraTabPageControl14";
-            this.ultraTabPageControl14.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl14.Size = new System.Drawing.Size(1328, 565);
             // 
             // ucBiographie1
             // 
             this.ucBiographie1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucBiographie1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucBiographie1.Location = new System.Drawing.Point(0, 0);
+            this.ucBiographie1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ucBiographie1.Name = "ucBiographie1";
-            this.ucBiographie1.Size = new System.Drawing.Size(538, 458);
+            this.ucBiographie1.Size = new System.Drawing.Size(1328, 565);
             this.ucBiographie1.TabIndex = 0;
             this.ucBiographie1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -393,11 +442,12 @@
             this.tabKrohwinkel.Controls.Add(this.ultraTabPageControl12);
             this.tabKrohwinkel.Controls.Add(this.ultraTabPageControl13);
             this.tabKrohwinkel.Controls.Add(this.ultraTabPageControl14);
-            this.tabKrohwinkel.Location = new System.Drawing.Point(6, 37);
+            this.tabKrohwinkel.Location = new System.Drawing.Point(8, 46);
+            this.tabKrohwinkel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabKrohwinkel.MaxVisibleTabRows = 1;
             this.tabKrohwinkel.Name = "tabKrohwinkel";
             this.tabKrohwinkel.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.tabKrohwinkel.Size = new System.Drawing.Size(1169, 462);
+            this.tabKrohwinkel.Size = new System.Drawing.Size(1559, 569);
             this.tabKrohwinkel.TabIndex = 105;
             this.tabKrohwinkel.TabLayoutStyle = Infragistics.Win.UltraWinTabs.TabLayoutStyle.SingleRowFixed;
             this.tabKrohwinkel.TabOrientation = Infragistics.Win.UltraWinTabs.TabOrientation.LeftTop;
@@ -474,22 +524,24 @@
             ultraTab14});
             this.tabKrohwinkel.TabSize = new System.Drawing.Size(25, 225);
             this.tabKrohwinkel.TextOrientation = Infragistics.Win.UltraWinTabs.TextOrientation.Horizontal;
-            this.tabKrohwinkel.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
+            this.tabKrohwinkel.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             // 
             // ultraTabSharedControlsPage2
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabSharedControlsPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(938, 458);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(1328, 565);
             // 
             // panelButtonUnten
             // 
             this.panelButtonUnten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panelButtonUnten.Controls.Add(this.btnUndo);
             this.panelButtonUnten.Controls.Add(this.btnSave);
-            this.panelButtonUnten.Location = new System.Drawing.Point(967, 501);
+            this.panelButtonUnten.Location = new System.Drawing.Point(1289, 617);
+            this.panelButtonUnten.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelButtonUnten.Name = "panelButtonUnten";
-            this.panelButtonUnten.Size = new System.Drawing.Size(207, 39);
+            this.panelButtonUnten.Size = new System.Drawing.Size(276, 48);
             this.panelButtonUnten.TabIndex = 122;
             // 
             // panelButtonOben
@@ -497,21 +549,24 @@
             this.panelButtonOben.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelButtonOben.Controls.Add(this.btnDelete);
             this.panelButtonOben.Controls.Add(this.btnNew);
-            this.panelButtonOben.Location = new System.Drawing.Point(1119, 2);
+            this.panelButtonOben.Location = new System.Drawing.Point(1492, 2);
+            this.panelButtonOben.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelButtonOben.Name = "panelButtonOben";
-            this.panelButtonOben.Size = new System.Drawing.Size(56, 31);
+            this.panelButtonOben.Size = new System.Drawing.Size(75, 38);
             this.panelButtonOben.TabIndex = 123;
             // 
             // ucAnamneseKrohwinkel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.panelButtonOben);
             this.Controls.Add(this.panelButtonUnten);
             this.Controls.Add(this.tabKrohwinkel);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "ucAnamneseKrohwinkel";
-            this.Size = new System.Drawing.Size(1180, 540);
+            this.Size = new System.Drawing.Size(1573, 665);
             this.Load += new System.EventHandler(this.ucAnamneseKrohwinkel2_Load);
             this.Controls.SetChildIndex(this.btnCopy, 0);
             this.Controls.SetChildIndex(this.baseButton1, 0);

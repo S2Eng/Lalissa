@@ -116,8 +116,9 @@
             // 
             // tabPagePersoenlicheDaten
             // 
+            this.tabPagePersoenlicheDaten.AutoScroll = true;
             this.tabPagePersoenlicheDaten.Controls.Add(this.grpRessource);
-            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
+            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
             this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(966, 592);
             // 
@@ -147,7 +148,7 @@
             this.grpRessource.Controls.Add(this.ultraLabel113);
             this.grpRessource.Location = new System.Drawing.Point(7, 6);
             this.grpRessource.Name = "grpRessource";
-            this.grpRessource.Size = new System.Drawing.Size(945, 381);
+            this.grpRessource.Size = new System.Drawing.Size(945, 530);
             this.grpRessource.TabIndex = 113;
             // 
             // baseLabel2
@@ -462,9 +463,10 @@
             // 
             // ultraTabPageControl2
             // 
+            this.ultraTabPageControl2.AutoScroll = true;
             this.ultraTabPageControl2.Controls.Add(this.grpPDX);
             this.ultraTabPageControl2.Controls.Add(this.lblVorname);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(966, 592);
             // 
@@ -478,7 +480,7 @@
             this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
             this.grpPDX.Location = new System.Drawing.Point(7, 6);
             this.grpPDX.Name = "grpPDX";
-            this.grpPDX.Size = new System.Drawing.Size(946, 389);
+            this.grpPDX.Size = new System.Drawing.Size(956, 583);
             this.grpPDX.TabIndex = 114;
             // 
             // ucAnamnesePDX1
@@ -486,11 +488,11 @@
             this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
+            this.ucAnamnesePDX1.Location = new System.Drawing.Point(1, 6);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
             this.ucAnamnesePDX1.ReadOnly = false;
-            this.ucAnamnesePDX1.Size = new System.Drawing.Size(1676, 648);
+            this.ucAnamnesePDX1.Size = new System.Drawing.Size(953, 577);
             this.ucAnamnesePDX1.TabIndex = 0;
             this.ucAnamnesePDX1.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -543,6 +545,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.tabLuft);
             this.Name = "ucLuft";
             this.Size = new System.Drawing.Size(970, 618);

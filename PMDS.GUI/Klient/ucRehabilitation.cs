@@ -11,6 +11,7 @@ using PMDS.Global;
 using PMDS.BusinessLogic;
 using PMDS.Klient;
 using PMDS.GUI.Klient;
+using System.Threading.Tasks;
 
 namespace PMDS.GUI
 {
@@ -73,11 +74,12 @@ namespace PMDS.GUI
                 SetReadOnly();
             }
         }
-        public void setControlsAktivDisable(bool bOn)
+        public async Task<bool> setControlsAktivDisable(bool bOn)
         {
             PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn);
             panelButtons1.Visible = !bOn;
             panelButtons2.Visible = !bOn;
+            return true;
         }
         //
         //lädt die Daten aus einem Businessobject und aktualisiert die GUI.

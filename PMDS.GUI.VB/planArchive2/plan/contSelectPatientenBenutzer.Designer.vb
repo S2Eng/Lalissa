@@ -82,16 +82,16 @@ Partial Class contSelectPatientenBenutzer
         '
         Me.cboBerufsgruppen.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend
         Me.cboBerufsgruppen.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains
-        Me.cboBerufsgruppen.Location = New System.Drawing.Point(591, 5)
+        Me.cboBerufsgruppen.Location = New System.Drawing.Point(629, 5)
         Me.cboBerufsgruppen.Name = "cboBerufsgruppen"
-        Me.cboBerufsgruppen.Size = New System.Drawing.Size(216, 21)
+        Me.cboBerufsgruppen.Size = New System.Drawing.Size(216, 24)
         Me.cboBerufsgruppen.TabIndex = 0
         '
         'lblBerufsgruppen
         '
-        Me.lblBerufsgruppen.Location = New System.Drawing.Point(511, 8)
+        Me.lblBerufsgruppen.Location = New System.Drawing.Point(437, 8)
         Me.lblBerufsgruppen.Name = "lblBerufsgruppen"
-        Me.lblBerufsgruppen.Size = New System.Drawing.Size(81, 15)
+        Me.lblBerufsgruppen.Size = New System.Drawing.Size(179, 20)
         Me.lblBerufsgruppen.TabIndex = 1
         Me.lblBerufsgruppen.Text = "Berufsgruppen"
         '
@@ -102,14 +102,13 @@ Partial Class contSelectPatientenBenutzer
         Appearance1.FontData.SizeInPoints = 8.0!
         Appearance1.ForeColor = System.Drawing.Color.RoyalBlue
         Me.lblSelectNone.Appearance = Appearance1
-        Me.lblSelectNone.AutoSize = True
         Appearance2.FontData.UnderlineAsString = "True"
         Me.lblSelectNone.HotTrackAppearance = Appearance2
         Me.lblSelectNone.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblSelectNone.Location = New System.Drawing.Point(1087, 8)
+        Me.lblSelectNone.Location = New System.Drawing.Point(1071, 8)
         Me.lblSelectNone.Margin = New System.Windows.Forms.Padding(4)
         Me.lblSelectNone.Name = "lblSelectNone"
-        Me.lblSelectNone.Size = New System.Drawing.Size(32, 14)
+        Me.lblSelectNone.Size = New System.Drawing.Size(52, 15)
         Me.lblSelectNone.TabIndex = 17
         Me.lblSelectNone.Tag = "Res.ID.SelectNone"
         Me.lblSelectNone.Text = "Keine"
@@ -123,14 +122,13 @@ Partial Class contSelectPatientenBenutzer
         Appearance3.FontData.SizeInPoints = 8.0!
         Appearance3.ForeColor = System.Drawing.Color.RoyalBlue
         Me.lblSelectAll.Appearance = Appearance3
-        Me.lblSelectAll.AutoSize = True
         Appearance4.FontData.UnderlineAsString = "True"
         Me.lblSelectAll.HotTrackAppearance = Appearance4
         Me.lblSelectAll.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblSelectAll.Location = New System.Drawing.Point(1062, 8)
+        Me.lblSelectAll.Location = New System.Drawing.Point(1032, 8)
         Me.lblSelectAll.Margin = New System.Windows.Forms.Padding(4)
         Me.lblSelectAll.Name = "lblSelectAll"
-        Me.lblSelectAll.Size = New System.Drawing.Size(23, 14)
+        Me.lblSelectAll.Size = New System.Drawing.Size(33, 18)
         Me.lblSelectAll.TabIndex = 16
         Me.lblSelectAll.Tag = "Res.ID.SelectAll"
         Me.lblSelectAll.Text = "Alle"
@@ -141,9 +139,9 @@ Partial Class contSelectPatientenBenutzer
         '
         Me.PanelBottom.Controls.Add(Me.btnSelectSave)
         Me.PanelBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelBottom.Location = New System.Drawing.Point(0, 691)
+        Me.PanelBottom.Location = New System.Drawing.Point(0, 682)
         Me.PanelBottom.Name = "PanelBottom"
-        Me.PanelBottom.Size = New System.Drawing.Size(1129, 33)
+        Me.PanelBottom.Size = New System.Drawing.Size(1129, 42)
         Me.PanelBottom.TabIndex = 3
         '
         'btnSelectSave
@@ -154,9 +152,9 @@ Partial Class contSelectPatientenBenutzer
         Me.btnSelectSave.Appearance = Appearance5
         Me.btnSelectSave.AutoWorkLayout = False
         Me.btnSelectSave.IsStandardControl = False
-        Me.btnSelectSave.Location = New System.Drawing.Point(1046, 2)
+        Me.btnSelectSave.Location = New System.Drawing.Point(1022, 3)
         Me.btnSelectSave.Name = "btnSelectSave"
-        Me.btnSelectSave.Size = New System.Drawing.Size(74, 27)
+        Me.btnSelectSave.Size = New System.Drawing.Size(99, 32)
         Me.btnSelectSave.TabIndex = 10
         Me.btnSelectSave.Tag = "ResID.OK"
         Me.btnSelectSave.Text = "OK"
@@ -176,14 +174,15 @@ Partial Class contSelectPatientenBenutzer
         Me.PanelCenter.Controls.Add(Me.lblBerufsgruppen)
         Me.PanelCenter.Controls.Add(Me.chkShowOnlyAnwesendePatienten)
         Me.PanelCenter.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelCenter.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PanelCenter.Location = New System.Drawing.Point(0, 0)
         Me.PanelCenter.Name = "PanelCenter"
-        Me.PanelCenter.Size = New System.Drawing.Size(1129, 691)
+        Me.PanelCenter.Size = New System.Drawing.Size(1129, 682)
         Me.PanelCenter.TabIndex = 1
         '
         'chkShowNotActiveUsers
         '
-        Me.chkShowNotActiveUsers.Location = New System.Drawing.Point(592, 28)
+        Me.chkShowNotActiveUsers.Location = New System.Drawing.Point(437, 40)
         Me.chkShowNotActiveUsers.Name = "chkShowNotActiveUsers"
         Me.chkShowNotActiveUsers.Size = New System.Drawing.Size(215, 17)
         Me.chkShowNotActiveUsers.TabIndex = 429
@@ -197,7 +196,7 @@ Partial Class contSelectPatientenBenutzer
         Appearance6.ForeColorDisabled = System.Drawing.Color.Black
         Appearance6.TextVAlignAsString = "Middle"
         Me.lblSelected.Appearance = Appearance6
-        Me.lblSelected.Location = New System.Drawing.Point(815, 7)
+        Me.lblSelected.Location = New System.Drawing.Point(851, 9)
         Me.lblSelected.Name = "lblSelected"
         Me.lblSelected.Size = New System.Drawing.Size(111, 17)
         Me.lblSelected.TabIndex = 427
@@ -221,10 +220,10 @@ Partial Class contSelectPatientenBenutzer
         Me.txtSearch.Appearance = Appearance7
         Me.txtSearch.AutoSize = False
         Me.txtSearch.BackColor = System.Drawing.Color.White
-        Me.txtSearch.Location = New System.Drawing.Point(292, 5)
+        Me.txtSearch.Location = New System.Drawing.Point(214, 7)
         Me.txtSearch.MaxLength = 0
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(209, 21)
+        Me.txtSearch.Size = New System.Drawing.Size(209, 22)
         Me.txtSearch.TabIndex = 424
         Me.txtSearch.Tag = "Vorname"
         '
@@ -245,11 +244,11 @@ Partial Class contSelectPatientenBenutzer
         Appearance10.BackColor = System.Drawing.SystemColors.Highlight
         Me.treeBenutzerPatientsSelected.ItemSettings.SelectedAppearance = Appearance10
         Me.treeBenutzerPatientsSelected.ItemSettings.SelectionType = Infragistics.Win.UltraWinListView.SelectionType.[Single]
-        Me.treeBenutzerPatientsSelected.Location = New System.Drawing.Point(815, 48)
+        Me.treeBenutzerPatientsSelected.Location = New System.Drawing.Point(815, 67)
         Me.treeBenutzerPatientsSelected.MainColumn.AllowSorting = Infragistics.Win.DefaultableBoolean.[True]
         Me.treeBenutzerPatientsSelected.MainColumn.Sorting = Infragistics.Win.UltraWinListView.Sorting.Ascending
         Me.treeBenutzerPatientsSelected.Name = "treeBenutzerPatientsSelected"
-        Me.treeBenutzerPatientsSelected.Size = New System.Drawing.Size(310, 642)
+        Me.treeBenutzerPatientsSelected.Size = New System.Drawing.Size(310, 614)
         Me.treeBenutzerPatientsSelected.TabIndex = 426
         Me.treeBenutzerPatientsSelected.View = Infragistics.Win.UltraWinListView.UltraListViewStyle.List
         Me.treeBenutzerPatientsSelected.ViewSettingsList.ImageSize = New System.Drawing.Size(0, 0)
@@ -270,9 +269,9 @@ Partial Class contSelectPatientenBenutzer
         '
         Me.utreeAbtBereiche.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.utreeAbtBereiche.Location = New System.Drawing.Point(3, 48)
+        Me.utreeAbtBereiche.Location = New System.Drawing.Point(3, 67)
         Me.utreeAbtBereiche.Name = "utreeAbtBereiche"
-        Me.utreeAbtBereiche.Size = New System.Drawing.Size(245, 642)
+        Me.utreeAbtBereiche.Size = New System.Drawing.Size(245, 614)
         Me.utreeAbtBereiche.TabIndex = 18
         '
         'treeBenutzerPatients
@@ -288,9 +287,9 @@ Partial Class contSelectPatientenBenutzer
         Appearance13.BackColor = System.Drawing.SystemColors.Highlight
         Me.treeBenutzerPatients.ItemSettings.SelectedAppearance = Appearance13
         Me.treeBenutzerPatients.ItemSettings.SelectionType = Infragistics.Win.UltraWinListView.SelectionType.[Single]
-        Me.treeBenutzerPatients.Location = New System.Drawing.Point(251, 48)
+        Me.treeBenutzerPatients.Location = New System.Drawing.Point(251, 67)
         Me.treeBenutzerPatients.Name = "treeBenutzerPatients"
-        Me.treeBenutzerPatients.Size = New System.Drawing.Size(561, 642)
+        Me.treeBenutzerPatients.Size = New System.Drawing.Size(561, 614)
         Me.treeBenutzerPatients.TabIndex = 1
         Me.treeBenutzerPatients.View = Infragistics.Win.UltraWinListView.UltraListViewStyle.List
         Me.treeBenutzerPatients.ViewSettingsList.CheckBoxStyle = Infragistics.Win.UltraWinListView.CheckBoxStyle.CheckBox
@@ -303,9 +302,9 @@ Partial Class contSelectPatientenBenutzer
         Appearance14.ForeColorDisabled = System.Drawing.Color.Black
         Appearance14.TextVAlignAsString = "Middle"
         Me.lblSearch.Appearance = Appearance14
-        Me.lblSearch.Location = New System.Drawing.Point(251, 7)
+        Me.lblSearch.Location = New System.Drawing.Point(142, 10)
         Me.lblSearch.Name = "lblSearch"
-        Me.lblSearch.Size = New System.Drawing.Size(49, 17)
+        Me.lblSearch.Size = New System.Drawing.Size(58, 17)
         Me.lblSearch.TabIndex = 425
         Me.lblSearch.Tag = "ResID.Search"
         Me.lblSearch.Text = "Suche"
@@ -315,9 +314,9 @@ Partial Class contSelectPatientenBenutzer
         '
         Me.chkShowOnlyAnwesendePatienten.Checked = True
         Me.chkShowOnlyAnwesendePatienten.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkShowOnlyAnwesendePatienten.Location = New System.Drawing.Point(508, 5)
+        Me.chkShowOnlyAnwesendePatienten.Location = New System.Drawing.Point(437, 7)
         Me.chkShowOnlyAnwesendePatienten.Name = "chkShowOnlyAnwesendePatienten"
-        Me.chkShowOnlyAnwesendePatienten.Size = New System.Drawing.Size(145, 20)
+        Me.chkShowOnlyAnwesendePatienten.Size = New System.Drawing.Size(184, 20)
         Me.chkShowOnlyAnwesendePatienten.TabIndex = 428
         Me.chkShowOnlyAnwesendePatienten.Text = "Nur anwesende Klienten"
         '

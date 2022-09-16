@@ -160,16 +160,14 @@ namespace PMDS.GUI
         {
             if (_datenErhebung == null)
             {
-
-                System.Windows.Forms.Cursor .Current  = System.Windows.Forms.Cursors.WaitCursor;
                 _datenErhebung = new ucDatenErhebungMain();
-                System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 GuiWorkflow.mainWindow.AddObject(_datenErhebung);
                 _datenErhebung.AttachFramework();
                 _datenErhebung.ucDatenErhebung1.AttachFramework();
                 _datenErhebung.ENV_ENVPatientIDChanged(ENV.CurrentIDPatient, eCurrentPatientChange.keiner , true, false);   
             }
         }
+
         public void initMedikamentierungsbereich()
         {
             if (_SitemapMedikamenteStammdaten == null)
@@ -232,11 +230,11 @@ namespace PMDS.GUI
             {
                 System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 _SitemapKlientenDetails = new ucSiteMapKlientenDetails();
-                _SitemapKlientenDetails.initControl();
+                _SitemapKlientenDetails.initControl();          //os-Performance (2.7)
                 System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 GuiWorkflow.mainWindow.AddObject(_SitemapKlientenDetails);
                 _SitemapKlientenDetails.AttachFramework();
-                _SitemapKlientenDetails.ENV_ENVPatientIDChanged(ENV.CurrentIDPatient, eCurrentPatientChange.keiner, true, false);       //os-Performance
+                _SitemapKlientenDetails.ENV_ENVPatientIDChanged(ENV.CurrentIDPatient, eCurrentPatientChange.keiner, true, false);       //os-Performance (1.3)
                 initdone = true;
             }
 
@@ -583,7 +581,7 @@ namespace PMDS.GUI
                 GuiWorkflow.HeaderMain.contPatientUserPicker1.initControl(PatientUserPicker.contPatientUserPicker.eTypeUIPicker.PatientSingle, true, eTypePatientenUserPickerChanged.MainPickerLeftTop);
                 GuiWorkflow.HeaderMain.contPatientUserPicker1.resetPicker(false, true);
                 GuiWorkflow.HeaderMain.clearPatientInfo();
-                //GuiWorkflow.HeaderMain.RefreshPatientInfo(true, true);
+                GuiWorkflow.HeaderMain.RefreshPatientInfo(true, true, false);
 
                 GuiWorkflow._guiworkflow.initInterventionenBereich(eUITypeTermine.Interventionen, TerminlisteAnsichtsmodi.Bereichsansicht);
                 GuiWorkflow._guiworkflow._SitemapTermineInterventionenBereich.RefreshTermin(false);

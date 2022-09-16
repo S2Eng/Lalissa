@@ -46,8 +46,8 @@ namespace PMDS.Calc.UI.Admin
             appearance2.ForeColor = System.Drawing.Color.Black;
             _override1.SelectedNodeAppearance = appearance2;
             this.tvMain.Override = _override1;
-            this.tvMain.UseAppStyling = false;
             this.tvMain.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.tvMain.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             // 
             // btnPush
             // 
@@ -66,8 +66,12 @@ namespace PMDS.Calc.UI.Admin
             // 
             // ucLeistungskatalogAuswahl
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.BackColor = System.Drawing.Color.Transparent;
             this.Name = "ucLeistungskatalogAuswahl";
+            this.Controls.SetChildIndex(this.tvMain, 0);
+            this.Controls.SetChildIndex(this.btnPush, 0);
+            this.Controls.SetChildIndex(this.btnPull, 0);
             ((System.ComponentModel.ISupportInitialize)(this.tvMain)).EndInit();
             this.ResumeLayout(false);
 

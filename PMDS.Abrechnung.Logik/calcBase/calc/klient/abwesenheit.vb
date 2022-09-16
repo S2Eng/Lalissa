@@ -141,7 +141,9 @@ Public Class abwesenheit
                     rtag.KürzungJN = True
                 End If
 
-                If rtag.Anwesenheitsstatus = 3 And (Me.rowKlient(Calc.dbCalc).KürzungLetzterTagAnwesenheit Or rtag.Abwesenheitsstatus = 2) Then
+                'If rtag.Anwesenheitsstatus = 3 And (Me.rowKlient(Calc.dbCalc).KürzungLetzterTagAnwesenheit Or rtag.Abwesenheitsstatus = 2) Then  'Falsch: hier wird bei Abwesenheit am letzten Tag jedenfalls gekürzt!
+                '
+                If rtag.Anwesenheitsstatus = 3 And Me.rowKlient(Calc.dbCalc).KürzungLetzterTagAnwesenheit And (rtag.Abwesenheitsstatus = 2 Or rtag.Abwesenheitsstatus = 3) Then
                     rtag.KürzungJN = True
                     'rtag.Anwesenheitsstatus = 0            //os: Kürzung muss hier her, nicht Anwesenheitsstatus = 0
                 End If

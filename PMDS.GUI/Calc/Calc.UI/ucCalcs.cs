@@ -9,6 +9,8 @@ using Infragistics.Win.UltraWinGrid;
 using PMDS.UI.Sitemap;
 using PMDS.GUI.Calc.Calc.UI;
 using System.Linq;
+using PMDS.Global;
+using Infragistics.Win;
 //using System.Windows.Input;
 
 namespace PMDS.Calc.UI
@@ -18,12 +20,11 @@ namespace PMDS.Calc.UI
         public PMDS.Calc.UI.ucCalcsSitemap uiSiteMapForm;
         public PMDS.Calc.UI.ucSR ucSR;
         private bool editorVis = false;
+        private PMDS.Calc.Logic.CalcUIMode ActUIMode = Logic.CalcUIMode.Undefiniert;
 
         public bool freigegebenOn = false;
         public PMDS.GUI.VB.gridExport export = new PMDS.GUI.VB.gridExport();
         //public QS2.Ressources.Handle.doRessources doRessources = new QS2.Ressources.Handle.doRessources();
-
-
 
 
         public ucCalcs()
@@ -66,8 +67,10 @@ namespace PMDS.Calc.UI
             this.dtAbrechMonat.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             this.dtRechDatum.DateTime = DateTime.Now;
 
-            this.uOptSetAbrechTyp.Items.Add((int)PMDS.Calc.Logic.eCalcRun.month, QS2.Desktop.ControlManagment.ControlManagment.getRes("Monatsabrechnung"));
-            this.uOptSetAbrechTyp.Items.Add((int)PMDS.Calc.Logic.eCalcRun.freeBill, QS2.Desktop.ControlManagment.ControlManagment.getRes("Freie Rechnung"));
+            this.uOptSetAbrechTyp.Items.Add((int)PMDS.Calc.Logic.eCalcRun.month, QS2.Desktop.ControlManagment.ControlManagment.getRes("Monat"));
+            this.uOptSetAbrechTyp.Items.Add((int)PMDS.Calc.Logic.eCalcRun.freeBill, QS2.Desktop.ControlManagment.ControlManagment.getRes("Frei erstellte"));
+            this.uOptSetAbrechTyp.ItemSpacingVertical = 3;
+            this.uOptSetAbrechTyp.ItemSpacingHorizontal = 3;
             this.uOptSetAbrechTyp.Value = (int)PMDS.Calc.Logic.eCalcRun.month;
 
             this.cboBillStatus.Value = "a";
@@ -109,7 +112,8 @@ namespace PMDS.Calc.UI
             if (this.uiSiteMapForm.typ == ucCalcsSitemap.eTyp.buchhaltung || this.uiSiteMapForm.typ == ucCalcsSitemap.eTyp.depotgeld ||
                        this.uiSiteMapForm.typ == ucCalcsSitemap.eTyp.sr)
             {
-                this.panelTopSr.Height = 75;
+                this.panelTopSr.Height = this.grpSuche.Top * 2 + this.grpSuche.Height + panelHistorie2.Height;
+                Application.DoEvents();
             }
             this.setColBack(false);
         }
@@ -213,16 +217,9 @@ namespace PMDS.Calc.UI
 
                 this.uiSiteMapForm.loadCalcs(ref this.dbPMDS1, dFrom, dTo, vonRechDatum, bisRechDatum,
                                             (UltraGrid)this.uGridAbrech2, (Infragistics.Win.Misc.UltraButton)this.butAlleKeine, ref this.lblCount,
-                                            billTyp, BillStatus, showFreigegebenAndStorniert, true, BillStatusFreigegeben, this.txtReNr.Text);
+                                            billTyp, BillStatus, showFreigegebenAndStorniert, true, BillStatusFreigegeben, this.txtReNr.Text, this.ActUIMode);
 
                 this.doSum();
-
-                //this.doRessources.run(this, this.components, null,
-                //          QS2.Ressources.Handle.doRessources.eTypeRessourcesRun.RessourcenManagement,
-                //          QS2.Ressources.Handle.doRessources.eSystemGroup.Booking,
-                //          QS2.Ressources.Handle.doRessources.eControlGroup.Booking,
-                //          QS2.Ressources.Handle.doRessources.eResType.Img, RBU.DataBase.CONNECTION);
-
             }
             catch (Exception ex)
             {
@@ -308,28 +305,33 @@ namespace PMDS.Calc.UI
         }
 
         public void setUI(string aktivButton)
-        {
+        {            
             using (Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfoF = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Info, "Hinweis", Infragistics.Win.DefaultableBoolean.True))
             {
                 switch (aktivButton)
                 {
                     case "F":
+                        ActUIMode = PMDS.Calc.Logic.CalcUIMode.Freigegeben;
                         this.btnPrint.Text = "Rechnung(en) öffnen";
-                        PMDS.Global.UIGlobal.setAktiv(this.btnFreigeben, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.White);
+                        PMDS.Global.UIGlobal.setUIButton(this.btnVorschau, false);
+                        PMDS.Global.UIGlobal.setUIButton(this.btnFreigeben, true);
                         ultraToolTipInfoF.ToolTipText = "\nFür Rechnungsversand = Umschalt-Taste\nFür Rechnungskopie = Strg-Taste";
                         this.btnRollung.Visible = false;
                         break;
 
                     case "O":
+                        ActUIMode = PMDS.Calc.Logic.CalcUIMode.Vorschau;
                         this.btnPrint.Text = "Vorschau(en) öffnen";
-                        PMDS.Global.UIGlobal.setAktiv(this.btnVorschau, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.White);
+                        PMDS.Global.UIGlobal.setUIButton(this.btnFreigeben, false);
+                        PMDS.Global.UIGlobal.setUIButton(this.btnVorschau, true);
                         ultraToolTipInfoF.ToolTipText += "\nFür FSW-XLSX-Vorschau = Strg-Taste";
                         this.btnRollung.Visible = true;
                         break;
 
                     default:
+                        ActUIMode = PMDS.Calc.Logic.CalcUIMode.Belege;
                         this.btnPrint.Text = "Beleg(e) öffnen";
-                        PMDS.Global.UIGlobal.setAktivDisable(this.btnVorschau, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                        PMDS.Global.UIGlobal.setUIButton(this.btnVorschau, false);
                         ultraToolTipInfoF.ToolTipText += "";
                         this.btnRollung.Visible = false;
                         break;
@@ -494,14 +496,31 @@ namespace PMDS.Calc.UI
             if (this.btnRechEinAus.Tag.ToString() == "1")
                 this.setUICalc(this.editorVis);
 
+            //Panels werden nach dem Wiederherstellen nicht korrekt gezeichnet -> neuzeichnen forcieren
+            panelPrint.Height -= 1;
+            panelDelete.Height -= 1;
+            paneStorno.Height -= 1;
+            panelFSW.Height -= 1;
+            panelAuswahlRechTyp.Height -= 1;
+            panelAuswahlFreigStornoAll.Height -= 1;
+            panelHistorie2.Height -= 1;
+            panelBottom.Height -= 1;
+
+            panelPrint.Height += 1;
+            panelDelete.Height += 1;
+            paneStorno.Height += 1;
+            panelFSW.Height += 1;
+            panelAuswahlRechTyp.Height += 1;
+            panelAuswahlFreigStornoAll.Height += 1;
+            panelHistorie2.Height += 1;
+            panelBottom.Height += 1;
+
             Application.DoEvents();
-            //this.ucProtokoll1.setWithHeight(this.Width, this.Height);
-            //this.grpAbrechnen.Left =  this.grpAbrechnen.Width 
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            this.doAction(eAction.delete, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die markeirten Zeilen wirklich löschen?"), "", PMDS.Calc.Logic.eModify.nichts, true, null, null, false);
+            this.doAction(eAction.delete, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die markierten Zeilen wirklich löschen?"), "", PMDS.Calc.Logic.eModify.nichts, true, null, null, false);
         }
 
         private void uOptSetAbrechTyp_ValueChanged(object sender, EventArgs e)
@@ -988,21 +1007,21 @@ namespace PMDS.Calc.UI
             try
             {
                 eAction action = eAction.fswNoUpload;
-                string MsgBoxTite = "Wollen Sie für die selektierten Zeilen eine FSW-Zahlungsaufforderung erstellen, aber nicht senden?\n\nZum Senden halten Sie die Umschalttaste gedrückt, wenn Sie auf den Knopf klicken.";
-                string ReturnText = "Zahlungsaufforderung wirde im XML-Format gepeichert, aber nicht gesendet.";
+                string MsgBoxTite = "Wollen eine FSW-Zahlungsaufforderung erstellen und speichern, aber NICHT senden?";
+                string ReturnText = "Zahlungsaufforderung wurde im XML-Format gepeichert, aber nicht gesendet.";
                 
                 if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightShift))
                 {
                     action = eAction.fsw;
-                    MsgBoxTite = "Wollen Sie für die selektierten Zeilen eine FSW-Zahlungsaufforderung erstellen und senden?";
-                    ReturnText = "Zahllungsaufforderung wurde erstllt und an den FSW gesendet.";
+                    MsgBoxTite = "Wollen Sie eine FSW-Zahlungsaufforderung erstellen, speichern und senden?";
+                    ReturnText = "Zielumgebung = " + ENV.FSW_FTPMode + "\nZahlungsaufforderung wurde erstellt und an den FSW gesendet.";
                 }
 
                 if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftAlt) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightAlt))
                 {
-                    action = eAction.fswreset;
-                    MsgBoxTite = "Wollen Sie den Status der Zahlungsaufforderung für den FSW zurücksetzen?";
-                    ReturnText = "Status für FSW-Zahlungsaufforderung wurde zurückgesetzt.";
+                    action = eAction.fswsFTPOnly;
+                    MsgBoxTite = "Wollen Sie eine eZAUFF per sFTP an den FSW senden?";
+                    ReturnText = "Zielumgebung = " + ENV.FSW_FTPMode + "\nFSW-Zahlungsaufforderung wurde per sFTP an den FSW gesendet.";
                 }
 
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;

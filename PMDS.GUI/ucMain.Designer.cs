@@ -505,13 +505,12 @@ namespace PMDS.GUI
             this.btnBezugspersonen.AutoWorkLayout = false;
             this.btnBezugspersonen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Button;
             this.btnBezugspersonen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBezugspersonen.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnBezugspersonen.IsStandardControl = false;
-            this.btnBezugspersonen.Location = new System.Drawing.Point(292, 0);
+            this.btnBezugspersonen.Location = new System.Drawing.Point(323, 0);
             this.btnBezugspersonen.Name = "btnBezugspersonen";
             this.btnBezugspersonen.ShowFocusRect = false;
             this.btnBezugspersonen.ShowOutline = false;
-            this.btnBezugspersonen.Size = new System.Drawing.Size(120, 27);
+            this.btnBezugspersonen.Size = new System.Drawing.Size(118, 27);
             this.btnBezugspersonen.TabIndex = 33;
             this.btnBezugspersonen.Tag = "6";
             this.btnBezugspersonen.Text = "Bezugsperson";
@@ -537,10 +536,9 @@ namespace PMDS.GUI
             this.btnAbwesenheiten.AutoWorkLayout = false;
             this.btnAbwesenheiten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Button;
             this.btnAbwesenheiten.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbwesenheiten.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnAbwesenheiten.ImageSize = new System.Drawing.Size(28, 28);
             this.btnAbwesenheiten.IsStandardControl = false;
-            this.btnAbwesenheiten.Location = new System.Drawing.Point(165, 0);
+            this.btnAbwesenheiten.Location = new System.Drawing.Point(186, 0);
             this.btnAbwesenheiten.Name = "btnAbwesenheiten";
             this.btnAbwesenheiten.ShowFocusRect = false;
             this.btnAbwesenheiten.ShowOutline = false;
@@ -570,10 +568,9 @@ namespace PMDS.GUI
             this.btnVersetzen.AutoWorkLayout = false;
             this.btnVersetzen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Button;
             this.btnVersetzen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVersetzen.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnVersetzen.ImageSize = new System.Drawing.Size(28, 28);
             this.btnVersetzen.IsStandardControl = false;
-            this.btnVersetzen.Location = new System.Drawing.Point(84, 0);
+            this.btnVersetzen.Location = new System.Drawing.Point(95, 0);
             this.btnVersetzen.Name = "btnVersetzen";
             this.btnVersetzen.ShowFocusRect = false;
             this.btnVersetzen.ShowOutline = false;
@@ -1281,6 +1278,7 @@ namespace PMDS.GUI
             this.Size = new System.Drawing.Size(1131, 619);
             this.Load += new System.EventHandler(this.ucSiteMapStart_Load);
             this.VisibleChanged += new System.EventHandler(this.ucSiteMapStart_VisibleChanged);
+            this.MouseHover += new System.EventHandler(this.ucMain_MouseHover);
             this.Resize += new System.EventHandler(this.ucSiteMapStart_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanelMitte)).EndInit();

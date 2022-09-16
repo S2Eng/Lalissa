@@ -223,7 +223,7 @@ Public Class doSr
                         If rRech.Typ <> CInt(eBillTyp.KeineRechnung) Then
                             Dim rHeader As dbPMDS.billHeaderRow = Me.getHeader(rRech.IDAbrechnung, IDKlinik)
                             Dim dbCalcRech As dbCalc = Me.getDBCalc(rHeader.dbCalc)
-                            Dim rOffLeist As dbPMDS.OffeneLeistungenRow = doBill1.doBillPrepare(dbCalcRech, listAbwSimple, listAbwExtended, editor, True)
+                            Dim rOffLeist As dbPMDS.OffeneLeistungenRow = doBill1.doBillPrepare(dbCalcRech, listAbwSimple, listAbwExtended, editor, 1)
                         End If
                     Next
                     ' Erw. Liste Abwesenheiten drucken

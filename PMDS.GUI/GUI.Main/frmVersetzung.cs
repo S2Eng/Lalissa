@@ -106,7 +106,7 @@ namespace PMDS.GUI
             this.labInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labInfo.Location = new System.Drawing.Point(0, 0);
             this.labInfo.Name = "labInfo";
-            this.labInfo.Size = new System.Drawing.Size(586, 48);
+            this.labInfo.Size = new System.Drawing.Size(653, 48);
             this.labInfo.TabIndex = 0;
             this.labInfo.Text = "Verlegung von {0}";
             // 
@@ -123,7 +123,7 @@ namespace PMDS.GUI
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(436, 314);
+            this.btnCancel.Location = new System.Drawing.Point(503, 314);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
             this.btnCancel.TabIndex = 2;
@@ -146,7 +146,7 @@ namespace PMDS.GUI
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(532, 314);
+            this.btnOK.Location = new System.Drawing.Point(599, 314);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(48, 32);
             this.btnOK.TabIndex = 3;
@@ -162,7 +162,7 @@ namespace PMDS.GUI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucVersetzung1.Location = new System.Drawing.Point(0, 48);
             this.ucVersetzung1.Name = "ucVersetzung1";
-            this.ucVersetzung1.Size = new System.Drawing.Size(588, 258);
+            this.ucVersetzung1.Size = new System.Drawing.Size(655, 258);
             this.ucVersetzung1.TabIndex = 4;
             // 
             // frmVersetzung
@@ -170,7 +170,7 @@ namespace PMDS.GUI
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(586, 350);
+            this.ClientSize = new System.Drawing.Size(653, 350);
             this.ControlBox = false;
             this.Controls.Add(this.ucVersetzung1);
             this.Controls.Add(this.btnCancel);

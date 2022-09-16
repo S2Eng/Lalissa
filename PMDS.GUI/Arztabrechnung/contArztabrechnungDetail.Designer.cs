@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
@@ -39,7 +39,7 @@
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             this.panelBottom = new System.Windows.Forms.Panel();
             this.btnAbort = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnSave = new QS2.Desktop.ControlManagment.BaseButton();
@@ -85,9 +85,9 @@
             // 
             // btnAbort
             // 
-            appearance8.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance8.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAbort.Appearance = appearance8;
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAbort.Appearance = appearance1;
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
             this.btnAbort.Location = new System.Drawing.Point(422, 7);
@@ -148,13 +148,13 @@
             // 
             // dteDatum
             // 
-            appearance1.BackColor = System.Drawing.Color.White;
-            appearance1.BackColor2 = System.Drawing.Color.White;
-            appearance1.BackColorDisabled = System.Drawing.Color.White;
-            appearance1.BackColorDisabled2 = System.Drawing.Color.White;
-            appearance1.ForeColor = System.Drawing.Color.Black;
-            appearance1.ForeColorDisabled = System.Drawing.Color.Black;
-            this.dteDatum.Appearance = appearance1;
+            appearance2.BackColor = System.Drawing.Color.White;
+            appearance2.BackColor2 = System.Drawing.Color.White;
+            appearance2.BackColorDisabled = System.Drawing.Color.White;
+            appearance2.BackColorDisabled2 = System.Drawing.Color.White;
+            appearance2.ForeColor = System.Drawing.Color.Black;
+            appearance2.ForeColorDisabled = System.Drawing.Color.Black;
+            this.dteDatum.Appearance = appearance2;
             this.dteDatum.BackColor = System.Drawing.Color.White;
             this.dteDatum.FormatString = "";
             this.dteDatum.Location = new System.Drawing.Point(489, 39);
@@ -283,24 +283,24 @@
             // 
             // lblFoundLeistungen
             // 
-            appearance9.BackColor = System.Drawing.Color.Transparent;
-            appearance9.FontData.SizeInPoints = 7.5F;
-            this.lblFoundLeistungen.Appearance = appearance9;
+            appearance7.BackColor = System.Drawing.Color.Transparent;
+            appearance7.FontData.SizeInPoints = 7.5F;
+            this.lblFoundLeistungen.Appearance = appearance7;
             this.lblFoundLeistungen.AutoSize = true;
             this.lblFoundLeistungen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.lblFoundLeistungen.Location = new System.Drawing.Point(8, 421);
             this.lblFoundLeistungen.Margin = new System.Windows.Forms.Padding(4);
             this.lblFoundLeistungen.Name = "lblFoundLeistungen";
-            this.lblFoundLeistungen.Size = new System.Drawing.Size(66, 13);
+            this.lblFoundLeistungen.Size = new System.Drawing.Size(194, 13);
             this.lblFoundLeistungen.TabIndex = 132;
-            this.lblFoundLeistungen.Text = "Gefunden: 10";
+            this.lblFoundLeistungen.Text = "Es wurde noch keine Suche durchgeführt.";
             // 
             // contPatientUserPicker1
             // 
             this.contPatientUserPicker1.BackColor = System.Drawing.Color.White;
             this.contPatientUserPicker1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.contPatientUserPicker1.Location = new System.Drawing.Point(489, 6);
-            this.contPatientUserPicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.contPatientUserPicker1.Margin = new System.Windows.Forms.Padding(4);
             this.contPatientUserPicker1.Name = "contPatientUserPicker1";
             this.contPatientUserPicker1.Size = new System.Drawing.Size(461, 30);
             this.contPatientUserPicker1.TabIndex = 214;

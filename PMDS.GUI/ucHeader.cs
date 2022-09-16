@@ -48,19 +48,6 @@ namespace PMDS.GUI
 
         public bool _action = false;
 
-
-        private System.Drawing.Color activeBackCol = System.Drawing.Color.SkyBlue;
-        private System.Drawing.Color activeForeCol = System.Drawing.Color.Black;
-        private System.Drawing.Color activeFrameCol = System.Drawing.Color.Transparent;
-
-        private System.Drawing.Color inactiveBackCol = System.Drawing.Color.Transparent;
-        private System.Drawing.Color inactiveForeCol = System.Drawing.Color.Black;
-        private System.Drawing.Color inactiveFrameCol = System.Drawing.Color.Transparent;
-
-        private System.Drawing.Color hoverBackCol = System.Drawing.Color.Gainsboro;
-        private System.Drawing.Color hoverForeCol = System.Drawing.Color.Black;
-        private System.Drawing.Color hoverFrameCol = System.Drawing.Color.Transparent;
-
         private Guid _IDPatient;
         private TerminlisteAnsichtsmodi _LastTerminlisteAnsichtsmodi = TerminlisteAnsichtsmodi.Klientanansicht;
 
@@ -159,7 +146,7 @@ namespace PMDS.GUI
                 _buttons[i].Tag = i;
             }
             this.btnRefresh.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-            PMDS.Global.UIGlobal.setAktivDisable(this.btnRefresh, 1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);
+            PMDS.Global.UIGlobal.setUIButton(this.btnRefresh, false);
             //PMDS.Global.UIGlobal.setAktiv(this.btnRefresh, 1, activeForeCol, activeFrameCol, activeBackCol);
 
             btnKlient.Tag = HeaderButtons.Details;      
@@ -219,46 +206,22 @@ namespace PMDS.GUI
         {
             try
             {
-                if (PMDS.Global.historie.HistorieOn)
-                    RefreshControl(IDPatient, true, clickGridTermine);
-                else if (ENV.AnsichtsModus != _LastTerminlisteAnsichtsmodi)
-                    RefreshControl(IDPatient, true, clickGridTermine);
-                else if ((_LastIDPatient == IDPatient && !(_LastIDPatient == Guid.Empty && IDPatient == Guid.Empty)) || _PreventSelfRefreshing)
-                {
-                    //Patient pat = new Patient(IDPatient);
-                    RefreshControl(IDPatient, true, clickGridTermine);
-                }
-                else
-                {
-                    RefreshControl(IDPatient, true, clickGridTermine);
-                }
+                //os: Immer RefreshControl und Patientenpicker
+                RefreshControl(IDPatient, true, clickGridTermine);
 
-                if (refreshPicker)
+                if (this.contPatientUserPicker1.contSelectPatienten != null)
                 {
-                    //PMDSBusinessComm.checkMessageForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
-                    if (ucHeader.bKlinikChanged)
-                    {
-                        if (this.contPatientUserPicker1.contSelectPatienten != null)
-                        {
-                            this.contPatientUserPicker1.contSelectPatienten.initControlData();
-                        }
-                        ucHeader.bKlinikChanged = false;
-                    }
-                    this.contPatientUserPicker1.initControl(PatientUserPicker.contPatientUserPicker.eTypeUIPicker.PatientSingle, true, eTypePatientenUserPickerChanged.MainPickerLeftTop);
-                    this.contPatientUserPicker1.selectUserPatient(IDPATIENT);
+                    this.contPatientUserPicker1.contSelectPatienten.initControlData();
                 }
-                else
-                {
-                    bool NoRefresPicker = true;
-                }
-
+                ucHeader.bKlinikChanged = false;
+                this.contPatientUserPicker1.initControl(PatientUserPicker.contPatientUserPicker.eTypeUIPicker.PatientSingle, true, eTypePatientenUserPickerChanged.MainPickerLeftTop);
+                this.contPatientUserPicker1.selectUserPatient(IDPATIENT);
             }
             catch (Exception ex)
             {
                 throw new Exception("ucHeader.ENV_ENVPatientIDChanged: " + ex.ToString());
             }
         }
-
 
         void ucMedizinDaten2_NotfallSelected(Guid IDSP)
         {
@@ -302,7 +265,6 @@ namespace PMDS.GUI
         
         private void RefreshControl(Guid IDPatient, bool bSelectKlient, bool clickGridTermine)
         {
-            this.checkMemory();
             _LastIDPatient = IDPatient;
 
             _RefreshShouldBeAfterVisible = true;
@@ -923,7 +885,7 @@ namespace PMDS.GUI
             this.ucHeader_Fill_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucHeader_Fill_Panel.BackColor = System.Drawing.Color.White;
+            this.ucHeader_Fill_Panel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ucHeader_Fill_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ucHeader_Fill_Panel.Controls.Add(this.panelTop);
             this.ucHeader_Fill_Panel.Controls.Add(this.panelBottom);
@@ -1524,7 +1486,7 @@ namespace PMDS.GUI
             // _ucHeader_Toolbars_Dock_Area_Left
             // 
             this._ucHeader_Toolbars_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._ucHeader_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.White;
+            this._ucHeader_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.Gainsboro;
             this._ucHeader_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
             this._ucHeader_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._ucHeader_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 0);
@@ -1557,7 +1519,7 @@ namespace PMDS.GUI
             // _ucHeader_Toolbars_Dock_Area_Right
             // 
             this._ucHeader_Toolbars_Dock_Area_Right.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._ucHeader_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.White;
+            this._ucHeader_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.Gainsboro;
             this._ucHeader_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
             this._ucHeader_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._ucHeader_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1293, 0);
@@ -1568,7 +1530,7 @@ namespace PMDS.GUI
             // _ucHeader_Toolbars_Dock_Area_Top
             // 
             this._ucHeader_Toolbars_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._ucHeader_Toolbars_Dock_Area_Top.BackColor = System.Drawing.Color.White;
+            this._ucHeader_Toolbars_Dock_Area_Top.BackColor = System.Drawing.Color.Gainsboro;
             this._ucHeader_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top;
             this._ucHeader_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
             this._ucHeader_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
@@ -1579,7 +1541,7 @@ namespace PMDS.GUI
             // _ucHeader_Toolbars_Dock_Area_Bottom
             // 
             this._ucHeader_Toolbars_Dock_Area_Bottom.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._ucHeader_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.White;
+            this._ucHeader_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.Gainsboro;
             this._ucHeader_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom;
             this._ucHeader_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText;
             this._ucHeader_Toolbars_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 141);
@@ -1607,7 +1569,7 @@ namespace PMDS.GUI
             // ucHeader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.ucHeader_Fill_Panel);
             this.Controls.Add(this._ucHeader_Toolbars_Dock_Area_Left);
             this.Controls.Add(this._ucHeader_Toolbars_Dock_Area_Right);
@@ -1667,7 +1629,6 @@ namespace PMDS.GUI
                     HeaderButtons h = (HeaderButtons)i;
                     ucHeader.lastButtonClicked = h;
                     HeaderButtonClick(h, true);
-                    this.checkMemory();
                 }
                         
             }
@@ -1689,15 +1650,15 @@ namespace PMDS.GUI
                 this.setButtonsDeaktive();
                 
                 if (ineu < 6)
-                    PMDS.Global.UIGlobal.setAktiv(_buttons[ineu], ineu, activeForeCol, activeFrameCol, activeBackCol);
+                    PMDS.Global.UIGlobal.setUIButton(_buttons[ineu], true);
                 else if (ineu == (int)HeaderButtons.Details)      // Details soll auch markiert bleiben
-                    PMDS.Global.UIGlobal.setAktiv(btnKlient, -1, activeForeCol, activeFrameCol, activeBackCol);
+                    PMDS.Global.UIGlobal.setUIButton(btnKlient, true);
                 else if (ineu == (int)HeaderButtons.Berichte)      // Berichte soll auch markiert bleiben
-                    PMDS.Global.UIGlobal.setAktiv(btnBerichte, -1, activeForeCol, activeFrameCol, activeBackCol);
+                    PMDS.Global.UIGlobal.setUIButton(btnBerichte, true);
                 else if (ineu == (int)HeaderButtons.Medikamente)      // Medikamente soll auch markiert bleiben
-                    PMDS.Global.UIGlobal.setAktiv(btnMitverantwortlicherBereich, -1, activeForeCol, activeFrameCol, activeBackCol);
+                    PMDS.Global.UIGlobal.setUIButton(btnMitverantwortlicherBereich, true);
                 else if (ineu == (int)HeaderButtons.Wunde)      // Wunde soll auch markiert bleiben
-                    PMDS.Global.UIGlobal.setAktiv(btnWunddoku, -1, activeForeCol, activeFrameCol, activeBackCol);
+                    PMDS.Global.UIGlobal.setUIButton(btnWunddoku, true);
                 
             }
             catch (Exception ex)
@@ -1711,21 +1672,17 @@ namespace PMDS.GUI
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    Color aktBorderCol = activeFrameCol;
-                    Color hotTrackBackCol = hoverBackCol;
-                    PMDS.Global.UIGlobal.setAktivDisable(_buttons[i], i, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);
+                    PMDS.Global.UIGlobal.setUIButton(_buttons[i], false);
                 }
 
-                PMDS.Global.UIGlobal.setAktivDisable(btnKlientenliste, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);
-                PMDS.Global.UIGlobal.setAktivDisable(btnKlient, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);                // Details button
-                PMDS.Global.UIGlobal.setAktivDisable(btnBerichte, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);                // Berichte Button
-                PMDS.Global.UIGlobal.setAktivDisable(btnMitverantwortlicherBereich, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);                // Mitverantwortlicher Bereich Button
-                PMDS.Global.UIGlobal.setAktivDisable(btnWunddoku, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);                // Wunde
-
-                PMDS.Global.UIGlobal.setAktivDisable(btnArchiv, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);
-                PMDS.Global.UIGlobal.setAktivDisable(btnTermine, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnArztabrechnung, -1, activeForeCol, hoverBackCol, activeFrameCol, inactiveBackCol, UIElementButtonStyle.Flat);
-
+                PMDS.Global.UIGlobal.setUIButton(btnKlientenliste, false);
+                PMDS.Global.UIGlobal.setUIButton(btnKlient, false);
+                PMDS.Global.UIGlobal.setUIButton(btnBerichte, false);
+                PMDS.Global.UIGlobal.setUIButton(btnMitverantwortlicherBereich, false);
+                PMDS.Global.UIGlobal.setUIButton(btnWunddoku, false);
+                PMDS.Global.UIGlobal.setUIButton(btnArchiv, false);
+                PMDS.Global.UIGlobal.setUIButton(btnTermine, false);
+                PMDS.Global.UIGlobal.setUIButton(btnArztabrechnung, false);
             }
             catch (Exception ex)
             {
@@ -1899,45 +1856,18 @@ namespace PMDS.GUI
             switch (e.Tool.Key)
             {
                 case "DokumentAblegen":
-                    this.neuesDokument();
                     break;
 
             }
-
         }
 
         private void neuerTermin(object sender, EventArgs e)
         {
             try
             {
-                this.checkMemory();
                 this.setButtonsDeaktive();
-                PMDS.Global.UIGlobal.setAktiv(btnTermine, -1, activeForeCol, activeFrameCol, activeBackCol);
+                PMDS.Global.UIGlobal.setUIButton(btnTermine, true);
                 GuiAction.archivTerminMail(false, false, false, false);
-
-                //PMDS.BusinessLogic.Patient pat = new PMDS.BusinessLogic.Patient(ENV.CurrentIDPatient);
-                //string bezPatient = pat.Vorname + " " + pat.Nachname;
-
-                //if (PMDS.Global.ENV.VersionPlanArchive == 1)
-                //{
-                //    PMDS.GUI.VB.cMailTermine clManagTermine = new PMDS.GUI.VB.cMailTermine();
-                //    clManagTermine.Termin_Neu(DateTime.Now, DateTime.Now, ENV.CurrentIDPatient.ToString(), bezPatient, null, null);
-                //}
-                //else if (PMDS.Global.ENV.VersionPlanArchive == 2)
-                //{
-                //    PMDS.GUI.VB.General gen = new VB.General();
-                //    PMDS.GUI.VB.compPlan compPlanTmp = new VB.compPlan();
-                //    PMDS.GUI.VB.dsPlan.planObjectDataTable tPlanObject = new VB.dsPlan.planObjectDataTable();
-                //    PMDS.GUI.VB.dsPlan.planObjectRow newPlanObject = compPlanTmp.getNewRowPlanObject(tPlanObject);
-                //    newPlanObject.IDObject = ENV.CurrentIDPatient;
-
-                //    string sBezeichnung = "";
-                //    string sFileType = "";
-                //    byte[] byt = null;
-                //    gen.newMessage(DateTime.Now, DateTime.Now, tPlanObject, null, System.Guid.NewGuid(), false, false,
-                //                    sBezeichnung, sFileType, byt, false, false);
-                //}
-
             }
             catch (Exception ex)
             {
@@ -1951,44 +1881,9 @@ namespace PMDS.GUI
         {
             try
             {
-                this.checkMemory();
                 this.setButtonsDeaktive();
-                PMDS.Global.UIGlobal.setAktiv(this.btnArchiv , -1, activeForeCol, activeFrameCol, activeBackCol);
+                PMDS.Global.UIGlobal.setUIButton(this.btnArchiv, true);
                 GuiAction.archivTerminMail(false, false, true, false);
-
-                ////PMDS.BusinessLogic.Patient pat = new PMDS.BusinessLogic.Patient(ENV.CurrentIDPatient);
-                ////string bezPatient = pat.Vorname + " " + pat.Nachname;
-
-                ////PMDS.GUI.VB.frmArchivAbleg frm = new PMDS.GUI.VB.frmArchivAbleg();
-                ////ArrayList arrObject = new ArrayList();
-                ////PMDS.GUI.VB.clObject aktObj = new PMDS.GUI.VB.clObject();
-                ////aktObj.id = ENV.CurrentIDPatient.ToString();
-                ////aktObj.bezeichnung = bezPatient;
-
-                ////arrObject.Add(aktObj);
-                ////frm.contArchivDokumentAblegen.objects = arrObject;
-
-                ////frm.ShowDialog(this);
-
-
-                //////PMDS.GUI.VB.frmArchAbleg frm = new PMDS.GUI.VB.frmArchAbleg();
-                //////ArrayList arrObject = new ArrayList();
-                //////PMDS.GUI.VB.clObject aktObj = new PMDS.GUI.VB.clObject();
-                //////aktObj.id = ENV.CurrentIDPatient.ToString();
-                //////aktObj.bezeichnung = bezPatient;
-                //////arrObject.Add(aktObj);
-
-                //////PMDS.GUI.VB.compDoku compDokuTmp = new VB.compDoku();
-                //////PMDS.GUI.VB.dbArchiv.archObjectDataTable tArchivObjects = new VB.dbArchiv.archObjectDataTable();
-                //////PMDS.GUI.VB.dbArchiv.archObjectRow newArchObject = compDokuTmp.getNewRowArchObject(tArchivObjects);
-                //////newArchObject.IDObject = ENV.CurrentIDPatient;
-
-                //////PMDS.GUI.VB.clFileInfo clFileInfo1 = new VB.clFileInfo();
-                //////clFileInfo1.tArchObject = tArchivObjects;
-                //////frm.ContArchAbleg1.arrFilesToSave.Add(clFileInfo1);
-
-                //////frm.ShowDialog(this);
-
             }
             catch (Exception ex)
             {
@@ -2011,16 +1906,6 @@ namespace PMDS.GUI
             
         }
 
-        private void neuerTermin()
-        {
-
-        }
-
-        private void neuesDokument()
-        {
-
-        }
-
 
         private void btnArztabrechnung_Click(object sender, EventArgs e)
         {
@@ -2028,7 +1913,6 @@ namespace PMDS.GUI
             {
                 this.Cursor = Cursors.WaitCursor;   
 
-                this.checkMemory();
                 if (ENV.CurrentIDPatient == null || ENV.CurrentIDPatient == Guid.Empty)
                 {
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurde kein Patient ausgewählt!", "", MessageBoxButtons.OK);
@@ -2152,20 +2036,6 @@ namespace PMDS.GUI
             }
         }
 
-
-        public void checkMemory()
-        {
-            try
-            {
-                PMDS.Data.Global.db.checkMemorySizeAppClient(ref this.mainWindow.lblTxtMemory, ref this.mainWindow.pBarMemoryUsage,
-                                                            ref this.ultraToolTipManagerWarningMemory);          
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ucHeader.checkMemory: " + ex.ToString());
-            }
-        }
 
         private void ucHeader_Fill_Panel_Paint(object sender, PaintEventArgs e)
         {

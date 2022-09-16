@@ -46,27 +46,27 @@ namespace PMDS.GUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMedizinischeDaten));
             this.ultraTabPageControl4 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
-            this.ucMedDiagnosen = new PMDS.GUI.ucMedTypDaten(this);
-            this.ucMedDauerDiagnosen = new PMDS.GUI.ucMedTypDaten(this);
+            this.ucMedDiagnosen = new ucMedTypDaten(this);
+            this.ucMedDauerDiagnosen = new ucMedTypDaten(this);
             this.ultraTabPageControl10 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.ucKostform = new PMDS.GUI.ucMedTypDaten(this);
-            this.ucNuechtern = new PMDS.GUI.ucMedTypDaten(this);
+            this.ucKostform = new ucMedTypDaten(this);
+            this.ucNuechtern = new ucMedTypDaten(this);
             this.ultraTabPageControl9 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.ucAntikoagolation = new PMDS.GUI.ucMedTypDaten(this);
-            this.ucSuchtmittel = new PMDS.GUI.ucMedTypDaten(this);
+            this.ucAntikoagolation = new ucMedTypDaten(this);
+            this.ucSuchtmittel = new ucMedTypDaten(this);
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.ucInfektionen = new PMDS.GUI.ucMedTypDaten(this);
-            this.ucImpfungen = new PMDS.GUI.ucMedTypDaten(this);
+            this.ucInfektionen = new ucMedTypDaten(this);
+            this.ucImpfungen = new ucMedTypDaten(this);
             this.ultraTabPageControl3 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
-            this.ucDiabetes = new PMDS.GUI.ucMedTypDaten(this);
-            this.ucAllergien = new PMDS.GUI.ucMedTypDaten(this);
+            this.ucDiabetes = new ucMedTypDaten(this);
+            this.ucAllergien = new ucMedTypDaten(this);
             this.ultraTabPageControl5 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.ucKatheder = new PMDS.GUI.ucMedTypDaten(this);
+            this.ucKatheder = new ucMedTypDaten(this);
             this.ucImplentateProthesen = new PMDS.GUI.ucMedTypDaten(this);
             this.ultraTabPageControl12 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -633,7 +633,7 @@ namespace PMDS.GUI
             this.lblBlutgruppe.Name = "lblBlutgruppe";
             this.lblBlutgruppe.Size = new System.Drawing.Size(57, 14);
             this.lblBlutgruppe.TabIndex = 163;
-            this.lblBlutgruppe.Text = "Blutgruppe";
+            this.lblBlutgruppe.Text = "Blutgrp.";
             // 
             // tbBlutgruppe
             // 
@@ -653,7 +653,7 @@ namespace PMDS.GUI
             this.lblRhesusfaktor.Name = "lblRhesusfaktor";
             this.lblRhesusfaktor.Size = new System.Drawing.Size(69, 14);
             this.lblRhesusfaktor.TabIndex = 165;
-            this.lblRhesusfaktor.Text = "Rhesusfaktor";
+            this.lblRhesusfaktor.Text = "Rhesusf.";
             // 
             // tbRhesusfaktur
             // 
@@ -764,34 +764,34 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseTextEditor tbRhesusfaktur;
         private QS2.Desktop.ControlManagment.BaseLabel lblBlutgruppe;
         private QS2.Desktop.ControlManagment.BaseTextEditor tbBlutgruppe;
-        private ucMedTypDaten ucKostform;
+        private ucMedTypDaten ucKostform { get; set; }
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl1;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl2;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl3;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl4;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl5;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl12;
-        private ucMedTypDaten ucInfektionen;
-        private ucMedTypDaten ucDiabetes;
-        private ucMedTypDaten ucMedDiagnosen;
-        private ucMedTypDaten ucKatheder;
-        private ucMedTypDaten ucAntikoagolation;
-        private ucMedTypDaten ucSonstige;
-        private ucMedTypDaten ucNuechtern;
+        private ucMedTypDaten ucInfektionen { get; set; }
+        private ucMedTypDaten ucDiabetes { get; set; }
+        private ucMedTypDaten ucMedDiagnosen { get; set; }
+        private ucMedTypDaten ucKatheder { get; set; }
+        private ucMedTypDaten ucAntikoagolation { get; set; }
+        private ucMedTypDaten ucSonstige { get; set; }
+        private ucMedTypDaten ucNuechtern { get; set; }
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer3;
-        private ucMedTypDaten ucImpfungen;
+        private ucMedTypDaten ucImpfungen { get; set; }
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer5;
-        private ucMedTypDaten ucSuchtmittel;
+        private ucMedTypDaten ucSuchtmittel { get; set; }
         private System.Windows.Forms.SplitContainer splitContainer4;
-        private ucMedTypDaten ucImplentateProthesen;
+        private ucMedTypDaten ucImplentateProthesen { get; set; }
         private System.Windows.Forms.SplitContainer splitContainer6;
-        private ucMedTypDaten ucAllergien;
+        private ucMedTypDaten ucAllergien { get; set; }
         private System.Windows.Forms.SplitContainer splitContainer7;
-        private ucMedTypDaten ucMedDauerDiagnosen;
-        private ucMedTypDaten ucUnvertraeglichkeiten;
+        private ucMedTypDaten ucMedDauerDiagnosen { get; set; }
+        private ucMedTypDaten ucUnvertraeglichkeiten { get; set; }
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl6;
-        private ucMedTypDaten ucBefunde;
+        private ucMedTypDaten ucBefunde { get; set; }
     }
 }

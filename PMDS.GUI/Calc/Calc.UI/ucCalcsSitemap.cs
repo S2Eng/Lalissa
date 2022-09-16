@@ -75,6 +75,17 @@ namespace PMDS.Calc.UI
 
                 if (initEnv)
                 {
+                    List<string> RechErwAbwesenheitListe = new List<string>();
+                    if (PMDS.Global.ENV.RechErwAbwesenheit == 2 || PMDS.Global.ENV.RechErwAbwesenheit == 3)
+                    {
+                        using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                        {
+                            RechErwAbwesenheitListe = (from a in db.AuswahlListe
+                                                       where a.IDAuswahlListeGruppe.Equals("KEA")
+                                                       select a.Bezeichnung).ToList();
+                        }
+                    }
+
                     this.calculation.Init(RBU.DataBase.CONNECTION, PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
                                 PMDS.Global.ENV.ReportPath,
                                 PMDS.Global.ENV.bookingJN,
@@ -90,7 +101,9 @@ namespace PMDS.Calc.UI
                                 PMDS.Global.ENV.pathConfig,
                                 PMDS.Global.ENV.TageOhneKuerzungGrundleistung,
                                 PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
-                                PMDS.Global.ENV.RechErwAbwesenheit, PMDS.Global.ENV.SrErwAbwesenheit,
+                                PMDS.Global.ENV.RechErwAbwesenheit,
+                                RechErwAbwesenheitListe,
+                                PMDS.Global.ENV.SrErwAbwesenheit,
                                 PMDS.Global.ENV.ZahlKondBankeinzug, PMDS.Global.ENV.ZahlKondErlagschein,
                                 PMDS.Global.ENV.ZahlKondÜberweisung, PMDS.Global.ENV.ZahlKondBar, ENV.ZahlKondFSW, ENV.AbwesenheitenAnzeigen, 
                                 ENV.RechTitelDepotGeld,
@@ -148,7 +161,7 @@ namespace PMDS.Calc.UI
                                 ref QS2.Desktop.ControlManagment.BaseLabel lblCount, PMDS.Calc.Logic.eBillTyp rechTyp, 
                                 PMDS.Calc.Logic.eBillStatus status, bool showStornierte, bool showExportierte,
                                 PMDS.Calc.Logic.eBillStatus BillStatusFreigegeben,
-                                string RechNr)
+                                string RechNr, PMDS.Calc.Logic.CalcUIMode ActUIMode)
         { 
             try
             {
@@ -158,7 +171,7 @@ namespace PMDS.Calc.UI
 
                 if (this.typ == eTyp.calc)
                 {
-                    this.calculation.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showStornierte, showExportierte, RechNr, ref iOffene, ref iFreigegebene);
+                    this.calculation.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showStornierte, showExportierte, RechNr, ref iOffene, ref iFreigegebene, ActUIMode);
                     this.showAnzButtonsCalc(ref db, von, bis, vonRechDatum, bisRechDatum, grid, butAlleKeine, ref lblCount, rechTyp, status, showStornierte, showExportierte, BillStatusFreigegeben);
                     this.form.btnVorschau.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Vorschau") + "" + " (" + iOffene.ToString() + ")";
                     this.form.btnFreigeben.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Freigegeben") + "" + " (" + iFreigegebene.ToString() + ")";
@@ -182,8 +195,7 @@ namespace PMDS.Calc.UI
                 //Spalte Rechnungsempfänger im Grid füllen
                 using (PMDS.db.Entities.ERModellPMDSEntities dbKost = PMDSBusiness.getDBContext())
                 {
-                int Zeile = 0;
-                    foreach (dbPMDS.billsRow bill in db.bills)
+                    foreach (dbPMDS.billsRow bill in db.bills.OrderBy(b => b.RechNr))
                     {
                         Guid IDKost = new Guid(bill.IDKost);
                         var rKost = (from k in dbKost.Kostentraeger
@@ -197,10 +209,17 @@ namespace PMDS.Calc.UI
                                             Rechnungsempfaenger = k.Rechnungsempfaenger.Trim()
                                         }).FirstOrDefault();
 
-                        if (rKost != null)
-                            grid.Rows[Zeile].Cells["Re-Empfänger"].Value = rKost.Rechnungsempfaenger;
-
-                        Zeile++;
+                        UltraGridBand band = grid.DisplayLayout.Bands[0];
+                        foreach (UltraGridRow row in band.GetRowEnumerator(GridRowType.DataRow))
+                        {
+                            if (row.Cells["IDKost"].Value.sEquals(IDKost))
+                            {
+                                if (rKost != null)
+                                {
+                                    row.Cells["Re-Empfänger"].Value = rKost.Rechnungsempfaenger;
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -426,9 +445,13 @@ namespace PMDS.Calc.UI
                     res = DialogResult.Yes;
                     this.sitemap.doAction22(typ, "", "", txtInfo, grid, ref lblCount, ref arrSelected, false);
                 }
+                else if (typ == eAction.fswsFTPOnly)
+                {
+                    res = DialogResult.Yes;
+                }
                 else
                 {
-                    res = this.sitemap.doAction22(typ, txtQuestion, QS2.Desktop.ControlManagment.ControlManagment.getRes("Rechnung/en"), txtInfo, grid, ref lblCount, ref arrSelected, msgBox);
+                    res = this.sitemap.doAction22(typ, txtQuestion, "", txtInfo, grid, ref lblCount, ref arrSelected, msgBox);
                 }
 
                 if (res == DialogResult.Yes)
@@ -438,7 +461,7 @@ namespace PMDS.Calc.UI
                         db.Configuration.LazyLoadingEnabled = false;
 
                         int anzDel = 0;
-                        if (typ == eAction.freigeben || typ == eAction.stornieren || typ == eAction.fsw || typ == eAction.fswreset || typ == eAction.fswNoUpload || typ == eAction.rollen || typ == eAction.fswXlsVorschau)
+                        if (typ == eAction.freigeben || typ == eAction.stornieren || typ == eAction.fsw || typ == eAction.fswreset || typ == eAction.fswNoUpload || typ == eAction.fswsFTPOnly || typ == eAction.rollen || typ == eAction.fswXlsVorschau)
                         {
                             List<String> listIDBills = new List<String>();
                             foreach (UltraGridRow rToDel in arrSelected)
@@ -687,6 +710,11 @@ namespace PMDS.Calc.UI
                                 PMDS.Global.FSWAbrechnung FSWAbrechnung = new FSWAbrechnung();
                                 FSWAbrechnung.GenerateFSWStructure(ENV.IDKlinik, listIDBills, FSWAbrechnung.eAction.fswreset);
                             }
+                            else if (typ == eAction.fswsFTPOnly)
+                            {
+                                PMDS.Global.FSWAbrechnung FSWAbrechnung = new FSWAbrechnung();
+                                FSWAbrechnung.GenerateFSWStructure(ENV.IDKlinik, listIDBills, FSWAbrechnung.eAction.fswsFTPOnly);
+                            }
 
                             else if (typ == eAction.stornieren)
                             {
@@ -695,8 +723,6 @@ namespace PMDS.Calc.UI
                                     PMDS.db.Entities.bills rBill2 = db.bills.Where(b => b.ID == IDBillStr).First();
                                     if (String.IsNullOrWhiteSpace(rBill2.IDBillStorno))
                                     {
-                                        //PMDS.db.Entities.billHeader rBillHeaderToStorno = db.billHeader.Where(b => b.ID == rBill2.IDAbrechnung).First();
-                                        //dbCalc dbCalcFoundNew = this.doBill.getDBCalc(rBillHeaderToStorno.dbCalc);
                                         this.calculation.stornieren(listIDBills, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, this.form.editor, PMDS.Global.ENV.IDKlinik, datStornodatum, null);
                                     }
                                     else

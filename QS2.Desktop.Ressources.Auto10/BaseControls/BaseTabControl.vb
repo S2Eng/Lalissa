@@ -37,10 +37,9 @@ Public Class BaseTabControl
     End Sub
     Public Sub doVisibleChanged()
         Try
-            If Not DesignMode And ENV._ApplicationIsRunning Then
+            If System.Diagnostics.Process.GetCurrentProcess().ProcessName <> "devenv" Then
                 Me.initControl()
-                Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Nothing, Me.IsLoaded, rRes, True, False, Me.DoIDResAuto,
-                                                       DesignMode)
+                Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Nothing, Me.IsLoaded, rRes, True, False, Me.DoIDResAuto)
             Else
                 Dim str As String = ""
             End If

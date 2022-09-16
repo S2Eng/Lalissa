@@ -38,7 +38,7 @@
             this.pdfViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pdfViewer.BackColor = System.Drawing.SystemColors.ControlDark;
+            //this.pdfViewer.BackColor = System.Drawing.SystemColors.ControlDark;
             this.pdfViewer.CurrentIndex = -1;
             this.pdfViewer.CurrentPageHighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.pdfViewer.Document = null;
@@ -99,7 +99,7 @@
             // 
             // ucKlientStammdatenDokument1
             // 
-            this.ucKlientStammdatenDokument1.BackColor = System.Drawing.Color.LightGray;
+            //this.ucKlientStammdatenDokument1.BackColor = System.Drawing.Color.LightGray;
             this.ucKlientStammdatenDokument1.docuDocumentFileTypePrefered = "pdf-Files (*.pdf)|*.pdf";
             this.ucKlientStammdatenDokument1.docuIDKey = "ID";
             this.ucKlientStammdatenDokument1.docuNameDocument = "Einverständniserklärung";

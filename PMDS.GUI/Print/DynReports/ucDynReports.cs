@@ -22,6 +22,7 @@ using Infragistics.Win.UltraWinExplorerBar;
 using Infragistics.Win.UltraWinTree;
 using System.Runtime.Remoting;
 using PMDS.DB;
+using S2Extensions;
 
 namespace PMDS.GUI
 {
@@ -216,10 +217,10 @@ namespace PMDS.GUI
         public static string GetReportFile(string sFile, ref string sConfigReturn)
         {
             string s = Path.GetExtension(sFile);
-            if (s.Equals(".rpt", StringComparison.CurrentCultureIgnoreCase))
+            if (s.sEquals(".rpt"))
                 return sFile;
             
-            if (s.Equals(".dynreportlink", StringComparison.CurrentCultureIgnoreCase))
+            if (s.sEquals(".dynreportlink"))
             {
                 using (StreamReader reader = new StreamReader(sFile, Encoding.Default))
                 {
@@ -233,7 +234,6 @@ namespace PMDS.GUI
                     if (!File.Exists(sPath))
                     {
                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox(string.Format(QS2.Desktop.ControlManagment.ControlManagment.getRes("Die Link Datei {0} mit dem Inhalt <{1}> ist ungültig"), sFile, sLine), true);
-                        //throw new Exception(string.Format("Die Link Datei {0} mit dem Inhalt <{1}> ist ungültig", sFile, sLine));
                         return "";
                     }
                     return sPath;
@@ -254,8 +254,14 @@ namespace PMDS.GUI
             ClickableImages.RemoveAll();
             List<string> al = new List<string>();
 
+            //Crystal-Reports
             AddReportFilesToList(dirTab1.CurrentSelectedPath, al);
             AddReportFilesToList(dirTab2.CurrentSelectedPath, al);
+
+            //SQL-Queries
+            //AddQueryFilesToList(dirTab1.CurrentSelectedPath, al);
+            //AddQueryFilesToList(dirTab2.CurrentSelectedPath, al);
+
             al.Sort();
 
             int iCount = -1;
@@ -265,12 +271,12 @@ namespace PMDS.GUI
                 {
                     string sConfig = "";
                     string sReport = GetReportFile(s, ref sConfig);
-                    if (sReport  != "")
+                    if (!String.IsNullOrWhiteSpace(sReport))
                     {
                         iCount++;
                         string sDisplayname = "";
                         DynReportDefinition def = new DynReportDefinition("");
-                        if (sConfig.Trim() == "")
+                        if (String.IsNullOrWhiteSpace(sConfig))
                         {
                             sConfig = GetXMLFileFromReportFile(sReport);
                             sDisplayname = Path.GetFileNameWithoutExtension(sReport);
@@ -283,12 +289,13 @@ namespace PMDS.GUI
                         }
                         
                         def.LoadFromConfig(sConfig);
+
                         if (def.Displayname.Length > 0)
                             sDisplayname = def.Displayname;
 
                         if (!def.HasUserRight(ENV.USERID))
                             continue;
-                        //PMDS.GUI.Datenerhebung.ValueListItemOwn itemOwn = (PMDS.GUI.Datenerhebung.ValueListItemOwn)item; lthxy
+
                         ClickableImages.AddFromFile(GetJPGFileFromReportFile(sReport), sDisplayname, "", sReport, iCount, Color.LightGray, null, sConfig);
                     }
                 }
@@ -308,22 +315,16 @@ namespace PMDS.GUI
         {
             if (sPath.Length > 0)
             {
-                string[] sa1 = Directory.GetFiles(sPath, "*.rpt");
-                al.AddRange(sa1);
-                sa1 = Directory.GetFiles(sPath, "*.dynreportlink");
-                al.AddRange(sa1);
+                string[] aRpt = Directory.GetFiles(sPath, "*.rpt");
+                al.AddRange(aRpt);
+                aRpt = Directory.GetFiles(sPath, "*.dynreportlink");
+                al.AddRange(aRpt);
             }
-        }
-
-        private void ClickableImages_DoubleClick(int index, object Tag, string XMLFile)
-        {
-
         }
 
         private void ClickableImages_Click(int index, object Tag, string XMLFile)
         {
             ucDynReportParameter1.XMLFileAlternate = XMLFile;
-            ucDynReportParameter1.REPORT_FILE = "";
             ucDynReportParameter1.REPORT_FILE = Tag.ToString();
 
             RefreshReportInfo();

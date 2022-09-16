@@ -39,6 +39,7 @@ namespace PMDS.GUI
             Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucZielEvaluierung));
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
@@ -141,7 +142,6 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn90 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("LogInNameFrei");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn92 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PSEKlasse");
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dtpDate2 = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -156,6 +156,7 @@ namespace PMDS.GUI
             this.optEvaluierungsStatus2 = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.optEvaluierungsStatus1 = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.panelButtonsUnten = new QS2.Desktop.ControlManagment.BasePanel();
+            this.nDauer = new QS2.Desktop.ControlManagment.BaseMaskEdit();
             this.lblDauer = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblNaechsteEvaluierung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.panelButtons = new QS2.Desktop.ControlManagment.BasePanel();
@@ -169,7 +170,6 @@ namespace PMDS.GUI
             this.dgHistorie = new QS2.Desktop.ControlManagment.BaseGrid();
             this.splitContainerUnten = new System.Windows.Forms.SplitContainer();
             this.dsPflegegeldstufe1 = new PMDS.Abrechnung.Global.dsPflegegeldstufe();
-            this.nDauer = new QS2.Desktop.ControlManagment.BaseMaskEdit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpDate2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsPflegeEintrag1)).BeginInit();
@@ -206,12 +206,12 @@ namespace PMDS.GUI
             this.dtpDate2.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDate2.FormatString = "";
             this.errorProvider1.SetIconAlignment(this.dtpDate2, System.Windows.Forms.ErrorIconAlignment.TopRight);
-            this.dtpDate2.Location = new System.Drawing.Point(3, 27);
+            this.dtpDate2.Location = new System.Drawing.Point(147, 0);
             this.dtpDate2.MaskInput = "";
             this.dtpDate2.Name = "dtpDate2";
             this.dtpDate2.ownFormat = "";
             this.dtpDate2.ownMaskInput = "";
-            this.dtpDate2.Size = new System.Drawing.Size(107, 24);
+            this.dtpDate2.Size = new System.Drawing.Size(128, 24);
             this.dtpDate2.TabIndex = 6;
             this.dtpDate2.Value = null;
             this.dtpDate2.ValueChanged += new System.EventHandler(this.dtpDate2_ValueChanged);
@@ -249,9 +249,9 @@ namespace PMDS.GUI
             this.gbEvaluierung.Controls.Add(this.panelStatusEingabe);
             this.gbEvaluierung.Controls.Add(this.panelButtonsUnten);
             this.gbEvaluierung.Controls.Add(this.label1);
-            this.gbEvaluierung.Location = new System.Drawing.Point(638, 25);
+            this.gbEvaluierung.Location = new System.Drawing.Point(571, 5);
             this.gbEvaluierung.Name = "gbEvaluierung";
-            this.gbEvaluierung.Size = new System.Drawing.Size(353, 328);
+            this.gbEvaluierung.Size = new System.Drawing.Size(420, 348);
             this.gbEvaluierung.TabIndex = 3;
             this.gbEvaluierung.Text = "Evaluierungsstatus";
             this.gbEvaluierung.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2000;
@@ -260,9 +260,9 @@ namespace PMDS.GUI
             // 
             this.panel3.Controls.Add(this.ultraGridBagLayoutPanelAnmerkung);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 87);
+            this.panel3.Location = new System.Drawing.Point(3, 113);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(347, 182);
+            this.panel3.Size = new System.Drawing.Size(414, 176);
             this.panel3.TabIndex = 30;
             // 
             // ultraGridBagLayoutPanelAnmerkung
@@ -273,7 +273,7 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanelAnmerkung.ExpandToFitWidth = true;
             this.ultraGridBagLayoutPanelAnmerkung.Location = new System.Drawing.Point(0, 0);
             this.ultraGridBagLayoutPanelAnmerkung.Name = "ultraGridBagLayoutPanelAnmerkung";
-            this.ultraGridBagLayoutPanelAnmerkung.Size = new System.Drawing.Size(347, 182);
+            this.ultraGridBagLayoutPanelAnmerkung.Size = new System.Drawing.Size(414, 176);
             this.ultraGridBagLayoutPanelAnmerkung.TabIndex = 27;
             // 
             // tbAnmerkung
@@ -292,7 +292,7 @@ namespace PMDS.GUI
             this.tbAnmerkung.Name = "tbAnmerkung";
             this.ultraGridBagLayoutPanelAnmerkung.SetPreferredSize(this.tbAnmerkung, new System.Drawing.Size(377, 190));
             this.tbAnmerkung.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.tbAnmerkung.Size = new System.Drawing.Size(337, 172);
+            this.tbAnmerkung.Size = new System.Drawing.Size(404, 166);
             this.tbAnmerkung.TabIndex = 26;
             // 
             // panelStatusEingabe
@@ -302,7 +302,7 @@ namespace PMDS.GUI
             this.panelStatusEingabe.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelStatusEingabe.Location = new System.Drawing.Point(3, 19);
             this.panelStatusEingabe.Name = "panelStatusEingabe";
-            this.panelStatusEingabe.Size = new System.Drawing.Size(347, 68);
+            this.panelStatusEingabe.Size = new System.Drawing.Size(414, 94);
             this.panelStatusEingabe.TabIndex = 29;
             // 
             // optEvaluierungsStatus2
@@ -320,9 +320,9 @@ namespace PMDS.GUI
             valueListItem3});
             this.optEvaluierungsStatus2.ItemSpacingHorizontal = 1;
             this.optEvaluierungsStatus2.ItemSpacingVertical = 2;
-            this.optEvaluierungsStatus2.Location = new System.Drawing.Point(165, 5);
+            this.optEvaluierungsStatus2.Location = new System.Drawing.Point(210, 5);
             this.optEvaluierungsStatus2.Name = "optEvaluierungsStatus2";
-            this.optEvaluierungsStatus2.Size = new System.Drawing.Size(175, 57);
+            this.optEvaluierungsStatus2.Size = new System.Drawing.Size(197, 83);
             this.optEvaluierungsStatus2.TabIndex = 4;
             this.optEvaluierungsStatus2.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.optEvaluierungsStatus2.ValueChanged += new System.EventHandler(this.os1_ValueChanged);
@@ -344,7 +344,7 @@ namespace PMDS.GUI
             this.optEvaluierungsStatus1.ItemSpacingVertical = 2;
             this.optEvaluierungsStatus1.Location = new System.Drawing.Point(10, 5);
             this.optEvaluierungsStatus1.Name = "optEvaluierungsStatus1";
-            this.optEvaluierungsStatus1.Size = new System.Drawing.Size(144, 56);
+            this.optEvaluierungsStatus1.Size = new System.Drawing.Size(195, 83);
             this.optEvaluierungsStatus1.TabIndex = 3;
             this.optEvaluierungsStatus1.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.optEvaluierungsStatus1.ValueChanged += new System.EventHandler(this.os1_ValueChanged);
@@ -358,33 +358,48 @@ namespace PMDS.GUI
             this.panelButtonsUnten.Controls.Add(this.panelButtons);
             this.panelButtonsUnten.Controls.Add(this.ultraLabel3);
             this.panelButtonsUnten.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtonsUnten.Location = new System.Drawing.Point(3, 269);
+            this.panelButtonsUnten.Location = new System.Drawing.Point(3, 289);
             this.panelButtonsUnten.Name = "panelButtonsUnten";
-            this.panelButtonsUnten.Size = new System.Drawing.Size(347, 56);
+            this.panelButtonsUnten.Size = new System.Drawing.Size(414, 56);
             this.panelButtonsUnten.TabIndex = 28;
+            // 
+            // nDauer
+            // 
+            appearance5.TextHAlignAsString = "Right";
+            this.nDauer.Appearance = appearance5;
+            this.nDauer.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
+            this.nDauer.Location = new System.Drawing.Point(147, 28);
+            this.nDauer.MaxValue = 1440;
+            this.nDauer.MinValue = 0;
+            this.nDauer.Name = "nDauer";
+            this.nDauer.NonAutoSizeHeight = 20;
+            this.nDauer.Size = new System.Drawing.Size(48, 23);
+            this.nDauer.TabIndex = 25;
             // 
             // lblDauer
             // 
-            this.lblDauer.Location = new System.Drawing.Point(122, 5);
+            this.lblDauer.AutoSize = true;
+            this.lblDauer.Location = new System.Drawing.Point(4, 31);
             this.lblDauer.Name = "lblDauer";
-            this.lblDauer.Size = new System.Drawing.Size(83, 19);
+            this.lblDauer.Size = new System.Drawing.Size(81, 17);
             this.lblDauer.TabIndex = 24;
             this.lblDauer.Text = "Dauer (Min.)";
             // 
             // lblNaechsteEvaluierung
             // 
+            this.lblNaechsteEvaluierung.AutoSize = true;
             this.lblNaechsteEvaluierung.Location = new System.Drawing.Point(4, 5);
             this.lblNaechsteEvaluierung.Name = "lblNaechsteEvaluierung";
-            this.lblNaechsteEvaluierung.Size = new System.Drawing.Size(105, 22);
+            this.lblNaechsteEvaluierung.Size = new System.Drawing.Size(132, 17);
             this.lblNaechsteEvaluierung.TabIndex = 23;
-            this.lblNaechsteEvaluierung.Text = "Nächste Eval.";
+            this.lblNaechsteEvaluierung.Text = "Nächste Evaluierung";
             // 
             // panelButtons
             // 
             this.panelButtons.Controls.Add(this.btnCancel);
             this.panelButtons.Controls.Add(this.btnOk);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelButtons.Location = new System.Drawing.Point(211, 0);
+            this.panelButtons.Location = new System.Drawing.Point(278, 0);
             this.panelButtons.Name = "panelButtons";
             this.panelButtons.Size = new System.Drawing.Size(136, 56);
             this.panelButtons.TabIndex = 22;
@@ -787,7 +802,7 @@ namespace PMDS.GUI
             this.dgMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgMain.Location = new System.Drawing.Point(3, 25);
             this.dgMain.Name = "dgMain";
-            this.dgMain.Size = new System.Drawing.Size(629, 326);
+            this.dgMain.Size = new System.Drawing.Size(562, 326);
             this.dgMain.TabIndex = 4;
             this.dgMain.Text = "Evaluierungen";
             this.dgMain.AfterRowActivate += new System.EventHandler(this.dgMain_AfterRowActivate);
@@ -1054,19 +1069,6 @@ namespace PMDS.GUI
             this.dsPflegegeldstufe1.DataSetName = "dsPflegegeldstufe";
             this.dsPflegegeldstufe1.Locale = new System.Globalization.CultureInfo("de-DE");
             this.dsPflegegeldstufe1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // nDauer
-            // 
-            appearance5.TextHAlignAsString = "Right";
-            this.nDauer.Appearance = appearance5;
-            this.nDauer.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
-            this.nDauer.Location = new System.Drawing.Point(136, 28);
-            this.nDauer.MaxValue = 1440;
-            this.nDauer.MinValue = 0;
-            this.nDauer.Name = "nDauer";
-            this.nDauer.NonAutoSizeHeight = 20;
-            this.nDauer.Size = new System.Drawing.Size(48, 23);
-            this.nDauer.TabIndex = 25;
             // 
             // ucZielEvaluierung
             // 

@@ -14,6 +14,12 @@ using System.Drawing;
 using Syncfusion.XlsIO;
 using System.Linq;
 using S2Extensions;
+using static PMDS.Global.db.cEBInterfaceDB;
+using Infragistics.Documents.Excel;
+using static PMDS.Global.FSWAbrechnung;
+using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
+using Elga.core.ServiceReferenceELGA;
+using ScintillaNET.Demo;
 
 namespace PMDS.Global
 {
@@ -42,20 +48,16 @@ namespace PMDS.Global
 
         public bool UseUploadToFSW { get; set; } = true;
         private List<string> ListIDBillsFSW { get; set; } = new List<string>();                   //Sammelt die Rechungen des FSW
-        private List<string> ListIDBillsFSWBW { get; set; } = new List<string>();                   //Sammelt die Rechungen des FSW für betreutes Wohnen
+        private List<string> ListIDBillsFSWBW { get; set; } = new List<string>();                 //Sammelt die Rechungen des FSW für betreutes Wohnen
 
-        private List<Leistungszeile> lstZeilen = new List<Leistungszeile>();
+        //private List<Leistungszeile> lstZeilen = new List<Leistungszeile>();
         private List<Chilkat.Xml> ListFSWXml = new List<Chilkat.Xml>();
+       
 
         private db.cEBInterfaceDB.Transaction Transaction { get; set; } = db.cEBInterfaceDB.NewTransaction(true);
         private db.cEBInterfaceDB.Transaction TransactionBW { get; set; } = db.cEBInterfaceDB.NewTransaction(false);
-
-        //private List<db.cEBInterfaceDB.Transaction> lTransactions = new List<db.cEBInterfaceDB.Transaction>();
-        public bool UseXlsxExport { get; set; }
         private ExcelEngine _FSWXlsx = new ExcelEngine();
-
         private eAction _RunAction;
-
         private List<XlsVorschauZeile> lstXlsVorschauZeilen = new List<XlsVorschauZeile>();
 
         private class XlsVorschauZeile
@@ -70,7 +72,28 @@ namespace PMDS.Global
             public DateTime ReDatum;
             public DateTime Monat;
             public string SVNr;
+            public bool bIsPflege;
         }
+
+        private List<TmpLineItem> lTmpLineItems = new List<TmpLineItem>();
+
+        private class TmpLineItem
+        {
+            public string Rechungsnummer = "";
+            public string Description = "";
+            public int Quantity = 0;
+            public decimal PreisProEinheit = 0;
+            public int TaxPercent = 0;
+            public decimal LineItemAmount = 0;
+            public decimal TaxableAmount = 0;
+            public decimal Tax = 0;
+            public bool bIsPflege = true;
+            public string IDLeistung = "";
+            public bool bIsStorno = false;
+            public bool bIsReduziert = false;
+            public string FiBu = "";
+        }
+
 
         public eAction RunAction
         {
@@ -78,24 +101,13 @@ namespace PMDS.Global
             set { _RunAction = value; }
         }
 
-        //public Chilkat.Xml FSWXml
-        //{
-        //    get { return _FSWXml; }
-        //    set { _FSWXml = value; }
-        //}
-
-        public ExcelEngine FSWXlsx
-        {
-            get { return _FSWXlsx; }
-            set { _FSWXlsx = value; }
-        }
-
         public enum eAction
         {
             fsw = 7,
             fswreset = 8,
             fswNoUpload = 9,
-            fswXlsVorschau = 10
+            fswXlsVorschau = 10,
+            fswsFTPOnly = 11
         }
 
         //------------------------ ebInterface / Abrechnungsschittstelle zum FSW -----------------------------
@@ -103,7 +115,6 @@ namespace PMDS.Global
         {
             try
             {
-
                 RunAction = Action;
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = calculation.delgetDBContext.Invoke())
@@ -116,6 +127,7 @@ namespace PMDS.Global
                                           select aw.Bezeichnung.Trim() ).ToList();
                     }
 
+                    string ret = "";
                     string MsgBoxTitle = "";
                     
                     switch (Action)
@@ -127,17 +139,62 @@ namespace PMDS.Global
                             MsgBoxTitle = "FSW-Zahlungsaufforderung erstellen und NICHT senden";
                             break;
                         case eAction.fswreset:
-                            MsgBoxTitle = "FSW-Status für Zahlungsaufforderung zurücksetzen";
-                            break;
+                            //Sammelrechnung-ID (eZAUFF) zurücksetzen
+                            if (ListIDBills.Count() > 0)
+                            {
+                                MsgBoxTitle = "FSW-Status für Zahlungsaufforderung zurücksetzen";
+                                ret = SetIDSR(ListIDBills, "", db);
+                                if (ret.Length == 0)
+                                {
+                                    string sTxt = ListIDBills.Count().sIntToWords("e") + " Rechnung".sMehrzahlText(ListIDBills.Count(), "en"); 
+
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der eZAUFF-Zustatus wurde für " + sTxt + " zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                }
+                                else
+                                {
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Zurücksetzen des eZAUFF-Status: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                }
+                            }
+                            else
+                            {
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keine Rechnungen ausgewählt. Es wurde nichts zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                            }
+                            return;
+
                         case eAction.fswXlsVorschau:
                             MsgBoxTitle = "Excel-Vorschau für FSW-Abrechnung erstellen";
                             break;
+
+                        case eAction.fswsFTPOnly:
+                            OpenFileDialog fd = new OpenFileDialog();
+                            fd.InitialDirectory = ENV.FSW_EZAUF;
+                            fd.Title = "Bitte wählen Sie eine XML-Datei für das Hochladen per SFTP an den FSW aus";
+                            fd.Filter = "eZAUFF-Files|*.xml";
+                            fd.CheckFileExists = true;
+                            fd.CheckPathExists = true;
+                            fd.Multiselect = false;
+
+                            if (fd.ShowDialog() == DialogResult.OK)
+                            {
+                                if (File.Exists(fd.FileName))
+                                {
+                                    string retsFTP = Upload(Path.GetFileNameWithoutExtension(fd.FileName) + Path.GetExtension(fd.FileName)  , fd.FileName, out string Log);
+                                    if (retsFTP.Length > 0)
+                                    {
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Hochladen der Zahlungsaufforderung: " + retsFTP, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    }
+                                    else
+                                    {
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zielumgebung = " + ENV.FSW_FTPMode + "\nDie eZAUFF wurde per sFTP hochgeladen: " + fd.FileName, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    }
+                                }
+                            }
+                            return;
                     }
 
                     decimal Rechnungsbetrag = 0;
-                    decimal RechnungsbetragBW = 0;
-
                     decimal Steuern = 0;
+                    decimal RechnungsbetragBW = 0;
                     decimal SteuernBW = 0;
 
                     foreach (string IDBill in ListIDBills ?? new List<string>())
@@ -165,35 +222,128 @@ namespace PMDS.Global
                             PMDS.Global.db.cEBInterfaceDB.Invoice Invoice = PMDS.Global.db.cEBInterfaceDB.Init(IDKlinik, new Guid(rBill.IDKlient));
                             PMDS.Global.db.cEBInterfaceDB.Invoice InvoiceBW = PMDS.Global.db.cEBInterfaceDB.Init(IDKlinik, new Guid(rBill.IDKlient));
 
-                            //Verhältnis Pflege / Betreuung auf der Rechnung ermitteln
-                            decimal dPflegeNetto = 0;
-                            decimal dBWNetto = 0;
-                            decimal dMwSt = 0;
-                            foreach (dbCalc.KostenKostenträgerRow Rechnungszeile in dbCalc.KostenKostenträger)
+
+                            // ----------------- Leistungen für den FSW ermitteln  --------------------
+                            lTmpLineItems = new List<TmpLineItem>();
+
+                            List<dbCalc.KostenträgerRow> lKostenträger = new List<dbCalc.KostenträgerRow>();
+                            List<dbCalc.ZahlerRow> lZahlungenFSW = new List<dbCalc.ZahlerRow>();
+                            List<dbCalc.ZahlerRow> lZahlungenNoFSW = new List<dbCalc.ZahlerRow>();
+                            List<string> lSplitLeistungen = new List<string>();
+                            List<dbCalc.TagesleistungenRow> lTagesleistungenNichtReduziert = new List<dbCalc.TagesleistungenRow>();
+                            List<dbCalc.TagesleistungenRow> lTagesleistungenReduziert = new List<dbCalc.TagesleistungenRow>();
+
+                            //Alle Zahler ermitteln, für die der FSW direkt oder indirekt zahlt
+                            foreach (dbCalc.ZahlerRow z in dbCalc.Zahler)
                             {
-                                if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !LeistungszeileBereitsVerrechnet(new Guid(Rechnungszeile.ID), new Guid(rBill.ID)))
+                                Guid IDKostIntern = new Guid(z.IDKostIntern);
+                                dbCalc.KostenträgerRow rKost = (from kt in dbCalc.Kostenträger
+                                                               where kt.IDKostIntern == IDKostIntern.ToString()
+                                                               select kt).First();
+
+                                if (FSWIsZahler(new Guid(rKost.IDKost.ToString()), ENV.FSW_IDIntern))
                                 {
-                                    if (Rechnungszeile.Kennung.sEquals("LZ"))
+                                    lZahlungenFSW.Add(z);      //Leistungen, bei denen der FSW zahlt
+                                    lKostenträger.Add(rKost);
+                                }
+                                else
+                                {
+                                    lZahlungenNoFSW.Add(z);    //Leistungen, bei denen der FSW NICHT zahlt
+                                }
+                            }
+
+                            foreach (dbCalc.ZahlerRow z in lZahlungenFSW)
+                            {
+                                foreach (dbCalc.ZahlerRow nz in lZahlungenNoFSW)
+                                {
+                                    if (z.IDLeistung == nz.IDLeistung)
                                     {
-                                        foreach (string sBW in lBW_Leistungen)
-                                        {
-                                            if (Rechnungszeile.Bezeichnung.sEquals(sBW, S2Extensions.Enums.eCompareMode.StartsWith))
-                                            {
-                                                dBWNetto += Rechnungszeile.Netto;
-                                            }
-                                            else
-                                            {
-                                                dPflegeNetto += Rechnungszeile.Netto;
-                                            }
-                                        }
-                                    }
-                                    else if (Rechnungszeile.Kennung.sEquals("MWstSatz"))   //zur Kontrolle
-                                    {
-                                        dMwSt += Rechnungszeile.Netto;
+                                        lSplitLeistungen.Add(z.IDLeistung);     //Leistungen, bei den der FSW mitzahlt
                                     }
                                 }
                             }
-                            decimal dPercentPflege = (dPflegeNetto != 0 ? (dPflegeNetto) / (dPflegeNetto + dBWNetto)  : 0);  //Aufteilungsschlüssel für MwsT, GSBG und Gesamt zwischen Pflege und Betreutes Wohnen
+
+                            //Alle Leistungen ermitteln, für die der FSW zahlt
+                            foreach (dbCalc.LeistungenRow l in dbCalc.Leistungen)
+                            {
+                                foreach (dbCalc.ZahlerRow zFSW in lZahlungenFSW.Where(lZ => lZ.IDLeistung == l.ID))
+                                {
+                                    bool bIsStorno = rBill.Status == -10 || rBill.RechNr.sEquals("ForStorno;");
+                                    decimal dStornoFaktor = (bIsStorno ? -1 : 1);
+
+                                    foreach (dbCalc.TagesleistungenRow tl in dbCalc.Tagesleistungen.Where(tl => tl.IDLeistung == l.ID))
+                                    {
+
+                                        foreach (dbCalc.KostenträgerRow rKost in lKostenträger)
+                                        {
+                                            if (tl.Datum.Date < rKost.von || tl.Datum.Date > rKost.bis)
+                                                continue;
+
+                                            if (!tl.ReduziertJN)
+                                            {
+                                                lTagesleistungenNichtReduziert.Add(tl);
+                                                break;                                      //Einmal bezahlt reicht.
+                                            }
+                                            else
+                                            {
+                                                lTagesleistungenReduziert.Add(tl);
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                    //Leistungen können im Zeitablauf andere Preise haben. Anzahl der Tage pro Leistung und Preis ermitteln
+                                    //für nicht reduzierte Leistungen
+                                    var lTagespreise = lTagesleistungenNichtReduziert.Where(lp => lp.IDLeistung == l.ID).GroupBy(lp => lp.IDLeistung, lp => lp.TagespreisNetto,
+                                                    (key, g) => new { ID = key, Tagespreise = g.ToList() });
+
+                                    foreach (var r in lTagespreise)
+                                    {
+                                        TmpLineItem lz = new TmpLineItem
+                                        {
+                                            Rechungsnummer = rBill.RechNr,
+                                            Description = l.LeistungBezeichnung,
+                                            Quantity = lTagesleistungenNichtReduziert.Where(tl => tl.TagespreisNetto == r.Tagespreise[0]).Count() * (int)dStornoFaktor,
+                                            PreisProEinheit = r.Tagespreise[0],
+                                            TaxPercent = l.MWStSatz,
+                                            LineItemAmount = (decimal)r.Tagespreise.Count() * r.Tagespreise[0] * dStornoFaktor,
+                                            TaxableAmount = (decimal)r.Tagespreise.Count() * r.Tagespreise[0] * dStornoFaktor,
+                                            Tax = Math.Round((decimal)r.Tagespreise.Count() * r.Tagespreise[0] * dStornoFaktor * (decimal)l.MWStSatz / 100, 2, MidpointRounding.AwayFromZero),
+                                            bIsPflege = CheckIsPflege(l.LeistungBezeichnung, lBW_Leistungen),
+                                            IDLeistung = l.ID,
+                                            bIsStorno = bIsStorno,
+                                            bIsReduziert = false,
+                                            FiBu = l.FIBU
+                                        };
+                                        lTmpLineItems.Add(lz);
+                                    }
+
+                                    //für reduzierte Leistungen
+                                    var lTagespreiseNR = lTagesleistungenReduziert.Where(lp => lp.IDLeistung == l.ID).GroupBy(lp => lp.IDLeistung, lp => lp.TagespreisReduziertNetto,
+                                                    (key, g) => new { ID = key, TagespreisReduziertNetto = g.ToList() });
+
+                                    foreach (var r in lTagespreiseNR)
+                                    {
+                                        TmpLineItem lz = new TmpLineItem
+                                        {
+                                            Rechungsnummer = rBill.RechNr,
+                                            Description = l.LeistungBezeichnung,
+                                            Quantity = lTagesleistungenReduziert.Where(tl => tl.TagespreisReduziertNetto == r.TagespreisReduziertNetto[0]).Count() * (int)dStornoFaktor,
+                                            PreisProEinheit = r.TagespreisReduziertNetto[0],
+                                            TaxPercent = l.MWStSatz,
+                                            LineItemAmount = (decimal)r.TagespreisReduziertNetto.Count() * r.TagespreisReduziertNetto[0] * dStornoFaktor,
+                                            TaxableAmount = (decimal)r.TagespreisReduziertNetto.Count() * r.TagespreisReduziertNetto[0] * dStornoFaktor,
+                                            Tax = Math.Round((decimal)r.TagespreisReduziertNetto.Count() * r.TagespreisReduziertNetto[0] * dStornoFaktor * (decimal)l.MWStSatz / 100, 2, MidpointRounding.AwayFromZero),
+                                            bIsPflege = CheckIsPflege(l.LeistungBezeichnung, lBW_Leistungen),
+                                            IDLeistung = l.ID,
+                                            bIsStorno = bIsStorno,
+                                            bIsReduziert = true,
+                                            FiBu = l.FIBU
+                                        };
+                                        lTmpLineItems.Add(lz);
+                                    }
+                                }
+                            }
 
                             Invoice.InvoiceNumber = rBill.RechNr;
                             Invoice.InvoiceDate = (DateTime)rBill.RechDatum;
@@ -217,212 +367,192 @@ namespace PMDS.Global
                                 InvoiceBW.Details.HeaderDescription = "Zahlungsaufforderung Zeitraum " + rBill.datum.ToString("MMMM") + " " + rBill.datum.ToString("yyyy");
                             }
 
-                            int Zeile = 0;
-                            int ZeileBW = 0;
+                            // ------------------------------------------------------------------------------------------
+                            int PositionNumber = 0;
+                            int PositionNumberBW = 0;
 
-                            foreach (dbCalc.KostenKostenträgerRow Rechnungszeile in dbCalc.KostenKostenträger)
+                            foreach (TmpLineItem lz in lTmpLineItems)
                             {
-                                //Prüfen, ob die Rechung an FSW oder Stellvertert geht (Kostenträger Sub in rBill) 
-                                //if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !lstZeilen.Contains(new Guid(Rechnungszeile.ID)))
-                                if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !LeistungszeileBereitsVerrechnet(new Guid(Rechnungszeile.ID), new Guid(rBill.ID)))
-                                {
-                                    if (Rechnungszeile.Kennung.sEquals("LZ"))
+                                    if (lz.bIsPflege)
                                     {
-                                        bool bLZIsPflege = false;
-                                        bool bLZIsBetreutesWohnen = false;
-                                        foreach (string sBW in lBW_Leistungen)      //Art der Leistung ermitteln
-                                        {
-                                            if (Rechnungszeile.Bezeichnung.sEquals(sBW, S2Extensions.Enums.eCompareMode.StartsWith))
-                                            {
-                                                bLZIsBetreutesWohnen = bLZIsBetreutesWohnen || true;
-                                                ZeileBW++;
-                                            }
-                                            else
-                                            {
-                                                bLZIsPflege = bLZIsPflege || true;
-                                                Zeile++;
-                                            }                                             
-                                        }                                        
+                                        PositionNumber++;           //Muss bei jeder Rechnung mit 1 beginnen (unabhängig von der Orginal-Zeilennummer) 
+                                        Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, PositionNumber, lz.Description + (lz.bIsReduziert ? " (reduziert)" : ""), lz.Quantity, lz.PreisProEinheit, lz.LineItemAmount, lz.TaxableAmount, lz.TaxPercent));
 
-                                        if (rBill.Status == -10)    //Bei Storno Tage negativ angeben und Basipreis positiv
-                                        {
-                                            if (bLZIsPflege)
-                                                Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl * -1, Math.Abs(Rechnungszeile.Netto / Rechnungszeile.Anzahl), Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
-                                            else if (bLZIsBetreutesWohnen)
-                                                InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl * -1, Math.Abs(Rechnungszeile.Netto / Rechnungszeile.Anzahl), Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
-                                        }
-                                        else
-                                        {
-                                            if (bLZIsPflege)
-                                                Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
-                                            else if (bLZIsBetreutesWohnen)
-                                                InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
-                                        }
-                                        lstZeilen.Add(new Leistungszeile() { IDRechnungszeile = new Guid(Rechnungszeile.ID), IDRechnung = new Guid(rBill.ID) });      // new Guid(Rechnungszeile.ID), new Guid(rBill.ID));
+                                        Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount += lz.LineItemAmount;
+                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage = lz.TaxPercent;
+                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Amount += lz.Tax;
+                                        Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount += lz.TaxableAmount;
 
+                                        Invoice.TotalGrossAmount += lz.LineItemAmount + lz.Tax;
+                                        Invoice.PayableAmount = Invoice.TotalGrossAmount;
+                                        Invoice.Tax = lz.Tax;
 
-                                        lstXlsVorschauZeilen.Add(new XlsVorschauZeile()
-                                        {
-                                            Nachname = rBill.KlientName,
-                                            Vorname = "",
-                                            //Text = (from la in dbCalc.Leistungen where la.IDLeistungskatalog == Rechnungszeile.IDLeistungsKatalog select la.LeistungBezeichnung).FirstOrDefault(),
-                                            Text = Rechnungszeile.Bezeichnung,
-                                            Netto = (double)Rechnungszeile.Netto,
-                                            MwStSatz = (double)Rechnungszeile.MWSt,
-                                            Anzahl = Rechnungszeile.Anzahl,
-                                            FiBu = Rechnungszeile.FIBU,
-                                            ReDatum = (DateTime)rBill.RechDatum,
-                                            Monat = Rechnungszeile.KostenträgerRow.von,
-                                            SVNr = VersicherungsNr
-                                        });
+                                        Invoice.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFID;
+                                    }
+                                    else
+                                    {
+                                        PositionNumberBW++;           //Muss bei jeder Rechnung mit 1 beginnen (unabhängig von der Orginal-Zeilennummer) 
+                                        InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, PositionNumberBW, lz.Description + (lz.bIsReduziert ? " (reduziert)" : ""), lz.Quantity, lz.PreisProEinheit, lz.LineItemAmount, lz.TaxableAmount, lz.TaxPercent));
+
+                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.BaseAmount += lz.LineItemAmount;
+                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Percentage = lz.TaxPercent;
+                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Amount += lz.Tax;
+                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount += lz.TaxableAmount;
+
+                                        InvoiceBW.TotalGrossAmount += lz.LineItemAmount + lz.Tax;
+                                        InvoiceBW.PayableAmount = InvoiceBW.TotalGrossAmount;
+                                        Invoice.Tax = lz.Tax;
+
+                                        InvoiceBW.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFIDBW;
                                     }
 
-                                    else if (Rechnungszeile.Kennung.sEquals("MWstSatz"))
+                                    lstXlsVorschauZeilen.Add(new XlsVorschauZeile()
                                     {
-                                        //Steuern werden als Surcharge verrechnet!!!!
-                                        decimal Tax = Math.Round(Rechnungszeile.Netto * dPercentPflege, 2, MidpointRounding.AwayFromZero);
-                                        Invoice.Tax += Tax;
-
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount = dPflegeNetto;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage = Rechnungszeile.MWStSatz;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Amount = Tax;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = dPflegeNetto;
-
-                                        decimal TaxBW = Math.Round(Rechnungszeile.Netto * (1 - dPercentPflege), 2, MidpointRounding.AwayFromZero);
-                                        InvoiceBW.Tax += TaxBW;
-
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.BaseAmount = dBWNetto;
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Percentage = Rechnungszeile.MWStSatz;
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Amount = TaxBW;
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = dBWNetto;
-                                    }
-
-                                    else if (Rechnungszeile.Kennung.sEquals("GSGB"))
-                                    {
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount = dPflegeNetto;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage = ENV.FSW_Prozent;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Amount = Math.Round(dPflegeNetto * (ENV.FSW_Prozent / 100), 2, MidpointRounding.AwayFromZero);
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = Invoice.ReductionAndSurchargeDetails.Surcharge.Amount;
-
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.BaseAmount = dBWNetto;
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Percentage = ENV.FSW_Prozent;
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Amount = Math.Round(dBWNetto * (ENV.FSW_Prozent / 100), 2, MidpointRounding.AwayFromZero);
-                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Amount;
-
-                                        lstZeilen.Add(new Leistungszeile() { IDRechnungszeile = new Guid(Rechnungszeile.ID), IDRechnung = new Guid(rBill.ID) });      // new Guid(Rechnungszeile.ID), new Guid(rBill.ID));
-                                    }
-                                    
-                                }
+                                        Nachname = rBill.KlientName,
+                                        Vorname = "",
+                                        Text = lz.Description + (lz.bIsReduziert ? " (reduziert)" : ""),
+                                        Netto = (double)lz.TaxableAmount,
+                                        MwStSatz = lz.TaxPercent,
+                                        Anzahl = lz.Quantity,
+                                        FiBu = lz.FiBu,
+                                        ReDatum = (DateTime)rBill.RechDatum,
+                                        Monat = rBill.datum,
+                                        SVNr = VersicherungsNr,
+                                        bIsPflege = lz.bIsPflege
+                                    });                                   
+                               
                             }
-                            if (Zeile > 0)                     //Wenn mindestens eine Rechnungszeile vom FSW bezahlt wird -> Rechnungsnummer in neuer Liste merken (fürs Update)
+
+                            if (Invoice.Details.ItemList.Count > 0)                      //Wenn mindestens eine Rechnungszeile vom FSW bezahlt wird -> Rechnungsnummer in neuer Liste merken (fürs Update){
+                            {
                                 ListIDBillsFSW.Add(IDBill);
+                                Steuern += Invoice.Tax;
+                                Rechnungsbetrag += Invoice.PayableAmount;
+                                Transaction.ArDocument.AddInvoiceToList(Invoice);
+                            }
 
-                            if (ZeileBW > 0)                     //Wenn mindestens eine Rechnungszeile vom FSW bezahlt wird -> Rechnungsnummer in neuer Liste merken (fürs Update)
+                            if (InvoiceBW.Details.ItemList.Count > 0)                     //Wenn mindestens eine Rechnungszeile vom FSW bezahlt wird -> Rechnungsnummer in neuer Liste merken (fürs Update)
+                            {
                                 ListIDBillsFSWBW.Add(IDBill);
-
-
-                            Invoice.TotalGrossAmount = Math.Round(rBill.betrag * dPercentPflege, 2, MidpointRounding.AwayFromZero);
-                            Invoice.PayableAmount = Invoice.TotalGrossAmount;
-                            Steuern += Invoice.Tax;
-                            Rechnungsbetrag += Invoice.PayableAmount;
-                            Invoice.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFID;
-                            Transaction.ArDocument.AddInvoiceToList(Invoice);
-
-                            InvoiceBW.TotalGrossAmount = Math.Round(rBill.betrag * (1 - dPercentPflege), 2, MidpointRounding.AwayFromZero);
-                            InvoiceBW.PayableAmount = InvoiceBW.TotalGrossAmount;
-                            SteuernBW += InvoiceBW.Tax;
-                            RechnungsbetragBW += InvoiceBW.PayableAmount;
-                            InvoiceBW.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFIDBW;
-                            TransactionBW.ArDocument.AddInvoiceToList(InvoiceBW);
+                                SteuernBW += InvoiceBW.Tax;
+                                RechnungsbetragBW += InvoiceBW.PayableAmount;
+                                TransactionBW.ArDocument.AddInvoiceToList(InvoiceBW);
+                            }
                         }
                     }
 
                     if (Action == eAction.fswXlsVorschau && lstXlsVorschauZeilen.Count > 0)
                     {
-                    //Excel anlegen
                         string xlsWorking = System.IO.Path.Combine(ENV.FSW_EZAUF, "FSW_Vorschau_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".xlsx");
-                        using (ExcelEngine excelEngine = new ExcelEngine())
+
+                        Infragistics.Documents.Excel.Workbook wb = new Infragistics.Documents.Excel.Workbook(WorkbookFormat.Excel2007);
+                        Infragistics.Documents.Excel.Worksheet ws = wb.Worksheets.Add("Übersicht FSW-Abrechnung");
+                        ws.Rows[0].Cells[0].Value = "Name";
+                        ws.Rows[0].Cells[1].Value = "SV-Nr";
+                        ws.Rows[0].Cells[2].Value = "Leistung";
+                        ws.Rows[0].Cells[3].Value = "Netto Pflege";
+                        ws.Rows[0].Cells[4].Value = "Netto BW";
+                        ws.Rows[0].Cells[5].Value = "MwSt-Satz";
+                        ws.Rows[0].Cells[6].Value = "Anzahl Tage";
+                        ws.Rows[0].Cells[7].Value = "FiBu";
+                        ws.Rows[0].Cells[8].Value = "Datum erstellt";
+                        ws.Rows[0].Cells[9].Value = "Monat/Jahr";
+
+                        ws.Columns[0].Width = 7000;
+                        ws.Columns[0].CellFormat.WrapText = Infragistics.Documents.Excel.ExcelDefaultableBoolean.True;
+                        ws.Columns[1].Width = 3000;
+                        ws.Columns[2].Width = 14000;
+                        ws.Columns[2].CellFormat.WrapText = Infragistics.Documents.Excel.ExcelDefaultableBoolean.True;
+                        ws.Columns[3].Width = 3000;
+                        ws.Columns[4].Width = 3000;
+                        ws.Columns[5].Width = 3000;
+                        ws.Columns[6].Width = 3000;
+                        ws.Columns[7].Width = 3000;
+                        ws.Columns[8].Width = 4000;
+                        ws.Columns[9].Width = 3000;
+
+                        for (int c = 0; c <= 9; c++)
                         {
+                            ws.Rows[0].Cells[c].CellFormat.Fill = CellFill.CreateSolidFill(Color.LightSalmon);
+                            ws.Rows[0].Cells[c].CellFormat.LeftBorderStyle = CellBorderLineStyle.Thin;
+                            ws.Rows[0].Cells[c].CellFormat.RightBorderStyle = CellBorderLineStyle.Thin;
+                        }
 
-                            IApplication application = excelEngine.Excel;
-                            application.DefaultVersion = ExcelVersion.Xlsx;
-                            IWorkbook workbook = application.Workbooks.Create(1);
-                            IWorksheet workSheet = workbook.Worksheets.Create("Übersicht");
-                            workbook.Worksheets[0].Remove();  //Standard-Worksheet entfernen
+                        int z = 0;
+                        var dec = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                        var thousend = CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator;
+                        var curency = CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol;
+                        string EuroString = "#" + thousend + "##0" + dec + "00 [$€-x-euro2]; -#" + thousend + "##" + dec + "00 [$€-x-euro2]; 0,00 [$€-x-euro2]";
 
-                            workSheet.Range[1, 1].Text = "Name";
-                            workSheet.Range[1, 2].Text = "SV-Nr";
-                            workSheet.Range[1, 3].Text = "Leistung";
-                            workSheet.Range[1, 4].Text = "Netto";
-                            workSheet.Range[1, 5].Text ="MwSt-Satz";
-                            workSheet.Range[1, 6].Text = "Anzahl Tage";
-                            workSheet.Range[1, 7].Text = "FiBu";
-                            workSheet.Range[1, 8].Text = "Datum erstellt";
-                            workSheet.Range[1, 9].Text = "Monat/Jahr";
+                        foreach (XlsVorschauZeile lz in lstXlsVorschauZeilen)
+                        {
+                            z++;
+                            ws.Rows[z].Cells[0].Value = lz.Nachname;
+                            ws.Rows[z].Cells[1].Value = lz.SVNr;
+                            ws.Rows[z].Cells[2].Value = lz.Text;
+                            ws.Rows[z].Cells[2].CellFormat.ShrinkToFit = ExcelDefaultableBoolean.True;
 
-                            int i = 1;
-                            foreach(XlsVorschauZeile lz in lstXlsVorschauZeilen)
+                            if (lz.bIsPflege)
                             {
-                                i++;
-                                workSheet.Range[i, 1].Text = lz.Nachname;
-                                workSheet.Range[i, 2].Text = lz.SVNr;
-                                workSheet.Range[i, 3].Text = lz.Text;
-                                workSheet.Range[i, 4].Number = lz.Netto;
-                                workSheet.Range[i, 4].NumberFormat = "€#,##0.00";
-                                workSheet.Range[i, 5].Number =  lz.MwStSatz;
-                                workSheet.Range[i, 6].Number = lz.Anzahl;
-                                workSheet.Range[i, 7].Text = lz.FiBu;
-                                workSheet.Range[i, 8].DateTime = lz.ReDatum;
-                                workSheet.Range[i, 8].NumberFormat = "dd.mm.yyyy";
-                                workSheet.Range[i, 9].DateTime = lz.Monat;
-                                workSheet.Range[i, 9].NumberFormat = "mm/yyyy";
-                            }
-                            workbook.SetPaletteColor(8, Color.FromArgb(255, 174, 33));
-
-                            //Header style
-                            IStyle headerStyle = workbook.Styles.Add("HeaderStyle");
-                            headerStyle.BeginUpdate();
-                            headerStyle.Color = Color.FromArgb(255, 174, 33);
-                            headerStyle.Font.Bold = true;
-                            headerStyle.Borders[ExcelBordersIndex.EdgeLeft].LineStyle = ExcelLineStyle.Thin;
-                            headerStyle.Borders[ExcelBordersIndex.EdgeRight].LineStyle = ExcelLineStyle.Thin;
-                            headerStyle.Borders[ExcelBordersIndex.EdgeTop].LineStyle = ExcelLineStyle.Thin;
-                            headerStyle.Borders[ExcelBordersIndex.EdgeBottom].LineStyle = ExcelLineStyle.Thin;
-                            headerStyle.EndUpdate();
-
-                            //Body style
-                            IStyle bodyStyle = workbook.Styles.Add("BodyStyle");
-                            bodyStyle.BeginUpdate();
-                            bodyStyle.Color = Color.FromArgb(239, 243, 247);
-                            bodyStyle.Borders[ExcelBordersIndex.EdgeLeft].LineStyle = ExcelLineStyle.Thin;
-                            bodyStyle.Borders[ExcelBordersIndex.EdgeRight].LineStyle = ExcelLineStyle.Thin;
-                            bodyStyle.EndUpdate();
-
-                            workSheet.Rows[0].CellStyle = headerStyle;
-                            workSheet.Range["A2:I" +i.ToString()].CellStyle = bodyStyle;
-
-                            workSheet.UsedRange.AutofitColumns();
-
-                            workbook.SaveAs(xlsWorking);
-                            if (File.Exists(xlsWorking))
-                            {
-                                if (generic.IsExcelInstalled())
-                                {
-                                    System.Diagnostics.Process.Start(xlsWorking);
-                                    return;
-                                }
-                                else
-                                {
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datei wurde gespeichert (" + xlsWorking + "), kann aber nicht geöffnet werden, weil Excel nicht installiert ist.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                    return;
-                                }
+                                ws.Rows[z].Cells[3].Value = lz.Netto;
+                                ws.Rows[z].Cells[3].CellFormat.FormatString = EuroString;
+                                ws.Rows[z].Cells[4].CellFormat.FormatString = EuroString;
+                                ws.Rows[z].Cells[4].Value = "";
                             }
                             else
-                            {                                                               
-                                {
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datei " + xlsWorking + "konnte nicht gespeichert werden.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                    return;
-                                }
+                            {
+                                ws.Rows[z].Cells[4].Value = lz.Netto;
+                                ws.Rows[z].Cells[4].CellFormat.FormatString = EuroString;
+                                ws.Rows[z].Cells[3].CellFormat.FormatString = EuroString;
+                                ws.Rows[z].Cells[3].Value = "";
+                            }
+                            ws.Rows[z].Cells[5].Value = lz.MwStSatz;
+                            ws.Rows[z].Cells[6].Value = lz.Anzahl;
+                            ws.Rows[z].Cells[7].Value = lz.FiBu;
+
+
+                            ws.Rows[z].Cells[8].Value = lz.ReDatum.Date;
+                            ws.Rows[z].Cells[8].CellFormat.FormatString = "dd.MM.yyyy";
+
+                            ws.Rows[z].Cells[9].Value = lz.Monat.Date;
+                            ws.Rows[z].Cells[9].CellFormat.FormatString = "MM-yyyy";
+                        }
+
+                        //Summen einfügen
+                        ws.Rows[z + 2].Cells[2].Value = "Summen";
+
+                        Infragistics.Documents.Excel.Formula SummePflege = Infragistics.Documents.Excel.Formula.Parse("=SUM($D$1:$D$" + (z + 1).ToString() + ")", Infragistics.Documents.Excel.CellReferenceMode.A1);
+                        SummePflege.ApplyTo(ws.Rows[z + 2].Cells[3]);
+                        ws.Rows[z + 2].Cells[3].CellFormat.FormatString = EuroString;
+
+                        Infragistics.Documents.Excel.Formula SummeBW = Infragistics.Documents.Excel.Formula.Parse("=SUM($E$1:$E$" + (z + 1).ToString() + ")", Infragistics.Documents.Excel.CellReferenceMode.A1);
+                        SummeBW.ApplyTo(ws.Rows[z + 2].Cells[4]);
+                        ws.Rows[z + 2].Cells[4].CellFormat.FormatString = EuroString;
+
+                        ws.Rows[z + 4].Cells[2].Value = "GESAMTSUMME";
+                        Infragistics.Documents.Excel.Formula Summe = Infragistics.Documents.Excel.Formula.Parse("=$D$" + (z + 3).ToString() + " + $E$" + (z + 3).ToString(), Infragistics.Documents.Excel.CellReferenceMode.A1);
+                        Summe.ApplyTo(ws.Rows[z + 4].Cells[3]);
+                        ws.Rows[z + 4].Cells[3].CellFormat.FormatString = EuroString;
+
+                        wb.Save(xlsWorking);
+                        if (File.Exists(xlsWorking))
+                        {
+                            if (generic.IsExcelInstalled())
+                            {
+                                System.Diagnostics.Process.Start(xlsWorking);
+                                return;
+                            }
+                            else
+                            {
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datei wurde gespeichert (" + xlsWorking + "), kann aber nicht geöffnet werden, weil Excel nicht installiert ist.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            {
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datei " + xlsWorking + "konnte nicht gespeichert werden.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                return;
                             }
                         }
                     }
@@ -445,9 +575,6 @@ namespace PMDS.Global
                     TransactionBW.ArDocument.Rechnungsbetrag = RechnungsbetragBW;
                     TransactionBW.ArDocument.Anzahl_Rechnungen = ListIDBillsFSWBW.Count;
 
-                    //lTransactions.Add(Transaction);
-                    //lTransactions.Add(TransactionBW);
-
                     List<XMLInfo> ListXMLInfos = new List<XMLInfo>();
                     XMLInfo XMLInfoPflege = new XMLInfo() { Transaction = Transaction };
                     XMLInfoPflege.bIsvalid = Transaction.ArDocument.Anzahl_Rechnungen > 0;
@@ -457,7 +584,6 @@ namespace PMDS.Global
                     XMLInfoBW.bIsvalid = TransactionBW.ArDocument.Anzahl_Rechnungen > 0;
                     ListXMLInfos.Add(XMLInfoBW);
 
-                    string ret = "";
                     if (ListIDBillsFSW.Count > 0 || ListIDBillsFSWBW.Count > 0)
                     {
                         List<string> ListIDs = new List<string>();
@@ -501,12 +627,19 @@ namespace PMDS.Global
                                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("XML-Exportdatei wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     return;
                                 }
-                                //FSWXml = _FSWXml;
                             }
 
                             if (RunAction == eAction.fswNoUpload)
                             {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ZAUF im XML-Export-Format wurde erstellt und gespeichert, aber nicht gesendet. ", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("eZAUFF im XML-Export-Format wurde erstellt und gespeichert, aber nicht gesendet.\n\nWollen Sie die Dateien anzeigen?", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.YesNo);
+                                if (res == DialogResult.Yes)
+                                {
+                                    string resShow = ShowXMLContent(ListXMLInfos);
+                                    if (!String.IsNullOrWhiteSpace(resShow))
+                                    {
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Anzeigen der Dateiinhalte:\n" + resShow, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    }
+                                }
                             }
 
                             if (ENV.FSW_SaveXLSX)
@@ -519,13 +652,14 @@ namespace PMDS.Global
                                 }
                                 if (!SaveXLSX(_FSWXlsx, ref FQFileXLSX, out Msg))   //Xlsx Speichern
                                 {
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exceldatei für ZAUF wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exceldatei für eZAUFF wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     return;
                                 }
                             }
                             
                             if (RunAction == eAction.fsw)    //Hochladen. Wenn nein -> nur XML erstellen (z.B. für Test)
                             {
+                                string Log = "";
                                 foreach(XMLInfo f in ListXMLInfos)
                                 {
                                     if (!f.bIsvalid)
@@ -535,37 +669,34 @@ namespace PMDS.Global
                                     FilenameXML = f.Transaction.bIsPflegeZAUFF ? FilenameXML : FilenameXMLBW;
                                     ListIDs = f.Transaction.bIsPflegeZAUFF ? ListIDBillsFSW : ListIDBillsFSWBW;
 
-                                    ret = Upload(FilenameXML, f.FQFileXML);
+                                    ret = Upload(FilenameXML, f.FQFileXML, out string LogsFTP);
+                                    Log += "\n" + LogsFTP;
+
                                     if (ret.Length > 0)
                                     {
                                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Hochladen der Zahlungsaufforderung: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                         return;
                                     }
-                                    //Sammelrechnung-ID (ZAUF) setzen
-                                    ret = SetIDSR(ListIDs, FilenameXML, db);
-                                    if (ret.Length == 0)
+                                    
+                                    ret = SetIDSR(ListIDs, FilenameXML, db);    //Sammelrechnung-ID (ZAUF) setzen
+                                    if (ret.Length != 0)
                                     {
-                                        string sBWExt = f.Transaction.bIsPflegeZAUFF ? "" : "(BW) ";
-                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung " + sBWExt + "für " + ListIDs.Count.ToString() + " Rechnung(en) an FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                    }
-                                    else
-                                    {
-                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung wurde gesendet, aber beim Sichern des ZAUF-Zustands (Kennung Sammelrechnung) ist ein Fehler aufgetreten: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung wurde gesendet, aber beim Sichern des eZAUFF-Zustands (Kennung Sammelrechnung) ist ein Fehler aufgetreten: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                         return;
                                     }
                                 }
-                            }
-                        }
-                        else
-                        {
-                            //Sammelrechnung-ID (ZAUF) setzen
-                            ret = SetIDSR(ListIDBills, "", db);
-                            if (ret.Length == 0)
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Status Zahlungsaufforderung für " + ListIDBills.Count.ToString() + " Rechnung(en) zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                            else
-                            {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Zurücksetzen des ZAUF-Zustands: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                return;
+
+                                string sTxtZAUFFS = ListXMLInfos.Count().sIntToWords("e ") + "Zahlungsaufforderung".sMehrzahlText(ListXMLInfos.Count(), "en");
+                                string sTxtRechnungen = ListIDs.Count().sIntToWords("e") + " Rechnung".sMehrzahlText(ListIDs.Count(), "en") + " wurde".sMehrzahlText(ListIDs.Count(), "n");
+                                DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sTxtZAUFFS + " für " + sTxtRechnungen + " an den FSW gesendet.\n\nWollen Sie die Dateien anzeigen?", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.YesNo);
+                                if (res == DialogResult.Yes)
+                                {
+                                    string resShow = ShowXMLContent(ListXMLInfos, Log);
+                                    if (!String.IsNullOrWhiteSpace(resShow))
+                                    {
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Anzeigen der Dateiinhalte:\n" + resShow, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    }
+                                }
                             }
                         }
                     }
@@ -583,6 +714,67 @@ namespace PMDS.Global
             finally
             {
                 
+            }
+        }
+
+        public string ShowXMLContent(List<XMLInfo> ListXMLInfos, string Log = "")
+        {
+            try
+            {
+                StringBuilder sbFileContent = new StringBuilder();
+
+                int ieZAUFFs = (from aw in ListXMLInfos
+                         where aw.bIsvalid == true
+                         select aw.bIsvalid).ToList().Count();
+
+                sbFileContent.Append("Diese Datei enthält " + ieZAUFFs.sIntToWords("e") + " eZAUFF".sMehrzahlText(ieZAUFFs, "s"));
+
+
+                if (!String.IsNullOrWhiteSpace(Log))
+                {
+                    sbFileContent.Append(" und eine Log-Datei für die SFTP-Übertragung\n");
+
+                    sbFileContent.Append("<<<<< BEGINN sFTP-Log-File >>>>>\n");
+                    sbFileContent.Append(Log);
+                    sbFileContent.Append("<<<<< ENDE sFTP-Log-File >>>>>");
+                }
+
+                foreach (XMLInfo xmlInfo in ListXMLInfos)
+                {
+                    if (xmlInfo.bIsvalid)
+                    {
+                        sbFileContent.Append("\n\n<<<<< BEGINN von " + xmlInfo.FQFileXML + " >>>>>\n");
+                        sbFileContent.Append(xmlInfo.Xml.ToString());
+                        sbFileContent.Append("<<<<< ENDE von " + xmlInfo.FQFileXML + ">>>>>");
+                    }
+                }
+
+                TextEditMainForm frm = new TextEditMainForm("eZAUFF-Export Übersicht", sbFileContent);
+                frm.Show();
+
+                //using (QS2.Desktop.Txteditor.frmTxtEditorField frmEditor = new QS2.Desktop.Txteditor.frmTxtEditorField())
+                //{
+                //    Font font = new Font(
+                //       new FontFamily("Courier New"),
+                //       12,
+                //       FontStyle.Regular,
+                //       GraphicsUnit.Point);
+
+                //    frmEditor.ContTXTField1.initControl(TXTextControl.ViewMode.FloatingText, true, true, true, true, false, false);
+                //    frmEditor.WindowState = FormWindowState.Maximized;
+                //    frmEditor.ContTXTField1.TXTControlField.ViewMode = TXTextControl.ViewMode.FloatingText;
+                //    frmEditor.ContTXTField1.TXTControlField.EditMode = TXTextControl.EditMode.ReadOnly;
+                //    frmEditor.ContTXTField1.TXTControlField.Font = font;
+                //    frmEditor.ContTXTField1.TXTControlField.Text = sbFileContent.ToString();
+                //    frmEditor.Text = "FSW-eZAUFF - Anzeige";
+                //    frmEditor.ShowDialog();
+                //}
+                Application.DoEvents();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
 
@@ -624,7 +816,7 @@ namespace PMDS.Global
                             res.IDSR = IDSR.Substring(IDSR.Length - 21, 21);
                         else
                         {
-                            return "Ungültige eZAUF-Nummer: " + IDSR;
+                            return "Ungültige eZAUFF-Nummer: " + IDSR;
                         }
                     }
                 }
@@ -828,6 +1020,7 @@ namespace PMDS.Global
         public static bool SaveXML(ref List<XMLInfo> ListXMLInfos, out string Message)
         {
             Message = "";
+
             try
             {
                 foreach (XMLInfo XmlInfo in ListXMLInfos)
@@ -843,6 +1036,7 @@ namespace PMDS.Global
                         if (dlg.ShowDialog() == DialogResult.OK)
                         {
                             XmlInfo.FQFileXML = dlg.FileName;
+
                             if (!XmlInfo.Xml.SaveXml(dlg.FileName))
                             {
                                 throw new Exception("Fehler beim Speichern der Zahlungsaufforderung: " + XmlInfo.Xml.LastErrorText);
@@ -960,7 +1154,7 @@ namespace PMDS.Global
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
                     bool b =  (from kt in db.Kostentraeger
-                            select kt).Where(kt => kt.ID == IDKostentraeger && kt.IDKostentraegerSub == IDFSW).Any();
+                            select kt).Where(kt => kt.ID == IDKostentraeger && (kt.IDKostentraegerSub == IDFSW || kt.ID == IDFSW)).Any();
 
                     if (b)
                     {
@@ -976,33 +1170,34 @@ namespace PMDS.Global
             }
         }
 
-        private bool LeistungszeileBereitsVerrechnet(Guid IDRechnungszeile, Guid IDRechnung)
-        {
-            try
-            {
-                return (from z in lstZeilen
-                          select z).Where(z => z.IDRechnungszeile == IDRechnungszeile && z.IDRechnung == IDRechnung).Any();
-                /*
-                foreach (Leistungszeile z in lstZeilen)
-                {
-                    if (z.IDRechnungszeile == IDRechnungszeile && z.IDRechnung == IDRechnung)
-                    {
-                        return true;
-                    }
-                }
-                return false;
-                */
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("FSWAbrechnung.cs.getDBCalc: " + ex.Message);
-            }
-        }
+        //private bool LeistungszeileBereitsVerrechnet(Guid IDRechnungszeile, Guid IDRechnung)
+        //{
+        //    try
+        //    {
+        //        return (from z in lstZeilen
+        //                  select z).Where(z => z.IDRechnungszeile == IDRechnungszeile && z.IDRechnung == IDRechnung).Any();
+        //        /*
+        //        foreach (Leistungszeile z in lstZeilen)
+        //        {
+        //            if (z.IDRechnungszeile == IDRechnungszeile && z.IDRechnung == IDRechnung)
+        //            {
+        //                return true;
+        //            }
+        //        }
+        //        return false;
+        //        */
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("FSWAbrechnung.cs.getDBCalc: " + ex.Message);
+        //    }
+        //}
 
-        private static string Upload (string RemoteFilename, string LocalFQFilename)
+        private static string Upload (string RemoteFilename, string LocalFQFilename, out string Log)
         {
             try
             {
+                Log = "";
                 bool success;
                 using (Chilkat.SFtp sftp = new Chilkat.SFtp())
                 {
@@ -1021,7 +1216,7 @@ namespace PMDS.Global
 //                                    if (sftp.UploadFileByName(RemoteFilename, LocalFQFilename))
                                     if (sftp.UploadFileByName( ENV.FSW_FTPMode.ToLower() + "/put/" + RemoteFilename, LocalFQFilename))
                                     {
-                                        WriteLogToFile(sftp.LastErrorText);
+                                        //WriteLogToFile(sftp.LastErrorText);
                                         if (sftp.LastErrorXml.Contains("failed status"))
                                         {
                                             WriteLogToFile(sftp.LastErrorText);
@@ -1030,6 +1225,7 @@ namespace PMDS.Global
                                         else
                                         {
                                             WriteLogToFile(sftp.LastErrorText);
+                                            Log = sftp.LastErrorText;
                                             return "";
                                         }
                                     }
@@ -1054,8 +1250,6 @@ namespace PMDS.Global
                             return "sFTP-Client-Connect fehlgeschlagen: " + sftp.LastErrorText;
                         }
                     }
-                    WriteLogToFile(sftp.LastErrorText);
-                    return "Undefiniertes Ende der Funktion erkannt.";
                 }
             }
             catch (Exception ex)
@@ -1079,6 +1273,24 @@ namespace PMDS.Global
                 throw new Exception("FSWAbrechnung.cs.WriteLogToFile: " + ex.Message);
             }
 
+        }
+
+        private bool CheckIsPflege(string LeistungBezeichnung, List<string> lBW_Leistungen)
+        {
+            bool bLZIsPflege = false;
+            bool bLZIsBetreutesWohnen = false;
+            foreach (string sBW in lBW_Leistungen)      //Art der Leistung ermitteln
+            {
+                if (LeistungBezeichnung.sEquals(sBW, S2Extensions.Enums.eCompareMode.StartsWith))
+                {
+                    bLZIsBetreutesWohnen = bLZIsBetreutesWohnen || true;
+                }
+                else
+                {
+                    bLZIsPflege = bLZIsPflege || true;
+                }
+            }
+            return bLZIsPflege;
         }
 
         private static string CopyXSLT(string sFileName)

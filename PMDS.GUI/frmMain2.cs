@@ -77,9 +77,6 @@ namespace PMDS
         public static qs2.ui.frmMain frmMainQS2 = null;
         private Panel PanelStatusbar;
         public UltraStatusBar ultraStatusBar1;
-        public Infragistics.Win.Misc.UltraLabel lblTxtMemory;
-        public Syncfusion.Windows.Forms.Tools.ProgressBarAdv pBarMemoryUsage;
-        private Panel panelBottomRight;
         public PMDS.DB.PMDSBusiness b = new PMDS.DB.PMDSBusiness();
 
         public bool _KlientenlisteOnTop = true;
@@ -110,6 +107,48 @@ namespace PMDS
             public bool Versetzung = false;
 
             public bool SuchtgiftschrankSchluessel = false;
+            public bool STAMP;
+        }
+
+        public class cRightsStammdaten
+        {
+            public bool Einrichtung = false;
+            public bool Benutzer = false;
+            public bool Gruppenrechte = false;
+            public bool VerwaltungEinrichtungUndBenutzer = false;
+            public bool VerwaltungFortbildungen = false;
+
+            public bool Auswahllisten = false;
+            public bool Zusatzeinträge = false;
+            public bool Textbausteine = false;
+            public bool Dokumentenverwaltung = false;
+            public bool ExterneEinrichtungen = false;
+
+            public bool Standardprozeduren = false;
+            public bool Assessments = false;
+            public bool Medikamente = false;
+            public bool Pflegerichtlinien = false;
+            public bool Ärzteverwaltung = false;
+            public bool Arztabrechnung = false;
+            public bool ÄrzteZusammenführen = false;
+            public bool Befundimport = false;
+
+            public bool Quickfilter = false;
+            public bool LayoutManager = false;
+            public bool MedizinischeTypen = false;
+            public bool MedizinscheDialoge = false;
+            public bool WundbilderSkalieren = false;
+
+            public bool QS2 = false;
+            public bool QS2AbfragebVerwaltenAdmin = false;
+            public bool QS2Ressourcen = false;
+            public bool QS2InformationenFelderSQLServer = false;
+            public bool QS2Kriterien = false;
+            public bool QS2Auswahllisten = false;
+
+            public bool Archiveinstellungen = false;
+            public bool EMailKonten = false;
+            public bool LogManager = false;
         }
 
         public ELGABusiness bElga = new ELGABusiness();
@@ -132,17 +171,6 @@ namespace PMDS
                 }
 
                 this.ultraToolbarsManager1.Tools["btnPatientAufenthalteLöschen"].SharedProps.Visible = false;
-
-                //throw new Exception("xy");
-                //this.TextException1();
-
-                //string sNrs = "";
-                //for (int i = 1000000; i < 1059999; i++)
-                //{
-                //    sNrs += i.ToString() + "\r\n";
-                //}
-                //sNrs += "\r\n";
-
             }
             catch (Exception ex)
             {
@@ -162,16 +190,11 @@ namespace PMDS
                 ucHeader1.HeaderButtonClick += new ucHeader.HeaderButtonClickDelegate(ucHeader1_HeaderButtonClick);
                 GuiAction.GuiActionDone += new GuiActionDoneDelegate(GuiAction_GuiActionDone);
                 ENV.NotfallChanged += new EventHandler(ENV_NotfallChanged);
-                //ENV.RestoreWindowPosition(this);
                 ENV.sendMainChanged += new sendMainChangedDelegate(this.mainEventReceive);
-
-                //PMDS.Global.Heimverträge.cHeimverträge cHeimverträge1 = new Global.Heimverträge.cHeimverträge();
-                //Infragistics.Win.UltraWinToolbars.PopupMenuTool popUpHeimverträge = (Infragistics.Win.UltraWinToolbars.PopupMenuTool)ultraToolbarsManager1.Tools["btnHeimverträge"];
-                //cHeimverträge1.loadMenü(popUpHeimverträge);
 
                 this.ultraToolbarsManager1.Tools["btnVerordnungen"].SharedProps.Visible = ENV.lic_VO;
                 this.ultraToolbarsManager1.Tools["btnVerordnungen2"].SharedProps.Visible = ENV.lic_VO;
-
+                this.ultraToolbarsManager1.Tools["btnSTAMP"].SharedProps.Visible = ENV.lic_STAMP;
             }
             catch (Exception ex)
             {
@@ -200,23 +223,7 @@ namespace PMDS
                 frmMain.Rights.ArchivTerminMail = ENV.HasRight(UserRights.ArchivTerminMail);
                 frmMain.Rights.Entlassung = ENV.HasRight(UserRights.Entlassung);
                 frmMain.Rights.Versetzung = ENV.HasRight(UserRights.Versetzung);
-                
-
-                //frmMain.Rights.Aufnahme = false;
-                //frmMain.Rights.Bewerber = false;
-                //frmMain.Rights.ImportGibodat = false;
-                //frmMain.Rights.QS2 = false;
-                //frmMain.Rights.DatenarchivierungAll = false;
-                //frmMain.Rights.Abrechnung = false;
-                //frmMain.Rights.btnTransferCalcData = false;
-                //frmMain.Rights.btnExportCalculations = false;
-                //frmMain.Rights.btnVerordnungen = false;
-                //frmMain.Rights.btnPatientAufenthalteLöschen = false;
-
-                //frmMain.Rights.ArchivTerminMail = false;
-                //frmMain.Rights.Entlassung = false;
-                //frmMain.Rights.Versetzung = false;
-                //frmMain.Rights.SuchtgiftschrankSchluessel = false;
+                frmMain.Rights.STAMP = ENV.HasRight(UserRights.STAMPMeldung);
             }
 
             this.ultraToolbarsManager1.Tools["Aufnahme"].SharedProps.Visible = frmMain.Rights.Aufnahme;
@@ -245,12 +252,137 @@ namespace PMDS
                 ultraToolbarsManager1.Tools["btnELGAPasswortÄndern"].SharedProps.Visible = ENV.lic_ELGA && ben.Elgaactive && !ben.IsGeneric;
                 IsInitialized = true;
             }
-
         }
+
+        public void setRightsStammdaten(out bool AnyMenüItemStammdaten, out bool AllMenüItemsStammdaten, out cRightsStammdaten RightsStammdaten)
+        {
+
+            AnyMenüItemStammdaten = false;
+            AllMenüItemsStammdaten = false;
+            RightsStammdaten = new cRightsStammdaten();
+
+            RightsStammdaten.Einrichtung = ENV.HasRight(UserRights.EinrichtungVerwalten);
+            RightsStammdaten.Benutzer = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;
+            RightsStammdaten.Gruppenrechte = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;                    //ultraToolbarsManager1.Tools["Gruppenrechte"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
+            RightsStammdaten.VerwaltungEinrichtungUndBenutzer = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure; //ultraToolbarsManager1.Tools["btnVerwaltungKlinikenUser"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
+            RightsStammdaten.VerwaltungFortbildungen = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;          //ultraToolbarsManager1.Tools["btnVerwaltungFortbildungen"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
+
+            RightsStammdaten.Auswahllisten = ENV.HasRight(UserRights.AuswahllistenVerwalten);
+            RightsStammdaten.Zusatzeinträge = ENV.HasRight(UserRights.ZusatzEintraegeVerwalten);
+            RightsStammdaten.Textbausteine = ENV.HasRight(UserRights.TextbausteineVerwalten);
+            RightsStammdaten.Dokumentenverwaltung = ENV.HasRight(UserRights.Dokumentenverwaltung);
+            RightsStammdaten.ExterneEinrichtungen = ENV.HasRight(UserRights.ExterneEinrichungenVerwalten);
+
+            RightsStammdaten.Standardprozeduren = ENV.HasRight(UserRights.StandardprozedurenVerwalten);
+            RightsStammdaten.Assessments = ENV.HasRight(UserRights.AssessmentsVerwalten);
+            RightsStammdaten.Medikamente = ENV.HasRight(UserRights.MedikamenteVerwalten);
+            RightsStammdaten.Pflegerichtlinien = ENV.HasRight(UserRights.PflegerichtlinienVerwalten);
+            RightsStammdaten.Ärzteverwaltung = ENV.HasRight(UserRights.AerzteVerwalten);
+            RightsStammdaten.Arztabrechnung = ENV.HasRight(UserRights.Arztabrechnung);
+            RightsStammdaten.ÄrzteZusammenführen = ENV.HasRight(UserRights.ÄrzteZusammenführen);
+            RightsStammdaten.Befundimport = ENV.HasRight(UserRights.Befundimport);
+
+            RightsStammdaten.Quickfilter = ENV.HasRight(UserRights.QuickfilterVerwalten);
+            RightsStammdaten.LayoutManager = ENV.HasRight(UserRights.LayoutmanagerVerwalten);
+            RightsStammdaten.MedizinischeTypen = ENV.HasRight(UserRights.MedizinischeTypenVerwalten);
+            RightsStammdaten.MedizinscheDialoge = ENV.HasRight(UserRights.MedizinischeDialogeVerwalten);
+            RightsStammdaten.WundbilderSkalieren = ENV.HasRight(UserRights.WundbilderSkalieren);
+
+            RightsStammdaten.QS2 = ENV.HasRight(UserRights.QS2Verwalten);
+            RightsStammdaten.QS2AbfragebVerwaltenAdmin = ENV.HasRight(UserRights.QS2Verwalten);
+            RightsStammdaten.QS2Ressourcen = ENV.HasRight(UserRights.QS2Verwalten);
+            RightsStammdaten.QS2InformationenFelderSQLServer = ENV.HasRight(UserRights.QS2Verwalten);
+            RightsStammdaten.QS2Kriterien = ENV.HasRight(UserRights.QS2Verwalten);
+            RightsStammdaten.QS2Auswahllisten = ENV.HasRight(UserRights.QS2Verwalten);
+
+            RightsStammdaten.Archiveinstellungen = ENV.HasRight(UserRights.ArchiveinstellungenVerwalten);
+            RightsStammdaten.EMailKonten = ENV.HasRight(UserRights.EMailKontenVerwalten);
+            RightsStammdaten.LogManager = false;
+
+            AnyMenüItemStammdaten =
+            (
+                RightsStammdaten.Einrichtung ||
+                RightsStammdaten.Benutzer ||
+                RightsStammdaten.Gruppenrechte ||
+                RightsStammdaten.VerwaltungEinrichtungUndBenutzer ||
+                RightsStammdaten.VerwaltungFortbildungen ||
+
+                RightsStammdaten.Auswahllisten ||
+                RightsStammdaten.Zusatzeinträge ||
+                RightsStammdaten.Textbausteine ||
+                RightsStammdaten.Dokumentenverwaltung ||
+                RightsStammdaten.ExterneEinrichtungen ||
+
+                RightsStammdaten.Standardprozeduren ||
+                RightsStammdaten.Assessments ||
+                RightsStammdaten.Medikamente ||
+                RightsStammdaten.Pflegerichtlinien ||
+                RightsStammdaten.Ärzteverwaltung ||
+                RightsStammdaten.Arztabrechnung ||
+                RightsStammdaten.ÄrzteZusammenführen ||
+                RightsStammdaten.Befundimport ||
+
+                RightsStammdaten.Quickfilter ||
+                RightsStammdaten.LayoutManager ||
+                RightsStammdaten.MedizinischeTypen ||
+                RightsStammdaten.MedizinscheDialoge ||
+                RightsStammdaten.WundbilderSkalieren ||
+
+                RightsStammdaten.QS2 ||
+                RightsStammdaten.QS2AbfragebVerwaltenAdmin ||
+                RightsStammdaten.QS2Ressourcen ||
+                RightsStammdaten.QS2InformationenFelderSQLServer ||
+                RightsStammdaten.QS2Kriterien ||
+                RightsStammdaten.QS2Auswahllisten ||
+
+                RightsStammdaten.Archiveinstellungen ||
+                RightsStammdaten.EMailKonten ||
+                RightsStammdaten.LogManager
+            );
+
+            AllMenüItemsStammdaten =
+            (
+                !RightsStammdaten.Einrichtung &&        
+                
+                //Benutzer-Items immer extra
+
+                //!RightsStammdaten.Auswahllisten &&    //bestehendes Recht vor 08/22-kann das Menü nicht steuern
+                !RightsStammdaten.Zusatzeinträge &&
+                !RightsStammdaten.Textbausteine &&
+                !RightsStammdaten.Dokumentenverwaltung &&
+                !RightsStammdaten.ExterneEinrichtungen &&
+
+                !RightsStammdaten.Standardprozeduren &&
+                !RightsStammdaten.Assessments &&
+                !RightsStammdaten.Medikamente &&
+                !RightsStammdaten.Pflegerichtlinien &&
+                !RightsStammdaten.Ärzteverwaltung &&
+                !RightsStammdaten.Arztabrechnung &&
+                !RightsStammdaten.ÄrzteZusammenführen &&
+                !RightsStammdaten.Befundimport &&
+
+                !RightsStammdaten.Quickfilter &&
+                //!RightsStammdaten.LayoutManager &&    //bestehendes Recht vor 08/22-kann das Menü nicht steuern
+                !RightsStammdaten.MedizinischeTypen &&
+                !RightsStammdaten.MedizinscheDialoge &&
+                !RightsStammdaten.WundbilderSkalieren &&
+
+                !RightsStammdaten.QS2 &&
+                !RightsStammdaten.QS2AbfragebVerwaltenAdmin &&
+                !RightsStammdaten.QS2Ressourcen &&
+                !RightsStammdaten.QS2InformationenFelderSQLServer &&
+                !RightsStammdaten.QS2Kriterien &&
+                !RightsStammdaten.QS2Auswahllisten &&
+
+                !RightsStammdaten.Archiveinstellungen &&
+                !RightsStammdaten.EMailKonten           
+                //LogManager nicht relevant (immer ausgeblendet)
+            ) || ENV.adminSecure;
+        }
+
         public void action(bool bOnOff)
         {
             this.ucHeader1._action = bOnOff;
-
         }
 
         public void mainEventReceive(eSendMain typ, cParDelegSendMain ParDelegSendMain)
@@ -284,11 +416,10 @@ namespace PMDS
                     {
                         string TxtMessaged = QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachrichten");
                         PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.btnMessages.Invoke((MethodInvoker)delegate { PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.btnMessages.Text = TxtMessaged; });
-                        //this._SitemapStart.btnMessages.Appearance.ForeColor = Color.Black;
                         this.ultraStatusBar1.Invoke((MethodInvoker)delegate { this.ultraStatusBar1.Panels["UnreadedMessages"].Text = ""; });
                         if (PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1 != null)
                         {
-                            PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1.ultraStatusBar1.Invoke((MethodInvoker)delegate { PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1.ultraStatusBar1.Panels["UnreadedMessages"].Text = ""; });
+                            PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1.ultraStatusBar1.Invoke( (MethodInvoker) delegate { PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1.ultraStatusBar1.Panels["UnreadedMessages"].Text = ""; });
                         }
                     }
                 }
@@ -431,12 +562,8 @@ namespace PMDS
             this.setRights(ref AnyMenüItemVerwaltung);
             bool bShowVerwaltung = AnyMenüItemVerwaltung && bKlientenListeOnTop;
             ultraToolbarsManager1.Tools["Verwaltung"].SharedProps.Visible = bShowVerwaltung;     
-
             ultraToolbarsManager1.Tools["mnuKlient"].SharedProps.Visible = !ultraToolbarsManager1.Tools["Verwaltung"].SharedProps.Visible;
-
-            //ultraToolbarsManager1.Tools["Klientenliste"].SharedProps.Visible = ultraToolbarsManager1.Tools["mnuKlient"].SharedProps.Visible;
             ultraToolbarsManager1.Tools["Klientenliste"].SharedProps.Visible = true;
-            ultraToolbarsManager1.Tools["btnÄrzteMergen"].SharedProps.Visible = ENV.HasRight(UserRights.ÄrzteZusammenführen);
 
             if (PMDS.Global.historie.HistorieOn)
             {
@@ -549,6 +676,7 @@ namespace PMDS
             ultraToolbarsManager1.Tools["Entlassen"].SharedProps.Visible = ENV.HasRight(UserRights.Entlassung) && Guid.Empty != IDPatient;
             ultraToolbarsManager1.Tools["Versetzen"].SharedProps.Visible = ENV.HasRight(UserRights.Versetzung) && Guid.Empty != IDPatient;
             ultraToolbarsManager1.Tools["Bereichsversetzung"].SharedProps.Visible = ENV.HasRight(UserRights.Versetzung) && Guid.Empty != IDPatient;
+            ultraToolbarsManager1.Tools["btnSTAMP"].SharedProps.Visible = ENV.HasRight(UserRights.STAMPMeldung);
 
             // Wenn der Klient gewechselt wird, dann die Abteilung setzen und das RMOptional setzen
 
@@ -597,7 +725,7 @@ namespace PMDS
         {
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("MainMenu");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool1 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Programm");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool2 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("mnuKlient");
@@ -621,7 +749,7 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool6 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Beenden");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool7 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Beenden");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool8 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Arbeitsstationsperren");
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool9 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Benutzerwechsel");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool10 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Passwort");
@@ -821,21 +949,20 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool190 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnAbrechnungInkoProdukte");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool192 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnPSE");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool194 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnSTAMP");
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel1 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel2 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel3 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel4 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel8 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel5 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel6 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel9 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel7 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.ultraPopupControlContainer1 = new Infragistics.Win.Misc.UltraPopupControlContainer(this.components);
             this.contextMenuStripLogging = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -862,9 +989,6 @@ namespace PMDS
             this.timerCheckConnectionAndNetwork = new System.Windows.Forms.Timer(this.components);
             this.PanelStatusbar = new System.Windows.Forms.Panel();
             this.ultraStatusBar1 = new Infragistics.Win.UltraWinStatusBar.UltraStatusBar();
-            this.lblTxtMemory = new Infragistics.Win.Misc.UltraLabel();
-            this.pBarMemoryUsage = new Syncfusion.Windows.Forms.Tools.ProgressBarAdv();
-            this.panelBottomRight = new System.Windows.Forms.Panel();
             this.timerELGA = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStripLogging.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).BeginInit();
@@ -874,8 +998,6 @@ namespace PMDS
             ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintraege1)).BeginInit();
             this.PanelStatusbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraStatusBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBarMemoryUsage)).BeginInit();
-            this.panelBottomRight.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitter1
@@ -883,7 +1005,7 @@ namespace PMDS
             this.splitter1.BackColor = System.Drawing.Color.Gainsboro;
             this.splitter1.Location = new System.Drawing.Point(0, 20);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(1, 678);
+            this.splitter1.Size = new System.Drawing.Size(1, 670);
             this.splitter1.TabIndex = 9;
             this.splitter1.TabStop = false;
             // 
@@ -925,7 +1047,7 @@ namespace PMDS
             this._frmBase_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.Color.Black;
             this._frmBase_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 20);
             this._frmBase_Toolbars_Dock_Area_Left.Name = "_frmBase_Toolbars_Dock_Area_Left";
-            this._frmBase_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 678);
+            this._frmBase_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 670);
             this._frmBase_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // ultraToolbarsManager1
@@ -939,8 +1061,8 @@ namespace PMDS
             this.ultraToolbarsManager1.DockWithinContainer = this;
             this.ultraToolbarsManager1.DockWithinContainerBaseType = typeof(PMDS.GUI.frmBase);
             this.ultraToolbarsManager1.LockToolbars = true;
-            appearance8.BackColor = System.Drawing.Color.White;
-            this.ultraToolbarsManager1.MenuSettings.Appearance = appearance8;
+            appearance7.BackColor = System.Drawing.Color.White;
+            this.ultraToolbarsManager1.MenuSettings.Appearance = appearance7;
             this.ultraToolbarsManager1.RuntimeCustomizationOptions = Infragistics.Win.UltraWinToolbars.RuntimeCustomizationOptions.None;
             this.ultraToolbarsManager1.ShowFullMenusDelay = 500;
             ultraToolbar1.DockedColumn = 0;
@@ -997,8 +1119,8 @@ namespace PMDS
             buttonTool6});
             buttonTool7.SharedPropsInternal.Caption = "Beenden";
             buttonTool7.SharedPropsInternal.Category = "Programm";
-            appearance9.Image = ((object)(resources.GetObject("appearance9.Image")));
-            buttonTool8.SharedPropsInternal.AppearancesSmall.Appearance = appearance9;
+            appearance8.Image = ((object)(resources.GetObject("appearance8.Image")));
+            buttonTool8.SharedPropsInternal.AppearancesSmall.Appearance = appearance8;
             buttonTool8.SharedPropsInternal.Caption = "Arbeitsstation sperren";
             buttonTool8.SharedPropsInternal.Category = "Programm";
             buttonTool9.SharedPropsInternal.Caption = "Abmelden";
@@ -1228,7 +1350,7 @@ namespace PMDS
             buttonTool189.SharedPropsInternal.Caption = "Abrechnung Inko-Pauschale";
             buttonTool190.SharedPropsInternal.Caption = "Abrechnung Inko-Produkt-Pauschale";
             buttonTool192.SharedPropsInternal.Caption = "Pflegestufen-Einschätzung";
-            buttonTool194.SharedPropsInternal.Caption = "STAMP Meldung senden";
+            buttonTool194.SharedPropsInternal.Caption = "STAMP-Meldung";
             this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             popupMenuTool9,
             buttonTool7,
@@ -1359,7 +1481,7 @@ namespace PMDS
             this._frmBase_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.Color.Black;
             this._frmBase_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1008, 20);
             this._frmBase_Toolbars_Dock_Area_Right.Name = "_frmBase_Toolbars_Dock_Area_Right";
-            this._frmBase_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 678);
+            this._frmBase_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 670);
             this._frmBase_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _frmBase_Toolbars_Dock_Area_Top
@@ -1379,7 +1501,7 @@ namespace PMDS
             this._frmBase_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.WhiteSmoke;
             this._frmBase_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom;
             this._frmBase_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.Color.Black;
-            this._frmBase_Toolbars_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 698);
+            this._frmBase_Toolbars_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 690);
             this._frmBase_Toolbars_Dock_Area_Bottom.Name = "_frmBase_Toolbars_Dock_Area_Bottom";
             this._frmBase_Toolbars_Dock_Area_Bottom.Size = new System.Drawing.Size(1008, 0);
             this._frmBase_Toolbars_Dock_Area_Bottom.ToolbarsManager = this.ultraToolbarsManager1;
@@ -1435,10 +1557,10 @@ namespace PMDS
             // 
             // lblIsLoading
             // 
-            appearance7.ForeColor = System.Drawing.Color.Gray;
-            appearance7.TextHAlignAsString = "Center";
-            appearance7.TextVAlignAsString = "Middle";
-            this.lblIsLoading.Appearance = appearance7;
+            appearance6.ForeColor = System.Drawing.Color.Gray;
+            appearance6.TextHAlignAsString = "Center";
+            appearance6.TextVAlignAsString = "Middle";
+            this.lblIsLoading.Appearance = appearance6;
             this.lblIsLoading.BackColorInternal = System.Drawing.Color.Transparent;
             this.lblIsLoading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblIsLoading.Location = new System.Drawing.Point(0, 0);
@@ -1452,10 +1574,10 @@ namespace PMDS
             this.panelStart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelStart.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelStart.BackColor = System.Drawing.Color.White;
             this.panelStart.Location = new System.Drawing.Point(0, 21);
             this.panelStart.Name = "panelStart";
-            this.panelStart.Size = new System.Drawing.Size(1006, 655);
+            this.panelStart.Size = new System.Drawing.Size(1006, 641);
             this.panelStart.TabIndex = 35;
             this.panelStart.Paint += new System.Windows.Forms.PaintEventHandler(this.panelStart_Paint);
             // 
@@ -1493,21 +1615,21 @@ namespace PMDS
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelStatusbar.BackColor = System.Drawing.Color.Transparent;
             this.PanelStatusbar.Controls.Add(this.ultraStatusBar1);
-            this.PanelStatusbar.Location = new System.Drawing.Point(-1, 676);
+            this.PanelStatusbar.Location = new System.Drawing.Point(-1, 662);
             this.PanelStatusbar.Name = "PanelStatusbar";
-            this.PanelStatusbar.Size = new System.Drawing.Size(865, 22);
+            this.PanelStatusbar.Size = new System.Drawing.Size(1009, 24);
             this.PanelStatusbar.TabIndex = 40;
             // 
             // ultraStatusBar1
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            appearance3.ForeColor = System.Drawing.Color.Black;
-            this.ultraStatusBar1.Appearance = appearance3;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            appearance2.ForeColor = System.Drawing.Color.Black;
+            this.ultraStatusBar1.Appearance = appearance2;
             this.ultraStatusBar1.ContextMenuStrip = this.contextMenuStripLogging;
-            this.ultraStatusBar1.Location = new System.Drawing.Point(0, 4);
+            this.ultraStatusBar1.Location = new System.Drawing.Point(0, 6);
             this.ultraStatusBar1.Name = "ultraStatusBar1";
-            appearance4.BorderColor = System.Drawing.Color.White;
-            this.ultraStatusBar1.PanelAppearance = appearance4;
+            appearance3.BorderColor = System.Drawing.Color.White;
+            this.ultraStatusBar1.PanelAppearance = appearance3;
             ultraStatusPanel1.Key = "User";
             ultraStatusPanel1.ToolTipText = "Angemeldeter Benutzer";
             ultraStatusPanel1.Width = 200;
@@ -1521,14 +1643,14 @@ namespace PMDS
             ultraStatusPanel8.Key = "UnreadedMessages";
             ultraStatusPanel8.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Automatic;
             ultraStatusPanel8.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Button;
-            appearance5.FontData.SizeInPoints = 7F;
-            ultraStatusPanel5.Appearance = appearance5;
+            appearance4.FontData.SizeInPoints = 7F;
+            ultraStatusPanel5.Appearance = appearance4;
             ultraStatusPanel5.Key = "Config";
             ultraStatusPanel5.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Automatic;
             ultraStatusPanel5.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Button;
             ultraStatusPanel5.Text = "Config";
-            appearance6.FontData.SizeInPoints = 7F;
-            ultraStatusPanel6.Appearance = appearance6;
+            appearance5.FontData.SizeInPoints = 7F;
+            ultraStatusPanel6.Appearance = appearance5;
             ultraStatusPanel6.Key = "Laden";
             ultraStatusPanel6.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Automatic;
             ultraStatusPanel6.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Button;
@@ -1549,72 +1671,10 @@ namespace PMDS
             ultraStatusPanel6,
             ultraStatusPanel9,
             ultraStatusPanel7});
-            this.ultraStatusBar1.Size = new System.Drawing.Size(865, 18);
+            this.ultraStatusBar1.Size = new System.Drawing.Size(1009, 18);
             this.ultraStatusBar1.TabIndex = 22;
             this.ultraStatusBar1.ButtonClick += new Infragistics.Win.UltraWinStatusBar.PanelEventHandler(this.ultraStatusBar2_ButtonClick);
             this.ultraStatusBar1.Click += new System.EventHandler(this.ultraStatusBar2_Click);
-            // 
-            // lblTxtMemory
-            // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            appearance2.FontData.SizeInPoints = 8F;
-            appearance2.TextHAlignAsString = "Right";
-            this.lblTxtMemory.Appearance = appearance2;
-            this.lblTxtMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTxtMemory.Location = new System.Drawing.Point(10, 5);
-            this.lblTxtMemory.Name = "lblTxtMemory";
-            this.lblTxtMemory.Size = new System.Drawing.Size(54, 13);
-            this.lblTxtMemory.TabIndex = 104;
-            this.lblTxtMemory.Text = "Speicher:";
-            this.lblTxtMemory.Visible = false;
-            // 
-            // pBarMemoryUsage
-            // 
-            this.pBarMemoryUsage.BackgroundStyle = Syncfusion.Windows.Forms.Tools.ProgressBarBackgroundStyles.Gradient;
-            this.pBarMemoryUsage.BackMultipleColors = new System.Drawing.Color[] {
-        System.Drawing.Color.Empty};
-            this.pBarMemoryUsage.BackSegments = false;
-            this.pBarMemoryUsage.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(149)))), ((int)(((byte)(152)))));
-            this.pBarMemoryUsage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBarMemoryUsage.CustomText = null;
-            this.pBarMemoryUsage.CustomWaitingRender = false;
-            this.pBarMemoryUsage.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pBarMemoryUsage.ForeColor = System.Drawing.Color.Transparent;
-            this.pBarMemoryUsage.ForegroundImage = null;
-            this.pBarMemoryUsage.ForeSegments = false;
-            this.pBarMemoryUsage.GradientEndColor = System.Drawing.Color.Transparent;
-            this.pBarMemoryUsage.GradientStartColor = System.Drawing.Color.Transparent;
-            this.pBarMemoryUsage.Location = new System.Drawing.Point(67, 5);
-            this.pBarMemoryUsage.MultipleColors = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128))))),
-        System.Drawing.Color.Red};
-            this.pBarMemoryUsage.Name = "pBarMemoryUsage";
-            this.pBarMemoryUsage.ProgressStyle = Syncfusion.Windows.Forms.Tools.ProgressBarStyles.MultipleGradient;
-            this.pBarMemoryUsage.SegmentWidth = 12;
-            this.pBarMemoryUsage.Size = new System.Drawing.Size(66, 13);
-            this.pBarMemoryUsage.Step = 1;
-            this.pBarMemoryUsage.StretchMultGrad = false;
-            this.pBarMemoryUsage.TabIndex = 105;
-            this.pBarMemoryUsage.ThemeName = "MultipleGradient";
-            this.pBarMemoryUsage.ThemesEnabled = true;
-            this.pBarMemoryUsage.TubeEndColor = System.Drawing.Color.Transparent;
-            this.pBarMemoryUsage.TubeStartColor = System.Drawing.Color.Transparent;
-            this.pBarMemoryUsage.Value = 95;
-            this.pBarMemoryUsage.Visible = false;
-            this.pBarMemoryUsage.WaitingGradientWidth = 400;
-            // 
-            // panelBottomRight
-            // 
-            this.panelBottomRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBottomRight.Controls.Add(this.lblTxtMemory);
-            this.panelBottomRight.Controls.Add(this.pBarMemoryUsage);
-            this.panelBottomRight.Location = new System.Drawing.Point(860, 676);
-            this.panelBottomRight.Name = "panelBottomRight";
-            this.panelBottomRight.Size = new System.Drawing.Size(146, 24);
-            this.panelBottomRight.TabIndex = 106;
             // 
             // timerELGA
             // 
@@ -1625,8 +1685,7 @@ namespace PMDS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1008, 698);
-            this.Controls.Add(this.panelBottomRight);
+            this.ClientSize = new System.Drawing.Size(1008, 690);
             this.Controls.Add(this.PanelStatusbar);
             this.Controls.Add(this.panelControlGesamt);
             this.Controls.Add(this.splitter1);
@@ -1636,9 +1695,9 @@ namespace PMDS
             this.Controls.Add(this._frmBase_Toolbars_Dock_Area_Right);
             this.Controls.Add(this._frmBase_Toolbars_Dock_Area_Bottom);
             this.Controls.Add(this._frmBase_Toolbars_Dock_Area_Top);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(947, 737);
+            this.MinimumSize = new System.Drawing.Size(947, 683);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PMDS";
@@ -1659,8 +1718,6 @@ namespace PMDS
             ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintraege1)).EndInit();
             this.PanelStatusbar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraStatusBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBarMemoryUsage)).EndInit();
-            this.panelBottomRight.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1738,8 +1795,6 @@ namespace PMDS
             this.panelControl.Height = 0;
             this.panelControl.Width = 0;
             this.Show();
-
-            this.ucHeader1.checkMemory();
 
             Application.DoEvents();
         }
@@ -1914,9 +1969,9 @@ namespace PMDS
                 }
 
                 o.AttachFramework();
-                o.CONTROL.Show();       //os-Performance !!!
+                o.CONTROL.Show();       //os-Performance !!!    2,3 Sekunden
                 this.panelControl.Dock = DockStyle.Fill;
-                Application.DoEvents();
+                //Application.DoEvents();
 
                 _topGUI = o;
                 PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart._showFirst = false;
@@ -1939,20 +1994,6 @@ namespace PMDS
         {
             try
             {
-                //Startgröße und -position abhängig von der Bildschirmauflösung
-                //Standardgröße des Formulars bei 1024 * 768 = 1024* 737 = minimale Größe 
-
-                //                int Width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
-                //                int Height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
-
-                //                this.Width = (int) (this.Width / 1024 * Width * 0.9);
-                //                this.Height = (int) (this.Height / 737 * Height * 0.9);
-
-                //if (Width > 1024)
-                //{
-                //    this.MinimumSize = new Size(1024 , 768);
-                //}
-
                 this.panelStart.BringToFront();
 
                 ENV.TaskbarPosition TaskbarPos = ENV.TaskbarPosition.Ausgeblendet;     //0 = ausgeblendet, 1 = unten, 2 = rechts, 3 = links
@@ -2035,16 +2076,11 @@ namespace PMDS
                 this.UISitemap = new PMDS.UI.Sitemap.UIFct();
                 if (!PMDS.Global.ENV.adminSecure)
                 {
-                    //this.ultraToolbarsManager1.Tools["popUpAmdmin"].SharedProps.Visible = false;
                     this.ultraStatusBar1.Panels["Laden"].Visible = false;
                     this.ultraStatusBar1.Panels["Config"].Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Text;
                 }
 
                 this.UISitemap.infoRuntimStatusbar(ref this.ultraStatusBar1);
-                //this.WindowState = FormWindowState.Maximized;
-                //this.Show();
-                //this.Visible = true;
-
                 PMDS.BusinessLogic.Standardzeiten.InitStandardzeiten();
 
                 if (ENV.PathDokumente.Trim() != "" && !System.IO.Directory.Exists(ENV.PathDokumente.Trim()))
@@ -2068,12 +2104,6 @@ namespace PMDS
                     this.bElga.setStatusbarOnOff(this.ultraStatusBar1, false);
                 }
 
-                //if (ENV.CheckConnectionAndPassword)
-                //{
-                //    //this.timerCheckConnectionAndNetwork.Enabled = true;
-                //    //this.timerCheckConnectionAndNetwork.Start();
-                //}
-
                 System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(this.th_checkNewVersion));
                 t.Start();
 
@@ -2081,8 +2111,6 @@ namespace PMDS
                 {
                     this.ultraStatusBar1.ContextMenuStrip = null;
                 }
-
-                this.ucHeader1.checkMemory();
             }
             catch (Exception ex)
             {
@@ -2374,6 +2402,8 @@ namespace PMDS
             ultraToolbarsManager1.Tools["Bereichsversetzung"].SharedProps.Visible = ENV.HasRight(UserRights.Versetzung);
             ultraToolbarsManager1.Tools["Abrechnung"].SharedProps.Visible = false;          // ENV.HasRight(UserRights.AbrechnungStarten);
             ultraToolbarsManager1.Tools["ImportGibodat"].SharedProps.Visible = ENV.HasRight(UserRights.ImportGibodat);
+            ultraToolbarsManager1.Tools["btnSTAMP"].SharedProps.Visible = ENV.HasRight(UserRights.STAMPMeldung);
+
 
             ultraToolbarsManager1.Tools["RezepteVerwalten"].SharedProps.Visible = ENV.HasRight(UserRights.RezepteVerwalten);
             ultraToolbarsManager1.Tools["Historie"].SharedProps.Visible = ENV.HasRight(UserRights.Historie);
@@ -2391,16 +2421,58 @@ namespace PMDS
             ultraToolbarsManager1.Tools["btnTransferCalcData"].SharedProps.Visible = ENV.HasRight(UserRights.AbrechnungenÜberspielen) || ENV.adminSecure;
             ultraToolbarsManager1.Tools["btnExportCalculations"].SharedProps.Visible = ENV.HasRight(UserRights.AbrechnungenExportieren) || ENV.adminSecure;
 
+            //Menü Verwaltung
             bool AnyMenüItemVerwaltung = false;
             this.setRights(ref AnyMenüItemVerwaltung);
             ultraToolbarsManager1.Tools["Verwaltung"].SharedProps.Visible = AnyMenüItemVerwaltung;
 
+            //Menü Grundaten
             ultraToolbarsManager1.Tools["Grunddaten"].SharedProps.Visible = ENV.HasRight(UserRights.Stammdatenverwaltung);
+            
+            //Menü-Item Stammdaten
+            this.setRightsStammdaten(out bool AnyMenüItemStammdaten, out bool AllMenüItemsStammdaten, out cRightsStammdaten RightsStammaten);
+            ultraToolbarsManager1.Tools["mnuStammdaten"].SharedProps.Visible = AnyMenüItemStammdaten || AllMenüItemsStammdaten || ENV.HasRight(UserRights.MenüStammdaten);
+
+            ultraToolbarsManager1.Tools["KlinikVerwaltung"].SharedProps.Visible = RightsStammaten.Einrichtung || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["BenutzerVerwaltung"].SharedProps.Visible = RightsStammaten.Benutzer;
+            ultraToolbarsManager1.Tools["Gruppenrechte"].SharedProps.Visible = RightsStammaten.Gruppenrechte;
+            ultraToolbarsManager1.Tools["btnVerwaltungKlinikenUser"].SharedProps.Visible = RightsStammaten.VerwaltungEinrichtungUndBenutzer;
+            ultraToolbarsManager1.Tools["btnVerwaltungFortbildungen"].SharedProps.Visible = RightsStammaten.VerwaltungFortbildungen;
+
+            ultraToolbarsManager1.Tools["Auswahllisten"].SharedProps.Visible = RightsStammaten.Auswahllisten || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["Zusatzeintraege"].SharedProps.Visible = RightsStammaten.Zusatzeinträge || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnTextbausteine"].SharedProps.Visible = RightsStammaten.Textbausteine || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnManageDocuments"].SharedProps.Visible = RightsStammaten.Dokumentenverwaltung || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["EinrichtungenVerwaltung"].SharedProps.Visible = RightsStammaten.ExterneEinrichtungen || AllMenüItemsStammdaten;
+
+            ultraToolbarsManager1.Tools["Standardprozeduren"].SharedProps.Visible = RightsStammaten.Standardprozeduren || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["Formulare"].SharedProps.Visible = RightsStammaten.Assessments || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["MedikamenteVerwalten"].SharedProps.Visible = RightsStammaten.Medikamente || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["LinkDokumenteVerwaltung"].SharedProps.Visible = RightsStammaten.Pflegerichtlinien || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnÄrzteverwaltung"].SharedProps.Visible = RightsStammaten.Ärzteverwaltung || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnArztabrechnung"].SharedProps.Visible = RightsStammaten.Arztabrechnung || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnÄrzteMergen"].SharedProps.Visible = RightsStammaten.ÄrzteZusammenführen || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnImportBefunde"].SharedProps.Visible = RightsStammaten.Befundimport || AllMenüItemsStammdaten;
+
+            ultraToolbarsManager1.Tools["QuickFilter"].SharedProps.Visible = RightsStammaten.Quickfilter || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnLayoutManager"].SharedProps.Visible = RightsStammaten.LayoutManager || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["MedizinischetypenVerwaltung"].SharedProps.Visible = RightsStammaten.MedizinischeTypen || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["Medizinische_Dialoge"].SharedProps.Visible = RightsStammaten.MedizinscheDialoge || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnWundBilderScale"].SharedProps.Visible = RightsStammaten.WundbilderSkalieren || AllMenüItemsStammdaten;
+
+            ultraToolbarsManager1.Tools["btnQS2Main"].SharedProps.Visible = RightsStammaten.QS2 || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnQS2ManageQueries"].SharedProps.Visible = RightsStammaten.QS2AbfragebVerwaltenAdmin || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnQS2Ressourcen"].SharedProps.Visible = RightsStammaten.QS2Ressourcen || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnQS2InformationFieldsSqlServer"].SharedProps.Visible = RightsStammaten.QS2InformationenFelderSQLServer || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnQS2Criterias"].SharedProps.Visible = RightsStammaten.QS2Kriterien || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnQS2SelLists"].SharedProps.Visible = RightsStammaten.QS2Auswahllisten || AllMenüItemsStammdaten;
+
+            ultraToolbarsManager1.Tools["ArchivStammdaten"].SharedProps.Visible = RightsStammaten.Archiveinstellungen || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnUserAccounts"].SharedProps.Visible = RightsStammaten.EMailKonten || AllMenüItemsStammdaten;
+            ultraToolbarsManager1.Tools["btnQS2LogManager"].SharedProps.Visible = RightsStammaten.LogManager;
         }
 
-       
-
-		private void ucQuickNavigator1_SiteMapEvent(PMDS.Global.SiteEvents e, ref bool used)
+        private void ucQuickNavigator1_SiteMapEvent(PMDS.Global.SiteEvents e, ref bool used)
 		{
 			switch(e)
 			{
@@ -2802,11 +2874,10 @@ namespace PMDS
                         }
 
                     case "btnSTAMP":
-                        using (PMDS.GUI.STAMP.frmSTAMP frmSTAMP = new PMDS.GUI.STAMP.frmSTAMP())
-                        {
-                            frmSTAMP.ShowDialog(this);
+                            PMDS.GUI.STAMP.frmSTAMPMeldung frmSTAMPMeldung = new PMDS.GUI.STAMP.frmSTAMPMeldung();
+                            frmSTAMPMeldung.Show(this);
                             break;
-                        }
+
                     case "btnHeimverträge":
                         break;
 
@@ -3115,7 +3186,6 @@ namespace PMDS
                         this.timerCheckConnectionAndNetwork.Stop();
                     }
                 }
-
             }
             catch (Exception ex)
             {

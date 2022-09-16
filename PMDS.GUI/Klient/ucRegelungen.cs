@@ -13,6 +13,8 @@ using PMDS.Klient;
 using PMDS.GUI.Klient;
 using PMDS.DB;
 using S2Extensions;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace PMDS.GUI
 {
@@ -36,6 +38,8 @@ namespace PMDS.GUI
             InitializeComponent();
             if (!DesignMode && ENV.AppRunning)
                 RefreshValueList();
+            gridUnterbringung.DisplayLayout.Override.CellClickAction = CellClickAction.RowSelect;
+            gridUnterbringung.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
         }
 
         private void RefreshValueList()
@@ -724,25 +728,23 @@ namespace PMDS.GUI
         {
 
         }
-        public void setControlsAktivDisable(bool bOn)
+        public async Task<bool> setControlsAktivDisable(bool bOn)
         {
             PMDS.GUI.BaseControls.historie.OnOffControls(grpPatientverfügung, bOn);
             PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxRelgiöseWünsche, bOn);
             PMDS.GUI.BaseControls.historie.OnOffControls(grpRegelungen, bOn);
             
             panelButtons.Visible = !bOn || ENV.HasRight(UserRights.HAGMeldungen);
+            return true;
         }
 
         private void btnDelUnterbringung_Click(object sender, EventArgs e)
         {
-
-
             if (Aufheben2016())
             {
                 //ValueChanged(sender, e);
                 //ENV.SignalKlientChanged();
             }
-
         }
 
         private void btnSendenUnterbringung_Click(object sender, EventArgs e)
@@ -761,11 +763,63 @@ namespace PMDS.GUI
                     bool bSent = !rUnterbringung.IsEDI_DatumNull() && rUnterbringung.Aktion.Trim() != "";
                     DialogResult res = new DialogResult();
 
-                    if (bSent) 
-                        res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Die freiheitsbeschränkende Maßnahme wurde bereits einmal gesendet. Wollen Sie sie erneut senden?", "Hinweis", MessageBoxButtons.YesNo);
-                    else
-                        res = (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie die Daten für die freiheitsbeschränkende Maßnahme jetzt senden?", "Senden", MessageBoxButtons.YesNo));
+                    if (bSent)
+                    {
+                        string chars = "ACDEFHJKLMNPRTUVWXYZ23479";
+                        Random random = new Random();
+                        string RandomPassphrase = new string(Enumerable.Repeat(chars, 8).Select(s => s[random.Next(s.Length)]).ToArray());
+                        string sWarnung = "";
 
+                        if (rUnterbringung.Aktion.sEquals("Vornahme"))
+                        {
+                            sWarnung = "Diese Meldung über die Vornahme einer Freiheitsbeschränkung für " + _klient.FullName + " wurde der Bewohnervertretung bereits übermittelt.\nWenn Sie diese Meldung erneut senden, wird jede in der Meldung enthaltene Maßnahme als neue, zusätzliche (doppelte) Maßnahme zu den bereits gemeldeten Maßnahmen an die Bewohnervertretung übermittelt.\n";
+                        }
+                        else if (rUnterbringung.Aktion.sEquals("Aufhebung"))
+                        {
+                            sWarnung = "Diese Meldung einer Freiheitsbeschränkung für " + _klient.FullName + " wurde der Bewohnervertretung bereits als aufgehoben gemeldet.\nDie Bewohnervertretung führt die darin enthaltenen Maßnahmen daher bereits als beendet.\nEin neuerliches Senden ist nicht notwendig.\nSollten Sie dennoch senden wollen, nehmen Sie bitte vorher Kontakt mit der zuständigen Bewohnervertreter:in oder support-edi@vertretungsnetz.at auf!\n";
+                        }
+                        sWarnung += "\nBitte nehmen Sie daher vor dem erneuten Senden Kontakt mit der zuständigen Bewohnervertreter:in per eMail an support-edi@vertretungsnetz.at auf!\n\n";
+                        sWarnung += "Klicken Sie auf OK, um nach Eingabe eines Bestätigungscodes die Meldung jetzt erneut zu senden oder auf Abbrechen, um die Meldung nicht zu senden.";
+
+                        using (PMDS.GUI.GenericControls.frmMessageBox frmMessageBox1 = new GenericControls.frmMessageBox())
+                        {
+                            frmMessageBox1.initControl(sWarnung);
+                            frmMessageBox1.ShowDialog(this);
+
+                            if (frmMessageBox1.abort)
+                            {
+                                res = DialogResult.No;
+                            }
+                            else
+                            {
+                                using (PMDS.GUI.BaseControls.frmInputText frmInput = new PMDS.GUI.BaseControls.frmInputText())
+                                {
+                                    frmInput.setData("HAG-Meldung erneut senden", "Geben Sie den Bestätigungscode  " + RandomPassphrase + "  hier ein:", "", true, "", "", false, true, false);
+                                    frmInput.ShowDialog(this);
+                                    if (frmInput._apport)
+                                    {                                            
+                                        res = DialogResult.No;
+                                    }
+                                    else
+                                    {
+                                        if (frmInput.txtInput1.Text.sEquals(RandomPassphrase))
+                                        {
+                                            res = DialogResult.Yes;
+                                        }
+                                        else
+                                        {
+                                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("HAG - Meldung erneut senden: Fehlerhafte Code-Eingabe. Die Funktion wird abgebrochen.", "Fehler", System.Windows.Forms.MessageBoxButtons.OK);
+                                            res = DialogResult.No;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        res = (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie die Daten für die freiheitsbeschränkende Maßnahme jetzt senden?", "Senden", MessageBoxButtons.YesNo));
+                    }
 
                     if (res == DialogResult.Yes)
                     {

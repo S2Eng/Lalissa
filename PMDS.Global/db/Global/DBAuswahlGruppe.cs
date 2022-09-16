@@ -351,7 +351,14 @@ namespace PMDS.DB
             daAuswahlGruppeByID.SelectCommand.Parameters[0].Value = Group;
             dsAuswahlGruppe.AuswahlListeGruppeDataTable t = new dsAuswahlGruppe.AuswahlListeGruppeDataTable();
             DataBase.Fill(daAuswahlGruppeByID, t);
-            return (dsAuswahlGruppe.AuswahlListeGruppeRow)t.Rows[0];
+            if (t.Rows.Count == 1)
+            {
+                return (dsAuswahlGruppe.AuswahlListeGruppeRow)t.Rows[0];
+            }
+            else
+            {
+                return null;
+            }
         }
         //----------------------------------------------------------------------------
         /// <summary>

@@ -16,6 +16,7 @@ namespace PMDS.UI.Sitemap
         fswreset = 8,
         fswNoUpload = 9,
         rollen = 10,
-        fswXlsVorschau = 11
+        fswXlsVorschau = 11,
+        fswsFTPOnly = 12
     }
 }

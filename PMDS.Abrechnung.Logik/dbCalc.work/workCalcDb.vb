@@ -803,6 +803,7 @@ Public Class workCalcDb
             rNewRowExport.IDSR = ""
 
             rNewRowExport.steuercode = IIf(rNewRowExport.prozent > 0, 1, 0)
+            rNewRowExport.koperiode = rBill.datum.ToString("yyyyMM")
 
             If BMDExportTyp = eBMDExportTyp.MZ Then
                 'MZ-spezifische Spalten sezen
@@ -830,6 +831,7 @@ Public Class workCalcDb
                     rUmbuchung.steuercode = 0
                     rUmbuchung.AbteilungCode = ""
                     rUmbuchung.ExportiertJN = rNewRowExport.ExportiertJN
+                    rUmbuchung.koperiode = ""
                 End If
             End If
 

@@ -226,7 +226,7 @@ namespace PMDS
 
                 
 
-                if (typ == "abrech")
+                if (typ == "abrech" || typ == "calc")
                 {
                     ENV.StartupMode = typ;
                     qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();

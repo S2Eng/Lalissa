@@ -5687,6 +5687,10 @@ namespace PMDS.Global.db.ERSystem
                         {
                             TypeCol = eTypeCol.tDateTime;
                         }
+                        else if (infoCol.TypeName.Trim().EndsWith("datetime2", StringComparison.OrdinalIgnoreCase))
+                        {
+                            TypeCol = eTypeCol.tDateTime;
+                        }
                         else if (infoCol.TypeName.Trim().EndsWith("date", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tDateTime;

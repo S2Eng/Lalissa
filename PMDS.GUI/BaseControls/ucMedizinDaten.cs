@@ -175,7 +175,7 @@ namespace PMDS.GUI.BaseControls
                         {
                             if (rMedType.bVisible)
                             {
-                                this.insertMedDatenIcon(ref this._ucAbwesenheit, MedizinischerTyp.Abwesenheit, rMedType.Icon, rMedType.IconOFF, 200);
+                                this.insertMedDatenIcon(ref this._ucAbwesenheit, MedizinischerTyp.Abwesenheit, rMedType.Icon, rMedType.IconOFF, 250);
                             }
                         }
                         else if (rMedType.MedizinischerTyp.Equals((int)MedizinischerTyp.WichtigeInformation))
@@ -447,6 +447,7 @@ namespace PMDS.GUI.BaseControls
             this._ucNotfall = new ucMedizinData();
             this._ucNotfall.NotfallIcon = true;
             this._ucNotfall.Init(999);
+            this._ucNotfall.Width = 32;
             this._ucNotfall.NotfallSelected += new NotfallSelectedDelegate(this._ucNotfall_NotfallSelected);
             this.pnlMain.Controls.Add(_ucNotfall);
         }
@@ -841,7 +842,7 @@ namespace PMDS.GUI.BaseControls
                 ucMedizinData1.Visible = true;
 
                 ucMedizinData1.SuspendLayout();
-                ucMedizinData1.ultraPictureBox1.BackColor = System.Drawing.Color.Transparent;
+                ucMedizinData1.ultraPictureBox1.BackColor = System.Drawing.Color.White;
                 ucMedizinData1.ultraPictureBox1.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
                 if (ucMedizinData1.imgIcoOff == null)
                 {
@@ -862,7 +863,7 @@ namespace PMDS.GUI.BaseControls
                 //ucMedizinData1.lblTxt.BringToFront();
                 ucMedizinData1.ultraPictureBox1.BringToFront();
 
-                ucMedizinData1.BackColor = System.Drawing.Color.Transparent;
+                ucMedizinData1.BackColor = System.Drawing.Color.White;
                 UltraToolTipInfo info = new UltraToolTipInfo();
                 info.ToolTipText = "";
                 info.ToolTipTitle = "";

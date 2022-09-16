@@ -628,7 +628,7 @@ namespace PMDS.DB
             this.oleDbCommand2.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 16, "IDPatient"),
             new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.Date, 16, "Von"),
-            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBDate, 16, "Bis")});
+            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.Date, 16, "Bis")});
             // 
             // oleDbSelectCommand4
             // 
@@ -1521,7 +1521,7 @@ namespace PMDS.DB
             }
             if (ret.txt1 != "")
             {
-                ret.title   = QS2.Desktop.ControlManagment.ControlManagment.getRes("Es bestehen offene Freiheitsbeschränkungen für den Patienten! (Anzahl: ") + dt.Rows.Count.ToString() + ")";    
+                ret.title   = QS2.Desktop.ControlManagment.ControlManagment.getRes("Es bestehen offene Freiheitsbeschränkungen für den Klienten! (Anzahl: ") + dt.Rows.Count.ToString() + ")";    
             }
             return ret;
         }

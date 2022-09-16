@@ -377,7 +377,7 @@ namespace PMDS.GUI
             this.cbArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbArea.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
             this.cbArea.BerufsstandGruppeJNA = -1;
-            this.cbArea.Group = "";
+            this.cbArea.Group = "LOA";
             this.cbArea.ID_PEP = -1;
             this.cbArea.Location = new System.Drawing.Point(16, 400);
             this.cbArea.MaxLength = 50;
@@ -392,7 +392,7 @@ namespace PMDS.GUI
             this.cbSide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbSide.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
             this.cbSide.BerufsstandGruppeJNA = -1;
-            this.cbSide.Group = "";
+            this.cbSide.Group = "LOS";
             this.cbSide.ID_PEP = -1;
             this.cbSide.Location = new System.Drawing.Point(16, 440);
             this.cbSide.MaxLength = 50;

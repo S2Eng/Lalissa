@@ -225,5 +225,52 @@ namespace PMDS.GUI.BaseControls
         {
 
         }
+
+        private void ucButton1_Click(object sender, EventArgs e)
+        {
+            dsLinkDokumente.LinkDokumenteRow r = _doc.NewRow(_dt);
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                DataRowView v = (DataRowView)dataGridView1.CurrentRow.DataBoundItem;
+                dsLinkDokumente.LinkDokumenteRow r = (dsLinkDokumente.LinkDokumenteRow)v.Row;
+                r.Delete();
+            }
+        }
+
+        private void baseButton1_Click(object sender, EventArgs e)
+        {
+            if (CURRENT == null)
+                return;
+            if (CURRENT.LinkName.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                ProcessHyperlink();
+            else
+                PMDS.GUI.GuiUtil.ShowDocumentFromByteStream(CURRENT.Dokument, Path.GetExtension(CURRENT.LinkName).ToLower());
+
+        }
+
+        private void baseButton2_Click(object sender, EventArgs e)
+        {
+            if (CURRENT == null || CURRENT.LinkName.StartsWith("http", StringComparison.OrdinalIgnoreCase) || CURRENT.IsDokumentNull())
+                return;
+
+            try
+            {
+                saveFileDialog1.DefaultExt = Path.GetExtension(CURRENT.LinkName).ToLower();
+                saveFileDialog1.FileName = CURRENT.LinkName;
+                DialogResult res = saveFileDialog1.ShowDialog();
+                if (res != DialogResult.OK)
+                    return;
+
+                File.WriteAllBytes(saveFileDialog1.FileName, CURRENT.Dokument);
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+        }
     }
 }

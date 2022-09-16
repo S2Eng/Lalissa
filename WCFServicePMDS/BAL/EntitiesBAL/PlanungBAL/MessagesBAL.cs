@@ -84,7 +84,7 @@ namespace WCFServicePMDS.BAL
                                             where mu.Idmessages == m.Id && mu.Iduser == UserId && !mu.Readed
                                             select mu
                               where m.ClientsMessage == ClientsMessage && m.TypeMessage == TypeMessage && 
-                                       m.CreatedDay >= dFromTmp.Date && m.CreatedDay <= dToTmp.Date && actions.Count() > 0
+                                       m.CreatedDay >= dFromTmp.Date && m.CreatedDay <= dToTmp.Date && actions.Any()
                               orderby m.Created ascending
                               select m
                              ).ToList();

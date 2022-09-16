@@ -172,10 +172,10 @@ namespace PMDS.GUI
             this.txtBemerkung.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBemerkung.Location = new System.Drawing.Point(112, 87);
+            this.txtBemerkung.Location = new System.Drawing.Point(137, 87);
             this.txtBemerkung.Multiline = true;
             this.txtBemerkung.Name = "txtBemerkung";
-            this.txtBemerkung.Size = new System.Drawing.Size(392, 192);
+            this.txtBemerkung.Size = new System.Drawing.Size(438, 192);
             this.txtBemerkung.TabIndex = 5;
             // 
             // lblBemerkung
@@ -199,9 +199,11 @@ namespace PMDS.GUI
             // dtpVersetzung
             // 
             this.dtpVersetzung.FormatString = "";
-            this.dtpVersetzung.Location = new System.Drawing.Point(112, 8);
+            this.dtpVersetzung.Location = new System.Drawing.Point(137, 8);
             this.dtpVersetzung.MaskInput = "dd.mm.yyyy hh:mm";
             this.dtpVersetzung.Name = "dtpVersetzung";
+            this.dtpVersetzung.ownFormat = "";
+            this.dtpVersetzung.ownMaskInput = "";
             this.dtpVersetzung.Size = new System.Drawing.Size(128, 21);
             this.dtpVersetzung.TabIndex = 1;
             // 
@@ -217,7 +219,7 @@ namespace PMDS.GUI
             // cboBereich
             // 
             this.cboBereich.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboBereich.Location = new System.Drawing.Point(112, 59);
+            this.cboBereich.Location = new System.Drawing.Point(137, 59);
             this.cboBereich.Name = "cboBereich";
             this.cboBereich.Size = new System.Drawing.Size(205, 21);
             this.cboBereich.TabIndex = 7;
@@ -226,7 +228,7 @@ namespace PMDS.GUI
             // 
             this.cbAbteilung.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbAbteilung.ENVAbteilung = false;
-            this.cbAbteilung.Location = new System.Drawing.Point(112, 33);
+            this.cbAbteilung.Location = new System.Drawing.Point(137, 33);
             this.cbAbteilung.Name = "cbAbteilung";
             this.cbAbteilung.rKlinik = null;
             this.cbAbteilung.Size = new System.Drawing.Size(205, 21);
@@ -245,7 +247,7 @@ namespace PMDS.GUI
             this.Controls.Add(this.lblVerlegungsdatum);
             this.Controls.Add(this.dtpVersetzung);
             this.Name = "ucVersetzung";
-            this.Size = new System.Drawing.Size(512, 287);
+            this.Size = new System.Drawing.Size(583, 287);
             this.Load += new System.EventHandler(this.ucVersetzung_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBemerkung)).EndInit();

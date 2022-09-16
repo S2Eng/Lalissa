@@ -83,7 +83,6 @@
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem10 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueList valueList5 = new Infragistics.Win.ValueList(364097177);
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
             this.cboBezeichnungstexte = new QS2.Desktop.ControlManagment.BaseComboEditor();
             this.lblVon = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblBis = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -99,8 +98,6 @@
             this.btnPrint = new PMDS.GUI.ucButton(this.components);
             this.btnDel = new PMDS.GUI.ucButton(this.components);
             this.btnAdd = new PMDS.GUI.ucButton(this.components);
-            this.panelGrid = new QS2.Desktop.ControlManagment.BasePanel();
-            this.ultraGridBagLayoutPanelGrid = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.grdManBuchungen3 = new QS2.Desktop.ControlManagment.BaseGrid();
             this.dsManBuch1 = new PMDS.Global.db.Global.ds_abrechnung.dsManBuch();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
@@ -113,9 +110,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpSuche)).BeginInit();
             this.grpSuche.SuspendLayout();
             this.panelDrucken2.SuspendLayout();
-            this.panelGrid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanelGrid)).BeginInit();
-            this.ultraGridBagLayoutPanelGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdManBuchungen3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsManBuch1)).BeginInit();
             this.SuspendLayout();
@@ -196,7 +190,7 @@
             this.cbAbgerechnet.BackColorInternal = System.Drawing.Color.Transparent;
             this.cbAbgerechnet.Location = new System.Drawing.Point(244, 19);
             this.cbAbgerechnet.Name = "cbAbgerechnet";
-            this.cbAbgerechnet.Size = new System.Drawing.Size(107, 20);
+            this.cbAbgerechnet.Size = new System.Drawing.Size(145, 20);
             this.cbAbgerechnet.TabIndex = 4;
             this.cbAbgerechnet.Text = "abgerechnet J/N";
             this.cbAbgerechnet.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
@@ -224,7 +218,7 @@
             this.grpSuche.Controls.Add(this.cbAbgerechnet);
             this.grpSuche.Location = new System.Drawing.Point(5, 1);
             this.grpSuche.Name = "grpSuche";
-            this.grpSuche.Size = new System.Drawing.Size(395, 50);
+            this.grpSuche.Size = new System.Drawing.Size(444, 50);
             this.grpSuche.TabIndex = 12;
             this.grpSuche.Text = "Suche";
             // 
@@ -240,7 +234,7 @@
             this.btnSearch.DoOnClick = true;
             this.btnSearch.ImageSize = new System.Drawing.Size(12, 12);
             this.btnSearch.IsStandardControl = true;
-            this.btnSearch.Location = new System.Drawing.Point(358, 18);
+            this.btnSearch.Location = new System.Drawing.Point(395, 18);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(27, 24);
             this.btnSearch.TabIndex = 12;
@@ -342,26 +336,6 @@
             this.btnAdd.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
             this.btnAdd.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // panelGrid
-            // 
-            this.panelGrid.Controls.Add(this.ultraGridBagLayoutPanelGrid);
-            this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGrid.Location = new System.Drawing.Point(0, 56);
-            this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(927, 476);
-            this.panelGrid.TabIndex = 12;
-            // 
-            // ultraGridBagLayoutPanelGrid
-            // 
-            this.ultraGridBagLayoutPanelGrid.Controls.Add(this.grdManBuchungen3);
-            this.ultraGridBagLayoutPanelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraGridBagLayoutPanelGrid.ExpandToFitHeight = true;
-            this.ultraGridBagLayoutPanelGrid.ExpandToFitWidth = true;
-            this.ultraGridBagLayoutPanelGrid.Location = new System.Drawing.Point(0, 0);
-            this.ultraGridBagLayoutPanelGrid.Name = "ultraGridBagLayoutPanelGrid";
-            this.ultraGridBagLayoutPanelGrid.Size = new System.Drawing.Size(927, 476);
-            this.ultraGridBagLayoutPanelGrid.TabIndex = 3;
             // 
             // grdManBuchungen3
             // 
@@ -564,19 +538,16 @@
             valueList3,
             valueList4,
             valueList5});
+            this.grdManBuchungen3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdManBuchungen3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            gridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint1.Insets.Bottom = 5;
-            gridBagConstraint1.Insets.Left = 5;
-            gridBagConstraint1.Insets.Right = 5;
-            gridBagConstraint1.Insets.Top = 1;
-            this.ultraGridBagLayoutPanelGrid.SetGridBagConstraint(this.grdManBuchungen3, gridBagConstraint1);
-            this.grdManBuchungen3.Location = new System.Drawing.Point(5, 1);
+            this.grdManBuchungen3.Location = new System.Drawing.Point(0, 56);
             this.grdManBuchungen3.Name = "grdManBuchungen3";
-            this.ultraGridBagLayoutPanelGrid.SetPreferredSize(this.grdManBuchungen3, new System.Drawing.Size(756, 107));
-            this.grdManBuchungen3.Size = new System.Drawing.Size(917, 470);
+            this.grdManBuchungen3.Size = new System.Drawing.Size(927, 476);
             this.grdManBuchungen3.TabIndex = 2;
             this.grdManBuchungen3.Text = "Buchungen";
+            this.grdManBuchungen3.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.grdManBuchungen3.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            this.grdManBuchungen3.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdManBuchungen3_InitializeLayout);
             this.grdManBuchungen3.AfterRowActivate += new System.EventHandler(this.grdManBuchungen3_AfterRowActivate);
             this.grdManBuchungen3.BeforeRowActivate += new Infragistics.Win.UltraWinGrid.RowEventHandler(this.grdManBuchungen3_BeforeRowActivate);
             this.grdManBuchungen3.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdManBuchungen3_CellChange);
@@ -600,7 +571,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.panelGrid);
+            this.Controls.Add(this.grdManBuchungen3);
             this.Controls.Add(this.panelOben);
             this.Name = "ucManFreiBuch";
             this.Size = new System.Drawing.Size(927, 532);
@@ -616,9 +587,6 @@
             this.grpSuche.ResumeLayout(false);
             this.grpSuche.PerformLayout();
             this.panelDrucken2.ResumeLayout(false);
-            this.panelGrid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanelGrid)).EndInit();
-            this.ultraGridBagLayoutPanelGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdManBuchungen3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsManBuch1)).EndInit();
             this.ResumeLayout(false);
@@ -631,7 +599,6 @@
         private QS2.Desktop.ControlManagment.BaseLabel lblBis;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private QS2.Desktop.ControlManagment.BaseCheckBox cbAbgerechnet;
-        private QS2.Desktop.ControlManagment.BasePanel panelGrid;
         private QS2.Desktop.ControlManagment.BasePanel panelOben;
         private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
         private QS2.Desktop.ControlManagment.BasePanel panelDrucken2;
@@ -645,7 +612,6 @@
         private PMDS.GUI.ucButton btnSearch;
         private QS2.Desktop.ControlManagment.BaseButton btnRechnungDrucken;
         private QS2.Desktop.ControlManagment.BaseGrid grdManBuchungen3;
-        private Infragistics.Win.Misc.UltraGridBagLayoutPanel ultraGridBagLayoutPanelGrid;
         private QS2.Desktop.ControlManagment.BaseComboEditor cboBezeichnungstexte;
     }
 }

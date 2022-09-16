@@ -61,6 +61,7 @@
             this.ucFormAsses1 = new PMDS.GUI.BaseControls.ucFormAsses();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.panelPdfViewer = new System.Windows.Forms.Panel();
+            this.panelDoc = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelTree = new System.Windows.Forms.Panel();
             this.lblTitle = new Infragistics.Win.Misc.UltraLabel();
             this.panelPdfViewer2 = new System.Windows.Forms.Panel();
@@ -154,7 +155,7 @@
             this.panelGird.Controls.Add(this.pdfToolStripViewModes1);
             this.panelGird.Controls.Add(this.pdfToolStripZoomEx1);
             this.panelGird.Controls.Add(this.pdfViewer1);
-            this.panelGird.Location = new System.Drawing.Point(1, 38);
+            this.panelGird.Location = new System.Drawing.Point(1, 39);
             this.panelGird.Name = "panelGird";
             this.panelGird.Size = new System.Drawing.Size(599, 404);
             this.panelGird.TabIndex = 14;
@@ -167,7 +168,7 @@
             this.pdfToolStripViewModes1.Location = new System.Drawing.Point(232, 3);
             this.pdfToolStripViewModes1.Name = "pdfToolStripViewModes1";
             this.pdfToolStripViewModes1.PdfViewer = this.pdfViewer1;
-            this.pdfToolStripViewModes1.Size = new System.Drawing.Size(133, 27);
+            this.pdfToolStripViewModes1.Size = new System.Drawing.Size(166, 27);
             this.pdfToolStripViewModes1.TabIndex = 21;
             this.pdfToolStripViewModes1.Text = "pdfToolStripViewModes1";
             // 
@@ -186,6 +187,7 @@
             this.pdfViewer1.Location = new System.Drawing.Point(2, 32);
             this.pdfViewer1.MouseMode = Patagames.Pdf.Net.Controls.WinForms.MouseModes.Default;
             this.pdfViewer1.Name = "pdfViewer1";
+            this.pdfViewer1.OptimizedLoadThreshold = 1000;
             this.pdfViewer1.Padding = new System.Windows.Forms.Padding(10);
             this.pdfViewer1.PageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.pdfViewer1.PageAutoDispose = true;
@@ -396,6 +398,7 @@
             // panelPdfViewer
             // 
             this.panelPdfViewer.BackColor = System.Drawing.Color.Transparent;
+            this.panelPdfViewer.Controls.Add(this.panelDoc);
             this.panelPdfViewer.Controls.Add(this.panelUnten);
             this.panelPdfViewer.Controls.Add(this.panelGird);
             this.panelPdfViewer.Controls.Add(this.panelOben2);
@@ -404,6 +407,18 @@
             this.panelPdfViewer.Name = "panelPdfViewer";
             this.panelPdfViewer.Size = new System.Drawing.Size(604, 481);
             this.panelPdfViewer.TabIndex = 13;
+            // 
+            // panelDoc
+            // 
+            this.panelDoc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelDoc.BackColor = System.Drawing.Color.DarkGray;
+            this.panelDoc.Location = new System.Drawing.Point(24, 55);
+            this.panelDoc.Name = "panelDoc";
+            this.panelDoc.Size = new System.Drawing.Size(194, 103);
+            this.panelDoc.TabIndex = 1006;
+            this.panelDoc.Visible = false;
             // 
             // panelTree
             // 
@@ -491,5 +506,6 @@
         private System.Windows.Forms.Panel panelTree;
         private System.Windows.Forms.Panel panelPdfViewer2;
         private Infragistics.Win.Misc.UltraLabel lblTitle;
+        private QS2.Desktop.ControlManagment.BasePanel panelDoc;
     }
 }

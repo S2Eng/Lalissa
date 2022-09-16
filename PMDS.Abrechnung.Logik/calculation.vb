@@ -4,7 +4,7 @@ Imports System.Text
 Imports VB = Microsoft.VisualBasic
 Imports System.Linq
 Imports System.Data.DataSetExtensions
-
+Imports System.Collections.Generic
 
 Public Class calculation
     Inherits calcBase
@@ -45,6 +45,7 @@ Public Class calculation
     Public Shared ZahlKondFSW As String = ""
 
     Public Shared AbwesenheitenAnzeigen As Boolean = True
+    Public Shared RechErwAbwesenheitListe As List(Of String) = New List(Of String)()
 
 
     Public Class cBill
@@ -74,7 +75,9 @@ Public Class calculation
                         ByVal pathConfig As String,
                         ByVal TageOhneKuerzungGrundleistung As Integer,
                         ByVal KuerzungGrundleistungLetzterTag As Boolean,
-                        ByVal RechErwAbwesenheit As Boolean, ByVal SrErwAbwesenheit As Boolean,
+                        ByVal RechErwAbwesenheit As Integer,
+                        ByVal RechErwAbwesenheitListe As List(Of String),
+                        ByVal SrErwAbwesenheit As Boolean,
                         ZahlKondBankeinzug As String, ZahlKondErlagschein As String, ZahlKondÜberweisung As String, ZahlKondBar As String, ZahlKondFSW As String,
                         AbwesenheitenAnzeigen As Boolean, RechTitelDepotGeld As String, bankdaten As Boolean)
         Try
@@ -108,6 +111,7 @@ Public Class calculation
             calculation.ZahlKondBar = ZahlKondBar
             calculation.ZahlKondFSW = ZahlKondFSW
             calculation.AbwesenheitenAnzeigen = AbwesenheitenAnzeigen
+            calculation.RechErwAbwesenheitListe = RechErwAbwesenheitListe
 
             MWSTSätze.loadMWSTSätzeFromFile()
 
@@ -158,7 +162,7 @@ Public Class calculation
                     doCalc.run(calc)
                 End If
 
-                doBill.run(calc, editor, IDKlinik, Bereich, Prot, iCounterProt)
+                doBill.run(calc, editor, IDKlinik, Bereich, Prot, iCounterProt, calculation.RechErwAbwesenheitListe)
 
                 If Me.rowKlient(calc.dbCalc).calcTyp = CInt(eCalcTyp.abrechnung) Then
                     doBill.save(eBillStatus.offen, calc, IDKlinik)
@@ -171,9 +175,12 @@ Public Class calculation
         End Try
     End Function
 
-    Public Sub Load(ByRef klienten As ArrayList, ByVal von As DateTime, ByVal bis As DateTime, vonRechDatum As Nullable(Of DateTime), bisRechDatum As Nullable(Of DateTime),
+    Public Sub Load(ByRef klienten As ArrayList, ByVal von As DateTime, ByVal bis As DateTime, vonRechDatum As Nullable(Of DateTime),
+                    bisRechDatum As Nullable(Of DateTime),
                     ByRef db As dbPMDS, ByVal rechTyp As PMDS.Calc.Logic.eBillTyp,
-                    ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showStornierte As Boolean, showExportiere As Boolean, RechNr As String)
+                    ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid,
+                    showStornierte As Boolean, showExportiere As Boolean, RechNr As String,
+                    ActUIMode As PMDS.Calc.Logic.CalcUIMode)
 
 
         Dim dbTemp As dbPMDS = db.Clone
@@ -190,7 +197,7 @@ Public Class calculation
     Public Sub Load(ByRef klienten As ArrayList, ByVal von As DateTime, ByVal bis As DateTime, vonRechDatum As Nullable(Of DateTime), bisRechDatum As Nullable(Of DateTime),
                     ByRef db As dbPMDS, ByVal rechTyp As PMDS.Calc.Logic.eBillTyp,
                     ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportiere As Boolean, RechNr As String,
-                    ByRef iOffene As Integer, ByRef iFreigegebene As Integer)
+                    ByRef iOffene As Integer, ByRef iFreigegebene As Integer, UIMode As PMDS.Calc.Logic.CalcUIMode)
 
 
         'Alle bills aus Db holen statt zweimal alle rechnungen lesen (einmal für offene und einmal für freigegeben)
@@ -208,11 +215,15 @@ Public Class calculation
 
         If status = PMDS.Calc.Logic.eBillStatus.offen Then
             For Each r As dbPMDS.billsRow In dbTemp.bills
-                If r.Freigegeben = False Then
-                    db.bills.ImportRow(r)
-                    iOffene += 1
+                If UIMode = CalcUIMode.Vorschau And r.Typ <> eBillTyp.Beilage And r.Typ <> eBillTyp.Rechnung And r.Typ <> eBillTyp.FreieRechnung Then
+                    'ignorieren // in Rechnugnsvorschau nur Beilagen, Rechnungen und FreiRechnungen anzeigen
                 Else
-                    iFreigegebene += 1
+                    If r.Freigegeben = False Then
+                        db.bills.ImportRow(r)
+                        iOffene += 1
+                    Else
+                        iFreigegebene += 1
+                    End If
                 End If
             Next
         ElseIf status = PMDS.Calc.Logic.eBillStatus.freigegeben Then

@@ -387,22 +387,19 @@ namespace PMDS.GUI
         public static void setColorCbo(UltraComboEditor cbo)
         {
             cbo.Appearance.BackColor = Color.Yellow;
-            cbo.UseAppStyling = false;
         }
+
         public static void setColorTxt(UltraTextEditor txt)
         {
             txt.Appearance.BackColor = Color.Yellow;
-            txt.UseAppStyling = false;
         }
         public static void setColorTxt2(QS2.Desktop.ControlManagment.BaseMaskEdit txt)
         {
             txt.Appearance.BackColor = Color.Yellow;
-            txt.UseAppStyling = false;
         }
         public static void setColorDat(UltraDateTimeEditor dat)
         {
             dat.Appearance.BackColor = Color.Yellow;
-            dat.UseAppStyling = false;
         }
 
 
@@ -431,26 +428,20 @@ namespace PMDS.GUI
 
         public static void resetColorCbo(UltraComboEditor cbo)
         {
-            cbo.Appearance.BackColor = Color.White;
-            cbo.UseAppStyling = false;
+			cbo.Appearance.Reset();
         }
         public static void resetColorTxt(UltraTextEditor txt)
         {
-            txt.Appearance.BackColor = Color.White;
-            txt.UseAppStyling = false;
-        }
-        public static void resetColorTxt2(QS2.Desktop.ControlManagment.BaseMaskEdit txt)
+			txt.Appearance.Reset();
+		}
+		public static void resetColorTxt2(QS2.Desktop.ControlManagment.BaseMaskEdit txt)
         {
-            txt.Appearance.BackColor = Color.White;
-            txt.UseAppStyling = false;
+			txt.Appearance.Reset();
         }
         public static void resetColorDat(UltraDateTimeEditor dat)
         {
-            dat.Appearance.BackColor = Color.White;
-            dat.UseAppStyling = false;
+			dat.Appearance.Reset();
         }
-
-
 
         public static void ValidateField(Control edit, bool condition,
                                 string sError, ref bool bError,

@@ -286,7 +286,7 @@ namespace EDIFact
             {
                 PMDS.DB.PMDSBusiness PMDSBusiness1 = new PMDS.DB.PMDSBusiness();
                 NewBefund.txtEdiFactFilePrintable = "";
-                string sDateiname = NewBefund.ArchivePath + "\\" + NewBefund.Dateiname + ": ";
+                string sDateiname = Path.Combine(NewBefund.ArchivePath, NewBefund.Dateiname + ": ");
 
                 if (BefundType.Equals(ENV.BefundTypText(eBefundTyp.BEFUND), StringComparison.CurrentCultureIgnoreCase))
                 {
@@ -546,6 +546,10 @@ namespace EDIFact
                         }
 
 
+                    }
+                    else
+                    {
+                        NewBefund.BezeichnungFile = "Unbekannte Mailbox-Nummer '" + NewBefund.MailBoxNr.Trim() + "'. Bitte Auswahlliste BIM überprüfen";
                     }
 
                 }

@@ -10,8 +10,7 @@ using PMDS.Global;
 using PMDS.BusinessLogic;
 using PMDS.GUI.BaseControls;
 using System.Linq;
-
-
+using System.Threading.Tasks;
 
 namespace PMDS.GUI
 {
@@ -162,11 +161,11 @@ namespace PMDS.GUI
 
         public void setControlsAktivDisable(bool bOn)
         {
-            this.ucKlientStammdaten1.setControlsAktivDisable(bOn);
-            if (this.ucMedizinischeDaten1 != null) this.ucMedizinischeDaten1.setControlsAktivDisable(bOn);
-            if (this.ucRegelungen1 != null) this.ucRegelungen1.setControlsAktivDisable(bOn);
-            if (this.ucDokumenteGegenstaende1 != null) this.ucDokumenteGegenstaende1.setControlsAktivDisable(bOn);
-            if (this.ucRehabilitation1 != null) this.ucRehabilitation1.setControlsAktivDisable(bOn);
+            this.ucKlientStammdaten1.setControlsAktivDisable(bOn).ConfigureAwait(false);
+            if (this.ucMedizinischeDaten1 != null) this.ucMedizinischeDaten1.setControlsAktivDisable(bOn).ConfigureAwait(false);
+            if (this.ucRegelungen1 != null) this.ucRegelungen1.setControlsAktivDisable(bOn).ConfigureAwait(false);
+            if (this.ucDokumenteGegenstaende1 != null) this.ucDokumenteGegenstaende1.setControlsAktivDisable(bOn).ConfigureAwait(false);
+            if (this.ucRehabilitation1 != null) this.ucRehabilitation1.setControlsAktivDisable(bOn).ConfigureAwait(false);
         }
 
         public void UpdateDATA()
@@ -183,19 +182,6 @@ namespace PMDS.GUI
         public bool ValidateFields()
         {
             return ucKlientStammdaten1.ValidateFields();
-
-            ////Änderung nach 09.05.2007
-            //foreach (UltraTab tab in tabKlientenakt.Tabs)
-            //{
-            //    foreach (Control c in tab.TabPage.Controls)
-            //    {
-            //        if (c is IWizardPage && !((IWizardPage)c).ValidateFields())
-            //        {
-            //            bError = true;
-            //            return !bError;
-            //        }
-            //    }
-            //}
         }
 
         public void Write()

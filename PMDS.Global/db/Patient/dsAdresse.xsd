@@ -12,7 +12,7 @@
   <xs:element name="dsAdresse" msdata:IsDataSet="true" msdata:Locale="de-AT" msprop:Generator_DataSetName="dsAdresse" msprop:Generator_UserDSName="dsAdresse">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Adresse" msprop:Generator_TableClassName="AdresseDataTable" msprop:Generator_TableVarName="tableAdresse" msprop:Generator_RowChangedName="AdresseRowChanged" msprop:Generator_TablePropName="Adresse" msprop:Generator_RowDeletingName="AdresseRowDeleting" msprop:Generator_RowChangingName="AdresseRowChanging" msprop:Generator_RowEvHandlerName="AdresseRowChangeEventHandler" msprop:Generator_RowDeletedName="AdresseRowDeleted" msprop:Generator_RowClassName="AdresseRow" msprop:Generator_UserTableName="Adresse" msprop:Generator_RowEvArgName="AdresseRowChangeEvent">
+        <xs:element name="Adresse" msprop:Generator_TableClassName="AdresseDataTable" msprop:Generator_TableVarName="tableAdresse" msprop:Generator_TablePropName="Adresse" msprop:Generator_RowDeletingName="AdresseRowDeleting" msprop:Generator_RowChangingName="AdresseRowChanging" msprop:Generator_RowEvHandlerName="AdresseRowChangeEventHandler" msprop:Generator_RowDeletedName="AdresseRowDeleted" msprop:Generator_UserTableName="Adresse" msprop:Generator_RowChangedName="AdresseRowChanged" msprop:Generator_RowEvArgName="AdresseRowChangeEvent" msprop:Generator_RowClassName="AdresseRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
@@ -44,10 +44,24 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="LandKZ" msprop:Generator_ColumnVarNameInTable="columnLandKZ" msprop:Generator_ColumnPropNameInRow="LandKZ" msprop:Generator_ColumnPropNameInTable="LandKZColumn" msprop:Generator_UserColumnName="LandKZ" minOccurs="0">
+              <xs:element name="LandKZ" msprop:Generator_ColumnVarNameInTable="columnLandKZ" msprop:Generator_ColumnPropNameInRow="LandKZ" msprop:Generator_ColumnPropNameInTable="LandKZColumn" msprop:Generator_UserColumnName="LandKZ">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Strasse_OhneHausnummer" msprop:Generator_ColumnVarNameInTable="columnStrasse_OhneHausnummer" msprop:Generator_ColumnPropNameInRow="Strasse_OhneHausnummer" msprop:Generator_ColumnPropNameInTable="Strasse_OhneHausnummerColumn" msprop:Generator_UserColumnName="Strasse_OhneHausnummer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Hausnummer" msprop:Generator_ColumnVarNameInTable="columnHausnummer" msprop:Generator_ColumnPropNameInRow="Hausnummer" msprop:Generator_ColumnPropNameInTable="HausnummerColumn" msprop:Generator_UserColumnName="Hausnummer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

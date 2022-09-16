@@ -1673,8 +1673,6 @@ namespace PMDS.GUI.PMDSClient
             this.panelControl.Width = 0;
             this.Show();
 
-            this.ucHeader1.checkMemory();
-
             Application.DoEvents();
         }
         public void ShowControlAndHeader(bool bShow)
@@ -2002,8 +2000,6 @@ namespace PMDS.GUI.PMDSClient
                 {
                     this.ultraStatusBar1.ContextMenuStrip = null;
                 }
-
-                this.ucHeader1.checkMemory();
             }
             catch (Exception ex)
             {
