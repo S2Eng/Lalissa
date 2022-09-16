@@ -112,10 +112,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.Desktop.Txteditor.dll</HintPath>
     </Reference>
-    <Reference Include="QS2.functions.vb, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\QS2.functions.vb.dll</HintPath>
-    </Reference>
     <Reference Include="QS2.Logging.Win, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.Logging.Win.dll</HintPath>
@@ -416,6 +412,10 @@
     <ProjectReference Include="..\Tools\QS2.functions.cs\QS2.functions.cs.csproj">
       <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
       <Name>QS2.functions.cs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.functions.vb.vbproj">
+      <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
+      <Name>QS2.functions.vb</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
