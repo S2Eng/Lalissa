@@ -373,7 +373,7 @@
     </Reference>
     <Reference Include="MARC.Everest, Version=1.5.0.0, Culture=neutral, PublicKeyToken=ba5b2480018546af, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PMDS\WCFServicePMDS\Dlls\MARC.Everest.dll</HintPath>
+      <HintPath>..\dlls\MARC.Everest.dll</HintPath>
     </Reference>
     <Reference Include="MARC.Everest.Formatters.XML.Datatypes.R1, Version=1.2.0.0, Culture=neutral, PublicKeyToken=50c44f29d884a7e5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -376,8 +376,9 @@
     <Reference Include="MARC.Everest.Formatters.XML.Datatypes.R1">
       <HintPath>..\Dlls\MARC.Everest.Formatters.XML.Datatypes.R1.dll</HintPath>
     </Reference>
-    <Reference Include="MARC.Everest.Formatters.XML.Datatypes.R2">
-      <HintPath>..\..\PMDS\WCFServicePMDS\Dlls\MARC.Everest.Formatters.XML.Datatypes.R2.dll</HintPath>
+    <Reference Include="MARC.Everest.Formatters.XML.Datatypes.R2, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\MARC.Everest.Formatters.XML.Datatypes.R2.dll</HintPath>
     </Reference>
     <Reference Include="MARC.Everest.Formatters.XML.ITS1">
       <HintPath>..\Dlls\MARC.Everest.Formatters.XML.ITS1.dll</HintPath>
