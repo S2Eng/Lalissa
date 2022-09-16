@@ -197,10 +197,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.Desktop.UI.vb.dll</HintPath>
     </Reference>
-    <Reference Include="QS2.functions.cs, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\QS2.functions.cs.dll</HintPath>
-    </Reference>
     <Reference Include="QS2.functions.vb, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.functions.vb.dll</HintPath>
@@ -980,6 +976,10 @@
       <Project>{10b7d2d1-0868-4fda-8473-a12b5bb9386f}</Project>
       <Name>S2Extensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tools\QS2.functions.cs\QS2.functions.cs.csproj">
+      <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
+      <Name>QS2.functions.cs</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -1031,7 +1031,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_AssemblyInfoFilename="Assembly.info" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_StartDate="2010/11/23" />
+      <UserProperties BuildVersion_StartDate="2010/11/23" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_AssemblyInfoFilename="Assembly.info" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

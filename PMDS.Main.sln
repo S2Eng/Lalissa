@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29025.244
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMDS.Main", "PMDS.Main\PMDS.Main.csproj", "{E934495D-0F9D-4A75-AAD7-79CDED878FDD}"
 EndProject
@@ -27,6 +27,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMDS.EFCore", "WCFServicePMDS\PMDS.EFCore.csproj", "{87427E1A-5914-4FD1-A0D0-C749DDEBB069}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S2Extensions", "S2Extensions\S2Extensions.csproj", "{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QS2.functions.cs", "Tools\QS2.functions.cs\QS2.functions.cs.csproj", "{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -116,18 +120,29 @@ Global
 		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Release|x86.ActiveCfg = Release|Any CPU
 		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Release|x86.Build.0 = Release|Any CPU
+		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug|x86.Build.0 = Debug|Any CPU
+		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Release|x86.ActiveCfg = Release|Any CPU
+		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9701C6F5-0D36-44C1-97B0-8C2BC96AD3D3}
-		BuildVersion_UseGlobalSettings = True
-		BuildVersion_ConfigurationName = Debug
-		BuildVersion_UpdateFileVersion = True
-		BuildVersion_AssemblyInfoFilename = Assembly.info
-		BuildVersion_StartDate = 2010/11/23
-		BuildVersion_BuildVersioningStyle = None.None.Increment.TimeStamp
 		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_BuildVersioningStyle = None.None.Increment.TimeStamp
+		BuildVersion_StartDate = 2010/11/23
+		BuildVersion_AssemblyInfoFilename = Assembly.info
+		BuildVersion_UpdateFileVersion = True
+		BuildVersion_ConfigurationName = Debug
+		BuildVersion_UseGlobalSettings = True
+		SolutionGuid = {9701C6F5-0D36-44C1-97B0-8C2BC96AD3D3}
 	EndGlobalSection
 EndGlobal

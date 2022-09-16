@@ -73,11 +73,11 @@ namespace PMDS
                     ENV.ActiveUser = rUserLoggedIn;
                     if (String.IsNullOrWhiteSpace(ENV.LoginInNameFrei))
                     {
-                        ENV.MainCaption = "Lalissa (" + ENV.ActiveUser.Nachname + " " + ENV.ActiveUser.Vorname + ") ";
+                        ENV.MainCaption = "Lellissa (" + ENV.ActiveUser.Nachname + " " + ENV.ActiveUser.Vorname + ") ";
                     }
                     else
                     {
-                        ENV.MainCaption = "Lalissa (" + ENV.ActiveUser.Benutzer1 + " - " + ENV.LoginInNameFrei + ") ";
+                        ENV.MainCaption = "Lellissa (" + ENV.ActiveUser.Benutzer1 + " - " + ENV.LoginInNameFrei + ") ";
                     }
                 }
             }
@@ -330,11 +330,11 @@ namespace PMDS
                                         ENV.ActiveUser = rUserLoggedIn;
                                         if (String.IsNullOrWhiteSpace(ENV.LoginInNameFrei))
                                         {
-                                            ENV.MainCaption = "Lalissa (" + ENV.ActiveUser.Nachname + " " + ENV.ActiveUser.Vorname + ") ";
+                                            ENV.MainCaption = "Lellissa (" + ENV.ActiveUser.Nachname + " " + ENV.ActiveUser.Vorname + ") ";
                                         }
                                         else
                                         {
-                                            ENV.MainCaption = "Lalissa (" + ENV.ActiveUser.Benutzer1 + " - " + ENV.LoginInNameFrei + ") ";
+                                            ENV.MainCaption = "Lellissa (" + ENV.ActiveUser.Benutzer1 + " - " + ENV.LoginInNameFrei + ") ";
                                         }
                                     }
                                 }

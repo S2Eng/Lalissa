@@ -456,10 +456,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.Desktop.UI.vb.dll</HintPath>
     </Reference>
-    <Reference Include="QS2.functions.cs, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\QS2.functions.cs.dll</HintPath>
-    </Reference>
     <Reference Include="QS2.functions.vb, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.functions.vb.dll</HintPath>
@@ -6040,6 +6036,10 @@
     <ProjectReference Include="..\S2Extensions\S2Extensions.csproj">
       <Project>{10b7d2d1-0868-4fda-8473-a12b5bb9386f}</Project>
       <Name>S2Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\QS2.functions.cs\QS2.functions.cs.csproj">
+      <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
+      <Name>QS2.functions.cs</Name>
     </ProjectReference>
     <ProjectReference Include="..\WCFServicePMDS\PMDS.EFCore.csproj">
       <Project>{87427e1a-5914-4fd1-a0d0-c749ddebb069}</Project>
