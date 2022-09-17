@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54E427E6-FF54-4671-BF5E-1E606453BF0C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>QS2.Resources</RootNamespace>
+    <AssemblyName>QS2.Resources</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>QS2.Resources.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>QS2.Resources.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="generic.vb" />
+    <Compile Include="getRes.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Ausschneiden.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Clock.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Dokumentenarchiv.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Editor.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Excel.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Help.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Info.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Kopieren.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Message.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_OffeneMeldungen.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Ordner.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Outlook.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_PDF.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Pflaster.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Transparent.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Weiterleiten.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Wichtig.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Winword.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Abbrechen.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Abgezeichnet.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Aktualisieren.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Bearbeiten.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Beenden.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_ChooseAll.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_ChooseNone.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Drucken.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Loeschen.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Minus.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_NeuesDokument.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Oeffnen.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_OK.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Plus.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Rückgängig.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Speichern.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Suche.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Table.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Ueberfaellig.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Vergrößern.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Verkleinern.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Vorschau.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Vorwaerts.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_Zurueck.ico" />
+    <EmbeddedResource Include="Icons\Launcher\ico_Abrechnung.ico" />
+    <EmbeddedResource Include="Icons\Launcher\ico_Bewerber.ico" />
+    <EmbeddedResource Include="Icons\Launcher\ico_Datenuebernahme.ico" />
+    <EmbeddedResource Include="Icons\Launcher\ico_Onlineformulare.ico" />
+    <EmbeddedResource Include="Icons\Launcher\ico_PEPS.ico" />
+    <EmbeddedResource Include="Icons\Launcher\ico_PMDS.ico" />
+    <EmbeddedResource Include="Icons\Launcher\ico_QS2.ico" />
+    <EmbeddedResource Include="Icons\Launcher\ico_Stammdaten.ico" />
+    <EmbeddedResource Include="Icons\Launcher\ico_Touchdoku.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Abrechnung\ico_Abrechnen.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Abrechnung\ico_Abrechnungsberichte.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Abrechnung\ico_Abrechnungsstammdaten.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Abrechnung\ico_Buchhaltung.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Abrechnung\ico_Depotgeld.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Abrechnung\ico_Kostenstraeger.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Abrechnung\ico_Leistungskatalog.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Abrechnung\ico_Rechnung.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Abrechnung\ico_Sammelabrechnung.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Abrechnung\ico_Sonderleistungen.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Abrechnung\ico_Tagsatzliste.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Intervention\ico_Einzelverordnung.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Intervention\ico_FreierBericht.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Intervention\ico_Massnahmen.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Intervention\ico_Sondertermine.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_ArchivTerminemail.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Berichte.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Datenerhebung.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Datenerhebung_2.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Evaluierung.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Evaluierung_2.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Interventionen.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Interventionen_2.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Klientenliste.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_MitverantworticherBereich.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Patient.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Planung.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Planung_2.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Uebergabe.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Uebergabe_2.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Wunddoku.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenliste\ico_Aufnahme.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenliste\ico_Bereichsuebersicht.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenliste\ico_Klientenakt.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Klientenliste\ico_Klientenakt_2.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Touchdoku\ico_Bereichsansicht.ico" />
+    <EmbeddedResource Include="Icons\PMDS\Touchdoku\ico_Pfleger.ico" />
+    <EmbeddedResource Include="Icons\QS2\QS2_blue.gif" />
+    <EmbeddedResource Include="qs2.pictures\ico_adjustments.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_Criterias.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_doLicense.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_down.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_forward.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_license.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_lock.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_log.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_marked.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_modifyQuery.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_PatientSearch.gif" />
+    <EmbeddedResource Include="qs2.pictures\ico_Queries.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_Reports.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_Ressourcen.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_selLists.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_service.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_sys.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_up.ico" />
+    <EmbeddedResource Include="qs2.pictures\ico_User.ico" />
+    <EmbeddedResource Include="qs2.pictures\ICO_weis.ico" />
+    <EmbeddedResource Include="qs2.pictures\logoProducer.jpg" />
+    <EmbeddedResource Include="qs2.pictures\QS2_10cm_RGB.jpg" />
+    <EmbeddedResource Include="qs2.pictures\queryDefault.jpg" />
+    <EmbeddedResource Include="qs2.pictures\reportDefault.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Icons\Buchungen\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Rechte.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Allergien!.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Allergien.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Allergien.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Antikaguliert!.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Antikaguliert.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Antikaguliert.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Diabetes!.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Diabetes.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Diabetes.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Impfungen!.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Impfungen.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Impfungen.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Implantate!.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Implantate.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Implantate.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Infektion.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Katheder!.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Katheder.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Katheder.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Kostform!.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Kostform.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Kostform.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_medDauerdiagnose!.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_medDiagnose!.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_MedizinischeDauerdiagnosen.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_MedizinischeDauerdiagnosen.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_MedizinischeDiagnosen.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_MedizinischeDiagnosen.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Nuechtern!.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Nuechtern.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Nuechtern.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Befunde!.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Befunde!.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Befunde.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Befunde.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Suchtmittel!.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Suchtmittel.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Suchtmittel.jpg" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Sonstiges.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Sonstiges.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_UnverträglichkeitenRZ.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_Infektion.ico" />
+    <EmbeddedResource Include="Icons\PMDS\MedizinischeTypen\ico_InfektionRZ.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\Allgemein\ico_about.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_antworten.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_earth.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_folder.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_heftklammer.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_historie.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_persons.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_scannen.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_send.ico" />
+    <EmbeddedResource Include="Icons\Allgemein\ico_trash.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\Allgemein2\ico_AlleTermine.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Archiv.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_Kliententermine.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_MeineTermine.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\PMDS\PMDS2\ico_Medikamente_01.ico" />
+    <EmbeddedResource Include="Icons\PMDS\PMDS2\ico_Medizinische_Daten.ico" />
+    <EmbeddedResource Include="Icons\PMDS\PMDS2\ico_Verknüpfen_03.ico" />
+    <EmbeddedResource Include="Icons\PMDS\PMDS2\ico_Verordnungen_03.ico" />
+    <EmbeddedResource Include="Icons\PMDS\PMDS2\ico_Wunden.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\PMDS\PMDS2\ico_Interventionen2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\PMDS\PMDS2\ico_Wunden_02.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\Allgemein2\ico_green.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_red.ico" />
+    <EmbeddedResource Include="Icons\Allgemein2\ico_yellow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\PMDS\Klientenakt\ico_Ausrufezeichen.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

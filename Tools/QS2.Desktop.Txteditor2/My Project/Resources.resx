@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chartline" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartline.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartarea3D" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartarea3d.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartbar" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartbar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="paste" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/paste.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/delete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="newpage" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/newpage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/save.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodeinterleaved2of5" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodeinterleaved2of5.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="mailmergeiffield" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/mailmergeiffield.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="mailmergeshowfieldtext" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/mailmergeshowfieldtext.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartbar3D" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartbar3d.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartarea" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartarea.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="pagebreak" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/pagebreak.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodeintelligentmail" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodeintelligentmail.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="redo" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/redo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="textframe" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/textframe.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="mailmergedeletefield" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/mailmergedeletefield.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="mergetablecells" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/mergetablecells.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="mailmergedatefield" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/mailmergedatefield.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartlayout" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartlayout.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="cut" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/cut.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartpie3D" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartpie3d.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodecode128" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodecode128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="pagenumbertop" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/pagenumbertop.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="options" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/options.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartbelowaxistitle" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartbelowaxistitle.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodeqrcode" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodeqrcode.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="pagenumberbottom" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/pagenumberbottom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodecode39" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodecode39.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="image" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/image.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodeupca" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodeupca.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="inserthyperlink" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/inserthyperlink.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartgridlinesmajorhor" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartgridlinesmajorhor.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartcolumn3D" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartcolumn3d.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartpie" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartpie.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="zoom" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/zoom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="insertlinebreak" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/insertlinebreak.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="pagecolumnstwo" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/pagecolumnstwo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="copy" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/copy.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="charttitlemain" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/charttitlemain.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="insertpagenumber" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/insertpagenumber.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="hfdialog" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/hfdialog.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="open" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/open.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="undo" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/undo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodepostnet" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodepostnet.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartlegend" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartlegend.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="mailmergeinsertfield" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/mailmergeinsertfield.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartcolumn" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartcolumn.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="deletepagenumber" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/deletepagenumber.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="splittablecells" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/splittablecells.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="_export" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/export.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="mailmergeincludetextfield" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/mailmergeincludetextfield.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartgridlinesmajorvert" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartgridlinesmajorvert.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="print" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/print.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="edithyperlink" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/edithyperlink.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chart" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chart.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodeean8" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodeean8.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="mailmergeshowfieldcodes" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/mailmergeshowfieldcodes.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="spelling" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/spelling.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="find" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/find.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodeean13" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodeean13.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartline3D" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartline3d.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="mailmergehighlightfields" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/mailmergehighlightfields.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodeazteccode" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodeazteccode.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodedatamatrix" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodedatamatrix.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartdatalabels" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartdatalabels.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartaxes" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartaxes.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="strMsgFileHandler01" xml:space="preserve">
+    <value>Some formatting features are possibly not supported by the used save format.
+These features may be lost or degraded when you reload this document.
+Click OK to reload the document anyway.
+To keep all formatting features, click Cancel, and then save the file in another file format.</value>
+  </data>
+  <data name="pageframedialog" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/pageframedialog.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="pagedialog" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/pagedialog.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="printpreview" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/printpreview.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="exit" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/exit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="pageviewprint" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/pageviewprint.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="pageviewnormal" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/pageviewnormal.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="charactersettings" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/charactersettings.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="replace" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/replace.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="insertbookmark" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/insertbookmark.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="header" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/header.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="insertfile" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/insertfile.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="help" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/help.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="styledialog" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/styledialog.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="listdialog" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/listdialog.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="paragraphsettings" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/paragraphsettings.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="tabs" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/tabs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="indentincrease" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/indentincrease.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="indentdecrease" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/indentdecrease.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/table.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="deletetable" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/deletetable.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="inserttablecolleft" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/inserttablecolleft.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="inserttablecolright" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/inserttablecolright.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="inserttablerowabove" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/inserttablerowabove.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="inserttablerowbelow" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/inserttablerowbelow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="selecttable" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/selecttable.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="selecttablecell" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/selecttablecell.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="selecttablecol" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/selecttablecol.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="selecttablerow" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/selecttablerow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="splittable" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/splittable.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="splittableabove" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/splittableabove.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="splittablebelow" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/splittablebelow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="strChartPropertiesMenuItemName" xml:space="preserve">
+    <value>Chart Properties…</value>
+  </data>
+  <data name="chartdatatable" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartdatatable.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="strChartEditDataMenuItemName" xml:space="preserve">
+    <value>Edit Chart Data…</value>
+  </data>
+  <data name="chartformat" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartformat.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="chartsetdatarelation" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/chart/chartsetdatarelation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="strChartDataRelMenuItemName" xml:space="preserve">
+    <value>Set Chart Data Relation…</value>
+  </data>
+  <data name="tabledialog" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/tabledialog.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="tablegridlines" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/tablegridlines.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="mailmergefieldproperties" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/mailmergefieldproperties.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="deletetablecell" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/deletetablecell.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="deletetablecol" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/deletetablecol.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="deletetablerow" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/deletetablerow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="strMsgFileHandler02" xml:space="preserve">
+    <value>Exporting to PDF/A is currently not possible because the PDF/A-Setting has not been enabled.
+The PDF/A-Setting can be enabled at 'Options' → 'PDF Settings' → 'Export Settings'
+The export process will now be canceled.</value>
+  </data>
+  <data name="strObjectName" xml:space="preserve">
+    <value>Set Object Name…</value>
+  </data>
+  <data name="formlayoutltr" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/formlayoutltr.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="formlayoutrtl" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/formlayoutrtl.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="hyphenation" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/hyphenation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="mailmergenextfield" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/mailmergenextfield.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="mailmergenextiffield" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/mailmergenextiffield.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="setlanguage" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/setlanguage.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="barcodecodabar" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodecodabar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodecode11" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodecode11.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodecode93" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodecode93.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodefourstate" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodefourstate.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodemaxicode" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodemaxicode.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodemicropdf" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodemicropdf.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodepdf417" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodepdf417.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcodeplanet" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcodeplanet.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+  <data name="barcoderoyalmail" type="System.Resources.ResXFileRef, System.Windows.Forms">../Images/small_32bit/barcode/barcoderoyalmail.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</data>
+</root>

@@ -1,0 +1,707 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2BAEDE76-A6D1-42CF-BF28-C1D20229C8EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>QS2.Desktop.Txteditor</RootNamespace>
+    <AssemblyName>QS2.Desktop.Txteditor</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>QS2.Desktop.Txteditor.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>QS2.Desktop.Txteditor.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Infragistics4.Documents.Core.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Core.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.Excel.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Excel.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.IO.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.IO.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.Reports.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Reports.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.TextDocument.CSharp.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.CSharp.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.TextDocument.TSql.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.TSql.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.TextDocument.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.TextDocument.VisualBasic.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.VisualBasic.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.Word.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Word.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Math.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Math.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.Core.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.Core.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataProvider.Adomd.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Adomd.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataProvider.Flat.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Flat.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataProvider.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataProvider.Xmla.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Xmla.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataSource.Flat.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Flat.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataSource.Mdx.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Mdx.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataSource.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataSource.Xmla.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Xmla.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Shared.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Shared.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Undo.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Undo.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.AppStylistSupport.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.AppStylistSupport.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.Barcode.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.Barcode.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.Shared.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.Shared.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraDataChart.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraDataChart.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraGauges.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraGauges.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraGeographicMap.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraGeographicMap.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraSparkline.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraSparkline.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.Misc.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.Misc.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.Portable.Core.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.Portable.Core.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.SupportDialogs.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.SupportDialogs.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinCalcManager.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v17.2.FormulaBuilder, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinCalcManager.v17.2.FormulaBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCarousel.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinCarousel.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinChart.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinChart.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinDataSource.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinDataSource.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinDock.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinDock.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinEditors.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinExplorerBar.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinExplorerBar.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinFormattedText.WordWriter.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinFormattedText.WordWriter.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGanttView.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGanttView.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGauge.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGauge.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.DocumentExport.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.DocumentExport.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.ExcelExport.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.ExcelExport.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.WordWriter.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.WordWriter.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinInkProvider.Ink17.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinInkProvider.Ink17.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinListBar.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinListBar.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinListView.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinListView.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinLiveTileView.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinLiveTileView.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinMaskedEdit.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinMaskedEdit.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinOfficeNavBar.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinOfficeNavBar.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinPivotGrid.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinPivotGrid.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinPrintPreviewDialog.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinPrintPreviewDialog.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinRadialMenu.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinRadialMenu.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinSchedule.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSchedule.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinSpellChecker.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSpellChecker.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinSpreadsheet.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSpreadsheet.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinStatusBar.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinStatusBar.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTabbedMdi.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinTabbedMdi.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinTabControl.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinToolbars.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinToolbars.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTree.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinTree.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.license.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\components.General\Dlls\qs2.license.core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TXDocumentServer, Version=30.0.1600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\Assembly\TXDocumentServer.dll</HintPath>
+    </Reference>
+    <Reference Include="TXDocumentServer.Windows.Forms, Version=30.0.1300.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\Assembly\TXDocumentServer.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="TXDocumentServer.Windows.Forms.Design, Version=30.0.110.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\Assembly\TXDocumentServer.Windows.Forms.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="TXDrawing, Version=30.0.600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\Assembly\TXDrawing.dll</HintPath>
+    </Reference>
+    <Reference Include="TXDrawing.Windows.Forms, Version=30.0.600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\Assembly\TXDrawing.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="TXSpell, Version=9.0.800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Text Control GmbH\TX Spell 7.0 .NET for Windows Forms\Assembly\TXSpell.dll</HintPath>
+    </Reference>
+    <Reference Include="TXSpell.Windows.Forms, Version=9.0.800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Text Control GmbH\TX Spell 7.0 .NET for Windows Forms\Assembly\TXSpell.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="TXTextControl, Version=30.0.2300.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\Assembly\TXTextControl.dll</HintPath>
+    </Reference>
+    <Reference Include="TXTextControl.Server, Version=30.0.1500.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\Assembly\TXTextControl.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="TXTextControl.Windows.Forms, Version=30.0.1500.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\Assembly\TXTextControl.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="TXTextControl.Windows.Forms.Design, Version=30.0.114.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Text Control GmbH\TX Text Control 25.0.NET for Windows Forms\Assembly\TXTextControl.Windows.Forms.Design.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="generic.vb" />
+    <Compile Include="ENV.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ui\cContextMenü.vb" />
+    <Compile Include="ui\contProtocol.designer.vb">
+      <DependentUpon>contProtocol.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\contProtocol.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\contTxtEditor.designer.vb">
+      <DependentUpon>contTxtEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Editor\contTxtEditor.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\doWork\clFields.vb" />
+    <Compile Include="ui\Editor\doWork\doBookmarks.vb" />
+    <Compile Include="ui\Editor\doWork\doEditor.vb" />
+    <Compile Include="ui\Editor\doWork\doFormat.vb" />
+    <Compile Include="ui\Editor\doWork\Enum.vb" />
+    <Compile Include="ui\Editor\doWork\formatAttr.vb" />
+    <Compile Include="ui\Editor\FileHandler.vb" />
+    <Compile Include="ui\Editor\Gui\contFelder.designer.vb">
+      <DependentUpon>contFelder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\contFelder.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\contFelder2.Designer.vb">
+      <DependentUpon>contFelder2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\contFelder2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\dsManage.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsManage.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmGotoField.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmHTMLOptions.designer.vb">
+      <DependentUpon>frmHTMLOptions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmHTMLOptions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmHyperlink.designer.vb">
+      <DependentUpon>frmHyperlink.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmHyperlink.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmInsertBreak.designer.vb">
+      <DependentUpon>frmInsertBreak.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmInsertBreak.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmInsertField.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmInsertTable.designer.vb">
+      <DependentUpon>frmInsertTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmInsertTable.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmManageFields.Designer.vb">
+      <DependentUpon>frmManageFields.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmManageFields.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmPDFOptions.designer.vb">
+      <DependentUpon>frmPDFOptions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmPDFOptions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmTxtEditor.designer.vb">
+      <DependentUpon>frmTxtEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\frmTxtEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\InputBox.designer.vb">
+      <DependentUpon>InputBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Editor\Gui\InputBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\Editor\retCheckBookmark.vb" />
+    <Compile Include="ui\frmProtocol.designer.vb">
+      <DependentUpon>frmProtocol.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\frmProtocol.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\SmallEditor\FileDragDropHandler.vb" />
+    <Compile Include="ui\SmallEditor\FileHandler2.vb" />
+    <Compile Include="ui\SmallEditor\frmTxtEditorField.Designer.vb">
+      <DependentUpon>frmTxtEditorField.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\SmallEditor\frmTxtEditorField.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\SmallEditor\SaveDocumentFileDialog.vb" />
+    <Compile Include="ui\SmallEditor\contTXTField.designer.vb">
+      <DependentUpon>contTXTField.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ui\SmallEditor\contTXTField.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ui\Spelling.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\contProtocol.resx">
+      <DependentUpon>contProtocol.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\contTxtEditor.resx">
+      <DependentUpon>contTxtEditor.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\Gui\contFelder.resx">
+      <DependentUpon>contFelder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\Gui\contFelder2.resx">
+      <DependentUpon>contFelder2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\Gui\frmGotoField.resx">
+      <DependentUpon>frmGotoField.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\Gui\frmHTMLOptions.resx">
+      <DependentUpon>frmHTMLOptions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\Gui\frmHyperlink.resx">
+      <DependentUpon>frmHyperlink.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\Gui\frmInsertBreak.resx">
+      <DependentUpon>frmInsertBreak.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\Gui\frmInsertField.resx">
+      <DependentUpon>frmInsertField.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\Gui\frmInsertTable.resx">
+      <DependentUpon>frmInsertTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\Gui\frmManageFields.resx">
+      <DependentUpon>frmManageFields.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\Gui\frmPDFOptions.resx">
+      <DependentUpon>frmPDFOptions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\Gui\frmTxtEditor.resx">
+      <DependentUpon>frmTxtEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\Editor\Gui\InputBox.resx">
+      <DependentUpon>InputBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\frmProtocol.resx">
+      <DependentUpon>frmProtocol.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\SmallEditor\contTXTField.resx">
+      <DependentUpon>contTXTField.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\SmallEditor\frmTxtEditorField.resx">
+      <DependentUpon>frmTxtEditorField.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ui\Editor\Gui\dsManage.xsc">
+      <DependentUpon>dsManage.xsd</DependentUpon>
+    </None>
+    <None Include="ui\Editor\Gui\dsManage.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsManage.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ui\Editor\Gui\dsManage.xss">
+      <DependentUpon>dsManage.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QS2.Desktop.UI.cs\QS2.Desktop.UI.cs.csproj">
+      <Project>{6b62c2f2-81be-4f42-9810-29d7d612295f}</Project>
+      <Name>QS2.Desktop.UI.cs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.Desktop.UI.vb\QS2.Desktop.UI.vb.vbproj">
+      <Project>{c28fb59d-797d-4a86-a590-072c1e0c626b}</Project>
+      <Name>QS2.Desktop.UI.vb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.functions.cs\QS2.functions.cs.csproj">
+      <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
+      <Name>QS2.functions.cs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.functions.vb\QS2.functions.vb.vbproj">
+      <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
+      <Name>QS2.functions.vb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.Logging.Win\QS2.Logging.Win.csproj">
+      <Project>{0dde0333-d4ec-419d-aebd-c8359083c02d}</Project>
+      <Name>QS2.Logging.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.Resources\QS2.Resources.vbproj">
+      <Project>{54e427e6-ff54-4671-bf5e-1e606453bf0c}</Project>
+      <Name>QS2.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newpage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printpreview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
