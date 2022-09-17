@@ -415,10 +415,6 @@
     <Reference Include="Patagames.Pdf.Wpf, Version=4.7.9.472, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
       <HintPath>..\packages\Pdfium.Net.SDK.4.27.2704\lib\net472\Patagames.Pdf.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="PdfSharp, Version=1.32.2608.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\PdfSharp.dll</HintPath>
-    </Reference>
     <Reference Include="PMDS.db.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\PMDS.db.Entities.dll</HintPath>
@@ -440,9 +436,6 @@
     <Reference Include="qs2.design.auto, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\qs2.design.auto.dll</HintPath>
-    </Reference>
-    <Reference Include="QS2.Desktop.Txteditor2">
-      <HintPath>..\..\..\project.QS2\QS2\dlls\QS2.Desktop.Txteditor2.dll</HintPath>
     </Reference>
     <Reference Include="QS2.license.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -6012,6 +6005,10 @@
     <ProjectReference Include="..\S2Extensions\S2Extensions.csproj">
       <Project>{10b7d2d1-0868-4fda-8473-a12b5bb9386f}</Project>
       <Name>S2Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\QS2.Desktop.Txteditor2\QS2.Desktop.Txteditor-2.vbproj">
+      <Project>{08f0dc54-0d47-48ca-8b91-af728cf2c615}</Project>
+      <Name>QS2.Desktop.Txteditor-2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Desktop.Txteditor\QS2.Desktop.Txteditor.vbproj">
       <Project>{2baede76-a6d1-42cf-bf28-c1d20229c8ef}</Project>
