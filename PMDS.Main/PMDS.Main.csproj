@@ -189,10 +189,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.Desktop.Txteditor.dll</HintPath>
     </Reference>
-    <Reference Include="QS2.Desktop.UI.cs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\QS2.Desktop.UI.cs.dll</HintPath>
-    </Reference>
     <Reference Include="QS2.Desktop.UI.vb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.Desktop.UI.vb.dll</HintPath>
@@ -967,6 +963,10 @@
     <ProjectReference Include="..\S2Extensions\S2Extensions.csproj">
       <Project>{10b7d2d1-0868-4fda-8473-a12b5bb9386f}</Project>
       <Name>S2Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\QS2.Desktop.UI.cs\QS2.Desktop.UI.cs.csproj">
+      <Project>{6b62c2f2-81be-4f42-9810-29d7d612295f}</Project>
+      <Name>QS2.Desktop.UI.cs</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.functions.cs\QS2.functions.cs.csproj">
       <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
