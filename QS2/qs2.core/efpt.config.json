@@ -1,0 +1,126 @@
+﻿{
+   "ContextClassName": "QS2_DEVContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "DoNotCombineNamespace": false,
+   "IdReplace": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models\\db",
+   "ProjectRootNamespace": "qs2.core",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[AddIns]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[Layout]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[LayoutGrids]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[Protocol]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[Ressourcen]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblAdjust]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblAdress]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblCriteria]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblCriteriaOpt]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblMedArchiv]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblObject]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblObjectApplications]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblObjectRel]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblParticipants]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblQueriesDef]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblQueryJoinsTemp]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblRelationship]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblSelListEntries]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblSelListEntriesObj]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblSelListEntriesSort]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblSelListGroup]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblSideLogic]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblStatistics]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblStay]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblStayAdditions]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblVersions]"
+      }
+   ],
+   "UseDatabaseNames": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseSpatial": false
+}

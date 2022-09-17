@@ -46,6 +46,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QS2.Desktop.Txteditor", "To
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QS2.Desktop.Txteditor-2", "Tools\QS2.Desktop.Txteditor2\QS2.Desktop.Txteditor-2.vbproj", "{08F0DC54-0D47-48CA-8B91-AF728CF2C615}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QS2.License.Core", "Tools\QS2.license.core\QS2.License.Core.vbproj", "{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -272,6 +274,18 @@ Global
 		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Release|x64.Build.0 = Release|x64
 		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Release|x86.ActiveCfg = Release|x86
 		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Release|x86.Build.0 = Release|x86
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}.Debug|x64.Build.0 = Debug|Any CPU
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}.Debug|x86.Build.0 = Debug|Any CPU
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}.Release|x64.ActiveCfg = Release|Any CPU
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}.Release|x64.Build.0 = Release|Any CPU
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}.Release|x86.ActiveCfg = Release|Any CPU
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -286,15 +300,16 @@ Global
 		{0DDE0333-D4EC-419D-AEBD-C8359083C02D} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
 		{2BAEDE76-A6D1-42CF-BF28-C1D20229C8EF} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
 		{08F0DC54-0D47-48CA-8B91-AF728CF2C615} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
+		{94394A2A-CC5F-4CAF-AE10-371D269F8E0A} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9701C6F5-0D36-44C1-97B0-8C2BC96AD3D3}
-		BuildVersion_UseGlobalSettings = True
-		BuildVersion_ConfigurationName = Debug
-		BuildVersion_UpdateFileVersion = True
-		BuildVersion_AssemblyInfoFilename = Assembly.info
-		BuildVersion_StartDate = 2010/11/23
-		BuildVersion_BuildVersioningStyle = None.None.Increment.TimeStamp
 		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_BuildVersioningStyle = None.None.Increment.TimeStamp
+		BuildVersion_StartDate = 2010/11/23
+		BuildVersion_AssemblyInfoFilename = Assembly.info
+		BuildVersion_UpdateFileVersion = True
+		BuildVersion_ConfigurationName = Debug
+		BuildVersion_UseGlobalSettings = True
+		SolutionGuid = {9701C6F5-0D36-44C1-97B0-8C2BC96AD3D3}
 	EndGlobalSection
 EndGlobal

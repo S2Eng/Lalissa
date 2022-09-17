@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="qs2.core.dbBase">
+    <Position X="6.25" Y="0.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="qs2.core.dbBase.DBTypeSqlServer" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\dbBase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.dbBase.TypeField" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\dbBase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AJgAoCAESAAxKAAAAACAAABCACgB0AEAAAAEABHAAYA=</HashCode>
+      <FileName>db\dbBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.ENV">
+    <Position X="0.5" Y="0.5" Width="3" />
+    <NestedTypes>
+      <Enum Name="qs2.core.ENV.eKAV" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ENV.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.ENV.eTypApp" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ENV.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.ENV.ePath" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ENV.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.ENV.eVarIni" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ENV.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gcM6cBi0KAIXECiyn+AozFbABgAMQJAiOjAY63CoCIc=</HashCode>
+      <FileName>ENV.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.Enums">
+    <Position X="3.75" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="qs2.core.Enums.eTypeQuery" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eOPTyp" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eLoadObjectFrom" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eKAVMode" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eDoProduktMode" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eTreeState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eSize" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eTypList" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eRights" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eTypQueryDef" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eTypeReport" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eControlType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eApplicationAutoStart" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eStayTyp" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.ePrefix" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eTypRunQuery" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eTypSubReport" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eDoProdukt" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eConditionTyp" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eTypeSub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.Enums.eResourceType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.ui">
+    <Position X="16" Y="0.5" Width="2.25" />
+    <NestedTypes>
+      <Enum Name="qs2.core.ui.eAutoFitStyle" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ui\ui.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AABAAIAAQAAAAAEAACBAAAhAABAQIEgAQAACAAAAAAY=</HashCode>
+      <FileName>ui\ui.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.language.doLanguage">
+    <Position X="9.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEACAAAAAAAAAAA=</HashCode>
+      <FileName>language\doLanguage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.language.sqlLanguage">
+    <Position X="9.75" Y="2" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="qs2.core.language.sqlLanguage.eLanguage" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>language\sqlLanguage.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.language.sqlLanguage.eTypSelLang" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>language\sqlLanguage.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AgACoGQCACAAAAAgABKQgAACACAAACACDAAKAgAIAAE=</HashCode>
+      <FileName>language\sqlLanguage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.language.dsLanguage">
+    <Position X="12.5" Y="0.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="qs2.core.language.dsLanguage.RessourcenRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.language.dsLanguage.RessourcenDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.language.dsLanguage.RessourcenRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.language.dsLanguage.RessourcenRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAwAAAAJAJAAAQAAAEAgCQBhAAAAAAAEABBA=</HashCode>
+      <FileName>language\dsLanguage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.sqlTxt">
+    <Position X="6.25" Y="6" Width="3" />
+    <TypeIdentifier>
+      <HashCode>CAEAAiYAAACAAAEEAEBQIQSBAGABAYBRgkCBCACCBDA=</HashCode>
+      <FileName>db\sqlTxt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.infragGridTools">
+    <Position X="16" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ui\infragGridTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

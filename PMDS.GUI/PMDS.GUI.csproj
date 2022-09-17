@@ -437,10 +437,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\qs2.design.auto.dll</HintPath>
     </Reference>
-    <Reference Include="QS2.license.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\QS2.license.core.dll</HintPath>
-    </Reference>
     <Reference Include="qs2.sitemap, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\qs2.sitemap.dll</HintPath>
@@ -6029,6 +6025,10 @@
     <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.functions.vb.vbproj">
       <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
       <Name>QS2.functions.vb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\QS2.license.core\QS2.License.Core.vbproj">
+      <Project>{94394a2a-cc5f-4caf-ae10-371d269f8e0a}</Project>
+      <Name>QS2.License.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Logging.Win\QS2.Logging.Win.csproj">
       <Project>{0dde0333-d4ec-419d-aebd-c8359083c02d}</Project>

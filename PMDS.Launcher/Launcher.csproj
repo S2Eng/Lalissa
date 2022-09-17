@@ -101,10 +101,6 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="QS2.license.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\QS2.license.core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
@@ -237,6 +233,10 @@
     <ProjectReference Include="..\Tools\QS2.functions.cs\QS2.functions.cs.csproj">
       <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
       <Name>QS2.functions.cs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\QS2.license.core\QS2.License.Core.vbproj">
+      <Project>{94394a2a-cc5f-4caf-ae10-371d269f8e0a}</Project>
+      <Name>QS2.License.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Resources\QS2.Resources.vbproj">
       <Project>{54e427e6-ff54-4671-bf5e-1e606453bf0c}</Project>

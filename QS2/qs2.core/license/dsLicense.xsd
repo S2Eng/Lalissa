@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsLicense" targetNamespace="http://tempuri.org/dsLicense.xsd" xmlns:mstns="http://tempuri.org/dsLicense.xsd" xmlns="http://tempuri.org/dsLicense.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsLicense" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsLicense" msprop:Generator_UserDSName="dsLicense">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Participant" msprop:Generator_TableClassName="ParticipantDataTable" msprop:Generator_TableVarName="tableParticipant" msprop:Generator_TablePropName="Participant" msprop:Generator_RowDeletingName="ParticipantRowDeleting" msprop:Generator_RowChangingName="ParticipantRowChanging" msprop:Generator_RowEvHandlerName="ParticipantRowChangeEventHandler" msprop:Generator_RowDeletedName="ParticipantRowDeleted" msprop:Generator_UserTableName="Participant" msprop:Generator_RowChangedName="ParticipantRowChanged" msprop:Generator_RowEvArgName="ParticipantRowChangeEvent" msprop:Generator_RowClassName="ParticipantRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDParticipant" msprop:Generator_ColumnVarNameInTable="columnIDParticipant" msprop:Generator_ColumnPropNameInRow="IDParticipant" msprop:Generator_ColumnPropNameInTable="IDParticipantColumn" msprop:Generator_UserColumnName="IDParticipant" type="xs:string" />
+              <xs:element name="LicCustomer" msprop:Generator_ColumnVarNameInTable="columnLicCustomer" msprop:Generator_ColumnPropNameInRow="LicCustomer" msprop:Generator_ColumnPropNameInTable="LicCustomerColumn" msprop:Generator_UserColumnName="LicCustomer" type="xs:string" minOccurs="0" />
+              <xs:element name="LicCountry" msprop:Generator_ColumnVarNameInTable="columnLicCountry" msprop:Generator_ColumnPropNameInRow="LicCountry" msprop:Generator_ColumnPropNameInTable="LicCountryColumn" msprop:Generator_UserColumnName="LicCountry" type="xs:string" minOccurs="0" />
+              <xs:element name="LicZIP" msprop:Generator_ColumnVarNameInTable="columnLicZIP" msprop:Generator_ColumnPropNameInRow="LicZIP" msprop:Generator_ColumnPropNameInTable="LicZIPColumn" msprop:Generator_UserColumnName="LicZIP" type="xs:string" minOccurs="0" />
+              <xs:element name="LicCity" msprop:Generator_ColumnVarNameInTable="columnLicCity" msprop:Generator_ColumnPropNameInRow="LicCity" msprop:Generator_ColumnPropNameInTable="LicCityColumn" msprop:Generator_UserColumnName="LicCity" type="xs:string" minOccurs="0" />
+              <xs:element name="LicAdress" msprop:Generator_ColumnVarNameInTable="columnLicAdress" msprop:Generator_ColumnPropNameInRow="LicAdress" msprop:Generator_ColumnPropNameInTable="LicAdressColumn" msprop:Generator_UserColumnName="LicAdress" type="xs:string" minOccurs="0" />
+              <xs:element name="LicPhone" msprop:Generator_ColumnVarNameInTable="columnLicPhone" msprop:Generator_ColumnPropNameInRow="LicPhone" msprop:Generator_ColumnPropNameInTable="LicPhoneColumn" msprop:Generator_UserColumnName="LicPhone" type="xs:string" minOccurs="0" />
+              <xs:element name="LicWeb" msprop:Generator_ColumnVarNameInTable="columnLicWeb" msprop:Generator_ColumnPropNameInRow="LicWeb" msprop:Generator_ColumnPropNameInTable="LicWebColumn" msprop:Generator_UserColumnName="LicWeb" type="xs:string" minOccurs="0" />
+              <xs:element name="UserGroup" msprop:Generator_ColumnVarNameInTable="columnUserGroup" msprop:Generator_ColumnPropNameInRow="UserGroup" msprop:Generator_ColumnPropNameInTable="UserGroupColumn" msprop:Generator_UserColumnName="UserGroup" type="xs:string" minOccurs="0" />
+              <xs:element name="GültigBis" msprop:Generator_ColumnVarNameInTable="columnGültigBis" msprop:Generator_ColumnPropNameInRow="GültigBis" msprop:Generator_ColumnPropNameInTable="GültigBisColumn" msprop:Generator_UserColumnName="GültigBis" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Application" msprop:Generator_TableClassName="ApplicationDataTable" msprop:Generator_TableVarName="tableApplication" msprop:Generator_TablePropName="Application" msprop:Generator_RowDeletingName="ApplicationRowDeleting" msprop:Generator_RowChangingName="ApplicationRowChanging" msprop:Generator_RowEvHandlerName="ApplicationRowChangeEventHandler" msprop:Generator_RowDeletedName="ApplicationRowDeleted" msprop:Generator_UserTableName="Application" msprop:Generator_RowChangedName="ApplicationRowChanged" msprop:Generator_RowEvArgName="ApplicationRowChangeEvent" msprop:Generator_RowClassName="ApplicationRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDParticipant" msprop:Generator_ColumnVarNameInTable="columnIDParticipant" msprop:Generator_ColumnPropNameInRow="IDParticipant" msprop:Generator_ColumnPropNameInTable="IDParticipantColumn" msprop:Generator_UserColumnName="IDParticipant" type="xs:string" />
+              <xs:element name="IDApplication" msprop:Generator_ColumnVarNameInTable="columnIDApplication" msprop:Generator_ColumnPropNameInRow="IDApplication" msprop:Generator_ColumnPropNameInTable="IDApplicationColumn" msprop:Generator_UserColumnName="IDApplication" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Variables" msprop:Generator_TableClassName="VariablesDataTable" msprop:Generator_TableVarName="tableVariables" msprop:Generator_TablePropName="Variables" msprop:Generator_RowDeletingName="VariablesRowDeleting" msprop:Generator_RowChangingName="VariablesRowChanging" msprop:Generator_RowEvHandlerName="VariablesRowChangeEventHandler" msprop:Generator_RowDeletedName="VariablesRowDeleted" msprop:Generator_UserTableName="Variables" msprop:Generator_RowChangedName="VariablesRowChanged" msprop:Generator_RowEvArgName="VariablesRowChangeEvent" msprop:Generator_RowClassName="VariablesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDParticipant" msprop:Generator_ColumnVarNameInTable="columnIDParticipant" msprop:Generator_ColumnPropNameInRow="IDParticipant" msprop:Generator_ColumnPropNameInTable="IDParticipantColumn" msprop:Generator_UserColumnName="IDParticipant" type="xs:string" />
+              <xs:element name="IDApplication" msprop:Generator_ColumnVarNameInTable="columnIDApplication" msprop:Generator_ColumnPropNameInRow="IDApplication" msprop:Generator_ColumnPropNameInTable="IDApplicationColumn" msprop:Generator_UserColumnName="IDApplication" type="xs:string" />
+              <xs:element name="VarName" msprop:Generator_ColumnVarNameInTable="columnVarName" msprop:Generator_ColumnPropNameInRow="VarName" msprop:Generator_ColumnPropNameInTable="VarNameColumn" msprop:Generator_UserColumnName="VarName" type="xs:string" />
+              <xs:element name="VarValue" msprop:Generator_ColumnVarNameInTable="columnVarValue" msprop:Generator_ColumnPropNameInRow="VarValue" msprop:Generator_ColumnPropNameInTable="VarValueColumn" msprop:Generator_UserColumnName="VarValue" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Applications" msprop:Generator_TableClassName="ApplicationsDataTable" msprop:Generator_TableVarName="tableApplications" msprop:Generator_TablePropName="Applications" msprop:Generator_RowDeletingName="ApplicationsRowDeleting" msprop:Generator_RowChangingName="ApplicationsRowChanging" msprop:Generator_RowEvHandlerName="ApplicationsRowChangeEventHandler" msprop:Generator_RowDeletedName="ApplicationsRowDeleted" msprop:Generator_UserTableName="Applications" msprop:Generator_RowChangedName="ApplicationsRowChanged" msprop:Generator_RowEvArgName="ApplicationsRowChangeEvent" msprop:Generator_RowClassName="ApplicationsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" />
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:Participant" />
+      <xs:field xpath="mstns:IDParticipant" />
+    </xs:unique>
+    <xs:unique name="Application_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Application" />
+      <xs:field xpath="mstns:IDParticipant" />
+      <xs:field xpath="mstns:IDApplication" />
+    </xs:unique>
+    <xs:unique name="Constraint11">
+      <xs:selector xpath=".//mstns:Applications" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Application_Variables" msdata:parent="Application" msdata:child="Variables" msdata:parentkey="IDParticipant IDApplication" msdata:childkey="IDParticipant IDApplication" msprop:Generator_UserChildTable="Variables" msprop:Generator_ChildPropName="GetVariablesRows" msprop:Generator_UserRelationName="Application_Variables" msprop:Generator_ParentPropName="ApplicationRowParent" msprop:Generator_RelationVarName="relationApplication_Variables" msprop:Generator_UserParentTable="Application" />
+      <msdata:Relationship name="Participant_Application" msdata:parent="Participant" msdata:child="Application" msdata:parentkey="IDParticipant" msdata:childkey="IDParticipant" msprop:Generator_UserChildTable="Application" msprop:Generator_ChildPropName="GetApplicationRows" msprop:Generator_UserRelationName="Participant_Application" msprop:Generator_ParentPropName="ParticipantRow" msprop:Generator_RelationVarName="relationParticipant_Application" msprop:Generator_UserParentTable="Participant" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>
