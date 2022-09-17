@@ -355,9 +355,6 @@
     <Reference Include="QS2.Desktop.UI.cs">
       <HintPath>..\Dlls\QS2.Desktop.UI.cs.dll</HintPath>
     </Reference>
-    <Reference Include="QS2.Desktop.UI.vb">
-      <HintPath>..\Dlls\QS2.Desktop.UI.vb.dll</HintPath>
-    </Reference>
     <Reference Include="QS2.functions.cs">
       <HintPath>..\Dlls\QS2.functions.cs.dll</HintPath>
     </Reference>
@@ -753,6 +750,10 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.6.0.0\analyzers\dotnet\vb\Microsoft.CodeAnalysis.VisualBasic.NetAnalyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tools\QS2.Desktop.UI.vb\QS2.Desktop.UI.vb.vbproj">
+      <Project>{c28fb59d-797d-4a86-a590-072c1e0c626b}</Project>
+      <Name>QS2.Desktop.UI.vb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.functions.vb.vbproj">
       <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
       <Name>QS2.functions.vb</Name>
