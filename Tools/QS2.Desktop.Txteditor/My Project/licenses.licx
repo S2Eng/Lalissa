@@ -1,5 +1,3 @@
-Patagames.Pdf.Net.Controls.WinForms.PdfViewer, Patagames.Pdf.WinForms, Version=4.6.7.472, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf
-
 TXTextControl.TextControl, TXTextControl.Windows.Forms, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
 TXTextControl.ServerTextControl, TXTextControl.Server, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
 TXTextControl.Proofing.TXSpellChecker, TXSpell.Windows.Forms, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638

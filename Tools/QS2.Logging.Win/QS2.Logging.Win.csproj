@@ -428,20 +428,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QS2.functions.cs\QS2.functions.cs.csproj">
-      <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
-      <Name>QS2.functions.cs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QS2.functions.vb\QS2.functions.vb.vbproj">
-      <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
-      <Name>QS2.functions.vb</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QS2.Resources\QS2.Resources.vbproj">
-      <Project>{54e427e6-ff54-4671-bf5e-1e606453bf0c}</Project>
-      <Name>QS2.Resources</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="contLogManager.resx">
       <DependentUpon>contLogManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -501,6 +487,20 @@
       <DependentUpon>dsLog2.xsd</DependentUpon>
     </None>
     <None Include="Resources\QS2_blue.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QS2.functions.cs\QS2.functions.cs.csproj">
+      <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
+      <Name>QS2.functions.cs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.functions.vb\QS2.functions.vb.vbproj">
+      <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
+      <Name>QS2.functions.vb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.Resources\QS2.Resources.vbproj">
+      <Project>{54e427e6-ff54-4671-bf5e-1e606453bf0c}</Project>
+      <Name>QS2.Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

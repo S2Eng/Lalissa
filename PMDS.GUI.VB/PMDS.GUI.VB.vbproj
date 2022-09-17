@@ -390,10 +390,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\qs2.design.auto.dll</HintPath>
     </Reference>
-    <Reference Include="QS2.Desktop.Txteditor, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\QS2.Desktop.Txteditor.dll</HintPath>
-    </Reference>
     <Reference Include="QS2.functions.vb, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.functions.vb.dll</HintPath>
@@ -401,10 +397,6 @@
     <Reference Include="QS2.license.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.license.core.dll</HintPath>
-    </Reference>
-    <Reference Include="QS2.Logging.Win, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\QS2.Logging.Win.dll</HintPath>
     </Reference>
     <Reference Include="qs2.sitemap, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -1344,6 +1336,10 @@
       <Project>{10b7d2d1-0868-4fda-8473-a12b5bb9386f}</Project>
       <Name>S2Extensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tools\QS2.Desktop.Txteditor\QS2.Desktop.Txteditor.vbproj">
+      <Project>{2baede76-a6d1-42cf-bf28-c1d20229c8ef}</Project>
+      <Name>QS2.Desktop.Txteditor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Desktop.UI.cs\QS2.Desktop.UI.cs.csproj">
       <Project>{6b62c2f2-81be-4f42-9810-29d7d612295f}</Project>
       <Name>QS2.Desktop.UI.cs</Name>
@@ -1355,6 +1351,10 @@
     <ProjectReference Include="..\Tools\QS2.functions.cs\QS2.functions.cs.csproj">
       <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
       <Name>QS2.functions.cs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\QS2.Logging.Win\QS2.Logging.Win.csproj">
+      <Project>{0dde0333-d4ec-419d-aebd-c8359083c02d}</Project>
+      <Name>QS2.Logging.Win</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Resources\QS2.Resources.vbproj">
       <Project>{54e427e6-ff54-4671-bf5e-1e606453bf0c}</Project>
