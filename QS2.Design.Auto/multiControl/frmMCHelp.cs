@@ -43,7 +43,7 @@ namespace qs2.design.auto.multiControl
 
         public string  GetHelpText()
         {
-            using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+            using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
             {
                 qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;
 

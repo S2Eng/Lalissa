@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
-using QS2.db.Entities;
+using PMDS.db.Entities;
 
 namespace qs2.design.auto.print
 {
@@ -74,7 +74,7 @@ namespace qs2.design.auto.print
                 this.dsHelper1.Clear();
 
                 System.Collections.Generic.List<string> lstChapters = qs2.core.generic.readStrVariables(this._Chapters);
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     foreach (string chapt in lstChapters)
                     {

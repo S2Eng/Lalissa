@@ -9687,18 +9687,18 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.getSelListEntriesMaxID: " + ex.ToString());
             }
         }
-        public System.Linq.IQueryable<QS2.db.Entities.tblSelListEntries> getSelListEntriesQS2(String IDGroupStr, QS2.db.Entities.ERModellQS2Entities db)
+        public System.Linq.IQueryable<PMDS.db.Entities.tblSelListEntries> getSelListEntriesQS2(String IDGroupStr, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
-                System.Linq.IQueryable<QS2.db.Entities.tblSelListGroup> tSelListGroup = db.tblSelListGroup.Where(o => o.IDGroupStr == IDGroupStr);
+                System.Linq.IQueryable<PMDS.db.Entities.tblSelListGroup> tSelListGroup = db.tblSelListGroup.Where(o => o.IDGroupStr == IDGroupStr);
                 if (tSelListGroup.Count() != 1)
                 {
                     throw new Exception("PMDSBusiness.getSelListEntries: rSelListGroup '" + IDGroupStr.Trim() + "' not exists in db!");
                 }
-                QS2.db.Entities.tblSelListGroup rSelListGroup = tSelListGroup.First();
+                PMDS.db.Entities.tblSelListGroup rSelListGroup = tSelListGroup.First();
 
-                System.Linq.IQueryable<QS2.db.Entities.tblSelListEntries> tSelListEntries = db.tblSelListEntries.Where(o => o.IDGroup == rSelListGroup.ID).OrderBy(p => p.IDRessource); 
+                System.Linq.IQueryable<PMDS.db.Entities.tblSelListEntries> tSelListEntries = db.tblSelListEntries.Where(o => o.IDGroup == rSelListGroup.ID).OrderBy(p => p.IDRessource); 
                 return tSelListEntries;
 
             }
@@ -9880,16 +9880,16 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.getPlansSerientermin5: " + ex.ToString());
             }
         }
-        public QS2.db.Entities.tblSelListGroup getSelListEntryGroupQS2(String IDGroupStr, QS2.db.Entities.ERModellQS2Entities db)
+        public PMDS.db.Entities.tblSelListGroup getSelListEntryGroupQS2(String IDGroupStr, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
-                System.Linq.IQueryable<QS2.db.Entities.tblSelListGroup> tSelListGroup = db.tblSelListGroup.Where(o => o.IDGroupStr == IDGroupStr);
+                System.Linq.IQueryable<PMDS.db.Entities.tblSelListGroup> tSelListGroup = db.tblSelListGroup.Where(o => o.IDGroupStr == IDGroupStr);
                 if (tSelListGroup.Count() != 1)
                 {
                     throw new Exception("PMDSBusiness.getSelListEntries: rSelListGroup '" + IDGroupStr.Trim() + "' not exists in db!");
                 }
-                QS2.db.Entities.tblSelListGroup rSelListGroup = tSelListGroup.First();
+                PMDS.db.Entities.tblSelListGroup rSelListGroup = tSelListGroup.First();
                 return rSelListGroup;
 
             }
@@ -11688,7 +11688,6 @@ namespace PMDS.DB
             try
             {
                 PMDS.db.Entities.ERModellPMDSEntities DBContext = new PMDS.db.Entities.ERModellPMDSEntities();
-                //PMDSBusiness.getConnection(ref DBContext);
                 if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                     PMDSBusiness.setERConnection(ref DBContext);
 
@@ -11751,29 +11750,6 @@ namespace PMDS.DB
                 }
                 string providerString = sqlBuilder.ToString();
 
-                //EntityConnectionStringBuilder entityBuilder = new EntityConnectionStringBuilder();
-                //entityBuilder.Provider = providerName;
-                //entityBuilder.ProviderConnectionString = providerString;
-                //entityBuilder.Name = "ERModellPMDSEntities";
-                //entityBuilder.Metadata = @"res://*/ERModellPMDS.csdl|res://*/ERModellPMDS.ssdl|res://*/ERModellPMDS.msl";
-
-                //System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                //var connection = config.ConnectionStrings.ConnectionStrings[entityBuilder.Name];
-
-                //if (connection == null)
-                //{
-                //    config.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings
-                //    {
-                //        Name = entityBuilder.Name,
-                //        ConnectionString = entityBuilder.ConnectionString.Replace("name=ERModellPMDSEntities;", ""),
-                //        ProviderName = "System.Data.EntityClient"
-                //    });
-                //    config.Save(ConfigurationSaveMode.Modified);
-                //    ConfigurationManager.RefreshSection("connectionStrings");
-
-                //    System.Windows.Forms.QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Konfigurationsdatei aktualisiert. Bitte starten Sie PMDS noch einmal.");
-                //}
-
                 DBContext.Database.Connection.ConnectionString = providerString;
                 try
                 {
@@ -11797,7 +11773,7 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.setConnection: " + ex.ToString());
             }
         }
-        public static void setERConnectionQS2(ref QS2.db.Entities.ERModellQS2Entities DBContext)
+        public static void setERConnectionQS2(ref PMDS.db.Entities.ERModellPMDSEntities DBContext)
         {
             try
             {
@@ -12166,11 +12142,11 @@ namespace PMDS.DB
 
 
         //Buisness-Layer Testfunctions
-        public static QS2.db.Entities.ERModellQS2Entities getDBContextQS2Test()
+        public static PMDS.db.Entities.ERModellPMDSEntities getDBContextQS2Test()
         {
             try
             {
-                QS2.db.Entities.ERModellQS2Entities DBContext = new QS2.db.Entities.ERModellQS2Entities();
+                PMDS.db.Entities.ERModellPMDSEntities DBContext = new PMDS.db.Entities.ERModellPMDSEntities();
                 PMDSBusiness.setERConnectionQS2(ref DBContext);
                 return DBContext;
             }
@@ -12246,7 +12222,7 @@ namespace PMDS.DB
             //                //conn.Close();
             //            }
         }
-        public bool CheckDbQS2Test(QS2.db.Entities.ERModellQS2Entities DBContextQS2, ref string prot, ref int iErrorsFound)
+        public bool CheckDbQS2Test(PMDS.db.Entities.ERModellPMDSEntities DBContextQS2, ref string prot, ref int iErrorsFound)
         {
             try
             {

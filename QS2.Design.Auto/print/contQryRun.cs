@@ -649,10 +649,7 @@ namespace qs2.ui.pint
                     qs2.ui.print.contQryRunPar.lockClickQueryReportButtons = true;
 
                     qs2.core.vb.frmActivity.ShowSplashScreen(qs2.core.language.sqlLanguage.getRes("QueryLoading"), frmActivity.eTypeUI.Main);
-                    while (!qs2.core.threadStayUI.StayUIIsinitialized && qs2.core.ENV.StaysAsThread)
-                    {
-                        qs2.core.generic.WaitMilli(1);
-                    }
+
 
                     qs2.sitemap.workflowAssist.contListAssistentElem reportButt = (qs2.sitemap.workflowAssist.contListAssistentElem)sender;
                     tgReportButton tgButt = (tgReportButton)reportButt.Tag;

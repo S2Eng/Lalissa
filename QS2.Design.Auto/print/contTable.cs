@@ -573,7 +573,7 @@ namespace qs2.ui.print
                     if (rSelCol.DataType.Equals(typeof(System.Guid)) && rSelRow[rSelCol.ColumnName.Trim()].ToString() != "")
                     {
                         qs2.core.db.ERSystem.businessFramework b = new core.db.ERSystem.businessFramework();
-                        QS2.db.Entities.tblStay rStay = b.checkIsStay((Guid)rSelRow[rSelCol.ColumnName.Trim()]);
+                        PMDS.db.Entities.tblStay rStay = b.checkIsStay((Guid)rSelRow[rSelCol.ColumnName.Trim()]);
                         if (rStay != null)
                         {
                             qs2.core.ENV.cParsCalMainFunction pars = new qs2.core.ENV.cParsCalMainFunction();

@@ -1,5 +1,5 @@
 ﻿using Chilkat;
-using QS2.db.Entities;
+using PMDS.db.Entities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -55,7 +55,7 @@ namespace qs2.core.db.ERSystem
             {
                EACTSUser retClass = new EACTSUser();
 
-               using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+               using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     System.Linq.IQueryable<tblObject> tObject = null;
 
@@ -102,7 +102,7 @@ namespace qs2.core.db.ERSystem
         {
             try
             {
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     return (from s in db.tblSelListEntries
                             join g in db.tblSelListGroup on s.IDGroup equals g.ID
@@ -123,7 +123,7 @@ namespace qs2.core.db.ERSystem
         {
             try
             {
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     System.Linq.IQueryable<tblObject> tObject = db.tblObject.Where(o => (o.UserCode == Usercode) && o.UserCode != "" && 
                                                                 ((o.IDParticipant == qs2.core.license.doLicense.rParticipant.IDParticipant.Trim() && o.UserName != "Supervisor") || 
@@ -155,7 +155,7 @@ namespace qs2.core.db.ERSystem
         {
             try
             {
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     System.Linq.IQueryable<tblObject> tObject = db.tblObject.Where(o => (o.KavVidierungPwd == KavVidierungPwd) && o.KavVidierungPwd != "" &&
                                                                 ((o.IDParticipant == qs2.core.license.doLicense.rParticipant.IDParticipant.Trim() && o.UserName != "Supervisor") ||
@@ -182,7 +182,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.checkKavVidierungPwd: " + ex.ToString());
             }
         }
-        public tblStay getAllStaysForPatient(Guid PatIDGuid, ref QS2.db.Entities.ERModellQS2Entities db)
+        public tblStay getAllStaysForPatient(Guid PatIDGuid, ref PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -200,7 +200,7 @@ namespace qs2.core.db.ERSystem
             {
                 if (Usercode.Trim() != "")
                 {
-                    using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                     {
                         System.Linq.IQueryable<tblObject> tObject = db.tblObject.Where(o => o.UserCode == Usercode && o.UserCode != "" && o.IDGuid != IDNotCheck &&
                                                                                         o.IDParticipant == qs2.core.license.doLicense.rParticipant.IDParticipant.Trim());
@@ -236,7 +236,7 @@ namespace qs2.core.db.ERSystem
             try
             {
                 System.Collections.Generic.Dictionary<int, tblObject> tUsersWithRole = new System.Collections.Generic.Dictionary<int, tblObject>();
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     System.Linq.IQueryable<tblSelListGroup> tSelListGroup = db.tblSelListGroup.Where(o => o.IDGroupStr.ToLower().Trim() == "roles");
                     if (tSelListGroup.Count() > 0)
@@ -276,7 +276,7 @@ namespace qs2.core.db.ERSystem
             try
             {
                 System.Collections.Generic.SortedDictionary<tblObject, System.Collections.Generic.SortedDictionary<string, tblStay>> tPatientsWithStaysCongenital = new System.Collections.Generic.SortedDictionary<tblObject, System.Collections.Generic.SortedDictionary<string, tblStay>>();
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     //System.Linq.IQueryable<tblStay_CARDIAC_A_E> tStays = db.tblStay_CARDIAC_A_E.Where(o => o.sdfsdf
                     //tblStay_CARDIAC_A_E rSelListGroup = tSelListGroup.First();
@@ -305,7 +305,7 @@ namespace qs2.core.db.ERSystem
         {
             try
             {
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     System.Linq.IQueryable<tblStay> tStay = db.tblStay.Where(o => (o.IDGuid == IDGuidStay));
                     if (tStay.Count() == 1)
@@ -329,7 +329,7 @@ namespace qs2.core.db.ERSystem
         {
             try
             {
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     System.Linq.IQueryable<tblStay> tStay = db.tblStay.Where(o => (o.ID == IDStay && o.IDApplication == IDApplication && o.IDParticipant == IDParticipant));
                     if (tStay.Count() == 1)
@@ -353,7 +353,7 @@ namespace qs2.core.db.ERSystem
         {
             try
             {
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     System.Linq.IQueryable<tblObject> tObject = db.tblObject.Where(o => (o.ID == IDObject));
                     tblObject rObject = tObject.First();
@@ -365,7 +365,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.getObject: " + ex.ToString());
             }
         }
-        public tblObject getObject2(int ID, QS2.db.Entities.ERModellQS2Entities db)
+        public tblObject getObject2(int ID, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -390,7 +390,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.getObject2: " + ex.ToString());
             }
         }
-        public tblObject getObject(string ExtID, string IDParticipant, QS2.db.Entities.ERModellQS2Entities db)
+        public tblObject getObject(string ExtID, string IDParticipant, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -424,7 +424,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.getObject: " + ex.ToString());
             }
         }
-        public tblStay getStay(int ID, string IDParticipant, string IDApplication, QS2.db.Entities.ERModellQS2Entities db)
+        public tblStay getStay(int ID, string IDParticipant, string IDApplication, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -442,7 +442,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.getStay: " + ex.ToString());
             }
         }
-        public tblStay getStay2(int ID, string IDParticipant, string IDApplication, QS2.db.Entities.ERModellQS2Entities db)
+        public tblStay getStay2(int ID, string IDParticipant, string IDApplication, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -472,7 +472,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.getStay2: " + ex.ToString());
             }
         }
-        public tblStay getStay(string MedRecNr, string Application, string IDParticipant, int Incidence, QS2.db.Entities.ERModellQS2Entities db, ref int iStaysFound)
+        public tblStay getStay(string MedRecNr, string Application, string IDParticipant, int Incidence, PMDS.db.Entities.ERModellPMDSEntities db, ref int iStaysFound)
         {
             try
             {
@@ -501,7 +501,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.getStay: " + ex.ToString());
             }
         }
-        public tblStay getStay(string Application, string IDParticipant,  QS2.db.Entities.ERModellQS2Entities db)
+        public tblStay getStay(string Application, string IDParticipant,  PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -523,7 +523,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.getStay: " + ex.ToString());
             }
         }
-        public bool checkMedRecNApplicationParticipantIncidenceExists(string MedRecN,  string IDApplication, string IDParticipant, int Incidence, QS2.db.Entities.ERModellQS2Entities db)
+        public bool checkMedRecNApplicationParticipantIncidenceExists(string MedRecN,  string IDApplication, string IDParticipant, int Incidence, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -553,7 +553,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.checkMedRecNApplicationParticipantIncidenceExists: " + ex.ToString());
             }
         }
-        public tblObject getUser(string UserNameDomain, QS2.db.Entities.ERModellQS2Entities db, string IDParticipant, ref int iUsersFound)
+        public tblObject getUser(string UserNameDomain, PMDS.db.Entities.ERModellPMDSEntities db, string IDParticipant, ref int iUsersFound)
         {
             try
             {
@@ -581,7 +581,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.getUser: " + ex.ToString());
             }
         }
-        public bool checkUserNameParticipant(string UserName, string IDParticipant, Guid IDGuidObject, QS2.db.Entities.ERModellQS2Entities db)
+        public bool checkUserNameParticipant(string UserName, string IDParticipant, Guid IDGuidObject, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -606,7 +606,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.checkUserNameParticipant: " + ex.ToString());
             }
         }
-        public bool checkUserNameDomainParticipant(string UserNameDomain, string IDParticipant, Guid IDGuidObject, QS2.db.Entities.ERModellQS2Entities db)
+        public bool checkUserNameDomainParticipant(string UserNameDomain, string IDParticipant, Guid IDGuidObject, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -632,7 +632,7 @@ namespace qs2.core.db.ERSystem
             }
         }
 
-        public System.Linq.IQueryable<tblStay> getAllStaysForuserxy(Guid IDUser, QS2.db.Entities.ERModellQS2Entities db)
+        public System.Linq.IQueryable<tblStay> getAllStaysForuserxy(Guid IDUser, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -649,7 +649,7 @@ namespace qs2.core.db.ERSystem
         {
             try
             {
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     System.Linq.IQueryable<tblStay> tStay = db.tblStay.Where(o => (o.PatIDGuid == PatIDGuid));
                     foreach (tblStay rStay in tStay)
@@ -675,7 +675,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.deletAllStaysForPatient: " + ex.ToString());
             }
         }
-        public void deletStayAdditions(tblStay rStay,Guid PatIDGuid, QS2.db.Entities.ERModellQS2Entities db)
+        public void deletStayAdditions(tblStay rStay,Guid PatIDGuid, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -709,7 +709,7 @@ namespace qs2.core.db.ERSystem
             try
             {
                 DBExeVersion = "";
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     System.Linq.IQueryable<tblDBVersion> tDBVersion = db.tblDBVersion.OrderByDescending(x => x.Description);
 
@@ -809,7 +809,7 @@ namespace qs2.core.db.ERSystem
         {
             try
             {
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     System.Linq.IQueryable<tblSelListEntries> tSelListEntries = db.tblSelListEntries.Where(o => (o.IDRessource == IDRes));
                     if (tSelListEntries.Count() > 0)
@@ -833,7 +833,7 @@ namespace qs2.core.db.ERSystem
         }
 
         public System.Linq.IQueryable<tblSelListEntriesObj> getSelListObjDoubledSelListsxy(int IDSelListEntry, int IDSelListEntrySublist, string typIDGroup,
-                                                                                        QS2.db.Entities.ERModellQS2Entities db)
+                                                                                        PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -855,7 +855,7 @@ namespace qs2.core.db.ERSystem
             }
         }
         public System.Linq.IQueryable<tblSelListEntriesObj> getSelListObjDoubledFldShortsxy(int IDSelListEntry, string FldShort, string IDApplication,  string typIDGroup,
-                                                                                            QS2.db.Entities.ERModellQS2Entities db)
+                                                                                            PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -948,11 +948,11 @@ namespace qs2.core.db.ERSystem
             return "Entity Validation Failed - errors follow:\n" + sb.ToString();
         }
 
-        public static QS2.db.Entities.ERModellQS2Entities getDBContext()
+        public static PMDS.db.Entities.ERModellPMDSEntities getDBContext()
         {
             try
-            {
-                QS2.db.Entities.ERModellQS2Entities DBContext = new QS2.db.Entities.ERModellQS2Entities();
+            {               
+                PMDS.db.Entities.ERModellPMDSEntities DBContext = new PMDS.db.Entities.ERModellPMDSEntities();
                 businessFramework.setERConnection(ref DBContext);
                 return DBContext;
             }
@@ -961,7 +961,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.getDBContext: " + ex.ToString());
             }
         }
-        public static void setERConnection(ref QS2.db.Entities.ERModellQS2Entities DBContext)
+        public static void setERConnection(ref PMDS.db.Entities.ERModellPMDSEntities DBContext)
         {
             try
             {
@@ -1021,7 +1021,7 @@ namespace qs2.core.db.ERSystem
                 if (qs2.core.ENV.WriteERConnectionString)
                 {
                     Boolean MustSaveQS2 = false;
-                    MustSaveQS2 = WriteERConnection("ERModellQS2Entities");
+                    MustSaveQS2 = WriteERConnection("ERModellPMDSEntities");
                     return;
                 }
 
@@ -1031,6 +1031,7 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("Main.InsertERConnection: " + ex.ToString());
             }
         }
+
         public static bool WriteERConnection(string ConnectionName)
         {
             try
@@ -1105,7 +1106,7 @@ namespace qs2.core.db.ERSystem
         }
 
 
-        public bool CheckDb(QS2.db.Entities.ERModellQS2Entities DBContext, ref string prot, ref int iErrorsFound)
+        public bool CheckDb(PMDS.db.Entities.ERModellPMDSEntities DBContext, ref string prot, ref int iErrorsFound)
         {
             try
             {               

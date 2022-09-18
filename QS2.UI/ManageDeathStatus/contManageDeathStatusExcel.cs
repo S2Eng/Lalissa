@@ -1,6 +1,6 @@
 ﻿using Infragistics.Documents.Excel;
 using qs2.core.db.ERSystem;
-using QS2.db.Entities;
+using PMDS.db.Entities;
 using S2Extensions;
 using System;
 using System.Collections.Generic;
@@ -267,7 +267,7 @@ namespace qs2.ui.ManageDeathStatus
                 ProtocolErr = "";
 
                 string msg = LastName + " " + FirstName + ", " + DOB.ToString("d") + " Geschlecht = " + Gender;
-                using (ERModellQS2Entities db = businessFramework.getDBContext())
+                using (ERModellPMDSEntities db = businessFramework.getDBContext())
                 {
                     int iGender;
                     switch (Gender.ToUpper())

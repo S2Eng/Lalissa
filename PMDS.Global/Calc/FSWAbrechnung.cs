@@ -2,23 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using PMDS.Calc.Logic;
 using PMDS.DB;
 using PMDS.db.Entities;
 using System.IO;
-using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Forms;
 using System.Drawing;
 using Syncfusion.XlsIO;
-using System.Linq;
 using S2Extensions;
 using static PMDS.Global.db.cEBInterfaceDB;
 using Infragistics.Documents.Excel;
-using static PMDS.Global.FSWAbrechnung;
-using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
-using Elga.core.ServiceReferenceELGA;
 using ScintillaNET.Demo;
 
 namespace PMDS.Global

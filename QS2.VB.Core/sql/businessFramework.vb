@@ -1,7 +1,7 @@
 ﻿Imports qs2.core.db.ERSystem
 Imports System.Data.Common
 Imports System.Data.SqlClient
-Imports qs2.db.Entities
+Imports PMDS.db.Entities
 Imports qs2.core.vb.DTOs
 
 Public Class businessFramework
@@ -1751,11 +1751,11 @@ Public Class businessFramework
         Try
             Dim sLineCol As String = "--------------------------------------------------------------------------------------------"
             Dim sColInfoEnd As String = ""
-            Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
                 db.Configuration.LazyLoadingEnabled = False
 
-                Dim tProtocol As IQueryable(Of qs2.db.Entities.Protocol) = From rProtocol In db.Protocol Where rProtocol.IDStay = rStayFound.ID And
+                Dim tProtocol As IQueryable(Of PMDS.db.Entities.Protocol) = From rProtocol In db.Protocol Where rProtocol.IDStay = rStayFound.ID And
                                                                                     rProtocol.IDParticipant = rStayFound.IDParticipant And
                                                                                     rProtocol.IDApplication = rStayFound.IDApplication And
                                                                                     rProtocol.Type = "Stay" Order By rProtocol.Created Descending
@@ -1835,7 +1835,7 @@ Public Class businessFramework
                                         NewProtEntryDetail.OldValueDB = sOrigValue.Trim()
                                         NewProtEntryDetail.NewValueDB = sNewValue.Trim()
 
-                                        Dim rCriteriaFound As qs2.db.Entities.tblCriteria = Nothing
+                                        Dim rCriteriaFound As PMDS.db.Entities.tblCriteria = Nothing
                                         If Me.getCriteria(rStayFound.IDApplication.Trim(), sColumn.Trim(), sProtocolError, rCriteriaFound, db) Then
                                             NewProtEntryDetail.FldShort = rCriteriaFound.FldShort.Trim()
                                             NewProtEntryDetail.SqlTable = rCriteriaFound.SourceTable.Trim()
@@ -1896,18 +1896,18 @@ Public Class businessFramework
                                             If rCriteriaFound.Classification.Trim().ToLower().Contains(("Type=IDObject").Trim().ToLower()) Then
                                                 Dim iOldValueDB As Integer = System.Convert.ToInt32(NewProtEntryDetail.OldValueDB.ToString())
                                                 If iOldValueDB <> -1 Then
-                                                    Dim tObjects As IQueryable(Of qs2.db.Entities.tblObject) = From rObj In db.tblObject Where rObj.ID = iOldValueDB
+                                                    Dim tObjects As IQueryable(Of PMDS.db.Entities.tblObject) = From rObj In db.tblObject Where rObj.ID = iOldValueDB
                                                     If tObjects.Count() > 0 Then
-                                                        Dim rObj As qs2.db.Entities.tblObject = tObjects.First()
+                                                        Dim rObj As PMDS.db.Entities.tblObject = tObjects.First()
                                                         NewProtEntryDetail.OldValue = rObj.LastName.Trim() + " " + rObj.FirstName.Trim() + " (" + NewProtEntryDetail.OldValueDB + ")"
                                                     End If
                                                 End If
 
                                                 Dim iNewValueDB As Integer = System.Convert.ToInt32(NewProtEntryDetail.NewValueDB.ToString())
                                                 If iNewValueDB <> -1 Then
-                                                    Dim tObjects As IQueryable(Of qs2.db.Entities.tblObject) = From rObj In db.tblObject Where rObj.ID = iNewValueDB
+                                                    Dim tObjects As IQueryable(Of PMDS.db.Entities.tblObject) = From rObj In db.tblObject Where rObj.ID = iNewValueDB
                                                     If tObjects.Count() > 0 Then
-                                                        Dim rObj As qs2.db.Entities.tblObject = tObjects.First()
+                                                        Dim rObj As PMDS.db.Entities.tblObject = tObjects.First()
                                                         NewProtEntryDetail.NewValue = rObj.LastName.Trim() + " " + rObj.FirstName.Trim() + " (" + NewProtEntryDetail.NewValueDB + ")"
                                                     End If
                                                 End If
@@ -1964,13 +1964,13 @@ Public Class businessFramework
     End Sub
 
     Public Function getCriteria(IDApplication As String, sColumn As String, ByRef sProtocol As String,
-                                ByRef rCriteriaReturn As qs2.db.Entities.tblCriteria,
-                                 db As qs2.db.Entities.ERModellQS2Entities) As Boolean
+                                ByRef rCriteriaReturn As PMDS.db.Entities.tblCriteria,
+                                 db As PMDS.db.Entities.ERModellPMDSEntities) As Boolean
         Try
-            Dim tCriteria As IQueryable(Of qs2.db.Entities.tblCriteria) = From rCriteria In db.tblCriteria Where rCriteria.IDApplication = IDApplication And
+            Dim tCriteria As IQueryable(Of PMDS.db.Entities.tblCriteria) = From rCriteria In db.tblCriteria Where rCriteria.IDApplication = IDApplication And
                                                                                 rCriteria.FldShort = sColumn
             If tCriteria.Count = 1 Then
-                Dim rCriteria As qs2.db.Entities.tblCriteria = tCriteria.First()
+                Dim rCriteria As PMDS.db.Entities.tblCriteria = tCriteria.First()
                 rCriteriaReturn = rCriteria
                 Return True
             ElseIf tCriteria.Count = 0 Then
@@ -1979,7 +1979,7 @@ Public Class businessFramework
                                                                     rCriteria.FldShort = sColumn
 
                 If tCriteria.Count = 1 Then
-                    Dim rCriteria As qs2.db.Entities.tblCriteria = tCriteria.First()
+                    Dim rCriteria As PMDS.db.Entities.tblCriteria = tCriteria.First()
                     rCriteriaReturn = rCriteria
                     Return True
                 ElseIf tCriteria.Count = 0 Then
@@ -1997,13 +1997,13 @@ Public Class businessFramework
     End Function
     Public Function getSelListGroupSearchTranslation(IDApplication As String, sColumn As String, ByRef IDOwnInt As Integer,
                                                      ByRef sTranslatedReturn As String, ByRef sProtocol As String,
-                                                     db As qs2.db.Entities.ERModellQS2Entities) As Boolean
+                                                     db As PMDS.db.Entities.ERModellPMDSEntities) As Boolean
         Try
-            Dim tSelListGroup As IQueryable(Of qs2.db.Entities.tblSelListGroup) = From rSelListGroup In db.tblSelListGroup Where
+            Dim tSelListGroup As IQueryable(Of PMDS.db.Entities.tblSelListGroup) = From rSelListGroup In db.tblSelListGroup Where
                                                                                         rSelListGroup.IDGroupStr = sColumn And
                                                                                         rSelListGroup.IDApplication = IDApplication
             If tSelListGroup.Count = 1 Then
-                Dim rSelListGroup As qs2.db.Entities.tblSelListGroup = tSelListGroup.First()
+                Dim rSelListGroup As PMDS.db.Entities.tblSelListGroup = tSelListGroup.First()
                 Me.getSelListTranslated(IDApplication, sColumn, IDOwnInt, sTranslatedReturn, sProtocol, db, rSelListGroup)
                 Return True
             Else
@@ -2012,7 +2012,7 @@ Public Class businessFramework
                                                         rSelListGroup.IDGroupStr = sColumn And
                                                         rSelListGroup.IDApplication = sAppAll
                 If tSelListGroup.Count = 1 Then
-                    Dim rSelListGroup As qs2.db.Entities.tblSelListGroup = tSelListGroup.First()
+                    Dim rSelListGroup As PMDS.db.Entities.tblSelListGroup = tSelListGroup.First()
                     Me.getSelListTranslated(IDApplication, sColumn, IDOwnInt, sTranslatedReturn, sProtocol, db, rSelListGroup)
                     Return True
                 Else
@@ -2026,13 +2026,13 @@ Public Class businessFramework
     End Function
     Public Function getSelListTranslated(IDApplication As String, sColumn As String, ByRef IDOwnInt As Integer,
                                                  ByRef sTranslatedReturn As String, ByRef sProtocol As String,
-                                                 db As qs2.db.Entities.ERModellQS2Entities, rSelListGroup As qs2.db.Entities.tblSelListGroup) As Boolean
+                                                 db As PMDS.db.Entities.ERModellPMDSEntities, rSelListGroup As PMDS.db.Entities.tblSelListGroup) As Boolean
         Try
-            Dim tSelListEntries As IQueryable(Of qs2.db.Entities.tblSelListEntries) = From rSelListEntries In db.tblSelListEntries Where
+            Dim tSelListEntries As IQueryable(Of PMDS.db.Entities.tblSelListEntries) = From rSelListEntries In db.tblSelListEntries Where
                                                                         rSelListEntries.IDGroup = rSelListGroup.ID
 
             Dim bFound As Boolean = False
-            For Each rSelListEntry As qs2.db.Entities.tblSelListEntries In tSelListEntries
+            For Each rSelListEntry As PMDS.db.Entities.tblSelListEntries In tSelListEntries
                 If Not rSelListEntry.IDOwnInt Is Nothing Then
                     If rSelListEntry.IDOwnInt.Equals(IDOwnInt) Then
                         Dim sSelListTranslated As String = qs2.core.language.sqlLanguage.getRes(rSelListEntry.IDRessource, True)
@@ -2069,8 +2069,8 @@ Public Class businessFramework
             sqlHelperRead.getSelListObjDoubledSelLists(sqlHelper.eTypeSel.All, dsHelperRead)
             For Each rHelper As dsHelper.tblSelListObjDoubledSelListsRow In dsHelperRead.tblSelListObjDoubledSelLists
                 Dim dDoubledFoundForDelete As Boolean = False
-                'Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
-                'Dim tSelListEntriesObj As IQueryable(Of qs2.db.Entities.tblSelListEntriesObj) = Nothing
+                'Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+                'Dim tSelListEntriesObj As IQueryable(Of PMDS.db.Entities.tblSelListEntriesObj) = Nothing
                 'tSelListEntriesObj = From rSelListEntriesObj In db.tblSelListEntriesObj
                 '                     Where rSelListEntriesObj.IDSelListEntry = rHelper.IDSelListEntry And (Not rSelListEntriesObj.IDSelListEntrySublist Is Nothing) And
                 '                            rSelListEntriesObj.IDSelListEntrySublist = rHelper.IDSelListEntrySublist And
@@ -2080,7 +2080,7 @@ Public Class businessFramework
                 '                            (rSelListEntriesObj.IDParticipant = "" Or rSelListEntriesObj.IDParticipant = "ALL")
 
                 'Dim b2 As New qs2.core.db.ERSystem.businessFramework()
-                'Dim tSelListEntriesObj As IQueryable(Of qs2.db.Entities.tblSelListEntriesObj) = b2.getSelListObjDoubledSelLists(rHelper.IDSelListEntry, rHelper.IDSelListEntrySublist, rHelper.typIDGroup.Trim(), db)
+                'Dim tSelListEntriesObj As IQueryable(Of PMDS.db.Entities.tblSelListEntriesObj) = b2.getSelListObjDoubledSelLists(rHelper.IDSelListEntry, rHelper.IDSelListEntrySublist, rHelper.typIDGroup.Trim(), db)
 
                 Dim dsAdminUpdate As New dsAdmin()
                 Dim sqlAdminUpdate As New sqlAdmin()
@@ -2118,8 +2118,8 @@ Public Class businessFramework
             sqlHelperRead.getSelListObjDoubledFldShorts(sqlHelper.eTypeSel.All, dsHelperRead)
             For Each rHelper As dsHelper.tblSelListObjDoubledFldShortsRow In dsHelperRead.tblSelListObjDoubledFldShorts
                 Dim dDoubledFoundForDelete As Boolean = False
-                'Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
-                'Dim tSelListEntriesObj As IQueryable(Of qs2.db.Entities.tblSelListEntriesObj) = Nothing
+                'Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+                'Dim tSelListEntriesObj As IQueryable(Of PMDS.db.Entities.tblSelListEntriesObj) = Nothing
                 'tSelListEntriesObj = From rSelListEntriesObj In db.tblSelListEntriesObj
                 '                     Where rSelListEntriesObj.IDSelListEntry = rHelper.IDSelListEntry And
                 '                            rSelListEntriesObj.IDSelListEntrySublist Is Nothing And
@@ -2130,7 +2130,7 @@ Public Class businessFramework
                 '                            (rSelListEntriesObj.IDParticipant = "" Or rSelListEntriesObj.IDParticipant = "ALL")
 
                 'Dim b2 As New qs2.core.db.ERSystem.businessFramework()
-                'Dim tSelListEntriesObj As IQueryable(Of qs2.db.Entities.tblSelListEntriesObj) = b2.getSelListObjDoubledFldShorts(rHelper.IDSelListEntry, rHelper.FldShort.Trim(), rHelper.IDApplication.Trim(), rHelper.typIDGroup.Trim(), db)
+                'Dim tSelListEntriesObj As IQueryable(Of PMDS.db.Entities.tblSelListEntriesObj) = b2.getSelListObjDoubledFldShorts(rHelper.IDSelListEntry, rHelper.FldShort.Trim(), rHelper.IDApplication.Trim(), rHelper.typIDGroup.Trim(), db)
 
                 Dim dsAdminUpdate As New dsAdmin()
                 Dim sqlAdminUpdate As New sqlAdmin()
@@ -2430,9 +2430,9 @@ Public Class businessFramework
         End Try
     End Sub
 
-    Public Function getProductsForUser(IDGuidObject As System.Guid, db As qs2.db.Entities.ERModellQS2Entities) As IQueryable(Of qs2.db.Entities.tblObjectApplications)
+    Public Function getProductsForUser(IDGuidObject As System.Guid, db As PMDS.db.Entities.ERModellPMDSEntities) As IQueryable(Of PMDS.db.Entities.tblObjectApplications)
         Try
-            Dim tObjectApplications As IQueryable(Of qs2.db.Entities.tblObjectApplications) = From rObjectApplications In db.tblObjectApplications Where rObjectApplications.IDObjectGuid = IDGuidObject
+            Dim tObjectApplications As IQueryable(Of PMDS.db.Entities.tblObjectApplications) = From rObjectApplications In db.tblObjectApplications Where rObjectApplications.IDObjectGuid = IDGuidObject
             Return tObjectApplications
 
         Catch ex As Exception
@@ -2446,14 +2446,11 @@ Public Class businessFramework
             If Not oStartTypeStayUI Is Nothing Then
                 Dim sStartTypeStayUI As String = oStartTypeStayUI.ToString().Trim()
                 If sStartTypeStayUI.Trim().ToLower().Trim().Equals(qs2.core.Enums.eStartTypeStayUI.Single.ToString().Trim().ToLower()) Then
-                    qs2.core.ENV.StaysAsThread = False
                     qs2.core.ENV.StaysAsExternProcess2 = False
                 ElseIf sStartTypeStayUI.Trim().ToLower().Trim().Equals(qs2.core.Enums.eStartTypeStayUI.Thread.ToString().Trim().ToLower()) Then
-                    qs2.core.ENV.StaysAsThread = True
                     qs2.core.ENV.StaysAsExternProcess2 = False
                     Throw New Exception("loadENVFromAdjustmentStayType: s2.core.ENV.StaysAsThread = True not allowed!")
                 ElseIf sStartTypeStayUI.Trim().ToLower().Trim().Equals(qs2.core.Enums.eStartTypeStayUI.Process.ToString().Trim().ToLower()) Then
-                    qs2.core.ENV.StaysAsThread = False
                     qs2.core.ENV.StaysAsExternProcess2 = True
                 Else
                     Throw New Exception("loadENVFromAdjustment: sStartTypeStayUI '" + sStartTypeStayUI.Trim() + "' not allowed!")
@@ -2461,7 +2458,6 @@ Public Class businessFramework
                 sStartTypeStayUIReturn = sStartTypeStayUI.Trim()
             Else
                 actUsr.adjustSave("", sqlAdmin.eAdjust.StartTypeStayUI, sqlAdmin.eTypSelAdjust.all, qs2.core.Enums.eStartTypeStayUI.Process.ToString().Trim())
-                qs2.core.ENV.StaysAsThread = False
                 qs2.core.ENV.StaysAsExternProcess2 = True
                 sStartTypeStayUIReturn = qs2.core.Enums.eStartTypeStayUI.Process.ToString().Trim()
             End If
@@ -2554,21 +2550,21 @@ Public Class businessFramework
 
     Public Function checkSelListIsUsedInStays(IDSelList As Integer, ByRef sProt As String) As Boolean
         Try
-            Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
-                Dim tSelListEntries As IQueryable(Of qs2.db.Entities.tblSelListEntries) = Nothing
+                Dim tSelListEntries As IQueryable(Of PMDS.db.Entities.tblSelListEntries) = Nothing
                 tSelListEntries = From rSelListEntries In db.tblSelListEntries Where rSelListEntries.ID = IDSelList
                 If tSelListEntries.Count <> 1 Then
                     Throw New Exception("checkSelListIsUsedInStays: IDSelList '" + IDSelList.ToString() + "' not exists in DB!")
                 End If
-                Dim rSelList As qs2.db.Entities.tblSelListEntries = tSelListEntries.First()
+                Dim rSelList As PMDS.db.Entities.tblSelListEntries = tSelListEntries.First()
 
-                Dim tSelListGroup As IQueryable(Of qs2.db.Entities.tblSelListGroup) = Nothing
+                Dim tSelListGroup As IQueryable(Of PMDS.db.Entities.tblSelListGroup) = Nothing
                 tSelListGroup = From rSelListGroup In db.tblSelListGroup Where rSelListGroup.ID = rSelList.IDGroup
                 If tSelListGroup.Count <> 1 Then
                     Throw New Exception("checkSelListIsUsedInStays: rSelList.IDGroup '" + rSelList.IDGroup.ToString() + "' not exists in DB!")
                 End If
-                Dim rSelListGrp As qs2.db.Entities.tblSelListGroup = tSelListGroup.First()
+                Dim rSelListGrp As PMDS.db.Entities.tblSelListGroup = tSelListGroup.First()
 
                 Dim bIsUsedInStays As Boolean = Me.checkSelListIsUsedInStays(rSelList.IDOwnInt, db, rSelListGrp.IDGroupStr.Trim(), rSelListGrp.IDApplication.Trim(), False, sProt, rSelList.IDRessource.Trim())
                 Dim bIsUsedInStaysAlias As Boolean = Me.checkSelListIsUsedInStays(rSelList.IDOwnInt, db, rSelListGrp.IDGroupStr.Trim(), rSelListGrp.IDApplication.Trim(), True, sProt, rSelList.IDRessource.Trim())
@@ -2581,11 +2577,11 @@ Public Class businessFramework
             Throw New Exception("businessFramework.checkSelListisusedInStays: " + ex.ToString())
         End Try
     End Function
-    Public Function checkSelListIsUsedInStays(IDOwnInt As Integer, db As qs2.db.Entities.ERModellQS2Entities,
+    Public Function checkSelListIsUsedInStays(IDOwnInt As Integer, db As PMDS.db.Entities.ERModellPMDSEntities,
                                                FldShort As String, IDApplication As String, checkAlias As Boolean,
                                                ByRef sProt As String, ByRef IDResSelList As String) As Boolean
         Try
-            Dim tCriteria As IQueryable(Of qs2.db.Entities.tblCriteria) = Nothing
+            Dim tCriteria As IQueryable(Of PMDS.db.Entities.tblCriteria) = Nothing
             If checkAlias Then
                 tCriteria = From rCriteria In db.tblCriteria Where rCriteria.AliasFldShort = FldShort And rCriteria.IDApplication = IDApplication
             Else
@@ -2594,7 +2590,7 @@ Public Class businessFramework
             If tCriteria.Count > 1 Then
                 Throw New Exception("checkSelListIsUsedInStays: tSelListEntries.Count>1 for FldShort '" + FldShort.Trim() + "' and IDApplication '" + IDApplication.Trim() + "'!")
             ElseIf tCriteria.Count = 1 Then
-                Dim rCrit As qs2.db.Entities.tblCriteria = tCriteria.First()
+                Dim rCrit As PMDS.db.Entities.tblCriteria = tCriteria.First()
                 If Not rCrit.ControlType.Trim().ToLower().Equals(core.Enums.eControlType.ComboBox.ToString().Trim().ToLower()) Then
                     Throw New Exception("checkSelListIsUsedInStays: rCrit.ControlType<>ComboBox for FldShort='" + rCrit.FldShort.Trim() + "' and IDApplication='" + rCrit.IDApplication.Trim() + "'")
                 End If
@@ -3075,19 +3071,19 @@ Public Class businessFramework
         End Try
     End Function
 
-    Public Function saveMedRecNInMedArchive(ByRef sProt As String, ByRef iUpdated As Integer, db As qs2.db.Entities.ERModellQS2Entities) As Boolean
+    Public Function saveMedRecNInMedArchive(ByRef sProt As String, ByRef iUpdated As Integer, db As PMDS.db.Entities.ERModellPMDSEntities) As Boolean
         Try
-            Dim lstMedArchiveCheck As New System.Collections.Generic.List(Of qs2.db.Entities.tblMedArchiv)()
-            Dim tMedArchiv As IQueryable(Of qs2.db.Entities.tblMedArchiv) = From rMedArchiv In db.tblMedArchiv Where rMedArchiv.DocumentInfo_HL7 <> "" And rMedArchiv.IDParticipant = "91130" Order By rMedArchiv.Created Descending
-            For Each rMedArchiv As qs2.db.Entities.tblMedArchiv In tMedArchiv
+            Dim lstMedArchiveCheck As New System.Collections.Generic.List(Of PMDS.db.Entities.tblMedArchiv)()
+            Dim tMedArchiv As IQueryable(Of PMDS.db.Entities.tblMedArchiv) = From rMedArchiv In db.tblMedArchiv Where rMedArchiv.DocumentInfo_HL7 <> "" And rMedArchiv.IDParticipant = "91130" Order By rMedArchiv.Created Descending
+            For Each rMedArchiv As PMDS.db.Entities.tblMedArchiv In tMedArchiv
                 lstMedArchiveCheck.Add(rMedArchiv)
             Next
 
-            For Each rMedArchiv As qs2.db.Entities.tblMedArchiv In lstMedArchiveCheck
+            For Each rMedArchiv As PMDS.db.Entities.tblMedArchiv In lstMedArchiveCheck
                 If Not rMedArchiv.IDStayGuid Is Nothing Then
-                    Dim tStay As IQueryable(Of qs2.db.Entities.tblStay) = From rtblStay In db.tblStay Where rtblStay.IDGuid = rMedArchiv.IDStayGuid
+                    Dim tStay As IQueryable(Of PMDS.db.Entities.tblStay) = From rtblStay In db.tblStay Where rtblStay.IDGuid = rMedArchiv.IDStayGuid
                     If tStay.Count() = 1 Then
-                        Dim rStay As qs2.db.Entities.tblStay = tStay.First()
+                        Dim rStay As PMDS.db.Entities.tblStay = tStay.First()
                         If rStay.MedRecN.Trim().Length <> 8 Then
                             sProt += "Warning: Length MedRecNr <> 8 for " + rStay.MedRecN.Trim() + "" + vbNewLine + vbNewLine
                         Else
@@ -3130,9 +3126,9 @@ Public Class businessFramework
     End Function
 
 
-    Public Function checkShowUpdateNews(IDObject As Guid, db As qs2.db.Entities.ERModellQS2Entities) As Boolean
+    Public Function checkShowUpdateNews(IDObject As Guid, db As PMDS.db.Entities.ERModellPMDSEntities) As Boolean
         Try
-            Dim rObjectUpdate As qs2.db.Entities.tblObject = (From rObject In db.tblObject Where rObject.IDGuid = IDObject).First()
+            Dim rObjectUpdate As PMDS.db.Entities.tblObject = (From rObject In db.tblObject Where rObject.IDGuid = IDObject).First()
             Return rObjectUpdate.ShowUpdateNewsAtStartup
 
         Catch ex As System.Data.Entity.Validation.DbEntityValidationException
@@ -3142,9 +3138,9 @@ Public Class businessFramework
         End Try
     End Function
 
-    Public Sub updateNewsShowOnOff(bOn As Boolean, IDObject As Guid, ByRef db As qs2.db.Entities.ERModellQS2Entities)
+    Public Sub updateNewsShowOnOff(bOn As Boolean, IDObject As Guid, ByRef db As PMDS.db.Entities.ERModellPMDSEntities)
         Try
-            Dim rObjectUpdate As qs2.db.Entities.tblObject = (From rObject In db.tblObject Where rObject.IDGuid = IDObject).First()
+            Dim rObjectUpdate As PMDS.db.Entities.tblObject = (From rObject In db.tblObject Where rObject.IDGuid = IDObject).First()
             rObjectUpdate.ShowUpdateNewsAtStartup = bOn
             db.SaveChanges()
 
@@ -3157,7 +3153,7 @@ Public Class businessFramework
 
 
 
-    Public Function updateData1(RunUpdate As Boolean, NurESLog As Boolean, ByRef sProtSum As String, ByRef db As qs2.db.Entities.ERModellQS2Entities)
+    Public Function updateData1(RunUpdate As Boolean, NurESLog As Boolean, ByRef sProtSum As String, ByRef db As PMDS.db.Entities.ERModellPMDSEntities)
         Try
 
             Dim IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.ToString()
@@ -3816,7 +3812,7 @@ Public Class businessFramework
 
             Dim Protocol1 As New qs2.core.vb.Protocol()
             'Dim IDGuid As Guid = System.Guid.NewGuid()
-            'Dim tProtocol As IQueryable(Of qs2.db.Entities.Protocol) = From rProtocol In db.Protocol Where rProtocol.IDGuid = IDGuid And
+            'Dim tProtocol As IQueryable(Of PMDS.db.Entities.Protocol) = From rProtocol In db.Protocol Where rProtocol.IDGuid = IDGuid And
             '                                                                    rProtocol.Type = "Update Herbst 2018" Order By rProtocol.Created Descending
             'For Each rProtDemo In tProtocol
             '    Dim x As New Guid(rProtDemo.User)
@@ -3847,7 +3843,7 @@ Public Class businessFramework
         End Try
     End Function
 
-    Public Function getStaysEF(ByRef db As qs2.db.Entities.ERModellQS2Entities)
+    Public Function getStaysEF(ByRef db As PMDS.db.Entities.ERModellPMDSEntities)
         Try
 
             Dim sqlStaysDemo2 As String = " SELECT qs2.tblStay.MedRecN, qs2.tblStay_CARDIAC_A_E.IsCongenital as A_E_IsCongenital FROM qs2.tblStay, qs2.tblStay_CARDIAC_A_E " +
@@ -3940,7 +3936,7 @@ Public Class businessFramework
                 Return True
             End If
 
-            Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
                 Dim tSelListEntryObj_Roles = (From o In db.tblSelListEntriesObj
                                               Join s In db.tblSelListEntries On o.IDSelListEntrySublist Equals s.ID
@@ -3978,7 +3974,7 @@ Public Class businessFramework
                 Return True
             End If
 
-            Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
                 If (From o In db.tblSelListEntriesObj
                     Join s In db.tblSelListEntries On o.IDSelListEntry Equals s.ID
@@ -4006,7 +4002,7 @@ Public Class businessFramework
         Try
             Dim dNow As Date = Now
 
-            Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
                 Dim iGrp = (From o In db.tblSelListGroup Order By o.ID Descending
                             Select o.ID).Distinct.ToList().Last()
@@ -4124,12 +4120,12 @@ Public Class businessFramework
 
                 ' Add Criterias  
                 nextGrp += 1
-                Dim newCriteria As tblCriteria = Me.addCriteria(App, "chaptA", "CheckBox", db, True, sProt, dNow)
-                newCriteria = Me.addCriteria(App, "NC_FUP1", "CheckBox", db, True, sProt, dNow)
+                Dim newCriteria As tblCriteria = Me.AddCriteria(App, "chaptA", "CheckBox", db, True, sProt, dNow)
+                newCriteria = Me.AddCriteria(App, "NC_FUP1", "CheckBox", db, True, sProt, dNow)
 
                 ' Add ProcGrps to Chapters
-                Dim newSelListObj As tblSelListEntriesObj = Me.addSelListObj(IDSelListEntryChapter0, IDSelListEntryProcGrp0, "", "", "Chapters0", db, True, sProt, dNow)
-                newSelListObj = Me.addSelListObj(IDSelListEntryChapter1, IDSelListEntryProcGrp1, "", "", "Chapters1", db, True, sProt, dNow)
+                Dim newSelListObj As tblSelListEntriesObj = Me.AddSelListObj(IDSelListEntryChapter0, IDSelListEntryProcGrp0, "", "", "Chapters0", db, True, sProt, dNow)
+                newSelListObj = Me.AddSelListObj(IDSelListEntryChapter1, IDSelListEntryProcGrp1, "", "", "Chapters1", db, True, sProt, dNow)
             End With
 
         Catch ex As System.Data.Entity.Validation.DbEntityValidationException
@@ -4141,10 +4137,10 @@ Public Class businessFramework
 
     Public Function AddSelListGrp(IDApplication As String, nextGrp As Integer, IDGroupStr As String,
                              Sublist As String, Sort As String, TypeEnum As String,
-                             db As qs2.db.Entities.ERModellQS2Entities, saveChanges As Boolean,
+                             db As PMDS.db.Entities.ERModellPMDSEntities, saveChanges As Boolean,
                              ByRef sProt As String, dNow As Date) As tblSelListGroup
         Try
-            Dim tSelListGrp As List(Of qs2.db.Entities.tblSelListGroup) = (From o In db.tblSelListGroup Where
+            Dim tSelListGrp As List(Of PMDS.db.Entities.tblSelListGroup) = (From o In db.tblSelListGroup Where
                                                     o.IDApplication = IDApplication And o.IDGroupStr = IDGroupStr And
                                                     o.IDParticipant = "ALL" Order By o.IDGuid Descending).ToList()
 
@@ -4182,10 +4178,10 @@ Public Class businessFramework
     Public Function AddSelListEntry(IDApplication As String, nextID As Integer, IDRessource As String,
                                     TypeStr As String, Sort As Integer, IDOwnStr As String, IDOwnInt As Integer,
                                     ByRef FldShortColumn As String, IDGroup As Integer, IDGroupStr As String, Table As String,
-                                    db As qs2.db.Entities.ERModellQS2Entities, saveChanges As Boolean,
+                                    db As PMDS.db.Entities.ERModellPMDSEntities, saveChanges As Boolean,
                                     ByRef sProt As String, dNow As Date) As tblSelListEntries
         Try
-            Dim tSelListEntry As List(Of qs2.db.Entities.tblSelListEntries) = (From o In db.tblSelListEntries Where
+            Dim tSelListEntry As List(Of PMDS.db.Entities.tblSelListEntries) = (From o In db.tblSelListEntries Where
                                                     o.IDRessource = IDRessource And
                                                     o.IDParticipant = "ALL" And o.IDGroup = IDGroup Order By o.IDGuid Descending).ToList()
 
@@ -4225,10 +4221,10 @@ Public Class businessFramework
     Public Function AddRessource(IDApplication As String, IDRes As String, German As String,
                                     English As String, IDParticipant As String, Type As String,
                                     FldShortColumn As String, Table As String,
-                                    db As qs2.db.Entities.ERModellQS2Entities, saveChanges As Boolean,
+                                    db As PMDS.db.Entities.ERModellPMDSEntities, saveChanges As Boolean,
                                     ByRef sProt As String, dNow As Date) As Ressourcen
         Try
-            Dim tRes As List(Of qs2.db.Entities.Ressourcen) = (From o In db.Ressourcen Where o.IDRes = IDRes And o.IDApplication = IDApplication And o.IDParticipant = "ALL" And
+            Dim tRes As List(Of PMDS.db.Entities.Ressourcen) = (From o In db.Ressourcen Where o.IDRes = IDRes And o.IDApplication = IDApplication And o.IDParticipant = "ALL" And
                                                     o.IDLanguageUser = "ALL" And o.Type = "Label" Order By o.IDRes Descending).ToList()
 
             If tRes.Count() = 0 Then
@@ -4267,13 +4263,13 @@ Public Class businessFramework
     Public Function AddSelListObj(IDSelListEntry As Nullable(Of Integer),
                                     IDSelListEntrySublist As Nullable(Of Integer),
                                     FldShortCriteria As String, IDApplicationCriteria As String, typIDGroup As String,
-                                    db As qs2.db.Entities.ERModellQS2Entities, saveChanges As Boolean,
+                                    db As PMDS.db.Entities.ERModellPMDSEntities, saveChanges As Boolean,
                                     ByRef sProt As String, dNow As Date) As tblSelListEntriesObj
         Try
-            'Dim tSelListObj As List(Of qs2.db.Entities.tblSelListEntriesObj) = (From o In db.tblSelListEntriesObj Where o.IDSelListEntry = IDSelListEntry And o.FldShort = FldShortCriteria And
+            'Dim tSelListObj As List(Of PMDS.db.Entities.tblSelListEntriesObj) = (From o In db.tblSelListEntriesObj Where o.IDSelListEntry = IDSelListEntry And o.FldShort = FldShortCriteria And
             '                                        o.IDApplication = IDApplicationCriteria And o.typIDGroup = typIDGroup Order By o.IDGuid Descending).ToList()
 
-            Dim tSelListObj As List(Of qs2.db.Entities.tblSelListEntriesObj) = (From o In db.tblSelListEntriesObj Where
+            Dim tSelListObj As List(Of PMDS.db.Entities.tblSelListEntriesObj) = (From o In db.tblSelListEntriesObj Where
                                                     o.IDSelListEntry = IDSelListEntry And o.typIDGroup = typIDGroup Order By o.IDGuid Descending).ToList()
 
             If tSelListObj.Count() = 0 Then
@@ -4313,11 +4309,11 @@ Public Class businessFramework
     End Function
 
     Public Function AddCriteria(IDApplication As String, FldShort As String, ControlType As String,
-                                db As qs2.db.Entities.ERModellQS2Entities, saveChanges As Boolean,
+                                db As PMDS.db.Entities.ERModellPMDSEntities, saveChanges As Boolean,
                                 ByRef sProt As String, dNow As Date) As tblCriteria
         Try
-            Dim tCriteria As List(Of qs2.db.Entities.tblCriteria) = (From o In db.tblCriteria Where o.FldShort = FldShort And o.IDApplication = IDApplication
-                                                                     Order By o.FldShort Descending).ToList()
+            Dim tCriteria As List(Of PMDS.db.Entities.tblCriteria) = (From o In db.tblCriteria Where o.FldShort = FldShort And o.IDApplication = IDApplication
+                                                                      Order By o.FldShort Descending).ToList()
 
             If tCriteria.Count() = 0 Then
                 Dim newCriteria As tblCriteria = EFEntities.NewtblCriteria(db)
@@ -4351,7 +4347,7 @@ Public Class businessFramework
 
     Public Function RemoveProduct(App As String) As Boolean
         Try
-            Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
                 Dim sqlDelSelListObj As String = "delete from qs2.tblStay where qs2.tblStay.IDApplication='" + App + "' "
                 Dim iRes As Integer = db.Database.ExecuteSqlCommand(sqlDelSelListObj)
@@ -4389,7 +4385,7 @@ Public Class businessFramework
     End Function
 
     Public Function CheckUserHasRightChapter(IDApplication As String, IDSelListChapter As Integer, lSelListEntryObj_RolesUsr As List(Of Integer),
-                                             db As qs2.db.Entities.ERModellQS2Entities) As Boolean
+                                             db As PMDS.db.Entities.ERModellPMDSEntities) As Boolean
         Try
             If ENV.adminSecure Then
                 'Return True
@@ -4419,7 +4415,7 @@ Public Class businessFramework
         End Try
     End Function
 
-    Public Function GetRolesForUser(IDApplication As String, IDObject As Integer, db As qs2.db.Entities.ERModellQS2Entities) As List(Of Integer)
+    Public Function GetRolesForUser(IDApplication As String, IDObject As Integer, db As PMDS.db.Entities.ERModellPMDSEntities) As List(Of Integer)
         Try
             Return (From o In db.tblSelListEntriesObj
                     Join s In db.tblSelListEntries On o.IDSelListEntry Equals s.ID
@@ -4431,7 +4427,7 @@ Public Class businessFramework
             Throw New Exception("businessFramework.GetRolesForUser: " + ex.ToString())
         End Try
     End Function
-    Public Function GetRolesForUser2(IDApplication As String, IDObject As Integer, db As qs2.db.Entities.ERModellQS2Entities) As List(Of Nullable(Of Integer))
+    Public Function GetRolesForUser2(IDApplication As String, IDObject As Integer, db As PMDS.db.Entities.ERModellPMDSEntities) As List(Of Nullable(Of Integer))
         Try
             Return (From o In db.tblSelListEntriesObj
                     Join s In db.tblSelListEntries On o.IDSelListEntry Equals s.ID
@@ -4445,7 +4441,7 @@ Public Class businessFramework
     End Function
 
     Public Function CheckSelListNrInStays(IDApplication As String, IDParticipant As String, IDGoupStr As String, IDSelListEntry As Integer, IDOnwInt As Integer, IDGuidStayOpend As Nullable(Of Guid),
-                                         db As qs2.db.Entities.ERModellQS2Entities, ByRef sProt As String) As Boolean
+                                         db As PMDS.db.Entities.ERModellPMDSEntities, ByRef sProt As String) As Boolean
         Try
             If ENV.adminSecure Then
                 Return True

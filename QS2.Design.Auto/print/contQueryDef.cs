@@ -41,7 +41,7 @@ namespace qs2.ui.print
         public string ApplicationLast = "";
         public qs2.core.vb.ui ui2 = new core.vb.ui();
 
-        public QS2.db.Entities.ERModellQS2Entities db = null;
+        public PMDS.db.Entities.ERModellPMDSEntities db = null;
 
 
 
@@ -605,7 +605,7 @@ namespace qs2.ui.print
         {
             try
             {
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     foreach (UltraGridRow rowGridQuery in this.gridQueryDef.Rows)
                     {
@@ -718,7 +718,7 @@ namespace qs2.ui.print
                 throw new Exception("contQueryDef.translateGrid: " + ex.ToString());
             }
         }
-        public void translateChapter(QS2.db.Entities.ERModellQS2Entities db, UltraGridRow rGrid, string Chapter, string Application, bool doChapters)
+        public void translateChapter(PMDS.db.Entities.ERModellPMDSEntities db, UltraGridRow rGrid, string Chapter, string Application, bool doChapters)
         {
             try
             {

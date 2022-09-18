@@ -30,7 +30,6 @@ namespace qs2.ui
 
                 sqlAdmin.dsAllAdmin = new dsAdmin();
                 qs2.core.ENV.alwaysNewConnection = false;
-                qs2.core.ENV.StaysAsThread = false;
                 qs2.core.ENV.StaysAsExternProcess2 = false;
 
                 qs2.core.ENV.path_config = path_config;
@@ -67,7 +66,6 @@ namespace qs2.ui
                         {
                             qs2.design.auto.workflowAssist.autoForm.ColorSchemas.initColorSchemas();
                             qs2.core.ENV.alwaysNewConnection = false;
-                            qs2.core.ENV.StaysAsThread = true;
                             qs2.core.ENV.StaysAsExternProcess2 = false;
                             
                             qs2.core.threadStayUI.StayUIIsinitialized = true;

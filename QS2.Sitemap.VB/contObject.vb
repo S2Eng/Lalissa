@@ -946,7 +946,7 @@ Public Class contObject
                 If Not Me.ContObjectRepresents.validate() Then Return False
 
                 Dim b As New qs2.core.db.ERSystem.businessFramework()
-                Using db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+                Using db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
                     Dim IDGuidObj As System.Guid = Nothing
                     If Not Me.isNew Then
                         IDGuidObj = Me.rObjLoaded.IDGuid

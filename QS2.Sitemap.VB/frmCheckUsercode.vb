@@ -66,7 +66,7 @@ Public Class frmCheckUsercode
 
     Public Function checkUsercode() As Boolean
         Try
-            Dim rObject As qs2.db.Entities.tblObject = Nothing
+            Dim rObject As PMDS.db.Entities.tblObject = Nothing
             Dim MessageReturn As String = ""
             Dim UsercodeOK As Boolean = businessFramework1.checkUsercode(Me.txtUsercode.Text.Trim(), rObject, MessageReturn)
             If UsercodeOK Then
@@ -89,7 +89,7 @@ Public Class frmCheckUsercode
             If Me.txtKavVidierungPwd.Text.Trim() <> "" Then
                 KavVidierungPwdEncrypted = Encryption1.StringEncrypt(Me.txtKavVidierungPwd.Text.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings)
             End If
-            Dim rObject As qs2.db.Entities.tblObject = Nothing
+            Dim rObject As PMDS.db.Entities.tblObject = Nothing
             Dim MessageReturn As String = ""
             Dim KavVidierungPwdOK As Boolean = businessFramework1.checkKavVidierungPwd(KavVidierungPwdEncrypted, rObject, MessageReturn)
             If KavVidierungPwdOK Then

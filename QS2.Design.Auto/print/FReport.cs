@@ -31,7 +31,7 @@ namespace qs2.design.auto.print
             try
             {
                 qs2.core.db.ERSystem.businessFramework b = new core.db.ERSystem.businessFramework();
-                QS2.db.Entities.tblStay rStay = b.checkIsStay(IDStay, Application.Trim(), IDParticipant.Trim());
+                PMDS.db.Entities.tblStay rStay = b.checkIsStay(IDStay, Application.Trim(), IDParticipant.Trim());
                 if (rStay != null)
                 {
                     qs2.core.ENV.cParsCalMainFunction pars = new qs2.core.ENV.cParsCalMainFunction();

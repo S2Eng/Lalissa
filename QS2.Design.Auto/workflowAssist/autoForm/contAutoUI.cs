@@ -943,7 +943,7 @@ namespace qs2.sitemap.workflowAssist.form
                     qs2.core.ENV.lstOpendChildForms.Add(this.frmQryRunReport1);
                 }
 
-                using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                 {
                     var tSelListObjQry = (from s in db.tblSelListEntries
                                         join sobj in db.tblSelListEntriesObj on s.ID equals sobj.IDSelListEntrySublist

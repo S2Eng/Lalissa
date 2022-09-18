@@ -140,7 +140,7 @@ Public Class contSelChaptFldShort
             Me.DsAdmin1.tblCriteria.Rows.Clear()
             Me.gridCriterias.Refresh()
 
-            Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
                 Dim lSelListEntryObj_RolesUsr As List(Of Integer) = b.GetRolesForUser(IDApplication, qs2.core.vb.actUsr.rUsr.ID, db)
                 If withChapters Then

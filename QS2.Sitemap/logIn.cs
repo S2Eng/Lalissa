@@ -130,7 +130,6 @@ namespace qs2.core
                         }
                         else
                         {
-                            qs2.core.ENV.StaysAsThread = true;
                             logIn.startThreadLoadAllData(DbConnStrStayUI);
                         }
                     }

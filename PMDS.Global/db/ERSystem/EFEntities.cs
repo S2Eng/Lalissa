@@ -6702,7 +6702,7 @@ namespace PMDS.Global.db.ERSystem
                 PMDS.Global.AppException.throwException(FctName + " " + ex.ToString(), FctNr);
             }
         }
-        public void efNewRowQS2<T>(ref System.Collections.Generic.Dictionary<string, efTable> lstTables, QS2.db.Entities.ERModellQS2Entities db,
+        public void efNewRowQS2<T>(ref System.Collections.Generic.Dictionary<string, efTable> lstTables, PMDS.db.Entities.ERModellPMDSEntities db,
                         object itm, string TableName, IEnumerable<T> items,
                         System.Collections.Generic.Dictionary<string, string> lstColsChange = null)
         {

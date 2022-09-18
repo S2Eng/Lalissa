@@ -1,5 +1,5 @@
 ﻿using PMDS.Global.db.ERSystem;
-using QS2.db.Entities;
+using PMDS.db.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,9 +15,9 @@ namespace qs2.core.db.ERSystem
     public class EFEntities
     {
 
-        private static IEnumerable<QS2.db.Entities.tblSelListGroup> _tblSelListGroup = null;
+        private static IEnumerable<PMDS.db.Entities.tblSelListGroup> _tblSelListGroup = null;
 
-        public static IEnumerable<QS2.db.Entities.tblSelListGroup> tblSelListGroup
+        public static IEnumerable<PMDS.db.Entities.tblSelListGroup> tblSelListGroup
         {
             get
             {
@@ -29,12 +29,12 @@ namespace qs2.core.db.ERSystem
             }
         }
         
-        public static tblSelListGroup newtblSelListGroup(ERModellQS2Entities db)
+        public static tblSelListGroup newtblSelListGroup(ERModellPMDSEntities db)
         {
             try
             {
                 EFEntities EFEntities1 = new ERSystem.EFEntities();
-                QS2.db.Entities.tblSelListGroup newtblSelListGroup = new QS2.db.Entities.tblSelListGroup();
+                PMDS.db.Entities.tblSelListGroup newtblSelListGroup = new PMDS.db.Entities.tblSelListGroup();
                 EFEntities1.EfNewRow(ref EFEntities.lstEfTables, db, newtblSelListGroup, newtblSelListGroup.GetType().Name, EFEntities.tblSelListGroup);
                 return newtblSelListGroup;
 
@@ -49,9 +49,9 @@ namespace qs2.core.db.ERSystem
             }
         }
 
-        private static IEnumerable<QS2.db.Entities.tblSelListEntries> _tblSelListEntries = null;
+        private static IEnumerable<PMDS.db.Entities.tblSelListEntries> _tblSelListEntries = null;
 
-        public static IEnumerable<QS2.db.Entities.tblSelListEntries> tblSelListEntries
+        public static IEnumerable<PMDS.db.Entities.tblSelListEntries> tblSelListEntries
         {
             get
             {
@@ -63,12 +63,12 @@ namespace qs2.core.db.ERSystem
             }
         }
         
-        public static tblSelListEntries newtblSelListEntries(ERModellQS2Entities db)
+        public static tblSelListEntries newtblSelListEntries(ERModellPMDSEntities db)
         {
             try
             {
                 EFEntities EFEntities1 = new ERSystem.EFEntities();
-                QS2.db.Entities.tblSelListEntries newtblSelListEntries = new QS2.db.Entities.tblSelListEntries();
+                PMDS.db.Entities.tblSelListEntries newtblSelListEntries = new PMDS.db.Entities.tblSelListEntries();
                 EFEntities1.EfNewRow(ref EFEntities.lstEfTables, db, newtblSelListEntries, newtblSelListEntries.GetType().Name, EFEntities.tblSelListEntries);
                 return newtblSelListEntries;
 
@@ -83,9 +83,9 @@ namespace qs2.core.db.ERSystem
             }
         }
 
-        private static IEnumerable<QS2.db.Entities.tblSelListEntriesObj> _tblSelListEntriesObj = null;
+        private static IEnumerable<PMDS.db.Entities.tblSelListEntriesObj> _tblSelListEntriesObj = null;
 
-        public static IEnumerable<QS2.db.Entities.tblSelListEntriesObj> tblSelListEntriesObj
+        public static IEnumerable<PMDS.db.Entities.tblSelListEntriesObj> tblSelListEntriesObj
         {
             get
             {
@@ -97,12 +97,12 @@ namespace qs2.core.db.ERSystem
             }
         }
         
-        public static tblSelListEntriesObj newtblSelListEntriesObj(ERModellQS2Entities db)
+        public static tblSelListEntriesObj newtblSelListEntriesObj(ERModellPMDSEntities db)
         {
             try
             {
                 EFEntities EFEntities1 = new ERSystem.EFEntities();
-                QS2.db.Entities.tblSelListEntriesObj newtblSelListEntriesObj = new QS2.db.Entities.tblSelListEntriesObj();
+                PMDS.db.Entities.tblSelListEntriesObj newtblSelListEntriesObj = new PMDS.db.Entities.tblSelListEntriesObj();
                 EFEntities1.EfNewRow(ref EFEntities.lstEfTables, db, newtblSelListEntriesObj, newtblSelListEntriesObj.GetType().Name, EFEntities.tblSelListEntriesObj);
                 return newtblSelListEntriesObj;
 
@@ -117,9 +117,9 @@ namespace qs2.core.db.ERSystem
             }
         }
 
-        private static IEnumerable<QS2.db.Entities.Ressourcen> _Ressourcen = null;
+        private static IEnumerable<PMDS.db.Entities.Ressourcen> _Ressourcen = null;
 
-        public static IEnumerable<QS2.db.Entities.Ressourcen> Ressourcen
+        public static IEnumerable<PMDS.db.Entities.Ressourcen> Ressourcen
         {
             get
             {
@@ -131,12 +131,12 @@ namespace qs2.core.db.ERSystem
             }
         }
         
-        public static Ressourcen newRessourcen(ERModellQS2Entities db)
+        public static Ressourcen newRessourcen(ERModellPMDSEntities db)
         {
             try
             {
                 EFEntities EFEntities1 = new ERSystem.EFEntities();
-                QS2.db.Entities.Ressourcen newRessourcen = new QS2.db.Entities.Ressourcen();
+                PMDS.db.Entities.Ressourcen newRessourcen = new PMDS.db.Entities.Ressourcen();
                 EFEntities1.EfNewRow(ref EFEntities.lstEfTables, db, newRessourcen, newRessourcen.GetType().Name, EFEntities.Ressourcen);
                 return newRessourcen;
 
@@ -151,9 +151,9 @@ namespace qs2.core.db.ERSystem
             }
         }
 
-        private static IEnumerable<QS2.db.Entities.tblCriteria> _tblCriteria = null;
+        private static IEnumerable<PMDS.db.Entities.tblCriteria> _tblCriteria = null;
 
-        public static IEnumerable<QS2.db.Entities.tblCriteria> tblCriteria
+        public static IEnumerable<PMDS.db.Entities.tblCriteria> tblCriteria
         {
             get
             {
@@ -165,12 +165,12 @@ namespace qs2.core.db.ERSystem
             }
         }
         
-        public static tblCriteria NewtblCriteria(ERModellQS2Entities db)
+        public static tblCriteria NewtblCriteria(ERModellPMDSEntities db)
         {
             try
             {
                 EFEntities EFEntities1 = new ERSystem.EFEntities();
-                QS2.db.Entities.tblCriteria newCriteria = new QS2.db.Entities.tblCriteria();
+                PMDS.db.Entities.tblCriteria newCriteria = new PMDS.db.Entities.tblCriteria();
                 EFEntities1.EfNewRow(ref EFEntities.lstEfTables, db, newCriteria, newCriteria.GetType().Name, EFEntities.tblCriteria);
                 return newCriteria;
 
@@ -190,7 +190,7 @@ namespace qs2.core.db.ERSystem
 
         public static System.Collections.Generic.Dictionary<string, efTable> lstEfTables = new System.Collections.Generic.Dictionary<string, efTable>();
         
-        public static QS2.db.Entities.ERModellQS2Entities db = null;
+        public static PMDS.db.Entities.ERModellPMDSEntities db = null;
 
         public static bool Isinitialized = false;
 
@@ -234,7 +234,7 @@ namespace qs2.core.db.ERSystem
             }
         }
 
-        public void InitMetadata(ref System.Collections.Generic.Dictionary<string, efTable> lstTables, QS2.db.Entities.ERModellQS2Entities db)
+        public void InitMetadata(ref System.Collections.Generic.Dictionary<string, efTable> lstTables, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
@@ -336,6 +336,10 @@ namespace qs2.core.db.ERSystem
                         {
                             TypeCol = eTypeCol.tDateTime;
                         }
+                        else if (infoCol.TypeName.EndsWith("datetime2", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            TypeCol = eTypeCol.tDateTime;
+                        }
                         else if (infoCol.TypeName.EndsWith("date", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tDateTime;
@@ -379,7 +383,7 @@ namespace qs2.core.db.ERSystem
             }
         }
         
-        public void EfNewRow<T>(ref System.Collections.Generic.Dictionary<string, efTable> lstTables, QS2.db.Entities.ERModellQS2Entities db,
+        public void EfNewRow<T>(ref System.Collections.Generic.Dictionary<string, efTable> lstTables, PMDS.db.Entities.ERModellPMDSEntities db,
                                 object itm, string TableName, IEnumerable<T> items,
                                 System.Collections.Generic.Dictionary<string, string> lstColsChange = null)
         {

@@ -123,66 +123,12 @@ namespace qs2.core
         {
             get
             {
-                if (ENV.StaysAsThread)
+                if (dbBase._dbConnThreadMain.State != System.Data.ConnectionState.Open)
                 {
-                    if (System.Threading.Thread.CurrentThread.ManagedThreadId.Equals(dbBase._IDThreadMain))
-                    {
-                        if (dbBase._dbConnThreadMain.State != System.Data.ConnectionState.Open)
-                        {
-                            dbBase._dbConnThreadMain.Close();
-                            dbBase._dbConnThreadMain.Open();
-                        }
-                        return dbBase._dbConnThreadMain;
-                    }
-                    else if (System.Threading.Thread.CurrentThread.ManagedThreadId.Equals(dbBase._IDThreadStayUI))
-                    {
-                        if (dbBase._dbConnThreadStayUI.State != System.Data.ConnectionState.Open)
-                        {
-                            dbBase._dbConnThreadStayUI.Close();
-                            dbBase._dbConnThreadStayUI.Open();
-                        }
-                        return dbBase._dbConnThreadStayUI;
-                    }
-                    else if (System.Threading.Thread.CurrentThread.ManagedThreadId.Equals(dbBase._IDThreadDBOperations))
-                    {
-                        if (dbBase._dbConnThreadDBOperations.State != System.Data.ConnectionState.Open)
-                        {
-                            dbBase._dbConnThreadDBOperations.Close();
-                            dbBase._dbConnThreadDBOperations.Open();
-                        }
-                        return dbBase._dbConnThreadDBOperations;
-                    }
-                    else
-                    {
-                        if (qs2.core.ENV.ConnectedOnDesignerDB_QS2_Dev)
-                        {
-                            if (dbBase._dbConnThreadMain.State != System.Data.ConnectionState.Open)
-                            {
-                                dbBase._dbConnThreadMain.Close();
-                                dbBase._dbConnThreadMain.Open();
-                            }
-                            return dbBase._dbConnThreadMain;
-                        }
-                        else
-                        {
-                            if (dbBase._dbConnThreadMain.State != System.Data.ConnectionState.Open)
-                            {
-                                dbBase._dbConnThreadMain.Close();
-                                dbBase._dbConnThreadMain.Open();
-                            }
-                            return dbBase._dbConnThreadMain;
-                        }
-                    }
+                    dbBase._dbConnThreadMain.Close();
+                    dbBase._dbConnThreadMain.Open();
                 }
-                else
-                {
-                    if (dbBase._dbConnThreadMain.State != System.Data.ConnectionState.Open)
-                    {
-                        dbBase._dbConnThreadMain.Close();
-                        dbBase._dbConnThreadMain.Open();
-                    }
-                    return dbBase._dbConnThreadMain;
-                }
+                return dbBase._dbConnThreadMain;
             }
         }
 

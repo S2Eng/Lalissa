@@ -393,7 +393,7 @@ Public Class contAddSelList
             Dim sqlAdminUpdate As New sqlAdmin()
             sqlAdminUpdate.initControl()
 
-            Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
                 sqlAdminTmp.getSelListEntrys(New sqlAdmin.ParametersSelListEntries(), 0, "", "", dsAdminTmp, sqlAdmin.eTypAuswahlList.id, "", 0, "", Me.rSelListActuell.ID)
                 Dim rSelListToCopy As dsAdmin.tblSelListEntriesRow = dsAdminTmp.tblSelListEntries.Rows(0)

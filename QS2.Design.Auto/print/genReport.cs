@@ -526,7 +526,7 @@ namespace qs2.print
                     bool DocFound = false;
                     bool SearchError = false;
 
-                    using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                     {
                         //Search first in Product-Directories and then in "ALL"-directory 
                         var rSelListDocDirsProduct = (from s in qs2.core.vb.sqlAdmin.dsAllAdmin.tblSelListEntries

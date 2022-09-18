@@ -1333,50 +1333,8 @@ namespace PMDS.Global
                 DataBase.Open();															// Generelles DB Objekt initialisieren
 
                 //Connection-Settings aktualisieren (app.config)
-                InsertERConnections();
-
-                bool ERConnectOK = false;
+                WriteERConnection("ERModellPMDSEntities");
                 PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
-                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
-                {
-                    ERConnectOK = true;
-                }
-
-                if (!ERConnectOK)
-                    throw new Exception("Can not connect to ER-System!");
-
-                //<20120229> Connection-Parameter für Pep-Berichte
-                c = new NameValueCollection();
-                sa = _Log.ConfigFile.GetStringValue("DSNMainPeps").Split(';');
-                foreach (string s in sa)
-                {
-                    string[] sa1 = s.Split(new[] { "=" }, 2, StringSplitOptions.RemoveEmptyEntries);
-                    if (sa1.Length > 1)
-                        c.Add(sa1[0].ToLower(), sa1[1]);
-                }
-
-                _dbUser_PEP = c["user id"];
-                _dbPassword_PEP = c["password"];
-                if (_dbPassword != null && (_dbPassword.EndsWith("=") || (_dbPassword.StartsWith("[[[") && _dbPassword.EndsWith("]]]"))))      //os: Verschlüsseltes Passwort berücksichtigen
-                {
-                    if (_dbPassword.StartsWith("[[[") && _dbPassword.EndsWith("]]]"))
-                    {
-                        _dbPassword = _dbPassword.Substring(3, _dbPassword.Length - 3);
-                    }
-                    _dbPassword_Encrpyted = _dbPassword;
-                    _dbPassword = PMDS.BusinessLogic.BUtil.DecryptString(_dbPassword.Trim());
-                }
-                _dbServer_PEP = c["data source"];
-                _dbDatabase_PEP = c["initial catalog"];
-                _IntegratedSecurity_PEP = c["integrated security"];
-
-                if (ENV.StartupTyp == "auswpep")
-                {
-                    PMDS.Global.DBPep.ConnPep = new System.Data.OleDb.OleDbConnection();
-                    PMDS.Global.DBPep.ConnPep.ConnectionString = _Log.ConfigFile.GetStringValue("DSNMainPeps");
-                    PMDS.Global.DBPep.ConnPep.ConnectionString = PMDS.Global.DBPep.ConnPep.ConnectionString.Replace(_dbPassword_Encrpyted, _dbPassword);
-                    PMDS.Global.DBPep.ConnPep.Open();
-                }
 
                 //------------------------------------------------------- ENV-Variablen aus Config lesen -------------------
                 SetENVValue("IGStyle", ref ENV.IGStyle);
@@ -1767,28 +1725,6 @@ namespace PMDS.Global
             catch (Exception ex)
             {
                 throw new Exception("ENV.setLicValue (bool): " + ex.ToString());
-            }
-        }
-
-        private static void InsertERConnections()
-        {
-            try
-            {
-                Boolean MustSavePMDS = false;
-                Boolean MustSaveQS2 = false;
-
-                MustSavePMDS = WriteERConnection("ERModellPMDSEntities");
-                MustSaveQS2 = WriteERConnection("ERModellQS2Entities");
-
-                //if (MustSavePMDS || MustSaveQS2)
-                //    System.Windows.Forms.QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Konfigurationsdatei wurde aktualisiert.");
-
-                return;
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("MainEntry.InsertERConnection: " + ex.ToString());
             }
         }
 

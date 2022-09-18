@@ -144,16 +144,16 @@ namespace qs2.sitemap
                 {
                     if (!qs2.core.ENV.VSDesignerMode)
                     {
-                        using (QS2.db.Entities.ERModellQS2Entities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
+                        using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
                         {
-                            IQueryable<QS2.db.Entities.tblObjectApplications> tObjectApplications = this.b.getProductsForUser(actUsr.rUsr.IDGuid, db);
+                            IQueryable<PMDS.db.Entities.tblObjectApplications> tObjectApplications = this.b.getProductsForUser(actUsr.rUsr.IDGuid, db);
                             if (!qs2.core.ENV.developModus && tObjectApplications.Count() > 0)
                             {
                                 System.Collections.Generic.List<qs2.core.license.dsLicense.ApplicationsRow> lstAppLicensed = new List<core.license.dsLicense.ApplicationsRow>();
                                 foreach (qs2.core.license.dsLicense.ApplicationsRow rAppLic in this.dsLicense1.Applications)
                                 {
                                     bool bAppExists = false;
-                                    foreach (QS2.db.Entities.tblObjectApplications rApp in tObjectApplications)
+                                    foreach (PMDS.db.Entities.tblObjectApplications rApp in tObjectApplications)
                                     {
                                         if (rApp.IDApplication.Trim().ToLower().Equals(rAppLic.Name.ToLower()))
                                         {

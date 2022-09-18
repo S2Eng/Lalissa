@@ -1018,7 +1018,7 @@ Public Class sqlObjects
                 End Select
 
                 If Not String.IsNullOrEmpty(sqlWhereAdmin) Then
-                    Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+                    Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
                     With db
                         Dim tSelListEntriesViews = (From s In db.tblSelListEntries
                                                     Join sg In db.tblSelListGroup On sg.ID Equals s.IDGroup

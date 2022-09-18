@@ -3,7 +3,7 @@ Imports Infragistics.Win.UltraWinToolTip
 Imports Infragistics.Win.UltraWinGrid
 Imports Infragistics.Win
 Imports qs2.Resources
-Imports qs2.db.Entities
+Imports PMDS.db.Entities
 Imports System.Runtime.CompilerServices
 
 Public Class contSelLists
@@ -660,19 +660,19 @@ Public Class contSelLists
     End Sub
     Public Sub loadSortCustomer()
         Try
-            Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
                 For Each rowGrid As UltraGridRow In Me.gridSelList.Rows
                     Dim v As DataRowView = rowGrid.ListObject
                     Dim rSelListGrid As dsAdmin.tblSelListEntriesRow = v.Row
 
-                    Dim tSelListEntriesSort As IQueryable(Of qs2.db.Entities.tblSelListEntriesSort) = From rSelListEntrySorto In db.tblSelListEntriesSort
+                    Dim tSelListEntriesSort As IQueryable(Of PMDS.db.Entities.tblSelListEntriesSort) = From rSelListEntrySorto In db.tblSelListEntriesSort
                                                                                                       Where rSelListEntrySorto.IDSelListEntry = rSelListGrid.ID And
                                                                                                           rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim()
                     If tSelListEntriesSort.Count > 1 Then
                         Throw New Exception("contSelLists.loadSortCustomer: tSelListEntriesSort.Count>1 ' for IDSelList" + rSelListGrid.ID.ToString() + "' and IDParticipant '" + qs2.core.license.doLicense.rParticipant.IDParticipant.Trim() + "' not allowed!")
                     ElseIf tSelListEntriesSort.Count = 1 Then
-                        Dim rSelListEntrySort As qs2.db.Entities.tblSelListEntriesSort = tSelListEntriesSort.First()
+                        Dim rSelListEntrySort As PMDS.db.Entities.tblSelListEntriesSort = tSelListEntriesSort.First()
                         rowGrid.Cells(Me.columnSortCustomer.Trim()).Value = rSelListEntrySort.Sort
                     ElseIf tSelListEntriesSort.Count = 0 Then
                         rowGrid.Cells(Me.columnSortCustomer.Trim()).Value = System.DBNull.Value
@@ -907,7 +907,7 @@ Public Class contSelLists
         Try
             Dim sqlAdminUpdate As New sqlAdmin()
             sqlAdminUpdate.initControl()
-            Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
                 For Each rowGrid As UltraGridRow In Me.gridSelList.Rows
                     Dim v As DataRowView = rowGrid.ListObject
@@ -919,18 +919,18 @@ Public Class contSelLists
                         iSortCustomerInGrid = rowGrid.Cells(Me.columnSortCustomer.Trim()).Value
                     End If
 
-                    Dim tSelListEntriesSort As IQueryable(Of qs2.db.Entities.tblSelListEntriesSort) = From rSelListEntrySorto In db.tblSelListEntriesSort
+                    Dim tSelListEntriesSort As IQueryable(Of PMDS.db.Entities.tblSelListEntriesSort) = From rSelListEntrySorto In db.tblSelListEntriesSort
                                                                                                       Where rSelListEntrySorto.IDSelListEntry = rSelListGrid.ID And
                                                                                                               rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim()
                     If tSelListEntriesSort.Count > 1 Then
                         Throw New Exception("contSelLists.saveSortCustomer: tSelListEntriesSort.Count>1 ' for IDSelList" + rSelListGrid.ID.ToString() + "' and IDParticipant '" + qs2.core.license.doLicense.rParticipant.IDParticipant.Trim() + "' not allowed!")
                     Else
                         If iSortCustomerInGrid > 0 Then
-                            Dim rSelListEntrySort As qs2.db.Entities.tblSelListEntriesSort = Nothing
+                            Dim rSelListEntrySort As PMDS.db.Entities.tblSelListEntriesSort = Nothing
                             If tSelListEntriesSort.Count = 1 Then
                                 rSelListEntrySort = tSelListEntriesSort.First()
                             ElseIf tSelListEntriesSort.Count = 0 Then
-                                rSelListEntrySort = New qs2.db.Entities.tblSelListEntriesSort()
+                                rSelListEntrySort = New PMDS.db.Entities.tblSelListEntriesSort()
                                 rSelListEntrySort.ID = System.Guid.NewGuid()
                                 rSelListEntrySort.IDSelListEntry = rSelListGrid.ID
                                 rSelListEntrySort.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim()
@@ -1077,7 +1077,7 @@ Public Class contSelLists
                 End If
 
                 If res = MsgBoxResult.Yes Then
-                    Using db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+                    Using db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
                         Dim sProt2 As String = ""
                         Dim sDeleteOK As Boolean = True
                         Dim sProt As String = ""
@@ -2000,7 +2000,7 @@ Public Class contSelLists
     Public Function getNextIDOwnInt(IDGroup As Integer) As Integer
         Try
             Dim retValue As Integer
-            Using db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()     'Gesamte Datenbank für alle Participants
+            Using db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()     'Gesamte Datenbank für alle Participants
                 With db
                     If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
                         Dim MaxIDInt? = 0

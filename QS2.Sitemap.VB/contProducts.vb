@@ -59,14 +59,14 @@ Public Class contProducts
             Me.valueHasChangedInGrid = False
             Me.ClearUI()
 
-            Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
-                Dim tObjectApplications As IQueryable(Of qs2.db.Entities.tblObjectApplications) = b.getProductsForUser(Me._IDGuidObject, db)
+                Dim tObjectApplications As IQueryable(Of PMDS.db.Entities.tblObjectApplications) = b.getProductsForUser(Me._IDGuidObject, db)
                 For Each rGridRow As Infragistics.Win.UltraWinGrid.UltraGridRow In Me.gridProducts.Rows
                     Dim v As DataRowView = rGridRow.ListObject
                     Dim rProduct As dsAdmin.ProductsRow = v.Row
 
-                    For Each rAppInDB As qs2.db.Entities.tblObjectApplications In tObjectApplications
+                    For Each rAppInDB As PMDS.db.Entities.tblObjectApplications In tObjectApplications
                         If rAppInDB.IDApplication.Trim().ToLower().Equals(rProduct.IDApplication.Trim().ToLower()) Then
                             rProduct.Active = True
                         End If
@@ -89,9 +89,9 @@ Public Class contProducts
                 Dim dsLicense1 As New core.license.dsLicense()
                 Dim doLicense1 As New core.license.doLicense()
 
-                Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+                Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
                 With db
-                    Dim tObjectApplicationsLoggedInUsr As IQueryable(Of qs2.db.Entities.tblObjectApplications) = b.getProductsForUser(actUsr.rUsr.IDGuid, db)
+                    Dim tObjectApplicationsLoggedInUsr As IQueryable(Of PMDS.db.Entities.tblObjectApplications) = b.getProductsForUser(actUsr.rUsr.IDGuid, db)
                     doLicense1.getAppsLicensedForParticipant(dsLicense1, qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), False)
 
                     If actUsr.rUsr.IDGuid.Equals(Me._IDGuidObject) Then
@@ -112,7 +112,7 @@ Public Class contProducts
                                     End If
                                 Next
                                 Dim bAppIsInListLoggedOnUser As Boolean = False
-                                For Each rAppLoggedInUsr As qs2.db.Entities.tblObjectApplications In tObjectApplicationsLoggedInUsr
+                                For Each rAppLoggedInUsr As PMDS.db.Entities.tblObjectApplications In tObjectApplicationsLoggedInUsr
                                     If rAppLoggedInUsr.IDApplication.Trim().ToLower().Equals(rProduct.Application.Trim().ToLower()) Then
                                         bAppIsInListLoggedOnUser = True
                                     End If
@@ -149,16 +149,16 @@ Public Class contProducts
 
     Public Function saveData() As Boolean
         Try
-            Dim db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
-                Dim tObjectApplications As IQueryable(Of qs2.db.Entities.tblObjectApplications) = b.getProductsForUser(Me._IDGuidObject, db)
+                Dim tObjectApplications As IQueryable(Of PMDS.db.Entities.tblObjectApplications) = b.getProductsForUser(Me._IDGuidObject, db)
                 For Each rGridRow As Infragistics.Win.UltraWinGrid.UltraGridRow In Me.gridProducts.Rows
                     Dim v As DataRowView = rGridRow.ListObject
                     Dim rProduct As dsAdmin.ProductsRow = v.Row
 
-                    Dim AppInDbFound As qs2.db.Entities.tblObjectApplications = Nothing
+                    Dim AppInDbFound As PMDS.db.Entities.tblObjectApplications = Nothing
                     Dim AppIsInDB As Boolean = False
-                    For Each rAppInDB As qs2.db.Entities.tblObjectApplications In tObjectApplications
+                    For Each rAppInDB As PMDS.db.Entities.tblObjectApplications In tObjectApplications
                         If rAppInDB.IDApplication.Trim().ToLower().Equals(rProduct.IDApplication.Trim().ToLower()) Then
                             AppInDbFound = rAppInDB
                             AppIsInDB = True
@@ -166,7 +166,7 @@ Public Class contProducts
                     Next
 
                     If rProduct.Active And Not AppIsInDB Then
-                        Dim NewProduct As New qs2.db.Entities.tblObjectApplications()
+                        Dim NewProduct As New PMDS.db.Entities.tblObjectApplications()
                         NewProduct.ID = System.Guid.NewGuid()
                         NewProduct.IDApplication = rProduct.IDApplication.Trim()
                         NewProduct.IDObjectGuid = Me._IDGuidObject

@@ -369,7 +369,7 @@ Public Class contMyAdjust
                 Me.cboDefaultSearchPatients.Value = Nothing
             End If
 
-            Using db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Using db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
                 Dim bDoNotShowAnymore As Boolean = Me.b.checkShowUpdateNews(qs2.core.vb.actUsr.rUsr.IDGuid, db)
                 Me.checkDoNotShowAnymore.Checked = Not bDoNotShowAnymore
             End Using
@@ -399,7 +399,7 @@ Public Class contMyAdjust
                 qs2.core.vb.actUsr.adjustSave(usrToSave, sqlAdmin.eAdjust.defaultSearchUser, sqlAdmin.eTypSelAdjust.forUsr, System.Convert.ToInt32(Me.cboDefaultSearchPatients.Value))
             End If
 
-            Using db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+            Using db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
                 Me.b.updateNewsShowOnOff(Not Me.checkDoNotShowAnymore.Checked, qs2.core.vb.actUsr.rUsr.IDGuid, db)
             End Using
 

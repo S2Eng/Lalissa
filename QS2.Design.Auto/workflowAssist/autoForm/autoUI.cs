@@ -278,65 +278,7 @@ namespace qs2.design.auto.workflowAssist.autoForm
                 rNew.FldShortGroupBoxParent = FldShortGroupBoxParent;
                 rNew.IDGuidsParent = IDGuidsParent;
 
-                //if (typeLoading == 1)
-                //{
-                //ownMultiControl1.setControl();
-                //ownMultiControl1.ownMCCriteria1.getData(ownMultiControl1, ownMultiControl1._FldShort, ownMultiControl1._controlType,
-                //                                        ownMultiControl1.ComboBox, ref ownMultiControl1.ownMCUI1, ownMultiControl1,
-                //                                        ref protocollForAdmin, ref ProtocolWindow, ownMultiControl1.OwnFieldForALLProducts);
-                //}
-
-                //ownMultiControl1.setFormat();
-                //ownMultiControl1.isLoaded = true;
-
                 this.addTabInfosToRow(ref rNew, cTagTab, tab, keyParentFrame);
-                //this.initMulticontrol(ownMultiControl1, ref dataStay);
-                
-                //lthxyxyxy
-                if (qs2.core.ENV.StaysAsThread)
-                {
-                    if (ownMultiControl1.OwnControlType != core.Enums.eControlType.Numeric && ownMultiControl1.OwnControlType != core.Enums.eControlType.NumericNoDb)
-                    {
-                        ownMultiControl1.setControl(false);                                         //lthxy
-                        //ownMultiControl1.ownMCCriteria1.getDataInit2(ownMultiControl1, ownMultiControl1._FldShort, ownMultiControl1._controlType,
-                        //                                            ownMultiControl1.ComboBox, ref ownMultiControl1.ownMCUI1, ownMultiControl1,
-                        //                                            ref protocollForAdmin, ref ProtocolWindow, ownMultiControl1.OwnFieldForALLProducts, false, false);
-
-                        //if (ownMultiControl1.OwnControlType == core.Enums.eControlType.ComboBox || ownMultiControl1.OwnControlType == core.Enums.eControlType.ComboBoxAsDropDown ||
-                        //    ownMultiControl1.OwnControlType == core.Enums.eControlType.ComboBoxCheckThreeStateBox)
-                        //{
-                        //    if (ownMultiControl1.ownMCCriteria1.ownMCCombo1.TypeComboBox == core.Enums.cVariablesValues.SelList ||
-                        //        ownMultiControl1.ownMCCriteria1.ownMCCombo1.TypeComboBox == qs2.core.Enums.cVariablesValues.Sql)
-                        //    {
-                        //        ownMultiControl1.ownMCCriteria1.getData(ownMultiControl1, ownMultiControl1._FldShort, ownMultiControl1._controlType,
-                        //                    ownMultiControl1.ComboBox, ref ownMultiControl1.ownMCUI1, ownMultiControl1,
-                        //                    ref protocollForAdmin, ref ProtocolWindow, ownMultiControl1.OwnFieldForALLProducts, false, false);
-                        //    }
-                        //    else
-                        //    {
-                        //        string xy = "";
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    ownMultiControl1.ownMCCriteria1.getData(ownMultiControl1, ownMultiControl1._FldShort, ownMultiControl1._controlType,
-                        //                    ownMultiControl1.ComboBox, ref ownMultiControl1.ownMCUI1, ownMultiControl1,
-                        //                    ref protocollForAdmin, ref ProtocolWindow, ownMultiControl1.OwnFieldForALLProducts, false, false);
-                        //}
-
-                        //ownMultiControl1.ownMCTxt1.doText(ownMultiControl1, false, false);
-                        //ownMultiControl1.ownMCFormat1.setFormatFromDb(ownMultiControl1, false, true);
-                        //ownMultiControl1.ownMCTxt1.setToolTipFormatForDbControl(ownMultiControl1);
-                    }
-                }
-                else
-                {
-
-                }
-
-
-                //ownMultiControl1.OwnOrder = qs2.design.auto.multiControl.ownMCGeneric.getTabOrder(ref ownMultiControl1._OwnOrderLineNr, ref ownMultiControl1._OwnOrderControlNr);
-
                 return rNew;
             }
             catch (Exception ex)

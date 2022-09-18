@@ -57,11 +57,11 @@ Public Class sqlProtocoll
                 Dim lstUsrApps As New List(Of String) From {"", qs2.core.license.doLicense.eApp.ALL.ToString()} 'ALL und Empty als Default, wenn User mindestens ein Produkt hat
                 Dim b As businessFramework = New businessFramework()
 
-                Using db As qs2.db.Entities.ERModellQS2Entities = qs2.core.db.ERSystem.businessFramework.getDBContext()
-                    Dim tObjectApplications As IQueryable(Of qs2.db.Entities.tblObjectApplications) = b.getProductsForUser(GuidUsr, db)
+                Using db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
+                    Dim tObjectApplications As IQueryable(Of PMDS.db.Entities.tblObjectApplications) = b.getProductsForUser(GuidUsr, db)
 
                     If tObjectApplications.Count() > 0 Then
-                        For Each rApp As qs2.db.Entities.tblObjectApplications In tObjectApplications
+                        For Each rApp As PMDS.db.Entities.tblObjectApplications In tObjectApplications
                             lstUsrApps.Add(rApp.IDApplication)
                         Next
 

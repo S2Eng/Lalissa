@@ -1,7 +1,7 @@
 ﻿using Infragistics.Documents.Excel;
 using Microsoft.Win32.SafeHandles;
 using qs2.core.db.ERSystem;
-using QS2.db.Entities;
+using PMDS.db.Entities;
 using System;
 using System.Data.Entity.Validation;
 using System.Linq;
@@ -25,7 +25,7 @@ namespace qs2.core.BAL
                 return;
 
             Workbook wb = Workbook.Load(f);
-            using (ERModellQS2Entities db = businessFramework.getDBContext())
+            using (ERModellPMDSEntities db = businessFramework.getDBContext())
             {
                 string sqlDel = string.Concat("Delete from qs2.Ressourcen where Type='Help' and IDApplication='", app, "' and IDParticipant='ALL' and IDLanguageUser='ALL'");
                 db.Database.ExecuteSqlCommand(sqlDel);
@@ -86,7 +86,7 @@ namespace qs2.core.BAL
                 return "";
         }
 
-        public bool checkCriteria(string fldshort, string app, ERModellQS2Entities db)
+        public bool checkCriteria(string fldshort, string app, ERModellPMDSEntities db)
         {
             var r = (from c in db.tblCriteria where c.FldShort == fldshort && c.IDApplication == app select new { c.FldShort, c.IDApplication, c.AliasFldShort }).FirstOrDefault();
             if (r is null)
