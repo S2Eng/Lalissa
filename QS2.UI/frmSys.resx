@@ -1,0 +1,591 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnLoadAllAD2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnLoadAllAD2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 88</value>
+  </data>
+  <data name="btnLoadAllAD2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnLoadAllAD2.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="btnLoadAllAD2.Text" xml:space="preserve">
+    <value>Read Active Directory</value>
+  </data>
+  <data name="&gt;&gt;btnLoadAllAD2.Name" xml:space="preserve">
+    <value>btnLoadAllAD2</value>
+  </data>
+  <data name="&gt;&gt;btnLoadAllAD2.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7731.20327, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnLoadAllAD2.Parent" xml:space="preserve">
+    <value>ultraTabPageControl1</value>
+  </data>
+  <data name="&gt;&gt;btnLoadAllAD2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnValidUserAD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>375, 44</value>
+  </data>
+  <data name="btnValidUserAD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 23</value>
+  </data>
+  <data name="btnValidUserAD.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="btnValidUserAD.Text" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="&gt;&gt;btnValidUserAD.Name" xml:space="preserve">
+    <value>btnValidUserAD</value>
+  </data>
+  <data name="&gt;&gt;btnValidUserAD.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7731.20327, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnValidUserAD.Parent" xml:space="preserve">
+    <value>chkUserAcitveDirectory</value>
+  </data>
+  <data name="&gt;&gt;btnValidUserAD.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtUsr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 24</value>
+  </data>
+  <data name="txtUsr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 21</value>
+  </data>
+  <data name="txtUsr.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;txtUsr.Name" xml:space="preserve">
+    <value>txtUsr</value>
+  </data>
+  <data name="&gt;&gt;txtUsr.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinEditors.UltraTextEditor, Infragistics4.Win.UltraWinEditors.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;txtUsr.Parent" xml:space="preserve">
+    <value>chkUserAcitveDirectory</value>
+  </data>
+  <data name="&gt;&gt;txtUsr.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtPwd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 47</value>
+  </data>
+  <data name="txtPwd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 21</value>
+  </data>
+  <data name="txtPwd.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtPwd.Name" xml:space="preserve">
+    <value>txtPwd</value>
+  </data>
+  <data name="&gt;&gt;txtPwd.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinEditors.UltraTextEditor, Infragistics4.Win.UltraWinEditors.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;txtPwd.Parent" xml:space="preserve">
+    <value>chkUserAcitveDirectory</value>
+  </data>
+  <data name="&gt;&gt;txtPwd.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkWithPwd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 48</value>
+  </data>
+  <data name="chkWithPwd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 17</value>
+  </data>
+  <data name="chkWithPwd.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="chkWithPwd.Text" xml:space="preserve">
+    <value>With Password</value>
+  </data>
+  <data name="&gt;&gt;chkWithPwd.Name" xml:space="preserve">
+    <value>chkWithPwd</value>
+  </data>
+  <data name="&gt;&gt;chkWithPwd.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinEditors.UltraCheckEditor, Infragistics4.Win.UltraWinEditors.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;chkWithPwd.Parent" xml:space="preserve">
+    <value>chkUserAcitveDirectory</value>
+  </data>
+  <data name="&gt;&gt;chkWithPwd.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 49</value>
+  </data>
+  <data name="lblPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 14</value>
+  </data>
+  <data name="lblPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="lblPassword.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="&gt;&gt;lblPassword.Name" xml:space="preserve">
+    <value>lblPassword</value>
+  </data>
+  <data name="&gt;&gt;lblPassword.Type" xml:space="preserve">
+    <Value>Infragistics.Win.Misc.UltraLabel, Infragistics4.Win.Misc.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;lblPassword.Parent" xml:space="preserve">
+    <value>chkUserAcitveDirectory</value>
+  </data>
+  <data name="&gt;&gt;lblPassword.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblUser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 26</value>
+  </data>
+  <data name="lblUser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 14</value>
+  </data>
+  <data name="lblUser.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="lblUser.Text" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="&gt;&gt;lblUser.Name" xml:space="preserve">
+    <value>lblUser</value>
+  </data>
+  <data name="&gt;&gt;lblUser.Type" xml:space="preserve">
+    <Value>Infragistics.Win.Misc.UltraLabel, Infragistics4.Win.Misc.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;lblUser.Parent" xml:space="preserve">
+    <value>chkUserAcitveDirectory</value>
+  </data>
+  <data name="&gt;&gt;lblUser.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="chkUserAcitveDirectory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 5</value>
+  </data>
+  <data name="chkUserAcitveDirectory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>473, 75</value>
+  </data>
+  <data name="chkUserAcitveDirectory.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="chkUserAcitveDirectory.Text" xml:space="preserve">
+    <value>CheckUser in Active Directory</value>
+  </data>
+  <data name="&gt;&gt;chkUserAcitveDirectory.Name" xml:space="preserve">
+    <value>chkUserAcitveDirectory</value>
+  </data>
+  <data name="&gt;&gt;chkUserAcitveDirectory.Type" xml:space="preserve">
+    <Value>Infragistics.Win.Misc.UltraGroupBox, Infragistics4.Win.Misc.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;chkUserAcitveDirectory.Parent" xml:space="preserve">
+    <value>ultraTabPageControl1</value>
+  </data>
+  <data name="&gt;&gt;chkUserAcitveDirectory.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="gridActiveDirextory.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="appearance16.TextHAlignAsString" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="gridActiveDirextory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 112</value>
+  </data>
+  <data name="gridActiveDirextory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>777, 363</value>
+  </data>
+  <data name="gridActiveDirextory.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="gridActiveDirextory.Text" xml:space="preserve">
+    <value>Active Directory</value>
+  </data>
+  <data name="&gt;&gt;gridActiveDirextory.Name" xml:space="preserve">
+    <value>gridActiveDirextory</value>
+  </data>
+  <data name="&gt;&gt;gridActiveDirextory.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinGrid.UltraGrid, Infragistics4.Win.UltraWinGrid.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;gridActiveDirextory.Parent" xml:space="preserve">
+    <value>ultraTabPageControl1</value>
+  </data>
+  <data name="&gt;&gt;gridActiveDirextory.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ultraTabPageControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 23</value>
+  </data>
+  <data name="ultraTabPageControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>788, 477</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl1.Name" xml:space="preserve">
+    <value>ultraTabPageControl1</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl1.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabPageControl, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl1.Parent" xml:space="preserve">
+    <value>ultraTabControlSys</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnSaveHL7Descr.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSaveHL7Descr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 22</value>
+  </data>
+  <data name="btnSaveHL7Descr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 23</value>
+  </data>
+  <data name="btnSaveHL7Descr.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="btnSaveHL7Descr.Text" xml:space="preserve">
+    <value>Save HL7-Description</value>
+  </data>
+  <data name="&gt;&gt;btnSaveHL7Descr.Name" xml:space="preserve">
+    <value>btnSaveHL7Descr</value>
+  </data>
+  <data name="&gt;&gt;btnSaveHL7Descr.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7731.20327, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnSaveHL7Descr.Parent" xml:space="preserve">
+    <value>ultraTabPageControl2</value>
+  </data>
+  <data name="&gt;&gt;btnSaveHL7Descr.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ultraTabPageControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-10000, -10000</value>
+  </data>
+  <data name="ultraTabPageControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>788, 477</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl2.Name" xml:space="preserve">
+    <value>ultraTabPageControl2</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl2.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabPageControl, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl2.Parent" xml:space="preserve">
+    <value>ultraTabControlSys</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtResultsTestUnits.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="txtResultsTestUnits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 36</value>
+  </data>
+  <data name="txtResultsTestUnits.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 439</value>
+  </data>
+  <data name="txtResultsTestUnits.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="txtResultsTestUnits.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;txtResultsTestUnits.Name" xml:space="preserve">
+    <value>txtResultsTestUnits</value>
+  </data>
+  <data name="&gt;&gt;txtResultsTestUnits.Type" xml:space="preserve">
+    <Value>Infragistics.Win.FormattedLinkLabel.UltraFormattedTextEditor, Infragistics4.Win.Misc.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;txtResultsTestUnits.Parent" xml:space="preserve">
+    <value>ultraTabPageControl3</value>
+  </data>
+  <data name="&gt;&gt;txtResultsTestUnits.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnRunTestUnits.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnRunTestUnits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 9</value>
+  </data>
+  <data name="btnRunTestUnits.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 23</value>
+  </data>
+  <data name="btnRunTestUnits.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="btnRunTestUnits.Text" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="&gt;&gt;btnRunTestUnits.Name" xml:space="preserve">
+    <value>btnRunTestUnits</value>
+  </data>
+  <data name="&gt;&gt;btnRunTestUnits.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7731.20327, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnRunTestUnits.Parent" xml:space="preserve">
+    <value>ultraTabPageControl3</value>
+  </data>
+  <data name="&gt;&gt;btnRunTestUnits.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ultraTabPageControl3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-10000, -10000</value>
+  </data>
+  <data name="ultraTabPageControl3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>788, 477</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl3.Name" xml:space="preserve">
+    <value>ultraTabPageControl3</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl3.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabPageControl, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl3.Parent" xml:space="preserve">
+    <value>ultraTabControlSys</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="dsLanguage1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="ultraTabSharedControlsPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-10000, -10000</value>
+  </data>
+  <data name="ultraTabSharedControlsPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>788, 477</value>
+  </data>
+  <data name="&gt;&gt;ultraTabSharedControlsPage1.Name" xml:space="preserve">
+    <value>ultraTabSharedControlsPage1</value>
+  </data>
+  <data name="&gt;&gt;ultraTabSharedControlsPage1.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabSharedControlsPage1.Parent" xml:space="preserve">
+    <value>ultraTabControlSys</value>
+  </data>
+  <data name="&gt;&gt;ultraTabSharedControlsPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ultraGridBagLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ultraGridBagLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ultraGridBagLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>802, 513</value>
+  </data>
+  <data name="ultraGridBagLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;ultraGridBagLayoutPanel1.Name" xml:space="preserve">
+    <value>ultraGridBagLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;ultraGridBagLayoutPanel1.Type" xml:space="preserve">
+    <Value>Infragistics.Win.Misc.UltraGridBagLayoutPanel, Infragistics4.Win.Misc.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraGridBagLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ultraGridBagLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ultraTabControlSys.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="ultraTabControlSys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>792, 503</value>
+  </data>
+  <data name="ultraTabControlSys.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="ultraTab1.Text" xml:space="preserve">
+    <value>Active Directory</value>
+  </data>
+  <data name="ultraTab2.Text" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="ultraTab3.Text" xml:space="preserve">
+    <value>Test-units</value>
+  </data>
+  <data name="&gt;&gt;ultraTabControlSys.Name" xml:space="preserve">
+    <value>ultraTabControlSys</value>
+  </data>
+  <data name="&gt;&gt;ultraTabControlSys.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabControl, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabControlSys.Parent" xml:space="preserve">
+    <value>ultraGridBagLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;ultraTabControlSys.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="dsAdmin1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>141, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>802, 513</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>741, 454</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>QS2 Sys</value>
+  </data>
+  <data name="&gt;&gt;dsLanguage1.Name" xml:space="preserve">
+    <value>dsLanguage1</value>
+  </data>
+  <data name="&gt;&gt;dsLanguage1.Type" xml:space="preserve">
+    <value>qs2.core.language.dsLanguage, qs2.core, Version=1.0.7731.20324, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dsAdmin1.Name" xml:space="preserve">
+    <value>dsAdmin1</value>
+  </data>
+  <data name="&gt;&gt;dsAdmin1.Type" xml:space="preserve">
+    <value>qs2.core.vb.dsAdmin, qs2.core.vb, Version=1.0.7731.20325, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmSys</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

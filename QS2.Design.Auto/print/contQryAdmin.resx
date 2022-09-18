@@ -1,0 +1,1412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="contConditions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="contConditions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="contConditions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>672, 425</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="contConditions.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;contConditions.Name" xml:space="preserve">
+    <value>contConditions</value>
+  </data>
+  <data name="&gt;&gt;contConditions.Type" xml:space="preserve">
+    <value>qs2.ui.print.contQueryDef, qs2.design.auto, Version=1.0.7480.21532, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;contConditions.Parent" xml:space="preserve">
+    <value>ultraTabPageControl2</value>
+  </data>
+  <data name="&gt;&gt;contConditions.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ultraTabPageControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 23</value>
+  </data>
+  <data name="ultraTabPageControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>672, 425</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl2.Name" xml:space="preserve">
+    <value>ultraTabPageControl2</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl2.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabPageControl, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl2.Parent" xml:space="preserve">
+    <value>ultraTabControlFields</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="contJoins.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="contJoins.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="contJoins.Size" type="System.Drawing.Size, System.Drawing">
+    <value>720, 425</value>
+  </data>
+  <data name="contJoins.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;contJoins.Name" xml:space="preserve">
+    <value>contJoins</value>
+  </data>
+  <data name="&gt;&gt;contJoins.Type" xml:space="preserve">
+    <value>qs2.ui.print.contQueryDef, qs2.design.auto, Version=1.0.7480.21532, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;contJoins.Parent" xml:space="preserve">
+    <value>ultraTabPageControl3</value>
+  </data>
+  <data name="&gt;&gt;contJoins.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ultraTabPageControl3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-10000, -10000</value>
+  </data>
+  <data name="ultraTabPageControl3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>720, 425</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl3.Name" xml:space="preserve">
+    <value>ultraTabPageControl3</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl3.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabPageControl, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl3.Parent" xml:space="preserve">
+    <value>ultraTabControlFields</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="contInputParemeters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="contInputParemeters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="contInputParemeters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>720, 425</value>
+  </data>
+  <data name="contInputParemeters.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;contInputParemeters.Name" xml:space="preserve">
+    <value>contInputParemeters</value>
+  </data>
+  <data name="&gt;&gt;contInputParemeters.Type" xml:space="preserve">
+    <value>qs2.ui.print.contQueryDef, qs2.design.auto, Version=1.0.7480.21532, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;contInputParemeters.Parent" xml:space="preserve">
+    <value>ultraTabPageControl1</value>
+  </data>
+  <data name="&gt;&gt;contInputParemeters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ultraTabPageControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-10000, -10000</value>
+  </data>
+  <data name="ultraTabPageControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>720, 425</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl1.Name" xml:space="preserve">
+    <value>ultraTabPageControl1</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl1.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabPageControl, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl1.Parent" xml:space="preserve">
+    <value>ultraTabControlFields</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControl1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="ultraTabSharedControlsPage2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-10000, -10000</value>
+  </data>
+  <data name="ultraTabSharedControlsPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>672, 425</value>
+  </data>
+  <data name="&gt;&gt;ultraTabSharedControlsPage2.Name" xml:space="preserve">
+    <value>ultraTabSharedControlsPage2</value>
+  </data>
+  <data name="&gt;&gt;ultraTabSharedControlsPage2.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabSharedControlsPage2.Parent" xml:space="preserve">
+    <value>ultraTabControlFields</value>
+  </data>
+  <data name="&gt;&gt;ultraTabSharedControlsPage2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ultraTabControlFields.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ultraTabControlFields.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ultraTabControlFields.Size" type="System.Drawing.Size, System.Drawing">
+    <value>676, 451</value>
+  </data>
+  <data name="ultraTabControlFields.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="ultraTab2.Text" xml:space="preserve">
+    <value>WhereConditions</value>
+  </data>
+  <data name="ultraTab4.Text" xml:space="preserve">
+    <value>Joins</value>
+  </data>
+  <data name="ultraTab1.Text" xml:space="preserve">
+    <value>InputParameters</value>
+  </data>
+  <data name="&gt;&gt;ultraTabControlFields.Name" xml:space="preserve">
+    <value>ultraTabControlFields</value>
+  </data>
+  <data name="&gt;&gt;ultraTabControlFields.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabControl, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabControlFields.Parent" xml:space="preserve">
+    <value>panelControls</value>
+  </data>
+  <data name="&gt;&gt;ultraTabControlFields.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelControls.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelControls.Location" type="System.Drawing.Point, System.Drawing">
+    <value>401, 25</value>
+  </data>
+  <data name="panelControls.Size" type="System.Drawing.Size, System.Drawing">
+    <value>676, 451</value>
+  </data>
+  <data name="panelControls.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;panelControls.Name" xml:space="preserve">
+    <value>panelControls</value>
+  </data>
+  <data name="&gt;&gt;panelControls.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelControls.Parent" xml:space="preserve">
+    <value>panelConditionsInputPar</value>
+  </data>
+  <data name="&gt;&gt;panelControls.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="contFields.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="contFields.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="contFields.Size" type="System.Drawing.Size, System.Drawing">
+    <value>401, 451</value>
+  </data>
+  <data name="contFields.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;contFields.Name" xml:space="preserve">
+    <value>contFields</value>
+  </data>
+  <data name="&gt;&gt;contFields.Type" xml:space="preserve">
+    <value>qs2.ui.print.contQueryDef, qs2.design.auto, Version=1.0.7480.21532, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;contFields.Parent" xml:space="preserve">
+    <value>panelFields</value>
+  </data>
+  <data name="&gt;&gt;contFields.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelFields.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panelFields.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="panelFields.Size" type="System.Drawing.Size, System.Drawing">
+    <value>401, 451</value>
+  </data>
+  <data name="panelFields.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;panelFields.Name" xml:space="preserve">
+    <value>panelFields</value>
+  </data>
+  <data name="&gt;&gt;panelFields.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelFields.Parent" xml:space="preserve">
+    <value>panelConditionsInputPar</value>
+  </data>
+  <data name="&gt;&gt;panelFields.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="_panelConditionsInputPar_Toolbars_Dock_Area_Left.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="_panelConditionsInputPar_Toolbars_Dock_Area_Left.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 451</value>
+  </data>
+  <metadata name="toolbarsManagerControlSelection.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>646, 19</value>
+  </metadata>
+  <data name="ultraToolbar1.Text" xml:space="preserve">
+    <value>UltraToolbar1</value>
+  </data>
+  <data name="stateButtonTool1.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>WhereConditions</value>
+  </data>
+  <data name="stateButtonTool2.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Joins</value>
+  </data>
+  <data name="stateButtonTool3.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>InputParameters</value>
+  </data>
+  <data name="labelTool1.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>lblOnOff</value>
+  </data>
+  <data name="appearance1.TextHAlignAsString" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="labelTool2.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Fields</value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Left.Name" xml:space="preserve">
+    <value>_panelConditionsInputPar_Toolbars_Dock_Area_Left</value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Left.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Left.Parent" xml:space="preserve">
+    <value>panelConditionsInputPar</value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Left.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="_panelConditionsInputPar_Toolbars_Dock_Area_Right.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1077, 25</value>
+  </data>
+  <data name="_panelConditionsInputPar_Toolbars_Dock_Area_Right.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 451</value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Right.Name" xml:space="preserve">
+    <value>_panelConditionsInputPar_Toolbars_Dock_Area_Right</value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Right.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Right.Parent" xml:space="preserve">
+    <value>panelConditionsInputPar</value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Right.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="_panelConditionsInputPar_Toolbars_Dock_Area_Bottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 476</value>
+  </data>
+  <data name="_panelConditionsInputPar_Toolbars_Dock_Area_Bottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1077, 0</value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Bottom.Name" xml:space="preserve">
+    <value>_panelConditionsInputPar_Toolbars_Dock_Area_Bottom</value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Bottom.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Bottom.Parent" xml:space="preserve">
+    <value>panelConditionsInputPar</value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Bottom.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="_panelConditionsInputPar_Toolbars_Dock_Area_Top.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="_panelConditionsInputPar_Toolbars_Dock_Area_Top.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1077, 25</value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Top.Name" xml:space="preserve">
+    <value>_panelConditionsInputPar_Toolbars_Dock_Area_Top</value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Top.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Top.Parent" xml:space="preserve">
+    <value>panelConditionsInputPar</value>
+  </data>
+  <data name="&gt;&gt;_panelConditionsInputPar_Toolbars_Dock_Area_Top.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="panelConditionsInputPar.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelConditionsInputPar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 56</value>
+  </data>
+  <data name="panelConditionsInputPar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1077, 476</value>
+  </data>
+  <data name="panelConditionsInputPar.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;panelConditionsInputPar.Name" xml:space="preserve">
+    <value>panelConditionsInputPar</value>
+  </data>
+  <data name="&gt;&gt;panelConditionsInputPar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelConditionsInputPar.Parent" xml:space="preserve">
+    <value>panelQueryAdmin</value>
+  </data>
+  <data name="&gt;&gt;panelConditionsInputPar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnDoAutoJoin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnDoAutoJoin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 0</value>
+  </data>
+  <data name="btnDoAutoJoin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 26</value>
+  </data>
+  <data name="btnDoAutoJoin.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="&gt;&gt;btnDoAutoJoin.Name" xml:space="preserve">
+    <value>btnDoAutoJoin</value>
+  </data>
+  <data name="&gt;&gt;btnDoAutoJoin.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7479.17625, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnDoAutoJoin.Parent" xml:space="preserve">
+    <value>panelButt</value>
+  </data>
+  <data name="&gt;&gt;btnDoAutoJoin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="appearance3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACnSURBVFhH7ZY7CoAwEERzUsHGc+SIdnoSsfGzEyIkgyE2
+        BpFZeM2wn0dsdCjvfWeMxmKsKaHhQVnvkRJj5Nk+Azdwq7saeiMbTglND6o0xznRo2GiMCPuqVZpjnNi
+        QsNGYUbcU63SHOfEVmt4W+CQwH8ESnW3M+X7Am8jAQlIQAISkIAEJPAJgZ3DhuwQmClsyQyBgcKWDNef
+        KyTwEi0+B27glh137gTdJqx/bG57owAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 0</value>
+  </data>
+  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 26</value>
+  </data>
+  <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
+    <value>btnSave</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7479.17625, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 0</value>
+  </data>
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 26</value>
+  </data>
+  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
+    <value>btnCancel</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7479.17625, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnEdit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEdit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 0</value>
+  </data>
+  <data name="btnEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 26</value>
+  </data>
+  <data name="btnEdit.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="btnEdit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="&gt;&gt;btnEdit.Name" xml:space="preserve">
+    <value>btnEdit</value>
+  </data>
+  <data name="&gt;&gt;btnEdit.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7479.17625, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnEdit.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;btnEdit.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>703, 0</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 28</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>panelButt</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 0</value>
+  </data>
+  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 26</value>
+  </data>
+  <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="btnClose.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Name" xml:space="preserve">
+    <value>btnClose</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7479.17625, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Parent" xml:space="preserve">
+    <value>panelButtClose</value>
+  </data>
+  <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelButtClose.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panelButtClose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>974, 0</value>
+  </data>
+  <data name="panelButtClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 28</value>
+  </data>
+  <data name="panelButtClose.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="panelButtClose.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;panelButtClose.Name" xml:space="preserve">
+    <value>panelButtClose</value>
+  </data>
+  <data name="&gt;&gt;panelButtClose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelButtClose.Parent" xml:space="preserve">
+    <value>panelButt</value>
+  </data>
+  <data name="&gt;&gt;panelButtClose.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnTestQuery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnTestQuery.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 0</value>
+  </data>
+  <data name="btnTestQuery.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 26</value>
+  </data>
+  <data name="btnTestQuery.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;btnTestQuery.Name" xml:space="preserve">
+    <value>btnTestQuery</value>
+  </data>
+  <data name="&gt;&gt;btnTestQuery.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7479.17625, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnTestQuery.Parent" xml:space="preserve">
+    <value>panelButt</value>
+  </data>
+  <data name="&gt;&gt;btnTestQuery.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="dropDownApplications1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>165, 6</value>
+  </data>
+  <data name="dropDownApplications1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 17</value>
+  </data>
+  <data name="dropDownApplications1.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="dropDownApplications1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;dropDownApplications1.Name" xml:space="preserve">
+    <value>dropDownApplications1</value>
+  </data>
+  <data name="&gt;&gt;dropDownApplications1.Type" xml:space="preserve">
+    <value>qs2.sitemap.dropDownApplications, qs2.sitemap, Version=1.0.7479.17625, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dropDownApplications1.Parent" xml:space="preserve">
+    <value>panelButt</value>
+  </data>
+  <data name="&gt;&gt;dropDownApplications1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="panelButt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panelButt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 532</value>
+  </data>
+  <data name="panelButt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1077, 28</value>
+  </data>
+  <data name="panelButt.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panelButt.Name" xml:space="preserve">
+    <value>panelButt</value>
+  </data>
+  <data name="&gt;&gt;panelButt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelButt.Parent" xml:space="preserve">
+    <value>panelQueryAdmin</value>
+  </data>
+  <data name="&gt;&gt;panelButt.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnUserRights.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="appearance8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN4SURBVFhHvVdNSFRRGBWiRRQUCAWZNmZBRAQRbdoWSLSp
+        dYtWgUQ/UFSroIKakkzzJ7MgWgS1CNqoBRYxP5ULa9EPTto446goQdCuLGe+zrnvu9MdmWLmvZkOHEbf
+        e98593z3e3e0plrY9CS+DewGP4CzYBxsAZfpI9UDTA6Dc02Dcanvj0rjYEzwu+VjcLU+WnlA/CyNNsB0
+        Iz73xt7K9qHX5mddAPkcrNWSygGiZ2hAcyZvH5+U+VxW7qZmpK4/4i6AZCeWa2lwQIzmOZo3wLxjbFIs
+        zn9MmgWpscsWLQ8GCOWTNwxEpXM8o9ZiFrIe15pwbx26sBZ0tuOVSviHmi/Ytneg7RbtMA/BnAsIDUal
+        NZGWe+kZMxN8HnVzKuMPEMgPHE26nOTXx9ImMTsSwv2ez969bE5kT2TEbBNq36tU+UDxaVCTR+TGouRc
+        EM3rByJ5c+LS6IRZMF9R1PeoXHlA4d+Tf2Jyr+2NaLs1R3AJJ1LmHucB9V/ArSpZOlDE5FkveeHAMTlT
+        s738vOkkv6rmrEN9DjykkqUDRUzuvWoDMekcc5Jjz7kgGjO92/Yw2u6YL4DHVLJ0oOjPIQODbsfAGzjP
+        nOxNTpnrbPsVJK8rND+qkqUDRUxetO3ccztw/LTmRHg0ZZ5Xc7b9uEqWDjU3IjTodszbtO3ewMWkb2La
+        XM8iO8156Kj5T9BX8oJDpst51dr0kLFtv+UmR9ud5KSv5CdZTBEa2T3nvl4reNXi0pfU5LmcXNbk+qrN
+        g74Gbgv4jWc2F+C+5212z/u9LelzknPgePoFSk6gsJUCIbxq+/B9bmGTs+Vmz/PJvRPOmfZfYPnJCRTW
+        gTylpAnc+WxYHmRm5QK+UrkgO+13dODMCVdongXLHzgLFJ+juSX3ksZ20nmG31ZzgsmdgaO5v+QEimvB
+        NI1d0pQLYfpW7DPBgfPazoEzz7Ht/pMTEDgB8sAoWABJk0Z04mFmTr4vZI05F6TTTvobOAsIrALfqVhR
+        0mzH0LA0R9+YbXFetWDJCYgctEb/Ik0X/ZkdLDkBkaXgiCNaCqfAIyoRDBA6AHKCixkt5jR4Edys5cEA
+        oSXgU7CYmcsEeApco6WVAQR3gz/AYqbkS5D/aq3QksoCwvfVyCUn+wW4H1ypj1YHMHAPHnbiEdist6sP
+        mPWAX8FecJde/k+oqfkNHeg4Bil7jusAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnUserRights.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnUserRights.Location" type="System.Drawing.Point, System.Drawing">
+    <value>732, 25</value>
+  </data>
+  <data name="btnUserRights.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 24</value>
+  </data>
+  <data name="btnUserRights.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="&gt;&gt;btnUserRights.Name" xml:space="preserve">
+    <value>btnUserRights</value>
+  </data>
+  <data name="&gt;&gt;btnUserRights.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7479.17625, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnUserRights.Parent" xml:space="preserve">
+    <value>panelTop</value>
+  </data>
+  <data name="&gt;&gt;btnUserRights.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="contSelListQueries.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="contSelListQueries.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 23</value>
+  </data>
+  <data name="contSelListQueries.Size" type="System.Drawing.Size, System.Drawing">
+    <value>648, 28</value>
+  </data>
+  <data name="contSelListQueries.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;contSelListQueries.Name" xml:space="preserve">
+    <value>contSelListQueries</value>
+  </data>
+  <data name="&gt;&gt;contSelListQueries.Type" xml:space="preserve">
+    <value>qs2.ui.print.contSelListQueries, qs2.design.auto, Version=1.0.7480.21532, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;contSelListQueries.Parent" xml:space="preserve">
+    <value>panelTop</value>
+  </data>
+  <data name="&gt;&gt;contSelListQueries.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnEditQuery.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="appearance9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN4SURBVFhHvVdNSFRRGBWiRRQUCAWZNmZBRAQRbdoWSLSp
+        dYtWgUQ/UFSroIKakkzzJ7MgWgS1CNqoBRYxP5ULa9EPTto446goQdCuLGe+zrnvu9MdmWLmvZkOHEbf
+        e98593z3e3e0plrY9CS+DewGP4CzYBxsAZfpI9UDTA6Dc02Dcanvj0rjYEzwu+VjcLU+WnlA/CyNNsB0
+        Iz73xt7K9qHX5mddAPkcrNWSygGiZ2hAcyZvH5+U+VxW7qZmpK4/4i6AZCeWa2lwQIzmOZo3wLxjbFIs
+        zn9MmgWpscsWLQ8GCOWTNwxEpXM8o9ZiFrIe15pwbx26sBZ0tuOVSviHmi/Ytneg7RbtMA/BnAsIDUal
+        NZGWe+kZMxN8HnVzKuMPEMgPHE26nOTXx9ImMTsSwv2ez969bE5kT2TEbBNq36tU+UDxaVCTR+TGouRc
+        EM3rByJ5c+LS6IRZMF9R1PeoXHlA4d+Tf2Jyr+2NaLs1R3AJJ1LmHucB9V/ArSpZOlDE5FkveeHAMTlT
+        s738vOkkv6rmrEN9DjykkqUDRUzuvWoDMekcc5Jjz7kgGjO92/Yw2u6YL4DHVLJ0oOjPIQODbsfAGzjP
+        nOxNTpnrbPsVJK8rND+qkqUDRUxetO3ccztw/LTmRHg0ZZ5Xc7b9uEqWDjU3IjTodszbtO3ewMWkb2La
+        XM8iO8156Kj5T9BX8oJDpst51dr0kLFtv+UmR9ud5KSv5CdZTBEa2T3nvl4reNXi0pfU5LmcXNbk+qrN
+        g74Gbgv4jWc2F+C+5212z/u9LelzknPgePoFSk6gsJUCIbxq+/B9bmGTs+Vmz/PJvRPOmfZfYPnJCRTW
+        gTylpAnc+WxYHmRm5QK+UrkgO+13dODMCVdongXLHzgLFJ+juSX3ksZ20nmG31ZzgsmdgaO5v+QEimvB
+        NI1d0pQLYfpW7DPBgfPazoEzz7Ht/pMTEDgB8sAoWABJk0Z04mFmTr4vZI05F6TTTvobOAsIrALfqVhR
+        0mzH0LA0R9+YbXFetWDJCYgctEb/Ik0X/ZkdLDkBkaXgiCNaCqfAIyoRDBA6AHKCixkt5jR4Edys5cEA
+        oSXgU7CYmcsEeApco6WVAQR3gz/AYqbkS5D/aq3QksoCwvfVyCUn+wW4H1ypj1YHMHAPHnbiEdist6sP
+        mPWAX8FecJde/k+oqfkNHeg4Bil7jusAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnEditQuery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEditQuery.Location" type="System.Drawing.Point, System.Drawing">
+    <value>707, 25</value>
+  </data>
+  <data name="btnEditQuery.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 24</value>
+  </data>
+  <data name="btnEditQuery.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="&gt;&gt;btnEditQuery.Name" xml:space="preserve">
+    <value>btnEditQuery</value>
+  </data>
+  <data name="&gt;&gt;btnEditQuery.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7479.17625, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnEditQuery.Parent" xml:space="preserve">
+    <value>panelTop</value>
+  </data>
+  <data name="&gt;&gt;btnEditQuery.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnDeleteQuery.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="appearance10.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFuSURBVFhH7Ze7TgJhEIXXC9oROo2l8W0t6bGRypBtSLCx
+        t/EJIFYmKhEpLLyznvlzJiHD8O/qLlmL/ZKvYc5cslAsyW+5TpIWvIKZ8RLuMLY5sORwaam1w1g5MKgN
+        T+ENfDBOobdcfIQ2LzNkVpvj4yDYgRPoLSijzMx/Qgh1l5qqtss160FobJqqdMw160FoYZqqdME1DXHw
+        qF7hW9VyfD4Ie99faTk+H4Q39UPc4oo4CP7PA+ajUTYbDFY+V+fDYbQOCx/wbRqDilcTFa9Gt7kiDoK1
+        H/BlGoOKVxMVr0aLvS8g2BzwaRqDilcTFa9Gd7kiDoK1H/BhGoOKVxMVr0ZbXBEHwdoPeDeNQcWriYpX
+        o3tcEQfB5gB5gVgZoHg1UfFqdJ8r4iDoHvDU72fPabryuTrt9ULGq9HCB9yaxiqccXw+CJ+Z5ipMOT4f
+        hA+g/M/zBv3FF3jC8cVAwxE8h3fQG1rEe3gBjznWkCQ/3EnoaEs7aYUAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnDeleteQuery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnDeleteQuery.Location" type="System.Drawing.Point, System.Drawing">
+    <value>682, 25</value>
+  </data>
+  <data name="btnDeleteQuery.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 24</value>
+  </data>
+  <data name="btnDeleteQuery.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteQuery.Name" xml:space="preserve">
+    <value>btnDeleteQuery</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteQuery.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7479.17625, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteQuery.Parent" xml:space="preserve">
+    <value>panelTop</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteQuery.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnManageQuery.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="appearance11.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHbSURBVFhHxZdLTsMwFEU7q7qDqnMkGHQl3Q4wYQNdQdWd
+        wAKomFJgwmfGAvi0YhruKU5J0+vUhUa+0pES530cx352Oqk6urzuiZGYiJl4EcsA17TxDJtecPu/FGwg
+        puJLFIlgi88ghNlfcu6KcQjmkqSALzG6IWya5NAXN8IF/QvE6ofwzZLhULwGR8vJ1aw4v3sq7j8Wxe3b
+        Z3Gm62O1OdsKxByGNF4y4M0bk8PFw3NR1+n80drWILYfCT3gmycNO29e1/x9YW0N5NieE2pksjiHLWJy
+        thHGIe2P1MBSS57tMTnbCOT6XaK6Yc06Q0tMzraBaZmcCrfXWo/J2TZAzh4doHQ6gygxOdsdjOgA9ds9
+        jBKTs93BhA6wiawbKSisaZbVocSypXZQwKq5xIwOsJOtG6lqbYnqWc0lXugA2+m6kdLalhiJai6x3OqA
+        q3KHEi9XzSVWHdj4BAxTW+LzVnOJ1SfYmIRMFCbMIUeCCc3ENjvmahJmX4bZC1HeUhz2g3ybEdJN3u0Y
+        qSHfgQSpMflI5vYJU+Vi+CMZ0oOkQylrui5qh7OtET+UlpLBzmM5BYWqRmnlzameZqerQ8zmY3kpGeb7
+        MSklh3y/ZlXJOc/PaV0K1sLveafzDcIzx3i7FNrRAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnManageQuery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnManageQuery.Location" type="System.Drawing.Point, System.Drawing">
+    <value>660, 25</value>
+  </data>
+  <data name="btnManageQuery.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 24</value>
+  </data>
+  <data name="btnManageQuery.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="&gt;&gt;btnManageQuery.Name" xml:space="preserve">
+    <value>btnManageQuery</value>
+  </data>
+  <data name="&gt;&gt;btnManageQuery.Type" xml:space="preserve">
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.7479.17625, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnManageQuery.Parent" xml:space="preserve">
+    <value>panelTop</value>
+  </data>
+  <data name="&gt;&gt;btnManageQuery.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblListQueries.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblListQueries.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 7</value>
+  </data>
+  <data name="lblListQueries.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 14</value>
+  </data>
+  <data name="lblListQueries.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="lblListQueries.Text" xml:space="preserve">
+    <value>List Queries</value>
+  </data>
+  <data name="&gt;&gt;lblListQueries.Name" xml:space="preserve">
+    <value>lblListQueries</value>
+  </data>
+  <data name="&gt;&gt;lblListQueries.Type" xml:space="preserve">
+    <Value>Infragistics.Win.Misc.UltraLabel, Infragistics4.Win.Misc.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;lblListQueries.Parent" xml:space="preserve">
+    <value>panelTop</value>
+  </data>
+  <data name="&gt;&gt;lblListQueries.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="comboApplication1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="comboApplication1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>807, 26</value>
+  </data>
+  <data name="comboApplication1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>262, 22</value>
+  </data>
+  <data name="comboApplication1.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="&gt;&gt;comboApplication1.Name" xml:space="preserve">
+    <value>comboApplication1</value>
+  </data>
+  <data name="&gt;&gt;comboApplication1.Type" xml:space="preserve">
+    <value>qs2.sitemap.comboApplication, qs2.sitemap, Version=1.0.7479.17625, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;comboApplication1.Parent" xml:space="preserve">
+    <value>panelTop</value>
+  </data>
+  <data name="&gt;&gt;comboApplication1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="panelTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panelTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panelTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1077, 56</value>
+  </data>
+  <data name="panelTop.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panelTop.Name" xml:space="preserve">
+    <value>panelTop</value>
+  </data>
+  <data name="&gt;&gt;panelTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelTop.Parent" xml:space="preserve">
+    <value>panelQueryAdmin</value>
+  </data>
+  <data name="&gt;&gt;panelTop.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panelQueryAdmin.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelQueryAdmin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panelQueryAdmin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1077, 560</value>
+  </data>
+  <data name="panelQueryAdmin.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;panelQueryAdmin.Name" xml:space="preserve">
+    <value>panelQueryAdmin</value>
+  </data>
+  <data name="&gt;&gt;panelQueryAdmin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelQueryAdmin.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;panelQueryAdmin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtSQL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="txtSQL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="txtSQL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1061, 197</value>
+  </data>
+  <data name="txtSQL.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtSQL.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;txtSQL.Name" xml:space="preserve">
+    <value>txtSQL</value>
+  </data>
+  <data name="&gt;&gt;txtSQL.Type" xml:space="preserve">
+    <Value>Infragistics.Win.FormattedLinkLabel.UltraFormattedTextEditor, Infragistics4.Win.Misc.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;txtSQL.Parent" xml:space="preserve">
+    <value>grpSql</value>
+  </data>
+  <data name="&gt;&gt;txtSQL.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="grpSql.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 0</value>
+  </data>
+  <data name="grpSql.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1067, 216</value>
+  </data>
+  <data name="grpSql.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="grpSql.Text" xml:space="preserve">
+    <value>SQL</value>
+  </data>
+  <data name="&gt;&gt;grpSql.Name" xml:space="preserve">
+    <value>grpSql</value>
+  </data>
+  <data name="&gt;&gt;grpSql.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpSql.Parent" xml:space="preserve">
+    <value>gridBagLayoutPanelSQL</value>
+  </data>
+  <data name="&gt;&gt;grpSql.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gridBagLayoutPanelSQL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="gridBagLayoutPanelSQL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="gridBagLayoutPanelSQL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1077, 218</value>
+  </data>
+  <data name="gridBagLayoutPanelSQL.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;gridBagLayoutPanelSQL.Name" xml:space="preserve">
+    <value>gridBagLayoutPanelSQL</value>
+  </data>
+  <data name="&gt;&gt;gridBagLayoutPanelSQL.Type" xml:space="preserve">
+    <Value>Infragistics.Win.Misc.UltraGridBagLayoutPanel, Infragistics4.Win.Misc.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;gridBagLayoutPanelSQL.Parent" xml:space="preserve">
+    <value>panelTestSQL2</value>
+  </data>
+  <data name="&gt;&gt;gridBagLayoutPanelSQL.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelTestSQL2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelTestSQL2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panelTestSQL2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1077, 218</value>
+  </data>
+  <data name="panelTestSQL2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panelTestSQL2.Name" xml:space="preserve">
+    <value>panelTestSQL2</value>
+  </data>
+  <data name="&gt;&gt;panelTestSQL2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelTestSQL2.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;panelTestSQL2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelButtonsUnten.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panelButtonsUnten.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 218</value>
+  </data>
+  <data name="panelButtonsUnten.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1077, 28</value>
+  </data>
+  <data name="panelButtonsUnten.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panelButtonsUnten.Name" xml:space="preserve">
+    <value>panelButtonsUnten</value>
+  </data>
+  <data name="&gt;&gt;panelButtonsUnten.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelButtonsUnten.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;panelButtonsUnten.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1077, 560</value>
+  </data>
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>310</value>
+  </data>
+  <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
+    <value>ultraTabPageControlQueryDef</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ultraTabPageControlQueryDef.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 23</value>
+  </data>
+  <data name="ultraTabPageControlQueryDef.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1077, 560</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControlQueryDef.Name" xml:space="preserve">
+    <value>ultraTabPageControlQueryDef</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControlQueryDef.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabPageControl, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControlQueryDef.Parent" xml:space="preserve">
+    <value>ultraTabControlMain</value>
+  </data>
+  <data name="&gt;&gt;ultraTabPageControlQueryDef.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="dsAdmin1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>127, 17</value>
+  </metadata>
+  <metadata name="contextMenuStripAdminQuery.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>344, 17</value>
+  </metadata>
+  <data name="exportToTSqlToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="exportToTSqlToolStripMenuItem.Text" xml:space="preserve">
+    <value>Export selected Query to T-Sql</value>
+  </data>
+  <data name="exportAllQueriesToTSqlToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="exportAllQueriesToTSqlToolStripMenuItem.Text" xml:space="preserve">
+    <value>Export all Queries to T-Sql</value>
+  </data>
+  <data name="extendedViewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="extendedViewToolStripMenuItem.Text" xml:space="preserve">
+    <value>Extended View</value>
+  </data>
+  <data name="contextMenuStripAdminQuery.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 70</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripAdminQuery.Name" xml:space="preserve">
+    <value>contextMenuStripAdminQuery</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripAdminQuery.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ultraTabSharedControlsPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-10000, -10000</value>
+  </data>
+  <data name="ultraTabSharedControlsPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1077, 560</value>
+  </data>
+  <data name="&gt;&gt;ultraTabSharedControlsPage1.Name" xml:space="preserve">
+    <value>ultraTabSharedControlsPage1</value>
+  </data>
+  <data name="&gt;&gt;ultraTabSharedControlsPage1.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabSharedControlsPage1.Parent" xml:space="preserve">
+    <value>ultraTabControlMain</value>
+  </data>
+  <data name="&gt;&gt;ultraTabSharedControlsPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gridBagLayoutPanelAll.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="gridBagLayoutPanelAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="gridBagLayoutPanelAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1081, 586</value>
+  </data>
+  <data name="gridBagLayoutPanelAll.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;gridBagLayoutPanelAll.Name" xml:space="preserve">
+    <value>gridBagLayoutPanelAll</value>
+  </data>
+  <data name="&gt;&gt;gridBagLayoutPanelAll.Type" xml:space="preserve">
+    <Value>Infragistics.Win.Misc.UltraGridBagLayoutPanel, Infragistics4.Win.Misc.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;gridBagLayoutPanelAll.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;gridBagLayoutPanelAll.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ultraTabControlMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ultraTabControlMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1081, 586</value>
+  </data>
+  <data name="ultraTabControlMain.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="ultraTab3.Text" xml:space="preserve">
+    <value>Query Admin</value>
+  </data>
+  <data name="&gt;&gt;ultraTabControlMain.Name" xml:space="preserve">
+    <value>ultraTabControlMain</value>
+  </data>
+  <data name="&gt;&gt;ultraTabControlMain.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinTabControl.UltraTabControl, Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;ultraTabControlMain.Parent" xml:space="preserve">
+    <value>gridBagLayoutPanelAll</value>
+  </data>
+  <data name="&gt;&gt;ultraTabControlMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="sqlAdmin1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="UltraToolTipManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>881, 19</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1081, 586</value>
+  </data>
+  <data name="&gt;&gt;toolbarsManagerControlSelection.Name" xml:space="preserve">
+    <value>toolbarsManagerControlSelection</value>
+  </data>
+  <data name="&gt;&gt;toolbarsManagerControlSelection.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinToolbars.UltraToolbarsManager, Infragistics4.Win.UltraWinToolbars.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;dsAdmin1.Name" xml:space="preserve">
+    <value>dsAdmin1</value>
+  </data>
+  <data name="&gt;&gt;dsAdmin1.Type" xml:space="preserve">
+    <value>qs2.core.vb.dsAdmin, qs2.core.vb, Version=1.0.7479.17622, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;exportToTSqlToolStripMenuItem.Name" xml:space="preserve">
+    <value>exportToTSqlToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;exportToTSqlToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;exportAllQueriesToTSqlToolStripMenuItem.Name" xml:space="preserve">
+    <value>exportAllQueriesToTSqlToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;exportAllQueriesToTSqlToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;extendedViewToolStripMenuItem.Name" xml:space="preserve">
+    <value>extendedViewToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;extendedViewToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sqlAdmin1.Name" xml:space="preserve">
+    <value>sqlAdmin1</value>
+  </data>
+  <data name="&gt;&gt;sqlAdmin1.Type" xml:space="preserve">
+    <value>qs2.core.vb.sqlAdmin, qs2.core.vb, Version=1.0.7479.17622, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;UltraToolTipManager1.Name" xml:space="preserve">
+    <value>UltraToolTipManager1</value>
+  </data>
+  <data name="&gt;&gt;UltraToolTipManager1.Type" xml:space="preserve">
+    <Value>Infragistics.Win.UltraWinToolTip.UltraToolTipManager, Infragistics4.Win.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>contQryAdmin</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

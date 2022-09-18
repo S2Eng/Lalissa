@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="qs2.design.auto.multiControl.ownMultiControl">
+    <Position X="10.75" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="qs2.design.auto.multiControl.ownMultiControl.eTypActionControl" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>multiControl\ownMultiControl.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>NZSYgQqgMLlxgheA6LTFHAge54kXYw4jAQ5JQSbFYxE=</HashCode>
+      <FileName>multiControl\ownMultiControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.sitemap.workflowAssist.form.contAutoUI">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="qs2.sitemap.workflowAssist.form.contAutoUI.eTypeActionService" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>workflowAssist\autoForm\contAutoUI.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.sitemap.workflowAssist.form.contAutoUI.eTypActivityControl" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>workflowAssist\autoForm\contAutoUI.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>B1aSonHyCCHuBIEgoAitFNZG8SBbQxRJQYaaD8onnQE=</HashCode>
+      <FileName>workflowAssist\autoForm\contAutoUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.design.auto.workflowAssist.autoForm.doAutoControls">
+    <Position X="3.5" Y="0.5" Width="2.75" />
+    <NestedTypes>
+      <Enum Name="qs2.design.auto.workflowAssist.autoForm.doAutoControls.eTypActivityControl" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>workflowAssist\autoForm\doAutoControls.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAEABAAAAIgBAAAEgAAAAAAAAAAA=</HashCode>
+      <FileName>workflowAssist\autoForm\doAutoControls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.design.auto.workflowAssist.autoForm.autoUI">
+    <Position X="3.5" Y="3.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="qs2.design.auto.workflowAssist.autoForm.autoUI.cLstRefresh" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>workflowAssist\autoForm\autoUI.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Delegate Name="qs2.design.auto.workflowAssist.autoForm.autoUI.doVASCULAR" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>workflowAssist\autoForm\autoUI.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="qs2.design.auto.workflowAssist.autoForm.autoUI.doCardiac" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>workflowAssist\autoForm\autoUI.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="qs2.design.auto.workflowAssist.autoForm.autoUI.doQTH" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>workflowAssist\autoForm\autoUI.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="qs2.design.auto.workflowAssist.autoForm.autoUI.doTestProduct" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>workflowAssist\autoForm\autoUI.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AgQIAABAAAAAAAAQAKEAQEiSAgBBAAARgAAIEAAVDgA=</HashCode>
+      <FileName>workflowAssist\autoForm\autoUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.design.auto.workflowAssist.autoForm.autoLoadControls">
+    <Position X="3.5" Y="9.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAIAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>workflowAssist\autoForm\autoLoadControls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.sitemap.workflowAssist.contListAssistent">
+    <Position X="7" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>hBACIAASACQjEoAAGEKBAAhCgGASACQgUA4ADSoDAIA=</HashCode>
+      <FileName>workflowAssist\assist\contListAssistent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.sitemap.workflowAssist.contListAssistentElem">
+    <Position X="7" Y="7.75" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>WAIGEAwIUjQBkQGQECiJfAgqCqASAEAAAAAiiCIkBIg=</HashCode>
+      <FileName>workflowAssist\assist\contListAssistentElem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.design.auto.workflowAssist.autoForm.dataStay">
+    <Position X="3.5" Y="11.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAIDABAABgCAgCAAIQAAgAACICABAIBIgAAA=</HashCode>
+      <FileName>workflowAssist\autoForm\dataStay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.design.auto.workflowAssist.autoForm.autoPrint">
+    <Position X="3.5" Y="15" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAABAAoAAAAAAAAAAACQAACAAAAABEAAAQAgAAAAAA=</HashCode>
+      <FileName>workflowAssist\autoForm\autoPrint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.design.auto.ownMCCriteria">
+    <Position X="13.5" Y="0.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="qs2.design.auto.ownMCCriteria.cVariables" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>multiControl\ownControl\ownMCCriteria.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="qs2.design.auto.ownMCCriteria.cVariablesDefinition" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>multiControl\ownControl\ownMCCriteria.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.design.auto.ownMCCriteria.cVariablesValues" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>multiControl\ownControl\ownMCCriteria.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>G3AQKAUDIFAAAApACEMAAAIgQIgAAQAAMIABAgAAAwA=</HashCode>
+      <FileName>multiControl\ownControl\ownMCCriteria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.design.auto.ownMCRelationship">
+    <Position X="13.5" Y="3.75" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="qs2.design.auto.ownMCRelationship.eTypAssignments" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>multiControl\ownControl\ownMCRelationship.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.design.auto.ownMCRelationship.eTypActionRelation" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>multiControl\ownControl\ownMCRelationship.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABABIQASCAoAAAgAACAAAAAAAAAABAEAAACAAAEQEAA=</HashCode>
+      <FileName>multiControl\ownControl\ownMCRelationship.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.design.auto.multiControl.ownMCCombo">
+    <Position X="16.75" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAyAAAEIBACAQIAAAAgAABABgAAAKAEAAAAAAAAIABA=</HashCode>
+      <FileName>multiControl\ownControl\ownMCCombo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.design.auto.multiControl.ownMCValue">
+    <Position X="16.75" Y="4.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAACAAAAYAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>multiControl\ownControl\ownMCValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.print.genReport">
+    <Position X="20.5" Y="0.5" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABBIAAICIBSABIAAAQAAAAAGAAMAEAAAKAAIEACOAgA=</HashCode>
+      <FileName>print\genReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.ui.print.infoQry">
+    <Position X="24" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACFAAAQBASSBAAAAQIAAAAAAgQCCMAQRCAgA=</HashCode>
+      <FileName>print\infoQry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.ui.print.infoReport">
+    <Position X="24" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAABAAAAAAAAAAAAAAAAAAAAAAACAAAAQAAgA=</HashCode>
+      <FileName>print\infoReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.design.auto.print.translateQuery">
+    <Position X="20.5" Y="6.5" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="qs2.design.auto.print.translateQuery.cVariables" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>print\translateQuery.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CBACoAQAgAAAAAAAAAAAkAAAAAAAAAAAAAgAAgAAAAg=</HashCode>
+      <FileName>print\translateQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.ui.drawMulticontrol">
+    <Position X="24" Y="5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABAIIEADAAAAQAEAAAQAIAAAAAICAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>print\drawMulticontrol.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.ui.print.contQryAdmin">
+    <Position X="26.75" Y="0.5" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>Bhg64QCCJDKgRWvCULCgwlSilqiQaT8ACYc4AwYEAJA=</HashCode>
+      <FileName>print\contQryAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.ui.pint.contQryRun">
+    <Position X="30.25" Y="0.5" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="qs2.ui.pint.contQryRun.eTypActionReports" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>print\contQryRun.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="qs2.ui.pint.contQryRun.tgReportButton" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>print\contQryRun.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="qs2.ui.pint.contQryRun.eTypToolbar" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>print\contQryRun.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>LBgIsGiDKmIQCWJgoCCNiAoCgOBgAgeWAAAAIKAGBMI=</HashCode>
+      <FileName>print\contQryRun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.ui.print.contQueryDef">
+    <Position X="26.75" Y="9.25" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>wlR0ZhgCCDyQkhiAJBKFoAAqBshAkREKDCJlKgAGBFM=</HashCode>
+      <FileName>print\contQueryDef.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.ui.print.contQryRunPar">
+    <Position X="30.25" Y="8.25" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="qs2.ui.print.contQryRunPar.eTypToolbar" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>print\contQryRunPar.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.ui.print.contQryRunPar.eActionElement" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>print\contQryRunPar.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.ui.print.contQryRunPar.eActionType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>print\contQryRunPar.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>DBAAAWECYOAEAEAihIOEiAgHTAJgoGdTAig1AgaPMxk=</HashCode>
+      <FileName>print\contQryRunPar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.ui.print.contTable">
+    <Position X="33.75" Y="0.5" Width="4" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="qs2.ui.print.contTable.eTypeUI" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>print\contTable.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>h5JIIpEPBmAJRKADQAShI0JiZDqwQEa2TYshAwLaJIs=</HashCode>
+      <FileName>print\contTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
