@@ -74,7 +74,6 @@ namespace PMDS
         public Infragistics.Win.AppStyling.Runtime.AppStylistRuntime appStylistRuntime1;
         private ToolStripMenuItem styleAppToolStripMenuItem;
         private Timer timerCheckConnectionAndNetwork;
-        public static qs2.ui.frmMain frmMainQS2 = null;
         private Panel PanelStatusbar;
         public UltraStatusBar ultraStatusBar1;
         public PMDS.DB.PMDSBusiness b = new PMDS.DB.PMDSBusiness();
@@ -791,7 +790,6 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool163 = new Infragistics.Win.UltraWinToolbars.ButtonTool("MedizinischetypenVerwaltung");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool164 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Medizinische_Dialoge");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool182 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnWundBilderScale");
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool157 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnQS2Main");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool146 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnQS2ManageQueries");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool150 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnQS2Ressourcen");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool153 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnQS2InformationFieldsSqlServer");
@@ -923,7 +921,6 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool143 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnQS2InformationFieldsSqlServer");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool144 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnQS2QueryExpress");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool145 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnQS2LogManager");
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool156 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnQS2Main");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool159 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnLayoutManager");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool28 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnRechteAbteilungenBereiche");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool107 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnImportBefunde");
@@ -1150,7 +1147,6 @@ namespace PMDS
             buttonTool161.InstanceProps.IsFirstInGroup = true;
             buttonTool166.InstanceProps.IsFirstInGroup = true;
             buttonTool111.InstanceProps.IsFirstInGroup = true;
-            buttonTool157.InstanceProps.IsFirstInGroup = true;
             buttonTool129.InstanceProps.IsFirstInGroup = true;
             popupMenuTool16.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool119,
@@ -1176,7 +1172,6 @@ namespace PMDS
             buttonTool163,
             buttonTool164,
             buttonTool182,
-            buttonTool157,
             buttonTool146,
             buttonTool150,
             buttonTool153,
@@ -1325,7 +1320,6 @@ namespace PMDS
             buttonTool143.SharedPropsInternal.Caption = "QS2-Information Felder Sql-Server";
             buttonTool144.SharedPropsInternal.Caption = "Query-Express";
             buttonTool145.SharedPropsInternal.Caption = "Log-Manager";
-            buttonTool156.SharedPropsInternal.Caption = "QS2";
             buttonTool159.SharedPropsInternal.Caption = "Layout-Manager";
             buttonTool28.SharedPropsInternal.Caption = "Rechte Abteilungen und Bereiche";
             buttonTool107.SharedPropsInternal.Caption = "Befundimport (EDIFACT)";
@@ -1445,7 +1439,6 @@ namespace PMDS
             buttonTool143,
             buttonTool144,
             buttonTool145,
-            buttonTool156,
             buttonTool159,
             buttonTool28,
             buttonTool107,
@@ -2460,7 +2453,6 @@ namespace PMDS
             ultraToolbarsManager1.Tools["Medizinische_Dialoge"].SharedProps.Visible = RightsStammaten.MedizinscheDialoge || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnWundBilderScale"].SharedProps.Visible = RightsStammaten.WundbilderSkalieren || AllMenüItemsStammdaten;
 
-            ultraToolbarsManager1.Tools["btnQS2Main"].SharedProps.Visible = RightsStammaten.QS2 || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnQS2ManageQueries"].SharedProps.Visible = RightsStammaten.QS2AbfragebVerwaltenAdmin || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnQS2Ressourcen"].SharedProps.Visible = RightsStammaten.QS2Ressourcen || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnQS2InformationFieldsSqlServer"].SharedProps.Visible = RightsStammaten.QS2InformationenFelderSQLServer || AllMenüItemsStammdaten;
@@ -2831,18 +2823,6 @@ namespace PMDS
                         QS2.Logging.Win.frmLogManager2 frmLog = new QS2.Logging.Win.frmLogManager2();
                         frmLog.initControl();
                         frmLog.Show();
-                        break;
-
-                    case "btnQS2Main":
-                        if (frmMain.frmMainQS2 == null)
-                        {
-                            frmMain.frmMainQS2 = new qs2.ui.frmMain();
-                            frmMain.frmMainQS2.UnvisibleOnClose = true;
-                            frmMainQS2.contMain1.mainWindow = frmMainQS2;
-                            frmMainQS2.contMain1.initControl("", "", "");
-                        }
-                        frmMain.frmMainQS2.Show();
-                        frmMain.frmMainQS2.Visible = true;
                         break;
 
                     case "btnRechteAbteilungenBereiche":
