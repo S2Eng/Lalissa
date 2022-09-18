@@ -2,8 +2,6 @@ Option Strict Off
 Option Explicit On
 Imports System.Text
 Imports VB = Microsoft.VisualBasic
-Imports System.Linq
-Imports System.Data.DataSetExtensions
 Imports System.Collections.Generic
 
 Public Class calculation

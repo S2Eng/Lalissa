@@ -2471,7 +2471,7 @@ namespace PMDS.GUI.PMDSClient
                         GuiAction.PatientAufenthaltInfo(ENV.CurrentIDPatient );
                         break;
 
-                    case "btnVerwaltungKlinikenUser":QS2.
+                    case "btnVerwaltungKlinikenUser":
                         frmVerwaltungKlinikenUser frmVerwaltungKlinikenUser1 = new frmVerwaltungKlinikenUser();
                         frmVerwaltungKlinikenUser1.initControl();
                         if (PMDS.Global.ENV.adminSecure)
