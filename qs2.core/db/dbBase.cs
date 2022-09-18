@@ -99,31 +99,7 @@ namespace qs2.core
 
                 dbBase.getVarConnStr(qs2.core.ENV.connStr);
                 dbBase._dbConnThreadMain = new System.Data.SqlClient.SqlConnection(qs2.core.ENV.connStr);
-                dbBase._dbConnThreadMain.Open();
-
-                if (ENV.StaysAsThread)
-                {
-                    if (System.Threading.Thread.CurrentThread.ManagedThreadId.Equals(dbBase._IDThreadMain))
-                    {
-                        dbBase._dbConnThreadMain = new System.Data.SqlClient.SqlConnection(qs2.core.ENV.connStr);
-                        dbBase._dbConnThreadMain.Open();
-                    }
-                    else if (System.Threading.Thread.CurrentThread.ManagedThreadId.Equals(dbBase._IDThreadStayUI))
-                    {
-                        dbBase._dbConnThreadStayUI = new System.Data.SqlClient.SqlConnection(qs2.core.ENV.connStr);
-                        dbBase._dbConnThreadStayUI.Open();
-                    }
-                    else if (System.Threading.Thread.CurrentThread.ManagedThreadId.Equals(dbBase._IDThreadDBOperations))
-                    {
-                        dbBase._dbConnThreadDBOperations = new System.Data.SqlClient.SqlConnection(qs2.core.ENV.connStr);
-                        dbBase._dbConnThreadDBOperations.Open();
-                    }
-                }
-                else
-                {
-                    dbBase._dbConnThreadMain = new System.Data.SqlClient.SqlConnection(qs2.core.ENV.connStr);
-                    dbBase._dbConnThreadMain.Open();
-                }
+                dbBase._dbConnThreadMain.Open();        
 
                 if (!DesignerMode)
                 {
@@ -131,7 +107,6 @@ namespace qs2.core
                     EFEntities ef = new EFEntities();
                     ef.Init2();
                 }
-
                 return true;
             }
             catch (Exception ex)

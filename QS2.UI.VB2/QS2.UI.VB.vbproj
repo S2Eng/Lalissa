@@ -73,23 +73,8 @@
     <Reference Include="ChilkatDotNet47_x64">
       <HintPath>..\DllsNoRedist\ChilkatDotNet47_x64.dll</HintPath>
     </Reference>
-    <Reference Include="core.Cardiac">
-      <HintPath>..\dlls\core.Cardiac.dll</HintPath>
-    </Reference>
-    <Reference Include="core.NC">
-      <HintPath>..\dlls\core.NC.dll</HintPath>
-    </Reference>
     <Reference Include="core.PrintWindowAuto">
       <HintPath>..\dlls\core.PrintWindowAuto.dll</HintPath>
-    </Reference>
-    <Reference Include="core.QTH">
-      <HintPath>..\dlls\core.QTH.dll</HintPath>
-    </Reference>
-    <Reference Include="core.TestProduct">
-      <HintPath>..\dlls\core.TestProduct.dll</HintPath>
-    </Reference>
-    <Reference Include="core.Vascular">
-      <HintPath>..\dlls\core.Vascular.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
