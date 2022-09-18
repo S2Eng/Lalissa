@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/servQS2.core" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/servQS2.core" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/QS2Service/QS2Service.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+  <xs:import schemaLocation="http://localhost/QS2Service/QS2Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost/QS2Service/QS2Service.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="cServiceInput">
+    <xs:sequence>
+      <xs:element name="AllParametersAsTxtReturn" nillable="true" type="xs:string" />
+      <xs:element name="IDApplication" nillable="true" type="xs:string" />
+      <xs:element name="IDParticipant" nillable="true" type="xs:string" />
+      <xs:element name="IsFunction" type="xs:boolean" />
+      <xs:element name="IsHeadquarter" type="xs:boolean" />
+      <xs:element name="dFrom" nillable="true" type="xs:dateTime" />
+      <xs:element name="dNow" type="xs:dateTime" />
+      <xs:element name="dTo" nillable="true" type="xs:dateTime" />
+      <xs:element name="datasetName" nillable="true" type="xs:string" />
+      <xs:element name="dsObjectFields" nillable="true" type="xs:string" />
+      <xs:element name="dsXML" nillable="true" type="xs:string" />
+      <xs:element name="lstColumnsDoNotCompare" nillable="true" type="tns:ArrayOfcCols" />
+      <xs:element name="lstListparametersForFunctions" nillable="true" type="tns:ArrayOfcSqlParameter" />
+      <xs:element name="parameters" nillable="true" type="tns:ArrayOfcSqlParameter" />
+      <xs:element name="sqlCommand" nillable="true" type="xs:string" />
+      <xs:element name="tableName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cServiceInput" nillable="true" type="tns:cServiceInput" />
+  <xs:complexType name="ArrayOfcCols">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="cCols" nillable="true" type="tns:cCols" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfcCols" nillable="true" type="tns:ArrayOfcCols" />
+  <xs:complexType name="cCols">
+    <xs:sequence>
+      <xs:element name="ColumnName" nillable="true" type="xs:string" />
+      <xs:element name="TableName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cCols" nillable="true" type="tns:cCols" />
+  <xs:complexType name="ArrayOfcSqlParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="cSqlParameter" nillable="true" type="tns:cSqlParameter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfcSqlParameter" nillable="true" type="tns:ArrayOfcSqlParameter" />
+  <xs:complexType name="cSqlParameter">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Data" name="DbType" type="q1:DbType" />
+      <xs:element name="Error" nillable="true" type="xs:string" />
+      <xs:element name="IDObjectGuid" type="ser:guid" />
+      <xs:element name="IDObjectServer" type="xs:int" />
+      <xs:element name="IsObjectFieldForChange" type="xs:boolean" />
+      <xs:element name="NameObjectServer" nillable="true" type="xs:string" />
+      <xs:element name="ParValueGuidInFctForChange" nillable="true" type="xs:string" />
+      <xs:element name="ParameterName" nillable="true" type="xs:string" />
+      <xs:element name="SourceColumn" nillable="true" type="xs:string" />
+      <xs:element name="TypeIntern" type="tns:dbBase.eTypeInt" />
+      <xs:element name="sValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cSqlParameter" nillable="true" type="tns:cSqlParameter" />
+  <xs:simpleType name="dbBase.eTypeInt">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="t_int" />
+      <xs:enumeration value="t_dbl" />
+      <xs:enumeration value="t_string" />
+      <xs:enumeration value="t_DateTime" />
+      <xs:enumeration value="t_Guid" />
+      <xs:enumeration value="t_DBNull" />
+      <xs:enumeration value="t_Binary" />
+      <xs:enumeration value="t_Boolean" />
+      <xs:enumeration value="none">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="dbBase.eTypeInt" nillable="true" type="tns:dbBase.eTypeInt" />
+  <xs:complexType name="cServiceResult">
+    <xs:sequence>
+      <xs:element name="AllParametersAsTxtReturn" nillable="true" type="xs:string" />
+      <xs:element name="BPKServiceResult" nillable="true" type="tns:cServiceResult.cBPKServiceResult" />
+      <xs:element name="Exception" nillable="true" type="xs:string" />
+      <xs:element name="OK" type="xs:boolean" />
+      <xs:element name="ServiceResult2" nillable="true" type="tns:cServiceResult12" />
+      <xs:element name="TransferFrom" nillable="true" type="xs:dateTime" />
+      <xs:element name="TransferOK" type="xs:int" />
+      <xs:element name="TransferProtocol" nillable="true" type="xs:string" />
+      <xs:element name="ds" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:element ref="xs:schema" />
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="dsXML" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="lstStayBPKZ" nillable="true" type="q2:ArrayOfKeyValueOfguidcServiceResult.cColumnsStayBPKZwtv2BdzT" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="lstStayTransfer" nillable="true" type="q3:ArrayOfKeyValueOfguidcServiceResult.cColumnsStayTransferwtv2BdzT" />
+      <xs:element name="parametersChanged" nillable="true" type="tns:ArrayOfcSqlParameter" />
+      <xs:element name="sCommand" nillable="true" type="xs:string" />
+      <xs:element name="sWhere" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cServiceResult" nillable="true" type="tns:cServiceResult" />
+  <xs:complexType name="cServiceResult.cBPKServiceResult">
+    <xs:sequence>
+      <xs:element name="BPKOK" type="xs:boolean" />
+      <xs:element name="BPKRowsPatientFound" type="xs:int" />
+      <xs:element name="ErrorMessageFromBPKService" nillable="true" type="xs:string" />
+      <xs:element name="MoreThanOneEntryFound" type="xs:boolean" />
+      <xs:element name="ResultBPK" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cServiceResult.cBPKServiceResult" nillable="true" type="tns:cServiceResult.cBPKServiceResult" />
+  <xs:complexType name="cServiceResult12">
+    <xs:sequence>
+      <xs:element name="AllParametersAsTxtReturn" nillable="true" type="xs:string" />
+      <xs:element name="BPKServiceResult" nillable="true" type="tns:cServiceResult12.cBPKServiceResult2" />
+      <xs:element name="Exception" nillable="true" type="xs:string" />
+      <xs:element name="OK" type="xs:boolean" />
+      <xs:element name="TransferFrom" nillable="true" type="xs:dateTime" />
+      <xs:element name="TransferOK" type="xs:int" />
+      <xs:element name="TransferProtocolColNotOnClient" nillable="true" type="xs:string" />
+      <xs:element name="TransferProtocolColNotOnServer" nillable="true" type="xs:string" />
+      <xs:element name="TransferProtocolStays" nillable="true" type="xs:string" />
+      <xs:element name="ds" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:element ref="xs:schema" />
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="dsXML" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="lstErrorColumnsSum" nillable="true" type="q4:ArrayOfKeyValueOfstringcUpdateData.cColumnsTransferNotOKsjiyB_PbD" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="lstStayBPKZ" nillable="true" type="q5:ArrayOfKeyValueOfguidcServiceResult.cColumnsStayBPKZwtv2BdzT" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="lstStayTransfer" nillable="true" type="q6:ArrayOfKeyValueOfguidcServiceResult12.cColumnsStayTransfer2wtv2BdzT" />
+      <xs:element name="parametersChanged" nillable="true" type="tns:ArrayOfcSqlParameter" />
+      <xs:element name="sCommand" nillable="true" type="xs:string" />
+      <xs:element name="sWhere" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cServiceResult12" nillable="true" type="tns:cServiceResult12" />
+  <xs:complexType name="cServiceResult12.cBPKServiceResult2">
+    <xs:sequence>
+      <xs:element name="BPKOK" type="xs:boolean" />
+      <xs:element name="BPKRowsPatientFound" type="xs:int" />
+      <xs:element name="ErrorMessageFromBPKService" nillable="true" type="xs:string" />
+      <xs:element name="MoreThanOneEntryFound" type="xs:boolean" />
+      <xs:element name="ResultBPK" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cServiceResult12.cBPKServiceResult2" nillable="true" type="tns:cServiceResult12.cBPKServiceResult2" />
+  <xs:complexType name="cUpdateData.cColumnsTransferNotOK">
+    <xs:sequence>
+      <xs:element name="ColumnName" nillable="true" type="xs:string" />
+      <xs:element name="IDGuidStay" type="ser:guid" />
+      <xs:element name="TableName" nillable="true" type="xs:string" />
+      <xs:element name="eErrorTypeTransfer" type="tns:cUpdateData.eErrorTypeTransfer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cUpdateData.cColumnsTransferNotOK" nillable="true" type="tns:cUpdateData.cColumnsTransferNotOK" />
+  <xs:simpleType name="cUpdateData.eErrorTypeTransfer">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Client" />
+      <xs:enumeration value="Server" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="cUpdateData.eErrorTypeTransfer" nillable="true" type="tns:cUpdateData.eErrorTypeTransfer" />
+  <xs:complexType name="cServiceResult.cColumnsStayBPKZ">
+    <xs:sequence>
+      <xs:element name="BPKZ" nillable="true" type="xs:string" />
+      <xs:element name="BPKZDone" type="xs:int" />
+      <xs:element name="BPKZFinishedClient" type="xs:boolean" />
+      <xs:element name="BPKZOK" type="xs:boolean" />
+      <xs:element name="BPKZStatus" nillable="true" type="xs:string" />
+      <xs:element name="ID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cServiceResult.cColumnsStayBPKZ" nillable="true" type="tns:cServiceResult.cColumnsStayBPKZ" />
+  <xs:complexType name="cServiceResult12.cColumnsStayTransfer2">
+    <xs:sequence>
+      <xs:element name="ID" type="ser:guid" />
+      <xs:element name="TransferFrom" nillable="true" type="xs:dateTime" />
+      <xs:element name="TransferOK" type="xs:int" />
+      <xs:element name="TransferProtocol" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cServiceResult12.cColumnsStayTransfer2" nillable="true" type="tns:cServiceResult12.cColumnsStayTransfer2" />
+  <xs:complexType name="cServiceResult.cColumnsStayTransfer">
+    <xs:sequence>
+      <xs:element name="ID" type="ser:guid" />
+      <xs:element name="TransferFrom" nillable="true" type="xs:dateTime" />
+      <xs:element name="TransferOK" type="xs:int" />
+      <xs:element name="TransferProtocol" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cServiceResult.cColumnsStayTransfer" nillable="true" type="tns:cServiceResult.cColumnsStayTransfer" />
+  <xs:complexType name="cServiceInput2">
+    <xs:sequence>
+      <xs:element name="Exception" nillable="true" type="xs:string" />
+      <xs:element name="OK" type="xs:boolean" />
+      <xs:element name="dsService" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="dsService" Namespace="http://schemas.datacontract.org/2004/07/servQS2.core.db" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:any namespace="http://tempuri.org/dsService.xsd" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="sqlWhere" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cServiceInput2" nillable="true" type="tns:cServiceInput2" />
+</xs:schema>

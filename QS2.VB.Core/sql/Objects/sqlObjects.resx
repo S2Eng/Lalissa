@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="SqlSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlSelectCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlSelectCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlSelectCommand1.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDGuid, FirstName, LastName, NameCombination, IsPatient, IsPersonal, IsUser, Title, DOB, Role, Gender, Race, SSN, IsJehova, KavVidierungPwd, UserName, isAdmin, UserShort, Password, Domain, UserNameDomain, 
+                         IsImported, Sort, ExtID, Active, CreatedUserID, Created, IDParticipant, MtStat, MtDate, MTLocatn, MtCause, ICD9, Classification, Description, PatOrigin, MtCauseDescription, Systemuser, CongenitalData, ConAntDiag, 
+                         ConGestAge, UserCode, ExtIDNr, MaidenName, BPKZ, BPKZ1, BPKZ2, ShowUpdateNewsAtStartup
+FROM            qs2.tblObject</value>
+  </data>
+  <metadata name="dbConn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="SqlUpdateCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlUpdateCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlUpdateCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlUpdateCommand1.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblObject] SET [IDGuid] = @IDGuid, [FirstName] = @FirstName, [LastName] = @LastName, [NameCombination] = @NameCombination, [IsPatient] = @IsPatient, [IsPersonal] = @IsPersonal, [IsUser] = @IsUser, [Title] = @Title, [DOB] = @DOB, [Role] = @Role, [Gender] = @Gender, [Race] = @Race, [SSN] = @SSN, [IsJehova] = @IsJehova, [KavVidierungPwd] = @KavVidierungPwd, [UserName] = @UserName, [isAdmin] = @isAdmin, [UserShort] = @UserShort, [Password] = @Password, [Domain] = @Domain, [UserNameDomain] = @UserNameDomain, [IsImported] = @IsImported, [Sort] = @Sort, [ExtID] = @ExtID, [Active] = @Active, [CreatedUserID] = @CreatedUserID, [Created] = @Created, [IDParticipant] = @IDParticipant, [MtStat] = @MtStat, [MtDate] = @MtDate, [MTLocatn] = @MTLocatn, [MtCause] = @MtCause, [ICD9] = @ICD9, [Classification] = @Classification, [Description] = @Description, [PatOrigin] = @PatOrigin, [MtCauseDescription] = @MtCauseDescription, [Systemuser] = @Systemuser, [CongenitalData] = @CongenitalData, [ConAntDiag] = @ConAntDiag, [ConGestAge] = @ConGestAge, [UserCode] = @UserCode, [ExtIDNr] = @ExtIDNr, [MaidenName] = @MaidenName, [BPKZ] = @BPKZ, [BPKZ1] = @BPKZ1, [BPKZ2] = @BPKZ2, [ShowUpdateNewsAtStartup] = @ShowUpdateNewsAtStartup WHERE (([ID] = @Original_ID))</value>
+  </data>
+  <metadata name="SqlDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlDeleteCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlDeleteCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daObject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+  <metadata name="SqlInsertCommand.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlInsertCommand.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlInsertCommand.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlInsertCommand.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblObject] ([IDGuid], [FirstName], [LastName], [NameCombination], [IsPatient], [IsPersonal], [IsUser], [Title], [DOB], [Role], [Gender], [Race], [SSN], [IsJehova], [KavVidierungPwd], [UserName], [isAdmin], [UserShort], [Password], [Domain], [UserNameDomain], [IsImported], [Sort], [ExtID], [Active], [CreatedUserID], [Created], [IDParticipant], [MtStat], [MtDate], [MTLocatn], [MtCause], [ICD9], [Classification], [Description], [PatOrigin], [MtCauseDescription], [Systemuser], [CongenitalData], [ConAntDiag], [ConGestAge], [UserCode], [ExtIDNr], [MaidenName], [BPKZ], [BPKZ1], [BPKZ2], [ShowUpdateNewsAtStartup]) VALUES (@IDGuid, @FirstName, @LastName, @NameCombination, @IsPatient, @IsPersonal, @IsUser, @Title, @DOB, @Role, @Gender, @Race, @SSN, @IsJehova, @KavVidierungPwd, @UserName, @isAdmin, @UserShort, @Password, @Domain, @UserNameDomain, @IsImported, @Sort, @ExtID, @Active, @CreatedUserID, @Created, @IDParticipant, @MtStat, @MtDate, @MTLocatn, @MtCause, @ICD9, @Classification, @Description, @PatOrigin, @MtCauseDescription, @Systemuser, @CongenitalData, @ConAntDiag, @ConGestAge, @UserCode, @ExtIDNr, @MaidenName, @BPKZ, @BPKZ1, @BPKZ2, @ShowUpdateNewsAtStartup)</value>
+  </data>
+  <metadata name="daObjectRel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 134</value>
+  </metadata>
+  <metadata name="SqlCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand2.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand3.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>399, 17</value>
+  </metadata>
+  <metadata name="SqlCommand3.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand4.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand4.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daAdress.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 173</value>
+  </metadata>
+  <metadata name="SqlCommand9.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand9.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand9.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand10.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand10.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand10.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand10.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblAdress] ([IDGuid], [CountryID], [ZIP], [City], [Street], [PhonePrivat], [PhoneBusiness], [PhoneMobil], [EMail], [Web], [Fax], [IsMainAdress], [IDGuidObject]) VALUES (@IDGuid, @CountryID, @ZIP, @City, @Street, @PhonePrivat, @PhoneBusiness, @PhoneMobil, @EMail, @Web, @Fax, @IsMainAdress, @IDGuidObject)</value>
+  </data>
+  <metadata name="SqlCommand11.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand11.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand12.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand12.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand12.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand12.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblAdress] SET [IDGuid] = @IDGuid, [CountryID] = @CountryID, [ZIP] = @ZIP, [City] = @City, [Street] = @Street, [PhonePrivat] = @PhonePrivat, [PhoneBusiness] = @PhoneBusiness, [PhoneMobil] = @PhoneMobil, [EMail] = @EMail, [Web] = @Web, [Fax] = @Fax, [IsMainAdress] = @IsMainAdress, [IDGuidObject] = @IDGuidObject WHERE (([IDGuid] = @Original_IDGuid))</value>
+  </data>
+  <metadata name="daMedArchiv.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 212</value>
+  </metadata>
+  <metadata name="SqlCommand5.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand5.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand5.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand6.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand6.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand6.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblMedArchiv] ([IDGuid], [IDStay], [IDParticipant], [IDApplication], [IDObjectGuid], [Document64], [SendDate], [Status], [Result], [FileName], [DocName], [DocID], [DocumentByte], [Document_Version], [DocumentInfo_HL7], [IDStayGuid], [Description], [Created]) VALUES (@IDGuid, @IDStay, @IDParticipant, @IDApplication, @IDObjectGuid, @Document64, @SendDate, @Status, @Result, @FileName, @DocName, @DocID, @DocumentByte, @Document_Version, @DocumentInfo_HL7, @IDStayGuid, @Description, @Created)</value>
+  </data>
+  <metadata name="SqlCommand7.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand7.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand7.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand7.CommandText" xml:space="preserve">
+    <value>SELECT        IDGuid, IDStay, IDParticipant, IDApplication, IDObjectGuid, Document64, SendDate, Status, Result, FileName, DocName, DocID, DocumentByte, Document_Version, DocumentInfo_HL7, IDStayGuid, Description, 
+                         Created
+FROM            qs2.tblMedArchiv</value>
+  </data>
+  <metadata name="SqlCommand8.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand8.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand8.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand8.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblMedArchiv] SET [IDGuid] = @IDGuid, [IDStay] = @IDStay, [IDParticipant] = @IDParticipant, [IDApplication] = @IDApplication, [IDObjectGuid] = @IDObjectGuid, [Document64] = @Document64, [SendDate] = @SendDate, [Status] = @Status, [Result] = @Result, [FileName] = @FileName, [DocName] = @DocName, [DocID] = @DocID, [DocumentByte] = @DocumentByte, [Document_Version] = @Document_Version, [DocumentInfo_HL7] = @DocumentInfo_HL7, [IDStayGuid] = @IDStayGuid, [Description] = @Description, [Created] = @Created WHERE (([IDGuid] = @Original_IDGuid))</value>
+  </data>
+  <metadata name="SqlSelectCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlSelectCommand2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlSelectCommand2.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlSelectCommand2.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDParticipant, IDGuid, IDApplication, MedRecN, Incidence, IDStayParent, IDParticipantParent, IDApplicationParent, StayTyp, OPTyp, SurgDtStart, SurgDtEnd, FUPDtPlan, FUPDt, SurgDuratMin, AdmitDt, PatExtID, PatIDGuid, 
+                         PatAge, PatHeight, PatWeight, PatBMI, BMIGroup, DischDt, IsActive, IsPlanned, StayComplete, IDVendor, DataVrsn, SoftVrsn, SoftVrsnTo, CreatedDt, Classification, Description, MtOpD, Mt30Stat, DisLocatn, MtDCStat, PatStreet, 
+                         PatZIP, PatCity, PatCountry, PatCountryID, PatOrigin, PatTel, HasComplications, Surgeon, Surg_Assist1, Surg_Assist2, Surg_Partim, Surg_ReOp, Surg_Assumption, Perfusionist, Perfusionist_Assist1, Anaesthesist, 
+                         Anaesthesist_Assist1, Consultant, Resident, ScrubNurse, StayDuratDays, StayPostOpDuratDays, Payor, Sent, SentDate, CongenitalData, OrgUnitStay, LastChange, OpenSince, BPKZStatus, BPKZ, BPKZDone, BPKZOK, 
+                         BPKZFinishedClient, TransferOK, TransferProtocol, TransferFrom, SurgeonRole, IDPredecessor, IDSucessors, PredecessorText, SucessorsText
+FROM            qs2.tblStay</value>
+  </data>
+  <metadata name="SqlInsertCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlInsertCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlInsertCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlInsertCommand1.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblStay] ([ID], [IDParticipant], [IDGuid], [IDApplication], [MedRecN], [Incidence], [IDStayParent], [IDParticipantParent], [IDApplicationParent], [StayTyp], [OPTyp], [SurgDtStart], [SurgDtEnd], [FUPDtPlan], [FUPDt], [SurgDuratMin], [AdmitDt], [PatExtID], [PatIDGuid], [PatAge], [PatHeight], [PatWeight], [PatBMI], [BMIGroup], [DischDt], [IsActive], [IsPlanned], [StayComplete], [IDVendor], [DataVrsn], [SoftVrsn], [SoftVrsnTo], [CreatedDt], [Classification], [Description], [MtOpD], [Mt30Stat], [DisLocatn], [MtDCStat], [PatStreet], [PatZIP], [PatCity], [PatCountry], [PatCountryID], [PatOrigin], [PatTel], [HasComplications], [Surgeon], [Surg_Assist1], [Surg_Assist2], [Surg_Partim], [Surg_ReOp], [Surg_Assumption], [Perfusionist], [Perfusionist_Assist1], [Anaesthesist], [Anaesthesist_Assist1], [Consultant], [Resident], [ScrubNurse], [StayDuratDays], [StayPostOpDuratDays], [Payor], [Sent], [SentDate], [CongenitalData], [OrgUnitStay], [LastChange], [OpenSince], [BPKZStatus], [BPKZ], [BPKZDone], [BPKZOK], [BPKZFinishedClient], [TransferOK], [TransferProtocol], [TransferFrom], [SurgeonRole], [IDPredecessor], [IDSucessors], [PredecessorText], [SucessorsText]) VALUES (@ID, @IDParticipant, @IDGuid, @IDApplication, @MedRecN, @Incidence, @IDStayParent, @IDParticipantParent, @IDApplicationParent, @StayTyp, @OPTyp, @SurgDtStart, @SurgDtEnd, @FUPDtPlan, @FUPDt, @SurgDuratMin, @AdmitDt, @PatExtID, @PatIDGuid, @PatAge, @PatHeight, @PatWeight, @PatBMI, @BMIGroup, @DischDt, @IsActive, @IsPlanned, @StayComplete, @IDVendor, @DataVrsn, @SoftVrsn, @SoftVrsnTo, @CreatedDt, @Classification, @Description, @MtOpD, @Mt30Stat, @DisLocatn, @MtDCStat, @PatStreet, @PatZIP, @PatCity, @PatCountry, @PatCountryID, @PatOrigin, @PatTel, @HasComplications, @Surgeon, @Surg_Assist1, @Surg_Assist2, @Surg_Partim, @Surg_ReOp, @Surg_Assumption, @Perfusionist, @Perfusionist_Assist1, @Anaesthesist, @Anaesthesist_Assist1, @Consultant, @Resident, @ScrubNurse, @StayDuratDays, @StayPostOpDuratDays, @Payor, @Sent, @SentDate, @CongenitalData, @OrgUnitStay, @LastChange, @OpenSince, @BPKZStatus, @BPKZ, @BPKZDone, @BPKZOK, @BPKZFinishedClient, @TransferOK, @TransferProtocol, @TransferFrom, @SurgeonRole, @IDPredecessor, @IDSucessors, @PredecessorText, @SucessorsText)</value>
+  </data>
+  <metadata name="SqlUpdateCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlUpdateCommand2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlUpdateCommand2.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlUpdateCommand2.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblStay] SET [ID] = @ID, [IDParticipant] = @IDParticipant, [IDGuid] = @IDGuid, [IDApplication] = @IDApplication, [MedRecN] = @MedRecN, [Incidence] = @Incidence, [IDStayParent] = @IDStayParent, [IDParticipantParent] = @IDParticipantParent, [IDApplicationParent] = @IDApplicationParent, [StayTyp] = @StayTyp, [OPTyp] = @OPTyp, [SurgDtStart] = @SurgDtStart, [SurgDtEnd] = @SurgDtEnd, [FUPDtPlan] = @FUPDtPlan, [FUPDt] = @FUPDt, [SurgDuratMin] = @SurgDuratMin, [AdmitDt] = @AdmitDt, [PatExtID] = @PatExtID, [PatIDGuid] = @PatIDGuid, [PatAge] = @PatAge, [PatHeight] = @PatHeight, [PatWeight] = @PatWeight, [PatBMI] = @PatBMI, [BMIGroup] = @BMIGroup, [DischDt] = @DischDt, [IsActive] = @IsActive, [IsPlanned] = @IsPlanned, [StayComplete] = @StayComplete, [IDVendor] = @IDVendor, [DataVrsn] = @DataVrsn, [SoftVrsn] = @SoftVrsn, [SoftVrsnTo] = @SoftVrsnTo, [CreatedDt] = @CreatedDt, [Classification] = @Classification, [Description] = @Description, [MtOpD] = @MtOpD, [Mt30Stat] = @Mt30Stat, [DisLocatn] = @DisLocatn, [MtDCStat] = @MtDCStat, [PatStreet] = @PatStreet, [PatZIP] = @PatZIP, [PatCity] = @PatCity, [PatCountry] = @PatCountry, [PatCountryID] = @PatCountryID, [PatOrigin] = @PatOrigin, [PatTel] = @PatTel, [HasComplications] = @HasComplications, [Surgeon] = @Surgeon, [Surg_Assist1] = @Surg_Assist1, [Surg_Assist2] = @Surg_Assist2, [Surg_Partim] = @Surg_Partim, [Surg_ReOp] = @Surg_ReOp, [Surg_Assumption] = @Surg_Assumption, [Perfusionist] = @Perfusionist, [Perfusionist_Assist1] = @Perfusionist_Assist1, [Anaesthesist] = @Anaesthesist, [Anaesthesist_Assist1] = @Anaesthesist_Assist1, [Consultant] = @Consultant, [Resident] = @Resident, [ScrubNurse] = @ScrubNurse, [StayDuratDays] = @StayDuratDays, [StayPostOpDuratDays] = @StayPostOpDuratDays, [Payor] = @Payor, [Sent] = @Sent, [SentDate] = @SentDate, [CongenitalData] = @CongenitalData, [OrgUnitStay] = @OrgUnitStay, [LastChange] = @LastChange, [OpenSince] = @OpenSince, [BPKZStatus] = @BPKZStatus, [BPKZ] = @BPKZ, [BPKZDone] = @BPKZDone, [BPKZOK] = @BPKZOK, [BPKZFinishedClient] = @BPKZFinishedClient, [TransferOK] = @TransferOK, [TransferProtocol] = @TransferProtocol, [TransferFrom] = @TransferFrom, [SurgeonRole] = @SurgeonRole, [IDPredecessor] = @IDPredecessor, [IDSucessors] = @IDSucessors, [PredecessorText] = @PredecessorText, [SucessorsText] = @SucessorsText WHERE (([ID] = @Original_ID) AND ([IDParticipant] = @Original_IDParticipant) AND ([IDApplication] = @Original_IDApplication))</value>
+  </data>
+  <metadata name="SqlDeleteCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlDeleteCommand2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlDeleteCommand2.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daStay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 251</value>
+  </metadata>
+  <metadata name="daObjectSmall.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 290</value>
+  </metadata>
+  <metadata name="SqlCommand17.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand17.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand17.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand17.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDGuid, FirstName, LastName, NameCombination, IsPatient, DOB, ExtID, Active, IDParticipant, MtStat, MtDate, MTLocatn, MtCause, ICD9, MtCauseDescription, ExtIDNr, MtDate AS MtDate2, 
+                         ICD9 AS ICD92
+FROM            qs2.tblObject</value>
+  </data>
+  <metadata name="daStaySmall.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 368</value>
+  </metadata>
+  <metadata name="SqlCommand15.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand15.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>285, 329</value>
+  </metadata>
+  <metadata name="SqlCommand15.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand15.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDParticipant, IDGuid, IDApplication, MedRecN, Incidence, StayTyp, OPTyp, SurgDtStart, SurgDtEnd, PatExtID, PatIDGuid, PatAge, StayComplete, Mt30Stat, SentDate, IsActive, Sent
+FROM            qs2.tblStay</value>
+  </data>
+  <metadata name="daObjectApplications.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 329</value>
+  </metadata>
+  <metadata name="SqlCommand13.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand13.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand13.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand14.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand14.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand14.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand16.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand16.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand16.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand18.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand18.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand18.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+</root>

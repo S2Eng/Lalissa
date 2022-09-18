@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsLayout" targetNamespace="http://tempuri.org/dsLayout.xsd" xmlns:mstns="http://tempuri.org/dsLayout.xsd" xmlns="http://tempuri.org/dsLayout.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsLayout" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsLayout" msprop:Generator_UserDSName="dsLayout">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Layout" msprop:Generator_TableClassName="LayoutDataTable" msprop:Generator_TableVarName="tableLayout" msprop:Generator_TablePropName="Layout" msprop:Generator_RowDeletingName="LayoutRowDeleting" msprop:Generator_RowChangingName="LayoutRowChanging" msprop:Generator_RowEvHandlerName="LayoutRowChangeEventHandler" msprop:Generator_RowDeletedName="LayoutRowDeleted" msprop:Generator_UserTableName="Layout" msprop:Generator_RowChangedName="LayoutRowChanged" msprop:Generator_RowEvArgName="LayoutRowChangeEvent" msprop:Generator_RowClassName="LayoutRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDGuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDGuid" msprop:Generator_ColumnPropNameInRow="IDGuid" msprop:Generator_ColumnPropNameInTable="IDGuidColumn" msprop:Generator_UserColumnName="IDGuid" type="xs:string" />
+              <xs:element name="LayoutName" msprop:Generator_ColumnVarNameInTable="columnLayoutName" msprop:Generator_ColumnPropNameInRow="LayoutName" msprop:Generator_ColumnPropNameInTable="LayoutNameColumn" msprop:Generator_UserColumnName="LayoutName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AllUsers" msprop:Generator_ColumnVarNameInTable="columnAllUsers" msprop:Generator_ColumnPropNameInRow="AllUsers" msprop:Generator_ColumnPropNameInTable="AllUsersColumn" msprop:Generator_UserColumnName="AllUsers" type="xs:boolean" />
+              <xs:element name="CreateFrom" msprop:Generator_ColumnVarNameInTable="columnCreateFrom" msprop:Generator_ColumnPropNameInRow="CreateFrom" msprop:Generator_ColumnPropNameInTable="CreateFromColumn" msprop:Generator_UserColumnName="CreateFrom">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CreateAt" msprop:Generator_ColumnVarNameInTable="columnCreateAt" msprop:Generator_ColumnPropNameInRow="CreateAt" msprop:Generator_ColumnPropNameInTable="CreateAtColumn" msprop:Generator_UserColumnName="CreateAt" type="xs:dateTime" />
+              <xs:element name="Key" msprop:Generator_ColumnVarNameInTable="columnKey" msprop:Generator_ColumnPropNameInRow="Key" msprop:Generator_ColumnPropNameInTable="KeyColumn" msprop:Generator_UserColumnName="Key">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GridRowMinHeigth" msprop:Generator_ColumnVarNameInTable="columnGridRowMinHeigth" msprop:Generator_ColumnPropNameInRow="GridRowMinHeigth" msprop:Generator_ColumnPropNameInTable="GridRowMinHeigthColumn" msprop:Generator_UserColumnName="GridRowMinHeigth" type="xs:int" />
+              <xs:element name="GridRowMaxHeigth" msprop:Generator_ColumnVarNameInTable="columnGridRowMaxHeigth" msprop:Generator_ColumnPropNameInRow="GridRowMaxHeigth" msprop:Generator_ColumnPropNameInTable="GridRowMaxHeigthColumn" msprop:Generator_UserColumnName="GridRowMaxHeigth" type="xs:int" />
+              <xs:element name="AutoFitStyleGrid" msprop:Generator_ColumnVarNameInTable="columnAutoFitStyleGrid" msprop:Generator_ColumnPropNameInRow="AutoFitStyleGrid" msprop:Generator_ColumnPropNameInTable="AutoFitStyleGridColumn" msprop:Generator_UserColumnName="AutoFitStyleGrid">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GridAutoNewline" msprop:Generator_ColumnVarNameInTable="columnGridAutoNewline" msprop:Generator_ColumnPropNameInRow="GridAutoNewline" msprop:Generator_ColumnPropNameInTable="GridAutoNewlineColumn" msprop:Generator_UserColumnName="GridAutoNewline" type="xs:boolean" />
+              <xs:element name="ShowAlwaysGroupBy" msprop:Generator_ColumnVarNameInTable="columnShowAlwaysGroupBy" msprop:Generator_ColumnPropNameInRow="ShowAlwaysGroupBy" msprop:Generator_ColumnPropNameInTable="ShowAlwaysGroupByColumn" msprop:Generator_UserColumnName="ShowAlwaysGroupBy" type="xs:boolean" />
+              <xs:element name="CaptionVisible" msprop:Generator_ColumnVarNameInTable="columnCaptionVisible" msprop:Generator_ColumnPropNameInRow="CaptionVisible" msprop:Generator_ColumnPropNameInTable="CaptionVisibleColumn" msprop:Generator_UserColumnName="CaptionVisible" type="xs:boolean" />
+              <xs:element name="AutoSizeWidthColumns" msprop:Generator_ColumnVarNameInTable="columnAutoSizeWidthColumns" msprop:Generator_ColumnPropNameInRow="AutoSizeWidthColumns" msprop:Generator_ColumnPropNameInTable="AutoSizeWidthColumnsColumn" msprop:Generator_UserColumnName="AutoSizeWidthColumns" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LayoutGrids" msprop:Generator_TableClassName="LayoutGridsDataTable" msprop:Generator_TableVarName="tableLayoutGrids" msprop:Generator_TablePropName="LayoutGrids" msprop:Generator_RowDeletingName="LayoutGridsRowDeleting" msprop:Generator_RowChangingName="LayoutGridsRowChanging" msprop:Generator_RowEvHandlerName="LayoutGridsRowChangeEventHandler" msprop:Generator_RowDeletedName="LayoutGridsRowDeleted" msprop:Generator_UserTableName="LayoutGrids" msprop:Generator_RowChangedName="LayoutGridsRowChanged" msprop:Generator_RowEvArgName="LayoutGridsRowChangeEvent" msprop:Generator_RowClassName="LayoutGridsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDGuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDGuid" msprop:Generator_ColumnPropNameInRow="IDGuid" msprop:Generator_ColumnPropNameInTable="IDGuidColumn" msprop:Generator_UserColumnName="IDGuid" type="xs:string" />
+              <xs:element name="GridName" msprop:Generator_ColumnVarNameInTable="columnGridName" msprop:Generator_ColumnPropNameInRow="GridName" msprop:Generator_ColumnPropNameInTable="GridNameColumn" msprop:Generator_UserColumnName="GridName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Band" msprop:Generator_ColumnVarNameInTable="columnBand" msprop:Generator_ColumnPropNameInRow="Band" msprop:Generator_ColumnPropNameInTable="BandColumn" msprop:Generator_UserColumnName="Band" type="xs:int" />
+              <xs:element name="ColumnName" msprop:Generator_ColumnVarNameInTable="columnColumnName" msprop:Generator_ColumnPropNameInRow="ColumnName" msprop:Generator_ColumnPropNameInTable="ColumnNameColumn" msprop:Generator_UserColumnName="ColumnName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ColumnWith" msprop:Generator_ColumnVarNameInTable="columnColumnWith" msprop:Generator_ColumnPropNameInRow="ColumnWith" msprop:Generator_ColumnPropNameInTable="ColumnWithColumn" msprop:Generator_UserColumnName="ColumnWith" type="xs:int" />
+              <xs:element name="Visible" msprop:Generator_ColumnVarNameInTable="columnVisible" msprop:Generator_ColumnPropNameInRow="Visible" msprop:Generator_ColumnPropNameInTable="VisibleColumn" msprop:Generator_UserColumnName="Visible" type="xs:boolean" />
+              <xs:element name="OrderBy" msprop:Generator_ColumnVarNameInTable="columnOrderBy" msprop:Generator_ColumnPropNameInRow="OrderBy" msprop:Generator_ColumnPropNameInTable="OrderByColumn" msprop:Generator_UserColumnName="OrderBy" type="xs:boolean" />
+              <xs:element name="Desc" msprop:Generator_ColumnVarNameInTable="columnDesc" msprop:Generator_ColumnPropNameInRow="Desc" msprop:Generator_ColumnPropNameInTable="DescColumn" msprop:Generator_UserColumnName="Desc" type="xs:boolean" />
+              <xs:element name="GroupBy" msprop:Generator_ColumnVarNameInTable="columnGroupBy" msprop:Generator_ColumnPropNameInRow="GroupBy" msprop:Generator_ColumnPropNameInTable="GroupByColumn" msprop:Generator_UserColumnName="GroupBy" type="xs:boolean" />
+              <xs:element name="Sort" msprop:Generator_ColumnVarNameInTable="columnSort" msprop:Generator_ColumnPropNameInRow="Sort" msprop:Generator_ColumnPropNameInTable="SortColumn" msprop:Generator_UserColumnName="Sort" type="xs:int" />
+              <xs:element name="IDLayout" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDLayout" msprop:Generator_ColumnPropNameInRow="IDLayout" msprop:Generator_ColumnPropNameInTable="IDLayoutColumn" msprop:Generator_UserColumnName="IDLayout" type="xs:string" />
+              <xs:element name="GridAutoNewline" msprop:Generator_ColumnVarNameInTable="columnGridAutoNewline" msprop:Generator_ColumnPropNameInRow="GridAutoNewline" msprop:Generator_ColumnPropNameInTable="GridAutoNewlineColumn" msprop:Generator_UserColumnName="GridAutoNewline" type="xs:boolean" />
+              <xs:element name="TypeCol" msprop:Generator_ColumnVarNameInTable="columnTypeCol" msprop:Generator_ColumnPropNameInRow="TypeCol" msprop:Generator_ColumnPropNameInTable="TypeColColumn" msprop:Generator_UserColumnName="TypeCol">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AutoSizeHeigthColumn" msprop:Generator_ColumnVarNameInTable="columnAutoSizeHeigthColumn" msprop:Generator_ColumnPropNameInRow="AutoSizeHeigthColumn" msprop:Generator_ColumnPropNameInTable="AutoSizeHeigthColumnColumn" msprop:Generator_UserColumnName="AutoSizeHeigthColumn" type="xs:boolean" />
+              <xs:element name="ColMinHeigth" msprop:Generator_ColumnVarNameInTable="columnColMinHeigth" msprop:Generator_ColumnPropNameInRow="ColMinHeigth" msprop:Generator_ColumnPropNameInTable="ColMinHeigthColumn" msprop:Generator_UserColumnName="ColMinHeigth" type="xs:int" />
+              <xs:element name="ColMaxHeigth" msprop:Generator_ColumnVarNameInTable="columnColMaxHeigth" msprop:Generator_ColumnPropNameInRow="ColMaxHeigth" msprop:Generator_ColumnPropNameInTable="ColMaxHeigthColumn" msprop:Generator_UserColumnName="ColMaxHeigth" type="xs:int" />
+              <xs:element name="ColumnCaption" msprop:Generator_ColumnVarNameInTable="columnColumnCaption" msprop:Generator_ColumnPropNameInRow="ColumnCaption" msprop:Generator_ColumnPropNameInTable="ColumnCaptionColumn" msprop:Generator_UserColumnName="ColumnCaption">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TypeUI" msprop:Generator_ColumnVarNameInTable="columnTypeUI" msprop:Generator_ColumnPropNameInRow="TypeUI" msprop:Generator_ColumnPropNameInTable="TypeUIColumn" msprop:Generator_UserColumnName="TypeUI" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Layout" />
+      <xs:field xpath="mstns:IDGuid" />
+    </xs:unique>
+    <xs:unique name="LayoutGrids_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LayoutGrids" />
+      <xs:field xpath="mstns:IDGuid" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

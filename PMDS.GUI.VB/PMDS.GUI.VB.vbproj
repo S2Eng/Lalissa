@@ -374,10 +374,6 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="qs2.core.vb, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\qs2.core.vb.dll</HintPath>
-    </Reference>
     <Reference Include="QS2.db.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.db.Entities.dll</HintPath>
@@ -1327,6 +1323,10 @@
     <ProjectReference Include="..\QS2.Desktop.Ressources.Auto10\QS2.Desktop.ControlManagment.vbproj">
       <Project>{1f894182-6563-4ffa-958d-b842cb449b21}</Project>
       <Name>QS2.Desktop.ControlManagment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.VB.Core\QS2.Core.VB.vbproj">
+      <Project>{f7905a52-3a40-4894-a5be-12f91b63da72}</Project>
+      <Name>QS2.Core.VB</Name>
     </ProjectReference>
     <ProjectReference Include="..\S2Extensions\S2Extensions.csproj">
       <Project>{10b7d2d1-0868-4fda-8473-a12b5bb9386f}</Project>

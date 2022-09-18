@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsKaplanMeier" targetNamespace="http://tempuri.org/dsKaplanMeier.xsd" xmlns:mstns="http://tempuri.org/dsKaplanMeier.xsd" xmlns="http://tempuri.org/dsKaplanMeier.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsKaplanMeier" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsKaplanMeier" msprop:Generator_UserDSName="dsKaplanMeier">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="KMInput" msprop:Generator_TableClassName="KMInputDataTable" msprop:Generator_TableVarName="tableKMInput" msprop:Generator_TablePropName="KMInput" msprop:Generator_RowDeletingName="KMInputRowDeleting" msprop:Generator_UserTableName="KMInput" msprop:Generator_RowChangingName="KMInputRowChanging" msprop:Generator_RowEvHandlerName="KMInputRowChangeEventHandler" msprop:Generator_RowDeletedName="KMInputRowDeleted" msprop:Generator_RowEvArgName="KMInputRowChangeEvent" msprop:Generator_RowChangedName="KMInputRowChanged" msprop:Generator_RowClassName="KMInputRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PatExtID" msprop:Generator_ColumnVarNameInTable="columnPatExtID" msprop:Generator_ColumnPropNameInRow="PatExtID" msprop:Generator_ColumnPropNameInTable="PatExtIDColumn" msprop:Generator_UserColumnName="PatExtID" type="xs:string" />
+              <xs:element name="PatFirstname" msprop:Generator_ColumnVarNameInTable="columnPatFirstname" msprop:Generator_ColumnPropNameInRow="PatFirstname" msprop:Generator_ColumnPropNameInTable="PatFirstnameColumn" msprop:Generator_UserColumnName="PatFirstname" type="xs:string" />
+              <xs:element name="PatLastname" msprop:Generator_ColumnVarNameInTable="columnPatLastname" msprop:Generator_ColumnPropNameInRow="PatLastname" msprop:Generator_ColumnPropNameInTable="PatLastnameColumn" msprop:Generator_UserColumnName="PatLastname" type="xs:string" />
+              <xs:element name="PatDOB" msprop:Generator_ColumnVarNameInTable="columnPatDOB" msprop:Generator_ColumnPropNameInRow="PatDOB" msprop:Generator_ColumnPropNameInTable="PatDOBColumn" msprop:Generator_UserColumnName="PatDOB" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="StayID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnStayID" msprop:Generator_ColumnPropNameInRow="StayID" msprop:Generator_ColumnPropNameInTable="StayIDColumn" msprop:Generator_UserColumnName="StayID" type="xs:string" minOccurs="0" />
+              <xs:element name="StayRecID" msprop:Generator_ColumnVarNameInTable="columnStayRecID" msprop:Generator_ColumnPropNameInRow="StayRecID" msprop:Generator_ColumnPropNameInTable="StayRecIDColumn" msprop:Generator_UserColumnName="StayRecID" type="xs:int" />
+              <xs:element name="StayMedRecNum" msprop:Generator_ColumnVarNameInTable="columnStayMedRecNum" msprop:Generator_ColumnPropNameInRow="StayMedRecNum" msprop:Generator_ColumnPropNameInTable="StayMedRecNumColumn" msprop:Generator_UserColumnName="StayMedRecNum" type="xs:string" />
+              <xs:element name="SurgDtStart" msprop:Generator_ColumnVarNameInTable="columnSurgDtStart" msprop:Generator_ColumnPropNameInRow="SurgDtStart" msprop:Generator_ColumnPropNameInTable="SurgDtStartColumn" msprop:Generator_UserColumnName="SurgDtStart" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FUPDt" msprop:Generator_ColumnVarNameInTable="columnFUPDt" msprop:Generator_ColumnPropNameInRow="FUPDt" msprop:Generator_ColumnPropNameInTable="FUPDtColumn" msprop:Generator_UserColumnName="FUPDt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FUPEreignis" msprop:Generator_ColumnVarNameInTable="columnFUPEreignis" msprop:Generator_ColumnPropNameInRow="FUPEreignis" msprop:Generator_ColumnPropNameInTable="FUPEreignisColumn" msprop:Generator_UserColumnName="FUPEreignis" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="KMRangListe" msprop:Generator_TableClassName="KMRangListeDataTable" msprop:Generator_TableVarName="tableKMRangListe" msprop:Generator_TablePropName="KMRangListe" msprop:Generator_RowDeletingName="KMRangListeRowDeleting" msprop:Generator_UserTableName="KMRangListe" msprop:Generator_RowChangingName="KMRangListeRowChanging" msprop:Generator_RowEvHandlerName="KMRangListeRowChangeEventHandler" msprop:Generator_RowDeletedName="KMRangListeRowDeleted" msprop:Generator_RowEvArgName="KMRangListeRowChangeEvent" msprop:Generator_RowChangedName="KMRangListeRowChanged" msprop:Generator_RowClassName="KMRangListeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RecID" msprop:Generator_ColumnVarNameInTable="columnRecID" msprop:Generator_ColumnPropNameInRow="RecID" msprop:Generator_ColumnPropNameInTable="RecIDColumn" msprop:Generator_UserColumnName="RecID" type="xs:int" />
+              <xs:element name="Inkorporation" msprop:Generator_ColumnVarNameInTable="columnInkorporation" msprop:Generator_ColumnPropNameInRow="Inkorporation" msprop:Generator_ColumnPropNameInTable="InkorporationColumn" msprop:Generator_UserColumnName="Inkorporation" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LetzteKontrolle" msprop:Generator_ColumnVarNameInTable="columnLetzteKontrolle" msprop:Generator_ColumnPropNameInRow="LetzteKontrolle" msprop:Generator_ColumnPropNameInTable="LetzteKontrolleColumn" msprop:Generator_UserColumnName="LetzteKontrolle" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Verlustdatum" msprop:Generator_ColumnVarNameInTable="columnVerlustdatum" msprop:Generator_ColumnPropNameInRow="Verlustdatum" msprop:Generator_ColumnPropNameInTable="VerlustdatumColumn" msprop:Generator_UserColumnName="Verlustdatum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Differenz" msprop:Generator_ColumnVarNameInTable="columnDifferenz" msprop:Generator_ColumnPropNameInRow="Differenz" msprop:Generator_ColumnPropNameInTable="DifferenzColumn" msprop:Generator_UserColumnName="Differenz" type="xs:int" />
+              <xs:element name="Verweildauer" msprop:Generator_ColumnVarNameInTable="columnVerweildauer" msprop:Generator_ColumnPropNameInRow="Verweildauer" msprop:Generator_ColumnPropNameInTable="VerweildauerColumn" msprop:Generator_UserColumnName="Verweildauer" type="xs:int" minOccurs="0" />
+              <xs:element name="ZensiertJN" msprop:Generator_ColumnVarNameInTable="columnZensiertJN" msprop:Generator_ColumnPropNameInRow="ZensiertJN" msprop:Generator_ColumnPropNameInTable="ZensiertJNColumn" msprop:Generator_UserColumnName="ZensiertJN" type="xs:boolean" />
+              <xs:element name="Rang" msprop:Generator_ColumnVarNameInTable="columnRang" msprop:Generator_ColumnPropNameInRow="Rang" msprop:Generator_ColumnPropNameInTable="RangColumn" msprop:Generator_UserColumnName="Rang" type="xs:int" />
+              <xs:element name="C" msprop:Generator_ColumnVarNameInTable="columnC" msprop:Generator_ColumnPropNameInRow="C" msprop:Generator_ColumnPropNameInTable="CColumn" msprop:Generator_UserColumnName="C" type="xs:double" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="KMResult" msprop:Generator_TableClassName="KMResultDataTable" msprop:Generator_TableVarName="tableKMResult" msprop:Generator_TablePropName="KMResult" msprop:Generator_RowDeletingName="KMResultRowDeleting" msprop:Generator_UserTableName="KMResult" msprop:Generator_RowChangingName="KMResultRowChanging" msprop:Generator_RowEvHandlerName="KMResultRowChangeEventHandler" msprop:Generator_RowDeletedName="KMResultRowDeleted" msprop:Generator_RowEvArgName="KMResultRowChangeEvent" msprop:Generator_RowChangedName="KMResultRowChanged" msprop:Generator_RowClassName="KMResultRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="k" msprop:Generator_ColumnVarNameInTable="columnk" msprop:Generator_ColumnPropNameInRow="k" msprop:Generator_ColumnPropNameInTable="kColumn" msprop:Generator_UserColumnName="k" type="xs:int" />
+              <xs:element name="tk" msprop:Generator_ColumnVarNameInTable="columntk" msprop:Generator_ColumnPropNameInRow="tk" msprop:Generator_ColumnPropNameInTable="tkColumn" msprop:Generator_UserColumnName="tk" type="xs:int" />
+              <xs:element name="Rang" msprop:Generator_ColumnVarNameInTable="columnRang" msprop:Generator_ColumnPropNameInRow="Rang" msprop:Generator_ColumnPropNameInTable="RangColumn" msprop:Generator_UserColumnName="Rang" type="xs:int" />
+              <xs:element name="Rk" msprop:Generator_ColumnVarNameInTable="columnRk" msprop:Generator_ColumnPropNameInRow="Rk" msprop:Generator_ColumnPropNameInTable="RkColumn" msprop:Generator_UserColumnName="Rk" type="xs:int" />
+              <xs:element name="dk" msprop:Generator_ColumnVarNameInTable="columndk" msprop:Generator_ColumnPropNameInRow="dk" msprop:Generator_ColumnPropNameInTable="dkColumn" msprop:Generator_UserColumnName="dk" type="xs:int" />
+              <xs:element name="pk" msprop:Generator_ColumnVarNameInTable="columnpk" msprop:Generator_ColumnPropNameInRow="pk" msprop:Generator_ColumnPropNameInTable="pkColumn" msprop:Generator_UserColumnName="pk" type="xs:double" />
+              <xs:element name="S" msprop:Generator_ColumnVarNameInTable="_columnS" msprop:Generator_ColumnPropNameInRow="S" msprop:Generator_ColumnPropNameInTable="SColumn" msprop:Generator_UserColumnName="S" type="xs:double" />
+              <xs:element name="C" msprop:Generator_ColumnVarNameInTable="columnC" msprop:Generator_ColumnPropNameInRow="C" msprop:Generator_ColumnPropNameInTable="CColumn" msprop:Generator_UserColumnName="C" type="xs:double" />
+              <xs:element name="Ct" msprop:Generator_ColumnVarNameInTable="columnCt" msprop:Generator_ColumnPropNameInRow="Ct" msprop:Generator_ColumnPropNameInTable="CtColumn" msprop:Generator_UserColumnName="Ct" type="xs:double" />
+              <xs:element name="K_" msprop:Generator_ColumnVarNameInTable="columnK_" msprop:Generator_ColumnPropNameInRow="K_" msprop:Generator_ColumnPropNameInTable="K_Column" msprop:Generator_UserColumnName="K_" type="xs:double" />
+              <xs:element name="S_" msprop:Generator_ColumnVarNameInTable="columnS_" msprop:Generator_ColumnPropNameInRow="S_" msprop:Generator_ColumnPropNameInTable="S_Column" msprop:Generator_UserColumnName="S_" type="xs:double" />
+              <xs:element name="_1KNt" msprop:Generator_ColumnVarNameInTable="column_1KNt" msprop:Generator_ColumnPropNameInRow="_1KNt" msprop:Generator_ColumnPropNameInTable="_1KNtColumn" msprop:Generator_UserColumnName="_1KNt" type="xs:double" />
+              <xs:element name="KolmogoroffKritVal" msprop:Generator_ColumnVarNameInTable="columnKolmogoroffKritVal" msprop:Generator_ColumnPropNameInRow="KolmogoroffKritVal" msprop:Generator_ColumnPropNameInTable="KolmogoroffKritValColumn" msprop:Generator_UserColumnName="KolmogoroffKritVal" type="xs:double" />
+              <xs:element name="HallWellnerKritVal" msprop:Generator_ColumnVarNameInTable="columnHallWellnerKritVal" msprop:Generator_ColumnPropNameInRow="HallWellnerKritVal" msprop:Generator_ColumnPropNameInTable="HallWellnerKritValColumn" msprop:Generator_UserColumnName="HallWellnerKritVal" type="xs:double" />
+              <xs:element name="KolmogoroffMin" msprop:Generator_ColumnVarNameInTable="columnKolmogoroffMin" msprop:Generator_ColumnPropNameInRow="KolmogoroffMin" msprop:Generator_ColumnPropNameInTable="KolmogoroffMinColumn" msprop:Generator_UserColumnName="KolmogoroffMin" type="xs:double" />
+              <xs:element name="KolmogoroffMax" msprop:Generator_ColumnVarNameInTable="columnKolmogoroffMax" msprop:Generator_ColumnPropNameInRow="KolmogoroffMax" msprop:Generator_ColumnPropNameInTable="KolmogoroffMaxColumn" msprop:Generator_UserColumnName="KolmogoroffMax" type="xs:double" />
+              <xs:element name="HallWellnerMin" msprop:Generator_ColumnVarNameInTable="columnHallWellnerMin" msprop:Generator_ColumnPropNameInRow="HallWellnerMin" msprop:Generator_ColumnPropNameInTable="HallWellnerMinColumn" msprop:Generator_UserColumnName="HallWellnerMin" type="xs:double" />
+              <xs:element name="HallWellnerMax" msprop:Generator_ColumnVarNameInTable="columnHallWellnerMax" msprop:Generator_ColumnPropNameInRow="HallWellnerMax" msprop:Generator_ColumnPropNameInTable="HallWellnerMaxColumn" msprop:Generator_UserColumnName="HallWellnerMax" type="xs:double" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="KMKolmogoroffKritVal" msprop:Generator_TableClassName="KMKolmogoroffKritValDataTable" msprop:Generator_TableVarName="tableKMKolmogoroffKritVal" msprop:Generator_TablePropName="KMKolmogoroffKritVal" msprop:Generator_RowDeletingName="KMKolmogoroffKritValRowDeleting" msprop:Generator_UserTableName="KMKolmogoroffKritVal" msprop:Generator_RowChangingName="KMKolmogoroffKritValRowChanging" msprop:Generator_RowEvHandlerName="KMKolmogoroffKritValRowChangeEventHandler" msprop:Generator_RowDeletedName="KMKolmogoroffKritValRowDeleted" msprop:Generator_RowEvArgName="KMKolmogoroffKritValRowChangeEvent" msprop:Generator_RowChangedName="KMKolmogoroffKritValRowChanged" msprop:Generator_RowClassName="KMKolmogoroffKritValRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="N" msprop:Generator_ColumnVarNameInTable="columnN" msprop:Generator_ColumnPropNameInRow="N" msprop:Generator_ColumnPropNameInTable="NColumn" msprop:Generator_UserColumnName="N" type="xs:int" />
+              <xs:element name="Alpha" msprop:Generator_ColumnVarNameInTable="columnAlpha" msprop:Generator_ColumnPropNameInRow="Alpha" msprop:Generator_ColumnPropNameInTable="AlphaColumn" msprop:Generator_UserColumnName="Alpha" type="xs:double" />
+              <xs:element name="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnPropNameInTable="ValueColumn" msprop:Generator_UserColumnName="Value" type="xs:double" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="KMKolmogoroffKritValInterpol" msprop:Generator_TableClassName="KMKolmogoroffKritValInterpolDataTable" msprop:Generator_TableVarName="tableKMKolmogoroffKritValInterpol" msprop:Generator_TablePropName="KMKolmogoroffKritValInterpol" msprop:Generator_RowDeletingName="KMKolmogoroffKritValInterpolRowDeleting" msprop:Generator_UserTableName="KMKolmogoroffKritValInterpol" msprop:Generator_RowChangingName="KMKolmogoroffKritValInterpolRowChanging" msprop:Generator_RowEvHandlerName="KMKolmogoroffKritValInterpolRowChangeEventHandler" msprop:Generator_RowDeletedName="KMKolmogoroffKritValInterpolRowDeleted" msprop:Generator_RowEvArgName="KMKolmogoroffKritValInterpolRowChangeEvent" msprop:Generator_RowChangedName="KMKolmogoroffKritValInterpolRowChanged" msprop:Generator_RowClassName="KMKolmogoroffKritValInterpolRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="N" msprop:Generator_ColumnVarNameInTable="columnN" msprop:Generator_ColumnPropNameInRow="N" msprop:Generator_ColumnPropNameInTable="NColumn" msprop:Generator_UserColumnName="N" type="xs:int" />
+              <xs:element name="Alpha" msprop:Generator_ColumnVarNameInTable="columnAlpha" msprop:Generator_ColumnPropNameInRow="Alpha" msprop:Generator_ColumnPropNameInTable="AlphaColumn" msprop:Generator_UserColumnName="Alpha" type="xs:double" />
+              <xs:element name="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnPropNameInTable="ValueColumn" msprop:Generator_UserColumnName="Value" type="xs:double" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="KMHallWellnerKritVal" msprop:Generator_TableClassName="KMHallWellnerKritValDataTable" msprop:Generator_TableVarName="tableKMHallWellnerKritVal" msprop:Generator_TablePropName="KMHallWellnerKritVal" msprop:Generator_RowDeletingName="KMHallWellnerKritValRowDeleting" msprop:Generator_UserTableName="KMHallWellnerKritVal" msprop:Generator_RowChangingName="KMHallWellnerKritValRowChanging" msprop:Generator_RowEvHandlerName="KMHallWellnerKritValRowChangeEventHandler" msprop:Generator_RowDeletedName="KMHallWellnerKritValRowDeleted" msprop:Generator_RowEvArgName="KMHallWellnerKritValRowChangeEvent" msprop:Generator_RowChangedName="KMHallWellnerKritValRowChanged" msprop:Generator_RowClassName="KMHallWellnerKritValRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Alpha" msprop:Generator_ColumnVarNameInTable="columnAlpha" msprop:Generator_ColumnPropNameInRow="Alpha" msprop:Generator_ColumnPropNameInTable="AlphaColumn" msprop:Generator_UserColumnName="Alpha" type="xs:double" />
+              <xs:element name="_1KNt" msprop:Generator_ColumnVarNameInTable="column_1KNt" msprop:Generator_ColumnPropNameInRow="_1KNt" msprop:Generator_ColumnPropNameInTable="_1KNtColumn" msprop:Generator_UserColumnName="_1KNt" type="xs:double" />
+              <xs:element name="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnPropNameInTable="ValueColumn" msprop:Generator_UserColumnName="Value" type="xs:double" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="KMChartZensiert" msprop:Generator_TableClassName="KMChartZensiertDataTable" msprop:Generator_TableVarName="tableKMChartZensiert" msprop:Generator_TablePropName="KMChartZensiert" msprop:Generator_RowDeletingName="KMChartZensiertRowDeleting" msprop:Generator_UserTableName="KMChartZensiert" msprop:Generator_RowChangingName="KMChartZensiertRowChanging" msprop:Generator_RowEvHandlerName="KMChartZensiertRowChangeEventHandler" msprop:Generator_RowDeletedName="KMChartZensiertRowDeleted" msprop:Generator_RowEvArgName="KMChartZensiertRowChangeEvent" msprop:Generator_RowChangedName="KMChartZensiertRowChanged" msprop:Generator_RowClassName="KMChartZensiertRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Differenz" msprop:Generator_ColumnVarNameInTable="columnDifferenz" msprop:Generator_ColumnPropNameInRow="Differenz" msprop:Generator_ColumnPropNameInTable="DifferenzColumn" msprop:Generator_UserColumnName="Differenz" type="xs:int" />
+              <xs:element name="S" msprop:Generator_ColumnVarNameInTable="_columnS" msprop:Generator_ColumnPropNameInRow="S" msprop:Generator_ColumnPropNameInTable="SColumn" msprop:Generator_UserColumnName="S" type="xs:double" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

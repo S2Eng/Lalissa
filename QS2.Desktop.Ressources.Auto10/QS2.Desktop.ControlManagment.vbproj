@@ -343,9 +343,6 @@
     <Reference Include="Patagames.Pdf.Wpf, Version=4.7.9.472, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
       <HintPath>..\packages\Pdfium.Net.SDK.4.27.2704\lib\net472\Patagames.Pdf.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="qs2.core.vb">
-      <HintPath>..\Dlls\qs2.core.vb.dll</HintPath>
-    </Reference>
     <Reference Include="qs2.design.auto">
       <HintPath>..\Dlls\qs2.design.auto.dll</HintPath>
     </Reference>
@@ -750,6 +747,10 @@
     <ProjectReference Include="..\qs2.core\QS2.Core.csproj">
       <Project>{aafb02c6-d8cd-4fe1-afbf-d09d8a256df4}</Project>
       <Name>QS2.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.VB.Core\QS2.Core.VB.vbproj">
+      <Project>{f7905a52-3a40-4894-a5be-12f91b63da72}</Project>
+      <Name>QS2.Core.VB</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Desktop.UI.vb\QS2.Desktop.UI.vb.vbproj">
       <Project>{c28fb59d-797d-4a86-a590-072c1e0c626b}</Project>

@@ -1,0 +1,25 @@
+diff a/qs2.vb.core/sql/Objects/sqlObjects.vb b/qs2.vb.core/sql/Objects/sqlObjects.vb	(rejected hunks)
+@@ -1496,13 +1496,19 @@
+     Public Sub genSqlSurgOrCardio(ByRef IsSurgical As Integer, ByRef IsCardiological As Integer, ByRef IsCongenital As Integer,
+                                                                ByRef SqlWhere As String)
+         Try
+-            Dim sWhereSurgeonRole As String = ""
++
++            Dim sWhereSurgeonRole As String = " (IsAquired = 1 "
++
++            If IsCongenital <> -1 Then
++                sWhereSurgeonRole += " AND IsCongenital = " + IsCongenital.ToString()
++            End If
++
+             If IsSurgical = 1 And IsCardiological = -1 Then
+-                sWhereSurgeonRole = " (SurgeonRole=1  or SurgeonRole=-3) "
++                sWhereSurgeonRole += " AND (SurgeonRole = 1  or SurgeonRole = -3)) "
+             ElseIf IsSurgical = -1 And IsCardiological = 1 Then
+-                sWhereSurgeonRole = " (SurgeonRole=9  or SurgeonRole=-3) "
++                sWhereSurgeonRole += " AND (SurgeonRole = 9  or SurgeonRole = -3)) "
+             ElseIf IsSurgical = 1 And IsCardiological = 1 Then
+-                sWhereSurgeonRole = " (SurgeonRole=1 or SurgeonRole=9 or SurgeonRole=-3) "
++                sWhereSurgeonRole += " AND SurgeonRole = -3) "
+             End If
+ 
+             If Not String.IsNullOrEmpty(sWhereSurgeonRole) Then

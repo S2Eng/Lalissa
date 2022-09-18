@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsHelper" targetNamespace="http://tempuri.org/dsHelper.xsd" xmlns:mstns="http://tempuri.org/dsHelper.xsd" xmlns="http://tempuri.org/dsHelper.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsHelper" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsHelper" msprop:Generator_UserDSName="dsHelper">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblSelListObjDoubledSelLists" msprop:Generator_TableClassName="tblSelListObjDoubledSelListsDataTable" msprop:Generator_TableVarName="tabletblSelListObjDoubledSelLists" msprop:Generator_RowChangedName="tblSelListObjDoubledSelListsRowChanged" msprop:Generator_TablePropName="tblSelListObjDoubledSelLists" msprop:Generator_RowDeletingName="tblSelListObjDoubledSelListsRowDeleting" msprop:Generator_RowChangingName="tblSelListObjDoubledSelListsRowChanging" msprop:Generator_RowEvHandlerName="tblSelListObjDoubledSelListsRowChangeEventHandler" msprop:Generator_RowDeletedName="tblSelListObjDoubledSelListsRowDeleted" msprop:Generator_RowClassName="tblSelListObjDoubledSelListsRow" msprop:Generator_UserTableName="tblSelListObjDoubledSelLists" msprop:Generator_RowEvArgName="tblSelListObjDoubledSelListsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDSelListEntry" msprop:Generator_ColumnVarNameInTable="columnIDSelListEntry" msprop:Generator_ColumnPropNameInRow="IDSelListEntry" msprop:Generator_ColumnPropNameInTable="IDSelListEntryColumn" msprop:Generator_UserColumnName="IDSelListEntry" type="xs:int" />
+              <xs:element name="IDSelListEntrySublist" msprop:Generator_ColumnVarNameInTable="columnIDSelListEntrySublist" msprop:Generator_ColumnPropNameInRow="IDSelListEntrySublist" msprop:Generator_ColumnPropNameInTable="IDSelListEntrySublistColumn" msprop:Generator_UserColumnName="IDSelListEntrySublist" type="xs:int" minOccurs="0" />
+              <xs:element name="typIDGroup" msprop:Generator_ColumnVarNameInTable="columntypIDGroup" msprop:Generator_ColumnPropNameInRow="typIDGroup" msprop:Generator_ColumnPropNameInTable="typIDGroupColumn" msprop:Generator_UserColumnName="typIDGroup">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDObject" msprop:Generator_ColumnVarNameInTable="columnIDObject" msprop:Generator_ColumnPropNameInRow="IDObject" msprop:Generator_ColumnPropNameInTable="IDObjectColumn" msprop:Generator_UserColumnName="IDObject" type="xs:int" minOccurs="0" />
+              <xs:element name="IDStay" msprop:Generator_ColumnVarNameInTable="columnIDStay" msprop:Generator_ColumnPropNameInRow="IDStay" msprop:Generator_ColumnPropNameInTable="IDStayColumn" msprop:Generator_UserColumnName="IDStay" type="xs:int" minOccurs="0" />
+              <xs:element name="FldShort" msprop:Generator_ColumnVarNameInTable="columnFldShort" msprop:Generator_ColumnPropNameInRow="FldShort" msprop:Generator_ColumnPropNameInTable="FldShortColumn" msprop:Generator_UserColumnName="FldShort" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDParticipant" msprop:Generator_ColumnVarNameInTable="columnIDParticipant" msprop:Generator_ColumnPropNameInRow="IDParticipant" msprop:Generator_ColumnPropNameInTable="IDParticipantColumn" msprop:Generator_UserColumnName="IDParticipant">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tblSelListObjDoubledFldShorts" msprop:Generator_TableClassName="tblSelListObjDoubledFldShortsDataTable" msprop:Generator_TableVarName="tabletblSelListObjDoubledFldShorts" msprop:Generator_RowChangedName="tblSelListObjDoubledFldShortsRowChanged" msprop:Generator_TablePropName="tblSelListObjDoubledFldShorts" msprop:Generator_RowDeletingName="tblSelListObjDoubledFldShortsRowDeleting" msprop:Generator_RowChangingName="tblSelListObjDoubledFldShortsRowChanging" msprop:Generator_RowEvHandlerName="tblSelListObjDoubledFldShortsRowChangeEventHandler" msprop:Generator_RowDeletedName="tblSelListObjDoubledFldShortsRowDeleted" msprop:Generator_RowClassName="tblSelListObjDoubledFldShortsRow" msprop:Generator_UserTableName="tblSelListObjDoubledFldShorts" msprop:Generator_RowEvArgName="tblSelListObjDoubledFldShortsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDSelListEntry" msprop:Generator_ColumnVarNameInTable="columnIDSelListEntry" msprop:Generator_ColumnPropNameInRow="IDSelListEntry" msprop:Generator_ColumnPropNameInTable="IDSelListEntryColumn" msprop:Generator_UserColumnName="IDSelListEntry" type="xs:int" />
+              <xs:element name="FldShort" msprop:Generator_ColumnVarNameInTable="columnFldShort" msprop:Generator_ColumnPropNameInRow="FldShort" msprop:Generator_ColumnPropNameInTable="FldShortColumn" msprop:Generator_UserColumnName="FldShort" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDApplication" msprop:Generator_ColumnVarNameInTable="columnIDApplication" msprop:Generator_ColumnPropNameInRow="IDApplication" msprop:Generator_ColumnPropNameInTable="IDApplicationColumn" msprop:Generator_UserColumnName="IDApplication" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="typIDGroup" msprop:Generator_ColumnVarNameInTable="columntypIDGroup" msprop:Generator_ColumnPropNameInRow="typIDGroup" msprop:Generator_ColumnPropNameInTable="typIDGroupColumn" msprop:Generator_UserColumnName="typIDGroup">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDObject" msprop:Generator_ColumnVarNameInTable="columnIDObject" msprop:Generator_ColumnPropNameInRow="IDObject" msprop:Generator_ColumnPropNameInTable="IDObjectColumn" msprop:Generator_UserColumnName="IDObject" type="xs:int" minOccurs="0" />
+              <xs:element name="IDStay" msprop:Generator_ColumnVarNameInTable="columnIDStay" msprop:Generator_ColumnPropNameInRow="IDStay" msprop:Generator_ColumnPropNameInTable="IDStayColumn" msprop:Generator_UserColumnName="IDStay" type="xs:int" minOccurs="0" />
+              <xs:element name="IDSelListEntrySublist" msprop:Generator_ColumnVarNameInTable="columnIDSelListEntrySublist" msprop:Generator_ColumnPropNameInRow="IDSelListEntrySublist" msprop:Generator_ColumnPropNameInTable="IDSelListEntrySublistColumn" msprop:Generator_UserColumnName="IDSelListEntrySublist" type="xs:int" minOccurs="0" />
+              <xs:element name="IDParticipant" msprop:Generator_ColumnVarNameInTable="columnIDParticipant" msprop:Generator_ColumnPropNameInRow="IDParticipant" msprop:Generator_ColumnPropNameInTable="IDParticipantColumn" msprop:Generator_UserColumnName="IDParticipant">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tblSettings" msprop:Generator_TableClassName="tblSettingsDataTable" msprop:Generator_TableVarName="tabletblSettings" msprop:Generator_TablePropName="tblSettings" msprop:Generator_RowDeletingName="tblSettingsRowDeleting" msprop:Generator_RowChangingName="tblSettingsRowChanging" msprop:Generator_RowEvHandlerName="tblSettingsRowChangeEventHandler" msprop:Generator_RowDeletedName="tblSettingsRowDeleted" msprop:Generator_UserTableName="tblSettings" msprop:Generator_RowChangedName="tblSettingsRowChanged" msprop:Generator_RowEvArgName="tblSettingsRowChangeEvent" msprop:Generator_RowClassName="tblSettingsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Variable" msprop:Generator_ColumnVarNameInTable="columnVariable" msprop:Generator_ColumnPropNameInRow="Variable" msprop:Generator_ColumnPropNameInTable="VariableColumn" msprop:Generator_UserColumnName="Variable" type="xs:string" />
+              <xs:element name="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnPropNameInTable="ValueColumn" msprop:Generator_UserColumnName="Value" type="xs:string" />
+              <xs:element name="validFor" msprop:Generator_ColumnVarNameInTable="columnvalidFor" msprop:Generator_ColumnPropNameInRow="validFor" msprop:Generator_ColumnPropNameInTable="validForColumn" msprop:Generator_UserColumnName="validFor" type="xs:string" />
+              <xs:element name="IDParticipant" msprop:Generator_ColumnVarNameInTable="columnIDParticipant" msprop:Generator_ColumnPropNameInRow="IDParticipant" msprop:Generator_ColumnPropNameInTable="IDParticipantColumn" msprop:Generator_UserColumnName="IDParticipant" type="xs:string" />
+              <xs:element name="Product" msprop:Generator_ColumnVarNameInTable="columnProduct" msprop:Generator_ColumnPropNameInRow="Product" msprop:Generator_ColumnPropNameInTable="ProductColumn" msprop:Generator_UserColumnName="Product" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CriteriasSmall" msprop:Generator_TableClassName="CriteriasSmallDataTable" msprop:Generator_TableVarName="tableCriteriasSmall" msprop:Generator_TablePropName="CriteriasSmall" msprop:Generator_RowDeletingName="CriteriasSmallRowDeleting" msprop:Generator_RowChangingName="CriteriasSmallRowChanging" msprop:Generator_RowEvHandlerName="CriteriasSmallRowChangeEventHandler" msprop:Generator_RowDeletedName="CriteriasSmallRowDeleted" msprop:Generator_UserTableName="CriteriasSmall" msprop:Generator_RowChangedName="CriteriasSmallRowChanged" msprop:Generator_RowEvArgName="CriteriasSmallRowChangeEvent" msprop:Generator_RowClassName="CriteriasSmallRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Field" msprop:Generator_ColumnVarNameInTable="columnField" msprop:Generator_ColumnPropNameInRow="Field" msprop:Generator_ColumnPropNameInTable="FieldColumn" msprop:Generator_UserColumnName="Field" type="xs:string" />
+              <xs:element name="FldShort" msprop:Generator_ColumnVarNameInTable="columnFldShort" msprop:Generator_ColumnPropNameInRow="FldShort" msprop:Generator_ColumnPropNameInTable="FldShortColumn" msprop:Generator_UserColumnName="FldShort" type="xs:string" />
+              <xs:element name="ControlType" msprop:Generator_ColumnVarNameInTable="columnControlType" msprop:Generator_ColumnPropNameInRow="ControlType" msprop:Generator_ColumnPropNameInTable="ControlTypeColumn" msprop:Generator_UserColumnName="ControlType" type="xs:string" />
+              <xs:element name="MinVal" msprop:Generator_ColumnVarNameInTable="columnMinVal" msprop:Generator_ColumnPropNameInRow="MinVal" msprop:Generator_ColumnPropNameInTable="MinValColumn" msprop:Generator_UserColumnName="MinVal">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaxVal" msprop:Generator_ColumnVarNameInTable="columnMaxVal" msprop:Generator_ColumnPropNameInRow="MaxVal" msprop:Generator_ColumnPropNameInTable="MaxValColumn" msprop:Generator_UserColumnName="MaxVal">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MinLength" msprop:Generator_ColumnVarNameInTable="columnMinLength" msprop:Generator_ColumnPropNameInRow="MinLength" msprop:Generator_ColumnPropNameInTable="MinLengthColumn" msprop:Generator_UserColumnName="MinLength" type="xs:int" />
+              <xs:element name="MaxLength" msprop:Generator_ColumnVarNameInTable="columnMaxLength" msprop:Generator_ColumnPropNameInRow="MaxLength" msprop:Generator_ColumnPropNameInTable="MaxLengthColumn" msprop:Generator_UserColumnName="MaxLength" type="xs:int" />
+              <xs:element name="DefaultValue" msprop:Generator_ColumnVarNameInTable="columnDefaultValue" msprop:Generator_ColumnPropNameInRow="DefaultValue" msprop:Generator_ColumnPropNameInTable="DefaultValueColumn" msprop:Generator_UserColumnName="DefaultValue" type="xs:string" />
+              <xs:element name="Chapter" msprop:Generator_ColumnVarNameInTable="columnChapter" msprop:Generator_ColumnPropNameInRow="Chapter" msprop:Generator_ColumnPropNameInTable="ChapterColumn" msprop:Generator_UserColumnName="Chapter" type="xs:string" />
+              <xs:element name="FldShortSelList" msprop:Generator_ColumnVarNameInTable="columnFldShortSelList" msprop:Generator_ColumnPropNameInRow="FldShortSelList" msprop:Generator_ColumnPropNameInTable="FldShortSelListColumn" msprop:Generator_UserColumnName="FldShortSelList" type="xs:string" />
+              <xs:element name="Application" msprop:Generator_ColumnVarNameInTable="columnApplication" msprop:Generator_ColumnPropNameInRow="Application" msprop:Generator_ColumnPropNameInTable="ApplicationColumn" msprop:Generator_UserColumnName="Application" type="xs:string" />
+              <xs:element name="Editable" msprop:Generator_ColumnVarNameInTable="columnEditable" msprop:Generator_ColumnPropNameInRow="Editable" msprop:Generator_ColumnPropNameInTable="EditableColumn" msprop:Generator_UserColumnName="Editable" type="xs:boolean" />
+              <xs:element name="FUP" msprop:Generator_ColumnVarNameInTable="columnFUP" msprop:Generator_ColumnPropNameInRow="FUP" msprop:Generator_ColumnPropNameInTable="FUPColumn" msprop:Generator_UserColumnName="FUP" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SelListSmall" msprop:Generator_TableClassName="SelListSmallDataTable" msprop:Generator_TableVarName="tableSelListSmall" msprop:Generator_TablePropName="SelListSmall" msprop:Generator_RowDeletingName="SelListSmallRowDeleting" msprop:Generator_RowChangingName="SelListSmallRowChanging" msprop:Generator_RowEvHandlerName="SelListSmallRowChangeEventHandler" msprop:Generator_RowDeletedName="SelListSmallRowDeleted" msprop:Generator_UserTableName="SelListSmall" msprop:Generator_RowChangedName="SelListSmallRowChanged" msprop:Generator_RowEvArgName="SelListSmallRowChangeEvent" msprop:Generator_RowClassName="SelListSmallRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDOwnInt" msprop:Generator_ColumnVarNameInTable="columnIDOwnInt" msprop:Generator_ColumnPropNameInRow="IDOwnInt" msprop:Generator_ColumnPropNameInTable="IDOwnIntColumn" msprop:Generator_UserColumnName="IDOwnInt" type="xs:int" />
+              <xs:element name="IDOwnStr" msprop:Generator_ColumnVarNameInTable="columnIDOwnStr" msprop:Generator_ColumnPropNameInRow="IDOwnStr" msprop:Generator_ColumnPropNameInTable="IDOwnStrColumn" msprop:Generator_UserColumnName="IDOwnStr" type="xs:string" />
+              <xs:element name="SelList" msprop:Generator_ColumnVarNameInTable="columnSelList" msprop:Generator_ColumnPropNameInRow="SelList" msprop:Generator_ColumnPropNameInTable="SelListColumn" msprop:Generator_UserColumnName="SelList" type="xs:string" />
+              <xs:element name="IDSelList" msprop:Generator_ColumnVarNameInTable="columnIDSelList" msprop:Generator_ColumnPropNameInRow="IDSelList" msprop:Generator_ColumnPropNameInTable="IDSelListColumn" msprop:Generator_UserColumnName="IDSelList" type="xs:int" />
+              <xs:element name="IDGroupStr" msprop:Generator_ColumnVarNameInTable="columnIDGroupStr" msprop:Generator_ColumnPropNameInRow="IDGroupStr" msprop:Generator_ColumnPropNameInTable="IDGroupStrColumn" msprop:Generator_UserColumnName="IDGroupStr" type="xs:string" />
+              <xs:element name="Application" msprop:Generator_ColumnVarNameInTable="columnApplication" msprop:Generator_ColumnPropNameInRow="Application" msprop:Generator_ColumnPropNameInTable="ApplicationColumn" msprop:Generator_UserColumnName="Application" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SelListSmall1" msprop:Generator_TableClassName="SelListSmall1DataTable" msprop:Generator_TableVarName="tableSelListSmall1" msprop:Generator_RowChangedName="SelListSmall1RowChanged" msprop:Generator_TablePropName="SelListSmall1" msprop:Generator_RowDeletingName="SelListSmall1RowDeleting" msprop:Generator_RowChangingName="SelListSmall1RowChanging" msprop:Generator_RowEvHandlerName="SelListSmall1RowChangeEventHandler" msprop:Generator_RowDeletedName="SelListSmall1RowDeleted" msprop:Generator_RowClassName="SelListSmall1Row" msprop:Generator_UserTableName="SelListSmall1" msprop:Generator_RowEvArgName="SelListSmall1RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDOwnInt" msprop:Generator_ColumnVarNameInTable="columnIDOwnInt" msprop:Generator_ColumnPropNameInRow="IDOwnInt" msprop:Generator_ColumnPropNameInTable="IDOwnIntColumn" msprop:Generator_UserColumnName="IDOwnInt" type="xs:int" />
+              <xs:element name="IDOwnStr" msprop:Generator_ColumnVarNameInTable="columnIDOwnStr" msprop:Generator_ColumnPropNameInRow="IDOwnStr" msprop:Generator_ColumnPropNameInTable="IDOwnStrColumn" msprop:Generator_UserColumnName="IDOwnStr" type="xs:string" />
+              <xs:element name="SelList" msprop:Generator_ColumnVarNameInTable="columnSelList" msprop:Generator_ColumnPropNameInRow="SelList" msprop:Generator_ColumnPropNameInTable="SelListColumn" msprop:Generator_UserColumnName="SelList" type="xs:string" />
+              <xs:element name="IDSelList" msprop:Generator_ColumnVarNameInTable="columnIDSelList" msprop:Generator_ColumnPropNameInRow="IDSelList" msprop:Generator_ColumnPropNameInTable="IDSelListColumn" msprop:Generator_UserColumnName="IDSelList" type="xs:int" />
+              <xs:element name="IDGroupStr" msprop:Generator_ColumnVarNameInTable="columnIDGroupStr" msprop:Generator_ColumnPropNameInRow="IDGroupStr" msprop:Generator_ColumnPropNameInTable="IDGroupStrColumn" msprop:Generator_UserColumnName="IDGroupStr" type="xs:string" />
+              <xs:element name="Application" msprop:Generator_ColumnVarNameInTable="columnApplication" msprop:Generator_ColumnPropNameInRow="Application" msprop:Generator_ColumnPropNameInTable="ApplicationColumn" msprop:Generator_UserColumnName="Application" type="xs:string" />
+              <xs:element name="IDOwnIntParent" msprop:Generator_ColumnVarNameInTable="columnIDOwnIntParent" msprop:Generator_ColumnPropNameInRow="IDOwnIntParent" msprop:Generator_ColumnPropNameInTable="IDOwnIntParentColumn" msprop:Generator_UserColumnName="IDOwnIntParent" type="xs:int" />
+              <xs:element name="IDSelListParent" msprop:Generator_ColumnVarNameInTable="columnIDSelListParent" msprop:Generator_ColumnPropNameInRow="IDSelListParent" msprop:Generator_ColumnPropNameInTable="IDSelListParentColumn" msprop:Generator_UserColumnName="IDSelListParent" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="QueriesClamps" msprop:Generator_TableClassName="QueriesClampsDataTable" msprop:Generator_TableVarName="tableQueriesClamps" msprop:Generator_RowChangedName="QueriesClampsRowChanged" msprop:Generator_TablePropName="QueriesClamps" msprop:Generator_RowDeletingName="QueriesClampsRowDeleting" msprop:Generator_RowChangingName="QueriesClampsRowChanging" msprop:Generator_RowEvHandlerName="QueriesClampsRowChangeEventHandler" msprop:Generator_RowDeletedName="QueriesClampsRowDeleted" msprop:Generator_RowClassName="QueriesClampsRow" msprop:Generator_UserTableName="QueriesClamps" msprop:Generator_RowEvArgName="QueriesClampsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Sort" msprop:Generator_ColumnVarNameInTable="columnSort" msprop:Generator_ColumnPropNameInRow="Sort" msprop:Generator_ColumnPropNameInTable="SortColumn" msprop:Generator_UserColumnName="Sort" type="xs:int" />
+              <xs:element name="ClampKey" msprop:Generator_ColumnVarNameInTable="columnClampKey" msprop:Generator_ColumnPropNameInRow="ClampKey" msprop:Generator_ColumnPropNameInTable="ClampKeyColumn" msprop:Generator_UserColumnName="ClampKey" type="xs:int" />
+              <xs:element name="ClampEbene" msdata:Caption="ClampGroupNr" msprop:Generator_ColumnVarNameInTable="columnClampEbene" msprop:Generator_ColumnPropNameInRow="ClampEbene" msprop:Generator_ColumnPropNameInTable="ClampEbeneColumn" msprop:Generator_UserColumnName="ClampEbene" type="xs:int" />
+              <xs:element name="rQry" msprop:Generator_ColumnVarNameInTable="columnrQry" msprop:Generator_ColumnPropNameInRow="rQry" msprop:Generator_ColumnPropNameInTable="rQryColumn" msprop:Generator_UserColumnName="rQry" type="xs:anyType" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Protocol" msprop:Generator_TableClassName="ProtocolDataTable" msprop:Generator_TableVarName="tableProtocol" msprop:Generator_TablePropName="Protocol" msprop:Generator_RowDeletingName="ProtocolRowDeleting" msprop:Generator_RowChangingName="ProtocolRowChanging" msprop:Generator_RowEvHandlerName="ProtocolRowChangeEventHandler" msprop:Generator_RowDeletedName="ProtocolRowDeleted" msprop:Generator_UserTableName="Protocol" msprop:Generator_RowChangedName="ProtocolRowChanged" msprop:Generator_RowEvArgName="ProtocolRowChangeEvent" msprop:Generator_RowClassName="ProtocolRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ChangedAt" msprop:Generator_ColumnVarNameInTable="columnChangedAt" msprop:Generator_ColumnPropNameInRow="ChangedAt" msprop:Generator_ColumnPropNameInTable="ChangedAtColumn" msprop:Generator_UserColumnName="ChangedAt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FromUser" msprop:Generator_ColumnVarNameInTable="columnFromUser" msprop:Generator_ColumnPropNameInRow="FromUser" msprop:Generator_ColumnPropNameInTable="FromUserColumn" msprop:Generator_UserColumnName="FromUser" type="xs:string" />
+              <xs:element name="MedRecNr" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnMedRecNr" msprop:Generator_ColumnPropNameInRow="MedRecNr" msprop:Generator_ColumnPropNameInTable="MedRecNrColumn" msprop:Generator_UserColumnName="MedRecNr" type="xs:string" />
+              <xs:element name="ColName" msprop:Generator_ColumnVarNameInTable="columnColName" msprop:Generator_ColumnPropNameInRow="ColName" msprop:Generator_ColumnPropNameInTable="ColNameColumn" msprop:Generator_UserColumnName="ColName" type="xs:string" />
+              <xs:element name="ImputType" msprop:Generator_ColumnVarNameInTable="columnImputType" msprop:Generator_ColumnPropNameInRow="ImputType" msprop:Generator_ColumnPropNameInTable="ImputTypeColumn" msprop:Generator_UserColumnName="ImputType" type="xs:string" />
+              <xs:element name="OldValue" msprop:Generator_ColumnVarNameInTable="columnOldValue" msprop:Generator_ColumnPropNameInRow="OldValue" msprop:Generator_ColumnPropNameInTable="OldValueColumn" msprop:Generator_UserColumnName="OldValue" type="xs:string" />
+              <xs:element name="OldValueDB" msprop:Generator_ColumnVarNameInTable="columnOldValueDB" msprop:Generator_ColumnPropNameInRow="OldValueDB" msprop:Generator_ColumnPropNameInTable="OldValueDBColumn" msprop:Generator_UserColumnName="OldValueDB" type="xs:string" />
+              <xs:element name="NewValue" msprop:Generator_ColumnVarNameInTable="columnNewValue" msprop:Generator_ColumnPropNameInRow="NewValue" msprop:Generator_ColumnPropNameInTable="NewValueColumn" msprop:Generator_UserColumnName="NewValue" type="xs:string" />
+              <xs:element name="NewValueDB" msprop:Generator_ColumnVarNameInTable="columnNewValueDB" msprop:Generator_ColumnPropNameInRow="NewValueDB" msprop:Generator_ColumnPropNameInTable="NewValueDBColumn" msprop:Generator_UserColumnName="NewValueDB" type="xs:string" />
+              <xs:element name="IDStay" msprop:Generator_ColumnVarNameInTable="columnIDStay" msprop:Generator_ColumnPropNameInRow="IDStay" msprop:Generator_ColumnPropNameInTable="IDStayColumn" msprop:Generator_UserColumnName="IDStay" type="xs:int" />
+              <xs:element name="IDApplication" msprop:Generator_ColumnVarNameInTable="columnIDApplication" msprop:Generator_ColumnPropNameInRow="IDApplication" msprop:Generator_ColumnPropNameInTable="IDApplicationColumn" msprop:Generator_UserColumnName="IDApplication" type="xs:string" />
+              <xs:element name="IDParticipant" msprop:Generator_ColumnVarNameInTable="columnIDParticipant" msprop:Generator_ColumnPropNameInRow="IDParticipant" msprop:Generator_ColumnPropNameInTable="IDParticipantColumn" msprop:Generator_UserColumnName="IDParticipant" type="xs:string" />
+              <xs:element name="ProtFrom" msprop:Generator_ColumnVarNameInTable="columnProtFrom" msprop:Generator_ColumnPropNameInRow="ProtFrom" msprop:Generator_ColumnPropNameInTable="ProtFromColumn" msprop:Generator_UserColumnName="ProtFrom" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SqlTable" msprop:Generator_ColumnVarNameInTable="columnSqlTable" msprop:Generator_ColumnPropNameInRow="SqlTable" msprop:Generator_ColumnPropNameInTable="SqlTableColumn" msprop:Generator_UserColumnName="SqlTable" type="xs:string" />
+              <xs:element name="FldShort" msprop:Generator_ColumnVarNameInTable="columnFldShort" msprop:Generator_ColumnPropNameInRow="FldShort" msprop:Generator_ColumnPropNameInTable="FldShortColumn" msprop:Generator_UserColumnName="FldShort" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Chapters" msprop:Generator_TableClassName="ChaptersDataTable" msprop:Generator_TableVarName="tableChapters" msprop:Generator_TablePropName="Chapters" msprop:Generator_RowDeletingName="ChaptersRowDeleting" msprop:Generator_RowChangingName="ChaptersRowChanging" msprop:Generator_RowEvHandlerName="ChaptersRowChangeEventHandler" msprop:Generator_RowDeletedName="ChaptersRowDeleted" msprop:Generator_UserTableName="Chapters" msprop:Generator_RowChangedName="ChaptersRowChanged" msprop:Generator_RowEvArgName="ChaptersRowChangeEvent" msprop:Generator_RowClassName="ChaptersRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="ChapterKey" msprop:Generator_ColumnVarNameInTable="columnChapterKey" msprop:Generator_ColumnPropNameInRow="ChapterKey" msprop:Generator_ColumnPropNameInTable="ChapterKeyColumn" msprop:Generator_UserColumnName="ChapterKey" type="xs:string" />
+              <xs:element name="Chapter" msprop:Generator_ColumnVarNameInTable="columnChapter" msprop:Generator_ColumnPropNameInRow="Chapter" msprop:Generator_ColumnPropNameInTable="ChapterColumn" msprop:Generator_UserColumnName="Chapter" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tblSettings" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="CriteriasSmall_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CriteriasSmall" />
+      <xs:field xpath="mstns:FldShort" />
+      <xs:field xpath="mstns:Application" />
+    </xs:unique>
+    <xs:unique name="SelListSmall_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SelListSmall" />
+      <xs:field xpath="mstns:IDSelList" />
+    </xs:unique>
+    <xs:unique name="QueriesClamps_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:QueriesClamps" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="CriteriasSmall_SelListSmall" msdata:parent="CriteriasSmall" msdata:child="SelListSmall" msdata:parentkey="Application FldShortSelList" msdata:childkey="Application IDGroupStr" msprop:Generator_UserChildTable="SelListSmall" msprop:Generator_ChildPropName="GetSelListSmallRows" msprop:Generator_UserRelationName="CriteriasSmall_SelListSmall" msprop:Generator_ParentPropName="CriteriasSmallRowParent" msprop:Generator_RelationVarName="relationCriteriasSmall_SelListSmall" msprop:Generator_UserParentTable="CriteriasSmall" />
+      <msdata:Relationship name="SelListSmall_SelListSmall1" msdata:parent="SelListSmall" msdata:child="SelListSmall1" msdata:parentkey="IDSelList IDOwnInt" msdata:childkey="IDSelListParent IDOwnIntParent" msprop:Generator_UserChildTable="SelListSmall1" msprop:Generator_ChildPropName="GetSelListSmall1Rows" msprop:Generator_UserRelationName="SelListSmall_SelListSmall1" msprop:Generator_RelationVarName="relationSelListSmall_SelListSmall1" msprop:Generator_UserParentTable="SelListSmall" msprop:Generator_ParentPropName="SelListSmallRowParent" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

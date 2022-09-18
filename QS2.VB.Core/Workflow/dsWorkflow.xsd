@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsWorkflow" targetNamespace="http://tempuri.org/dsWorkflow.xsd" xmlns:mstns="http://tempuri.org/dsWorkflow.xsd" xmlns="http://tempuri.org/dsWorkflow.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsWorkflow" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsWorkflow" msprop:Generator_UserDSName="dsWorkflow">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblImportInterface1" msprop:Generator_TableClassName="tblImportInterface1DataTable" msprop:Generator_TableVarName="tabletblImportInterface1" msprop:Generator_RowChangedName="tblImportInterface1RowChanged" msprop:Generator_TablePropName="tblImportInterface1" msprop:Generator_RowDeletingName="tblImportInterface1RowDeleting" msprop:Generator_RowChangingName="tblImportInterface1RowChanging" msprop:Generator_RowEvHandlerName="tblImportInterface1RowChangeEventHandler" msprop:Generator_RowDeletedName="tblImportInterface1RowDeleted" msprop:Generator_RowClassName="tblImportInterface1Row" msprop:Generator_UserTableName="tblImportInterface1" msprop:Generator_RowEvArgName="tblImportInterface1RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PatID" msprop:Generator_ColumnVarNameInTable="columnPatID" msprop:Generator_ColumnPropNameInRow="PatID" msprop:Generator_ColumnPropNameInTable="PatIDColumn" msprop:Generator_UserColumnName="PatID" type="xs:string" />
+              <xs:element name="PatLName" msprop:Generator_ColumnVarNameInTable="columnPatLName" msprop:Generator_ColumnPropNameInRow="PatLName" msprop:Generator_ColumnPropNameInTable="PatLNameColumn" msprop:Generator_UserColumnName="PatLName" type="xs:string" />
+              <xs:element name="PatFName" msprop:Generator_ColumnVarNameInTable="columnPatFName" msprop:Generator_ColumnPropNameInRow="PatFName" msprop:Generator_ColumnPropNameInTable="PatFNameColumn" msprop:Generator_UserColumnName="PatFName" type="xs:string" />
+              <xs:element name="PatGender" msprop:Generator_ColumnVarNameInTable="columnPatGender" msprop:Generator_ColumnPropNameInRow="PatGender" msprop:Generator_ColumnPropNameInTable="PatGenderColumn" msprop:Generator_UserColumnName="PatGender" type="xs:int" />
+              <xs:element name="PatSSN" msprop:Generator_ColumnVarNameInTable="columnPatSSN" msprop:Generator_ColumnPropNameInRow="PatSSN" msprop:Generator_ColumnPropNameInTable="PatSSNColumn" msprop:Generator_UserColumnName="PatSSN" type="xs:string" />
+              <xs:element name="PatDOB" msprop:Generator_ColumnVarNameInTable="columnPatDOB" msprop:Generator_ColumnPropNameInRow="PatDOB" msprop:Generator_ColumnPropNameInTable="PatDOBColumn" msprop:Generator_UserColumnName="PatDOB" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PatCountry" msprop:Generator_ColumnVarNameInTable="columnPatCountry" msprop:Generator_ColumnPropNameInRow="PatCountry" msprop:Generator_ColumnPropNameInTable="PatCountryColumn" msprop:Generator_UserColumnName="PatCountry" type="xs:string" />
+              <xs:element name="PatZIP" msprop:Generator_ColumnVarNameInTable="columnPatZIP" msprop:Generator_ColumnPropNameInRow="PatZIP" msprop:Generator_ColumnPropNameInTable="PatZIPColumn" msprop:Generator_UserColumnName="PatZIP" type="xs:string" />
+              <xs:element name="PatCity" msprop:Generator_ColumnVarNameInTable="columnPatCity" msprop:Generator_ColumnPropNameInRow="PatCity" msprop:Generator_ColumnPropNameInTable="PatCityColumn" msprop:Generator_UserColumnName="PatCity" type="xs:string" />
+              <xs:element name="PatTel" msprop:Generator_ColumnVarNameInTable="columnPatTel" msprop:Generator_ColumnPropNameInRow="PatTel" msprop:Generator_ColumnPropNameInTable="PatTelColumn" msprop:Generator_UserColumnName="PatTel" type="xs:string" />
+              <xs:element name="PatStreet" msprop:Generator_ColumnVarNameInTable="columnPatStreet" msprop:Generator_ColumnPropNameInRow="PatStreet" msprop:Generator_ColumnPropNameInTable="PatStreetColumn" msprop:Generator_UserColumnName="PatStreet" type="xs:string" />
+              <xs:element name="AdmitDt" msprop:Generator_ColumnVarNameInTable="columnAdmitDt" msprop:Generator_ColumnPropNameInRow="AdmitDt" msprop:Generator_ColumnPropNameInTable="AdmitDtColumn" msprop:Generator_UserColumnName="AdmitDt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DischDt" msprop:Generator_ColumnVarNameInTable="columnDischDt" msprop:Generator_ColumnPropNameInRow="DischDt" msprop:Generator_ColumnPropNameInTable="DischDtColumn" msprop:Generator_UserColumnName="DischDt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MedRecN" msprop:Generator_ColumnVarNameInTable="columnMedRecN" msprop:Generator_ColumnPropNameInRow="MedRecN" msprop:Generator_ColumnPropNameInTable="MedRecNColumn" msprop:Generator_UserColumnName="MedRecN" type="xs:string" />
+              <xs:element name="PatCountryID" msprop:Generator_ColumnVarNameInTable="columnPatCountryID" msprop:Generator_ColumnPropNameInRow="PatCountryID" msprop:Generator_ColumnPropNameInTable="PatCountryIDColumn" msprop:Generator_UserColumnName="PatCountryID" type="xs:int" />
+              <xs:element name="PatOrigin" msprop:Generator_ColumnVarNameInTable="columnPatOrigin" msprop:Generator_ColumnPropNameInRow="PatOrigin" msprop:Generator_ColumnPropNameInTable="PatOriginColumn" msprop:Generator_UserColumnName="PatOrigin" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

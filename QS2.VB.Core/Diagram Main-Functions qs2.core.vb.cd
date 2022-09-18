@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="qs2.core.vb.sqlAdmin">
+    <Position X="3.25" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="qs2.core.vb.sqlAdmin.eDbTypAuswObj" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypSelListGetMaxID" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="qs2.core.vb.sqlAdmin.ParametersSelListEntries" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypeSelvSelListEntriesObj" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypSelRelationship" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eAdjust" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypSelListID" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypSelAdjust" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypAuswahlList" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypSelQueryJoinsTemp" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypStayAdditions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypAuswahlObj" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypeSideLogic" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypSelGruppen" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypSelQueryDef" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypSelStayAdditions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypSelCriteriaOpt" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlAdmin.eTypSelCriteria" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\sqlAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>s3AUBaKjIrRawitF4EbYXoUTj+VYAmNBQaAAc7OzVEA=</HashCode>
+      <FileName>sql\Admin\sqlAdmin.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.vb.dsAdmin">
+    <Position X="6.25" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="qs2.core.vb.dsAdmin.tblQueryJoinsTempRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblSelListEntriesDataTable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\dsAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.tblQueryJoinsTempRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.getAllUsersWithRightsDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblSelListEntriesObjRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblAdjustRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.tblQueriesDefRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.tblCriteriaOptRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.tblRelationshipRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.dbAutoUIRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.getCriteriasForUserRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.getCriteriasForUserRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.getCriteriasForUserRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.protokollRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblQueriesDefRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblStayAdditionsDataTable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\dsAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblCriteriaRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblSelListEntriesRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.getButtonsForUserRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.tblSideLogicRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.tblCriteriaOptDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.dbAutoUIRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.tblAdjustRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Delegate Name="qs2.core.vb.dsAdmin.protokollRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Delegate Name="qs2.core.vb.dsAdmin.dbAutoUIRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.tblCriteriaRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.tblCriteriaOptRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.tblQueryJoinsTempRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblSelListGroupRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblStayAdditionsRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblQueryJoinsTempDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.getAllUsersWithRightsRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Delegate Name="qs2.core.vb.dsAdmin.tblSelListEntriesObjRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.tblSelListGroupRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.tblStayAdditionsRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.getAllUsersWithRolesRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblAdjustDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblSideLogicRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.vSelListEntriesObjRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.vListEntriesWithGroupRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.vSelListEntriesObjRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblAdjustRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.getButtonsForUserDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblSelListEntriesObjRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.protokollRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblSelListGroupDataTable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\dsAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblRelationshipRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.SelListMaxIDsDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.vSelListEntriesObjDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.SelListMaxIDsRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.tblSelListEntriesRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.tblCriteriaDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.getAllUsersWithRolesRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.getButtonsForUserRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblCriteriaOptRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblSideLogicDataTable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\dsAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblSelListEntriesObjDataTable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\dsAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.getAllUsersWithRolesRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.vListEntriesWithGroupRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.SelListMaxIDsRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblQueriesDefDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblSideLogicRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblRelationshipRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.tblSelListGroupRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.getAllUsersWithRightsRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.dbAutoUIDataTable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\dsAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.vSelListEntriesObjRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblRelationshipDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.protokollDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.tblCriteriaRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Delegate Name="qs2.core.vb.dsAdmin.SelListMaxIDsRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.tblSelListEntriesRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.vListEntriesWithGroupDataTable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Admin\dsAdmin.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.getAllUsersWithRightsRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.getAllUsersWithRolesDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.vListEntriesWithGroupRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.getCriteriasForUserDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsAdmin.getButtonsForUserRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsAdmin.tblQueriesDefRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsAdmin.tblStayAdditionsRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gkAQQMKJgxCNABNEXNQQQAEEw2jGaDlAFAaiCAESRBk=</HashCode>
+      <FileName>sql\Admin\dsAdmin.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.vb.sqlObjects">
+    <Position X="8.5" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="qs2.core.vb.sqlObjects.eTypSelObj" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Objects\sqlObjects.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlObjects.eTypObj" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Objects\sqlObjects.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlObjects.eTypSelAdr" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Objects\sqlObjects.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlObjects.eTypSelAnspr" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Objects\sqlObjects.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlObjects.eTypSelObjRights" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Objects\sqlObjects.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlObjects.eTypSelStay" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Objects\sqlObjects.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="qs2.core.vb.sqlObjects.eTypSelMedArchiv" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Objects\sqlObjects.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ECPYgzJCKnQpaEFJAjCABIB6AAcQgCTEAqAUYAGQWBA=</HashCode>
+      <FileName>sql\Objects\sqlObjects.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.vb.dsObjects">
+    <Position X="11.5" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="qs2.core.vb.dsObjects.tblMedArchivRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Delegate Name="qs2.core.vb.dsObjects.tblObjectRelRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsObjects.tblStayRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsObjects.tblObjectRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsObjects.tblMedArchivRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsObjects.tblObjectRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsObjects.tblStayDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsObjects.tblAdressRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsObjects.tblMedArchivRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsObjects.tblAdressRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsObjects.tblAdressRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsObjects.tblStayRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsObjects.tblObjectRelRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="qs2.core.vb.dsObjects.tblStayRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="qs2.core.vb.dsObjects.tblObjectRelDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsObjects.tblObjectRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsObjects.tblObject1DataTable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Objects\dsObjects.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="qs2.core.vb.dsObjects.tblAdressDataTable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\Objects\dsObjects.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="qs2.core.vb.dsObjects.tblMedArchivDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsObjects.tblObjectDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="qs2.core.vb.dsObjects.tblObjectRelRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AABCGAAABwAgAAJAFAAAYYAAAAiCQBgAAAAABgEADBA=</HashCode>
+      <FileName>sql\Objects\dsObjects.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.vb.coreStaysProducts">
+    <Position X="11.5" Y="5.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>GAKAEAACAAEAEAQAAAAEAAAACAAAAAAAACABAEAAAAA=</HashCode>
+      <FileName>sql\products\coreStaysProducts.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.vb.cTranslate">
+    <Position X="11.5" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>sql\cTranslate.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="qs2.core.vb.businessFramework">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <NestedTypes>
+      <Enum Name="qs2.core.vb.businessFramework.eTypeProtocoll" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\businessFramework.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Delegate Name="qs2.core.vb.businessFramework.StatusUI" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\businessFramework.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Class Name="qs2.core.vb.businessFramework.cSelListAndObj" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\businessFramework.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="qs2.core.vb.businessFramework.cProtEntry" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\businessFramework.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="qs2.core.vb.businessFramework.cProtEntryDetail" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>sql\businessFramework.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>MCCCQCQAZBAABUAQFgn5kAckABtQAITAY0BARA0iAAA=</HashCode>
+      <FileName>sql\businessFramework.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

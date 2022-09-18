@@ -1,0 +1,826 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="dbConn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="daSelListEntrys.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+  <metadata name="SqlCommand5.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand5.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand5.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand6.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand6.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand6.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblSelListEntries] ([ID], [IDGuid], [IDRessource], [IDOwnInt], [IDOwnStr], [sort], [IsMain], [TypeQry], [TypeStr], [Table], [FldShortColumn], [picture], [IDGroup], [CreatedUser], [Private], [VersionNrFrom], [VersionNrTo], [Classification], [Created], [Sql], [UIType], [Description], [IDParticipant], [Extern], [SubQuery], [LicenseKey], [Published], [ForServices]) VALUES (@ID, @IDGuid, @IDRessource, @IDOwnInt, @IDOwnStr, @sort, @IsMain, @TypeQry, @TypeStr, @Table, @FldShortColumn, @picture, @IDGroup, @CreatedUser, @Private, @VersionNrFrom, @VersionNrTo, @Classification, @Created, @Sql, @UIType, @Description, @IDParticipant, @Extern, @SubQuery, @LicenseKey, @Published, @ForServices)</value>
+  </data>
+  <metadata name="SqlCommand7.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand7.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand7.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand7.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDGuid, IDRessource, IDOwnInt, IDOwnStr, sort, IsMain, TypeQry, TypeStr, [Table], FldShortColumn, picture, IDGroup, CreatedUser, Private, VersionNrFrom, VersionNrTo, Classification, Created, Sql, UIType, Description, 
+                         IDParticipant, Extern, SubQuery, LicenseKey, Published, ForServices
+FROM            qs2.tblSelListEntries</value>
+  </data>
+  <metadata name="SqlCommand8.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand8.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand8.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand8.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblSelListEntries] SET [ID] = @ID, [IDGuid] = @IDGuid, [IDRessource] = @IDRessource, [IDOwnInt] = @IDOwnInt, [IDOwnStr] = @IDOwnStr, [sort] = @sort, [IsMain] = @IsMain, [TypeQry] = @TypeQry, [TypeStr] = @TypeStr, [Table] = @Table, [FldShortColumn] = @FldShortColumn, [picture] = @picture, [IDGroup] = @IDGroup, [CreatedUser] = @CreatedUser, [Private] = @Private, [VersionNrFrom] = @VersionNrFrom, [VersionNrTo] = @VersionNrTo, [Classification] = @Classification, [Created] = @Created, [Sql] = @Sql, [UIType] = @UIType, [Description] = @Description, [IDParticipant] = @IDParticipant, [Extern] = @Extern, [SubQuery] = @SubQuery, [LicenseKey] = @LicenseKey, [Published] = @Published, [ForServices] = @ForServices WHERE (([ID] = @Original_ID))</value>
+  </data>
+  <metadata name="daSelListGroup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 134</value>
+  </metadata>
+  <metadata name="SqlCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand2.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand2.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblSelListGroup] ([ID], [IDGuid], [IDGroupStr], [IDApplication], [IDParticipant], [IDRessource], [sys], [VersionNrFrom], [VersionNrTo], [Sublist], [TypeEnum], [SortColumn], [Classification], [Description]) VALUES (@ID, @IDGuid, @IDGroupStr, @IDApplication, @IDParticipant, @IDRessource, @sys, @VersionNrFrom, @VersionNrTo, @Sublist, @TypeEnum, @SortColumn, @Classification, @Description)</value>
+  </data>
+  <metadata name="SqlCommand3.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand3.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand3.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDGuid, IDGroupStr, IDApplication, IDParticipant, IDRessource, sys, VersionNrFrom, VersionNrTo, Sublist, TypeEnum, SortColumn, Classification, 
+                         Description
+FROM           qs2.tblSelListGroup</value>
+  </data>
+  <metadata name="SqlCommand4.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand4.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand4.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblSelListGroup] SET [ID] = @ID, [IDGuid] = @IDGuid, [IDGroupStr] = @IDGroupStr, [IDApplication] = @IDApplication, [IDParticipant] = @IDParticipant, [IDRessource] = @IDRessource, [sys] = @sys, [VersionNrFrom] = @VersionNrFrom, [VersionNrTo] = @VersionNrTo, [Sublist] = @Sublist, [TypeEnum] = @TypeEnum, [SortColumn] = @SortColumn, [Classification] = @Classification, [Description] = @Description WHERE (([ID] = @Original_ID))</value>
+  </data>
+  <metadata name="daSelListEntrysObj.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 173</value>
+  </metadata>
+  <metadata name="SqlCommand13.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand13.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand13.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand14.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand14.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand14.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand14.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblSelListEntriesObj] ([IDGuid], [FldShort], [IDApplication], [IDObject], [IDSelListEntrySublist], [IDSelListEntry], [IDStay], [IDParticipantStay], [IDApplicationStay], [typIDGroup], [From], [To], [IDClassification], [IDOwnInt], [Created], [CreatedBy], [Modified], [ModifiedBy], [Sort], [Description], [IsMain], [Active], [IDParticipant], [IDObjectGuid], [Transfered], [nVisible]) VALUES (@IDGuid, @FldShort, @IDApplication, @IDObject, @IDSelListEntrySublist, @IDSelListEntry, @IDStay, @IDParticipantStay, @IDApplicationStay, @typIDGroup, @From, @To, @IDClassification, @IDOwnInt, @Created, @CreatedBy, @Modified, @ModifiedBy, @Sort, @Description, @IsMain, @Active, @IDParticipant, @IDObjectGuid, @Transfered, @nVisible)</value>
+  </data>
+  <metadata name="SqlCommand15.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand15.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>307, 173</value>
+  </metadata>
+  <metadata name="SqlCommand15.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand15.CommandText" xml:space="preserve">
+    <value>SELECT        IDGuid, FldShort, IDApplication, IDObject, IDSelListEntrySublist, IDSelListEntry, IDStay, IDParticipantStay, IDApplicationStay, typIDGroup, [From], [To], IDClassification, IDOwnInt, Created, CreatedBy, Modified, ModifiedBy, Sort, 
+                         Description, IsMain, Active, IDParticipant, IDObjectGuid, Transfered, nVisible
+FROM            qs2.tblSelListEntriesObj</value>
+  </data>
+  <metadata name="SqlCommand16.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand16.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand16.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand16.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblSelListEntriesObj] SET [IDGuid] = @IDGuid, [FldShort] = @FldShort, [IDApplication] = @IDApplication, [IDObject] = @IDObject, [IDSelListEntrySublist] = @IDSelListEntrySublist, [IDSelListEntry] = @IDSelListEntry, [IDStay] = @IDStay, [IDParticipantStay] = @IDParticipantStay, [IDApplicationStay] = @IDApplicationStay, [typIDGroup] = @typIDGroup, [From] = @From, [To] = @To, [IDClassification] = @IDClassification, [IDOwnInt] = @IDOwnInt, [Created] = @Created, [CreatedBy] = @CreatedBy, [Modified] = @Modified, [ModifiedBy] = @ModifiedBy, [Sort] = @Sort, [Description] = @Description, [IsMain] = @IsMain, [Active] = @Active, [IDParticipant] = @IDParticipant, [IDObjectGuid] = @IDObjectGuid, [Transfered] = @Transfered, [nVisible] = @nVisible WHERE (([IDGuid] = @Original_IDGuid))</value>
+  </data>
+  <metadata name="daAdjust.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 290</value>
+  </metadata>
+  <metadata name="SqlDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlDeleteCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlDeleteCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlInsertCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlInsertCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlInsertCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlSelectCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlSelectCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlUpdateCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlUpdateCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlUpdateCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlUpdateCommand1.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblAdjust] SET [setting] = @setting, [client] = @client, [usrSetting] = @usrSetting, [type] = @type, [str] = @str, [dbl] = @dbl, [bool] = @bool, [dat] = @dat, [byt] = @byt WHERE (([setting] = @Original_setting) AND ([client] = @Original_client))</value>
+  </data>
+  <metadata name="daCriteria.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 368</value>
+  </metadata>
+  <metadata name="SqlCommand9.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand9.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand9.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand10.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand10.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand10.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand10.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblCriteria] ([FldShort], [IDApplication], [ControlType], [SQLValueListSelect], [AliasFldShort], [SourceTable], [ControlPattern], [MaskInput], [ControlMinVal], [ControlMaxVal], [ControlMinLength], [ControlMaxLength], [Used], [Validate], [Editable], [UserDefined], [UseInQueries], [LicenseKey], [Description], [ShowAt], [prefered], [Classification], [DefaultValues], [DefaultValuesCustomer], [UsedCustomer]) VALUES (@FldShort, @IDApplication, @ControlType, @SQLValueListSelect, @AliasFldShort, @SourceTable, @ControlPattern, @MaskInput, @ControlMinVal, @ControlMaxVal, @ControlMinLength, @ControlMaxLength, @Used, @Validate, @Editable, @UserDefined, @UseInQueries, @LicenseKey, @Description, @ShowAt, @prefered, @Classification, @DefaultValues, @DefaultValuesCustomer, @UsedCustomer)</value>
+  </data>
+  <metadata name="SqlCommand11.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand11.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand11.CommandText" xml:space="preserve">
+    <value>SELECT        FldShort, IDApplication, ControlType, SQLValueListSelect, AliasFldShort, SourceTable, ControlPattern, MaskInput, ControlMinVal, ControlMaxVal, ControlMinLength, ControlMaxLength, Used, Validate, Editable, UserDefined, 
+                         UseInQueries, LicenseKey, Description, ShowAt, prefered, Classification, DefaultValues, DefaultValuesCustomer, UsedCustomer
+FROM            qs2.tblCriteria</value>
+  </data>
+  <metadata name="SqlCommand12.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand12.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>525, 212</value>
+  </metadata>
+  <metadata name="SqlCommand12.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand12.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblCriteria] SET [FldShort] = @FldShort, [IDApplication] = @IDApplication, [ControlType] = @ControlType, [SQLValueListSelect] = @SQLValueListSelect, [AliasFldShort] = @AliasFldShort, [SourceTable] = @SourceTable, [ControlPattern] = @ControlPattern, [MaskInput] = @MaskInput, [ControlMinVal] = @ControlMinVal, [ControlMaxVal] = @ControlMaxVal, [ControlMinLength] = @ControlMinLength, [ControlMaxLength] = @ControlMaxLength, [Used] = @Used, [Validate] = @Validate, [Editable] = @Editable, [UserDefined] = @UserDefined, [UseInQueries] = @UseInQueries, [LicenseKey] = @LicenseKey, [Description] = @Description, [ShowAt] = @ShowAt, [prefered] = @prefered, [Classification] = @Classification, [DefaultValues] = @DefaultValues, [DefaultValuesCustomer] = @DefaultValuesCustomer, [UsedCustomer] = @UsedCustomer WHERE (([FldShort] = @Original_FldShort) AND ([IDApplication] = @Original_IDApplication))</value>
+  </data>
+  <metadata name="daCriteriaOpt.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 407</value>
+  </metadata>
+  <metadata name="SqlCommand17.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand17.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand17.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand18.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand18.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand18.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand18.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblCriteriaOpt] ([FldShort], [IDApplication], [Parameter], [Value], [Referenze], [VersionNrFrom], [VersionNrTo]) VALUES (@FldShort, @IDApplication, @Parameter, @Value, @Referenze, @VersionNrFrom, @VersionNrTo)</value>
+  </data>
+  <metadata name="SqlCommand19.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand19.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand19.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand20.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand20.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 251</value>
+  </metadata>
+  <metadata name="SqlCommand20.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand20.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblCriteriaOpt] SET [FldShort] = @FldShort, [IDApplication] = @IDApplication, [Parameter] = @Parameter, [Value] = @Value, [Referenze] = @Referenze, [VersionNrFrom] = @VersionNrFrom, [VersionNrTo] = @VersionNrTo WHERE (([FldShort] = @Original_FldShort) AND ([IDApplication] = @Original_IDApplication) AND ([Parameter] = @Original_Parameter))</value>
+  </data>
+  <metadata name="davListEntriesWithGroup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 446</value>
+  </metadata>
+  <metadata name="SqlCommand27.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand27.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand27.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand27.CommandText" xml:space="preserve">
+    <value>SELECT        s_ID, s_IDGuid, s_IDRessource, s_IDOwnInt, s_IDOwnStr, s_sort, s_IsMain, s_TypeStr, s_Table, s_FldShortColum, s_picture, s_IDGroup, s_CreatedUser, s_Private, 
+                         s_Classification, s_Created, s_Sql, s_VersionNrFrom, s_VersionNrTo, s_TypeQry, s_UIType, s_Description, g_IDGuid, g_IDGroupStr, g_IDApplication, 
+                         g_IDParticipant, g_IDRessource, g_sys, g_Sublist, g_TypeEnum, g_SortColumn, g_Classification, g_VersionNrFrom, g_VersionNrTo, g_Description
+FROM            qs2.vListEntriesWithGroup</value>
+  </data>
+  <metadata name="daStayAdditions.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 485</value>
+  </metadata>
+  <metadata name="SqlCommand25.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand25.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand25.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand26.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand26.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>149, 368</value>
+  </metadata>
+  <metadata name="SqlCommand26.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand26.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblStayAdditions] ([IDGuid], [IDStayParent], [IDApplicationStayParent], [IDParticipantStayParent], [IDStayChild], [IDApplicationStayChild], [IDParticipantStayChild], [IDSelList], [typ], [Sort], [Classification], [Description], [IDSelListFirst], [IDPatient], [IDApplication], [IDObject]) VALUES (@IDGuid, @IDStayParent, @IDApplicationStayParent, @IDParticipantStayParent, @IDStayChild, @IDApplicationStayChild, @IDParticipantStayChild, @IDSelList, @typ, @Sort, @Classification, @Description, @IDSelListFirst, @IDPatient, @IDApplication, @IDObject)</value>
+  </data>
+  <metadata name="SqlCommand28.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand28.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand28.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand28.CommandText" xml:space="preserve">
+    <value>SELECT        IDGuid, IDStayParent, IDApplicationStayParent, IDParticipantStayParent, IDStayChild, IDApplicationStayChild, IDParticipantStayChild, IDSelList, typ, Sort, Classification, Description, IDSelListFirst, IDPatient, 
+                         IDApplication, IDObject
+FROM            qs2.tblStayAdditions</value>
+  </data>
+  <metadata name="SqlCommand29.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand29.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand29.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand29.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblStayAdditions] SET [IDGuid] = @IDGuid, [IDStayParent] = @IDStayParent, [IDApplicationStayParent] = @IDApplicationStayParent, [IDParticipantStayParent] = @IDParticipantStayParent, [IDStayChild] = @IDStayChild, [IDApplicationStayChild] = @IDApplicationStayChild, [IDParticipantStayChild] = @IDParticipantStayChild, [IDSelList] = @IDSelList, [typ] = @typ, [Sort] = @Sort, [Classification] = @Classification, [Description] = @Description, [IDSelListFirst] = @IDSelListFirst, [IDPatient] = @IDPatient, [IDApplication] = @IDApplication, [IDObject] = @IDObject WHERE (([IDGuid] = @Original_IDGuid))</value>
+  </data>
+  <metadata name="SqlSelectCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlSelectCommand2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlSelectCommand2.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlDeleteCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlDeleteCommand2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlDeleteCommand2.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daRelationship.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 524</value>
+  </metadata>
+  <metadata name="SqlInsertCommand.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlInsertCommand.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlInsertCommand.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlInsertCommand.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblRelationship] ([FldShortParent], [IDApplicationParent], [FldShortChild], [IDApplicationChild], [Conditions], [Type], [TypeSub], [IDKey], [IDGuid], [ConditionsSub], [Sort]) VALUES (@FldShortParent, @IDApplicationParent, @FldShortChild, @IDApplicationChild, @Conditions, @Type, @TypeSub, @IDKey, @IDGuid, @ConditionsSub, @Sort)</value>
+  </data>
+  <metadata name="SqlUpdateCommand.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlUpdateCommand.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlUpdateCommand.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlUpdateCommand.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblRelationship] SET [FldShortParent] = @FldShortParent, [IDApplicationParent] = @IDApplicationParent, [FldShortChild] = @FldShortChild, [IDApplicationChild] = @IDApplicationChild, [Conditions] = @Conditions, [Type] = @Type, [TypeSub] = @TypeSub, [IDKey] = @IDKey, [IDGuid] = @IDGuid, [ConditionsSub] = @ConditionsSub, [Sort] = @Sort WHERE (([IDGuid] = @Original_IDGuid))</value>
+  </data>
+  <metadata name="daQueriesDef.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 563</value>
+  </metadata>
+  <metadata name="SqlCommand21.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand21.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand21.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand22.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand22.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand22.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand22.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblQueriesDef] ([IDGuid], [UserInput], [FunctionPar], [Combination], [QryTable], [QryColumn], [CriteriaFldShort], [CriteriaApplication], [IsSQLServerField], [Label], [ControlType], [Typ], [Condition], [ValueMin], [Max], [ValueMinIDRes], [MaxIDRes], [CombinationEnd], [freeSql], [Sort], [IDSelList], [ApplicationOwn], [ParticipantOwn], [All], [SpecialDefinition], [ComboAsDropDown], [ComboAsDropDownCondition], [SpecialDefinitionMax], [Chapter], [Chapters], [ChaptersDone], [Placeholder]) VALUES (@IDGuid, @UserInput, @FunctionPar, @Combination, @QryTable, @QryColumn, @CriteriaFldShort, @CriteriaApplication, @IsSQLServerField, @Label, @ControlType, @Typ, @Condition, @ValueMin, @Max, @ValueMinIDRes, @MaxIDRes, @CombinationEnd, @freeSql, @Sort, @IDSelList, @ApplicationOwn, @ParticipantOwn, @All, @SpecialDefinition, @ComboAsDropDown, @ComboAsDropDownCondition, @SpecialDefinitionMax, @Chapter, @Chapters, @ChaptersDone, @Placeholder)</value>
+  </data>
+  <metadata name="SqlCommand23.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand23.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand23.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand23.CommandText" xml:space="preserve">
+    <value>SELECT        IDGuid, UserInput, FunctionPar, Combination, QryTable, QryColumn, CriteriaFldShort, CriteriaApplication, IsSQLServerField, Label, ControlType, Typ, Condition, ValueMin, Max, ValueMinIDRes, MaxIDRes, CombinationEnd, 
+                         freeSql, Sort, IDSelList, ApplicationOwn, ParticipantOwn, [All], SpecialDefinition, ComboAsDropDown, ComboAsDropDownCondition, SpecialDefinitionMax, Chapter, Chapters, ChaptersDone, Placeholder
+FROM            qs2.tblQueriesDef</value>
+  </data>
+  <metadata name="SqlCommand24.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand24.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand24.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand24.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblQueriesDef] SET [IDGuid] = @IDGuid, [UserInput] = @UserInput, [FunctionPar] = @FunctionPar, [Combination] = @Combination, [QryTable] = @QryTable, [QryColumn] = @QryColumn, [CriteriaFldShort] = @CriteriaFldShort, [CriteriaApplication] = @CriteriaApplication, [IsSQLServerField] = @IsSQLServerField, [Label] = @Label, [ControlType] = @ControlType, [Typ] = @Typ, [Condition] = @Condition, [ValueMin] = @ValueMin, [Max] = @Max, [ValueMinIDRes] = @ValueMinIDRes, [MaxIDRes] = @MaxIDRes, [CombinationEnd] = @CombinationEnd, [freeSql] = @freeSql, [Sort] = @Sort, [IDSelList] = @IDSelList, [ApplicationOwn] = @ApplicationOwn, [ParticipantOwn] = @ParticipantOwn, [All] = @All, [SpecialDefinition] = @SpecialDefinition, [ComboAsDropDown] = @ComboAsDropDown, [ComboAsDropDownCondition] = @ComboAsDropDownCondition, [SpecialDefinitionMax] = @SpecialDefinitionMax, [Chapter] = @Chapter, [Chapters] = @Chapters, [ChaptersDone] = @ChaptersDone, [Placeholder] = @Placeholder WHERE (([IDGuid] = @Original_IDGuid))</value>
+  </data>
+  <metadata name="daQueryJoinsTemp.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 602</value>
+  </metadata>
+  <metadata name="SqlCommand30.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand30.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand30.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand31.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand31.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand31.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand31.CommandText" xml:space="preserve">
+    <value>INSERT INTO [qs2].[tblQueryJoinsTemp] ([IDGuid], [FromTable], [FromColumn], [ToTable], [ToColumn], [Order], [TypJoin], [alwaysDoJoin]) VALUES (@IDGuid, @FromTable, @FromColumn, @ToTable, @ToColumn, @Order, @TypJoin, @alwaysDoJoin)</value>
+  </data>
+  <metadata name="SqlCommand32.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand32.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>419, 446</value>
+  </metadata>
+  <metadata name="SqlCommand32.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand33.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand33.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand33.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand33.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblQueryJoinsTemp] SET [IDGuid] = @IDGuid, [FromTable] = @FromTable, [FromColumn] = @FromColumn, [ToTable] = @ToTable, [ToColumn] = @ToColumn, [Order] = @Order, [TypJoin] = @TypJoin, [alwaysDoJoin] = @alwaysDoJoin WHERE (([IDGuid] = @Original_IDGuid))</value>
+  </data>
+  <metadata name="daSideLogic.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 641</value>
+  </metadata>
+  <metadata name="SqlCommand34.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand34.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand34.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand35.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand35.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand35.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand36.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand36.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>449, 485</value>
+  </metadata>
+  <metadata name="SqlCommand36.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand37.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand37.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand37.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand37.CommandText" xml:space="preserve">
+    <value>UPDATE [qs2].[tblSideLogic] SET [IDGuid] = @IDGuid, [Type] = @Type, [Action] = @Action, [FldShort] = @FldShort, [Chapter] = @Chapter, [IDApplication] = @IDApplication, [ID] = @ID WHERE (([IDGuid] = @Original_IDGuid))</value>
+  </data>
+  <metadata name="daMaxSelListID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 680</value>
+  </metadata>
+  <metadata name="SqlCommand40.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand40.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand40.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daMaxSelListGroupID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 719</value>
+  </metadata>
+  <metadata name="SqlCommand38.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand38.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand38.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="davSelListEntriesObj.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 758</value>
+  </metadata>
+  <metadata name="SqlCommand42.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand42.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>280, 602</value>
+  </metadata>
+  <metadata name="SqlCommand42.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand42.CommandText" xml:space="preserve">
+    <value>SELECT        IDSelListEntryIDRes, IDSelListEntryIDOwnInt, IDSelListEntryIDOwnStr, IDSelListEntryIDGroupStr, IDSelListEntryIDApplication, IDSelListEntrySublistIDRes, IDSelListEntrySublistIDOwnInt, 
+                         IDSelListEntrySublistIDOwnStr, IDSelListEntrySublistIDGroupStr, IDSelListEntrySublistIDApplication, CriteriaFldShort, CriteriaIDApplication, CriteriaControlType, ObjectNameCombination, StayMedRecN, 
+                         ObjTypIDGroup, ObjFrom, ObjTo, ObjIDClassification, ObjIDOwnInt, ObjCreated, ObjCreatedBy, ObjModified, ObjModifiedBy, ObjDescription, ObjSort, ObjIDParticipant
+FROM            qs2.vSelListEntriesObj</value>
+  </data>
+  <metadata name="daGetAllUsersWithRoles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 212</value>
+  </metadata>
+  <metadata name="SqlCommand39.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand39.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>121, 641</value>
+  </metadata>
+  <metadata name="SqlCommand39.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daGetButtonsForUser.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 251</value>
+  </metadata>
+  <metadata name="SqlCommand41.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand41.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand41.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daGetCriteriasForUser.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 797</value>
+  </metadata>
+  <metadata name="SqlCommand43.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand43.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand43.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daGetAllUsersWithRights.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 329</value>
+  </metadata>
+  <metadata name="SqlCommand44.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand44.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand44.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daGetChaptersAlwaysEditableAllUsers.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 836</value>
+  </metadata>
+  <metadata name="SqlCommand45.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand45.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>117, 797</value>
+  </metadata>
+  <metadata name="SqlCommand45.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="SqlCommand45.CommandText" xml:space="preserve">
+    <value>SELECT DISTINCT qs2.tblSelListEntries.ID AS IDSelListChapter, qs2.getAllUsersWithRoles.ID AS IDObject, qs2.tblSelListEntriesObj.IDClassification
+FROM            qs2.tblSelListGroup AS tblSelListGroup_1 INNER JOIN
+                         qs2.tblSelListEntries AS tblSelListEntries_1 ON tblSelListGroup_1.ID = tblSelListEntries_1.IDGroup INNER JOIN
+                         qs2.tblSelListGroup INNER JOIN
+                         qs2.tblSelListEntries ON qs2.tblSelListGroup.ID = qs2.tblSelListEntries.IDGroup INNER JOIN
+                         qs2.tblSelListEntriesObj ON qs2.tblSelListEntries.ID = qs2.tblSelListEntriesObj.IDSelListEntry ON tblSelListEntries_1.ID = qs2.tblSelListEntriesObj.IDSelListEntrySublist INNER JOIN
+                         qs2.getAllUsersWithRoles ON tblSelListEntries_1.ID = qs2.getAllUsersWithRoles.IDSelListEntry
+WHERE        (qs2.tblSelListGroup.IDGroupStr IN ('Chapters0', 'Chapters1', 'ProcGrp0', 'ProcGrp1')) AND (tblSelListGroup_1.IDGroupStr = 'Roles') AND (qs2.tblSelListEntriesObj.IDClassification &lt;&gt; '')</value>
+  </data>
+  <metadata name="daSelListEntriesSort.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 875</value>
+  </metadata>
+  <metadata name="SqlCommand46.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand46.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand46.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand47.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand47.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>274, 836</value>
+  </metadata>
+  <metadata name="SqlCommand47.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand48.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand48.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand48.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand49.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand49.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand49.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daGetCriteriasUserForUser.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 914</value>
+  </metadata>
+  <metadata name="SqlCommand50.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="SqlCommand50.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SqlCommand50.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+</root>
