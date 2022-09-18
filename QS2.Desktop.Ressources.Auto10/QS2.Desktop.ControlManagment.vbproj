@@ -343,9 +343,6 @@
     <Reference Include="Patagames.Pdf.Wpf, Version=4.7.9.472, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
       <HintPath>..\packages\Pdfium.Net.SDK.4.27.2704\lib\net472\Patagames.Pdf.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="qs2.core">
-      <HintPath>..\Dlls\qs2.core.dll</HintPath>
-    </Reference>
     <Reference Include="qs2.core.vb">
       <HintPath>..\Dlls\qs2.core.vb.dll</HintPath>
     </Reference>
@@ -750,13 +747,17 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.6.0.0\analyzers\dotnet\vb\Microsoft.CodeAnalysis.VisualBasic.NetAnalyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\qs2.core\QS2.Core.csproj">
+      <Project>{aafb02c6-d8cd-4fe1-afbf-d09d8a256df4}</Project>
+      <Name>QS2.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Desktop.UI.vb\QS2.Desktop.UI.vb.vbproj">
       <Project>{c28fb59d-797d-4a86-a590-072c1e0c626b}</Project>
       <Name>QS2.Desktop.UI.vb</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.functions.vb.vbproj">
+    <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.Functions.vb.vbproj">
       <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
-      <Name>QS2.functions.vb</Name>
+      <Name>QS2.Functions.vb</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Resources\QS2.Resources.vbproj">
       <Project>{54e427e6-ff54-4671-bf5e-1e606453bf0c}</Project>

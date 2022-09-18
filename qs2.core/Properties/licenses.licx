@@ -1,5 +1,5 @@
-TXTextControl.TextControl, TXTextControl.Windows.Forms, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
 TXTextControl.ServerTextControl, TXTextControl.Server, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
+TXTextControl.TextControl, TXTextControl.Windows.Forms, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
 TXTextControl.Proofing.TXSpellChecker, TXSpell.Windows.Forms, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
 
 Infragistics.Win.Misc.UltraGridBagLayoutPanel, Infragistics4.Win.Misc.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb

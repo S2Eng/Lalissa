@@ -6,9 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using S2Extensions;
-using Infragistics.Documents.Excel.Charts;
-using System.Windows.Input;
-using Microsoft.SqlServer.Management.Smo;
+
+
 
 
 namespace qs2.core

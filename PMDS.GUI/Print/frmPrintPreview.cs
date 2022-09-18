@@ -151,7 +151,7 @@ namespace PMDS.Print
                     info.ConnectionInfo.UserID = string.Empty;
                 }
 
-                info.ConnectionInfo.ServerName = qs2.core.ENV.server;
+                info.ConnectionInfo.ServerName = qs2.core.ENV.Server;
 
                 foreach (Table t in ReportDocument1.Database.Tables)
                 {

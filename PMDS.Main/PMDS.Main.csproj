@@ -169,10 +169,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\PMDS.db.Entities.dll</HintPath>
     </Reference>
-    <Reference Include="qs2.core, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\qs2.core.dll</HintPath>
-    </Reference>
     <Reference Include="qs2.core.vb, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\qs2.core.vb.dll</HintPath>
@@ -944,6 +940,10 @@
       <Project>{b9ad1f88-a785-4d1d-9062-2de8572c2126}</Project>
       <Name>PMDS.GUI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\qs2.core\QS2.Core.csproj">
+      <Project>{aafb02c6-d8cd-4fe1-afbf-d09d8a256df4}</Project>
+      <Name>QS2.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QS2.Desktop.Ressources.Auto10\QS2.Desktop.ControlManagment.vbproj">
       <Project>{1f894182-6563-4ffa-958d-b842cb449b21}</Project>
       <Name>QS2.Desktop.ControlManagment</Name>
@@ -964,13 +964,13 @@
       <Project>{c28fb59d-797d-4a86-a590-072c1e0c626b}</Project>
       <Name>QS2.Desktop.UI.vb</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.functions.cs\QS2.functions.cs.csproj">
+    <ProjectReference Include="..\Tools\QS2.functions.cs\QS2.Functions.cs.csproj">
       <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
-      <Name>QS2.functions.cs</Name>
+      <Name>QS2.Functions.cs</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.functions.vb.vbproj">
+    <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.Functions.vb.vbproj">
       <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
-      <Name>QS2.functions.vb</Name>
+      <Name>QS2.Functions.vb</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Logging.Win\QS2.Logging.Win.csproj">
       <Project>{0dde0333-d4ec-419d-aebd-c8359083c02d}</Project>
@@ -1031,7 +1031,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_AssemblyInfoFilename="Assembly.info" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_StartDate="2010/11/23" />
+      <UserProperties BuildVersion_StartDate="2010/11/23" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_AssemblyInfoFilename="Assembly.info" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

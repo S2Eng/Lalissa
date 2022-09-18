@@ -2596,7 +2596,7 @@ namespace PMDS.GUI.PMDSClient
                         break;
 
                     case "btnQS2QueryExpress":
-                        qs2.ui.OpenWindow.doControl(qs2.core.ENV.eTypApp.fctQueryExpress, null, null, PMDS.Global.ENV.adminSecure);
+                        //qs2.ui.OpenWindow.doControl(qs2.core.ENV.eTypApp.fctQueryExpress, null, null, PMDS.Global.ENV.adminSecure);
                         break;
 
                     case "btnQS2LogManager":
