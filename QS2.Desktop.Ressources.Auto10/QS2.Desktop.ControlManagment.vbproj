@@ -352,9 +352,6 @@
     <Reference Include="QS2.functions.cs">
       <HintPath>..\Dlls\QS2.functions.cs.dll</HintPath>
     </Reference>
-    <Reference Include="qs2.sitemap.vb">
-      <HintPath>..\Dlls\qs2.sitemap.vb.dll</HintPath>
-    </Reference>
     <Reference Include="qs2.ui">
       <HintPath>..\Dlls\qs2.ui.dll</HintPath>
     </Reference>
@@ -744,6 +741,10 @@
     <ProjectReference Include="..\qs2.core\QS2.Core.csproj">
       <Project>{aafb02c6-d8cd-4fe1-afbf-d09d8a256df4}</Project>
       <Name>QS2.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.Sitemap.VB\QS2.Sitemap.VB.vbproj">
+      <Project>{ee656db6-f7e2-4413-8ce6-11bc1009a131}</Project>
+      <Name>QS2.Sitemap.VB</Name>
     </ProjectReference>
     <ProjectReference Include="..\QS2.Sitemap\QS2.Sitemap.csproj">
       <Project>{9e183118-353b-46fa-bbd7-1f85b8e13ff1}</Project>

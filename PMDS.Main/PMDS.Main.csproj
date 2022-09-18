@@ -177,10 +177,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\qs2.design.auto.dll</HintPath>
     </Reference>
-    <Reference Include="qs2.sitemap.vb, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\qs2.sitemap.vb.dll</HintPath>
-    </Reference>
     <Reference Include="qs2.ui, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\qs2.ui.dll</HintPath>
@@ -939,6 +935,10 @@
     <ProjectReference Include="..\QS2.Desktop.Ressources.Auto10\QS2.Desktop.ControlManagment.vbproj">
       <Project>{1f894182-6563-4ffa-958d-b842cb449b21}</Project>
       <Name>QS2.Desktop.ControlManagment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.Sitemap.VB\QS2.Sitemap.VB.vbproj">
+      <Project>{ee656db6-f7e2-4413-8ce6-11bc1009a131}</Project>
+      <Name>QS2.Sitemap.VB</Name>
     </ProjectReference>
     <ProjectReference Include="..\QS2.Sitemap\QS2.Sitemap.csproj">
       <Project>{9e183118-353b-46fa-bbd7-1f85b8e13ff1}</Project>
