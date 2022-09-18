@@ -5,6 +5,7 @@ Imports Infragistics.Win
 Imports qs2.Resources
 Imports PMDS.db.Entities
 Imports System.Runtime.CompilerServices
+Imports S2Extensions
 
 Public Class contSelLists
 
@@ -667,7 +668,7 @@ Public Class contSelLists
                     Dim rSelListGrid As dsAdmin.tblSelListEntriesRow = v.Row
 
                     Dim tSelListEntriesSort As IQueryable(Of PMDS.db.Entities.tblSelListEntriesSort) = From rSelListEntrySorto In db.tblSelListEntriesSort
-                                                                                                      Where rSelListEntrySorto.IDSelListEntry = rSelListGrid.ID And
+                                                                                                       Where rSelListEntrySorto.IDSelListEntry = rSelListGrid.ID And
                                                                                                           rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim()
                     If tSelListEntriesSort.Count > 1 Then
                         Throw New Exception("contSelLists.loadSortCustomer: tSelListEntriesSort.Count>1 ' for IDSelList" + rSelListGrid.ID.ToString() + "' and IDParticipant '" + qs2.core.license.doLicense.rParticipant.IDParticipant.Trim() + "' not allowed!")
@@ -920,8 +921,8 @@ Public Class contSelLists
                     End If
 
                     Dim tSelListEntriesSort As IQueryable(Of PMDS.db.Entities.tblSelListEntriesSort) = From rSelListEntrySorto In db.tblSelListEntriesSort
-                                                                                                      Where rSelListEntrySorto.IDSelListEntry = rSelListGrid.ID And
-                                                                                                              rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim()
+                                                                                                       Where rSelListEntrySorto.IDSelListEntry = rSelListGrid.ID And
+rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim()
                     If tSelListEntriesSort.Count > 1 Then
                         Throw New Exception("contSelLists.saveSortCustomer: tSelListEntriesSort.Count>1 ' for IDSelList" + rSelListGrid.ID.ToString() + "' and IDParticipant '" + qs2.core.license.doLicense.rParticipant.IDParticipant.Trim() + "' not allowed!")
                     Else
@@ -1095,15 +1096,15 @@ Public Class contSelLists
 
                                 If Me.mainWindow._OnlyOwnSelListsEditable Then
                                     If bIsQueryGroup Then
-                                        If Not qs2.core.generic.sEquals(rSelList.TypeStr, "User") Then
+                                        If Not rSelList.TypeStr.sEquals("User") Then
                                             sDeleteOK = False
                                         End If
                                     Else
                                         If b.checkSelListIsUsedInStays(rSelList.ID, sProt) Then
                                             sDeleteOK = False
                                         End If
-                                        If qs2.core.generic.sEquals(rSelList.TypeStr, "User") Then
-                                            If Not qs2.core.generic.sEquals(rSelList.IDParticipant, qs2.core.license.doLicense.rParticipant.IDParticipant) Then
+                                        If rSelList.TypeStr.sEquals("User") Then
+                                            If Not rSelList.IDParticipant.sEquals(qs2.core.license.doLicense.rParticipant.IDParticipant) Then
                                                 sDeleteOK = False
                                             End If
                                         Else

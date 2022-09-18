@@ -15,6 +15,7 @@ using QS2.Resources;
 using Infragistics.Win.UltraWinToolTip;
 using qs2.design.auto.workflowAssist.autoForm;
 using qs2.design.auto.print;
+using S2Extensions;
 
 namespace qs2.ui.print
 {
@@ -2630,7 +2631,7 @@ namespace qs2.ui.print
                         //bool SelectionWithoutClosing = false;
                         this.loadMulticontrols(ref rSelQuery, ref protocollForAdmin, ref protocolWindow);
                     }
-                    else if (qs2.core.generic.sEquals(e.Cell.Column, this.dsAdmin1.tblQueriesDef.ConditionColumn.ColumnName))
+                    else if (e.Cell.Column.sEquals( this.dsAdmin1.tblQueriesDef.ConditionColumn.ColumnName))
                     {
                         DataRowView v = (DataRowView)e.Cell.Row.ListObject;
                         dsAdmin.tblQueriesDefRow rSelQuery = (dsAdmin.tblQueriesDefRow)v.Row;
@@ -2639,7 +2640,7 @@ namespace qs2.ui.print
                         rSelQuery.Max = "";
 
 
-                        if (qs2.core.generic.sEquals(qs2.core.generic.TranslateEx(e.Cell.Text.ToString()),
+                        if (qs2.core.generic.TranslateEx(e.Cell.Text.ToString()).sEquals(
                                 new List<object> { qs2.core.generic.TranslateEx(qs2.core.sqlTxt.between),
                                                    qs2.core.generic.TranslateEx(qs2.core.sqlTxt.notBetween),
                                                    qs2.core.generic.TranslateEx(qs2.core.sqlTxt.like),

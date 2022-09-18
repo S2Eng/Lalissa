@@ -3,9 +3,7 @@ using Infragistics.Win.UltraWinGrid;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
@@ -13,7 +11,6 @@ using System.Security;
 using System.Security.Permissions;
 using System.Reflection;
 using System.ComponentModel;
-using PMDS.Global;
 
 namespace PMDS.Global
 {
@@ -66,7 +63,6 @@ namespace PMDS.Global
                     if (!IsInExpandedGroup(r))
                         continue;
                     arrSelected.Add(r);
-                    //if (r.Selected) { arrSelected.Add(r); }
                 }
 
                 if (arrSelected.Count > 0)
@@ -85,7 +81,6 @@ namespace PMDS.Global
             catch (Exception ex)
             {
                 throw new Exception("doAction: " + ex.ToString());
-                //return DialogResult.No;
             }
         }
         public static void getSelectedGridRows(UltraGrid grid, List<UltraGridRow> arrSelected, bool useChildBands)
@@ -95,15 +90,7 @@ namespace PMDS.Global
                 if (!IsInExpandedGroup(r))
                     continue;
                 arrSelected.Add(r);
-                //if (r.Selected) { arrSelected.Add(r); }
             }
-
-            //if (arrSelected.Count > 0)
-            //{
-            //}
-            //else
-            //{
-            //}
         }
 
         public static bool IsInExpandedGroup(UltraGridRow r)
@@ -191,117 +178,6 @@ namespace PMDS.Global
             }
         }
 
-        //public static bool sEqualsList2(List<object> s1, List<object> s2, Enums.eCompareMode compareMode = Enums.eCompareMode.Equals, bool trim = true, bool IgnoreCase = true)
-        //{
-        //    try
-        //    {
-        //        foreach (object o1 in s1)
-        //        {
-        //            foreach (object o2 in s2)
-        //            {
-        //                if (sEquals(o1, o2, compareMode, trim, IgnoreCase) == true)
-        //                    return true;
-        //            }
-        //        }
-        //        return false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("qs2.generic.sEquals (check list in list of objects): " + ex.ToString());
-        //    }
-        //}
-
-        //public static bool sEquals(object s1, List<object> s2, Enums.eCompareMode compareMode = Enums.eCompareMode.Equals, bool trim = true, bool IgnoreCase = true)
-        //{
-        //    try
-        //    {
-        //        foreach (object o2 in s2)
-        //        {
-        //            if (sEquals(s1, o2, compareMode, trim, IgnoreCase) == true)
-        //                return true;
-        //        }
-        //        return false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("qs2.generic.sEquals (check object in list of objects): " + ex.ToString());
-        //    }
-        //}
-
-        //public static bool sEquals(object s1, object s2, Enums.eCompareMode compareMode = Enums.eCompareMode.Equals, bool trim = true, bool IgnoreCase = true)
-        //{
-        //    try
-        //    {
-        //        if (trim)
-
-        //            switch (compareMode)
-        //            {
-        //                case Enums.eCompareMode.Equals:
-        //                    return (s1.ToString() ?? "").Trim().Equals((s2.ToString() ?? "").Trim(), IgnoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal);
-
-        //                case Enums.eCompareMode.StartsWith:
-        //                    return (s1.ToString() ?? "").Trim().StartsWith((s2.ToString() ?? "").Trim(), IgnoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal);
-
-        //                case Enums.eCompareMode.EndsWith:
-        //                    return (s1.ToString() ?? "").Trim().EndsWith((s2.ToString() ?? "").Trim(), IgnoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal);
-
-        //                case Enums.eCompareMode.Contains:
-        //                    return (s1.ToString() ?? "").Trim().IndexOf((s2.ToString() ?? "").Trim(), StringComparison.OrdinalIgnoreCase) >= 0;
-
-        //                default:
-        //                    return false;
-        //            }
-        //        else
-        //        {
-        //            switch (compareMode)
-        //            {
-        //                case Enums.eCompareMode.Equals:
-        //                    return (s1.ToString() ?? "").Equals((s2.ToString() ?? ""), IgnoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal);
-
-        //                case Enums.eCompareMode.StartsWith:
-        //                    return (s1.ToString() ?? "").StartsWith((s2.ToString() ?? ""), IgnoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal);
-
-        //                case Enums.eCompareMode.EndsWith:
-        //                    return (s1.ToString() ?? "").EndsWith((s2.ToString() ?? ""), IgnoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal);
-
-        //                case Enums.eCompareMode.Contains:
-        //                    return (s1.ToString() ?? "").IndexOf((s2.ToString() ?? ""), StringComparison.OrdinalIgnoreCase) >= 0;
-
-        //                default:
-        //                    return false;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("qs2.generic.sEquals: " + ex.ToString());
-        //    }
-        //}
-
-        public static void TogglePassword(object sender)
-        {
-            if (Control.ModifierKeys.HasFlag(Keys.Control))
-            {
-                if (sender.GetType().Equals(typeof(QS2.Desktop.ControlManagment.BaseTextEditor)))
-                {
-                    QS2.Desktop.ControlManagment.BaseTextEditor ed = (QS2.Desktop.ControlManagment.BaseTextEditor)sender;
-                    if (ed.PasswordChar == '\0')
-                        ed.PasswordChar = '*';
-                    else
-                        ed.PasswordChar = '\0';
-                }
-                else if (sender.GetType().Equals(typeof(Infragistics.Win.UltraWinEditors.UltraTextEditor)))
-                {
-                    Infragistics.Win.UltraWinEditors.UltraTextEditor ed = (Infragistics.Win.UltraWinEditors.UltraTextEditor)sender;
-                    if (ed.PasswordChar == '\0')
-                        ed.PasswordChar = '*';
-                    else
-                        ed.PasswordChar = '\0';
-                }
-
-                Application.DoEvents();
-            }
-        }
 
         public static bool CheckDirWritable(string filename)
         {
@@ -334,37 +210,6 @@ namespace PMDS.Global
             return value.ToString();
         }
 
-
-        //public static void CheckMemorySizeProcess(bool adminSecure, long MaxSizeMemory)
-        //{
-        //    try
-        //    {
-        //        if (!adminSecure)
-        //        {
-        //            System.Diagnostics.Process loProcess = System.Diagnostics.Process.GetCurrentProcess();
-        //            long lnValue = loProcess.WorkingSet;
-        //            long MemorySize = loProcess.WorkingSet64;
-        //            long MaxSizeMemoryTmp = MaxSizeMemory * 1000 * 1000;
-        //            if (MemorySize > MaxSizeMemoryTmp)
-        //            {
-        //                GC.Collect();
-        //                GC.WaitForPendingFinalizers();
-        //                if (Environment.OSVersion.Platform == PlatformID.Win32NT)
-        //                {
-        //                    SetProcessWorkingSetSize(Process.GetCurrentProcess().Handle, -1, -1);
-        //                }
-        //            }
-        //        }
-
-        //        string xy = "";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("generic.CheckMemorySizeProcess: " + ex.ToString());
-        //    }
-
-        //}
-
         public static bool IsExcelInstalled()
         {
             try
@@ -390,7 +235,6 @@ namespace PMDS.Global
 
         public static void EndSuspendLayout(Control control)
         {
-            // Create a C "true" boolean as an IntPtr
             if (control != null)
             {
                 IntPtr wparam = new IntPtr(1);

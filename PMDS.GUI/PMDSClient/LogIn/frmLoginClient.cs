@@ -435,7 +435,7 @@ namespace PMDS.GUI.PMDSClient
 
         private void txtPasswort_KeyDown(object sender, KeyEventArgs e)
         {
-            PMDS.Global.generic.TogglePassword(sender);
+            qs2.core.generic.TogglePassword(sender);
         }
     }
 

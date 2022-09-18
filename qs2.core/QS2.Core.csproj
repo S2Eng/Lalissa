@@ -607,7 +607,6 @@
     <Compile Include="db\ERSystem\ERHelper.cs" />
     <Compile Include="ExceptionHandler\ExceptionHand.cs" />
     <Compile Include="Impersonation.cs" />
-    <Compile Include="products\productFields.cs" />
     <Compile Include="SelfNgenPoC.cs" />
     <Compile Include="db\ERSystem\businessFramework.cs" />
     <Compile Include="print\dsSimpleQuerySelection.Designer.cs">
@@ -617,8 +616,6 @@
     </Compile>
     <Compile Include="print\print.cs" />
     <Compile Include="Protocol.cs" />
-    <Compile Include="BAL\ImpExpStayKey.cs" />
-    <Compile Include="BAL\ImportHelpFromExcel.cs" />
     <Compile Include="ThreadStayUI.cs" />
     <Compile Include="ui\Colors.cs" />
     <Compile Include="print\dsQryAuto.cs">

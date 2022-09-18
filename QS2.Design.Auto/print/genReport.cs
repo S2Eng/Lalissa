@@ -625,12 +625,6 @@ namespace qs2.print
                         //}
                         #endregion
                         
-                        else if (System.IO.File.Exists(DocFile + qs2.core.vb.funct.fileTypePDF)) //PDF 
-                        {
-                            PrintPDF(lstInfoQryRunPar[0], infoReport, DocFile);
-
-                        }
-                        
                         else if (System.IO.File.Exists(DocFile + qs2.core.vb.funct.fileTypeRTF)) //RTF
                         {
                             if (lstInfoQryRunPar[0].dsQryResult.Tables[0].Rows.Count > 0)
@@ -789,74 +783,6 @@ namespace qs2.print
             }
 
             return false;
-        }
-
-        private static void PrintPDF(ui.print.infoQry infoQry,  ui.print.infoReport infoRpt, string DocFile)
-        {
-            if (infoQry.dsQryResult.Tables[0].Rows.Count > 0)
-            {
-                if (infoQry.dsQryResult.Tables[0].Rows.Count > 500)
-                {
-                    qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("MaxRecords500"), MessageBoxButtons.OK, "");
-                    return;
-                }
-                qs2.design.auto.print.frmPDFViewer frmPDF = new qs2.design.auto.print.frmPDFViewer();
-                frmPDF.Init(DocFile + qs2.core.vb.funct.fileTypePDF, infoQry, infoRpt);
-                frmPDF.Show();
-            }
-            else
-            {
-                qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoRecords"), MessageBoxButtons.OK, "");
-                return;
-            }
-        }
-
-        public void doAutoWhereClasuselForCRParameterxyxyxyxy(System.Collections.Generic.List<qs2.ui.print.infoQry> lstInfoQryRunPar,
-                        qs2.ui.print.infoReport infoReport,
-                        qs2.core.Enums.eTypRunQuery typRunQuery, bool message, bool datasetViewer,
-                        ref qs2.core.vb.dsAdmin.tblQueriesDefDataTable tAllParametersForReport,
-                        ref string sqlWhereReturn, ref string WhereClauselForSimpleFunctions)
-        {
-            try
-            {
-                //if (sqlWhereReturn.Trim() != "" || WhereClauselForSimpleFunctions.Trim() != "")
-                //{
-                //    string WhereClauselForSimpleFunctionsTranslated = "";
-                //    if (WhereClauselForSimpleFunctions.Trim() != "")
-                //    {
-                //        this.translateSqlWhere(ref WhereClauselForSimpleFunctions, ref WhereClauselForSimpleFunctionsTranslated, ref infoReport.Application, ref infoReport.Participant);
-                //    }
-                //    string sqlWhereReturnTranslated = "";
-                //    if (sqlWhereReturn.Trim() != "")
-                //    {
-                //        this.translateSqlWhere(ref sqlWhereReturn, ref sqlWhereReturnTranslated, ref infoReport.Application, ref infoReport.Participant);
-                //    }
-                  
-                //    foreach (qs2.ui.print.infoQry infoQry1 in lstInfoQryRunPar)
-                //    {
-                //        sqlAdmin sqlAdminTmp = new sqlAdmin();
-                //        dsAdmin.tblQueriesDefRow rNewQueriesDef = sqlAdminTmp.addRowQueriesDef(infoQry1.tQryParForQueryxy);
-                //        rNewQueriesDef.Typ = core.Enums.eTypQueryDef.InputParameters.ToString();
-                //        rNewQueriesDef.QryColumn = "SqlWhere";
-
-                //        string CombinationWhere = "";
-                //        if (sqlWhereReturnTranslated.Trim() != "" && WhereClauselForSimpleFunctionsTranslated.Trim() != "")
-                //        {
-                //            CombinationWhere = "\r\n";
-                //        }
-                //        foreach(System.Data.SqlClient.SqlParameter parSql  in infoQry1.parametersSql)
-                //        {
-                //            sqlWhereReturnTranslated = sqlWhereReturnTranslated.Replace(parSql.ParameterName, parSql.Value.ToString());
-                //        }
-                //        rNewQueriesDef[qs2.core.generic.columnNameVal] = WhereClauselForSimpleFunctionsTranslated.Trim() + CombinationWhere + sqlWhereReturnTranslated.Trim();
-                //    }
-                //}
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genReport.doAutoWhereClasuselForCRParameter:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
         }
 
         public void doAutoWhereClasuselForCRParameterFromUI(System.Collections.Generic.List<qs2.ui.print.infoQry> lstInfoQryRunPar,

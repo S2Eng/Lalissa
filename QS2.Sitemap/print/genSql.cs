@@ -8,6 +8,7 @@ using qs2.core.vb;
 using System.Globalization;
 using System.Web;
 using System.IO;
+using S2Extensions;
 
 namespace qs2.sitemap.print
 {
@@ -971,7 +972,7 @@ namespace qs2.sitemap.print
                     foreach (qs2.core.vb.dsAdmin.tblQueriesDefRow rQry in arrQueries)
                     {
 
-                        if (generic.sEquals(rQry.ControlType, "TextField") || generic.sEquals(rQry.ControlType, "TextFieldMulti"))
+                        if (rQry.ControlType.sEquals("TextField") || rQry.ControlType.sEquals( "TextFieldMulti"))
                         {
                             rQry.ValueMin = HttpUtility.HtmlEncode(rQry.ValueMin);
                         }
@@ -982,8 +983,8 @@ namespace qs2.sitemap.print
                             //CheckSchalter: 5. if SimpleView -> wie IsSQLServerField -> mit normalen Ds-Parameters für Sql-Client
                             bool doSqlSrvField = false;
                             bool doWhereClauselForSimpleFunctions = false;
-                            if (generic.sEquals(rSelListQry.TypeQry, qs2.core.print.print.eQueryType.SimpleView) ||
-                                generic.sEquals(rSelListQry.TypeQry, (qs2.core.print.print.eQueryType.SimpleFunction)))
+                            if (rSelListQry.TypeQry.sEquals(qs2.core.print.print.eQueryType.SimpleView) ||
+                                rSelListQry.TypeQry.sEquals(qs2.core.print.print.eQueryType.SimpleFunction))
                             {
                                 doSqlSrvField = true;
                                 if (rSelListQry.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleFunction.ToString().ToLower()) && doFunctionParameters)
@@ -1665,12 +1666,12 @@ namespace qs2.sitemap.print
                             }
                         }
                     }
-                    else if(generic.sEquals(ControlType, new List<object> { core.Enums.eControlType.Textfield, 
+                    else if (ControlType.sEquals( new List<object> { core.Enums.eControlType.Textfield, 
                                                                             core.Enums.eControlType.TextfieldMulti, 
                                                                             core.Enums.eControlType.TextfieldNoDb, 
                                                                             core.Enums.eControlType.TextfieldMultiNoDb }))
                     {
-                        if (!generic.sEquals(Condition, "in"))
+                        if (!Condition.sEquals( "in"))
                         {
                             sValueMinTmp = "'" + sValueMin.Trim() + "'";
                             sValueMaxTmp = "'" + sValueMax.Trim() + "'";
@@ -1681,9 +1682,9 @@ namespace qs2.sitemap.print
                             sValueMaxTmp += sValueMax.Trim();
                         }
                     }
-                    else if (generic.sEquals(ControlType, core.Enums.eControlType.ComboBox) ||
-                             generic.sEquals(ControlType, core.Enums.eControlType.ComboBoxNoDb) ||
-                             generic.sEquals(ControlType, core.Enums.eControlType.ComboBoxAsDropDown))
+                    else if (ControlType.sEquals(core.Enums.eControlType.ComboBox) ||
+                             ControlType.sEquals(core.Enums.eControlType.ComboBoxNoDb) ||
+                             ControlType.sEquals(core.Enums.eControlType.ComboBoxAsDropDown))
                     {
                         int iValueTmp = -999;
                         bool resultParseOKInt = System.Int32.TryParse(sValueMin.Trim(), out iValueTmp);

@@ -165,8 +165,7 @@ namespace qs2.core
 
         public static bool ESII_AcceptNoCreat = true;
 
-        public static bool IsDevelopmentMachine = qs2.core.generic.sEquals(Environment.MachineName, new List<object> { "styhl2", "sty040", "sty041" });
-
+        public static bool IsDevelopmentMachine = Environment.MachineName.sEquals( new List<object> { "styhl2", "sty040", "sty041" });
         public static string PdfiumKey = "EEF63308-0101E307-06060B50-44464955-4D5F434F-52501500-6F734073-322D656E-67696E65-6572696E-672E636F-6D40006E-50A02F72-7589BDC9-FA775FFE-E4C11070-8AECCB91-AA05BDDC-9064397A-0128DB07-08CA4E9D-1701E8DB-F0CAEA1E-386F13D9-6F207B8F-4FFCD647-D4BDA0FC-669139";
 
 

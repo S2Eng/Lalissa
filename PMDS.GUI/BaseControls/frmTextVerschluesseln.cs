@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Linq;
 using PMDS.db.Entities;
 
+
 namespace PMDS.GUI.BaseControls
 {
     public partial class frmTextVerschluesseln : Form
@@ -147,7 +148,7 @@ namespace PMDS.GUI.BaseControls
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            PMDS.Global.generic.TogglePassword(sender);
+            qs2.core.generic.TogglePassword(sender);
         }
     }
 }

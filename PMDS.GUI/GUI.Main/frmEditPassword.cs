@@ -629,17 +629,17 @@ namespace PMDS.GUI
 
         private void txtPasswortAlt_KeyDown(object sender, KeyEventArgs e)
         {
-            PMDS.Global.generic.TogglePassword(sender);
+            qs2.core.generic.TogglePassword(sender);
         }
 
         private void txtPasswort_KeyDown(object sender, KeyEventArgs e)
         {
-            PMDS.Global.generic.TogglePassword(sender);
+            qs2.core.generic.TogglePassword(sender);
         }
 
         private void txtPasswort2_KeyDown(object sender, KeyEventArgs e)
         {
-            PMDS.Global.generic.TogglePassword(sender);
+            qs2.core.generic.TogglePassword(sender);
         }
     }
 }

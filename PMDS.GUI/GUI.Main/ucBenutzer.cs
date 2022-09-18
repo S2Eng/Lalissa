@@ -1386,7 +1386,7 @@ namespace PMDS.GUI
 
         private void txtSMTPPwd_KeyDown(object sender, KeyEventArgs e)
         {
-            PMDS.Global.generic.TogglePassword(sender);
+            qs2.core.generic.TogglePassword(sender);
         }
     }
 }

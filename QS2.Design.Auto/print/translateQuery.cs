@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 using Infragistics.Win.UltraWinGrid;
 using qs2.core.vb;
+using S2Extensions;
 
 
 
@@ -89,15 +90,15 @@ namespace qs2.design.auto.print
                         ownMCCriteria1.IDParticipant = qs2.core.license.doLicense.eApp.ALL.ToString();
 
                         string FldShortTmp = "";
-                        if (qs2.core.generic.sEquals(col.ColumnName, qs2.core.generic.prefixColAutoTranslate, core.Enums.eCompareMode.StartsWith))
+                        if (col.ColumnName.sEquals(qs2.core.generic.prefixColAutoTranslate, S2Extensions.Enums.eCompareMode.StartsWith))
                         {
                             FldShortTmp = col.ColumnName.Substring(qs2.core.generic.prefixColAutoTranslate.Length, col.ColumnName.Length - qs2.core.generic.prefixColAutoTranslate.Length);
                         }
-                        else if (qs2.core.generic.sEquals(col.ColumnName, qs2.core.generic.TransEmpty, core.Enums.eCompareMode.StartsWith))
+                        else if (col.ColumnName.sEquals(qs2.core.generic.TransEmpty,S2Extensions.Enums.eCompareMode.StartsWith))
                         {
                             FldShortTmp = col.ColumnName.Substring(qs2.core.generic.TransEmpty.Length, col.ColumnName.Length - qs2.core.generic.TransEmpty.Length);
                         }
-                        else if (qs2.core.generic.sEquals(col.ColumnName, qs2.core.generic.prefixColAutoTranslateFunctions, core.Enums.eCompareMode.StartsWith))
+                        else if (col.ColumnName.sEquals(qs2.core.generic.prefixColAutoTranslateFunctions, S2Extensions.Enums.eCompareMode.StartsWith))
                         {
                             FldShortTmp = col.ColumnName.Substring(qs2.core.generic.prefixColAutoTranslateFunctions.Length, col.ColumnName.Length - qs2.core.generic.prefixColAutoTranslateFunctions.Length);
                         }
@@ -111,7 +112,7 @@ namespace qs2.design.auto.print
 
                         if (!rigthOK && HasCriteria)
                         {
-                            if (!qs2.core.generic.sEquals(col.ColumnName, qs2.core.generic.TransEmpty, core.Enums.eCompareMode.StartsWith))
+                            if (!col.ColumnName.sEquals(qs2.core.generic.TransEmpty, S2Extensions.Enums.eCompareMode.StartsWith))
                             {
                                 this.lstColsNoRigth.Add(col.ColumnName);
                             }
@@ -136,8 +137,8 @@ namespace qs2.design.auto.print
                     //}
                     if (rigthOK)
                     {
-                        if (!qs2.core.generic.sEquals(col.ColumnName, qs2.core.generic.TransEmpty, core.Enums.eCompareMode.StartsWith) &&
-                            !qs2.core.generic.sEquals(col.ColumnName, qs2.core.generic.prefixColAutoTranslate, core.Enums.eCompareMode.StartsWith))
+                        if (!col.ColumnName.sEquals(qs2.core.generic.TransEmpty, S2Extensions.Enums.eCompareMode.StartsWith) &&
+                            !col.ColumnName.sEquals(qs2.core.generic.prefixColAutoTranslate, S2Extensions.Enums.eCompareMode.StartsWith))
                         {
 
                             string IDApplicationTmp = "";
@@ -173,7 +174,7 @@ namespace qs2.design.auto.print
                             {
                                 rCriteriaFound = (qs2.core.vb.dsAdmin.tblCriteriaRow)arrCriteriaFound[0];
 
-                                if (qs2.core.generic.sEquals(rCriteriaFound.Classification, "Type=IDObject", core.Enums.eCompareMode.Contains))
+                                if (rCriteriaFound.Classification.sEquals("Type=IDObject", S2Extensions.Enums.eCompareMode.Contains))
                                 {
                                     colIsObjectID = true;
                                 }
@@ -262,7 +263,7 @@ namespace qs2.design.auto.print
                                 if (colIsCriteriaComboBoxAndIsInRelation)
                                 {
                                     string colPrevNotTrans = "";
-                                    if (qs2.core.generic.sEquals(colPrev, qs2.core.generic.prefixColAutoTranslate, core.Enums.eCompareMode.StartsWith))
+                                    if (colPrev.sEquals(qs2.core.generic.prefixColAutoTranslate, S2Extensions.Enums.eCompareMode.StartsWith))
                                     {
                                         colPrevNotTrans = colPrevPrev;
                                     }
@@ -865,7 +866,7 @@ namespace qs2.design.auto.print
                     //typeRet = core.Enums.eControlType.Textfield;
                     qs2.core.vb.dsAdmin dsSelListFound = new qs2.core.vb.dsAdmin();
 
-                    if (qs2.core.generic.sEquals(col.ColumnName, qs2.core.generic.prefixColAutoTranslateFunctions, core.Enums.eCompareMode.StartsWith))
+                    if (col.ColumnName.sEquals(qs2.core.generic.prefixColAutoTranslateFunctions, S2Extensions.Enums.eCompareMode.StartsWith))
                     {
                         foreach (DataRow r in dtToTranslate.Rows)
                         {
@@ -899,7 +900,7 @@ namespace qs2.design.auto.print
                                         cVariables cVariableKeySelList = lstVariables[0];
                                         cVariables cVariableDef = lstVariables[1];
                                         cVariables cVariableApplication = lstVariables[2];
-                                        if (qs2.core.generic.sEquals(cVariableDef.definition,"FldShort"))
+                                        if (cVariableDef.definition.sEquals("FldShort"))
                                         {
                                             this.dsAdmin1.Clear();
                                             qs2.core.vb.dsAdmin.tblCriteriaRow[] arrCriteriaTrans = this.sqlAdmin1.getCriterias(this.dsAdmin1, qs2.core.vb.sqlAdmin.eTypSelCriteria.idRam, cVariableDef.value, cVariableApplication.value, false, false, false, "", "", false);
@@ -920,7 +921,7 @@ namespace qs2.design.auto.print
                                                 r[col.ColumnName] = Translation.Trim();
                                             }
                                         }
-                                        else if (qs2.core.generic.sEquals(cVariableDef.definition,"IDGroupStr"))
+                                        else if (cVariableDef.definition.sEquals("IDGroupStr"))
                                         {
                                             string Translation = "";
                                             bool GroupNotFound = false;
@@ -998,7 +999,7 @@ namespace qs2.design.auto.print
                         bool WasPrinted = false;
                         foreach (string IDGroupStrWasPrinted in lstSelListWasPrinted)
                         {
-                            if (qs2.core.generic.sEquals(IDGroupStrWasPrinted,IDGroupStr))
+                            if (IDGroupStrWasPrinted.sEquals(IDGroupStr))
                             {
                                 WasPrinted = true;
                             }
@@ -1025,7 +1026,7 @@ namespace qs2.design.auto.print
                         int iCounterAdded = 0;
                         foreach (qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelListEntryFound in arrSelListEntriesTrans)
                         {
-                            if (qs2.core.generic.sEquals(KeySelList,"IDOwnInt"))
+                            if (KeySelList.sEquals("IDOwnInt"))
                             {
                                 if (rSelListEntryFound.IDOwnInt.Equals(System.Convert.ToInt32(ValueToTranslate)) || doListTxt)
                                 {
@@ -1045,7 +1046,7 @@ namespace qs2.design.auto.print
                                         return;
                                 }
                             }
-                            else if (qs2.core.generic.sEquals(KeySelList,"IDOwnStr"))
+                            else if (KeySelList.sEquals("IDOwnStr"))
                             {
                                 if (rSelListEntryFound.IDOwnStr.Equals(System.Convert.ToString(ValueToTranslate)) || doListTxt)
                                 {
@@ -1107,13 +1108,13 @@ namespace qs2.design.auto.print
                         this.formatSelList(nBiggestSelList, ref lstTxtAllSelListEntries, ref lstSelLists, 1);
                     }
 
-                    if (qs2.core.generic.sEquals(IDGroupStr, "CountryID") ||
-                        qs2.core.generic.sEquals(IDGroupStr, new List<object> { "PatOrigin", "DisLoctn", "RefCardDept", "DisLoctnDesc" }, core.Enums.eCompareMode.Contains))
+                    if (IDGroupStr.sEquals("CountryID") ||
+                        IDGroupStr.sEquals(new List<object> { "PatOrigin", "DisLoctn", "RefCardDept", "DisLoctnDesc" }, S2Extensions.Enums.eCompareMode.Contains))
                     {
                         lstTxtAllSelListEntries = "";
                     }
 
-                    if (qs2.core.generic.sEquals(rGroup.Classification, "DoNotPrint", core.Enums.eCompareMode.Contains))
+                    if (rGroup.Classification.sEquals("DoNotPrint", S2Extensions.Enums.eCompareMode.Contains))
                     {
                         lstTxtAllSelListEntries = "";
                     }

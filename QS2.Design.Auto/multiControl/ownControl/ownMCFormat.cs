@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-
+using S2Extensions;
 
 
 namespace qs2.design.auto.multiControl
@@ -365,7 +365,7 @@ namespace qs2.design.auto.multiControl
                     else if (ownControl1._controlType == core.Enums.eControlType.Textfield)
                     {
                         message = "";
-                        if (qs2.core.generic.sEquals(ownControl1.Textfield.Text, "'", core.Enums.eCompareMode.Contains))
+                        if (ownControl1.Textfield.Text.sEquals("'", S2Extensions.Enums.eCompareMode.Contains))
                             message = qs2.core.language.sqlLanguage.getRes("ValueMayNotContainSingleQuotes", "ALL", "ALL", "Das Feld darf kein Hochkomma enthalten", false, true);
                         else if (ownControl1.Textfield.Text.Length < this.calculatedFormat1.MinValue || ownControl1.Textfield.Text.Length > this.calculatedFormat1.MaxValue)
                             message = qs2.core.language.sqlLanguage.getRes("ValueLengthMustBetween") + " " + this.calculatedFormat1.MinValue.ToString() + " " + qs2.core.language.sqlLanguage.getRes("and") + " " + this.calculatedFormat1.MaxValue.ToString();
@@ -388,7 +388,7 @@ namespace qs2.design.auto.multiControl
                     else if (ownControl1._controlType == core.Enums.eControlType.TextfieldMulti)
                     {
                         message = "";
-                        if (qs2.core.generic.sEquals(ownControl1.TextfieldMulti.Text, "'", core.Enums.eCompareMode.Contains))
+                        if (ownControl1.TextfieldMulti.Text.sEquals("'", S2Extensions.Enums.eCompareMode.Contains))
                             message = qs2.core.language.sqlLanguage.getRes("ValueMayNotContainSingleQuotes", "ALL", "ALL", "Das Feld darf kein Hochkomma enthalten", false, true);
                         else if (ownControl1.TextfieldMulti.Text.Length < this.calculatedFormat1.MinValue || ownControl1.TextfieldMulti.Text.Length > this.calculatedFormat1.MaxValue)
                             message = qs2.core.language.sqlLanguage.getRes("ValueLengthMustBetween") + " " + this.calculatedFormat1.MinValue.ToString() + " " + qs2.core.language.sqlLanguage.getRes("and") + " " + this.calculatedFormat1.MaxValue.ToString();
