@@ -858,13 +858,6 @@ namespace PMDS.GUI.PMDSClient
             this.styleAppToolStripMenuItem.Text = "Style app";
             this.styleAppToolStripMenuItem.Click += new System.EventHandler(this.styleAppToolStripMenuItem_Click);
             // 
-            // openConfigManagerToolStripMenuItem
-            // 
-            this.openConfigManagerToolStripMenuItem.Name = "openConfigManagerToolStripMenuItem";
-            this.openConfigManagerToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.openConfigManagerToolStripMenuItem.Text = "Open Config.-Manager";
-            this.openConfigManagerToolStripMenuItem.Click += new System.EventHandler(this.openConfigManagerToolStripMenuItem_Click);
-            // 
             // _frmBase_Toolbars_Dock_Area_Left
             // 
             this._frmBase_Toolbars_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
@@ -1401,11 +1394,6 @@ namespace PMDS.GUI.PMDSClient
             this.textControl1.Size = new System.Drawing.Size(101, 45);
             this.textControl1.TabIndex = 0;
             this.textControl1.UserNames = null;
-            // 
-            // timerLoad
-            // 
-            this.timerLoad.Interval = 250;
-            this.timerLoad.Tick += new System.EventHandler(this.timerLoad_Tick);
             // 
             // dsPDxEintraege1
             // 
@@ -3001,64 +2989,6 @@ namespace PMDS.GUI.PMDSClient
         }
 
         private void ultraStatusBar2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void openConfigManagerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-                this.openConfigManager();
-
-            }
-            catch (Exception ex)
-            {
-                PMDS.Global.ENV.HandleException(ex);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
-        }
-
-        public void openConfigManager()
-        {
-            try
-            {
-                qs2.ui.vb.frmLockApplication frmLockApplication1 = new qs2.ui.vb.frmLockApplication();
-                frmLockApplication1.checkSupervisorPwd = true;
-                frmLockApplication1.ShowDialog(this);
-                if (frmLockApplication1.PwdOK)
-                {
-                    string sConfigFileOnlyFileNameTmp = System.IO.Path.GetFileName(PMDS.Global.ENV.sConfigFile.Trim());
-
-                    frmSelectConfig frmSelectConfig1 = new frmSelectConfig();
-                    frmSelectConfig1.initControl(ENV.pathConfig, sConfigFileOnlyFileNameTmp, true);
-                    frmSelectConfig1.ShowDialog();
-                    if (!frmSelectConfig1.abort)
-                    {
-                    }
-                    else
-                    {
-                        if (frmSelectConfig1._runWithDefaultConfigFile)
-                        {
-                        }
-                        else
-                        {
-                        }
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("openConfigManager: " + ex.ToString());
-            }
-        }
-
-        private void timerLoad_Tick(object sender, EventArgs e)
         {
 
         }

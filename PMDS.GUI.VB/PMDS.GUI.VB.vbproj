@@ -1318,10 +1318,6 @@
       <Project>{9e183118-353b-46fa-bbd7-1f85b8e13ff1}</Project>
       <Name>QS2.Sitemap</Name>
     </ProjectReference>
-    <ProjectReference Include="..\QS2.UI.VB2\QS2.UI.VB.vbproj">
-      <Project>{c7f25bbf-f605-444f-9d2c-925a33670faa}</Project>
-      <Name>QS2.UI.VB</Name>
-    </ProjectReference>
     <ProjectReference Include="..\QS2.UI\QS2.UI.csproj">
       <Project>{f6e2b1c8-ee33-45e9-a0ac-ae1d5f0e334f}</Project>
       <Name>QS2.UI</Name>

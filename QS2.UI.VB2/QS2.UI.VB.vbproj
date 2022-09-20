@@ -500,15 +500,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="adjustments\contAdjustMain.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="adjustments\frmAdjustMain.Designer.vb">
-      <DependentUpon>frmAdjustMain.vb</DependentUpon>
-    </Compile>
-    <Compile Include="adjustments\frmAdjustMain.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -525,61 +516,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="other\frmAdjustmentQTHDb.Designer.vb">
-      <DependentUpon>frmAdjustmentQTHDb.vb</DependentUpon>
-    </Compile>
-    <Compile Include="other\frmAdjustmentQTHDb.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="other\dsMerging.Designer.vb">
-      <DependentUpon>dsMerging.xsd</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="other\frmLicense.Designer.vb">
-      <DependentUpon>frmLicense.vb</DependentUpon>
-    </Compile>
-    <Compile Include="other\frmLicense.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="other\frmLockApplication.Designer.vb">
-      <DependentUpon>frmLockApplication.vb</DependentUpon>
-    </Compile>
-    <Compile Include="other\frmLockApplication.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="other\frmSelectDB.Designer.vb">
-      <DependentUpon>frmSelectDB.vb</DependentUpon>
-    </Compile>
-    <Compile Include="other\frmSelectDB.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="other\frmSimulatePMDSQuery.Designer.vb">
-      <DependentUpon>frmSimulatePMDSQuery.vb</DependentUpon>
-    </Compile>
-    <Compile Include="other\frmSimulatePMDSQuery.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="other\frmSys.Designer.vb">
-      <DependentUpon>frmSys.vb</DependentUpon>
-    </Compile>
-    <Compile Include="other\frmSys.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmStayUIAsProcess.Designer.vb">
-      <DependentUpon>frmStayUIAsProcess.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmStayUIAsProcess.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="adjustments\contAdjustMain.resx">
-      <DependentUpon>contAdjustMain.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="adjustments\frmAdjustMain.resx">
-      <DependentUpon>frmAdjustMain.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -587,28 +525,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="other\frmAdjustmentQTHDb.resx">
-      <DependentUpon>frmAdjustmentQTHDb.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="other\frmLicense.resx">
-      <DependentUpon>frmLicense.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="other\frmLockApplication.resx">
-      <DependentUpon>frmLockApplication.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="other\frmSelectDB.resx">
-      <DependentUpon>frmSelectDB.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="other\frmSimulatePMDSQuery.resx">
-      <DependentUpon>frmSimulatePMDSQuery.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="other\frmSys.resx">
-      <DependentUpon>frmSys.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pdf.Net.SDK.licx" />
-    <EmbeddedResource Include="frmStayUIAsProcess.resx">
-      <DependentUpon>frmStayUIAsProcess.vb</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -620,17 +537,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="other\dsMerging.xsc">
-      <DependentUpon>dsMerging.xsd</DependentUpon>
-    </None>
-    <None Include="other\dsMerging.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsMerging.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="other\dsMerging.xss">
-      <DependentUpon>dsMerging.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -649,6 +555,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="other\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
