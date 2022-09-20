@@ -806,14 +806,6 @@
       <Project>{2baede76-a6d1-42cf-bf28-c1d20229c8ef}</Project>
       <Name>QS2.Desktop.Txteditor</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.Desktop.UI.cs\QS2.Desktop.UI.cs.csproj">
-      <Project>{6b62c2f2-81be-4f42-9810-29d7d612295f}</Project>
-      <Name>QS2.Desktop.UI.cs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.Desktop.UI.vb\QS2.Desktop.UI.vb.vbproj">
-      <Project>{c28fb59d-797d-4a86-a590-072c1e0c626b}</Project>
-      <Name>QS2.Desktop.UI.vb</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.functions.cs\QS2.Functions.cs.csproj">
       <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
       <Name>QS2.Functions.cs</Name>

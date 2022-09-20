@@ -749,17 +749,9 @@
       <Project>{c7f25bbf-f605-444f-9d2c-925a33670faa}</Project>
       <Name>QS2.UI.VB</Name>
     </ProjectReference>
-    <ProjectReference Include="..\QS2.UI\QS2.UI.csproj">
-      <Project>{f6e2b1c8-ee33-45e9-a0ac-ae1d5f0e334f}</Project>
-      <Name>QS2.UI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\QS2.VB.Core\QS2.Core.VB.vbproj">
       <Project>{f7905a52-3a40-4894-a5be-12f91b63da72}</Project>
       <Name>QS2.Core.VB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.Desktop.UI.vb\QS2.Desktop.UI.vb.vbproj">
-      <Project>{c28fb59d-797d-4a86-a590-072c1e0c626b}</Project>
-      <Name>QS2.Desktop.UI.vb</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.Functions.vb.vbproj">
       <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>

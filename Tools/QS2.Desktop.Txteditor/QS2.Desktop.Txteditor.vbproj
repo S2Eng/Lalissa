@@ -634,14 +634,6 @@
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QS2.Desktop.UI.cs\QS2.Desktop.UI.cs.csproj">
-      <Project>{6b62c2f2-81be-4f42-9810-29d7d612295f}</Project>
-      <Name>QS2.Desktop.UI.cs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QS2.Desktop.UI.vb\QS2.Desktop.UI.vb.vbproj">
-      <Project>{c28fb59d-797d-4a86-a590-072c1e0c626b}</Project>
-      <Name>QS2.Desktop.UI.vb</Name>
-    </ProjectReference>
     <ProjectReference Include="..\QS2.functions.cs\QS2.Functions.cs.csproj">
       <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
       <Name>QS2.Functions.cs</Name>
@@ -649,10 +641,6 @@
     <ProjectReference Include="..\QS2.functions.vb\QS2.Functions.vb.vbproj">
       <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
       <Name>QS2.Functions.vb</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QS2.license.core\QS2.License.Core.vbproj">
-      <Project>{94394a2a-cc5f-4caf-ae10-371d269f8e0a}</Project>
-      <Name>QS2.License.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\QS2.Logging.Win\QS2.Logging.Win.csproj">
       <Project>{0dde0333-d4ec-419d-aebd-c8359083c02d}</Project>

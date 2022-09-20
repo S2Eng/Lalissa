@@ -499,10 +499,6 @@
       <Project>{9e183118-353b-46fa-bbd7-1f85b8e13ff1}</Project>
       <Name>QS2.Sitemap</Name>
     </ProjectReference>
-    <ProjectReference Include="..\QS2.UI.VB2\QS2.UI.VB.vbproj">
-      <Project>{c7f25bbf-f605-444f-9d2c-925a33670faa}</Project>
-      <Name>QS2.UI.VB</Name>
-    </ProjectReference>
     <ProjectReference Include="..\QS2.VB.Core\QS2.Core.VB.vbproj">
       <Project>{f7905a52-3a40-4894-a5be-12f91b63da72}</Project>
       <Name>QS2.Core.VB</Name>
@@ -514,14 +510,6 @@
     <ProjectReference Include="..\Tools\QS2.Desktop.Txteditor\QS2.Desktop.Txteditor.vbproj">
       <Project>{2baede76-a6d1-42cf-bf28-c1d20229c8ef}</Project>
       <Name>QS2.Desktop.Txteditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.Desktop.UI.cs\QS2.Desktop.UI.cs.csproj">
-      <Project>{6b62c2f2-81be-4f42-9810-29d7d612295f}</Project>
-      <Name>QS2.Desktop.UI.cs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.Desktop.UI.vb\QS2.Desktop.UI.vb.vbproj">
-      <Project>{c28fb59d-797d-4a86-a590-072c1e0c626b}</Project>
-      <Name>QS2.Desktop.UI.vb</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.functions.cs\QS2.Functions.cs.csproj">
       <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
