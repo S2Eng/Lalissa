@@ -10,8 +10,7 @@ using System.Windows.Forms;
 using qs2.core.vb;
 using Infragistics.Win.UltraWinGrid;
 using QS2.Resources;
-
-
+using S2Extensions;
 
 
 namespace qs2.ui.print
@@ -466,19 +465,7 @@ namespace qs2.ui.print
                 this.ultraGrid1.Refresh();
                 bool LayoutFound = false;
                 this.compLayout1.doLayoutGrid(this.ultraGrid1, this.LayoutKey, null, ref LayoutFound, true, false, false);
-
                 this.setTitleGrid();
-                this.doChart();
-
-                if (!qs2.core.license.doLicense.rApplication.IDApplication.Trim().Equals(qs2.core.license.doLicense.eApp.PMDS.ToString().Trim(), StringComparison.OrdinalIgnoreCase))
-                {
-                    //if (this.right_QueryReportOwn)
-                    if (qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightQueryReportOwn, false))
-                    {
-                        this.doColUnvisibleObjects();
-                    }
-                }
-
             }
             catch (Exception ex)
             {
@@ -486,23 +473,7 @@ namespace qs2.ui.print
             }
         }
 
-        public void doChart()
-        {
-            if (this.isChart())
-            {
-                if (this.infoQryRunPar.rSelListQry.IDRessource.Trim().ToLower().EndsWith(("KaplanMeier").Trim().ToLower()))
-                {
-                    qs2.Queries.KaplanMeier.contChartKaplanMeier contChartKaplanMeier1 = new qs2.Queries.KaplanMeier.contChartKaplanMeier();
-                    contChartKaplanMeier1.initControl();
-
-                    contChartKaplanMeier1.infoQryRunPar = this.infoQryRunPar;
-                    contChartKaplanMeier1.Dock = DockStyle.Fill;
-                    this.panelChart.Controls.Add(contChartKaplanMeier1);
-
-                    contChartKaplanMeier1.drawKaplanMeier((DataTable)this.infoQryRunPar.dsQryResult.Tables[0]);
-                }
-            }
-        }
+       
         public bool isChart()
         {
             if (this.infoQryRunPar == null)

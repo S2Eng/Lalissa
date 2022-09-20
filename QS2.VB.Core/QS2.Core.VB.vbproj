@@ -554,11 +554,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StoredProduedures.xsd</DependentUpon>
     </Compile>
-    <Compile Include="sql\products\ALL\dsKaplanMeier.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsKaplanMeier.xsd</DependentUpon>
-    </Compile>
     <Compile Include="sql\products\CARDIAC\doCARDIAC_Statistik.vb" />
     <Compile Include="sql\products\CARDIAC\sqlCARDIAC.Designer.vb">
       <DependentUpon>sqlCARDIAC.vb</DependentUpon>
@@ -935,17 +930,6 @@
     <None Include="sql\Objects\dsObjects.xss">
       <DependentUpon>dsObjects.xsd</DependentUpon>
     </None>
-    <None Include="sql\products\ALL\dsKaplanMeier.xsc">
-      <DependentUpon>dsKaplanMeier.xsd</DependentUpon>
-    </None>
-    <None Include="sql\products\ALL\dsKaplanMeier.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsKaplanMeier.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="sql\products\ALL\dsKaplanMeier.xss">
-      <DependentUpon>dsKaplanMeier.xsd</DependentUpon>
-    </None>
     <None Include="sql\layout\dsLayout.xsc">
       <DependentUpon>dsLayout.xsd</DependentUpon>
     </None>
@@ -1017,6 +1001,7 @@
     <Folder Include="Interface\HL7\" />
     <Folder Include="Products\" />
     <Folder Include="sql\BusinessLogic\" />
+    <Folder Include="sql\products\ALL\" />
     <Folder Include="sql\products\QTH\" />
     <Folder Include="sql\products\VASCULAR\" />
   </ItemGroup>

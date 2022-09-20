@@ -464,8 +464,6 @@
     <Compile Include="ownControls\inherit Infrag\InfragCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="print\KaplanMeier\KaplanMeier.cs" />
-    <Compile Include="print\KaplanMeier\dbKaplanMeier.cs" />
     <Compile Include="print\print.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
