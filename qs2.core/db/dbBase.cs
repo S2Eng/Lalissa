@@ -136,27 +136,29 @@ namespace qs2.core
         {
             try
             {
-                System.Data.Common.DbConnectionStringBuilder OLEDBBuilder = new System.Data.Common.DbConnectionStringBuilder();
-                OLEDBBuilder.ConnectionString = ConnectionStr.Trim();
+                System.Data.Common.DbConnectionStringBuilder oledbBuilder = new System.Data.Common.DbConnectionStringBuilder
+                {
+                    ConnectionString = ConnectionStr.Trim()
+                };
 
-                dbBase.Database = OLEDBBuilder["Initial Catalog"].ToString();
-                dbBase.Server = OLEDBBuilder["Data Source"].ToString();
+                dbBase.Database = oledbBuilder["Initial Catalog"].ToString();
+                dbBase.Server = oledbBuilder["Data Source"].ToString();
                 dbBase.TrustedConnection = false;
 
-                string[] aKeys = new string[OLEDBBuilder.Keys.Count];
-                object[] aValues = new object[OLEDBBuilder.Keys.Count];
-                OLEDBBuilder.Keys.CopyTo(aKeys, 0);
-                OLEDBBuilder.Values.CopyTo(aValues, 0);
+                string[] aKeys = new string[oledbBuilder.Keys.Count];
+                object[] aValues = new object[oledbBuilder.Keys.Count];
+                oledbBuilder.Keys.CopyTo(aKeys, 0);
+                oledbBuilder.Values.CopyTo(aValues, 0);
                 var dic = aKeys.Zip(aValues, (k, v) => new { k, v }).ToDictionary(x => x.k, x => x.v);
 
                 //Check of MSOLEDBSQL and SQLNCLI. Remove SQLNCLI later
-                dbBase.TrustedConnection =  (OLEDBBuilder.ContainsKey("Integrated Security") && dic["Integrated Security"].sEquals("SSPI")) ||
-                                            (OLEDBBuilder.ContainsKey("trusted_connection") && dic["trusted_connection"].sEquals("Yes"));
+                dbBase.TrustedConnection =  (oledbBuilder.ContainsKey("Integrated Security") && dic["Integrated Security"].sEquals("SSPI")) ||
+                                            (oledbBuilder.ContainsKey("trusted_connection") && dic["trusted_connection"].sEquals("Yes"));
 
                 if (!dbBase.TrustedConnection)
                 {
-                    dbBase.User = OLEDBBuilder["User ID"].ToString();
-                    dbBase.PwdDecrypted = OLEDBBuilder["Password"].ToString();
+                    dbBase.User = oledbBuilder["User ID"].ToString();
+                    dbBase.PwdDecrypted = oledbBuilder["Password"].ToString();
                 }
                 return true;
             }

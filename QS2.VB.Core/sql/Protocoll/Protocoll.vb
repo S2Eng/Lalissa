@@ -638,36 +638,4 @@ Public Class Protocol : Implements IDisposable
         End Set
     End Property
 
-    Public Function WriteEventLog(EventLogText As String) As Boolean
-        Try
-
-            'Schreiben auf entfernte Machine noch prüfen.
-            'Dim PathToExe As String = Application.StartupPath
-            'Dim MachineName As String = Environment.MachineName
-            'If PathToExe.StartsWith("\\") Then
-            '    MachineName = System.IO.Directory.GetDirectoryRoot(PathToExe)
-            'End If
-
-
-
-#If Not DEBUG Then
-    Dim LogName As String = System.Windows.Forms.Application.ProductName
-    Using eventLog As EventLog = New EventLog("Application")
-        'eventLog.MachineName = MachineName
-        eventLog.Source = "Application"
-        eventLog.WriteEntry(EventLogText, EventLogEntryType.Information, 54321)
-        Return True
-    End Using
-    Return False
-#Else
-            Return True
-#End If
-
-
-        Catch ex As Exception
-            'No action in case of write-error
-            'qs2.core.generic.getExep(ex.ToString(), ex.Message)
-        End Try
-    End Function
-
 End Class

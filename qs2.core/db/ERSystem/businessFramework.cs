@@ -56,7 +56,7 @@ namespace qs2.core.db.ERSystem
                EACTSUser retClass = new EACTSUser();
 
                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
-                {
+               {
                     System.Linq.IQueryable<tblObject> tObject = null;
 
                     if (IDObject == 0)
@@ -81,20 +81,20 @@ namespace qs2.core.db.ERSystem
                     }
                     else
                         return retClass;
-                }
+               }
 
                 return retClass;
-            }
+           }
 
            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
            //{
            //    throw new System.Data.Entity.Validation.DbEntityValidationException(dbBase.getDbEntityValidationException(ex), ex);
            //}
 
-            catch (Exception ex)
-            {
-                throw new Exception("qs2.core.db.ERSystem.businessFramework.getEACTSUserByRole: " + ex.ToString());
-            }
+           catch (Exception ex)
+           {
+               throw new Exception("qs2.core.db.ERSystem.businessFramework.getEACTSUserByRole: " + ex.ToString());
+           }
         }
 
 
