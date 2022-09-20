@@ -471,12 +471,6 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddIn.manage\frmAddIns.Designer.vb">
-      <DependentUpon>frmAddIns.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AddIn.manage\frmAddIns.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="adjustments\contAdjust.vb">
       <SubType>UserControl</SubType>
     </Compile>
@@ -506,12 +500,6 @@
       <DependentUpon>contObject.vb</DependentUpon>
     </Compile>
     <Compile Include="contObject.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AddIn.manage\contAddIns.Designer.vb">
-      <DependentUpon>contAddIns.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AddIn.manage\contAddIns.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmCheckUsercode.Designer.vb">
@@ -646,9 +634,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddIn.manage\frmAddIns.resx">
-      <DependentUpon>frmAddIns.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="adjustments\contAdjust.resx">
       <DependentUpon>contAdjust.vb</DependentUpon>
     </EmbeddedResource>
@@ -663,9 +648,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="contObject.resx">
       <DependentUpon>contObject.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AddIn.manage\contAddIns.resx">
-      <DependentUpon>contAddIns.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contObjectRel.resx">
       <DependentUpon>contObjectRel.vb</DependentUpon>

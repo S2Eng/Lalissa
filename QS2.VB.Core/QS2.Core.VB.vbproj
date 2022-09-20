@@ -593,21 +593,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="sql\AddIns\AddIn.vb" />
-    <Compile Include="sql\AddIns\sqlAddIns.designer.vb">
-      <DependentUpon>sqlAddIns.vb</DependentUpon>
-    </Compile>
-    <Compile Include="sql\AddIns\sqlAddIns.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="sql\AddIns\dsAddIn.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsAddIn.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="sql\AddIns\dsAddIn.vb">
-      <DependentUpon>dsAddIn.xsd</DependentUpon>
-    </Compile>
     <Compile Include="sql\cTranslate.vb" />
     <Compile Include="sql\Admin\dsAdmin.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -750,9 +735,6 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="sql\AddIns\sqlAddIns.resx">
-      <DependentUpon>sqlAddIns.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="sql\layout\compLayout.resx">
       <DependentUpon>compLayout.vb</DependentUpon>
     </EmbeddedResource>
@@ -886,17 +868,6 @@
     <None Include="Service References\AKH_CDA_Service\ZWS_S_CDA_HEADER_B64_SA.wsdl" />
     <None Include="Service References\KAV_MedArchiv\kav.wsdl" />
     <None Include="Service References\KAV_PatAuskunft\kav.wsdl" />
-    <None Include="sql\AddIns\dsAddIn.xsc">
-      <DependentUpon>dsAddIn.xsd</DependentUpon>
-    </None>
-    <None Include="sql\AddIns\dsAddIn.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsAddIn.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="sql\AddIns\dsAddIn.xss">
-      <DependentUpon>dsAddIn.xsd</DependentUpon>
-    </None>
     <None Include="sql\Admin\dsAdmin.xsc">
       <DependentUpon>dsAdmin.xsd</DependentUpon>
     </None>

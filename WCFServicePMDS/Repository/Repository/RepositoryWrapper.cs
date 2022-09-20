@@ -167,7 +167,6 @@ namespace WCFServicePMDS.Repository
         private Interfaces.IZusatzGruppeRepository _ZusatzGruppe;
         private Interfaces.IZusatzGruppeEintragRepository _ZusatzGruppeEintrag;
         private Interfaces.IZusatzWertRepository _ZusatzWert;
-        private Interfaces.IAddInsRepository _AddIns;
         private Interfaces.ILayoutRepository _Layout;
         private Interfaces.ILayoutGridsRepository _LayoutGrids;
         private Interfaces.IProtocolRepository _Protocol;
@@ -2068,18 +2067,6 @@ namespace WCFServicePMDS.Repository
                 }
 
                 return _ZusatzWert;
-            }
-        }
-        public Interfaces.IAddInsRepository AddIns
-        {
-            get
-            {
-                if (_AddIns == null)
-                {
-                    _AddIns  = new WCFServicePMDS.Repository.Repository.AddInsRepository(_repoContext);
-                }
-
-                return _AddIns;
             }
         }
         public Interfaces.ILayoutRepository Layout

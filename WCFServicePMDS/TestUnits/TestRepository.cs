@@ -185,7 +185,6 @@ namespace WCFServicePMDS.TestUnits
                     i = _repoWrapper.ZusatzGruppe.FindByCondition(o => o.Id == System.Guid.NewGuid().ToString()).Count();
                     i = _repoWrapper.ZusatzGruppeEintrag.FindByCondition(o => o.Id == System.Guid.NewGuid()).Count();
                     i = _repoWrapper.ZusatzWert.FindByCondition(o => o.Id == System.Guid.NewGuid()).Count();
-                    i = _repoWrapper.AddIns.FindByCondition(o => o.Id == System.Guid.NewGuid()).Count();
                     i = _repoWrapper.Layout.FindByCondition(o => o.Idguid == System.Guid.NewGuid()).Count();
                     i = _repoWrapper.LayoutGrids.FindByCondition(o => o.Idguid == System.Guid.NewGuid()).Count();
                     i = _repoWrapper.Protocol.FindByCondition(o => o.Idguid == System.Guid.NewGuid()).Count();
@@ -323,7 +322,6 @@ namespace WCFServicePMDS.TestUnits
                     i = _repoWrapper.Textbausteine.FindByCondition(o => o.Id == System.Guid.NewGuid()).Count();
                     i = _repoWrapper.Unterbringung.FindByCondition(o => o.Id == System.Guid.NewGuid()).Count();
                   
-                    i = _repoWrapper.AddIns.FindByCondition(o => o.Id == System.Guid.NewGuid()).Count();
                     i = _repoWrapper.Layout.FindByCondition(o => o.Idguid == System.Guid.NewGuid()).Count();
                     i = _repoWrapper.LayoutGrids.FindByCondition(o => o.Idguid == System.Guid.NewGuid()).Count();
 

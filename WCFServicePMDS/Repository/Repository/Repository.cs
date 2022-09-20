@@ -1093,13 +1093,6 @@ namespace WCFServicePMDS.Repository
 
             }
         }
-        public class AddInsRepository : RepositoryBase<AddIns>, Interfaces.IAddInsRepository
-        {
-            public AddInsRepository(Models.DB.PMDSDevContext repositoryContext) : base(repositoryContext)
-            {
-
-            }
-        }
         public class LayoutRepository : RepositoryBase<Layout>, Interfaces.ILayoutRepository
         {
             public LayoutRepository(Models.DB.PMDSDevContext repositoryContext) : base(repositoryContext)

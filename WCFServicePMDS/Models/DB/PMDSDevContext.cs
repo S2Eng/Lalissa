@@ -23,7 +23,6 @@ namespace WCFServicePMDS.Models.DB
 
 
         public virtual DbSet<Abteilung> Abteilung { get; set; }
-        public virtual DbSet<AddIns> AddIns { get; set; }
         public virtual DbSet<Adresse> Adresse { get; set; }
         public virtual DbSet<Aerzte> Aerzte { get; set; }
         public virtual DbSet<AnamneseKrohwinkel> AnamneseKrohwinkel { get; set; }
@@ -258,49 +257,7 @@ namespace WCFServicePMDS.Models.DB
                     .HasConstraintName("FK_Abteilung_Kontakt");
             });
 
-            modelBuilder.Entity<AddIns>(entity =>
-            {
-                entity.ToTable("AddIns", "qs2");
-
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.ActivatedAt).HasColumnType("datetime");
-
-                entity.Property(e => e.ActivatedFrom)
-                    .HasMaxLength(150)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.AddInName)
-                    .IsRequired()
-                    .HasMaxLength(150)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.Description)
-                    .IsRequired()
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.Dll)
-                    .IsRequired()
-                    .HasMaxLength(150)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.Group)
-                    .IsRequired()
-                    .HasMaxLength(150)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.Place)
-                    .IsRequired()
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.Type)
-                    .IsRequired()
-                    .HasMaxLength(150)
-                    .HasDefaultValueSql("('')");
-            });
-
+           
             modelBuilder.Entity<Adresse>(entity =>
             {
                 entity.HasIndex(e => e.Id)

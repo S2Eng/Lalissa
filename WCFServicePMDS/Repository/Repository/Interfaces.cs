@@ -644,10 +644,6 @@ namespace WCFServicePMDS.Repository
         {
 
         }
-        public interface IAddInsRepository : IRepositoryBase<AddIns>
-        {
-
-        }
         public interface ILayoutRepository : IRepositoryBase<Layout>
         {
 

@@ -1162,7 +1162,6 @@
     <Compile Include="GenericDTO\GuidDTO.cs" />
     <Compile Include="Hosts\CheckClientRuning.cs" />
     <Compile Include="Models\DB\Abteilung.cs" />
-    <Compile Include="Models\DB\AddIns.cs" />
     <Compile Include="Models\DB\Adresse.cs" />
     <Compile Include="Models\DB\Aerzte.cs" />
     <Compile Include="Models\DB\AnamneseKrohwinkel.cs" />
