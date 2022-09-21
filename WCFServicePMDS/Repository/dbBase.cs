@@ -26,14 +26,7 @@ namespace WCFServicePMDS.DAL
         public static string connStr = "";
         public static System.DateTime minDateTime = new System.DateTime(1900, 1, 1);
         public static int _counterReconnect = 0;
-
         public static int CommandTimeOutEFCore = 720;
-
-
-
-
-
-
 
         public static System.Data.SqlClient.SqlConnection dbConn
         {
@@ -54,43 +47,6 @@ namespace WCFServicePMDS.DAL
             }
         }
 
-        public static bool setConnectionDB(string client, string user)
-        {
-            try
-            {
-                throw new Exception("WCFServicePMDS.DAL.dbBase.setConnectionDB: Function not allowed!");
-
-                dbBase.getVarConnStr(ENV.ENVWcf.db);
-
-                SqlConnectionStringBuilder connStrBuilder = new SqlConnectionStringBuilder();
-                connStrBuilder.InitialCatalog = dbBase.Database.Trim();
-                connStrBuilder.DataSource = dbBase.Server.Trim();
-                if (dbBase.TrustedConnection)
-                {
-                    connStrBuilder.IntegratedSecurity = true;
-                }
-                else
-                {
-                    connStrBuilder.IntegratedSecurity = false;
-                    connStrBuilder.UserID = dbBase.User.Trim();
-                    connStrBuilder.Password = dbBase.PwdDecrypted.Trim();
-                }
-
-                connStrBuilder.ConnectTimeout = ENV.ENVWcf.ConnectTimeout;
-                dbBase._dbConn = new System.Data.SqlClient.SqlConnection(connStrBuilder.ConnectionString);
-                dbBase._dbConn.Open();
-                //dbBase.getDBContext();
-                dbBase.connStr = connStrBuilder.ConnectionString;
-                Log.write("Client: " + client + (user.Trim() != "" ? ", User: " + user + "" : "") + "\r\n" + "ConnectOK", false, 0);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                string eExcep = "Can not connect to Database!" + "\r\n" + "\r\n" + "dbBase.setConnectionDB: " + ex.ToString();
-                throw new Exception("WCFServicePMDS.DAL.dbBase.setConnectionDB: " + eExcep);
-            }
-        }
         public static bool reconnect(int counterReconnect)
         {
             try
@@ -173,63 +129,6 @@ namespace WCFServicePMDS.DAL
             }
         }
 
-
-        //public static ERModellPMDSEntities getDBContext()
-        //{
-        //    try
-        //    {
-        //        throw new Exception("getDBContext: EF6 is deactivated!");
-
-        //        //SqlConnection dbConnCheck = dbBase.dbConn;
-        //        ERModellPMDSEntities DBContext = new ERModellPMDSEntities();
-        //        dbBase.setERConnection(ref DBContext);
-        //        return DBContext;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("WCFServicePMDS.DAL.dbBase.getDBContext: " + ex.ToString());
-        //    }
-        //}
-        //public static bool setERConnection(ref ERModellPMDSEntities DBContext)
-        //{
-        //    try
-        //    {
-        //        throw new Exception("setERConnection: EF6 is deactivated!");
-
-        //        string providerName = "System.Data.SqlClient";
-        //        string serverName = dbBase.Server.Trim();
-        //        string databaseName = dbBase.Database.Trim();
-        //        string User = dbBase.User.Trim();
-        //        string Pwd = dbBase.PwdDecrypted.Trim();
-
-        //        SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
-        //        sqlBuilder.DataSource = serverName;
-        //        sqlBuilder.InitialCatalog = databaseName;
-        //        sqlBuilder.ApplicationName = "EntityFramework";
-        //        sqlBuilder.MultipleActiveResultSets = true;
-        //        sqlBuilder.IntegratedSecurity = true;
-        //        sqlBuilder.MaxPoolSize = 5000;
-
-        //        if (User != null)
-        //        {
-        //            if (User.Trim() != "")
-        //            {
-        //                sqlBuilder.UserID = User;
-        //                sqlBuilder.Password = Pwd == null ? "" : Pwd;
-        //                sqlBuilder.IntegratedSecurity = false;
-        //            }
-        //        }
-
-        //        DBContext.Database.Connection.ConnectionString = sqlBuilder.ConnectionString;
-        //        DBContext.Database.Connection.Open();
-        //        return true;
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("WCFServicePMDS.DAL.dbBase.setConnection: " + ex.ToString());
-        //    }
-        //}
 
         public string getDbEntityValidationException(System.Data.Entity.Validation.DbEntityValidationException ex)
         {

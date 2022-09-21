@@ -5,10 +5,14 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Core.EntityClient;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using S2Extensions;
+
+
 
 namespace qs2.core.db.ERSystem
 {
@@ -903,36 +907,6 @@ namespace qs2.core.db.ERSystem
             }
         }
 
-
-
-        // 2018
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public static string getDbEntityValidationException(System.Data.Entity.Validation.DbEntityValidationException ex)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -953,7 +927,7 @@ namespace qs2.core.db.ERSystem
             try
             {               
                 PMDS.db.Entities.ERModellPMDSEntities DBContext = new PMDS.db.Entities.ERModellPMDSEntities();
-                businessFramework.setERConnection(ref DBContext);
+                businessFramework.setERConnectionSqlDb(ref DBContext);
                 return DBContext;
             }
             catch (Exception ex)
@@ -961,40 +935,33 @@ namespace qs2.core.db.ERSystem
                 throw new Exception("businessFramework.getDBContext: " + ex.ToString());
             }
         }
-        public static void setERConnection(ref PMDS.db.Entities.ERModellPMDSEntities DBContext)
+
+        public static void setERConnectionOleDb(ref PMDS.db.Entities.ERModellPMDSEntities DBContext)
         {
             try
             {
                 System.Data.Common.DbConnectionStringBuilder OLEDBBuilder = new System.Data.Common.DbConnectionStringBuilder();
                 OLEDBBuilder["Data Source"] = dbBase.Server;
                 OLEDBBuilder["Initial Catalog"] = dbBase.Database;
-
-                SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
-                sqlBuilder.DataSource = dbBase.Server;
-                sqlBuilder.InitialCatalog = dbBase.Database;
-                sqlBuilder.ApplicationName = "EntityFramework";
-                sqlBuilder.MultipleActiveResultSets = true;
-                sqlBuilder.IntegratedSecurity = true;
-                sqlBuilder.MaxPoolSize = 5000;
-
-                //Für SQL-User
+                OLEDBBuilder["Provider"] = dbBase.Provider;
+                OLEDBBuilder["Persist Security Info"] = true;
+                OLEDBBuilder["MARS Connection"] = true;
                 if (dbBase.User != null)
                 {
                     if (dbBase.User.Trim() != "")
                     {
-                        sqlBuilder.UserID = dbBase.User;
-                        string Pwd = dbBase.PwdDecrypted;
-                        sqlBuilder.Password = Pwd == null ? "" : Pwd;
-                        sqlBuilder.IntegratedSecurity = false;
+                        OLEDBBuilder["User ID"] = dbBase.User;
+                        OLEDBBuilder["Password"] = dbBase.PwdDecrypted;
                     }
                 }
+                else
+                {
+                    OLEDBBuilder["Integrated Security"] = "SSPI";
+                }
 
-                ConnString = sqlBuilder.ConnectionString;
-                DBContext.Database.Connection.ConnectionString = ConnString; 
+                DBContext.Database.Connection.ConnectionString = OLEDBBuilder.ConnectionString;
                 DBContext.Database.Connection.Open();
-
                 return;
-
             }
             catch (Exception ex)
             {
@@ -1002,15 +969,33 @@ namespace qs2.core.db.ERSystem
             }
         }
 
-        public string GetConnectionString()
+        public static void setERConnectionSqlDb(ref PMDS.db.Entities.ERModellPMDSEntities DBContext)
         {
             try
             {
-                return ConnString;
+                SqlConnectionStringBuilder sqlDBBuilder = new SqlConnectionStringBuilder();
+                System.Data.Common.DbConnectionStringBuilder SqlDBBuilder = new System.Data.Common.DbConnectionStringBuilder();
+                sqlDBBuilder.DataSource = dbBase.Server;
+                sqlDBBuilder.InitialCatalog = dbBase.Database;
+                sqlDBBuilder.PersistSecurityInfo = true;
+                sqlDBBuilder.MultipleActiveResultSets = true;
+                if (!String.IsNullOrWhiteSpace(dbBase.User) && !String.IsNullOrWhiteSpace(dbBase.PwdDecrypted))
+                {
+                        sqlDBBuilder.UserID = dbBase.User;
+                        sqlDBBuilder.Password = dbBase.PwdDecrypted;
+                }
+                else
+                {
+                    sqlDBBuilder.IntegratedSecurity = true;
+                }
+
+                DBContext.Database.Connection.ConnectionString = sqlDBBuilder.ConnectionString;
+                DBContext.Database.Connection.Open();
+                return;
             }
             catch (Exception ex)
             {
-                throw new Exception("businessFramework.GetConnectionString: " + ex.ToString());
+                throw new Exception("businessFramework.setConnection: " + ex.ToString());
             }
         }
 
@@ -1021,10 +1006,9 @@ namespace qs2.core.db.ERSystem
                 if (qs2.core.ENV.WriteERConnectionString)
                 {
                     Boolean MustSaveQS2 = false;
-                    MustSaveQS2 = WriteERConnection("ERModellPMDSEntities");
+                    MustSaveQS2 = WriteERConnectionSqlDb("ERModellPMDSEntities");
                     return;
                 }
-
             }
             catch (Exception ex)
             {
@@ -1032,132 +1016,65 @@ namespace qs2.core.db.ERSystem
             }
         }
 
-        public static bool WriteERConnection(string ConnectionName)
+        private static bool WriteERConnectionSqlDb(string ConnectionName)
         {
             try
             {
                 string providerName = "System.Data.SqlClient";
-                string serverName = dbBase.Server.Trim();
-                string databaseName = dbBase.Database.Trim();
-                string User = dbBase.User.Trim();
-                string Pwd = dbBase.PwdDecrypted.Trim();
-
-                string ERproviderName = "System.Data.EntityClient";
-                string ERMetaData = @"res://*/ERModellQS2.csdl|res://*/ERModellQS2.ssdl|res://*/ERModellQS2.msl";
-                
-                SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
-                sqlBuilder.DataSource = serverName;
-                sqlBuilder.InitialCatalog = databaseName;
-                sqlBuilder.ApplicationName = "EntityFramework";
-                sqlBuilder.MultipleActiveResultSets = true;
-                sqlBuilder.IntegratedSecurity = true;
-
-                //Für SQL-User
-                if (User != null)
-                {
-                    if (User.Trim() != "")
-                    {
-                        sqlBuilder.UserID = User;
-                        sqlBuilder.Password = Pwd == null ? "" : Pwd;
-                        sqlBuilder.IntegratedSecurity = false;
-                    }
-                }
-                string providerString = sqlBuilder.ToString();
-
                 System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
                 var connection = config.ConnectionStrings.ConnectionStrings[ConnectionName];
 
-                string chkdataBaseName = "=" + databaseName.ToUpper() + ";";
-                string chkServerName = "=" + serverName.ToUpper() + ";";
-
-                //Wenn es die Connection schon gibt, prüfen, ob die richtige DB und der richte Server eingetragen sind
-                if (connection != null && connection.ConnectionString.ToUpper().Contains(chkServerName) && connection.ConnectionString.ToUpper().Contains(chkdataBaseName))
+                //Wenn es die Connection schon gibt, prüfen, ob die richtige DB und der richtige Server eingetragen sind
+                if (connection != null && connection.ConnectionString.sContains(dbBase.Database) &&
+                    connection.ConnectionString.sContains(dbBase.Server))
                 {
                     return true;
                 }
                 else
                 {
-                    if (connection != null)
-                        config.ConnectionStrings.ConnectionStrings.Remove(ConnectionName);
-
-                    EntityConnectionStringBuilder entityBuilder = new EntityConnectionStringBuilder();
-                    entityBuilder.Provider = providerName;
-                    entityBuilder.ProviderConnectionString = providerString;
-                    entityBuilder.Name = ConnectionName;
-                    entityBuilder.Metadata = ERMetaData;
-
-                    config.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings
+                    SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
+                    sqlBuilder.DataSource = dbBase.Server;
+                    sqlBuilder.InitialCatalog = dbBase.Database;
+                    sqlBuilder.ApplicationName = "EntityFramework";
+                    sqlBuilder.MultipleActiveResultSets = true;
+                    if (dbBase.User != null)
                     {
-                        Name = entityBuilder.Name,
-                        ConnectionString = entityBuilder.ConnectionString.Replace("name=" + entityBuilder.Name + ";", ""),
-                        ProviderName = ERproviderName
-                    });
-                    config.Save(ConfigurationSaveMode.Modified, false);
+                        if (dbBase.User.Trim() != "")
+                        {
+                            sqlBuilder.UserID = dbBase.User;
+                            sqlBuilder.Password = dbBase.PwdDecrypted;
+                        }
+                    }
+                    else
+                    {
+                        sqlBuilder.IntegratedSecurity = true;
+                    }
+
+                    ConnectionStringsSection csSection = config.ConnectionStrings;
+                    ConnectionStringSettingsCollection csCollection = csSection.ConnectionStrings;
+                    ConnectionStringSettings cs = csCollection[ConnectionName];
+                    if (cs != null)
+                    {
+                        csCollection.RemoveAt(csCollection.IndexOf(cs));
+                        ConfigurationManager.RefreshSection("connectionStrings");
+                    }
+
+                    Configuration configNew = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                    csSection.ConnectionStrings.Add(
+                        new ConnectionStringSettings(ConnectionName,
+                            sqlBuilder.ConnectionString,
+                            providerName));
+
+                    configNew.Save(ConfigurationSaveMode.Modified, false);
                     ConfigurationManager.RefreshSection("connectionStrings");
-                    return false;
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Main.WriteERConnection: " + ex.ToString());
+                throw new Exception("businessFranmework.WriteERConnectionSqlDb: " + ex.ToString());
 
             }
         }
-
-
-        public bool CheckDb(PMDS.db.Entities.ERModellPMDSEntities DBContext, ref string prot, ref int iErrorsFound)
-        {
-            try
-            {               
-                var t1 = DBContext.tblSelListGroup.Where(k => k.ID.Equals(-999)); this.CheckTable(t1, ref prot, ref iErrorsFound);
-                var t2 = DBContext.tblSelListEntries.Where(k => k.ID.Equals(-999)); this.CheckTable(t2, ref prot, ref iErrorsFound);
-                var t3 = DBContext.tblSelListEntriesObj.Where(k => k.IDGuid.Equals(System.Guid.NewGuid())); this.CheckTable(t3, ref prot, ref iErrorsFound);
-                var t4 = DBContext.Ressourcen.Where(k => k.IDGuid.Equals(System.Guid.NewGuid())); this.CheckTable(t4, ref prot, ref iErrorsFound);
-                var t5 = DBContext.tblCriteria.Where(k => k.FldShort.Equals("xyxy")); this.CheckTable(t5, ref prot, ref iErrorsFound);
-                var t6 = DBContext.tblRelationship.Where(k => k.FldShortParent.Equals("xyxy")); this.CheckTable(t6, ref prot, ref iErrorsFound);
-                var t7 = DBContext.tblCriteriaOpt.Where(k => k.FldShort.Equals("xyxy")); this.CheckTable(t7, ref prot, ref iErrorsFound);
-                var t8 = DBContext.AddIns.Where(k => k.ID.Equals(System.Guid.NewGuid())); this.CheckTable(t8, ref prot, ref iErrorsFound);
-                var t9 = DBContext.Layout.Where(k => k.IDGuid.Equals(System.Guid.NewGuid())); this.CheckTable(t9, ref prot, ref iErrorsFound);
-                var t10 = DBContext.LayoutGrids.Where(k => k.IDGuid.Equals(System.Guid.NewGuid())); this.CheckTable(t10, ref prot, ref iErrorsFound);
-                var t11 = DBContext.Protocol.Where(k => k.IDGuid.Equals(System.Guid.NewGuid())); this.CheckTable(t11, ref prot, ref iErrorsFound);
-                var t12 = DBContext.tblAdjust.Where(k => k.setting.Equals("xyxy")); this.CheckTable(t12, ref prot, ref iErrorsFound);
-                var t13 = DBContext.tblAdress.Where(k => k.IDGuid.Equals(System.Guid.NewGuid())); this.CheckTable(t13, ref prot, ref iErrorsFound);
-                var t14 = DBContext.tblMedArchiv.Where(k => k.IDGuid.Equals(System.Guid.NewGuid())); this.CheckTable(t14, ref prot, ref iErrorsFound);
-                var t15 = DBContext.tblObject.Where(k => k.ID.Equals(-999)); this.CheckTable(t15, ref prot, ref iErrorsFound);
-                var t16 = DBContext.tblObjectRel.Where(k => k.IDGuid.Equals(System.Guid.NewGuid())); this.CheckTable(t16, ref prot, ref iErrorsFound);
-                var t17 = DBContext.tblQueriesDef.Where(k => k.IDGuid.Equals(System.Guid.NewGuid())); this.CheckTable(t17, ref prot, ref iErrorsFound);
-                var t18 = DBContext.tblQueryJoinsTemp.Where(k => k.IDGuid.Equals(System.Guid.NewGuid())); this.CheckTable(t18, ref prot, ref iErrorsFound);
-                var t19 = DBContext.tblSideLogic.Where(k => k.IDGuid.Equals(System.Guid.NewGuid())); this.CheckTable(t19, ref prot, ref iErrorsFound);
-                var t20 = DBContext.tblStay.Where(k => k.ID.Equals(-999)); this.CheckTable(t20, ref prot, ref iErrorsFound);
-                var t21 = DBContext.tblStayAdditions.Where(k => k.IDGuid.Equals(System.Guid.NewGuid())); this.CheckTable(t21, ref prot, ref iErrorsFound);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("businessFramework.CheckDb: " + ex.ToString());
-            }
-        }
-        public void CheckTable(IQueryable t, ref string prot, ref int iErrorsFound)
-        {
-            var o = t.ElementType;
-            try
-            {
-                foreach (var r in t)
-                {
-                    string xy = "";
-                }
-            }
-            catch (Exception ex)
-            {
-                iErrorsFound += 1;
-                string txtTmp = "Error Select from Table '" + o.Name + "' !" + "\r\n" + ex.ToString();
-                //throw new Exception(txtTmp);
-                prot += txtTmp + "\r\n" + "\r\n" + "\r\n";
-            }
-        }
-
     }
-
 }

@@ -11,7 +11,7 @@ namespace qs2.ui
 {
 
 
-    public class RunFromOhterSystem
+    public class RunFromOtherSystem
     {
 
         public static bool IsInitialized = false;
@@ -23,7 +23,7 @@ namespace qs2.ui
         {
             try
             {
-                if (RunFromOhterSystem.IsInitialized)
+                if (RunFromOtherSystem.IsInitialized)
                 {
                     return true;
                 }
@@ -38,7 +38,7 @@ namespace qs2.ui
                 qs2.core.generic.evdoLog += new qs2.core.generic.doLog(qs2.ui.Logging.Log.doLog);
                 qs2.core.ENV.fileConfig = System.IO.Path.Combine(qs2.core.ENV.path_config, qs2.core.ENV.configFile);
                 if (!System.IO.File.Exists(qs2.core.ENV.fileConfig))
-                    throw new Exception("RunFromOhterSystem.LogIn: Config-File '" + qs2.core.ENV.fileConfig + "' does not exist!");
+                    throw new Exception("RunFromOtherSystem.LogIn: Config-File '" + qs2.core.ENV.fileConfig + "' does not exist!");
 
                 qs2.core.ENV.readConfig(qs2.core.ENV.fileConfig, false);
                 qs2.core.ENV.path_log = PathLog;
@@ -54,56 +54,44 @@ namespace qs2.ui
                 }
                 qs2.core.ENV.readPathes(false, false, true);
 
-                //if (RunFromOhterSystem.checkLicense())
-                //{
                 qs2.core.vb.ui.loadStyleInfrag(true, "Light", "run from other System");
-                    qs2.core.ENV.readConnInfoDB();
-                    //qs2.core.vb.init.initSystem();
+                qs2.core.ENV.readConnInfoDB();
                     
-                    if (qs2.core.license.doLicense.autoLoadParticipantAndApplication(Application))
+                if (qs2.core.license.doLicense.autoLoadParticipantAndApplication(Application))
+                {
+                    if (qs2.core.logIn.doConnect2(true, false, false, "", true, true))
                     {
-                        if (qs2.core.logIn.doConnect2(true, false, false, "", true, true))
-                        {
-                            qs2.design.auto.workflowAssist.autoForm.ColorSchemas.initColorSchemas();
-                            qs2.core.ENV.alwaysNewConnection = false;
-                            qs2.core.ENV.StaysAsExternProcess2 = false;
-                            
-                            qs2.core.threadStayUI.StayUIIsinitialized = true;
-                            qs2.core.vb.sqlObjects sqlObjects1 = new sqlObjects(); 
-                            sqlObjects1.initControl();
-                            Guid IDGuidObjBack = System.Guid.Empty;
-                            int IDObjectBack = -1;
+                        qs2.design.auto.workflowAssist.autoForm.ColorSchemas.initColorSchemas();
+                        qs2.core.ENV.alwaysNewConnection = false;
+                        qs2.core.ENV.StaysAsExternProcess2 = false;
+                        
+                        qs2.core.threadStayUI.StayUIIsinitialized = true;
+                        qs2.core.vb.sqlObjects sqlObjects1 = new sqlObjects(); 
+                        sqlObjects1.initControl();
+                        Guid IDGuidObjBack = System.Guid.Empty;
+                        int IDObjectBack = -1;
 
-                            sqlObjects sqlObjectsAutoLogIn = new sqlObjects();
-                            sqlObjectsAutoLogIn.initControl();
-                            dsObjects.tblObjectRow rObjAutoLogIn = sqlObjectsAutoLogIn.getObjectRow(-99, sqlObjects.eTypSelObj.UserName, sqlObjects.eTypObj.IsUser, "", "Supervisor");
-                            actUsr.loadActUsr(rObjAutoLogIn.ID, false);
-                            qs2.design.auto.ownMCCriteria.initSharedDataSets(false);
-                            RunFromOhterSystem.IsInitialized = true;
-                            
-                            //System.Windows.Forms.MessageBox.Show(DateTime.Now.ToString() + " - Initializing ready");
-                            return true;
-                        }
-                        else
-                        {
-                            throw new Exception("RunFromOhterSystem.LogIn: LogIn-Error!"); 
-                        }
+                        sqlObjects sqlObjectsAutoLogIn = new sqlObjects();
+                        sqlObjectsAutoLogIn.initControl();
+                        dsObjects.tblObjectRow rObjAutoLogIn = sqlObjectsAutoLogIn.getObjectRow(-99, sqlObjects.eTypSelObj.UserName, sqlObjects.eTypObj.IsUser, "", "Supervisor");
+                        actUsr.loadActUsr(rObjAutoLogIn.ID, false);
+                        qs2.design.auto.ownMCCriteria.initSharedDataSets(false);
+                        RunFromOtherSystem.IsInitialized = true;
+                        return true;
                     }
                     else
                     {
-                        throw new Exception("RunFromOhterSystem.LogIn: Error load Participant and Application! (Function autoLoadParticipantAndApplication)"); 
+                        throw new Exception("RunFromOtherSystem.LogIn: LogIn-Error!"); 
                     }
-
-                //}
-                //else
-                //{
-                //    throw new Exception("RunFromOhterSystem.LogIn: license is not correct!");
-                //}
+                }
+                else
+                {
+                    throw new Exception("RunFromOtherSystem.LogIn: Error load Participant and Application! (Function autoLoadParticipantAndApplication)"); 
+                }
             }
             catch (Exception ex)
             {
-                throw new Exception("RunFromOhterSystem.LogIn: " + ex.ToString());
-                //return false;
+                throw new Exception("RunFromOtherSystem.LogIn: " + ex.ToString());
             }
         }
 

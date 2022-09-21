@@ -16,9 +16,6 @@ namespace PMDS
 
 	public static class MainEntry
     {
-
-
-
         static bool ProcessStartup(Form frm, UserRights right, string RightsErrorText, bool bNoLoginRequired, bool testWindow, bool IsTouch  )
         {
             if (!bNoLoginRequired)  
@@ -33,22 +30,9 @@ namespace PMDS
                 }
             }       
 
-            if (right == UserRights.AbrechnungStarten)
-            {
-                if (!testWindow)
-                {
-                    PMDS.Global.UIGlobal.infoStart.TopMost = true;
-                    PMDS.Global.UIGlobal.infoStart.ShowInTaskbar = false;
-                    PMDS.Global.UIGlobal.infoStart.StartPosition = FormStartPosition.CenterScreen;
-                    if (ENV.COMMANDLINE_bshowSplash)
-                        PMDS.Global.UIGlobal.infoStart.Start();
-                    //((PMDS.Calc.UI.Admin.frmAbrechnung)frm).initControl();
-                }
-            } 
-
             QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
-            qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();
-            RunFromOhterSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+            qs2.ui.RunFromOtherSystem RunFromOtherSystem1 = new qs2.ui.RunFromOtherSystem();
+            RunFromOtherSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
             qs2.core.ENV.IsHeadquarter = true;
 
             if (!IsTouch)
@@ -221,89 +205,9 @@ namespace PMDS
                 ENV.initELGAFormatter();
 
                 PMDS.GUI.VB.General.MainCallFcts = new GUI.VB.General.dMainCallFcts(ucSiteMapPMDS.MainCallDel);
-
                 PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
 
-                
-
-                if (typ == "abrech" || typ == "calc")
-                {
-                    ENV.StartupMode = typ;
-                    qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();
-                    RunFromOhterSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
-                    PMDS.Global.ENV.setStyleInfrag(true);
-                    qs2.core.ENV.IsHeadquarter = true;
-                    PMDS.Calc.Logic.calculation.delgetDBContext += new Calc.Logic.calculation.getDBContext(PMDS.DB.PMDSBusiness.getDBContext2);
-                    PMDS.Calc.Logic.calculation.delCallFctMainSystem += new Calc.Logic.calculation.CallFctMainSystem(ENV.CallFctMainSystem);
-                
-                    PMDS.Global.db.ERSystem.EFEntities EFEntities1 = new Global.db.ERSystem.EFEntities();
-                    EFEntities1.init2(true);
-                    if (infoStartMain != null)
-                        infoStartMain.Close();
-                    ProcessStartup(new PMDS.Calc.UI.Admin.frmMainCalc(), UserRights.AbrechnungStarten, QS2.Desktop.ControlManagment.ControlManagment.getRes("Sie verfügen nicht über die notwendigen Rechte um die Abrechnung direkt zu starten"), false, false, false);            // Abrechnung starten 
-                }
-                else if (typ == "depotabrech")
-                {
-                    ENV.StartupMode = typ;
-                    if (infoStartMain != null)
-                        infoStartMain.Close();
-                    PMDS.Global.ENV.setStyleInfrag(true);
-                    PMDS.Calc.UI.Admin.frmMainCalc frm = new PMDS.Calc.UI.Admin.frmMainCalc();
-                    frm.nurDepot = true;
-
-                    ProcessStartup(frm, UserRights.AbrechnungStarten, QS2.Desktop.ControlManagment.ControlManagment.getRes("Sie verfügen nicht über die notwendigen Rechte um die Abrechnung direkt zu starten"), false, false, false);            // Abrechnung starten 
-                }
-                else if (typ == "log")
-                {
-                    ENV.StartupMode = typ;
-                    if (infoStartMain != null)
-                        infoStartMain.Close();
-                    //PMDS.Global.ENV.setStyleInfrag(true);
-                    QS2.Logging.Win.frmLogManager2 frmLog = new QS2.Logging.Win.frmLogManager2();
-                    frmLog.initControl();
-                    frmLog.Show();
-                }
-                //else if (typ == "bew")
-                //{
-                //    ProcessStartup(new frmBewerber(), UserRights.BewerberStarten, "Sie verfügen nicht über die notwendigen Rechte um die Bewerberverwaltung direkt zu starten", false, false);        // Bewerber starten 
-                //}
-                //else if (typ == "stammdat")
-                //{
-                //    ProcessStartup(new frmStammdaten(), UserRights.StammdatenStarten, "Sie verfügen nicht über die notwendigen Rechte um die Stammdatenverwaltung direkt zu starten", false, false);  // Stammdaten starten 
-                //}
-                else if (typ == "auswpep")
-                {
-                    if (infoStartMain != null)
-                        infoStartMain.Close();
-                    if (!GuiWorkflow.Init())
-                        return;
-
-                    QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
-                    qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();
-                    RunFromOhterSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
-                    PMDS.Global.ENV.setStyleInfrag(true);
-                    qs2.core.ENV.IsHeadquarter = true;
-
-                    PMDS.GUI.frmDynReports frm = new PMDS.GUI.frmDynReports(ENV.DynReportsPEP);
-                    frm.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Berichte PEP");
-                    Application.Run(frm);
-                }
-                else if (typ == "touch")
-                {
-                    if (infoStartMain != null)
-                        infoStartMain.Close();
-                    qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();
-                    RunFromOhterSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
-                    PMDS.Global.ENV.setStyleInfrag(true);
-                    qs2.core.ENV.IsHeadquarter = true;
-
-                    ProcessStartup(new frmQM(), UserRights.Rueckmelden, QS2.Desktop.ControlManagment.ControlManagment.getRes("Sie verfügen nicht über die notwendigen Rechte um Klientenrückmeldungen zu tätigen"), true, false, true);                    // Quickmeldung starten 
-                }
-                else if (typ == "peps")
-                {
-                    System.Diagnostics.Process.Start(System.IO.Path.Combine(Application.StartupPath, "PMDS_PEP.exe") + " ", "?ConfigFile=" + System.IO.Path.GetFileName(ENV.sConfigFile) + " ?ConfigPath=" + ENV.sConfigRootDir);
-                }
-                else if (typ == "pmds" || String.IsNullOrWhiteSpace(typ))                                                                                                                                                            // PMDS starten
+                if (typ == "pmds" || String.IsNullOrWhiteSpace(typ))                                                                                                                                                            // PMDS starten
                 {
 
                     if (ENV.CheckLicense())
@@ -359,8 +263,8 @@ namespace PMDS
                             }
 
                             QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
-                            qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();
-                            RunFromOhterSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+                            qs2.ui.RunFromOtherSystem RunFromOtherSystem1 = new qs2.ui.RunFromOtherSystem();
+                            RunFromOtherSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
                             PMDS.Global.ENV.setStyleInfrag(true);
                             qs2.core.ENV.IsHeadquarter = true;
                             PMDS.Global.db.ERSystem.EFEntities EFEntities1 = new Global.db.ERSystem.EFEntities();
@@ -451,8 +355,8 @@ namespace PMDS
 
 
                         QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
-                        qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();
-                        RunFromOhterSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+                        qs2.ui.RunFromOtherSystem RunFromOtherSystem1 = new qs2.ui.RunFromOtherSystem();
+                        RunFromOtherSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
                         PMDS.Global.ENV.setStyleInfrag(true);
                         qs2.core.ENV.IsHeadquarter = true;
                         PMDS.Global.db.ERSystem.EFEntities EFEntities1 = new Global.db.ERSystem.EFEntities();

@@ -61,8 +61,6 @@ namespace PMDS.GUI
             {
                 if (ENV.COMMANDLINE_USER.Length == 0)
                 {
-                    //qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();
-                    //RunFromOhterSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS");
                     cAdminFile ret = ENV.checkAutoLogIn();
                     if (ret.exists)
                     {

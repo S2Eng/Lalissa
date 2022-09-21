@@ -11689,7 +11689,7 @@ namespace PMDS.DB
             {
                 PMDS.db.Entities.ERModellPMDSEntities DBContext = new PMDS.db.Entities.ERModellPMDSEntities();
                 if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
-                    PMDSBusiness.setERConnection(ref DBContext);
+                    PMDSBusiness.setERConnectionSqlDb(ref DBContext);
 
                 return DBContext;
             }
@@ -11719,6 +11719,45 @@ namespace PMDS.DB
                 {
                     throw new Exception("PMDSBusiness.getDBContext: " + "\r\n" + sInfoExcept + "\r\n" + "\r\n" + ex.ToString());
                 }
+            }
+        }
+
+        public static void setERConnectionSqlDb(ref PMDS.db.Entities.ERModellPMDSEntities DBContext)
+        {
+            try
+            {
+                var entityCnxStringBuilder = new EntityConnectionStringBuilder(System.Configuration.ConfigurationManager.ConnectionStrings["ERModellPMDSEntities"].ConnectionString);
+                var sqlCnxStringBuilder = new SqlConnectionStringBuilder(entityCnxStringBuilder.ProviderConnectionString);
+
+                sqlCnxStringBuilder.PersistSecurityInfo = true;
+                sqlCnxStringBuilder.InitialCatalog = ENV.connectionStringBuilder["Initial Catalog"].ToString();
+                sqlCnxStringBuilder.DataSource = ENV.connectionStringBuilder.DataSource;
+                sqlCnxStringBuilder.MultipleActiveResultSets = true;
+
+                if (!ENV.connectionStringBuilder["User Id"].sEquals("") && !ENV.connectionStringBuilder["Password"].sEquals(""))
+                {
+                    sqlCnxStringBuilder.UserID = ENV.connectionStringBuilder["User Id"].ToString(); 
+                    sqlCnxStringBuilder.Password = ENV.connectionStringBuilder["Password"].ToString();
+                }
+                else
+                {
+                    sqlCnxStringBuilder.IntegratedSecurity = true;
+                }
+
+                try
+                {
+                    DBContext.Database.Connection.ConnectionString = sqlCnxStringBuilder.ConnectionString;
+                    DBContext.Database.Connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    string x = ex.InnerException.ToString();
+                }
+                return;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.setConnection:SqlDb " + ex.ToString());
             }
         }
 
@@ -11773,6 +11812,7 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.setConnection: " + ex.ToString());
             }
         }
+
         public static void setERConnectionQS2(ref PMDS.db.Entities.ERModellPMDSEntities DBContext)
         {
             try

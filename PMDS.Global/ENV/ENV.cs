@@ -112,6 +112,8 @@ namespace PMDS.Global
         public static bool VisualStudioMode = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
         public static Guid VersionNr = new Guid("10000000-1009-1000-0000-000000000001");
 
+        public static string ERConnectionName = "ERModellPMDSEntities";
+
         //public const string PdfiumKey = "52433553494d50032923be84e16cd6ae0bce153446af7918d52303038286fd2b0597de34bf5bb65e2a161a268e74107bd7da7c1adb202edff3e8c55a13bff7afa38569c96e45ff0cdef48e36b8df77e907676788cae00126f52c5eaadbb3c424062e8e0e5feb6faf89900306ee469aa40664bdf84b2e4fce7497c19f3f9d2d877dc1be192cb695f4";  //Version 3.10.5
         public const string PdfiumKey = "EEF63308-0101E307-06060B50-44464955-4D5F434F-52501500-6F734073-322D656E-67696E65-6572696E-672E636F-6D40006E-50A02F72-7589BDC9-FA775FFE-E4C11070-8AECCB91-AA05BDDC-9064397A-0128DB07-08CA4E9D-1701E8DB-F0CAEA1E-386F13D9-6F207B8F-4FFCD647-D4BDA0FC-669139";
         public const string ChilkatKey = "S2ENGN.CB1022023_XfLzJ7t36L5K";  //Version 9.5.0.89 - 29.11.2021
@@ -263,14 +265,19 @@ namespace PMDS.Global
 
         public static bool SavePflegebegleitschreibenToArchiv = true;
 
-        private static bool _AbteilungRMOptional;	            // Flag ob der Rückmeldetext für die Abteilung Optional ist oder nicht
+        private static bool _AbteilungRMOptional;               // Flag ob der Rückmeldetext für die Abteilung Optional ist oder nicht
+
+        public static OleDbConnectionStringBuilder connectionStringBuilder = new OleDbConnectionStringBuilder();
         private static string _dbUser = "";
         private static string _dbPassword = "";
         private static string _dbPassword_Encrpyted = "";
-
+        private static string _dbProvider = "";
         private static string _dbServer = "";
         private static string _dbDatabase = "";
         private static string _IntegratedSecurity = "";
+        private static bool _PersistSecurity = true;
+
+
 
         private static string _dbUser_PEP = "";                           //Peps-Berichte
         private static string _dbPassword_PEP = "";
@@ -1044,6 +1051,12 @@ namespace PMDS.Global
             get { return _dbServer; }
         }
 
+        public static string DB_PROVIDER
+        {
+            get { return _dbProvider; }
+        }
+
+
         public static string DB_DATABASE
         {
             get { return _dbDatabase; }
@@ -1284,56 +1297,44 @@ namespace PMDS.Global
                 AppRunning = true;
 
                 ENV.intSetupDirs();
-
-                ConfigFile cfg;
-
                 Log.RegisterStandardLog(LogDestinations.EventLog, "PMDS");					// Standard zum Eventlog
 
-                cfg = new RBU.ConfigFile(PMDS.Global.ENV.sConfigFile);						// Konfigurationsdatei 
+                ConfigFile cfg = new RBU.ConfigFile(PMDS.Global.ENV.sConfigFile);						// Konfigurationsdatei 
                 _ConfigFile = cfg;
-
                 _Log = Log.LOG;
                 _Log.ConfigFile = _ConfigFile;
-
                 _Log.ROLLOVERLIMIT = 5000000;												// Grenze auf 5MB heben
-
                 _Log.Level = (LogLevels)0;
                 _Log.Destination = (LogDestinations)2;
                 _Log.LogFile = _ConfigFile.GetStringValue("LogFile");
 
-                // DBUser und DBPassword verspeichern (Kommt entweder direkt aus dem OledbString oder wird {{{HIDDEN...}}} ersetzt durch PMSOwner
-                NameValueCollection c = new NameValueCollection();
+                ENV.connectionStringBuilder.ConnectionString = _Log.ConfigFile.GetStringValue("DSNMain");
+                connectionStringBuilder["Persist Security"] = true;
 
-                //os: Änderung: Anmeldung mit DSNMain statt Connection-String-Eigenschaft
-                string[] sa = _Log.ConfigFile.GetStringValue("DSNMain").Split(';');
+                if (connectionStringBuilder["Password"] != null && connectionStringBuilder["Password"].ToString().StartsWith("[[[") && connectionStringBuilder["Password"].ToString().EndsWith("]]]"))      //os: Verschlüsseltes Passwort berücksichtigen
+                {
+                    _dbPassword_Encrpyted = connectionStringBuilder["Password"].ToString();
+                    _dbPassword = connectionStringBuilder["Password"].ToString().Substring(3, _dbPassword.Length - 3);
+                    connectionStringBuilder["Password"] = PMDS.BusinessLogic.BUtil.DecryptString(_dbPassword.Trim());
+                }
+                else
+                {
+                    _dbPassword_Encrpyted = connectionStringBuilder["Password"].ToString();
+                    _IntegratedSecurity = ENV.connectionStringBuilder["Integrated Security"].ToString();
+                }
 
-                foreach (string s in sa)
-                {
-                    string[] sa1 = s.Split(new[] { "=" }, 2, StringSplitOptions.RemoveEmptyEntries);
-                    if (sa1.Length > 1)
-                        c.Add(sa1[0].ToLower().Trim(), sa1[1].Trim());
-                }
-                _dbUser = c["user id"];
-                _dbPassword = c["password"];
-                if (_dbPassword != null && (_dbPassword.EndsWith("=") || (_dbPassword.StartsWith("[[[") && _dbPassword.EndsWith("]]]"))))      //os: Verschlüsseltes Passwort berücksichtigen
-                {
-                    if (_dbPassword.StartsWith("[[[") && _dbPassword.EndsWith("]]]"))
-                    {
-                        _dbPassword = _dbPassword.Substring(3, _dbPassword.Length - 3);
-                    }
-                    _dbPassword_Encrpyted = _dbPassword;
-                    _dbPassword = PMDS.BusinessLogic.BUtil.DecryptString(_dbPassword.Trim());
-                }
-                _dbServer = c["data source"];
-                _dbDatabase = c["initial catalog"];
-                _IntegratedSecurity = c["integrated security"];
+                _dbUser = ENV.connectionStringBuilder["User Id"].ToString();
+                _dbPassword = ENV.connectionStringBuilder["Password"].ToString();
+                _dbProvider = ENV.connectionStringBuilder["Provider"].ToString();
+                _dbServer = ENV.connectionStringBuilder["Data Source"].ToString();
+                _dbDatabase = ENV.connectionStringBuilder["Initial Catalog"].ToString();
 
                 DataBase.COMMANDTIMEOUT = 150;
                 DataBase.SetUserAndPassword(_dbUser, _dbPassword, _dbPassword_Encrpyted);
-                DataBase.Open();															// Generelles DB Objekt initialisieren
+                DataBase.Open();															
 
                 //Connection-Settings aktualisieren (app.config)
-                WriteERConnection("ERModellPMDSEntities");
+                WriteERConnectionSqlDb(ENV.ERConnectionName);
                 PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
 
                 //------------------------------------------------------- ENV-Variablen aus Config lesen -------------------
@@ -1728,76 +1729,47 @@ namespace PMDS.Global
             }
         }
 
-        private static bool WriteERConnection(string ConnectionName)
+        private static bool WriteERConnectionSqlDb(string ConnectionName)
         {
             try
             {
                 string providerName = "System.Data.SqlClient";
-                string serverName = PMDS.Global.ENV.DB_SERVER;
-                string databaseName = PMDS.Global.ENV.DB_DATABASE;
-                string User = PMDS.Global.ENV.DB_USER;
-                string Pwd = PMDS.Global.ENV.DB_PASSWORD;
-                string ERproviderName = "System.Data.EntityClient";
-                string ERMetaData = @"res://*/ERModellPMDS.csdl|res://*/ERModellPMDS.ssdl|res://*/ERModellPMDS.msl";
-
-                SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
-                sqlBuilder.DataSource = serverName;
-                sqlBuilder.InitialCatalog = databaseName;
-                sqlBuilder.ApplicationName = "EntityFramework";
-                sqlBuilder.MultipleActiveResultSets = true;
-                sqlBuilder.IntegratedSecurity = true;
-
-                //Für SQL-User
-                if (User != null)
-                {
-                    sqlBuilder.UserID = User;
-                    sqlBuilder.Password = Pwd ?? "";
-                    sqlBuilder.IntegratedSecurity = false;
-                }
-                string providerString = sqlBuilder.ToString();
-
-
                 System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
                 var connection = config.ConnectionStrings.ConnectionStrings[ConnectionName];
 
-                string chkdataBaseName = "=" + databaseName.ToUpper() + ";";
-                string chkServerName = "=" + serverName.ToUpper() + ";";
-
-                //Wenn es die Connection schon gibt, prüfen, ob die richtige DB und der richte Server eingetragen sind
-                if (connection != null && connection.ConnectionString.ToUpper().Contains(chkServerName) && connection.ConnectionString.ToUpper().Contains(chkdataBaseName))
+                //Wenn es die Connection schon gibt, prüfen, ob die richtige DB und der richtige Server eingetragen sind
+                if (connection != null && connection.ConnectionString.sContains(ENV.connectionStringBuilder["Initial Catalog"]) && 
+                    connection.ConnectionString.sContains(ENV.connectionStringBuilder["Data Source"]))
                 {
                     return true;
                 }
                 else
                 {
-                    if (connection != null)
-                        config.ConnectionStrings.ConnectionStrings.Remove(ConnectionName);
-
-                    EntityConnectionStringBuilder entityBuilder = new EntityConnectionStringBuilder();
-                    entityBuilder.Provider = providerName;
-                    entityBuilder.ProviderConnectionString = providerString;
-                    entityBuilder.Name = ConnectionName;
-                    entityBuilder.Metadata = ERMetaData;
-
-                    config.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings
+                    ConnectionStringsSection csSection = config.ConnectionStrings;
+                    ConnectionStringSettingsCollection csCollection = csSection.ConnectionStrings;
+                    ConnectionStringSettings cs = csCollection[ConnectionName];
+                    if (cs != null)
                     {
-                        Name = entityBuilder.Name,
-                        ConnectionString = entityBuilder.ConnectionString.Replace("name=" + entityBuilder.Name + ";", ""),
-                        ProviderName = ERproviderName
-                    });
-                    config.Save(ConfigurationSaveMode.Modified, false);
+                        csCollection.RemoveAt(csCollection.IndexOf(cs));
+                        ConfigurationManager.RefreshSection("connectionStrings");
+                    }
+
+                    Configuration configNew = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                    csSection.ConnectionStrings.Add(
+                        new ConnectionStringSettings(ConnectionName,
+                        ENV.connectionStringBuilder.ConnectionString.Replace("Provider=" + ENV.connectionStringBuilder["Provider"].ToString() + ";", ""),
+                        providerName));
+
+                    configNew.Save(ConfigurationSaveMode.Modified, false);
                     ConfigurationManager.RefreshSection("connectionStrings");
-                    return false;
+                    return true;
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception("MainEntry.WriteERConnection: " + ex.ToString());
-
             }
         }
-
 
         public static bool intSetupDirs()
         {
