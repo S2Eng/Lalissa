@@ -471,12 +471,6 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="adjustments\contAdjust.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="adjustments\contMyAdjust.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -597,12 +591,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="adjustments\contAdjust.resx">
-      <DependentUpon>contAdjust.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="adjustments\contMyAdjust.resx">
-      <DependentUpon>contMyAdjust.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -736,6 +724,9 @@
       <Project>{54e427e6-ff54-4671-bf5e-1e606453bf0c}</Project>
       <Name>QS2.Resources</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="adjustments\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
