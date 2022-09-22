@@ -43,7 +43,6 @@ namespace qs2.sitemap
             try
             {
                 qs2.core.vb.funct funct1 = new qs2.core.vb.funct();
-                //verz = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
                 string fileSelected = "";
 
                 if (typExport == eTypExport.excel)
@@ -64,7 +63,6 @@ namespace qs2.sitemap
                         try
                         {
                             System.IO.File.Delete(fileSelected);
-                            System.GC.Collect();
                         }
                         catch (Exception ex)
                         {
@@ -96,8 +94,6 @@ namespace qs2.sitemap
                         }
                         wordDocWriter.EndParagraph();
                         wordDocWriter.AddEmptyParagraph();
-                        // Hide few columns in the Grid
-                        //this.HideSomeGridColumns();
                         this.ultraGridWordWriter1.Export(grid, wordDocWriter);
                         wordDocWriter.EndDocument();
                         wordDocWriter.Close();
@@ -124,6 +120,7 @@ namespace qs2.sitemap
                 throw new Exception("export.doExport:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
             }
         }
+
         public bool doCSV(UltraGrid grid, Environment.SpecialFolder toFolder, eTypExport typExport, System.Data.DataSet dsToExport, string fileSelected, 
                              ref System.Collections.Generic.Dictionary<string, string> lstColsTableTranslated)
         {
@@ -149,7 +146,6 @@ namespace qs2.sitemap
                         else
                         {
                             resultCsv += col.ColumnName + Separator;
-                            //resultCsv += "äöü" + Separator; 
                         }
                     }
                     resultCsv += qs2.core.generic.lineBreak;
@@ -170,14 +166,6 @@ namespace qs2.sitemap
                 FileStream1.Close();
 
                 return true;
-
-                //ASCIIEncoding ascII = new ASCIIEncoding();
-                //Byte[] encodedBytes = ascII.GetBytes(resultCsv);
-                //System.IO.FileStream FileStream1 = new System.IO.FileStream(fileSelected, System.IO.FileMode.CreateNew);
-                //System.IO.BinaryWriter BinaryWriter1 = new System.IO.BinaryWriter(FileStream1);
-                //BinaryWriter1.Write(encodedBytes);
-                //BinaryWriter1.Close();
-
             }
             catch (Exception ex)
             {
@@ -188,19 +176,7 @@ namespace qs2.sitemap
 
         private void ultraGridWordWriter1_ExportStarted(object sender, Infragistics.Win.UltraWinGrid.WordWriter.ExportStartedEventArgs e)
         {
-            //if (ultraOptionSet1.CheckedIndex == 2)
-            //{
-            //    // The following setttings will be applied only to the exported Grid.
-            //    // This will not affect the on-screen grid.
-            //    // Change the header back color
-            //    e.Layout.Override.HeaderAppearance.BackColor = Color.Yellow;
-            //    // Hides columns on UltraGrid in the exported Word document
-            //    e.Layout.Bands[0].Columns[0].Hidden = true;
-            //    e.Layout.Bands[0].Columns[2].Hidden = true;
-            //    e.Layout.Bands[0].Columns[8].Hidden = true;
-            //    e.Layout.Bands[0].Columns[9].Hidden = true;
 
-            //}
         }
     }
 }
