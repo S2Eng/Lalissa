@@ -19,7 +19,6 @@ using QS2.Resources;
 namespace qs2.design.auto.multiControl
 {
 
-    [Designer(typeof(qs2.design.auto.multiControl.DesignerWizardCheck))]
     public partial class ownMultiGridSelList : UserControl
     {
         public string[] _FldShort;

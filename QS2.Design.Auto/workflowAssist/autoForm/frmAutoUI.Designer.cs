@@ -78,16 +78,8 @@
             this.Name = "frmAutoUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.TopMost = true;
-            this.Activated += new System.EventHandler(this.frmAutoUI_Activated);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAutoUI_FormClosing);
-            this.Load += new System.EventHandler(this.frmAutoUI_Load);
-            this.VisibleChanged += new System.EventHandler(this.frmAutoUI_VisibleChanged);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmAutoUI_KeyDown);
-            this.Move += new System.EventHandler(this.frmAutoUI_Move);
-            this.Resize += new System.EventHandler(this.frmAutoUI_Resize);
             this.panelAllWhite.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion

@@ -694,7 +694,6 @@
     <Compile Include="multiControl\ownTab.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="multiControl\DesignerWizardCheck.cs" />
     <Compile Include="multiControl\ownGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>

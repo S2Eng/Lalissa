@@ -1030,23 +1030,11 @@ namespace qs2.design.auto
 
         }
 
-
-
-
         public void getLicenseDesignTime(System.Windows.Forms.Control ctl)
         {
-            qs2.core.logIn.connectDesignMode();
             this.Application = qs2.core.ENV.developApplication;
             this.IDParticipant = qs2.core.ENV.developParticipant;
-            //else
-            //{
-            //    //this.IDApplication = this.getAutoUI(ctl).OwnLicense.OwnApplication;
-            //    //this.IDParticipant = this.getAutoUI(ctl).OwnLicense.OwnParticipant;
-            //}
         }
-
-
-
     }
 
 }

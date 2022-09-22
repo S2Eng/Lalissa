@@ -33,7 +33,6 @@ namespace qs2.sitemap.workflowAssist.form
         public static bool LoadingStayData = false;
 
         public bool _PatientVisible = false;
-        //public qs2.sitemap.vb.contObject contObject1 = null;
         
         public event EventHandler ownSaveClicked;
         public event EventHandler ownEditClicked;

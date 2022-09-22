@@ -66,17 +66,9 @@ namespace qs2.sitemap.manage.wizardsDevelop
             this.dsAdmin1 .tblCriteria.Columns.Add(newColNewTranslation);
 
             this.gridInfrag1xyxy.UpdateMode = UpdateMode.OnUpdate;
-            if (this.DesignMode)
-            {
-                qs2.core.logIn.connectDesignMode();
-                this.loadRes();
-                this.loadLists(this.IDApplication);
-            }
-            else
-            {
-                this.loadRes();
-                this.loadLists(this.IDApplication);
-            }
+
+            this.loadRes();
+            this.loadLists(this.IDApplication);
 
             this.btnSave.initControl();
             this.btnCancel.initControl();

@@ -15,42 +15,6 @@ namespace qs2.core
     {
         public static bool DataThreadIsReady = false;
         public static string DbConnStrStayUI = "";
-        
-
-        
-
-        public static bool connectDesignMode()
-        {
-            if (qs2.core.ENV.developCopnnected)
-            {
-                //System.Windows.Forms.MessageBox.Show("developSimulateControls: " + qs2.core.ENV.developSimulateControls.ToString());
-                return true;
-            }
-
-            System.Windows.Forms.MessageBox.Show("INIT developSimulateControls ");
-
-            qs2.core.ENV.readPathes(true, false, false);
-            ENV.VSDesignerMode = true;
-            if (qs2.core.ENV.readConfig(qs2.core.ENV.fileConfig, true))
-            {
-                qs2.core.ENV.readConnInfoDB();
-                if (qs2.core.logIn.doConnect2(false, true, true, "", false))
-                {
-                    sqlObjects sqlObjectsAutoLogIn = new sqlObjects();
-                    sqlObjectsAutoLogIn.initControl();
-                    dsObjects.tblObjectRow rObjAutoLogIn = sqlObjectsAutoLogIn.getObjectRow(-99, sqlObjects.eTypSelObj.UserName, sqlObjects.eTypObj.IsUser, "", "Supervisor");
-                    actUsr.loadActUsr(rObjAutoLogIn.ID, true);
-                    qs2.core.ENV.developCopnnected = true;
-                    return true;
-                }
-                else
-                {
-                    throw new Exception("connectDesignMode: Error LogIn!");
-                }
-            }
-            else
-                return false;
-        }
 
         public static bool doConnect2(bool loadAllRessources, bool DesignerMode, bool CheckVersionDB, string DbConnStrStayUI, bool IsPMDS, bool doNotDecryptPwd = false)
         {

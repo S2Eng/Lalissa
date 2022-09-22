@@ -58,13 +58,10 @@ namespace qs2.sitemap.ownControls.inherit_Infrag
         {
             if (this._autoTextYN)
             {
-                if (this.DesignMode)
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                     return;
 
-                if (this.DesignMode)
-                    qs2.core.logIn.connectDesignMode();
-
-                if (this._IDRessourceText.Trim() != "")
+                if (!String.IsNullOrWhiteSpace(this._IDRessourceText))
                 {
                     this.lblButton.Text = qs2.core.language.sqlLanguage.getRes(this._IDRessourceText);
                 }
@@ -73,7 +70,7 @@ namespace qs2.sitemap.ownControls.inherit_Infrag
                     this.lblButton.Text = "";
                 }
 
-                if (this.OwnIDRessourceToolTipTitle.Trim() != "")
+                if (!String.IsNullOrWhiteSpace(this.OwnIDRessourceToolTipTitle))
                 {
                     this._toolTipButton.ToolTipTitle = qs2.core.language.sqlLanguage.getRes(this.OwnIDRessourceToolTipTitle);
                 }
@@ -81,7 +78,7 @@ namespace qs2.sitemap.ownControls.inherit_Infrag
                 {
                     this._toolTipButton.ToolTipTitle = "";
                 }
-                if (this.OwnIDRessourceToolTipText.Trim() != "")
+                if (!String.IsNullOrWhiteSpace(this.OwnIDRessourceToolTipText))
                 {
                     this._toolTipButton.ToolTipText = qs2.core.language.sqlLanguage.getRes(this.OwnIDRessourceToolTipText);
                 }
@@ -160,16 +157,12 @@ namespace qs2.sitemap.ownControls.inherit_Infrag
                 {
                     this.lblButton.Appearance.Image = QS2.Resources.getRes.getImage(value, 32, 32 );
                 }
-                //if (this.DesignMode) this.ownAutoText();
             }
         }
 
         private void lblButton_Click(object sender, EventArgs e)
         {
-            //if (this.LabelCLicked != null)
-            //{
-                this.LabelCLicked.Invoke(sender, e); 
-            //}
+            this.LabelCLicked.Invoke(sender, e); 
         }
 
         public Color OwnForeColorLabel
@@ -194,7 +187,6 @@ namespace qs2.sitemap.ownControls.inherit_Infrag
             {
                 this._TextHAlign = value;
                 this.lblButton.Appearance.TextHAlign = this._TextHAlign;
-
             }
         }
     }

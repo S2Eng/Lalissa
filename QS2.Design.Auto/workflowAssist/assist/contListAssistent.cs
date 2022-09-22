@@ -1152,8 +1152,6 @@ namespace qs2.sitemap.workflowAssist
             set
             {
                 this.IDRessourceTitle = value;
-                if (this.DesignMode)
-                    qs2.core.logIn.connectDesignMode();
             }
         }
 
