@@ -483,7 +483,6 @@
     <Compile Include="cboObjects.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="doProductsAll.vb" />
     <Compile Include="frmCheckUsercode.Designer.vb">
       <DependentUpon>frmCheckUsercode.vb</DependentUpon>
     </Compile>
