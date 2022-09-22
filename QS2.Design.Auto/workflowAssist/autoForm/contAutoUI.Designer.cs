@@ -409,7 +409,6 @@
             // textControl2
             // 
             this.textControl2.Font = new System.Drawing.Font("Arial", 10F);
-            this.textControl2.FormattingPrinter = "Standard";
             this.textControl2.Location = new System.Drawing.Point(88, 40);
             this.textControl2.Name = "textControl2";
             this.textControl2.PageMargins.Bottom = 79.03D;
@@ -712,7 +711,6 @@
             // textControl1
             // 
             this.textControl1.Font = new System.Drawing.Font("Arial", 10F);
-            this.textControl1.FormattingPrinter = "Standard";
             this.textControl1.Location = new System.Drawing.Point(83, 44);
             this.textControl1.Name = "textControl1";
             this.textControl1.PageMargins.Bottom = 79.03D;

@@ -21,7 +21,6 @@ namespace qs2.sitemap.workflowAssist.form
 
     public partial class contAutoUI : UserControl
     {
-
         public frmAutoUI parentFormAutoUI;
         public license _license;
 
