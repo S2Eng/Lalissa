@@ -197,7 +197,7 @@ namespace PMDS
 
                 if (ENV.Init(false) == false)   
                     return;
-
+                 
                 //anycpu_deployment.DLLDispatcher.BinPath = PMDS.Global.ENV.path_bin;
                 //anycpu_deployment.DLLDispatcher.HookOnCurrentAppDomain();
                 /*<runtime><loadFromRemoteSources enabled="true"/></runtime>  -- Nicht vergessen in Config!  */
