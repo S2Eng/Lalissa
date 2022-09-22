@@ -248,21 +248,6 @@ namespace qs2.print
                             }
                         }
                     }
-                    else if (Extern && !infoQryRunPar.IsVLAD)
-                    {
-                        cServiceQS2 ServiceQS2 = new cServiceQS2();
-                        qs2.core.vb.QS2Service1.cServiceResult ServiceResult = ServiceQS2.fillDataSetExtern(ref infoQryRunPar.Sql, infoQryRunPar.parametersSql,
-                                                                                                        ref infoQryRunPar.dsQryResult, tableName, datasetName,
-                                                                                                        ref AllParametersAsTxtReturn, ref viewIsFunction,
-                                                                                                        ref lstParForExternFct);
-
-                        if (!ServiceResult.OK)
-                        {
-                            this.doErrorExecuteSql(infoQryRunPar.Sql, infoQryRunPar.parametersSql, infoQryRunPar.rSelListQry.IDRessource);
-                            return;
-                        }
-                    }
-
                     this.addStandardTablesToDs(infoQryRunPar.dsQryResult, typRunQuery, infoQryRunPar);
 
                     string protocol = "";
@@ -454,23 +439,6 @@ namespace qs2.print
                                     this.doErrorExecuteSql(infoQry1.Sql, infoQry1.parametersSql, infoQry1.rSelListQry.IDRessource);
                                     return;
 
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (!infoQry1.IsVLAD)
-                            {
-                                cServiceQS2 ServiceQS2 = new cServiceQS2();
-                                qs2.core.vb.QS2Service1.cServiceResult ServiceResult = ServiceQS2.fillDataSetExtern(ref infoQry1.Sql, infoQry1.parametersSql,
-                                                                                                                ref infoQry1.dsQryResult, dataTableName, dataSetName,
-                                                                                                                ref AllParametersAsTxt, ref viewIsFunction,
-                                                                                                                ref lstParForExternFct);
-
-                                if (!ServiceResult.OK)
-                                {
-                                    this.doErrorExecuteSql(infoQry1.Sql, infoQry1.parametersSql, infoQry1.rSelListQry.IDRessource);
-                                    return;
                                 }
                             }
                         }

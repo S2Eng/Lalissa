@@ -2024,27 +2024,11 @@ namespace qs2.sitemap.print
                         {
                             ReturnValue = qs2.core.vb.dbBase.getDateConvertSql((DateTime)retValue1.valueObj) + "";
                         }
-                        //newPar = retValue1.valueStr.Substring(0, 10);
-                        //newPar = "Convert(DateTime, '" + newPar + "', 120)";
-                        //if (controlType == core.Enums.eControlType.DateTime ||
-                        //    controlType == core.Enums.eControlType.DateTimeNoDb ||
-                        //    controlType == core.Enums.eControlType.Date ||
-                        //    controlType == core.Enums.eControlType.DateNoDb ||
-                        //    controlType == core.Enums.eControlType.Time ||
-                        //    controlType == core.Enums.eControlType.TimeNoDb)
-                        //{
-                        //    string sSqlDat = "" + qs2.core.vb.dbBase.getDateConvertSql((DateTime)retValue1.valueObj) + "";
-                        //}
                     }
                     else if (retValue1.valueObj.GetType().Equals(typeof(int)) ||
                                 retValue1.valueObj.GetType().Equals(typeof(double)) || retValue1.valueObj.GetType().Equals(typeof(decimal)))
                     {
                         ReturnValue = retValue1.valueStr;
-                        if (doWhereClauselForSimpleFunctions && retValue1.valueObj.GetType().Equals(typeof(int)))
-                        {
-                            this.changeParForExternService(ref sDelimiter, ParName, ref ReturnValue, ref retValue1, ref lstParForExternFct,
-                                                            ref bExternQuery, ref doWhereClauselForSimpleFunctions);
-                        }
                     }
                     else if (retValue1.valueObj.GetType().Equals(typeof(bool)))
                     {
@@ -2055,45 +2039,11 @@ namespace qs2.sitemap.print
                         throw new Exception("genSql.getValueForFct: Type '" + retValue1.valueObj.GetType().Name + "' not allowed for Function-Parameter!");
                     }
                 }
-
-             }
+            }
             catch (Exception ex)
             {
                 throw new Exception("genSql.getValueForFct:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
             }
-        }
-        public void changeParForExternService(ref string sDelimiter, string ParName, ref string ReturnValue, ref qs2.core.generic.retValue retValue1,
-                                            ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
-                                            ref bool bExternQuery, ref bool doWhereClauselForSimpleFunctions)
-        {
-        try
-        {
-            if (bExternQuery && doWhereClauselForSimpleFunctions)
-            {
-                qs2.core.vb.businessFramework b = new businessFramework();
-                cServiceQS2 ServiceQS21 = new cServiceQS2();
-                if (b.checkIfObjectFieldForExtern(ParName.Trim()))
-                {
-                    Guid IDObjectGuid = b.getGuidForObject(System.Convert.ToInt32(retValue1.valueStr));
-                    string ReturnValueOrig = ReturnValue;
-                    ReturnValue = sDelimiter + "" + IDObjectGuid.ToString() + "" + sDelimiter;
-
-                    qs2.core.vb.QS2Service1.cSqlParameter NewSqlParameter = new core.vb.QS2Service1.cSqlParameter();
-                    NewSqlParameter.ParameterName = ParName;
-                    NewSqlParameter.SourceColumn = ParName;
-                    NewSqlParameter.sValue = ReturnValueOrig;
-                    NewSqlParameter.IDObjectGuid = IDObjectGuid.ToString();
-                    NewSqlParameter.IsObjectFieldForChange = true;
-                    NewSqlParameter.ParValueGuidInFctForChange = ReturnValue;
-                    lstParForExternFct.Add(NewSqlParameter);
-                }
-            }
-
-        }
-        catch (Exception ex)
-        {
-            throw new Exception("genSql.changeParForExternService:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-        }
         }
 
         public System.Data.SqlClient.SqlParameter getParameterSql(string ParameterName, string valueStr, 
@@ -2111,26 +2061,6 @@ namespace qs2.sitemap.print
                 
                 return newParSql;
 
-                //if(retValue1.valueObj.GetType().Equals(typeof(string)))
-                //{
-                //    newParSql.DbType = System.Data.DbType.String;
-                //}
-                //else if (retValue1.valueObj.GetType().Equals(typeof(Int32)) || retValue1.valueObj.GetType().Equals(typeof(int)))
-                //{
-                //    newParSql.DbType = System.Data.DbType.Int32;
-                //}
-                //else if (retValue1.valueObj.GetType().Equals(typeof(decimal)))
-                //{
-                //    newParSql.DbType = System.Data.DbType.Decimal;
-                //}
-                //else if (retValue1.valueObj.GetType().Equals(typeof(bool)))
-                //{
-                //    newParSql.DbType = System.Data.DbType.Boolean;
-                //}
-                //else if (retValue1.valueObj.GetType().Equals(typeof(DateTime)))
-                //{
-                //    newParSql.DbType = System.Data.DbType.DateTime;
-                //}
             }
             catch (Exception ex)
             {

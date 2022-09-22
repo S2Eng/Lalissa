@@ -543,8 +543,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="ServiceQS2\cSendStay.vb" />
-    <Compile Include="ServiceQS2\ServiceQS2.vb" />
     <Compile Include="sql\actUsr.vb" />
     <Compile Include="sql\businessFramework.vb" />
     <Compile Include="sql\dbBase.vb" />
@@ -967,7 +965,6 @@
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Products\" />
     <Folder Include="sql\BusinessLogic\" />
     <Folder Include="sql\products\ALL\" />
     <Folder Include="sql\products\QTH\" />
@@ -975,9 +972,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AKH_CDA_Service\" />
