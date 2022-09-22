@@ -1282,29 +1282,8 @@ namespace qs2.design.auto.multiControl
             dataStayTmp = parentAutoUI.dataStay;
             rStayTmp = parentAutoUI.rStayRead;
             ParentStayIsNotNull = true;
-            ParentFormIsVisible = this.parentAutoUI.parentFormAutoUI.Visible;
 
-            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv" && ParentStayIsNotNull && !this.IsQueryControl)
-            {
-                if (ParentFormIsVisible && !this.isLoaded)
-                {
-                    if (!this.ownMCCriteria1._ControlIsFormatted)
-                    {
-                        this.doText();
-                        //this.loadData();
-                        this.setEditable(this._editable);
-                    }
-                    this.ownMCCriteria1._ControlIsFormatted = true;
-                    this.doVisible2();
-                    this.TabIndex = this.OwnOrder;
-                    if (qs2.core.ENV.ExtendedUI)
-                    {
-                        this.showTabOrder();
-                    }
-                    this.isLoaded = true;
-                }
-            }
-            else if (!DesignMode && this.IsQueryControl)
+            if (this.IsQueryControl)
             {
                 if (!this.isLoaded)
                 {
@@ -1331,20 +1310,15 @@ namespace qs2.design.auto.multiControl
             bool ParentStayIsNotNull = false;
             bool ParentFormIsInEditMode = false;
             ParentStayIsNotNull = true;
-            ParentFormIsInEditMode = this.parentAutoUI.parentFormAutoUI.isInEditMode;
-
 
             if (ParentStayIsNotNull)
             {
                 this.setEditable(ParentFormIsInEditMode); 
             }
-            //if (!this.ownControlUI1.IsVisible_LicenseKey)
-            //{
-            //    string xy = "";
-            //}
             this.ownControlUI1.IsVisible_LicenseKey = true;
             this.Visible = (this.ownControlUI1.IsVisible_Criteriaxy && this.ownControlUI1.IsVisible_LicenseKey && this.IsVisibleControlAssignmentChapters);
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             try

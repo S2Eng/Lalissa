@@ -2008,26 +2008,9 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (!DesignMode && this.parentAutoUI != null)
+                if (this.Visible)
                 {
-                    if (this.parentAutoUI.parentFormAutoUI.Visible && !this.isLoaded)
-                    {
-                        this.ownMCCriteria1._ControlIsFormatted = true;
-                        if (!this.PropertyVisibleIsActive)
-                        {
-                            this.setVisible();
-                        }
-
-                        this.TabIndex = this.OwnOrderLineNr * 10 + this.OwnOrderControlNr;
-                        this.isLoaded = true;
-                    }
-                }
-                else if (!DesignMode && this.parentAutoUI == null)
-                {
-                    if (this.Visible)
-                    {
-                        this.setControl(false);
-                    }
+                    this.setControl(false);
                 }
                 return true;
 

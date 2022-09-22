@@ -986,7 +986,6 @@ namespace qs2.design.auto
                     }
 
                     this.parentAutoUI.contAutoProtokoll1.addRow(sChapter, FldShort, sTxtProt + "!", rAutoUI, QS2.Resources.getRes.Allgemein2.ico_Wichtig, true, true, false, false);
-                    this.parentAutoUI.setButtonProtocolCaption();
 
                     ownMCCriteria.counterNewCriteriaAssignments += 1;
                 }

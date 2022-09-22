@@ -54,23 +54,6 @@ namespace qs2.sitemap.workflowAssist
             InitializeComponent();
         }
 
-        public void initControl(bool multiselection )
-        {
-            try
-            {
-                if (IsInitialized2)
-                    return;
-                this.sqlAdmin1.initControl();
-                this.multiselectionJN = multiselection;
-                this.sqlAdmin1.initControl();
-                this.ultraTabControlList.Style = UltraTabControlStyle.Wizard;
-                IsInitialized2 = true;
-            }
-            catch (Exception ex)
-            {
-                qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-        }
 
         public void buildList(qs2.core.Enums.eTypList TypList,  bool clearDB,
                               string Application, string Participant, bool showAllStayTypes)
@@ -284,17 +267,7 @@ namespace qs2.sitemap.workflowAssist
                         this.CheckElementClassification(rSelEntries, ref contButtAssistentElem1);
 
 
-                        if (TypList == core.Enums.eTypList.CHAPTERS)
-                        {
-                            if (this.autoUI != null)
-                            {
-                                this.autoUI.translateTab(rSelEntries.IDOwnStr, rSelEntries.IDRessource);
-                            }
-                            else
-                            {
-                                throw new Exception("this.autoUI = null");
-                            }
-                        }                           
+                                       
 
                         object sender = new object();
                         EventArgs evArg = new EventArgs();
@@ -493,31 +466,7 @@ namespace qs2.sitemap.workflowAssist
                     ChapterElement.cListAssistentElem.isReloaded = true;
                 }
                 ChapterElement.isOn = ChapterElement.cListAssistentElem.isOKOn;
-                ChapterElement.cListAssistentElem.isEditable = this.autoUI.parentFormAutoUI.isInEditMode;
                 ChapterElement.lockUnlock(ChapterElement.cListAssistentElem.isEditable);
-                iCounter += 1;
-            }
-        }
-
-        public void loadCompletedChapter(qs2.core.vb.dsObjects.tblStayRow rStay)
-        {
-            int iCounter = 0;
-            foreach (KeyValuePair<int, string> chapterActive in this.autoUI.lstAllChaptersActive)
-            {
-                contListAssistentElem ChapterElement = (contListAssistentElem)this.panelButtons.ClientArea.Controls[iCounter];
-                ChapterElement.loadIsOk(rStay);
-                ChapterElement.cListAssistentElem.isReloaded = true;
-                iCounter += 1;
-            }
-        }
-
-        public void saveCompletedChapter(qs2.core.vb.dsObjects.tblStayRow rStay)
-        {
-            int iCounter = 0;
-            foreach (KeyValuePair<int, string> chapterActive in this.autoUI.lstAllChaptersActive)
-            {
-                contListAssistentElem ChapterElement = (contListAssistentElem)this.panelButtons.ClientArea.Controls[iCounter];
-                ChapterElement.saveIsOk(rStay);
                 iCounter += 1;
             }
         }
@@ -608,29 +557,6 @@ namespace qs2.sitemap.workflowAssist
                         else
                         {
                             throw new Exception("this.autoUI = null");
-                        }
-
-                        if (qs2.core.ENV.ResetControlsToDefaultValues && ButtonClickedByUser && this.autoUI.parentFormAutoUI.isInEditMode)
-                        {
-                            string sInfoChapter = "";
-                            System.Collections.Generic.List<string> lstChaptersToReset = new List<string>();
-                            foreach (string chapterActiveBefore in lstButtonsActivatedBefore)
-                            {
-                                bool bWasOnBefore = false;
-                                foreach (KeyValuePair<int, string> keyPairVis in this.autoUI.lstAllChaptersActive)
-                                {
-                                    qs2.design.auto.workflowAssist.assist.cListAssistentElem keyPairOrig = this.autoUI.lstAllChapters[keyPairVis.Key];
-                                    if (keyPairOrig.rSelEntries.IDOwnStr.Trim().ToLower().Equals(chapterActiveBefore.Trim().ToLower()))
-                                    {
-                                        bWasOnBefore = true;
-                                    }
-                                }
-                                if (!bWasOnBefore)
-                                {
-                                    lstChaptersToReset.Add(chapterActiveBefore.Trim());
-                                    sInfoChapter += (String.IsNullOrWhiteSpace(sInfoChapter) ? "" : ",") +  chapterActiveBefore.Trim();
-                                }
-                            }
                         }
 
                         if (ButtonClickedByUser && loadSelectedChapters)
@@ -1068,17 +994,6 @@ namespace qs2.sitemap.workflowAssist
                             ChapterElement.setButtonOK(keyPairOrig.isOKOn);
                             
                             iCounter += 1;
-                            if (this.autoUI != null)
-                            {
-                                if (ChapterElement.cListAssistentElem.element.selListEntryIDOwnStr == this.autoUI.getIDOwnStrActiveTab())
-                                {
-                                    qs2.design.auto.workflowAssist.autoForm.ColorSchemas.setButtonAktivElement(ChapterElement, core.ui.eButtonType.Chapter);
-                                }
-                            }
-                            else
-                            {
-                                throw new Exception("this.autoUI = null");
-                            }
                         }
                         Application.DoEvents();
                     }

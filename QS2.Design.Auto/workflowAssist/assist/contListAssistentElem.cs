@@ -93,7 +93,7 @@ namespace qs2.sitemap.workflowAssist
                     bool isInEditMode = false;
                     if (this.cListAssistentElem.ListMain.autoUI != null)
                     {
-                        isInEditMode = this.cListAssistentElem.ListMain.autoUI.parentFormAutoUI.isInEditMode;
+                        isInEditMode = false;
                     }
                     else
                     {
@@ -187,7 +187,7 @@ namespace qs2.sitemap.workflowAssist
                     bool isInEditMode = false;
                     if (this.cListAssistentElem.ListMain.autoUI != null)
                     {
-                        isInEditMode = this.cListAssistentElem.ListMain.autoUI.parentFormAutoUI.isInEditMode;
+                        isInEditMode = false;
                     }
                     else
                     {
@@ -281,11 +281,6 @@ namespace qs2.sitemap.workflowAssist
                     if (this.cListAssistentElem.ListMain.autoUI != null)
                     {
                         bool ProcGroupDeactivated = false;
-                        if (qs2.core.ENV.ResetControlsToDefaultValues && ButtonClickedByUser && this.cListAssistentElem.ListMain.autoUI.parentFormAutoUI.isInEditMode)
-                        {
-                            ProcGroupDeactivated = true;
-                        }
-
                         this.cListAssistentElem.ownMCRelationship.doRelationship(this.cListAssistentElem.rCriteria.FldShort.Trim(), "", ref retValue1, false, SubRelation, this.cListAssistentElem.rCriteria.IDApplication,
                                     qs2.core.license.doLicense.eApp.ALL.ToString(),
                                     ref this.cListAssistentElem.ListMain.autoUI.dataStay, ref this.cListAssistentElem.ListMain.autoUI, 

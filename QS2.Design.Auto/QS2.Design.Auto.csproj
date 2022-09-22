@@ -737,7 +737,6 @@
     <Compile Include="workflowAssist\autoForm\autoLoadControls.cs" />
     <Compile Include="workflowAssist\autoForm\autoUI.cs" />
     <Compile Include="workflowAssist\autoForm\ColorSchemas.cs" />
-    <Compile Include="workflowAssist\autoForm\DestroyAllControls.cs" />
     <Compile Include="workflowAssist\autoForm\contAutoProtokoll.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -120,43 +120,6 @@ namespace qs2.design.auto.multiControl
             }
         }
 
-        public void showTabOrder()
-        {
-            //this.ownControlInfo1.doToolTip(this, "TabIndex", this._tabIndex.ToString(), this, true, this.ownControlCriteria1.IDApplication.ToString(), this.OwnFieldForALLProducts);
-     
-        }
-
-        private void ownTab_VisibleChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv" && this.parentAutoUI != null)
-                {
-                    if (this.parentAutoUI.parentFormAutoUI.Visible && !this.isLoaded)
-                    {
-                        this.doText();
-                        this.TabIndex = this.OwnOrder;
-                        if (qs2.core.ENV.ExtendedUI)
-                        {
-                            this.showTabOrder();
-                        }
-                        this.isLoaded = true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownTab.ownTab_VisibleChangedxy", "", false, true,
-                                                                    this.ownControlCriteria1.Application,
-                                                                    qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
-        }
-
         private void loadedDatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try

@@ -219,8 +219,6 @@
             ultraTab1.Text = "protokoll";
             this.tabPages.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab1});
-            this.tabPages.SelectedTabChanging += new Infragistics.Win.UltraWinTabControl.SelectedTabChangingEventHandler(this.tabPages_SelectedTabChanging);
-            this.tabPages.VisibleChanged += new System.EventHandler(this.tabPages_VisibleChanged);
             // 
             // ultraTabSharedControlsPage3
             // 
@@ -532,7 +530,6 @@
             this.btnClose.TabIndex = 13;
             this.btnClose.TabStop = false;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCancel
             // 
@@ -746,7 +743,6 @@
             // timerCheckProtocol
             // 
             this.timerCheckProtocol.Interval = 600;
-            this.timerCheckProtocol.Tick += new System.EventHandler(this.timerCheckProtocol_Tick);
             // 
             // dsAdmin1
             // 
@@ -762,8 +758,6 @@
             this.DoubleBuffered = true;
             this.Name = "contAutoUI";
             this.Size = new System.Drawing.Size(1154, 683);
-            this.Load += new System.EventHandler(this.contWorkAuto_Load);
-            this.VisibleChanged += new System.EventHandler(this.contAutoUI_VisibleChanged);
             this.ultraTabPageControl2.ResumeLayout(false);
             this.ultraTabPageControl1.ResumeLayout(false);
             this.PanelAll.ClientArea.ResumeLayout(false);
