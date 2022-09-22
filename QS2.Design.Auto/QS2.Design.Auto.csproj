@@ -610,7 +610,6 @@
     <Compile Include="print\doRelationshipEvaluation.cs" />
     <Compile Include="print\drawReportGroups.cs" />
     <Compile Include="print\exportTSQL.cs" />
-    <Compile Include="print\FReport.cs" />
     <Compile Include="print\frmAllQueriesEditSmall.cs">
       <SubType>Form</SubType>
     </Compile>

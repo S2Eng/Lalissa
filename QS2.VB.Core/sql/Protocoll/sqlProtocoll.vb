@@ -60,7 +60,7 @@ Public Class sqlProtocoll
                 Using db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
                     Dim tObjectApplications As IQueryable(Of PMDS.db.Entities.tblObjectApplications) = b.getProductsForUser(GuidUsr, db)
 
-                    If tObjectApplications.Count() > 0 Then
+                    If tObjectApplications.Any() Then
                         For Each rApp As PMDS.db.Entities.tblObjectApplications In tObjectApplications
                             lstUsrApps.Add(rApp.IDApplication)
                         Next
