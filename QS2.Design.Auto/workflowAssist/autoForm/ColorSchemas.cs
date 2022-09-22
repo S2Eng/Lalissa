@@ -20,19 +20,11 @@ using Infragistics.Win.UltraWinToolbars;
 using Infragistics.Win.UltraWinStatusBar;
 using Infragistics.Win.UltraWinProgressBar;
 
-
-
-
-
 namespace qs2.design.auto.workflowAssist.autoForm
 {
-    
-
     public class ColorSchemas
     {
-
         public bool IsInitialized = false;
-//        qs2.design.auto.multiControl.ownMultiControl mctest;
 
         public enum eTypeUIPanel
         {
@@ -172,8 +164,6 @@ namespace qs2.design.auto.workflowAssist.autoForm
         public static System.Drawing.Color colButtonStayInactiveHotTrackForeground;
         public static System.Drawing.Color colButtonStayInactiveHotTrackBackground;
 
-
-
         //Buttons on MainPage
         //active
         public static System.Drawing.Color colButtonMainActiveBorder;
@@ -245,7 +235,6 @@ namespace qs2.design.auto.workflowAssist.autoForm
         public static System.Drawing.Color colButtonChapterInactiveHotTrackBorder;
         public static System.Drawing.Color colButtonChapterInactiveHotTrackForeground;
         public static System.Drawing.Color colButtonChapterInactiveHotTrackBackground;
-
 
         public static void initColorSchemas()
         {
@@ -1402,7 +1391,6 @@ namespace qs2.design.auto.workflowAssist.autoForm
                 cboDropDown.Appearance.ForeColorDisabled = input_ForeColor_Inactive;
                 cboDropDown.Appearance.BackColor = input_BackColor_Active;
                 cboDropDown.Appearance.ForeColor = input_ForeColor_Active;
-
             }
             catch (Exception ex)
             {
@@ -1450,19 +1438,6 @@ namespace qs2.design.auto.workflowAssist.autoForm
                 btn.UseOsThemes = DefaultableBoolean.Default;
                 btn.ButtonStyle = UIElementButtonStyle.Flat;
                 btn.UseFlatMode = DefaultableBoolean.True;
-                /*
-                btn.Appearance.FontData.BoldAsString = "True";
-                btn.Appearance.BackColor = btn_BackColor_Active;
-                btn.Appearance.ForeColor = btn_ForeColor_Active;
-                btn.Appearance.BackColorDisabled = btn_BackColor_InActive;
-                btn.Appearance.ForeColorDisabled = btn_ForeColor_InActive;
-
-                btn.HotTrackAppearance.FontData.BoldAsString = "True";
-                btn.HotTrackAppearance.BackColor = btn_BackColor_Active_HotTrack;
-                btn.HotTrackAppearance.ForeColor = btn_ForeColor_Active_HotTrack;
-                btn.HotTrackAppearance.BackColorDisabled = btn_BackColor_InActive_HotTrack;
-                btn.HotTrackAppearance.ForeColorDisabled = btn_ForeColor_InActive_HotTrack;
-                */
             }
             catch (Exception ex)
             {
