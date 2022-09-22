@@ -602,53 +602,20 @@ namespace qs2.design.auto.workflowAssist.autoForm
             }
         }
         
-        
-        
         public void initMulticontrol(qs2.design.auto.multiControl.ownMultiControl ownControlChild,
                                         ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay)
         {
             try
             {
-                //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControlChild.OwnFldShort, "PreOpDiagGeneral", false))
-                //{
-                //    string xy = "";
-                //}
-
                 string protocollForAdmin = "";
                 bool ProtocolWindow = false;
             
-                //qs2.core.ui.addWatch("doControlChapters initMulticontrol.setControl: start" + ownControlChild.OwnFldShort, true);
                 ownControlChild.setControl(false);
-                //qs2.core.ui.addWatch("doControlChapters initMulticontrol.setControl: end" + ownControlChild.OwnFldShort, true);
-
-                //qs2.core.ui.addWatch("doControlChapters initMulticontrol.getData: start " + ownControlChild.OwnFldShort, true);
                 ownControlChild.ownMCCriteria1.getData(ownControlChild, ownControlChild._FldShort, ownControlChild._controlType,
                                                         ownControlChild.ComboBox, ref ownControlChild.ownMCUI1, ownControlChild,
                                                         ref protocollForAdmin, ref ProtocolWindow, ownControlChild.OwnFieldForALLProducts, false, false);
-                //qs2.core.ui.addWatch("doControlChapters initMulticontrol.getData: end " + ownControlChild.OwnFldShort, true);
-
-                //qs2.core.ui.addWatch("doControlChapters initMulticontrol.doText: start " + ownControlChild.OwnFldShort, true);
                 ownControlChild.ownMCTxt1.doText(ownControlChild, false, false);
-                //qs2.core.ui.addWatch("doControlChapters initMulticontrol.doText: end " + ownControlChild.OwnFldShort, true);
-
-                //qs2.core.ui.addWatch("doControlChapters initMulticontrol.setFormatFromDb: start " + ownControlChild.OwnFldShort, true);
                 ownControlChild.ownMCFormat1.setFormatFromDb(ownControlChild,false ,true );
-                //qs2.core.ui.addWatch("doControlChapters initMulticontrol.setFormatFromDb: end " + ownControlChild.OwnFldShort, true);
-
-                //ownControlChild.ownMCTxt1.setToolTipFormatForDbControl(ownControlChild);
-                //qs2.core.ui.addWatch("doControlChapters initMulticontrol.end: " + ownControlChild.OwnFldShort, true);
-
-                //if (dataStay.IsNewStay)
-                //{
-                //    if (ownControlChild.ownMCCriteria1.DefaultValuesCriteria)
-                //    {
-                //        //qs2.core.generic.retValue retValue1 = ownControlChild.ownMCDataBind1.getValueFromRow(ownControlChild);
-                //        // ownControlChild.ownMCDataBind1.setRowValue(ownControlChild, ownControlChild.ownMCCriteria1.defaultDBValue.valueStr);
-                //        dataStay.coreStaysProducts.setField(ownControlChild._FldShort, ownControlChild.ownMCCriteria1.defaultDBValue.valueObj);
-                //    }
-                //}
-
-                //ownControlChild.ownMCCriteria1._ControlIsFormatted = true;
             }
             catch (Exception ex)
             {
@@ -678,7 +645,6 @@ namespace qs2.design.auto.workflowAssist.autoForm
             }
         }
 
-        
         public void addTabInfosToRow(ref qs2.core.vb.dsAdmin.dbAutoUIRow rNew,  
                                                 cTabTag cTagTab, UltraTab tab,
                                                 System.Guid keyParentFrame)
@@ -707,29 +673,6 @@ namespace qs2.design.auto.workflowAssist.autoForm
             }
         }
         
-        public System.Guid addObjectControlToDbxy(Control cont, cTabTag cTagTab, UltraTab tab,
-               System.Guid keyParentFrame, ref qs2.core.vb.dsAdmin dsAdminUI,
-               qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI,
-               core.license.doLicense.eApp IDApplication, string Participant, ref qs2.sitemap.vb.contObject contObject1,
-               ref int typeLoading)
-        {
-            try
-            {
-                qs2.sitemap.vb.contObject contObjectOwnControl = (qs2.sitemap.vb.contObject)cont;
-                contObject1 = contObjectOwnControl;
-                contObject1.typSearch = core.vb.sqlObjects.eTypObj.IsPatient;
-                contObject1.OwnIsEmbedded = true;
-                contObject1.initControl();
-                contObject1.loadRes();
-                contObject1.setControlsOnOff(true);
-                return keyParentFrame;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("autoUI.addObjectControlToDb: " + ex.ToString());
-            }
-        }
-
         public qs2.core.vb.dsAdmin.dbAutoUIRow addAutoUI(ref qs2.core.vb.dsAdmin dsAdminUI)
         {
             qs2.core.vb.dsAdmin.dbAutoUIRow rNew = (qs2.core.vb.dsAdmin.dbAutoUIRow)dsAdminUI.dbAutoUI.NewRow();
