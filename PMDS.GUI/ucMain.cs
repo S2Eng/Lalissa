@@ -1500,23 +1500,23 @@ namespace PMDS.GUI
             {
                 if (!this.bcheckIPCCallToClientDone)
                 {
-                    if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
-                    {
-                        while (!remotingSrv.LoggedIn2)
-                        {
-                            qs2.core.generic.WaitMilli(10);
-                        }
+                //    if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
+                //    {
+                //        while (!remotingSrv.LoggedIn2)
+                //        {
+                //            qs2.core.generic.WaitMilli(10);
+                //        }
 
-                        remotingClient remotingClient1 = new remotingClient();
-                        cParComm cParComm1 = new cParComm();
-                        remotingClient.cCallFctReturn CallFctReturn = null;
-                        remotingClient1.callFct(ICommunicationService.eTypeCallTo.ClientPMDS, ICommunicationService.eTypeFct.TestCallToClient, cParComm1, ref CallFctReturn);
-                        if (!CallFctReturn.bOK)
-                        {
-                            throw new Exception("ucMain.checkIPCCallToClient: CallFctReturn.bOK=false not allowed!");
-                        }
-                    }
-                }
+                //        remotingClient remotingClient1 = new remotingClient();
+                //        cParComm cParComm1 = new cParComm();
+                //        remotingClient.cCallFctReturn CallFctReturn = null;
+                //        remotingClient1.callFct(ICommunicationService.eTypeCallTo.ClientPMDS, ICommunicationService.eTypeFct.TestCallToClient, cParComm1, ref CallFctReturn);
+                //        if (!CallFctReturn.bOK)
+                //        {
+                //            throw new Exception("ucMain.checkIPCCallToClient: CallFctReturn.bOK=false not allowed!");
+                //        }
+                //    }
+                //}
 
                 this.bcheckIPCCallToClientDone = true;
             }

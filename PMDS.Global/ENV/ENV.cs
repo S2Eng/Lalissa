@@ -1342,7 +1342,7 @@ namespace PMDS.Global
                 SetENVValue("adminSecure", ref ENV.adminSecure);
                 SetENVValue("License", ref ENV.License, eTrim.yes, eDecrypt.PMDSMode);
                 SetENVValue("TypeRessourcesRun", ref ENV.TypeRessourcesRun);
-                SetENVValue("SchnellrueckmeldungAsProcess", ref ENV.SchnellrückmeldungAsProcess);
+                //SetENVValue("SchnellrueckmeldungAsProcess", ref ENV.SchnellrückmeldungAsProcess);
 
                 SetENVValue("bookingJN", ref ENV._bookingJN);
                 SetENVValue("typRechNr", ref ENV.typRechNr);

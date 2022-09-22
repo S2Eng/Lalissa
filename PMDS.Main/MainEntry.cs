@@ -120,7 +120,7 @@ namespace PMDS
                 //<20130212> Simple Install-Parameter integriert, für Einfache direkte installation -> siehe 
                 ENV.SimpleInstall = searchKeyArg("SimpleInstall", args);
                 ENV.StartFromShare = searchKeyArg("StartFromShare", args);
-                remotingSrv.showMsgBoxTestmodus("StartFromShare: " + ENV.StartFromShare);
+                //remotingSrv.showMsgBoxTestmodus("StartFromShare: " + ENV.StartFromShare);
                 string LogPathPMDSFromLauncher = searchKeyArg("logPathPMDS", args);
 
                 string sDoOrigPathConfig = searchKeyArg("DoOrigPathConfig", args);
@@ -164,11 +164,6 @@ namespace PMDS
                         throw new Exception("Kommandozeilenparameter ?ConfigPath fehlt.");
                     }
                 }
-
-                //PMDS.Global.Other.AppConfig.Change(ENV.exeConfig);
-                //AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", ENV.exeConfig);
-
-                //<20120209> Name des Config-Files MUSS mitgegeben werden!!
                 string configFileRead = searchKeyArg("ConfigFile", args);
                 remotingSrv.showMsgBoxTestmodus("ConfigFile: " + configFileRead);
 
@@ -197,10 +192,6 @@ namespace PMDS
 
                 if (ENV.Init(false) == false)   
                     return;
-                 
-                //anycpu_deployment.DLLDispatcher.BinPath = PMDS.Global.ENV.path_bin;
-                //anycpu_deployment.DLLDispatcher.HookOnCurrentAppDomain();
-                /*<runtime><loadFromRemoteSources enabled="true"/></runtime>  -- Nicht vergessen in Config!  */
 
                 ENV.initELGAFormatter();
 
@@ -256,11 +247,11 @@ namespace PMDS
                                 return;
                             }
 
-                            if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
-                            {
-                                PMDS.Global.Remote.remotingSrv remotingSrv1 = new Global.Remote.remotingSrv();
-                                remotingSrv1.startProcIPCClient("Schnellrückmeldung", ENV.USERID, "0", ENV.IDAnmeldungen, ENV.LoggedInAsSuperUser, ENV.UsrPwdEnc);
-                            }
+                            //if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
+                            //{
+                            //    PMDS.Global.Remote.remotingSrv remotingSrv1 = new Global.Remote.remotingSrv();
+                            //    remotingSrv1.startProcIPCClient("Schnellrückmeldung", ENV.USERID, "0", ENV.IDAnmeldungen, ENV.LoggedInAsSuperUser, ENV.UsrPwdEnc);
+                            //}
 
                             QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
                             qs2.ui.RunFromOtherSystem RunFromOtherSystem1 = new qs2.ui.RunFromOtherSystem();

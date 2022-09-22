@@ -324,15 +324,15 @@ namespace PMDS.Global.Remote
         {
             try
             {
-                if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
-                {
-                    remotingClient remotingClient1 = new remotingClient();
-                    cParComm cParComm1 = new cParComm();
-                    remotingClient.cCallFctReturn CallFctReturn = null;
+                //if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
+                //{
+                //    remotingClient remotingClient1 = new remotingClient();
+                //    cParComm cParComm1 = new cParComm();
+                //    remotingClient.cCallFctReturn CallFctReturn = null;
 
-                    remotingSrv.SiteMap = SiteMap;
-                    remotingClient1.callFct(ICommunicationService.eTypeCallTo.ClientPMDS, ICommunicationService.eTypeFct.CloseIPCClient, cParComm1, ref CallFctReturn);
-                }
+                //    remotingSrv.SiteMap = SiteMap;
+                //    remotingClient1.callFct(ICommunicationService.eTypeCallTo.ClientPMDS, ICommunicationService.eTypeFct.CloseIPCClient, cParComm1, ref CallFctReturn);
+                //}
 
             }
             catch (Exception ex)
@@ -497,17 +497,17 @@ namespace PMDS.Global.Remote
         {
             try
             {
-                if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
-                {
-                    string pathIPC = System.IO.Path.GetTempPath() + "\\ipc";
-                    string IPCFileTemp = pathIPC + "\\closed_" + remotingSrv.UriMainPMDS + ".ipctemp";
-                    string IPCFile = pathIPC + "\\closed_" + remotingSrv.UriMainPMDS + ".ipc";
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(IPCFileTemp, true))
-                    {
-                        file.Write((savedData ? "S" : "C"));
-                    }
-                    System.IO.File.Move(IPCFileTemp, IPCFile);
-                }
+                //if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
+                //{
+                //    string pathIPC = System.IO.Path.GetTempPath() + "\\ipc";
+                //    string IPCFileTemp = pathIPC + "\\closed_" + remotingSrv.UriMainPMDS + ".ipctemp";
+                //    string IPCFile = pathIPC + "\\closed_" + remotingSrv.UriMainPMDS + ".ipc";
+                //    using (System.IO.StreamWriter file = new System.IO.StreamWriter(IPCFileTemp, true))
+                //    {
+                //        file.Write((savedData ? "S" : "C"));
+                //    }
+                //    System.IO.File.Move(IPCFileTemp, IPCFile);
+                //}
 
             }
             catch (Exception ex)

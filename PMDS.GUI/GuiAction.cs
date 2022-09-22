@@ -905,82 +905,53 @@ namespace PMDS.GUI
                     iCounter += 1;
                 }
                 
-                if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
+                //if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
+                //{
+                //    if (GuiAction.SchnellrückmeldungOpend)
+                //    {
+                //        PMDS.GUI.GUI.Main.frmInfoSchnellrueckmeldungOpend frmInfoSchnellrueckmeldungOpend1 = new GUI.Main.frmInfoSchnellrueckmeldungOpend();
+                //        frmInfoSchnellrueckmeldungOpend1.txtInfo.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Schnellrückmeldung ist bereits geöffnet!");
+                //        frmInfoSchnellrueckmeldungOpend1.TopMost = true;
+                //        frmInfoSchnellrueckmeldungOpend1.ShowDialog(MainControl);
+                //        return false;
+                //    }
+                //    else
+                //    {
+                //        remotingClient remotingClient1 = new remotingClient();
+                //        cParComm cParComm1 = new cParComm();
+                //        cParComm1.lstInterventionen = lstInterventionenGuid;
+                //        remotingClient.cCallFctReturn CallFctReturn = null;
+                //        if (arall.Count > frmPatientRueckmeldungLine.GetMaxLines())
+                //        {
+                //            QS2.Desktop.ControlManagment.ControlManagment.MessageBox(QS2.Desktop.ControlManagment.ControlManagment.getRes("Es können max. ") + frmPatientRueckmeldungLine.GetMaxLines().ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(" Meldungen ausgewählt werden."), "", MessageBoxButtons.OK, true);
+                //            //return false;
+                //        }
+                //        remotingSrv.openSchnellrückmeldungSave(cParComm1.lstInterventionen, mainWindowLeft, mainWindowTop, mainWindowWidth, mainWindowHeight);
+
+                //        return remotingClient.CallFctReturn.bOK;
+                //    }
+                //}
+ 
+                if (!bfrmRueckmedlungLineisinitialized)
                 {
-                    if (GuiAction.SchnellrückmeldungOpend)
+                    frmRueckmedlungLine = new frmPatientRueckmeldungLine();
+                    bfrmRueckmedlungLineisinitialized = true;
+                }
+
+                frmRueckmedlungLine.SetData(ar);
+                DialogResult ret = frmRueckmedlungLine.ShowDialog();
+                if (ret == DialogResult.OK)
+                {
+                    if (SiteMap != null)
                     {
-                        PMDS.GUI.GUI.Main.frmInfoSchnellrueckmeldungOpend frmInfoSchnellrueckmeldungOpend1 = new GUI.Main.frmInfoSchnellrueckmeldungOpend();
-                        frmInfoSchnellrueckmeldungOpend1.txtInfo.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Schnellrückmeldung ist bereits geöffnet!");
-                        frmInfoSchnellrueckmeldungOpend1.TopMost = true;
-                        frmInfoSchnellrueckmeldungOpend1.ShowDialog(MainControl);
-                        return false;
+                        SiteMap.RefreshTermin(false);
                     }
-                    else
-                    {
-                        remotingClient remotingClient1 = new remotingClient();
-                        cParComm cParComm1 = new cParComm();
-                        cParComm1.lstInterventionen = lstInterventionenGuid;
-                        remotingClient.cCallFctReturn CallFctReturn = null;
-
-                        ////Test getInterventionen
-                        //PMDSBusiness b = new PMDSBusiness();
-                        //PMDS.Global.db.ERSystem.dsTermine dsTermine = null;
-                        //b.getInterventionenByIDs(ref lstInterventionenGuid, true, ref dsTermine);
-
-                        //remotingSrv remotingSrv1 = new remotingSrv();
-                        //remotingSrv1.run(remotingSrv.PortMainPMDS.Trim(), remotingSrv.UriMainPMDS.Trim(), remotingSrv.varsToCall.SrvNr, false, false);
-
-                        if (arall.Count > frmPatientRueckmeldungLine.GetMaxLines())
-                        {
-                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox(QS2.Desktop.ControlManagment.ControlManagment.getRes("Es können max. ") + frmPatientRueckmeldungLine.GetMaxLines().ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(" Meldungen ausgewählt werden."), "", MessageBoxButtons.OK, true);
-                            //return false;
-                        }
-
-                        remotingSrv.openSchnellrückmeldungSave(cParComm1.lstInterventionen, mainWindowLeft, mainWindowTop, mainWindowWidth, mainWindowHeight);
-
-                        //remotingSrv.SiteMap = SiteMap;
-                        //remotingClient1.callFct(ICommunicationService.eTypeCallTo.ClientPMDS, ICommunicationService.eTypeFct.StartSchnellrückmeldung, cParComm1, ref CallFctReturn);
-                        //SchnellrückmeldungAsProcessBack = true;
-                        ////return false;
-
-                        if (remotingClient.CallFctReturn.bOK)
-                        {
-                            //if (remotingSrv.SiteMap != null)
-                            //{
-                            //    remotingSrv.SiteMap.RefreshTermin(false);
-                            //}
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }
+                    return true;
                 }
                 else
                 {
-                    if (!bfrmRueckmedlungLineisinitialized)
-                    {
-                        frmRueckmedlungLine = new frmPatientRueckmeldungLine();
-                        bfrmRueckmedlungLineisinitialized = true;
-                    }
-
-                    frmRueckmedlungLine.SetData(ar);
-                    DialogResult ret = frmRueckmedlungLine.ShowDialog();
-                    if (ret == DialogResult.OK)
-                    {
-                        if (SiteMap != null)
-                        {
-                            SiteMap.RefreshTermin(false);
-                        }
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    return false;
                 }
-                //PMDS.GUI.frmPatientRueckmeldungLine.IsSchnellrückmeldung = false;
 
             }
             catch (Exception ex)
