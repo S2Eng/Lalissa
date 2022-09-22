@@ -8,6 +8,7 @@ using qs2.core.vb;
 using System.Globalization;
 using System.Web;
 using System.IO;
+using Infragistics.Win;
 using S2Extensions;
 
 namespace qs2.sitemap.print
@@ -16,11 +17,8 @@ namespace qs2.sitemap.print
 
     public class genSql
     {
-        
         public sqlAdmin sqlAdmin1;
         public dsAdmin dsAdmin1;
-
-        //public qs2.core.generic generic1 { get; set; } = new qs2.core.generic();
 
         public enum eTypDoJoins
         {
@@ -54,14 +52,6 @@ namespace qs2.sitemap.print
         {
             public System.Collections.Generic.List<string> lstTablesForinnerJoin = new List<string>();
         }
-
-
-
-
-
-
-
-
 
         public void initControl()
         {
@@ -107,13 +97,7 @@ namespace qs2.sitemap.print
                 if (rSelListQry.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.FullMode.ToString().ToLower()))
                 {
                     throw new Exception("doSql: eQueryType.FullMode not allowed!");
-                    //sqlWhereJoins = this.doJoins(tJoins, ref prot);
                 }
-                
-                //string sqlStandardFields = this.doSqlAddStandardFields_tblStay(tFields, ref tables, ref prot);
-                //sqlFields += (sqlFields.Trim().Equals("") ? sqlStandardFields : ", " + sqlStandardFields);
-                //if (sqlFields.Equals(""))
-                //    sqlFields = qs2.core.sqlTxt.select + " * ";
 
                 string sqlParameterFunction = "";
                 string sqlWhereConditions = "";
@@ -123,53 +107,20 @@ namespace qs2.sitemap.print
                 this.doSqlConditions(tConditions, tParFct, ref prot, withParameters, parametersSql, false,
                                         ref sqlParameterFunction, rSelListQry, true, ref lstSqlFix, ref sqlWhereConditions,
                                         ref WhereClauselForSimpleFunctions, false, ref lstParForExternFct, false, ref SqlWhereAdmin, ref DataSql);
-                //CheckSchalter: 3. if SimpleFct -> WhereClauselForSimpleFunctions -> one Where-String for doTables 
 
                 
                 foreach (qs2.sitemap.print.genSql.subQuery subQuery in lstSubQueries)
                 {
-                    if (!rSelListQry.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.FullMode.ToString().ToLower()))
-                    {
-                        //lthxy
-                        //foreach (qs2.core.vb.dsAdmin.tblQueriesDefRow rQry in subQuery.tQryConditionsSub)
-                        //{
-                        //    rQry.QryTable = rSelListQry._Table;
-                        //}
-                        //foreach (qs2.core.vb.dsAdmin.tblQueriesDefRow rQry in subQuery.tParFunctParSub)
-                        //{
-                        //    rQry.QryTable = rSelListQry._Table;
-                        //}
-                    }
 
-                    //bool SubQueryIsOK = false;
                     qs2.sitemap.print.print print1 = new qs2.sitemap.print.print();
                     qs2.core.Enums.eStayTyp StayTypeMainQuery = print1.getTypeQuery(rSelListQry.Classification.Trim());
                     qs2.core.Enums.eStayTyp StayTypeSubQuery = print1.getTypeQuery(subQuery.rSelListQrySub.Classification.Trim());
-
-                    //if (StayTypeSubQuery == StayTypeMainQuery &&
-                    //    rSelListQry.Classification != "" &&
-                    //    rSelListQry.Classification != "")
-                    //{
-                    //    SubQueryIsOK = true;
-                    //}
-
-                    //if (!SubQueryIsOK)
-                    //{
-                    //    throw new Exception("genSql.doSql: SubQuery '" + subQuery.rSelListQrySub.IDRessource + "' has an other Classification-Type as the MainQUery '" + rSelListQry.IDRessource + "'!");
-                    //}
-                    //else
-                    //{
-                    //    string xy = "";
-                    //}
                     this.doSqlConditions(subQuery.tQryConditionsSub, subQuery.tParFunctParSub, ref prot, 
                                         withParameters, parametersSql, false, ref sqlParameterFunction, rSelListQry, false,
                                         ref lstSqlFix, ref sqlWhereConditionsSubQuery,
                                         ref WhereClauselForSimpleFunctions, true, ref lstParForExternFct, false, ref SqlWhereAdmin, ref DataSql);
                 }  
 
-                //string sqlWhereStays = this.doSqlConditions(null, false, ref tables, ref prot, true, null, withParameters, null);
-                //sqlWhere += this.doSqlConditions(tInputFields, true, ref tables, ref prot, false, sqlWhere, tQryPar, withParameters);
-                
                 System.Collections.Generic.List<string> tables = new System.Collections.Generic.List<string>();
                 this.saveTables(ref tFields, ref tables);
                 this.saveTables(ref tConditions, ref tables);
@@ -295,7 +246,6 @@ namespace qs2.sitemap.print
             }
         }
 
-
         public bool calcJoinStandard(qs2.core.vb.dsAdmin.tblQueriesDefDataTable tFields,
                     qs2.core.vb.dsAdmin.tblQueriesDefDataTable tConditions,
                     ref qs2.core.vb.dsAdmin dsJoinsResult,
@@ -315,10 +265,6 @@ namespace qs2.sitemap.print
                 dsJoinsOnlyTables.tblQueriesDef.Columns.Add(qs2.core.generic.columnNameType, typeof(string));
 
                 int Sort = 0;
-                //dsObjects.tblStayDataTable tStay = new dsObjects.tblStayDataTable();
-                //System.Guid IDJoin = System.Guid.NewGuid();
-                //IDJoin = this.addQry("", tStay.TableName, "", "", ref Sort, dsJoinsOnlyTables, eTypDoJoins.tableEntry, IDJoin);
-                //this.addQry("", tStay.TableName, tStay.IDColumn.ColumnName, "", ref Sort, dsJoinsAllFields, eTypDoJoins.fieldEntry, IDJoin);
 
                 this.doSqlFields(tFields, dsJoinsOnlyTables, dsJoinsAllFields, ref prot, true, ref Sort, ref rSelListEntry);
                 this.doTablesConditions(tConditions, dsJoinsOnlyTables, dsJoinsAllFields, ref Sort, ref prot);
@@ -384,12 +330,6 @@ namespace qs2.sitemap.print
                                 this.addNewJoinDsResult("", rQryTable.QryTable, dsJoinsResult.tblStayAdditions.IDApplicationStayParentColumn.ColumnName, "", ref SortNeu, ref dsJoinsResult);
                             }
                         }
-                        else
-                        {
-                            //SortNeu += 1;
-                            //string nextCombonation = (SortNeu == 0 ? qs2.core.sqlTxt.where : qs2.core.sqlTxt.and);
-                            //this.addNewJoinDsResult(nextCombonation, dsObjTemp.tblStay.TableName, sID, qs2.core.sqlTxt.equals, ref SortNeu, ref dsJoinsResult);
-                        }
                     }
                 }
 
@@ -451,7 +391,6 @@ namespace qs2.sitemap.print
             catch (Exception ex)
             {
                 throw new Exception("genSql.calcJoinStandard:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                //return false;
             }
         }
 
@@ -474,8 +413,6 @@ namespace qs2.sitemap.print
                 dsJoinsOnlyTables.tblQueriesDef.Columns.Add(qs2.core.generic.columnNameType, typeof(string));
 
                 this.sqlAdmin1.getQueryJoinsTemp(System.Guid.Empty, dsJoinsResult, sqlAdmin.eTypSelQueryJoinsTemp.all);
-                //dsJoinsResult.tblQueryJoinsTemp.Columns.Add(qs2.core.generic.columnUsed, typeof(bool));
-                //dsJoinsResult.tblQueryJoinsTemp.Columns.Add(qs2.core.generic.columnNameType, typeof(string));
                 
                 int SortNeu = -1;
                 int Sort = 0;
@@ -506,7 +443,6 @@ namespace qs2.sitemap.print
             catch (Exception ex)
             {
                 throw new Exception("genSql.calcJoinTable:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                //return false;
             }
         }
 
@@ -516,10 +452,6 @@ namespace qs2.sitemap.print
         {
             foreach (dsAdmin.tblQueryJoinsTempRow rJoinTemp in tblQueryJoinsTemp)
             {
-                //if (rJoinTemp.alwaysDoJoin)
-                //{
-                //}
-
                 bool tableFoundFrom = false;
                 bool tableFoundTo = false;
                 foreach (dsAdmin.tblQueriesDefRow rQryTable in dsJoinsOnlyTables.tblQueriesDef)
@@ -561,25 +493,6 @@ namespace qs2.sitemap.print
             catch (Exception ex)
             {
                 throw new Exception("genSql.addNewJoinDsResult:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                //return false;
-            }
-        }
-
-        public dsAdmin.tblQueriesDefRow getRowTableStay(dsAdmin dsJoinsOnlyTables)
-        {
-            try
-            {
-                dsObjects dsObjTemp = new dsObjects();
-                dsAdmin.tblQueriesDefRow[] arrQryTablesFound = (dsAdmin.tblQueriesDefRow[])dsJoinsOnlyTables.tblQueriesDef.Select(dsJoinsOnlyTables.tblQueriesDef.QryTableColumn.ColumnName + qs2.core.sqlTxt.equals + "'" + dsObjTemp.tblStay.TableName + "'");
-                if (arrQryTablesFound.Length > 0)
-                    return arrQryTablesFound[0];
-                else
-                    return null;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genSql.getRowTableStay:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                //return null;
             }
         }
 
@@ -641,8 +554,6 @@ namespace qs2.sitemap.print
                         this.doSqlConditions(tConditions, tParFct, ref prot, true, parametersSql,  true, ref sqlParameterFunctionTmp, rSelListQry,
                                                 false, ref lstSqlFix, ref sqlWhere, ref dummyWhereNotUsed, false, ref lstParForExternFct, true, ref SqlWhereNoParFunct, ref DataSql);
 
-                        //CheckSchalter: 8. WhereClauselForSimpleFunctions (wenn leer dann leerstring mit '') integrieren mit '' dazwischen + Parameter wie immer mit neuem Datumsformat übergeben
-
                         string sqlParameterFunctionSum = "";
                         if (WhereClauselForSimpleFunctions.Trim() == "")
                         {
@@ -664,7 +575,6 @@ namespace qs2.sitemap.print
                         sqlTables += tableFound; 
                     }
                 }
-                //sqlTables = (!sqlTables.Trim().Equals("") ? qs2.core.sqlTxt.from + sqlTables : "");
                 sqlTables += " ";
             }
             catch (Exception ex)
@@ -714,7 +624,6 @@ namespace qs2.sitemap.print
             catch (Exception ex)
             {
                 throw new Exception("genSql.addQry:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                //return System.Guid.NewGuid();
             }
         }
 
@@ -737,7 +646,7 @@ namespace qs2.sitemap.print
                         rQueryClear[qs2.core.generic.columnNewName] = "";
                     }
 
-                    // check for double-Fields
+                    // check for duplicte fields
                     foreach (dsAdmin.tblQueriesDefRow rQueryOrig in arrQueries)
                     {
                         int counterDoubleField = 0;
@@ -755,10 +664,9 @@ namespace qs2.sitemap.print
                     string sGrpTabblePrefix = "";
                     foreach (dsAdmin.tblQueriesDefRow rQuery in arrQueries)
                     {
-                        //CheckSchalter: 2. richige Sql-Felder für SimpleFct oder SimpleViews
                         bool doSqlSrvField = false;
-                        if (rSelListQry.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleView.ToString().ToLower()) ||
-                            rSelListQry.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleFunction.ToString().ToLower()))
+                        if (rSelListQry.TypeQry.sEquals(qs2.core.print.print.eQueryType.SimpleView) ||
+                            rSelListQry.TypeQry.sEquals(qs2.core.print.print.eQueryType.SimpleFunction))
                         {
                             doSqlSrvField = true;
                         }
@@ -836,7 +744,6 @@ namespace qs2.sitemap.print
                         }
                     }
 
-                    this.checkIDGuidStay(ref sql, ref sGrpTabblePrefix);
                     sql = qs2.core.sqlTxt.select + sql;
                     return (sql + " ");
                 }
@@ -846,97 +753,9 @@ namespace qs2.sitemap.print
             catch (Exception ex)
             {
                 throw new Exception("genSql.doSqlFields:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                //return "";
             }
         }
-        public void checkIDGuidStay(ref string sql, ref string sTable)
-        {
-            try
-            {
-                if (!qs2.core.license.doLicense.rApplication.IDApplication.Trim().ToLower().Equals(qs2.core.license.doLicense.eApp.PMDS.ToString().Trim().ToLower()))
-                {
-                    if (sql.Trim() != "" && sTable.Trim() != "")
-                    {
-                        string FieldIDGuidStay = sTable.Trim() + ".[IDGuid]";
-                        if (!sql.Trim().ToLower().Contains(FieldIDGuidStay.Trim().ToLower()))
-                        {
-                            sql += ", " + FieldIDGuidStay.Trim() + " ";
-                            //string xy = "";
-                        }
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genSql.checkIDGuidStay: IDGuid for Table '" + sTable.Trim() + "' not exists in DB-Schema" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-        }
-        public string doSqlAddStandardFields_tblStayxy(qs2.core.vb.dsAdmin.tblQueriesDefDataTable tFields, ref System.Collections.Generic.List<string> tables, ref string prot)
-        {
-            try
-            {
-                string sql = "";
-                dsObjects.tblStayDataTable tStay = new  dsObjects.tblStayDataTable ();
-                sql += tStay.TableName + "." + tStay.PatIDGuidColumn.ColumnName;
-                sql += ", " + tStay.TableName + "." + tStay.PatExtIDColumn.ColumnName;
-                sql += ", " + tStay.TableName + "." + tStay.PatIDGuidColumn.ColumnName;
-                sql += ", " + tStay.TableName + "." + tStay.CreatedDtColumn.ColumnName;
-                sql += ", " + tStay.TableName + "." + tStay.StayTypColumn.ColumnName;
-                sql += ", " + tStay.TableName + "." + tStay.OPTypColumn.ColumnName;
-                sql += ", " + tStay.TableName + "." + tStay.IDColumn.ColumnName;
-                sql += ", " + tStay.TableName + "." + tStay.MedRecNColumn.ColumnName;
-
-                return sql;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genSql.doSqlAddStandardFields_tblStay:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                //return "";
-            }
-        }
-        
-        public string doJoinsxy(qs2.core.vb.dsAdmin.tblQueriesDefDataTable tJoins,  ref string prot)
-        {
-            try
-            {
-                string sql = "";
-                dsAdmin.tblQueriesDefRow[] arrQueries = (dsAdmin.tblQueriesDefRow[])tJoins.Select("", tJoins.SortColumn.ColumnName + qs2.core.sqlTxt.asc);
-                if (arrQueries.Length > 0)
-                {
-                    bool nextEquals = false;
-                    foreach (dsAdmin.tblQueriesDefRow rQuery in arrQueries)
-                    {
-                        if (!rQuery.freeSql.Trim().Equals(""))
-                            nextEquals = false;
-
-                        string tableCorrected = rQuery.QryTable;
-                        if (qs2.core.dbBase.viewIsFunction2(tableCorrected))
-                            tableCorrected = qs2.core.dbBase.getFunctionName(tableCorrected);
-
-
-                        if (!nextEquals)
-                        {
-                            sql += rQuery.Combination + " " + tableCorrected + "." + rQuery.QryColumn + rQuery.Condition + rQuery.freeSql.Trim();
-                        }
-                        else
-                        {
-                            sql += tableCorrected + "." + rQuery.QryColumn + " " + rQuery.CombinationEnd;
-                        }
-                        nextEquals = !nextEquals;
-                    }
-                    return (sql + " ");
-                }
-                else
-                    return "";
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genSql.doJoins:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                //return "";
-            }
-        }
-
+       
         public void doSqlConditions(qs2.core.vb.dsAdmin.tblQueriesDefDataTable tConditions,
                                     qs2.core.vb.dsAdmin.tblQueriesDefDataTable tParFct, ref string prot,
                                     bool withParameters,
@@ -979,18 +798,12 @@ namespace qs2.sitemap.print
 
                         if ((bool)rQry[qs2.core.generic.columnRemoved] == false)
                         {
-                            //CheckSchalter: 4. if SimpleFct -> WhereClauselForSimpleFunctions -> one Where-String for doTables -> doWhereClauselForSimpleFunctions = true;
-                            //CheckSchalter: 5. if SimpleView -> wie IsSQLServerField -> mit normalen Ds-Parameters für Sql-Client
                             bool doSqlSrvField = false;
                             bool doWhereClauselForSimpleFunctions = false;
                             if (rSelListQry.TypeQry.sEquals(qs2.core.print.print.eQueryType.SimpleView) ||
                                 rSelListQry.TypeQry.sEquals(qs2.core.print.print.eQueryType.SimpleFunction))
                             {
                                 doSqlSrvField = true;
-                                if (rSelListQry.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleFunction.ToString().ToLower()) && doFunctionParameters)
-                                {
-                                    //doWhereClauselForSimpleFunctions = true;
-                                }
                             }
                             else if (rQry.IsSQLServerField)
                             {
@@ -1087,48 +900,6 @@ namespace qs2.sitemap.print
             }
         }
 
-        public void setParametersListSqlFix(ref System.Collections.Generic.List<sqlFix> lstSqlFix, ref string sql, string fieldInfo, string valueUsr)
-        {
-            if (valueUsr.Trim() == "")
-                return;
-            
-            if (lstSqlFix.Count > 0)
-            {
-                bool firstSubSqlFix = true;
-                foreach (sqlFix sqlFix in lstSqlFix)
-                {
-                    if (sqlFix.SqlCommand.Trim() != "")
-                    {
-                        string sqlCondition = "";
-                        if (firstSubSqlFix)
-                        {
-                            sqlCondition = (!sqlFix.sqlConditionExists ? qs2.core.sqlTxt.where : qs2.core.sqlTxt.and);
-                        }
-                        else
-                        {
-                            sqlCondition = qs2.core.sqlTxt.and;
-                        }
-
-                        string sqlToAdd = "";
-                        if (sqlFix.lstSqlFixparameter.Count > 0)
-                        {
-                            int parNr = 0;
-                            foreach (string par in sqlFix.lstSqlFixparameter)
-                            {
-                                if (fieldInfo.Trim().ToLower() == par.Trim().ToLower())
-                                {
-                                    sqlToAdd = sqlFix.SqlCommand.Trim().Replace("{" + parNr.ToString() + "}", valueUsr);
-                                    parNr += 1;
-                                }
-                            }
-                        }
-
-                        sql += sqlCondition + sqlToAdd;
-                        firstSubSqlFix = false;
-                    }
-                }
-            }
-        }
         public void getListSqlFix(dsAdmin.tblSelListEntriesRow rSelListQry, ref System.Collections.Generic.List<sqlFix> lstSqlFix)
         {
             if (rSelListQry.Sql.Trim() != "")
@@ -1165,16 +936,6 @@ namespace qs2.sitemap.print
         {
             try
             {
-                //foreach (string table in tables)
-                //{
-                //    if (table.Trim() != tStay.TableName)
-                //    {
-                //        sql += (sql == "" ? "" : qs2.core.sqlTxt.and);
-                //        sql += tStay.TableName + ".ID = " + table + ".ID";
-                //    }
-                //}
-                //sql = (sql.Trim() == "" ? "" : qs2.core.sqlTxt.where + sql);
-
                 dsAdmin.tblQueriesDefRow[] arrQueries = (dsAdmin.tblQueriesDefRow[])tConditions.Select("", tConditions.SortColumn.ColumnName + qs2.core.sqlTxt.asc);
                 if (arrQueries.Length > 0)
                 {
@@ -1411,7 +1172,6 @@ namespace qs2.sitemap.print
                 {
                     return "";
                 }
-
             }
             catch (Exception ex)
             {
@@ -1454,27 +1214,21 @@ namespace qs2.sitemap.print
                 }
                 else
                 {
-                    if (ControlType.Trim().ToLower() == core.Enums.eControlType.DateTime.ToString().Trim().ToLower() ||
-                        ControlType.Trim().ToLower() == core.Enums.eControlType.DateTimeNoDb.ToString().Trim().ToLower() ||
-                        ControlType.Trim().ToLower() == core.Enums.eControlType.Date.ToString().Trim().ToLower() ||
-                        ControlType.Trim().ToLower() == core.Enums.eControlType.DateNoDb.ToString().Trim().ToLower() ||
-                        ControlType.Trim().ToLower() == core.Enums.eControlType.Time.ToString().Trim().ToLower() ||
-                        ControlType.Trim().ToLower() == core.Enums.eControlType.TimeNoDb.ToString().Trim().ToLower())
+                    if (ControlType.sEquals(core.Enums.eControlType.DateTime) ||
+                        ControlType.sEquals(core.Enums.eControlType.DateTimeNoDb) ||
+                        ControlType.sEquals(core.Enums.eControlType.Date) ||
+                        ControlType.sEquals(core.Enums.eControlType.DateNoDb) ||
+                        ControlType.sEquals(core.Enums.eControlType.Time) ||
+                        ControlType.sEquals(core.Enums.eControlType.TimeNoDb))
                     {
-                        if (!sValueMin.Trim().ToLower().Equals(("null").Trim().ToLower()) && !sValueMin.Trim().ToLower().Equals(("").Trim().ToLower()))
+                        if (!sValueMin.sEquals("null") && !String.IsNullOrWhiteSpace(sValueMin))
                         {
-                            //DateTime dValueMin = DateTime.Parse(sValueMin.Trim());
-                            //DateTime dValueMin = DateTime.ParseExact(sValueMin.Trim(), "MM-dd-yyyy HH:mm:ss", null);
                             DateTime dValueMin = new DateTime();
                             bool IsNull = false;
                             this.getDateFromStrings(sValueMin, ref dValueMin, ref IsNull);
                             if (!IsNull)
                             {
                                 sValueMinTmp = qs2.core.vb.dbBase.getDateConvertSql(dValueMin);
-                            }
-                            else
-                            {
-                                //string xyxy = "";
                             }
                         }
                         if (!sValueMax.Trim().ToLower().Equals(("null").Trim().ToLower()) && isBetween && !sValueMax.Trim().ToLower().Equals(("").Trim().ToLower()))
@@ -1485,10 +1239,6 @@ namespace qs2.sitemap.print
                             if (!IsNull)
                             {
                                 sValueMaxTmp = qs2.core.vb.dbBase.getDateConvertSql(dValueMax);
-                            }
-                            else
-                            {
-                                //string xyxy = "";
                             }
                         }
                     }
@@ -1541,7 +1291,6 @@ namespace qs2.sitemap.print
                         sValueMinTmp = sValueMin.Trim();
                         sValueMaxTmp = sValueMax.Trim();
                     }
-
                 }
 
                 if (isBetween)
@@ -1552,102 +1301,13 @@ namespace qs2.sitemap.print
                 {
                     SqlWhereAdmin += "\r\n" + CombinationTmp + " " + TableName.Trim() + "." + ColumnName.Trim() + " " + Condition.Trim() + " " + sValueMinTmp.Trim() + " " + CombinationEndTmp + " ";
                 }
-
-                //string xy = "";            
-
-                //if (oValue == null)
-                //{
-                //    sqlValue = "null";
-                //}
-                //else
-                //{
-                //    if (oValue == System.DBNull.Value)
-                //    {
-                //        sqlValue = "null";
-                //    }
-                //    else
-                //    {
-                //        if (oValue.GetType().Equals(typeof(string)) || oValue.GetType().Equals(typeof(string)) || oValue.GetType().Equals(typeof(string)))
-                //        {
-                //            string SqlValueTmp = "";
-                //            string sValue = oValue.ToString();
-                //            sValue = sValue.Replace("'", "''");
-                //            //string sValuexy = @sValue.Replace("'", "''");
-                //            //string quote2 = "\"";
-                //            //char dc = (char)34;
-                //            //string x = "\'";
-
-                //            SqlValueTmp = "'" + sValue + "'";
-                //            sqlValue += SqlValueTmp;
-                //        }
-                //        else if (oValue.GetType().Equals(typeof(Int32)) || oValue.GetType().Equals(typeof(Int16)) || oValue.GetType().Equals(typeof(Int32)))
-                //        {
-                //            string SqlValueTmp = "";
-                //            int iValue = System.Convert.ToInt32(oValue);
-                //            SqlValueTmp = iValue.ToString();
-                //            sqlValue += SqlValueTmp;
-                //        }
-                //        else if (oValue.GetType().Equals(typeof(decimal)) || oValue.GetType().Equals(typeof(double)) || oValue.GetType().Equals(typeof(Double)) || oValue.GetType().Equals(typeof(Decimal)))
-                //        {
-                //            string SqlValueTmp = "";
-                //            double dValue = System.Convert.ToDouble(oValue);
-                //            SqlValueTmp = dValue.ToString();
-                //            sqlValue += SqlValueTmp;
-                //        }
-                //        else if (oValue.GetType().Equals(typeof(bool)) || oValue.GetType().Equals(typeof(Boolean)))
-                //        {
-                //            string SqlValueTmp = "";
-                //            bool bValue = (bool)oValue;
-                //            if (bValue)
-                //            {
-                //                SqlValueTmp = "1";
-                //            }
-                //            else
-                //            {
-                //                SqlValueTmp = "0";
-                //            }
-                //            SqlValueTmp += SqlValueTmp;
-                //        }
-                //        else if (oValue.GetType().Equals(typeof(DateTime)))
-                //        {
-                //            string SqlValueTmp = "";
-                //            DateTime dat = (DateTime)oValue;
-                //            string sDate = dbBase.getDateConvertSql(dat);
-                //            SqlValueTmp = sDate.ToString();
-                //            SqlValueTmp += SqlValueTmp;
-                //        }
-                //        else if (oValue.GetType().Equals(typeof(Guid)))
-                //        {
-                //            string SqlValueTmp = "";
-                //            Guid gValue = new Guid(oValue.ToString());
-                //            SqlValueTmp = "'" + gValue.ToString() + "'";
-                //            SqlValueTmp += SqlValueTmp;
-                //        }
-                //        else if (oValue.GetType().Equals(typeof(Byte[])))
-                //        {
-                //            string SqlValueTmp = "";
-                //            byte[] bValue = (byte[])oValue;
-                //            //string sValue = Encoding.UTF8.GetString(bValue, 0, bValue.Length);
-                //            //var sValue = System.Text.Encoding.Default.GetString(bValue);
-                //            string sValue = BitConverter.ToString(bValue);
-                //            sValue = "0x" + sValue.Replace("-", "");
-                //            SqlValueTmp = "" + sValue.ToString() + "";
-                //            SqlValueTmp += SqlValueTmp;
-                //        }
-                //        else
-                //        {
-                //            throw new Exception("getSqlValue: Type '" + oValue.GetType().ToString() + "' not allowed!");
-                //        }
-
-                //    }
-                //}
-
             }
             catch (Exception ex)
             {
                 throw new Exception("genSql.getSqlValue: " + ex.ToString());
             }
         }
+
         public void getDateFromStrings(string sDate, ref DateTime dDatReturn, ref bool IsNull)
         {
             try
@@ -1659,17 +1319,9 @@ namespace qs2.sitemap.print
                 string sMinutes = sDate.Trim().Substring(14, 2);
                 string sSeconds = sDate.Trim().Substring(17, 2);
 
-                //if (sYears.Trim().Equals("01") && sMonth.Trim().Equals("01") && sDays.Trim().Equals("01"))
-                //{
-                //    IsNull = true;
-                //}
-                //else
-                //{
-                    DateTime dTmp = new DateTime(System.Convert.ToInt32(sYears.Trim()), System.Convert.ToInt32(sMonth.Trim()), System.Convert.ToInt32(sDays.Trim()),
-                            System.Convert.ToInt32(sHours.Trim()), System.Convert.ToInt32(sMinutes.Trim()), System.Convert.ToInt32(sSeconds.Trim()));
-                    dDatReturn = dTmp;
-                //}
-
+                DateTime dTmp = new DateTime(System.Convert.ToInt32(sYears.Trim()), System.Convert.ToInt32(sMonth.Trim()), System.Convert.ToInt32(sDays.Trim()),
+                        System.Convert.ToInt32(sHours.Trim()), System.Convert.ToInt32(sMinutes.Trim()), System.Convert.ToInt32(sSeconds.Trim()));
+                dDatReturn = dTmp;
             }
             catch (Exception ex)
             {
@@ -1681,36 +1333,10 @@ namespace qs2.sitemap.print
         {
             if (iCounterConditions == 0)
             {
-                sCombination = sCombination.Trim().ToLower().Replace(("or").Trim().ToLower(), "");
-                sCombination = sCombination.Trim().ToLower().Replace(("AND").Trim().ToLower(), "");
-
-                //if (addWhere)
-                    //sCombination = " where " + sCombination;
+                sCombination = sCombination.ToLower().Replace(("or"), "");
+                sCombination = sCombination.ToLower().Replace(("and"), "");
             }
             return sCombination;
-        }
-
-        public string getCombination(string CombinationFromQuery)
-        {
-            if (CombinationFromQuery.Trim() == "")
-            {
-                return " and ";
-            }
-            else
-            {
-                return " " + CombinationFromQuery.Trim() + " ";
-            }
-        }
-        public string checkCombinationEnd(string CombinationEndFromQuery)
-        {
-            if (CombinationEndFromQuery.Trim() == "")
-            {
-                return "";
-            }
-            else
-            {
-                return " " + CombinationEndFromQuery.Trim() + " ";
-            }
         }
 
         public void getValueForFct(string table, bool doFunctionParameters, ref string sqlParameterFunction,
@@ -1891,9 +1517,9 @@ namespace qs2.sitemap.print
             catch (Exception ex)
             {
                 throw new Exception("genSql.getParameterSql:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                //return null;
             }
         }
+
         public void checkParameterSqlExists(ref string ParameterName,
                                     System.Collections.Generic.List<System.Data.SqlClient.SqlParameter> parametersSql,
                                     ref int NextNrxy)
@@ -1913,42 +1539,6 @@ namespace qs2.sitemap.print
             catch (Exception ex)
             {
                 throw new Exception("genSql.checkParameterSqlExists:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-        }
-        public void checkParameterSqlExistsxyxy(ref string ParameterName, 
-                                            System.Collections.Generic.List<System.Data.SqlClient.SqlParameter> parametersSql, 
-                                            ref int NextNr)
-        {
-            try
-            {
-                foreach (System.Data.SqlClient.SqlParameter SqlParameter1 in parametersSql)
-                {
-                    if (SqlParameter1.ParameterName.Substring(1, SqlParameter1.ParameterName.Length - 1) == ParameterName)
-                    {
-                        NextNr += 1;
-                        ParameterName += NextNr.ToString();
-                        this.checkParameterSqlExists(ref ParameterName, parametersSql, ref NextNr);
-                    }
-                 }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genSql.checkParameterSqlExists:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-        }
-
-        public bool checkSysColumnExists(string columnName, string tableName, ref core.Enums.eTypQueryDef TypQueryDef, string TypeQry,
-                                        ref dsAdmin.tblQueriesDefRow rSelQuery)
-        {
-            qs2.core.SysDB.dsSysDB.COLUMNSRow rColSys = qs2.core.SysDB.sqlSysDB.getSysColumnRow(tableName.Trim(), columnName.Trim(),
-                                                        qs2.core.SysDB.sqlSysDB.dsSysDBAll, false);
-            if (rColSys != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
 
@@ -1971,54 +1561,24 @@ namespace qs2.sitemap.print
             catch (Exception ex)
             {
                 throw new Exception("genSql.getCriteria:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                //return null;
             }
         }
       
-        public string getValueSqlxy(qs2.core.vb.dsAdmin.tblCriteriaRow rCriteria, string value)
-        {
-            try
-            {
-                //string ValueSql = "";
-                if (rCriteria.ControlType.Trim().ToLower() == core.Enums.eControlType.Textfield.ToString().Trim().ToLower() ||
-                    rCriteria.ControlType.Trim().ToLower() == core.Enums.eControlType.TextfieldMulti.ToString().Trim().ToLower() ||
-                    rCriteria.ControlType.Trim().ToLower() == core.Enums.eControlType.DateTime.ToString().Trim().ToLower() ||
-                    rCriteria.ControlType.Trim().ToLower() == core.Enums.eControlType.Date.ToString().Trim().ToLower() ||
-                    rCriteria.ControlType.Trim().ToLower() == core.Enums.eControlType.Time.ToString().Trim().ToLower())
-                {
-                    return "";
-                    //CAST('01.01.2010 12:23:02' AS datetime) AS Expr1
-                }
-                else
-                {
-                    return "";
-                }
-
-                //return ValueSql;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genSql.getValueSqlxy:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                //return "";
-            }
-        }
         public bool controlIsDbDataControl(string controlType)
         {
-            if (controlType.Trim().ToLower() == core.Enums.eControlType.Textfield.ToString().Trim().ToLower() ||
-                controlType.Trim().ToLower() == core.Enums.eControlType.TextfieldMulti.ToString().Trim().ToLower() ||
-                controlType.Trim().ToLower() == core.Enums.eControlType.Integer.ToString().Trim().ToLower() ||
-                controlType.Trim().ToLower() == core.Enums.eControlType.Numeric.ToString().Trim().ToLower() ||
-                controlType.Trim().ToLower() == core.Enums.eControlType.Date.ToString().Trim().ToLower() ||
-                controlType.Trim().ToLower() == core.Enums.eControlType.DateTime.ToString().Trim().ToLower() ||
-                controlType.Trim().ToLower() == core.Enums.eControlType.Time.ToString().Trim().ToLower() ||
-                controlType.Trim().ToLower() == core.Enums.eControlType.CheckBox.ToString().Trim().ToLower() ||
-                controlType.Trim().ToLower() == core.Enums.eControlType.ThreeStateCheckBox.ToString().Trim().ToLower() ||
-                controlType.Trim().ToLower() == core.Enums.eControlType.ComboBox.ToString().Trim().ToLower())
+            return (controlType.sEquals(new List<object>
             {
-                return true;
-            }
-            else
-                return false;
+                core.Enums.eControlType.Textfield,
+                core.Enums.eControlType.TextfieldMulti,
+                core.Enums.eControlType.Integer,
+                core.Enums.eControlType.Numeric,
+                core.Enums.eControlType.Date,
+                core.Enums.eControlType.DateTime,
+                core.Enums.eControlType.Time,
+                core.Enums.eControlType.CheckBox,
+                core.Enums.eControlType.ThreeStateCheckBox,
+                core.Enums.eControlType.ComboBox
+            }));
         }
 
         public void addProtEntry(string txt, ref string prot)
