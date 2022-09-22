@@ -233,11 +233,11 @@ namespace qs2.ui.pint
         {
             try
             {
-                //if (qs2.ui.print.contQryAdmin.dataChanged)
-                //{
-                //    this.loadGroups();
-                //    qs2.ui.print.contQryAdmin.dataChanged = false;
-                //}
+                if (qs2.ui.print.contQryAdmin.dataChanged)
+                {
+                    this.loadGroups("PMDS");
+                    qs2.ui.print.contQryAdmin.dataChanged = false;
+                }
             }
             catch (Exception ex)
             {
@@ -261,7 +261,6 @@ namespace qs2.ui.pint
 
                 this.contQryRunPar1.contSelListQueries1.clearData();
                 this.contQryRunPar1.setUIQuery(false);
-                //this.contQryRunPar1.panelNoQuery.Visible = false;
                 
                 qs2.core.vb.sqlAdmin.ParametersSelListEntries Parameters = new qs2.core.vb.sqlAdmin.ParametersSelListEntries();
                 this.sqlAdmin1.getSelListEntrys(ref Parameters, this.typRunQuery.ToString(), this.IDParticipant, this.getSelectedApplication(), ref this.dsAdmin1, sqlAdmin.eTypAuswahlList.groupParticipantOwnOrAll);
