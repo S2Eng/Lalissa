@@ -151,7 +151,6 @@
             this.contAutoProtokoll1.Name = "contAutoProtokoll1";
             this.contAutoProtokoll1.Size = new System.Drawing.Size(940, 419);
             this.contAutoProtokoll1.TabIndex = 0;
-            this.contAutoProtokoll1.Load += new System.EventHandler(this.contAutoProtokoll1_Load);
             // 
             // ultraTabPageControl1
             // 
@@ -361,7 +360,6 @@
             this.cboPrintDocuments.NullText = "<Aufenthaltsdatenblatt>";
             this.cboPrintDocuments.Size = new System.Drawing.Size(198, 21);
             this.cboPrintDocuments.TabIndex = 246;
-            this.cboPrintDocuments.ValueChanged += new System.EventHandler(this.cboPrintDocuments_ValueChanged);
             // 
             // btnCopy
             // 
@@ -451,7 +449,6 @@
             this.dropDownAssigns.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.dropDownAssigns.TabIndex = 9;
             this.dropDownAssigns.Text = "Others";
-            this.dropDownAssigns.Click += new System.EventHandler(this.dropDownAssigns_Click);
             // 
             // btnCheck
             // 
@@ -517,8 +514,6 @@
             this.btnChangeHistorieStay.Size = new System.Drawing.Size(54, 19);
             this.btnChangeHistorieStay.TabIndex = 0;
             this.btnChangeHistorieStay.Visible = false;
-            this.btnChangeHistorieStay.LabelCLicked += new System.EventHandler(this.btnChangeHistorieStay_LabelCLicked);
-            this.btnChangeHistorieStay.Load += new System.EventHandler(this.btnChangeHistorieStay_Load);
             // 
             // btnClose
             // 

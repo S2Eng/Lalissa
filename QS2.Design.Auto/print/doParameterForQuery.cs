@@ -57,7 +57,7 @@ namespace qs2.print
                             System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiGridSelList> lstReturnMultiGrids,
                             qs2.ui.print.infoQry infoQryRunPar,
                             dsAdmin.tblQueriesDefDataTable tQryDefToSetValues,
-                            bool IsFctCRParameter, ref bool IsHeadquarter, string IDParticipant, bool bExtern,
+                            bool IsFctCRParameter, ref bool IsHeadquarter, string IDParticipant,
                             bool noParticipant, bool checkBrackets, ref bool BracketOK)
         {
             try

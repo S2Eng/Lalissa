@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("UltraToolbar1");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool3 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("popUpService");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool2 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("popUpService");
@@ -42,11 +40,8 @@
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool4 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("popUpQueries");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnManageQueries");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("openReportDirectory");
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.panelBottom = new System.Windows.Forms.Panel();
-            this.chkOLAP = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
-            this.chkFRDesignMode = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.panelService = new System.Windows.Forms.Panel();
             this.panelService_Fill_Panel = new System.Windows.Forms.Panel();
             this._panelService_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
@@ -54,7 +49,6 @@
             this._panelService_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._panelService_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._panelService_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
-            this.chkDoQueryReportExtern = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.contSelListQueries1 = new qs2.ui.print.contSelListQueries();
             this.menuStripManageQuerySubSelect = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.manageQueryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,11 +62,8 @@
             this.panelParameters = new System.Windows.Forms.Panel();
             this.grpQueryParameter = new Infragistics.Win.Misc.UltraGroupBox();
             this.panelBottom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkOLAP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkFRDesignMode)).BeginInit();
             this.panelService.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkDoQueryReportExtern)).BeginInit();
             this.menuStripManageQuerySubSelect.SuspendLayout();
             this.contextMenuStripButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpQueryParameter)).BeginInit();
@@ -83,10 +74,7 @@
             // 
             this.panelBottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBottom.Controls.Add(this.chkOLAP);
-            this.panelBottom.Controls.Add(this.chkFRDesignMode);
             this.panelBottom.Controls.Add(this.panelService);
-            this.panelBottom.Controls.Add(this.chkDoQueryReportExtern);
             this.panelBottom.Controls.Add(this.contSelListQueries1);
             this.panelBottom.Controls.Add(this.lblQuerySub);
             this.panelBottom.Controls.Add(this.btnRunReport);
@@ -94,32 +82,6 @@
             this.panelBottom.Name = "panelBottom";
             this.panelBottom.Size = new System.Drawing.Size(540, 64);
             this.panelBottom.TabIndex = 2;
-            // 
-            // chkOLAP
-            // 
-            this.chkOLAP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            this.chkOLAP.Appearance = appearance1;
-            this.chkOLAP.BackColor = System.Drawing.Color.Transparent;
-            this.chkOLAP.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkOLAP.Location = new System.Drawing.Point(152, 38);
-            this.chkOLAP.Name = "chkOLAP";
-            this.chkOLAP.Size = new System.Drawing.Size(129, 16);
-            this.chkOLAP.TabIndex = 39;
-            this.chkOLAP.Text = "OLAP";
-            // 
-            // chkFRDesignMode
-            // 
-            this.chkFRDesignMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.chkFRDesignMode.Appearance = appearance2;
-            this.chkFRDesignMode.BackColor = System.Drawing.Color.Transparent;
-            this.chkFRDesignMode.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkFRDesignMode.Location = new System.Drawing.Point(408, 38);
-            this.chkFRDesignMode.Name = "chkFRDesignMode";
-            this.chkFRDesignMode.Size = new System.Drawing.Size(129, 16);
-            this.chkFRDesignMode.TabIndex = 38;
-            this.chkFRDesignMode.Text = "DesignMode FR";
             // 
             // panelService
             // 
@@ -227,19 +189,6 @@
             this._panelService_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManager1;
             this._panelService_Toolbars_Dock_Area_Top.UseAppStyling = false;
             // 
-            // chkDoQueryReportExtern
-            // 
-            this.chkDoQueryReportExtern.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.chkDoQueryReportExtern.Appearance = appearance3;
-            this.chkDoQueryReportExtern.BackColor = System.Drawing.Color.Transparent;
-            this.chkDoQueryReportExtern.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkDoQueryReportExtern.Location = new System.Drawing.Point(306, 38);
-            this.chkDoQueryReportExtern.Name = "chkDoQueryReportExtern";
-            this.chkDoQueryReportExtern.Size = new System.Drawing.Size(70, 14);
-            this.chkDoQueryReportExtern.TabIndex = 37;
-            this.chkDoQueryReportExtern.Text = "Extern";
-            // 
             // contSelListQueries1
             // 
             this.contSelListQueries1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -277,8 +226,8 @@
             // btnRunReport
             // 
             this.btnRunReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnRunReport.Appearance = appearance4;
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnRunReport.Appearance = appearance1;
             this.btnRunReport.ContextMenuStrip = this.contextMenuStripButton;
             this.btnRunReport.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnRunReport.Location = new System.Drawing.Point(408, 7);
@@ -315,14 +264,12 @@
             this.openResultsInTableToolStripMenuItem.Name = "openResultsInTableToolStripMenuItem";
             this.openResultsInTableToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
             this.openResultsInTableToolStripMenuItem.Text = "OpenResultsInTable";
-            this.openResultsInTableToolStripMenuItem.Click += new System.EventHandler(this.openResultsInTableToolStripMenuItem_Click);
             // 
             // generateSqlCommandForCommandLineToolStripMenuItem
             // 
             this.generateSqlCommandForCommandLineToolStripMenuItem.Name = "generateSqlCommandForCommandLineToolStripMenuItem";
             this.generateSqlCommandForCommandLineToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
             this.generateSqlCommandForCommandLineToolStripMenuItem.Text = "GenerateSqlCommandForCommandLine";
-            this.generateSqlCommandForCommandLineToolStripMenuItem.Click += new System.EventHandler(this.generateSqlCommandForCommandLineToolStripMenuItem_Click);
             // 
             // panelParameters
             // 
@@ -356,11 +303,8 @@
             this.Load += new System.EventHandler(this.contQryRunPar_Load);
             this.VisibleChanged += new System.EventHandler(this.contQryRunPar_VisibleChanged);
             this.panelBottom.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chkOLAP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkFRDesignMode)).EndInit();
             this.panelService.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkDoQueryReportExtern)).EndInit();
             this.menuStripManageQuerySubSelect.ResumeLayout(false);
             this.contextMenuStripButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grpQueryParameter)).EndInit();
@@ -386,12 +330,9 @@
         private System.Windows.Forms.ToolStripMenuItem openResultsInTableToolStripMenuItem;
         public contSelListQueries contSelListQueries1;
         private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
-        public Infragistics.Win.UltraWinEditors.UltraCheckEditor chkDoQueryReportExtern;
         private System.Windows.Forms.ToolStripMenuItem generateSqlCommandForCommandLineToolStripMenuItem;
         public System.Windows.Forms.Panel panelParameters;
         public Infragistics.Win.Misc.UltraGroupBox grpQueryParameter;
-        public Infragistics.Win.UltraWinEditors.UltraCheckEditor chkFRDesignMode;
-        public Infragistics.Win.UltraWinEditors.UltraCheckEditor chkOLAP;
         public System.Windows.Forms.Panel panelBottom;
     }
 }

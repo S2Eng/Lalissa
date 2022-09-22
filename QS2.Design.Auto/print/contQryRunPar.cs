@@ -160,11 +160,6 @@ namespace qs2.ui.print
                        && qs2.core.license.doLicense.GetLicense(qs2.core.Enums.eLicense.LIC_QUERYFROMMASTER_DATE).dValue.Date >= DateTime.Today
                        && qs2.core.license.doLicense.GetLicense(qs2.core.Enums.eLicense.LIC_STS).bValue;
 
-                this.chkDoQueryReportExtern.Visible = ((bUseExternalQueries || actUsr.IsAdminSecureOrSupervisor()) && this.typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups);
-                if (qs2.core.ENV.IsHeadquarter)
-                {
-                    this.chkDoQueryReportExtern.Visible = false; 
-                }
                 this.contSelListQueries1._IsSubQueriesFromMainControl = true;
                 this.grpQueryParameter.Visible = false;
 
@@ -181,17 +176,8 @@ namespace qs2.ui.print
             try
             {
 
-                this.chkFRDesignMode.Visible = false;
-                this.chkOLAP.Visible = false;
-
                 if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
                 {
-                    this.chkOLAP.Visible = qs2.core.license.doLicense.GetLicense(qs2.core.Enums.eLicense.LIC_OLAP).bValue ||
-                        qs2.core.license.doLicense.GetLicense(qs2.core.Enums.eLicense.LIC_OLAP_VALID_DATE).dValue > DateTime.Now ||
-                        qs2.core.ENV.IsDevelopmentMachine || 
-                        qs2.core.vb.actUsr.IsAdminSecureOrSupervisor();
-                    this.chkOLAP.Left = this.chkFRDesignMode.Left;
-
                     this.btnRunReport.Appearance.Image = getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Drucken, 32, 32);
                     this.btnRunReport.Text = qs2.core.language.sqlLanguage.getRes("RunQuery");
                     this.ultraToolbarsManager1.Tools["btnManageQueries"].SharedProps.Visible = false;
@@ -200,8 +186,6 @@ namespace qs2.ui.print
                 }
                 else if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.ReportGroups)
                 {
-                    this.chkFRDesignMode.Visible = qs2.core.ENV.IsDevelopmentMachine || qs2.core.vb.actUsr.IsAdminSecureOrSupervisor();
-
                     this.btnRunReport.Appearance.Image = getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Drucken , 32, 32);
                     this.btnRunReport.Text = qs2.core.language.sqlLanguage.getRes("RunReport");
                     this.openResultsInTableToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("RunReport") + " " + qs2.core.language.sqlLanguage.getRes("TableViewer");
@@ -210,8 +194,6 @@ namespace qs2.ui.print
 
                 else if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.DocumentGroups)
                 {
-                    this.chkFRDesignMode.Visible = false;
-
                     this.btnRunReport.Appearance.Image = getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Drucken, 32, 32);
                     this.btnRunReport.Text = qs2.core.language.sqlLanguage.getRes("RunDocument");
                     this.openResultsInTableToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("RunDocument") + " " + qs2.core.language.sqlLanguage.getRes("TableViewer");
@@ -219,7 +201,6 @@ namespace qs2.ui.print
                 }
 
                 this.generateSqlCommandForCommandLineToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("GenerateSqlCommandForCommandLine");
-                this.chkDoQueryReportExtern.Text = qs2.core.language.sqlLanguage.getRes("Extern");
                 
                 this.ultraToolbarsManager1.Tools["btnManageQueries"].SharedProps.Caption = qs2.core.language.sqlLanguage.getRes("ManageQueries");
                 this.ultraToolbarsManager1.Tools["btnInfoQueries"].SharedProps.Caption = qs2.core.language.sqlLanguage.getRes("InfoQueries");
@@ -1398,14 +1379,7 @@ namespace qs2.ui.print
                 this.Cursor = Cursors.WaitCursor;
                 bool viewIsFunction = false;
                 System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct = new List<core.vb.QS2Service1.cSqlParameter>();
-                if (this.doReportQuery(false, this.chkDoQueryReportExtern.Checked, ref viewIsFunction, ref lstParForExternFct, false, chkFRDesignMode.Checked, chkOLAP.Checked))
-                {
-                    if (this.mainWindow != null)
-                    {
-                        //this.mainWindow.Visible = false;      //Eingabefenster für Parameter beim Test nach Query ausblenden
-                    }
-                }
-
+                this.doReportQuery(false, ref viewIsFunction, ref lstParForExternFct, false);
             }
             catch (Exception ex)
             {
@@ -1416,9 +1390,10 @@ namespace qs2.ui.print
                 this.Cursor = Cursors.Default;
             }
         }
-        public bool doReportQuery(bool datasetViewer, bool bExtern, ref bool viewIsFunction,
+
+        public bool doReportQuery(bool datasetViewer, ref bool viewIsFunction,
                                     ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct, 
-                                    bool SqlForAdmin, bool FRDesignMode, bool OLAP, bool getWhereSql = false)
+                                    bool SqlForAdmin, bool getWhereSql = false)
         {
             try
             {
@@ -1429,14 +1404,12 @@ namespace qs2.ui.print
                 string WhereClauselForSimpleFunctions = "";
                 string SqlWhereInfoTotal = "";
                 this.infoReport.newRun();
-                //string sumWhereClauselInfo = "";
                 foreach (qs2.ui.print.infoQry infoQryRunPar in this.lstInfoQryRunning)
                 {
                     if (!infoQryRunPar.isSubQuery)
                     {
                         infoQryRunPar.newRun();
 
-                        //infoQryRunPar.dsQryResult.DataSetName = infoQryRunPar.dsQryResult.DataSetName;
                         System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiControl> lstMultiControl = new System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiControl>();
                         System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiGridSelList> lstReturnMultiGrids = new List<design.auto.multiControl.ownMultiGridSelList>();
                         this.runInfoSubQuery(infoQryRunPar, ref lstMultiControl, ref lstReturnMultiGrids);
@@ -1446,16 +1419,10 @@ namespace qs2.ui.print
                         infoQryRunPar.isStayReport = this.isStayReport;
                         infoQryRunPar.IDGuid = this.IDGuid;
                         this.genReport1.runQueryReport2(true, lstMultiControl, ref lstReturnMultiGrids, this.typRunQuery, infoQryRunPar,
-                                                        ref WhereClauselForSimpleFunctions, bExtern, ref viewIsFunction, ref lstParForExternFct, SqlForAdmin, true, ref BracketsOK);
+                                                        ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref lstParForExternFct, SqlForAdmin, true, ref BracketsOK);
                         SqlWhereInfoTotal += " " + infoQryRunPar.SqlWhereInfo + "\r\n";
                         WhereClauselForSimpleFunctions += " " + WhereClauselForSimpleFunctionsTmp;
                         sqlTotal3 += infoQryRunPar.sqlForAdmin.Trim() + "\r\n" + "\r\n";
-
-                        if (!BracketsOK)
-                        {
-                            //s2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("QueryClampsNotOK"), MessageBoxButtons.OK, "");
-                            //return false;
-                        }
 
                         if (typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups && !getWhereSql)
                         {
@@ -1466,7 +1433,7 @@ namespace qs2.ui.print
                             }
                             else
                             {
-                                this.genReport1.openQuery(typRunQuery, infoQryRunPar, datasetViewer, bExtern, ref viewIsFunction, ref lstParForExternFct, SqlForAdmin, OLAP);
+                                this.genReport1.openQuery(typRunQuery, infoQryRunPar, datasetViewer, ref viewIsFunction, ref lstParForExternFct, SqlForAdmin);
                             }
                             int countQryRunPar = 0;
                             foreach (qs2.ui.print.infoQry infoQryRunParCheck in this.lstInfoQryRunning)
@@ -1486,55 +1453,14 @@ namespace qs2.ui.print
                             {
                                 abortSql = true;
                             }
-
                         }
                     }
                 }
-
-                if (typRunQuery == qs2.core.Enums.eTypRunQuery.ReportGroups  || typRunQuery == qs2.core.Enums.eTypRunQuery.DocumentGroups)
-                {
-                    if (this.lstInfoQryRunning.Count > 0)
-                    {
-                        if (bDoActionMulticontrols)
-                        {
-                            //this.doActionMulticontrols(eActionElement.getTranslatedText, ref tAllParametersForReport, eActionType.BeetweenRows, ref SqlWhereFromUI, this.lstInfoQryRunning[0]);
-                            //this.doActionMulticontrols(eActionElement.getTranslatedText, ref tAllParametersForReport, eActionType.NormalRows, ref SqlWhereFromUI, this.lstInfoQryRunning[0]);
-                            //this.doActionMulticontrols(eActionElement.getTranslatedText, ref tAllParametersForReport, eActionType.DeleteRows, ref SqlWhereFromUI, this.lstInfoQryRunning[0]);
-                            //this.doActionMulticontrols(eActionElement.getTranslatedText, ref tAllParametersForReport, eActionType.GetSqlWhere, ref SqlWhereFromUI, this.lstInfoQryRunning[0]);
-                            //this.doActionMulticontrols(eActionElement.getTranslatedText, ref tAllParametersForReport, eActionType.WriteSqlWhere, ref SqlWhereFromUI, this.lstInfoQryRunning[0]);
-                        }
-
-                        if (abortSql)
-                        {
-                            //bool abortTmp = true;
-                            qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoRight"), MessageBoxButtons.OK, "");
-                        }
-                        else
-                        {
-                            if (SqlForAdmin)
-                            {
-                                this.genReport1.openSqlCommandInConsoleForAdmin(this.lstInfoQryRunning[0].sqlForAdmin, this.lstInfoQryRunning[0]);
-                            }
-                            else
-                            {
-                                this.genReport1.openReport(this.lstInfoQryRunning, this.infoReport, typRunQuery, false, datasetViewer,
-                                                                ref SqlWhereInfoTotal, bExtern, ref viewIsFunction, ref lstParForExternFct, SqlForAdmin, FRDesignMode);
-                            }
-                            this.genReport1.saveProtocol(infoReport.rSelListReport.IDRessource, this.grpQueryParameter.Text.Trim(), Protocol.eTypeProtocoll.RunReport, infoReport, sqlTotal3, core.Enums.eTypRunQuery.ReportGroups);
-                        }
-                    }
-                    else
-                    {
-                        qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoQueryExists") + "!", MessageBoxButtons.OK, "");
-                    }   
-                }
-
                 return true;
             }
             catch (Exception ex)
             {
                 throw new Exception("contQryRunPar.doReportQuery: " + ex.ToString());
-                //return false;
             }
         }
 
@@ -1547,20 +1473,12 @@ namespace qs2.ui.print
                 if (infoQryRunPar.typSubreport == core.Enums.eTypSubReport.MainReport)
                 {
                     infoQryRunPar.lstInfoQryRunParSub = lstInfoQryRunParSub;
-                    //this.getLstMultiControlForQuery(infoQryRunPar.rSelListQry, ref lstMultiControl, ref infoQryRunPar.IDQueryGroup);
-                    //if (infoQryRunPar.lstInfoQryRunParSub.Count > 0)
-                    //{
-                        foreach (qs2.ui.print.infoQry infoQryRunParSub in this.lstInfoQryRunning)
-                        {
-                            infoQryRunParSub.newRun();
-                            infoQryRunParSub.dsQryResult.DataSetName = "Subquery " + infoQryRunParSub.rSelListQry.IDRessource + " {" + System.Guid.NewGuid().ToString() + "}"; ;
-                            this.getLstMultiControlForQuery(infoQryRunParSub.rSelListQry, ref lstMultiControl, ref lstReturnMultiGrids, ref infoQryRunParSub.IDQueryGroup);
-                        }
-                    //}
-                }
-                else
-                {
-                    //throw new Exception("runInfoSubQuery: infoQryRunPar.typSubreport != core.Enums.eTypSubReport.MainReport!");
+                    foreach (qs2.ui.print.infoQry infoQryRunParSub in this.lstInfoQryRunning)
+                    {
+                        infoQryRunParSub.newRun();
+                        infoQryRunParSub.dsQryResult.DataSetName = "Subquery " + infoQryRunParSub.rSelListQry.IDRessource + " {" + System.Guid.NewGuid().ToString() + "}"; ;
+                        this.getLstMultiControlForQuery(infoQryRunParSub.rSelListQry, ref lstMultiControl, ref lstReturnMultiGrids, ref infoQryRunParSub.IDQueryGroup);
+                    }
                 }
             }
             catch (Exception ex)
@@ -1658,7 +1576,7 @@ namespace qs2.ui.print
                             infoQryRunPar.isStayReport = this.isStayReport;
                             infoQryRunPar.IDGuid = this.IDGuid;
                             this.genReport1.generateSql2(true, lstMultiControl, lstMultiControlMultiGrid, infoQryRunPar, this.typRunQuery, false,
-                                                        ref WhereClauselForSimpleFunctions, false, ref viewIsFunction, ref lstParForExternFct, ref noParticipant, false, true, ref BracketsOK, ref infoQryRunPar.SqlWhereAdmin);
+                                                        ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref lstParForExternFct, ref noParticipant, false, true, ref BracketsOK, ref infoQryRunPar.SqlWhereAdmin);
                      
                             if (!BracketsOK)
                                 qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("QueryClampsNotOK"), MessageBoxButtons.OK, "");
@@ -1719,7 +1637,7 @@ namespace qs2.ui.print
                         infoQryRunPar.isStayReport = this.isStayReport;
                         infoQryRunPar.IDGuid = this.IDGuid;
                         this.genReport1.generateSql2(true, lstMultiControl, lstMultiControlMultiGrid, infoQryRunPar, this.typRunQuery, true,
-                                                        ref WhereClauselForSimpleFunctions, false, ref viewIsFunction, ref lstParForExternFct, ref noParticipant, false, true, ref ClampsOK, ref infoQryRunPar.SqlWhereAdmin);
+                                                        ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref lstParForExternFct, ref noParticipant, false, true, ref ClampsOK, ref infoQryRunPar.SqlWhereAdmin);
 
                         if (!ClampsOK)
                             qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("QueryClampsNotOK"), MessageBoxButtons.OK, "");
@@ -2009,7 +1927,7 @@ namespace qs2.ui.print
                 this.Cursor = Cursors.WaitCursor;
                 bool viewIsFunction = false;
                 System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct = new List<core.vb.QS2Service1.cSqlParameter>();
-                this.doReportQuery(true, this.chkDoQueryReportExtern.Checked, ref viewIsFunction, ref lstParForExternFct, false, chkFRDesignMode.Checked, false);
+                this.doReportQuery(true, ref viewIsFunction, ref lstParForExternFct, false);
             }
             catch (Exception ex)
             {
@@ -2111,7 +2029,7 @@ namespace qs2.ui.print
                 this.Cursor = Cursors.WaitCursor;
                 bool viewIsFunction = false;
                 System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct = new List<core.vb.QS2Service1.cSqlParameter>();
-                this.doReportQuery(true, this.chkDoQueryReportExtern.Checked, ref viewIsFunction, ref lstParForExternFct, true, chkFRDesignMode.Checked, false);
+                this.doReportQuery(true, ref viewIsFunction, ref lstParForExternFct, false);
 
             }
             catch (Exception ex)

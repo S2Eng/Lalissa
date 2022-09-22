@@ -46,7 +46,7 @@ namespace qs2.print
                                     ref System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiGridSelList> lstReturnMultiGrids,
                                     qs2.core.Enums.eTypRunQuery typRunQuery,
                                     qs2.ui.print.infoQry infoQryRunPar,
-                                    ref string WhereClauselForSimpleFunctions, bool bExtern, ref bool viewIsFunction,
+                                    ref string WhereClauselForSimpleFunctions, ref bool viewIsFunction,
                                     ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
                                     bool SqlForAdmin, bool CheckBrackets, ref bool BracketsOK)
         {
@@ -54,7 +54,7 @@ namespace qs2.print
             {
                 bool noParticipant = this.noParticipant(infoQryRunPar.rSelListQry.Classification.Trim());
                 infoQryRunPar.Sql = this.generateSql2(withParameters, lstMultiControl, lstReturnMultiGrids, infoQryRunPar, typRunQuery, false,
-                                                        ref WhereClauselForSimpleFunctions, bExtern, ref viewIsFunction, ref lstParForExternFct, ref noParticipant, SqlForAdmin,
+                                                        ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref lstParForExternFct, ref noParticipant, SqlForAdmin,
                                                         CheckBrackets, ref BracketsOK, ref infoQryRunPar.SqlWhereAdmin);
                 return infoQryRunPar.Sql;
             }
@@ -70,7 +70,7 @@ namespace qs2.print
                                     System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiGridSelList> lstReturnMultiGrids, 
                                     qs2.ui.print.infoQry infoQryRunPar,
                                     qs2.core.Enums.eTypRunQuery typRunQuery, bool saveResult,
-                                    ref string WhereClauselForSimpleFunctions, bool Extern, ref bool viewIsFunction,
+                                    ref string WhereClauselForSimpleFunctions, ref bool viewIsFunction,
                                     ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
                                     ref bool noParticipant, bool SqlForAdmin, bool CheckBrackets, ref bool BracketsOK, ref string sqlWhereAdminReturn)
         {
@@ -90,15 +90,10 @@ namespace qs2.print
                 string protokoll = "";
                 infoQryRunPar.parametersSql = new System.Collections.Generic.List<System.Data.SqlClient.SqlParameter>();
                 doParameterForQuery doParameterForQuery1 = new doParameterForQuery();
-                doParameterForQuery1.getParValues(lstMultiControl, lstReturnMultiGrids, infoQryRunPar, infoQryRunPar.dsConditionsForQuery.tblQueriesDef, false, ref qs2.core.ENV.IsHeadquarter, qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), Extern, noParticipant, CheckBrackets, ref BracketsOK);
+                doParameterForQuery1.getParValues(lstMultiControl, lstReturnMultiGrids, infoQryRunPar, infoQryRunPar.dsConditionsForQuery.tblQueriesDef, false, ref qs2.core.ENV.IsHeadquarter, qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), noParticipant, CheckBrackets, ref BracketsOK);
                 bool BracketOKTmp = false;
-                doParameterForQuery1.getParValues(lstMultiControl, lstReturnMultiGrids, infoQryRunPar, infoQryRunPar.dsParFctForQuery.tblQueriesDef, true, ref qs2.core.ENV.IsHeadquarter, qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), Extern, noParticipant, false, ref BracketOKTmp);
+                doParameterForQuery1.getParValues(lstMultiControl, lstReturnMultiGrids, infoQryRunPar, infoQryRunPar.dsParFctForQuery.tblQueriesDef, true, ref qs2.core.ENV.IsHeadquarter, qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), noParticipant, false, ref BracketOKTmp);
                 doParameterForQuery.addColumnsToTableConditions(infoQryRunPar.dsParFctForQuery.tblQueriesDef);
-
-                if (Extern)
-                {
-                    doParameterForQuery1.deleteFieldsForExternQuery(lstMultiControl, infoQryRunPar); 
-                }
 
                 if (infoQryRunPar.rSelListQry.IDRessource.Trim().ToLower().EndsWith("vlad"))
                 {
@@ -118,8 +113,8 @@ namespace qs2.print
                     doParameterForQuery.addColumnsToTableConditions(InfoQryRunParSub.dsParFctForQuery.tblQueriesDef);
 
                     bool BracketsOKSub = false;
-                    doParameterForQuery1.getParValues(lstMultiControl, lstReturnMultiGrids, InfoQryRunParSub, InfoQryRunParSub.dsConditionsForQuery.tblQueriesDef, false, ref qs2.core.ENV.IsHeadquarter, qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), Extern, noParticipant, CheckBrackets, ref BracketsOKSub);
-                    doParameterForQuery1.getParValues(lstMultiControl, lstReturnMultiGrids, InfoQryRunParSub, InfoQryRunParSub.dsParFctForQuery.tblQueriesDef, true, ref qs2.core.ENV.IsHeadquarter, qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), Extern, noParticipant, false, ref BracketOKTmp);
+                    doParameterForQuery1.getParValues(lstMultiControl, lstReturnMultiGrids, InfoQryRunParSub, InfoQryRunParSub.dsConditionsForQuery.tblQueriesDef, false, ref qs2.core.ENV.IsHeadquarter, qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), noParticipant, CheckBrackets, ref BracketsOKSub);
+                    doParameterForQuery1.getParValues(lstMultiControl, lstReturnMultiGrids, InfoQryRunParSub, InfoQryRunParSub.dsParFctForQuery.tblQueriesDef, true, ref qs2.core.ENV.IsHeadquarter, qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), noParticipant, false, ref BracketOKTmp);
                     infoQryRunPar.SqlWhereInfo += "\r\n" + InfoQryRunParSub.SqlWhereInfo;
 
                     if (!BracketsOKSub)
@@ -146,42 +141,9 @@ namespace qs2.print
                                                         withParameters, infoQryRunPar.parametersSql, ref  lstSubQueries,
                                                         infoQryRunPar.rSelListQry, ref lstSqlFix,
                                                         ref sqlWhereReturn, ref WhereClauselForSimpleFunctions, ref viewIsFunction,
-                                                        ref lstParForExternFct, ref Extern, ref infoQryRunPar.sqlForAdmin, ref DataSql, ref sqlWhereAdminReturn);
+                                                        ref lstParForExternFct, ref infoQryRunPar.sqlForAdmin, ref DataSql, ref sqlWhereAdminReturn);
                 infoQryRunPar.SqlWhereFromSql = sqlWhereReturn;
                 infoQryRunPar.WhereClauselForSimpleFunctions = WhereClauselForSimpleFunctions;
-                if (infoQryRunPar.IsVLAD)
-                {
-                    this.doVLAD(typRunQuery, infoQryRunPar, false, false, ref infoQryRunPar.Sql);
-                }
-
-                //this.contFields.rSelList.Sql = sql.Trim();
-                //this.txtSQL.Text = sql.Trim();
-                //dsAdmin.tblSelListEntriesRow[] arrSelListEntry = new dsAdmin.tblSelListEntriesRow[1];
-                //arrSelListEntry.SetValue(this.contFields.rSelList, 0);
-                //this.sqlAdmin1.daSelListEntrys.Update(arrSelListEntry);
-
-                //if (infoQryRunPar.ownMultiGridSelListQuery != null)
-                //{
-                //    System.Collections.Generic.List<qs2.core.generic.retValue> lstUserInput = new List<core.generic.retValue>();
-                //    infoQryRunPar.ownMultiGridSelListQuery.getSelListsAdded(lstUserInput);
-                //    //qs2.design.auto.ui ui = new qs2.design.auto.ui();
-                //    //System.Collections.Generic.List<qs2.core.generic.retValue> lstUserInput = ui.getControlValues(infoQryRunPar.ownMultiGridSelList1);
-                //    if (lstUserInput.Count > 0)
-                //    {
-                //        string sqlWhereMultiGrid = "";
-                //        foreach (qs2.core.generic.retValue vParToSet in lstUserInput)
-                //        {
-                //            if (sqlWhereMultiGrid.Trim() != "")
-                //            {
-                //                sqlWhereMultiGrid += qs2.core.sqlTxt.and;
-                //            }
-                //            sqlWhereMultiGrid += " CongenitalData like " + vParToSet.valueStr.Trim() + " ";
-                //            //this.genSql1.setParametersListSqlFix(ref lstSqlFix, ref  infoQryRunPar.Sql, vParToSet.fieldInfo, vParToSet.valueStr);
-                //        }
-                //        sqlWhereMultiGrid = " ( " + sqlWhereMultiGrid + " ) ";
-                //        infoQryRunPar.Sql += (!infoQryRunPar.Sql.Contains(qs2.core.sqlTxt.where.Trim()) ? qs2.core.sqlTxt.where : qs2.core.sqlTxt.and) + " " + sqlWhereMultiGrid;
-                //    }
-                //}runQuery
 
                 if (!protokoll.Trim().Equals(""))
                 {
@@ -208,44 +170,40 @@ namespace qs2.print
             }
         }
 
-        public void openQuery(qs2.core.Enums.eTypRunQuery typRunQuery, qs2.ui.print.infoQry infoQryRunPar, bool dataSetViewer, bool Extern, 
+        public void openQuery(qs2.core.Enums.eTypRunQuery typRunQuery, qs2.ui.print.infoQry infoQryRunPar, bool dataSetViewer, 
                                 ref bool viewIsFunction,
-                                ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct, bool SqlForAdmin, bool OLAP)
+                                ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct, bool SqlForAdmin)
         {
             try
             {
                 if (infoQryRunPar.Sql != "" || infoQryRunPar.IsVLAD)
                 {
-                    //System.Data.DataSet dsQryAuto1 = new System.Data.DataSet();
                     string datasetName = qs2.core.dbBase.tableNameDsQueries + infoQryRunPar.rSelListQry.IDRessource;
                     string tableName = qs2.core.dbBase.tableNameQueries + infoQryRunPar.rSelListQry.IDRessource;
                     string AllParametersAsTxtReturn = "";
 
-                    if (!Extern && !infoQryRunPar.IsVLAD)
+                    if (!qs2.core.dbBase.fillDataSet(infoQryRunPar.Sql, infoQryRunPar.parametersSql,
+                            ref infoQryRunPar.dsQryResult, tableName, datasetName, ref AllParametersAsTxtReturn, viewIsFunction))
                     {
-                        if (!qs2.core.dbBase.fillDataSet(infoQryRunPar.Sql, infoQryRunPar.parametersSql,
-                                ref infoQryRunPar.dsQryResult, tableName, datasetName, ref AllParametersAsTxtReturn, viewIsFunction))
-                        {
-                            this.doErrorExecuteSql(infoQryRunPar.Sql, infoQryRunPar.parametersSql, infoQryRunPar.rSelListQry.IDRessource);
-                            return;
-                        }
-                        else
-                        {
+                        this.doErrorExecuteSql(infoQryRunPar.Sql, infoQryRunPar.parametersSql, infoQryRunPar.rSelListQry.IDRessource);
+                        return;
+                    }
+                    else
+                    {
 
-                            int rCount = 0;
-                            foreach (System.Data.DataRow r in infoQryRunPar.dsQryResult.Tables[tableName].AsEnumerable())
+                        int rCount = 0;
+                        foreach (System.Data.DataRow r in infoQryRunPar.dsQryResult.Tables[tableName].AsEnumerable())
+                        {
+                            int cCount = 0;
+                            foreach (System.Data.DataColumn c in infoQryRunPar.dsQryResult.Tables[tableName].Columns)
                             {
-                                int cCount = 0;
-                                foreach (System.Data.DataColumn c in infoQryRunPar.dsQryResult.Tables[tableName].Columns)
+                                if (c.DataType.FullName == "System.String")
                                 {
-                                    if (c.DataType.FullName == "System.String")
-                                    {
-                                        r[c.ColumnName] = HttpUtility.HtmlDecode(infoQryRunPar.dsQryResult.Tables[tableName].Rows[rCount].ItemArray[cCount].ToString()).Replace("<br/>", "\n");
-                                    }
-                                    cCount++;
+                                    r[c.ColumnName] = HttpUtility.HtmlDecode(infoQryRunPar.dsQryResult.Tables[tableName].Rows[rCount].ItemArray[cCount].ToString()).Replace("<br/>", "\n");
                                 }
-                                rCount++;
+                                cCount++;
                             }
+                            rCount++;
                         }
                     }
                     this.addStandardTablesToDs(infoQryRunPar.dsQryResult, typRunQuery, infoQryRunPar);
@@ -290,12 +248,9 @@ namespace qs2.print
                             if (protocol.Trim() != "")
                             {
                                 frmTable1.contTable1.lblProtocol.Visible = true;
-                                //frmTable1.contTable1.ProtocollCounter = counterErrors;
                                 frmTable1.contTable1.ProtocollText = protocol.Trim();
                                 frmTable1.contTable1.ProtocollTitle = "Info: Problems with Query";
                                 frmTable1.contTable1.lblProtocol.Text = "Errors"; //"Errors (" + counterErrors.ToString() + ")";
-                                //frmTable1.contTable1.lblProtocol.Appearance.ForeColor = System.Drawing.Color.DarkRed;
-                                //frmTable1.contTable1.lblProtocol.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
                             }
                             frmTable1.contTable1.infoQryRunPar = infoQryRunPar;
                             string isChart = infoQryRunPar.rSelListQry.IDOwnStr;
@@ -310,14 +265,6 @@ namespace qs2.print
                             frmTable1.Show();
                         }
                     }
-                    //if (protocol.Trim() != "")
-                    //{
-                    //    qs2.core.vb.frmProtocol frmProt = new qs2.core.vb.frmProtocol();
-                    //    frmProt.initControl();
-                    //    frmProt.Text = "Info: Problems with Query";
-                    //    frmProt.ContProtocol1.txtProtokoll.Text = protocol.Trim();
-                    //    frmProt.Show();
-                    //}
                 }
                 else
                     qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoSqlExists") + "!", MessageBoxButtons.OK, "");
@@ -343,53 +290,6 @@ namespace qs2.print
                 throw new Exception("genReport.openSqlCommandInConsoleForAdmin:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
             }
         }
-        public void doVLAD(qs2.core.Enums.eTypRunQuery typRunQuery, qs2.ui.print.infoQry infoQryRunPar, bool dataSetViewer, 
-                            bool Extern, ref string sqlVLADReturn)
-        {
-            try
-            {
-                dsCARDIAC dsStatisticsVLAD = new dsCARDIAC();
-                DataTableCollection dtColl = dsStatisticsVLAD.Tables;
-
-                if (dtColl.Contains("VLADCARDIAC_STAYS") && dtColl.CanRemove(dtColl["VLADCARDIAC_STAYS"]))
-                    dtColl.Remove("VLADCARDIAC_STAYS");
-                
-                doCARDIAC_Statistik doCARDIAC_Statistik1 = new doCARDIAC_Statistik();
-
-                qs2.core.Enums.iEuroSCOREVersion iEuroSCOREVersion = core.Enums.iEuroSCOREVersion.EuroSCOREII;
-                foreach (qs2.core.vb.dsAdmin.tblQueriesDefRow rQryParFound in infoQryRunPar.dsParFctForQuery.tblQueriesDef)
-                {
-                    if (rQryParFound.ValueMin.Trim() != "" && (bool)rQryParFound[qs2.core.generic.columnRemoved] == false)
-                    {
-                        if (rQryParFound.QryColumn.Trim().ToLower().Contains("rptcardiac_euroscoreversion"))
-                        {
-                            System.Collections.Generic.List<string> lstValues = qs2.core.generic.readStrVariables(rQryParFound.ValueMin.Trim());
-                            if (lstValues.Count > 0)
-                            {
-                                iEuroSCOREVersion = (qs2.core.Enums.iEuroSCOREVersion)System.Convert.ToInt32((lstValues[0].ToString().Trim()));
-                            }
-                        }
-                    }
-                }
-
-                string sqlWhereAdmin = "";
-                int iPosWhere = infoQryRunPar.sqlForAdmin.IndexOf("where");
-                if (iPosWhere != -1)
-                {
-                    sqlWhereAdmin = infoQryRunPar.sqlForAdmin.Substring(iPosWhere, infoQryRunPar.sqlForAdmin.Length - iPosWhere);
-                }
-
-                doCARDIAC_Statistik1.calcVLAD(sqlWhereAdmin, iEuroSCOREVersion, ref sqlVLADReturn , ref dsStatisticsVLAD );
-                dsStatisticsVLAD.tblStatistics.TableName = "Qry" + infoQryRunPar.rSelListQry.IDRessource.Trim();
-                infoQryRunPar.dsQryResult = dsStatisticsVLAD.Copy();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genReport.doVLAD:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-        }
-
-   
 
         public void doErrorExecuteSql(string Sql, System.Collections.Generic.List<System.Data.SqlClient.SqlParameter> parametersSql,
                                         string QueryName)
@@ -409,416 +309,6 @@ namespace qs2.print
             catch (Exception ex)
             {
                 throw new Exception("genReport.doErrorExecuteSql:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-        }
-
-        public void openReport(System.Collections.Generic.List<qs2.ui.print.infoQry> lstInfoQryRunPar, qs2.ui.print.infoReport infoReport, 
-                                qs2.core.Enums.eTypRunQuery typRunQuery, bool message, bool datasetViewer,
-                                ref string SqlWhereInfoTotal, bool bExtern, ref bool viewIsFunction,
-                                ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct, 
-                                bool SqlForAdmin, bool FRDesignMode)
-        {
-            try
-            {
-                string protocol = "";
-                foreach (qs2.ui.print.infoQry infoQry1 in lstInfoQryRunPar)
-                {
-                    if (!String.IsNullOrWhiteSpace(infoQry1.Sql))
-                    {
-                        string dataTableName = qs2.core.dbBase.tableNameQueries + infoQry1.rSelListQry.IDRessource;
-                        string dataSetName = qs2.core.dbBase.tableNameDsQueries + infoQry1.rSelListQry.IDRessource;
-                        string AllParametersAsTxt = "";
-
-                        if (!bExtern)
-                        {
-                            if (!infoQry1.IsVLAD)
-                            {
-                                if (!qs2.core.dbBase.fillDataSet(infoQry1.Sql, infoQry1.parametersSql, ref infoQry1.dsQryResult,
-                                dataTableName, dataSetName, ref AllParametersAsTxt, viewIsFunction))
-                                {
-                                    this.doErrorExecuteSql(infoQry1.Sql, infoQry1.parametersSql, infoQry1.rSelListQry.IDRessource);
-                                    return;
-
-                                }
-                            }
-                        }
-
-                        this.addStandardTablesToDs(infoQry1.dsQryResult, typRunQuery, infoQry1);
-                        this.doTableParameters(infoQry1);
-                        System.Data.DataTable dtReturn = this.translateQuery1.translateSelList(infoQry1.dsQryResult.Tables[dataTableName], null, infoQry1.Application, ref protocol, true);
-                        if (dtReturn == null)
-                            return;
-                        this.doAutoWhereClasuselForCRParameterFromUI(lstInfoQryRunPar, infoReport, typRunQuery, message, datasetViewer, 
-                                                                        ref SqlWhereInfoTotal, ref infoQry1.Sql, ref AllParametersAsTxt);
-
-                        System.Data.DataSet dsNew = new System.Data.DataSet();
-                        dsNew.DataSetName = infoQry1.dsQryResult.DataSetName;
-                        foreach (System.Data.DataTable dtExist in infoQry1.dsQryResult.Tables)
-                        {
-                            if (dataTableName.Trim().Equals(dtExist.TableName, StringComparison.OrdinalIgnoreCase))
-                            {
-                                dsNew.Tables.Add(dtReturn);
-                            }
-                            else
-                            {
-                                System.Data.DataTable dtNew = new System.Data.DataTable();
-                                dtNew = dtExist.Copy();
-                                dsNew.Tables.Add(dtNew);
-                            }
-                        }
-                        infoQry1.dsQryResult = dsNew;
-                    }
-                    else
-                    {
-                        if (!infoQry1.isSubQuery)
-                        {
-                            string dataTableName = qs2.core.dbBase.tableNameQueries + infoQry1.rSelListQry.IDRessource;
-                            string AllParametersAsTxt = "";
-                            this.addStandardTablesToDs(infoQry1.dsQryResult, typRunQuery, infoQry1);
-                            this.doTableParameters(infoQry1);
-                            System.Data.DataTable dtReturn = this.translateQuery1.translateSelList(infoQry1.dsQryResult.Tables[dataTableName], null, infoQry1.Application, ref protocol, true);
-                            if (dtReturn == null)
-                                return;
-                            this.doAutoWhereClasuselForCRParameterFromUI(lstInfoQryRunPar, infoReport, typRunQuery, message, datasetViewer,
-                            ref SqlWhereInfoTotal, ref infoQry1.Sql, ref AllParametersAsTxt);
-
-                            if (message)
-                                qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoSqlExists") + "!", MessageBoxButtons.OK, "");
-                        }
-                    } 
-                }
-
-                if (!datasetViewer)
-                {
-                    string DocFile = "";
-                    bool DocFound = false;
-                    bool SearchError = false;
-
-                    using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
-                    {
-                        //Search first in Product-Directories and then in "ALL"-directory 
-                        var rSelListDocDirsProduct = (from s in qs2.core.vb.sqlAdmin.dsAllAdmin.tblSelListEntries
-                                                      join g in qs2.core.vb.sqlAdmin.dsAllAdmin.tblSelListGroup on s.IDGroup equals g.ID
-                                                      join usort in qs2.core.vb.sqlAdmin.dsAllAdmin.tblSelListEntriesSort on s.ID equals usort.IDSelListEntry
-                                                      into res
-                                                      from subpet in res.DefaultIfEmpty()
-                                                      where g.IDGroupStr == "DocumentDirectories" && g.IDApplication == infoReport.Application
-                                                      orderby g.IDApplication descending
-                                                      orderby subpet?.Sort ?? 0
-                                                      select new { s.IDRessource, s.ID, s.IDOwnStr }).ToList();
-
-                        var rSelListDocDirsALL = (from s in qs2.core.vb.sqlAdmin.dsAllAdmin.tblSelListEntries
-                                                  join g in qs2.core.vb.sqlAdmin.dsAllAdmin.tblSelListGroup on s.IDGroup equals g.ID
-                                                  join usort in qs2.core.vb.sqlAdmin.dsAllAdmin.tblSelListEntriesSort on s.ID equals usort.IDSelListEntry
-                                                  into res
-                                                  from subpet in res.DefaultIfEmpty()
-                                                  where g.IDGroupStr == "DocumentDirectories" && g.IDApplication == "ALL"
-                                                  orderby g.IDApplication descending
-                                                  orderby subpet?.Sort ?? 0
-                                                  select new { s.IDRessource, s.ID, s.IDOwnStr }).ToList();
-
-                        var rSelListCombined = rSelListDocDirsProduct.Union(rSelListDocDirsALL);
-
-                        foreach (var DocumentDirectory in rSelListCombined)
-                        {
-                            DocFound = CheckDocumentFile(DocumentDirectory.IDRessource, infoReport.rSelListReport.IDRessource, out DocFile, out SearchError);
-
-                            if (SearchError)
-                                return;
-
-                            if (DocFound)
-                                break;
-                        }
-
-                        if (!DocFound)              //Search in Default-ReportPath (no translation)
-                        {
-                            DocFound = CheckDocumentFile(System.IO.Path.Combine(qs2.core.ENV.path_reports, infoReport.Application), infoReport.rSelListReport.IDRessource, out DocFile, out SearchError);
-
-                            if (SearchError)
-                                return;
-                        }
-                    }
-
-                    if (DocFound)
-                    {
-                        if (System.IO.File.Exists(DocFile + qs2.core.vb.funct.fileTypeFastReport)) //use Fast-Report 
-                        {
-                            if (lstInfoQryRunPar[0].dsQryResult.Tables[0].Rows.Count > 0 || FRDesignMode)
-                            {
-                                qs2.design.auto.print.FReport FR2 = new qs2.design.auto.print.FReport();
-                                if (FRDesignMode)
-                                    FR2.Init(DocFile + qs2.core.vb.funct.fileTypeFastReport, lstInfoQryRunPar[0], infoReport, FRDesignMode).Design();
-                                else
-                                    FR2.Init(DocFile + qs2.core.vb.funct.fileTypeFastReport, lstInfoQryRunPar[0], infoReport, FRDesignMode).Show(false);
-                                #region FastReport als Thread
-                                /*
-                                //Anklickbare Berichte(die einen Stay öffnen können) müssen modal aufgehen, die anderen können als Thread starten
-                                if (infoReport.rSelListReport.Classification.ToUpper().Contains("MODAL;"))
-                                {
-                                    qs2.design.auto.print.FReport FR = new qs2.design.auto.print.FReport();
-                                    FR.Init(RepFile + qs2.core.vb.funct.fileTypeFastReport, lstInfoQryRunPar[0], infoReport, FRDesignMode);
-                                }
-                                else
-                                {
-                                    qs2.design.auto.print.FReport FR = new qs2.design.auto.print.FReport();
-                                    Thread thread1 = new Thread(delegate () { FR.Init(RepFile + qs2.core.vb.funct.fileTypeFastReport, lstInfoQryRunPar[0], infoReport, FRDesignMode); });
-                                    thread1.SetApartmentState(ApartmentState.STA);
-                                    thread1.Start();
-                                }
-                                */
-                                #endregion
-                            }
-                            else
-                            {
-                                qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoRecords"), MessageBoxButtons.OK, "");
-                            }
-                        }
-                        #region CrystalReport - obsolet
-                        //else if (System.IO.File.Exists(RepFile + qs2.core.vb.funct.fileTypeFastReport)) //use CrystalReports
-                        //{
-                        //    qs2.ui.print.frmCryCrystRepViewer frmCryCrystRepViewer1 = new qs2.ui.print.frmCryCrystRepViewer();
-                        //    if (!string.IsNullOrWhiteSpace(protocol))
-                        //    {
-                        //        frmCryCrystRepViewer1.contQryCrystRepViewer1.lblProtocol.Visible = true;
-                        //        frmCryCrystRepViewer1.contQryCrystRepViewer1.ProtocollText = protocol.Trim();
-                        //        frmCryCrystRepViewer1.contQryCrystRepViewer1.ProtocollTitle = "Info: Problems with Report";
-                        //        frmCryCrystRepViewer1.contQryCrystRepViewer1.lblProtocol.Text = "Errors"; //"Errors (" + counterErrors.ToString() + ")";
-                        //    }
-                        //    frmCryCrystRepViewer1.contQryCrystRepViewer1.lstInfoQryRunPar = lstInfoQryRunPar;
-                        //    frmCryCrystRepViewer1.contQryCrystRepViewer1.infoReport = infoReport;
-
-                        //    frmCryCrystRepViewer1.initControl();
-                        //    qs2.core.ENV.lstOpendChildForms.Add(frmCryCrystRepViewer1);
-                        //    frmCryCrystRepViewer1.Show();
-                        //}
-                        #endregion
-                        
-                        else if (System.IO.File.Exists(DocFile + qs2.core.vb.funct.fileTypeRTF)) //RTF
-                        {
-                            if (lstInfoQryRunPar[0].dsQryResult.Tables[0].Rows.Count > 0)
-                            {
-                                cRTFDocuments cRTFDoks = new cRTFDocuments();
-                                List<byte[]> ListOfDocuments = cRTFDoks.CreateDocuments(DocFile + qs2.core.vb.funct.fileTypeRTF, lstInfoQryRunPar[0], infoReport, true);
-
-                                QS2.Desktop.Txteditor.doEditor doEditor1 = new QS2.Desktop.Txteditor.doEditor();
-                                QS2.Desktop.Txteditor.frmTxtEditor frmEditor = new QS2.Desktop.Txteditor.frmTxtEditor();
-                                frmEditor.fFelderEinAus = true;
-                                frmEditor.ContTxtEditor1.typUI = QS2.Desktop.Txteditor.etyp.all;
-                                frmEditor.ContTxtEditor1.LinealeOnOff(false);
-                                frmEditor.ContTxtEditor1.textControl1.EditMode = TXTextControl.EditMode.Edit;
-                                frmEditor.ContTxtEditor1.textControl1.IsSpellCheckingEnabled = false;
-                                frmEditor.Show();
-
-                                TXTextControl.AppendSettings appSettings = new TXTextControl.AppendSettings();
-                                foreach (byte[] Document in ListOfDocuments)
-                                {
-                                    frmEditor.ContTxtEditor1.textControl1.Append(Document, TXTextControl.BinaryStreamType.InternalFormat, TXTextControl.AppendSettings.StartWithNewSection);
-                                }
-                                frmEditor.ContTxtEditor1.textControl1.ViewMode = TXTextControl.ViewMode.PageView;
-                                frmEditor.ContTxtEditor1.textControl1.StatusBar.ShowSection = false;
-                                frmEditor.ContTxtEditor1.textControl1.StatusBar.ShowSectionCounter = false;
-
-                                frmEditor.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_QS2, 32, 32);
-                                frmEditor.Text = "";
-                                if (!qs2.core.license.doLicense.GetLicense(qs2.core.Enums.eLicense.LIC_DOCUMENTS).bValue)
-                                    frmEditor.Text = qs2.core.language.sqlLanguage.getRes("TrialVersion") + qs2.core.language.sqlLanguage.getRes("ValidTo") + " " + qs2.core.license.doLicense.GetLicense(qs2.core.Enums.eLicense.LIC_DOCUMENTS_VALID_DATE).dValue.ToString("dd.MM.yyyy - ");
-                                
-                                frmEditor.Text += System.IO.Path.GetFileNameWithoutExtension(DocFile) + " (" + ListOfDocuments.Count().ToString() + ")";
-                                Application.DoEvents();
-                            }
-                            else
-                            {
-                                qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoRecords"), MessageBoxButtons.OK, "");
-                            }
-                        }
-                        else
-                        {
-                            qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NeitherFastReportNorCrystalReportsOrPDFAvailable"), MessageBoxButtons.OK, "");
-                        }
-                    }
-                    else
-                    {
-                        qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NeitherFastReportNorCrystalReportsOrPDFAvailable"), MessageBoxButtons.OK, "");
-                    }                    
-                }
-                else
-                {
-                    qs2.ui.print.frmTable frmTable1 = new qs2.ui.print.frmTable();
-                    if (!string.IsNullOrWhiteSpace(protocol))
-                    {
-                        frmTable1.contTable1.lblProtocol.Visible = true;
-                        frmTable1.contTable1.ProtocollText = protocol.Trim();
-                        frmTable1.contTable1.ProtocollTitle = "Info: Problems with Query";
-                        frmTable1.contTable1.lblProtocol.Text = "Errors"; //"Errors (" + counterErrors.ToString() + ")";
-                    }
-                    frmTable1.selectDatasets = true;
-                    System.Collections.ArrayList lstDatasets = new System.Collections.ArrayList();
-                    foreach (qs2.ui.print.infoQry infoQry1 in lstInfoQryRunPar)
-                    {
-                        lstDatasets.Add(infoQry1.dsQryResult);
-                    }
-                    frmTable1.contTable1.doTranslateQuery = false;
-                    frmTable1.lstDatasets = lstDatasets;
-                    frmTable1.IDParticipant = infoReport.Participant;
-                    frmTable1.IDApplication = infoReport.Application;
-                    frmTable1.initControl(qs2.ui.print.contTable.eTypeUI.Query, ref protocol, false);
-                    qs2.core.ENV.lstOpendChildForms.Add(frmTable1);
-                    frmTable1.Show();
-                }
-
-                //if (protocol.Trim() != "")
-                //{
-                //    frmProtocol frmProt = new frmProtocol();
-                //    frmProt.initControl();
-                //    frmProt.Text = "Info: Problems with Report";
-                //    frmProt.ContProtocol1.txtProtokoll.Text = protocol.Trim();
-                //    frmProt.Show();
-                //}
-
-            }
-            catch (Exception ex)
-            {
-                qs2.core.generic.getExep(qs2.core.Exceptions.ExceptionHand.GetStackTraceForException(ex).ToString(), ex.Message);
-                //throw new Exception("genReport.openReport:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-        }
-
-
-        private bool CheckDocumentFile(string sPath, string sFile, out string DocFile, out bool SearchError)
-        {
-            DocFile = "";
-            SearchError = false;
-
-            if (sPath.StartsWith("auto_"))
-                sPath = qs2.core.language.sqlLanguage.getRes(sPath);
-
-            if (sFile.StartsWith("auto_"))
-                sFile = qs2.core.language.sqlLanguage.getRes(sFile);
-                
-            if (!qs2.core.generic.CheckIllegalCharacter(sPath, true))
-            {
-                SearchError = true;
-                return false;
-            }
-
-            if (!qs2.core.generic.CheckIllegalCharacter(sFile, false))
-            {
-                SearchError = true;
-                return false;
-            }
-
-            string DocFileTmp = System.IO.Path.Combine(sPath, sFile);
-            if (System.IO.File.Exists(DocFileTmp + qs2.core.vb.funct.fileTypeFastReport))
-            {
-                DocFile = DocFileTmp;
-                if (qs2.core.generic.CheckOpenFile(DocFile + qs2.core.vb.funct.fileTypeFastReport))
-                {
-                    return true;
-                }
-                else
-                {
-                    SearchError = true;
-                    return false;
-                }
-            }
-
-            else if (System.IO.File.Exists(DocFileTmp + qs2.core.vb.funct.fileTypePDF))
-            {
-                DocFile = DocFileTmp;
-                if (qs2.core.generic.CheckOpenFile(DocFile + qs2.core.vb.funct.fileTypePDF))
-                {
-                    return true;
-                }
-                else
-                {
-                    SearchError = true;
-                    return false;
-                }
-            }
-
-            else if (System.IO.File.Exists(DocFileTmp + qs2.core.vb.funct.fileTypeRTF))
-            {
-                DocFile = DocFileTmp;
-                if (qs2.core.generic.CheckOpenFile(DocFile + qs2.core.vb.funct.fileTypeRTF))
-                {
-                    return true;
-                }
-                else
-                {
-                    SearchError = true;
-                    return false;
-                }
-            }
-
-            return false;
-        }
-
-        public void doAutoWhereClasuselForCRParameterFromUI(System.Collections.Generic.List<qs2.ui.print.infoQry> lstInfoQryRunPar,
-                                                            qs2.ui.print.infoReport infoReport,
-                                                            qs2.core.Enums.eTypRunQuery typRunQuery, bool message, bool datasetViewer,
-                                                            ref string sqlWhereToAdd, ref string Sql, ref string AllParametersAsTxt)
-        {
-            try
-            {
-                foreach (qs2.ui.print.infoQry infoQry1 in lstInfoQryRunPar)
-                {
-                    sqlAdmin sqlAdminTmp = new sqlAdmin();
-                    dsAdmin.tblQueriesDefRow rNewQueriesDef = sqlAdminTmp.addRowQueriesDef(infoQry1.dsParFctForQuery.tblQueriesDef);
-                    rNewQueriesDef.Typ = core.Enums.eTypQueryDef.InputParameters.ToString();
-                    rNewQueriesDef.QryColumn = "SqlWhere";
-
-                    rNewQueriesDef.ValueMin = sqlWhereToAdd.Trim();
-
-                    rNewQueriesDef = sqlAdminTmp.addRowQueriesDef(infoQry1.dsParFctForQuery.tblQueriesDef);
-                    rNewQueriesDef.Typ = core.Enums.eTypQueryDef.InputParameters.ToString();
-                    rNewQueriesDef.QryColumn = "Sql";
-
-                    rNewQueriesDef.ValueMin = Sql.Trim() + "\r\n" + "\r\n" + AllParametersAsTxt.Trim();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genReport.doAutoWhereClasuselForCRParameterFromUI:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-        }
-
-        public void translateSqlWherexyxy(ref string SqlWhereToTranslate, ref string SqlWhereTranslated, 
-                                        ref string Application, ref string Participant)
-        {
-            try
-            {
-                //SqlWhereTranslated = SqlWhereToTranslate;
-                //string SqlWhereTranslatedTmp = SqlWhereToTranslate;
-                //int iPosEmptySignPrev = 0;
-                //int pos = 0;
-                //while (pos < SqlWhereTranslatedTmp.Length) 
-                //{
-                //    int iNextPosEmpty = SqlWhereTranslatedTmp.IndexOf(" ", pos);
-                //    if(iNextPosEmpty != -1)
-                //    {
-                //        string sWord = SqlWhereTranslatedTmp.Substring(iPosEmptySignPrev, iNextPosEmpty - iPosEmptySignPrev);
-                //        if (sWord.Trim() != "")
-                //        {
-                //            string sWordTmp = qs2.core.language.sqlLanguage.checkComma(sWord);
-                //            if (sWordTmp.Trim() == "")
-                //            {
-                //                sWordTmp = sWord;
-                //            }
-                //            string sWordTranslated = qs2.core.language.sqlLanguage.getResAllProdukts(sWordTmp.Trim(), Participant, Application, true);
-                //            if (sWordTranslated.Trim() != "")
-                //            {
-                //                SqlWhereTranslated = SqlWhereTranslated.Replace(sWord.Trim(), "" + sWordTranslated.Trim() + "");
-                //            }
-                //            iPosEmptySignPrev = iNextPosEmpty;
-                //        }
-
-                //    }
-                //    pos += 1;
-                //}
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genReport.translateSqlWhere:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
             }
         }
 

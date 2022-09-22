@@ -89,7 +89,7 @@ namespace qs2.sitemap.print
                                     ref System.Collections.Generic.List<sqlFix> lstSqlFix,
                                     ref string sqlWhereReturn, ref string WhereClauselForSimpleFunctionsReturn, ref bool viewIsFunction,
                                     ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
-                                    ref bool bExternQuery, ref string sqlForAdmin, ref cDataSql DataSql, ref string sqlWhereAdminReturn)
+                                    ref string sqlForAdmin, ref cDataSql DataSql, ref string sqlWhereAdminReturn)
         {
             try
             {
@@ -122,7 +122,7 @@ namespace qs2.sitemap.print
                 string SqlWhereAdmin = "";
                 this.doSqlConditions(tConditions, tParFct, ref prot, withParameters, parametersSql, false,
                                         ref sqlParameterFunction, rSelListQry, true, ref lstSqlFix, ref sqlWhereConditions,
-                                        ref WhereClauselForSimpleFunctions, false, ref lstParForExternFct, ref bExternQuery, false, ref SqlWhereAdmin, ref DataSql);
+                                        ref WhereClauselForSimpleFunctions, false, ref lstParForExternFct, false, ref SqlWhereAdmin, ref DataSql);
                 //CheckSchalter: 3. if SimpleFct -> WhereClauselForSimpleFunctions -> one Where-String for doTables 
 
                 
@@ -164,7 +164,7 @@ namespace qs2.sitemap.print
                     this.doSqlConditions(subQuery.tQryConditionsSub, subQuery.tParFunctParSub, ref prot, 
                                         withParameters, parametersSql, false, ref sqlParameterFunction, rSelListQry, false,
                                         ref lstSqlFix, ref sqlWhereConditionsSubQuery,
-                                        ref WhereClauselForSimpleFunctions, true, ref lstParForExternFct, ref bExternQuery, false, ref SqlWhereAdmin, ref DataSql);
+                                        ref WhereClauselForSimpleFunctions, true, ref lstParForExternFct, false, ref SqlWhereAdmin, ref DataSql);
                 }  
 
                 //string sqlWhereStays = this.doSqlConditions(null, false, ref tables, ref prot, true, null, withParameters, null);
@@ -184,7 +184,7 @@ namespace qs2.sitemap.print
                 string SqlWhereNoParFunct = "";
                 this.doTables2(ref tables, tConditions, tParFct, ref prot, withParameters, parametersSql, 
                                 ref sqlParameterFunctionTables, rSelListQry, ref lstSqlFix, ref sqlTables,
-                                ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref lstParForExternFct, ref bExternQuery, ref SqlWhereNoParFunct,
+                                ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref lstParForExternFct, ref SqlWhereNoParFunct,
                                 ref DataSql);
                 
                 sqlTables = (!sqlTables.Trim().Equals("") ? qs2.core.sqlTxt.from + sqlTables : "");
@@ -616,7 +616,7 @@ namespace qs2.sitemap.print
                                     ref System.Collections.Generic.List<sqlFix> lstSqlFix,
                                     ref string sqlTables, ref string WhereClauselForSimpleFunctions, ref bool viewIsFunction,
                                     ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
-                                    ref bool bExternQuery, ref string SqlWhereNoParFunct, ref cDataSql DataSql)
+                                    ref string SqlWhereNoParFunct, ref cDataSql DataSql)
         {
             try
             {
@@ -639,7 +639,7 @@ namespace qs2.sitemap.print
 
                         string dummyWhereNotUsed = "";
                         this.doSqlConditions(tConditions, tParFct, ref prot, true, parametersSql,  true, ref sqlParameterFunctionTmp, rSelListQry,
-                                                false, ref lstSqlFix, ref sqlWhere, ref dummyWhereNotUsed, false, ref lstParForExternFct, ref bExternQuery, true, ref SqlWhereNoParFunct, ref DataSql);
+                                                false, ref lstSqlFix, ref sqlWhere, ref dummyWhereNotUsed, false, ref lstParForExternFct, true, ref SqlWhereNoParFunct, ref DataSql);
 
                         //CheckSchalter: 8. WhereClauselForSimpleFunctions (wenn leer dann leerstring mit '') integrieren mit '' dazwischen + Parameter wie immer mit neuem Datumsformat übergeben
 
@@ -947,7 +947,7 @@ namespace qs2.sitemap.print
                                     ref string sqlWhere,
                                     ref string WhereClauselForSimpleFunctions,
                                     bool IsIsSubQuery, ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
-                                    ref bool bExternQuery, bool IsFunction, ref string SqlWhereAdmin, ref cDataSql DataSql)
+                                    bool IsFunction, ref string SqlWhereAdmin, ref cDataSql DataSql)
         {
             try
             {
@@ -1028,7 +1028,7 @@ namespace qs2.sitemap.print
                                     conditionToAdd = this.getCondition(rQry, tableCorrected, rQry.ControlType, ref parametersSql, withParameters,
                                     doFunctionParameters, ref sqlParameterFunction,
                                     ref WhereClauselForSimpleFunctions, ref doWhereClauselForSimpleFunctions, ref rSelListQry,
-                                    ref iCounterConditions, ref lstParForExternFct, ref bExternQuery, ref SqlWhereAdmin);
+                                    ref iCounterConditions, ref lstParForExternFct, ref SqlWhereAdmin);
 
                                     if (!String.IsNullOrWhiteSpace(conditionToAdd))
                                     {
@@ -1066,7 +1066,7 @@ namespace qs2.sitemap.print
                                     string conditionToAdd = this.getCondition(rQry, tableCorrected, rCriteria.ControlType, ref parametersSql,
                                                             withParameters, doFunctionParameters, ref sqlParameterFunction,
                                                             ref WhereClauselForSimpleFunctions, ref doWhereClauselForSimpleFunctions, ref rSelListQry,
-                                                            ref iCounterConditions, ref lstParForExternFct, ref bExternQuery, ref SqlWhereAdmin);
+                                                            ref iCounterConditions, ref lstParForExternFct, ref SqlWhereAdmin);
 
                                     // add Combination and Condition to Sql
                                     if (!String.IsNullOrWhiteSpace(conditionToAdd))
@@ -1223,76 +1223,13 @@ namespace qs2.sitemap.print
                                     ref string WhereClauselForSimpleFunctions, ref bool doWhereClauselForSimpleFunctions, 
                                     ref dsAdmin.tblSelListEntriesRow rSelListQry,  ref int iCounterConditions,
                                     ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
-                                    ref bool bExternQuery, ref string SqlWhereAdmin)
+                                    ref string SqlWhereAdmin)
         {
             try
             {
-                //string ValueMinSql = this.getValueSql(rCriteria, rQry.ValueMin).Trim();
-                //string MaxSql = this.getValueSql(rCriteria, rQry.Max).Trim();
-
-                //if ((rQry.Condition.Trim() == qs2.core.sqlTxt.between.Trim()) || (rQry.Condition.Trim() == qs2.core.sqlTxt.notBetween.Trim()))
-                //{
-                //    conditionToAdd += "(" + rCriteria.SourceTable + "." + rQry.QueryFldShort + rQry.Condition + rQry.ValueMin.Trim() + " " + qs2.core.sqlTxt.and + " " + rQry.Max.Trim() + " )";
-                //}
-                //else if ((rQry.Condition.Trim() == qs2.core.sqlTxt.isNull.Trim()) || (rQry.Condition.Trim() == qs2.core.sqlTxt.isNotNull.Trim()))
-                //{
-                //    conditionToAdd += rCriteria.SourceTable + "." + rQry.QueryFldShort + rQry.Condition;
-                //}
-                //else
-                //{
-                //    conditionToAdd += rCriteria.SourceTable + "." + rQry.QueryFldShort + rQry.Condition + rQry.ValueMin.Trim();
-                //}
-            
                 string ValueMinTxtForSql = rQry.ValueMin.Trim();
                 string MaxForSql = rQry.Max.Trim();
-
-                // Condition is User-Input ?
                 bool IsCRParameter = false;
-                if (rQry.UserInput)
-                {
-                    //bool parFounded = false;
-                    //int countPar = 0;
-                    //foreach (dsAdmin.tblQueriesDefRow rPar in tQryPar)
-                    //{
-                    //    if (rQry.IDGuid.Equals(rPar[qs2.core.generic.columnNameIDKey]))
-                    //    {
-                    //        if (countPar == 0)
-                    //        {
-                    //            ValueMinTxtForSql = rPar[qs2.core.generic.columnNameValTxt].ToString();
-                    //        }
-                    //        else if (countPar == 1)
-                    //        {
-                    //            MaxForSql = rPar[qs2.core.generic.columnNameValTxt].ToString();
-                    //        }
-                    //        else
-                    //        {
-                    //            throw new Exception("getCondition: More than two Parameters in Between!");
-                    //        }
-
-                    //        // other conditions
-                    //        if (rQry.ControlType.Trim().ToString().Trim().ToLower().Equals(core.Enums.eControlType.CheckBox.ToString().Trim().ToLower()) ||
-                    //            rQry.ControlType.Trim().ToString().Trim().ToLower().Equals(core.Enums.eControlType.CheckBoxNoDb.ToString().Trim().ToLower()))
-                    //        {
-                    //            if (ValueMinTxtForSql.Trim().ToLower().Equals(("-1").Trim().ToLower()))
-                    //            {
-                    //                return "";
-                    //            }
-                    //        }
-
-                    //        qs2.core.vb.dsAdmin.tblQueriesDefRow rNewParFound = this.sqlAdmin1.addRowQueriesDef(tAllParametersForReport);
-                    //        rNewParFound.ItemArray = rPar.ItemArray;
-
-                    //        parFounded = true;
-                    //        countPar += 1;
-                    //        //continue;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    if (!parFounded)
-                    //        throw new Exception("getCondition: No User-Input-Parameter found for Parameter '" + rQry.QryColumn + "'");
-                    //}
-                }
 
                 if (rQry.Typ == core.Enums.eTypQueryDef.InputParameters.ToString())
                 {
@@ -1332,8 +1269,6 @@ namespace qs2.sitemap.print
                                     System.Data.SqlClient.SqlParameter newParSql2 = this.getParameterSql(ParameterNameMonkeyTo, (MaxForSql.Trim() != "" ? MaxForSql : ValueMinTxtForSql), controlType, parametersSql);
                                     parametersSql.Add(newParSql2);
 
-                                    //string condition2ToAdd = this.getCondition(rQry, tQryPar, rCriteria, ref parameters, withParameters);
-
                                     this.getSqlValue(ValueMinTxtForSql.Trim(), ValueMinTxtForSql.Trim(), MaxForSql.Trim(), MaxForSql.Trim(), rQry.QryColumn.Trim(), table.Trim(), rQry.Combination.Trim(), rQry.Condition.Trim(), rQry.CombinationEnd.Trim(), rQry.ControlType, false, true, ref SqlWhereAdmin, false);
                                 }
                                 else if ((rQry.Condition.Trim() == qs2.core.sqlTxt.isNull.Trim()) || (rQry.Condition.Trim() == qs2.core.sqlTxt.isNotNull.Trim()))
@@ -1345,9 +1280,9 @@ namespace qs2.sitemap.print
                                 else if ((rQry.Condition.Trim() == qs2.core.sqlTxt.In.Trim()) || (rQry.Condition.Trim() == qs2.core.sqlTxt.NotIn.Trim()))
                                 {
                                     // In  or  not in
-                                    if (rQry.ControlType.Trim().ToLower().Equals(core.Enums.eControlType.DateTime.ToString().Trim().ToLower().Trim().ToLower()) ||
-                                        rQry.ControlType.Trim().ToLower().Equals(core.Enums.eControlType.Date.ToString().Trim().ToLower().Trim().ToLower()) ||
-                                        rQry.ControlType.Trim().ToLower().Equals(core.Enums.eControlType.Time.ToString().Trim().ToLower().Trim().ToLower()))
+                                    if (rQry.ControlType.sEquals(core.Enums.eControlType.DateTime) ||
+                                        rQry.ControlType.sEquals(core.Enums.eControlType.Date) ||
+                                        rQry.ControlType.sEquals(core.Enums.eControlType.Time))
                                     {
                                         System.Collections.Generic.List<string> lstDats = new List<string>();
                                         string sValueMinTmp = rQry.ValueMin.Trim();
@@ -1451,119 +1386,9 @@ namespace qs2.sitemap.print
                         }
                         else
                         {
-                            //CheckSchalter: 7. if SimpleFunction -> normale Paremterübergabe für Functions -> bleibt wies ist
                             if (doWhereClauselForSimpleFunctions)
                             {
                                 throw new Exception("doWhereClauselForSimpleFunctions=1 not allowed! Functions has normal Parameters!");
-                                /*
-                                string FirstClaimb = "";
-                                if (rQry.Combination.Contains(("(")))
-                                {
-                                    FirstClaimb = this.checkFirstCombination(rQry.Combination, ref iCounterConditions, false);
-                                    //FirstClaimb = "(";
-                                }
-
-                                if (ValueMinTxtForSql.Trim() != "" && rQry.Condition.Trim() != qs2.core.sqlTxt.isNull.Trim() && rQry.Condition.Trim() != qs2.core.sqlTxt.isNotNull.Trim())
-                                {
-                                    if ((rQry.Condition.Trim() == qs2.core.sqlTxt.between.Trim()) || (rQry.Condition.Trim() == qs2.core.sqlTxt.notBetween.Trim()))
-                                    {
-                                        // between
-                                        string conditionForFunction = qs2.core.sqlTxt.getColWhereBetweenNoMonkeyxy(rQry.QryColumn.Trim(), table.Trim(), rQry.Condition.Trim()) + "";
-
-                                        bool noInputFrom = false;
-                                        bool doLike = false;
-                                        string ReturnValueFrom = "";
-                                        this.getValueForFct(table, doFunctionParameters, ref sqlParameterFunction, ref doWhereClauselForSimpleFunctions, ref rSelListQry,
-                                                            ref controlType, ref ValueMinTxtForSql, ref ReturnValueFrom, ref doLike, ref noInputFrom, ref lstParForExternFct, ref bExternQuery, rQry.QryColumn.Trim());
-
-                                        bool noInputTo = false;
-                                        string ReturnValueTo = "";
-                                        this.getValueForFct(table, doFunctionParameters, ref sqlParameterFunction, ref doWhereClauselForSimpleFunctions, ref rSelListQry,
-                                                            ref controlType, ref MaxForSql, ref ReturnValueTo, ref doLike, ref noInputTo, ref lstParForExternFct, ref bExternQuery, rQry.QryColumn.Trim());
-
-                                        conditionForFunction = System.String.Format(conditionForFunction, ReturnValueFrom, ReturnValueTo);
-
-                                        string sJoin = "";
-                                        if (WhereClauselForSimpleFunctions.Trim() != "")
-                                        {
-                                            sJoin = this.getCombination(rQry.Combination);
-                                        }
-                                        else
-                                        {
-                                            sJoin = FirstClaimb;
-                                        }
-                                        if (!noInputFrom || !noInputTo)
-                                        {
-                                            WhereClauselForSimpleFunctions += sJoin + conditionForFunction + " " + this.checkCombinationEnd(rQry.CombinationEnd);
-                                        }
-                                    }
-                                    else if ((rQry.Condition.Trim() == qs2.core.sqlTxt.isNull.Trim()) || (rQry.Condition.Trim() == qs2.core.sqlTxt.isNotNull.Trim()))
-                                    {
-                                        // is null
-                                        string conditionForFunction = " " + rQry.QryColumn.Trim() + " " + rQry.Condition.Trim();
-                                        string sJoin = "";
-                                        if (WhereClauselForSimpleFunctions.Trim() != "")
-                                        {
-                                            sJoin = this.getCombination(rQry.Combination);
-                                        }
-                                        else
-                                        {
-                                            sJoin = FirstClaimb;
-                                        }
-                                        WhereClauselForSimpleFunctions += sJoin + conditionForFunction + " " + this.checkCombinationEnd(rQry.CombinationEnd);
-
-                                    }
-                                    else
-                                    {
-                                        bool noInput = false;
-                                        bool doLike = false;
-                                        if (rQry.Condition.Trim().ToLower() == qs2.core.sqlTxt.like.Trim().ToLower())
-                                        {
-                                            doLike = true;
-                                        }
-                                        string conditionForFunction = qs2.core.sqlTxt.getColWhereNoMonkeyxy(rQry.QryColumn.Trim(), table.Trim(), rQry.Condition.Trim()) + "";
-
-                                        string ReturnValue = "";
-                                        this.getValueForFct(table, doFunctionParameters, ref sqlParameterFunction, ref doWhereClauselForSimpleFunctions, ref rSelListQry,
-                                                            ref controlType, ref ValueMinTxtForSql, ref ReturnValue, ref doLike, ref noInput, ref lstParForExternFct, ref bExternQuery, rQry.QryColumn.Trim());
-
-                                        string sJoin = "";
-                                        if (WhereClauselForSimpleFunctions.Trim() != "")
-                                        {
-                                            sJoin = this.getCombination(rQry.Combination);
-                                        }
-                                        else
-                                        {
-                                            sJoin = FirstClaimb;
-                                        }
-                                        if (!noInput)
-                                        {
-                                            WhereClauselForSimpleFunctions += sJoin + conditionForFunction + "" + ReturnValue + this.checkCombinationEnd(rQry.CombinationEnd);
-                                        }
-                                    }
-                                }
-                                else if ((rQry.Condition.Trim() == qs2.core.sqlTxt.isNull.Trim()) || (rQry.Condition.Trim() == qs2.core.sqlTxt.isNotNull.Trim()))
-                                {
-                                    // is null
-                                    string conditionForFunction = " " + rQry.QryColumn.Trim() + " " + rQry.Condition.Trim();
-                                    //string conditionForFunction = " " + table.Trim() + "." + rQry.QryColumn.Trim() + " " + rQry.Condition.Trim();
-                                    string sJoin = "";
-                                    if (WhereClauselForSimpleFunctions.Trim() != "")
-                                    {
-                                        sJoin = this.getCombination(rQry.Combination);
-                                    }
-                                    else
-                                    {
-                                        sJoin = FirstClaimb;
-                                    }
-                                    WhereClauselForSimpleFunctions += sJoin + conditionForFunction + " " + this.checkCombinationEnd(rQry.CombinationEnd);
-
-                                }
-                                else
-                                {
-                                    //throw new Exception("getCondition: Error generate Condigion because rQry.Condition='" + rQry.Condition.Trim() + "' is wrong!");
-                                }
-                                */
                             }
                             else
                             {
@@ -1571,7 +1396,7 @@ namespace qs2.sitemap.print
                                 bool doLike = false;
                                 string ReturnValue = "";
                                 this.getValueForFct(table, doFunctionParameters, ref sqlParameterFunction, ref doWhereClauselForSimpleFunctions, ref rSelListQry,
-                                                        ref controlType, ref ValueMinTxtForSql, ref ReturnValue, ref doLike, ref noInput, ref lstParForExternFct, ref bExternQuery, rQry.QryColumn.Trim());
+                                                        ref controlType, ref ValueMinTxtForSql, ref ReturnValue, ref doLike, ref noInput, ref lstParForExternFct, rQry.QryColumn.Trim());
                                 sqlParameterFunction += (sqlParameterFunction.Trim().Equals("") ? "," + ReturnValue : "," + ReturnValue);
                             }
                             return "";
@@ -1594,6 +1419,7 @@ namespace qs2.sitemap.print
                 //return "";
             }
         }
+
         public void getSqlValue(string sValueMin, object oValueMin, string sValueMax, object oValueMax, string ColumnName,
                                 string TableName, string Combination, string Condition, string CombinationEnd, string ControlType, bool isNull, bool isBetween,
                                 ref string SqlWhereAdmin, bool IsInDateTime)
@@ -1893,7 +1719,7 @@ namespace qs2.sitemap.print
                                 ref core.Enums.eControlType controlType, ref string ValueMinTxtForSql, ref string ReturnValue,
                                 ref bool doLike, ref bool noInput,
                                 ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
-                                ref bool bExternQuery, string ParName)
+                                string ParName)
         {
             try
             {
