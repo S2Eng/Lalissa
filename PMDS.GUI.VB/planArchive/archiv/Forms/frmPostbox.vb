@@ -103,22 +103,19 @@ Public Class FrmPostbox
         Dim ButtonTool1 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Schließen")
         Dim ButtonTool2 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("PostboxExplorer")
         Dim ButtonTool3 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("PostboxAktualisieren")
-        Dim ButtonTool4 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Scannen")
         Dim ButtonTool5 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("MultiTIFFErzeugen")
         Dim ButtonTool6 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("MSDocumentImaging")
         Dim ButtonTool7 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Schließen")
         Dim Appearance17 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance18 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim ButtonTool8 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Scannen")
-        Dim Appearance19 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool9 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("PostboxAktualisieren")
-        Dim Appearance20 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance19 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool10 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("PostboxExplorer")
-        Dim Appearance21 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance20 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool11 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("MultiTIFFErzeugen")
-        Dim Appearance22 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance21 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool12 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("MSDocumentImaging")
-        Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance22 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.Postbox = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.UGridPostbox = New Infragistics.Win.UltraWinGrid.UltraGrid()
@@ -153,9 +150,9 @@ Public Class FrmPostbox
         Me.Postbox.Controls.Add(Me.Panel1)
         Me.Postbox.Controls.Add(Me.PanelUntenGrid)
         Me.Postbox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Postbox.Location = New System.Drawing.Point(0, 26)
+        Me.Postbox.Location = New System.Drawing.Point(0, 75)
         Me.Postbox.Name = "Postbox"
-        Me.Postbox.Size = New System.Drawing.Size(592, 356)
+        Me.Postbox.Size = New System.Drawing.Size(592, 307)
         Me.Postbox.TabIndex = 462
         '
         'Panel1
@@ -164,7 +161,7 @@ Public Class FrmPostbox
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(592, 315)
+        Me.Panel1.Size = New System.Drawing.Size(592, 266)
         Me.Panel1.TabIndex = 459
         '
         'UGridPostbox
@@ -231,7 +228,7 @@ Public Class FrmPostbox
         Me.UGridPostbox.Dock = System.Windows.Forms.DockStyle.Fill
         Me.UGridPostbox.Location = New System.Drawing.Point(0, 0)
         Me.UGridPostbox.Name = "UGridPostbox"
-        Me.UGridPostbox.Size = New System.Drawing.Size(592, 315)
+        Me.UGridPostbox.Size = New System.Drawing.Size(592, 266)
         Me.UGridPostbox.TabIndex = 0
         Me.UGridPostbox.Text = "Postbox ..."
         Me.UGridPostbox.UpdateMode = Infragistics.Win.UltraWinGrid.UpdateMode.OnUpdate
@@ -287,7 +284,7 @@ Public Class FrmPostbox
         Me.PanelUntenGrid.Controls.Add(Me.UButtonÜbernehmen)
         Me.PanelUntenGrid.Controls.Add(Me.UCheckEditorDateienLöschen)
         Me.PanelUntenGrid.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelUntenGrid.Location = New System.Drawing.Point(0, 315)
+        Me.PanelUntenGrid.Location = New System.Drawing.Point(0, 266)
         Me.PanelUntenGrid.Name = "PanelUntenGrid"
         Me.PanelUntenGrid.Size = New System.Drawing.Size(592, 41)
         Me.PanelUntenGrid.TabIndex = 1
@@ -357,7 +354,7 @@ Public Class FrmPostbox
         UltraToolbar1.DockedRow = 0
         ButtonTool5.InstanceProps.IsFirstInGroup = True
         ButtonTool6.InstanceProps.IsFirstInGroup = True
-        UltraToolbar1.NonInheritedTools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool1, ButtonTool2, ButtonTool3, ButtonTool4, ButtonTool5, ButtonTool6})
+        UltraToolbar1.NonInheritedTools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool1, ButtonTool2, ButtonTool3, ButtonTool5, ButtonTool6})
         UltraToolbar1.Text = "UltraToolbar"
         Me.UltraToolbarsManager.Toolbars.AddRange(New Infragistics.Win.UltraWinToolbars.UltraToolbar() {UltraToolbar1})
         Me.UltraToolbarsManager.ToolbarSettings.AllowCustomize = Infragistics.Win.DefaultableBoolean.[False]
@@ -376,28 +373,23 @@ Public Class FrmPostbox
         ButtonTool7.SharedPropsInternal.CustomizerCaption = "Schließen"
         ButtonTool7.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText
         Appearance19.Cursor = System.Windows.Forms.Cursors.Hand
-        ButtonTool8.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = Appearance19
-        ButtonTool8.SharedPropsInternal.Caption = "Scannen"
-        ButtonTool8.SharedPropsInternal.CustomizerCaption = "Scannen"
-        ButtonTool8.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText
-        Appearance20.Cursor = System.Windows.Forms.Cursors.Hand
-        ButtonTool9.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = Appearance20
+        ButtonTool9.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = Appearance19
         ButtonTool9.SharedPropsInternal.Caption = "Aktualisieren"
         ButtonTool9.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.TextOnlyAlways
         ButtonTool9.SharedPropsInternal.ToolTipText = "Postbox aktualisieren"
-        Appearance21.Cursor = System.Windows.Forms.Cursors.Hand
-        ButtonTool10.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = Appearance21
+        Appearance20.Cursor = System.Windows.Forms.Cursors.Hand
+        ButtonTool10.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = Appearance20
         ButtonTool10.SharedPropsInternal.Caption = "Postbox"
         ButtonTool10.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText
-        Appearance22.Cursor = System.Windows.Forms.Cursors.Hand
-        ButtonTool11.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = Appearance22
+        Appearance21.Cursor = System.Windows.Forms.Cursors.Hand
+        ButtonTool11.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = Appearance21
         ButtonTool11.SharedPropsInternal.Caption = "Multi-TIFF erzeugen"
         ButtonTool11.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText
-        Appearance23.Cursor = System.Windows.Forms.Cursors.Hand
-        ButtonTool12.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = Appearance23
+        Appearance22.Cursor = System.Windows.Forms.Cursors.Hand
+        ButtonTool12.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = Appearance22
         ButtonTool12.SharedPropsInternal.Caption = "MS Document Imaging"
         ButtonTool12.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText
-        Me.UltraToolbarsManager.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool7, ButtonTool8, ButtonTool9, ButtonTool10, ButtonTool11, ButtonTool12})
+        Me.UltraToolbarsManager.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool7, ButtonTool9, ButtonTool10, ButtonTool11, ButtonTool12})
         Me.UltraToolbarsManager.UseFlatMode = Infragistics.Win.DefaultableBoolean.[True]
         '
         '_FrmPostbox_Toolbars_Dock_Area_Top
@@ -408,7 +400,7 @@ Public Class FrmPostbox
         Me._FrmPostbox_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText
         Me._FrmPostbox_Toolbars_Dock_Area_Top.Location = New System.Drawing.Point(0, 0)
         Me._FrmPostbox_Toolbars_Dock_Area_Top.Name = "_FrmPostbox_Toolbars_Dock_Area_Top"
-        Me._FrmPostbox_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(592, 26)
+        Me._FrmPostbox_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(592, 75)
         Me._FrmPostbox_Toolbars_Dock_Area_Top.ToolbarsManager = Me.UltraToolbarsManager
         '
         '_FrmPostbox_Toolbars_Dock_Area_Bottom
@@ -428,9 +420,9 @@ Public Class FrmPostbox
         Me._FrmPostbox_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.White
         Me._FrmPostbox_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left
         Me._FrmPostbox_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._FrmPostbox_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 26)
+        Me._FrmPostbox_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 75)
         Me._FrmPostbox_Toolbars_Dock_Area_Left.Name = "_FrmPostbox_Toolbars_Dock_Area_Left"
-        Me._FrmPostbox_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(0, 356)
+        Me._FrmPostbox_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(0, 307)
         Me._FrmPostbox_Toolbars_Dock_Area_Left.ToolbarsManager = Me.UltraToolbarsManager
         '
         '_FrmPostbox_Toolbars_Dock_Area_Right
@@ -439,9 +431,9 @@ Public Class FrmPostbox
         Me._FrmPostbox_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.White
         Me._FrmPostbox_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right
         Me._FrmPostbox_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._FrmPostbox_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(592, 26)
+        Me._FrmPostbox_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(592, 75)
         Me._FrmPostbox_Toolbars_Dock_Area_Right.Name = "_FrmPostbox_Toolbars_Dock_Area_Right"
-        Me._FrmPostbox_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(0, 356)
+        Me._FrmPostbox_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(0, 307)
         Me._FrmPostbox_Toolbars_Dock_Area_Right.ToolbarsManager = Me.UltraToolbarsManager
         '
         'TimerLoadPostbox
@@ -516,14 +508,8 @@ Public Class FrmPostbox
                 Me.UGridPostbox.ContextMenu = Nothing
 
                 UIElements.Menu_ItemOnOff(Me.UltraToolbarsManager, 0, "MultiTIFFErzeugen", False)
-                'UIElements.Menu_ItemOnOff(Me.UltraToolbarsManager, 0, "Scannen", False)
-
                 Me.TimerLoadPostbox.Enabled = True
-
             Else
-                'Dim compFenstr As New S2CoreSystemDatabase.compFensterliste
-                'compFenstr.AddWindowsMenü(Me, Me.Text, IDWindow.ToString, "Add", Me.Icon.ToBitmap, False)
-
                 Me.PanelUntenGrid.Visible = True
                 UIElements.Menu_ItemOnOff(Me.UltraToolbarsManager, 0, "MultiTIFFErzeugen", True)
 
@@ -588,9 +574,6 @@ Public Class FrmPostbox
                 Case "MultiTIFFErzeugen"
                     Me.VorschauMultiTIFFERzeugen(typDateiVorschau.MakeMultiTIFF, "")
 
-                Case "Scannen"
-                    Me.Scan()
-
                 Case "PostboxExplorer"
                     Dim clUsr As New GeneralArchiv
                     clUsr.OpenPostboxExplorer()
@@ -623,29 +606,6 @@ Public Class FrmPostbox
         End Try
     End Sub
 
-    Public Sub Scan()
-        Dim gen As New GeneralArchiv
-        Try
-
-            Dim frm As New ITSCont.ui.communication.scan.FrmScan
-            frm.ShowDialog(Me)
-            If Not frm.apport Then
-                Dim fileNameScan As String = ""
-                fileNameScan = "Scan_" + Now.Year.ToString + "_" + Now.Month.ToString + "_" + Now.Day.ToString + "_" +
-                                    Now.Hour.ToString + "_" + Now.Minute.ToString + "_" + Now.Second.ToString + ".jpg"
-                fileNameScan = System.IO.Path.Combine(PMDS.Global.ENV.path_Temp, fileNameScan)
-                Dim scanDokuWrite As System.Drawing.Image
-                If Not gen.IsNull(frm.PictureBox1.Image) Then
-                    scanDokuWrite = frm.PictureBox1.Image
-                    scanDokuWrite.Save(fileNameScan)
-                    Me.loadPostbox()
-                End If
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("Scan: " + ex.ToString())
-        End Try
-    End Sub
     Public Sub VorschauMultiTIFFERzeugen(ByVal typ As typDateiVorschau, ByVal filePreview As String)
         Dim gen As New GeneralArchiv
         Try
