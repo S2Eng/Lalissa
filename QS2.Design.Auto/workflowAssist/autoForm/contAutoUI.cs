@@ -17,8 +17,6 @@ using S2Extensions;
 namespace qs2.sitemap.workflowAssist.form
 {
 
-   
-
     public partial class contAutoUI : UserControl
     {
         public license _license;

@@ -1,23 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using System.Drawing;
 using System.Data;
-using System.Windows.Forms;
-
 using Infragistics.Win.UltraWinGrid;
 using qs2.core.vb;
 using S2Extensions;
 
 
-
-
 namespace qs2.design.auto.print
 {
-
-
     public class translateQuery
     {
         public qs2.core.vb.sqlAdmin sqlAdmin1 = new qs2.core.vb.sqlAdmin();
@@ -38,16 +29,6 @@ namespace qs2.design.auto.print
 
         public TableToArray TableToArray = null;
 
-
-
-
-
-
-
-
-
-
-
         public DataTable translateSelList(DataTable dtFromQuery, UltraGrid grid, string IDApplication, ref string protocol, bool translateForReport)
         {
             string ErrField = "";
@@ -60,12 +41,6 @@ namespace qs2.design.auto.print
 
                 this.TableToArray = new TableToArray();
                 Object[,] objTranslated = this.TableToArray.copyTableToArrayForTranslation(ref dtFromQuery);
-
-                //System.Collections.Generic.List<System.Data.DataColumn> lstCols = new System.Collections.Generic.List<System.Data.DataColumn>();
-                //foreach (DataColumn col in dtToTranslate.Columns)
-                //{
-                //    lstCols.Add(col);
-                //}
 
                 string colPrev = "";
                 string colPrevPrev = "";
@@ -121,20 +96,12 @@ namespace qs2.design.auto.print
                         {
                             rigthOK = true;
                         }
-                        else
-                        {
-                            //string xy = "";
-                        }
                     }
                     else
                     {
                         rigthOK = true;
                     }
 
-                    //if (!rigthOK)
-                    //{
-                    //    string xy = "";
-                    //}
                     if (rigthOK)
                     {
                         if (!col.ColumnName.sEquals(qs2.core.generic.TransEmpty, S2Extensions.Enums.eCompareMode.StartsWith) &&
@@ -221,7 +188,6 @@ namespace qs2.design.auto.print
 
                             if ((colIsCriteriaComboBox || colIsDbComboBox) && !colIsCheckBox && !colIsThreeStateCheckBox)
                             {
-                                //colTxt.SetOrdinal(col.Ordinal);
                                 bool KeyIsIDOwnStr = false;
                                 string TranslationFound = "";
 
@@ -236,7 +202,6 @@ namespace qs2.design.auto.print
                                     KeyIsIDOwnStr = rGroup.Classification.Equals("Key=IDOwnStr", StringComparison.OrdinalIgnoreCase);
 
                                     System.Collections.Specialized.ListDictionary lstTranslationsFounded = new System.Collections.Specialized.ListDictionary();
-                                    //System.Data.DataRow[] arrOrderCmb = (System.Data.DataRow[])dtFromQuery.Select("", col.ColumnName + " asc");
                                     if (KeyIsIDOwnStr)
                                     {
                                         this.translateSelListComboBoxObj(ref dtFromQuery, ref ErrField, ref ErrFieldSub, col,
@@ -253,13 +218,7 @@ namespace qs2.design.auto.print
                                                                         ref TranslationFound, ref IDGroupToLoad, false, null, "", IDApplication, ref SubSelListCboDone, ref arrRelationsParentEqualsValueTmp);
                                     }
                                 }
-                                //if (colIsCriteriaComboBoxAndIsInRelation)
-                                //{
-                                //    this.getGroupfromSelectedParentFldShort2xy(IDApplication, ref colPrev, ref arrRelationship, ref iColPrevValueSelList, ref KeyIsIDOwnStr, ref TranslationFound, ref rGroup,
-                                //                        ref arrSelListEntries, ref ErrField, ref ErrFieldSub, ref protocol, ref colCount, ref IDGroupToLoad,
-                                //                        ref dtFromQuery, col, ref objTranslated);
 
-                                //}
                                 if (colIsCriteriaComboBoxAndIsInRelation)
                                 {
                                     string colPrevNotTrans = "";
@@ -291,10 +250,6 @@ namespace qs2.design.auto.print
                                 this.translateObjectID(ref dtFromQuery, ref ErrField, ref ErrFieldSub, col,
                                                         ref colCount, ref objTranslated, ref protocol);
                             }
-                            else
-                            {
-                                //string xy = "";
-                            }
                         }
                         colPrevPrev = colPrev;
                         colPrev = col.ColumnName;
@@ -305,15 +260,11 @@ namespace qs2.design.auto.print
                 DataTable dtResult = this.TableToArray.copyTranslatedArrayToNewTable(ref objTranslated, ref dtFromQuery);
                 this.TableToArray.clearColumnsNotUsedForTranslation(ref dtResult);
 
-                foreach (string columnName in this.lstColsNoRigth)              //lthxy
+                foreach (string columnName in this.lstColsNoRigth)              
                 {
                     if (dtResult.Columns.Contains(columnName.Trim()))
                     {
                         dtResult.Columns.Remove(columnName.Trim());
-                    }
-                    else
-                    {
-                        //string xy = "";
                     }
                 }
 
@@ -370,17 +321,11 @@ namespace qs2.design.auto.print
         {
             try
             {
-                //colTxt.SetOrdinal(col.Ordinal);
                 qs2.core.vb.dsAdmin.tblSelListGroupRow[] arrGrp = this.sqlAdmin1.getSelListGroup(ref this.dsAdmin1, qs2.core.vb.sqlAdmin.eTypSelGruppen.IDGruppeRam, IDGroupToLoad, "ALL", IDApplication);
                 if (arrGrp.Length != 1)
                 {
                     arrGrp = this.sqlAdmin1.getSelListGroup(ref this.dsAdmin1, qs2.core.vb.sqlAdmin.eTypSelGruppen.IDGruppeRam, IDGroupToLoad, "ALL", qs2.core.license.doLicense.eApp.ALL.ToString());
-                    if (arrGrp.Length != 1)
-                    {
-                        //throw new Exception("translateSelList: No rGroup found for IDGroup '" + col.ColumnName + "'!");
-                        //string xy = "";
-                    }
-                    else
+                    if (arrGrp.Length == 1)
                     {
                         IDApplicationTmp = qs2.core.license.doLicense.eApp.ALL.ToString();
                     }
@@ -415,6 +360,7 @@ namespace qs2.design.auto.print
                 throw new Exception("Error Column '" + ErrField.Trim() + "' or Error ColumnSub '" + ErrFieldSub.Trim() + "' translateQuery.getSelListGroupForTranslateSelListComboBox: " + qs2.core.generic.lineBreak + ex.ToString());
             }
         }
+
         public void translateSelListComboBox(ref DataTable dtFromQuery, ref string ErrField, ref string ErrFieldSub, DataColumn col,
                                         ref System.Collections.Specialized.ListDictionary lstTranslationsFounded, ref int colCount,
                                         ref Object[,] objTranslated, qs2.core.vb.dsAdmin.tblSelListEntriesRow[] arrSelListEntries,

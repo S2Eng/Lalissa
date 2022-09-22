@@ -710,19 +710,6 @@ namespace qs2.design.auto
                 {
                     dsAdminWork.Clear();
                     string sGroup = "";
-                    //if (ownMultiControl1.StayTyp == core.Enums.eStayTyp.Stay)
-                    //{
-                    //    sGroup = "CHAPTERS0";
-                    //}
-                    //else if (ownMultiControl1.StayTyp == core.Enums.eStayTyp.FollowUp)
-                    //{
-                    //    sGroup = "Chapters1";
-                    //}
-                    //else
-                    //{
-                    //    throw new Exception("checkChapterAssignmentInDb: ownMultiControl1.StayTyp ' " + ownMultiControl1.StayTyp.ToString() + "'  is wrong!");
-                    //}
-
                     Nullable<System.Guid> IDSelListObjChapter0 = null;
                     bool ExistsInChapter0 = false;
                     sGroup = "CHAPTERS0";
