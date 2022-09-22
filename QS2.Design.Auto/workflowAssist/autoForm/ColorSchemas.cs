@@ -1855,7 +1855,6 @@ namespace qs2.design.auto.workflowAssist.autoForm
         }
         public static void setButtonStyle(UltraButton butt)
         {
-            butt.ButtonStyle = qs2.core.Colors.styleButt;
             butt.UseOsThemes = DefaultableBoolean.False;
             butt.UseFlatMode = DefaultableBoolean.Default;
             butt.ShowFocusRect = false;

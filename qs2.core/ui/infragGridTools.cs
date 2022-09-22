@@ -7,12 +7,8 @@ using System.Collections;
 namespace qs2.core
 {
 
-
-
     public class infragGridTools
     {
-
-        
         protected static void GetAllRowsFromGroupedUltraGrid(UltraGridRow r, ref ArrayList al, bool bSelectedOnly)
         {
             GetAllRowsFromGroupedUltraGrid(r, ref al, bSelectedOnly, false);

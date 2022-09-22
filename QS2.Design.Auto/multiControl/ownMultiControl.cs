@@ -1181,9 +1181,6 @@ namespace qs2.design.auto.multiControl
                     else if (typAction == eTypActionControl.showError)
                     {
                         this.Numeric.UseAppStyling = false;
-                        this.Numeric.Appearance.BackColor = qs2.core.Colors.BackColorFieldError;
-                        this.Numeric.Appearance.BackColorDisabled = qs2.core.Colors.BackColorFieldError;
-                        this.Numeric.Appearance.ForeColorDisabled = qs2.core.Colors.ForeColorFieldError;
                     }
                     else if (typAction == eTypActionControl.setEditableAndFocus)
                     {
@@ -1226,9 +1223,6 @@ namespace qs2.design.auto.multiControl
                     else if (typAction == eTypActionControl.showError)
                     {
                         this.ComboBox.UseAppStyling = false;
-                        this.ComboBox.Appearance.BackColor = qs2.core.Colors.BackColorFieldError;
-                        this.ComboBox.Appearance.BackColorDisabled = qs2.core.Colors.BackColorFieldError;
-                        this.ComboBox.Appearance.ForeColorDisabled = qs2.core.Colors.ForeColorFieldError;
                     }
                     else if (typAction == eTypActionControl.setEditableAndFocus)
                     {
@@ -1269,9 +1263,6 @@ namespace qs2.design.auto.multiControl
                     else if (typAction == eTypActionControl.showError)
                     {
                         this.ComboBox.UseAppStyling = false;
-                        this.ComboBox.Appearance.BackColor = qs2.core.Colors.BackColorFieldError;
-                        this.ComboBox.Appearance.BackColorDisabled = qs2.core.Colors.BackColorFieldError;
-                        this.ComboBox.Appearance.ForeColorDisabled = qs2.core.Colors.ForeColorFieldError;
                     }
                     else if (typAction == eTypActionControl.setEditableAndFocus)
                     {
@@ -1312,9 +1303,6 @@ namespace qs2.design.auto.multiControl
                     else if (typAction == eTypActionControl.showError)
                     {
                         this.DropDown.UseAppStyling = qs2.core.ENV.UseAppStylingDefault;
-                        this.DropDown.Appearance.BackColor = qs2.core.Colors.BackColorFieldError;
-                        this.DropDown.Appearance.BackColorDisabled = qs2.core.Colors.BackColorFieldError;
-                        this.DropDown.Appearance.ForeColorDisabled = qs2.core.Colors.ForeColorFieldError;
                     }
                     else if (typAction == eTypActionControl.setEditableAndFocus)
                     {
@@ -1359,9 +1347,6 @@ namespace qs2.design.auto.multiControl
                     else if (typAction == eTypActionControl.showError)
                     {
                         this.DateTime.UseAppStyling = false;
-                        this.DateTime.Appearance.BackColor = qs2.core.Colors.BackColorFieldError;
-                        this.DateTime.Appearance.BackColorDisabled = qs2.core.Colors.BackColorFieldError;
-                        this.DateTime.Appearance.ForeColorDisabled = qs2.core.Colors.ForeColorFieldError;
                     }
                     else if (typAction == eTypActionControl.setEditableAndFocus)
                     {
@@ -1408,9 +1393,6 @@ namespace qs2.design.auto.multiControl
                     else if (typAction == eTypActionControl.showError)
                     {
                         this.Date.UseAppStyling = false;
-                        this.Date.Appearance.BackColor = qs2.core.Colors.BackColorFieldError;
-                        this.Date.Appearance.BackColorDisabled = qs2.core.Colors.BackColorFieldError;
-                        this.Date.Appearance.ForeColorDisabled = qs2.core.Colors.ForeColorFieldError;
                     }
                     else if (typAction == eTypActionControl.setEditableAndFocus)
                     {
@@ -1457,9 +1439,6 @@ namespace qs2.design.auto.multiControl
                     else if (typAction == eTypActionControl.showError)
                     {
                         this.Time.UseAppStyling = false;
-                        this.Time.Appearance.BackColor = qs2.core.Colors.BackColorFieldError;
-                        this.Time.Appearance.BackColorDisabled = qs2.core.Colors.BackColorFieldError;
-                        this.Time.Appearance.ForeColorDisabled = qs2.core.Colors.ForeColorFieldError;
                     }
                     else if (typAction == eTypActionControl.setEditableAndFocus)
                     {
@@ -1506,18 +1485,10 @@ namespace qs2.design.auto.multiControl
                     else if (typAction == eTypActionControl.showError)
                     {
                         this.Textfield.UseAppStyling = false;
-                        this.Textfield.Appearance.BackColor = qs2.core.Colors.BackColorFieldError;
-                        this.Textfield.Appearance.ForeColor = qs2.core.Colors.ForeColorFieldError;
-                        this.Textfield.Appearance.BackColorDisabled = qs2.core.Colors.BackColorFieldError;
-                        this.Textfield.Appearance.ForeColorDisabled = qs2.core.Colors.ForeColorFieldError;
                     }
                     else if (typAction == eTypActionControl.clearError)
                     {
                         this.Textfield.UseAppStyling = false;
-                        this.Textfield.Appearance.BackColor = qs2.core.Colors.BackColorFieldNoError;
-                        this.Textfield.Appearance.ForeColor = qs2.core.Colors.ForeColorFieldNoError;
-                        this.Textfield.Appearance.BackColorDisabled = qs2.core.Colors.BackColorFieldNoError;
-                        this.Textfield.Appearance.ForeColorDisabled = qs2.core.Colors.ForeColorFieldNoError;
                     }
                     else if (typAction == eTypActionControl.setEditableAndFocus)
                     {
@@ -1560,16 +1531,10 @@ namespace qs2.design.auto.multiControl
                     else if (typAction == eTypActionControl.showError)
                     {
                         this.TextfieldMulti.UseAppStyling = false;
-                        this.TextfieldMulti.Appearance.BackColor = qs2.core.Colors.BackColorFieldError;
-                        this.TextfieldMulti.Appearance.BackColorDisabled = qs2.core.Colors.BackColorFieldError;
-                        this.TextfieldMulti.Appearance.ForeColorDisabled = qs2.core.Colors.ForeColorFieldError;
                     }
                     else if (typAction == eTypActionControl.clearError)
                     {
                         this.TextfieldMulti.UseAppStyling = false;
-                        this.TextfieldMulti.Appearance.BackColor = qs2.core.Colors.BackColorFieldNoError;
-                        this.TextfieldMulti.Appearance.BackColorDisabled = qs2.core.Colors.BackColorFieldNoError;
-                        this.TextfieldMulti.Appearance.ForeColorDisabled = qs2.core.Colors.BackColorFieldNoError;
                     }
                     else if (typAction == eTypActionControl.setEditableAndFocus)
                     {

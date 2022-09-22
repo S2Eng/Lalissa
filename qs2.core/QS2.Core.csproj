@@ -515,7 +515,6 @@
     <Compile Include="db\ERSystem\ERHelper.cs" />
     <Compile Include="ExceptionHandler\ExceptionHand.cs" />
     <Compile Include="Impersonation.cs" />
-    <Compile Include="SelfNgenPoC.cs" />
     <Compile Include="db\ERSystem\businessFramework.cs" />
     <Compile Include="print\dsSimpleQuerySelection.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -524,8 +523,6 @@
     </Compile>
     <Compile Include="print\print.cs" />
     <Compile Include="Protocol.cs" />
-    <Compile Include="ThreadStayUI.cs" />
-    <Compile Include="ui\Colors.cs" />
     <Compile Include="print\dsQryAuto.cs">
       <DependentUpon>dsQryAuto.xsd</DependentUpon>
     </Compile>
@@ -578,7 +575,6 @@
     </Compile>
     <Compile Include="ENV.cs" />
     <Compile Include="generic.cs" />
-    <Compile Include="Interfaces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ui\ProgBar.cs">
       <SubType>Component</SubType>

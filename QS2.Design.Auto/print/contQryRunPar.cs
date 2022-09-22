@@ -975,7 +975,6 @@ namespace qs2.ui.print
 
                     newElement.TabStop = false;
                     newElement.infragLabelLeft.UseAppStyling = false;
-                    newElement.infragLabelLeft.Appearance.ForeColor = qs2.core.Colors.standardCol2;
                     newElement.infragLabelRight.Visible = false;
                     newElement.infragLabelRight.Text = "";
                 }

@@ -8,36 +8,11 @@ Public Class ui
 
     Public Shared Sub loadStyleInfrag(bUserdefined As Boolean, loadDefaultStyle As String, app As String)
         Try
-            If Not bUserdefined Then
-                Dim sStyleUI As String = actUsr.adjustRead(qs2.core.vb.actUsr.rUsr.UserName, sqlAdmin.eAdjust.styleUI, sqlAdmin.eTypSelAdjust.forUsr, "")
-                If sStyleUI Is Nothing Then
-                    Exit Sub
-                Else
-                    loadDefaultStyle = sStyleUI
-                End If
-
-                Dim sIslFile As String = System.IO.Path.Combine(core.ENV.path_config, loadDefaultStyle.ToString() + ".isl")
-                If System.IO.File.Exists(sIslFile) Then
-                    Infragistics.Win.AppStyling.StyleManager.Load(sIslFile)
-                    ui.setInfragColorScheme(loadDefaultStyle.ToString())
-                    If loadDefaultStyle.Trim().ToLower().Equals(("Dark").Trim().ToLower()) Then
-                        qs2.core.ENV.ColorSchema = 1
-                    ElseIf loadDefaultStyle.Trim().ToLower().Equals(("Light").Trim().ToLower()) Then
-                        qs2.core.ENV.ColorSchema = 2
-                    End If
-                End If
-            Else
-                If qs2.core.ENV.ColorSchema = 1 Then
-                    Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(core.ENV.path_config, "Dark.isl"))
-                    ui.setInfragColorScheme(loadDefaultStyle.ToString())
-                    ui.setInfragColorScheme("Silver")
-                ElseIf qs2.core.ENV.ColorSchema = 2 Then
-                    Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(core.ENV.path_config, "Light.isl"))
-                    ui.setInfragColorScheme(loadDefaultStyle.ToString())
-                    ui.setInfragColorScheme("Silver")
-                End If
+            If qs2.core.ENV.ColorSchema = 1 Then
+                Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(core.ENV.path_config, "Dark.isl"))
+            ElseIf qs2.core.ENV.ColorSchema = 2 Then
+                Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(core.ENV.path_config, "Light.isl"))
             End If
-            'Infragistics.Win.AppStyling.StyleManager.Reset()
 
         Catch ex As Exception
             Throw New Exception("loadStyleInfrag: " + ex.ToString())
@@ -61,126 +36,8 @@ Public Class ui
             Throw New Exception("getWatchProtokoll: " + ex.ToString())
         End Try
     End Sub
-    Public Shared Sub setInfragColorScheme(sStyleUI As String)
-        If sStyleUI.Trim().ToLower() = ("Blue").ToLower() Then
-            Infragistics.Win.Office2010ColorTable.ColorScheme = Infragistics.Win.Office2010ColorScheme.Blue
-            qs2.core.Colors.initColors(System.Drawing.Color.FromArgb(210, 228, 255), System.Drawing.Color.FromArgb(132, 178, 233))
-        Else
-            Infragistics.Win.Office2013ColorTable.ColorScheme = Infragistics.Win.Office2013ColorScheme.Default
-            qs2.core.Colors.initColors(System.Drawing.Color.LightGray, System.Drawing.Color.FromArgb(132, 178, 233))
-        End If
 
-    End Sub
-
-    Public Sub UltraGridMouseEnterElementGetToolTipTextForRowGrid(sender As System.Object, e As Infragistics.Win.UIElementEventArgs, _
-                                            ByRef typObj As qs2.core.vb.sqlObjects.eTypObj, _
-                                            ByRef sToolTipTitle As String, ByRef sToolTipText As String, _
-                                            ByRef toolTipManager As Infragistics.Win.UltraWinToolTip.UltraToolTipManager, _
-                                            ByRef grid As UltraGrid, _
-                                            ByRef forObject As Boolean, ByRef forStay As Boolean)
-        If Not qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-            Exit Sub
-        End If
-
-        toolTipManager.ToolTipImage = Infragistics.Win.ToolTipImage.Info
-
-        If e.Element.GetType() = GetType(Infragistics.Win.UltraWinGrid.RowUIElement) Then
-            Dim row As Infragistics.Win.UltraWinGrid.UltraGridRow = e.Element.GetContext()
-            If forObject Then
-                Me.getToolTipTextObject(typObj, row, sToolTipTitle, sToolTipText)
-            ElseIf forStay Then
-                Me.getToolTipTextStay(row, sToolTipTitle, sToolTipText)
-            End If
-
-            Dim tipInfo As New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo()
-            tipInfo.ToolTipTitle = sToolTipTitle
-            tipInfo.ToolTipText = sToolTipText
-            toolTipManager.SetUltraToolTip(grid, tipInfo)
-            toolTipManager.ShowToolTip(grid)
-        Else
-            'Me.UltraToolTipManager1.HideToolTip()
-        End If
-
-        'If e.Element.GetType() = GetType(Infragistics.Win.UltraWinGrid.CellUIElement) Then
-        '    Dim column As Infragistics.Win.UltraWinGrid.UltraGridColumn = e.Element.GetContext()
-        '    If column.Key = "LastName" Then
-        '        Dim tipInfo As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Click button to delete record.", ToolTipImage.Info, "Delete Record", DefaultableBoolean.True)
-        '        Me.UltraToolTipManager1.SetUltraToolTip(Me.UltraGrid1, tipInfo)
-        '        Me.UltraToolTipManager1.ShowToolTip(Me.UltraGrid1)
-        '    Else
-        '        Me.UltraToolTipManager1.HideToolTip()
-        '    End If
-        'End If
-
-    End Sub
-    Public Sub UltraGridMouseLeave(sender As System.Object, e As System.EventArgs, _
-                                     ByRef toolTipManager As Infragistics.Win.UltraWinToolTip.UltraToolTipManager, _
-                                        ByRef grid As UltraGrid)
-        toolTipManager.HideToolTip()
-        toolTipManager.SetUltraToolTip(grid, Nothing)
-    End Sub
-
-    Public Sub getToolTipTextObject(ByRef typObj As qs2.core.vb.sqlObjects.eTypObj, ByRef rowGrid As Infragistics.Win.UltraWinGrid.UltraGridRow, _
-                                        ByRef sToolTipTitle As String, ByRef sToolTipText As String)
-
-        Dim v As DataRowView = rowGrid.ListObject
-        Dim rObjSel As qs2.core.vb.dsObjects.tblObjectRow = v.Row
-
-        sToolTipTitle = qs2.core.language.sqlLanguage.getRes("Name") + ": " + sqlObjects.getNameCombination(rObjSel) + vbNewLine
-        If Not rObjSel.IsDOBNull() Then
-            sToolTipText = qs2.core.language.sqlLanguage.getRes("DOB") + ": " + rObjSel.DOB + vbNewLine
-        End If
-        If Not rObjSel.IsMtDateNull() Then
-            sToolTipText += qs2.core.language.sqlLanguage.getRes("MtDate") + ": " + rObjSel.MtDate + vbNewLine
-        End If
-        sToolTipText += qs2.core.language.sqlLanguage.getRes("Participant") + ": " + rObjSel.IDParticipant + vbNewLine
-
-        If typObj = qs2.core.vb.sqlObjects.eTypObj.IsPatient Then
-            sToolTipText += qs2.core.language.sqlLanguage.getRes("Title") + ": " + rObjSel.Title + vbNewLine
-            sToolTipText += qs2.core.language.sqlLanguage.getRes("SSN") + ": " + rObjSel.SSN   '+ vbNewLine
-            'sToolTipText += qs2.core.language.sqlLanguage.getRes("IsJehova") + ": " + rObjSel.IsJehova.ToString() + vbNewLine
-        ElseIf typObj = qs2.core.vb.sqlObjects.eTypObj.IsUser Then
-        End If
-
-    End Sub
-    Public Sub getToolTipTextStay(ByRef rowGrid As Infragistics.Win.UltraWinGrid.UltraGridRow, _
-                                    ByRef sToolTipTitle As String, ByRef sToolTipText As String)
-
-        Dim v As DataRowView = rowGrid.ListObject
-        Dim rStaySel As qs2.core.vb.dsObjects.tblStayRow = v.Row
-
-        sToolTipTitle = "MedRecNr" + ": " + rStaySel.MedRecN + vbNewLine
-        sToolTipText += qs2.core.language.sqlLanguage.getRes("Participant") + ": " + rStaySel.IDParticipant + vbNewLine
-        If Not rStaySel.IsSurgDtStartNull() Then
-            sToolTipText += qs2.core.language.sqlLanguage.getRes("SurgDtStart") + ": " + rStaySel.SurgDtStart.ToString() + vbNewLine
-        End If
-        If Not rStaySel.IsSurgDtEndNull() Then
-            sToolTipText += qs2.core.language.sqlLanguage.getRes("SurgDtEnd") + ": " + rStaySel.SurgDtEnd.ToString() + vbNewLine
-        End If
-        If Not rStaySel.IsFUPDtNull() Then
-            sToolTipText += qs2.core.language.sqlLanguage.getRes("FUPDt") + ": " + rStaySel.FUPDt.ToString() + vbNewLine
-        End If
-
-        'If Not rObjSel.IsDOBNull() Then
-        '    sToolTipText = qs2.core.language.sqlLanguage.getRes("DOB") + ": " + rObjSel.DOB + vbNewLine
-        'End If
-        'If Not rObjSel.IsMtDateNull() Then
-        '    sToolTipText += qs2.core.language.sqlLanguage.getRes("MtDate") + ": " + rObjSel.MtDate + vbNewLine
-        'End If
-        'sToolTipText += qs2.core.language.sqlLanguage.getRes("Participant") + ": " + rObjSel.IDParticipant + vbNewLine
-
-        'If typObj = qs2.core.vb.sqlObjects.eTypObj.IsPatient Then
-        '    sToolTipText += qs2.core.language.sqlLanguage.getRes("Title") + ": " + rObjSel.Title + vbNewLine
-        '    sToolTipText += qs2.core.language.sqlLanguage.getRes("SSN") + ": " + rObjSel.SSN + vbNewLine
-        '    sToolTipText += qs2.core.language.sqlLanguage.getRes("IsJehova") + ": " + rObjSel.IsJehova.ToString() + vbNewLine
-        'ElseIf typObj = qs2.core.vb.sqlObjects.eTypObj.IsUser Then
-
-        'End If
-
-    End Sub
-
-
-    Public Shared Function loadImagesFromRessources(cbo As Infragistics.Win.UltraWinEditors.UltraComboEditor, _
+    Public Shared Function loadImagesFromRessources(cbo As Infragistics.Win.UltraWinEditors.UltraComboEditor,
                                                      ValueListToLoad As Infragistics.Win.ValueList) As Boolean
 
         ValueListToLoad.ValueListItems.Clear()

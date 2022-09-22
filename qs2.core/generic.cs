@@ -161,23 +161,7 @@ namespace qs2.core
         {
             System.Diagnostics.Process.Start("explorer.exe", path);
         }
-
-
-        public static DialogResult showMessageBoxWIN(string txt, MessageBoxButtons typButtons, string title)
-        {
-            try
-            {
-                if (title.Equals(""))
-                    title = qs2.core.language.sqlLanguage.getRes("QS2");
-
-                return System.Windows.Forms.MessageBox.Show(txt, title, typButtons);
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("generic.showMessageBoxWIN:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-        }
+        
         public static DialogResult showMessageBox(string txt, MessageBoxButtons typButtons, string title)
         {
             try
@@ -383,37 +367,7 @@ namespace qs2.core
                 return false;
             }
         }
-
-        public static Bitmap CombineBitmaps(Image[] images)
-        {
-            if (images.Length == 0)
-                return new Bitmap(1, 1);
-            int width = 0;
-            int height = 0;
-            foreach (Bitmap bmp in images)
-            {
-                //width += bmp.Width;
-                width += 18;
-                //if (height < bmp.Height)
-                //    height = bmp.Height;
-                height = 18;
-            }
-            Bitmap bitmap = new Bitmap(width, height);
-            using (Graphics grfx = Graphics.FromImage(bitmap))
-            {
-                int x = 0;
-                foreach (Bitmap bmp in images)
-                {
-                    if (bmp == null)
-                        continue;
-                    //grfx.DrawImage(bmp, x, 0, bmp.Width, height);
-                    grfx.DrawImage(bmp, x, 0, 18, 18);
-                    x += 18;// bmp.Width;
-                }
-            }
-            return bitmap;
-        }
-
+        
         public static void getResourceTypes(Infragistics.Win.ValueList valList, Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)
         {
             foreach (int val in Enum.GetValues(typeof(Enums.eResourceType)))
@@ -429,6 +383,7 @@ namespace qs2.core
 
             }
         }
+
         public static void getSpecialDefinitionsMinValue(Infragistics.Win.ValueList valList, Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)
         {
             foreach (int val in Enum.GetValues(typeof(Enums.eSpecialDefinitionsMinValue)))
@@ -444,6 +399,7 @@ namespace qs2.core
                 }
             }
         }
+
         public static void getSpecialDefinitionsMaxValue(Infragistics.Win.ValueList valList, Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)
         {
             foreach (int val in Enum.GetValues(typeof(Enums.eSpecialDefinitionsMaxValue)))
@@ -481,6 +437,7 @@ namespace qs2.core
                     cbo.Items.Add(val, qs2.core.language.sqlLanguage.getRes(sResTyp));
             }
         }
+
         public static int getStayTypeInt(Enums.eStayTyp typ)
         {
             foreach (int val in Enum.GetValues(typeof(Enums.eStayTyp)))
@@ -491,6 +448,7 @@ namespace qs2.core
             }
             return qs2.core.generic.idMinus;
         }
+
         public static void getOPTypes(Infragistics.Win.ValueList valList, Infragistics.Win.UltraWinEditors.UltraComboEditor cbo, bool notSurgery)
         {
             foreach (int val in Enum.GetValues(typeof(Enums.eOPTyp)))
@@ -506,33 +464,6 @@ namespace qs2.core
             }
         }
 
-        public static void getFilesUIStyles(Infragistics.Win.ValueList valList, Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)
-        {
-            foreach (string fileFound in System.IO.Directory.GetFiles(ENV.path_config))
-            {
-                string fileName = System.IO.Path.GetFileName(fileFound);
-                string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(fileFound);
-
-                if (Path.GetExtension(fileName) == ".isl")
-                {
-                    if (valList != null)
-                        valList.ValueListItems.Add(fileNameWithoutExtension, fileNameWithoutExtension);
-                    if (cbo != null)
-                        cbo.Items.Add(fileNameWithoutExtension, fileNameWithoutExtension);
-                }
-            }
-        }
-        public static void getEnumLanguages(Infragistics.Win.ValueList valList, Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)
-        {
-            foreach (int val in Enum.GetValues(typeof(qs2.core.language.sqlLanguage.eLanguage)))
-            {
-                string sResTyp = Enum.GetName(typeof(qs2.core.language.sqlLanguage.eLanguage), val);
-                if (valList != null)
-                    valList.ValueListItems.Add(sResTyp, sResTyp);
-                if (cbo != null)
-                    cbo.Items.Add(sResTyp, sResTyp);
-            }
-        }
         public static void getTypQueryDefs(Infragistics.Win.ValueList valList, Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)
         {
             foreach (int val in Enum.GetValues(typeof(Enums.eTypQueryDef)))
@@ -544,6 +475,7 @@ namespace qs2.core
                     cbo.Items.Add(sResTyp, sResTyp);
             }
         }
+
         public static void getAutoFitStyleGrid(Infragistics.Win.ValueList valList, Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)
         {
             foreach (int val in Enum.GetValues(typeof(ui.eAutoFitStyle)))
@@ -555,6 +487,7 @@ namespace qs2.core
                     cbo.Items.Add(sResTyp, sResTyp);
             }
         }
+
         public static core.license.doLicense.eApp searchEnumApplication(string keyToSearch)
         {
             foreach (int val in Enum.GetValues(typeof(license.doLicense.eApp)))
@@ -565,17 +498,7 @@ namespace qs2.core
             }
             throw new Exception("searchEnumApplication: key '" + keyToSearch + "' not found!");
         }
-        public static core.Enums.eStayTyp searchEnumStayType(string keyToSearch)
-        {
-            foreach (int val in Enum.GetValues(typeof(license.doLicense.eApp)))
-            {
-                string sResTyp = Enum.GetName(typeof(license.doLicense.eApp), val);
-                if (keyToSearch == sResTyp)
-                    return (core.Enums.eStayTyp)val;
-            }
-            throw new Exception("searchEnumStayType: key '" + keyToSearch + "' not found!");
-        }
-
+       
         public static qs2.core.Enums.eControlType searchEnumControlType(string keyToSearch)
         {
             foreach (int val in Enum.GetValues(typeof(qs2.core.Enums.eControlType)))
@@ -588,16 +511,7 @@ namespace qs2.core
             }
             throw new Exception("searchEnumControlType: key '" + keyToSearch + "' not found!");
         }
-        public static qs2.core.ENV.eTypApp searchEnumTypApp(string keyToSearch)
-        {
-            foreach (int val in Enum.GetValues(typeof(qs2.core.ENV.eTypApp)))
-            {
-                string sResTyp = Enum.GetName(typeof(qs2.core.ENV.eTypApp), val);
-                if (keyToSearch == sResTyp)
-                    return (qs2.core.ENV.eTypApp)val;
-            }
-            throw new Exception("searchEnumControlType: key '" + keyToSearch + "' not found!");
-        }
+
         public static qs2.core.Enums.eTypSubReport searchEnumTypSubReport(string keyToSearch)
         {
             foreach (int val in Enum.GetValues(typeof(qs2.core.Enums.eTypSubReport)))
@@ -608,6 +522,7 @@ namespace qs2.core
             }
             throw new Exception("searchEnumTypSubReport: key '" + keyToSearch + "' not found!");
         }
+
         public static core.Enums.eResourceType searchEnumRessourcenTyp(string keyToSearch)
         {
             foreach (int val in Enum.GetValues(typeof(core.Enums.eResourceType)))
@@ -618,16 +533,7 @@ namespace qs2.core
             }
             return Enums.eResourceType.None;
         }
-        public static Infragistics.Win.UltraWinGrid.ColumnStyle searchEnumColumnStyleInfragistics(string keyToSearch)
-        {
-            foreach (int val in Enum.GetValues(typeof(core.Enums.eResourceType)))
-            {
-                string sResTyp = Enum.GetName(typeof(core.Enums.eResourceType), val);
-                if (keyToSearch == sResTyp)
-                    return (Infragistics.Win.UltraWinGrid.ColumnStyle)val;
-            }
-            return Infragistics.Win.UltraWinGrid.ColumnStyle.Default;
-        }
+
         public static System.Collections.Generic.List<string> getEnumValues(Type TypeToSearch)
         {
             System.Collections.Generic.List<string> lstReturn = new System.Collections.Generic.List<string>();
@@ -689,14 +595,6 @@ namespace qs2.core
                     }
                 }
                 MaskInputCalc = "{LOC}" + MaskInputCalc;
-                // Reverse Format-Strings
-                //string FormatStringCalc = "";
-                //string MaskInputCalc = "{LOC}";
-                //for (int i = FormatStringCalcWrong.Length; i >= 1; i--)
-                //{
-                //    FormatStringCalc += FormatStringCalcWrong.Substring(i - 1, 1);
-                //    MaskInputCalc += MaskInputCalcWrong.Substring(i - 1, 1);
-                //}
 
                 if (NUMERIC_SCALE == 0)
                 {
@@ -731,6 +629,7 @@ namespace qs2.core
                 return calculatedFormat1;
             }
         }
+
         public static infoControl setFormatText(int CHARACTER_MAXIMUM_LENGTH, string ControlMinVal, string ControlMaxVal, bool isFormatedTxt)
         {
             infoControl calculatedFormat1 = new infoControl();
@@ -1043,15 +942,6 @@ namespace qs2.core
             }
         }
 
-        public string getDateConvertSql(DateTime dat)
-        {
-            string sDat = "";
-            sDat = "CONVERT(datetime,'" + dat.ToString("MM-dd-yyyy HH:mm:ss") + "', 120)";
-            return sDat;
-        }
-
-      
-
         private static bool checkValueNull(object value)
         {
 
@@ -1084,15 +974,7 @@ namespace qs2.core
                 ValueReturn = str.Substring(posEquals + 1, str.Length - (posEquals + 1)).Trim();
             }
         }
-        public static void readVariableAndValue(string str, ref string VariableReturn, ref string ValueReturn, string delimiter)
-        {
-            int posEquals = str.IndexOf(delimiter.Trim());
-            if (posEquals != -1)
-            {
-                VariableReturn = str.Substring(0, posEquals).Trim();
-                ValueReturn = str.Substring(posEquals + 1, str.Length - (posEquals + 1)).Trim();
-            }
-        }
+
         public static void getValues(string str, string delimiter, ref System.Collections.Generic.List<string> lstValuesFound)
         {
             try
@@ -1210,10 +1092,12 @@ namespace qs2.core
                 return qs2.core.generic.getSubstring(strToSearch, actPosRead, strToSearch.Length - actPosRead);
             }
         }
+
         public static string getSubstring(string strToSearch, int startIndex, int length)
         {
             return strToSearch.Substring(startIndex, length);
         }
+
         public static int nextPos(string strToSearch, string searchStr, int actPos)
         {
             return strToSearch.IndexOf(searchStr, actPos);
@@ -1294,7 +1178,6 @@ namespace qs2.core
             }
         }
 
-
         public static byte[] StringToBytes(string str)
         {
             byte[] bytes = new byte[str.Length * sizeof(char)];
@@ -1335,11 +1218,6 @@ namespace qs2.core
                     credentials.Password,
                     userName,
                     0);
-
-                //if (result != 0)
-                //{
-                //    throw new Exception("Error connecting to remote share");    //osxy Ressource hinzufügen
-                //}
             }
 
             ~NetworkConnection()
@@ -1421,8 +1299,7 @@ namespace qs2.core
         private static bool AcceptAllCertifications(object sender, System.Security.Cryptography.X509Certificates.X509Certificate certification, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
         {
             return true;
-        } 
-
+        }
 
         public static System.Text.Encoding GetEncoding ()
         {

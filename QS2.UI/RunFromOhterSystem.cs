@@ -64,8 +64,6 @@ namespace qs2.ui
                         qs2.design.auto.workflowAssist.autoForm.ColorSchemas.initColorSchemas();
                         qs2.core.ENV.alwaysNewConnection = false;
                         qs2.core.ENV.StaysAsExternProcess2 = false;
-                        
-                        qs2.core.threadStayUI.StayUIIsinitialized = true;
                         qs2.core.vb.sqlObjects sqlObjects1 = new sqlObjects(); 
                         sqlObjects1.initControl();
                         Guid IDGuidObjBack = System.Guid.Empty;
