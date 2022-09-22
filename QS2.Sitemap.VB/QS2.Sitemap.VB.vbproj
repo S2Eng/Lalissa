@@ -477,24 +477,6 @@
     <Compile Include="adjustments\contMyAdjust.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cboObjects.Designer.vb">
-      <DependentUpon>cboObjects.vb</DependentUpon>
-    </Compile>
-    <Compile Include="cboObjects.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="frmCheckUsercode.Designer.vb">
-      <DependentUpon>frmCheckUsercode.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmCheckUsercode.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSelectPatient.Designer.vb">
-      <DependentUpon>frmSelectPatient.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSelectPatient.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -620,15 +602,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="adjustments\contMyAdjust.resx">
       <DependentUpon>contMyAdjust.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cboObjects.resx">
-      <DependentUpon>cboObjects.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCheckUsercode.resx">
-      <DependentUpon>frmCheckUsercode.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSelectPatient.resx">
-      <DependentUpon>frmSelectPatient.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
