@@ -483,12 +483,6 @@
     <Compile Include="cboObjects.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="contProducts.Designer.vb">
-      <DependentUpon>contProducts.vb</DependentUpon>
-    </Compile>
-    <Compile Include="contProducts.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="doProductsAll.vb" />
     <Compile Include="frmCheckUsercode.Designer.vb">
       <DependentUpon>frmCheckUsercode.vb</DependentUpon>
@@ -630,9 +624,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cboObjects.resx">
       <DependentUpon>cboObjects.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="contProducts.resx">
-      <DependentUpon>contProducts.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCheckUsercode.resx">
       <DependentUpon>frmCheckUsercode.vb</DependentUpon>
