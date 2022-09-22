@@ -577,7 +577,6 @@
     </Compile>
     <Compile Include="funct.vb" />
     <Compile Include="init.vb" />
-    <Compile Include="Interface\KAV\XMLTools.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -968,8 +967,6 @@
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Import\" />
-    <Folder Include="Interface\HL7\" />
     <Folder Include="Products\" />
     <Folder Include="sql\BusinessLogic\" />
     <Folder Include="sql\products\ALL\" />

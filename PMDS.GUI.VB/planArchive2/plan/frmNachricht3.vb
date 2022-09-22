@@ -3318,7 +3318,7 @@ Public Class frmNachricht3
                     If Me.chkIsSerientermin.Checked Then
                         If Me.frmStatus = General.eStatusForm.neu Then
                             ownerSucessfullySaved = True
-                        Else ownerSucessfullySaved = True
+                        Else
                             If Me.dteSerienterminEndetAm.Value.Equals(EndetAmSerientermin) Then
                                 If Me.saveNachrichtToDb2() Then
                                     ownerSucessfullySaved = True
