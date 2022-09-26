@@ -443,8 +443,6 @@
             this.txtSuche.Name = "txtSuche";
             this.txtSuche.Size = new System.Drawing.Size(122, 21);
             this.txtSuche.TabIndex = 9;
-            this.txtSuche.ValueChanged += new System.EventHandler(this.txtSuche_ValueChanged);
-            this.txtSuche.Leave += new System.EventHandler(this.txtSuche_Leave);
             // 
             // lblSearch
             // 

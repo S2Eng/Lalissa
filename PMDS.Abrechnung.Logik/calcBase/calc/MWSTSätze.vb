@@ -55,7 +55,7 @@ Public Class MWSTSätze
                     Dim sLine As String = reader.ReadLine
                     If (sLine.Trim() <> "") Then
                         If sLine.Trim().Substring(0, 2) <> ("//") Then
-                            Dim fields As System.Collections.Generic.List(Of String) = QS2.functions.cs.funct.readStrVariables(sLine.Trim())
+                            Dim fields As String() = sLine.Split(New Char() {";"})
                             If fields(0).Trim().Equals("MWST", StringComparison.CurrentCultureIgnoreCase) Then
                                 Dim rNew As dbPMDS.MWSTSätzeRow = MWSTSätze.tMWSTSätzeFromFile.NewRow()
                                 rNew.Prozent = System.Convert.ToInt32(fields(1).Trim())

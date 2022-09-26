@@ -1370,7 +1370,7 @@ Public Class contTxtEditor
         Dim funct1 As New QS2.functions.vb.funct()
         Dim tmpFile As String = ""
         If temporär Then
-            tmpFile = ENV._path_temp + "\" + funct1.getFileName(docu, True) + "_" + System.Guid.NewGuid.ToString + funct1.getFiletyp(docu)
+            tmpFile = ENV._path_temp + "\" + funct1.getFileName(docu, True) + "_" + System.Guid.NewGuid.ToString + System.IO.Path.GetExtension(docu)
             System.IO.File.Copy(docu, tmpFile)
         Else
             tmpFile = docu

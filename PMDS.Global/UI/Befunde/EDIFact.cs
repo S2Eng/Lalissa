@@ -800,7 +800,7 @@ namespace EDIFact
             {
                 editorToShow.Text = "";
                 QS2.functions.vb.funct funct1 = new QS2.functions.vb.funct();
-                string selectedFile = funct1.selectFile(false, "" + this.TypeBefund, QS2.functions.vb.funct.getFolder(Environment.SpecialFolder.Desktop));
+                string selectedFile = funct1.selectFile(this.TypeBefund, System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
                 if (selectedFile != null)
                 {
                     Font font = new Font("lucida console", 8.0f);

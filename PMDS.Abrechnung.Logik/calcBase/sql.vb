@@ -1,5 +1,5 @@
 ﻿Imports System.Data.OleDb
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports S2Extensions
 Imports VB = Microsoft.VisualBasic
 
 Public Class Sql
@@ -129,13 +129,13 @@ Public Class Sql
             End Using
 
         Catch exept As Exception
-            If QS2.functions.cs.funct.checkExceptionServerNotReachable(exept.ToString()) Then
-                QS2.functions.cs.funct.WaitMilli(200)
+            If checkExceptionServerNotReachable(exept.ToString()) Then
+                System.Threading.Thread.Sleep(200)
                 Try
                     Return Me.insertBillHeader(rNew)
                 Catch ex As Exception
-                    If QS2.functions.cs.funct.checkExceptionServerNotReachable(exept.ToString()) Then
-                        QS2.functions.cs.funct.WaitMilli(200)
+                    If checkExceptionServerNotReachable(exept.ToString()) Then
+                        System.Threading.Thread.Sleep(200)
                         Return Me.insertBillHeader(rNew)
                     Else
                         calcBase.doExept(exept)
@@ -145,6 +145,20 @@ Public Class Sql
                 calcBase.doExept(exept)
             End If
         End Try
+    End Function
+
+
+    Private Function checkExceptionServerNotReachable(except As String) As Boolean
+        If except.sContains("Server antwortet nicht") Or
+           except.sContains("DBNETLIB") Or
+           except.sContains("bereits ein geöffneter DataReader zugeordnet") Or
+           except.sContains("Status der Verbindung ist 'Geschlossen'") Or
+           except.sContains("Physische Verbindung nicht einsatzbereit") Or
+           except.sContains("Abfragetimeout") Then
+            Return True
+        Else
+            Return False
+        End If
     End Function
 
     Public Function delBillHeader(ByRef ID As String) As Boolean

@@ -14,24 +14,18 @@ namespace QS2.Logging
 
     public partial class ucError : System.Windows.Forms.UserControl
     {
+        private const string lineBreak = "\r\n";
+        private System.Guid _id;
+        private QS2.Logging.dsLog.tblLogRow rNewError1;
+        private string hostName2 = "";
+        private string TxtInfo = "";
+        private string fld_title = "";
+        private string fld_usr = "";
+        private string fld_from = "";
+        private string fld_error = "";
 
-        public System.Guid _id;
         public frmError modalWindow;
-        public QS2.Logging.dsLog.tblLogRow rNewError1 = null;
-        public string hostName2 = "";
-        public string TxtInfo = "";
-        public bool germanTxt = false;
-        
-        public string fld_title = "";
-        public string fld_usr = "";
-        public string fld_from = "";
-        public string fld_error = "";
-
-
-
-
-
-
+        public bool germanTxt;
 
         public ucError()
         {
@@ -41,7 +35,6 @@ namespace QS2.Logging
         private void frmError_Load(object sender, EventArgs e)
         {
             this.ultraGridBagLayoutPanelExept.Visible = false;
-            //this.pictureBox1.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.ePicture.ico_log, 32, 32);
         }
 
         public void setData(string title, string exep, string usr, bool WriteDataToXML)
@@ -49,7 +42,6 @@ namespace QS2.Logging
             try
             {
                 this._id = System.Guid.NewGuid();
-                //sErr += "<span style=" + (char)34 + "font-size:8pt;" + (char)34 + ">" + exep + "</span>" + "";
                 this.lblExept.Value = exep;
 
                 string errFile = "";
@@ -89,8 +81,8 @@ namespace QS2.Logging
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("The logfile '" + errFile + "' can not be written!" + QS2.functions.cs.funct.lineBreak +
-                                    "Please contact your administrator ..." + QS2.functions.cs.funct.lineBreak + QS2.functions.cs.funct.lineBreak + QS2.functions.cs.funct.lineBreak + ex.ToString(), "Write Log-file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("The logfile '" + errFile + "' can not be written!" + lineBreak +
+                                    "Please contact your administrator ..." + lineBreak + lineBreak + lineBreak + ex.ToString(), "Write Log-file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
               
                 }
 
@@ -106,8 +98,8 @@ namespace QS2.Logging
             }
             catch (Exception ex2)
             {
-                MessageBox.Show("Error in the error handling system!" + QS2.functions.cs.funct.lineBreak +
-                                "Please contact your administrator ..." + QS2.functions.cs.funct.lineBreak + QS2.functions.cs.funct.lineBreak + QS2.functions.cs.funct.lineBreak + ex2.ToString(), "Write Log-file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Error in the error handling system!" + lineBreak +
+                                "Please contact your administrator ..." + lineBreak + lineBreak + lineBreak + ex2.ToString(), "Write Log-file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 

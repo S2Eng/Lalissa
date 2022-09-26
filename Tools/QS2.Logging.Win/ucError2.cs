@@ -16,19 +16,13 @@ namespace QS2.Logging
 
     public partial class ucError2 : System.Windows.Forms.UserControl
     {
-
+        private const string lineBreak = "\r\n";
         public System.Guid _id;
         public frmError2 modalWindow;
         public QS2.Logging.dsLog.tblLogRow rNewError = null;
         public string hostName = "";
         public string TxtInfo = "";
         public bool germanTxt = false;
-
-
-
-
-
-
 
         public ucError2()
         {
@@ -75,8 +69,8 @@ namespace QS2.Logging
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("The logfile '" + errFile + "' can not be written!" + QS2.functions.cs.funct.lineBreak +
-                                    "Please contact your administrator ..." + QS2.functions.cs.funct.lineBreak + QS2.functions.cs.funct.lineBreak + QS2.functions.cs.funct.lineBreak + ex.ToString(), "Write Log-file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("The logfile '" + errFile + "' can not be written!" + lineBreak +
+                                    "Please contact your administrator ..." + lineBreak + lineBreak + lineBreak + ex.ToString(), "Write Log-file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
               
                 }
 
@@ -92,8 +86,8 @@ namespace QS2.Logging
             }
             catch (Exception ex2)
             {
-                MessageBox.Show("Error in the error handling system!" + QS2.functions.cs.funct.lineBreak +
-                                "Please contact your administrator ..." + QS2.functions.cs.funct.lineBreak + QS2.functions.cs.funct.lineBreak + QS2.functions.cs.funct.lineBreak + ex2.ToString(), "Write Log-file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Error in the error handling system!" + lineBreak +
+                                "Please contact your administrator ..." + lineBreak + lineBreak + lineBreak + ex2.ToString(), "Write Log-file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 

@@ -54,13 +54,10 @@ Public Class doEditor
     Public Function saveDocument(ByVal docuToSave As String, ByVal typ As TXTextControl.StreamType, _
                                  ByVal editor As TXTextControl.TextControl) As Boolean
 
-        'Me.documentName = docuToSave
-        'Me.actualFilterIndex = Me.SaveFileDialog1.FilterIndex
         Dim SaveSettings As New TXTextControl.SaveSettings()
         If System.IO.File.Exists(docuToSave) Then
             System.IO.File.Delete(docuToSave)
         End If
-        QS2.functions.cs.funct.runGarbColl()
         editor.Save(docuToSave, typ, SaveSettings)
         Return True
 
@@ -68,7 +65,6 @@ Public Class doEditor
 
     Public Function getText(ByVal typ As TXTextControl.StringStreamType, ByVal editor As TXTextControl.TextControl) As String
         Try
-            QS2.functions.cs.funct.runGarbColl()
             Dim strData As String = ""
             editor.Save(strData, typ)
             Return strData

@@ -17,14 +17,10 @@ namespace QS2.Logging
     {
 
         private string _db = "";
+        private const string lineBreak = "\r\n";
         private QS2.functions.vb.funct clString = new QS2.functions.vb.funct();
 
         public QS2.Logging.frmLogManager mainWindow = null;
-
-
-
-
-       
 
         public contLogViewer()
         {
@@ -114,7 +110,7 @@ namespace QS2.Logging
 
                 if (!System.IO.Directory.Exists(QS2.Logging.ENV._path_log))
                 { System.IO.Directory.CreateDirectory(QS2.Logging.ENV._path_log); }
-                string fil = clString.selectFile(false, QS2.functions.vb.funct.typLogFile, QS2.Logging.ENV._path_log);
+                string fil = clString.selectFile(QS2.functions.vb.funct.typLogFile, QS2.Logging.ENV._path_log);
                 if (fil != "")
                 {
                     this.dsLog1.tblLog.Rows.Clear();
@@ -236,6 +232,7 @@ namespace QS2.Logging
                 this.Cursor = Cursors.Default;
             }
         }
+
         public void previewOnOff(bool bOn)
         {
             if (bOn)
@@ -252,31 +249,16 @@ namespace QS2.Logging
             }
         }
 
-        private void txtSuche_Leave(object sender, EventArgs e)
-        {
-  
-        }
-
-        private void txtSuche_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSuche_Click(object sender, EventArgs e)
         {
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
-                //dsLog.tblLogRow[] prows;
-                //prows = (dsLog.tblLogRow[])this.dsLog1.tblLog.Select("error = '" + txtSuche.Text + "' or title ='" + txtSuche.Text + "'");
-                
                 this.ultraGrid1.DisplayLayout.Bands[0].ColumnFilters[dsLog1.tblLog .errorColumn .ColumnName ].ClearFilterConditions();
                 this.ultraGrid1.DisplayLayout.Bands[0].ColumnFilters[dsLog1.tblLog.titleColumn .ColumnName].ClearFilterConditions();
                 if (this.txtSuche.Text != "")
                 {
                     this.ultraGrid1.DisplayLayout.Bands[0].ColumnFilters[dsLog1.tblLog.errorColumn.ColumnName].FilterConditions.Add(Infragistics.Win.UltraWinGrid.FilterComparisionOperator.Contains , this.txtSuche.Text);
-                    //this.ultraGrid1.DisplayLayout.Bands[0].ColumnFilters[dsLog1.tblLog.titleColumn.ColumnName].FilterConditions.Add(Infragistics.Win.UltraWinGrid.FilterComparisionOperator.Like, this.txtSuche.Text);
                 }
             }
             catch (Exception ex)
@@ -309,7 +291,7 @@ namespace QS2.Logging
             string prot = "";
             foreach (QS2.Logging.dsLog.tblLogRow r in this.dsLog1.tblLog)
             {
-                prot += r.error + QS2.functions.cs.funct.lineBreak;
+                prot += r.error + lineBreak;
             }
             Clipboard.SetDataObject(prot, true);
 
@@ -337,7 +319,7 @@ namespace QS2.Logging
 
                 foreach (string db in System.IO.Directory.GetFiles(QS2.Logging.ENV._path_log))
                 {
-                    if (clString.getFiletyp(db) == ".xml")
+                    if (System.IO.Path.GetExtension(db) == ".xml")
                         this.cboDB.Items.Add(db, clString.getFileName(db, false));
                 }
                 this.Cursor = Cursors.Default;
@@ -348,7 +330,7 @@ namespace QS2.Logging
             if (this.btnRefresh.Focused)
             {
                 this.loadDB();
-             }
+            }
         }
 
         private void cboDB_ValueChanged(object sender, EventArgs e)
@@ -377,9 +359,10 @@ namespace QS2.Logging
         {
             this.lblFound.Text = "Found: " + this.ultraGrid1.Rows.Count.ToString();
         }
+
         private void lblLogOrdnerÖffnen_Click(object sender, EventArgs e)
         {
-            QS2.functions.cs.funct.openWindowsExplorer(QS2.Logging.ENV._path_log);
+            QS2.functions.cs.Funct.openWindowsExplorer(QS2.Logging.ENV._path_log);
         }
 
         private void testExceptionToolStripMenuItem_Click(object sender, EventArgs e)
