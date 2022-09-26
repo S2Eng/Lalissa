@@ -488,7 +488,6 @@ namespace PMDS.GUI
         }
         public   void setWidthHeigtSiteMapStart(int w, int h)
         {
-            this._SitemapStart.setWidthHeigtSiteMapStart (w, h);
         }
 
         public void initEvaluierung()

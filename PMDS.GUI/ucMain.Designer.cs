@@ -311,7 +311,6 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanelAll2.SetPreferredSize(this.ultraGridBagLayoutPanelMitte, new System.Drawing.Size(979, 451));
             this.ultraGridBagLayoutPanelMitte.Size = new System.Drawing.Size(1121, 568);
             this.ultraGridBagLayoutPanelMitte.TabIndex = 28;
-            this.ultraGridBagLayoutPanelMitte.Paint += new System.Windows.Forms.PaintEventHandler(this.ultraGridBagLayoutPanelMitte_Paint);
             // 
             // panelAll
             // 
@@ -869,7 +868,6 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanelMitte.SetPreferredSize(this.panelRigthTree, new System.Drawing.Size(184, 100));
             this.panelRigthTree.Size = new System.Drawing.Size(212, 556);
             this.panelRigthTree.TabIndex = 0;
-            this.panelRigthTree.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // panelAll2
             // 
@@ -905,7 +903,6 @@ namespace PMDS.GUI
             this.panelsSelectKlinik.Name = "panelsSelectKlinik";
             this.panelsSelectKlinik.Size = new System.Drawing.Size(212, 1);
             this.panelsSelectKlinik.TabIndex = 7;
-            this.panelsSelectKlinik.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // panelButtoenUntenRechts
             // 
@@ -1212,7 +1209,6 @@ namespace PMDS.GUI
             this.lblHeim.Size = new System.Drawing.Size(891, 34);
             this.lblHeim.TabIndex = 35;
             this.lblHeim.Text = "PMDS - Pflegemanagement und Dokumentationssystem für ";
-            this.lblHeim.Click += new System.EventHandler(this.lblHeim_Click);
             // 
             // panelTopRigth
             // 
@@ -1277,9 +1273,6 @@ namespace PMDS.GUI
             this.Name = "ucMain";
             this.Size = new System.Drawing.Size(1131, 619);
             this.Load += new System.EventHandler(this.ucSiteMapStart_Load);
-            this.VisibleChanged += new System.EventHandler(this.ucSiteMapStart_VisibleChanged);
-            this.MouseHover += new System.EventHandler(this.ucMain_MouseHover);
-            this.Resize += new System.EventHandler(this.ucSiteMapStart_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanelMitte)).EndInit();
             this.ultraGridBagLayoutPanelMitte.ResumeLayout(false);

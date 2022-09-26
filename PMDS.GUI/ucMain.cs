@@ -1,62 +1,33 @@
 using System;
 using System.Windows.Forms;
-using System.Diagnostics;
-
 using PMDS.Global;
 using PMDS.BusinessLogic;
-
-
 using PMDS.Global.db.Patient;
-using System.Drawing;
-using System.Threading.Tasks;
-
-using Infragistics.UltraGauge.Resources;
 using PMDS.DB;
 using PMDS.GUI.Messenger;
-using PMDS.Global.Remote;
 
 
 namespace PMDS.GUI
 {
-
     public delegate void AttachedDelegate(bool bAttached);
-
-
-
 
     public partial class ucMain : QS2.Desktop.ControlManagment.BaseControl, IPMDSGUIObject
     {
+        private bool _loadInProgress = true;
+        private PMDS.DB.PMDSBusiness _pmdsBusiness1 = new PMDS.DB.PMDSBusiness();
+        private PMDS.Global.db.ERSystem.dsKlientenliste _dsKlientenliste1 = new PMDS.Global.db.ERSystem.dsKlientenliste();
+        private PMDS.GUI.BaseControls.PflegerCombo _pflegerCombo1 = null;
+
         public event SiteMapDelegate SiteMapEvent;
 
-
-        private bool _FrameworkAttached;
-        private bool _LoadInProgress = true;
-        private bool _bFirstAttach = true;
         public frmMain mainWindow;
         public bool _showFirst = true;
-
-        public PMDS.DB.DBKlinik _DBKlinik = null;
-        public PMDS.DB.PMDSBusiness PMDSBusiness1 = new PMDS.DB.PMDSBusiness();
-        public PMDS.Global.db.ERSystem.dsKlientenliste dsKlientenliste1 = new PMDS.Global.db.ERSystem.dsKlientenliste();
-
         public frmMessenger frmMessenger1 = null;
-
         public bool bcheckIPCCallToClientDone = false;
-
-        public PMDS.GUI.BaseControls.PflegerCombo pflegerCombo1 = null;
-
-
-
-
-
-
-
 
         public ucMain()
         {
             InitializeComponent();
-
-            this._DBKlinik = new PMDS.DB.DBKlinik();
 
             this.setButtonsAktivDeaktiv(SiteEvents.NONE);
             this.panelButtonleisteUnten.Visible = false;
@@ -76,16 +47,14 @@ namespace PMDS.GUI
             this.btnTermineBereich.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_MeineTermine, QS2.Resources.getRes.ePicTyp.ico);
 
             GuiAction.GuiActionDone += new GuiActionDoneDelegate(GuiAction_GuiActionDone);
-
-            //Neu nach 03.07.2007 MDA
             ENV.ENVPatientDatenChanged += new ENVPatientDatenChangedDelegate(ENV_ENVPatientDatenChanged);
 
             this.LoadPflegerCombo();
 
-            pflegerCombo1.Value = ENV.USERID; //{{{eng}}} 04.10.2007
-            pflegerCombo1.Enabled = false;    //{{{eng}}} 04.10.2007
+            _pflegerCombo1.Value = ENV.USERID; 
+            _pflegerCombo1.Enabled = false;    
 
-            pflegerCombo1.Visible = ENV.BezugspersonenJN;
+            _pflegerCombo1.Visible = ENV.BezugspersonenJN;
             BezugspersonfilterONOFF.Visible = ENV.BezugspersonenJN;
 
             if (ENV.HasRight(UserRights.NurBezugspflege) && !ENV.adminSecure)
@@ -93,8 +62,8 @@ namespace PMDS.GUI
                 BezugspersonfilterONOFF.Visible = true;
                 BezugspersonfilterONOFF.Checked = true;
                 BezugspersonfilterONOFF.Enabled = false;
-                pflegerCombo1.Visible = true;
-                pflegerCombo1.Enabled = false;
+                _pflegerCombo1.Visible = true;
+                _pflegerCombo1.Enabled = false;
             }
 
             this.setRightButtonleisteUnten();
@@ -103,36 +72,24 @@ namespace PMDS.GUI
             this.ucPatientGroup1.mainWindow = this;
 
             this.btnReports.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Drucken, QS2.Resources.getRes.ePicTyp.ico);
-            //PMDS.Global.UIGlobal.setAktivDisable(this.btnReports, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-
             this.btnBereich.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Klientenliste.ico_Bereichsuebersicht, QS2.Resources.getRes.ePicTyp.ico);
-            //PMDS.Global.UIGlobal.setAktivDisable(this.btnBereich, -1, ENVCOLOR.inactiveForeCol, ENVCOLOR.hoverBackCol, ENVCOLOR.inactiveFrameCol, ENVCOLOR.inactiveBackCol, Infragistics.Win.UIElementButtonStyle.Flat);
-
             this.btnAufnahmexyxy.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Klientenakt.ico_ArchivTerminemail, QS2.Resources.getRes.ePicTyp.ico);
-            //QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Klientenliste.ico_Aufnahme, QS2.Resources.getRes.ePicTyp.ico);
         }
 
         void LoadPflegerCombo()
         {
             try
             {
-                if (this.pflegerCombo1 == null)
+                if (this._pflegerCombo1 == null)
                 {
-                    this.pflegerCombo1 = new PMDS.GUI.BaseControls.PflegerCombo(true);
+                    this._pflegerCombo1 = new PMDS.GUI.BaseControls.PflegerCombo(true);
 
-                    this.pflegerCombo1.Dock = DockStyle.Fill;
-                    //appearance4.FontData.Name = "Microsoft Sans Serif";
-                    //appearance4.FontData.SizeInPoints = 10F;
-                    //this.pflegerCombo1.Appearance = appearance4;
-                    //this.pflegerCombo1.Location = new System.Drawing.Point(751, 3);
-                    this.pflegerCombo1.Name = "pflegerCombo1";
-                    //this.pflegerCombo1.Size = new System.Drawing.Size(141, 24);
-                    this.pflegerCombo1.TabIndex = 31;
-                    this.pflegerCombo1.Text = "";
-
-                    this.pflegerCombo1.ValueChanged += new System.EventHandler(this.pflegerCombo1ValueChanged);
-
-                    this.panelPfleger.Controls.Add(this.pflegerCombo1);
+                    this._pflegerCombo1.Dock = DockStyle.Fill;
+                    this._pflegerCombo1.Name = "pflegerCombo1";
+                    this._pflegerCombo1.TabIndex = 31;
+                    this._pflegerCombo1.Text = "";
+                    this._pflegerCombo1.ValueChanged += new System.EventHandler(this.pflegerCombo1ValueChanged);
+                    this.panelPfleger.Controls.Add(this._pflegerCombo1);
                 }
             }
             catch (Exception ex)
@@ -143,11 +100,10 @@ namespace PMDS.GUI
 
         void ENV_ENVPatientDatenChanged(Guid IDPatient)
         {
-            if (_LoadInProgress)
+            if (_loadInProgress)
                 return;
             Guid id = ENV.CurrentIDPatient;
             RefreshPatientSearch(false);
-            //ucPatientPicker1.SetIDPatient(id);
         }
 
         //----------------------------------------------------------------------------
@@ -159,30 +115,6 @@ namespace PMDS.GUI
         void GuiAction_GuiActionDone(SiteEvents ev)
         {
             RefreshPatientSearch(true);
-
-            //switch (ev)
-            //{
-            //    case SiteEvents.Entlassen:
-            //        RefreshPatientSearch(true);
-            //        break;
-            //    case SiteEvents.Aufnahme:
-            //        //ucPatientPicker1.RefreshList(GuiAction.LastAufnahmePatientID, ENV.CurrentUserAbteilungen.ToArray());      // Liste aktualisieren und auf ID Positionieren
-            //        //ENV.CurrentIDPatient = GuiAction.LastAufnahmePatientID;
-            //        //ENV.sendPatientChanged(eCurrentPatientChange.keiner  );
-            //        //break;
-            //        RefreshPatientSearch(true);
-            //        break;
-            //    case SiteEvents.Bereichsversetzung:
-            //        //ucPatientPicker1.SetActiveBereich(GuiAction.LastVersetzungBereichText);
-            //        //break;
-            //        RefreshPatientSearch(true);
-            //        break;
-            //    case SiteEvents.Versetzen:
-            //        //ucPatientPicker1.SetActiveAbteilung(GuiAction.LastVersetzungAbteilungID);
-            //        //break;
-            //        RefreshPatientSearch(true);
-            //        break;
-            //}
         }
 
         //----------------------------------------------------------------------------
@@ -219,22 +151,17 @@ namespace PMDS.GUI
                     Form.ActiveForm.Close();
                     break;
 
-                case SiteEvents.Patient:        // gar nichts machen wird von außen verarbeitet
+                case SiteEvents.Patient:        // gar nichts machen, wird von außen verarbeitet
                     SignalPatientenaktion();
                     break;
 
-                //case SiteEvents.Stammdaten:
-                //    GuiWorkflow.ShowStartPage();
-                //    break;
-
-                // Witerleiten
+                // Weiterleiten
                 default:
                     GuiAction.ActionFromEvent(sender.SiteEvent);
                     break;
             }
         }
         #region IPMDSGUIObject Members
-
 
         //----------------------------------------------------------------------------
         /// <summary>
@@ -251,6 +178,7 @@ namespace PMDS.GUI
                     break;
             }
         }
+
         //----------------------------------------------------------------------------
         /// <summary>
         /// Benachrichtigen
@@ -290,14 +218,8 @@ namespace PMDS.GUI
             PMDS.GUI.GuiWorkflow._guiworkflow._SitemapKlientenDetails.ucKlient1.SwitchTo(ucKlient.eModeKlient.KlientStammdaten);
             PMDS.GUI.GuiWorkflow._guiworkflow._SitemapKlientenDetails.ucKlient1.tabKlientenakt.SelectedTab = PMDS.GUI.GuiWorkflow._guiworkflow._SitemapKlientenDetails.ucKlient1.tabKlientenakt.Tabs["Regelungen"];
 
-            //PMDS.GUI.GuiWorkflow GuiWorkflow1 = new GuiWorkflow();
-            //GuiWorkflow1.loadKlientenStammdaten();
-
-            //if (bLastGrup)
-            //    SignalEvent(SiteEvents.KlientenDetailsLastSelectedGroup);
-            //else
-
         }
+
         //----------------------------------------------------------------------------
         /// <summary>
         /// CONTROL
@@ -352,26 +274,8 @@ namespace PMDS.GUI
             try
             {
                 ENV.UserLoggedOn += new EventHandler(ENV_UserLoggedOn);
-
-                UpdateActions();
-                if (!_FrameworkAttached)
-                {
-                    //<20120202-2>
-                    //_framework.HEADER.ShowOnlyHeader(false);
-                    //this.ucPatientGroup1.RefreshGUI(false, false, true , false);
-                    //RefreshPatientSearch(false);
-                }
-
-                _FrameworkAttached = true;
-
-                // Synchronisieren der NächstenEvaluierungsinformation da diese sich geändert haben könnte
-                //ucPatientPicker1.RefreshNaechsteEvaluierung(ENV.CurrentIDPatient);
-
-                // Beim wiederholten Aufruf wieder den richtigen Klienten setzen
-                //if (!_bFirstAttach)
-                //    ucPatientPicker1_RowChanged(this, null);
-
-                _bFirstAttach = false;
+//                _FrameworkAttached = true;
+//                _bFirstAttach = false;
                 EnableDisableBereichsbutton(ucPatientGroup1.CurrentSelection, false);
 
                 btnAufnahmexyxy.Visible = ENV.ShowAufnahmeButton;
@@ -380,7 +284,6 @@ namespace PMDS.GUI
 
                 if (!this._showFirst) _framework.HEADER.ShowOnlyHeader(false);
                 Application.DoEvents();
-                // signalisieren dass Header nicht gezeigt werden soll
             }
             catch (Exception ex)
             {
@@ -410,6 +313,7 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         public void ProcessKeyEvent(KeyEventArgs e)
         {
+            //Keep Body for future access
             //			switch(e.KeyCode) 
             //			{
             //				case Keys.L:								
@@ -423,7 +327,6 @@ namespace PMDS.GUI
 
         private void ENV_UserLoggedOn(object sender, EventArgs e)
         {
-            UpdateActions();
             txtSearch.Clear();
             RefreshPatientSearch(false);
             RefreshGroupTree();
@@ -451,16 +354,6 @@ namespace PMDS.GUI
             ucPatientGroup1.RefreshGUI(ENV.CurrentUserAbteilungen, this.ucPatientGroup1.allKliniken, this.ucPatientGroup1.onlyKlinikenUsr, false, this.ucPatientGroup1._adminModusAlleKliniken);
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// erlaubte Aktionen ein/ausblenden
-        /// </summary>
-        //----------------------------------------------------------------------------
-        private void UpdateActions()
-        {
-
-        }
-
         public void RefreshPatientSearch(bool bUseGroupInfo)
         {
             ucPatientPicker1.Abteilung = Guid.Empty;
@@ -472,11 +365,10 @@ namespace PMDS.GUI
                 ucPatientPicker1.Bereich = ucPatientGroup1.CurrentSelection.Bereich;
             }
 
-            //{{{eng}}} 04.10.2007
             if (BezugspersonfilterONOFF.Checked == true)
-                if (pflegerCombo1.Visible)
+                if (_pflegerCombo1.Visible)
                 {
-                    string Pfleger = pflegerCombo1.Value.ToString();
+                    string Pfleger = _pflegerCombo1.Value.ToString();
                     ENV.CurrentIDBezugsPfleger = new Guid(Pfleger);
                 }
                 else ENV.CurrentIDBezugsPfleger = Guid.Empty;
@@ -487,15 +379,9 @@ namespace PMDS.GUI
             }
             else
             {
-                //PMDS.GUI.Error.errorHandling.saveLog("RefreshPatientSearch2");
-                //ucPatientPicker1.RefreshList(ENV.CurrentUserAbteilungen.ToArray());
-
                 ucPatientPicker1.RefreshList();
-                string xy = "";
             }
             ShowHideButtons();
-
-            this.checkIPCCallToClient();
         }
 
         //----------------------------------------------------------------------------
@@ -505,7 +391,6 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         private void ShowHideButtons()
         {
-            // btnKlient.Visible  = !ucPatientPicker1.EMPTYLIST;
             btnBereich.Visible = !ucPatientPicker1.IsEmpty();
         }
 
@@ -523,15 +408,6 @@ namespace PMDS.GUI
                     this.mainWindow.ultraToolbarsManager1.Tools["btnPatientAufenthalteLöschen"].SharedProps.Visible = false;
                     this.ClearSelectedPatient();
                 }
-
-                //if (_LoadInProgress)
-                //    return;
-                //_LoadInProgress = true;
-                //this.Cursor = Cursors.WaitCursor;
-                //RefreshPatientSearch(false);
-                //this.Cursor = Cursors.Arrow;
-                //_LoadInProgress = false;
-
             }
             catch (Exception ex)
             {
@@ -552,7 +428,6 @@ namespace PMDS.GUI
                 ENV.setIDBereich = System.Guid.Empty;
                 ENV.setCurrentIDAbteilung = System.Guid.Empty;
                 ENV.setCurrentIDBereich = System.Guid.Empty;
-                //ENV.sendPatientChanged(eCurrentPatientChange.keiner, true);
                 this.ucPatientPicker1.dgEintrag.Selected.Rows.Clear();
                 this.ucPatientPicker1.dgEintrag.ActiveRow = null;
             }
@@ -562,27 +437,20 @@ namespace PMDS.GUI
             }
         }
 
-
         private void ucPatientGroup1_SelectionChanged(object sender, PatientGroupSelection args)
         {
             try
             {
-                //this.Cursor = Cursors.WaitCursor;
-
-                if (_LoadInProgress)
+                if (_loadInProgress)
                     return;
                 try
                 {
-                    //if (ucPatientGroup1.Focused )
-                    //{
                     this.Cursor = Cursors.WaitCursor;
                     txtSearch.Clear();
                     RefreshPatientSearch(true);
                     ENV.setCurrentIDAbteilung = args.Abteilung;
                     ENV.setCurrentIDBereich = args.Bereich;
                     EnableDisableBereichsbutton(args, true);
-                    //}
-
                     this.doDokumenteBenutzer();
 
                 }
@@ -597,19 +465,14 @@ namespace PMDS.GUI
             }
         }
 
-
         private void EnableDisableBereichsbutton(PatientGroupSelection args, bool newInit)
         {
-            //btnBereich.Visible = args.Abteilung != Guid.Empty || args.Bereich != Guid.Empty;
             if (newInit)
             {
                 this.panelButtonleisteUnten.Visible = false;
                 this.btnKlient.Visible = false;
                 this.mainWindow.ultraToolbarsManager1.Tools["btnPatientAufenthalteLöschen"].SharedProps.Visible = false;
             }
-            //else 
-            //    if (ucPatientPicker1.dgEintrag.Selected.Rows.All.Length != 0 && ucPatientPicker1.dgEintrag.Selected.Rows[0] != null)
-            //            ENV.CurrentIDPatient = (Guid)ucPatientPicker1.dgEintrag.Selected.Rows[0].Cells["IDKlient"].Value;
         }
 
         private void ProcessAufnahme()
@@ -630,7 +493,6 @@ namespace PMDS.GUI
                 }
                 ENV.setIDAUFENTHALT = Aufenthalt.LastByPatient(ucPatientPicker1.CURRENT_IDPATIENTxy);
                 ENV.setCurrentIDPatient = ucPatientPicker1.CURRENT_IDPATIENTxy;
-                //ENV.sendPatientChanged();
 
             }
             catch (Exception ex)
@@ -642,6 +504,7 @@ namespace PMDS.GUI
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void ucPatientPicker1_Click(object sender, EventArgs e)
         {
             try
@@ -661,6 +524,7 @@ namespace PMDS.GUI
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void ucPatientPicker1_DoubleClick(object sender, EventArgs e)
         {
             try
@@ -675,8 +539,6 @@ namespace PMDS.GUI
                     PMDS.Global.historie hist = new PMDS.Global.historie();
                     hist.IDAufenthalt = ucPatientPicker1.CURRENT_IDAufenhaltxy;
                 }
-                // osxy: Warum LastByPatient? Fehlerursache für Wiederaufnahme bei Hauser vom 12.12.2014, weil Datum bei Wiederaufnahme früher eingegeben wurde!!!!
-                // Aufenthalt.LastByPatient(ucPatientPicker1.CURRENT_IDPATIENTxy);
                 ENV.setIDAUFENTHALT = ucPatientPicker1.CURRENT_IDAufenhaltxy;
                 ENV.setCurrentIDPatient = ucPatientPicker1.CURRENT_IDPATIENTxy;
 
@@ -742,13 +604,6 @@ namespace PMDS.GUI
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
-                //System.Data.Entity.DbSet<PMDS.db.Entities.Kostentraeger> dbKost = null;
-                //PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
-                //PMDSBusiness1.getAllKostenträger(ref dbKost);
-
-                //               if (!ENV.HasRight(UserRights.KlickOnGroupPickerRootNode) && ucPatientGroup1.CurrentSelection.Abteilung.Equals(Guid.Empty)) return;
-
                 this.setButtonsAktivDeaktiv(SiteEvents.BereichsauswahlKlientenliste);
                 ENV.CurrentAnsichtinfo.IDAbteilung = ucPatientGroup1.CurrentSelection.Abteilung;
                 ENV.CurrentAnsichtinfo.IDBereich = ucPatientGroup1.CurrentSelection.Bereich;
@@ -756,18 +611,7 @@ namespace PMDS.GUI
                 ENV.AnsichtsModus = TerminlisteAnsichtsmodi.Bereichsansicht;
                 ucSiteMapTermine.FirstCallDoRefreshKlienten = true;
                 ucMedikamenteMainPicker.FirstCallDoRefreshKlienten = true;
-
-                //System.Guid IDAbteilungGesamtesHaus = System.Guid.Empty;
-                //if (IDAbteilungGesamtesHaus.Equals(ENV.CurrentAnsichtinfo.IDAbteilung))
-                //{
-                //    if (!this.PMDSBusiness1.UserHasRechtAufGesamteshaus(ENV.USERID))
-                //    {
-                //        return;
-                //    }
-                //}
-
                 SignalEvent(SiteEvents.Bereichsansicht);
-
             }
             catch (Exception ex)
             {
@@ -779,41 +623,9 @@ namespace PMDS.GUI
             }
         }
 
-        /// <summary>
-        /// Wunsch Oskar, dass das Panel zentriert plaziert wird
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ucSiteMapStart_Resize(object sender, EventArgs e)
-        {
-            try
-            {
-                //panel1.Top = 0;                 // nach oben ausrichten
-                //panel1.Height = this.Height;    // selbe höhe
-
-                //if (panel1.Width >= this.Width)
-                //{
-                //    panel1.Left = 0;
-                //    return;
-                //}
-
-                //panel1.Left = ((this.Width - panel1.Width) / 2);
-                //this.panelOben.Left = panel1.Left;
-            }
-            catch (Exception ex)
-            {
-                PMDS.Global.ENV.HandleException(ex);
-            }
-        }
-        public void setWidthHeigtSiteMapStart(int w, int h)
-        {
-            //this.Width = w;
-            //this.Height = h;
-        }
-
         public void SetFinishLoading()
         {
-            _LoadInProgress = false;
+            _loadInProgress = false;
         }
 
         private void ucSiteMapStart_Load(object sender, EventArgs e)
@@ -824,8 +636,6 @@ namespace PMDS.GUI
                     return;
 
                 txtSearch.Focus();
-                //this.setTitleForm();
-                //RefreshGroupTree();          
             }
             catch (Exception ex)
             {
@@ -833,22 +643,17 @@ namespace PMDS.GUI
             }
         }
 
-
         public void setTitleForm(dsKlinik.KlinikRow rKlinik)
         {
             this.lblHeim.Text = "PMDS - Pflegemanagement- und Dokumentationssystem " + (rKlinik != null ? "für " + rKlinik.Bezeichnung.Trim() : "");
         }
-
 
         private void ucPatientGroup1_DoubleClick(object sender, EventArgs e)
         {
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
-                //if (btnBereich.Visible)
                 btnBereich_Click(this, EventArgs.Empty);
-
             }
             catch (Exception ex)
             {
@@ -859,7 +664,6 @@ namespace PMDS.GUI
                 this.Cursor = Cursors.Default;
             }
         }
-
 
         //----------------------------------------------------------------------------
         /// <summary>
@@ -872,16 +676,16 @@ namespace PMDS.GUI
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                if (_LoadInProgress)
+                if (_loadInProgress)
                     return;
                 if (BezugspersonfilterONOFF.Checked == true)
                 {
-                    if (pflegerCombo1.Value != null && pflegerCombo1.Value.GetType() == typeof(Guid))
+                    if (_pflegerCombo1.Value != null && _pflegerCombo1.Value.GetType() == typeof(Guid))
                     {
                         Guid newGuid;
-                        if (pflegerCombo1.Value != null && Guid.TryParse(pflegerCombo1.Value.ToString(), out newGuid))
+                        if (_pflegerCombo1.Value != null && Guid.TryParse(_pflegerCombo1.Value.ToString(), out newGuid))
                         {
-                            ENV.CurrentIDBezugsPfleger = (Guid)pflegerCombo1.Value;
+                            ENV.CurrentIDBezugsPfleger = (Guid)_pflegerCombo1.Value;
                             RefreshPatientSearch(true);
                             ucPatientGroup1.Focus();
                         }
@@ -906,51 +710,32 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         private void BezugspersonfilterONOFF_AfterCheckStateChanged(object sender, EventArgs e)
         {
-            if (_LoadInProgress)
+            if (_loadInProgress)
                 return;
             if (BezugspersonfilterONOFF.Checked == true)
             {
-                pflegerCombo1.Enabled = true;
-                if (pflegerCombo1.Value != null)
+                _pflegerCombo1.Enabled = true;
+                if (_pflegerCombo1.Value != null)
                 {
-                    ENV.CurrentIDBezugsPfleger = (Guid)pflegerCombo1.Value;
+                    ENV.CurrentIDBezugsPfleger = (Guid)_pflegerCombo1.Value;
                 }
                 else
                 {
-                    pflegerCombo1.Value = ENV.USERID;
-                    ENV.CurrentIDBezugsPfleger = (Guid)pflegerCombo1.Value;
+                    _pflegerCombo1.Value = ENV.USERID;
+                    ENV.CurrentIDBezugsPfleger = (Guid)_pflegerCombo1.Value;
                 }
 
                 if (ENV.HasRight(UserRights.NurBezugspflege) && !ENV.adminSecure)
-                    pflegerCombo1.Enabled = false;
+                    _pflegerCombo1.Enabled = false;
             }
             else
             {
-                pflegerCombo1.Enabled = false;
+                _pflegerCombo1.Enabled = false;
                 ENV.CurrentIDBezugsPfleger = Guid.Empty;
             }
 
             RefreshPatientSearch(true);
             ucPatientGroup1.Focus();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelOben_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void ultraGridBagLayoutPanelMitte_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         public bool rowSelected(bool withMsgBox)
@@ -970,7 +755,7 @@ namespace PMDS.GUI
         {
             using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
             {
-                PMDS.db.Entities.Aufenthalt rActAuf = PMDSBusiness1.getAktuellerAufenthaltPatient(IDKlient, true, db);
+                PMDS.db.Entities.Aufenthalt rActAuf = _pmdsBusiness1.getAktuellerAufenthaltPatient(IDKlient, true, db);
                 if (rActAuf == null)
                 {
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Klient ist nicht mehr in der Liste der aktuellen Klienten!", "PMDS");
@@ -1019,15 +804,6 @@ namespace PMDS.GUI
         {
             if (!rowSelected(true)) 
                 return;
-
-            //if (!this.checkPatientHasActAufenthalt(ENV.CurrentIDPatient))             //os211222
-            //{
-            //    return;
-            //}
-
-            //SiteEventArgs args = new SiteEventArgs();
-            //args.IDPatient = ENV.CurrentIDPatient;
-            //args.IDAufenthalt = Aufenthalt.LastByPatient(ENV.CurrentIDPatient);
 
             SiteEventArgs args = new SiteEventArgs();
             args.IDPatient = ENV.CurrentIDPatient;
@@ -1098,7 +874,6 @@ namespace PMDS.GUI
 
         private void setRightButtonleisteUnten()
         {
-            //this.btnEntlassen.Visible = ENV.HasRight(UserRights.Entlassung);
             this.btnEntlassen.Visible = ENV.HasRight(UserRights.KlientEntlassen);
             this.btnAbwesenheiten.Visible = ENV.HasRight(UserRights.AbwesenheitErfassen);
             this.btnVersetzen.Visible = ENV.HasRight(UserRights.Versetzung);
@@ -1160,37 +935,17 @@ namespace PMDS.GUI
 
         public void setHistorieOnOff()
         {
-
-            //PMDSBusiness b = new PMDSBusiness();
-            //b.testObjectApplications();
-
-
             PMDS.Global.historie.HistorieOn = this.chkHistorie.Checked;
 
             ucPatientPicker1.ShowEntlassene = this.chkHistorie.Checked;
             this.panelBereichsauswahl.Visible = !this.chkHistorie.Checked;
             BezugspersonfilterONOFF.Checked = ENV.HasRight(UserRights.NurBezugspflege);
-            //SiteEventArgs args = new SiteEventArgs();
-            //args.IDPatient = ENV.CurrentIDPatient;
-            //args.IDAufenthalt = Aufenthalt.LastByPatient(ENV.CurrentIDPatient);
-
-            //System.Guid gid = new System.Guid();
-
-            //if (ucPatientPicker1.CURRENT_IDPATIENT == Guid.Empty)
-            //    return;
-            //ENV.CurrentIDPatient = ucPatientPicker1.CURRENT_IDPATIENT;
-            //ENV.IDAUFENTHALT = Aufenthalt.LastByPatient(ENV.CurrentIDPatient);
-            // ProcessKlientenClick(false);
 
             txtSearch.Clear();
             ucPatientGroup1.SetCurrentToRoot();
             ucPatientGroup1.Refresh();
 
-
-
             RefreshPatientSearch(true);
-            //ENV.CurrentIDAbteilung = args.Abteilung;
-            //ENV.CurrentIDBereich = args.Bereich;
             this.btnDokumenteBenutzer.Visible = false;
 
             EnableDisableBereichsbutton(ucPatientGroup1.CurrentSelection, true);
@@ -1203,9 +958,8 @@ namespace PMDS.GUI
                 this.lblHeim.Appearance.ForeColor = System.Drawing.Color.White;
                 this.lblS2.Appearance.ForeColor = System.Drawing.Color.White;
                 lblInfoHistorie.Visible = false;
-                pflegerCombo1.Visible = ENV.BezugspersonenJN;
+                _pflegerCombo1.Visible = ENV.BezugspersonenJN;
                 BezugspersonfilterONOFF.Visible = ENV.BezugspersonenJN;
-
 
                 lblHeim.Appearance.ForeColor = System.Drawing.Color.Black;
             }
@@ -1217,7 +971,7 @@ namespace PMDS.GUI
                 this.lblHeim.Appearance.ForeColor = System.Drawing.Color.White;
                 this.lblS2.Appearance.ForeColor = System.Drawing.Color.White;
                 BezugspersonfilterONOFF.Visible = false;
-                pflegerCombo1.Visible = false;
+                _pflegerCombo1.Visible = false;
                 lblHeim.Appearance.ForeColor = System.Drawing.Color.White;
             }
 
@@ -1226,57 +980,12 @@ namespace PMDS.GUI
                 BezugspersonfilterONOFF.Visible = true;
                 BezugspersonfilterONOFF.Checked = true;
                 BezugspersonfilterONOFF.Enabled = false;
-                pflegerCombo1.Visible = true;
-                pflegerCombo1.Enabled = false;
+                _pflegerCombo1.Visible = true;
+                _pflegerCombo1.Enabled = false;
             }
 
             Application.DoEvents();
-
-            //this.ucPatientPicker1.dgEintrag.ActiveRow = null;
-            //this.ucPatientPicker1.dgEintrag.Selected.Rows.Clear();
             GuiWorkflow.mainWindow.setHeaderUI(false);
-
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel8_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblHeim_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ucSiteMapStart_VisibleChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (this.Visible)
-                {
-
-                    //this.ucPatientGroup1.loadEinrichtungen();
-                }
-            }
-            catch (Exception ex)
-            {
-                ENV.HandleException(ex);
-            }
         }
 
         private void ucPatientGroup1_klinikHasChanged(dsKlinik.KlinikRow rKlinik)
@@ -1341,11 +1050,6 @@ namespace PMDS.GUI
             }
         }
 
-        void HandleExternalCloseEvent(object sender, EventArgs e)
-        {
-            // Do something useful here.  
-        }
-
         private void checkUserActivity(object sender, EventArgs e)
         {
             if (this.mainWindow.Visible == true && !ENV.IgnoreMaxIdleTime)
@@ -1408,14 +1112,14 @@ namespace PMDS.GUI
                 }
                 else
                 {
-                    this.dsKlientenliste1.Clear();
+                    this._dsKlientenliste1.Clear();
                     Global.db.ERSystem.sqlManange sqlManange1 = new Global.db.ERSystem.sqlManange();
                     sqlManange1.initControl();
-                    sqlManange1.loadDokumenteBenutzer(ref this.dsKlientenliste1, ENV.CurrentIDAbteilung);
-                    if (this.dsKlientenliste1.Dokumente2.Rows.Count > 0)
+                    sqlManange1.loadDokumenteBenutzer(ref this._dsKlientenliste1, ENV.CurrentIDAbteilung);
+                    if (this._dsKlientenliste1.Dokumente2.Rows.Count > 0)
                     {
                         //PMDS.Global.UIGlobal.setAktiv(this.btnDokumenteBenutzer, -1, ENVCOLOR.activeForeCol, ENVCOLOR.activeFrameCol, ENVCOLOR.activeBackCol);
-                        this.btnDokumenteBenutzer.Text = "Anleitungen (" + this.dsKlientenliste1.Dokumente2.Rows.Count.ToString() + ")";
+                        this.btnDokumenteBenutzer.Text = "Anleitungen (" + this._dsKlientenliste1.Dokumente2.Rows.Count.ToString() + ")";
                         this.btnDokumenteBenutzer.Visible = true;
                     }
                     else
@@ -1436,7 +1140,7 @@ namespace PMDS.GUI
             {
                 this.Cursor = Cursors.WaitCursor;
                 PMDS.GUI.GUI.Main.frmDocumentsSelect frmDocumentsSelect1 = new GUI.Main.frmDocumentsSelect();
-                frmDocumentsSelect1.initControl(ENV.CurrentIDAbteilung, ref this.dsKlientenliste1);
+                frmDocumentsSelect1.initControl(ENV.CurrentIDAbteilung, ref this._dsKlientenliste1);
                 frmDocumentsSelect1.Show();
             }
             catch (Exception ex)
@@ -1494,39 +1198,6 @@ namespace PMDS.GUI
             }
         }
 
-        public void checkIPCCallToClient()
-        {
-            try
-            {
-                if (!this.bcheckIPCCallToClientDone)
-                {
-                    //    if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
-                    //    {
-                    //        while (!remotingSrv.LoggedIn2)
-                    //        {
-                    //            qs2.core.generic.WaitMilli(10);
-                    //        }
-
-                    //        remotingClient remotingClient1 = new remotingClient();
-                    //        cParComm cParComm1 = new cParComm();
-                    //        remotingClient.cCallFctReturn CallFctReturn = null;
-                    //        remotingClient1.callFct(ICommunicationService.eTypeCallTo.ClientPMDS, ICommunicationService.eTypeFct.TestCallToClient, cParComm1, ref CallFctReturn);
-                    //        if (!CallFctReturn.bOK)
-                    //        {
-                    //            throw new Exception("ucMain.checkIPCCallToClient: CallFctReturn.bOK=false not allowed!");
-                    //        }
-                    //    }
-                    //}
-
-                    this.bcheckIPCCallToClientDone = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ucMain.checkIPCCallToClient: " + ex.ToString());
-            }
-        }
-
         private void btnTermineBereich_Click(object sender, EventArgs e)
         {
             try
@@ -1545,11 +1216,6 @@ namespace PMDS.GUI
             {
                 this.Cursor = Cursors.Default;
             }
-        }
-
-        private void ucMain_MouseHover(object sender, EventArgs e)
-        {
-            string x = "";
         }
     }
 }
