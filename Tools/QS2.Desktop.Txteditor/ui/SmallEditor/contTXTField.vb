@@ -197,6 +197,7 @@ Public Class contTXTField
             Throw New Exception("contTXTField.getPlainText: " + ex.ToString())
         End Try
     End Function
+
     Public Function showText(ByVal txt As String, ByVal typ As TXTextControl.StreamType) As Boolean
         Try
             Return Me.doEditor1.showText(txt, typ, True, Me._ViewMode, Me.TXTControlField, Nothing, Nothing)
@@ -205,7 +206,8 @@ Public Class contTXTField
             Throw New Exception("contTXTField.showText: " + ex.ToString())
         End Try
     End Function
-    Public Function showText(ByVal txt As String, ByVal typ As TXTextControl.StreamType, _
+
+    Public Function showText(ByVal txt As String, ByVal typ As TXTextControl.StreamType,
                                 Optional ByRef bytes() As Byte = Nothing, Optional ByRef bytesPdf() As Byte = Nothing) As Boolean
         Try
             Return Me.doEditor1.showText(txt, typ, True, Me._ViewMode, Me.TXTControlField, bytes, bytesPdf)
@@ -214,6 +216,7 @@ Public Class contTXTField
             Throw New Exception("contTXTField.showText: " + ex.ToString())
         End Try
     End Function
+
     Public Property bReadOnly() As Boolean
         Get
             Return Me._bReadOnly
@@ -240,6 +243,7 @@ Public Class contTXTField
             'Me.TXTControlField.Enabled = Not Me._bReadOnly
         End Set
     End Property
+
     Public Sub doSmallVersion()
         Try
             Me.toolStripButtonNew.Visible = False
@@ -259,190 +263,6 @@ Public Class contTXTField
             Throw New Exception("contTXTField.doSmallVersion: " + ex.ToString())
         End Try
     End Sub
-    Private Sub toolStripButtonNew_Click_1(sender As Object, e As EventArgs) Handles toolStripButtonNew.Click
-        Try
-            Me.FileNew()
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-    Private Sub toolStripButtonOpen_Click_1(sender As Object, e As EventArgs) Handles toolStripButtonOpen.Click
-        Try
-            Me.FileOpen()
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-    Private Sub toolStripButtonSave_Click_1(sender As Object, e As EventArgs) Handles toolStripButtonSave.Click
-        Try
-            Me.FileSaveAs()
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-    Private Sub ToolStripButtonPrint_Click_1(sender As Object, e As EventArgs) Handles ToolStripButtonPrint.Click
-        Try
-            Me.Print()
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-    Private Sub toolStripButtonCut_Click_1(sender As Object, e As EventArgs) Handles toolStripButtonCut.Click
-        Try
-            Me.TXTControlField.Cut()
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-    Private Sub toolStripButtonCopy_Click_1(sender As Object, e As EventArgs) Handles toolStripButtonCopy.Click
-        Try
-            If Me.doCopySelectAll Then
-                System.Windows.Forms.Clipboard.SetDataObject(Me.TXTControlField.Text.Trim())
-            Else
-                Me.TXTControlField.Copy()
-            End If
-
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-    Private Sub toolStripButtonPaste_Click_1(sender As Object, e As EventArgs) Handles toolStripButtonPaste.Click
-        Try
-            Me.TXTControlField.Paste()
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-    Private Sub toolStripButtonUndo_Click_1(sender As Object, e As EventArgs) Handles toolStripButtonUndo.Click
-        Try
-            Me.TXTControlField.Undo()
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-    Private Sub toolStripButtonRedo_Click_1(sender As Object, e As EventArgs) Handles toolStripButtonRedo.Click
-        Try
-            Me.TXTControlField.Redo()
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-    Private Sub toolStripButtoSearch_Click_1(sender As Object, e As EventArgs) Handles toolStripButtoSearch.Click
-        Try
-            Me.TXTControlField.Find()
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-
-    Private Sub TXTControlField_TextContextMenuOpening_1(sender As Object, e As TXTextControl.TextContextMenuEventArgs) Handles TXTControlField.TextContextMenuOpening
-        Try
-            Dim cContextMenü1 As New cContextMenü()
-            cContextMenü1.TXTControlField_TextContextMenuOpening(sender, e, Me.contextMenuStripSpell, Spelling.getSpellChecker(), Me._SpellChecking, Me.DesignMode, Me.TXTControlField)
-
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-
-    Private Sub TXTControlField_TextChanged(sender As Object, e As EventArgs)
-        'Try
-        '    If textChangedEventEnabled Then
-        '        txSpellChecker1.Check(Me.TXTControlField.Text)
-        '    End If
-
-        'Catch ex As Exception
-        '    MsgBox("contTXTField.TXTControlField_TextChanged: " + ex.ToString(), "Error")
-        'End Try
-    End Sub
-
-    Private Sub TXTControlField_MouseDown(sender As Object, e As MouseEventArgs)
-        'currentIncorrectWord = Nothing
-        'If e.Button = Windows.Forms.MouseButtons.Right Then
-        '    Dim txtTemp As String = Me.TXTControlField.Text
-        '    currentCursorPosition = txtTemp.GetCharIndexFromPosition(New Point(e.X, e.Y))
-        '    If currentCursorPosition > 0 Then
-        '        For Each incorrectWord As TXTextControl.Proofing.IncorrectWord In txSpellChecker1.IncorrectWords
-        '            If incorrectWord.Start <= currentCursorPosition Then
-        '                If currentCursorPosition <= incorrectWord.Start + incorrectWord.Length Then
-        '                    currentIncorrectWord = incorrectWord
-        '                    Exit For
-        '                End If
-        '            Else
-        '                Exit For
-        '            End If
-        '        Next
-        '    End If
-        'End If
-    End Sub
-
-    Private Sub TXTControlField_Changed(sender As Object, e As EventArgs) Handles TXTControlField.Changed
-        Try
-            If TXTControlField.Focused Then
-                If Me.delonValueChanged <> Nothing Then
-                    Me.delonValueChanged.Invoke()
-                End If
-            End If
-
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-
-    Private Sub TXTControlField_KeyDown(sender As Object, e As KeyEventArgs) Handles TXTControlField.KeyDown
-        Try
-            If e.KeyCode = Keys.F7 Then
-                If Me._SpellChecking Then
-                    Spelling.getSpellChecker().SpellCheckDialog.Show(Me.TXTControlField)
-                End If
-            End If
-            'If Me._bReadOnly Then
-            '    e.SuppressKeyPress = True
-            'End If
-
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-
-    Private Sub TXTControlField_HypertextLinkClicked(sender As Object, e As TXTextControl.HypertextLinkEventArgs) Handles TXTControlField.HypertextLinkClicked
-        Try
-            If e.HypertextLink.Target.Trim().ToLower().StartsWith(("var_").Trim().ToLower()) Then
-                If Me.delOnHyperlinkClicked <> Nothing Then
-                    Dim retStr As String = Me.delOnHyperlinkClicked.Invoke(e.HypertextLink.Target.Trim())
-
-                End If
-            End If
-
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-
-    Private Sub TXTControlField_KeyUp(sender As Object, e As KeyEventArgs) Handles TXTControlField.KeyUp
-        If Me.delOnKeyUp <> Nothing Then
-            Me.delOnKeyUp.Invoke(sender, e)
-        End If
-    End Sub
-
-    Private Sub btnSpellChecking_Click(sender As Object, e As EventArgs) Handles btnSpellChecking.Click
-        Try
-            Spelling.getSpellChecker().SpellCheckDialog.Show(Me.TXTControlField)
-
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-
-    Private Sub toolStripButtonLanguages_Click(sender As Object, e As EventArgs) Handles toolStripButtonLanguages.Click
-        Try
-            Me.TXTControlField.LanguageDialog()
-
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
-
 End Class
 
 

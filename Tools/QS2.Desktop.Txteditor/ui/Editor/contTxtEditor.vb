@@ -102,7 +102,6 @@ Public Class contTxtEditor
             'Me.doUI1.run(Me, Me.components, Me.UltraToolTipManager1, newRessourcesAdded, True)
 
             Dim commands As String = Microsoft.VisualBasic.Command()
-            LoadAppSettings()
             FileHandler1.TextControl = textControl1
             ' Check if program has been started with a file name as a command line parameter
             Me.FileNew(True, False)
@@ -946,7 +945,7 @@ Public Class contTxtEditor
         'Me.checkOrientation()
 
         If doDelegate Then
-            If Not Me.delOnNewClicked = Nothing Then
+            If Not IsNothing(Me.delOnNewClicked) Then
                 Me.delOnNewClicked.Invoke()
             End If
         End If
@@ -980,7 +979,6 @@ Public Class contTxtEditor
         If FileHandler1.FileOpen() Then
             If Not Me.mainForm Is Nothing Then Me.mainForm.Text = FileHandler1.DocumentFileName
         End If
-        checkOrientation()
     End Sub
 
     Public Sub Print()
@@ -992,24 +990,7 @@ Public Class contTxtEditor
         'Dim pd As System.Drawing.Printing.PrintDocument = Me.getPrintDocument()
         textControl1.PrintPreview("")
     End Sub
-    Public Function getPrintDocumentxy() As System.Drawing.Printing.PrintDocument
-        'Dim pd As New System.Drawing.Printing.PrintDocument
-        'If textControl1.PageSize.Width > textControl1.PageSize.Height Then
-        '    pd.DefaultPageSettings.Landscape = True
-        'Else
-        '    pd.DefaultPageSettings.Landscape = False
-        'End If
-        'pd.DefaultPageSettings.PaperSize = New System.Drawing.Printing.PaperSize("new size", textControl1.PageSize.Width, textControl1.PageSize.Height)
-        'pd.DefaultPageSettings.Margins = New System.Drawing.Printing.Margins(textControl1.PageMargins.Left, textControl1.PageMargins.Right, textControl1.PageMargins.Top, textControl1.PageMargins.Bottom)
-        'Return pd
-    End Function
-    Public Sub checkOrientation()
-        'If textControl1.PageSize.Width > textControl1.PageSize.Height Then
-        '    Me.textControl1.Landscape = True
-        'Else
-        '    Me.textControl1.Landscape = False
-        'End If
-    End Sub
+
     Public Sub Cut()
         textControl1.Cut()
     End Sub
@@ -1320,74 +1301,10 @@ Public Class contTxtEditor
 #End Region
 
     Public Sub resizeControl(ByVal w As Double, ByVal h As Double)
-
         Me.Width = w
         Me.Height = h
-
-        ' Me.textControl1.Height = Me.Height - 600
-        'Me.textControl1.Top = -600
-        'Me.textControl1.Left = -600
     End Sub
 
-    Private Sub frmMain_FormClosing()
-        Dim Result As System.Windows.Forms.DialogResult
-        If FileHandler1.DocumentDirty Then
-            Dim sTxt As String = ""
-            If Not Me.mainForm Is Nothing Then sTxt = Me.mainForm.Text
-
-            Dim sTitle As String = generic.getRes("Save")
-            Dim sText As String = generic.getRes("SaveChangesToX")
-            sText = String.Format(sText, sTxt)
-            Result = generic.showMessageBox(sText, System.Windows.Forms.MessageBoxButtons.YesNo, "")
-
-            If Result = System.Windows.Forms.DialogResult.Yes Then
-                FileHandler1.FileSave()
-                If FileHandler1.DocumentFileName = "" Then
-                    'e.Cancel = True
-                End If
-            Else
-                If Result = System.Windows.Forms.DialogResult.Cancel Then
-                    ' e.Cancel = True
-                End If
-            End If
-        End If
-
-        SaveAppSettings()
-    End Sub
-    Private Sub LoadAppSettings()
-        ''Take over initial resizing
-        'Me.StartPosition = FormStartPosition.Manual
-
-        '' Resize
-        'Me.Location = My.Settings.LastWindowPos
-        'Me.Size = My.Settings.LastWindowSize
-        'Me.WindowState = My.Settings.LastWindowState
-    End Sub
-
-    Private Sub SaveAppSettings()
-        'My.Settings.LastWindowState = Me.WindowState
-
-        'If Me.WindowState = FormWindowState.Normal Then
-        '    My.Settings.LastWindowSize = Me.Size
-        '    My.Settings.LastWindowPos = Me.Location
-        'Else
-        '    My.Settings.LastWindowSize = Me.RestoreBounds.Size
-        '    My.Settings.LastWindowPos = Me.RestoreBounds.Location
-        'End If
-        My.Settings.Save()
-    End Sub
-    Private Sub mnuFile_Exit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles mnuFile_Exit.Click
-        If Not Me.mainForm Is Nothing Then Me.mainForm.Close()
-    End Sub
-
-    Private Sub EinfügenToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EinfügenToolStripMenuItem.Click
-        Try
-            Me.feldEinfügen()
-
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
     Public Sub feldEinfügen()
         Try
             Me.cTxtEditor1.addFelder(Me, Me.textControl1)
@@ -1396,14 +1313,7 @@ Public Class contTxtEditor
             QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
         End Try
     End Sub
-    Private Sub GeheZuTextmarkeToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GeheZuTextmarkeToolStripMenuItem.Click
-        Try
-            geheZuFeld()
 
-        Catch ex As Exception
-            QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
-        End Try
-    End Sub
     Public Sub geheZuFeld()
         Try
             Me.textControl1.Focus()
@@ -1413,16 +1323,11 @@ Public Class contTxtEditor
             QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
         End Try
     End Sub
-    Private Sub TextmarkenHervorhebenToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextmarkenHervorhebenToolStripMenuItem.Click
-        textmarkenHervorheben()
-    End Sub
+
     Public Sub textmarkenHervorheben()
         cTxtEditor1.textmarkenHervorheben(System.Drawing.Color.DarkRed, System.Drawing.Color.White, Me, Me.textControl1, True)
     End Sub
 
-    Private Sub HervorhebenZurücksetzenToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HervorhebenZurücksetzenToolStripMenuItem.Click
-        HervorhebenZurücksetzen()
-    End Sub
     Public Sub HervorhebenZurücksetzen()
         cTxtEditor1.textmarkenHervorheben(System.Drawing.Color.White, System.Drawing.Color.Black, Me, Me.textControl1, False)
     End Sub
@@ -1440,19 +1345,7 @@ Public Class contTxtEditor
         End Try
     End Sub
 
-    Private Sub ToolStripButton17_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub AlsPDFSichernToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AlsPDFSichernToolStripMenuItem.Click
-        Me.ExportPDF("", True, True)
-    End Sub
-    Private Sub ToolStripButton17_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton17.Click
-        Me.ExportPDF("", True, True)
-    End Sub
-
-
-    Public Function showText(ByVal txt As String, ByVal typ As TXTextControl.StreamType, ByVal eingabeJN As Boolean, _
+    Public Function showText(ByVal txt As String, ByVal typ As TXTextControl.StreamType, ByVal eingabeJN As Boolean,
             ByVal viewMod As TXTextControl.ViewMode, Optional ByRef bytes() As Byte = Nothing) As Boolean
 
         Me.FileNew(False, False)
@@ -1466,20 +1359,12 @@ Public Class contTxtEditor
         If txt = "" And bytes Is Nothing Then Exit Function
         Me.doEditor.showText(txt, typ, eingabeJN, viewMod, Me.textControl1, bytes)
 
-        'FileHandler1.m_DocumentDirty = False
         FileHandler1.DocumentFileName = ""
-
-        If FileHandler1.FileOpen_temp() Then
-            'Me.Text = FileHandler1.DocumentFileName
-        End If
-
-        'Me.textControl1.Tables.GridLines = False
-        'mnuTable_GridLines.Checked = False
         Return True
-
     End Function
-    Public Function showFile(ByVal docu As String, ByVal lockEingbe As Boolean, _
-                            ByVal typ As TXTextControl.StreamType, ByVal view As TXTextControl.ViewMode, _
+
+    Public Function showFile(ByVal docu As String, ByVal lockEingbe As Boolean,
+                            ByVal typ As TXTextControl.StreamType, ByVal view As TXTextControl.ViewMode,
                             ByVal temporär As Boolean) As Boolean
 
         Dim funct1 As New QS2.functions.vb.funct()
@@ -1503,21 +1388,8 @@ Public Class contTxtEditor
         textControl1.ViewMode = view
 
         Return True
-
     End Function
-    Public Function saveDocumentxy(ByVal docuToSave As String, ByVal typ As TXTextControl.StreamType) As Boolean
 
-        If Me.doEditor.saveDocument(docuToSave, typ, Me.textControl1) Then
-            FileHandler1.DocumentFileName = docuToSave
-            'FileHandler1.FileSave()
-            If Not (FileHandler1.DocumentFileName = "") Then
-                If Not Me.mainForm Is Nothing Then Me.mainForm.Text = FileHandler1.DocumentFileName
-            End If
-
-            Return True
-        End If
-
-    End Function
     Public Function clearForm() As Boolean
         Me.FileNew(False, False)
     End Function
@@ -1634,9 +1506,8 @@ Public Class contTxtEditor
     Private Sub textControl1_HypertextLinkClicked_1(sender As System.Object, e As TXTextControl.HypertextLinkEventArgs) Handles textControl1.HypertextLinkClicked
         Try
             If e.HypertextLink.Target.Trim().ToLower().StartsWith(("var_").Trim().ToLower()) Then
-                If Me.delOnHyperlinkClicked <> Nothing Then
+                If Not IsNothing(Me.delOnHyperlinkClicked) Then
                     Dim retStr As String = Me.delOnHyperlinkClicked.Invoke(e.HypertextLink.Target.Trim())
-
                 End If
             End If
 

@@ -1848,7 +1848,8 @@ Public Class frmNachrichtBereich
                     If Me.chkIsSerientermin.Checked Then
                         If Me.IsNew Then
                             ownerSucessfullySaved = True
-                        Else ownerSucessfullySaved = True
+                        Else
+                            ownerSucessfullySaved = True
                             If Me.dteSerienterminEndetAm.Value.Equals(EndetAmSerientermin) Then
                                 If Me.saveNachrichtToDb2(lAbtBereiche) Then
                                     Me.copyPlanBereichForEachAbtBereich(lAbtBereiche, rPlanOwner, dsPlanUpdatePlanBereich, compPlanUpdatePlanBereich)

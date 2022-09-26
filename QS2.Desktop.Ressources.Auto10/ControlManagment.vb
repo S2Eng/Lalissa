@@ -1608,7 +1608,7 @@ Public Class HandleEvent
 
                 Dim DefaultNameQuickfilterTmp As String = ""
                 Dim sKey As String = ""
-                If Me._InfoControl.dGetLastClickedQuickfilter <> Nothing Then
+                If Not IsNothing(Me._InfoControl.dGetLastClickedQuickfilter) Then
                     Dim retGetQuickfilter As doBaseElements.cInfoControl.retGetQuickfilter
                     retGetQuickfilter = Me._InfoControl.dGetLastClickedQuickfilter.Invoke()
                     If retGetQuickfilter.LastClickedQuickfilter.Trim() <> "" Then
