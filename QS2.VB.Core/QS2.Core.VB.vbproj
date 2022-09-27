@@ -517,11 +517,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="sql\InsertFromClipboard.vb" />
-    <Compile Include="sql\products\CARDIAC\dsCARDIAC.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsCARDIAC.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Ressources\doRessources.vb" />
     <Compile Include="Ressources\dsControls.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -551,13 +546,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StoredProduedures.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="sql\products\CARDIAC\doCARDIAC_Statistik.vb" />
-    <Compile Include="sql\products\CARDIAC\sqlCARDIAC.Designer.vb">
-      <DependentUpon>sqlCARDIAC.vb</DependentUpon>
-    </Compile>
-    <Compile Include="sql\products\CARDIAC\sqlCARDIAC.vb">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="sql\products\coreStaysProducts.vb" />
     <Compile Include="sql\Protocoll\dsProtocol.Designer.vb">
@@ -719,9 +707,6 @@
     <EmbeddedResource Include="sql\Helper\sqlHelper.resx">
       <DependentUpon>sqlHelper.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="sql\products\CARDIAC\sqlCARDIAC.resx">
-      <DependentUpon>sqlCARDIAC.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ui\contProtocol.resx">
       <DependentUpon>contProtocol.vb</DependentUpon>
     </EmbeddedResource>
@@ -827,17 +812,6 @@
     </None>
     <None Include="sql\Helper\dsHelper.xss">
       <DependentUpon>dsHelper.xsd</DependentUpon>
-    </None>
-    <None Include="sql\products\CARDIAC\dsCARDIAC.xsc">
-      <DependentUpon>dsCARDIAC.xsd</DependentUpon>
-    </None>
-    <None Include="sql\products\CARDIAC\dsCARDIAC.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsCARDIAC.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="sql\products\CARDIAC\dsCARDIAC.xss">
-      <DependentUpon>dsCARDIAC.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -964,12 +938,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="sql\BusinessLogic\" />
-    <Folder Include="sql\products\ALL\" />
-    <Folder Include="sql\products\QTH\" />
-    <Folder Include="sql\products\VASCULAR\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
