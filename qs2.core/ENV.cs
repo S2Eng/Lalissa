@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -1435,32 +1436,19 @@ namespace qs2.core
             }
         }
 
-        public static void readConnInfoDB()
+        public static void ReadConnInfoDb()
         {
-            //
-            System.Data.OleDb.OleDbConnectionStringBuilder OLEDBBuilder = new System.Data.OleDb.OleDbConnectionStringBuilder();
-            OLEDBBuilder.ConnectionString = ENV.connStr;
+            SqlConnectionStringBuilder SqlBuilder = new SqlConnectionStringBuilder(ENV.connStr);
 
-            ENV.Server = OLEDBBuilder.DataSource;
-            ENV.Database = OLEDBBuilder["Initial Catalog"].ToString();
-            ENV.TrustedConnection = false;
+            ENV.Server = SqlBuilder.DataSource;
+            ENV.Database = SqlBuilder.InitialCatalog;
+            ENV.TrustedConnection = SqlBuilder.IntegratedSecurity;
 
-            //Keys and Values to dictionary
-            string[] aKeys = new string[OLEDBBuilder.Keys.Count];
-            object[] aValues = new object[OLEDBBuilder.Keys.Count];
-            OLEDBBuilder.Keys.CopyTo(aKeys, 0);
-            OLEDBBuilder.Values.CopyTo(aValues, 0);
-            var dic = aKeys.Zip(aValues, (k, v) => new { k, v }).ToDictionary(x => x.k, x => x.v);
+            if (SqlBuilder.IntegratedSecurity) 
+                return;
 
-            //Check of MSOLEDBSQL and SQLNCLI. Remove SQLNCLI later
-            ENV.TrustedConnection = (OLEDBBuilder.ContainsKey("Integrated Security") && dic["Integrated Security"].sEquals("SSPI")) ||
-                                    (OLEDBBuilder.ContainsKey("trusted_connection") && dic["trusted_connection"].sEquals("Yes"));
-
-            if (!ENV.TrustedConnection)
-            { 
-                ENV.userDb = OLEDBBuilder["User ID"].ToString();
-                ENV.pwdDbEncrypted = OLEDBBuilder["Password"].ToString();
-            }
+            ENV.userDb = SqlBuilder.UserID;
+            ENV.pwdDbEncrypted = SqlBuilder.Password;
         }
 
         public static void CallFunctionMain(eTypeFunction TypeFunction, cParsCalMainFunction pars)

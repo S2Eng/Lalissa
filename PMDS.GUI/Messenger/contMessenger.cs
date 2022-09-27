@@ -15,22 +15,29 @@ using PMDS.DB;
 using PMDS.Global.db.ERSystem;
 using System.IO;
 using PMDSClient.Sitemap;
+using QS2.Desktop.Txteditor;
 using WCFServicePMDS.BAL.DTO;
 using S2Extensions;
+using ENV = PMDS.Global.ENV;
 
 
 namespace PMDS.GUI.Messenger
-{  
+{
 
     public partial class contMessenger : UserControl
     {
+
+        private contTxtEditor contTxtEditor1 = new contTxtEditor();
+
+
         public frmMessenger mainWindow = null;
         public bool IsInitialized = false;
-
         public PMDS.GUI.VB.contSelectPatientenBenutzer contSelectPatientenBenutzer1 = null;
-
         public UIGlobal UIGlobal1 = new UIGlobal();
         public PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
+        public string newLine = "\r\n";
+        public string newLineOrig = "----------------- {0} -------------------------------";
+        public doEditor doEditor = new doEditor();
 
         public eTypeUI _TypeUI;
         public enum eTypeUI
@@ -41,10 +48,6 @@ namespace PMDS.GUI.Messenger
             NewMessage = 3
         }
 
-        public string newLine = "\r\n";
-        public string newLineOrig = "----------------- {0} -------------------------------";
-
-        public QS2.Desktop.Txteditor.doEditor doEditor = new QS2.Desktop.Txteditor.doEditor();
 
         public contMessenger()
         {
@@ -196,12 +199,12 @@ namespace PMDS.GUI.Messenger
 
                         this.btnDelete.Visible = true;
                     }
-                    else 
+                    else
                     {
                         this.btnDelete.Visible = false;
 
                         if (this.optReaded.Value.ToString().Equals("U"))
-                        {                   
+                        {
                             this.udteFrom.Value = null;
                             dFromTmp = new DateTime(1900, 1, 1, 0, 0, 0);
 
@@ -252,7 +255,7 @@ namespace PMDS.GUI.Messenger
 
                             if (bOK)
                             {
-                                PMDS.Global.db.ERSystem.dsKlientenliste.tMessagesRow  rNewtMessage = this.sqlManange1.getNewttMessages(ref this.dsKlientenliste1);
+                                PMDS.Global.db.ERSystem.dsKlientenliste.tMessagesRow rNewtMessage = this.sqlManange1.getNewttMessages(ref this.dsKlientenliste1);
 
                                 var rUserFrom = (from b in db.Benutzer
                                                  where b.ID == rM.IdguidObject
@@ -309,11 +312,15 @@ namespace PMDS.GUI.Messenger
                         dsKlientenliste.tMessagesRow rtMessageAct = (dsKlientenliste.tMessagesRow)v.Row;
 
                         var lMu = (from mu in lM.lMessagesToUsers
-                                where mu.Idmessages == rtMessageAct.IDProtocoll && mu.Iduser == ENV.USERID
-                                select new
-                                {
-                                    ID = mu.Id, mu.Idmessages, mu.Iduser, mu.Readed, mu.ReadedAt
-                                });
+                                   where mu.Idmessages == rtMessageAct.IDProtocoll && mu.Iduser == ENV.USERID
+                                   select new
+                                   {
+                                       ID = mu.Id,
+                                       mu.Idmessages,
+                                       mu.Iduser,
+                                       mu.Readed,
+                                       mu.ReadedAt
+                                   });
 
                         if (!UIAusgang)
                         {
@@ -363,7 +370,7 @@ namespace PMDS.GUI.Messenger
                 throw new Exception("contMessenger.loadTreeMessages: " + ex.ToString());
             }
         }
-    
+
         public void loadMessageDetail(dsKlientenliste.tMessagesRow rSelMessage, UltraGridRow rSelGridRow, bool updateMessageReaded)
         {
             try
@@ -391,7 +398,7 @@ namespace PMDS.GUI.Messenger
                                              Nachname = b.Nachname,
                                              Vorname = b.Vorname
                                          }).First();
-                        
+
                         this.lblSender.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Absender") + ": " + rUserFrom.Nachname.Trim() + " " + rUserFrom.Vorname.Trim() + " (" + rProtMessage.UserFrom.Trim() + ")";
                         this.txtTitle.Text = rProtMessage.Title.Trim();
                         this.textControlMessage.Text = rProtMessage.Text.Trim();
@@ -403,7 +410,7 @@ namespace PMDS.GUI.Messenger
                         {
                             var tMUNotReaded = (from mu in tMessagesToUsers
                                                 where !mu.Readed
-                                                select new { mu.ID, mu.Readed, mu.ReadedAt});
+                                                select new { mu.ID, mu.Readed, mu.ReadedAt });
                             if (tMUNotReaded.Any())
                             {
                                 rSelGridRow.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
@@ -461,20 +468,20 @@ namespace PMDS.GUI.Messenger
             }
         }
 
-      
+
         public void setUIUserFrom(Guid IDUser, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
                 var rUserFrom = (from b in db.Benutzer
-                                    where b.ID == IDUser
+                                 where b.ID == IDUser
                                  select new
-                                    {
-                                        IDBenutzer = b.ID,
-                                        Benutzer = b.Benutzer1,
-                                        Nachname = b.Nachname,
-                                        Vorname = b.Vorname
-                                    }).First();
+                                 {
+                                     IDBenutzer = b.ID,
+                                     Benutzer = b.Benutzer1,
+                                     Nachname = b.Nachname,
+                                     Vorname = b.Vorname
+                                 }).First();
 
                 this.lblSender.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Absender") + ": " + rUserFrom.Nachname.Trim() + " " + rUserFrom.Vorname.Trim() + " (" + rUserFrom.Benutzer.Trim() + ")";
 
@@ -632,7 +639,7 @@ namespace PMDS.GUI.Messenger
                     {
                         this.panelButtonsTop.Visible = true;
                         this.panelButtonsBottomRight.Visible = false;
-                    
+
                         this.txtTitle.Enabled = false;
                         this.textControlMessage.EditMode = TXTextControl.EditMode.ReadOnly;
                         this.contSelectPatientenBenutzer1._UserCanChangeBenutzerPatients = false;
@@ -702,7 +709,7 @@ namespace PMDS.GUI.Messenger
                             this.txtTitle.Focus();
                         }
                     }
-                }   
+                }
                 else if (this._TypeUI == eTypeUI.AnswerAll)
                 {
                     UltraGridRow rSelGridRow = null;
@@ -820,28 +827,24 @@ namespace PMDS.GUI.Messenger
                     foreach (var rUserSended in tMessagesToUsers)
                     {
                         var rUserFrom = (from b in db.Benutzer
-                                            where b.ID == rUserSended.IDUser
-                                            select new
-                                            {
-                                                IDBenutzer = b.ID,
-                                                Benutzer = b.Benutzer1,
-                                                Nachname = b.Nachname,
-                                                Vorname = b.Vorname
-                                            }).First();
+                                         where b.ID == rUserSended.IDUser
+                                         select new
+                                         {
+                                             IDBenutzer = b.ID,
+                                             Benutzer = b.Benutzer1,
+                                             Nachname = b.Nachname,
+                                             Vorname = b.Vorname
+                                         }).First();
 
                         UserSended += rUserFrom.Nachname.Trim() + " " + rUserFrom.Vorname.Trim() + " (" + rUserFrom.Benutzer.Trim() + ")" + "; ";
                     }
 
                     sTxtMessageForPrint += newLine + UserSended.Trim() + newLine + newLine + QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachricht") + ": " + sNewLine + rSelMessage.MessageTxt.Trim();
-                    editor.Text = sTxtMessageForPrint.Trim();
 
-                    byte[] bPDF = this.doEditor.getTextInByte(TXTextControl.BinaryStreamType.AdobePDF, editor);
-                    Stream stream = new MemoryStream(bPDF);
-             
-                    PMDS.GUI.VB.frmPdfViewer frmPdfViewer1 = new PMDS.GUI.VB.frmPdfViewer();
-                    frmPdfViewer1.initControl("", stream);
-                    frmPdfViewer1.Show();
-                    frmPdfViewer1.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Druck Nachricht");
+                    QS2.Desktop.Txteditor.frmTxtEditor frmEditor = new QS2.Desktop.Txteditor.frmTxtEditor();
+                    frmEditor.fFelderEinAus = false;
+                    frmEditor.Show();
+                    frmEditor.ContTxtEditor1.textControl1.Text = sTxtMessageForPrint;
                 }
 
             }
@@ -850,7 +853,6 @@ namespace PMDS.GUI.Messenger
                 throw new Exception("contMessenger.printMessage: " + ex.ToString());
             }
         }
-
 
         public dsKlientenliste.tMessagesRow getSelectedRow(ref UltraGridRow gridRow, bool WithMsgBox)
         {

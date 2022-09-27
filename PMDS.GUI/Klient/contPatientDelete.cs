@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using PMDS.DB;
 using PMDS.GUI.VB;
 using S2Extensions;
+using System.Diagnostics;
 
 namespace PMDS.GUI.Klient
 {
@@ -216,11 +217,12 @@ namespace PMDS.GUI.Klient
                                 {
                                     if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie das generierte PDF-Dokument mit den Patientendaten öffnen?", "PMDS", MessageBoxButtons.YesNo) == DialogResult.Yes)
                                     {
-                                        using (frmPdfViewer frmPdfViewer1 = new frmPdfViewer())
+                                        ProcessStartInfo psi = new ProcessStartInfo
                                         {
-                                            frmPdfViewer1.ShowDialog();
-                                            frmPdfViewer1.initControl(frmExport.FileNamePDFDocument, null);
-                                        }
+                                            FileName = frmExport.FileNamePDFDocument,
+                                            UseShellExecute = true
+                                        };
+                                        Process.Start(psi);
                                     }
                                 }
                                 else

@@ -10,6 +10,7 @@ using PMDS.Global.Remote;
 using System.Linq;
 using System.Diagnostics;
 using S2Extensions;
+using qs2.ui;
 
 namespace PMDS
 {
@@ -18,6 +19,9 @@ namespace PMDS
     {
         static bool ProcessStartup(Form frm, UserRights right, string RightsErrorText, bool bNoLoginRequired, bool testWindow, bool IsTouch  )
         {
+            qs2.ui.RunFromPMDS RunFromPMDS1 = new qs2.ui.RunFromPMDS();
+            RunFromPMDS1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+
             if (!bNoLoginRequired)  
             {
                 if (!frmLogin.ProcessLogin())
@@ -31,8 +35,6 @@ namespace PMDS
             }       
 
             QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
-            qs2.ui.RunFromOtherSystem RunFromOtherSystem1 = new qs2.ui.RunFromOtherSystem();
-            RunFromOtherSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
             qs2.core.ENV.IsHeadquarter = true;
 
             if (!IsTouch)
@@ -200,6 +202,8 @@ namespace PMDS
 
                 if (typ == "pmds" || String.IsNullOrWhiteSpace(typ))                                                                                                                                                            // PMDS starten
                 {
+                    qs2.ui.RunFromPMDS RunFromPMDS1 = new qs2.ui.RunFromPMDS();
+                    RunFromPMDS1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
 
                     if (ENV.CheckLicense())
                     {
@@ -247,15 +251,9 @@ namespace PMDS
                                 return;
                             }
 
-                            //if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
-                            //{
-                            //    PMDS.Global.Remote.remotingSrv remotingSrv1 = new Global.Remote.remotingSrv();
-                            //    remotingSrv1.startProcIPCClient("Schnellrückmeldung", ENV.USERID, "0", ENV.IDAnmeldungen, ENV.LoggedInAsSuperUser, ENV.UsrPwdEnc);
-                            //}
-
                             QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
-                            qs2.ui.RunFromOtherSystem RunFromOtherSystem1 = new qs2.ui.RunFromOtherSystem();
-                            RunFromOtherSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+
+                            
                             PMDS.Global.ENV.setStyleInfrag(true);
                             qs2.core.ENV.IsHeadquarter = true;
                             PMDS.Global.db.ERSystem.EFEntities EFEntities1 = new Global.db.ERSystem.EFEntities();
@@ -346,8 +344,8 @@ namespace PMDS
 
 
                         QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
-                        qs2.ui.RunFromOtherSystem RunFromOtherSystem1 = new qs2.ui.RunFromOtherSystem();
-                        RunFromOtherSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+                        qs2.ui.RunFromPMDS RunFromPMDS1 = new qs2.ui.RunFromPMDS();
+                        RunFromPMDS1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
                         PMDS.Global.ENV.setStyleInfrag(true);
                         qs2.core.ENV.IsHeadquarter = true;
                         PMDS.Global.db.ERSystem.EFEntities EFEntities1 = new Global.db.ERSystem.EFEntities();
@@ -376,7 +374,6 @@ namespace PMDS
                         remotingClient1.callFct(ICommunicationService.eTypeCallTo.MainPMDS, ICommunicationService.eTypeFct.LogInFinished, cParComm1, ref CallFctReturn);
                         remotingSrv.showMsgBoxTestmodus("logged in ready sended to Main-Pmds");
 
-                        //remotingSrv.showMsgBoxTestmodus("starting schnellrückmeldung finisehd");
                         Application.Run(PMDS.Global.Remote.remotingClient.frmMainFormIPCClient1);
                     }
                 }

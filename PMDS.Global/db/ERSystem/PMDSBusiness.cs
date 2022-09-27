@@ -11761,58 +11761,6 @@ namespace PMDS.DB
             }
         }
 
-        public static void setERConnection(ref PMDS.db.Entities.ERModellPMDSEntities DBContext)
-        {
-            try
-            {
-                string providerName = "System.Data.SqlClient";
-                string serverName = PMDS.Global.ENV.DB_SERVER;
-                string databaseName = PMDS.Global.ENV.DB_DATABASE;
-                string User = PMDS.Global.ENV.DB_USER;
-                string Pwd = PMDS.Global.ENV.DB_PASSWORD;
-
-                SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
-                sqlBuilder.DataSource = serverName;
-                sqlBuilder.InitialCatalog = databaseName;
-                sqlBuilder.ApplicationName = "EntityFramework";
-                sqlBuilder.MultipleActiveResultSets = true;
-                sqlBuilder.IntegratedSecurity = true;
-                sqlBuilder.MaxPoolSize = 5000;
-
-                //Für SQL-User
-                if (User != null)
-                {
-                    sqlBuilder.UserID = User;
-                    sqlBuilder.Password = Pwd ?? "";
-                    sqlBuilder.IntegratedSecurity = false;
-                    sqlBuilder.PersistSecurityInfo = true;
-                }
-                string providerString = sqlBuilder.ToString();
-
-                DBContext.Database.Connection.ConnectionString = providerString;
-                try
-                {
-                    DBContext.Database.Connection.Open();
-                }
-                catch
-                {
-                    //ev. nocheinmal probieren
-                    if (DBContext.Database.Connection.State == ConnectionState.Closed)
-                    {
-                        qs2.core.generic.WaitMilli(500);
-                        DBContext.Database.Connection.Open();
-                    }
-                }
-                return;
-
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception("PMDSBusiness.setConnection: " + ex.ToString());
-            }
-        }
-
         public static void setERConnectionQS2(ref PMDS.db.Entities.ERModellPMDSEntities DBContext)
         {
             try
@@ -11841,7 +11789,6 @@ namespace PMDS.DB
                         sqlBuilder.Password = Pwd ?? "";
                         sqlBuilder.IntegratedSecurity = false;
                     }
-
                 }
 
                 DBContext.Database.Connection.ConnectionString = sqlBuilder.ConnectionString;
@@ -11855,7 +11802,6 @@ namespace PMDS.DB
                 throw new Exception("businessFramework.setERConnectionQS2: " + ex.ToString());
             }
         }
-
 
         public bool CheckDb(PMDS.db.Entities.ERModellPMDSEntities DBContext, ref string prot, ref int iErrorsFound)
         {

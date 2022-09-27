@@ -895,7 +895,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="app.config" />
-    <None Include="launcherVorlage.Config" />
+    <None Include="launcher.Config.Template" />
     <None Include="PMDS.Config.Template" />
     <None Include="sql.hl\sql.hl.sonstigeSkripts\AllePatientenL?schen.os.sql" />
   </ItemGroup>

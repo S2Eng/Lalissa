@@ -460,7 +460,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RunFromOhterSystem.cs" />
+    <Compile Include="RunFromPMDS.cs" />
     <Compile Include="TestUnits.cs" />
   </ItemGroup>
   <ItemGroup>

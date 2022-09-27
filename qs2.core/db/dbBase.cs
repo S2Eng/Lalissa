@@ -2,6 +2,7 @@
 using S2Extensions;
 using System;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 //using Microsoft.SqlServer.Management.Smo;
@@ -132,35 +133,21 @@ namespace qs2.core
             }
         }
 
-        public static bool getVarConnStr(string ConnectionStr)
+        public static void getVarConnStr(string ConnectionStr)
         {
             try
             {
-                System.Data.Common.DbConnectionStringBuilder oledbBuilder = new System.Data.Common.DbConnectionStringBuilder
-                {
-                    ConnectionString = ConnectionStr.Trim()
-                };
+                SqlConnectionStringBuilder SqlBuilder = new SqlConnectionStringBuilder(ConnectionStr.Trim());
 
-                dbBase.Database = oledbBuilder["Initial Catalog"].ToString();
-                dbBase.Server = oledbBuilder["Data Source"].ToString();
-                dbBase.TrustedConnection = false;
+                dbBase.Server = SqlBuilder.DataSource;
+                dbBase.Database = SqlBuilder.InitialCatalog;
+                dbBase.TrustedConnection = SqlBuilder.IntegratedSecurity;
 
-                string[] aKeys = new string[oledbBuilder.Keys.Count];
-                object[] aValues = new object[oledbBuilder.Keys.Count];
-                oledbBuilder.Keys.CopyTo(aKeys, 0);
-                oledbBuilder.Values.CopyTo(aValues, 0);
-                var dic = aKeys.Zip(aValues, (k, v) => new { k, v }).ToDictionary(x => x.k, x => x.v);
+                if (SqlBuilder.IntegratedSecurity)
+                    return;
 
-                //Check of MSOLEDBSQL and SQLNCLI. Remove SQLNCLI later
-                dbBase.TrustedConnection =  (oledbBuilder.ContainsKey("Integrated Security") && dic["Integrated Security"].sEquals("SSPI")) ||
-                                            (oledbBuilder.ContainsKey("trusted_connection") && dic["trusted_connection"].sEquals("Yes"));
-
-                if (!dbBase.TrustedConnection)
-                {
-                    dbBase.User = oledbBuilder["User ID"].ToString();
-                    dbBase.PwdDecrypted = oledbBuilder["Password"].ToString();
-                }
-                return true;
+                dbBase.User = SqlBuilder.UserID;
+                dbBase.PwdDecrypted = SqlBuilder.Password;
             }
 
             catch (Exception ex)

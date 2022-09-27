@@ -1346,7 +1346,7 @@ Public Class contTxtEditor
     End Sub
 
     Public Function showText(ByVal txt As String, ByVal typ As TXTextControl.StreamType, ByVal eingabeJN As Boolean,
-            ByVal viewMod As TXTextControl.ViewMode, Optional ByRef bytes() As Byte = Nothing) As Boolean
+            ByVal viewMod As TXTextControl.ViewMode, Optional bytesPDF() As Byte = Nothing) As Boolean
 
         Me.FileNew(False, False)
 
@@ -1356,8 +1356,8 @@ Public Class contTxtEditor
             Me.lockEingbe = True
         End If
 
-        If txt = "" And bytes Is Nothing Then Exit Function
-        Me.doEditor.showText(txt, typ, eingabeJN, viewMod, Me.textControl1, bytes)
+        If txt = "" And bytesPDF Is Nothing Then Exit Function
+        Me.doEditor.showText(txt, typ, eingabeJN, viewMod, Me.textControl1, bytesPDF)
 
         FileHandler1.DocumentFileName = ""
         Return True

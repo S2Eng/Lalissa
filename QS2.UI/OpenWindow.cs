@@ -22,42 +22,27 @@ namespace qs2.ui
 
     public class OpenWindow
     {
+        private static qs2.ui.pint.contQryRun contQueriesRun;
+        private static System.Windows.Forms.Form frmQueriesRun = null;
 
-        public static qs2.ui.pint.contQryRun contQueriesRun;
-        public static System.Windows.Forms.Form frmQueriesRun = null;
+        private static qs2.ui.print.contQryAdmin contQryAdminUsr;
+        private static System.Windows.Forms.Form frmQryAdminUsr = null;
 
-        public static qs2.ui.pint.contQryRun contReportsRun;
-        public static System.Windows.Forms.Form frmReportsRun = null;
+        private static qs2.ui.print.frmQryAdmin frmQryAdmin = null;
 
-        public static qs2.ui.pint.contQryRun contDocumentsRun;
-        public static System.Windows.Forms.Form frmDocumentsRun = null;
+        private static qs2.sitemap.manage.wizardsDevelop.frmRessourcen frmRessourcen = null;
+        private static qs2.sitemap.workflowAssist.frmInfoFieldDB frmInfoDB = null;
+        private static qs2.sitemap.vb.frmSelLists frmSelLists = null;
+        private static qs2.sitemap.manage.wizardsDevelop.frmCriterias frmCriteria = null;
 
-        public static qs2.ui.print.contQryAdmin contQryAdminUsr;
-        public static System.Windows.Forms.Form frmQryAdminUsr = null;
-
-        public static qs2.ui.print.frmQryAdmin frmQryAdmin = null;
-
-        public static qs2.sitemap.manage.wizardsDevelop.frmRessourcen frmRessourcen = null;
-        public static qs2.sitemap.workflowAssist.frmInfoFieldDB frmInfoDB = null;
-        public static qs2.sitemap.vb.frmSelLists frmSelLists = null;
-        public static qs2.sitemap.manage.wizardsDevelop.frmCriterias frmCriteria = null;
+        private static qs2.core.vb.frmLayoutManager frmLayouts = null;
 
         public static QS2.Logging.contLogViewer contLogViewer = null;
         public static System.Windows.Forms.Form frmLogViewer = null;
 
-        public static qs2.core.vb.frmLayoutManager frmLayouts = null;
-
-
-
-
-
-
-
-        public static void doControl(qs2.core.ENV.eTypApp typFound, Panel PanelToLoad, System.Windows.Forms.Form FrmMain, 
-                                     bool ExtendedView)
+        public static void doControl(qs2.core.ENV.eTypApp typFound, Panel PanelToLoad, System.Windows.Forms.Form FrmMain, bool ExtendedView)
         {
             try
-
             {
                 if (typFound == qs2.core.ENV.eTypApp.contQuerysRun)
                 {
@@ -76,42 +61,6 @@ namespace qs2.ui
                     }
                     OpenWindow.frmQueriesRun.Show();
                     OpenWindow.frmQueriesRun.Visible = true;
-                }
-                else if (typFound == qs2.core.ENV.eTypApp.contReportsRun)
-                {
-                    if (OpenWindow.contReportsRun == null)
-                    {
-                        OpenWindow.contReportsRun = new qs2.ui.pint.contQryRun();
-                        OpenWindow.contReportsRun.typRunQuery = qs2.core.Enums.eTypRunQuery.ReportGroups;
-                        OpenWindow.contReportsRun.defaultApplication = qs2.core.license.doLicense.rApplication.IDApplication.ToString();
-                        OpenWindow.contReportsRun.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.ToString();
-                        OpenWindow.contReportsRun.initControl(qs2.core.license.doLicense.rApplication.IDApplication.ToString(), true);
-                        OpenWindow.frmReportsRun = FrmMain;
-                        OpenWindow.frmReportsRun.Icon = getRes.getIcon(QS2.Resources.getRes.ePicture.ico_Reports, 32, 32);
-                        OpenWindow.frmReportsRun.Text = qs2.core.language.sqlLanguage.getRes("Reports");
-                        OpenWindow.loadIntoPanel(OpenWindow.contReportsRun, PanelToLoad);
-                        OpenWindow.contReportsRun.refreshControl();
-                    }
-                    OpenWindow.frmReportsRun.Show();
-                    OpenWindow.contReportsRun.Visible = true;
-                }
-                else if (typFound == qs2.core.ENV.eTypApp.contDocumentsRun)
-                {
-                    if (OpenWindow.contDocumentsRun == null)
-                    {
-                        OpenWindow.contDocumentsRun = new qs2.ui.pint.contQryRun();
-                        OpenWindow.contDocumentsRun.typRunQuery = qs2.core.Enums.eTypRunQuery.ReportGroups;
-                        OpenWindow.contDocumentsRun.defaultApplication = qs2.core.license.doLicense.rApplication.IDApplication.ToString();
-                        OpenWindow.contDocumentsRun.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.ToString();
-                        OpenWindow.contDocumentsRun.initControl(qs2.core.license.doLicense.rApplication.IDApplication.ToString(), true);
-                        OpenWindow.frmDocumentsRun = FrmMain;
-                        OpenWindow.frmDocumentsRun.Icon = getRes.getIcon(QS2.Resources.getRes.PMDS_Klientenakt.ico_Datenerhebung, 32, 32);
-                        OpenWindow.frmDocumentsRun.Text = qs2.core.language.sqlLanguage.getRes("Documents");
-                        OpenWindow.loadIntoPanel(OpenWindow.contDocumentsRun, PanelToLoad);
-                        OpenWindow.contDocumentsRun.refreshControl();
-                    }
-                    OpenWindow.frmReportsRun.Show();
-                    OpenWindow.contReportsRun.Visible = true;
                 }
                 else if (typFound == qs2.core.ENV.eTypApp.contQuerysUser)
                 {
@@ -142,7 +91,6 @@ namespace qs2.ui
                         OpenWindow.frmQryAdmin.contQryAdmin1.contSelListQueries.btnRefreshQuery.Visible = false;
                         OpenWindow.frmQryAdmin.contQryAdmin1.contSelListQueries.btnClearSelection.Visible = false;
                         OpenWindow.frmQryAdmin.contQryAdmin1.comboApplication1.OwnLabelVisible = false;
-                        //this.frmQryAdmin_AppMenü.contQryAdmin1.contSelListQueries2.cboQuerySelect.Dock = DockStyle.Left;
                         OpenWindow.frmQryAdmin.contQryAdmin1.typeQuery = core.Enums.eTypeQuery.Admin;
                         OpenWindow.frmQryAdmin.contQryAdmin1.DefaultApplication = qs2.core.license.doLicense.rApplication.IDApplication;
                         OpenWindow.frmQryAdmin.contQryAdmin1.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant;
@@ -152,24 +100,18 @@ namespace qs2.ui
                 }
                 else if (typFound == qs2.core.ENV.eTypApp.QS2PopUpContainerRessourcen)
                 {
-                    //if (OpenWindow.frmRessourcen == null)
-                    //{
-                        OpenWindow.frmRessourcen = new qs2.sitemap.manage.wizardsDevelop.frmRessourcen();
-                        OpenWindow.frmRessourcen.contRessourcen1.IDApplication = qs2.core.license.doLicense.eApp.ALL.ToString();    //qs2.core.license.doLicense.rApplication.IDApplication;
-                        OpenWindow.frmRessourcen.contRessourcen1.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant;
-                        OpenWindow.frmRessourcen.contRessourcen1.btnClose.Visible = false;
-                    //}
+                    OpenWindow.frmRessourcen = new qs2.sitemap.manage.wizardsDevelop.frmRessourcen();
+                    OpenWindow.frmRessourcen.contRessourcen1.IDApplication = qs2.core.license.doLicense.eApp.ALL.ToString();    //qs2.core.license.doLicense.rApplication.IDApplication;
+                    OpenWindow.frmRessourcen.contRessourcen1.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant;
+                    OpenWindow.frmRessourcen.contRessourcen1.btnClose.Visible = false;
                     OpenWindow.frmRessourcen.Show();
                 }
                 else if (typFound == qs2.core.ENV.eTypApp.QS2PopUpContainerSysDatabase)
                 {
-                    //if (OpenWindow.frmInfoDB == null)
-                    //{
-                        OpenWindow.frmInfoDB = new qs2.sitemap.workflowAssist.frmInfoFieldDB();
-                        OpenWindow.frmInfoDB.contInfoFieldDB1.panelButtClose.Visible = false;
-                        OpenWindow.frmInfoDB.contInfoFieldDB1.IDApplication = qs2.core.license.doLicense.rApplication.IDApplication;
-                        OpenWindow.frmInfoDB.contInfoFieldDB1.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant;
-                    //}
+                    OpenWindow.frmInfoDB = new qs2.sitemap.workflowAssist.frmInfoFieldDB();
+                    OpenWindow.frmInfoDB.contInfoFieldDB1.panelButtClose.Visible = false;
+                    OpenWindow.frmInfoDB.contInfoFieldDB1.IDApplication = qs2.core.license.doLicense.rApplication.IDApplication;
+                    OpenWindow.frmInfoDB.contInfoFieldDB1.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant;
                     OpenWindow.frmInfoDB.Show();
                 }
                 else if (typFound == qs2.core.ENV.eTypApp.QS2PopUpContainerSelLists)
@@ -190,27 +132,21 @@ namespace qs2.ui
                 }
                 else if (typFound == qs2.core.ENV.eTypApp.QS2PopUpContainerCriterias)
                 {
-                    //if (OpenWindow.frmCriteria == null)
-                    //{
-                        OpenWindow.frmCriteria = new qs2.sitemap.manage.wizardsDevelop.frmCriterias();
-                        OpenWindow.frmCriteria.contCriterias1.IDApplication = qs2.core.license.doLicense.rApplication.IDApplication;
-                        OpenWindow.frmCriteria.contCriterias1.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant;
-                        OpenWindow.frmCriteria.contCriterias1.btnClose.Visible = false;
-                    //}
+                    OpenWindow.frmCriteria = new qs2.sitemap.manage.wizardsDevelop.frmCriterias();
+                    OpenWindow.frmCriteria.contCriterias1.IDApplication = qs2.core.license.doLicense.rApplication.IDApplication;
+                    OpenWindow.frmCriteria.contCriterias1.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant;
+                    OpenWindow.frmCriteria.contCriterias1.btnClose.Visible = false;
                     OpenWindow.frmCriteria.loadForm(sitemap.manage.wizardsDevelop.contCriterias.eTypeUI.Admin);
                     OpenWindow.frmCriteria.Show();
                 }
                 else if (typFound == qs2.core.ENV.eTypApp.QS2PopUpContainerLayouts)
                 {
-                    //if (OpenWindow.frmCriteria == null)
-                    //{
                     OpenWindow.frmLayouts = new qs2.core.vb.frmLayoutManager();
                     OpenWindow.frmLayouts.ContLayoutGrid1.cLayoutManager1._LayoutKey = "";
                     OpenWindow.frmLayouts.ContLayoutGrid1.cLayoutManager1.gridUIToSave = null;
                     OpenWindow.frmLayouts.ContLayoutGrid1.cLayoutManager1.typLayoutGrid = cLayoutManager.eTypLayoutGrid.onlyFirstBand;
                     OpenWindow.frmLayouts.initControl("", true, "", ExtendedView);
                     OpenWindow.frmLayouts.Show();
-
                 }
                 else if (typFound == qs2.core.ENV.eTypApp.contTexteditor)
                 {
@@ -223,7 +159,6 @@ namespace qs2.ui
                 {
                     throw new Exception("OpenWindow.doControl: typFound '" + typFound.ToString() + " not supported!'");
                 }
-
             }
             catch (Exception ex)
             {
@@ -237,6 +172,5 @@ namespace qs2.ui
             cont.Dock = DockStyle.Fill;
             cont.BackColor = System.Drawing.Color.Transparent;
         }
-
     }
 }

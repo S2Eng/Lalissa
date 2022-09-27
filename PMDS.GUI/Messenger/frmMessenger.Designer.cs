@@ -66,7 +66,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 732);
             this.Controls.Add(this.contMessenger1);
-            this.Controls.Add(this.ultraStatusBar1);
+            //this.Controls.Add(this.ultraStatusBar1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(950, 650);
@@ -76,7 +76,7 @@
             this.Text = "Internes Nachrichtensystem";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMessenger_FormClosing);
             this.Load += new System.EventHandler(this.frmMessenger_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ultraStatusBar1)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ultraStatusBar1)).EndInit();
             this.ResumeLayout(false);
 
         }

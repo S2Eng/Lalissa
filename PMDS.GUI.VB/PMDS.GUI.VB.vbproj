@@ -810,12 +810,6 @@
     <Compile Include="planArchive2\plan\frmNachricht3.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="planArchive2\plan\frmPdfViewer.Designer.vb">
-      <DependentUpon>frmPdfViewer.vb</DependentUpon>
-    </Compile>
-    <Compile Include="planArchive2\plan\frmPdfViewer.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="planArchive2\plan\frmSelectUsr.designer.vb">
       <DependentUpon>frmSelectUsr.vb</DependentUpon>
     </Compile>
@@ -1063,9 +1057,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="planArchive2\plan\frmNachricht3.resx">
       <DependentUpon>frmNachricht3.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="planArchive2\plan\frmPdfViewer.resx">
-      <DependentUpon>frmPdfViewer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="planArchive2\plan\frmSelectUsr.resx">
       <DependentUpon>frmSelectUsr.vb</DependentUpon>
