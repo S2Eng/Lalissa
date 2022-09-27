@@ -116,7 +116,7 @@ namespace QS2.Logging
             this.lblErwAnsichtEinAus.Text = "Erweiterte Ansicht";
             this.lblSendMessageAsEMail.Text = "Nachricht an S2 senden";
             this.btnSend.Text = "Senden";
-            this.btnStartMikogo.Text = "Online-Unterstützung 1 (FastViewer)";
+            this.btnStartFastViewer.Text = "Online-Unterstützung 1 (FastViewer)";
             this.btnStartTeamViewer.Text = "Online-Unterstützung 2 (TeamViewer)";
 
 
@@ -124,7 +124,7 @@ namespace QS2.Logging
         }
         public void setUIEnglish()
         {
-            this.btnStartMikogo.AutoSize = true;
+            this.btnStartFastViewer.AutoSize = true;
             this.btnStartTeamViewer.AutoSize = true;
         }
         private void UFormLinkZurücksetzen_Click(object sender, EventArgs e) 
@@ -146,7 +146,7 @@ namespace QS2.Logging
                 string msgTxt = "";
                 if (!this.germanTxt)
                 {
-                    msgTxt = "Please a short description of the error" + "\r\n" + "\r\n" + "\r\n";
+                    msgTxt = "Please enter a short description of the error" + "\r\n" + "\r\n" + "\r\n";
                     msgTxt += "Title: " + this.txtDescritpionOfProblem.Text + "\r\n";
                     msgTxt += this.rNewError.title + "\r\n" + "\r\n";
                     msgTxt += "User: " + this.rNewError.usr + "\r\n";
@@ -156,7 +156,7 @@ namespace QS2.Logging
                 }
                 else
                 {
-                    msgTxt = "Please a short description of the error" + "\r\n" + "\r\n" + "\r\n";
+                    msgTxt = "Please enter a short description of the error" + "\r\n" + "\r\n" + "\r\n";
                     msgTxt += "Title: " + this.txtDescritpionOfProblem.Text + "\r\n";
                     msgTxt += this.rNewError.title + "\r\n" + "\r\n";
                     msgTxt += "User: " + this.rNewError.usr + "\r\n";
@@ -165,11 +165,8 @@ namespace QS2.Logging
                     msgTxt += "Message: " + "\r\n" + this.rNewError.error.ToString() + "\r\n" + "\r\n";
                 }
 
-
                 QS2.functions.cs.EMail sendEMail1 = new QS2.functions.cs.EMail();
                 sendEMail1.sendEMail("Message QS2", msgTxt, QS2.functions.cs.EMail.EMailService);
-
-                //if (this.modalWindow != null) this.modalWindow.Close();
             }
             catch (Exception ex)
             {
@@ -182,7 +179,7 @@ namespace QS2.Logging
         }
 
 
-        private void btnStartMikogo_Click(object sender, EventArgs e)
+        private void btnStartFastViewer_Click(object sender, EventArgs e)
         {
             try
             {

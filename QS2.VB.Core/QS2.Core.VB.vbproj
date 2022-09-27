@@ -495,7 +495,6 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="doBM.vb" />
     <Compile Include="Service References\QS2Service1\Reference.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -562,7 +561,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="funct.vb" />
-    <Compile Include="init.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

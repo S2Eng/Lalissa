@@ -78,10 +78,6 @@ Public Class InsertFromClipboard
 
             Dim rRessourceNew As qs2.core.language.dsLanguage.RessourcenRow = InsertFromClipboard.tRessourcen.NewRow()
             rRessourceNew.ItemArray = rLanguage.ItemArray
-            If addCopyToRes Then
-                'rRessourceNew.German = "Kopie " + rRessourceNew.German
-                'rRessourceNew.English = "Copy " + rRessourceNew.English
-            End If
             InsertFromClipboard.tRessourcen.Rows.Add(rRessourceNew)
 
             rLanguageReturn = rRessourceNew

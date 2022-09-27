@@ -34,7 +34,7 @@ Public Class cTranslate
             rLanguageFound.Created = System.DateTime.Now
             rLanguageFound.CreatedUser = qs2.core.vb.actUsr.rUsr.UserName
 
-            If ENV.VSDesignerMode Then
+            If System.Diagnostics.Process.GetCurrentProcess().ProcessName = "devenv" Then
                 rLanguageFound.TypeSub = ""
                 If rLanguageFound.IDApplication.Trim() = "" Then
                     rLanguageFound.IDApplication = qs2.core.license.doLicense.eApp.ALL.ToString()
@@ -47,11 +47,6 @@ Public Class cTranslate
                 sqlLanguage1.loadAllRessources()
             End If
             Return True
-
-            'Dim translatedTxt As String = qs2.core.language.sqlLanguage.getRes("Translation", "ALL", Me.Application)
-            'If translatedTxt.Trim() <> "" Then
-            'Else
-            'End If
 
         Catch ex As Exception
             Throw New Exception("cTranslate.saveTranslation: " + ex.ToString())
@@ -124,7 +119,7 @@ Public Class cTranslate
             rLanguageFound.Created = System.DateTime.Now
             rLanguageFound.CreatedUser = ""     'qs2.core.vb.actUsr.rUsr.UserName
 
-            If ENV.VSDesignerMode Then
+            If System.Diagnostics.Process.GetCurrentProcess().ProcessName = "devenv" Then
                 rLanguageFound.TypeSub = ""
                 If rLanguageFound.IDApplication.Trim() = "" Then
                     rLanguageFound.IDApplication = qs2.core.license.doLicense.eApp.ALL.ToString()
@@ -133,11 +128,6 @@ Public Class cTranslate
 
             sqlLanguage1.daLanguage.Update(dsLanguage1.Ressourcen)
             Return True
-
-            'Dim translatedTxt As String = qs2.core.language.sqlLanguage.getRes("Translation", "ALL", Me.Application)
-            'If translatedTxt.Trim() <> "" Then
-            'Else
-            'End If
 
         Catch ex As Exception
             Throw New Exception("cTranslate.saveTranslation: " + ex.ToString())

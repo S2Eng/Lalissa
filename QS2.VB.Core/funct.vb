@@ -10,7 +10,7 @@ Imports Microsoft.VisualBasic
 Imports Microsoft.Win32
 Imports Infragistics.Win.UltraWinGrid
 Imports Infragistics.Win
-
+Imports S2Extensions
 
 
 Public Class funct
@@ -50,11 +50,6 @@ Public Class funct
     Public Shared typeDecimal As String = "System.Decimal"
     Public Shared typeGuid As String = "System.Guid"
     Public Shared typeDBNull As String = "System.DBNull"
-
-
-
-
-
 
     Public Function getFileName(ByVal File As String, ByVal ohneEndung As Boolean) As String
         Try
@@ -114,6 +109,7 @@ Public Class funct
         Finally
         End Try
     End Function
+
     Public Function saveFile(ByVal withDefaultTypes As Boolean, ByVal DateiTyp As String, _
                                          Optional ByVal fileNameDefault As String = "", _
                                          Optional ByVal defaultDir As String = "") As String
@@ -136,82 +132,6 @@ Public Class funct
             Throw New Exception("funct.saveFile:" + vbNewLine + vbNewLine + ex.ToString())
         Finally
         End Try
-    End Function
-
-    Public Function encryptMD5(ByVal txt As String) As String
-        Dim rd As New RijndaelManaged
-
-        Dim md5 As New MD5CryptoServiceProvider
-        Dim key() As Byte = md5.ComputeHash(Encoding.UTF8.GetBytes(txt))
-
-        md5.Clear()
-        rd.Key = key
-        rd.GenerateIV()
-
-        Dim iv() As Byte = rd.IV
-        Dim ms As New MemoryStream
-
-        ms.Write(iv, 0, iv.Length)
-
-        Dim cs As New CryptoStream(ms, rd.CreateEncryptor, CryptoStreamMode.Write)
-        Dim data() As Byte = System.Text.Encoding.UTF8.GetBytes(txt)
-
-        cs.Write(data, 0, data.Length)
-        cs.FlushFinalBlock()
-
-        Dim encdata() As Byte = ms.ToArray()
-        txt = Convert.ToBase64String(encdata)
-        cs.Close()
-        rd.Clear()
-        Return txt
-    End Function
-    Public Function decryptMD5(ByVal txt As String) As String
-        Dim rd As New RijndaelManaged
-        Dim rijndaelIvLength As Integer = 16
-        Dim md5 As New MD5CryptoServiceProvider
-        Dim key() As Byte = md5.ComputeHash(Encoding.UTF8.GetBytes(txt))
-
-        md5.Clear()
-
-        Dim encdata() As Byte = Convert.FromBase64String(txt)
-        Dim ms As New MemoryStream(encdata)
-        Dim iv(15) As Byte
-
-        ms.Read(iv, 0, rijndaelIvLength)
-        rd.IV = iv
-        rd.Key = key
-
-        Dim cs As New CryptoStream(ms, rd.CreateDecryptor, CryptoStreamMode.Read)
-
-        Dim data(ms.Length - rijndaelIvLength) As Byte
-        Dim i As Integer = cs.Read(data, 0, data.Length)
-
-        txt = System.Text.Encoding.UTF8.GetString(data, 0, i)
-        cs.Close()
-        rd.Clear()
-        Return txt
-    End Function
-
-    Public Function ByteToString(ByVal bytes() As Byte) As String
-
-        Dim str As String = ""
-        Dim i As Integer
-        For i = 0 To bytes.Length - 1
-            str += Chr(bytes(i))
-        Next i
-        Return str
-
-    End Function
-    Public Function StringToByte(ByVal Str As String) As Byte()
-
-        Dim ByteStrings() As Char
-        ByteStrings = Str.ToCharArray()
-        Dim ByteOut(ByteStrings.Length - 1) As Byte
-        For i As Integer = 0 To ByteStrings.Length - 1
-            ByteOut(i) = Convert.ToByte(ByteStrings(i))
-        Next
-        Return ByteOut
-
     End Function
 
     Public Function checkComboBox(ByRef cmb As Infragistics.Win.UltraWinEditors.UltraComboEditor, ByVal auswahlPflicht As Boolean, _
@@ -249,6 +169,7 @@ Public Class funct
             Throw New Exception("funct.checkComboBox:" + vbNewLine + vbNewLine + ex.ToString())
         End Try
     End Function
+  
     Public Function checkComboBoxGrid(ByRef cmb As Infragistics.Win.UltraWinGrid.UltraCombo, _
                                   ByVal auswahlPflicht As Boolean, _
                                   ByVal table As DataTable, ByVal key As String, ByVal keyIsInteger As Boolean) As Boolean
@@ -297,18 +218,6 @@ Public Class funct
         End Try
     End Function
    
-    Public Shared Function searchEnumRights(ByVal keyToSearch As String, ByVal typEnum As Type) As qs2.core.Enums.eRights
-
-        For Each val As Integer In [Enum].GetValues(typEnum)
-            Dim str As String = [Enum].GetName(typEnum, val)
-            If keyToSearch = str Then
-                Return val          'return (qs2.core.vb.sqlAdmin.eGroups)val;
-            End If
-        Next
-
-        Return Enums.eRights.rightNone
-
-    End Function
     Public Shared Function getEnumAsList(ByVal typEnum As Type, ByVal valList As Infragistics.Win.ValueList) As System.Collections.Generic.List(Of String)
 
         Dim result As New System.Collections.Generic.List(Of String)()
@@ -320,6 +229,7 @@ Public Class funct
         Return result
 
     End Function
+
     Public Shared Function getEnumAsList2(ByVal typEnum As Type, ByVal valList As Infragistics.Win.ValueList) As System.Collections.Generic.List(Of String)
 
         Dim result As New System.Collections.Generic.List(Of String)()
@@ -331,17 +241,15 @@ Public Class funct
         Return result
 
     End Function
+    
     Public Shared Function getFolder(ByVal typ As System.Environment.SpecialFolder) As String
         Return System.Environment.GetFolderPath(typ)
     End Function
-    Public Shared Function GetAppFolder() As String
-        Return System.Environment.CurrentDirectory
-    End Function
-
-
+    
     Public Function openFile(ByVal file As String, ByVal dateiTyp As String, ByVal openTemporär As Boolean ) As Boolean
         Me.openFile(file, dateiTyp, openTemporär, False, False, False, Nothing)
     End Function
+    
     Public Function openFile(ByVal file As String, ByVal dateiTyp As String, ByVal openTemporär As Boolean, _
                       ByVal openIntern As Boolean, _
                        ByVal withMsgBox As Boolean, ByVal printFile As Boolean, binIntern() As Byte) As Boolean
@@ -367,7 +275,17 @@ Public Class funct
                     System.Diagnostics.Process.Start(file)
                     Return True
                 Else
-                    Me.printFile(file)
+                    Dim startInfo As New ProcessStartInfo()
+                    startInfo.UseShellExecute = True
+                    startInfo.Verb = "Print"
+                    startInfo.CreateNoWindow = True
+                    startInfo.WindowStyle = ProcessWindowStyle.Minimized
+                    startInfo.FileName = file
+
+                    Dim proc As New Process()
+                    proc.StartInfo = startInfo
+                    proc.Start()
+
                     Return True
                 End If
             End If
@@ -379,6 +297,7 @@ Public Class funct
             Return False
         End If
     End Function
+
     Public Function openFileIntern(ByVal file As String, ByVal dateiTyp As String, ByVal openTemporär As Boolean, _
                           ByVal openIntern As Boolean, ByVal withMsgBox As Boolean, binIntern() As Byte) As Boolean
 
@@ -388,222 +307,17 @@ Public Class funct
             End If
         Else
             Dim frmTxtEditor1 As New qs2.Desktop.Txteditor.frmTxtEditor()
-            'Dim dOnSaveDocu As New contTxtEditor.onSaveDocu(AddressOf Me.saveDocu)
-            'frmTxtEditor1.ContTxtEditor1.delOnSaveDocu = dOnSaveDocu
-
             frmTxtEditor1.ContTxtEditor1.IDDocu = System.Guid.NewGuid()   'not ready    'lth
             frmTxtEditor1.ContTxtEditor1.TypDocu = "xy"
             frmTxtEditor1.ContTxtEditor1.showUISaveDocuToDB(True)
 
             frmTxtEditor1.Show()
-            'frm.openDokument(file, TXTextControl.StreamType.InternalFormat, False)
             Dim doEditor1 As New qs2.Desktop.Txteditor.doEditor()
             doEditor1.showText("", TXTextControl.StreamType.InternalFormat, True, TXTextControl.ViewMode.PageView, frmTxtEditor1.ContTxtEditor1.textControl1, binIntern)
         End If
-
         Return True
-
-    End Function
-    Public Function printFile(ByVal fileToPrint As String) As Boolean
-
-        Dim startInfo As New ProcessStartInfo()
-
-        startInfo.UseShellExecute = True
-        startInfo.Verb = "Print"
-        startInfo.CreateNoWindow = True
-        startInfo.WindowStyle = ProcessWindowStyle.Minimized
-        startInfo.FileName = fileToPrint
-
-        Dim proc As New Process()
-        proc.StartInfo = startInfo
-        proc.Start()
-
-        Return True
-
     End Function
 
-    Public Function openFile_old(ByVal file As String, ByVal type As String, ByVal openTemp As Boolean) As Boolean
-        Try
-            If System.IO.File.Exists(file) Then
-                Dim fileTemp As String = ""
-                If openTemp Then
-                    Dim IDNewFileNameTemp As New System.Guid
-                    IDNewFileNameTemp = System.Guid.NewGuid
-                    fileTemp = Me.getFolder(Environment.SpecialFolder.Templates) + "\" + IDNewFileNameTemp.ToString + type
-                    System.IO.File.Copy(file, fileTemp)
-                Else
-                    fileTemp = file
-                End If
-                If type = "" Then
-                    type = Path.GetExtension(file)
-                End If
-
-                Dim key_ProgEntry As String = ""
-                Dim key_typ As RegistryKey
-                Try
-                    key_typ = Registry.CurrentUser.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\" + type)
-                    Dim keys() As String = key_typ.GetValueNames()
-                    For Each s As String In keys
-                        key_ProgEntry = key_typ.GetValue(s)
-                    Next
-
-                    If key_ProgEntry = "" Then
-                        key_typ = Registry.CurrentUser.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\" + type + "\OpenWithProgids")
-                        keys = key_typ.GetValueNames()
-                        For Each s As String In keys
-                            key_ProgEntry = s
-                        Next
-                        If key_ProgEntry = "" Then
-                            key_typ = Registry.ClassesRoot.OpenSubKey(type)
-                            key_ProgEntry = key_typ.GetValue("")
-                        End If
-                    End If
-                Catch ex As Exception
-                    key_typ = Registry.ClassesRoot.OpenSubKey(type)
-                    key_ProgEntry = key_typ.GetValue("")
-                End Try
-
-                If Me.openFile_reg(file, type, openTemp, key_ProgEntry, fileTemp, False) Then
-                    Return True
-                Else
-                    key_typ = Registry.ClassesRoot.OpenSubKey(type)
-                    key_ProgEntry = key_typ.GetValue("")
-                    If Me.openFile_reg(file, type, openTemp, key_ProgEntry, fileTemp, True) Then
-                        Return True
-                    End If
-                End If
-
-            Else
-                qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("FileNotExists") + "!", Windows.Forms.MessageBoxButtons.OK, "")
-                Return False
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("funct.openFile_old:" + vbNewLine + vbNewLine + ex.ToString())
-        Finally
-        End Try
-    End Function
-    Public Function openFile_reg(ByVal file As String, ByVal type As String, ByVal openTemp As Boolean, _
-                                ByVal key_ProgEntry As String, ByVal fileTemp As String, ByVal message As Boolean) As Boolean
-        Try
-            If Not key_ProgEntry Is Nothing Then
-                Dim key_prog As RegistryKey = Registry.ClassesRoot.OpenSubKey(key_ProgEntry + "\shell\open\command")
-                If Not key_prog Is Nothing Then
-                    Dim path_exe As String = key_prog.GetValue("")
-                    If Microsoft.VisualBasic.Right(path_exe, 4) = Chr(34) + "%1" + Chr(34) Then
-                        path_exe = Microsoft.VisualBasic.Left(path_exe, Len(path_exe) - 4)
-                    End If
-                    If Microsoft.VisualBasic.Right(path_exe, 2) = "%1" Then
-                        path_exe = Microsoft.VisualBasic.Left(path_exe, Len(path_exe) - 2)
-                    End If
-                    If Microsoft.VisualBasic.Left(path_exe, 12) = "rundll32.exe" Or path_exe.Contains("PhotoViewer.dll") Then
-                        'path_exe = ""
-                        'Shell(dateiTemp)
-                        Dim prog As String = ""
-                        prog = Me.getFolder(Environment.SpecialFolder.System) + "\mspaint.exe"
-                        If System.IO.File.Exists(prog) Then
-                            Shell(prog + " " + Chr(34) + fileTemp + Chr(34), AppWinStyle.NormalFocus)
-                            Return True
-                        End If
-                    End If
-                    Shell(path_exe + " " + Chr(34) + fileTemp + Chr(34), AppWinStyle.NormalFocus)
-                    Return True
-                Else
-                    'Throw New Exception("DateiÖffnen: Registry.ClassesRoot.OpenSubKey(key_ProgEintrag \shell\open\command) - no key")
-                    If message Then qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoProgramForOpenFile") + "!", Windows.Forms.MessageBoxButtons.OK, "")
-                    Return False
-                End If
-            Else
-                'Throw New Exception("DateiÖffnen: Registry.ClassesRoot.OpenSubKey(typ) - no key")
-                If message Then qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoProgramForOpenFile") + "!", Windows.Forms.MessageBoxButtons.OK, "")
-                Return False
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("funct.openFile_reg:" + vbNewLine + vbNewLine + ex.ToString())
-        Finally
-        End Try
-    End Function
-
-    Public Function saveFileAs(ByVal file As String, ByVal dateiTyp As String) As Boolean
-
-        If dateiTyp.Trim() = "" Then
-            dateiTyp = Path.GetExtension(file)
-        End If
-
-        Dim fileList As String = ""
-        If LCase(dateiTyp) = LCase(".doc") Then
-            fileList = "Microsoft Word Files (*.doc)|*.doc"
-        ElseIf LCase(dateiTyp) = LCase(".docx") Then
-            fileList = "Microsoft Word Xml-Files (*.doc)|*.docx"
-        ElseIf LCase(dateiTyp) = LCase(".rtf") Then
-            fileList = "rtf Files (*.Rtf)|*.rtf"
-        ElseIf LCase(dateiTyp) = LCase(".xls") Then
-            fileList = "xls Files (*.xls)|*.xls"
-        ElseIf LCase(dateiTyp) = LCase(".xsd") Then
-            fileList = "xsd Files (*.xsd)|*.xsd"
-        ElseIf LCase(dateiTyp) = LCase(".txt") Then
-            fileList = "Text Files (*.txt)|*.txt"
-        ElseIf LCase(dateiTyp) = LCase(".pdf") Then
-            fileList = "pdf Files (*.pdf)|*.pdf"
-        ElseIf LCase(dateiTyp) = LCase(".zip") Then
-            fileList = "zip Files (*.zip)|*.zip"
-        ElseIf LCase(dateiTyp) = LCase(".rar") Then
-            fileList = "rar Files (*.rar)|*.rar"
-        ElseIf LCase(dateiTyp) = LCase(".ppt") Then
-            fileList = "Power Point Files (*.ppt)|*.ppt"
-
-        ElseIf LCase(dateiTyp) = LCase(".tif") Then
-            fileList = "tif Files (*.tif)|*.tif"
-        ElseIf LCase(dateiTyp) = LCase(".tiff") Then
-            fileList = "tif Files (*.tiff)|*.tiff"
-        ElseIf LCase(dateiTyp) = LCase(".bmp") Then
-            fileList = "bmp Files (*.bmp)|*.bmp"
-        ElseIf LCase(dateiTyp) = LCase(".jpg") Then
-            fileList = "jpg Files (*.jpg)|*.jpg"
-        ElseIf LCase(dateiTyp) = LCase(".jpeg") Then
-            fileList = "jpeg Files (*.jpeg)|*.jpeg"
-        ElseIf LCase(dateiTyp) = LCase(".gif") Then
-            fileList = "gif Files (*.gif)|*.gif"
-
-        ElseIf LCase(dateiTyp) = LCase(".mp3") Then
-            fileList = "mp3 Files (*.mp3)|*.mp3"
-        ElseIf LCase(dateiTyp) = LCase(".wav") Then
-            fileList = "wav Files (*.wav)|*.wav"
-
-        Else
-            fileList = "All Files (*.*)|*.*|" + _
-                        "bmp Files (*.bmp)|*.bmp|" + _
-                        "gif Files (*.gif)|*.gif|" + _
-                        "ini Files (*.ini)|*.ini|" + _
-                        "jpeg Files (*.jpeg)|*.jpeg|" + _
-                        "jpg Files (*.jpg)|*.jpg|" + _
-                        "Microsoft Excel Files (*.xls)|*.xls|" + _
-                        "Microsoft Word Files (*.doc)|*.doc|" + _
-                        "pdf Files (*.pdf)|*.pdf|" + _
-                        "Power Point Files (*.ppt)|*.ppt|" + _
-                        "rar Files (*.rar)|*.rar|" + _
-                        "Text Files (*.txt)|*.txt|" + _
-                        "tif Files (*.tif)|*.tif|" + _
-                        "rtf Files (*.Rtf)|*.rtf" + _
-                        "xls Files (*.xls)|*.xls|" + _
-                        "xsd Files (*.xsd)|*.xsd|" + _
-                        "zip Files (*.zip)|*.zip|"
-
-        End If
-
-        Dim fileToSave As String = ""
-        fileToSave = Me.SaveFileDialog(fileList, "", "")
-        If Not fileToSave.Trim() = "" Then
-            If System.IO.File.Exists(fileToSave) Then
-                System.IO.File.Delete(fileToSave)
-            End If
-            System.IO.File.Copy(file, fileToSave)
-            qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("FileSaved"), Windows.Forms.MessageBoxButtons.OK, "")
-            Return True
-        End If
-
-    End Function
     Public Function SaveFileDialog(ByVal DateiTyp As String, ByVal rootVerzeichnis As String, ByVal FileName As String) As String
 
         Dim SaveFileD As New SaveFileDialog
@@ -656,8 +370,8 @@ Public Class funct
         fs.Close()
         r.Close()
         Return fileByte
-
     End Function
+
     Public Function saveFileFromBytes(ByVal fileToSave As String, ByVal byteStream() As Byte, ByVal msgBox As Boolean) As Boolean
         Try
             Dim fileTyp As String = Path.GetExtension(fileToSave)
@@ -674,6 +388,7 @@ Public Class funct
         Finally
         End Try
     End Function
+
     Public Function saveFileFromBytes(ByVal path As String, ByVal Bezeichnung As String, ByVal DateiTyp As String, ByVal byteStream() As Byte) As String
         Try
             Dim file As String = Me.getFileName(path, Bezeichnung, DateiTyp, 0)
@@ -688,6 +403,7 @@ Public Class funct
         Finally
         End Try
     End Function
+
     Public Function saveFileFromString(ByVal path As String, ByVal Bezeichnung As String, ByVal DateiTyp As String, ByVal Text As String) As String
         Try
             Dim file As String = Me.getFileName(path, Bezeichnung, DateiTyp, 0)
@@ -702,9 +418,10 @@ Public Class funct
         Finally
         End Try
     End Function
+
     Public Function getFilename(ByVal path As String, ByVal fileName As String, ByVal fileType As String, ByVal nr As String) As String
         Try
-            Dim file As String = path + "\" + fileName + If(nr = 0, "", nr.ToString()) + fileType
+            Dim file As String = System.IO.Path.Combine(path, fileName + If(nr = 0, "", nr.ToString()) + fileType)
             Try
                 System.IO.File.Delete(file)
                 Return file
@@ -718,55 +435,7 @@ Public Class funct
         End Try
     End Function
 
-    Public Shared Sub clearDirTemp()
-        Try
-            Dim allFiles() As String
-            allFiles = System.IO.Directory.GetFiles(qs2.core.ENV.path_temp)
-            For Each f As String In allFiles
-                Try
-                    System.IO.File.Delete(f)
-                Catch ex As Exception
-                Finally
-                End Try
-            Next
-
-        Catch ex As Exception
-            Throw New Exception("funct.clearDirTemp:" + vbNewLine + vbNewLine + ex.ToString())
-        Finally
-        End Try
-    End Sub
-    Public Shared Sub openURL(ByVal url As String)
-        Try
-            Call ShellExecute(0, "open", url, "", "", 1)
-
-        Catch ex As Exception
-            Throw New Exception("funct.openURL:" + vbNewLine + vbNewLine + ex.ToString())
-        Finally
-        End Try
-    End Sub
-    Public Shared Sub openNewEMail(ByVal sTo As String, Optional ByVal sTitle As String = "", Optional ByVal sText As String = "")
-
-        Dim sParam As String
-
-        ' Betreff
-        If sTitle.Length > 0 Then AddMailParam(sParam, "subject=" + sTitle)
-
-        ' Nachrichtentext
-        If sText.Length > 0 Then AddMailParam(sParam, "body=" + sText.Replace(Chr(10), "%0d").Replace(Chr(13), "%0a"))
-
-        ' Fenster "Neue Nachricht" öffnen
-        Process.Start("mailto: " + sTo + sParam)
-
-    End Sub
-    Private Shared Sub AddMailParam(ByRef sAllParam As String, ByVal sParam As String)
-        If sAllParam = String.Empty Then
-            sAllParam = "?" + sParam
-        Else
-            sAllParam &= "&" + sParam
-        End If
-    End Sub
     Public Shared Sub setFilterGrid(ByVal grid As UltraGrid, ByVal bOn As Boolean)
-
         If bOn Then
             grid.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True
             grid.DisplayLayout.Override.FilterUIType = FilterUIType.FilterRow
@@ -784,6 +453,7 @@ Public Class funct
             grid.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False
         End If
     End Sub
+    
     Public Shared Sub setStyleGrid(ByRef grd As UltraGrid, ByVal setMergeOn As Boolean, ByVal doSplitterFunctions As Boolean)
 
         If setMergeOn Then
@@ -816,45 +486,11 @@ Public Class funct
         condition = grid.DisplayLayout.Bands(bandIndex).ColumnFilters(col).FilterConditions.Add(FilterComparisionOperator.Contains, filterVal)
 
     End Function
-    Public Function clearFilter(ByVal col As DataColumn, ByVal filterVal As Object, ByVal grid As UltraGrid)
-        For Each band As UltraGridBand In grid.DisplayLayout.Bands
-            For Each colFilter As ColumnFilter In band.ColumnFilters
-                If colFilter.Column.Key = col.ColumnName Then
-                    For Each filterCond As FilterCondition In colFilter.FilterConditions
-                        If filterCond.CompareValue.Equals(filterVal) Then
-                            colFilter.FilterConditions.Remove(filterCond)
-                        End If
-                    Next
-                End If
-            Next
-        Next
-    End Function
-    Public Function clearFilter(ByVal col As DataColumn, ByVal grid As UltraGrid)
-        For Each band As UltraGridBand In grid.DisplayLayout.Bands
-            For Each colFilter As ColumnFilter In band.ColumnFilters
-                If colFilter.Column.Key = col.ColumnName Then
-                    colFilter.ClearFilterConditions()
-                End If
-            Next
-        Next
-    End Function
+
     Public Function clearAllFilter(ByVal grid As UltraGrid)
         For Each band As UltraGridBand In grid.DisplayLayout.Bands
             For Each colFilter As ColumnFilter In band.ColumnFilters
                 colFilter.ClearFilterConditions()
-            Next
-        Next
-    End Function
-    Public Function filterContainsCol(ByVal col As DataColumn, ByVal filterVal As Object, ByVal grid As UltraGrid)
-        For Each band As UltraGridBand In grid.DisplayLayout.Bands
-            For Each colFilter As ColumnFilter In band.ColumnFilters
-                If colFilter.Column.Key = col.ColumnName Then
-                    For Each filterCond As FilterCondition In colFilter.FilterConditions
-                        If filterCond.CompareValue.Equals(filterVal) Then
-                            Return True
-                        End If
-                    Next
-                End If
             Next
         Next
     End Function
@@ -867,6 +503,7 @@ Public Class funct
         Me.gridAdvancedView(bOn, grid.DisplayLayout.Bands(0), lstColAktivate, lstColDeaktivate, lstColAktivateErweitert)
 
     End Sub
+
     Public Sub gridAdvancedView(ByVal bOn As Boolean, ByRef band As UltraGridBand, _
                             ByVal lstColAktivate As System.Collections.Generic.List(Of String), _
                             ByVal lstColDeaktivate As System.Collections.Generic.List(Of String), _
@@ -877,7 +514,7 @@ Public Class funct
         For Each col As UltraGridColumn In band.Columns
             Dim bDoFormat As Boolean = True
             If Not doNotChangeVisibilityState Then
-                If col.DataType.ToString().ToLower().Trim() = funct.typeGuid.ToLower().Trim() Then
+                If col.DataType.sEquals(funct.typeGuid) Then
                     col.Hidden = True
                 Else
                     col.Hidden = Not bOn
@@ -889,21 +526,21 @@ Public Class funct
             End If
 
             If bDoFormat Then
-                If col.DataType.ToString().ToLower().Trim() = funct.typeString.ToLower().Trim() Then
+                If col.DataType.sEquals(funct.typeString) Then
                     col.CellAppearance.TextHAlign = HAlign.Left
                     col.Header.Appearance.TextHAlign = HAlign.Left
 
                 End If
-                If col.DataType.ToString().ToLower().Trim() = funct.typeDouble.ToLower().Trim() Or _
-                    col.DataType.ToString().ToLower().Trim() = funct.typeInt32.ToLower().Trim() Or _
-                    col.DataType.ToString().ToLower().Trim() = funct.typeDecimal.ToLower().Trim() Then
+                If col.DataType.sEquals(funct.typeDouble) Or _
+                    col.DataType.sEquals(funct.typeInt32) Or _
+                    col.DataType.sEquals(funct.typeDecimal) Then
 
                     col.CellAppearance.TextHAlign = HAlign.Right
                     col.Header.Appearance.TextHAlign = HAlign.Right
                 End If
 
-                If col.DataType.ToString().ToLower().Trim() = funct.typeDate.ToLower().Trim() Or _
-                    col.DataType.ToString().ToLower().Trim() = funct.typeDateTime.ToLower().Trim() Then
+                If col.DataType.sEquals(funct.typeDate) Or _
+                    col.DataType.sEquals(funct.typeDateTime) Then
 
                     col.CellAppearance.TextHAlign = HAlign.Center
                     col.Header.Appearance.TextHAlign = HAlign.Center
@@ -941,88 +578,6 @@ Public Class funct
 
     End Sub
 
-    Public Function doSortPlusMinus1(ByVal toTop As Boolean, AnyNewPosition As Boolean, NewPositon As Integer, ByVal dtToSort As DataTable, _
-                         ByVal sortColumn As String, ByVal IDToCheck As String, _
-                         ByVal rSelList As DataRow, _
-                         ByVal grid As Infragistics.Win.UltraWinGrid.UltraGrid, _
-                         ByVal OnlyVisibleColumns As Boolean, _
-                         ByVal KeyInGrid As String, _
-                         ByVal colNameVisible As String) As Boolean
-        Try
-            Dim newNr As Integer = 0
-            Dim lastNrVisible As Integer = 0
-            Dim NrPlusNotVisible As Integer = 0
-            If OnlyVisibleColumns Then
-                NrPlusNotVisible = 1000
-            End If
-            Dim reached As Boolean = False
-            Dim orderBy As String
-            If toTop Then
-                orderBy = " desc "
-            Else
-                orderBy = " asc "
-            End If
-            Dim colNewOrder As String = "NewOrder"
-            Dim colVisible As String = "VisibleFct"
-            dtToSort.Columns.Add(colNewOrder, newNr.GetType())
-            dtToSort.Columns.Add(colVisible, GetType(String))
-
-            Dim arrActualSelList() As DataRow = dtToSort.Select("", sortColumn + orderBy)
-            For Each rActualSelList As DataRow In arrActualSelList
-                Dim NrPlusNotVisibleTmp As Integer = 0
-                If OnlyVisibleColumns Then
-                    For Each ColInGrid As UltraGridColumn In grid.DisplayLayout.Bands(0).Columns
-                        If ColInGrid.Key.Trim().ToLower().Equals(KeyInGrid.Trim().ToString().ToLower()) Then
-                            If rActualSelList(colNameVisible) = True Then
-                                NrPlusNotVisibleTmp = 0
-                                rActualSelList(colVisible) = True
-                            Else
-                                NrPlusNotVisibleTmp = NrPlusNotVisible
-                                rActualSelList(colVisible) = False
-                            End If
-                        End If
-                    Next
-                Else
-                    NrPlusNotVisibleTmp = 0
-                End If
-
-                newNr += 1
-                If (Not reached) And (rActualSelList(IDToCheck) = rSelList(IDToCheck)) Then
-                    reached = True
-                    rActualSelList(colNewOrder) = (newNr + 1 + NrPlusNotVisibleTmp)
-                ElseIf reached And (rActualSelList(IDToCheck) <> rSelList(IDToCheck)) Then
-                    reached = False
-                    rActualSelList(colNewOrder) = (newNr - 1 + NrPlusNotVisibleTmp)
-                ElseIf (Not reached) And (rActualSelList(IDToCheck) <> rSelList(IDToCheck)) Then
-                    rActualSelList(colNewOrder) = newNr + NrPlusNotVisibleTmp
-                End If
-            Next
-
-            lastNrVisible = newNr
-            newNr = 0
-            Dim newNrNotVisible As Integer = NrPlusNotVisible
-            Dim arrActualSelListWrite() As DataRow = dtToSort.Select("", colNewOrder + orderBy)
-            For Each rActualSelListWrite As DataRow In arrActualSelListWrite
-                If rActualSelListWrite(colVisible) = True Then
-                    newNr += 1
-                    rActualSelListWrite(sortColumn) = newNr
-                Else
-                    newNrNotVisible += 1
-                    rActualSelListWrite(sortColumn) = newNrNotVisible
-                End If
-            Next
-
-            dtToSort.Columns.Remove(colNewOrder)
-            dtToSort.Columns.Remove(colVisible)
-            grid.DisplayLayout.Bands(0).SortedColumns.Clear()
-            grid.DisplayLayout.Bands(0).SortedColumns.Add(sortColumn, False)
-
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("funct.doSort:" + vbNewLine + vbNewLine + ex.ToString())
-        End Try
-    End Function
     Public Function doSortAuto(ByVal dtToSort As DataTable, _
                         ByVal sortColumn As String, ByVal IDToCheck As String, _
                         ByVal rSelList As DataRow, _
@@ -1065,24 +620,6 @@ Public Class funct
                     End If
                 End If
             Next
-
-            'Dim colNewOrder As String = "NewOrder"
-            'Dim colVisible As String = "VisibleFct"
-            'dtToSort.Columns.Add(colNewOrder, GetType(Integer))
-            'dtToSort.Columns.Add(colVisible, GetType(String))
-            'Dim arrActualSelList() As DataRow = dtToSort.Select("", sortColumn + " asc ")
-            'For Each rActualSelList As DataRow In arrActualSelList
-            '    If rActualSelList(IDToCheck) = rSelList(IDToCheck) Then
-            '        If Not rLastActualSelList Is Nothing Then
-            '            NewSortKeyRow = rLastActualSelList(sortColumn)
-            '            'NewSortKeyRow = rActualSelList(sortColumn)
-            '        Else
-            '            NewSortKeyRow = rLastActualSelList(sortColumn)
-            '        End If
-            '    Else
-            '        rLastActualSelList = rActualSelList
-            '    End If
-            'Next
 
             Dim newNrVisible As Integer = 0
             Dim newNrNotVisible As Integer = 0
@@ -1205,97 +742,14 @@ Public Class funct
         End Try
     End Function
 
-    Public Function getLastSortNumber(ByVal dtToSort As DataTable, ByVal columnNameSort As String) As Integer
-        Try
-            Dim lastNr As Integer = 0
-            For Each rSelList As DataRow In dtToSort.Rows
-                If rSelList.RowState <> DataRowState.Deleted Then
-                    If Not rSelList(columnNameSort) Is System.DBNull.Value Then _
-                        lastNr = IIf(lastNr < rSelList(columnNameSort), rSelList(columnNameSort), lastNr)
-                End If
-            Next
-            Return (lastNr + 1)
-
-        Catch ex As Exception
-            Throw New Exception("funct.getLastSortNumber:" + vbNewLine + vbNewLine + ex.ToString())
-            Return 5000
-        End Try
-    End Function
-
-    Public Shared Function getDate235959(ByVal datOrig As Date) As Date
-        Dim datReturn As New Date(datOrig.Year, datOrig.Month, datOrig.Day, 23, 59, 59)
-        Return datReturn
-    End Function
-
-    Public Sub setMergeStyle(ByRef grd As UltraGrid, ByVal setMergeOn As Boolean, ByVal doSplitterFunctions As Boolean)
-
-        If setMergeOn Then
-            grd.DisplayLayout.Override.MergedCellStyle = MergedCellStyle.OnlyWhenSorted
-            grd.DisplayLayout.Override.MergedCellAppearance.BackColor = System.Drawing.Color.Beige
-        Else
-            grd.DisplayLayout.Override.MergedCellStyle = MergedCellStyle.Never
-        End If
-
-        grd.DisplayLayout.Override.RowSizing = RowSizing.Free
-        grd.DisplayLayout.Override.CellMultiLine = DefaultableBoolean.True
-
-        If doSplitterFunctions Then
-            grd.DisplayLayout.MaxColScrollRegions = 2
-            grd.DisplayLayout.MaxRowScrollRegions = 2
-        Else
-            grd.DisplayLayout.MaxColScrollRegions = 1
-            grd.DisplayLayout.MaxRowScrollRegions = 1
-        End If
-
-    End Sub
-    Public Sub setFilterGridKomplex(ByRef grd As UltraGrid, ByVal bIsOn As Boolean, ByVal doSplitterFunctions As Boolean)
-
-        If bIsOn Then
-            grd.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True
-            grd.DisplayLayout.Override.FilterUIType = FilterUIType.FilterRow
-            grd.DisplayLayout.Override.FilterOperatorLocation = FilterOperatorLocation.Hidden
-            grd.DisplayLayout.Override.FilterRowPrompt = qs2.core.language.sqlLanguage.getRes("ClickHereToFilterData")
-            grd.DisplayLayout.Override.FilterRowAppearance.ForeColor = System.Drawing.Color.DarkGray
-            grd.DisplayLayout.Override.FilterRowAppearance.BackColor = System.Drawing.Color.White
-            grd.DisplayLayout.Override.FilterRowAppearance.FontData.Bold = DefaultableBoolean.False
-            grd.DisplayLayout.Override.FilterOperandStyle = FilterOperandStyle.Combo
-            grd.DisplayLayout.Override.FilterClearButtonLocation = FilterClearButtonLocation.Row
-            grd.DisplayLayout.Override.FilterOperatorDropDownItems = FilterOperatorDropDownItems.Contains
-            grd.DisplayLayout.Override.FilterUIType = FilterUIType.FilterRow
-            grd.DisplayLayout.Override.FixedHeaderIndicator = FixedHeaderIndicator.None
-            grd.DisplayLayout.Override.FixedRowIndicator = FixedRowIndicator.None
-            'grd.DisplayLayout.Override.GroupByColumnsHidden = DefaultableBoolean.Default
-            'grd.DisplayLayout.Override.GroupByRowExpansionStyle = GroupByRowExpansionStyle.Default
-            'grd.DisplayLayout.Override.GroupByRowInitialExpansionState = GroupByRowInitialExpansionState.Default
-            '      grd.DisplayLayout.Override.GroupBySummaryDisplayStyle = 
-            grd.DisplayLayout.Override.SpecialRowSeparator = SpecialRowSeparator.FilterRow
-            ' grd.DisplayLayout.Override.SpecialRowSeparatorAppearance.BackColor = Color.LightSteelBlue
-            Me.setMergeStyle(grd, True, doSplitterFunctions)
-            'grd.DisplayLayout.Override.FilterRowPromptAppearance.FontData.SizeInPoints = 10
-            grd.DisplayLayout.Override.FilterRowPromptAppearance.ForeColor = System.Drawing.Color.DarkGray
-
-        Else
-            grd.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False
-        End If
-
-    End Sub
-
     Public Shared Sub copyDataset(ByRef dsToCopy As DataSet, ByRef resultDs As DataSet)
 
         For Each tableToCopy As DataTable In dsToCopy.Tables
             Dim newDataTable As DataTable = tableToCopy.Copy()
             resultDs.Tables.Add(newDataTable)
-            'For Each columnToCopy As DataColumn In tableToCopy.Columns
-            '    newTable.Columns.Add(columnToCopy)
-            'Next
-            'For Each rowToCopy As DataRow In tableToCopy.Rows
-            '    Dim newRow As DataRow = newTable.NewRow()
-            '    newRow.ItemArray = rowToCopy.ItemArray
-            '    newTable.Rows.Add(newRow)
-            'Next
         Next
-
     End Sub
+    
     Public Shared Sub getVariablesLefRightOfPoint(ByVal strToSearch As String, ByRef leftStr As String, ByRef rightStr As String, _
                                            Separator As String)
 
@@ -1308,30 +762,7 @@ Public Class funct
         End If
 
     End Sub
-    Public Shared Function getComputerName() As String
-        Return My.Computer.Name
-    End Function
-
-    Public Shared Function base64Encode(ByVal sText As String) As String
-        Try
-            Dim nBytes() As Byte = System.Text.Encoding.Default.GetBytes(sText)
-            Return System.Convert.ToBase64String(nBytes)
-
-        Catch ex As Exception
-            Throw New Exception("funct.base64Encode: " + vbNewLine + vbNewLine + ex.ToString())
-        End Try
-    End Function
-
-    Public Shared Function base64Decode(ByVal sText As String) As String
-        Try
-            Dim nBytes() As Byte = System.Convert.FromBase64String(sText)
-            Return System.Text.Encoding.Default.GetString(nBytes)
-
-        Catch ex As Exception
-            Throw New Exception("funct.base64Decode: " + vbNewLine + vbNewLine + ex.ToString())
-        End Try
-    End Function
-
+    
     Public Shared Function ContainsSpecialChars(s As String) As String
         Try
             Return s.IndexOfAny("[~`!@#$%^&*()-+=|{}':;.,<>/?]".ToCharArray) <> -1

@@ -44,7 +44,7 @@
             this.lblExept = new Infragistics.Win.FormattedLinkLabel.UltraFormattedTextEditor();
             this.panelButtons = new System.Windows.Forms.Panel();
             this.btnStartTeamViewer = new System.Windows.Forms.Button();
-            this.btnStartMikogo = new System.Windows.Forms.Button();
+            this.btnStartFastViewer = new System.Windows.Forms.Button();
             this.lblSendMessageAsEMail = new Infragistics.Win.Misc.UltraLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.UFormLinkZurücksetzen = new Infragistics.Win.Misc.UltraLabel();
@@ -134,7 +134,7 @@
             // panelButtons
             // 
             this.panelButtons.Controls.Add(this.btnStartTeamViewer);
-            this.panelButtons.Controls.Add(this.btnStartMikogo);
+            this.panelButtons.Controls.Add(this.btnStartFastViewer);
             this.panelButtons.Controls.Add(this.lblSendMessageAsEMail);
             this.panelButtons.Controls.Add(this.panel1);
             this.panelButtons.Controls.Add(this.UFormLinkZurücksetzen);
@@ -157,16 +157,16 @@
             this.btnStartTeamViewer.UseVisualStyleBackColor = true;
             this.btnStartTeamViewer.Click += new System.EventHandler(this.btnStartTeamViewer_Click);
             // 
-            // btnStartMikogo
+            // btnStartFastViewer
             // 
-            this.btnStartMikogo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnStartMikogo.Location = new System.Drawing.Point(6, 4);
-            this.btnStartMikogo.Name = "btnStartMikogo";
-            this.btnStartMikogo.Size = new System.Drawing.Size(193, 23);
-            this.btnStartMikogo.TabIndex = 13;
-            this.btnStartMikogo.Text = "Start FastViewer";
-            this.btnStartMikogo.UseVisualStyleBackColor = true;
-            this.btnStartMikogo.Click += new System.EventHandler(this.btnStartMikogo_Click);
+            this.btnStartFastViewer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnStartFastViewer.Location = new System.Drawing.Point(6, 4);
+            this.btnStartFastViewer.Name = "btnStartFastViewer";
+            this.btnStartFastViewer.Size = new System.Drawing.Size(193, 23);
+            this.btnStartFastViewer.TabIndex = 13;
+            this.btnStartFastViewer.Text = "Start FastViewer";
+            this.btnStartFastViewer.UseVisualStyleBackColor = true;
+            this.btnStartFastViewer.Click += new System.EventHandler(this.btnStartFastViewer_Click);
             // 
             // lblSendMessageAsEMail
             // 
@@ -379,7 +379,7 @@
         public Infragistics.Win.FormattedLinkLabel.UltraFormattedTextEditor lblExept;
         internal Infragistics.Win.Misc.UltraLabel lblSendMessageAsEMail;
         public Infragistics.Win.Misc.UltraButton btnSend;
-        private System.Windows.Forms.Button btnStartMikogo;
+        private System.Windows.Forms.Button btnStartFastViewer;
         private System.Windows.Forms.Button btnStartTeamViewer;
         private Infragistics.Win.FormattedLinkLabel.UltraFormattedTextEditor ultraFormattedTextEditor1;
         public Infragistics.Win.UltraWinEditors.UltraTextEditor txtDescritpionOfProblem;
