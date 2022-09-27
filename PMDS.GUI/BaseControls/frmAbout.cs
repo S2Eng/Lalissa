@@ -21,15 +21,13 @@ namespace PMDS
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private PMDS.GUI.ucButton btnOK;
 		private QS2.Desktop.ControlManagment.BaseTextEditor tbInfo;
-		private System.Windows.Forms.LinkLabel lbWeb;
-        private System.Windows.Forms.LinkLabel lblemail;
+		private System.Windows.Forms.LinkLabel _lbWeb;
+        private System.Windows.Forms.LinkLabel _lblemail;
         private QS2.Desktop.ControlManagment.BaseLabel lblVersion;
         private QS2.Desktop.ControlManagment.BaseLabel lblDatabase;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem styleNeuLadenToolStripMenuItem;
         private ToolStripMenuItem styleZurücksetzenToolStripMenuItem;
-        internal QS2.Desktop.ControlManagment.BaseLabel lblLogViewer;
-        internal QS2.Desktop.ControlManagment.BaseLabel lblUIviewer;
 		private System.ComponentModel.IContainer components;
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem testExceptionToolStripMenuItem;
@@ -60,11 +58,8 @@ namespace PMDS
         public Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripMain pdfToolStripMain1;
         private Patagames.Pdf.Net.Controls.WinForms.PdfViewer pdfViewer1;
         private ToolStripMenuItem eLDAAbrechnungToolStripMenuItem;
+        private Infragistics.Win.AppStyling.Runtime.AppStylistRuntime appStylistRuntime1;
         private FileInfo fiMikogo;
-
-
-
-
 
 
         public frmAbout()
@@ -84,8 +79,6 @@ namespace PMDS
                 this.lblVersion.Text = PMDS.Global.ENV.getPmdsVersion();
                 this.lblDatabase.Text = PMDS.Global.ENV.getPmdsDB;
                 this.lblVersionGuid.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Versions-Nr") + ": " + PMDS.Global.ENV.VersionNr.ToString();
-
-                lblUIviewer.Visible = PMDS.Global.ENV.adminSecure;
 
                 fiNetViewer = new FileInfo(Path.Combine(Application.StartupPath, "FastViewer.exe"));
                 this.btnNetViewer.Visible = fiNetViewer.Exists;
@@ -151,20 +144,20 @@ namespace PMDS
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbout));
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.formularDesignerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
@@ -181,14 +174,13 @@ namespace PMDS
             this.sytemAdministrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.loadAllDataIntoRAMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eLDAAbrechnungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnOK = new PMDS.GUI.ucButton(this.components);
             this.tbInfo = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.lbWeb = new System.Windows.Forms.LinkLabel();
-            this.lblemail = new System.Windows.Forms.LinkLabel();
+            this._lbWeb = new System.Windows.Forms.LinkLabel();
+            this._lblemail = new System.Windows.Forms.LinkLabel();
             this.lblVersion = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblDatabase = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.lblLogViewer = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.lblUIviewer = new QS2.Desktop.ControlManagment.BaseLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnHandbuch = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnNetViewer = new QS2.Desktop.ControlManagment.BaseButton();
@@ -201,7 +193,7 @@ namespace PMDS
             this.pdfToolStripZoom1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripZoom();
             this.pdfToolStripSearch1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripSearch();
             this.pdfToolStripMain1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripMain();
-            this.eLDAAbrechnungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appStylistRuntime1 = new Infragistics.Win.AppStyling.Runtime.AppStylistRuntime(this.components);
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -229,7 +221,7 @@ namespace PMDS
             this.loadAllDataIntoRAMToolStripMenuItem,
             this.eLDAAbrechnungToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(235, 282);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(235, 260);
             // 
             // formularDesignerToolStripMenuItem
             // 
@@ -324,14 +316,21 @@ namespace PMDS
             this.loadAllDataIntoRAMToolStripMenuItem.Text = "Load all Data into RAM";
             this.loadAllDataIntoRAMToolStripMenuItem.Click += new System.EventHandler(this.loadAllDataIntoRAMToolStripMenuItem_Click);
             // 
+            // eLDAAbrechnungToolStripMenuItem
+            // 
+            this.eLDAAbrechnungToolStripMenuItem.Name = "eLDAAbrechnungToolStripMenuItem";
+            this.eLDAAbrechnungToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            this.eLDAAbrechnungToolStripMenuItem.Text = "ELDA-Abrechnung";
+            this.eLDAAbrechnungToolStripMenuItem.Click += new System.EventHandler(this.eLDAAbrechnungToolStripMenuItem_Click);
+            // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
-            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOK.Appearance = appearance1;
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            appearance14.Image = ((object)(resources.GetObject("appearance14.Image")));
+            appearance14.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance14.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOK.Appearance = appearance14;
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -352,11 +351,11 @@ namespace PMDS
             // 
             this.tbInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            appearance2.BackColor = System.Drawing.Color.White;
-            appearance2.BackColorDisabled = System.Drawing.Color.White;
-            appearance2.FontData.Name = "Arial";
-            appearance2.ForeColorDisabled = System.Drawing.Color.Black;
-            this.tbInfo.Appearance = appearance2;
+            appearance1.BackColor = System.Drawing.Color.White;
+            appearance1.BackColorDisabled = System.Drawing.Color.White;
+            appearance1.FontData.Name = "Arial";
+            appearance1.ForeColorDisabled = System.Drawing.Color.Black;
+            this.tbInfo.Appearance = appearance1;
             this.tbInfo.BackColor = System.Drawing.Color.White;
             this.tbInfo.Enabled = false;
             this.tbInfo.Location = new System.Drawing.Point(6, 249);
@@ -367,42 +366,41 @@ namespace PMDS
             this.tbInfo.Size = new System.Drawing.Size(290, 246);
             this.tbInfo.TabIndex = 10;
             this.tbInfo.Text = "S2-Engineering GmbH";
-            this.tbInfo.ValueChanged += new System.EventHandler(this.ultraTextEditor1_ValueChanged);
             // 
             // lbWeb
             // 
-            this.lbWeb.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
-            this.lbWeb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbWeb.LinkColor = System.Drawing.Color.RoyalBlue;
-            this.lbWeb.Location = new System.Drawing.Point(3, 511);
-            this.lbWeb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbWeb.Name = "lbWeb";
-            this.lbWeb.Size = new System.Drawing.Size(192, 20);
-            this.lbWeb.TabIndex = 11;
-            this.lbWeb.TabStop = true;
-            this.lbWeb.Text = "www.s2-engineering.com";
-            this.lbWeb.VisitedLinkColor = System.Drawing.Color.RoyalBlue;
-            this.lbWeb.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbWeb_LinkClicked);
+            this._lbWeb.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
+            this._lbWeb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._lbWeb.LinkColor = System.Drawing.Color.RoyalBlue;
+            this._lbWeb.Location = new System.Drawing.Point(3, 511);
+            this._lbWeb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._lbWeb.Name = "_lbWeb";
+            this._lbWeb.Size = new System.Drawing.Size(192, 20);
+            this._lbWeb.TabIndex = 11;
+            this._lbWeb.TabStop = true;
+            this._lbWeb.Text = "www.s2-engineering.com";
+            this._lbWeb.VisitedLinkColor = System.Drawing.Color.RoyalBlue;
+            this._lbWeb.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbWeb_LinkClicked);
             // 
             // lblemail
             // 
-            this.lblemail.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
-            this.lblemail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblemail.LinkColor = System.Drawing.Color.RoyalBlue;
-            this.lblemail.Location = new System.Drawing.Point(3, 531);
-            this.lblemail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblemail.Name = "lblemail";
-            this.lblemail.Size = new System.Drawing.Size(245, 20);
-            this.lblemail.TabIndex = 12;
-            this.lblemail.TabStop = true;
-            this.lblemail.Text = "eMail: office@s2-engineering.com";
-            this.lblemail.VisitedLinkColor = System.Drawing.Color.RoyalBlue;
-            this.lblemail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblemail_LinkClicked);
+            this._lblemail.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
+            this._lblemail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._lblemail.LinkColor = System.Drawing.Color.RoyalBlue;
+            this._lblemail.Location = new System.Drawing.Point(3, 531);
+            this._lblemail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._lblemail.Name = "_lblemail";
+            this._lblemail.Size = new System.Drawing.Size(245, 20);
+            this._lblemail.TabIndex = 12;
+            this._lblemail.TabStop = true;
+            this._lblemail.Text = "eMail: office@s2-engineering.com";
+            this._lblemail.VisitedLinkColor = System.Drawing.Color.RoyalBlue;
+            this._lblemail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblemail_LinkClicked);
             // 
             // lblVersion
             // 
-            appearance3.TextVAlignAsString = "Middle";
-            this.lblVersion.Appearance = appearance3;
+            appearance2.TextVAlignAsString = "Middle";
+            this.lblVersion.Appearance = appearance2;
             this.lblVersion.Location = new System.Drawing.Point(6, 124);
             this.lblVersion.Margin = new System.Windows.Forms.Padding(4);
             this.lblVersion.Name = "lblVersion";
@@ -412,56 +410,14 @@ namespace PMDS
             // 
             // lblDatabase
             // 
-            appearance4.TextVAlignAsString = "Middle";
-            this.lblDatabase.Appearance = appearance4;
+            appearance15.TextVAlignAsString = "Middle";
+            this.lblDatabase.Appearance = appearance15;
             this.lblDatabase.Location = new System.Drawing.Point(6, 148);
             this.lblDatabase.Margin = new System.Windows.Forms.Padding(4);
             this.lblDatabase.Name = "lblDatabase";
             this.lblDatabase.Size = new System.Drawing.Size(290, 64);
             this.lblDatabase.TabIndex = 14;
             this.lblDatabase.Text = "Version: xy";
-            // 
-            // lblLogViewer
-            // 
-            this.lblLogViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance5.Cursor = System.Windows.Forms.Cursors.Hand;
-            appearance5.FontData.SizeInPoints = 8F;
-            appearance5.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblLogViewer.Appearance = appearance5;
-            this.lblLogViewer.AutoSize = true;
-            appearance6.FontData.UnderlineAsString = "True";
-            this.lblLogViewer.HotTrackAppearance = appearance6;
-            this.lblLogViewer.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblLogViewer.Location = new System.Drawing.Point(236, 517);
-            this.lblLogViewer.Margin = new System.Windows.Forms.Padding(4);
-            this.lblLogViewer.Name = "lblLogViewer";
-            this.lblLogViewer.Size = new System.Drawing.Size(60, 14);
-            this.lblLogViewer.TabIndex = 15;
-            this.lblLogViewer.Text = "Log-Viewer";
-            this.lblLogViewer.UseAppStyling = true;
-            this.lblLogViewer.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
-            this.lblLogViewer.Click += new System.EventHandler(this.lblLogViewer_Click);
-            // 
-            // lblUIviewer
-            // 
-            this.lblUIviewer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance7.Cursor = System.Windows.Forms.Cursors.Hand;
-            appearance7.FontData.SizeInPoints = 8F;
-            appearance7.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblUIviewer.Appearance = appearance7;
-            this.lblUIviewer.AutoSize = true;
-            appearance8.FontData.UnderlineAsString = "True";
-            this.lblUIviewer.HotTrackAppearance = appearance8;
-            this.lblUIviewer.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblUIviewer.Location = new System.Drawing.Point(248, 538);
-            this.lblUIviewer.Margin = new System.Windows.Forms.Padding(4);
-            this.lblUIviewer.Name = "lblUIviewer";
-            this.lblUIviewer.Size = new System.Drawing.Size(48, 14);
-            this.lblUIviewer.TabIndex = 17;
-            this.lblUIviewer.Text = "UiViewer";
-            this.lblUIviewer.UseAppStyling = true;
-            this.lblUIviewer.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
-            this.lblUIviewer.Visible = false;
             // 
             // pictureBox1
             // 
@@ -478,8 +434,8 @@ namespace PMDS
             // btnHandbuch
             // 
             this.btnHandbuch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance9.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnHandbuch.Appearance = appearance9;
+            appearance20.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnHandbuch.Appearance = appearance20;
             this.btnHandbuch.AutoWorkLayout = false;
             this.btnHandbuch.IsStandardControl = false;
             this.btnHandbuch.Location = new System.Drawing.Point(8, 676);
@@ -493,9 +449,9 @@ namespace PMDS
             // btnNetViewer
             // 
             this.btnNetViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance10.ForeColor = System.Drawing.Color.Red;
-            appearance10.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnNetViewer.Appearance = appearance10;
+            appearance9.ForeColor = System.Drawing.Color.Red;
+            appearance9.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnNetViewer.Appearance = appearance9;
             this.btnNetViewer.AutoWorkLayout = false;
             this.btnNetViewer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.btnNetViewer.IsStandardControl = false;
@@ -510,9 +466,9 @@ namespace PMDS
             // btnTeamViewer
             // 
             this.btnTeamViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance11.ForeColor = System.Drawing.Color.Blue;
-            appearance11.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnTeamViewer.Appearance = appearance11;
+            appearance10.ForeColor = System.Drawing.Color.Blue;
+            appearance10.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnTeamViewer.Appearance = appearance10;
             this.btnTeamViewer.AutoWorkLayout = false;
             this.btnTeamViewer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.btnTeamViewer.IsStandardControl = false;
@@ -527,9 +483,9 @@ namespace PMDS
             // btnWebMikogo
             // 
             this.btnWebMikogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance12.ForeColor = System.Drawing.Color.Green;
-            appearance12.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnWebMikogo.Appearance = appearance12;
+            appearance11.ForeColor = System.Drawing.Color.Green;
+            appearance11.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnWebMikogo.Appearance = appearance11;
             this.btnWebMikogo.AutoWorkLayout = false;
             this.btnWebMikogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.btnWebMikogo.IsStandardControl = false;
@@ -542,9 +498,9 @@ namespace PMDS
             // 
             // lblVersionGuid
             // 
-            appearance13.FontData.SizeInPoints = 9F;
-            appearance13.TextVAlignAsString = "Middle";
-            this.lblVersionGuid.Appearance = appearance13;
+            appearance12.FontData.SizeInPoints = 9F;
+            appearance12.TextVAlignAsString = "Middle";
+            this.lblVersionGuid.Appearance = appearance12;
             this.lblVersionGuid.Location = new System.Drawing.Point(6, 222);
             this.lblVersionGuid.Margin = new System.Windows.Forms.Padding(4);
             this.lblVersionGuid.Name = "lblVersionGuid";
@@ -561,6 +517,7 @@ namespace PMDS
             // pnlPDF.ClientArea
             // 
             this.pnlPDF.ClientArea.Controls.Add(this.pdfViewer1);
+            this.pnlPDF.ClientArea.Controls.Add(this.pdfToolStripMain1);
             this.pnlPDF.ClientArea.Controls.Add(this.pdfToolStripViewModes1);
             this.pnlPDF.Location = new System.Drawing.Point(332, 6);
             this.pnlPDF.Name = "pnlPDF";
@@ -569,7 +526,6 @@ namespace PMDS
             // 
             // pdfViewer1
             // 
-            this.pdfViewer1.AllowSetDocument = false;
             this.pdfViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -583,6 +539,7 @@ namespace PMDS
             this.pdfViewer1.Location = new System.Drawing.Point(0, 76);
             this.pdfViewer1.MouseMode = Patagames.Pdf.Net.Controls.WinForms.MouseModes.Default;
             this.pdfViewer1.Name = "pdfViewer1";
+            this.pdfViewer1.OptimizedLoadThreshold = 1000;
             this.pdfViewer1.Padding = new System.Windows.Forms.Padding(10);
             this.pdfViewer1.PageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.pdfViewer1.PageAutoDispose = true;
@@ -609,7 +566,7 @@ namespace PMDS
             this.pdfToolStripViewModes1.Location = new System.Drawing.Point(185, 0);
             this.pdfToolStripViewModes1.Name = "pdfToolStripViewModes1";
             this.pdfToolStripViewModes1.PdfViewer = this.pdfViewer1;
-            this.pdfToolStripViewModes1.Size = new System.Drawing.Size(144, 27);
+            this.pdfToolStripViewModes1.Size = new System.Drawing.Size(177, 27);
             this.pdfToolStripViewModes1.TabIndex = 16;
             this.pdfToolStripViewModes1.Text = "pdfToolStripViewModes1";
             // 
@@ -642,6 +599,7 @@ namespace PMDS
             // 
             // pdfToolStripSearch1
             // 
+            this.pdfToolStripSearch1.ActiveRecordColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
             this.pdfToolStripSearch1.CurrentRecord = 0;
             this.pdfToolStripSearch1.Dock = System.Windows.Forms.DockStyle.None;
             this.pdfToolStripSearch1.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
@@ -657,22 +615,16 @@ namespace PMDS
             // pdfToolStripMain1
             // 
             this.pdfToolStripMain1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pdfToolStripMain1.BackColor = System.Drawing.Color.Transparent;
             this.pdfToolStripMain1.Dock = System.Windows.Forms.DockStyle.None;
             this.pdfToolStripMain1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.pdfToolStripMain1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.pdfToolStripMain1.Location = new System.Drawing.Point(1183, 6);
+            this.pdfToolStripMain1.Location = new System.Drawing.Point(573, 0);
             this.pdfToolStripMain1.Name = "pdfToolStripMain1";
             this.pdfToolStripMain1.PdfViewer = this.pdfViewer1;
-            this.pdfToolStripMain1.Size = new System.Drawing.Size(105, 58);
+            this.pdfToolStripMain1.Size = new System.Drawing.Size(136, 58);
             this.pdfToolStripMain1.TabIndex = 17;
             this.pdfToolStripMain1.Text = "pdfToolStripMain1";
-            // 
-            // eLDAAbrechnungToolStripMenuItem
-            // 
-            this.eLDAAbrechnungToolStripMenuItem.Name = "eLDAAbrechnungToolStripMenuItem";
-            this.eLDAAbrechnungToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
-            this.eLDAAbrechnungToolStripMenuItem.Text = "ELDA-Abrechnung";
-            this.eLDAAbrechnungToolStripMenuItem.Click += new System.EventHandler(this.eLDAAbrechnungToolStripMenuItem_Click);
             // 
             // frmAbout
             // 
@@ -681,7 +633,6 @@ namespace PMDS
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnOK;
             this.ClientSize = new System.Drawing.Size(1296, 789);
-            this.Controls.Add(this.pdfToolStripMain1);
             this.Controls.Add(this.pdfToolStripZoom1);
             this.Controls.Add(this.pdfToolStripSearch1);
             this.Controls.Add(this.pnlPDF);
@@ -690,12 +641,10 @@ namespace PMDS
             this.Controls.Add(this.btnTeamViewer);
             this.Controls.Add(this.btnNetViewer);
             this.Controls.Add(this.lblDatabase);
-            this.Controls.Add(this.lblUIviewer);
             this.Controls.Add(this.lblVersion);
-            this.Controls.Add(this.lblLogViewer);
             this.Controls.Add(this.tbInfo);
-            this.Controls.Add(this.lblemail);
-            this.Controls.Add(this.lbWeb);
+            this.Controls.Add(this._lblemail);
+            this.Controls.Add(this._lbWeb);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnHandbuch);
@@ -722,16 +671,6 @@ namespace PMDS
 			this.Close();
 		}
 
-		private void ultraLabel1_Click(object sender, System.EventArgs e)
-		{
-		
-		}
-
-		private void ultraTextEditor1_ValueChanged(object sender, System.EventArgs e)
-		{
-		
-		}
-
 		private void ProcessStart(string sText) 
 		{
 			try 
@@ -746,14 +685,13 @@ namespace PMDS
 
 		private void lbWeb_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
-			ProcessStart(lbWeb.Text);
+			ProcessStart(_lbWeb.Text);
 		}
 
 		private void lblemail_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
 			ProcessStart("mailto:office@s2-engineering.com&subject=Informationsanforderung PMDS");
 		}
-
 
         private void styleNeuLadenToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -763,13 +701,6 @@ namespace PMDS
         private void styleZurücksetzenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PMDS.Global.ENV.setStyleInfrag(false );
-        }
-
-        private void lblLogViewer_Click(object sender, EventArgs e)
-        {
-            QS2.Logging.Win.frmLogManager2 frmLog = new QS2.Logging.Win.frmLogManager2();
-            frmLog.initControl();
-            frmLog.Show();
         }
 
         private void testExceptionToolStripMenuItem_Click(object sender, EventArgs e)
