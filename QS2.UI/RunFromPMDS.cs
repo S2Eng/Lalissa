@@ -73,7 +73,6 @@ namespace qs2.ui
                         qs2.core.vb.sqlObjects sqlObjects1 = new sqlObjects();
                         sqlObjects1.initControl();
                         Guid IDGuidObjBack = System.Guid.Empty;
-                        int IDObjectBack = -1;
 
                         sqlObjects sqlObjectsAutoLogIn = new sqlObjects();
                         sqlObjectsAutoLogIn.initControl();
