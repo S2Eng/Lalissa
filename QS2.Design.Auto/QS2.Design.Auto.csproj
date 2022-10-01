@@ -558,12 +558,6 @@
     <Compile Include="print\contQryAdminSelectChapter.Designer.cs">
       <DependentUpon>contQryAdminSelectChapter.cs</DependentUpon>
     </Compile>
-    <Compile Include="print\contQryCrystRepViewer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="print\contQryCrystRepViewer.Designer.cs">
-      <DependentUpon>contQryCrystRepViewer.cs</DependentUpon>
-    </Compile>
     <Compile Include="print\contQryRun.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -615,12 +609,6 @@
     </Compile>
     <Compile Include="print\frmAllQueriesEditSmall.Designer.cs">
       <DependentUpon>frmAllQueriesEditSmall.cs</DependentUpon>
-    </Compile>
-    <Compile Include="print\frmCryCrystRepViewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="print\frmCryCrystRepViewer.Designer.cs">
-      <DependentUpon>frmCryCrystRepViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="print\frmInputText2.cs">
       <SubType>Form</SubType>
@@ -860,9 +848,6 @@
     <EmbeddedResource Include="print\contQryAdminSelectChapter.resx">
       <DependentUpon>contQryAdminSelectChapter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="print\contQryCrystRepViewer.resx">
-      <DependentUpon>contQryCrystRepViewer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="print\contQryRun.resx">
       <DependentUpon>contQryRun.cs</DependentUpon>
     </EmbeddedResource>
@@ -886,9 +871,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="print\frmAllQueriesEditSmall.resx">
       <DependentUpon>frmAllQueriesEditSmall.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="print\frmCryCrystRepViewer.resx">
-      <DependentUpon>frmCryCrystRepViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="print\frmInputText2.resx">
       <DependentUpon>frmInputText2.cs</DependentUpon>
