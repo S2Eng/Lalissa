@@ -1122,13 +1122,11 @@ namespace PMDS.Global
             {
                 string DBInfo = "PMDS Database: " + DataBase.CONNECTION.DataSource + ":" + DataBase.CONNECTION.Database + "\r\n";
                 DBInfo += "QS2 Database: " + qs2.core.dbBase.Server.Trim() + ":" + qs2.core.dbBase.Database.Trim() + "\r\n";
-                if (ENV.DB_SERVER_PEP != null)
-                    DBInfo += "PEP Database: " + ENV._dbServer_PEP.Trim() + "." + ENV._dbDatabase_PEP.Trim() + "\r\n";
+                
                 if (ENV.conGiboDat != null)
                 {
                     DBInfo += "GiboDat Database: " + ENV.conGiboDat.DataSource.Trim() + "." + ENV.conGiboDat.Database.Trim() + "";
                 }
-
                 return DBInfo;
             }
         }

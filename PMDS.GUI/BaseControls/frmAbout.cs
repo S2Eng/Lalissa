@@ -144,20 +144,16 @@ namespace PMDS
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbout));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbout));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.formularDesignerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
@@ -190,9 +186,9 @@ namespace PMDS
             this.pnlPDF = new Infragistics.Win.Misc.UltraPanel();
             this.pdfViewer1 = new Patagames.Pdf.Net.Controls.WinForms.PdfViewer();
             this.pdfToolStripViewModes1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripViewModes();
+            this.pdfToolStripMain1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripMain();
             this.pdfToolStripZoom1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripZoom();
             this.pdfToolStripSearch1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripSearch();
-            this.pdfToolStripMain1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripMain();
             this.appStylistRuntime1 = new Infragistics.Win.AppStyling.Runtime.AppStylistRuntime(this.components);
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbInfo)).BeginInit();
@@ -326,11 +322,11 @@ namespace PMDS
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance14.BackColor = System.Drawing.Color.Transparent;
-            appearance14.Image = ((object)(resources.GetObject("appearance14.Image")));
-            appearance14.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance14.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOK.Appearance = appearance14;
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOK.Appearance = appearance1;
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -351,23 +347,23 @@ namespace PMDS
             // 
             this.tbInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            appearance1.BackColor = System.Drawing.Color.White;
-            appearance1.BackColorDisabled = System.Drawing.Color.White;
-            appearance1.FontData.Name = "Arial";
-            appearance1.ForeColorDisabled = System.Drawing.Color.Black;
-            this.tbInfo.Appearance = appearance1;
+            appearance2.BackColor = System.Drawing.Color.White;
+            appearance2.BackColorDisabled = System.Drawing.Color.White;
+            appearance2.FontData.Name = "Arial";
+            appearance2.ForeColorDisabled = System.Drawing.Color.Black;
+            this.tbInfo.Appearance = appearance2;
             this.tbInfo.BackColor = System.Drawing.Color.White;
             this.tbInfo.Enabled = false;
-            this.tbInfo.Location = new System.Drawing.Point(6, 249);
+            this.tbInfo.Location = new System.Drawing.Point(6, 270);
             this.tbInfo.Margin = new System.Windows.Forms.Padding(4);
             this.tbInfo.Multiline = true;
             this.tbInfo.Name = "tbInfo";
             this.tbInfo.ReadOnly = true;
-            this.tbInfo.Size = new System.Drawing.Size(290, 246);
+            this.tbInfo.Size = new System.Drawing.Size(317, 225);
             this.tbInfo.TabIndex = 10;
             this.tbInfo.Text = "S2-Engineering GmbH";
             // 
-            // lbWeb
+            // _lbWeb
             // 
             this._lbWeb.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
             this._lbWeb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -382,7 +378,7 @@ namespace PMDS
             this._lbWeb.VisitedLinkColor = System.Drawing.Color.RoyalBlue;
             this._lbWeb.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbWeb_LinkClicked);
             // 
-            // lblemail
+            // _lblemail
             // 
             this._lblemail.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
             this._lblemail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -399,25 +395,27 @@ namespace PMDS
             // 
             // lblVersion
             // 
-            appearance2.TextVAlignAsString = "Middle";
-            this.lblVersion.Appearance = appearance2;
-            this.lblVersion.Location = new System.Drawing.Point(6, 124);
+            appearance3.TextVAlignAsString = "Middle";
+            this.lblVersion.Appearance = appearance3;
+            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.Location = new System.Drawing.Point(6, 126);
             this.lblVersion.Margin = new System.Windows.Forms.Padding(4);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(290, 20);
+            this.lblVersion.Size = new System.Drawing.Size(317, 20);
             this.lblVersion.TabIndex = 13;
-            this.lblVersion.Text = "Version: xy";
+            this.lblVersion.Text = "Version:";
             // 
             // lblDatabase
             // 
-            appearance15.TextVAlignAsString = "Middle";
-            this.lblDatabase.Appearance = appearance15;
-            this.lblDatabase.Location = new System.Drawing.Point(6, 148);
+            appearance4.TextVAlignAsString = "Middle";
+            this.lblDatabase.Appearance = appearance4;
+            this.lblDatabase.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatabase.Location = new System.Drawing.Point(6, 152);
             this.lblDatabase.Margin = new System.Windows.Forms.Padding(4);
             this.lblDatabase.Name = "lblDatabase";
-            this.lblDatabase.Size = new System.Drawing.Size(290, 64);
+            this.lblDatabase.Size = new System.Drawing.Size(317, 88);
             this.lblDatabase.TabIndex = 14;
-            this.lblDatabase.Text = "Version: xy";
+            this.lblDatabase.Text = "Version:";
             // 
             // pictureBox1
             // 
@@ -434,8 +432,8 @@ namespace PMDS
             // btnHandbuch
             // 
             this.btnHandbuch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance20.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnHandbuch.Appearance = appearance20;
+            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnHandbuch.Appearance = appearance5;
             this.btnHandbuch.AutoWorkLayout = false;
             this.btnHandbuch.IsStandardControl = false;
             this.btnHandbuch.Location = new System.Drawing.Point(8, 676);
@@ -449,9 +447,9 @@ namespace PMDS
             // btnNetViewer
             // 
             this.btnNetViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance9.ForeColor = System.Drawing.Color.Red;
-            appearance9.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnNetViewer.Appearance = appearance9;
+            appearance6.ForeColor = System.Drawing.Color.Red;
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnNetViewer.Appearance = appearance6;
             this.btnNetViewer.AutoWorkLayout = false;
             this.btnNetViewer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.btnNetViewer.IsStandardControl = false;
@@ -461,14 +459,15 @@ namespace PMDS
             this.btnNetViewer.Size = new System.Drawing.Size(290, 31);
             this.btnNetViewer.TabIndex = 92;
             this.btnNetViewer.Text = "Online-Unterstützung 1 (FastViewer)";
+            this.btnNetViewer.UseAppStyling = false;
             this.btnNetViewer.Click += new System.EventHandler(this.btnNetViewer_Click);
             // 
             // btnTeamViewer
             // 
             this.btnTeamViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance10.ForeColor = System.Drawing.Color.Blue;
-            appearance10.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnTeamViewer.Appearance = appearance10;
+            appearance7.ForeColor = System.Drawing.Color.Blue;
+            appearance7.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnTeamViewer.Appearance = appearance7;
             this.btnTeamViewer.AutoWorkLayout = false;
             this.btnTeamViewer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.btnTeamViewer.IsStandardControl = false;
@@ -478,14 +477,15 @@ namespace PMDS
             this.btnTeamViewer.Size = new System.Drawing.Size(289, 31);
             this.btnTeamViewer.TabIndex = 93;
             this.btnTeamViewer.Text = "Online-Unterstützung 2 (TeamViewer)";
+            this.btnTeamViewer.UseAppStyling = false;
             this.btnTeamViewer.Click += new System.EventHandler(this.baseButton1_Click);
             // 
             // btnWebMikogo
             // 
             this.btnWebMikogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance11.ForeColor = System.Drawing.Color.Green;
-            appearance11.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnWebMikogo.Appearance = appearance11;
+            appearance8.ForeColor = System.Drawing.Color.Green;
+            appearance8.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnWebMikogo.Appearance = appearance8;
             this.btnWebMikogo.AutoWorkLayout = false;
             this.btnWebMikogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.btnWebMikogo.IsStandardControl = false;
@@ -498,15 +498,16 @@ namespace PMDS
             // 
             // lblVersionGuid
             // 
-            appearance12.FontData.SizeInPoints = 9F;
-            appearance12.TextVAlignAsString = "Middle";
-            this.lblVersionGuid.Appearance = appearance12;
-            this.lblVersionGuid.Location = new System.Drawing.Point(6, 222);
+            appearance9.FontData.SizeInPoints = 9F;
+            appearance9.TextVAlignAsString = "Middle";
+            this.lblVersionGuid.Appearance = appearance9;
+            this.lblVersionGuid.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersionGuid.Location = new System.Drawing.Point(6, 241);
             this.lblVersionGuid.Margin = new System.Windows.Forms.Padding(4);
             this.lblVersionGuid.Name = "lblVersionGuid";
             this.lblVersionGuid.Size = new System.Drawing.Size(317, 21);
             this.lblVersionGuid.TabIndex = 96;
-            this.lblVersionGuid.Text = "Version: 000-00..";
+            this.lblVersionGuid.Text = "Version: ";
             // 
             // pnlPDF
             // 
@@ -517,7 +518,6 @@ namespace PMDS
             // pnlPDF.ClientArea
             // 
             this.pnlPDF.ClientArea.Controls.Add(this.pdfViewer1);
-            this.pnlPDF.ClientArea.Controls.Add(this.pdfToolStripMain1);
             this.pnlPDF.ClientArea.Controls.Add(this.pdfToolStripViewModes1);
             this.pnlPDF.Location = new System.Drawing.Point(332, 6);
             this.pnlPDF.Name = "pnlPDF";
@@ -570,6 +570,20 @@ namespace PMDS
             this.pdfToolStripViewModes1.TabIndex = 16;
             this.pdfToolStripViewModes1.Text = "pdfToolStripViewModes1";
             // 
+            // pdfToolStripMain1
+            // 
+            this.pdfToolStripMain1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pdfToolStripMain1.BackColor = System.Drawing.Color.Transparent;
+            this.pdfToolStripMain1.Dock = System.Windows.Forms.DockStyle.None;
+            this.pdfToolStripMain1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.pdfToolStripMain1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.pdfToolStripMain1.Location = new System.Drawing.Point(1127, 6);
+            this.pdfToolStripMain1.Name = "pdfToolStripMain1";
+            this.pdfToolStripMain1.PdfViewer = this.pdfViewer1;
+            this.pdfToolStripMain1.Size = new System.Drawing.Size(105, 58);
+            this.pdfToolStripMain1.TabIndex = 17;
+            this.pdfToolStripMain1.Text = "pdfToolStripMain1";
+            // 
             // pdfToolStripZoom1
             // 
             this.pdfToolStripZoom1.Dock = System.Windows.Forms.DockStyle.None;
@@ -603,7 +617,7 @@ namespace PMDS
             this.pdfToolStripSearch1.CurrentRecord = 0;
             this.pdfToolStripSearch1.Dock = System.Windows.Forms.DockStyle.None;
             this.pdfToolStripSearch1.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
-            this.pdfToolStripSearch1.Location = new System.Drawing.Point(661, 6);
+            this.pdfToolStripSearch1.Location = new System.Drawing.Point(706, 6);
             this.pdfToolStripSearch1.Name = "pdfToolStripSearch1";
             this.pdfToolStripSearch1.PdfViewer = this.pdfViewer1;
             this.pdfToolStripSearch1.SearchFlags = Patagames.Pdf.Enums.FindFlags.None;
@@ -612,20 +626,6 @@ namespace PMDS
             this.pdfToolStripSearch1.TabIndex = 18;
             this.pdfToolStripSearch1.Text = "pdfToolStripSearch1";
             // 
-            // pdfToolStripMain1
-            // 
-            this.pdfToolStripMain1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pdfToolStripMain1.BackColor = System.Drawing.Color.Transparent;
-            this.pdfToolStripMain1.Dock = System.Windows.Forms.DockStyle.None;
-            this.pdfToolStripMain1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.pdfToolStripMain1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.pdfToolStripMain1.Location = new System.Drawing.Point(573, 0);
-            this.pdfToolStripMain1.Name = "pdfToolStripMain1";
-            this.pdfToolStripMain1.PdfViewer = this.pdfViewer1;
-            this.pdfToolStripMain1.Size = new System.Drawing.Size(136, 58);
-            this.pdfToolStripMain1.TabIndex = 17;
-            this.pdfToolStripMain1.Text = "pdfToolStripMain1";
-            // 
             // frmAbout
             // 
             this.AcceptButton = this.btnOK;
@@ -633,8 +633,9 @@ namespace PMDS
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnOK;
             this.ClientSize = new System.Drawing.Size(1296, 789);
-            this.Controls.Add(this.pdfToolStripZoom1);
+            this.Controls.Add(this.pdfToolStripMain1);
             this.Controls.Add(this.pdfToolStripSearch1);
+            this.Controls.Add(this.pdfToolStripZoom1);
             this.Controls.Add(this.pnlPDF);
             this.Controls.Add(this.lblVersionGuid);
             this.Controls.Add(this.btnWebMikogo);
