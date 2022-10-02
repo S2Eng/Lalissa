@@ -551,7 +551,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="cLayoutManager.vb" />
-    <Compile Include="UI.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BaseControls\BaseButton.resx">

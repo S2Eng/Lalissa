@@ -76,9 +76,6 @@ Public Class BaseTabControl
 
     Private Sub BaseTabControl_MouseEnter(sender As Object, e As EventArgs) Handles MyBase.MouseEnter
         Try
-            If UI.IsKeyPressed(Windows.Forms.Keys.F1) Then
-                'Me.doBaseElements1.ShowInControlDesigner(Me.IDRes)
-            End If
 
         Catch ex As Exception
             QS2.core.generic.getExep(ex.ToString(), "")

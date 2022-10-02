@@ -278,11 +278,14 @@ namespace PMDS.GUI
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                QS2.Desktop.ControlManagment.UI ui1 = new QS2.Desktop.ControlManagment.UI();
-                if (ui1.evDoubleClickOK(sender, e, this.dgMain))
+                
+                if (dgMain.DisplayLayout.UIElement.LastElementEntered != null &&
+                    dgMain.DisplayLayout.UIElement.LastElementEntered.GetType() != typeof(Infragistics.Win.UltraWinScrollBar.ScrollArrowUIElement) &&
+                    dgMain.DisplayLayout.UIElement.LastElementEntered.GetType() != typeof(Infragistics.Win.UltraWinScrollBar.ScrollTrackSubAreaUIElement) &&
+                    dgMain.DisplayLayout.UIElement.LastElementEntered.GetType() != typeof(Infragistics.Win.UltraWinScrollBar.ScrollThumbUIElement))
                 {
                     this.UpdateMedikament();
-                } 
+                }
             }
             catch (Exception ex)
             {
