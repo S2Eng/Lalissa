@@ -704,6 +704,10 @@
       <Project>{f7905a52-3a40-4894-a5be-12f91b63da72}</Project>
       <Name>QS2.Core.VB</Name>
     </ProjectReference>
+    <ProjectReference Include="..\S2Extensions\S2Extensions.csproj">
+      <Project>{10b7d2d1-0868-4fda-8473-a12b5bb9386f}</Project>
+      <Name>S2Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.Functions.vb.vbproj">
       <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
       <Name>QS2.Functions.vb</Name>
