@@ -49,29 +49,6 @@ Public Class BaseGrid
 
     Public Shared Sub doFormatDateTime(grid As Infragistics.Win.UltraWinGrid.UltraGrid)
         Try
-            'For Each band As Infragistics.Win.UltraWinGrid.UltraGridBand In grid.DisplayLayout.Bands
-            '    For Each col As Infragistics.Win.UltraWinGrid.UltraGridColumn In band.Columns
-            '        If col.DataType.Name.ToString().Trim().ToLower().Equals(("DateTime").Trim().ToLower()) Then
-            '            col.Format = "dd.MM.yyyy HH:mm"
-            '            col.MaskInput = "dd.MM.yyyy HH:mm"
-            '        End If
-            '        If col.DataType.Name.ToString().Trim().ToLower().Equals(("Date").Trim().ToLower()) Then
-            '            col.Format = "dd.MM.yyyy"
-            '            col.MaskInput = "dd.MM.yyyy"
-            '        End If
-
-            '        If col.Style <> Infragistics.Win.UltraWinGrid.ColumnStyle.Default Then
-            '            If col.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime Then
-            '                col.Format = "dd.MM.yyyy HH:mm"
-            '                col.MaskInput = "dd.MM.yyyy HH:mm"
-            '            End If
-            '            If col.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Date Then
-            '                col.Format = "dd.MM.yyyy"
-            '                col.MaskInput = "dd.MM.yyyy"
-            '            End If
-            '        End If
-            '    Next
-            'Next
 
         Catch ex As Exception
             Throw New Exception("doFormatDateTime: " + ex.ToString())
@@ -81,7 +58,6 @@ Public Class BaseGrid
     Private Sub BaseGrid_MouseEnter(sender As Object, e As EventArgs) Handles MyBase.MouseEnter
         Try
             Me.initControl()
-            Me.doBaseElements1.CheckMouseEnter(sender, e, Me.IDRes)
 
         Catch ex As Exception
             QS2.core.generic.getExep(ex.ToString(), "")

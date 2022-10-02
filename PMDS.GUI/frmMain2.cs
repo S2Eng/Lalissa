@@ -2718,10 +2718,6 @@ namespace PMDS
                         frmImportGibodat1.ShowDialog(this);
                         break;
 
-                    case "btnLoadDesignMode":
-                        QS2.Desktop.ControlManagment.ControlManagment.LoadControlDesigner("");
-                        break;
-
                     case "btnTextbausteine":
                         PMDS.GUI.GUI.Main.frmTextbausteine frmTextbausteine1 = new GUI.GUI.Main.frmTextbausteine();
                         frmTextbausteine1.initControl();

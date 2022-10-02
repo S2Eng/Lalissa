@@ -1059,7 +1059,7 @@ namespace PMDS.GUI
                                 r‹bergabe.Delete();
                             }
                         }
-                        SiteMap.RefreshTermin(false);
+                       //SiteMap.RefreshTermin(false);
                     }
                     return true;
                 }

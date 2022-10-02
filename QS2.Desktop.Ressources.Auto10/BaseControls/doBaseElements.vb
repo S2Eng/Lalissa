@@ -107,22 +107,6 @@ Public Class doBaseElements
         End Try
     End Function
 
-    Public Sub CheckMouseEnter(sender As Object, e As EventArgs, IDRes As String)
-        Try
-            If Not QS2.Desktop.ControlManagment.ControlManagment.frmDesigner Is Nothing Then
-                If QS2.Desktop.ControlManagment.ControlManagment.frmDesigner.Visible Then
-                    If UI.IsKeyPressed(Windows.Forms.Keys.F3) Then
-                        QS2.Desktop.ControlManagment.ControlManagment.LoadControlDesigner(IDRes)
-                    End If
-                End If
-            End If
-
-        Catch ex As Exception
-            QS2.core.generic.getExep(ex.ToString(), "")
-        End Try
-    End Sub
-
-
     Public Sub runControlManagmentBaseGridManual(grid As Infragistics.Win.UltraWinGrid.UltraGrid, NameDefaultLayout As String)
         Try
             Dim baseGrid As QS2.Desktop.ControlManagment.BaseGrid = grid

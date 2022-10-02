@@ -30,7 +30,6 @@
         {
             this.ContTxtEditor1 = new QS2.Desktop.Txteditor.contTxtEditor();
             this.ultraPanel1 = new Infragistics.Win.Misc.UltraPanel();
-            this.ContTxtEditor2 = new QS2.Desktop.Txteditor2.contTxtEditor2();
             this.ultraPanel2 = new Infragistics.Win.Misc.UltraPanel();
             this.ultraProgressBar1 = new Infragistics.Win.UltraWinProgressBar.UltraProgressBar();
             this.ultraPanel1.ClientArea.SuspendLayout();
@@ -57,25 +56,12 @@
             // 
             // ultraPanel1.ClientArea
             // 
-            this.ultraPanel1.ClientArea.Controls.Add(this.ContTxtEditor2);
             this.ultraPanel1.ClientArea.Controls.Add(this.ContTxtEditor1);
             this.ultraPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraPanel1.Location = new System.Drawing.Point(0, 0);
             this.ultraPanel1.Name = "ultraPanel1";
             this.ultraPanel1.Size = new System.Drawing.Size(1007, 784);
             this.ultraPanel1.TabIndex = 115;
-            // 
-            // ContTxtEditor2
-            // 
-            this.ContTxtEditor2.AllowDrop = true;
-            this.ContTxtEditor2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ContTxtEditor2.Location = new System.Drawing.Point(18, 19);
-            this.ContTxtEditor2.Name = "ContTxtEditor2";
-            this.ContTxtEditor2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ContTxtEditor2.Size = new System.Drawing.Size(308, 167);
-            this.ContTxtEditor2.TabIndex = 115;
-            this.ContTxtEditor2.Visible = false;
             // 
             // ultraPanel2
             // 
@@ -121,6 +107,5 @@
         private Infragistics.Win.Misc.UltraPanel ultraPanel1;
         private Infragistics.Win.Misc.UltraPanel ultraPanel2;
         private Infragistics.Win.UltraWinProgressBar.UltraProgressBar ultraProgressBar1;
-        private QS2.Desktop.Txteditor2.contTxtEditor2 ContTxtEditor2;
     }
 }

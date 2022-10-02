@@ -5991,10 +5991,6 @@
       <Project>{10b7d2d1-0868-4fda-8473-a12b5bb9386f}</Project>
       <Name>S2Extensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.Desktop.Txteditor2\QS2.Desktop.Txteditor-2.vbproj">
-      <Project>{08f0dc54-0d47-48ca-8b91-af728cf2c615}</Project>
-      <Name>QS2.Desktop.Txteditor-2</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Desktop.Txteditor\QS2.Desktop.Txteditor.vbproj">
       <Project>{2baede76-a6d1-42cf-bf28-c1d20229c8ef}</Project>
       <Name>QS2.Desktop.Txteditor</Name>

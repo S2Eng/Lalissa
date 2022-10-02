@@ -22,7 +22,6 @@ Public Class BaseDateTimeEditorWin
 
     Private Sub BaseDateTimeEditorWin_MouseEnter(sender As Object, e As EventArgs) Handles MyBase.MouseEnter
         Try
-            Me.doBaseElements1.CheckMouseEnter(sender, e, Me.IDRes)
 
         Catch ex As Exception
             QS2.core.generic.getExep(ex.ToString(), "")

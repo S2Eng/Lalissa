@@ -21,7 +21,6 @@ Public Class BaseGroupBoxWin
 
     Private Sub BaseGroupBoxWin_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
         Try
-            Me.doBaseElements1.CheckMouseEnter(sender, e, Me.IDRes)
 
         Catch ex As Exception
             QS2.core.generic.getExep(ex.ToString(), "")

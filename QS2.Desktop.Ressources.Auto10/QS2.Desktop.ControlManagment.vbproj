@@ -514,18 +514,6 @@
     <Compile Include="compSql.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="contDesigner.Designer.vb">
-      <DependentUpon>contDesigner.vb</DependentUpon>
-    </Compile>
-    <Compile Include="contDesigner.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ControlInfo.Designer.vb">
-      <DependentUpon>ControlInfo.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ControlInfo.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ControlWorker.vb" />
     <Compile Include="ControlManagment.vb" />
     <Compile Include="dsControls.vb">
@@ -535,12 +523,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsManage.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="frmDesigner.Designer.vb">
-      <DependentUpon>frmDesigner.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmDesigner.vb">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="dsControls.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -638,15 +620,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="compSql.resx">
       <DependentUpon>compSql.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="contDesigner.resx">
-      <DependentUpon>contDesigner.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ControlInfo.resx">
-      <DependentUpon>ControlInfo.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDesigner.resx">
-      <DependentUpon>frmDesigner.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">

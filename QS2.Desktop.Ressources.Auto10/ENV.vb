@@ -1,7 +1,4 @@
-﻿
-
-
-Public Class ENV
+﻿Public Class ENV
 
     Public Shared _Application As String = ""
     Public Shared _TypeRessourcesRun As String = ""
@@ -16,10 +13,6 @@ Public Class ENV
     Public Shared _IsInitialized As Boolean = False
     Public Shared _IntDeactivated As Boolean = True
     Public Shared _conn2 As System.Data.SqlClient.SqlConnection = Nothing
-
-
-
-
 
     Public Shared Function init(ByRef Application As String, ByRef TypeRessourcesRun As String, ExtendedView As Boolean,
                                 DoNotShowRessources As Boolean, AutoAddNewRessources As Boolean, IntDeactivated As Boolean, conn As System.Data.SqlClient.SqlConnection) As Boolean

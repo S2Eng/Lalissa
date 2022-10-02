@@ -16,8 +16,6 @@ Imports QS2.core
 
 Public Class ControlManagment
 
-    Public Shared frmDesigner As frmDesigner = Nothing
-
     Public Shared defaultParticipant As String = QS2.core.license.doLicense.eApp.ALL.ToString()
     Public Shared iCounterDepthControlForIDRes As Integer = 5
     Public Shared prefControlNameAutoAdded As String = "AddedFromQS2"
@@ -53,13 +51,6 @@ Public Class ControlManagment
 
     Public Shared Sub LoadControlDesigner(IDRes As String)
         Try
-            If ControlManagment.frmDesigner Is Nothing Then
-                ControlManagment.frmDesigner = New frmDesigner()
-                ControlManagment.frmDesigner.initControl()
-            End If
-            ControlManagment.frmDesigner.ContDesigner1.refreshUI(IDRes)
-            ControlManagment.frmDesigner.Show()
-            ControlManagment.frmDesigner.Visible = True
 
         Catch ex As Exception
             Throw New Exception("ControlManagment.LoadControlDesigner: " + ex.ToString())
@@ -1494,7 +1485,6 @@ Public Class HandleEvent
 
     Public Sub ToolStripMenuItem_ControlInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem_ControlInfo.Click
         Try
-            Me.openInfoControl(Me._rControl, Nothing)
 
         Catch ex As Exception
             QS2.core.generic.getExep("HandleEvent.ToolStripMenuItem_ControlInfo_Click: " + ex.ToString(), "")
@@ -1576,21 +1566,6 @@ Public Class HandleEvent
     End Sub
 
 
-    Public Sub openInfoControl(ByRef rControl As dsControls.ControlsRow, ParentForm As System.Windows.Forms.Form)
-        Try
-            Dim cont As Control = rControl.Ctrl
-            Dim frm As New ControlInfo()
-            frm.loadData(cont, rControl.IDRes, rControl.IsStandardControl)
-            If ParentForm Is Nothing Then
-                frm.ShowDialog()
-            Else
-                frm.ShowDialog(ParentForm)
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("HandleEvent.ToolStripMenuItem_ControlInfo_Click: " + ex.ToString())
-        End Try
-    End Sub
     Public Function DoActionForGrid(ByRef rControl As dsControls.ControlsRow, ActionType As eActionType) As Boolean
         Try
             Dim gridTmp As UltraGrid = Nothing

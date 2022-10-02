@@ -38,8 +38,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QS2.Logging.Win", "Tools\QS
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QS2.Desktop.Txteditor", "Tools\QS2.Desktop.Txteditor\QS2.Desktop.Txteditor.vbproj", "{2BAEDE76-A6D1-42CF-BF28-C1D20229C8EF}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QS2.Desktop.Txteditor-2", "Tools\QS2.Desktop.Txteditor2\QS2.Desktop.Txteditor-2.vbproj", "{08F0DC54-0D47-48CA-8B91-AF728CF2C615}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QS2", "QS2", "{2DAFD630-BA6F-4E70-B870-13DB9DE5EF1A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QS2.Core", "qs2.core\QS2.Core.csproj", "{AAFB02C6-D8CD-4FE1-AFBF-D09D8A256DF4}"
@@ -319,24 +317,6 @@ Global
 		{2BAEDE76-A6D1-42CF-BF28-C1D20229C8EF}.Release|x64.Build.0 = Release|Any CPU
 		{2BAEDE76-A6D1-42CF-BF28-C1D20229C8EF}.Release|x86.ActiveCfg = Release|Any CPU
 		{2BAEDE76-A6D1-42CF-BF28-C1D20229C8EF}.Release|x86.Build.0 = Release|Any CPU
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Debug(x64)|Any CPU.ActiveCfg = Debug|x64
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Debug(x64)|Any CPU.Build.0 = Debug|x64
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Debug(x64)|x64.ActiveCfg = Debug|x64
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Debug(x64)|x64.Build.0 = Debug|x64
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Debug(x64)|x86.ActiveCfg = Debug|x86
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Debug(x64)|x86.Build.0 = Debug|x86
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Debug|Any CPU.Build.0 = Debug|x64
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Debug|x64.ActiveCfg = Debug|x64
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Debug|x64.Build.0 = Debug|x64
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Debug|x86.ActiveCfg = Debug|x86
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Debug|x86.Build.0 = Debug|x86
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Release|Any CPU.ActiveCfg = Release|x64
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Release|Any CPU.Build.0 = Release|x64
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Release|x64.ActiveCfg = Release|x64
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Release|x64.Build.0 = Release|x64
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Release|x86.ActiveCfg = Release|x86
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615}.Release|x86.Build.0 = Release|x86
 		{AAFB02C6-D8CD-4FE1-AFBF-D09D8A256DF4}.Debug(x64)|Any CPU.ActiveCfg = Debug(x64)|Any CPU
 		{AAFB02C6-D8CD-4FE1-AFBF-D09D8A256DF4}.Debug(x64)|Any CPU.Build.0 = Debug(x64)|Any CPU
 		{AAFB02C6-D8CD-4FE1-AFBF-D09D8A256DF4}.Debug(x64)|x64.ActiveCfg = Debug(x64)|Any CPU
@@ -456,7 +436,6 @@ Global
 		{54E427E6-FF54-4671-BF5E-1E606453BF0C} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
 		{0DDE0333-D4EC-419D-AEBD-C8359083C02D} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
 		{2BAEDE76-A6D1-42CF-BF28-C1D20229C8EF} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
-		{08F0DC54-0D47-48CA-8B91-AF728CF2C615} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
 		{AAFB02C6-D8CD-4FE1-AFBF-D09D8A256DF4} = {2DAFD630-BA6F-4E70-B870-13DB9DE5EF1A}
 		{F7905A52-3A40-4894-A5BE-12F91B63DA72} = {2DAFD630-BA6F-4E70-B870-13DB9DE5EF1A}
 		{9E183118-353B-46FA-BBD7-1F85B8E13FF1} = {2DAFD630-BA6F-4E70-B870-13DB9DE5EF1A}
@@ -465,13 +444,13 @@ Global
 		{F6E2B1C8-EE33-45E9-A0AC-AE1D5F0E334F} = {2DAFD630-BA6F-4E70-B870-13DB9DE5EF1A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9701C6F5-0D36-44C1-97B0-8C2BC96AD3D3}
-		BuildVersion_UseGlobalSettings = True
-		BuildVersion_ConfigurationName = Debug
-		BuildVersion_UpdateFileVersion = True
-		BuildVersion_AssemblyInfoFilename = Assembly.info
-		BuildVersion_StartDate = 2010/11/23
-		BuildVersion_BuildVersioningStyle = None.None.Increment.TimeStamp
 		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_BuildVersioningStyle = None.None.Increment.TimeStamp
+		BuildVersion_StartDate = 2010/11/23
+		BuildVersion_AssemblyInfoFilename = Assembly.info
+		BuildVersion_UpdateFileVersion = True
+		BuildVersion_ConfigurationName = Debug
+		BuildVersion_UseGlobalSettings = True
+		SolutionGuid = {9701C6F5-0D36-44C1-97B0-8C2BC96AD3D3}
 	EndGlobalSection
 EndGlobal

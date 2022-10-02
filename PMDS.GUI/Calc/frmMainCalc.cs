@@ -386,17 +386,6 @@ namespace PMDS.Calc.UI.Admin
                         this.sitemap.openBillTemp(PMDS.Calc.Logic.doDepotgeld.jahresAbRTF, false);
                         break;
 
-                    case "btnControlDesigner":
-                        //PMDS.DB.Global.EntityQueries.businessFramework db = new DB.Global.EntityQueries.businessFramework();
-                        ////this.ControlManagment.run(this, this.components, null,
-                        ////                        QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString(),
-                        ////                        qs2.core.license.doLicense.eApp.PMDS.ToString(),
-                        ////                        QS2.Desktop.ControlManagment.ControlManagment.eControlGroup.Booking,
-                        ////                        qs2.core.Enums.eResourceType.ImageEnum);
-
-                        QS2.Desktop.ControlManagment.ControlManagment.LoadControlDesigner("");
-                        break;
-
                     case "btnListePatientenEntlassen":
                         frmListePatientenEntlassen frmListePatientenEntlassen1 = new frmListePatientenEntlassen();
                         frmListePatientenEntlassen1.initControl();
