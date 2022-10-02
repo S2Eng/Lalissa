@@ -11,7 +11,7 @@ Public Class contTextTemplateFiles
     Public modalWindow As contTextTemplates = Nothing
 
     Public ui As New UI
-    Public fct As New QS2.functions.vb.functOld()
+    Public fct As New QS2.functions.vb.FileFunctions()
 
     Public isLoaded As Boolean = False
     Public editable As Boolean = False
@@ -130,7 +130,7 @@ Public Class contTextTemplateFiles
 
     Public Sub add()
         Try
-            Dim funct1 As New QS2.functions.vb.functOld()
+            Dim funct1 As New QS2.functions.vb.FileFunctions()
             Dim selectedFile As String = ""
             selectedFile = funct1.SelectFileDialog("All Files (*.*)|*.*|" +
                                                         "Microsoft Word Files (*.doc)|*.doc|" +

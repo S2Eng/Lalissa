@@ -1828,7 +1828,7 @@ namespace PMDS.Global
             //Settings.path_Temp = System.IO.Path.GetTempPath() + "\\PMDS";
             ENV.path_Temp = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "PMDS");
             ENV.check_Path(ENV.path_Temp, true);
-            QS2.functions.vb.functOld.path_temp = PMDS.Global.ENV.path_Temp;
+            QS2.functions.vb.FileFunctions.path_temp = PMDS.Global.ENV.path_Temp;
 
             ENV.path_BiografieVorlagen = ENV.pathForms;
             ENV.check_Path(ENV.path_BiografieVorlagen, true);

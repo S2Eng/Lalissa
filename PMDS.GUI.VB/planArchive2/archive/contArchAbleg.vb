@@ -1095,7 +1095,7 @@ Public Class contArchAbleg
 
     Public Function loadFile(ByVal file As String) As Boolean
         Try
-            Dim funct1 As New QS2.functions.vb.functOld()
+            Dim funct1 As New QS2.functions.vb.FileFunctions()
             If System.IO.File.Exists(file) Then
                 If System.IO.Directory.Exists(funct1.GetDir(file)) Then
                     If gen.IsNull(funct1.GetFiletyp(file)) Then
@@ -1221,7 +1221,7 @@ Public Class contArchAbleg
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            Dim funct1 As New qs2.functions.vb.functOld()
+            Dim funct1 As New QS2.functions.vb.FileFunctions()
             Dim selectedFile As String = ""
             selectedFile = funct1.SelectFileDialog("All Files (*.*)|*.*|" +
                         "Microsoft Word Files (*.doc)|*.doc|" +

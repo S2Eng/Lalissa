@@ -5,7 +5,7 @@ Imports System.Security.Cryptography
 Public Class Encryption
 
     Public Shared IV() As Byte = {50, 199, 10, 159, 132, 55, 236, 189, 51, 243, 244, 91, 17, 136, 39, 230}
-    Public Shared keyForEncryptingStrings As String = "*engineering_"
+    Public Shared ReadOnly keyForEncryptingStrings As String = "*engineering_"
 
     Public Function StringEncrypt(ByVal plainText As String, ByVal keyText As String) As String
         Try

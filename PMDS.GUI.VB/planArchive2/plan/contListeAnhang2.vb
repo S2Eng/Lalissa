@@ -13,7 +13,7 @@ Public Class contListeAnhang2
 
     Public compPlan1 As New compPlan()
     Public ui As New UI
-    Public fct As New QS2.functions.vb.functOld()
+    Public fct As New QS2.functions.vb.FileFunctions()
 
     Public tPlanAnhangSich As New dsPlan.planAnhangDataTable()
     Public isLoaded As Boolean = False

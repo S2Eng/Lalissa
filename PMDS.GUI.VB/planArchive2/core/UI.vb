@@ -144,13 +144,13 @@ Public Class UI
                 If openTemporär Then
                     Dim IDNewFileNameTemp As New System.Guid
                     IDNewFileNameTemp = System.Guid.NewGuid
-                    dateiTemp = System.IO.Path.Combine(qs2.functions.vb.functOld.path_temp, IDNewFileNameTemp.ToString + dateiTyp)
+                    dateiTemp = System.IO.Path.Combine(qs2.functions.vb.FileFunctions.path_temp, IDNewFileNameTemp.ToString + dateiTyp)
                     System.IO.File.Copy(file, dateiTemp)
                 Else
                     dateiTemp = file
                 End If
                 If Me.gen.IsNull(dateiTyp) Then
-                    Dim cl As New QS2.functions.vb.functOld()
+                    Dim cl As New QS2.functions.vb.FileFunctions()
                     dateiTyp = cl.GetFiletyp(file)
                 End If
 
@@ -724,7 +724,7 @@ Public Class UI
     Public Function saveFileAs(ByVal file As String, ByVal dateiTyp As String) As Boolean
         Try
             If Me.gen.IsNull(dateiTyp) Then
-                Dim cl As New QS2.functions.vb.functOld()
+                Dim cl As New QS2.functions.vb.FileFunctions()
                 dateiTyp = cl.GetFiletyp(file)
             End If
 

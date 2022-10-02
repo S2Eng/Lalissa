@@ -1456,7 +1456,7 @@ Public Class contTxtEditor
                             ByVal typ As TXTextControl.StreamType, ByVal view As TXTextControl.ViewMode,
                             ByVal temporär As Boolean) As Boolean
 
-        Dim funct1 As New QS2.functions.vb.funct()
+        Dim funct1 As New QS2.functions.vb.FileFunctions
         Dim tmpFile As String = ""
         If temporär Then
             tmpFile = Settings._path_temp + "\" + funct1.getFileName(docu, True) + "_" + System.Guid.NewGuid.ToString + System.IO.Path.GetExtension(docu)
@@ -1515,7 +1515,7 @@ Public Class contTxtEditor
         Try
             Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
 
-            Dim funct1 As New QS2.functions.vb.funct()
+            Dim funct1 As New QS2.functions.vb.FileFunctions()
             Dim binInt() As Byte = Me.doEditor.getTextInByte(TXTextControl.BinaryStreamType.InternalFormat, Me.textControl1)
             Dim binExport() As Byte = Nothing
 

@@ -73,13 +73,13 @@ Public Class cArchive
 
     Public Function getFileFromDB(ByVal Bezeichnung As String, ByVal DateiTyp As String, ByVal byteStream() As Byte) As String
         Try
-            Dim file As String = Me.getFilename(qs2.functions.vb.functOld.path_temp, Bezeichnung, DateiTyp, 0, False)
+            Dim file As String = Me.getFilename(qs2.functions.vb.FileFunctions.path_temp, Bezeichnung, DateiTyp, 0, False)
             Using fs As New IO.FileStream(file, IO.FileMode.Create)
                 fs.Write(byteStream, 0, byteStream.Length)
                 Return file
             End Using
 
-            'Dim file As String = Me.getFilename(qs2.functions.vb.functOld.path_temp, Bezeichnung, DateiTyp, 0, False)
+            'Dim file As String = Me.getFilename(qs2.functions.vb.FileFunctions.path_temp, Bezeichnung, DateiTyp, 0, False)
             'Dim fs As IO.FileStream = New IO.FileStream(file, IO.FileMode.Create)
             'Dim b() As Byte = byteStream
             'fs.Write(b, 0, b.Length)
@@ -94,7 +94,7 @@ Public Class cArchive
                                 ByVal DateiTyp As String, ByVal nr As String, ByVal deleteExistingFile As Boolean) As String
         Dim gen As New General
         Try
-            Dim strOp As New QS2.functions.vb.functOld()
+            Dim strOp As New QS2.functions.vb.FileFunctions()
             Dim file As String = path + "\" + Bezeichnung + If(nr = 0, "", "_" + nr.ToString()) + DateiTyp
 
             If System.IO.File.Exists(file) Then

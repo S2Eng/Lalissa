@@ -33,7 +33,7 @@ Public Class clPlan
     Public Shared protWindowMarkOn As Boolean = False
 
 
-    Public funct1 As New QS2.functions.vb.functOld()
+    Public funct1 As New QS2.functions.vb.FileFunctions()
     Public Shared abortIMport As Boolean = False
     Public db1 As New db()
 

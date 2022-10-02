@@ -16,7 +16,7 @@ Public Class contMailInputSrv
     Public messages As New System.Collections.Generic.List(Of clPlan.cMessage)
 
     Public clFold As New clFolder
-    Public StringOperate As New QS2.functions.vb.functOld()
+    Public StringOperate As New QS2.functions.vb.FileFunctions()
 
     Public clPlan1 As New clPlan()
     Public dsPlanReaded As New dsPlan()
@@ -253,7 +253,7 @@ Public Class contMailInputSrv
                                ByRef cTgMailSelected As clPlan.cTgMail)
         Try
             Me.treeAttachments.Nodes.Clear()
-            Dim funct1 As New QS2.functions.vb.functOld()
+            Dim funct1 As New QS2.functions.vb.FileFunctions()
 
             For Each Attachment As clPlan.cTgAttachment In cTgMailSelected.lstAttachments
                 Dim newNode As Infragistics.Win.UltraWinTree.UltraTreeNode = Me.treeAttachments.Nodes.Add(System.Guid.NewGuid().ToString(), Attachment.fileName.Trim())
@@ -267,10 +267,10 @@ Public Class contMailInputSrv
             Throw New Exception("contMailInputSrv.loadAttachments: " + ex.ToString())
         End Try
     End Sub
-    Public Sub openAttachment(ByRef NodeTree As cNodeTree, ByRef isOutlookWebAPI As Boolean, _
+    Public Sub openAttachment(ByRef NodeTree As cNodeTree, ByRef isOutlookWebAPI As Boolean,
                               ByRef Attachment As clPlan.cTgAttachment)
         Try
-            Dim funct1 As New QS2.functions.vb.functOld()
+            Dim funct1 As New QS2.functions.vb.FileFunctions()
             Dim clFolder1 As New UI()
 
             Dim DirName As String = clFolder1.selectFolder()

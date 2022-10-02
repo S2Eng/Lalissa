@@ -18,7 +18,7 @@ namespace QS2.Logging
 
         private string _db = "";
         private const string lineBreak = "\r\n";
-        private QS2.functions.vb.funct clString = new QS2.functions.vb.funct();
+        private QS2.functions.vb.FileFunctions funct = new QS2.functions.vb.FileFunctions();
 
         public QS2.Logging.frmLogManager mainWindow = null;
 
@@ -93,7 +93,7 @@ namespace QS2.Logging
             }
             catch (Exception ex)
             {
-                QS2.functions.vb.funct.getExcept(ex.ToString(), "");
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -110,7 +110,7 @@ namespace QS2.Logging
 
                 if (!System.IO.Directory.Exists(QS2.Logging.ENV._path_log))
                 { System.IO.Directory.CreateDirectory(QS2.Logging.ENV._path_log); }
-                string fil = clString.selectFile(QS2.functions.vb.funct.typLogFile, QS2.Logging.ENV._path_log);
+                string fil = funct.selectFile(QS2.functions.vb.FileFunctions.typLogFile, QS2.Logging.ENV._path_log);
                 if (fil != "")
                 {
                     this.dsLog1.tblLog.Rows.Clear();
@@ -124,7 +124,7 @@ namespace QS2.Logging
                     this.loadDB();
 
                     this.cboDB.Value = null ;
-                    string aktDat = clString.getFileName(fil, false);
+                    string aktDat =  System.IO.Path.GetFileNameWithoutExtension(fil);
                     foreach ( Infragistics.Win.ValueListItem  itm  in this.cboDB.Items  )
                     {
                         if (itm.DisplayText == aktDat)
@@ -170,7 +170,7 @@ namespace QS2.Logging
                     this.ultraGrid1.Selected.Rows.Clear();
                     this.ultraGrid1.ActiveRow = null;
                     this.Text = "Log-manager" + " [" + "Logfile" + ": " + errFile + "]";
-                    this.cboDB.Text = clString.getFileName(errFile, false);
+                    this.cboDB.Text = System.IO.Path.GetFileNameWithoutExtension(errFile);
                     this._db = errFile;
 
                     this.ultraGrid1.DisplayLayout.Bands[0].SortedColumns.Clear();
@@ -198,7 +198,7 @@ namespace QS2.Logging
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                string fil = clString.saveFile(false, QS2.functions.vb.funct.typLogFile, QS2.Logging.ENV._path_log);
+                string fil = funct.saveFile(false, QS2.functions.vb.FileFunctions.typLogFile, QS2.Logging.ENV._path_log);
                 if (fil != null )
                 {
                     dsLog1.WriteXml(fil);
@@ -320,7 +320,7 @@ namespace QS2.Logging
                 foreach (string db in System.IO.Directory.GetFiles(QS2.Logging.ENV._path_log))
                 {
                     if (System.IO.Path.GetExtension(db) == ".xml")
-                        this.cboDB.Items.Add(db, clString.getFileName(db, false));
+                        this.cboDB.Items.Add(db, System.IO.Path.GetFileNameWithoutExtension(db));
                 }
                 this.Cursor = Cursors.Default;
         }

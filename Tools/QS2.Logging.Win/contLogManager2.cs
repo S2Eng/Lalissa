@@ -21,13 +21,9 @@ namespace QS2.Logging.Win
     {
 
         public frmLogManager2 mainWindow = null;
-        private QS2.functions.vb.funct clString = new QS2.functions.vb.funct();
+        private QS2.functions.vb.FileFunctions clString = new QS2.functions.vb.FileFunctions();
 
         public dsLog2.tblLog2Row rLogSel2Last = null;
-
-
-
-
 
         public contLogManager2()
         {
@@ -456,7 +452,7 @@ namespace QS2.Logging.Win
                 this.Cursor = Cursors.WaitCursor;
 
                 string sPathTmpDefault = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string fil = this.clString.saveFile(false, QS2.functions.vb.funct.typLogFile, "", sPathTmpDefault);
+                string fil = this.clString.saveFile(false, QS2.functions.vb.FileFunctions.typLogFile, "", sPathTmpDefault);
                 if (fil != null)
                 {
                     this.dsLog21.WriteXml(fil);

@@ -799,7 +799,7 @@ namespace EDIFact
             try
             {
                 editorToShow.Text = "";
-                QS2.functions.vb.funct funct1 = new QS2.functions.vb.funct();
+                QS2.functions.vb.FileFunctions funct1 = new QS2.functions.vb.FileFunctions();
                 string selectedFile = funct1.selectFile(this.TypeBefund, System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
                 if (selectedFile != null)
                 {

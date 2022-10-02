@@ -97,8 +97,8 @@ Public Class contProtocol
             Me.Cursor = Cursors.WaitCursor
  
             Application.DoEvents()
-            Dim clString As New QS2.functions.vb.funct()
-            Dim fil As String = clString.saveFile(False, QS2.functions.vb.funct.fileTypeTxt, "", System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop))
+            Dim funct As New QS2.functions.vb.FileFunctions()
+            Dim fil As String = funct.saveFile(False, QS2.functions.vb.FileFunctions.fileTypeTxt, "", System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop))
             If fil <> Nothing Then
                 Dim StreamWriter1 As New System.IO.StreamWriter(fil)
                 StreamWriter1.Write(Me.txtProtokoll.Text.Trim())

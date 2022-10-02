@@ -3,7 +3,7 @@
 Public Class doDoc
 
     Public gen As New General
-    Public funct1 As New QS2.functions.vb.functOld()
+    Public funct1 As New QS2.functions.vb.FileFunctions()
 
     Public Enum eTypSaveDocu
         addFiles = 0
