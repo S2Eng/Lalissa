@@ -218,42 +218,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Shared.v21.2.dll</HintPath>
     </Reference>
-    <Reference Include="Infragistics4.Olap.DataSource.Xmla.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Xmla.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataSource.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataSource.Mdx.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Mdx.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataSource.Flat.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Flat.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataProvider.Xmla.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Xmla.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataProvider.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataProvider.Flat.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Flat.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataProvider.Adomd.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Adomd.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.Core.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.Core.v21.2.dll</HintPath>
-    </Reference>
     <Reference Include="Infragistics4.Math.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Math.v21.2.dll</HintPath>
@@ -366,23 +330,11 @@
       <DependentUpon>dsLog2.xsd</DependentUpon>
     </Compile>
     <Compile Include="EMail.cs" />
-    <Compile Include="frmError2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmError2.Designer.cs">
-      <DependentUpon>frmError2.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmError.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmError.Designer.cs">
       <DependentUpon>frmError.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmErrorDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmErrorDetail.Designer.cs">
-      <DependentUpon>frmErrorDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -390,12 +342,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="ucError2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ucError2.Designer.cs">
-      <DependentUpon>ucError2.cs</DependentUpon>
     </Compile>
     <Compile Include="ucError.cs">
       <SubType>UserControl</SubType>
@@ -405,22 +351,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmError2.resx">
-      <DependentUpon>frmError2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmError.resx">
       <DependentUpon>frmError.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmErrorDetail.resx">
-      <DependentUpon>frmErrorDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ucError2.resx">
-      <DependentUpon>ucError2.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ucError.resx">
       <DependentUpon>ucError.cs</DependentUpon>
@@ -451,7 +389,6 @@
     <None Include="dsLog2.xss">
       <DependentUpon>dsLog2.xsd</DependentUpon>
     </None>
-    <None Include="Resources\QS2_blue.gif" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QS2.functions.vb\QS2.Functions.vb.vbproj">
@@ -462,6 +399,9 @@
       <Project>{54e427e6-ff54-4671-bf5e-1e606453bf0c}</Project>
       <Name>QS2.Resources</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

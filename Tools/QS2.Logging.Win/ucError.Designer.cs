@@ -29,19 +29,12 @@
         private void InitializeComponent()
         {
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint13 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint14 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint3 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint15 = new Infragistics.Win.Layout.GridBagConstraint();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucError));
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint4 = new Infragistics.Win.Layout.GridBagConstraint();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelExept = new System.Windows.Forms.Panel();
             this.ultraGridBagLayoutPanel1execpt = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
@@ -59,9 +52,6 @@
             this.uGridBagTxt = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.lblMessage1 = new Infragistics.Win.FormattedLinkLabel.UltraFormattedTextEditor();
             this.lblMessageGerman = new Infragistics.Win.FormattedLinkLabel.UltraFormattedTextEditor();
-            this.panelPic = new System.Windows.Forms.Panel();
-            this.ultraGridBagLayoutPanel1 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ultraGridBagLayoutPanelExept = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.panel2.SuspendLayout();
             this.panelExept.SuspendLayout();
@@ -72,10 +62,6 @@
             this.panelMessage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uGridBagTxt)).BeginInit();
             this.uGridBagTxt.SuspendLayout();
-            this.panelPic.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel1)).BeginInit();
-            this.ultraGridBagLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanelExept)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,14 +107,14 @@
             appearance1.ForeColor = System.Drawing.Color.Black;
             appearance1.ForeColorDisabled = System.Drawing.Color.Black;
             this.lblExept.Appearance = appearance1;
-            gridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint1.Insets.Bottom = 5;
-            gridBagConstraint1.Insets.Left = 5;
-            gridBagConstraint1.Insets.Right = 5;
-            gridBagConstraint1.Insets.Top = 5;
-            gridBagConstraint1.OriginX = 0;
-            gridBagConstraint1.OriginY = 0;
-            this.ultraGridBagLayoutPanel1execpt.SetGridBagConstraint(this.lblExept, gridBagConstraint1);
+            gridBagConstraint13.Fill = Infragistics.Win.Layout.FillType.Both;
+            gridBagConstraint13.Insets.Bottom = 5;
+            gridBagConstraint13.Insets.Left = 5;
+            gridBagConstraint13.Insets.Right = 5;
+            gridBagConstraint13.Insets.Top = 5;
+            gridBagConstraint13.OriginX = 0;
+            gridBagConstraint13.OriginY = 0;
+            this.ultraGridBagLayoutPanel1execpt.SetGridBagConstraint(this.lblExept, gridBagConstraint13);
             this.lblExept.Location = new System.Drawing.Point(5, 5);
             this.lblExept.Name = "lblExept";
             this.ultraGridBagLayoutPanel1execpt.SetPreferredSize(this.lblExept, new System.Drawing.Size(400, 59));
@@ -177,13 +163,7 @@
             // lblSendMessageAsEMail
             // 
             this.lblSendMessageAsEMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance2.Cursor = System.Windows.Forms.Cursors.Hand;
-            appearance2.FontData.SizeInPoints = 8F;
-            appearance2.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblSendMessageAsEMail.Appearance = appearance2;
             this.lblSendMessageAsEMail.AutoSize = true;
-            appearance3.FontData.UnderlineAsString = "True";
-            this.lblSendMessageAsEMail.HotTrackAppearance = appearance3;
             this.lblSendMessageAsEMail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lblSendMessageAsEMail.Location = new System.Drawing.Point(507, 30);
             this.lblSendMessageAsEMail.Name = "lblSendMessageAsEMail";
@@ -204,13 +184,7 @@
             // 
             // UFormLinkZurücksetzen
             // 
-            appearance4.Cursor = System.Windows.Forms.Cursors.Hand;
-            appearance4.FontData.SizeInPoints = 8F;
-            appearance4.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.UFormLinkZurücksetzen.Appearance = appearance4;
             this.UFormLinkZurücksetzen.AutoSize = true;
-            appearance5.FontData.UnderlineAsString = "True";
-            this.UFormLinkZurücksetzen.HotTrackAppearance = appearance5;
             this.UFormLinkZurücksetzen.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.UFormLinkZurücksetzen.Location = new System.Drawing.Point(237, 30);
             this.UFormLinkZurücksetzen.Name = "UFormLinkZurücksetzen";
@@ -234,13 +208,7 @@
             // 
             // lblErwAnsichtEinAus
             // 
-            appearance6.Cursor = System.Windows.Forms.Cursors.Hand;
-            appearance6.FontData.SizeInPoints = 8F;
-            appearance6.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblErwAnsichtEinAus.Appearance = appearance6;
             this.lblErwAnsichtEinAus.AutoSize = true;
-            appearance7.FontData.UnderlineAsString = "True";
-            this.lblErwAnsichtEinAus.HotTrackAppearance = appearance7;
             this.lblErwAnsichtEinAus.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lblErwAnsichtEinAus.Location = new System.Drawing.Point(374, 30);
             this.lblErwAnsichtEinAus.Name = "lblErwAnsichtEinAus";
@@ -254,7 +222,6 @@
             // panelMessageOben
             // 
             this.panelMessageOben.Controls.Add(this.panelMessage);
-            this.panelMessageOben.Controls.Add(this.panelPic);
             this.panelMessageOben.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMessageOben.Location = new System.Drawing.Point(0, 0);
             this.panelMessageOben.Name = "panelMessageOben";
@@ -265,9 +232,9 @@
             // 
             this.panelMessage.Controls.Add(this.uGridBagTxt);
             this.panelMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMessage.Location = new System.Drawing.Point(82, 0);
+            this.panelMessage.Location = new System.Drawing.Point(0, 0);
             this.panelMessage.Name = "panelMessage";
-            this.panelMessage.Size = new System.Drawing.Size(621, 147);
+            this.panelMessage.Size = new System.Drawing.Size(703, 147);
             this.panelMessage.TabIndex = 2;
             // 
             // uGridBagTxt
@@ -279,31 +246,31 @@
             this.uGridBagTxt.ExpandToFitWidth = true;
             this.uGridBagTxt.Location = new System.Drawing.Point(0, 0);
             this.uGridBagTxt.Name = "uGridBagTxt";
-            this.uGridBagTxt.Size = new System.Drawing.Size(621, 147);
+            this.uGridBagTxt.Size = new System.Drawing.Size(703, 147);
             this.uGridBagTxt.TabIndex = 0;
             // 
             // lblMessage1
             // 
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            appearance8.BackColorDisabled = System.Drawing.Color.Transparent;
-            appearance8.BorderColor = System.Drawing.Color.Transparent;
-            appearance8.FontData.SizeInPoints = 8F;
-            appearance8.ForeColor = System.Drawing.Color.Black;
-            appearance8.ForeColorDisabled = System.Drawing.Color.Black;
-            appearance8.TextVAlignAsString = "Middle";
-            this.lblMessage1.Appearance = appearance8;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            appearance2.BackColorDisabled = System.Drawing.Color.Transparent;
+            appearance2.BorderColor = System.Drawing.Color.Transparent;
+            appearance2.FontData.SizeInPoints = 8F;
+            appearance2.ForeColor = System.Drawing.Color.Black;
+            appearance2.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance2.TextVAlignAsString = "Middle";
+            this.lblMessage1.Appearance = appearance2;
             this.lblMessage1.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
-            gridBagConstraint2.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint2.Insets.Bottom = 5;
-            gridBagConstraint2.Insets.Left = 5;
-            gridBagConstraint2.Insets.Right = 5;
-            gridBagConstraint2.Insets.Top = 5;
-            this.uGridBagTxt.SetGridBagConstraint(this.lblMessage1, gridBagConstraint2);
+            gridBagConstraint14.Fill = Infragistics.Win.Layout.FillType.Both;
+            gridBagConstraint14.Insets.Bottom = 5;
+            gridBagConstraint14.Insets.Left = 5;
+            gridBagConstraint14.Insets.Right = 5;
+            gridBagConstraint14.Insets.Top = 5;
+            this.uGridBagTxt.SetGridBagConstraint(this.lblMessage1, gridBagConstraint14);
             this.lblMessage1.Location = new System.Drawing.Point(5, 5);
             this.lblMessage1.Name = "lblMessage1";
             this.uGridBagTxt.SetPreferredSize(this.lblMessage1, new System.Drawing.Size(459, 166));
             this.lblMessage1.ReadOnly = true;
-            this.lblMessage1.Size = new System.Drawing.Size(301, 137);
+            this.lblMessage1.Size = new System.Drawing.Size(342, 137);
             this.lblMessage1.TabIndex = 2;
             this.lblMessage1.UseAppStyling = false;
             this.lblMessage1.Value = "<span style=\"color:RoyalBlue; font-size:8pt;\">An unexpected error occured.</span>" +
@@ -311,63 +278,30 @@
             // 
             // lblMessageGerman
             // 
-            appearance9.BackColor = System.Drawing.Color.Transparent;
-            appearance9.BackColorDisabled = System.Drawing.Color.Transparent;
-            appearance9.BorderColor = System.Drawing.Color.Transparent;
-            appearance9.FontData.SizeInPoints = 8F;
-            appearance9.ForeColor = System.Drawing.Color.Black;
-            appearance9.ForeColorDisabled = System.Drawing.Color.Black;
-            appearance9.TextVAlignAsString = "Middle";
-            this.lblMessageGerman.Appearance = appearance9;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.BackColorDisabled = System.Drawing.Color.Transparent;
+            appearance3.BorderColor = System.Drawing.Color.Transparent;
+            appearance3.FontData.SizeInPoints = 8F;
+            appearance3.ForeColor = System.Drawing.Color.Black;
+            appearance3.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance3.TextVAlignAsString = "Middle";
+            this.lblMessageGerman.Appearance = appearance3;
             this.lblMessageGerman.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
-            gridBagConstraint3.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint3.Insets.Bottom = 5;
-            gridBagConstraint3.Insets.Left = 5;
-            gridBagConstraint3.Insets.Right = 5;
-            gridBagConstraint3.Insets.Top = 5;
-            this.uGridBagTxt.SetGridBagConstraint(this.lblMessageGerman, gridBagConstraint3);
-            this.lblMessageGerman.Location = new System.Drawing.Point(316, 5);
+            gridBagConstraint15.Fill = Infragistics.Win.Layout.FillType.Both;
+            gridBagConstraint15.Insets.Bottom = 5;
+            gridBagConstraint15.Insets.Left = 5;
+            gridBagConstraint15.Insets.Right = 5;
+            gridBagConstraint15.Insets.Top = 5;
+            this.uGridBagTxt.SetGridBagConstraint(this.lblMessageGerman, gridBagConstraint15);
+            this.lblMessageGerman.Location = new System.Drawing.Point(357, 5);
             this.lblMessageGerman.Name = "lblMessageGerman";
             this.uGridBagTxt.SetPreferredSize(this.lblMessageGerman, new System.Drawing.Size(459, 166));
             this.lblMessageGerman.ReadOnly = true;
-            this.lblMessageGerman.Size = new System.Drawing.Size(300, 137);
+            this.lblMessageGerman.Size = new System.Drawing.Size(341, 137);
             this.lblMessageGerman.TabIndex = 1;
             this.lblMessageGerman.UseAppStyling = false;
             this.lblMessageGerman.Value = resources.GetString("lblMessageGerman.Value");
             this.lblMessageGerman.Visible = false;
-            // 
-            // panelPic
-            // 
-            this.panelPic.Controls.Add(this.ultraGridBagLayoutPanel1);
-            this.panelPic.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelPic.Location = new System.Drawing.Point(0, 0);
-            this.panelPic.Name = "panelPic";
-            this.panelPic.Size = new System.Drawing.Size(82, 147);
-            this.panelPic.TabIndex = 1;
-            // 
-            // ultraGridBagLayoutPanel1
-            // 
-            this.ultraGridBagLayoutPanel1.Controls.Add(this.pictureBox1);
-            this.ultraGridBagLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraGridBagLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.ultraGridBagLayoutPanel1.Name = "ultraGridBagLayoutPanel1";
-            this.ultraGridBagLayoutPanel1.Size = new System.Drawing.Size(82, 147);
-            this.ultraGridBagLayoutPanel1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            gridBagConstraint4.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint4.OriginX = 0;
-            gridBagConstraint4.OriginY = 0;
-            this.ultraGridBagLayoutPanel1.SetGridBagConstraint(this.pictureBox1, gridBagConstraint4);
-            this.pictureBox1.Image = global::QS2.Logging.Win.Properties.Resources.QS2_blue;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 48);
-            this.pictureBox1.Name = "pictureBox1";
-            this.ultraGridBagLayoutPanel1.SetPreferredSize(this.pictureBox1, new System.Drawing.Size(100, 50));
-            this.pictureBox1.Size = new System.Drawing.Size(82, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // ultraGridBagLayoutPanelExept
             // 
@@ -398,10 +332,6 @@
             this.panelMessage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uGridBagTxt)).EndInit();
             this.uGridBagTxt.ResumeLayout(false);
-            this.panelPic.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel1)).EndInit();
-            this.ultraGridBagLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanelExept)).EndInit();
             this.ResumeLayout(false);
 
@@ -419,9 +349,6 @@
         internal Infragistics.Win.Misc.UltraLabel UFormLinkZurücksetzen;
         private Infragistics.Win.Misc.UltraGridBagLayoutPanel ultraGridBagLayoutPanelExept;
         private System.Windows.Forms.Panel panelMessage;
-        private System.Windows.Forms.Panel panelPic;
-        private Infragistics.Win.Misc.UltraGridBagLayoutPanel ultraGridBagLayoutPanel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         public Infragistics.Win.FormattedLinkLabel.UltraFormattedTextEditor lblExept;
         internal Infragistics.Win.Misc.UltraLabel lblSendMessageAsEMail;

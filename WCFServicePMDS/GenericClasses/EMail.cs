@@ -142,7 +142,7 @@ namespace WCFServicePMDS
         {
             try
             {
-                if (!string.IsNullOrEmpty(ENV.ENVWcf.SmtpServer))
+                if (!string.IsNullOrEmpty(ENV.ENVWcf.SmtpServer) && ENV.ENVWcf.SmtpAdressFrom != null)
                 {
                     System.Net.Mail.MailMessage email = new System.Net.Mail.MailMessage();
                     System.Net.Mail.MailAddress adrFrom = new System.Net.Mail.MailAddress(ENV.ENVWcf.SmtpAdressFrom.Trim(), ENV.ENVWcf.SmtpAdressFrom.Trim());
@@ -196,7 +196,7 @@ namespace WCFServicePMDS
                     return true;
                 }
                 else
-                    return true;
+                    return false;
             }
             catch (Exception ex)
             {
