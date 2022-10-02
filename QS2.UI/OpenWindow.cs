@@ -37,7 +37,6 @@ namespace qs2.ui
 
         private static qs2.core.vb.frmLayoutManager frmLayouts = null;
 
-        public static QS2.Logging.contLogViewer contLogViewer = null;
         public static System.Windows.Forms.Form frmLogViewer = null;
 
         public static void doControl(qs2.core.ENV.eTypApp typFound, Panel PanelToLoad, System.Windows.Forms.Form FrmMain, bool ExtendedView)

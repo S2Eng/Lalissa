@@ -349,18 +349,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="contLogManager.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="contLogManager.designer.cs">
-      <DependentUpon>contLogManager.cs</DependentUpon>
-    </Compile>
-    <Compile Include="contLogManager2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="contLogManager2.Designer.cs">
-      <DependentUpon>contLogManager2.cs</DependentUpon>
-    </Compile>
     <Compile Include="dsLog.cs">
       <DependentUpon>dsLog.xsd</DependentUpon>
     </Compile>
@@ -396,19 +384,7 @@
     <Compile Include="frmErrorDetail.Designer.cs">
       <DependentUpon>frmErrorDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLogManager.Designer.cs">
-      <DependentUpon>frmLogManager.cs</DependentUpon>
-    </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="frmLogManager2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLogManager2.Designer.cs">
-      <DependentUpon>frmLogManager2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -429,12 +405,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="contLogManager.resx">
-      <DependentUpon>contLogManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="contLogManager2.resx">
-      <DependentUpon>contLogManager2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmError2.resx">
       <DependentUpon>frmError2.cs</DependentUpon>
     </EmbeddedResource>
@@ -443,12 +413,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmErrorDetail.resx">
       <DependentUpon>frmErrorDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLogManager.resx">
-      <DependentUpon>frmLogManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLogManager2.resx">
-      <DependentUpon>frmLogManager2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -2575,16 +2575,6 @@ namespace PMDS.GUI.PMDSClient
                         qs2.ui.OpenWindow.doControl(qs2.core.ENV.eTypApp.QS2PopUpContainerSysDatabase, null, null, PMDS.Global.ENV.adminSecure);
                         break;
 
-                    case "btnQS2QueryExpress":
-                        //qs2.ui.OpenWindow.doControl(qs2.core.Settings.eTypApp.fctQueryExpress, null, null, PMDS.Global.Settings.adminSecure);
-                        break;
-
-                    case "btnQS2LogManager":
-                        QS2.Logging.Win.frmLogManager2 frmLog = new QS2.Logging.Win.frmLogManager2();
-                        frmLog.initControl();
-                        frmLog.Show();
-                        break;
-
                     case "btnRechteAbteilungenBereiche":
                         frmBenutzer frmBenutzer1 = new frmBenutzer(true);
                         frmBenutzer1.ShowDialog(this);
