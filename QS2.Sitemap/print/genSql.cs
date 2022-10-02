@@ -111,10 +111,6 @@ namespace qs2.sitemap.print
                 
                 foreach (qs2.sitemap.print.genSql.subQuery subQuery in lstSubQueries)
                 {
-
-                    qs2.sitemap.print.print print1 = new qs2.sitemap.print.print();
-                    qs2.core.Enums.eStayTyp StayTypeMainQuery = print1.getTypeQuery(rSelListQry.Classification.Trim());
-                    qs2.core.Enums.eStayTyp StayTypeSubQuery = print1.getTypeQuery(subQuery.rSelListQrySub.Classification.Trim());
                     this.doSqlConditions(subQuery.tQryConditionsSub, subQuery.tParFunctParSub, ref prot, 
                                         withParameters, parametersSql, false, ref sqlParameterFunction, rSelListQry, false,
                                         ref lstSqlFix, ref sqlWhereConditionsSubQuery,
@@ -472,10 +468,9 @@ namespace qs2.sitemap.print
                 {
                     arrJoinTempFound.Add(rJoinTemp);
                 }
-             }
+            }
         }
-
-
+        
         public bool addNewJoinDsResult(string Combination, string table, string column,
                                         string condition, ref int Sort, ref dsAdmin dsJoinsResult)
         {
@@ -583,7 +578,6 @@ namespace qs2.sitemap.print
             }
         }
     
-
         public System.Guid addQry(string Combination, string table, string Column, string Condition, string CombinationEnd, ref int Sort,
                             dsAdmin dsQry, eTypDoJoins typDoJoins, System.Guid IDJoin)
         {

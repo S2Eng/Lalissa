@@ -249,14 +249,11 @@ namespace  qs2.ui.print
                     }
 
                     bool bIDParticipant = false;
-                    //if (this.typeQuery == core.Enums.eTypeQuery.User)
-                    //{
-                        if (rSelList.IDParticipant.Trim() == "" || rSelList.IDParticipant.Trim().ToLower().Equals(qs2.core.license.doLicense.eApp.ALL.ToString().Trim().ToLower()) ||
-                            rSelList.IDParticipant.Trim().ToLower().Equals(qs2.core.license.doLicense.rParticipant.IDParticipant.Trim().ToLower()))
-                        {
-                            bIDParticipant = true;
-                        }
-                    //}
+                    if (rSelList.IDParticipant.Trim() == "" || rSelList.IDParticipant.Trim().ToLower().Equals(qs2.core.license.doLicense.eApp.ALL.ToString().Trim().ToLower()) ||
+                        rSelList.IDParticipant.Trim().ToLower().Equals(qs2.core.license.doLicense.rParticipant.IDParticipant.Trim().ToLower()))
+                    {
+                        bIDParticipant = true;
+                    }
 
                     if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
                     {
@@ -292,38 +289,21 @@ namespace  qs2.ui.print
                                 bOk = true;
                             }
                         }
+                        
                         if (actUsr.IsAdminSecureOrSupervisor() && this.typeQuery == core.Enums.eTypeQuery.Admin)
                         {
                             bOk = true;
                         }
+
                         if (bOk && HasUserHasRight && bIDParticipant)
                         {
-                            //rSelList.TypeStr = qs2.core.language.sqlLanguage.getRes(rSelList.TypeStr);
-                            //OnlySubQueries with same Type as MainQuery
                             if (InfoQryMain != null)
                             {
-                                bool bShowAsSubQuery = false;
-                                qs2.sitemap.print.print print1 = new qs2.sitemap.print.print();
-                                qs2.core.Enums.eStayTyp StayTypeMainQuery = print1.getTypeQuery(InfoQryMain.rSelListQry.Classification.Trim());
-                                qs2.core.Enums.eStayTyp StayTypeSubQuery = print1.getTypeQuery(rSelList.Classification.Trim());
-
-                                if (StayTypeSubQuery == StayTypeMainQuery &&
-                                    InfoQryMain.rSelListQry.Classification != "" &&
-                                    rSelList.Classification != "")
-                                {
-                                    bShowAsSubQuery = true;
-                                }
-
-                                if (!bShowAsSubQuery)
+                                if (!(InfoQryMain.rSelListQry.Classification != "" && rSelList.Classification != ""))
                                 {
                                     rowGridSelList.Hidden = true;
                                 }
-                                else
-                                {
-                                    //string xy = "";
-                                }
                             }
-
 
                             if (rSelListAdded != null)
                             {
@@ -331,7 +311,6 @@ namespace  qs2.ui.print
                                 {
                                     rFirstSelList = rSelListAdded;
                                     rowGridFirstSelList = rowGridSelList;
-                                    //toEditMode = true;
                                 }
                             }
                             else
