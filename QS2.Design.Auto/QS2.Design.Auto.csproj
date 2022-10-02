@@ -523,12 +523,6 @@
     <Compile Include="multiControl\ownControl\ownMCInfo.cs" />
     <Compile Include="multiControl\ownControl\ownMCUI.cs" />
     <Compile Include="multiControl\ownControl\ownMCValue.cs" />
-    <Compile Include="PDFViewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PDFViewer.Designer.cs">
-      <DependentUpon>PDFViewer.cs</DependentUpon>
-    </Compile>
     <Compile Include="print\contQryAdmin.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -803,9 +797,6 @@
       <DependentUpon>ownTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pdf.Net.SDK.licx" />
-    <EmbeddedResource Include="PDFViewer.resx">
-      <DependentUpon>PDFViewer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="print\contQryAdmin.resx">
       <DependentUpon>contQryAdmin.cs</DependentUpon>
       <SubType>Designer</SubType>
