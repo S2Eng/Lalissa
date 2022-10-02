@@ -2469,10 +2469,6 @@
       <Project>{2baede76-a6d1-42cf-bf28-c1d20229c8ef}</Project>
       <Name>QS2.Desktop.Txteditor</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.functions.cs\QS2.Functions.cs.csproj">
-      <Project>{e3c41a76-0e7b-45cd-afd9-09f419ccd894}</Project>
-      <Name>QS2.Functions.cs</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.Functions.vb.vbproj">
       <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
       <Name>QS2.Functions.vb</Name>

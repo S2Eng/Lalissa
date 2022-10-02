@@ -8,7 +8,7 @@ namespace QS2.Logging.Win
 {
     public class EMail
     {
-        public static string EMailService = "ServiceCenter@s2-engineering.com";
+        public static string EMailService { get; set; } = "ServiceCenter@s2-engineering.com";
 
         public void sendEMail(string sTitle, string sText, string sTo)
         {

@@ -30,8 +30,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S2Extensions", "S2Extension
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QS2.Functions.cs", "Tools\QS2.functions.cs\QS2.Functions.cs.csproj", "{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}"
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QS2.Functions.vb", "Tools\QS2.functions.vb\QS2.Functions.vb.vbproj", "{2411E49C-1E98-41CF-BB11-32E995046CD8}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QS2.Resources", "Tools\QS2.Resources\QS2.Resources.vbproj", "{54E427E6-FF54-4671-BF5E-1E606453BF0C}"
@@ -251,24 +249,6 @@ Global
 		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Release|x64.Build.0 = Release|Any CPU
 		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Release|x86.ActiveCfg = Release|Any CPU
 		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F}.Release|x86.Build.0 = Release|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug(x64)|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug(x64)|Any CPU.Build.0 = Debug|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug(x64)|x64.ActiveCfg = Debug|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug(x64)|x64.Build.0 = Debug|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug(x64)|x86.ActiveCfg = Debug|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug(x64)|x86.Build.0 = Debug|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug|x64.Build.0 = Debug|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Debug|x86.Build.0 = Debug|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Release|x64.ActiveCfg = Release|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Release|x64.Build.0 = Release|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Release|x86.ActiveCfg = Release|Any CPU
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894}.Release|x86.Build.0 = Release|Any CPU
 		{2411E49C-1E98-41CF-BB11-32E995046CD8}.Debug(x64)|Any CPU.ActiveCfg = Debug|Any CPU
 		{2411E49C-1E98-41CF-BB11-32E995046CD8}.Debug(x64)|Any CPU.Build.0 = Debug|Any CPU
 		{2411E49C-1E98-41CF-BB11-32E995046CD8}.Debug(x64)|x64.ActiveCfg = Debug|Any CPU
@@ -492,7 +472,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1F894182-6563-4FFA-958D-B842CB449B21} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
 		{10B7D2D1-0868-4FDA-8473-A12B5BB9386F} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
-		{E3C41A76-0E7B-45CD-AFD9-09F419CCD894} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
 		{2411E49C-1E98-41CF-BB11-32E995046CD8} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
 		{54E427E6-FF54-4671-BF5E-1E606453BF0C} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
 		{0DDE0333-D4EC-419D-AEBD-C8359083C02D} = {BFC9C5B4-DB78-449D-AE8C-5CC88D97549A}
@@ -507,13 +486,13 @@ Global
 		{F6E2B1C8-EE33-45E9-A0AC-AE1D5F0E334F} = {2DAFD630-BA6F-4E70-B870-13DB9DE5EF1A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_UpdateAssemblyVersion = True
-		BuildVersion_BuildVersioningStyle = None.None.Increment.TimeStamp
-		BuildVersion_StartDate = 2010/11/23
-		BuildVersion_AssemblyInfoFilename = Assembly.info
-		BuildVersion_UpdateFileVersion = True
-		BuildVersion_ConfigurationName = Debug
-		BuildVersion_UseGlobalSettings = True
 		SolutionGuid = {9701C6F5-0D36-44C1-97B0-8C2BC96AD3D3}
+		BuildVersion_UseGlobalSettings = True
+		BuildVersion_ConfigurationName = Debug
+		BuildVersion_UpdateFileVersion = True
+		BuildVersion_AssemblyInfoFilename = Assembly.info
+		BuildVersion_StartDate = 2010/11/23
+		BuildVersion_BuildVersioningStyle = None.None.Increment.TimeStamp
+		BuildVersion_UpdateAssemblyVersion = True
 	EndGlobalSection
 EndGlobal

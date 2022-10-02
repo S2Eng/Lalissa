@@ -1,14 +1,5 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.ComponentModel
-Imports System.Data
-Imports System.Drawing
-Imports System.Text
-Imports System.Windows.Forms
+﻿Imports System.Windows.Forms
 Imports qs2.Resources
-
-
-
 
 
 Public Class contProtocol
@@ -85,7 +76,7 @@ Public Class contProtocol
             msgTxt += "Hostname: " + System.Net.Dns.GetHostName().ToString() + vbNewLine + vbNewLine
             msgTxt += "Message: " + vbNewLine + Me.txtProtokoll.Text.Trim() + vbNewLine
 
-            sendEMail1.sendEMail("Message QS2", msgTxt, QS2.functions.cs.EMail.EMailService)
+            sendEMail1.sendEMail("Message QS2", msgTxt, QS2.Logging.Win.EMail.EMailService)
 
         Catch ex As Exception
             QS2.Desktop.Txteditor.generic.getExcept(ex.ToString(), ex.Message)
