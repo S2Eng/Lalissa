@@ -487,12 +487,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="selLists\contAddSelList.Designer.vb">
-      <DependentUpon>contAddSelList.vb</DependentUpon>
-    </Compile>
-    <Compile Include="selLists\contAddSelList.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="selLists\contCboSelList.designer.vb">
       <DependentUpon>contCboSelList.vb</DependentUpon>
     </Compile>
@@ -523,12 +517,6 @@
     <Compile Include="selLists\contSelLists.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="selLists\contSelListsChapter.designer.vb">
-      <DependentUpon>contSelListsChapter.vb</DependentUpon>
-    </Compile>
-    <Compile Include="selLists\contSelListsChapter.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="selLists\contSelListsObj.designer.vb">
       <DependentUpon>contSelListsObj.vb</DependentUpon>
     </Compile>
@@ -540,12 +528,6 @@
     </Compile>
     <Compile Include="selLists\contUserSelList..vb">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="selLists\frmAddSelList.Designer.vb">
-      <DependentUpon>frmAddSelList.vb</DependentUpon>
-    </Compile>
-    <Compile Include="selLists\frmAddSelList.vb">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="selLists\frmSelectField.Designer.vb">
       <DependentUpon>frmSelectField.vb</DependentUpon>
@@ -593,9 +575,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pdf.Net.SDK.licx" />
-    <EmbeddedResource Include="selLists\contAddSelList.resx">
-      <DependentUpon>contAddSelList.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="selLists\contCboSelList.resx">
       <DependentUpon>contCboSelList.vb</DependentUpon>
     </EmbeddedResource>
@@ -611,17 +590,11 @@
     <EmbeddedResource Include="selLists\contSelLists.resx">
       <DependentUpon>contSelLists.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="selLists\contSelListsChapter.resx">
-      <DependentUpon>contSelListsChapter.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="selLists\contSelListsObj.resx">
       <DependentUpon>contSelListsObj.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="selLists\contUserSelList..resx">
       <DependentUpon>contUserSelList..vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="selLists\frmAddSelList.resx">
-      <DependentUpon>frmAddSelList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="selLists\frmSelectField.resx">
       <DependentUpon>frmSelectField.vb</DependentUpon>

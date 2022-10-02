@@ -883,38 +883,6 @@ namespace qs2.ui.print
                         contQryAdmin.dataChanged = true;
                     }
                 }
-                else if (this.typeQuery == qs2.core.Enums.eTypeQuery.User)
-                {
-                    qs2.sitemap.vb.frmAddSelList frmAddSelList1 = new qs2.sitemap.vb.frmAddSelList();
-                    frmAddSelList1.ContAddSelList1.typUI = sitemap.vb.contAddSelList.eTypUI.newQueryUser;
-                    frmAddSelList1.ContAddSelList1.isNew = !edit;
-                    if (edit)
-                    {
-                        frmAddSelList1.ContAddSelList1.IDSelListToEdit = rSelectedQuery.ID; 
-                    }
-                    frmAddSelList1.ContAddSelList1.IDApplication = this.getSelectedApplication();
-                    frmAddSelList1.ContAddSelList1.IDParticipant = qs2.core.license.doLicense.eApp.ALL.ToString();
-                    frmAddSelList1.ContAddSelList1.IDGroupStr = "Queries";
-                    frmAddSelList1.ShowDialog(this);
-
-                    if (!frmAddSelList1.ContAddSelList1.abort)
-                    {
-                        this.loadQueries(null, false, false);
-                        this.contSelListQueries.loadQueries(frmAddSelList1.ContAddSelList1.rSelListActuell, this.getSelectedApplication(), this.IDParticipant, null, this.getTypeSelListForPrivate(), -999, false);
-                        this.contFields.addAutoFields();
-                        this.edit(true);
-                        contQryAdmin.dataChanged = true;
-                    }
-                    else if (frmAddSelList1.ContAddSelList1.bCopy)
-                    {
-                        this.loadQueries(null, false, false);
-                        this.contSelListQueries.loadQueries(frmAddSelList1.ContAddSelList1.rSelListActuell, this.getSelectedApplication(), this.IDParticipant, null, this.getTypeSelListForPrivate(), -999, false);
-                        this.contFields.addAutoFields();
-                        this.edit(true);
-                        contQryAdmin.dataChanged = true;
-                    }
-
-                }
           }
           catch (Exception ex)
           {

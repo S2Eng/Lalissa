@@ -2,27 +2,17 @@
 Imports qs2.core
 Imports qs2.core.print
 
-
-
-
 Public Class contAddQueryType
 
     Public _IsNewQuery As Boolean = False
-
     Public Application As String = ""
     Public Participant As String = ""
-
-    Public MainWindow As contAddSelList = Nothing
-
     Public lstTypeQueries As System.Collections.Generic.List(Of KeyValuePair(Of String, String)) = Nothing
-
     Public tSimpleViews As qs2.core.vb.dsAdmin.tblSelListEntriesDataTable = Nothing
     Public tSimpleFunctions As qs2.core.vb.dsAdmin.tblSelListEntriesDataTable = Nothing
-
     Public printWork As qs2.core.print.print = Nothing
     Public IsInitialized As Boolean = False
     Public abort As Boolean = True
-
     Public sqlAdminWork As qs2.core.vb.sqlAdmin = Nothing
     Public dsAdminWork As qs2.core.vb.dsAdmin = Nothing
 
@@ -33,11 +23,6 @@ Public Class contAddQueryType
 
     Public lockOptionBox As Boolean = False
     Public b As New qs2.core.db.ERSystem.businessFramework()
-
-
-
-
-
 
     Private Sub contQuerySelectType_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
     End Sub
@@ -136,8 +121,8 @@ Public Class contAddQueryType
             For Each itm As System.Collections.Generic.KeyValuePair(Of String, String) In Me.lstTypeQueries
                 Dim bShow As Boolean = True
                 ' And Not qs2.core.vb.actUsr.rUsr.isAdmin 
-                If Not qs2.core.ENV.adminSecure And _
-                    (itm.Key.ToString().Trim().ToLower() = qs2.core.print.print.eQueryType.SimpleFunction.ToString().ToLower() Or _
+                If Not qs2.core.ENV.adminSecure And
+                    (itm.Key.ToString().Trim().ToLower() = qs2.core.print.print.eQueryType.SimpleFunction.ToString().ToLower() Or
                       itm.Key.ToString().Trim().ToLower() = qs2.core.print.print.eQueryType.FullMode.ToString().ToLower()) Then
                     bShow = False
                 End If
@@ -230,7 +215,7 @@ Public Class contAddQueryType
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
         End Try
     End Sub
-    Public Sub loadTableList(ByRef tViewFunctions As qs2.core.vb.dsAdmin.tblSelListEntriesDataTable, _
+    Public Sub loadTableList(ByRef tViewFunctions As qs2.core.vb.dsAdmin.tblSelListEntriesDataTable,
                              ByRef QueryTypeToLoad As String, ByRef TableNameToLoad As String, ByRef NewQuery As Boolean)
         Try
             Me.resetTableSelection()
@@ -360,7 +345,7 @@ Public Class contAddQueryType
         End Try
     End Sub
 
-    Public Sub doAction(ByRef IDIsOn As System.Guid, ByRef tableNameToSelect As String, ByRef TypeAction As eTypeAction, _
+    Public Sub doAction(ByRef IDIsOn As System.Guid, ByRef tableNameToSelect As String, ByRef TypeAction As eTypeAction,
                         ByRef NewQuery As Boolean)
         Try
             If tableNameToSelect.Trim() = "" Then

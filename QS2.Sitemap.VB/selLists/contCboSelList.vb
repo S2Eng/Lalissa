@@ -117,82 +117,12 @@ Public Class contCboSelList
 
     Private Sub cboComboBoxSelList_EditorButtonClick(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinEditors.EditorButtonEventArgs) Handles cboSelList.EditorButtonClick
         Try
-            Me.Cursor = Windows.Forms.Cursors.WaitCursor
-
-            If (e.Button.Key = "search") Then
-                Me.addSelList()
-            End If
-
         Catch ex As Exception
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
         Finally
             Me.Cursor = Windows.Forms.Cursors.Default
         End Try
     End Sub
-    Public Function addSelList() As Boolean
-        Try
-            Dim frmAddSelList1 As New qs2.sitemap.vb.frmAddSelList()
-            frmAddSelList1.ContAddSelList1.typUI = sitemap.vb.contAddSelList.eTypUI.newQueryGroup
-            frmAddSelList1.ContAddSelList1.isNew = True
-            frmAddSelList1.ContAddSelList1.chkPublished.Visible = False
-            frmAddSelList1.ContAddSelList1.IDApplication = Me.IDApplication
-            frmAddSelList1.ContAddSelList1.IDParticipant = Me.IDParticipant
-            frmAddSelList1.ContAddSelList1.chkForServices.Visible = False
-            frmAddSelList1.ContAddSelList1._UserEntry = Me._UserEntry
-            frmAddSelList1.ContAddSelList1.IDGroupStr = "QueryGroups"
-            frmAddSelList1.Text = qs2.core.language.sqlLanguage.getRes("AddNewGroup")
-            'frmAddSelList1.loadRes()
-            'frmAddSelList1.ContAddSelList1.initControl()
-            frmAddSelList1.Icon = qs2.Resources.getRes.getIcon(qs2.Resources.getRes.Allgemein.ico_Plus, 32, 32)
-            frmAddSelList1.ShowDialog(Me)
-            If Not frmAddSelList1.ContAddSelList1.abort Then
-                Me.loadData()
-                If Not frmAddSelList1.ContAddSelList1.rSelListActuell Is Nothing Then
-                    Me.cboSelList.Value = frmAddSelList1.ContAddSelList1.rSelListActuell.ID
-                End If
-            End If
-
-        Catch ex As Exception
-            qs2.core.generic.getExep(ex.ToString(), ex.Message)
-        End Try
-    End Function
-
-    Public Function getSelectedSelList(ByVal withMsgBox As Boolean) As dsAdmin.tblSelListEntriesRow
-        Try
-            If Not Me.cboSelList.ActiveRow Is Nothing Then
-                If Me.cboSelList.ActiveRow.IsGroupByRow Or Me.cboSelList.ActiveRow.IsFilterRow Then
-                    If withMsgBox Then
-                        qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoEntrySelected") + "!", Windows.Forms.MessageBoxButtons.OK, "")
-                        Me.cboSelList.Focus()
-                    End If
-                    Return Nothing
-                Else
-                    Dim v As DataRowView = Me.cboSelList.ActiveRow.ListObject
-                    Dim rSelSelList As dsAdmin.tblSelListEntriesRow = v.Row
-                    Return rSelSelList
-                End If
-            Else
-                If withMsgBox Then
-                    qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoEntrySelected") + "!", Windows.Forms.MessageBoxButtons.OK, "")
-                    Me.cboSelList.Focus()
-                End If
-                Return Nothing
-            End If
-
-        Catch ex As Exception
-            qs2.core.generic.getExep(ex.ToString(), ex.Message)
-        End Try
-    End Function
-
-    Public Property UserEntry() As String
-        Get
-            Return Me._UserEntry
-        End Get
-        Set
-            Me._UserEntry = Value
-        End Set
-    End Property
-
 
     Private Sub cboComboBoxSelList_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboSelList.ValueChanged
         Try
@@ -206,6 +136,7 @@ Public Class contCboSelList
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
         End Try
     End Sub
+
     Public Sub clearSelection()
         'Me.cboComboBoxSelList.Value = Nothing
         Me.cboSelList.SelectedRow = Nothing
