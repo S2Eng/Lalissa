@@ -53,14 +53,14 @@ namespace QS2.Logging.Win
         {
             try
             {
-                if (QS2.Logging.ENV._path_log.Trim() == "")
+                if (QS2.Logging.Settings._path_log.Trim() == "")
                 {
-                    throw new Exception("contLogManager2.loadData: QS2.Logging.ENV._path_log.Trim()='' not allowed!");
+                    throw new Exception("contLogManager2.loadData: QS2.Logging.Settings._path_log.Trim()='' not allowed!");
                 }
 
                 using (var fbd = new FolderBrowserDialog())
                 {
-                    fbd.SelectedPath = QS2.Logging.ENV._path_log.Trim();
+                    fbd.SelectedPath = QS2.Logging.Settings._path_log.Trim();
                     DialogResult result = fbd.ShowDialog();
                     if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                     {

@@ -1550,7 +1550,7 @@ namespace PMDS.Global
                 ENV.lic_PflegestufenEinschätzung = setLicValue("lic_PflegestufenEinschätzung");
                 ENV.lic_STAMP = setLicValue("lic_STAMP");
 
-                QS2.Logging.ENV.init(ENV._LOGPATH, true, ENV.adminSecure);
+                QS2.Logging.Settings.init(ENV._LOGPATH, true, ENV.adminSecure);
                 QS2.Desktop.ControlManagment.ENV.init(ref PMDS.Global.ENV.IDApplication, ref PMDS.Global.ENV.TypeRessourcesRun, ENV.adminSecure, ENV.DoNotShowRessources, ENV.AutoAddNewRessources, ENV.IntDeactivated, DataBase.CONNECTIONSqlClient);
                 QS2.Desktop.Txteditor.Settings.init(ENV.path_Temp, ENV._LOGPATH, true, ENV.adminSecure);
                 PMDSClient.PMDSClientWrapper.init();
@@ -2075,7 +2075,7 @@ namespace PMDS.Global
 
         public static void HandleException(Exception e, string sType = "Exception", bool ShowMsgBox = true, bool checkOutOfMemory = true, string TitleAlternative = null, bool sendEMail = true)
         {
-            QS2.Logging.ENV.init(ENV.LOGPATH, true, qs2.core.ENV.adminSecure);
+            QS2.Logging.Settings.init(ENV.LOGPATH, true, qs2.core.ENV.adminSecure);
             string sHostName = System.Net.Dns.GetHostName();
             string IPAdress = "";
 
@@ -2201,7 +2201,7 @@ namespace PMDS.Global
                     }
                     sExceptNr += NewLine + NewLine;
                 }
-                QS2.Logging.ENV.doLog2(sExceptNr + e.ToString(), dNow, sHostName.Trim(), IPAdress.Trim(), sUsrLoggedIn.Trim(), sType.Trim(), true, ShowMsgBox,
+                QS2.Logging.Settings.doLog2(sExceptNr + e.ToString(), dNow, sHostName.Trim(), IPAdress.Trim(), sUsrLoggedIn.Trim(), sType.Trim(), true, ShowMsgBox,
                                         (string.IsNullOrEmpty(TitleAlternative) ? "" : TitleAlternative.Trim()));
                 //QS2.Logging.Settings.doLog(sExceptNr + e.ToString(), "", "PMDS-System", true);
                 if (checkOutOfMemory)
@@ -2209,7 +2209,7 @@ namespace PMDS.Global
             }
             else
             {
-                QS2.Logging.ENV.doLog2(e.ToString(), dNow, sHostName.Trim(), IPAdress.Trim(), sUsrLoggedIn.Trim(), sType.Trim(), true, ShowMsgBox,
+                QS2.Logging.Settings.doLog2(e.ToString(), dNow, sHostName.Trim(), IPAdress.Trim(), sUsrLoggedIn.Trim(), sType.Trim(), true, ShowMsgBox,
                                         (string.IsNullOrEmpty(TitleAlternative) ? "" : TitleAlternative.Trim()));
                 if (checkOutOfMemory)
                     ENV.checkExceptionOutOfMemory(e.ToString());

@@ -26,6 +26,6 @@
         Settings._SystemIsInitialized = SystemIsInitialized
         Settings._adminSecure = adminSecure
 
-        QS2.Logging.ENV.init(path_log, SystemIsInitialized, adminSecure)
+        QS2.Logging.Settings.init(path_log, SystemIsInitialized, adminSecure)
     End Sub
 End Class

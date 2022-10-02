@@ -46,14 +46,14 @@ namespace QS2.Logging
                 string errFile = "";
                 try
                 {
-                    if (!System.IO.Directory.Exists(QS2.Logging.ENV._path_log))
+                    if (!System.IO.Directory.Exists(QS2.Logging.Settings._path_log))
                     {
-                        System.IO.Directory.CreateDirectory(QS2.Logging.ENV._path_log);
+                        System.IO.Directory.CreateDirectory(QS2.Logging.Settings._path_log);
                     }
 
                     this.hostName= System.Net.Dns.GetHostName();
                     if (this.hostName == "") hostName = System.Guid.NewGuid().ToString();
-                    errFile = QS2.Logging.ENV._path_log + "\\log_" + this.hostName + ".xml";
+                    errFile = QS2.Logging.Settings._path_log + "\\log_" + this.hostName + ".xml";
                     QS2.Logging.dsLog ds = new QS2.Logging.dsLog();
                     if (!System.IO.File.Exists(errFile))
                         { ds.WriteXml(errFile); }
@@ -77,7 +77,7 @@ namespace QS2.Logging
                 this.lblErwOnOff(true);
                 if (title != "") this.Text = title;
 
-                if (QS2.Logging.ENV._adminSecure)
+                if (QS2.Logging.Settings._adminSecure)
                 {
                     this.panelExept.Visible = true;
                     this.lblErwOnOff(this.panelExept.Visible);

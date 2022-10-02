@@ -23,7 +23,6 @@ namespace QS2.Logging.Win
                 sTxtNew = sText.Replace(Convert.ToChar(13).ToString(), "%0a");
                 this.addMailParam(ref sParam, "body=" + sTxtNew);
             }
-
             System.Diagnostics.Process.Start("mailto: " + sTo + sParam);
         }
 

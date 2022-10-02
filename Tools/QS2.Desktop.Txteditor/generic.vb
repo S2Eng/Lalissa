@@ -3,7 +3,7 @@ Public Class generic
 
     Public Shared Sub getExcept(ex As String, sTitle As String)
 
-        QS2.Logging.ENV.init(Settings._path_log, True, Settings._adminSecure)
+        QS2.Logging.Settings.init(Settings._path_log, True, Settings._adminSecure)
 
         Dim frmErr As New QS2.Logging.frmError()
         frmErr.setData(sTitle, ex, "QS2.Desktop.Txteditor", True)

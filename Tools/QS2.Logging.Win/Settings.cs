@@ -5,34 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-
-
-
 namespace QS2.Logging
 {
-
-
-    public class ENV
+    public class Settings
     {
 
         public static string _path_log = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
         public static bool _SystemIsInitialized = false;
         public static bool _adminSecure = false;
 
-
-
-
-
-
         public static void init(string path_log, bool SystemIsInitialized, bool adminSecure)
         {
             try
             {
-                if (!ENV._SystemIsInitialized)
+                if (!Settings._SystemIsInitialized)
                 {
-                    ENV._path_log = path_log;
-                    ENV._SystemIsInitialized = SystemIsInitialized;
-                    ENV._adminSecure = adminSecure;
+                    Settings._path_log = path_log;
+                    Settings._SystemIsInitialized = SystemIsInitialized;
+                    Settings._adminSecure = adminSecure;
                 }
 
             }
@@ -40,31 +30,30 @@ namespace QS2.Logging
             {
                 MessageBox.Show(ex.ToString(), "QS2 - Error QS2.Logging.init::ex2");
             }
-
         }
 
         public static void doLog(string ex, string title, string usr, bool germanTxt = false)
         {
             try
             {
-                if (!QS2.Logging.ENV._SystemIsInitialized)
+                if (!QS2.Logging.Settings._SystemIsInitialized)
                 {
                     MessageBox.Show(title.Trim() + "\r\n" + ex.Trim() + "\r\n" + "\r\n" + "System is not initialized!", "QS2 - Error");
                 }
                 else
                 {
                     bool errPath = false;
-                    if (QS2.Logging.ENV._path_log.Trim().Equals(""))
+                    if (QS2.Logging.Settings._path_log.Trim().Equals(""))
                     {
                         errPath = true;
                     }
                     else
                     {
-                        if (!System.IO.Directory.Exists(QS2.Logging.ENV._path_log))
+                        if (!System.IO.Directory.Exists(QS2.Logging.Settings._path_log))
                         {
                             try
                             {
-                                System.IO.Directory.CreateDirectory(QS2.Logging.ENV._path_log);
+                                System.IO.Directory.CreateDirectory(QS2.Logging.Settings._path_log);
                             }
                             catch (Exception ex2)
                             {
@@ -111,24 +100,24 @@ namespace QS2.Logging
             string exLong = exOr + CrHtml + CrHtml + sInfoExcep1 + CrHtml + CrHtml + TitleAlternative + CrHtml;
             try
             {
-                if (!QS2.Logging.ENV._SystemIsInitialized)
+                if (!QS2.Logging.Settings._SystemIsInitialized)
                 {
                     MessageBox.Show(exLong.Trim() + "\r\n" + "\r\n" + "System is not initialized!", "QS2 - Error");
                 }
                 else
                 {
                     bool errPath = false;
-                    if (QS2.Logging.ENV._path_log.Trim().Equals(""))
+                    if (QS2.Logging.Settings._path_log.Trim().Equals(""))
                     {
                         errPath = true;
                     }
                     else
                     {
-                        if (!System.IO.Directory.Exists(QS2.Logging.ENV._path_log.Trim()))
+                        if (!System.IO.Directory.Exists(QS2.Logging.Settings._path_log.Trim()))
                         {
                             try
                             {
-                                System.IO.Directory.CreateDirectory(QS2.Logging.ENV._path_log.Trim());
+                                System.IO.Directory.CreateDirectory(QS2.Logging.Settings._path_log.Trim());
                                 System.GC.Collect();
                             }
                             catch (Exception ex2)
@@ -153,7 +142,7 @@ namespace QS2.Logging
                         string sErrorWriteLog = "";
                         try
                         {
-                            using (StreamWriter outputFile = new StreamWriter(System.IO.Path.Combine(QS2.Logging.ENV._path_log.Trim(), "Log_" + System.Environment.MachineName.Trim() + "" + ".logQS2"), true))
+                            using (StreamWriter outputFile = new StreamWriter(System.IO.Path.Combine(QS2.Logging.Settings._path_log.Trim(), "Log_" + System.Environment.MachineName.Trim() + "" + ".logQS2"), true))
                             {
                                 outputFile.WriteLine(txtLog);
                             }

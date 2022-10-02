@@ -402,7 +402,7 @@
     <Compile Include="frmLogManager.Designer.cs">
       <DependentUpon>frmLogManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="ENV.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="frmLogManager2.cs">
       <SubType>Form</SubType>
     </Compile>

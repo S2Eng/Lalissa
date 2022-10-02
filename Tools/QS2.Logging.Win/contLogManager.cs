@@ -108,9 +108,9 @@ namespace QS2.Logging
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                if (!System.IO.Directory.Exists(QS2.Logging.ENV._path_log))
-                { System.IO.Directory.CreateDirectory(QS2.Logging.ENV._path_log); }
-                string fil = funct.selectFile(QS2.functions.vb.FileFunctions.typLogFile, QS2.Logging.ENV._path_log);
+                if (!System.IO.Directory.Exists(QS2.Logging.Settings._path_log))
+                { System.IO.Directory.CreateDirectory(QS2.Logging.Settings._path_log); }
+                string fil = funct.selectFile(QS2.functions.vb.FileFunctions.typLogFile, QS2.Logging.Settings._path_log);
                 if (fil != "")
                 {
                     this.dsLog1.tblLog.Rows.Clear();
@@ -153,14 +153,14 @@ namespace QS2.Logging
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                if (!System.IO.Directory.Exists(QS2.Logging.ENV._path_log))
+                if (!System.IO.Directory.Exists(QS2.Logging.Settings._path_log))
                 {
-                    System.IO.Directory.CreateDirectory(QS2.Logging.ENV._path_log);
+                    System.IO.Directory.CreateDirectory(QS2.Logging.Settings._path_log);
                 }
 
                 string hostName = System.Net.Dns.GetHostName();
                 if (hostName == "") hostName = System.Guid.NewGuid().ToString();
-                string errFile = QS2.Logging.ENV._path_log + "\\log_" + System.Net.Dns.GetHostName() + ".xml";
+                string errFile = QS2.Logging.Settings._path_log + "\\log_" + System.Net.Dns.GetHostName() + ".xml";
 
                 if (System.IO.File.Exists(errFile))
                 {
@@ -178,7 +178,7 @@ namespace QS2.Logging
                 }
                 else
                 {
-                    this.Text = "Log-manager" + " [" + "Log-path" + ": " + QS2.Logging.ENV._path_log + "]";
+                    this.Text = "Log-manager" + " [" + "Log-path" + ": " + QS2.Logging.Settings._path_log + "]";
                 }
             }
             catch (Exception ex)
@@ -197,7 +197,7 @@ namespace QS2.Logging
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                string fil = funct.saveFile(false, QS2.functions.vb.FileFunctions.typLogFile, QS2.Logging.ENV._path_log);
+                string fil = funct.saveFile(false, QS2.functions.vb.FileFunctions.typLogFile, QS2.Logging.Settings._path_log);
                 if (fil != null )
                 {
                     dsLog1.WriteXml(fil);
@@ -316,7 +316,7 @@ namespace QS2.Logging
                 
                 this.cboDB.Items.Clear  ();
 
-                foreach (string db in System.IO.Directory.GetFiles(QS2.Logging.ENV._path_log))
+                foreach (string db in System.IO.Directory.GetFiles(QS2.Logging.Settings._path_log))
                 {
                     if (System.IO.Path.GetExtension(db) == ".xml")
                         this.cboDB.Items.Add(db, System.IO.Path.GetFileName(db));
@@ -361,7 +361,7 @@ namespace QS2.Logging
 
         private void lblLogOrdnerÖffnen_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", QS2.Logging.ENV._path_log);
+            System.Diagnostics.Process.Start("explorer.exe", QS2.Logging.Settings._path_log);
         }
 
         private void testExceptionToolStripMenuItem_Click(object sender, EventArgs e)

@@ -46,8 +46,8 @@ namespace qs2.ui.Logging
                     doGermanTxt = false;
                 }
 
-                QS2.Logging.ENV.init(qs2.core.ENV.path_log, true, qs2.core.ENV.adminSecure);
-                QS2.Logging.ENV.doLog(ex.ToString(), title, "QS2-System", doGermanTxt);
+                QS2.Logging.Settings.init(qs2.core.ENV.path_log, true, qs2.core.ENV.adminSecure);
+                QS2.Logging.Settings.doLog(ex.ToString(), title, "QS2-System", doGermanTxt);
 
             }
             catch (Exception ex1)
