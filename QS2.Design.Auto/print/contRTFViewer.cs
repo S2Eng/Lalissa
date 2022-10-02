@@ -74,15 +74,11 @@ namespace qs2.design.auto.print
                     frmEditor.ContTxtEditor1.textControl1.ViewMode = TXTextControl.ViewMode.PageView;
                     frmEditor.ContTxtEditor1.textControl1.IsSpellCheckingEnabled = false;
                     frmEditor.Show();
-                    frmEditor.Text = System.IO.Path.GetFileNameWithoutExtension(Filename);
-
+                    frmEditor.Text = System.IO.Path.GetFileName(Filename);
                     frmEditor.ContTxtEditor1.textControl1.ViewMode = TXTextControl.ViewMode.PageView;
-                    //frmEditor.ContTxtEditor1.textControl1.Load(txtOrigIntFormat, TXTextControl.BinaryStreamType.InternalFormat);
 
                     foreach (byte[] Document in ListOfDocuments)
                     {
-                        /*ContTxtEditor2._textControl.Append(Document, TXTextControl.BinaryStreamType.InternalFormat, TXTextControl.AppendSettings.StartWithNewSection);*/
-
                         frmEditor.ContTxtEditor1.textControl1.Append(Document, TXTextControl.BinaryStreamType.InternalFormat, TXTextControl.AppendSettings.StartWithNewSection);
                     }
                     

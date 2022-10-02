@@ -151,7 +151,7 @@ Public Class UI
                 End If
                 If Me.gen.IsNull(dateiTyp) Then
                     Dim cl As New QS2.functions.vb.FileFunctions()
-                    dateiTyp = cl.GetFiletyp(file)
+                    dateiTyp = System.IO.Path.GetExtension(file)
                 End If
 
                 If openIntern Then
@@ -724,8 +724,7 @@ Public Class UI
     Public Function saveFileAs(ByVal file As String, ByVal dateiTyp As String) As Boolean
         Try
             If Me.gen.IsNull(dateiTyp) Then
-                Dim cl As New QS2.functions.vb.FileFunctions()
-                dateiTyp = cl.GetFiletyp(file)
+                dateiTyp = System.IO.Path.GetExtension(file)
             End If
 
             Dim fileList As String = ""
@@ -791,7 +790,7 @@ Public Class UI
 
             Dim FileName As String = ""
             If file.Trim() <> "" Then
-                FileName = System.IO.Path.GetFileNameWithoutExtension(file)
+                FileName = System.IO.Path.GetFileName(file)
             End If
 
             Dim xmlOp As New clFolder

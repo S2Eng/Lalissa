@@ -402,7 +402,7 @@ namespace PMDS.GUI
                                         frmPDF.ShowBookmarks = true;
                                         frmPDF.ShowOpenDialog = false;
                                         frmPDF.ShowPrintDialog = true;
-                                        frmPDF.SetCaption = System.IO.Path.GetFileNameWithoutExtension(ReportFile);
+                                        frmPDF.SetCaption = System.IO.Path.GetFileName(ReportFile);
                                         frmPDF.Show();
                                     }
                                 }

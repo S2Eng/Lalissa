@@ -132,15 +132,15 @@ Public Class contTextTemplateFiles
         Try
             Dim funct1 As New QS2.functions.vb.FileFunctions()
             Dim selectedFile As String = ""
-            selectedFile = funct1.SelectFileDialog("All Files (*.*)|*.*|" +
+            selectedFile = funct1.selectFile("All Files (*.*)|*.*|" +
                                                         "Microsoft Word Files (*.doc)|*.doc|" +
                                                         "Microsoft Excel Files (*.xls)|*.xls|" +
                                                         "Text Files (*.txt)|*.txt|" +
                                                         "pdf Files (*.pdf)|*.pdf|" +
                                                         "rtf Files (*.Rtf)|*.rtf", "")
             If Not gen.IsNull(selectedFile) Then
-                Dim dateiTyp As String = fct.GetFiletyp(selectedFile)
-                Dim bez As String = Microsoft.VisualBasic.InputBox(doUI.getRes("AddAppendix"), doUI.getRes("EnterANameForTheDocument"), fct.GetFileName(selectedFile, True))
+                Dim dateiTyp As String = System.IO.Path.GetExtension(selectedFile)
+                Dim bez As String = Microsoft.VisualBasic.InputBox(doUI.getRes("AddAppendix"), doUI.getRes("EnterANameForTheDocument"), System.IO.Path.GetFileNameWithoutExtension(selectedFile))
                 If bez <> "" Then
                     Dim bs() As Byte = Me.gen.readByteStreamFile(selectedFile)
 

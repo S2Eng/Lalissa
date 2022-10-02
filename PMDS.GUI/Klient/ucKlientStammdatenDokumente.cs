@@ -32,7 +32,7 @@ namespace PMDS.GUI.Klient
             PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF();
             if (frmPDF.OpenPDFFromByte(byt))
             {
-                frmPDF.SetCaption = ""; //System.IO.Path.GetFileNameWithoutExtension("");
+                frmPDF.SetCaption = "";
                 frmPDF.ShowBookmarks = false;
                 frmPDF.ShowOpenDialog = false;
                 frmPDF.ShowPrintDialog = true;

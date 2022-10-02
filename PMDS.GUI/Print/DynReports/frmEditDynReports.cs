@@ -58,7 +58,7 @@ namespace PMDS.GUI
 
         private void SetHeaderText()
         {
-            this.Text += " - " + Path.GetFileNameWithoutExtension(_ReportFile);
+            this.Text += " - " + Path.GetFileName(_ReportFile);
         }
 
         private void RefreshImage()

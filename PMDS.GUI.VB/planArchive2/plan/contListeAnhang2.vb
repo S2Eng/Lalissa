@@ -129,8 +129,8 @@ Public Class contListeAnhang2
             Dim selectedFile As String = ""
             selectedFile = GeneralArchiv1.SelectFile(True, "")
             If Not general.IsNull(selectedFile) Then
-                Dim dateiTyp As String = fct.GetFiletyp(selectedFile)
-                Dim bez As String = Microsoft.VisualBasic.InputBox(doUI.getRes("AddAppendix"), doUI.getRes("EnterANameForTheDocument"), fct.GetFileName(selectedFile, True))
+                Dim dateiTyp As String = System.IO.Path.GetExtension(selectedFile)
+                Dim bez As String = Microsoft.VisualBasic.InputBox(doUI.getRes("AddAppendix"), doUI.getRes("EnterANameForTheDocument"), System.IO.Path.GetFileNameWithoutExtension(selectedFile))
                 If bez <> "" Then
                     Dim bs() As Byte = general.readByteStreamFile(selectedFile)
                     Me.addFile(bs, bez, dateiTyp, idPlan)

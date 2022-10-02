@@ -388,7 +388,7 @@ namespace qs2.print
                 string fileToSave = this.funct1.saveFile(false, qs2.core.vb.funct.xmlFileType, fileNameDefault, System.IO.Path.Combine(qs2.core.ENV.path_reports, Application));
                 if (fileToSave != null)
                 {
-                    string fileToSaveXsd = Path.Combine(Path.GetFullPath(fileToSave), Path.GetFileNameWithoutExtension(fileToSave), ".xsd");
+                    string fileToSaveXsd = Path.Combine(Path.GetFullPath(fileToSave), Path.GetFileNameWithoutExtension(fileToSave) + ".xsd");
                     if (System.IO.File.Exists(fileToSave))
                         System.IO.File.Delete(fileToSave);
                     if (System.IO.File.Exists(fileToSaveXsd))

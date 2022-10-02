@@ -965,7 +965,7 @@ namespace PMDS.Print
                     {
                         string filenameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(saveFileDialog1.FileName.Trim());
                         string dirToSave = System.IO.Path.GetDirectoryName(saveFileDialog1.FileName.Trim());
-                        string XsdFile = dirToSave + "\\" + filenameWithoutExtension.Trim() + ".xsd";
+                        string XsdFile = System.IO.Path.Combine(dirToSave, filenameWithoutExtension.Trim() + ".xsd");
                         dsVO.WriteXml(saveFileDialog1.FileName.Trim(), XmlWriteMode.WriteSchema);
                         dsVO.WriteXmlSchema(XsdFile.Trim());
                         return;
@@ -1037,7 +1037,7 @@ namespace PMDS.Print
                     {
                         string filenameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(saveFileDialog1.FileName.Trim());
                         string dirToSave = System.IO.Path.GetDirectoryName(saveFileDialog1.FileName.Trim());
-                        string XsdFile = dirToSave + "\\" + filenameWithoutExtension.Trim() + ".xsd";
+                        string XsdFile = System.IO.Path.Combine(dirToSave, filenameWithoutExtension.Trim() + ".xsd");
                         dsVO.WriteXml(saveFileDialog1.FileName.Trim(), XmlWriteMode.WriteSchema);
                         dsVO.WriteXmlSchema(XsdFile.Trim());
                         return;

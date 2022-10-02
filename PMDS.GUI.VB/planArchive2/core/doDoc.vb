@@ -29,8 +29,8 @@ Public Class doDoc
                 For Each docuSerienbrief As String In allFilesVor
                     Dim fileName As String = ""
                     Try
-                        Dim typ As String = funct1.GetFiletyp(docuSerienbrief)
-                        fileName = funct1.GetFileName(docuSerienbrief, True)
+                        Dim typ As String = System.IO.Path.GetExtension(docuSerienbrief)
+                        fileName = System.IO.Path.GetFileNameWithoutExtension(docuSerienbrief)
                         Dim startIntNr As Integer = fileName.IndexOf(".", 0)
 
                         Dim tArchObjectTemp As New dbArchiv.archObjectDataTable()
@@ -82,9 +82,9 @@ Public Class doDoc
     Public Function setFileInfo(ByRef file As String, ByRef tArchObjects As dbArchiv.archObjectDataTable,
                             ByRef FileToAdd As clFileInfo) As Boolean
         Try
-            FileToAdd.file_typ = funct1.GetFiletyp(file)
-            FileToAdd.file_origVerzeichnis = funct1.GetDir(file)
-            FileToAdd.file_name = funct1.GetFileName(file, False)
+            FileToAdd.file_typ = System.IO.Path.GetExtension(file)
+            FileToAdd.file_origVerzeichnis = System.IO.Path.GetFullPath(file)
+            FileToAdd.file_name = System.IO.Path.GetFileName(file)
 
             Dim genMain As New General()
             FileToAdd.fileB = genMain.readByteStreamFile(file)

@@ -198,7 +198,7 @@ namespace PMDS.Global.print
             byte[] bPDF;
             if (frmPDF.OpenPDF(ReportFile, out bPDF))
             {
-                frmPDF.SetCaption = System.IO.Path.GetFileNameWithoutExtension(ReportFile);
+                frmPDF.SetCaption = System.IO.Path.GetFileName(ReportFile);
                 frmPDF.ShowBookmarks = _ShowBookmarks;
                 frmPDF.ShowOpenDialog = _ShowOpenFileDialog;
                 frmPDF.ShowPrintDialog = _ShowPrintDialog;

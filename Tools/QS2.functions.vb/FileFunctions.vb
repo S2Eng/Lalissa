@@ -25,25 +25,6 @@ Public Class FileFunctions
         End Try
     End Function
 
-    Public Function getFileName(ByVal File As String, ByVal ohneEndung As Boolean) As String
-        Try
-
-            If File = "" Then
-                Return ""
-            End If
-
-            If ohneEndung Then
-                Return Path.GetFileNameWithoutExtension(File)
-            Else
-                Return Path.GetFileName(File)
-            End If
-        Catch ex As Exception
-            Throw New Exception("funct.getFileName:" + vbNewLine + vbNewLine + ex.ToString())
-            Return ""
-        Finally
-        End Try
-    End Function
-
     Public Function saveFile(ByVal withDefaultTypes As Boolean, ByVal DateiTyp As String,
                              Optional ByVal fileNameDefault As String = "",
                              Optional ByVal defaultDir As String = "") As String
@@ -68,8 +49,7 @@ Public Class FileFunctions
         End Try
     End Function
 
-    Public Function selectFile(ByVal DateiTyp As String,
-                               Optional ByVal defaultDir As String = "") As String
+    Public Function selectFile(DateiTyp As String, defaultDir As String) As String
         Try
 
             Dim openFileDialog As New OpenFileDialog
@@ -87,6 +67,8 @@ Public Class FileFunctions
 
             If openFileDialog.ShowDialog() = DialogResult.OK Then
                 Return openFileDialog.FileName
+            Else
+                Return ""
             End If
 
         Catch ex As Exception
@@ -95,13 +77,22 @@ Public Class FileFunctions
         End Try
     End Function
 
-    Public Function GetFiletyp(ByVal File As String) As String
+    Public Function SelectFileDialog(ByVal DateiTyp As String, ByVal rootVerzeichnis As String) As String
 
-        Return System.IO.Path.GetExtension(File)
-    End Function
+        Dim openFileDialog As New OpenFileDialog
+        openFileDialog.InitialDirectory = ""
+        If rootVerzeichnis <> "" And System.IO.Directory.Exists(rootVerzeichnis) Then
+            openFileDialog.InitialDirectory = rootVerzeichnis
+        End If
+        openFileDialog.Filter = DateiTyp        '"Microsoft Excel Dateien (*.xls)|*.xls"
+        openFileDialog.FilterIndex = 1
+        openFileDialog.RestoreDirectory = True
 
-    Public Function GetDir(ByVal File As String) As String
-        Return System.IO.Path.GetFullPath(File)
+        If openFileDialog.ShowDialog() = DialogResult.OK Then
+            Return openFileDialog.FileName
+        End If
+        Return ""
+
     End Function
 
     Public Function SaveFileDialog(ByVal DateiTyp As String, ByVal rootVerzeichnis As String) As String
@@ -122,35 +113,8 @@ Public Class FileFunctions
 
     End Function
 
-    Public Function SelectFileDialog(ByVal DateiTyp As String, ByVal rootVerzeichnis As String) As String
-
-        Dim openFileDialog As New OpenFileDialog
-        Dim File As String
-        Dim Pfad As String
-        openFileDialog.InitialDirectory = ""
-        If rootVerzeichnis <> "" And System.IO.Directory.Exists(rootVerzeichnis) Then
-            openFileDialog.InitialDirectory = rootVerzeichnis
-        End If
-        openFileDialog.Filter = DateiTyp        '"Microsoft Excel Dateien (*.xls)|*.xls"
-        openFileDialog.FilterIndex = 1
-        openFileDialog.RestoreDirectory = True
-        If openFileDialog.ShowDialog() = DialogResult.OK Then
-            File = openFileDialog.FileName
-            Return File
-        End If
-        Return ""
-
-    End Function
-
-    Public Function saveFileFromBytes(ByVal fileToSave As String, ByVal byteStream() As Byte, ByVal msgBox As Boolean) As Boolean
-
-        Me.saveFileFromBytes(fileToSave, byteStream)
-        Return True
-    End Function
-
     Public Function saveFileFromBytes(ByVal fileToSave As String, ByVal byteStream() As Byte) As Boolean
 
-        'Dim file As String = Me.GetFileName(path, True)
         Dim fs As IO.FileStream = New IO.FileStream(fileToSave, IO.FileMode.Create)
         Dim b() As Byte = byteStream
         fs.Write(b, 0, b.Length)

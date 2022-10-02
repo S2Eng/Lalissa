@@ -1097,19 +1097,14 @@ Public Class contArchAbleg
         Try
             Dim funct1 As New QS2.functions.vb.FileFunctions()
             If System.IO.File.Exists(file) Then
-                If System.IO.Directory.Exists(funct1.GetDir(file)) Then
-                    If gen.IsNull(funct1.GetFiletyp(file)) Then
+                If System.IO.Directory.Exists(System.IO.Path.GetFullPath(file)) Then
+                    If gen.IsNull(System.IO.Path.GetExtension(file)) Then
                         Throw New Exception("loadFile: Error reading File - No File-Type!")
-                        Return False
                     End If
-                    If gen.IsNull(funct1.GetFileName(file, False)) Then
+                    If gen.IsNull(System.IO.Path.GetFileName(file)) Then
                         Throw New Exception("loadFile: Error reading FileName!")
-                        Return False
                     End If
                     Dim doDoc1 As New doDoc()
-                    'If Me.arrFilesToSave.Count > 0 Then
-                    '    Throw New Exception("loadFile: arrFilesToSave.Count > 0!")
-                    'End If
 
                     Dim FileToAddFirst As clFileInfo = Me.arrFilesToSave(0)
                     If Me.anzFilesToAdded = 0 Then
@@ -1223,7 +1218,7 @@ Public Class contArchAbleg
 
             Dim funct1 As New QS2.functions.vb.FileFunctions()
             Dim selectedFile As String = ""
-            selectedFile = funct1.SelectFileDialog("All Files (*.*)|*.*|" +
+            selectedFile = funct1.selectFile("All Files (*.*)|*.*|" +
                         "Microsoft Word Files (*.doc)|*.doc|" +
                         "Microsoft Excel Files (*.xls)|*.xls|" +
                         "Text Files (*.txt)|*.txt|" +

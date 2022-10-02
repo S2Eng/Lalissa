@@ -270,16 +270,15 @@ Public Class contMailInputSrv
     Public Sub openAttachment(ByRef NodeTree As cNodeTree, ByRef isOutlookWebAPI As Boolean,
                               ByRef Attachment As clPlan.cTgAttachment)
         Try
-            Dim funct1 As New QS2.functions.vb.FileFunctions()
             Dim clFolder1 As New UI()
 
             Dim DirName As String = clFolder1.selectFolder()
             If Not gen.IsNull(DirName) Then
                 Dim sFilename As String = DirName + "\" + Attachment.fileName + Attachment.typeFile
-                If funct1.saveFileFromBytes(sFilename, Attachment.byt, False) Then
+                Dim funct1 As New QS2.functions.vb.FileFunctions()
+                If funct1.saveFileFromBytes(sFilename, Attachment.byt) Then
                     clFolder1.openFile(sFilename, Attachment.typeFile, False, Nothing, False, True, False)
                 End If
-                'MsgBox(compAutoUI.getRes("EntrySaved"), MsgBoxStyle.Information, "Save")
             End If
 
         Catch ex As Exception

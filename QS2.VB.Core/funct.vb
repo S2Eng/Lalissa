@@ -51,23 +51,6 @@ Public Class funct
     Public Shared typeGuid As String = "System.Guid"
     Public Shared typeDBNull As String = "System.DBNull"
 
-    Public Function getFileName(ByVal File As String, ByVal ohneEndung As Boolean) As String
-        Try
-
-            If File = "" Then Return ""
-
-            If ohneEndung Then
-                Return Path.GetFileNameWithoutExtension(File)
-            Else
-                Return Path.GetFileName(File)
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("funct.getFileName:" + vbNewLine + vbNewLine + ex.ToString())
-            Return ""
-        Finally
-        End Try
-    End Function
 
     Public Function getFileTypForDialog(ByVal typFile As String) As String
         Try
@@ -376,7 +359,7 @@ Public Class funct
         Try
             Dim fileTyp As String = Path.GetExtension(fileToSave)
             Dim dirToSave As String = Path.GetFullPath(fileToSave)
-            fileToSave = Me.getFileName(fileToSave, True)
+            fileToSave = Path.GetFileNameWithoutExtension(fileToSave)
             Me.saveFileFromBytes(dirToSave, fileToSave, fileTyp, byteStream)
             If msgBox Then
                 qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("FileWasSaved"), MessageBoxButtons.OK, "")

@@ -46,8 +46,6 @@ namespace PMDS.Global.Heimverträge
             try
             {
                 DateTime dNow = DateTime.Now;
-                string NameDocument = System.IO.Path.GetFileNameWithoutExtension(fileFullName);  //MenüKey.Trim().Substring(14, MenüKey.Trim().Length - 14);
-
                 if (ENV.CurrentIDPatient == null || ENV.CurrentIDPatient == System.Guid.Empty)
                 {
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Kein Klient ausgewählt!", "", System.Windows.Forms.MessageBoxButtons.OK);

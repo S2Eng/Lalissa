@@ -124,10 +124,9 @@ namespace QS2.Logging
                     this.loadDB();
 
                     this.cboDB.Value = null ;
-                    string aktDat =  System.IO.Path.GetFileNameWithoutExtension(fil);
                     foreach ( Infragistics.Win.ValueListItem  itm  in this.cboDB.Items  )
                     {
-                        if (itm.DisplayText == aktDat)
+                        if (itm.DisplayText == System.IO.Path.GetFileName(fil))
                         {
                             this.cboDB.Text  = itm.DisplayText;
                         }
@@ -170,7 +169,7 @@ namespace QS2.Logging
                     this.ultraGrid1.Selected.Rows.Clear();
                     this.ultraGrid1.ActiveRow = null;
                     this.Text = "Log-manager" + " [" + "Logfile" + ": " + errFile + "]";
-                    this.cboDB.Text = System.IO.Path.GetFileNameWithoutExtension(errFile);
+                    this.cboDB.Text = System.IO.Path.GetFileName(errFile);
                     this._db = errFile;
 
                     this.ultraGrid1.DisplayLayout.Bands[0].SortedColumns.Clear();
@@ -320,7 +319,7 @@ namespace QS2.Logging
                 foreach (string db in System.IO.Directory.GetFiles(QS2.Logging.ENV._path_log))
                 {
                     if (System.IO.Path.GetExtension(db) == ".xml")
-                        this.cboDB.Items.Add(db, System.IO.Path.GetFileNameWithoutExtension(db));
+                        this.cboDB.Items.Add(db, System.IO.Path.GetFileName(db));
                 }
                 this.Cursor = Cursors.Default;
         }
