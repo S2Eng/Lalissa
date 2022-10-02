@@ -377,6 +377,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsLog2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="EMail.cs" />
     <Compile Include="frmError2.cs">
       <SubType>Form</SubType>
     </Compile>

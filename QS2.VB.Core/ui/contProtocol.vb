@@ -91,7 +91,7 @@ Public Class contProtocol
 
     Private Sub lblSendMessageAsEMail_Click(sender As System.Object, e As System.EventArgs) Handles lblSendMessageAsEMail.Click
         Try
-            Dim sendEMail1 As New qs2.functions.cs.EMail()
+            Dim sendEMail1 As New qs2.Logging.Win.EMail()
             Dim msgTxt As String = ""
             msgTxt = qs2.core.language.sqlLanguage.getRes("PleaseAShortDescriptionOfTheError") + vbNewLine + vbNewLine + vbNewLine
             msgTxt += "Title: Send Protocol" + vbNewLine + vbNewLine

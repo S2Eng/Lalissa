@@ -977,6 +977,10 @@
       <Project>{94394a2a-cc5f-4caf-ae10-371d269f8e0a}</Project>
       <Name>QS2.License.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tools\QS2.Logging.Win\QS2.Logging.Win.csproj">
+      <Project>{0dde0333-d4ec-419d-aebd-c8359083c02d}</Project>
+      <Name>QS2.Logging.Win</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Resources\QS2.Resources.vbproj">
       <Project>{54e427e6-ff54-4671-bf5e-1e606453bf0c}</Project>
       <Name>QS2.Resources</Name>

@@ -362,7 +362,7 @@ namespace QS2.Logging
 
         private void lblLogOrdnerÖffnen_Click(object sender, EventArgs e)
         {
-            QS2.functions.cs.Funct.openWindowsExplorer(QS2.Logging.ENV._path_log);
+            System.Diagnostics.Process.Start("explorer.exe", QS2.Logging.ENV._path_log);
         }
 
         private void testExceptionToolStripMenuItem_Click(object sender, EventArgs e)

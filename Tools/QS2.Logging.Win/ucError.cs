@@ -6,7 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-
+using QS2.functions.cs;
 
 
 namespace QS2.Logging
@@ -179,11 +179,8 @@ namespace QS2.Logging
                     msgTxt += "Message: " + "\r\n" + this.fld_error + "\r\n" + "\r\n";
                 }
 
-
-                QS2.functions.cs.EMail sendEMail1 = new QS2.functions.cs.EMail();
-                sendEMail1.sendEMail("Message QS2", msgTxt, QS2.functions.cs.EMail.EMailService);
-
-                //if (this.modalWindow != null) this.modalWindow.Close();
+                QS2.Logging.Win.EMail sendEMail1 = new QS2.Logging.Win.EMail();
+                sendEMail1.sendEMail("Message QS2", msgTxt, QS2.Logging.Win.EMail.EMailService);
             }
             catch (Exception ex)
             {

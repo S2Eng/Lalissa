@@ -165,8 +165,8 @@ namespace QS2.Logging
                     msgTxt += "Message: " + "\r\n" + this.rNewError.error.ToString() + "\r\n" + "\r\n";
                 }
 
-                QS2.functions.cs.EMail sendEMail1 = new QS2.functions.cs.EMail();
-                sendEMail1.sendEMail("Message QS2", msgTxt, QS2.functions.cs.EMail.EMailService);
+                QS2.Logging.Win.EMail sendEMail1 = new QS2.Logging.Win.EMail();
+                sendEMail1.sendEMail("Message QS2", msgTxt, QS2.Logging.Win.EMail.EMailService);
             }
             catch (Exception ex)
             {
