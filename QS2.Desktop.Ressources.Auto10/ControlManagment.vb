@@ -10,9 +10,7 @@ Imports Infragistics.Win.UltraWinTabControl
 Imports Infragistics.Win.UltraWinToolbars
 Imports QS2.core.vb
 Imports QS2.core
-
-
-
+Imports S2Extensions
 
 Public Class ControlManagment
 
@@ -31,7 +29,6 @@ Public Class ControlManagment
         DesktopManagement = 0
         ProductiveFull = 1
         ProductiveSmall = 2
-        'OnlyPictures = 3
         Off = 10
     End Enum
     Public Enum eControlGroup
@@ -44,11 +41,6 @@ Public Class ControlManagment
 
 
 
-
-
-
-
-
     Public Shared Sub LoadControlDesigner(IDRes As String)
         Try
 
@@ -56,6 +48,7 @@ Public Class ControlManagment
             Throw New Exception("ControlManagment.LoadControlDesigner: " + ex.ToString())
         End Try
     End Sub
+
     Public Shared Function openLayoutmanager(ByRef grid As BaseGrid, sKey As String) As Boolean
         Try
             Dim frmLayoutManager1 As New core.vb.frmLayoutManager()
@@ -84,13 +77,13 @@ Public Class ControlManagment
         Try
             Dim ModusDesktopManagment As Boolean = False
             Dim ProductiveFull As Boolean = False
-            If QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
+            If Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.DesktopManagement) Then
                 ModusDesktopManagment = True
-            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
+            ElseIf Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.ProductiveFull) Then
                 ProductiveFull = True
-            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
+            ElseIf Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.ProductiveSmall) Then
                 ProductiveFull = False
-            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
+            ElseIf Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.Off) Then
                 Exit Sub
             End If
 
@@ -125,13 +118,11 @@ Public Class ControlManagment
                     rActControl.ControlText = TextControlOnUIActuell
                 End If
 
-                If Not cont.GetType.Equals((GetType(BaseTabControl))) Then
-                    'If ModusDesktopManagment And doContextMenü Then
+                If Not cont.GetType.Equals(GetType(BaseTabControl)) Then
                     Dim HandleEvent1 As New HandleEvent(components, cont, iControlsDone, IDRes, Description,
                                                     ContextMenuStrip, rRes, IsStandardControl, "", rActControl, TextControlOnUIActuell,
                                                      ProductiveFull,
                                                      InfoControl, Me, DoIDResAuto, ExtendedView)
-                    'End If
                 End If
 
                 rActControl.ActionPerformed = True
@@ -181,7 +172,6 @@ Public Class ControlManagment
                     Dim IDResTmp As String = IDRes + "_" + itmValList.DataValue.ToString()
                     Me.getRes(IDResTmp, IDResFound, translatedTxt, ControlGroup, ResourceTypeToLoad, rRes)
                     If rRes Is Nothing Then
-                        'If ModusDesktopManagment Then
                         If Me.isControlForTxt(cont) Then
                             If Not itmValList.DisplayText Is Nothing Then
                                 TxtGerman = itmValList.DisplayText.Trim()
@@ -278,7 +268,6 @@ Public Class ControlManagment
                                     ByRef TextControlOnUIActuell As String,
                                     ByRef tab As UltraTab, ByRef ValueListItem As Infragistics.Win.ValueListItem) As Boolean
         Try
-            'If Settings._TypeRessourcesRun.ToString().Trim().ToLower() <> eTypeRessourcesRun.OnlyPictures.ToString().Trim().ToLower() Then
             If (Me.isControlForTxt(cont)) Then
                 If rRes Is Nothing Then
                     Try
@@ -326,50 +315,16 @@ Public Class ControlManagment
                     End Try
                 End If
             End If
-            'End If
-
-            'If cont.GetType.Equals((GetType(BaseButton))) And Not IsStandardControlxy Then
-            '    Dim BaseControl As BaseButton = cont
-            '    Dim translatedTxtImage As String = ""
-            '    Dim rResFoundImg As QS2.core.language.dsLanguage.RessourcenRow = Nothing
-            '    Me.getRes(IDRes, IDResFound, translatedTxtImage, ControlGroup, core.Enums.eResourceType.ImageEnum, rResFoundImg)
-            '    If rResFoundImg Is Nothing Then
-            '        BaseControl.Appearance.Image = Nothing
-            '    Else
-            '        If rResFoundImg.Image.Trim = "" Then
-            '            BaseControl.Appearance.Image = Nothing
-            '        Else
-            '            BaseControl.Appearance.Image = QS2.Resources.getRes.getImageFromTxt(rResFoundImg.Image, 32, 32)
-            '        End If
-            '    End If
-            'End If
-            'If cont.GetType.Equals((GetType(Form))) Then
-            '    Dim BaseControl As Form = cont
-            '    Dim translatedTxtImage As String = ""
-            '    Dim rResFoundImg As QS2.core.language.dsLanguage.RessourcenRow = Nothing
-            '    Me.getRes(IDRes, IDResFound, translatedTxtImage, ControlGroup, core.Enums.eResourceType.ImageEnum, rResFoundImg)
-            '    If rResFoundImg Is Nothing Then
-            '        BaseControl.Icon = Nothing
-            '    Else
-            '        If rResFoundImg.Image.Trim = "" Then
-            '            BaseControl.Icon = Nothing
-            '        Else
-            '            BaseControl.Icon = QS2.Resources.getRes.getIconFromTxt(rResFoundImg.Image, 32, 32)
-            '        End If
-            '    End If
-
-            'End If
-
         Catch ex As Exception
             Throw New Exception("doRessources.setResControl: " + ex.ToString())
         End Try
     End Function
+
     Private Function getRes(ByRef IDRes As String, ByRef IDResFound As Boolean, ByRef translatedTxt As String,
                           ByRef ControlGroup As eControlGroup,
                           ByRef ResourceTypeToLoad As core.Enums.eResourceType,
                           ByRef rRes As QS2.core.language.dsLanguage.RessourcenRow) As Boolean
         Try
-            'Dim ResourceTypeForAutoInsert As QS2.core.Enums.eResourceType
             translatedTxt = QS2.core.language.sqlLanguage.getRes(IDRes, ResourceTypeToLoad, ControlManagment.defaultParticipant, Settings._Application, rRes, False, False)
             If rRes Is Nothing Then
                 IDResFound = False
@@ -382,6 +337,7 @@ Public Class ControlManagment
             Throw New Exception("doRessources.getRes: " + ex.ToString())
         End Try
     End Function
+
     Private Function addNewResAuto(ByRef IDRes As String, ByRef Description As String, ByRef cont As Control, ByRef components As Object,
                       ByRef ControlGroup As eControlGroup,
                       ByRef iControlsDone As Integer,
@@ -419,7 +375,6 @@ Public Class ControlManagment
                 rNewResToAdd.ItemArray = rRes.ItemArray
                 QS2.core.language.sqlLanguage.dsLanguageAll.Ressourcen.Rows.Add(rNewResToAdd)
             Catch ex As Exception
-                'System.Threading.Thread.Sleep(30)
                 ControlManagment.sqlLanguageUpdate.loadAllRessources()
                 ControlManagment.dsLanguageUpdate.Clear()
                 Dim IDResFound As Boolean = False
@@ -432,7 +387,6 @@ Public Class ControlManagment
                     If Not cont Is Nothing Then
                         rNewProt.Cont = cont
                         rNewProt.ControlType = cont.GetType().ToString()
-                        'Throw New Exception("doRessources.AddResAuto: IDRes '" + IDRes + "' cannot automatically inserted because IDRes exists! (eResourceTypeToInsert='" + ResourceTypeToInsert.ToString() + "')")
                     End If
                 Else
                     Dim str As String = ""
@@ -447,21 +401,20 @@ Public Class ControlManagment
     End Function
     Public Function getTypeRessourcesRun(ByRef ModusDesktopManagment As Boolean, ByRef ProductiveFull As Boolean) As Boolean
         Try
-            If QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
+            If Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.DesktopManagement) Then
                 ModusDesktopManagment = True
                 Return True
 
-            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
+            ElseIf Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.ProductiveFull) Then
                 ProductiveFull = True
                 Return True
 
-            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
+            ElseIf Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.ProductiveSmall) Then
                 ProductiveFull = False
                 Return True
 
-            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
+            ElseIf Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.Off) Then
                 Return False
-
             End If
 
         Catch ex As Exception
@@ -477,13 +430,13 @@ Public Class ControlManagment
 
             Dim ModusDesktopManagment As Boolean = False
             Dim ProductiveFull As Boolean = False
-            If QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
+            If Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.DesktopManagement) Then
                 ModusDesktopManagment = True
-            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
+            ElseIf Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.ProductiveFull) Then
                 ProductiveFull = True
-            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
+            ElseIf Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.ProductiveSmall) Then
                 ProductiveFull = False
-            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
+            ElseIf Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.Off) Then
                 Return False
             End If
 
@@ -535,13 +488,14 @@ Public Class ControlManagment
 
             Dim ModusDesktopManagment As Boolean = False
             Dim ProductiveFull As Boolean = False
-            If QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
+
+            If Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.DesktopManagement) Then
                 ModusDesktopManagment = True
-            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
+            ElseIf Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.ProductiveFull) Then
                 ProductiveFull = True
-            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
+            ElseIf Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.ProductiveSmall) Then
                 ProductiveFull = False
-            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
+            ElseIf Settings._TypeRessourcesRun.sEquals(eTypeRessourcesRun.Off) Then
                 Return False
             End If
 
@@ -804,15 +758,15 @@ Public Class ControlManagment
 
     Private Function isControlForTxt(Cont As Control) As Boolean
         Try
-            If Cont.GetType.Equals((GetType(BaseButton))) Or Cont.GetType.Equals((GetType(BaseButtonWin))) Or
-                    Cont.GetType.Equals((GetType(BaseCheckBox))) Or Cont.GetType.Equals((GetType(BaseCheckBoxWin))) Or
-                    Cont.GetType.Equals((GetType(BaseComboEditor))) Or Cont.GetType.Equals((GetType(BaseDateTimeEditor))) Or
-                    Cont.GetType.Equals((GetType(BaseDateTimeEditorWin))) Or Cont.GetType.Equals((GetType(BaseGroupBox))) Or
-                    Cont.GetType.Equals((GetType(BaseGroupBoxWin))) Or Cont.GetType.Equals((GetType(BaseGroupBoxWin))) Or
-                    Cont.GetType.Equals((GetType(BaseLabel))) Or Cont.GetType.Equals((GetType(BaseLableWin))) Or
-                    Cont.GetType.Equals((GetType(BaseLabel))) Or Cont.GetType.Equals((GetType(BaseTabControl))) Or
-                    Cont.GetType.Equals((GetType(BaseOptionSet))) Or Cont.GetType.Equals((GetType(baseForm))) Then
 
+            If Cont.GetType.Equals(GetType(BaseButton)) Or Cont.GetType.Equals(GetType(BaseButtonWin)) Or
+                    Cont.GetType.Equals(GetType(BaseCheckBox)) Or Cont.GetType.Equals(GetType(BaseCheckBoxWin)) Or
+                    Cont.GetType.Equals(GetType(BaseComboEditor)) Or Cont.GetType.Equals(GetType(BaseDateTimeEditor)) Or
+                    Cont.GetType.Equals(GetType(BaseDateTimeEditorWin)) Or Cont.GetType.Equals(GetType(BaseGroupBox)) Or
+                    Cont.GetType.Equals(GetType(BaseGroupBoxWin)) Or Cont.GetType.Equals(GetType(BaseGroupBoxWin)) Or
+                    Cont.GetType.Equals(GetType(BaseLabel)) Or Cont.GetType.Equals(GetType(BaseLableWin)) Or
+                    Cont.GetType.Equals(GetType(BaseLabel)) Or Cont.GetType.Equals(GetType(BaseTabControl)) Or
+                    Cont.GetType.Equals(GetType(BaseOptionSet)) Or Cont.GetType.Equals(GetType(baseForm)) Then
                 Return True
             Else
                 Dim bNoControlForTxt As Boolean = True
@@ -851,6 +805,7 @@ Public Class ControlManagment
             Return False
         End If
     End Function
+
     Private Function getRowControlFromDb(ByRef IDRes As String, ByRef Ctrl As System.Windows.Forms.Control, ByRef ds As dsControls) As dsControls.ControlsRow
         Dim arrControl() As dsControls.ControlsRow = ds.Controls.Select(ds.Controls.IDResColumn.ColumnName + "='" + IDRes.Trim() + "'", "")
         If arrControl.Length = 1 Then
@@ -860,12 +815,9 @@ Public Class ControlManagment
             'Throw New Exception("doRessources.getRowControlFromDb: Control '" + IDRes + "' not found in Db!")
         End If
     End Function
+
     Public Shared Function getIDREsForControlxy(ByVal contToTranslate As Control, ByRef IDResReturn As String, ByRef DescriptionReturn As String) As Boolean
         Try
-            'Dim IDRes As String = contToTranslate.Name.Trim()
-            'If Not contToTranslate.Parent Is Nothing Then
-            '    IDRes += "_" + contToTranslate.Parent.Name.Trim()
-            'End If
             Dim IDRes As String = ""
             Dim CounterControl As Integer = 0
             ControlManagment.getIDResForControl_rek(contToTranslate, IDRes, DescriptionReturn, CounterControl)
@@ -873,7 +825,6 @@ Public Class ControlManagment
                 IDResReturn = ""
                 DescriptionReturn = ""
                 Return False
-                'Throw New Exception("doRessources.getIDREsForControl: IDRes.Trim() = '' for Control!")
             End If
             DescriptionReturn = "Number controls: " + CounterControl.ToString() + vbNewLine + DescriptionReturn
             IDResReturn = IDRes
@@ -884,6 +835,7 @@ Public Class ControlManagment
             Throw New Exception("doRessources.getIDREsForControl: " + ex.ToString())
         End Try
     End Function
+
     Private Shared Function getIDResForControl_rek(ByRef contToTranslate As Control, ByRef IDRes As String, ByRef Description As String,
                                                   ByRef CounterControl As Integer) As String
         Try
@@ -919,271 +871,9 @@ Public Class ControlManagment
             Throw New Exception("doRessources.addControl: " + ex.ToString())
         End Try
     End Function
-
-
-
-
-
-
-
-
-
-
-    Private Function runxy(ByVal contToTranslate As Control, ByVal components As Object,
-                    ByVal tooltipManager1 As UltraToolTipManager,
-                    ByVal TypeRessourcesRunStr As String,
-                    ByVal Application As String,
-                    ByVal ControlGroup As eControlGroup,
-                    ByVal ResType As QS2.core.Enums.eResourceType) As Boolean
-
-        Try
-            'If contToTranslate.Visible Then
-            '    Dim TypeRessourcesRun As eTypeRessourcesRun
-            '    If TypeRessourcesRunStr.Trim().ToLower().Equals(eTypeRessourcesRun.AddRessourcesAuto.ToString().Trim().ToLower()) Then
-            '        TypeRessourcesRun = eTypeRessourcesRun.AddRessourcesAuto
-            '    ElseIf TypeRessourcesRunStr.Trim().ToLower().Equals(eTypeRessourcesRun.Productive.ToString().Trim().ToLower()) Then
-            '        TypeRessourcesRun = eTypeRessourcesRun.Productive
-            '    ElseIf TypeRessourcesRunStr.Trim().ToLower().Equals(eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
-            '        TypeRessourcesRun = eTypeRessourcesRun.DesktopManagement
-            '    ElseIf TypeRessourcesRunStr.Trim().ToLower().Equals(eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
-            '        TypeRessourcesRun = eTypeRessourcesRun.Off
-            '        Return True
-            '    Else
-            '        Return True
-            '    End If
-
-            '    Dim iControlsDone As Integer = 0
-            '    Dim doControls As Boolean = True
-            '    Dim Ebene As Integer = 0
-            '    Me.runControls_rek(contToTranslate, components, tooltipManager1, Ebene, _
-            '                       TypeRessourcesRun, Application, ControlGroup, ResType, _
-            '                       iControlsDone)
-            '    Me.runComponents_rek(contToTranslate, components, tooltipManager1, _
-            '                         TypeRessourcesRun, Application, ControlGroup, ResType, _
-            '                         iControlsDone)
-
-            'End If
-
-            'Return True
-
-        Catch ex As Exception
-            Throw New Exception("doRessources.run: " + ex.ToString())
-        End Try
-    End Function
-    Private Function runControls_rekxy(ByRef contParent As Control, ByRef components As Object,
-                            ByRef tooltipManager1 As UltraToolTipManager,
-                            ByVal Ebene As Integer,
-                            ByRef TypeRessourcesRun As eTypeRessourcesRun,
-                            ByRef Application As String,
-                            ByRef ControlGroup As eControlGroup,
-                            ByRef ResType As QS2.core.Enums.eResourceType, ByRef iControlsDone As Integer)
-        Try
-            'If contToTranslate.Name.Trim().ToLower().Equals(("ucRechnungenKlient1").Trim().ToLower()) Then
-            '    Dim str As String = ""
-            'End If
-            'If contToTranslate.GetType().Name.Trim().ToLower().Equals(("ucRechnungenKlient").Trim().ToLower()) Then
-            '    Dim str As String = ""
-            'End If
-
-            'Ebene += 1
-            'For Each contFound As Control In contParent.Controls
-            '    If contFound.GetType.Equals((GetType(UltraLabel))) Then
-            '        Dim labelToTranslate As UltraLabel = contFound
-            '        Dim IDRes As String = ""
-            '        Dim Description As String = ""
-            '        Dim rActControl As dsControls.ControlsRow = Nothing
-            '        Me.doControl(contFound, components, TypeRessourcesRun, Application, ControlGroup, ResType, iControlsDone, IDRes, Description, rActControl)
-
-            '    ElseIf contFound.GetType.Equals((GetType(Label))) Then
-            '        Dim labelWindowsToTranslate As Label = contFound
-            '        Dim IDRes As String = ""
-            '        Dim Description As String = ""
-            '        Dim rActControl As dsControls.ControlsRow = Nothing
-            '        Me.doControl(contFound, components, TypeRessourcesRun, Application, ControlGroup, ResType, iControlsDone, IDRes, Description, rActControl)
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraCheckEditor))) Then
-            '        Dim checkBoxToTranslate As UltraCheckEditor = contFound
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraGroupBox))) Then
-            '        Dim groupBoxToTranslate As UltraGroupBox = contFound
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraExpandableGroupBox))) Then
-            '        Dim ExpandableGroupBoxToTranslate As UltraExpandableGroupBox = contFound
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraGrid))) Then
-            '        'Dim gridToTranslate As UltraGrid = contFound
-            '        Dim IDRes As String = ""
-            '        Dim Description As String = ""
-            '        Dim rActControl As dsControls.ControlsRow = Nothing
-            '        Me.doControl(contFound, components, TypeRessourcesRun, Application, ControlGroup, ResType, iControlsDone, IDRes, Description, rActControl)
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraDropDown))) Then
-            '        Dim UltraDropDownToTranslate As UltraDropDown = contFound
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraTree))) Then
-            '        Dim treeToTranslate As UltraTree = contFound
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraCombo))) Then
-            '        Dim UltraComboToTranslate As UltraCombo = contFound
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraButton))) Or _
-            '        contFound.GetType.Name.ToString().Trim().ToLower().Equals(("ucButton").Trim().ToLower()) Then
-            '        'Dim ButtonToTranslate As UltraButton = contFound
-            '        Dim IDRes As String = ""
-            '        Dim Description As String = ""
-            '        Dim rActControl As dsControls.ControlsRow = Nothing
-            '        Me.doControl(contFound, components, TypeRessourcesRun, Application, ControlGroup, ResType, iControlsDone, IDRes, Description, rActControl)
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraDropDownButton))) Then
-            '        Dim UltraDropDownButtonToTranslate As UltraDropDownButton = contFound
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraExplorerBar))) Then
-            '        Dim UltraExplorerBarToTranslate As UltraExplorerBar = contFound
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraOptionSet))) Then
-            '        Dim UltraOptionSetToTranslate As UltraOptionSet = contFound
-
-            '    ElseIf contFound.GetType.Equals((GetType(RadioButton))) Then
-            '        'Dim RadioButtonToTranslate As RadioButton = contFound
-            '        Dim IDRes As String = ""
-            '        Dim Description As String = ""
-            '        Dim rActControl As dsControls.ControlsRow = Nothing
-            '        Me.doControl(contFound, components, TypeRessourcesRun, Application, ControlGroup, ResType, iControlsDone, IDRes, Description, rActControl)
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraTabControl))) Then
-            '        Dim UltraTabControlToTranslate As UltraTabControl = contFound
-            '        For Each tabInControl As UltraTab In UltraTabControlToTranslate.Tabs
-            '            'If Not tabInControl.TabControl.GetType().ToString().Trim().ToLower().StartsWith(("Infragistics.").Trim().ToLower()) And _
-            '            '    Not tabInControl.TabControl.GetType().ToString().Trim().ToLower().StartsWith(("Infragistics.").Trim().ToLower()) Then
-
-            '            '    Me.runControls_rek(tabInControl.TabControl, components, tooltipManager1, Ebene, TypeRessourcesRun, Application, ControlGroup, ResType, _
-            '            '                        iControlsDone)
-            '            'Else
-            '            '    Dim str As String = ""
-            '            'End If
-
-            '            Me.runControls_rek(tabInControl.TabControl, components, tooltipManager1, Ebene, TypeRessourcesRun, Application, ControlGroup, ResType, _
-            '                            iControlsDone)
-            '        Next
-
-            '    ElseIf contFound.GetType.Equals((GetType(UltraTab))) Then
-            '        Dim str As String = ""
-
-            '    ElseIf contFound.GetType.Equals((GetType(MenuStrip))) Then
-            '        Dim MenuStripToTranslate As MenuStrip = contFound
-
-
-            '    ElseIf contFound.GetType.Equals((GetType(ToolStrip))) Then
-            '        Dim ToolStripToTranslate As ToolStrip = contFound
-
-            '        'Else
-            '        '    rActControl.Loadedxy = True
-            '    End If
-
-            '    'If contFound.GetType.Equals((GetType(Panel))) Or _
-            '    '        contFound.GetType.Equals((GetType(UserControl))) Or _
-            '    '        contFound.GetType.Equals((GetType(UltraTabControl))) Or _
-            '    '        contFound.GetType.Equals((GetType(UltraGridBagLayoutPanel))) Or _
-            '    '        contFound.GetType.Equals((GetType(UltraTabSharedControlsPage))) Or _
-            '    '        contFound.GetType.Equals((GetType(UltraTabPageControl))) Or _
-            '    '        contFound.GetType.Equals((GetType(UltraGrid))) Or _
-            '    '        contFound.GetType.Equals((GetType(UltraGridBand))) Or _
-            '    '        contFound.GetType.Equals((GetType(UltraGroupBox))) Or _
-            '    '        contFound.GetType.Equals((GetType(UltraExpandableGroupBox))) Or _
-            '    '        contFound.GetType.Equals((GetType(Form))) Or _
-            '    '        contFound.GetType.Equals((GetType(UltraTab))) Or _
-            '    '        contFound.GetType.Equals((GetType(UltraExplorerBar))) Or _
-            '    '        contFound.GetType.Equals((GetType(UltraDropDownBase))) Or _
-            '    '        contFound.GetType.Equals((GetType(Control)))   Then
-
-            '    '    Me.runControls_rek(contFound, components, tooltipManager1, Ebene, TypeRessourcesRun, Application, ControlGroup, ResType, iControlsDone)
-
-            '    'Else
-            '    '    Dim sType As String = contFound.GetType.ToString()
-            '    '    If contFound.GetType.Name.ToString().Trim().ToLower().Equals(("ucButton").Trim().ToLower()) Then
-            '    '        Dim strxy As String = ""
-            '    '    End If
-            '    '    Dim str As String = ""
-            '    'End If
-
-
-            '    'If contToTranslate.GetType.Equals((GetType(Panel))) Or _
-            '    '                contToTranslate.GetType.Equals((GetType(UserControl))) Or _
-            '    '                contToTranslate.GetType.Equals((GetType(UltraTabControl))) Or _
-            '    '                contToTranslate.GetType.Equals((GetType(UltraGridBagLayoutPanel))) Or _
-            '    '                contToTranslate.GetType.Equals((GetType(UltraDropDownBase))) Or _
-            '    '                contToTranslate.GetType.Equals((GetType(Control))) Then
-
-
-            '    'Else
-            '    '    Dim sType As String = contToTranslate.GetType.ToString()
-            '    '    If Ebene = 0 Or Ebene = 1 Then
-            '    '        Dim str As String = ""
-            '    '    End If
-
-            '    'End If
-
-            '    'If doRek Then
-            '    '    If Not contFound.GetType().ToString().Trim().ToLower().StartsWith(("Infragistics.").Trim().ToLower()) And _
-            '    '        Not contFound.GetType().ToString().Trim().ToLower().StartsWith(("Infragistics.").Trim().ToLower()) Then
-
-            '    '        Me.runControls_rek(contFound, components, tooltipManager1, Ebene, TypeRessourcesRun, Application, ControlGroup, ResType, _
-            '    '                            iControlsDone)
-
-            '    '    Else
-            '    '        Dim str As String = ""
-            '    '    End If
-            '    'End If
-
-            '    Me.runControls_rek(contFound, components, tooltipManager1, Ebene, TypeRessourcesRun, Application, ControlGroup, ResType, iControlsDone)
-            'Next
-
-        Catch ex As Exception
-            Throw New Exception("doRessources.runControls_rek: " + ex.ToString())
-        End Try
-    End Function
-    Private Function runComponents_rekxy(ByRef contToTranslate As Control, ByRef components As Object,
-                            ByRef tooltipManager1 As UltraToolTipManager,
-                            ByRef TypeRessourcesRun As eTypeRessourcesRun,
-                            ByRef Application As String,
-                            ByRef ControlGroup As eControlGroup,
-                            ByRef ResType As QS2.core.Enums.eResourceType, ByRef iControlsDone As Integer)
-        Try
-            'If Not components Is Nothing Then
-            '    Dim Container1 As New System.ComponentModel.Container
-            '    Container1 = components
-            '    For Each componentFound As Object In Container1.Components
-
-            '        If componentFound.GetType.Equals((GetType(UltraToolbarsManager))) Then
-            '            Dim UltraToolbarsManagerToTranslate As UltraToolbarsManager = componentFound
-
-            '        ElseIf componentFound.GetType.Equals((GetType(ContextMenuStrip))) Then
-            '            Dim ContextMenuStripToTranslate As ContextMenuStrip = componentFound
-
-            '        ElseIf componentFound.GetType.Equals((GetType(MenuStrip))) Then
-            '            Dim MenuStripToTranslate As MenuStrip = componentFound
-
-            '        Else
-            '            Dim xy As String = ""
-
-            '        End If
-            '        'If componentFound.GetType.Equals((GetType(System.ComponentModel.Container))) Then
-            '        '    Me.runComponents_rek(componentFound, components, tooltipManager1)
-            '        'End If
-            '    Next
-            'End If
-
-        Catch ex As Exception
-            Throw New Exception("doRessources.runComponents_rek: " + ex.ToString())
-        End Try
-    End Function
-
 End Class
 
-
 Public Class HandleEvent
-
-
     Friend WithEvents ToolStripMenuItem_LayoutSave As System.Windows.Forms.ToolStripMenuItem = Nothing
     Friend WithEvents ToolStripMenuItem_LayoutReset As System.Windows.Forms.ToolStripMenuItem = Nothing
 
@@ -1217,11 +907,9 @@ Public Class HandleEvent
 
     Public WithEvents _forControl As Control = Nothing
     Public _componentsxy As Object = Nothing
-
     Public _IDRes As String = ""
     Public _Description As String = ""
     Public _DoIDResAuto As Boolean = False
-
     Public _rRes As QS2.core.language.dsLanguage.RessourcenRow = Nothing
     Public _ControlGroup As ControlManagment.eControlGroup = Nothing
     Public _ResType As QS2.core.Enums.eResourceType = Nothing
@@ -1229,29 +917,14 @@ Public Class HandleEvent
     Public _rControl As dsControls.ControlsRow = Nothing
     Public _IDResStandardControl As String = ""
     Public _IsStandardControl As Boolean = False
-
     Public _ProductiveFull As Boolean = False
     Public _ExtendedView As Boolean = False
-
-
     Public WithEvents _grid As UltraGrid = Nothing
-
     Public _TextControlOnUIActuell As String = ""
     Public _InfoControl As doBaseElements.cInfoControl = Nothing
-
     Public _ControlManagment As ControlManagment = Nothing
-
     Public WithEvents _ContextMenuStrip As ContextMenuStrip = Nothing
-
     Public doBaseElements1 As New doBaseElements()
-
-
-
-
-
-
-
-
 
     Public Sub New(ByVal components As Object, forControl As Control, ByRef iControlsDone As Integer,
                    ByRef IDRes As String, Description As String, ByRef ContextMenuStrip As ContextMenuStrip,
@@ -1284,14 +957,6 @@ Public Class HandleEvent
             Me._ExtendedView = ExtendedView
 
             Dim ContextMenuStripToAdd As System.Windows.Forms.ContextMenuStrip = Nothing
-            'If forControl.ContextMenuStrip Is Nothing Then
-            '    ContextMenuStripToAdd = New ContextMenuStrip(components)
-            '    ContextMenuStripToAdd.Name = Me.getControlNameAutoAdded()
-            '    Me.ContextMenuStrip = ContextMenuStripToAdd
-            '    forControl.ContextMenuStrip = ContextMenuStripToAdd
-            'Else
-            '    ContextMenuStripToAdd = forControl.ContextMenuStrip
-            'End If
 
             If forControl.GetType.Equals((GetType(UltraGrid))) Or forControl.GetType.Name.Trim().ToLower().Equals(("BaseGrid").Trim().ToLower().ToString()) Or
                 Me._InfoControl._IsQuickFilter Then
@@ -1302,15 +967,6 @@ Public Class HandleEvent
                     Me._grid = forControl
                 End If
                 ContextMenuStripToAdd = ContextMenuStrip
-
-                'Me.ToolStripMenuItem_LayoutSave = ContextMenuStripToAdd.Items.Add(Me.getControlNameAutoAdded())
-                'Me.ToolStripMenuItem_LayoutSave.Text = "Layout speichern"
-                'Me.ToolStripMenuItem_LayoutSave.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Speichern, 32, 32)
-
-                'Me.ToolStripMenuItem_LayoutReset = ContextMenuStripToAdd.Items.Add(Me.getControlNameAutoAdded())
-                'Me.ToolStripMenuItem_LayoutReset.Text = "Layout zurücksetzen"
-                'Me.ToolStripMenuItem_LayoutReset.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Rückgängig, 32, 32)
-
 
                 If Settings._RigthLayoutmanager Then
                     Me.ToolStripMenuItem_LayoutManagerGrid = ContextMenuStripToAdd.Items.Add(Me.getControlNameAutoAdded())
@@ -1351,19 +1007,11 @@ Public Class HandleEvent
                         Me.ToolStripMenuItem_CopyAllRowsFromCell.Text = "Alle Werte in ausgewählter Spalte kopieren"
                         Me.ToolStripMenuItem_CopyAllRowsFromCell.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Kopieren, 32, 32)
                     End If
-
-                    'If rControl.IDRes.Equals("gridInterventionEinzel") Then
-                    '    Me.ToolStripMenuItem_EndTask = ContextMenuStripToAdd.Items.Add(Me.getControlNameAutoAdded())
-                    '    Me.ToolStripMenuItem_EndTask.Text = "Maßnahme beenden"
-                    '    Me.ToolStripMenuItem_EndTask.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Klientenakt.ico_Planung, 32, 32)
-                    'End If
                 End If
-
             End If
 
             If QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
                 ContextMenuStripToAdd = ContextMenuStrip
-                'Me.ToolStripSeparator1 = ContextMenuStripToAdd.Items.Add(Me.getControlNameAutoAdded())
 
                 Me.ToolStripMenuItem_CallResManager = ContextMenuStripToAdd.Items.Add(Me.getControlNameAutoAdded())
                 Me.ToolStripMenuItem_CallResManager.Text = "Ressources"
@@ -1385,6 +1033,7 @@ Public Class HandleEvent
             Throw New Exception("HandleEvent.New: " + ex.ToString())
         End Try
     End Sub
+
     Public Function getControlNameAutoAdded() As String
         Dim newControlName As String = ControlManagment.prefControlNameAutoAdded + "_" + Me._forControl.Name + "_" + System.Guid.NewGuid().ToString()
         Return newControlName.Trim()
@@ -1545,12 +1194,7 @@ Public Class HandleEvent
                         Dim IDPflegeplanx As Guid = Me._grid.ActiveRow.ListObject.Row.Item("IDPflegeplan")
                         Dim sTextForPE = "Maßnahme wurde direkt aus der Interventionsliste beendet."
 
-                        Dim res As DialogResult = QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Wollen Sie diese Maßnahme jetzt wklich beenden?", MsgBoxStyle.YesNo, "Maßnahme direkt beenden")
-                        If res = DialogResult.Yes Then
-                            'PMDS.DB.PMDSBusiness PMDSBusiness1 = New PMDS.DB.PMDSBusiness()
-                            'PMDSBusiness1.EndPflegePlan(IDPflegePlan, sTextForPE, dNow, true, true, false);  
-
-                        End If
+                        Dim res As DialogResult = QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Wollen Sie diese Maßnahme jetzt wirklich beenden?", MsgBoxStyle.YesNo, "Maßnahme direkt beenden")
                     Else
                         QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Keine Pflegeplan gefunden", MsgBoxStyle.OkOnly, "")
                     End If
@@ -1561,10 +1205,8 @@ Public Class HandleEvent
 
         Catch ex As Exception
             'Do Nothing
-            'QS2.core.generic.getExep("HandleEvent.ToolStripMenuItem_EndTask_Click: " + ex.ToString(), "")
         End Try
     End Sub
-
 
     Public Function DoActionForGrid(ByRef rControl As dsControls.ControlsRow, ActionType As eActionType) As Boolean
         Try
@@ -1600,7 +1242,6 @@ Public Class HandleEvent
                         If Me._InfoControl.QuickFilterKey.Trim() = "" Then
                             sKey = Me._IDRes.Trim()
                         Else
-                            'sKey = Me._InfoControl.QuickFilterKey.Trim() + "_" + Me._IDRes.Trim()
                             sKey = Me._IDRes.Trim()
                         End If
                     End If
@@ -1613,46 +1254,6 @@ Public Class HandleEvent
                 frmLayoutManager1.ContLayoutGrid1.loadData(sKey.Trim(), DefaultNameQuickfilterTmp, True, True, False)
                 frmLayoutManager1.ShowDialog()
                 Me._InfoControl.LastLoadedLayout.IsLoaded = False
-
-                'Dim compLayout1 As New QS2.core.vb.compLayout()
-                'compLayout1.initControl()
-                'If Not frmLayoutManager1.ContLayoutGrid1.layoutDeleted Then
-                '    Me._compLayout.doLayoutGrid(gridTmp, Me._IDRes.Trim(), Nothing)
-                '    Me._InfoControl.LastLoadedLayout.IsLoaded = False
-                'Else
-                '    compLayout1.resetLayoutGrid(gridTmp)
-                '    Me._InfoControl.LastLoadedLayout.IsLoaded = False
-                '    'QS2.core.generic.showMessageBox(QS2.core.language.sqlLanguage.getRes("LayoutWasReset") + "!", MessageBoxButtons.OK, "")
-                'End If
-
-                'If Not frmLayoutGrid1.ContLayoutGrid1.abort Then
-                '    Dim doBaseElements1 As New doBaseElements()
-                '    doBaseElements1.runControlManagment(Me._IDRes, Me._forControl, Me._ContextMenuStrip, False, Me._rRes, False, False)
-                '    Return True
-                'End If
-
-                'ElseIf ActionType = eActionType.LayoutSave Then
-                '    Dim dsLayout1 As New QS2.core.vb.dsLayout()
-                '    Dim compLayout1 As New QS2.core.vb.compLayout()
-                '    compLayout1.initControl()
-                '    Dim cLayoutManager1 As New qs2.core.vb.cLayoutManager()
-                '    cLayoutManager1.gridUIToSave = gridTmp
-                '    If cLayoutManager1.load(Me._IDRes.Trim(), dsLayout1, compLayout1) Then
-                '        compLayout1.doLayoutGrid(gridTmp, Me._IDRes.Trim())
-                '        Me._InfoControl.LastLoadedLayout.IsLoaded = False
-                '        QS2.core.generic.showMessageBox(QS2.core.language.sqlLanguage.getRes("LayoutSaved") + "!", MessageBoxButtons.OK, "")
-                '    End If
-
-                'ElseIf ActionType = eActionType.LayoutReset Then
-                '    Dim dsLayout1 As New qs2.core.vb.dsLayout()
-                '    Dim compLayout1 As New qs2.core.vb.compLayout()
-                '    compLayout1.initControl()
-                '    Dim cLayoutManager1 As New qs2.core.vb.cLayoutManager()
-                '    If compLayout1.deleteLayoutKeyGrid(Me._IDRes.Trim()) Then
-                '        compLayout1.resetLayoutGrid(gridTmp)
-                '        Me._InfoControl.LastLoadedLayout.IsLoaded = False
-                '        QS2.core.generic.showMessageBox(QS2.core.language.sqlLanguage.getRes("LayoutWasReset") + "!", MessageBoxButtons.OK, "")
-                '    End If
 
             ElseIf ActionType = eActionType.ExportAsExcel Then
                 Dim lstColTranslated As New System.Collections.Generic.Dictionary(Of String, String)
@@ -1732,13 +1333,6 @@ Public Class HandleEvent
     Public Function OpenTableViewer(ByRef rControl As dsControls.ControlsRow) As Boolean
         Try
             Dim frmTable1 As New QS2.ui.print.frmTable()
-            'If Me._Description.Trim() <> "" Then
-            '    frmTable1.contTable1.lblProtocol.Visible = True
-            '    frmTable1.contTable1.ProtocollText = Me._Description
-            '    frmTable1.contTable1.ProtocollTitle = "Protocol Ressourcen-Managment"
-            '    frmTable1.contTable1.lblProtocol.Text = "Info"
-            'End If
-
             frmTable1.contTable1.infoQryRunPar = Nothing
             frmTable1.selectDatasets = True
             Dim lstDatasets As New System.Collections.ArrayList()

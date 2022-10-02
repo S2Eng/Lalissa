@@ -1781,7 +1781,6 @@ namespace PMDS.GUI
             }
         }
 
-
         public void initControl()
         {
             try
@@ -1812,28 +1811,21 @@ namespace PMDS.GUI
 		{
             try
             {
-                TerminExSettings settings = new TerminExSettings();
-
-                settings.Mode = ucTerminTimePicker1.Mode;
-                settings.Fromxy = ucTerminTimePicker1.RangeFrom;
-                settings.To = ucTerminTimePicker1.RangeTo;
-
-                // FilterPicker
-                settings.IDMassnahme = ucTerminFilterPicker1.IDMassnahme;
-
-                //settings.BezugJN = ucTerminFilterPicker1.ShowBezug;
-                //settings.IDBezug = ucTerminFilterPicker1.IDBezug;
-
-                settings.Massnahmen = ucTerminFilterPicker1.MASSNAHMEN;
-
-                settings.BerufsstandJN = ucTerminFilterPicker1.ShowBerufsstand;
-                settings.Berufsstand = ucTerminFilterPicker1.Berufsstand;
-
-                settings.WichtigFürJN = ucTerminFilterPicker1.WichtigFürJN;
-                settings.WichtigFür = ucTerminFilterPicker1.WichtigFür;
+                TerminExSettings settings = new TerminExSettings
+                {
+                    Mode = ucTerminTimePicker1.Mode,
+                    Fromxy = ucTerminTimePicker1.RangeFrom,
+                    To = ucTerminTimePicker1.RangeTo,
+                    // FilterPicker
+                    IDMassnahme = ucTerminFilterPicker1.IDMassnahme,
+                    Massnahmen = ucTerminFilterPicker1.MASSNAHMEN,
+                    BerufsstandJN = ucTerminFilterPicker1.ShowBerufsstand,
+                    Berufsstand = ucTerminFilterPicker1.Berufsstand,
+                    WichtigFürJN = ucTerminFilterPicker1.WichtigFürJN,
+                    WichtigFür = ucTerminFilterPicker1.WichtigFür
+                };
 
                 return settings;
-
             }
             catch (Exception ex)
             {
@@ -3611,7 +3603,6 @@ namespace PMDS.GUI
             }
         }
 
-
         private void ultraDropDownButtonTermine_Click(object sender, EventArgs e)
         {
 
@@ -3632,7 +3623,7 @@ namespace PMDS.GUI
                     {
                         if (this.CheckPEHasIDPflegeplan(base.CurTerminRowIntervention, null))
                         {
-                            DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Wollen Sie diese Maßnahme jetzt wklich beenden?", MessageBoxButtons.YesNo, "Maßnahme direkt beenden");
+                            DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Wollen Sie diese Maßnahme jetzt wirklich beenden?", MessageBoxButtons.YesNo, "Maßnahme direkt beenden");
                             if (res == DialogResult.Yes)
                             {
                                 Cursor.Current = Cursors.WaitCursor;
@@ -3677,7 +3668,7 @@ namespace PMDS.GUI
                     {
                         if (this.CheckPEHasIDPflegeplan(base.CurTerminRowIntervention, null))
                         {
-                            DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Wollen Sie diese Maßnahme jetzt wklich beenden?", MessageBoxButtons.YesNo, "Maßnahme direkt beenden");
+                            DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Wollen Sie diese Maßnahme jetzt wirklich beenden?", MessageBoxButtons.YesNo, "Maßnahme direkt beenden");
                             if (res == DialogResult.Yes)
                             {
                                 Cursor.Current = Cursors.WaitCursor;
