@@ -1759,9 +1759,6 @@ namespace PMDS.GUI
 		}
 		#endregion
 
-
-
-
         private void ucTermineEx_Load(object sender, EventArgs e)
         {
 
@@ -1791,15 +1788,7 @@ namespace PMDS.GUI
                 this.uDropDownDekursEntwürfe.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Table, QS2.Resources.getRes.ePicTyp.ico); ;
                 this.uDropDownDekursEntwürfe2.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Table, QS2.Resources.getRes.ePicTyp.ico); ;
 
-                if (ENV.adminSecure || ENV.HasRight(UserRights.MenüStammdaten))
-                {
-                    this.updateNächstesDatumToolStripMenuItem.Visible = true;
-                }
-                else
-                {
-                    this.updateNächstesDatumToolStripMenuItem.Visible = false;
-                }
-
+                this.updateNächstesDatumToolStripMenuItem.Visible = ENV.adminSecure || ENV.HasRight(UserRights.MenüStammdaten);
             }
             catch (Exception ex)
             {
@@ -1816,7 +1805,6 @@ namespace PMDS.GUI
                     Mode = ucTerminTimePicker1.Mode,
                     Fromxy = ucTerminTimePicker1.RangeFrom,
                     To = ucTerminTimePicker1.RangeTo,
-                    // FilterPicker
                     IDMassnahme = ucTerminFilterPicker1.IDMassnahme,
                     Massnahmen = ucTerminFilterPicker1.MASSNAHMEN,
                     BerufsstandJN = ucTerminFilterPicker1.ShowBerufsstand,
@@ -1824,7 +1812,6 @@ namespace PMDS.GUI
                     WichtigFürJN = ucTerminFilterPicker1.WichtigFürJN,
                     WichtigFür = ucTerminFilterPicker1.WichtigFür
                 };
-
                 return settings;
             }
             catch (Exception ex)

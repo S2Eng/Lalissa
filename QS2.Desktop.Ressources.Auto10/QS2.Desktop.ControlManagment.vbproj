@@ -514,7 +514,6 @@
     <Compile Include="compSql.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ControlWorker.vb" />
     <Compile Include="ControlManagment.vb" />
     <Compile Include="dsControls.vb">
       <DependentUpon>dsControls.xsd</DependentUpon>
