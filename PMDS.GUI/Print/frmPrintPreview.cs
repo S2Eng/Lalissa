@@ -185,10 +185,10 @@ namespace PMDS.Print
                     }
                 }
                 //if (info.ConnectionInfo.IntegratedSecurity == true)
-                //    ReportDocument1.SetDatabaseLogon(string.Empty, string.Empty, qs2.core.ENV.server, qs2.core.ENV.db);
+                //    ReportDocument1.SetDatabaseLogon(string.Empty, string.Empty, qs2.core.Settings.server, qs2.core.Settings.db);
 
                 //else
-                //    ReportDocument1.SetDatabaseLogon(qs2.core.ENV.userDb, qs2.core.ENV.pwdDbDecrypted, qs2.core.ENV.server, qs2.core.ENV.db);
+                //    ReportDocument1.SetDatabaseLogon(qs2.core.Settings.userDb, qs2.core.Settings.pwdDbDecrypted, qs2.core.Settings.server, qs2.core.Settings.db);
 
                 return true;
             }

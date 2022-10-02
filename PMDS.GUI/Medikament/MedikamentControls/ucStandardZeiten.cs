@@ -249,11 +249,11 @@ namespace PMDS.GUI
 
             if (!bZOK)
             {
-                /*GuiUtil.ValidateField(t0, bZOK, ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
-                GuiUtil.ValidateField(t1, bZOK, ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
-                GuiUtil.ValidateField(t2, bZOK, ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
-                GuiUtil.ValidateField(t3, bZOK, ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
-                GuiUtil.ValidateField(t4, bZOK, ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);*/
+                /*GuiUtil.ValidateField(t0, bZOK, Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+                GuiUtil.ValidateField(t1, bZOK, Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+                GuiUtil.ValidateField(t2, bZOK, Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+                GuiUtil.ValidateField(t3, bZOK, Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+                GuiUtil.ValidateField(t4, bZOK, Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);*/
                 int summe=0;
                 for (int i = 0; i < Dosierung.Length; i++)
                     summe = summe+ Dosierung[i];

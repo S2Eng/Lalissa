@@ -50,7 +50,7 @@ namespace PMDS.GUI.Kostentraeger
             this.btnDel.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Loeschen, 32, 32);
             this.btnUpdate.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Bearbeiten, 32, 32);
 
-            //this.btnAddFSW.Visible = ENV.FSW_IDIntern != Guid.Empty;
+            //this.btnAddFSW.Visible = Settings.FSW_IDIntern != Guid.Empty;
             this.btnAddFSW.Visible = false; //Ersetzt durch Auswahl der Zahlart im normalen Modus
             RefreshValueLists();
         }
@@ -420,7 +420,7 @@ namespace PMDS.GUI.Kostentraeger
             ArrayList al2 = new ArrayList();
             bool del = false;
             //PatientEinkommen pe = new PatientEinkommen();
-            //dsPatientEinkommen.PatientEinkommenDataTable pedt = pe.Read(IDPatient, ENV.id);
+            //dsPatientEinkommen.PatientEinkommenDataTable pedt = pe.Read(IDPatient, Settings.id);
             foreach (UltraGridRow r in ra)
             {
                 r.Delete(false);

@@ -415,7 +415,7 @@ Public Class contSelectPatientenBenutzer
                         IDBereichTmp = IDBereich
                     End If
 
-                    'sqlManangeWork.getPatientenStart(PMDS.Global.ENV.USERID, 0, System.Guid.Empty, dsKlientenliste1, IDAbteilungTmp, IDBereichTmp, System.Guid.Empty)
+                    'sqlManangeWork.getPatientenStart(PMDS.Global.Settings.USERID, 0, System.Guid.Empty, dsKlientenliste1, IDAbteilungTmp, IDBereichTmp, System.Guid.Empty)
                     'Dim arrKlientenlisteOnline() As dsKlientenliste.vKlientenlisteRow = dsKlientenliste1.vKlientenliste.Select("", dsKlientenliste1.vKlientenliste.PatientNameColumn.ColumnName + " asc")
                     Dim arrKlientenliste As List(Of PMDSBusinessStructures.cPatients) = Me.bRAM.getPatientenStart(IDAbteilungTmp, IDBereichTmp, db2)
                     Dim listAbwesPatients As List(Of Guid) = Me.bRAM.getListAbwesendePatients()

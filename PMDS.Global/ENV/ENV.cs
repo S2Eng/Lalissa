@@ -605,7 +605,7 @@ namespace PMDS.Global
             {
                 if (ENV._IDKlinik == _IDKlinikNoKlinikSelected)
                 {
-                    throw new NotSupportedException("ENV.IDKlinik: No Klinik selected!");
+                    throw new NotSupportedException("Settings.IDKlinik: No Klinik selected!");
                 }
                 return ENV._IDKlinik;
             }
@@ -654,11 +654,11 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.CallFctMainSystem: " + ex.ToString());
+                throw new Exception("Settings.CallFctMainSystem: " + ex.ToString());
             }
         }
 
-        // ------ ELGA-Formatters müssen in der ENV static sein (Threading)
+        // ------ ELGA-Formatters müssen in der Settings static sein (Threading)
         [Structure(Name = "ObservationMedia", StructureType = StructureAttribute.StructureAttributeType.MessageType, IsEntryPoint = false, Model = "POCD_MT000040UV", Publisher = "Copyright (C)2011, Health Level Seven")]
         public class ELGAObservationMedia : ObservationMedia
         {
@@ -1014,7 +1014,7 @@ namespace PMDS.Global
                 case SpenderTyp.Tagesspender:
                     return ENV.String("TAGESSPENDER");
             }
-            return "*** Spendertyp ****  " + s.ToString() + " not defined - ENV.SpenderTypText";
+            return "*** Spendertyp ****  " + s.ToString() + " not defined - Settings.SpenderTypText";
         }
 
         public static void UserWithAbteilungLoggedOn(
@@ -1335,12 +1335,12 @@ namespace PMDS.Global
                 WriteERConnectionSqlDb(ENV.ERConnectionName);
                 PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
 
-                //------------------------------------------------------- ENV-Variablen aus Config lesen -------------------
+                //------------------------------------------------------- Settings-Variablen aus Config lesen -------------------
                 SetENVValue("IGStyle", ref ENV.IGStyle);
                 SetENVValue("adminSecure", ref ENV.adminSecure);
                 SetENVValue("License", ref ENV.License, eTrim.yes, eDecrypt.PMDSMode);
                 SetENVValue("TypeRessourcesRun", ref ENV.TypeRessourcesRun);
-                //SetENVValue("SchnellrueckmeldungAsProcess", ref ENV.SchnellrückmeldungAsProcess);
+                //SetENVValue("SchnellrueckmeldungAsProcess", ref Settings.SchnellrückmeldungAsProcess);
 
                 SetENVValue("bookingJN", ref ENV._bookingJN);
                 SetENVValue("typRechNr", ref ENV.typRechNr);
@@ -1409,7 +1409,7 @@ namespace PMDS.Global
                 SetENVValue("SMTPPort", ref PMDS.Global.clSMTP.SMTPPort);
 
                 SetENVValue("RezeptanforderungZeitraum", ref ENV.RezeptanforderungZeitraum);
-                SetENVValue("SHOW_AUFNAHMEBUTTON", ref ENV.ShowAufnahmeButton);     //In Config von ON|OFF auf 1|0 umstellen!!!  //ENV.ShowAufnahmeButton = _Log.ConfigFile.GetStringValue("SHOW_AUFNAHMEBUTTON") == "ON" ? true : false;
+                SetENVValue("SHOW_AUFNAHMEBUTTON", ref ENV.ShowAufnahmeButton);     //In Config von ON|OFF auf 1|0 umstellen!!!  //Settings.ShowAufnahmeButton = _Log.ConfigFile.GetStringValue("SHOW_AUFNAHMEBUTTON") == "ON" ? true : false;
 
                 SetENVValue("ELGAStatusGreen", ref ENV.ELGAStatusGreen);
                 SetENVValue("ELGAStatusYellow", ref ENV.ELGAStatusYellow);
@@ -1551,14 +1551,14 @@ namespace PMDS.Global
 
                 QS2.Logging.ENV.init(ENV._LOGPATH, true, ENV.adminSecure);
                 QS2.Desktop.ControlManagment.ENV.init(ref PMDS.Global.ENV.IDApplication, ref PMDS.Global.ENV.TypeRessourcesRun, ENV.adminSecure, ENV.DoNotShowRessources, ENV.AutoAddNewRessources, ENV.IntDeactivated, DataBase.CONNECTIONSqlClient);
-                QS2.Desktop.Txteditor.ENV.init(ENV.path_Temp, ENV._LOGPATH, true, ENV.adminSecure);
+                QS2.Desktop.Txteditor.Settings.init(ENV.path_Temp, ENV._LOGPATH, true, ENV.adminSecure);
                 PMDSClient.PMDSClientWrapper.init();
 
                 return true;
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.Init: " + ex.ToString());
+                throw new Exception("Settings.Init: " + ex.ToString());
             }
         }
 
@@ -1571,7 +1571,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue (bool): " + ex.ToString());
+                throw new Exception("Settings.SetENVValue (bool): " + ex.ToString());
             }
         }
 
@@ -1607,7 +1607,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue (string/password): " + ex.ToString());
+                throw new Exception("Settings.SetENVValue (string/password): " + ex.ToString());
             }
         }
 
@@ -1620,7 +1620,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue (int): " + ex.ToString());
+                throw new Exception("Settings.SetENVValue (int): " + ex.ToString());
             }
         }
 
@@ -1633,7 +1633,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue (int): " + ex.ToString());
+                throw new Exception("Settings.SetENVValue (int): " + ex.ToString());
             }
         }
 
@@ -1646,7 +1646,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue (Guid): " + ex.Message);
+                throw new Exception("Settings.SetENVValue (Guid): " + ex.Message);
             }
         }
 
@@ -1659,7 +1659,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue (uint): " + ex.ToString());
+                throw new Exception("Settings.SetENVValue (uint): " + ex.ToString());
             }
         }
 
@@ -1672,7 +1672,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue (Password): " + ex.ToString());
+                throw new Exception("Settings.SetENVValue (Password): " + ex.ToString());
             }
         }
 
@@ -1690,7 +1690,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue (EndpointAdress): " + ex.ToString());
+                throw new Exception("Settings.SetENVValue (EndpointAdress): " + ex.ToString());
             }
         }
 
@@ -1711,7 +1711,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.setLicValue (numeric): " + ex.ToString());
+                throw new Exception("Settings.setLicValue (numeric): " + ex.ToString());
             }
         }
 
@@ -1723,7 +1723,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.setLicValue (bool): " + ex.ToString());
+                throw new Exception("Settings.setLicValue (bool): " + ex.ToString());
             }
         }
 
@@ -1806,17 +1806,17 @@ namespace PMDS.Global
 
 
 
-            //if (ENV.StartFromShare.Trim() == "0" || ENV.DoOrigPathConfig)
+            //if (Settings.StartFromShare.Trim() == "0" || Settings.DoOrigPathConfig)
             //{
-            //    //ENV.ReportConfigPath = System.IO.Directory.GetParent(ENV.pathConfig) + "\\reports";
-            //    //ENV.ReportConfigPath = System.IO.Path.Combine(System.IO.Directory.GetParent(ENV.pathConfig).ToString(), "reports");
-            //    ENV.ReportConfigPath = ENV.RptConfigPath;
+            //    //Settings.ReportConfigPath = System.IO.Directory.GetParent(Settings.pathConfig) + "\\reports";
+            //    //Settings.ReportConfigPath = System.IO.Path.Combine(System.IO.Directory.GetParent(Settings.pathConfig).ToString(), "reports");
+            //    Settings.ReportConfigPath = Settings.RptConfigPath;
             //}
             //else
             //{
-            //    ENV.ReportConfigPath = System.IO.Path.Combine(ENV.sConfigRootDir, ENV.getAdditionalFolder(), System.IO.Path.GetFileName(ENV.sRootDir), localRptConfigPath);                           //<120118> neu für Configdateien der DynReports in pathConfig
+            //    Settings.ReportConfigPath = System.IO.Path.Combine(Settings.sConfigRootDir, Settings.getAdditionalFolder(), System.IO.Path.GetFileName(Settings.sRootDir), localRptConfigPath);                           //<120118> neu für Configdateien der DynReports in pathConfig
             //}
-            //ENV.check_Path(ENV.ReportConfigPath, true);
+            //Settings.check_Path(Settings.ReportConfigPath, true);
 
             ENV.ReportPathDatenerhebung = System.IO.Path.Combine(ENV.sRootDir, "DynReportsDatenerhebung");
             ENV.check_Path(ENV.ReportPathDatenerhebung, false);
@@ -1825,7 +1825,7 @@ namespace PMDS.Global
             ENV.check_Path(ENV.pathForms, false);
             ENV.Image_Path = ENV.pathForms;
 
-            //ENV.path_Temp = System.IO.Path.GetTempPath() + "\\PMDS";
+            //Settings.path_Temp = System.IO.Path.GetTempPath() + "\\PMDS";
             ENV.path_Temp = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "PMDS");
             ENV.check_Path(ENV.path_Temp, true);
             QS2.functions.vb.functOld.path_temp = PMDS.Global.ENV.path_Temp;
@@ -2202,7 +2202,7 @@ namespace PMDS.Global
                 }
                 QS2.Logging.ENV.doLog2(sExceptNr + e.ToString(), dNow, sHostName.Trim(), IPAdress.Trim(), sUsrLoggedIn.Trim(), sType.Trim(), true, ShowMsgBox,
                                         (string.IsNullOrEmpty(TitleAlternative) ? "" : TitleAlternative.Trim()));
-                //QS2.Logging.ENV.doLog(sExceptNr + e.ToString(), "", "PMDS-System", true);
+                //QS2.Logging.Settings.doLog(sExceptNr + e.ToString(), "", "PMDS-System", true);
                 if (checkOutOfMemory)
                     ENV.checkExceptionOutOfMemory(e.ToString());
             }
@@ -2225,7 +2225,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                string sExcept = "ENV.thread_sendExceptionAsSMTPEMail: " + ex.ToString();
+                string sExcept = "Settings.thread_sendExceptionAsSMTPEMail: " + ex.ToString();
                 PMDS.Global.ENV.HandleException(new Exception(sExcept), "Exception", false);
                 //throw new Exception(sExcept);
             }
@@ -2286,7 +2286,7 @@ namespace PMDS.Global
                     //if (IPAdress.Trim() == "")
                     //{
                     //    Exception exTmp = new Exception("Error (DBNETLIB) - IPAdress for Server '" + RBU.DataBase.Srv.Trim() + "' = empty!");
-                    //    ENV.HandleException(exTmp, "ExceptionGetIPAdress", true);
+                    //    Settings.HandleException(exTmp, "ExceptionGetIPAdress", true);
                     //}
                     //else
                     //{

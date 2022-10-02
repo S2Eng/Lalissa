@@ -238,9 +238,9 @@ namespace PMDS.GUI
 
                 if (PMDS.GUI.Medikament.cMedListKlienten._Mehrfachauswahl && dgMain.Rows.Count == 0)
                 {
-                    //ENV.IDAUFENTHALT = System.Guid.Empty;
-                    //ENV.CurrentIDPatient = Guid.Empty;
-                    //ENV.sendPatientChanged(eCurrentPatientChange.keiner);
+                    //Settings.IDAUFENTHALT = System.Guid.Empty;
+                    //Settings.CurrentIDPatient = Guid.Empty;
+                    //Settings.sendPatientChanged(eCurrentPatientChange.keiner);
                 }
 
             }
@@ -416,7 +416,7 @@ namespace PMDS.GUI
 
             if (this.Visible)
             {
-                //pnlEmpty.Visible = ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht ? true : false;
+                //pnlEmpty.Visible = Settings.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht ? true : false;
                 RefreshMedikation();
             }
         }
@@ -756,7 +756,7 @@ namespace PMDS.GUI
         //Neu nach 25.01.2008 MDA
         private void HideOrShowGropMehrauswahl()
         {
-            //this.pnlEmpty .Visible = ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht;
+            //this.pnlEmpty .Visible = Settings.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht;
         }
 
         public void RefreshControl()
@@ -939,11 +939,11 @@ namespace PMDS.GUI
 
                     //if (PMDS.GUI.Medikament.cMedListKlienten._Mehrfachauswahl)
                     //{
-                    //    //ENV.IDAUFENTHALT = Aufenthalt.LastByPatient((Guid)dgMain.ActiveRow.Cells["IDPatient"].Value);
-                    //    //ENV.CurrentIDPatient = (Guid)dgMain.ActiveRow.Cells["IDPatient"].Value;
-                    //    //ENV.sendPatientChanged(eCurrentPatientChange.keiner);
+                    //    //Settings.IDAUFENTHALT = Aufenthalt.LastByPatient((Guid)dgMain.ActiveRow.Cells["IDPatient"].Value);
+                    //    //Settings.CurrentIDPatient = (Guid)dgMain.ActiveRow.Cells["IDPatient"].Value;
+                    //    //Settings.sendPatientChanged(eCurrentPatientChange.keiner);
 
-                    //    //this.ucMedikamenteStammdatenMain.ucMedikamenteMainPickerMain.SelectPatientInTree(ENV.CurrentIDPatient);
+                    //    //this.ucMedikamenteStammdatenMain.ucMedikamenteMainPickerMain.SelectPatientInTree(Settings.CurrentIDPatient);
                     //}
                 }
             }

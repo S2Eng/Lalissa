@@ -685,12 +685,12 @@ namespace PMDS.DB
 
 
 
-            //            Guid IDSollberufsstand = ITEM[0].IsIDEintragNull() ? Guid.Empty : DBUtil.GetMassnahmeSollBerufsstand(ITEM[0].IDEintrag, ENV.CurrentIDAbteilung);
+            //            Guid IDSollberufsstand = ITEM[0].IsIDEintragNull() ? Guid.Empty : DBUtil.GetMassnahmeSollBerufsstand(ITEM[0].IDEintrag, Settings.CurrentIDAbteilung);
             //            if (IDSollberufsstand != Guid.Empty)
             //                ITEM[0].IDSollberufsstand = IDSollberufsstand;
 
             //            //19.04.2007 MDA: Solldauer, IDPflegeplanH, IDBereich und IDAbteilung übernehmen
-            //            ITEM[0].Solldauer = ITEM[0].IsIDEintragNull() ? 0 : DBUtil.GetMassnahmeSolldauer(ITEM[0].IDEintrag, ENV.CurrentIDAbteilung);    //Solldauer
+            //            ITEM[0].Solldauer = ITEM[0].IsIDEintragNull() ? 0 : DBUtil.GetMassnahmeSolldauer(ITEM[0].IDEintrag, Settings.CurrentIDAbteilung);    //Solldauer
 
             //Keine Referenz zu PflegeplanH erforderlich
             //Guid IDPflegePlanH = ITEM[0].IsIDPflegePlanNull() ? Guid.Empty : DBUtil.GetMassnahmePflegeplanH(ITEM[0].IDPflegePlan);          //IDPflegePlanH

@@ -4268,7 +4268,7 @@ Public Class cOutlookWebAPI
     '        End If
 
     '        Dim doMarkingAsReaded As Boolean = True
-    '        If PMDS.Global.ENV.adminSecure Then
+    '        If PMDS.Global.Settings.adminSecure Then
     '            If NotMarkAsReaded Then
     '                doMarkingAsReaded = False
     '            End If

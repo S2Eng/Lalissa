@@ -46,8 +46,8 @@ namespace PMDS.Calc.UI.Admin
                 ControlManagment1.autoTranslateToolbars(this.ultraToolbarsManager1, null, this);
 
                 this.ultraToolbarsManager1.Tools["btnDoAbw"].SharedProps.Visible = (!nurDepot || ENV.adminSecure);
-                //this.ultraToolbarsManager1.Tools["buttJahrAbBuch"].SharedProps.Visible = (nurDepot || ENV.adminSecure);
-                //this.ultraToolbarsManager1.Tools["popUpAmdmin"].SharedProps.Visible = PMDS.Global.ENV.adminSecure;
+                //this.ultraToolbarsManager1.Tools["buttJahrAbBuch"].SharedProps.Visible = (nurDepot || Settings.adminSecure);
+                //this.ultraToolbarsManager1.Tools["popUpAmdmin"].SharedProps.Visible = PMDS.Global.Settings.adminSecure;
                 this.ultraToolbarsManager1.Tools["popVorTxtControl"].SharedProps.Visible = PMDS.Global.ENV.adminSecure;
                 this.ultraStatusBar1.Panels["Laden"].Visible = PMDS.Global.ENV.adminSecure;
                 this.ultraStatusBar1.Panels["Config"].Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Text;
@@ -86,7 +86,7 @@ namespace PMDS.Calc.UI.Admin
 
                 //    if (c.IsChanged)
                 //    {
-                //        DialogResult res = ENV.AskForSave();
+                //        DialogResult res = Settings.AskForSave();
 
                 //        if (res == DialogResult.Cancel)
                 //        {
@@ -540,7 +540,7 @@ namespace PMDS.Calc.UI.Admin
             {
                 //if (QS2.Desktop.ControlManagment.ControlWorker.isBack)
                 //{
-                //    this.ControlWorker.run(Application.OpenForms, this.components, PMDS.Global.ENV.TypeRessourcesRun);
+                //    this.ControlWorker.run(Application.OpenForms, this.components, PMDS.Global.Settings.TypeRessourcesRun);
                 //}
                 //else
                 //{

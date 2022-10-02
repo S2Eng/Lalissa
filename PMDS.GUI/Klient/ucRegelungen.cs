@@ -636,7 +636,7 @@ namespace PMDS.GUI
             if (Verlaengern2016())
             {
                 //ValueChanged(sender, e);
-                //ENV.SignalKlientChanged();
+                //Settings.SignalKlientChanged();
             }
 
 
@@ -743,7 +743,7 @@ namespace PMDS.GUI
             if (Aufheben2016())
             {
                 //ValueChanged(sender, e);
-                //ENV.SignalKlientChanged();
+                //Settings.SignalKlientChanged();
             }
         }
 

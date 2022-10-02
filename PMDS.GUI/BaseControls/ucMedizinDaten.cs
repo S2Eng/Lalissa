@@ -286,7 +286,7 @@ namespace PMDS.GUI.BaseControls
                         }
                     }
                     else
-                        throw new Exception("ucMedizinDaten.Refresh: ENV.IDAufenthalt = null!");
+                        throw new Exception("ucMedizinDaten.Refresh: Settings.IDAufenthalt = null!");
                 
 
                     if ((clickGridTermine && this._IDPatientLast != System.Guid.Empty && this._IDPatientLast == this._IDPatient) || this._IDPatient.Equals(System.Guid.Empty))

@@ -157,7 +157,7 @@ namespace PMDS.GUI.Arztabrechnung
 
                 //this.lvPatienten.Items.Clear();
                 //this.dsKlientenliste1.vKlientenliste.Clear();
-                //this.sqlManange1.getPatientenStart(ENV.USERID, 0, System.Guid.Empty, ref this.dsKlientenliste1, System.Guid.Empty, System.Guid.Empty, System.Guid.Empty);
+                //this.sqlManange1.getPatientenStart(Settings.USERID, 0, System.Guid.Empty, ref this.dsKlientenliste1, System.Guid.Empty, System.Guid.Empty, System.Guid.Empty);
                 //foreach (Global.db.ERSystem.dsKlientenliste.vKlientenlisteRow rKlient in this.dsKlientenliste1.vKlientenliste)
                 //{
                 //    UltraListViewItem listItem = new UltraListViewItem(rKlient.PatientName.Trim(), null, null);

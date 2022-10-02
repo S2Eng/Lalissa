@@ -137,7 +137,7 @@ namespace PMDS.GUI.Medikament
                 this.optRezeptAngefordertJN.Value = -1;
 
                 /*
-                if (ENV.RezeptBestellModus == 1) //Nur Rezeptbestellung
+                if (Settings.RezeptBestellModus == 1) //Nur Rezeptbestellung
                 {
                     this.grpMedikamentBestellt.Visible = false;
                     this.btnRezepteAnfordern.Visible = false;
@@ -145,7 +145,7 @@ namespace PMDS.GUI.Medikament
 
                     this.optBestellt.Value = -1;
                 }
-                else if (ENV.RezeptBestellModus == 2) // Nur Medikamentenbestellung
+                else if (Settings.RezeptBestellModus == 2) // Nur Medikamentenbestellung
                 {
                     this.grpRezeptAngefordert.Visible = false;
                     this.btnRezepteAnfordern.Visible = false;
@@ -153,7 +153,7 @@ namespace PMDS.GUI.Medikament
 
                     this.optRezeptAngefordertJN.Value = -1;
                 }
-                else if (ENV.RezeptBestellModus == 3)   //Rezeptbestellung UND Medikamentenbestellung
+                else if (Settings.RezeptBestellModus == 3)   //Rezeptbestellung UND Medikamentenbestellung
                 {
                     this.btnRezepteAnfordern.Visible = false;
                     this.btnMedikamenteBestellen.Visible = false;
@@ -185,17 +185,17 @@ namespace PMDS.GUI.Medikament
                     this.btnRezepteDrucken.Visible = true;
 
                     /*
-                    if (ENV.RezeptDruck == 1 || ENV.RezeptDruck == 4 || ENV.RezeptDruck == -1)
+                    if (Settings.RezeptDruck == 1 || Settings.RezeptDruck == 4 || Settings.RezeptDruck == -1)
                     {
                         this.btnRezepteanforderungsliste.Visible = true;
                     }
 
-                    if (ENV.RezeptDruck == 2 || ENV.RezeptDruck == 5 || ENV.RezeptDruck == -1)
+                    if (Settings.RezeptDruck == 2 || Settings.RezeptDruck == 5 || Settings.RezeptDruck == -1)
                     {
                         this.btnMedikamentenbestellliste.Visible = true;
                     }
 
-                    if (ENV.RezeptDruck == 3 || ENV.RezeptDruck == 4 || ENV.RezeptDruck == 5 || ENV.RezeptDruck == -1)
+                    if (Settings.RezeptDruck == 3 || Settings.RezeptDruck == 4 || Settings.RezeptDruck == 5 || Settings.RezeptDruck == -1)
                     {
                         this.btnRezepteDrucken.Visible = true;
                     }

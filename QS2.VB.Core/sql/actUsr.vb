@@ -178,7 +178,7 @@ Public Class actUsr
             '        UserNameTmp.Trim().ToLower = qs2.core.vb.sqlObjects.userName_Supervisor.Trim().ToLower() Then
             '        Return True
             '    End If
-            '    If qs2.core.ENV.adminSecure Then
+            '    If qs2.core.Settings.adminSecure Then
             '        Return True
             '    End If
             'End If

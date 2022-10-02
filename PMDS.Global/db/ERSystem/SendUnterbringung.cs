@@ -458,11 +458,11 @@ namespace PMDS.Global.db.ERSystem
                         //Mit den Anmeldeinformationen des Users
                         //handler.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
 
-                        // Mit fixen Werten aus der ENV
+                        // Mit fixen Werten aus der Settings
                         //WebProxy wProxy = new WebProxy();
                         //CredentialCache cc = new CredentialCache();
-                        //NetworkCredential nc = new NetworkCredential(ENV.ProxyUserName.Trim(), ENV.ProxyPassword.Trim(), ENV.ProxyDomain.Trim());
-                        //cc.Add(ENV.ProxyHost.Trim(), ENV.ProxyPort, ENV.ProxyAuthentication.Trim(), nc);
+                        //NetworkCredential nc = new NetworkCredential(Settings.ProxyUserName.Trim(), Settings.ProxyPassword.Trim(), Settings.ProxyDomain.Trim());
+                        //cc.Add(Settings.ProxyHost.Trim(), Settings.ProxyPort, Settings.ProxyAuthentication.Trim(), nc);
                         //wProxy.Credentials = cc;
 
                         //Mit eingabe des Passworts
@@ -487,12 +487,12 @@ namespace PMDS.Global.db.ERSystem
                 }
 
 
-                //if (ENV.ProxyJN)
+                //if (Settings.ProxyJN)
                 //{
                 //    WebProxy wProxy = new WebProxy();
                 //    CredentialCache cc = new CredentialCache();
-                //    NetworkCredential nc = new NetworkCredential(ENV.ProxyUserName.Trim(), ENV.ProxyPassword.Trim(), ENV.ProxyDomain.Trim());
-                //    cc.Add(ENV.ProxyHost.Trim(), ENV.ProxyPort, ENV.ProxyAuthentication.Trim(), nc);
+                //    NetworkCredential nc = new NetworkCredential(Settings.ProxyUserName.Trim(), Settings.ProxyPassword.Trim(), Settings.ProxyDomain.Trim());
+                //    cc.Add(Settings.ProxyHost.Trim(), Settings.ProxyPort, Settings.ProxyAuthentication.Trim(), nc);
 
                 //    wProxy.Credentials = cc;
                 //    wsEDI.Proxy = wProxy;
@@ -1053,11 +1053,11 @@ namespace PMDS.Global.db.ERSystem
                             //Mit den Anmeldeinformationen des Users
                             //handler.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
 
-                            // Mit fixen Werten aus der ENV
+                            // Mit fixen Werten aus der Settings
                             //WebProxy wProxy = new WebProxy();
                             //CredentialCache cc = new CredentialCache();
-                            //NetworkCredential nc = new NetworkCredential(ENV.ProxyUserName.Trim(), ENV.ProxyPassword.Trim(), ENV.ProxyDomain.Trim());
-                            //cc.Add(ENV.ProxyHost.Trim(), ENV.ProxyPort, ENV.ProxyAuthentication.Trim(), nc);
+                            //NetworkCredential nc = new NetworkCredential(Settings.ProxyUserName.Trim(), Settings.ProxyPassword.Trim(), Settings.ProxyDomain.Trim());
+                            //cc.Add(Settings.ProxyHost.Trim(), Settings.ProxyPort, Settings.ProxyAuthentication.Trim(), nc);
                             //wProxy.Credentials = cc;
 
                             //Mit eingabe des Passworts

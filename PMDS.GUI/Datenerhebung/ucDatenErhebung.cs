@@ -847,7 +847,7 @@ namespace PMDS.GUI
                     //    {
                     //        if (ucPanel.ISTOSAVE)
                     //        {
-                    //            DialogResult res = ENV.AskForSave();
+                    //            DialogResult res = Settings.AskForSave();
                     //            if (res == DialogResult.Cancel)
                     //            {
                     //                SelectItem(ucPanel);

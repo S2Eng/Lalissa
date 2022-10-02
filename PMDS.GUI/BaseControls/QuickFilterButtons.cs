@@ -565,7 +565,7 @@ namespace PMDS.GUI.BaseControls
                 compLayout1.initControl();
                 compLayout1.doLayoutGrid(bQuickFilter._grid, sKey.Trim(), null, ref LayoutFound, true, !PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources);
                 //QS2.Desktop.ControlManagment.cLayoutManager2 cLayoutManager1 = new QS2.Desktop.ControlManagment.cLayoutManager2();
-                //cLayoutManager1.doLayoutGrid(bQuickFilter._grid, sKey.Trim(), null, ref LayoutFound, true, !PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources);
+                //cLayoutManager1.doLayoutGrid(bQuickFilter._grid, sKey.Trim(), null, ref LayoutFound, true, !PMDS.Global.Settings.IntDeactivated, PMDS.Global.Settings.AutoAddNewRessources);
 
                 QS2.Desktop.ControlManagment.BaseGrid.doFormatDateTime(bQuickFilter._grid);
             }

@@ -234,7 +234,7 @@ namespace qs2.design.auto.multiControl
                         //infoToolStripMenuItem.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Info, 32, 32);
                         infoClassificationToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("Info") + " " + qs2.core.language.sqlLanguage.getRes("Classification");
 
-                        //if (!DesignMode && qs2.core.ENV.adminSecure && qs2.core.vb.actUsr.rUsr.isAdmin)
+                        //if (!DesignMode && qs2.core.Settings.adminSecure && qs2.core.vb.actUsr.rUsr.isAdmin)
                         if (!DesignMode && qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
                         {
                             ownMultiControl1.ContextMenuStrip = contextMenuStripSelList;

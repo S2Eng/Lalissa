@@ -113,7 +113,7 @@ namespace PMDS.GUI.BaseControls
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
                     PMDS.db.Entities.WundePos rWundePos = this.b.getWundePos(IDWundePos, db);
-                    //if (rWundePos != null && rWundePos.DatumErstellt.Value.AddHours(ENV.WundbildModifyTime) < DateTime.Now)
+                    //if (rWundePos != null && rWundePos.DatumErstellt.Value.AddHours(Settings.WundbildModifyTime) < DateTime.Now)
                     //{
                     //    this.setEditableOnOff(false);
                     //}
@@ -122,8 +122,8 @@ namespace PMDS.GUI.BaseControls
                     //    this.setEditableOnOff(true);
                     //}
 
-                    //System.Windows.Forms.MessageBox.Show("Wundbildzeit: " + (rWundePos.Erhebungszeitpunkt.Value.AddHours(ENV.WundbildModifyTime) > DateTime.Now).ToString());
-                    //System.Windows.Forms.MessageBox.Show("Recht: " + ENV.HasRight(UserRights.WundeÄndern).ToString());
+                    //System.Windows.Forms.MessageBox.Show("Wundbildzeit: " + (rWundePos.Erhebungszeitpunkt.Value.AddHours(Settings.WundbildModifyTime) > DateTime.Now).ToString());
+                    //System.Windows.Forms.MessageBox.Show("Recht: " + Settings.HasRight(UserRights.WundeÄndern).ToString());
                     //System.Windows.Forms.MessageBox.Show("Benutzer_erstellt: " + rWundePos.IDBenutzer_Erstellt.Value.ToString());
 
                     

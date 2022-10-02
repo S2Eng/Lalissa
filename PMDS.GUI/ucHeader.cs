@@ -250,7 +250,7 @@ namespace PMDS.GUI
             if (!this._ArztabrechnungJNinitialized)
             {
                 bool bArztabrechnungErfassung = ENV.HasRight(UserRights.ArztabrechnungErfassung);     
-                //Benutzer ben = new Benutzer(ENV.USERID);
+                //Benutzer ben = new Benutzer(Settings.USERID);
                 this._ArztabrechnungJN = bArztabrechnungErfassung;
                 this.btnArztabrechnung.Visible = bArztabrechnungErfassung;
                 this._ArztabrechnungJNinitialized = true;
@@ -1759,7 +1759,7 @@ namespace PMDS.GUI
                     this.IDPATIENT = ENV.CurrentIDPatient;
 
                     ENV.sendPatientChanged(eCurrentPatientChange.PickerLinksOben, false, false);
-                    //RefreshControl(ENV.CurrentIDPatient, false);
+                    //RefreshControl(Settings.CurrentIDPatient, false);
                 }
 
             }

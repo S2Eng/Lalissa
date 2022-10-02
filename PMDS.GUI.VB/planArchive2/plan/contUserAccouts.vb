@@ -38,7 +38,7 @@ Public Class contUserAccouts
             Me.cboTyp.Items.Add(compUserAccounts.eTypEMailAccount.Pop3.ToString(), compUserAccounts.eTypEMailAccount.Pop3.ToString())
             Me.cboTyp.Value = compUserAccounts.eTypEMailAccount.SMTP.ToString()
 
-            'If Not ITSCont.core.SystemDb.actUsr.rUsr.IsAdmin And Not ENV.adminSecure Then
+            'If Not ITSCont.core.SystemDb.actUsr.rUsr.IsAdmin And Not Settings.adminSecure Then
             '    Me.PanelButtEdit.Visible = False
             '    Me.GesamtesServiceProtokollLöschenToolStripMenuItem.Visible = False
             'End If

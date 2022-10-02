@@ -88,7 +88,7 @@ namespace PMDS
 					}
 #endif
 
-                //qs2.core.generic.evdoLog += new qs2.core.generic.doLog(ENV.errorLogging);
+                //qs2.core.generic.evdoLog += new qs2.core.generic.doLog(Settings.errorLogging);
 
 
                 //if (qs2.core.generic.evdoLog != null)
@@ -122,7 +122,7 @@ namespace PMDS
                 //<20130212> Simple Install-Parameter integriert, für Einfache direkte installation -> siehe 
                 ENV.SimpleInstall = searchKeyArg("SimpleInstall", args);
                 ENV.StartFromShare = searchKeyArg("StartFromShare", args);
-                //remotingSrv.showMsgBoxTestmodus("StartFromShare: " + ENV.StartFromShare);
+                //remotingSrv.showMsgBoxTestmodus("StartFromShare: " + Settings.StartFromShare);
                 string LogPathPMDSFromLauncher = searchKeyArg("logPathPMDS", args);
 
                 string sDoOrigPathConfig = searchKeyArg("DoOrigPathConfig", args);
@@ -309,11 +309,11 @@ namespace PMDS
                         {
                             if (String.IsNullOrWhiteSpace(ENV.UsrPwdEnc))
                             {
-                                throw new Exception("MainEntry: typ=Schnellrückmeldung - ENV.UsrPwdEnc='' not allowed!");
+                                throw new Exception("MainEntry: typ=Schnellrückmeldung - Settings.UsrPwdEnc='' not allowed!");
                             }
                             if (ENV.UsrPwdEnc.Trim() != rBenutzer.Passwort.Trim())
                             {
-                                throw new Exception("MainEntry: typ=Schnellrückmeldung - ENV.UsrPwdEnc<>rBenutzer.Passwort not allowed!");
+                                throw new Exception("MainEntry: typ=Schnellrückmeldung - Settings.UsrPwdEnc<>rBenutzer.Passwort not allowed!");
                             }
                         }
                         ENV.setUSERID = rBenutzer.ID;

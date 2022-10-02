@@ -516,8 +516,8 @@ namespace PMDS.GUI
 //                    DataSet ds = new DataSet();
 //                    ds.DataSetName = "Termin";
 //                    ds.Tables.Add(tTermineForPrint);
-//                    ds.WriteXml((System.IO.Path.Combine(ENV.ReportPath, "Termine.xml")), System.Data.XmlWriteMode.WriteSchema);
-//                    ds.WriteXmlSchema((System.IO.Path.Combine(ENV.ReportPath, "Termine.xsd")));
+//                    ds.WriteXml((System.IO.Path.Combine(Settings.ReportPath, "Termine.xml")), System.Data.XmlWriteMode.WriteSchema);
+//                    ds.WriteXmlSchema((System.IO.Path.Combine(Settings.ReportPath, "Termine.xsd")));
 //#endif
                     //DataTable dtForReport = PMDS.DB.BusinessHelp.ToDataTable(lstInterventionen);
                     GuiAction.PreviewTerminliste(tTermineForPrint, this.MainWindow.ucSiteMapTermine1._ansichtmodi, this.MainWindow.ucSiteMapTermine1._UITypeTermine, ShowVitalzeichenJN);

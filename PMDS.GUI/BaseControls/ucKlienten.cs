@@ -355,7 +355,7 @@ namespace PMDS.GUI
 
                     if (this._singleSelect)
                     {
-                        //if (!ENV.selKlientenChanged(eSendMain.checkEdited, new List<string>(), true, false)) return;
+                        //if (!Settings.selKlientenChanged(eSendMain.checkEdited, new List<string>(), true, false)) return;
                         //this.SetTabSelected(el, true);
                         //this.SavedSelectedTab = el;
                         elementClickedSingle(el, el.isOnSingle);
@@ -426,7 +426,7 @@ namespace PMDS.GUI
                 //if (chkHistorie.Focused)
                 //{
                 //    PMDS.Global.historie.HistorieOn = this.chkHistorie.Checked;
-                //    ENV.selKlientenChanged(eSendMain.historieOnOff, new List<string>(), false, (object)chkHistorie.Checked);
+                //    Settings.selKlientenChanged(eSendMain.historieOnOff, new List<string>(), false, (object)chkHistorie.Checked);
                 //    this.loadKlienten(true, new PMDS.Data.Patient.dsPatientStation.PatientDataTable(), true, true, chkHistorie.Checked);
                 //}
 

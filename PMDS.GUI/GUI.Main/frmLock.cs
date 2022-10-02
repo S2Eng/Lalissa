@@ -70,7 +70,7 @@ namespace PMDS.GUI
 
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
                 
-				//Text = string.Format(Text, ENV.DATABASE);
+				//Text = string.Format(Text, Settings.DATABASE);
                 this.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("PMDS - Gesperrt");
 
                 this.btnNewLogIn.Appearance.Image = null;

@@ -59,7 +59,7 @@ Public Class suchePlan
 
             ElseIf TypeUI = contPlanungData.eTypeUI.IDKlient Then
                 If PMDS.Global.ENV.CurrentIDPatient = Nothing Then
-                    Throw New Exception("searchPlan2: PMDS.Global.ENV.CurrentIDPatient = Nothing not allowed!")
+                    Throw New Exception("searchPlan2: PMDS.Global.Settings.CurrentIDPatient = Nothing not allowed!")
                 End If
                 Dim id_str As String = " planObject.idObject = '" + PMDS.Global.ENV.CurrentIDPatient.ToString + "' "
                 Dim sql_sub As String = " Patient.ID in ( SELECT idObject FROM  planObject " +

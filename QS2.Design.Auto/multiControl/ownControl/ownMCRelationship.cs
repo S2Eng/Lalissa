@@ -1057,7 +1057,7 @@ namespace qs2.design.auto
                                     {
                                         this.setDefaultDBValue(ownControlChild, userChanged, IDApplication, true);
                                     }
-                                    //qs2.core.Protocol.doMonitoring("ownMCCriteria.doRelationshipChild", qs2.core.ENV.TagForMonitoring.Trim(), 
+                                    //qs2.core.Protocol.doMonitoring("ownMCCriteria.doRelationshipChild", qs2.core.Settings.TagForMonitoring.Trim(), 
                                     //                                ownControlChild.ownMCUI1.controlIsVisibleRelationsship, null, "", IDApplication.ToString(),
                                     //                                core.Protocol.eTypeError.Info);
                                 }
@@ -1160,7 +1160,7 @@ namespace qs2.design.auto
                 }
                 if (ownMultiControl1.ownMCDataBind1.Binding1 == null)
                 {
-                    //if (qs2.core.ENV.TypeSetDefaultDBValue == 0 || qs2.core.ENV.TypeSetDefaultDBValue == 1)
+                    //if (qs2.core.Settings.TypeSetDefaultDBValue == 0 || qs2.core.Settings.TypeSetDefaultDBValue == 1)
                     //{
                         this.autoUI1.multicontrolFillData(ref ownMultiControl1.parentAutoUI.dataStay, ownMultiControl1);  
                     //}

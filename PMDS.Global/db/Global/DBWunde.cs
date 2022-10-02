@@ -164,7 +164,7 @@ namespace PMDS.DB.Global
                 //Wird jetzt in der Neuanlage befüllt
                 //if (r.RowState == System.Data.DataRowState.Added)
                 //{
-                //    r.IDBenutzer_Erstellt   = ENV.USERID;
+                //    r.IDBenutzer_Erstellt   = Settings.USERID;
                 //    r.DatumErstellt         = DateTime.Now;
                 //}
                 if (r.RowState == System.Data.DataRowState.Modified)
@@ -179,7 +179,7 @@ namespace PMDS.DB.Global
                 //Wird jetzt bereits bei der Neuanlage befüllt.
                 //if (r.RowState == System.Data.DataRowState.Added)
                 //{
-                //    r.IDBenutzer_Erstellt   = ENV.USERID;
+                //    r.IDBenutzer_Erstellt   = Settings.USERID;
                 //    r.DatumErstellt         = DateTime.Now;
                 //}
 

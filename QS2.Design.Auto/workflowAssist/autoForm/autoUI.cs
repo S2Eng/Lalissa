@@ -445,7 +445,7 @@ namespace qs2.design.auto.workflowAssist.autoForm
                 ownTab1.FldShortTabPageParent = FldShortTabPageParent;
                 ownTab1.FldShortGroupBoxParent = FldShortGroupBoxParent;
                 ownTab1.rAutoUI = rNew;
-                //ownTab1.UseAppStyling = qs2.core.ENV.UseAppStylingDefault;
+                //ownTab1.UseAppStyling = qs2.core.Settings.UseAppStylingDefault;
                 //ownTab1.Style = UltraTabControlStyle.Wizard;
 
                 rNew.ID = ownTab1.ID;

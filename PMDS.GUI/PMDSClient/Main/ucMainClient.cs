@@ -128,9 +128,9 @@ namespace PMDS.GUI.PMDSClient
             //        RefreshPatientSearch(true);
             //        break;
             //    case SiteEvents.Aufnahme:
-            //        //ucPatientPicker1.RefreshList(GuiAction.LastAufnahmePatientID, ENV.CurrentUserAbteilungen.ToArray());      // Liste aktualisieren und auf ID Positionieren
-            //        //ENV.CurrentIDPatient = GuiAction.LastAufnahmePatientID;
-            //        //ENV.sendPatientChanged(eCurrentPatientChange.keiner  );
+            //        //ucPatientPicker1.RefreshList(GuiAction.LastAufnahmePatientID, Settings.CurrentUserAbteilungen.ToArray());      // Liste aktualisieren und auf ID Positionieren
+            //        //Settings.CurrentIDPatient = GuiAction.LastAufnahmePatientID;
+            //        //Settings.sendPatientChanged(eCurrentPatientChange.keiner  );
             //        //break;
             //        RefreshPatientSearch(true);
             //        break;
@@ -327,7 +327,7 @@ namespace PMDS.GUI.PMDSClient
                 _FrameworkAttached = true;
 
                 // Synchronisieren der NächstenEvaluierungsinformation da diese sich geändert haben könnte
-                //ucPatientPicker1.RefreshNaechsteEvaluierung(ENV.CurrentIDPatient);
+                //ucPatientPicker1.RefreshNaechsteEvaluierung(Settings.CurrentIDPatient);
 
                 // Beim wiederholten Aufruf wieder den richtigen Klienten setzen
                 //if (!_bFirstAttach)
@@ -450,7 +450,7 @@ namespace PMDS.GUI.PMDSClient
             else
             {
                 //PMDS.GUI.Error.errorHandling.saveLog("RefreshPatientSearch2");
-                //ucPatientPicker1.RefreshList(ENV.CurrentUserAbteilungen.ToArray());
+                //ucPatientPicker1.RefreshList(Settings.CurrentUserAbteilungen.ToArray());
 
                 ucPatientPicker1.RefreshList();
                 string xy = "";
@@ -514,7 +514,7 @@ namespace PMDS.GUI.PMDSClient
                 ENV.setIDBereich = System.Guid.Empty;
                 ENV.setCurrentIDAbteilung = System.Guid.Empty;
                 ENV.setCurrentIDBereich = System.Guid.Empty;
-                //ENV.sendPatientChanged(eCurrentPatientChange.keiner, true);
+                //Settings.sendPatientChanged(eCurrentPatientChange.keiner, true);
                 this.ucPatientPicker1.dgEintrag.Selected.Rows.Clear();
                 this.ucPatientPicker1.dgEintrag.ActiveRow = null;
             }
@@ -571,7 +571,7 @@ namespace PMDS.GUI.PMDSClient
             }
             //else 
             //    if (ucPatientPicker1.dgEintrag.Selected.Rows.All.Length != 0 && ucPatientPicker1.dgEintrag.Selected.Rows[0] != null)
-            //            ENV.CurrentIDPatient = (Guid)ucPatientPicker1.dgEintrag.Selected.Rows[0].Cells["IDKlient"].Value;
+            //            Settings.CurrentIDPatient = (Guid)ucPatientPicker1.dgEintrag.Selected.Rows[0].Cells["IDKlient"].Value;
         }
 
         private void ProcessAufnahme()
@@ -592,7 +592,7 @@ namespace PMDS.GUI.PMDSClient
                 }
                 ENV.setIDAUFENTHALT = Aufenthalt.LastByPatient(ucPatientPicker1.CURRENT_IDPATIENTxy);
                 ENV.setCurrentIDPatient = ucPatientPicker1.CURRENT_IDPATIENTxy;
-                //ENV.sendPatientChanged();
+                //Settings.sendPatientChanged();
 
             }
             catch (Exception ex)
@@ -711,7 +711,7 @@ namespace PMDS.GUI.PMDSClient
                 //PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
                 //PMDSBusiness1.getAllKostenträger(ref dbKost);
 
-                //               if (!ENV.HasRight(UserRights.KlickOnGroupPickerRootNode) && ucPatientGroup1.CurrentSelection.Abteilung.Equals(Guid.Empty)) return;
+                //               if (!Settings.HasRight(UserRights.KlickOnGroupPickerRootNode) && ucPatientGroup1.CurrentSelection.Abteilung.Equals(Guid.Empty)) return;
 
                 this.setButtonsAktivDeaktiv(SiteEvents.BereichsauswahlKlientenliste);
                 ENV.CurrentAnsichtinfo.IDAbteilung = ucPatientGroup1.CurrentSelection.Abteilung;
@@ -722,9 +722,9 @@ namespace PMDS.GUI.PMDSClient
                 ucMedikamenteMainPicker.FirstCallDoRefreshKlienten = true;
 
                 //System.Guid IDAbteilungGesamtesHaus = System.Guid.Empty;
-                //if (IDAbteilungGesamtesHaus.Equals(ENV.CurrentAnsichtinfo.IDAbteilung))
+                //if (IDAbteilungGesamtesHaus.Equals(Settings.CurrentAnsichtinfo.IDAbteilung))
                 //{
-                //    if (!this.PMDSBusiness1.UserHasRechtAufGesamteshaus(ENV.USERID))
+                //    if (!this.PMDSBusiness1.UserHasRechtAufGesamteshaus(Settings.USERID))
                 //    {
                 //        return;
                 //    }
@@ -827,7 +827,7 @@ namespace PMDS.GUI.PMDSClient
 
         //----------------------------------------------------------------------------
         /// <summary>
-        /// Wenn nicht auf Bezugspersin gefiltert wird wird ENV-currentidbezugsperson Guidempty //{{{eng}}} 04.10.2007         
+        /// Wenn nicht auf Bezugspersin gefiltert wird wird Settings-currentidbezugsperson Guidempty //{{{eng}}} 04.10.2007         
         /// </summary>
         //----------------------------------------------------------------------------
         private void pflegerCombo1_ValueChanged(object sender, EventArgs e)
@@ -865,7 +865,7 @@ namespace PMDS.GUI.PMDSClient
 
         //----------------------------------------------------------------------------
         /// <summary>
-        /// Bei checken von Bezugsfiltercheckbox wird ENV Bezugspfleger gesetzt //{{{eng}}} 04.10.2007         
+        /// Bei checken von Bezugsfiltercheckbox wird Settings Bezugspfleger gesetzt //{{{eng}}} 04.10.2007         
         /// </summary>
         //----------------------------------------------------------------------------
         private void BezugspersonfilterONOFF_AfterCheckStateChanged(object sender, EventArgs e)
@@ -1045,7 +1045,7 @@ namespace PMDS.GUI.PMDSClient
 
         private void setRightButtonleisteUnten()
         {
-            //this.btnEntlassen.Visible = ENV.HasRight(UserRights.Entlassung);
+            //this.btnEntlassen.Visible = Settings.HasRight(UserRights.Entlassung);
             this.btnEntlassen.Visible = ENV.HasRight(UserRights.KlientEntlassen);
             this.btnAbwesenheiten.Visible = ENV.HasRight(UserRights.AbwesenheitErfassen);
             this.btnVersetzen.Visible = ENV.HasRight(UserRights.Versetzung);
@@ -1114,15 +1114,15 @@ namespace PMDS.GUI.PMDSClient
             this.panelBereichsauswahl.Visible = !this.chkHistorie.Checked;
             BezugspersonfilterONOFF.Checked = ENV.HasRight(UserRights.NurBezugspflege);
             //SiteEventArgs args = new SiteEventArgs();
-            //args.IDPatient = ENV.CurrentIDPatient;
-            //args.IDAufenthalt = Aufenthalt.LastByPatient(ENV.CurrentIDPatient);
+            //args.IDPatient = Settings.CurrentIDPatient;
+            //args.IDAufenthalt = Aufenthalt.LastByPatient(Settings.CurrentIDPatient);
 
             //System.Guid gid = new System.Guid();
 
             //if (ucPatientPicker1.CURRENT_IDPATIENT == Guid.Empty)
             //    return;
-            //ENV.CurrentIDPatient = ucPatientPicker1.CURRENT_IDPATIENT;
-            //ENV.IDAUFENTHALT = Aufenthalt.LastByPatient(ENV.CurrentIDPatient);
+            //Settings.CurrentIDPatient = ucPatientPicker1.CURRENT_IDPATIENT;
+            //Settings.IDAUFENTHALT = Aufenthalt.LastByPatient(Settings.CurrentIDPatient);
             // ProcessKlientenClick(false);
 
             txtSearch.Clear();
@@ -1132,8 +1132,8 @@ namespace PMDS.GUI.PMDSClient
 
 
             RefreshPatientSearch(true);
-            //ENV.CurrentIDAbteilung = args.Abteilung;
-            //ENV.CurrentIDBereich = args.Bereich;
+            //Settings.CurrentIDAbteilung = args.Abteilung;
+            //Settings.CurrentIDBereich = args.Bereich;
             this.btnDokumenteBenutzer.Visible = false;
 
             EnableDisableBereichsbutton(ucPatientGroup1.CurrentSelection, true);
@@ -1335,7 +1335,7 @@ namespace PMDS.GUI.PMDSClient
         {
             try
             {
-                if (ENV.CurrentIDAbteilung == null)   // || ENV.CurrentIDAbteilung == System.Guid.Empty
+                if (ENV.CurrentIDAbteilung == null)   // || Settings.CurrentIDAbteilung == System.Guid.Empty
                 {
                     PMDS.Global.UIGlobal.setUIButton(this.btnDokumenteBenutzer, false);
                     this.btnDokumenteBenutzer.Visible = false;
@@ -1434,7 +1434,7 @@ namespace PMDS.GUI.PMDSClient
             {
                 if (!this.bcheckIPCCallToClientDone)
                 {
-                    //if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
+                    //if (Settings.SchnellrückmeldungAsProcess.Trim() == "1")
                     //{
                     //    while (!remotingSrv.LoggedIn2)
                     //    {

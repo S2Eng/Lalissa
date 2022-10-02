@@ -149,7 +149,7 @@ namespace qs2.design.auto.multiControl
                 //if (this.DesignMode)
                 //{
                 //    this.Text = "[" + this._FldShort + "]";
-                //    if (qs2.core.ENV.developSimulateControls)
+                //    if (qs2.core.Settings.developSimulateControls)
                 //    {
                 //        this.doText();
                 //    }

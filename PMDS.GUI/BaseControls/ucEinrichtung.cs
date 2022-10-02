@@ -469,7 +469,7 @@ namespace PMDS.GUI
 
 			// txtLand
 			//GuiUtil.ValidateField(cboLand, (cboLand.Text.Length > 0),
-			//	ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+			//	Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
 			// txtPLZ
 			GuiUtil.ValidateField(txtPLZ, (txtPLZ.Text.Length > 0),

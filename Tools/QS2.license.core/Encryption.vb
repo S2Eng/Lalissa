@@ -2,16 +2,10 @@
 Imports System.Security
 Imports System.Security.Cryptography
 
-
-
 Public Class Encryption
-
 
     Public Shared IV() As Byte = {50, 199, 10, 159, 132, 55, 236, 189, 51, 243, 244, 91, 17, 136, 39, 230}
     Public Shared keyForEncryptingStrings As String = "*engineering_"
-
-
-
 
     Public Function StringEncrypt(ByVal plainText As String, ByVal keyText As String) As String
         Try
@@ -37,7 +31,7 @@ Public Class Encryption
     End Function
     Public Function StringDecrypt(ByVal encrypted As String, ByVal keyText As String) As String
         Try
-            Dim workBytes() As Byte = _
+            Dim workBytes() As Byte =
             Convert.FromBase64String(encrypted)
             Dim keyBytes() As Byte = System.Text.Encoding.UTF8.GetBytes(keyText.GetHashCode)
             keyBytes = {45, 49, 52, 55, 57, 57, 56, 53, 48, 56, 56}         'Hashcode in 32-Bit-Umgebung

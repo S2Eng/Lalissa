@@ -619,9 +619,9 @@ namespace PMDS.Calc.UI.Admin
             {
                 DateTime t = new DateTime(1900, 1, 1);
                 //GuiUtil.ValidateField(dgMain, (DateTime.TryParse(cell.Text.Trim(), out t)),
-                //                     ENV.String("GUI.E_NO_TEXT"), ref bError, false, null);
+                //                     Settings.String("GUI.E_NO_TEXT"), ref bError, false, null);
                 //if (bError)
-                //    r.SetColumnError(cell.Column.Index, ENV.String("GUI.E_NO_TEXT"));
+                //    r.SetColumnError(cell.Column.Index, Settings.String("GUI.E_NO_TEXT"));
 
                 if (cell.Value != null && cell.Value != DBNull.Value)
                     DateTime.TryParse(cell.Text.Trim(), out t);

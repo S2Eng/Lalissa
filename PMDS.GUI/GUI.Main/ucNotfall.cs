@@ -386,7 +386,7 @@ namespace PMDS.GUI
                 bError = true;
 
 //            if(_Notfall && _mode == BearbeitungsModus.neu)            // nur im Notfall prüfen os 160425
-//                GuiUtil.ValidateField(cbWichtig, (cbWichtig.Text.Length > 0), ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+//                GuiUtil.ValidateField(cbWichtig, (cbWichtig.Text.Length > 0), Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
             
             return !bError;

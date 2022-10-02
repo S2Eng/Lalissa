@@ -190,7 +190,7 @@ namespace PMDS.GUI
                 TermineExTmp.ultraDropDownButtonTermine.Visible = ((HasRightTermineVerwalten && !PMDS.Global.historie.HistorieOn) ? true : false);
                 TermineExTmp.btnGegenzeichnen .Visible = !PMDS.Global.historie.HistorieOn;
 
-                //if (ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht && this._UITypeTermine == eUITypeTermine.Dekurs)
+                //if (Settings.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht && this._UITypeTermine == eUITypeTermine.Dekurs)
                 //{
                 //}
                 //else
@@ -296,8 +296,8 @@ namespace PMDS.GUI
                 //    }
                 //    else if (UITypeTermine == eUITypeTermine.Übergabe)
                 //    {
-                //        //int UWeekEnd = (int)ENV.ConfigFile.GetDoubleValue("UEBERGABE_WEEKEND");
-                //        //int UNormal = (int)ENV.ConfigFile.GetDoubleValue("UEBERGABE_NORMAL");
+                //        //int UWeekEnd = (int)Settings.ConfigFile.GetDoubleValue("UEBERGABE_WEEKEND");
+                //        //int UNormal = (int)Settings.ConfigFile.GetDoubleValue("UEBERGABE_NORMAL");
                 //        //if (UWeekEnd == 0) UWeekEnd = 72;
                 //        //if (UNormal == 0) UNormal = 24;
 
@@ -426,8 +426,8 @@ namespace PMDS.GUI
                 }
                 else
                 {
-                    this._TermineEx._idBereich = ENV.CurrentAnsichtinfo.IDBereich;              //ENV.CurrentIDBereich;
-                    this._TermineEx._idAbteilungxy = ENV.CurrentAnsichtinfo.IDAbteilung;        //ENV.CurrentIDAbteilung;
+                    this._TermineEx._idBereich = ENV.CurrentAnsichtinfo.IDBereich;              //Settings.CurrentIDBereich;
+                    this._TermineEx._idAbteilungxy = ENV.CurrentAnsichtinfo.IDAbteilung;        //Settings.CurrentIDAbteilung;
                     this._TermineEx._idPatient = Guid.Empty;
 
                     if (this._UITypeTermine == eUITypeTermine.Interventionen ||

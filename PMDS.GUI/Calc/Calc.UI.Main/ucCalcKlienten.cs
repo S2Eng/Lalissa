@@ -483,7 +483,7 @@ namespace PMDS.Calc.UI.Admin
         public void setTabAktivFirst()
         {
             if (this.IsLoaded ) return;
-            //if (ENV.HasRight(UserRights.abrechnungsdatenAnzeigen))
+            //if (Settings.HasRight(UserRights.abrechnungsdatenAnzeigen))
             //{
             //    {
                     tabMainCalc.ActiveTab = tabMainCalc.Tabs[(int)ErfassungMode.RechnungenKlient];

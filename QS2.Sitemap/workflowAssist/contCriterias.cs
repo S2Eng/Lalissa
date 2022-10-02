@@ -409,7 +409,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
                     //qs2.core.vb.sqlAdmin sqlAdmin1 = new qs2.core.vb.sqlAdmin();
                     //sqlAdmin1.initControl();
                     //sqlAdmin1.loadAll(true);
-                    //if (qs2.core.ENV.VSDesignerMode)
+                    //if (qs2.core.Settings.VSDesignerMode)
                     //{
 
                     //}

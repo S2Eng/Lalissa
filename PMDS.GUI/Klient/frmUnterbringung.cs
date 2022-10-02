@@ -407,7 +407,7 @@ namespace PMDS.GUI
             string strError;
 
             //GuiUtil.ValidateField(dtpBeginn, (Beginn != DateTime.MinValue),
-            //        ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+            //        Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
             // wenn Medikamente (unabhängig von Dauer) -> Arzt, Medikament und Dosierung erforderlich
             if (MedikFreihBeschraenkungJN)

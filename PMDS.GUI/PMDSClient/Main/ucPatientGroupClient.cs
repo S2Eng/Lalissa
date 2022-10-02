@@ -348,7 +348,7 @@ namespace PMDS.GUI.PMDSClient
 
                     //if (this.mainWindow != null && !this._IsMainPicker)
                     //{
-                    //    this.cbKlinik.Value = ENV.IDKlinik;
+                    //    this.cbKlinik.Value = Settings.IDKlinik;
                     //}
                     //else
                     //{
@@ -356,7 +356,7 @@ namespace PMDS.GUI.PMDSClient
                     //}
                     ////if (this.mainWindow != null && this._IsMainPicker)
                     ////{
-                    ////    ((frmMain)this.mainWindow.FRAMEWORK.HEADER).ucHeader1.ucPatientGroupPicker1.ucPatientGroup1.cbKlinik.Value = ENV.IDKlinik;
+                    ////    ((frmMain)this.mainWindow.FRAMEWORK.HEADER).ucHeader1.ucPatientGroupPicker1.ucPatientGroup1.cbKlinik.Value = Settings.IDKlinik;
                     ////}
 
                     if (this._IsMainHeaderPicker)
@@ -602,7 +602,7 @@ namespace PMDS.GUI.PMDSClient
                 PatientGroupSelection CurrentSelectionFound = (PatientGroupSelection)tree.ActiveNode.Tag;
                 //if (CurrentSelectionFound.IsKlinik)
                 //{
-                //    if (!this.PMDSBusiness1.UserHasRechtAufGesamteshaus(ENV.USERID))
+                //    if (!this.PMDSBusiness1.UserHasRechtAufGesamteshaus(Settings.USERID))
                 //    {
                 //        return;
                 //    }
@@ -831,7 +831,7 @@ namespace PMDS.GUI.PMDSClient
                         {
                             //if (this.mainWindow != null && this._IsMainPicker)    'lthxy
                             //{
-                            //    ((frmMain)this.mainWindow.FRAMEWORK.HEADER).ucHeader1.ucPatientGroupPicker1.ucPatientGroup1.cbKlinik.Value = ENV.IDKlinik;
+                            //    ((frmMain)this.mainWindow.FRAMEWORK.HEADER).ucHeader1.ucPatientGroupPicker1.ucPatientGroup1.cbKlinik.Value = Settings.IDKlinik;
                             //}
                             using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                             {

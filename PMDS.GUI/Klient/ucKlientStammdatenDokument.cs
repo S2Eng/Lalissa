@@ -237,7 +237,7 @@ namespace PMDS.GUI.Klient
                                     select new
                                     { p.Nachname, p.Vorname }
                                        ).First();
-                    //PMDS.db.Entities.Patient rPatient = this.b.getPatient(ENV.CurrentIDPatient, db);
+                    //PMDS.db.Entities.Patient rPatient = this.b.getPatient(Settings.CurrentIDPatient, db);
                     string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokument für Klient '") + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes("' hinterlegt");
                     PMDS.db.Entities.Benutzer rUsr = this.b.LogggedOnUser();
 
@@ -296,7 +296,7 @@ namespace PMDS.GUI.Klient
                     {
                         throw new Exception("showDocument: this._docuDocumentFileTypeSaved='' not allowed!");
                     }
-                    //string FileTmp = PMDS.Global.ENV.path_Temp.Trim() + "\\" + sGuid.Trim() + "" + this._docuDocumentFileTypeSaved.Trim();
+                    //string FileTmp = PMDS.Global.Settings.path_Temp.Trim() + "\\" + sGuid.Trim() + "" + this._docuDocumentFileTypeSaved.Trim();
                     string FileTmp = System.IO.Path.Combine(PMDS.Global.ENV.path_Temp.Trim(), sGuid.Trim() + this._docuDocumentFileTypeSaved.Trim());
                     using (FileStream file = new FileStream(FileTmp.Trim(), FileMode.Create, System.IO.FileAccess.Write))
                     {

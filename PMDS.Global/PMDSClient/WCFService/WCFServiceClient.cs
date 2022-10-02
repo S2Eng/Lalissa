@@ -106,8 +106,8 @@ namespace PMDSClient.Sitemap
 
                 //System.Windows.Forms.MessageBox.Show("0.0.6");
 
-                //QS2.Desktop.ControlManagment.WCFServicePMDS.Service1Client Service1Client1 = new QS2.Desktop.ControlManagment.WCFServicePMDS.Service1Client("BasicHttpBinding_IService1", ENV.UrlWCFServicePMDS.Trim());
-                //bool bCheckOK = Service1Client1.TestService(System.Environment.MachineName.Trim(), ENV.LoginInNameFrei, ENV.VersionNr);
+                //QS2.Desktop.ControlManagment.WCFServicePMDS.Service1Client Service1Client1 = new QS2.Desktop.ControlManagment.WCFServicePMDS.Service1Client("BasicHttpBinding_IService1", Settings.UrlWCFServicePMDS.Trim());
+                //bool bCheckOK = Service1Client1.TestService(System.Environment.MachineName.Trim(), Settings.LoginInNameFrei, Settings.VersionNr);
                 //bool CallOK = true;
             }
             catch (Exception ex)
@@ -237,7 +237,7 @@ namespace PMDSClient.Sitemap
                 //ELGASessionDTO session = new ELGASessionDTO();
                 //WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
                 //session.IDUser = IDUser;
-                //ELGALogInDto1.LogInOK = elga.ELGALogInHCP(PMDS.Global.ENV.ELGAUser.Trim(), PMDS.Global.ENV.ELGAPwd.Trim(), NameGDA.Trim(), Rolle.Trim(), IDKlinik, ref session, PMDS.Global.ENV.ELGAUrl);
+                //ELGALogInDto1.LogInOK = elga.ELGALogInHCP(PMDS.Global.Settings.ELGAUser.Trim(), PMDS.Global.Settings.ELGAPwd.Trim(), NameGDA.Trim(), Rolle.Trim(), IDKlinik, ref session, PMDS.Global.Settings.ELGAUrl);
 
                 //if (session.Errors != null)
                 //{
@@ -276,7 +276,7 @@ namespace PMDSClient.Sitemap
                         //    ELGASessionDTO session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                         //    WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
                         //    session.IDUser = IDUser;
-                        //    elga.ELGALogOut(ref session, PMDS.Global.ENV.ELGAUrl);
+                        //    elga.ELGALogOut(ref session, PMDS.Global.Settings.ELGAUrl);
                         //}
                     }
                 }
@@ -1143,8 +1143,8 @@ namespace PMDSClient.Sitemap
                 //string xml = "";
                 //async Task<string> genCDA2(int number)
                 //{
-                //    QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1Client1 = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client("BasicHttpBinding_IService1", ENV.UrlWCFServicePMDS.Trim());
-                //    //xml = Service1Client1.genCDA(ENV.IDAUFENTHALT, ENV.USERID, IDEinrichtungEmpfänger, ENV.USERID, CDAeTypeCDA);
+                //    QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1Client1 = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client("BasicHttpBinding_IService1", Settings.UrlWCFServicePMDS.Trim());
+                //    //xml = Service1Client1.genCDA(Settings.IDAUFENTHALT, Settings.USERID, IDEinrichtungEmpfänger, Settings.USERID, CDAeTypeCDA);
                 //    bool isReady = true;
                 //    Task.Delay(49000);
                 //    return "";
@@ -1158,8 +1158,8 @@ namespace PMDSClient.Sitemap
                 string xml = "";
                 var t = new Task(() =>
                 {
-                    //QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1Client1 = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client("BasicHttpBinding_IService1", ENV.UrlWCFServicePMDS.Trim());
-                    //xml = Service1Client1.genCDA(ENV.IDAUFENTHALT, ENV.USERID, IDEinrichtungEmpfänger, ENV.USERID, CDAeTypeCDA);
+                    //QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1Client1 = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client("BasicHttpBinding_IService1", Settings.UrlWCFServicePMDS.Trim());
+                    //xml = Service1Client1.genCDA(Settings.IDAUFENTHALT, Settings.USERID, IDEinrichtungEmpfänger, Settings.USERID, CDAeTypeCDA);
                     Thread.Sleep(5000);
                     bool isReady = true;
                 });

@@ -130,7 +130,7 @@ namespace PMDS.DynReportsForms
 
             ds = (dsRepMedikamentenBlatt)dsaddheaderinfo(IDAufenthalt == Guid.Empty ? IDAufenthaltbyCurrentPatient : IDAufenthalt, ds);
 //#if DEBUG
-//            ds.WriteXml(System.IO.Path.Combine(ENV.ReportPath, "dsRepMedikamentenBlatt.xml"), System.Data.XmlWriteMode.WriteSchema);
+//            ds.WriteXml(System.IO.Path.Combine(Settings.ReportPath, "dsRepMedikamentenBlatt.xml"), System.Data.XmlWriteMode.WriteSchema);
 //#endif
 
             return ds;

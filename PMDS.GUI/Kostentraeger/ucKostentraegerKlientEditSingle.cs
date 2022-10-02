@@ -345,14 +345,14 @@ namespace PMDS.GUI.Kostentraeger
                                 this._rPatientKostentraeger.IDBenutzer = ENV.USERID;
                                 this._rPatientKostentraeger.IDPatientIstZahler = null;
 
-                                //if (ENV.FSW_IDIntern != Guid.Empty)   //automatische Forderungsabtretung an FSW, wenn FSW-ID angegeben ist
+                                //if (Settings.FSW_IDIntern != Guid.Empty)   //automatische Forderungsabtretung an FSW, wenn FSW-ID angegeben ist
                                 //{
                                 //    this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Grundkosten;
                                 //    this._rKostenträger.PatientbezogenJN = false;
                                 //    this._rKostenträger.Zahlart = (int)PMDS.Calc.Logic.eZahlart.FSW;
-                                //    this._rKostenträger.GSBG = ENV.FSW_Prozent;
+                                //    this._rKostenträger.GSBG = Settings.FSW_Prozent;
                                 //    this._rKostenträger.Rechnungsempfaenger = "(Fond Soziales Wien)";
-                                //    this._rKostenträger.IDKostentraegerSub = ENV.FSW_IDIntern;
+                                //    this._rKostenträger.IDKostentraegerSub = Settings.FSW_IDIntern;
                                 //}
                                 //else
                                 //{
@@ -464,9 +464,9 @@ namespace PMDS.GUI.Kostentraeger
                     this.cboIDKostentraegerSub.Value = ENV.FSW_IDIntern;
                     this.cboEnumKostentraegerart.Value = (int)Kostentraegerart.Grundkosten;
                 }
-                //else if (EVMode && ENV.FSW_IDIntern != Guid.Empty)
+                //else if (EVMode && Settings.FSW_IDIntern != Guid.Empty)
                 //{
-                //    this.cboIDKostentraegerSub.Value = ENV.FSW_IDIntern;
+                //    this.cboIDKostentraegerSub.Value = Settings.FSW_IDIntern;
                 //    this.cboEnumKostentraegerart.Value = (int)Kostentraegerart.Grundkosten;
                 //}
 

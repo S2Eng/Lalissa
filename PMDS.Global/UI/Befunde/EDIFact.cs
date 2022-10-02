@@ -159,7 +159,7 @@ namespace EDIFact
 
                         foreach (string FileNoExtensionFound in FilesNoExtensionFound)   //.dcm anhängen
                         {
-                            System.IO.File.Move(System.IO.Path.Combine(DirectoryFound, FileNoExtensionFound), System.IO.Path.Combine(DirectoryFound, FileNoExtensionFound + ENV.BefundTypText(eBefundTyp.DICOM)));
+                            System.IO.File.Move(System.IO.Path.Combine(DirectoryFound, FileNoExtensionFound), System.IO.Path.Combine(DirectoryFound, FileNoExtensionFound + Settings.BefundTypText(eBefundTyp.DICOM)));
                         }
                         */
                     }
@@ -183,7 +183,7 @@ namespace EDIFact
                                 structNewBefund.BefundNummer = NewBefund.BefundNummer;
                                 structNewBefund.Befund = NewBefund;
 
-                                if (System.IO.Path.GetExtension(DCMFileFound).Equals(ENV.BefundTypText(eBefundTyp.DICOM), StringComparison.CurrentCultureIgnoreCase))
+                                if (System.IO.Path.GetExtension(DCMFileFound).Equals(Settings.BefundTypText(eBefundTyp.DICOM), StringComparison.CurrentCultureIgnoreCase))
                                 {
                                     list.Add(structNewBefund);
                                     DICOMStructure = true;
@@ -644,7 +644,7 @@ namespace EDIFact
                                 {
                                     zip.UnlockComponent(ENV.ChilkatKey);
                                     FileInfo fi = new FileInfo(FileIn);
-                                    //Befund.DateiType = ENV.BefundTypText(eBefundTyp.ZIP);    //os 150998 warum?
+                                    //Befund.DateiType = Settings.BefundTypText(eBefundTyp.ZIP);    //os 150998 warum?
                                     Befund.SizeDoku = Befund.byteDicomSeriesFile.Length;
                                     Dateiname = fi.Name + ENV.BefundTypText(eBefundTyp.DICOMDIR) + ENV.BefundTypText(eBefundTyp.ZIP);
                                     BezeichnungFile += ENV.BefundTypText(eBefundTyp.DICOM);

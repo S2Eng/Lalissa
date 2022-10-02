@@ -2012,7 +2012,7 @@ namespace PMDS.GUI
                 catch (Exception ex)
                 {
                     s.To = System.DateTime.Now;
-                    //ENV.HandleException(ex);
+                    //Settings.HandleException(ex);
                 }
                 DateTime dFrom = new DateTime(dTo.Year, dTo.Month, dTo.Day, 0, 0, 0);
                 dFrom = dFrom.AddDays(-2);
@@ -2469,8 +2469,8 @@ namespace PMDS.GUI
                 
                 if (this.UITypeTermine == eUITypeTermine.Dekurs && this.ucSiteMapTermine1._ansichtmodi == TerminlisteAnsichtsmodi.Bereichsansicht)
                 {
-                    //Guid IDPatient = ENV.CurrentIDPatient;
-                    //Guid IDAufenthalt = ENV.IDAUFENTHALT;
+                    //Guid IDPatient = Settings.CurrentIDPatient;
+                    //Guid IDAufenthalt = Settings.IDAUFENTHALT;
                     if (!this.IsPatientSelected(true)) return;
                     GuiAction.InsertTermin(this.IDAufenthalt, false, (Form)GuiWorkflow.mainWindow, this.ucSiteMapTermine1, null, null);
                 }
@@ -3219,7 +3219,7 @@ namespace PMDS.GUI
                             this.PMDSBusiness1.Gegenzeichnen(lst‹bergabe, ref iCounterAbgezeichnet, true, ENV.HasRight(UserRights.AutomatischeArztabrechungseintr‰ge));
                             this.ucSiteMapTermine1.RefreshTermin(true);
 
-                            //if (ENV.adminSecure)
+                            //if (Settings.adminSecure)
                             //{
                             //    //QS2.Desktop.ControlManagment.ControlManagment.MessageBox(iCounterAbgezeichnet.ToString() + " Eintr‰ge wurden gegengezeichnet!", "Gegenzeichnen", MessageBoxButtons.OK);
                             //}

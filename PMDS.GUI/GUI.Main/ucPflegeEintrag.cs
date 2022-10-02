@@ -1451,11 +1451,11 @@ namespace PMDS.GUI
                 }
 
                 //GuiUtil.ValidateField(dtpZeitpunkt, (dtpZeitpunkt.Text.Length > 0),
-                //    ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+                //    Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
 
                 //GuiUtil.ValidateField(dtpZeitpunkt, dtpZeitpunkt.DateTime <= DateTime.Now,
-                //    ENV.String("GUI.E_NO_FUTURE_ZEITPUNKT"), ref bError, bInfo, errorProvider1);
+                //    Settings.String("GUI.E_NO_FUTURE_ZEITPUNKT"), ref bError, bInfo, errorProvider1);
             }
 
             // txtIstDauer

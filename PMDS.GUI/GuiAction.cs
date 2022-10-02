@@ -471,7 +471,7 @@ namespace PMDS.GUI
                                                 //    Patagames.Pdf.Net.PdfDocument docPDF = Patagames.Pdf.Net.PdfDocument.Load(rFormular.PDF_BLOP, formFDF);
                                                 //    formFDF.InterForm.ResetForm();
                                                 //    formFDF.InterForm.ImportFromFdf(docFDF);
-                                                //    docPDF.Save(PMDS.Print.CR.ReportManager.GetUniqueArchivFileName(KlientNameGebDat, ENV.ArchivPath, rFormular.Name, "0", d.ToString("yyyy-MM-dd HH.mm.ss.fff")), Patagames.Pdf.Enums.SaveFlags.RemoveSecurity);
+                                                //    docPDF.Save(PMDS.Print.CR.ReportManager.GetUniqueArchivFileName(KlientNameGebDat, Settings.ArchivPath, rFormular.Name, "0", d.ToString("yyyy-MM-dd HH.mm.ss.fff")), Patagames.Pdf.Enums.SaveFlags.RemoveSecurity);
                                                 //}
                                                 //Mit Syncfusion - löst sich auf
                                                 {
@@ -905,7 +905,7 @@ namespace PMDS.GUI
                     iCounter += 1;
                 }
                 
-                //if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
+                //if (Settings.SchnellrückmeldungAsProcess.Trim() == "1")
                 //{
                 //    if (GuiAction.SchnellrückmeldungOpend)
                 //    {
@@ -1096,8 +1096,8 @@ namespace PMDS.GUI
                     return true;
                 }
 
-                //QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("ERROR_MISSING_EINTRAG_IN_PP", DBUtil.GetEintragName(IDEintrag), pat.FullName)
-                //    , ENV.String("DIALOGTITLE_MISSING_EINTRAG_IN_PP"), MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                //QS2.Desktop.ControlManagment.ControlManagment.MessageBox(Settings.String("ERROR_MISSING_EINTRAG_IN_PP", DBUtil.GetEintragName(IDEintrag), pat.FullName)
+                //    , Settings.String("DIALOGTITLE_MISSING_EINTRAG_IN_PP"), MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 //return false;
 			}
 			else if(ar.Length == 1)						// Genau einer passt
@@ -1163,7 +1163,7 @@ namespace PMDS.GUI
                     IsAbwesend = b.KlientIsAbwesend(db, ENV.IDAUFENTHALT);
                 }
 
-                if (!IsAbwesend)            //if (ENV.lic_ELGA && !IsAbwesend)
+                if (!IsAbwesend)            //if (Settings.lic_ELGA && !IsAbwesend)
                 {
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
@@ -1455,7 +1455,7 @@ namespace PMDS.GUI
 			dsPflegePlan.PflegePlanRow r = pp.GetRowByID(IDPflegePlan);			
             //if(!r.IsLetztesDatumNull())
             //{
-            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("TERMIN_DONE"));
+            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(Settings.String("TERMIN_DONE"));
             //    return false;
             //}
 

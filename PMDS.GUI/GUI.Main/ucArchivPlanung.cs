@@ -98,10 +98,10 @@ namespace PMDS.Itscont
                 this.contPlanung211.PMDSMainWindow = (Control)this;
        
 
-                //////if (ENV.CurrentIDPatient != Guid.Empty)
+                //////if (Settings.CurrentIDPatient != Guid.Empty)
                 //////{
-                //////    Patient p = new Patient(ENV.CurrentIDPatient);
-                //////    Benutzer b = new Benutzer(ENV.USERID);
+                //////    Patient p = new Patient(Settings.CurrentIDPatient);
+                //////    Benutzer b = new Benutzer(Settings.USERID);
                 //////    this.Text = string.Format(QS2.Desktop.ControlManagment.ControlManagment.getRes("Archiv von {0} für {1} "), b.BenutzerName, p.FullInfo);
                 //////}
                 //////else
@@ -208,7 +208,7 @@ namespace PMDS.Itscont
                 //    //inf.ToolTipTitle = "";
                 //    //this.ultraToolTipManager1.SetUltraToolTip(this.btnEMail, inf);
 
-                //    //infAuswahl = "von Benutzer " + new Benutzer(ENV.USERID).FullName;
+                //    //infAuswahl = "von Benutzer " + new Benutzer(Settings.USERID).FullName;
 
                 //    //this.ultraToolbarsManager1.UseLargeImagesOnMenu = false;
                 //    //this.ultraToolbarsManager1.UseLargeImagesOnToolbar = false;
@@ -283,7 +283,7 @@ namespace PMDS.Itscont
                     {
                         throw new Exception("loadData: TypeUI '" + TypeUI.ToString() + "' not allowed!");
                     }
-                    //this.initArchiv(ENV.DB_SERVER, ENV.DB_DATABASE, ENV.DB_USER, ENV.DB_PASSWORD, ENV.CurrentIDPatient, typArchiv);
+                    //this.initArchiv(Settings.DB_SERVER, Settings.DB_DATABASE, Settings.DB_USER, Settings.DB_PASSWORD, Settings.CurrentIDPatient, typArchiv);
                 }
 
                 this.setButtonsAktivDeaktiv(this._lastAktivButton);
@@ -370,7 +370,7 @@ namespace PMDS.Itscont
 
                     if (ENV.CurrentIDPatient == System.Guid.Empty)
                     {
-                        throw new Exception("initArchiv: ENV.CurrentIDPatient=System.Guid.Empty not allowed!");
+                        throw new Exception("initArchiv: Settings.CurrentIDPatient=System.Guid.Empty not allowed!");
                     }
                     pat = new Patient(ENV.CurrentIDPatient);
                     infAuswahl = QS2.Desktop.ControlManagment.ControlManagment.getRes("für Klient ") + pat.FullName;
@@ -442,7 +442,7 @@ namespace PMDS.Itscont
                     PMDS.GUI.VB.compPlan compPlan1 = new GUI.VB.compPlan();
                     PMDS.GUI.VB.dsPlan.planObjectRow rPlanObj = compPlan1.getNewRowPlanObject(dsPlan1.planObject);
 
-                    //pat = new Patient(ENV.CurrentIDPatient);
+                    //pat = new Patient(Settings.CurrentIDPatient);
                     //infAuswahl = QS2.Desktop.ControlManagment.ControlManagment.getRes("für Klient ") + pat.FullName;
                     //this.lblInfo.Text = infAuswahl;
                     //this.lblInfo.Text = "";

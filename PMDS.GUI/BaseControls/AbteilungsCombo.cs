@@ -74,7 +74,7 @@ namespace PMDS.GUI.BaseControls
                     //    {
                     //        using (dsAbteilung dsAbteilungFound = new dsAbteilung())
                     //        {
-                    //            System.Linq.IQueryable<PMDS.db.Entities.BenutzerAbteilung> tBenutzerAbteilung = this.b.getBenutzerAbteilung(ENV.USERID, db);
+                    //            System.Linq.IQueryable<PMDS.db.Entities.BenutzerAbteilung> tBenutzerAbteilung = this.b.getBenutzerAbteilung(Settings.USERID, db);
                     //            DBAbteilung1.getAbteilungenByKlinik(this.rKlinik.ID, dsAbteilungFound);
                     //            foreach (dsAbteilung.AbteilungRow r in dsAbteilungFound.Abteilung)
                     //            {

@@ -733,7 +733,7 @@ namespace PMDS.GUI
 
             //if(al.Count >= AbteilungsAuswahlCombo.ABTEILUNGS_COUNT) 
             //{
-            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("MESSAGE_NO_MOREEINTRAGZUSATZ"), ENV.String("DIALOGTITLE_NO_MOREEINTRAGZUSATZ"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(Settings.String("MESSAGE_NO_MOREEINTRAGZUSATZ"), Settings.String("DIALOGTITLE_NO_MOREEINTRAGZUSATZ"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             //    return;
             //}
 
@@ -742,7 +742,7 @@ namespace PMDS.GUI
 
             //if(al.Count == 0)								// Noch keine Werte definiert ==> zuerst mal die Defaultabteilung anlegen
             //{
-            //    _EintragZusatz.AddNew(ENV.ABTEILUNG);
+            //    _EintragZusatz.AddNew(Settings.ABTEILUNG);
             //    return;
             //}
 

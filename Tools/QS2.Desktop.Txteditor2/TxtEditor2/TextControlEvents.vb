@@ -293,7 +293,7 @@ Partial Public Class contTxtEditor2
         End If
 
         Dim strName As String = obj.Name
-        If FrmInputBox.ShowInputBox("Object Name", strName, ENV.frmMain, True) Then
+        If FrmInputBox.ShowInputBox("Object Name", strName, Settings.frmMain, True) Then
             obj.Name = strName
         End If
     End Sub

@@ -151,7 +151,7 @@ namespace PMDS.GUI
         {
             try
             {
-                Patient pat = new Patient(IDPatient);                   //new Patient(ENV.CurrentIDPatient);
+                Patient pat = new Patient(IDPatient);                   //new Patient(Settings.CurrentIDPatient);
                 title = string.Format(title, pat.FullName.Trim());
                 
                 ucKlientStammdaten.cKontakteChanged newKontakteChanged = new ucKlientStammdaten.cKontakteChanged();

@@ -247,7 +247,7 @@ namespace PMDS.GUI
             //cbTop10.DataSource = _PDx.GetAllPDxGruppeFromAbteilung(EnvPflegePlan.CurrentKlientenAbteilung, PFLEGEPLANMODUS == PflegePlanModus.Normal);
             //cbTop10Allgemein.DataSource = _PDx.GetAllPDxGruppeFromAbteilung(Guid.Empty,PFLEGEPLANMODUS == PflegePlanModus.Normal);        // Generelle Abteilung
 
-            //cbAnamnesen.DataSource = _pdxAnamnese.GetAllAnamnesen(ENV.CurrentIDPatient);
+            //cbAnamnesen.DataSource = _pdxAnamnese.GetAllAnamnesen(Settings.CurrentIDPatient);
 		}
 
 		//----------------------------------------------------------------------------
@@ -1861,7 +1861,7 @@ namespace PMDS.GUI
         ///     1) Eine Treenode gemäß der Parameter hinzugefügt (grünen Haken nicht vergessen)
         ///     2) Wenn demStandardHinzufuegen == true dann für die Übergebenen Abteilungen über die Businesslogik 
         ///         Einträge in der Tabelle PDXEinträge generieren
-        /// + Die Abteilung ist ab nun die des ausgewählten Klienten ==> Bezeichnungen in die konkrete Abteilung umbenennen (ENV.EnvPflegePlan.CurrentKlientenAbteilung)
+        /// + Die Abteilung ist ab nun die des ausgewählten Klienten ==> Bezeichnungen in die konkrete Abteilung umbenennen (Settings.EnvPflegePlan.CurrentKlientenAbteilung)
         /// </summary>
         //----------------------------------------------------------------------------
         //Änderung nach 15.05.2007 MDA

@@ -73,16 +73,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EMail.vb" />
     <Compile Include="Encryption.vb" />
-    <Compile Include="frmInputPwd.designer.vb">
-      <DependentUpon>frmInputPwd.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmInputPwd.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="generic.vb" />
-    <Compile Include="License.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -100,9 +91,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmInputPwd.resx">
-      <DependentUpon>frmInputPwd.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

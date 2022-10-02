@@ -459,7 +459,7 @@ namespace PMDS.GUI
                 }
                 else
                 {
-                    throw new Exception("ucMedikamenteMainPicker.LoadData: ENV.AnsichtsModus '" + ENV.AnsichtsModus.ToString() + "' not allowed!");
+                    throw new Exception("ucMedikamenteMainPicker.LoadData: Settings.AnsichtsModus '" + ENV.AnsichtsModus.ToString() + "' not allowed!");
                 }               
 
 
@@ -469,35 +469,35 @@ namespace PMDS.GUI
                 //    List<Guid> list = new List<Guid>();
                 //    list.Add(p.ID);
 
-                //    //ENV.CurrentIDPatient = p.ID;
+                //    //Settings.CurrentIDPatient = p.ID;
                 //    this.ucMedikamenteStammdaten1.SetModeUI(ucMedikamenteMainPicker._UITypeDekurs);
                 //    if (!PMDS.GUI.Medikament.cMedListKlienten._Mehrfachauswahl && this.ucMedikamenteStammdaten1.IDAufenthalt != p.Aufenthalt.ID)
                 //    {
-                //        ENV.IDAUFENTHALT = this.ucMedikamenteStammdaten1.IDAufenthalt;
-                //        if (ENV.doPatientFromTermineBereich && ENV.CurrentIDPatient != System.Guid.Empty)
+                //        Settings.IDAUFENTHALT = this.ucMedikamenteStammdaten1.IDAufenthalt;
+                //        if (Settings.doPatientFromTermineBereich && Settings.CurrentIDPatient != System.Guid.Empty)
                 //        {
-                //            //this.SelectPatient(ENV.CurrentIDPatient);
+                //            //this.SelectPatient(Settings.CurrentIDPatient);
                 //        }
                 //        else
                 //        {
-                //            ENV.CurrentIDPatient = p.ID;
+                //            Settings.CurrentIDPatient = p.ID;
                 //        }
                 //        this.ucMedikamenteStammdaten1.IDAufenthalt = p.Aufenthalt.ID;
                 //    }
                 //    else
                 //    {
-                //        if (ENV.doPatientFromTermineBereich && ENV.CurrentIDPatient != System.Guid.Empty)
+                //        if (Settings.doPatientFromTermineBereich && Settings.CurrentIDPatient != System.Guid.Empty)
                 //        {
-                //            //this.SelectPatient(ENV.CurrentIDPatient);
+                //            //this.SelectPatient(Settings.CurrentIDPatient);
                 //        }
                 //        else
                 //        {
-                //            ENV.CurrentIDPatient = p.ID;
+                //            Settings.CurrentIDPatient = p.ID;
                 //        }
                 //        this.ucMedikamenteStammdaten1.RefreshControl(list);
                 //    }
 
-                //    ENV.sendPatientChanged(eCurrentPatientChange.keiner);
+                //    Settings.sendPatientChanged(eCurrentPatientChange.keiner);
                 //}
 
             }
@@ -598,7 +598,7 @@ namespace PMDS.GUI
         }
         public void _SitemapTermine_PatientSelectionChanged(Guid IDPatient, Guid IDAufenthalt)
         {
-            //ENV.IDAUFENTHALT = IDAufenthalt;
+            //Settings.IDAUFENTHALT = IDAufenthalt;
             System.Guid idAuf = PMDS.BusinessLogic.Aufenthalt.LastByPatient(IDPatient);
             ENV.setIDAUFENTHALT = idAuf;
             ENV.setCurrentIDPatient = IDPatient;
@@ -774,7 +774,7 @@ namespace PMDS.GUI
             {
                 if (ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Klientanansicht)
                 {
-                    throw new Exception("TreeSelectionChanged: ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Klientanansicht not allowed!");
+                    throw new Exception("TreeSelectionChanged: Settings.AnsichtsModus == TerminlisteAnsichtsmodi.Klientanansicht not allowed!");
                 }
                 PMDS.GUI.Medikament.cMedListKlienten._Mehrfachauswahl = Mehrfachauswahl;
 
@@ -880,7 +880,7 @@ namespace PMDS.GUI
             //}
             //catch (Exception ex)
             //{
-            //    ENV.HandleException(ex);
+            //    Settings.HandleException(ex);
             //}
             //finally
             //{
@@ -1054,13 +1054,13 @@ namespace PMDS.GUI
         {
             try
             {
-                //if (ENV.AnsichtsModus != TerminlisteAnsichtsmodi.Bereichsansicht)
+                //if (Settings.AnsichtsModus != TerminlisteAnsichtsmodi.Bereichsansicht)
                 //    return;
 
                 //// mda:16.10.2007 
-                //if ((ENV.CurrentAnsichtinfo.IDAbteilung != Guid.Empty && ENV.CurrentAnsichtinfo.IDAbteilung == _IDAbteilung &&
-                //    ENV.CurrentAnsichtinfo.IDBereich == _IDBereich) || 
-                //    (ENV.CurrentAnsichtinfo.IDAbteilung == Guid.Empty && ENV.CurrentUserAbteilungen.ToArray() == _listUserAbteilungen)
+                //if ((Settings.CurrentAnsichtinfo.IDAbteilung != Guid.Empty && Settings.CurrentAnsichtinfo.IDAbteilung == _IDAbteilung &&
+                //    Settings.CurrentAnsichtinfo.IDBereich == _IDBereich) || 
+                //    (Settings.CurrentAnsichtinfo.IDAbteilung == Guid.Empty && Settings.CurrentUserAbteilungen.ToArray() == _listUserAbteilungen)
                 //   )
                 //{
                 //    RefreshCurrentTab();        // mda:16.10.2007 
@@ -1071,9 +1071,9 @@ namespace PMDS.GUI
                 //}
                 PMDS.GUI.Medikament.cMedListKlienten._lIDKlienten.Clear();
                 this.treeKlienten.Nodes.Clear();
-                //_IDAbteilungxy = ENV.CurrentAnsichtinfo.IDAbteilung;
-                //_IDBereichxy = ENV.CurrentAnsichtinfo.IDBereich;
-                //_listUserAbteilungenxy = ENV.CurrentUserAbteilungen.ToArray();
+                //_IDAbteilungxy = Settings.CurrentAnsichtinfo.IDAbteilung;
+                //_IDBereichxy = Settings.CurrentAnsichtinfo.IDBereich;
+                //_listUserAbteilungenxy = Settings.CurrentUserAbteilungen.ToArray();
 
                 dsPatientStation.PatientDataTable t = GuiUtil.GetKlientenforCurrentSelection(false, PMDS.Global.ENV.IDKlinik);     // 18.10.2007 RBU: Routine von mda ausgelagert
                 foreach (dsPatientStation.PatientRow r in t)

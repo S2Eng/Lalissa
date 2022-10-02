@@ -396,7 +396,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="generic.vb" />
-    <Compile Include="ENV.vb" />
+    <Compile Include="Settings.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

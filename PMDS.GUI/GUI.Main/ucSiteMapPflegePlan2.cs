@@ -285,8 +285,8 @@ namespace PMDS.GUI
             }
 
             //TO DO:
-            //if (ENV.IDPFLEGEPLAN != Guid.Empty)
-            //    ucPflegeplan21.MarkAllPDxForIDPflegePlan(ENV.IDPFLEGEPLAN);
+            //if (Settings.IDPFLEGEPLAN != Guid.Empty)
+            //    ucPflegeplan21.MarkAllPDxForIDPflegePlan(Settings.IDPFLEGEPLAN);
         }
 
         private void ProcessSave()

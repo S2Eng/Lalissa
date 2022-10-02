@@ -119,11 +119,11 @@ namespace PMDS.GUI.BaseControls
             os-170709 Kontonummer und Bankleitzahl sind keine Pflichtfelder mehr, dafür IBAN und BIC
             // txtName
             GuiUtil.ValidateField(txtKontoNr, (txtKontoNr.Text.Length > 0),
-                ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+                Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
             // txtName
             GuiUtil.ValidateField(txtBLZ, (txtBLZ.Text.Length > 0),
-                ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+                Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
             */
 
             GuiUtil.ValidateField(txtIBAN, (txtIBAN.Text.Length > 0),

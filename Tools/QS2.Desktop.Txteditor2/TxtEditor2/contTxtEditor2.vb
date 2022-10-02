@@ -274,7 +274,7 @@ Partial Public Class contTxtEditor2
             ' Force exception if standard version:
             _textControl.HypertextLinks.GetItem()
 
-            If FrmHyperlink.ShowDialog(_textControl, ENV.frmMain) = System.Windows.Forms.DialogResult.OK Then
+            If FrmHyperlink.ShowDialog(_textControl, Settings.frmMain) = System.Windows.Forms.DialogResult.OK Then
                 _fileHandler.DocumentDirty = True
             End If
         Catch ex As Exception
@@ -291,7 +291,7 @@ Partial Public Class contTxtEditor2
 
             If target IsNot Nothing Then
                 targetName = target.Name
-                If FrmInputBox.ShowInputBox("Enter a name for this target:", targetName, ENV.frmMain) Then
+                If FrmInputBox.ShowInputBox("Enter a name for this target:", targetName, Settings.frmMain) Then
                     target.Name = targetName
                 End If
             End If
@@ -485,7 +485,7 @@ Partial Public Class contTxtEditor2
             ' Force Exception if standard version:
             _textControl.HypertextLinks.GetItem()
 
-            FrmHyperlink.ShowDialog(_textControl, ENV.frmMain)
+            FrmHyperlink.ShowDialog(_textControl, Settings.frmMain)
         Catch ex As Exception
             MessageBox.Show(ex.Message, ProductName)
         End Try
@@ -498,7 +498,7 @@ Partial Public Class contTxtEditor2
 
             Dim TargetName As String = ""
 
-            If FrmInputBox.ShowInputBox("Target Name:", TargetName, ENV.frmMain) Then
+            If FrmInputBox.ShowInputBox("Target Name:", TargetName, Settings.frmMain) Then
                 Dim Target As New TXTextControl.DocumentTarget(TargetName)
                 Target.Deleteable = False
                 _textControl.DocumentTargets.Add(Target)

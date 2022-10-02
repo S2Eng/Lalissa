@@ -363,19 +363,19 @@ namespace PMDS.Global.UI.Befunde
             //            this.panelBefundDetail.Visible = true;
             //            EDIFact.EDIFact.cBefund Befund = (EDIFact.EDIFact.cBefund)rSelRow.obj;
 
-            //            if (Befund.DateiType.Equals(ENV.BefundTypText(eBefundTyp.BEFUND), StringComparison.CurrentCultureIgnoreCase) ||
-            //                Befund.DateiType.Equals(ENV.BefundTypText(eBefundTyp.LABOR), StringComparison.CurrentCultureIgnoreCase)
+            //            if (Befund.DateiType.Equals(Settings.BefundTypText(eBefundTyp.BEFUND), StringComparison.CurrentCultureIgnoreCase) ||
+            //                Befund.DateiType.Equals(Settings.BefundTypText(eBefundTyp.LABOR), StringComparison.CurrentCultureIgnoreCase)
             //                )
             //            {
             //                this.contEdiFactViewer1.initControl(Befund.txtEdiFactFilePrintable, null, false, Befund.DateiType, Befund);
             //            }
                         
-            //            else if (Befund.DateiType.Equals(ENV.BefundTypText(eBefundTyp.PDF), StringComparison.CurrentCultureIgnoreCase))
-            //                this.contEdiFactViewer1.initControl(QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokument wird in externem PDF-Viewer angezeigt."), null, false, ENV.BefundTypText(eBefundTyp.PDF), Befund);
+            //            else if (Befund.DateiType.Equals(Settings.BefundTypText(eBefundTyp.PDF), StringComparison.CurrentCultureIgnoreCase))
+            //                this.contEdiFactViewer1.initControl(QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokument wird in externem PDF-Viewer angezeigt."), null, false, Settings.BefundTypText(eBefundTyp.PDF), Befund);
 
-            //            else if (Befund.DateiType.Equals(ENV.BefundTypText(eBefundTyp.DICOM), StringComparison.CurrentCultureIgnoreCase) ||
+            //            else if (Befund.DateiType.Equals(Settings.BefundTypText(eBefundTyp.DICOM), StringComparison.CurrentCultureIgnoreCase) ||
             //                Befund.IsDicomStudy)
-            //                this.contEdiFactViewer1.initControl(QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokument wird in externem Dicom-Viewer angezeigt."), null, false, ENV.BefundTypText(eBefundTyp.DICOM), Befund);
+            //                this.contEdiFactViewer1.initControl(QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokument wird in externem Dicom-Viewer angezeigt."), null, false, Settings.BefundTypText(eBefundTyp.DICOM), Befund);
 
             //            this.loadDetailBefund(rSelRow);
             //        }
@@ -384,7 +384,7 @@ namespace PMDS.Global.UI.Befunde
             //}
             //catch (Exception ex)
             //{
-            //    PMDS.Global.ENV.HandleException(ex);
+            //    PMDS.Global.Settings.HandleException(ex);
             //}
             //finally
             //{

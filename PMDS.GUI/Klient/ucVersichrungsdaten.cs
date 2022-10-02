@@ -247,7 +247,7 @@ namespace PMDS.GUI
 
             // Sv-NR
             //GuiUtil.ValidateField(txtVersNr, (txtVersNr.Text.Length > 0),
-            //    ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+            //    Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
             return bError;
         }

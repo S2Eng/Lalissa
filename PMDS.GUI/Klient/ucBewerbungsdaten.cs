@@ -473,7 +473,7 @@ namespace PMDS.GUI
             //}
             //catch (Exception ex)
             //{
-            //    ENV.HandleException(ex);
+            //    Settings.HandleException(ex);
             //}
             //finally
             //{

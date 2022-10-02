@@ -31,9 +31,9 @@ namespace PMDS.Calc.UI.Admin
 
         public void RefreshControl()
         {
-            //if (DesignMode || !ENV.AppRunning) return;
-            ////ucDynReports1.Init(ENV.DynReportPath);   // Reportliste laden    
-            //ucDynReports1.Init(ENV.DynReportExtrasPath);
+            //if (DesignMode || !Settings.AppRunning) return;
+            ////ucDynReports1.Init(Settings.DynReportPath);   // Reportliste laden    
+            //ucDynReports1.Init(Settings.DynReportExtrasPath);
         }
 
     }

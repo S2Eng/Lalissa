@@ -46,7 +46,7 @@ namespace PMDS.GUI
 		{
 			InitializeComponent();
 
-            btnGroup.Visible = true;        // ENV.HasRight(UserRights.ManageGroupRights);
+            btnGroup.Visible = true;        // Settings.HasRight(UserRights.ManageGroupRights);
 			btnSave.EnabledChanged += new EventHandler(btnSave_EnabledChanged);
 		}
 

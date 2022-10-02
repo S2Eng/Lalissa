@@ -254,13 +254,13 @@ Public Class clPlan
                 Dim compUserAccountsTmp As New compUserAccounts()     'lthNotOKEMailSystemAK
                 Dim dsUserAccountsTmp As New dsUserAccounts()
                 rUsrAccount = compUserAccountsTmp.getNewRowUserAccounts(dsUserAccountsTmp.tblUserAccounts)
-                'rUsrAccount.Name = ENV.Systemmessage_Name.Trim()
-                'rUsrAccount.AdrFrom = ENV.Systemmessage_AdrFrom.Trim()
-                'rUsrAccount.Server = ENV.Systemmessage_Server.Trim()
-                'rUsrAccount.Port = ENV.Systemmessage_Port
-                'rUsrAccount.UsrAuthentication = ENV.Systemmessage_User.Trim()
-                'rUsrAccount.PwdAuthentication = ENV.Systemmessage_Pwd.Trim()
-                'rUsrAccount.SSL = ENV.Systemmessage_SSl
+                'rUsrAccount.Name = Settings.Systemmessage_Name.Trim()
+                'rUsrAccount.AdrFrom = Settings.Systemmessage_AdrFrom.Trim()
+                'rUsrAccount.Server = Settings.Systemmessage_Server.Trim()
+                'rUsrAccount.Port = Settings.Systemmessage_Port
+                'rUsrAccount.UsrAuthentication = Settings.Systemmessage_User.Trim()
+                'rUsrAccount.PwdAuthentication = Settings.Systemmessage_Pwd.Trim()
+                'rUsrAccount.SSL = Settings.Systemmessage_SSl
                 rUsrAccount.OutlookWebAPI = True
             End If
 
@@ -468,7 +468,7 @@ Public Class clPlan
             End If
         Finally
             'If WaitATimeAfterSent Then
-            '    'System.Threading.Thread.Sleep(ENV.WaitAfterEMailSent * 1000)
+            '    'System.Threading.Thread.Sleep(Settings.WaitAfterEMailSent * 1000)
             'End If
         End Try
     End Function
@@ -636,7 +636,7 @@ Public Class clPlan
             End If
         Finally
             'If WaitATimeAfterSent Then
-            '    'System.Threading.Thread.Sleep(ENV.WaitAfterEMailSent * 1000)
+            '    'System.Threading.Thread.Sleep(Settings.WaitAfterEMailSent * 1000)
             'End If
         End Try
     End Function

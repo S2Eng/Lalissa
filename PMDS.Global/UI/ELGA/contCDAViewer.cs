@@ -221,7 +221,7 @@ namespace PMDS.GUI.ELGA
             try
             {
                 throw new Exception("Function saveDocuToELGA not activated!");
-                //return this.bELGA.saveDocuToELGA(ENV.USERID, ENV.IDAUFENTHALT, this._DocumentName.Trim(), this._Xml.Trim(), null, this._Stylesheet.Trim(), this._ClinicalDocumentSetID.Trim());
+                //return this.bELGA.saveDocuToELGA(Settings.USERID, Settings.IDAUFENTHALT, this._DocumentName.Trim(), this._Xml.Trim(), null, this._Stylesheet.Trim(), this._ClinicalDocumentSetID.Trim());
             }
             catch (Exception ex)
             {

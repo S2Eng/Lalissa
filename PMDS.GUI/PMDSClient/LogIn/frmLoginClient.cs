@@ -144,7 +144,7 @@ namespace PMDS.GUI.PMDSClient
                     QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                     //ControlManagment1.autoTranslateForm(this);
                 }
-                //Text = string.Format(Text, ENV.DATABASE);
+                //Text = string.Format(Text, Settings.DATABASE);
                 this.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("PMDS");
 
                 this.btnCancel.Appearance.Image = null;
@@ -152,7 +152,7 @@ namespace PMDS.GUI.PMDSClient
                 //this.btnOK.Text = "OK";
                 this.btnCancel.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Abbrechen");
 
-                // ENV user setzten
+                // Settings user setzten
                 if (ENV.USERID == Guid.Empty)
 					User = null;
 				else

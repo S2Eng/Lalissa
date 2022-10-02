@@ -187,7 +187,7 @@ namespace PMDS.Calc.UI
                             }
                             if (r.IDKlinik != ENV.IDKlinik)
                             {
-                                throw new Exception("ucDepotgeldCalc.loadData: r.IDKlinik != ENV.IDKlinik for IDPatient '" + r.ID.ToString() + "'!");
+                                throw new Exception("ucDepotgeldCalc.loadData: r.IDKlinik != Settings.IDKlinik for IDPatient '" + r.ID.ToString() + "'!");
                             }
                             rNew.IDKlinik = r.IDKlinik;
 

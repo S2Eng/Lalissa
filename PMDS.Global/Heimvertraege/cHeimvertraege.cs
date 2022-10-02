@@ -74,7 +74,7 @@ namespace PMDS.Global.Heimverträge
                                             p.Geburtsort}
                                        ).First();
 
-                    //PMDS.db.Entities.Patient rPatient = b.getPatient(ENV.CurrentIDPatient, db);
+                    //PMDS.db.Entities.Patient rPatient = b.getPatient(Settings.CurrentIDPatient, db);
                     PMDS.db.Entities.Aufenthalt rActAufenthalt = b.getAktuellerAufenthaltPatient(rPatInfo.ID, false, db);
 
                     string sPatientStraßeGassePlatzNrStgTür = "";

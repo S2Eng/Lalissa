@@ -714,7 +714,7 @@ Public Class contArchivMain
             Me.ContArchivSuch1.UCheckEditorImGesamtarchivSuchen.Checked = False
 
             If Me.startTyp = eStart.gesamtsystem Then
-                'If PMDS.Global.ENV.HasRight([Global].UserRights.ArchivTerminMailSucheGesamt) Then
+                'If PMDS.Global.Settings.HasRight([Global].UserRights.ArchivTerminMailSucheGesamt) Then
                 '    Me.ContArchivSuch1.UCheckEditorImGesamtarchivSuchen.Visible = True
                 'End If
                 Me.ContArchivSuch1.UCheckEditorImGesamtarchivSuchen.Visible = True

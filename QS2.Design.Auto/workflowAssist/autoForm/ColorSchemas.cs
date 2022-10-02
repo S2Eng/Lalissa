@@ -776,10 +776,10 @@ namespace qs2.design.auto.workflowAssist.autoForm
 
                 return; //os220609
 
-                //if (qs2.core.ENV.UseAppStylingDefault == true)
+                //if (qs2.core.Settings.UseAppStylingDefault == true)
                 //    return;
 
-                //chk.UseAppStyling = qs2.core.ENV.UseAppStylingDefault;
+                //chk.UseAppStyling = qs2.core.Settings.UseAppStylingDefault;
                 //chk.UseFlatMode = DefaultableBoolean.True;
                 
                 //if (InfoTop == false)

@@ -667,7 +667,7 @@ namespace PMDS.GUI
 
         //----------------------------------------------------------------------------
         /// <summary>
-        /// Wenn nicht auf Bezugspersin gefiltert wird wird ENV-currentidbezugsperson Guidempty //{{{eng}}} 04.10.2007         
+        /// Wenn nicht auf Bezugspersin gefiltert wird wird Settings-currentidbezugsperson Guidempty //{{{eng}}} 04.10.2007         
         /// </summary>
         //----------------------------------------------------------------------------
         private void pflegerCombo1ValueChanged(object sender, EventArgs e)
@@ -705,7 +705,7 @@ namespace PMDS.GUI
 
         //----------------------------------------------------------------------------
         /// <summary>
-        /// Bei checken von Bezugsfiltercheckbox wird ENV Bezugspfleger gesetzt //{{{eng}}} 04.10.2007         
+        /// Bei checken von Bezugsfiltercheckbox wird Settings Bezugspfleger gesetzt //{{{eng}}} 04.10.2007         
         /// </summary>
         //----------------------------------------------------------------------------
         private void BezugspersonfilterONOFF_AfterCheckStateChanged(object sender, EventArgs e)
@@ -1106,7 +1106,7 @@ namespace PMDS.GUI
             try
             {
                 PMDS.Global.UIGlobal.setUIButton(this.btnDokumenteBenutzer, false);
-                if (ENV.CurrentIDAbteilung == null)   // || ENV.CurrentIDAbteilung == System.Guid.Empty
+                if (ENV.CurrentIDAbteilung == null)   // || Settings.CurrentIDAbteilung == System.Guid.Empty
                 {
                     this.btnDokumenteBenutzer.Visible = false;
                 }

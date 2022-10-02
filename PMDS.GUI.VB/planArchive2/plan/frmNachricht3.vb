@@ -2015,7 +2015,7 @@ Public Class frmNachricht3
             Else
             End If
 
-            'If Not ITSCont.core.SystemDb.actUsr.rUsr.IsAdmin And Not ENV.adminSecure Then
+            'If Not ITSCont.core.SystemDb.actUsr.rUsr.IsAdmin And Not Settings.adminSecure Then
             '    Me.EditierenToolStripMenuItem.Visible = True
             'End If
 
@@ -2441,7 +2441,7 @@ Public Class frmNachricht3
                     Me.contSelectBenutzer.addIDObjectToList(rUsrLoggedOn.ID)
                     Dim IDFoundTree As Boolean = False
                     Me.contSelectPatienten.autoSelectAllForAbtBereich(PlanArchive.IDAbteilung_Patienten, PlanArchive.IDBereich_Patienten, False, Nothing, True, TypeUI, IDFoundTree)
-                    'Me.contSelectPatienten.autoSelectAllForAbtBereich(PMDS.Global.ENV.CurrentIDAbteilung, PMDS.Global.ENV.IDBereich, False, Nothing, True)
+                    'Me.contSelectPatienten.autoSelectAllForAbtBereich(PMDS.Global.Settings.CurrentIDAbteilung, PMDS.Global.Settings.IDBereich, False, Nothing, True)
                     Me.contSelectBenutzer.cboBerufsgruppen.Value = Nothing
                     IDFoundTree = False
                     Me.contSelectBenutzer.autoSelectAllForAbtBereich(PlanArchive.IDAbteilung_Benutzer, PlanArchive.IDBereich_Benutzer, False, rUsrLoggedOn.ID, True, TypeUI, IDFoundTree)
@@ -3088,14 +3088,14 @@ Public Class frmNachricht3
                     End If
                     If Not lstPatientsSelected.Contains(PMDS.Global.ENV.CurrentIDPatient) Then
                         Me.contSelectPatienten.addIDObjectToList(PMDS.Global.ENV.CurrentIDPatient)
-                        'Throw New Exception("frmNachricht.checkInput: lstPatientsSelected not contains ENV.CurrentIDPatient (='" + PMDS.Global.ENV.CurrentIDPatient.ToString() + "')!")
+                        'Throw New Exception("frmNachricht.checkInput: lstPatientsSelected not contains Settings.CurrentIDPatient (='" + PMDS.Global.Settings.CurrentIDPatient.ToString() + "')!")
                     End If
 
                 ElseIf Me._TypeUI = contPlanungData.eTypeUI.PlanMy Then
                     Dim lstUsersSelected As System.Collections.Generic.List(Of Guid) = Me.contSelectBenutzer.getList()
                     Dim rUsrLoggedOn As PMDS.db.Entities.Benutzer = b.LogggedOnUser(db)
                     If Not lstUsersSelected.Contains(rUsrLoggedOn.ID) Then
-                        Throw New Exception("frmNachricht.checkInput: lstUsersSelected not contains ENV.CurrentIDPatient (='" + PMDS.Global.ENV.CurrentIDPatient.ToString() + "')!")
+                        Throw New Exception("frmNachricht.checkInput: lstUsersSelected not contains Settings.CurrentIDPatient (='" + PMDS.Global.ENV.CurrentIDPatient.ToString() + "')!")
                     End If
 
                 End If

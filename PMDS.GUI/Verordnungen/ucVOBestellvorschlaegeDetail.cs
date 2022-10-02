@@ -272,8 +272,8 @@ namespace PMDS.GUI.Verordnungen
                         this._rVO_BestellpostitionenEF.DatumGeaendert = dNow;
                         this._rVO_BestellpostitionenEF.IDBenutzerErstellt = rBenutzer.ID;
                         this._rVO_BestellpostitionenEF.IDBenutzerGeaendert = rBenutzer.ID;
-                        this._rVO_BestellpostitionenEF.LoginNameFreiErstellt = PMDS.Global.ENV.LoginInNameFrei.Trim();
-                        this._rVO_BestellpostitionenEF.LoginNameFreiGeaendert = PMDS.Global.ENV.LoginInNameFrei.Trim();
+                        this._rVO_BestellpostitionenEF.LoginNameFreiErstellt = PMDS.Global.Settings.LoginInNameFrei.Trim();
+                        this._rVO_BestellpostitionenEF.LoginNameFreiGeaendert = PMDS.Global.Settings.LoginInNameFrei.Trim();
 
                         this._db.VO_Bestellpostitionen.Add(this._rVO_BestellpostitionenEF);
                         */

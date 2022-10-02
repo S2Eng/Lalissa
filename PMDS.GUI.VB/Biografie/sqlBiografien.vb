@@ -81,7 +81,7 @@ Public Class sqlBiografien
     End Function
     Public Function InsertRow(ByVal txtFormular As String, ByVal IDPatient As Guid) As clObject
         Try
-            'PMDS.BusinessLogic.Patient pat = new PMDS.BusinessLogic.Patient(PMDS.Global.ENV.CurrentIDPatient);
+            'PMDS.BusinessLogic.Patient pat = new PMDS.BusinessLogic.Patient(PMDS.Global.Settings.CurrentIDPatient);
             'return pat.Vorname + " " + pat.Nachname;
             Dim ret As New clObject
 
@@ -93,7 +93,7 @@ Public Class sqlBiografien
             idNew = System.Guid.NewGuid
 
             Me.Command.Parameters.Add(New System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 16, "ID")).Value = idNew
-            Me.Command.Parameters.Add(New System.Data.OleDb.OleDbParameter("IDREF", System.Data.OleDb.OleDbType.Guid, 16, "IDREF")).Value = IDPatient 'PMDS.Global.ENV.CurrentIDPatient
+            Me.Command.Parameters.Add(New System.Data.OleDb.OleDbParameter("IDREF", System.Data.OleDb.OleDbType.Guid, 16, "IDREF")).Value = IDPatient 'PMDS.Global.Settings.CurrentIDPatient
 
             Me.Command.Parameters.Add(New System.Data.OleDb.OleDbParameter("FormularName", System.Data.OleDb.OleDbType.VarChar, 50, "FormularName")).Value = Me.FormularName
             Me.Command.Parameters.Add(New System.Data.OleDb.OleDbParameter("Text", System.Data.OleDb.OleDbType.LongVarChar, 0, "Text")).Value = txtFormular
@@ -125,7 +125,7 @@ Public Class sqlBiografien
 
             'Me.Command.Parameters.Add(New System.Data.OleDb.OleDbParameter("AlsHTML", System.Data.OleDb.OleDbType.Boolean, 1, "AlsHTML")).Value = AlsHTML
 
-            'PMDS.Global.ENV.USERID 
+            'PMDS.Global.Settings.USERID 
 
             Me.Command.ExecuteNonQuery()
             ret.id = idNew.ToString

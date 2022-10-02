@@ -1468,7 +1468,7 @@ namespace PMDS.GUI
 
             // Erstkontakt
             //GuiUtil.ValidateField(cmbBenutzer, (cmbBenutzer.Text.Length > 0),
-            //    ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+            //    Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
             if (!string.IsNullOrWhiteSpace(txtFallzahl.Text))
             {
@@ -2025,7 +2025,7 @@ namespace PMDS.GUI
             try
             {
                 //UltraToolTipInfo info = new UltraToolTipInfo();
-                //info.ToolTipText = ENV.String("aaa bbbb cccc");
+                //info.ToolTipText = Settings.String("aaa bbbb cccc");
                 //info.ToolTipText = "xx dd ff";
                 //this.ultraToolTipManager1.SetUltraToolTip(this.lblPatientenverfügung, info);
 

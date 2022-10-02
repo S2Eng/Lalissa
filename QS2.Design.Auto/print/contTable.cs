@@ -390,7 +390,7 @@ namespace qs2.ui.print
                 this.ultraGrid1.Refresh();
                 Application.DoEvents();
                 
-                //this.doDistinctGrid(qs2.core.ENV.ShowAllRowsQueryResult);
+                //this.doDistinctGrid(qs2.core.Settings.ShowAllRowsQueryResult);
                 this.ultraGrid1.Refresh();
                 Application.DoEvents();
                 

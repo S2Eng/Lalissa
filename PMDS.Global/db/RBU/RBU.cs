@@ -193,13 +193,13 @@ namespace RBU
                 {
                     DataBase.iTryConnect += 1;
                     Exception exTmp = new Exception("RBU.Connect: " + DataBase.iTryConnect.ToString() + "nd try" + "\r\n" + sInfoExcept + "\r\n");
-                    //ENV.HandleException(exTmp, "RBU.Connect() ", false);
+                    //Settings.HandleException(exTmp, "RBU.Connect() ", false);
                     qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
                     DataBase.Open();
                     try
                     {
                         Exception exTmp2 = new Exception("RBU.Connect: 3rd try" + "\r\n" + sInfoExcept + "\r\n");
-                        //ENV.HandleException(exTmp2, "RBU.Connect() ", false);
+                        //Settings.HandleException(exTmp2, "RBU.Connect() ", false);
                         qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
                         DataBase.Open();
                     }
@@ -251,7 +251,7 @@ namespace RBU
                 if (PMDS.Global.ENV.checkExceptionDBNetLib2(ex.ToString()))
                 {
                     Exception exTmp = new Exception("RBU.Fill (DataSet): 2nd try" + "\r\n" + sInfoExcept + "\r\n");
-                    //ENV.HandleException(exTmp, "ExceptionDBNetLibNextCall", false);
+                    //Settings.HandleException(exTmp, "ExceptionDBNetLibNextCall", false);
                     qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
                     SetConnection(da);
                     int i2 = RBU.DataBase.Fill(da, ds);
@@ -260,7 +260,7 @@ namespace RBU
                     try
                     {
                         Exception exTmp2 = new Exception("RBU.Fill (DataSet): 3rd try" + "\r\n" + sInfoExcept + "\r\n");
-                        //ENV.HandleException(exTmp2, "ExceptionDBNetLibNextCall", false);
+                        //Settings.HandleException(exTmp2, "ExceptionDBNetLibNextCall", false);
                         qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
                         SetConnection(da);
                         int i3 = RBU.DataBase.Fill(da, ds);
@@ -271,7 +271,7 @@ namespace RBU
                         try
                         {
                             Exception exTmp3 = new Exception("RBU.Fill (DataSet): 4th try" + "\r\n" + sInfoExcept + "\r\n");
-                            ENV.HandleException(exTmp3, "ExceptionDBNetLibNextCall", false);
+                            Settings.HandleException(exTmp3, "ExceptionDBNetLibNextCall", false);
                             qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
                             SetConnection(da);
                             int i4 = RBU.DataBase.Fill(da, ds);
@@ -279,7 +279,7 @@ namespace RBU
                         }
                         catch (Exception ex3)
                         {
-                            PMDS.Global.ENV.checkExceptionDBNetLib(ex3.ToString());
+                            PMDS.Global.Settings.checkExceptionDBNetLib(ex3.ToString());
                             throw new Exception("RBU.Fill (DataSet): " + "\r\n" + sInfoExcept + "\r\n" + "\r\n" + ex.ToString());
                         }
                     }
@@ -311,7 +311,7 @@ namespace RBU
                 if (PMDS.Global.ENV.checkExceptionDBNetLib2(ex.ToString()) || PMDS.Global.ENV.checkExceptionAbfragetimeout(ex.ToString()))
                 {
                     Exception exTmp = new Exception("RBU.Fill (DataTable): 2'nd try" + "\r\n" + sInfoExcept + "\r\n");
-                    //ENV.HandleException(exTmp, "ExceptionDBNetLibNextCall", false);
+                    //Settings.HandleException(exTmp, "ExceptionDBNetLibNextCall", false);
                     qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
                     SetConnection(da);
                     int i2 = RBU.DataBase.Fill(da, dt);
@@ -321,7 +321,7 @@ namespace RBU
                     try
                     {
                         Exception exTmp2 = new Exception("RBU.Fill (DataTable): 3'nd try" + "\r\n" + sInfoExcept + "\r\n");
-                        //ENV.HandleException(exTmp2, "ExceptionDBNetLibNextCall", false);
+                        //Settings.HandleException(exTmp2, "ExceptionDBNetLibNextCall", false);
                         qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
                         SetConnection(da);
                         int i3 = RBU.DataBase.Fill(da, dt);
@@ -332,7 +332,7 @@ namespace RBU
                         try
                         {
                             Exception exTmp3 = new Exception("RBU.Fill (DataTable): 4'nd try" + "\r\n" + sInfoExcept + "\r\n");
-                            ENV.HandleException(exTmp3, "ExceptionDBNetLibNextCall", false);
+                            Settings.HandleException(exTmp3, "ExceptionDBNetLibNextCall", false);
                             qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
                             SetConnection(da);
                             int i4 = RBU.DataBase.Fill(da, dt);
@@ -340,7 +340,7 @@ namespace RBU
                         }
                         catch (Exception ex3)
                         {
-                            PMDS.Global.ENV.checkExceptionDBNetLib(ex3.ToString());
+                            PMDS.Global.Settings.checkExceptionDBNetLib(ex3.ToString());
                             throw new Exception("RBU.Fill (DataTable): " + "\r\n" + sInfoExcept + "\r\n" + "\r\n" + ex.ToString());
                         }
                     }
@@ -373,7 +373,7 @@ namespace RBU
                 if (PMDS.Global.ENV.checkExceptionDBNetLib2(ex.ToString()) || PMDS.Global.ENV.checkExceptionAbfragetimeout(ex.ToString()))
                 {
                     Exception exTmp = new Exception("RBU.Update: 2'nd try" + "\r\n" + sInfoExcept + "\r\n");
-                    //ENV.HandleException(exTmp, "ExceptionDBNetLibNextCall", false);
+                    //Settings.HandleException(exTmp, "ExceptionDBNetLibNextCall", false);
                     qs2.core.generic.WaitMilli(1000);
                     SetConnection(da);
                     int i2 = da.Update(ds);
@@ -382,7 +382,7 @@ namespace RBU
                     try
                     {
                         Exception exTmp2 = new Exception("RBU.Update: 3'nd try" + "\r\n" + sInfoExcept + "\r\n");
-                        //ENV.HandleException(exTmp2, "ExceptionDBNetLibNextCall", false);
+                        //Settings.HandleException(exTmp2, "ExceptionDBNetLibNextCall", false);
                         qs2.core.generic.WaitMilli(1000);
                         SetConnection(da);
                         int i3 = da.Update(ds);
@@ -393,7 +393,7 @@ namespace RBU
                         try
                         {
                             Exception exTmp3 = new Exception("RBU.Update: 4'nd try" + "\r\n" + sInfoExcept + "\r\n");
-                            ENV.HandleException(exTmp3, "ExceptionDBNetLibNextCall", false);
+                            Settings.HandleException(exTmp3, "ExceptionDBNetLibNextCall", false);
                             qs2.core.generic.WaitMilli(1000);
                             SetConnection(da);
                             int i4 = da.Update(ds);
@@ -401,7 +401,7 @@ namespace RBU
                         }
                         catch (Exception ex3)
                         {
-                            PMDS.Global.ENV.checkExceptionDBNetLib(ex3.ToString());
+                            PMDS.Global.Settings.checkExceptionDBNetLib(ex3.ToString());
                             throw new Exception("RBU.Update: " + "\r\n" + sInfoExcept + "\r\n" + "\r\n" + ex.ToString());
                         }
                     }
@@ -466,7 +466,7 @@ namespace RBU
                 if (PMDS.Global.ENV.checkExceptionDBNetLib2(ex.ToString()) || PMDS.Global.ENV.checkExceptionAbfragetimeout(ex.ToString()))
                 {
                     Exception exTmp = new Exception("RBU.EcecuteNonQuery: 2'nd try" + "\r\n" + sInfoExcept + "\r\n");
-                    //ENV.HandleException(exTmp, "ExceptionDBNetLibNextCall", false);
+                    //Settings.HandleException(exTmp, "ExceptionDBNetLibNextCall", false);
                     qs2.core.generic.WaitMilli(1000);
                     int i2 = cmd.ExecuteNonQuery();
                     return i2;
@@ -474,7 +474,7 @@ namespace RBU
                     try
                     {
                         Exception exTmp2 = new Exception("RBU.EcecuteNonQuery: 3'nd try" + "\r\n" + sInfoExcept + "\r\n");
-                        //ENV.HandleException(exTmp2, "ExceptionDBNetLibNextCall", false);
+                        //Settings.HandleException(exTmp2, "ExceptionDBNetLibNextCall", false);
                         qs2.core.generic.WaitMilli(1000);
                         int i3 = cmd.ExecuteNonQuery();
                         return i3;
@@ -484,14 +484,14 @@ namespace RBU
                         try
                         {
                             Exception exTmp3 = new Exception("RBU.EcecuteNonQuery: 4'nd try" + "\r\n" + sInfoExcept + "\r\n");
-                            ENV.HandleException(exTmp3, "ExceptionDBNetLibNextCall", false);
+                            Settings.HandleException(exTmp3, "ExceptionDBNetLibNextCall", false);
                             qs2.core.generic.WaitMilli(1000);
                             int i4 = cmd.ExecuteNonQuery();
                             return i4;
                         }
                         catch (Exception ex3)
                         {
-                            PMDS.Global.ENV.checkExceptionDBNetLib(ex3.ToString());
+                            PMDS.Global.Settings.checkExceptionDBNetLib(ex3.ToString());
                             throw new Exception("RBU.EcecuteNonQuery: " + "\r\n" + sInfoExcept + "\r\n" + "\r\n" + ex.ToString());
                         }
                     }

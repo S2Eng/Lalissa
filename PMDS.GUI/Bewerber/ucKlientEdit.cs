@@ -125,16 +125,16 @@ namespace PMDS.GUI
             //neu nach 26.04.2007 MDA
 
             //nach User Rechte Tab Stammdaten anzeigen oder ausblenden
-            //ucKlient1.StammdatenVisible = ENV.HasRight(UserRights.KlientenAktStammdatenAnzeigen);
+            //ucKlient1.StammdatenVisible = Settings.HasRight(UserRights.KlientenAktStammdatenAnzeigen);
 
             //Stammdaten ReadOnly setzen
-            //ucKlient1.StammdatenReadOnly = !ENV.HasRight(UserRights.KlientenAktStammdatenAendern);
+            //ucKlient1.StammdatenReadOnly = !Settings.HasRight(UserRights.KlientenAktStammdatenAendern);
 
             //Sonstige Visible
-            //ucKlient1.SonstigeVisible = ENV.HasRight(UserRights.KlientenAktSonstigeAnzeigen);
+            //ucKlient1.SonstigeVisible = Settings.HasRight(UserRights.KlientenAktSonstigeAnzeigen);
 
             //Sonstige ReadOnly
-            //ucKlient1.SonstigeReadOnly = !ENV.HasRight(UserRights.KlientenAktSonstigeAendern);
+            //ucKlient1.SonstigeReadOnly = !Settings.HasRight(UserRights.KlientenAktSonstigeAendern);
 
 
             //if (!ucKlient1.StammdatenVisible && !ucKlient1.SonstigeVisible)

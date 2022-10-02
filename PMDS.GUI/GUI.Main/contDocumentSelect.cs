@@ -69,7 +69,7 @@ namespace PMDS.GUI.GUI.Main
         {
             try
             {
-                //ENV.PathDokumente
+                //Settings.PathDokumente
                 this.dsKlientenliste1.Clear();
                 foreach (PMDS.Global.db.ERSystem.dsKlientenliste.Dokumente2Row rDokumentDB in dsKlientenlisteFromDB.Dokumente2)
                 {

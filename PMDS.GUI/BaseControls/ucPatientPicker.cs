@@ -641,7 +641,7 @@ namespace PMDS.GUI
                     compLayout1.initControl();
                     compLayout1.doLayoutGrid(this.dgEintrag, this.dgEintrag.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources);
                     //QS2.Desktop.ControlManagment.cLayoutManager2 cLayoutManager1 = new QS2.Desktop.ControlManagment.cLayoutManager2();
-                    //cLayoutManager1.doLayoutGrid(this.dgEintrag, this.dgEintrag.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources);
+                    //cLayoutManager1.doLayoutGrid(this.dgEintrag, this.dgEintrag.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.Settings.IntDeactivated, PMDS.Global.Settings.AutoAddNewRessources);
                     QS2.Desktop.ControlManagment.BaseGrid.doFormatDateTime(this.dgEintrag);
                 }
                 else

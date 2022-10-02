@@ -887,8 +887,8 @@ Public Class sqlObjects
 
             ElseIf typSel = eTypSelStay.DeleteStaysAutoStart Then
                 'Dim AdmDatToDelete As Date = datSearchFrom.Date
-                'If ENV.XMonthDeleteStaysStartUp > 0 Then
-                '    AdmDatToDelete = AdmDatToDelete.AddMonths((ENV.XMonthDeleteStaysStartUp * -1))
+                'If Settings.XMonthDeleteStaysStartUp > 0 Then
+                '    AdmDatToDelete = AdmDatToDelete.AddMonths((Settings.XMonthDeleteStaysStartUp * -1))
                 'End If
                 Dim sWhere As String = " where IDGuid<>'" + System.Guid.NewGuid.ToString() + "' and IsActive= 0 and Surgeon = -1 AND SurgDtStart IS NULL "
                 If datSearchFrom <> Nothing Then

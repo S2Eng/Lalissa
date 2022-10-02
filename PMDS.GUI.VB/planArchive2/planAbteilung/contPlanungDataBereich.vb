@@ -1108,7 +1108,7 @@ Public Class contPlanungDataBereich
                             'Dim tUser As IQueryable(Of PMDS.db.Entities.Benutzer) = b.getUserByUserName2(cSelAppActuell.rPlanBereichSel.CreatedFrom.Trim(), db)
                             'If tUser.Count = 1 Then
                             '    Dim rUsr As PMDS.db.Entities.Benutzer = tUser.First
-                            '    If ((Not rUsr.IDBerufsstand Is Nothing) AndAlso Me.b.UserCanSign(rUsr.IDBerufsstand.Value)) Or PMDS.Global.ENV.adminSecure Then
+                            '    If ((Not rUsr.IDBerufsstand Is Nothing) AndAlso Me.b.UserCanSign(rUsr.IDBerufsstand.Value)) Or PMDS.Global.Settings.adminSecure Then
                             '        bDoDelete = True
                             '    End If
                             'Else

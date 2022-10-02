@@ -44,7 +44,7 @@ Public Class contTextTemplates
             Me.btnDel.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Loeschen, 32, 32)
             Me.btnSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32)
 
-            'If Not ITSCont.core.SystemDb.actUsr.rUsr.IsAdmin And Not ENV.adminSecure Then
+            'If Not ITSCont.core.SystemDb.actUsr.rUsr.IsAdmin And Not Settings.adminSecure Then
             'End If
             'Me.ui1.setMergeStyle(Me.gridUserAccounts, True, True)
             'Me.doGridUI(False)

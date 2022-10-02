@@ -151,7 +151,7 @@ namespace PMDS.GUI.BaseControls
             catch (Exception e)
             {
                 throw new Exception("AuswahlGruppeComboMulti.RefreshList: " + e.ToString());
-                //PMDS.Global.ENV.HandleException(e);
+                //PMDS.Global.Settings.HandleException(e);
             }
         }
         public void initCboPlanungsEinträge(eUITypeTermine UITypeTermine, bool IsManageQuickfilter)

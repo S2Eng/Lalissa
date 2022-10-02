@@ -317,7 +317,7 @@ namespace PMDS.GUI
 
         public void SetEditOnOff()
         {
-            bool bManageusers = true;   // ENV.HasRight(UserRights.ManageUserRights);
+            bool bManageusers = true;   // Settings.HasRight(UserRights.ManageUserRights);
 
             this.btnAdd.Visible = bManageusers;
             this.btnDel3.Visible = bManageusers;

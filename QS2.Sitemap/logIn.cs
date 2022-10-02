@@ -100,7 +100,7 @@ namespace qs2.core
 
                     qs2.core.ENV.SystemIsInitialized = true;
 
-                    QS2.Desktop.Txteditor.ENV.init(qs2.core.ENV.path_temp, qs2.core.ENV.path_log, true, qs2.core .ENV.adminSecure);
+                    QS2.Desktop.Txteditor.Settings.init(qs2.core.ENV.path_temp, qs2.core.ENV.path_log, true, qs2.core .ENV.adminSecure);
                     qs2.core.dbBase.checkConnectedOnDesignerDB();
 
                     return true;

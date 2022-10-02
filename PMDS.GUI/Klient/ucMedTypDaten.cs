@@ -375,7 +375,7 @@ namespace PMDS.GUI
 
 
                     ucMedizinischeDaten.IDMedDatenNew = null;
-                    //ENV.SignalMedizinDatenChanged();
+                    //Settings.SignalMedizinDatenChanged();
                     //this.UpdateGUI();
 
                     this.copyMehrfachauswahl(ref IDMedDatenOrig, IDPatientOrig, ref frm.lstPatienteSelected);
@@ -391,7 +391,7 @@ namespace PMDS.GUI
                         }
                     }
 
-                    //ENV.SignalMedizinDatenChanged();
+                    //Settings.SignalMedizinDatenChanged();
                     //this.UpdateGUI();
                     return true;
                 }

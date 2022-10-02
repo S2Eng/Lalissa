@@ -652,7 +652,7 @@ namespace PMDS.Global
                         XmlDocument myDownloads = new XmlDocument();
                         myDownloads.LoadXml(result_allowedDLs);
                         XmlNodeList myProdukt = myDownloads.SelectNodes(@"*/*");
-                        //ENV.ApoKHIX = "165664900";
+                        //Settings.ApoKHIX = "165664900";
                         var myDL = client.DownloadData(String.Format(@"https://services.apoverlag.at/download_svc/1.0/downloadoeavdata?tk={0}&prdid={1}&date={2}&vgda={3}", token, ENV.ApoKHIX, DateTime.Now.AddMonths(iMonat).ToString("yyMM"), bImportGesamtDaten.ToString().ToLower()));
                         string filename = client.ResponseHeaders["Content-Disposition"];
                         XMLFile = Path.Combine(ENV.ftpFileImportMedikamente, filename.Substring(filename.IndexOf('=') + 1));

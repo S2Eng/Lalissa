@@ -285,7 +285,7 @@ namespace PMDS.Calc.UI
                 calculation calculation2 = new calculation();
                 if (this.typ == eTyp.calc)
                 {
-                    //calculation2.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref dbSelect, rechTyp, status2, false, ENV.IDKlinik, showFreigegebenAndStorniert2, showExportierte, "");
+                    //calculation2.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref dbSelect, rechTyp, status2, false, Settings.IDKlinik, showFreigegebenAndStorniert2, showExportierte, "");
                     if (status == eBillStatus.offen)
                     {
                         dbFreigegeben = dbSelect;
@@ -494,7 +494,7 @@ namespace PMDS.Calc.UI
                                     db.Configuration.LazyLoadingEnabled = false;
                                     using (PMDS.Calc.Logic.Sql sqlCheck = new PMDS.Calc.Logic.Sql())
                                     {
-                                        //this.doBill.doAction(listIDBills, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, ref this.form.editor, "f", PMDS.Global.ENV.IDKlinik, true, ref listIDDoStorno);
+                                        //this.doBill.doAction(listIDBills, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, ref this.form.editor, "f", PMDS.Global.Settings.IDKlinik, true, ref listIDDoStorno);
                                         foreach (string IDBillStr in listIDBills)
                                         {
                                             Guid IDBillToCheck = new Guid(IDBillStr.Trim());

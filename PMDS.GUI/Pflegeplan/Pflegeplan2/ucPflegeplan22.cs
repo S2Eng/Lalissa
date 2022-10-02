@@ -1422,7 +1422,7 @@ namespace PMDS.GUI
         {
             //if (_bChangeInProgress)
             //{
-            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("MESSAGE_SAVE_BEVORE_PRINT"), "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(Settings.String("MESSAGE_SAVE_BEVORE_PRINT"), "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    return;
             //}
             
@@ -1432,7 +1432,7 @@ namespace PMDS.GUI
             //}
             //else
             //{
-            //    frmDynReports frm = new frmDynReports(ENV.DynReportWundePath );
+            //    frmDynReports frm = new frmDynReports(Settings.DynReportWundePath );
             //    frm.ShowDialog();
             //}
         }

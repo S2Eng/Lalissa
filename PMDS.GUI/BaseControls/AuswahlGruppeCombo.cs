@@ -64,12 +64,12 @@ namespace PMDS.GUI.BaseControls
                 //    bool bStop2 = true;
                 //}
 
-                //if (ENV.AppRunning && Group.Trim() != "")
+                //if (Settings.AppRunning && Group.Trim() != "")
                 //{
                 //    this.initControl();
                 //}
 
-                //if (ENV.HasRight(UserRights.AuswahllistenVerwalten) && ENV.AppRunning)
+                //if (Settings.HasRight(UserRights.AuswahllistenVerwalten) && Settings.AppRunning)
                 //{
                 //    //    if (sys)
                 //    //    {
@@ -83,7 +83,7 @@ namespace PMDS.GUI.BaseControls
                 //    //    }
 
                 //    //    //Neu nach 03.07.2007 MDA
-                //    ENV.AuswahlGruppeListChanged += new AuswahlGruppeListChangedDelegate(ENV_AuswahlGruppeListChanged);
+                //    Settings.AuswahlGruppeListChanged += new AuswahlGruppeListChangedDelegate(ENV_AuswahlGruppeListChanged);
                 //}
             }
 		}

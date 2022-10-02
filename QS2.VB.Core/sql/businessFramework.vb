@@ -558,7 +558,7 @@ Public Class businessFramework
             ElseIf qs2.core.ENV.ControlOpenStayType = 1 Then
                 bRigthOK = b.checkIsAdminOrUserIsInStayAsObject(IDGuidStay, IDUserTmp, Application, True)
             Else
-                Throw New Exception("checkRigthStay: ENV.ControlOpenStayType '" + ENV.ControlOpenStayType.ToString() + "' not allowed in config-File!")
+                Throw New Exception("checkRigthStay: Settings.ControlOpenStayType '" + ENV.ControlOpenStayType.ToString() + "' not allowed in config-File!")
             End If
 
             If bRigthOK Then
@@ -591,7 +591,7 @@ Public Class businessFramework
             'Dim bProveRole As Boolean = False
             'If checkVersion2 Then
             '    sqlObjectsWork.getObjectRel(actUsr.rUsr.IDGuid, dsObjectsWork, sqlObjects.eTypSelAnspr.idObjectSub)
-            '    lstRolesToCheckFromConfig = qs2.core.generic.readStrVariables(qs2.core.ENV.ControlOpenStayTypeRoles.Trim())
+            '    lstRolesToCheckFromConfig = qs2.core.generic.readStrVariables(qs2.core.Settings.ControlOpenStayTypeRoles.Trim())
             '    For Each cRoleUser As cSelListAndObj In lstRolesForUserActive
             '        For Each cRoleToCheck As String In lstRolesToCheckFromConfig
             '            If cRoleUser.rSelList.IDOwnInt.Equals(System.Convert.ToInt32(cRoleToCheck.Trim())) Then
@@ -735,7 +735,7 @@ Public Class businessFramework
                 Dim lstRolesToCheckFromConfig As New System.Collections.Generic.List(Of String)
                 dsObjectsWork.tblObjectRel.Clear()
                 If checkVersion2 Then
-                    'qs2.core.ENV.ControlOpenStayType=1
+                    'qs2.core.Settings.ControlOpenStayType=1
                     Dim sSumControlOpenStayTypeRoles As String = ""
                     sqlObjectsWork.getObjectRel(rUser.IDGuid, dsObjectsWork, sqlObjects.eTypSelAnspr.idObjectSub)
                     lstRolesToCheckFromConfig = qs2.core.generic.readStrVariables(qs2.core.ENV.ControlOpenStayTypeRoles.Trim())
@@ -748,7 +748,7 @@ Public Class businessFramework
                         Next
                     Next
                 Else
-                    'qs2.core.ENV.ControlOpenStayType=0
+                    'qs2.core.Settings.ControlOpenStayType=0
                 End If
 
                 'get Object-Fields from product-Stays with Criterias
@@ -1120,7 +1120,7 @@ Public Class businessFramework
                 'If rRes Is Nothing Then
                 '    Dim rNewProt As dsControls.ProtocollRow = ControlManagment.addProtocoll(ControlManagment.dsControls)
                 '    rNewProt.IDRes = IDRes
-                '    rNewProt.Txt = "IDRes '" + IDRes.Trim() + "' could not added to QS2-Database! (Table=Ressources, Application='" + ENV._Application.ToString() + "', TypeRes='" + ResourceTypeToLoad.ToString() + "'" + vbNewLine +
+                '    rNewProt.Txt = "IDRes '" + IDRes.Trim() + "' could not added to QS2-Database! (Table=Ressources, Application='" + Settings._Application.ToString() + "', TypeRes='" + ResourceTypeToLoad.ToString() + "'" + vbNewLine +
                 '                    "TxtGerman='" + TxtGerman + "')"
 
                 '    rNewProt.Cont = cont
@@ -2449,7 +2449,7 @@ Public Class businessFramework
                     qs2.core.ENV.StaysAsExternProcess2 = False
                 ElseIf sStartTypeStayUI.Trim().ToLower().Trim().Equals(qs2.core.Enums.eStartTypeStayUI.Thread.ToString().Trim().ToLower()) Then
                     qs2.core.ENV.StaysAsExternProcess2 = False
-                    Throw New Exception("loadENVFromAdjustmentStayType: s2.core.ENV.StaysAsThread = True not allowed!")
+                    Throw New Exception("loadENVFromAdjustmentStayType: s2.core.Settings.StaysAsThread = True not allowed!")
                 ElseIf sStartTypeStayUI.Trim().ToLower().Trim().Equals(qs2.core.Enums.eStartTypeStayUI.Process.ToString().Trim().ToLower()) Then
                     qs2.core.ENV.StaysAsExternProcess2 = True
                 Else

@@ -1459,7 +1459,7 @@ Public Class contTxtEditor
         Dim funct1 As New QS2.functions.vb.funct()
         Dim tmpFile As String = ""
         If temporär Then
-            tmpFile = ENV._path_temp + "\" + funct1.getFileName(docu, True) + "_" + System.Guid.NewGuid.ToString + System.IO.Path.GetExtension(docu)
+            tmpFile = Settings._path_temp + "\" + funct1.getFileName(docu, True) + "_" + System.Guid.NewGuid.ToString + System.IO.Path.GetExtension(docu)
             System.IO.File.Copy(docu, tmpFile)
         Else
             tmpFile = docu
@@ -1696,7 +1696,7 @@ Public Class contTxtEditor
 
             Dim sTitle As String = generic.getRes("Save")
             Dim sText As String = generic.getRes("SaveChangesToX")
-            Dim txtOptional As String = "ENV._path_log='" + ENV._path_log + "',  ENV._path_temp='" + ENV._path_temp + "'"
+            Dim txtOptional As String = "Settings._path_log='" + Settings._path_log + "',  Settings._path_temp='" + Settings._path_temp + "'"
             sText = String.Format(sText, " [Any path] ")
             generic.showMessageBox(sText, System.Windows.Forms.MessageBoxButtons.OK, sTitle, txtOptional)
 

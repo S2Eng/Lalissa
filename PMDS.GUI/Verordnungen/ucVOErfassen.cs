@@ -749,7 +749,7 @@ namespace PMDS.GUI.Verordnungen
 
                 //qs2.core.vb.compLayout compLayout1 = new qs2.core.vb.compLayout();
                 //compLayout1.initControl();
-                //compLayout1.doLayoutGrid(this.gridVO, this.gridVO.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources);
+                //compLayout1.doLayoutGrid(this.gridVO, this.gridVO.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.Settings.IntDeactivated, PMDS.Global.Settings.AutoAddNewRessources);
 
                 QS2.Desktop.ControlManagment.cLayoutManager2 cLayoutManager1 = new QS2.Desktop.ControlManagment.cLayoutManager2();
                 cLayoutManager1.doLayoutGrid(this.gridVO, this.gridVO.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources);
@@ -776,7 +776,7 @@ namespace PMDS.GUI.Verordnungen
                 QS2.Desktop.ControlManagment.cLayoutManager2 cLayoutManager1 = new QS2.Desktop.ControlManagment.cLayoutManager2();
                 cLayoutManager1.doLayoutGrid(this.gridVOBestelldaten, this.gridVOBestelldaten.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources);
 
-                //compLayout1.doLayoutGrid(this.gridVOBestelldaten, this.gridVOBestelldaten.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources);
+                //compLayout1.doLayoutGrid(this.gridVOBestelldaten, this.gridVOBestelldaten.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.Settings.IntDeactivated, PMDS.Global.Settings.AutoAddNewRessources);
                 //QS2.Desktop.ControlManagment.BaseGrid.doFormatDateTime(this.gridVOBestelldaten);
 
             }

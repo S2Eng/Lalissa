@@ -62,8 +62,8 @@ namespace PMDS.GUI
 
             this.ucKlient1.ucRegelungen1.ucSiteMapKlientenDetailsMain = this;
             this.ucPrintArztbrief1.mainWindow = this;
-            //bool bArztabrechnungErfassung = ENV.HasRight(UserRights.ArztabrechnungErfassung); 
-            //Benutzer ben = new Benutzer(ENV.USERID);
+            //bool bArztabrechnungErfassung = Settings.HasRight(UserRights.ArztabrechnungErfassung); 
+            //Benutzer ben = new Benutzer(Settings.USERID);
             bool bArztabrechnungErfassung = ENV.HasRight(UserRights.ArztabrechnungErfassung);           //lthArztabrechnung    
             this.ucPrintArztbrief1.Visible = bArztabrechnungErfassung;       
             this.btnDiagnosenliste.Visible = bArztabrechnungErfassung;
@@ -106,7 +106,7 @@ namespace PMDS.GUI
                 if ((ucKlient1.Klient != null && IDPatient != Guid.Empty && IDPatient != ucKlient1.Klient.ID) || ucSiteMapKlientenDetails.alwaysAskForSave)
                     AskForSave();
 
-                //if (this.Visible && ENV.CurrentAnsichtinfo.Ansichtsmodus == TerminlisteAnsichtsmodi.Klientanansicht)
+                //if (this.Visible && Settings.CurrentAnsichtinfo.Ansichtsmodus == TerminlisteAnsichtsmodi.Klientanansicht)
                 //{
                     this.lockRefresh = true;
                     RefreshPatient();
@@ -425,7 +425,7 @@ namespace PMDS.GUI
 
                 this.RefreshPatient();
 
-                //ENV.SignalMedizinDatenChanged();            //lthRefreshMedData
+                //Settings.SignalMedizinDatenChanged();            //lthRefreshMedData
                 return true;
             }
             catch (Exception e)

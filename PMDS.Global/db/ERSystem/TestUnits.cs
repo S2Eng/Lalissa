@@ -1336,7 +1336,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keine Zeile ausgewählt!");
 
 
-                // ---------------------------------------- MsgBoxes with   ENV.String()-Call ------------------------------------------------------
+                // ---------------------------------------- MsgBoxes with   Settings.String()-Call ------------------------------------------------------
 
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("MESSAGE_SAVE_BEVORE"), "", MessageBoxButtons.OK, MessageBoxIcon.Stop, true);
                 
@@ -1684,49 +1684,49 @@ namespace PMDS.Global.db.ERSystem
             {
                 string retStr2 = ENV.String("OneRowByID: DB.E_ID_NOT_FOUND");
 
-                //string sResult =  ENV.String("EINZELSPENDER");
-                //sResult =  ENV.String("WOCHENSPENDER");
-                //sResult =  ENV.String("TAGESSPENDER");
-                //sResult =  ENV.String("A");
-                //sResult =  ENV.String("S");
-                //sResult =  ENV.String("R");
-                //sResult =  ENV.String("Z");
-                //sResult =  ENV.String("M");
-                //sResult =  ENV.String("X");
-                //sResult =  ENV.String("PATIENT_BASEINFO");
-                //sResult =  ENV.String("WIEDERHOLUNGSTYP_T") + " ";
+                //string sResult =  Settings.String("EINZELSPENDER");
+                //sResult =  Settings.String("WOCHENSPENDER");
+                //sResult =  Settings.String("TAGESSPENDER");
+                //sResult =  Settings.String("A");
+                //sResult =  Settings.String("S");
+                //sResult =  Settings.String("R");
+                //sResult =  Settings.String("Z");
+                //sResult =  Settings.String("M");
+                //sResult =  Settings.String("X");
+                //sResult =  Settings.String("PATIENT_BASEINFO");
+                //sResult =  Settings.String("WIEDERHOLUNGSTYP_T") + " ";
 
-                //sResult =  ENV.String("WIEDERHOLUNGSTYP_A");
+                //sResult =  Settings.String("WIEDERHOLUNGSTYP_A");
                 //int wert = 0;
-                //sResult =  ENV.String("WIEDERHOLUNGSTYP_J", wert.ToString()) + " ";
+                //sResult =  Settings.String("WIEDERHOLUNGSTYP_J", wert.ToString()) + " ";
                 //string Group = "";
-                //sResult =  ENV.String("SiteGroups." + Group.ToString());
+                //sResult =  Settings.String("SiteGroups." + Group.ToString());
                 //string Entry = "";
-                //sResult =  ENV.String("SiteEvents." + Entry.ToString());
-                //sResult =  ENV.String("PATIENT_BASEINFO");
+                //sResult =  Settings.String("SiteEvents." + Entry.ToString());
+                //sResult =  Settings.String("PATIENT_BASEINFO");
 
-                //sResult =  ENV.String("GUI.E_NO_TEXT");
-                //sResult =  ENV.String("GUI.E_NO_TEXT");
-                //sResult =  ENV.String("ERROR_MS_ORZB");
-                //sResult =  ENV.String("B");
+                //sResult =  Settings.String("GUI.E_NO_TEXT");
+                //sResult =  Settings.String("GUI.E_NO_TEXT");
+                //sResult =  Settings.String("ERROR_MS_ORZB");
+                //sResult =  Settings.String("B");
                 //string name = "";
-                //sResult =  ENV.String(name);
-                //sResult =  ENV.String("INFO_KEINE_RESOURCEN");
-                //sResult =  ENV.String("GUI_AREA_TERMINLISTE");
-                //sResult =  ENV.String("GUI.E_NO_TEXT");
+                //sResult =  Settings.String(name);
+                //sResult =  Settings.String("INFO_KEINE_RESOURCEN");
+                //sResult =  Settings.String("GUI_AREA_TERMINLISTE");
+                //sResult =  Settings.String("GUI.E_NO_TEXT");
                 //string usr_FullName = "";
-                //sResult =  ENV.String("GUI.STATUS_USER", usr_FullName);
-                //sResult = PMDS.Global. ENV.String("GUI.STATUS_DB");
-                //sResult =  ENV.String("GUI.E_ZUSATZ_ENTRY");
-                //sResult =  ENV.String("GUI.E_NO_TEXT");
-                //sResult =  ENV.String("DAS");
-                //sResult =  ENV.String("DIE");
+                //sResult =  Settings.String("GUI.STATUS_USER", usr_FullName);
+                //sResult = PMDS.Global. Settings.String("GUI.STATUS_DB");
+                //sResult =  Settings.String("GUI.E_ZUSATZ_ENTRY");
+                //sResult =  Settings.String("GUI.E_NO_TEXT");
+                //sResult =  Settings.String("DAS");
+                //sResult =  Settings.String("DIE");
                 //string _Katalog_GROUP2 = "";
-                // ENV.String(_Katalog_GROUP2.ToString() + "Single");
+                // Settings.String(_Katalog_GROUP2.ToString() + "Single");
                 //string _SelectedGroup = "";
-                //sResult =  ENV.String(_SelectedGroup + "_Select");
-                //sResult =  ENV.String(_SelectedGroup + "Single") + " " +  ENV.String("SEARCH");
-                //sResult =  ENV.String(_SelectedGroup + "_Select");
+                //sResult =  Settings.String(_SelectedGroup + "_Select");
+                //sResult =  Settings.String(_SelectedGroup + "Single") + " " +  Settings.String("SEARCH");
+                //sResult =  Settings.String(_SelectedGroup + "_Select");
 
 
 
@@ -2497,49 +2497,49 @@ namespace PMDS.Global.db.ERSystem
                 // -- ----------------------- UNSICHER ---------------------------------------------------------------------------------
                 // -------------------------------------------------------------------------------------------------------------------------------
                 
-                //string sResult =  ENV.String("EINZELSPENDER");
-                //sResult =  ENV.String("WOCHENSPENDER");
-                //sResult =  ENV.String("TAGESSPENDER");
-                //sResult =  ENV.String("A");
-                //sResult =  ENV.String("S");
-                //sResult =  ENV.String("R");
-                //sResult =  ENV.String("Z");
-                //sResult =  ENV.String("M");
-                //sResult =  ENV.String("X");
-                //sResult =  ENV.String("PATIENT_BASEINFO");
-                //sResult =  ENV.String("WIEDERHOLUNGSTYP_T") + " ";
+                //string sResult =  Settings.String("EINZELSPENDER");
+                //sResult =  Settings.String("WOCHENSPENDER");
+                //sResult =  Settings.String("TAGESSPENDER");
+                //sResult =  Settings.String("A");
+                //sResult =  Settings.String("S");
+                //sResult =  Settings.String("R");
+                //sResult =  Settings.String("Z");
+                //sResult =  Settings.String("M");
+                //sResult =  Settings.String("X");
+                //sResult =  Settings.String("PATIENT_BASEINFO");
+                //sResult =  Settings.String("WIEDERHOLUNGSTYP_T") + " ";
 
-                //sResult =  ENV.String("WIEDERHOLUNGSTYP_A");
+                //sResult =  Settings.String("WIEDERHOLUNGSTYP_A");
                 //int wert = 0;
-                //sResult =  ENV.String("WIEDERHOLUNGSTYP_J", wert.ToString()) + " ";
+                //sResult =  Settings.String("WIEDERHOLUNGSTYP_J", wert.ToString()) + " ";
                 //string Group = "";
-                //sResult =  ENV.String("SiteGroups." + Group.ToString());
+                //sResult =  Settings.String("SiteGroups." + Group.ToString());
                 //string Entry = "";
-                //sResult =  ENV.String("SiteEvents." + Entry.ToString());
-                //sResult =  ENV.String("PATIENT_BASEINFO");
+                //sResult =  Settings.String("SiteEvents." + Entry.ToString());
+                //sResult =  Settings.String("PATIENT_BASEINFO");
 
-                //sResult =  ENV.String("GUI.E_NO_TEXT");
-                //sResult =  ENV.String("GUI.E_NO_TEXT");
-                //sResult =  ENV.String("ERROR_MS_ORZB");
-                //sResult =  ENV.String("B");
+                //sResult =  Settings.String("GUI.E_NO_TEXT");
+                //sResult =  Settings.String("GUI.E_NO_TEXT");
+                //sResult =  Settings.String("ERROR_MS_ORZB");
+                //sResult =  Settings.String("B");
                 //string name = "";
-                //sResult =  ENV.String(name);
-                //sResult =  ENV.String("INFO_KEINE_RESOURCEN");
-                //sResult =  ENV.String("GUI_AREA_TERMINLISTE");
-                //sResult =  ENV.String("GUI.E_NO_TEXT");
+                //sResult =  Settings.String(name);
+                //sResult =  Settings.String("INFO_KEINE_RESOURCEN");
+                //sResult =  Settings.String("GUI_AREA_TERMINLISTE");
+                //sResult =  Settings.String("GUI.E_NO_TEXT");
                 //string usr_FullName = "";
-                //sResult =  ENV.String("GUI.STATUS_USER", usr_FullName);
-                //sResult = PMDS.Global. ENV.String("GUI.STATUS_DB");
-                //sResult =  ENV.String("GUI.E_ZUSATZ_ENTRY");
-                //sResult =  ENV.String("GUI.E_NO_TEXT");
-                //sResult =  ENV.String("DAS");
-                //sResult =  ENV.String("DIE");
+                //sResult =  Settings.String("GUI.STATUS_USER", usr_FullName);
+                //sResult = PMDS.Global. Settings.String("GUI.STATUS_DB");
+                //sResult =  Settings.String("GUI.E_ZUSATZ_ENTRY");
+                //sResult =  Settings.String("GUI.E_NO_TEXT");
+                //sResult =  Settings.String("DAS");
+                //sResult =  Settings.String("DIE");
                 //string _Katalog_GROUP2 = "";
-                // ENV.String(_Katalog_GROUP2.ToString() + "Single");
+                // Settings.String(_Katalog_GROUP2.ToString() + "Single");
                 //string _SelectedGroup = "";
-                //sResult =  ENV.String(_SelectedGroup + "_Select");
-                //sResult =  ENV.String(_SelectedGroup + "Single") + " " +  ENV.String("SEARCH");
-                //sResult =  ENV.String(_SelectedGroup + "_Select");
+                //sResult =  Settings.String(_SelectedGroup + "_Select");
+                //sResult =  Settings.String(_SelectedGroup + "Single") + " " +  Settings.String("SEARCH");
+                //sResult =  Settings.String(_SelectedGroup + "_Select");
 
                 // ---------------------------------------------------------------------------------------------------------------------------------------
                 // ------------------------- ABGEARBEITET ------------------------------------------------------------------------------------------

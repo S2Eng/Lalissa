@@ -49,7 +49,7 @@ Public Class frmActivity
 
 
     Private Sub frmActivity_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        'If qs2.core.ENV.LoactionMain <> Nothing Then
+        'If qs2.core.Settings.LoactionMain <> Nothing Then
         If frmActivity._TypeUI = eTypeUI.Stay And qs2.core.ENV.LoactionSizeStay.Width > 10 Then
             Me.Left = qs2.core.ENV.LoactionStay.X + (qs2.core.ENV.LoactionSizeStay.Width / 2) - (Me.Width / 2)
             Me.Top = qs2.core.ENV.LoactionStay.Y + (qs2.core.ENV.LoactionSizeStay.Height / 2) - (Me.Height / 2)

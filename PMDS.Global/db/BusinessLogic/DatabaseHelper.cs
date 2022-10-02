@@ -44,7 +44,7 @@ namespace PMDS.BusinessLogic
                             string sExcept = "DatabaseHelper.IDListeFromSQL - Error convert r[0].ToGuid() r[0]='" + r[0].ToString() + "' : Command =" + sSQL + "\r\n" + "\r\n" + ex.ToString();
                             Exception ex2 = new Exception(sExcept);
                             PMDS.Global.ENV.HandleException(ex2);
-                            //PMDS.Global.ENV.WriteLog(sExcept);
+                            //PMDS.Global.Settings.WriteLog(sExcept);
                         }
 
                         if (bGuidOK)

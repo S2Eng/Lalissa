@@ -246,7 +246,7 @@ namespace PMDS.GUI
                 GuiWorkflow.mainWindow.AddObject(_SitemapKlientenDetails);
                 _SitemapKlientenDetails.initControl();
                 //_SitemapKlientenDetails.AttachFramework();
-                //_SitemapKlientenDetails.ENV_ENVPatientIDChanged(ENV.CurrentIDPatient, eCurrentPatientChange.keiner);
+                //_SitemapKlientenDetails.ENV_ENVPatientIDChanged(Settings.CurrentIDPatient, eCurrentPatientChange.keiner);
                 initdone = true;
             }
         }
@@ -259,7 +259,7 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         void _SitemapTermine_PatientSelectionChanged(Guid IDPatient, Guid IDAufenthalt)
         {
-            //ENV.IDAUFENTHALT = IDAufenthalt;
+            //Settings.IDAUFENTHALT = IDAufenthalt;
             ENV.setIDAUFENTHALT = IDAufenthalt;
             System.Guid idAuf = PMDS.BusinessLogic.Aufenthalt.LastByPatient(IDPatient);
             ENV.setIDAUFENTHALT = idAuf;
@@ -386,7 +386,7 @@ namespace PMDS.GUI
         }
         public static void ShowPflegePlan()
         {
-           //if(ENV._USE_PP_0)
+           //if(Settings._USE_PP_0)
            //{
            //     _guiworkflow._framework.BringOnTop(_guiworkflow._SitemapPflegePlan);
            //}
@@ -517,7 +517,7 @@ namespace PMDS.GUI
 
                 GuiWorkflow.mainWindow.AddObject(this._SitemapTermineInterventionen);
                 this._SitemapTermineInterventionen.AttachFramework();
-                //_SitemapTermine.ENV_ENVPatientIDChanged(ENV.CurrentIDPatient);
+                //_SitemapTermine.ENV_ENVPatientIDChanged(Settings.CurrentIDPatient);
             }
         }
         public static void ShowInterventionen(bool refreshData)
@@ -539,7 +539,7 @@ namespace PMDS.GUI
 
                 GuiWorkflow.mainWindow.AddObject(this._SitemapTermine‹bergabe);
                 this._SitemapTermine‹bergabe.AttachFramework();
-                //_SitemapTermine.ENV_ENVPatientIDChanged(ENV.CurrentIDPatient);
+                //_SitemapTermine.ENV_ENVPatientIDChanged(Settings.CurrentIDPatient);
                 
             }
         }
@@ -562,7 +562,7 @@ namespace PMDS.GUI
 
                 GuiWorkflow.mainWindow.AddObject(this._SitemapTermineInterventionenBereich);
                 this._SitemapTermineInterventionenBereich.AttachFramework();
-                //_SitemapTermine.ENV_ENVPatientIDChanged(ENV.CurrentIDPatient);
+                //_SitemapTermine.ENV_ENVPatientIDChanged(Settings.CurrentIDPatient);
                
             }
         }
@@ -588,7 +588,7 @@ namespace PMDS.GUI
             }
             else
             {
-                throw new Exception("ShowInterventionenBereich: ENV.AnsichtsModus '" + ENV.AnsichtsModus.ToString() + "' not allowed!");
+                throw new Exception("ShowInterventionenBereich: Settings.AnsichtsModus '" + ENV.AnsichtsModus.ToString() + "' not allowed!");
             }
         }
         public void init‹bergabeBereich(eUITypeTermine UITypeTermine, TerminlisteAnsichtsmodi TerminlisteAnsichtsmodi)
@@ -601,7 +601,7 @@ namespace PMDS.GUI
 
                 GuiWorkflow.mainWindow.AddObject(this._SitemapTermine‹bergabeBereich);
                 this._SitemapTermine‹bergabeBereich.AttachFramework();
-                //_SitemapTermine.ENV_ENVPatientIDChanged(ENV.CurrentIDPatient);
+                //_SitemapTermine.ENV_ENVPatientIDChanged(Settings.CurrentIDPatient);
                 
             }
         }

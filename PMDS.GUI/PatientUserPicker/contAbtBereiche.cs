@@ -79,9 +79,9 @@ namespace PMDS.GUI.PatientUserPicker
                     //bool IDFoundInTree2 = false;
                     //this.contSelectPatientenBenutzer1.utreeAbtBereiche.Enabled = true;
                     //contPlanungData.eTypeUI TypeUI = contPlanungData.eTypeUI.IDKlient;
-                    //this.contSelectPatientenBenutzer1.autoSelectAllForAbtBereich(PMDS.Global.ENV.CurrentIDAbteilung, PMDS.Global.ENV.IDBereich, false, null, true, TypeUI, ref IDFoundInTree2);
+                    //this.contSelectPatientenBenutzer1.autoSelectAllForAbtBereich(PMDS.Global.Settings.CurrentIDAbteilung, PMDS.Global.Settings.IDBereich, false, null, true, TypeUI, ref IDFoundInTree2);
 
-                    //ENV.delPatientenUersPickerValueChanged += new dPatientenUersPickerValueChanged(this.PatientenUersPickerValueChanged);
+                    //Settings.delPatientenUersPickerValueChanged += new dPatientenUersPickerValueChanged(this.PatientenUersPickerValueChanged);
                     ENV.deldAbtBereichPickerValueChanged += new dAbtBereichPickerValueChanged(this.BereichPickerValueChanged);
 
                     //this.resetPicker(false);

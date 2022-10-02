@@ -61,10 +61,10 @@ namespace PMDS.GUI
 
         public void SetUI()
         {
-            //this.chkAktuell.Enabled = ENV.adminSecure;
-            //this.chkImportiert.Enabled = ENV.adminSecure;
-            //this.datGültigkeitsdatum.Enabled = ENV.adminSecure;
-            //this.datImportiertAm.Enabled = ENV.adminSecure;
+            //this.chkAktuell.Enabled = Settings.adminSecure;
+            //this.chkImportiert.Enabled = Settings.adminSecure;
+            //this.datGültigkeitsdatum.Enabled = Settings.adminSecure;
+            //this.datImportiertAm.Enabled = Settings.adminSecure;
         }
 
 

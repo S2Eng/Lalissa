@@ -549,7 +549,7 @@ namespace PMDS.UI.Sitemap
         public void setStatusbar (ref Infragistics.Win.UltraWinStatusBar.UltraStatusBar statBar, bool  showDB  )
         {
             statBar.Panels[0].Text = ENV.String("GUI.STATUS_USER", this.usr.FullName);
-            //statBar.Panels[1].Text = ENV.String("GUI.STATUS_ABT", PMDS.GUI.GuiUtil.Abteilung());
+            //statBar.Panels[1].Text = Settings.String("GUI.STATUS_ABT", PMDS.GUI.GuiUtil.Abteilung());
             if (showDB)
             {
                 //this.lblVersion.Text = "Version " + Assembly.GetExecutingAssembly().GetName().Version.ToString();

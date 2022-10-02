@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------------------------
-//	ENV.cs
+//	Settings.cs
 //  Klasse für globalen Zugriff auf die Farben
 //  Erstellt am:	13.9.2004
 //  Erstellt von:	RBU

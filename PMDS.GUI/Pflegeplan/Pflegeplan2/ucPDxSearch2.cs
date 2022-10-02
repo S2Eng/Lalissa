@@ -817,7 +817,7 @@ namespace PMDS.GUI
             tvGenerell.ListIDPDX = null;
             tvGenerell.PDX_SELARGS = listGenerell.ToArray();
             tvGenerell.RemovePDxNodes(tvSpecific.GetPDxNodes());
-            //tvGenerell.GetPDxNodes()[0].Nodes[0].Text = ENV.String("B");
+            //tvGenerell.GetPDxNodes()[0].Nodes[0].Text = Settings.String("B");
             
             foreach (Infragistics.Win.UltraWinTree.UltraTreeNode n in tvGenerell.GetPDxNodes())
             {
@@ -1640,7 +1640,7 @@ namespace PMDS.GUI
 
         private void TabMain_SelectedTabChanged(object sender, Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventArgs e)
         {
-            //if (DesignMode || !ENV.AppRunning) return;
+            //if (DesignMode || !Settings.AppRunning) return;
             RefreshTopcombo = false;
              RefreshControl();
         }

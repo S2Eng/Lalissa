@@ -115,7 +115,7 @@ Public Class contUserSelList
                     rNew.SetIDSelListEntrySublistNull()
                     rNew.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim()
 
-                    'If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() And qs2.core.ENV.ConnectedOnDesignerDB_QS2_Dev Then
+                    'If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() And qs2.core.Settings.ConnectedOnDesignerDB_QS2_Dev Then
                     '    rNew.IDParticipant = ""
                     'Else
                     '    rNew.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim()

@@ -53,10 +53,10 @@ namespace PMDS.UI.Sitemap
                 if (listID.Count > 0)
                 {
                     //frmProtokoll.Show();
-                    //if (PMDS.Global.ENV.mainAbrech != null)
+                    //if (PMDS.Global.Settings.mainAbrech != null)
                     //{
-                    //    frmProtokoll.Left = PMDS.Global.ENV.mainAbrech.Left + (PMDS.Global.ENV.mainAbrech.Width / 2) / 2;
-                    //    frmProtokoll.Top = PMDS.Global.ENV.mainAbrech.Top + (PMDS.Global.ENV.mainAbrech.Height / 2) / 2 + 100;
+                    //    frmProtokoll.Left = PMDS.Global.Settings.mainAbrech.Left + (PMDS.Global.Settings.mainAbrech.Width / 2) / 2;
+                    //    frmProtokoll.Top = PMDS.Global.Settings.mainAbrech.Top + (PMDS.Global.Settings.mainAbrech.Height / 2) / 2 + 100;
                     //}
 
                     print.loadTempStream(PMDS.Calc.Logic.bill.rechnungRTF, (typ == "D" ? true: false));

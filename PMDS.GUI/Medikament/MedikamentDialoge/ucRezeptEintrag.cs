@@ -726,7 +726,7 @@ namespace PMDS.GUI
                 GuiUtil.ValidateField(dtpAbgebenBis, (((DateTime)dtpAbgebenBis.Value) >= ((DateTime)dtpAbgebenVon.Value)),
                      ENV.String("GUI.E_REZEPTE_ABG_BIS"), ref bError, bInfo, errorProvider1);
                 //GuiUtil.ValidateField(dtpAbgebenBis, (((DateTime)dtpAbgebenBis.Value).Date >= ((DateTime)dtpAbgebenVon.Value).Date),
-                //     ENV.String("GUI.E_REZEPTE_ABG_BIS"), ref bError, bInfo, errorProvider1);
+                //     Settings.String("GUI.E_REZEPTE_ABG_BIS"), ref bError, bInfo, errorProvider1);
             }
             else
             {
@@ -842,7 +842,7 @@ namespace PMDS.GUI
             
             //Applikationsform
             //GuiUtil.ValidateField(cmbApplikationsform, cmbApplikationsform.Text.Trim().Length > 0,
-            //                     ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+            //                     Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
             GuiUtil.ValidateField(ucPatientAerzte1.cmbArzt, ucPatientAerzte1.cmbArzt.Text.Trim().Length > 0,
                                  ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);

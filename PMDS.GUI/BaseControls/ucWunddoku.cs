@@ -1219,7 +1219,7 @@ namespace PMDS.GUI.BaseControls
             {
                 PMDS.db.Entities.Benutzer rUser = this.b.getUser(ENV.USERID, db);
                 if (rUser.IDArzt == null )
-                    //r.VorgeschlagenVon = rUser.Vorname + ' ' +rUser.Nachname + " (" + ENV.LoginInNameFrei + ")";
+                    //r.VorgeschlagenVon = rUser.Vorname + ' ' +rUser.Nachname + " (" + Settings.LoginInNameFrei + ")";
                     r.VorgeschlagenVon = ENV.LoginInNameFrei;
                 else
                     r.AngeordnetVon = ENV.LoginInNameFrei;

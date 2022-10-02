@@ -277,7 +277,7 @@ Public Class calculation
                                 ByVal editor As TXTextControl.TextControl, ByVal IDKlinik As System.Guid, rechDat As Nullable(Of Date))
         calcBase.errTxt = ""
 
-        'this.calculation.stornieren(listID, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, this.form.editor, PMDS.Global.ENV.IDKlinik);
+        'this.calculation.stornieren(listID, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, this.form.editor, PMDS.Global.Settings.IDKlinik);
         Dim listIDDoStorno As New System.Collections.Generic.List(Of dbPMDS.billsRow)()
         Me._doBill.doAction(listIDBills, sr, editor, "f", IDKlinik, False, listIDDoStorno, rechDat)
     End Sub

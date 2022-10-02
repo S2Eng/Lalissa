@@ -5723,8 +5723,8 @@ namespace PMDS.DB
                         rPflegePlan.NaechsteEvaluierung = NaechsteEvaluierung.Date;
                     rPflegePlan.LetzteEvaluierung = DateTime.Now;
                     //rPflegePlan.NaechsteEvaluierungBemerkung = EvaluierungBemerkung;
-                    //rPflegePlan.IDBenutzer_Geaendert = ENV.ActiveUser.ID;
-                    //rPflegePlan.LogInNameFrei = ENV.LoginInNameFrei;
+                    //rPflegePlan.IDBenutzer_Geaendert = Settings.ActiveUser.ID;
+                    //rPflegePlan.LogInNameFrei = Settings.LoginInNameFrei;
                     //rPflegePlan.DatumGeaendert = DateTime.Now;
                     db.SaveChanges();
                     return true;
@@ -12044,7 +12044,7 @@ namespace PMDS.DB
                             }
                             string exTmp2 = "PMDSBusiness.handleExceptionsServerNotReachable: Too muach repeats (=" + ExeptHandlerServerNotReachable.iFctCalled.ToString() + ") for Fct. " + FctName + "\r\n" + "\r\n" + sExept2.ToString();
                             throw new Exception(exTmp2.ToString());
-                            //ENV.HandleException(exTmp2, "PMDSBusiness.handleExceptionsServerNotReachable", false);
+                            //Settings.HandleException(exTmp2, "PMDSBusiness.handleExceptionsServerNotReachable", false);
                         }
                         else
                         {

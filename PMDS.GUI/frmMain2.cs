@@ -212,7 +212,7 @@ namespace PMDS
                 frmMain.Rights.ImportGibodat = ENV.HasRight(UserRights.ImportGibodat);
                 frmMain.Rights.QS2 = ENV.HasRight(UserRights.QS2);
                 frmMain.Rights.KlientenberichtDrucken = ENV.HasRight(UserRights.KlientenberichtDrucken);
-                //frmMain.Rights.Abrechnung = ENV.HasRight(UserRights.Abrechnung);
+                //frmMain.Rights.Abrechnung = Settings.HasRight(UserRights.Abrechnung);
                 frmMain.Rights.btnTransferCalcData = (ENV.HasRight(UserRights.Abrechnungen‹berspielen) || ENV.adminSecure);
                 frmMain.Rights.btnExportCalculations = ENV.HasRight(UserRights.AbrechnungenExportieren) || ENV.adminSecure;
                 frmMain.Rights.SuchtgiftschrankSchluessel = ENV.HasRight(UserRights.SuchtgiftschrankSchluessel);
@@ -262,9 +262,9 @@ namespace PMDS
 
             RightsStammdaten.Einrichtung = ENV.HasRight(UserRights.EinrichtungVerwalten);
             RightsStammdaten.Benutzer = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;
-            RightsStammdaten.Gruppenrechte = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;                    //ultraToolbarsManager1.Tools["Gruppenrechte"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
-            RightsStammdaten.VerwaltungEinrichtungUndBenutzer = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure; //ultraToolbarsManager1.Tools["btnVerwaltungKlinikenUser"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
-            RightsStammdaten.VerwaltungFortbildungen = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;          //ultraToolbarsManager1.Tools["btnVerwaltungFortbildungen"].SharedProps.Visible = ENV.HasRight(UserRights.ManageUser);
+            RightsStammdaten.Gruppenrechte = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;                    //ultraToolbarsManager1.Tools["Gruppenrechte"].SharedProps.Visible = Settings.HasRight(UserRights.ManageUser);
+            RightsStammdaten.VerwaltungEinrichtungUndBenutzer = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure; //ultraToolbarsManager1.Tools["btnVerwaltungKlinikenUser"].SharedProps.Visible = Settings.HasRight(UserRights.ManageUser);
+            RightsStammdaten.VerwaltungFortbildungen = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;          //ultraToolbarsManager1.Tools["btnVerwaltungFortbildungen"].SharedProps.Visible = Settings.HasRight(UserRights.ManageUser);
 
             RightsStammdaten.Auswahllisten = ENV.HasRight(UserRights.AuswahllistenVerwalten);
             RightsStammdaten.Zusatzeintr‰ge = ENV.HasRight(UserRights.ZusatzEintraegeVerwalten);
@@ -2296,7 +2296,7 @@ namespace PMDS
             // datenbank anzeigen
             panelUser.Text = ENV.String("GUI.STATUS_USER", new BusinessLogic.Benutzer(ENV.USERID).FullName);
             panelAbt.Text = ENV.String("GUI.STATUS_ABT", GuiUtil.Abteilung());
-            //panelVersion.Text	= ENV.String("GUI.STATUS_VERSION", version);
+            //panelVersion.Text	= Settings.String("GUI.STATUS_VERSION", version);
         }
 
         //----------------------------------------------------------------------------
@@ -2385,20 +2385,20 @@ namespace PMDS
 
             ultraToolbarsManager1.Tools["Versetzen"].SharedProps.Visible = ENV.HasRight(UserRights.Versetzung);
             ultraToolbarsManager1.Tools["Bereichsversetzung"].SharedProps.Visible = ENV.HasRight(UserRights.Versetzung);
-            ultraToolbarsManager1.Tools["Abrechnung"].SharedProps.Visible = false;          // ENV.HasRight(UserRights.AbrechnungStarten);
+            ultraToolbarsManager1.Tools["Abrechnung"].SharedProps.Visible = false;          // Settings.HasRight(UserRights.AbrechnungStarten);
             ultraToolbarsManager1.Tools["ImportGibodat"].SharedProps.Visible = ENV.HasRight(UserRights.ImportGibodat);
             ultraToolbarsManager1.Tools["btnSTAMP"].SharedProps.Visible = ENV.HasRight(UserRights.STAMPMeldung);
 
 
             ultraToolbarsManager1.Tools["RezepteVerwalten"].SharedProps.Visible = ENV.HasRight(UserRights.RezepteVerwalten);
             ultraToolbarsManager1.Tools["Historie"].SharedProps.Visible = ENV.HasRight(UserRights.Historie);
-            //ultraToolbarsManager1.Tools["Orem"].SharedProps.Visible                 = ENV.HasRight(UserRights.CreateClassification);
+            //ultraToolbarsManager1.Tools["Orem"].SharedProps.Visible                 = Settings.HasRight(UserRights.CreateClassification);
             ultraToolbarsManager1.Tools["Bemerkung"].SharedProps.Visible = ENV.HasRight(UserRights.Rueckmelden);
 
             ultraToolbarsManager1.Tools["Urlaub"].SharedProps.Visible = ENV.HasRight(UserRights.Urlaube);
             ultraToolbarsManager1.Tools["Bezugsperson"].SharedProps.Visible = ENV.HasRight(UserRights.BezugspersonAendern);
 
-            ultraToolbarsManager1.Tools["Barcodeverarbeitung"].SharedProps.Visible = false; // ENV.HasRight(UserRights.BarcodeVerarbeitung); ;
+            ultraToolbarsManager1.Tools["Barcodeverarbeitung"].SharedProps.Visible = false; // Settings.HasRight(UserRights.BarcodeVerarbeitung); ;
 
             ultraToolbarsManager1.Tools["DatenarchivierungKlient"].SharedProps.Visible = (ENV.HasRight(UserRights.Historie) && (ENV.ArchivPath != "")) || ENV.adminSecure;
             ultraToolbarsManager1.Tools["DatenarchivierungAlle"].SharedProps.Visible = (ENV.HasRight(UserRights.Historie) && (ENV.ArchivPath != "")) || ENV.adminSecure;
@@ -2807,7 +2807,7 @@ namespace PMDS
                         break;
 
                     case "btnQS2QueryExpress":
-                        //qs2.ui.OpenWindow.doControl(qs2.core.ENV.eTypApp.fctQueryExpress, null, null, PMDS.Global.ENV.adminSecure);
+                        //qs2.ui.OpenWindow.doControl(qs2.core.Settings.eTypApp.fctQueryExpress, null, null, PMDS.Global.Settings.adminSecure);
                         break;
 
                     case "btnQS2LogManager":
@@ -3020,7 +3020,7 @@ namespace PMDS
             {
                 //if (QS2.Desktop.ControlManagment.ControlWorker.isBack)
                 //{
-                //    this.ControlWorker.run(Application.OpenForms, this.components, PMDS.Global.ENV.TypeRessourcesRun);
+                //    this.ControlWorker.run(Application.OpenForms, this.components, PMDS.Global.Settings.TypeRessourcesRun);
                 //}
                 //else
                 //{
@@ -3062,7 +3062,7 @@ namespace PMDS
             {
                 if (this.Visible)
                 {
-                    //ENV.fMainWindowResized(this.Size);
+                    //Settings.fMainWindowResized(this.Size);
                 }
             }
             catch (Exception ex)

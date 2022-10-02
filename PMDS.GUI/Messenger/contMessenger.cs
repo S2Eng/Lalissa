@@ -445,7 +445,7 @@ namespace PMDS.GUI.Messenger
                                     db.SaveChanges();
                                 }
 
-                                //this.checkTreeItemReaded(ENV.USERID, tgTree2, rProtMessage, db);
+                                //this.checkTreeItemReaded(Settings.USERID, tgTree2, rProtMessage, db);
                                 rSelGridRow.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.False;
                                 rSelMessage.Readed = true;
                             }

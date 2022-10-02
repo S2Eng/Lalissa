@@ -61,7 +61,7 @@ namespace PMDS.GUI.GUI.Main
                 bool IDFoundInTree = false;
                 this.contSelectPatientenBenutzer1.autoSelectAllForAbtBereich(System.Guid.Empty, System.Guid.Empty, false, null, true, VB.contPlanungData.eTypeUI.PlansAll, ref IDFoundInTree);
                 this.contSelectPatientenBenutzer1.SelectAllNoneBenutzerPatients(CheckState.Unchecked);
-                //this.contSelectPatientenBenutzer1.SelectListViewItemBenutzerPatient(ENV.CurrentIDPatient);
+                //this.contSelectPatientenBenutzer1.SelectListViewItemBenutzerPatient(Settings.CurrentIDPatient);
                 this.contSelectPatientenBenutzer1.setLabelCount2();
                 this.contSelectPatientenBenutzer1.PanelBottom.Visible = false;
 

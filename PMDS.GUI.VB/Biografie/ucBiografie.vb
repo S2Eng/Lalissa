@@ -201,7 +201,7 @@ Public Class ucBiografie
     Public Sub fillFormTemplate()
         Try
 
-            'Dim dsPatientInfo1 As dsPatientInfo = compPatient.getPatientendaten(PMDS.Global.ENV.CurrentIDPatient)
+            'Dim dsPatientInfo1 As dsPatientInfo = compPatient.getPatientendaten(PMDS.Global.Settings.CurrentIDPatient)
 
             Dim p As New PMDS.BusinessLogic.Patient(PMDS.Global.ENV.CurrentIDPatient)
 

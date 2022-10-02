@@ -158,7 +158,7 @@
     <Compile Include="TxtEditor2\ContextMenu_AppFields.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TxtEditor2\ENV.vb" />
+    <Compile Include="TxtEditor2\Settings.vb" />
     <Compile Include="TxtEditor2\FileDragDropHandler.vb" />
     <Compile Include="TxtEditor2\FileHandler.vb" />
     <Compile Include="TxtEditor2\FileHandler_Toolbar.vb" />

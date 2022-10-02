@@ -1636,7 +1636,7 @@ namespace PMDS.DynReportsForms
             bool bError = false;
             //bool bInfo = true;
             //GuiUtil.ValidateField(cbETo, (cbETo.Value != null),
-            //ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+            //Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
             if (this.cbETo.Value == null)
             {

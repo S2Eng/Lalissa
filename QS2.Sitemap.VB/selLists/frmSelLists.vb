@@ -131,10 +131,10 @@ Public Class frmSelLists
     Private Sub frmSelLists_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
         Try
             If Me.Visible Then
-                'Dim pars As New qs2.core.ENV.cParsCalMainFunction()
+                'Dim pars As New qs2.core.Settings.cParsCalMainFunction()
                 'pars.UICoontrol = Me
                 'pars.UIComponents = Me.components
-                'qs2.core.ENV.CallFunctionMain(core.ENV.eTypeFunction.doColorManagment, pars)
+                'qs2.core.Settings.CallFunctionMain(core.Settings.eTypeFunction.doColorManagment, pars)
             End If
 
         Catch ex As Exception

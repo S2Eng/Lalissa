@@ -97,14 +97,14 @@ namespace PMDS.GUI
         {
             dsPatientStation.PatientDataTable t;
             List<Guid> ag = new List<Guid>();
-            //if (ENV.CurrentAnsichtinfo.IDAbteilung != Guid.Empty)
+            //if (Settings.CurrentAnsichtinfo.IDAbteilung != Guid.Empty)
             //{
-            //    ag.Add(ENV.CurrentAnsichtinfo.IDAbteilung);
-            //    t = Patient.ByFilter("", false, ag.ToArray(), ENV.CurrentAnsichtinfo.IDBereich, entlassene, ENV.IDKlinik);
+            //    ag.Add(Settings.CurrentAnsichtinfo.IDAbteilung);
+            //    t = Patient.ByFilter("", false, ag.ToArray(), Settings.CurrentAnsichtinfo.IDBereich, entlassene, Settings.IDKlinik);
             //}
             //else
             //{
-            //    t = Patient.ByFilter("", false, ENV.CurrentUserAbteilungen.ToArray(), ENV.CurrentAnsichtinfo.IDBereich, false, ENV.IDKlinik);
+            //    t = Patient.ByFilter("", false, Settings.CurrentUserAbteilungen.ToArray(), Settings.CurrentAnsichtinfo.IDBereich, false, Settings.IDKlinik);
             //}
 
             //<20120202-2>

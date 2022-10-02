@@ -130,7 +130,7 @@ namespace PMDS.Print
         public static void PrintPflegePlanPDxOrientated(Guid IDAufenthalt, bool bBeendeteAnzeigen)
         {
             ReportDocument rpt = ReportManager.GetPflegePlanPDxOrientated();
-            //rpt.SetDatabaseLogon(ENV.DB_USER, ENV.DB_PASSWORD, ENV.DB_SERVER, ENV.DB_DATABASE);
+            //rpt.SetDatabaseLogon(Settings.DB_USER, Settings.DB_PASSWORD, Settings.DB_SERVER, Settings.DB_DATABASE);
 
             TableLogOnInfo info = new TableLogOnInfo();
             info.ConnectionInfo.DatabaseName = ENV.DB_DATABASE;
@@ -818,8 +818,8 @@ namespace PMDS.Print
         {
             try
             {
-                //dsTermine.WriteXml(ENV.pathConfig + "\\dsTermine.xml", XmlWriteMode.WriteSchema);
-                //dsTermine.WriteXmlSchema(ENV.pathConfig + "\\dsTermine.xsd");
+                //dsTermine.WriteXml(Settings.pathConfig + "\\dsTermine.xml", XmlWriteMode.WriteSchema);
+                //dsTermine.WriteXmlSchema(Settings.pathConfig + "\\dsTermine.xsd");
                 //return;
 
                 ReportDocument rpt = new ReportDocument();

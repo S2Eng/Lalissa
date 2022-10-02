@@ -522,7 +522,7 @@ namespace qs2.ui.print
                             qs2.core.vb.businessFramework b = new businessFramework();
                             RoleOK = b.checkRolesUser(true, InfoQryRunPar.Application.Trim(), QryColumn, InfoQryRunPar.rSelListQry._Table.Trim());
 
-                            //if (qs2.core.ENV.ControlOpenStayType == 0)
+                            //if (qs2.core.Settings.ControlOpenStayType == 0)
                             //{
                             //    RoleOK = b.checkRolesUser(false, InfoQryRunPar.Application.Trim(), QryColumn, InfoQryRunPar.rSelListQry._Table.Trim());
                             //}

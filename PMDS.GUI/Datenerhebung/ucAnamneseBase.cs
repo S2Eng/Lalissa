@@ -104,7 +104,7 @@ namespace PMDS.GUI
                 AnamneseObject.IDPatient = value;
 
                 //if(Modell == PflegeModelle.Krohwinkel)
-                //    Klient = new KlientDetails(value, ENV.IDAUFENTHALT);
+                //    Klient = new KlientDetails(value, Settings.IDAUFENTHALT);
                 _valueChangeEnabled = false;
                 _AnamneseRow = null;
                 SetPDX();
@@ -405,7 +405,7 @@ namespace PMDS.GUI
             AnamneseObject.Refresh();
 
             //if(Modell == PflegeModelle.Krohwinkel)
-            //    Klient = new KlientDetails(IDPatient, ENV.IDAUFENTHALT);
+            //    Klient = new KlientDetails(IDPatient, Settings.IDAUFENTHALT);
 
             SetPDX();
             InitErstelltAmCombo();
@@ -440,7 +440,7 @@ namespace PMDS.GUI
             AnamneseObject.Refresh();
 
             //if (Modell == PflegeModelle.Krohwinkel)
-            //    Klient = new KlientDetails(IDPatient, ENV.IDAUFENTHALT);
+            //    Klient = new KlientDetails(IDPatient, Settings.IDAUFENTHALT);
 
             _valueChangeEnabled = false;
             SetPDX();
@@ -474,7 +474,7 @@ namespace PMDS.GUI
             AnamneseObject.Refresh();
 
             //if (Modell == PflegeModelle.Krohwinkel)
-            //    Klient = new KlientDetails(IDPatient, ENV.IDAUFENTHALT);
+            //    Klient = new KlientDetails(IDPatient, Settings.IDAUFENTHALT);
 
             SetPDX();
             InitErstelltAmCombo();

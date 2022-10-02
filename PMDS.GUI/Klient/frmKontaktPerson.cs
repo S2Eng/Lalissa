@@ -27,7 +27,7 @@ namespace PMDS.GUI
             }
 
             Closing += new CancelEventHandler(frm_Closing);
-            //if (!ENV.HasRight(UserRights.KlientenAktStammdatenAendern))
+            //if (!Settings.HasRight(UserRights.KlientenAktStammdatenAendern))
         }
 
         public void AllowEdit (bool bSwitch)

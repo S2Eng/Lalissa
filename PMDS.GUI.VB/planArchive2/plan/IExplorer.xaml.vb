@@ -128,7 +128,7 @@ Public Class IExplorer
     Public Sub doLogIn(UserID As String, Pwd As String, ReloadiOffice As Boolean)
         Try
             'If ReloadiOffice Then
-            '    Me.NavigateToUrl(ENV.urlIOffice.Trim())
+            '    Me.NavigateToUrl(Settings.urlIOffice.Trim())
             'End If
             Me.WebSiteLoaded()
 

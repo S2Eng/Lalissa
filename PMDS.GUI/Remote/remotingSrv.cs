@@ -136,9 +136,9 @@ namespace PMDS.Global.Remote
                         if (!throwException)
                         {
                             string txtLog = "Info: IPC-channel reconnected (Port: " + Port.Trim() + "). Machine: " + System.Environment.MachineName.Trim() + "\r\n";
-                            //PMDS.Global.ENV.WriteLog(txtLog);
-                            //PMDS.Global.ENV.HandleException(new Exception(txtLog), "Exception reconnect IPC", false);
-                            //PMDS.Global.ENV.HandleException(new Exception(txtLog));
+                            //PMDS.Global.Settings.WriteLog(txtLog);
+                            //PMDS.Global.Settings.HandleException(new Exception(txtLog), "Exception reconnect IPC", false);
+                            //PMDS.Global.Settings.HandleException(new Exception(txtLog));
                         }
 
                         //if (IsIPCProcess)
@@ -238,7 +238,7 @@ namespace PMDS.Global.Remote
                 }
 
                 string sConfigFileOnlyNameTmp = System.IO.Path.GetFileName(ENV.sConfigFile.Trim());
-                //string sConfigFileTmp = ENV.sConfigFile;
+                //string sConfigFileTmp = Settings.sConfigFile;
                 if (sConfigFileOnlyNameTmp.Contains(" "))
                 {
                     sConfigFileOnlyNameTmp = "\"" + sConfigFileOnlyNameTmp + "\"";
@@ -324,7 +324,7 @@ namespace PMDS.Global.Remote
         {
             try
             {
-                //if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
+                //if (Settings.SchnellrückmeldungAsProcess.Trim() == "1")
                 //{
                 //    remotingClient remotingClient1 = new remotingClient();
                 //    cParComm cParComm1 = new cParComm();
@@ -497,7 +497,7 @@ namespace PMDS.Global.Remote
         {
             try
             {
-                //if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
+                //if (Settings.SchnellrückmeldungAsProcess.Trim() == "1")
                 //{
                 //    string pathIPC = System.IO.Path.GetTempPath() + "\\ipc";
                 //    string IPCFileTemp = pathIPC + "\\closed_" + remotingSrv.UriMainPMDS + ".ipctemp";

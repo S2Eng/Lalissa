@@ -119,16 +119,16 @@ namespace PMDS.Calc.UI.Admin
         private void UpdateActions()
         {
             ////nach User Rechte Tab Stammdaten anzeigen oder ausblenden
-            //ucKlient2.StammdatenVisible = ENV.HasRight(UserRights.KlientenAktStammdatenAnzeigen);
+            //ucKlient2.StammdatenVisible = Settings.HasRight(UserRights.KlientenAktStammdatenAnzeigen);
 
             ////Stammdaten ReadOnly setzen
-            //ucKlient2.StammdatenReadOnly = !ENV.HasRight(UserRights.KlientenAktStammdatenAendern);
+            //ucKlient2.StammdatenReadOnly = !Settings.HasRight(UserRights.KlientenAktStammdatenAendern);
 
             //Sonstige Visible
-            //ucKlient2.SonstigeVisible = ENV.HasRight(UserRights.KlientenAktSonstigeAnzeigen);
+            //ucKlient2.SonstigeVisible = Settings.HasRight(UserRights.KlientenAktSonstigeAnzeigen);
 
             //Sonstige ReadOnly
-            //ucKlient2.SonstigeReadOnly = !ENV.HasRight(UserRights.KlientenAktSonstigeAendern);
+            //ucKlient2.SonstigeReadOnly = !Settings.HasRight(UserRights.KlientenAktSonstigeAendern);
     
 
             //if (!ucKlient2.StammdatenVisible && !ucKlient2.SonstigeVisible)

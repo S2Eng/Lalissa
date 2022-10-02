@@ -161,7 +161,7 @@ namespace PMDS.GUI
                     _framework.HEADER.ShowOnlyHeader(true);
                     ENV.UserLoggedOn += new EventHandler(ENV_UserLoggedOn);
 
-                    //if (ENV.CurrentIDPatient  != System.Guid.Empty && this.Visible && ENV.AnsichtsModus == TerminlisteAnsichtsmodi .Bereichsansicht ) 
+                    //if (Settings.CurrentIDPatient  != System.Guid.Empty && this.Visible && Settings.AnsichtsModus == TerminlisteAnsichtsmodi .Bereichsansicht ) 
                     //            this.loadMainSite();
                 }
 
@@ -203,7 +203,7 @@ namespace PMDS.GUI
         {
             //AskForSave();
 
-            //ENV.UserLoggedOn -= new EventHandler(ENV_UserLoggedOn);
+            //Settings.UserLoggedOn -= new EventHandler(ENV_UserLoggedOn);
         }
 
         //----------------------------------------------------------------------------

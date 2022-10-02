@@ -224,7 +224,7 @@ namespace PMDS.DB
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Ein eindeutiger Eintrag aus der Liste " + ID + " konnte nicht gefunden werden!", "ACHTUNG - Fehlerhafte Verarbeitung!", System.Windows.Forms.MessageBoxButtons.OK);
                     return;
 
-                    //throw new DBException(ENV.String("DB.E_ID_NOT_FOUND", owner.GetType().ToString(), da.SelectCommand.Parameters[0].Value.ToString()));
+                    //throw new DBException(Settings.String("DB.E_ID_NOT_FOUND", owner.GetType().ToString(), da.SelectCommand.Parameters[0].Value.ToString()));
                 } 
             }
 	    }

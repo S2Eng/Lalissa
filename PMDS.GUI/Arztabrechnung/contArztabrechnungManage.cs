@@ -125,7 +125,7 @@ namespace PMDS.GUI.Arztabrechnung
             try
             {
                 //this.dsKlientenliste1.Clear();
-                //this.sqlManange1.getPatientenStart(ENV.USERID, 0, System.Guid.Empty, ref dsKlientenliste1, System.Guid.Empty, System.Guid.Empty, System.Guid.Empty);
+                //this.sqlManange1.getPatientenStart(Settings.USERID, 0, System.Guid.Empty, ref dsKlientenliste1, System.Guid.Empty, System.Guid.Empty, System.Guid.Empty);
                 //foreach (Global.db.ERSystem.dsKlientenliste.vKlientenlisteRow rKlient in dsKlientenliste1.vKlientenliste)
                 //{
                 //    Infragistics.Win.ValueListItem itm = this.cboPatient.Items.Add(rKlient.IDKlient, rKlient.PatientName.Trim());

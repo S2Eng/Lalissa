@@ -1203,7 +1203,7 @@ namespace PMDS.GUI
                 ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
             //GuiUtil.ValidateField(cbBerufsstand, (cbBerufsstand.Value != null),
-            //    ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+            //    Settings.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
             string MsgTxt = "";
             bool cbBerufsgruppeOK = PMDSBusinessUI.checkCboBox(this.cbBerufsstand, QS2.Desktop.ControlManagment.ControlManagment.getRes("Berufsst."), true, ref MsgTxt);

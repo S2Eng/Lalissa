@@ -63,7 +63,7 @@ namespace PMDS.Calc.UI.Admin
                 this.ucHeader1.setUI(nurDepot);
                 if (nurDepot)
                 {
-                    //if (ENV.HasRight(UserRights.depotgeldAnzeigen))
+                    //if (Settings.HasRight(UserRights.depotgeldAnzeigen))
                     this._currentAction = AbrechnungsAktion.depotgeld;
                     this.tabMain.ActiveTab = this.tabMain.Tabs[3];
                     this.tabMain.SelectedTab = this.tabMain.Tabs[3];

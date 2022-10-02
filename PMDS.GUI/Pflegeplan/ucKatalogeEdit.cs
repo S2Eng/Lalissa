@@ -1038,7 +1038,7 @@ namespace PMDS.GUI
                 //    sb.Append("\"" + cbASZM.Text + "\" ist bei mindestens einem Klienten im Pflegeplan zugeordnet.");
                 //    sb.Append("\n\nDer Eintrag kann nicht entfernt werden.");
 
-                //    if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sb.ToString(), ENV.String("DIALOGTITLE_DELETEASZM", ASZMOhneArtikel), MessageBoxButtons.OK, MessageBoxIcon.Information) != DialogResult.Yes)
+                //    if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sb.ToString(), Settings.String("DIALOGTITLE_DELETEASZM", ASZMOhneArtikel), MessageBoxButtons.OK, MessageBoxIcon.Information) != DialogResult.Yes)
                 //    {
                 //        return;
                 //    }

@@ -1051,7 +1051,7 @@ namespace PMDS.Calc.UI.Admin
             PMDS.GUI.UltraGridTools.AddZahlartValueList(dgMain, "Zahlart");
             sitemap.fillEnumBillTyp(this.dgKlienten.DisplayLayout.ValueLists[0], false);
 
-            //PMDS.GUI.UltraGridTools.AddKostentraegerValueList(Guid IDPatient, dgMain, "IDKlinik", ENV.IDKlinik);
+            //PMDS.GUI.UltraGridTools.AddKostentraegerValueList(Guid IDPatient, dgMain, "IDKlinik", Settings.IDKlinik);
 
 
             this.ucKlinikDropDown1.initControl();

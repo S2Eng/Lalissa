@@ -189,7 +189,7 @@ namespace PMDS.DB
 
                     //List <cPatientsAll> tPatientsAufenthaltAllActTmp2 = (from p in db.Patient
                     //                                                     join a in db.Aufenthalt on p.ID equals a.IDPatient
-                    //                                                     where a.IDKlinik == PMDS.Global.ENV.IDKlinik && a.Entlassungszeitpunkt == null && !lstPatAbw.Contains(p.ID)
+                    //                                                     where a.IDKlinik == PMDS.Global.Settings.IDKlinik && a.Entlassungszeitpunkt == null && !lstPatAbw.Contains(p.ID)
                     //                                                     orderby p.Nachname ascending, p.Vorname ascending
                     //                                                     select new cPatientsAll()
                     //                                                     {
@@ -208,7 +208,7 @@ namespace PMDS.DB
                     //List<cPatientsAll> tPatientsAufenthaltAllActTmp2 = (from p in db.Patient
                     //                                                   join a in db.Aufenthalt on p.ID equals a.IDPatient 
                     //                                                   from uv in db.UrlaubVerlauf.Where(uv => uv.IDAufenthalt == a.ID && uv.EndeDatum != null)  
-                    //                                                   where a.IDKlinik == PMDS.Global.ENV.IDKlinik && a.Entlassungszeitpunkt == null   
+                    //                                                   where a.IDKlinik == PMDS.Global.Settings.IDKlinik && a.Entlassungszeitpunkt == null   
                     //                                                    orderby p.Nachname ascending, p.Vorname ascending
                     //                                                   select new cPatientsAll()
                     //                                                   {
@@ -227,7 +227,7 @@ namespace PMDS.DB
                 //PMDSBusinessRAM.dsKlientenliste1 = new dsKlientenliste();
                 //sqlManange sqlManangeWork = new sqlManange();
                 //sqlManangeWork.initControl();
-                //sqlManangeWork.getPatientenStart(PMDS.Global.ENV.USERID, 0, System.Guid.Empty, ref PMDSBusinessRAM.dsKlientenliste1, System.Guid.Empty, System.Guid.Empty, System.Guid.Empty);
+                //sqlManangeWork.getPatientenStart(PMDS.Global.Settings.USERID, 0, System.Guid.Empty, ref PMDSBusinessRAM.dsKlientenliste1, System.Guid.Empty, System.Guid.Empty, System.Guid.Empty);
             }
             catch (Exception ex)
             {
