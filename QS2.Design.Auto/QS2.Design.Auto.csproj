@@ -500,19 +500,6 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cFormStart.cs" />
-    <Compile Include="frmStart.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmStart.Designer.cs">
-      <DependentUpon>frmStart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmTestColors.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTestColors.Designer.cs">
-      <DependentUpon>frmTestColors.cs</DependentUpon>
-    </Compile>
     <Compile Include="multiControl\contOnwMultiControlGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -791,12 +778,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmStart.resx">
-      <DependentUpon>frmStart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTestColors.resx">
-      <DependentUpon>frmTestColors.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="multiControl\contMultiGridSelListElement.resx">
       <DependentUpon>contMultiGridSelListElement.cs</DependentUpon>
     </EmbeddedResource>
