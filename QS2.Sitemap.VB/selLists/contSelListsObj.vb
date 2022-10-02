@@ -668,7 +668,6 @@ Public Class contSelListsObj
     Private Sub AssignCriteriaToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AssignCriteriaToolStripMenuItem.Click
         Try
             Me.Cursor = Windows.Forms.Cursors.WaitCursor
-            Me.AssignCriterias()
 
         Catch ex As Exception
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
@@ -678,58 +677,11 @@ Public Class contSelListsObj
     End Sub
     Private Sub AssignCriteriaCustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AssignCriteriaCustomerToolStripMenuItem.Click
         Try
-            Me.Cursor = Windows.Forms.Cursors.WaitCursor
-            Me.AssignCriteriasCustomer()
 
         Catch ex As Exception
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
         Finally
             Me.Cursor = Windows.Forms.Cursors.Default
-        End Try
-    End Sub
-
-    Public Sub AssignCriterias()
-        Try
-            Dim selRowGrid As Infragistics.Win.UltraWinGrid.UltraGridRow = Nothing
-            Dim rSelSelList As dsAdmin.tblSelListEntriesRow = Me.getSelectedRow(True, selRowGrid)
-            If Not rSelSelList Is Nothing Then
-                Dim rGroup As dsAdmin.tblSelListGroupRow = Me.sqlAdmin1.getSelListGroupRowID(rSelSelList.IDGroup)
-                Dim frm As New frmSelListsChapter()
-                If rGroup.IDGroupStr.Trim().ToLower().StartsWith(("Chapters").Trim().ToLower()) Then
-                    frm.ContSelListsChapter1.typIDGroup = qs2.core.vb.sqlAdmin.eDbTypAuswObj.Criterias.ToString()
-                Else
-                    frm.ContSelListsChapter1.typIDGroup = qs2.core.vb.sqlAdmin.eDbTypAuswObj.Criterias.ToString() + "_" + rGroup.IDGroupStr.Trim()
-                End If
-
-                frm.IDApplication = Me.IDApplicationToAssignForSublists
-                frm.IDParticipant = Me.IDParticipantToAssignForSublists
-                frm.ContSelListsChapter1.rGroupSelected = rGroup
-                frm.ContSelListsChapter1.rSelEntry = rSelSelList
-                frm.ShowDialog(Me)
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("contSelListsObj.AssignCriterias: " + ex.ToString())
-        End Try
-    End Sub
-    Public Sub AssignCriteriasCustomer()
-        Try
-            Dim selRowGrid As Infragistics.Win.UltraWinGrid.UltraGridRow = Nothing
-            Dim rSelSelList As dsAdmin.tblSelListEntriesRow = Me.getSelectedRow(True, selRowGrid)
-            If Not rSelSelList Is Nothing Then
-                Dim rGroup As dsAdmin.tblSelListGroupRow = Me.sqlAdmin1.getSelListGroupRowID(rSelSelList.IDGroup)
-                Dim frm As New frmSelListsChapter()
-                frm.ContSelListsChapter1.typIDGroup = qs2.core.vb.sqlAdmin.eDbTypAuswObj.CriteriasUser.ToString() + "_" + rGroup.IDGroupStr.Trim()
-                frm.IDApplication = Me.IDApplicationToAssignForSublists
-                frm.IDParticipant = Me.IDParticipantToAssignForSublists
-                frm.ContSelListsChapter1.rGroupSelected = rGroup
-                frm.ContSelListsChapter1.rSelEntry = rSelSelList
-                frm.showiSelect = True
-                frm.ShowDialog(Me)
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("contSelListsObj.AssignCriteriasCustomer: " + ex.ToString())
         End Try
     End Sub
 

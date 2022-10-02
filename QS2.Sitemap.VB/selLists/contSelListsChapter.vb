@@ -28,9 +28,6 @@ Public Class contSelListsChapter
     Public funct1 As New qs2.core.vb.funct()
 
     Public typIDGroup As String = ""
-
-    Public frmMain As frmSelListsChapter = Nothing
-
     Public _textCaption As String = ""
 
     Public coliSelection As String = "iSelection"
@@ -520,8 +517,6 @@ Public Class contSelListsChapter
 
             Me.IDApplication = selectedApplication
             Me.ContCboSelListChapters.IDApplication = Me.IDApplication
-            Me.frmMain.IDApplication = Me.IDApplication
-            Me.frmMain.setTitle()
             Me.ContCboSelListChapters.IDGroupStr = Me.optChapterStayFollowUp.Value.ToString()
             Me.ContCboSelListChapters.loadData()
 

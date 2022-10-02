@@ -1477,37 +1477,24 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
                     Dim v As DataRowView = Me.gridSelList.ActiveRow.ListObject
                     Dim rSelEntry As dsAdmin.tblSelListEntriesRow = v.Row
 
-                    If tagMenü.sublist.Trim().ToLower() = qs2.core.vb.sqlAdmin.groupNameCriterias.Trim().ToLower() Then
-                        Dim frm As New frmSelListsChapter()
-                        frm.ContSelListsChapter1.rGroupSelected = tagMenü.rGroup
-                        If tagMenü.rGroup.IDGroupStr.Trim().ToLower().StartsWith(("Chapters").Trim().ToLower()) Then
-                            frm.ContSelListsChapter1.typIDGroup = qs2.core.vb.sqlAdmin.eDbTypAuswObj.Criterias.ToString()
-                        Else
-                            frm.ContSelListsChapter1.typIDGroup = qs2.core.vb.sqlAdmin.eDbTypAuswObj.Criterias.ToString() + "_" + tagMenü.rGroup.IDGroupStr.Trim()
-                        End If
-                        frm.ContSelListsChapter1.rSelEntry = rSelEntry
-                        frm.ShowDialog(Me)
-
-                    Else
-                        Dim frm As New frmSelListsObj()
-                        frm.ContSelListsObj1.TypeStr = ""
-                        frm.ContSelListsObj1._idObject_IDSelListEntrySublist_IDStay = rSelEntry.ID
-                        frm.ContSelListsObj1.grpToLoad = tagMenü.rGroup.IDGroupStr
-                        Dim lstClassification As New System.Collections.ArrayList()
-                        If tagMenü.rGroup.IDGroupStr.ToLower().Trim() = ("Queries").ToLower().Trim() Then
-                            lstClassification.Add(qs2.core.Enums.eTypSubReport.MainReport.ToString())
-                            lstClassification.Add(qs2.core.Enums.eTypSubReport.SubReport.ToString())
-                            lstClassification.Add("")
-                        End If
-
-                        frm.ContSelListsObj1.typDB = sqlAdmin.eDbTypAuswObj.SubSelList
-                        frm.ContSelListsObj1.typ = contSelListsObj.eTyp.saveForSelList
-                        frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal,
-                                      True, tagMenü.rGroup.IDApplication, tagMenü.rGroup.IDParticipant, tagMenü.sublist, rSelEntry.IDRessource)
-
-                        frm.ShowDialog(Me)
-
+                    Dim frm As New frmSelListsObj()
+                    frm.ContSelListsObj1.TypeStr = ""
+                    frm.ContSelListsObj1._idObject_IDSelListEntrySublist_IDStay = rSelEntry.ID
+                    frm.ContSelListsObj1.grpToLoad = tagMenü.rGroup.IDGroupStr
+                    Dim lstClassification As New System.Collections.ArrayList()
+                    If tagMenü.rGroup.IDGroupStr.ToLower().Trim() = ("Queries").ToLower().Trim() Then
+                        lstClassification.Add(qs2.core.Enums.eTypSubReport.MainReport.ToString())
+                        lstClassification.Add(qs2.core.Enums.eTypSubReport.SubReport.ToString())
+                        lstClassification.Add("")
                     End If
+
+                    frm.ContSelListsObj1.typDB = sqlAdmin.eDbTypAuswObj.SubSelList
+                    frm.ContSelListsObj1.typ = contSelListsObj.eTyp.saveForSelList
+                    frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal,
+                                 True, tagMenü.rGroup.IDApplication, tagMenü.rGroup.IDParticipant, tagMenü.sublist, rSelEntry.IDRessource)
+
+                    frm.ShowDialog(Me)
+
                 End If
             End If
 

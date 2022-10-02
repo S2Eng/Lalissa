@@ -559,12 +559,6 @@
     <Compile Include="selLists\frmSelLists.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="selLists\frmSelListsChapter.designer.vb">
-      <DependentUpon>frmSelListsChapter.vb</DependentUpon>
-    </Compile>
-    <Compile Include="selLists\frmSelListsChapter.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="selLists\frmSelListsObj.designer.vb">
       <DependentUpon>frmSelListsObj.vb</DependentUpon>
     </Compile>
@@ -634,9 +628,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="selLists\frmSelLists.resx">
       <DependentUpon>frmSelLists.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="selLists\frmSelListsChapter.resx">
-      <DependentUpon>frmSelListsChapter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="selLists\frmSelListsObj.resx">
       <DependentUpon>frmSelListsObj.vb</DependentUpon>
