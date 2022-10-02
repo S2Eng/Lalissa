@@ -392,10 +392,6 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="PrintWindowAuto, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\dlls\PrintWindowAuto.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -788,10 +784,6 @@
     <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.Functions.vb.vbproj">
       <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
       <Name>QS2.Functions.vb</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.license.core\QS2.License.Core.vbproj">
-      <Project>{94394a2a-cc5f-4caf-ae10-371d269f8e0a}</Project>
-      <Name>QS2.License.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Logging.Win\QS2.Logging.Win.csproj">
       <Project>{0dde0333-d4ec-419d-aebd-c8359083c02d}</Project>

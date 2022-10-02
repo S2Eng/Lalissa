@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using QS2.functions.vb;
 using S2Extensions;
 
 
@@ -27,7 +28,7 @@ namespace qs2.core
         public static bool alwaysNewConnection = false;
         public static bool VisualStudioModus = (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
 
-        public static qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+        public static Encryption Encryption1 = new Encryption();
         public static bool VSDesignerMode = false;
 
         public static bool SystemIsInitialized = false;
@@ -906,7 +907,7 @@ namespace qs2.core
                                     ENV.KAVUser = sValue;
 
                                 else if (sVar.Equals("KAVPassword", sc))
-                                    ENV.KAVPassword = ENV.Encryption1.StringDecrypt(sValue, qs2.license.core.Encryption.keyForEncryptingStrings);
+                                    ENV.KAVPassword = ENV.Encryption1.StringDecrypt(sValue, Encryption.keyForEncryptingStrings);
 
                                 else if (sVar.Equals("KAVAuthentificationMode", sc))
                                     ENV.KAVAuthentificationMode = sValue;
@@ -918,7 +919,7 @@ namespace qs2.core
                                     ENV.HL7_User = sValue;
 
                                 else if (sVar.Equals("HL7_Password", sc))
-                                    ENV.HL7_Password = ENV.Encryption1.StringDecrypt(sValue, qs2.license.core.Encryption.keyForEncryptingStrings);
+                                    ENV.HL7_Password = ENV.Encryption1.StringDecrypt(sValue, Encryption.keyForEncryptingStrings);
 
                                 else if (sVar.Equals("HL7_Version", sc))
                                     ENV.HL7_Version = sValue;
@@ -1165,7 +1166,7 @@ namespace qs2.core
                                     for (int i = 0; i < Math.Min(AKHParams.Count(), Values.Count()); i++)
                                     {
                                         string Val = Values.Count() <= i ? Values[0] : Values[i];
-                                        AKHParams[i].Value.AKHCDA_Password = ENV.Encryption1.StringDecrypt(Val, qs2.license.core.Encryption.keyForEncryptingStrings);
+                                        AKHParams[i].Value.AKHCDA_Password = ENV.Encryption1.StringDecrypt(Val, Encryption.keyForEncryptingStrings);
                                     }
                                 }
 
@@ -1255,7 +1256,7 @@ namespace qs2.core
                                     for (int i = 0; i < Math.Min(AKHParams.Count(), Values.Count()); i++)
                                     {
                                         string Val = Values.Count() <= i ? Values[0] : Values[i];
-                                        AKHParams[i].Value.AKHUpload_Password = ENV.Encryption1.StringDecrypt(Val, qs2.license.core.Encryption.keyForEncryptingStrings);
+                                        AKHParams[i].Value.AKHUpload_Password = ENV.Encryption1.StringDecrypt(Val, Encryption.keyForEncryptingStrings);
                                     }
                                 }
                                 //--------------------------------------------------------------------
@@ -1413,11 +1414,10 @@ namespace qs2.core
             try
             {
                 System.Collections.Generic.List<string> lstIDParticipantsDecrypted = new List<string>();
-                qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
                 lstIDParticipantsDecrypted = qs2.core.generic.readStrVariables(ENV.IDParticipant.Trim());
                 foreach (string IDParticipant in lstIDParticipantsDecrypted)
                 {
-                    string IDParticipantDecrypted = Encryption1.StringDecrypt(IDParticipant.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                    string IDParticipantDecrypted = Encryption1.StringDecrypt(IDParticipant.Trim(), Encryption.keyForEncryptingStrings);
                     if (IDParticipantDecrypted.Trim() != "")
                     {
                         ENV.lstIDParticipantsEncrypted.Add(IDParticipantDecrypted);

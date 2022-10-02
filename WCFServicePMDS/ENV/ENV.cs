@@ -198,13 +198,12 @@ namespace WCFServicePMDS
             Exceptions.checkFault(new List<Task>() { tBen2, tPat2, tKlin2 });
 
         }
-     
-
+        
         public static bool readConfig<T>(string configFile, T env)
         {
             try
             {
-                qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+                QS2.functions.vb.Encryption Encryption1 = new QS2.functions.vb.Encryption();
 
                 System.IO.StreamReader str = new System.IO.StreamReader(configFile);
                 while (str.Peek() >= 0)
@@ -295,7 +294,7 @@ namespace WCFServicePMDS
         {
             try
             {
-                qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+                QS2.functions.vb.Encryption Encryption1 = new QS2.functions.vb.Encryption();
 
                 System.IO.StreamReader str = new System.IO.StreamReader(hostsFile);
                 while (str.Peek() >= 0)

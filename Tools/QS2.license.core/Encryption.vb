@@ -29,6 +29,7 @@ Public Class Encryption
             Return ""
         End Try
     End Function
+
     Public Function StringDecrypt(ByVal encrypted As String, ByVal keyText As String) As String
         Try
             Dim workBytes() As Byte =

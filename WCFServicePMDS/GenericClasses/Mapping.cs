@@ -110,7 +110,7 @@ namespace WCFServicePMDS
         }
         public static void setValProp<T>(T o, string sVar, string sValue, bool decrypt = false)
         {
-            qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+            QS2.functions.vb.Encryption Encryption1 = new QS2.functions.vb.Encryption();
 
             //var target = (T)Activator.CreateInstance(typeof(T));
             var propInfos = o.GetType().GetProperties(flags);
@@ -148,7 +148,7 @@ namespace WCFServicePMDS
                             {
                                 if (!string.IsNullOrEmpty(sValue))
                                     if (decrypt)
-                                        propertyInfo.SetValue(o, Encryption1.StringDecrypt(sValue.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings), null);
+                                        propertyInfo.SetValue(o, Encryption1.StringDecrypt(sValue.Trim(), QS2.functions.vb.Encryption.keyForEncryptingStrings), null);
                                     else
                                         propertyInfo.SetValue(o, sValue.Trim(), null);
                                 else

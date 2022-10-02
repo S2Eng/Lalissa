@@ -362,20 +362,9 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="QS2.db.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\QS2.db.Entities.dll</HintPath>
-    </Reference>
     <Reference Include="QS2.functions.vb, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.functions.vb.dll</HintPath>
-    </Reference>
-    <Reference Include="qs2.ui.comm.scan">
-      <HintPath>..\Dlls\qs2.ui.comm.scan.dll</HintPath>
-    </Reference>
-    <Reference Include="QueryExpress, Version=1.0.4713.31774, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\QueryExpress.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -1312,10 +1301,6 @@
     <ProjectReference Include="..\Tools\QS2.Desktop.Txteditor\QS2.Desktop.Txteditor.vbproj">
       <Project>{2baede76-a6d1-42cf-bf28-c1d20229c8ef}</Project>
       <Name>QS2.Desktop.Txteditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.license.core\QS2.License.Core.vbproj">
-      <Project>{94394a2a-cc5f-4caf-ae10-371d269f8e0a}</Project>
-      <Name>QS2.License.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\QS2.Logging.Win\QS2.Logging.Win.csproj">
       <Project>{0dde0333-d4ec-419d-aebd-c8359083c02d}</Project>

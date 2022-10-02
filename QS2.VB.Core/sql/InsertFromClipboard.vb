@@ -113,8 +113,8 @@ Public Class InsertFromClipboard
             ds.WriteXml(writer, XmlWriteMode.WriteSchema)
             Dim XmlDS As String = writer.ToString()
 
-            Dim Encryption1 As New qs2.license.core.Encryption()
-            Dim XmlDSEncrypted As String = Encryption1.StringEncrypt(XmlDS, qs2.license.core.Encryption.keyForEncryptingStrings)
+            Dim Encryption1 As New qs2.functions.vb.Encryption()
+            Dim XmlDSEncrypted As String = Encryption1.StringEncrypt(XmlDS, qs2.functions.vb.Encryption.keyForEncryptingStrings)
             System.Windows.Forms.Clipboard.SetText(XmlDSEncrypted)
 
             If SelLists Then
@@ -130,8 +130,8 @@ Public Class InsertFromClipboard
     End Function
     Public Function saveDataToDBFromClipboard(ByRef txtEncrypted As String, ByRef iCounterRowsUpdated As Integer) As Boolean
         Try
-            Dim Encryption1 As New qs2.license.core.Encryption()
-            Dim XmlDSDecrypted As String = Encryption1.StringDecrypt(txtEncrypted, qs2.license.core.Encryption.keyForEncryptingStrings)
+            Dim Encryption1 As New qs2.functions.vb.Encryption()
+            Dim XmlDSDecrypted As String = Encryption1.StringDecrypt(txtEncrypted, qs2.functions.vb.Encryption.keyForEncryptingStrings)
 
             Dim ds As New DataSet()
             Dim decryptedClipboard As String = ""

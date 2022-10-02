@@ -22,7 +22,7 @@ namespace PMDS.GUI.ELGA
 
         public PMDS.db.Entities.ERModellPMDSEntities _db = null;
         public PMDSBusiness b = new PMDSBusiness();
-        qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+        QS2.functions.vb.Encryption Encryption1 = new QS2.functions.vb.Encryption();
 
         private bool PasswortExpired;
 
@@ -113,7 +113,7 @@ namespace PMDS.GUI.ELGA
                             return false;
                         }
 
-                        string ELGAPwdDecrypted = Encryption1.StringDecrypt(rUsr.ELGAPwd, qs2.license.core.Encryption.keyForEncryptingStrings);
+                        string ELGAPwdDecrypted = Encryption1.StringDecrypt(rUsr.ELGAPwd, QS2.functions.vb.Encryption.keyForEncryptingStrings);
                         if (this.txtELGAPwd.Text.Trim() != ELGAPwdDecrypted.Trim())
                         {
                             this.errorProvider1.SetError(this.txtELGAPwd, "Error");

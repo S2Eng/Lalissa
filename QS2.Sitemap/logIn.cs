@@ -21,12 +21,12 @@ namespace qs2.core
             try
             {
                 qs2.core.vb.funct funct1 = new qs2.core.vb.funct();
-                qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+                QS2.functions.vb.Encryption Encryption1 = new QS2.functions.vb.Encryption();
                 if (!qs2.core.ENV.TrustedConnection)
                 {
                     if (!doNotDecryptPwd)
                     {
-                        ENV.pwdDbDecrypted = Encryption1.StringDecrypt(qs2.core.ENV.pwdDbEncrypted, qs2.license.core.Encryption.keyForEncryptingStrings);
+                        ENV.pwdDbDecrypted = Encryption1.StringDecrypt(qs2.core.ENV.pwdDbEncrypted, QS2.functions.vb.Encryption.keyForEncryptingStrings);
                         ENV.connStr = ENV.connStr.Replace(qs2.core.ENV.pwdDbEncrypted, ENV.pwdDbDecrypted);
                     }
                 }

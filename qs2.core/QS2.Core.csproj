@@ -654,9 +654,9 @@
       <Project>{10b7d2d1-0868-4fda-8473-a12b5bb9386f}</Project>
       <Name>S2Extensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tools\QS2.license.core\QS2.License.Core.vbproj">
-      <Project>{94394a2a-cc5f-4caf-ae10-371d269f8e0a}</Project>
-      <Name>QS2.License.Core</Name>
+    <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.Functions.vb.vbproj">
+      <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
+      <Name>QS2.Functions.vb</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

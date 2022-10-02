@@ -80,7 +80,7 @@ namespace WCFServicePMDS.DAL
         {
             try
             {
-                qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+                QS2.functions.vb.Encryption Encryption1 = new QS2.functions.vb.Encryption();
                 System.Data.Common.DbConnectionStringBuilder OLEDBBuilder = new System.Data.Common.DbConnectionStringBuilder();
                 OLEDBBuilder.ConnectionString = ConnectionStr.Trim();
 
@@ -92,7 +92,7 @@ namespace WCFServicePMDS.DAL
                     if (OLEDBBuilder.ContainsKey("User ID") && OLEDBBuilder.ContainsKey("Password"))
                     {
                         dbBase.User = OLEDBBuilder["User ID"].ToString();
-                        string PwdDecrypted = Encryption1.StringDecrypt(OLEDBBuilder["Password"].ToString().Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                        string PwdDecrypted = Encryption1.StringDecrypt(OLEDBBuilder["Password"].ToString().Trim(), QS2.functions.vb.Encryption.keyForEncryptingStrings);
                         dbBase.PwdDecrypted = PwdDecrypted;
                         dbBase.TrustedConnection = false;
                     }
@@ -110,7 +110,7 @@ namespace WCFServicePMDS.DAL
                     if (!sqlBuilder.IntegratedSecurity)
                     {
                         dbBase.User = sqlBuilder.UserID;
-                        string PwdDecrypted = Encryption1.StringDecrypt(sqlBuilder.Password.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                        string PwdDecrypted = Encryption1.StringDecrypt(sqlBuilder.Password.Trim(), QS2.functions.vb.Encryption.keyForEncryptingStrings);
                         dbBase.PwdDecrypted = PwdDecrypted;
                         dbBase.TrustedConnection = false;
                     }

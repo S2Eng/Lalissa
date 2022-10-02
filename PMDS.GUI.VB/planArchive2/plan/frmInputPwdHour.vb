@@ -60,7 +60,7 @@ Public Class frmInputPwdHour
             Me.abort = False
             If Me.txtPwdEntered.Text.Length > 2 Then
                 Dim sActHour As String = IIf(Me.actTime.Hour >= 10, Me.actTime.Hour.ToString(), "0" + Me.actTime.Hour.ToString())
-                If Me.txtPwdEntered.Text.Substring(0, Me.txtPwdEntered.Text.Length - 2).Equals(QS2.license.core.Encryption.keyForEncryptingStrings) And Me.txtPwdEntered.Text.Substring(Me.txtPwdEntered.Text.Length - 2, 2).Equals(sActHour) Then
+                If Me.txtPwdEntered.Text.Substring(0, Me.txtPwdEntered.Text.Length - 2).Equals(QS2.functions.vb.Encryption.keyForEncryptingStrings) And Me.txtPwdEntered.Text.Substring(Me.txtPwdEntered.Text.Length - 2, 2).Equals(sActHour) Then
                     Me.pwdOK = True
                     Me.Close()
                 Else

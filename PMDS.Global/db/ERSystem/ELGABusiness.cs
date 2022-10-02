@@ -116,7 +116,7 @@ namespace PMDS.Global.db.ERSystem
         }
 
         public static WCFServiceClient WCFServiceClient1 { get; set; }
-        public qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+        public QS2.functions.vb.Encryption Encryption1 = new QS2.functions.vb.Encryption();
         public static bool MsgBoxVerlängerungActive = false;
         public PMDSBusiness b = new PMDSBusiness();
 
@@ -292,7 +292,7 @@ namespace PMDS.Global.db.ERSystem
                                                     ELGA_AuthorSpeciality = b.ELGA_AuthorSpeciality
                                                 }).ToList();
 
-                    string ELGAPwdDecrypted = Encryption1.StringDecrypt(tUsr.First().ELGAPwd.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                    string ELGAPwdDecrypted = Encryption1.StringDecrypt(tUsr.First().ELGAPwd.Trim(), QS2.functions.vb.Encryption.keyForEncryptingStrings);
                     tUsr.First().ELGAPwd = ELGAPwdDecrypted.Trim();
                     return tUsr.First();
                 }

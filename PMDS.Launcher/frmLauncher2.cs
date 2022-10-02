@@ -13,6 +13,7 @@ using Microsoft.Win32;
 using System.IO;
 using QS2.Resources;
 using System.Linq;
+using QS2.functions.vb;
 
 namespace Launcher
 {
@@ -470,8 +471,8 @@ namespace Launcher
                                 p.StartInfo.UserName = update.sUsername;
                                 p.StartInfo.Password = new System.Security.SecureString();
 
-                                qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
-                                foreach (char c in Encryption1.StringDecrypt(update.sPasswordEnc, "*engineering_"))  //nicht ändern!! Texte in der DB und Config sind damit verschlüsselt
+                                Encryption Encryption1 = new Encryption();
+                                foreach (char c in Encryption1.StringDecrypt(update.sPasswordEnc, Encryption.keyForEncryptingStrings))  //nicht ändern!! Texte in der DB und Config sind damit verschlüsselt
                                 {
                                     p.StartInfo.Password.AppendChar(c);
                                 }

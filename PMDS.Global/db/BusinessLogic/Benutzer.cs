@@ -7,7 +7,7 @@ using PMDS.Data.Patient;
 using PMDS.Data.Global;
 using PMDS.Data.PflegePlan;
 using PMDS.Global.db.Global;
-
+using QS2.functions.vb;
 
 
 namespace PMDS.BusinessLogic
@@ -161,8 +161,8 @@ namespace PMDS.BusinessLogic
             get { return DB_ROW.ELGAPwd; }
             set
             {
-                qs2.license.core.Encryption Encryptor = new qs2.license.core.Encryption();                
-                DB_ROW.ELGAPwd = Encryptor.StringEncrypt(value, qs2.license.core.Encryption.keyForEncryptingStrings);
+                Encryption Enc = new Encryption();
+                DB_ROW.ELGAPwd = Enc.StringEncrypt(value, Encryption.keyForEncryptingStrings);
             }
         }
         public DateTime ELGAPwdLastChange
@@ -357,9 +357,9 @@ namespace PMDS.BusinessLogic
             string encPas = DB_ROW.ELGAPwd;
             string encStr = pass;
 
-            qs2.license.core.Encryption Encryptor = new qs2.license.core.Encryption();
+            Encryption Encryptor = new Encryption();
             if (!String.IsNullOrWhiteSpace(passClear))
-                encStr = Encryptor.StringEncrypt(passClear, qs2.license.core.Encryption.keyForEncryptingStrings);
+                encStr = Encryptor.StringEncrypt(passClear, Encryption.keyForEncryptingStrings);
 
             if (encPas == encStr)
             {

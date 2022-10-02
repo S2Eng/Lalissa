@@ -33,14 +33,14 @@ namespace PMDS.BusinessLogic
 
         public static string EncryptString(string str)
         {
-            qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
-            return Encryption1.StringEncrypt(str, "*engineering_");  //nicht ändern!! Texte in der DB und Config sind damit verschlüsselt
+            QS2.functions.vb.Encryption Enc = new QS2.functions.vb.Encryption();
+            return Enc.StringEncrypt(str, QS2.functions.vb.Encryption.keyForEncryptingStrings);  //nicht ändern!! Texte in der DB und Config sind damit verschlüsselt
         }
 
         public static string DecryptString(string str)
         {
-            qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
-            return Encryption1.StringDecrypt(str,"*engineering_"); //nicht ändern!! Texte in der DB und Config sind damit verschlüsselt
+            QS2.functions.vb.Encryption Enc = new QS2.functions.vb.Encryption();
+            return Enc.StringDecrypt(str, QS2.functions.vb.Encryption.keyForEncryptingStrings); //nicht ändern!! Texte in der DB und Config sind damit verschlüsselt
         }
 
         public static Image ImageFromArray(byte[] bImage, bool bGCCollect)

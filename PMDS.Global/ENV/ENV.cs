@@ -32,6 +32,7 @@ using MARC.Everest.Formatters.XML.Datatypes.R1;
 using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
 using MARC.Everest.DataTypes;
 using MARC.Everest.Attributes;
+using QS2.functions.vb;
 using S2Extensions;
 
 namespace PMDS.Global
@@ -1590,8 +1591,8 @@ namespace PMDS.Global
                 }
                 else if (decr == eDecrypt.QS2Mode)
                 {
-                    qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
-                    string PwdDecrypted = Encryption1.StringDecrypt(stemp.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                    Encryption Encryption1 = new Encryption();
+                    string PwdDecrypted = Encryption1.StringDecrypt(stemp.Trim(), Encryption.keyForEncryptingStrings);
                     ENVVar = PwdDecrypted.Trim();
                 }
 

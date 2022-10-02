@@ -162,9 +162,6 @@
     <Reference Include="Patagames.Pdf.Wpf, Version=4.7.9.472, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
       <HintPath>..\packages\Pdfium.Net.SDK.4.27.2704\lib\net472\Patagames.Pdf.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="QS2.license.core">
-      <HintPath>..\Dlls\QS2.license.core.dll</HintPath>
-    </Reference>
     <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
     </Reference>
@@ -2167,6 +2164,10 @@
     <ProjectReference Include="..\Elga.core\PMDS.Core.Elga.csproj">
       <Project>{e9575ad9-bed7-4aad-8d67-26cdd8961496}</Project>
       <Name>PMDS.Core.Elga</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\QS2.functions.vb\QS2.Functions.vb.vbproj">
+      <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
+      <Name>QS2.Functions.vb</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

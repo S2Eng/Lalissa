@@ -15,16 +15,9 @@ namespace PMDS.GUI.ELGA
     public partial class frmELGAMsgBox : Form
     {
         public bool abort = true;
-
         public PMDSBusiness b = new PMDSBusiness();
-        public qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
-
+        public QS2.functions.vb.Encryption Encryption1 = new QS2.functions.vb.Encryption();
         public Guid ID = System.Guid.NewGuid();
-
-
-
-
-
 
         public frmELGAMsgBox()
         {

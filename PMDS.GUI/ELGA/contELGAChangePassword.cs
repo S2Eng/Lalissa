@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using PMDS.DB;
 using PMDS.Global;
 using PMDS.Global.db.ERSystem;
+using QS2.functions.vb;
 
 namespace PMDS.GUI.ELGA
 {
@@ -21,7 +22,7 @@ namespace PMDS.GUI.ELGA
         public bool IsInitialized = false;
 
         public PMDSBusiness b = new PMDSBusiness();
-        public qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+        public Encryption Encryption1 = new Encryption();
 
 
 
@@ -103,7 +104,7 @@ namespace PMDS.GUI.ELGA
                     }
                     else
                     {
-                        string ELGAPwdDecrypted = Encryption1.StringDecrypt(rUsr.ELGAPwd, qs2.license.core.Encryption.keyForEncryptingStrings);
+                        string ELGAPwdDecrypted = Encryption1.StringDecrypt(rUsr.ELGAPwd, QS2.functions.vb.Encryption.keyForEncryptingStrings);
                         if (this.txtELGAPwdOld.Text.Trim() != ELGAPwdDecrypted.Trim())
                         {
                             this.errorProvider1.SetError(this.txtELGAPwdOld, "Error");
@@ -175,7 +176,7 @@ namespace PMDS.GUI.ELGA
                 {
                     PMDS.db.Entities.Benutzer rUsr = db.Benutzer.Where(o => o.ID == ENV.USERID).First();
 
-                    string ELGAPwdEncrypted = Encryption1.StringEncrypt(this.txtELGAPwdNew.Text.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                    string ELGAPwdEncrypted = Encryption1.StringEncrypt(this.txtELGAPwdNew.Text.Trim(), Encryption.keyForEncryptingStrings);
                     rUsr.ELGAPwd = ELGAPwdEncrypted;
                     db.SaveChanges();
 

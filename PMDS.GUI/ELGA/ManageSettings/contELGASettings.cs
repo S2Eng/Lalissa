@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using PMDS.DB;
 using PMDS.Global;
 using PMDS.Global.db.ERSystem;
+using QS2.functions.vb;
 
 
 namespace PMDS.GUI.ELGA.ManageSettings
@@ -24,7 +25,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
 
         public PMDS.db.Entities.ERModellPMDSEntities _db = null;
         public PMDSBusiness b = new PMDSBusiness();
-        public qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+        public Encryption Encryption1 = new Encryption();
 
         public bool Isinitialized = false;
 
@@ -108,7 +109,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
                 {
                     this.txtELGAUser.Text = rUsr.ELGAUser.Trim();
 
-                    string ELGAPwdDecrypted = Encryption1.StringDecrypt(rUsr.ELGAPwd.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                    string ELGAPwdDecrypted = Encryption1.StringDecrypt(rUsr.ELGAPwd.Trim(), QS2.functions.vb.Encryption.keyForEncryptingStrings);
                     this.txtELGAPwd.Text = ELGAPwdDecrypted;
                     this.txtELGAPwd.Text = ELGAPwdDecrypted;
                     this.txtELGAPwdWdhlg.Text = ELGAPwdDecrypted;
@@ -205,7 +206,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
                 rUsr.ELGAUser = this.txtELGAUser.Text.Trim();
                 if (!this.chkELGAAutostartSession.Checked)
                 {
-                    string ELGAPwdEncrypted = Encryption1.StringEncrypt(this.txtELGAPwd.Text.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                    string ELGAPwdEncrypted = Encryption1.StringEncrypt(this.txtELGAPwd.Text.Trim(), Encryption.keyForEncryptingStrings);
                     rUsr.ELGAPwd = ELGAPwdEncrypted;
                     rUsr.ELGAPwdLastChange = DateTime.Now;
                     rUsr.ELGAAutoLogin = false;
