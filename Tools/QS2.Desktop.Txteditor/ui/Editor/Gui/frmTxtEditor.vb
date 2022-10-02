@@ -1,18 +1,10 @@
 ﻿Imports System.Windows.Forms
 
-
-
-
 Public Class frmTxtEditor
 
 
-    Public fFelderEinAus As Boolean = False
     Public fFelderEinAus2 As Boolean = False
     Public ds As DataSet
-
-
-
-
 
     Private Sub frmTxtEditor_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
@@ -21,7 +13,7 @@ Public Class frmTxtEditor
             generic.getRes("Texteditor")
             Me.ContTxtEditor1.mainForm = Me
             Me.ContTxtEditor1.doNew(True)
-            Me.ContTxtEditor1.loadForm(Me.fFelderEinAus, Me.ds, True, Me.fFelderEinAus2)
+            Me.ContTxtEditor1.loadForm(False, Me.ds, True)
             Me.ContTxtEditor1.setControlTyp()
             Me.ContTxtEditor1.FileNew(False, False)
 

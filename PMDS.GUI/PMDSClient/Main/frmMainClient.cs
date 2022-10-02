@@ -2444,7 +2444,6 @@ namespace PMDS.GUI.PMDSClient
 
                     case "Texteditor":
                         QS2.Desktop.Txteditor.frmTxtEditor frmEditor = new QS2.Desktop.Txteditor.frmTxtEditor();
-                        frmEditor.fFelderEinAus =  false ;
                         frmEditor.Show();
                         break;
 

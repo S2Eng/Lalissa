@@ -378,7 +378,6 @@ namespace PMDS.Global.Heimverträge
 
                         QS2.Desktop.Txteditor.doEditor doEditor1 = new QS2.Desktop.Txteditor.doEditor();
                         QS2.Desktop.Txteditor.frmTxtEditor frmEditor = new QS2.Desktop.Txteditor.frmTxtEditor();
-                        frmEditor.fFelderEinAus = false;
                         frmEditor.ContTxtEditor1.typUI = QS2.Desktop.Txteditor.etyp.all;
                         frmEditor.ContTxtEditor1.LinealeOnOff(false);
                         frmEditor.ContTxtEditor1.textControl1.EditMode = TXTextControl.EditMode.Edit;

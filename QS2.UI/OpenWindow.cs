@@ -151,7 +151,6 @@ namespace qs2.ui
                 else if (typFound == qs2.core.ENV.eTypApp.contTexteditor)
                 {
                     QS2.Desktop.Txteditor.frmTxtEditor frmTxtEditor1 = new QS2.Desktop.Txteditor.frmTxtEditor();
-                    frmTxtEditor1.fFelderEinAus = true;
                     frmTxtEditor1.ds = new DataSet();
                     frmTxtEditor1.Show();
                 }

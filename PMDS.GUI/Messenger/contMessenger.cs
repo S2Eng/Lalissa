@@ -842,7 +842,6 @@ namespace PMDS.GUI.Messenger
                     sTxtMessageForPrint += newLine + UserSended.Trim() + newLine + newLine + QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachricht") + ": " + sNewLine + rSelMessage.MessageTxt.Trim();
 
                     QS2.Desktop.Txteditor.frmTxtEditor frmEditor = new QS2.Desktop.Txteditor.frmTxtEditor();
-                    frmEditor.fFelderEinAus = false;
                     frmEditor.Show();
                     frmEditor.ContTxtEditor1.textControl1.Text = sTxtMessageForPrint;
                 }

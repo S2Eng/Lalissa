@@ -89,7 +89,7 @@ Public Class contTextTemplates
         Try
             Me.ContTxtEditor1.doNew(True)
             'Me.ContTxtEditor1.doNew(False)
-            Me.ContTxtEditor1.loadForm(False, Nothing, False, False)
+            Me.ContTxtEditor1.loadForm(False, Nothing, False)
 
             Me.ContTxtEditor1.typUI = QS2.Desktop.Txteditor.etyp.all
             Me.ContTxtEditor1.setControlTyp()

@@ -295,7 +295,6 @@ namespace PMDS.Calc.UI.Admin
 
                     case "bEditor":
                         QS2.Desktop.Txteditor.frmTxtEditor frmEditor = new QS2.Desktop.Txteditor.frmTxtEditor();
-                        frmEditor.fFelderEinAus = false;
                         frmEditor.Show();
                         break;
 

@@ -390,36 +390,17 @@ Public Class General
             frmTxtEditor = New QS2.Desktop.Txteditor.frmTxtEditor()
 
             If WithVariables Then
-                frmTxtEditor.fFelderEinAus = False
                 frmTxtEditor.fFelderEinAus2 = False
             End If
 
             frmTxtEditor.ContTxtEditor1.doNew(True)
-            frmTxtEditor.ContTxtEditor1.loadForm(False, New DataSet, True, True)
+            frmTxtEditor.ContTxtEditor1.loadForm(False, New DataSet, True)
             frmTxtEditor.ContTxtEditor1.setNewControlTyp(etyp.all)
-
-            'frmTxtEditor.ContTxtEditor1.delOnSaveDocu = Nothing
             frmTxtEditor.ContTxtEditor1.FileNew(False, False)
             frmTxtEditor.ContTxtEditor1.clearForm()
-
             frmTxtEditor.Show()
             frmTxtEditor.BringToFront()
             Return frmTxtEditor
-
-            'If cTxtEditor.frmTxtEditor Is Nothing Then
-            '    cTxtEditor.frmTxtEditor = New frmTxtEditor()
-            '    cTxtEditor.frmTxtEditor.NotClose = True
-            '    cTxtEditor.frmTxtEditor.ContTxtEditor1.doNew(True)
-            '    cTxtEditor.frmTxtEditor.ContTxtEditor1.loadForm(False, Nothing, True)
-            '    cTxtEditor.frmTxtEditor.ContTxtEditor1.setNewControlTyp(etyp.all)
-            'End If
-
-            'cTxtEditor.frmTxtEditor.ContTxtEditor1.delOnSaveDocu = Nothing
-            'cTxtEditor.frmTxtEditor.ContTxtEditor1.FileNew(False, False, False)
-            'cTxtEditor.frmTxtEditor.ContTxtEditor1.clearForm()
-            'cTxtEditor.frmTxtEditor.Show()
-            'cTxtEditor.frmTxtEditor.BringToFront()
-            'Return cTxtEditor.frmTxtEditor
 
         Catch ex As Exception
             Throw New Exception("General.cTxtEditor: " + ex.ToString())

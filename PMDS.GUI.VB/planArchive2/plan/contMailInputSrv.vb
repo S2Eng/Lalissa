@@ -62,7 +62,7 @@ Public Class contMailInputSrv
             End If
 
             Me.ContTxtEditor1.doNew(False)
-            Me.ContTxtEditor1.loadForm(False, Nothing, False, False)
+            Me.ContTxtEditor1.loadForm(False, Nothing, False)
             Me.ContTxtEditor1.setControlTyp()
 
             Me.lblPosteingang.Text = doUI.getRes("Inbox")

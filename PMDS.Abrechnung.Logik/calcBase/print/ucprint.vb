@@ -18,7 +18,7 @@ Public Class ucprint
 
         Me.editor = New QS2.Desktop.Txteditor.contTxtEditor()
         Me.PanelEditor.Controls.Add(Me.editor)
-        Me.editor.loadForm(False, Nothing, False, False)
+        Me.editor.loadForm(False, Nothing, False)
         Me.editor.setControlTyp()
         Me.editor.FileNew(False, False)
 

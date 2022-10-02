@@ -3045,7 +3045,6 @@ namespace PMDS.GUI
                     if (lstInterventionen.Count > 0)
                     {
                         QS2.Desktop.Txteditor.frmTxtEditor frmEditor = new QS2.Desktop.Txteditor.frmTxtEditor();
-                        frmEditor.fFelderEinAus = false;
                         frmEditor.ContTxtEditor1.typUI = QS2.Desktop.Txteditor.etyp.all;
                         frmEditor.ContTxtEditor1.LinealeOnOff(false);
                         frmEditor.ContTxtEditor1.textControl1.EditMode = TXTextControl.EditMode.ReadAndSelect;

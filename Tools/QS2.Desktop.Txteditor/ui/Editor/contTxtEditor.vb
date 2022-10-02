@@ -32,7 +32,6 @@ Public Class contTxtEditor
     Public doEditor As New doEditor
     Public doBookmarks As New doBookmarks
     Public contFelder1 As contFelder
-    Public contFelder2 As contFelder2 = Nothing
 
     Public mouseIsInFieldseditor As Boolean = False
 
@@ -94,47 +93,22 @@ Public Class contTxtEditor
     Private Sub frmMain_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
     End Sub
 
-    Public Sub loadForm(ByVal bFelderEIn As Boolean, ByRef ds As DataSet, ByRef doCultureSelectedTxt As Boolean, ByVal bFelderEIn2 As Boolean)
+    Public Sub loadForm(ByVal bFelderEIn As Boolean, ByRef ds As DataSet, ByRef doCultureSelectedTxt As Boolean)
         Try
             Me.textControl1.SpellChecker = Spelling.getSpellChecker()
 
             Dim newRessourcesAdded As Integer = 0
-            'Me.doUI1.run(Me, Me.components, Me.UltraToolTipManager1, newRessourcesAdded, True)
-
             Dim commands As String = Microsoft.VisualBasic.Command()
+
             LoadAppSettings()
             FileHandler1.TextControl = textControl1
+
             ' Check if program has been started with a file name as a command line parameter
             Me.FileNew(True, False)
             FileHandler1.DocumentDirty = False
             UpdateSaveStatus()
             textControl1.ViewMode = TXTextControl.ViewMode.Normal
-            If bFelderEIn Then
-                Me.contFelder1 = New contFelder()
-                Me.PanelFelder.Controls.Clear()
-                Me.contFelder1.Dock = System.Windows.Forms.DockStyle.Fill
-                Me.PanelFelder.Controls.Add(Me.contFelder1)
-                Me.contFelder1.modalWindow = Me
-                If Not ds Is Nothing Then
-                    contFelder1.initControl()
-                    contFelder1.loadFields(ds)
-                End If
-                UExpandableGroupBoxFelder.Visible = True
-            Else
-                UExpandableGroupBoxFelder.Visible = False
-            End If
-
-            If bFelderEIn2 Then
-                Me.contFelder2 = New contFelder2()
-                contFelder2.initControl()
-                Me.PanelFelder.Controls.Clear()
-                Me.contFelder2.Dock = System.Windows.Forms.DockStyle.Fill
-                Me.PanelFelder.Controls.Add(Me.contFelder2)
-                Me.contFelder2.modalWindow = Me
-                UExpandableGroupBoxFelder.Visible = True
-            Else
-                UExpandableGroupBoxFelder.Visible = False
-            End If
+            UExpandableGroupBoxFelder.Visible = False
 
             If doCultureSelectedTxt Then
                 Dim cultEN = CultureInfo.GetCultureInfo("de-DE")    '("en-US")

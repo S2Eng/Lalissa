@@ -1979,7 +1979,7 @@ Public Class frmNachricht3
             Me.contTxtEditor1.typUI = QS2.Desktop.Txteditor.etyp.all
             Me.contTxtEditor1.LinealeOnOff(True)
             Me.contTxtEditor1.SetUIReadOnOff(False)
-            Me.contTxtEditor1.loadForm(False, Nothing, False, False)
+            Me.contTxtEditor1.loadForm(False, Nothing, False)
             Me.contTxtEditor1.setControlTyp()
             Me.contTxtEditor1.buttonBar1.Visible = False
             Me.contTxtEditor1.FileNew(False, False)
