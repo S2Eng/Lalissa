@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class contProtocol
     Inherits System.Windows.Forms.UserControl
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,23 +20,23 @@ Partial Class contProtocol
     'Hinweis: Die folgende Prozedur ist für den Windows Form-Designer erforderlich.
     'Das Bearbeiten ist mit dem Windows Form-Designer möglich.  
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Save as ...", Infragistics.Win.DefaultableBoolean.[Default])
-        Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim UltraToolTipInfo2 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Save as ...", Infragistics.Win.DefaultableBoolean.[Default])
-        Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance6 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim UltraToolTipInfo3 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Save as ...", Infragistics.Win.DefaultableBoolean.[Default])
-        Dim Appearance7 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim UltraToolTipInfo4 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Save as ...", Infragistics.Win.DefaultableBoolean.[Default])
-        Dim Appearance8 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance13 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim UltraToolTipInfo5 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Save as ...", Infragistics.Win.DefaultableBoolean.[Default])
+        Dim Appearance14 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim UltraToolTipInfo6 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Save as ...", Infragistics.Win.DefaultableBoolean.[Default])
+        Dim Appearance15 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance16 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim UltraToolTipInfo7 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Save as ...", Infragistics.Win.DefaultableBoolean.[Default])
+        Dim Appearance17 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim UltraToolTipInfo8 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Save as ...", Infragistics.Win.DefaultableBoolean.[Default])
+        Dim Appearance18 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance19 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance20 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim UltraTab1 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
         Me.UltraTabPageControl1 = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
         Me.PanelProtocol = New System.Windows.Forms.Panel()
@@ -104,11 +104,11 @@ Partial Class contProtocol
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextControl1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TextControl1.Font = New System.Drawing.Font("Arial", 10.0!)
-        Me.TextControl1.Location = New System.Drawing.Point(4, 4)
+        Me.TextControl1.Location = New System.Drawing.Point(1, 4)
         Me.TextControl1.Name = "TextControl1"
         Me.TextControl1.Size = New System.Drawing.Size(800, 326)
         Me.TextControl1.TabIndex = 0
-        Me.TextControl1.TextBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TextControl1.TextBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.TextControl1.UserNames = Nothing
         Me.TextControl1.ViewMode = TXTextControl.ViewMode.Normal
         '
@@ -125,13 +125,13 @@ Partial Class contProtocol
         '
         'UFormLinkZurücksetzen
         '
-        Appearance1.Cursor = System.Windows.Forms.Cursors.Hand
-        Appearance1.FontData.SizeInPoints = 8.0!
-        Appearance1.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.UFormLinkZurücksetzen.Appearance = Appearance1
+        Appearance11.Cursor = System.Windows.Forms.Cursors.Hand
+        Appearance11.FontData.SizeInPoints = 8.0!
+        Appearance11.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.UFormLinkZurücksetzen.Appearance = Appearance11
         Me.UFormLinkZurücksetzen.AutoSize = True
-        Appearance2.FontData.UnderlineAsString = "True"
-        Me.UFormLinkZurücksetzen.HotTrackAppearance = Appearance2
+        Appearance12.FontData.UnderlineAsString = "True"
+        Me.UFormLinkZurücksetzen.HotTrackAppearance = Appearance12
         Me.UFormLinkZurücksetzen.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.UFormLinkZurücksetzen.Location = New System.Drawing.Point(12, 6)
         Me.UFormLinkZurücksetzen.Name = "UFormLinkZurücksetzen"
@@ -171,34 +171,34 @@ Partial Class contProtocol
         'btnPrintPrieview
         '
         Me.btnPrintPrieview.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance3.ImageHAlign = Infragistics.Win.HAlign.Center
-        Me.btnPrintPrieview.Appearance = Appearance3
+        Appearance13.ImageHAlign = Infragistics.Win.HAlign.Center
+        Me.btnPrintPrieview.Appearance = Appearance13
         Me.btnPrintPrieview.Location = New System.Drawing.Point(679, 3)
         Me.btnPrintPrieview.Name = "btnPrintPrieview"
         Me.btnPrintPrieview.Size = New System.Drawing.Size(25, 24)
         Me.btnPrintPrieview.TabIndex = 21
-        UltraToolTipInfo1.ToolTipTitle = "Save as ..."
-        Me.UltraToolTipManager1.SetUltraToolTip(Me.btnPrintPrieview, UltraToolTipInfo1)
+        UltraToolTipInfo5.ToolTipTitle = "Save as ..."
+        Me.UltraToolTipManager1.SetUltraToolTip(Me.btnPrintPrieview, UltraToolTipInfo5)
         '
         'btnRefresh
         '
         Me.btnRefresh.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance4.ImageHAlign = Infragistics.Win.HAlign.Center
-        Me.btnRefresh.Appearance = Appearance4
+        Appearance14.ImageHAlign = Infragistics.Win.HAlign.Center
+        Me.btnRefresh.Appearance = Appearance14
         Me.btnRefresh.Location = New System.Drawing.Point(767, 3)
         Me.btnRefresh.Name = "btnRefresh"
         Me.btnRefresh.Size = New System.Drawing.Size(25, 24)
         Me.btnRefresh.TabIndex = 20
-        UltraToolTipInfo2.ToolTipTitle = "Save as ..."
-        Me.UltraToolTipManager1.SetUltraToolTip(Me.btnRefresh, UltraToolTipInfo2)
+        UltraToolTipInfo6.ToolTipTitle = "Save as ..."
+        Me.UltraToolTipManager1.SetUltraToolTip(Me.btnRefresh, UltraToolTipInfo6)
         '
         'lblMonitoring
         '
-        Appearance5.BackColor = System.Drawing.Color.Transparent
-        Appearance5.FontData.SizeInPoints = 10.0!
-        Appearance5.ForeColor = System.Drawing.Color.DarkRed
-        Appearance5.TextVAlignAsString = "Middle"
-        Me.lblMonitoring.Appearance = Appearance5
+        Appearance15.BackColor = System.Drawing.Color.Transparent
+        Appearance15.FontData.SizeInPoints = 10.0!
+        Appearance15.ForeColor = System.Drawing.Color.DarkRed
+        Appearance15.TextVAlignAsString = "Middle"
+        Me.lblMonitoring.Appearance = Appearance15
         Me.lblMonitoring.Dock = System.Windows.Forms.DockStyle.Left
         Me.lblMonitoring.Location = New System.Drawing.Point(470, 0)
         Me.lblMonitoring.Name = "lblMonitoring"
@@ -211,34 +211,34 @@ Partial Class contProtocol
         'btnClear
         '
         Me.btnClear.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance6.ImageHAlign = Infragistics.Win.HAlign.Center
-        Me.btnClear.Appearance = Appearance6
+        Appearance16.ImageHAlign = Infragistics.Win.HAlign.Center
+        Me.btnClear.Appearance = Appearance16
         Me.btnClear.Location = New System.Drawing.Point(736, 3)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(25, 24)
         Me.btnClear.TabIndex = 18
-        UltraToolTipInfo3.ToolTipTitle = "Save as ..."
-        Me.UltraToolTipManager1.SetUltraToolTip(Me.btnClear, UltraToolTipInfo3)
+        UltraToolTipInfo7.ToolTipTitle = "Save as ..."
+        Me.UltraToolTipManager1.SetUltraToolTip(Me.btnClear, UltraToolTipInfo7)
         '
         'btnSaveAs
         '
         Me.btnSaveAs.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance7.ImageHAlign = Infragistics.Win.HAlign.Center
-        Me.btnSaveAs.Appearance = Appearance7
+        Appearance17.ImageHAlign = Infragistics.Win.HAlign.Center
+        Me.btnSaveAs.Appearance = Appearance17
         Me.btnSaveAs.Location = New System.Drawing.Point(711, 3)
         Me.btnSaveAs.Name = "btnSaveAs"
         Me.btnSaveAs.Size = New System.Drawing.Size(25, 24)
         Me.btnSaveAs.TabIndex = 17
-        UltraToolTipInfo4.ToolTipTitle = "Save as ..."
-        Me.UltraToolTipManager1.SetUltraToolTip(Me.btnSaveAs, UltraToolTipInfo4)
+        UltraToolTipInfo8.ToolTipTitle = "Save as ..."
+        Me.UltraToolTipManager1.SetUltraToolTip(Me.btnSaveAs, UltraToolTipInfo8)
         '
         'lblTitleError
         '
-        Appearance8.BackColor = System.Drawing.Color.Transparent
-        Appearance8.FontData.SizeInPoints = 10.0!
-        Appearance8.ForeColor = System.Drawing.Color.DarkRed
-        Appearance8.TextVAlignAsString = "Middle"
-        Me.lblTitleError.Appearance = Appearance8
+        Appearance18.BackColor = System.Drawing.Color.Transparent
+        Appearance18.FontData.SizeInPoints = 10.0!
+        Appearance18.ForeColor = System.Drawing.Color.DarkRed
+        Appearance18.TextVAlignAsString = "Middle"
+        Me.lblTitleError.Appearance = Appearance18
         Me.lblTitleError.Dock = System.Windows.Forms.DockStyle.Left
         Me.lblTitleError.Location = New System.Drawing.Point(82, 0)
         Me.lblTitleError.Name = "lblTitleError"
@@ -262,13 +262,13 @@ Partial Class contProtocol
         'lblSendMessageAsEMail
         '
         Me.lblSendMessageAsEMail.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance9.Cursor = System.Windows.Forms.Cursors.Hand
-        Appearance9.FontData.SizeInPoints = 8.0!
-        Appearance9.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.lblSendMessageAsEMail.Appearance = Appearance9
+        Appearance19.Cursor = System.Windows.Forms.Cursors.Hand
+        Appearance19.FontData.SizeInPoints = 8.0!
+        Appearance19.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.lblSendMessageAsEMail.Appearance = Appearance19
         Me.lblSendMessageAsEMail.AutoSize = True
-        Appearance10.FontData.UnderlineAsString = "True"
-        Me.lblSendMessageAsEMail.HotTrackAppearance = Appearance10
+        Appearance20.FontData.UnderlineAsString = "True"
+        Me.lblSendMessageAsEMail.HotTrackAppearance = Appearance20
         Me.lblSendMessageAsEMail.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.lblSendMessageAsEMail.Location = New System.Drawing.Point(575, 8)
         Me.lblSendMessageAsEMail.Name = "lblSendMessageAsEMail"

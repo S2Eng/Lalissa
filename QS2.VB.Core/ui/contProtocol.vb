@@ -5,29 +5,20 @@ Imports System.Data
 Imports System.Drawing
 Imports System.Text
 Imports System.Windows.Forms
-Imports qs2.core.vb
-Imports qs2.pictures
 Imports qs2.Resources
 
 
-
-
-
 Public Class contProtocol
-
+    Private _funct As New qs2.functions.vb.FileFunctions()
 
     Public mainWindow As frmProtocol = Nothing
-    Public funct1 As New qs2.core.vb.funct()
-
     Public TypeProtocolWindow As eTypeProtocolWindow = eTypeProtocolWindow.normal
+
     Public Enum eTypeProtocolWindow
         protocol = 0
         monitoring = 1
         normal = 100
     End Enum
-
-
-
 
     Public Sub initControl()
         Try
@@ -137,7 +128,7 @@ Public Class contProtocol
             Me.Cursor = Cursors.WaitCursor
 
             Application.DoEvents()
-            Dim fil As String = Me.funct1.saveFile(False, qs2.core.vb.funct.TxtFileTxtDialog, "", qs2.core.vb.funct.getFolder(Environment.SpecialFolder.Desktop))
+            Dim fil As String = _funct.saveFile(False, qs2.core.vb.funct.TxtFileTxtDialog, "", System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop))
             If fil <> Nothing Then
                 Dim StreamWriter1 As New System.IO.StreamWriter(fil)
                 StreamWriter1.Write(Me.TextControl1.Text.Trim())
@@ -168,9 +159,7 @@ Public Class contProtocol
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            If Me.TypeProtocolWindow = eTypeProtocolWindow.protocol Then
-                'Me.txtProtokoll.Text = qs2.core.Protocol.totalProtocol.Trim()
-            ElseIf Me.TypeProtocolWindow = eTypeProtocolWindow.monitoring Then
+            If Me.TypeProtocolWindow = eTypeProtocolWindow.monitoring Then
                 Me.TextControl1.Text = qs2.core.Protocol.MonitoringOutput.Trim()
             End If
 
