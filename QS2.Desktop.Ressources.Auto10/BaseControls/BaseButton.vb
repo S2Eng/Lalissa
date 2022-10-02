@@ -106,7 +106,7 @@ Public Class BaseButton
             If Not Me.doBaseElements1.InfoControl.LastLoadedLayout.IsLoaded And Me.AutoWorkLayout Then
                 Dim LayoutFound As Boolean = False
                 If Not DesignMode Then
-                    compLayout1.doLayoutGrid(Me.doBaseElements1.InfoControl.grid, Me.IDRes.Trim(), Nothing, LayoutFound, True, Not ENV._IntDeactivated, ENV._AutoAddNewRessources)
+                    compLayout1.doLayoutGrid(Me.doBaseElements1.InfoControl.grid, Me.IDRes.Trim(), Nothing, LayoutFound, True, Not Settings._IntDeactivated, Settings._AutoAddNewRessources)
                     QS2.Desktop.ControlManagment.BaseGrid.doFormatDateTime(Me.doBaseElements1.InfoControl.grid)
                 End If
                 Me.doBaseElements1.InfoControl.LastLoadedLayout.IsLoaded = True

@@ -44,7 +44,7 @@ namespace PMDS.GUI
 			ENV.SignalQuickfilterChanged(null);
 
             //PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
-            QS2.Desktop.ControlManagment.ENV.initRigth(ENV.HasRight(UserRights.Layout), ENV.adminSecure);
+            QS2.Desktop.ControlManagment.Settings.initRigth(ENV.HasRight(UserRights.Layout), ENV.adminSecure);
 
             if (!bRet)
             {

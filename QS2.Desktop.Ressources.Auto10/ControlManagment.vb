@@ -84,13 +84,13 @@ Public Class ControlManagment
         Try
             Dim ModusDesktopManagment As Boolean = False
             Dim ProductiveFull As Boolean = False
-            If QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
+            If QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
                 ModusDesktopManagment = True
-            ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
+            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
                 ProductiveFull = True
-            ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
+            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
                 ProductiveFull = False
-            ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
+            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
                 Exit Sub
             End If
 
@@ -169,7 +169,7 @@ Public Class ControlManagment
                 ControlManagment.sqlLanguageUpdate.initControl()
                 ControlManagment.sqlLanguageUpdate.getLanguage(System.Guid.NewGuid().ToString(), ControlManagment.dsLanguageUpdate,
                                                core.language.sqlLanguage.eTypSelLang.IDRes,
-                                               core.Enums.eResourceType.Label, ENV._Application)
+                                               core.Enums.eResourceType.Label, Settings._Application)
             End If
 
             If cont.GetType.Equals((GetType(BaseOptionSet))) Then
@@ -190,7 +190,7 @@ Public Class ControlManagment
                             End If
                         End If
 
-                        If ENV._AutoAddNewRessources Then
+                        If Settings._AutoAddNewRessources Then
                             Me.addNewResAuto(IDResTmp, Description, cont, components, ControlGroup, iControlsDone,
                                                 rActControl, ResourceTypeToLoad, ContextMenuStrip, TxtEnglish, TxtGerman, rRes, IsStandardControlxy, "")
                             translatedTxt = TxtGerman
@@ -220,7 +220,7 @@ Public Class ControlManagment
                             TxtGerman = tab.Text.Trim()
                         End If
 
-                        If ENV._AutoAddNewRessources Then
+                        If Settings._AutoAddNewRessources Then
                             Me.addNewResAuto(IDResTmp, Description, cont, components, ControlGroup, iControlsDone,
                                                 rActControl, ResourceTypeToLoad, ContextMenuStrip, TxtEnglish, TxtGerman, rRes, IsStandardControlxy, "")
                             translatedTxt = TxtGerman
@@ -247,7 +247,7 @@ Public Class ControlManagment
                         TxtGerman = cont.Text.Trim()
                     End If
 
-                    If ENV._AutoAddNewRessources Then
+                    If Settings._AutoAddNewRessources Then
                         Me.addNewResAuto(IDRes, Description, cont, components, ControlGroup, iControlsDone,
                                             rActControl, ResourceTypeToLoad, ContextMenuStrip, TxtEnglish, TxtGerman, rRes, IsStandardControlxy, "")
                         translatedTxt = TxtGerman
@@ -278,7 +278,7 @@ Public Class ControlManagment
                                     ByRef TextControlOnUIActuell As String,
                                     ByRef tab As UltraTab, ByRef ValueListItem As Infragistics.Win.ValueListItem) As Boolean
         Try
-            'If ENV._TypeRessourcesRun.ToString().Trim().ToLower() <> eTypeRessourcesRun.OnlyPictures.ToString().Trim().ToLower() Then
+            'If Settings._TypeRessourcesRun.ToString().Trim().ToLower() <> eTypeRessourcesRun.OnlyPictures.ToString().Trim().ToLower() Then
             If (Me.isControlForTxt(cont)) Then
                 If rRes Is Nothing Then
                     Try
@@ -303,7 +303,7 @@ Public Class ControlManagment
                     End Try
                 Else
                     Try
-                        If ENV._DoNotShowRessources Then
+                        If Settings._DoNotShowRessources Then
                             translatedTxt = ""     '"---"
                         End If
                         If Not tab Is Nothing Then
@@ -370,7 +370,7 @@ Public Class ControlManagment
                           ByRef rRes As QS2.core.language.dsLanguage.RessourcenRow) As Boolean
         Try
             'Dim ResourceTypeForAutoInsert As QS2.core.Enums.eResourceType
-            translatedTxt = QS2.core.language.sqlLanguage.getRes(IDRes, ResourceTypeToLoad, ControlManagment.defaultParticipant, ENV._Application, rRes, False, False)
+            translatedTxt = QS2.core.language.sqlLanguage.getRes(IDRes, ResourceTypeToLoad, ControlManagment.defaultParticipant, Settings._Application, rRes, False, False)
             If rRes Is Nothing Then
                 IDResFound = False
             Else
@@ -391,13 +391,13 @@ Public Class ControlManagment
                       ByRef TxtEnglish As String, ByRef TxtGerman As String,
                       ByRef rRes As QS2.core.language.dsLanguage.RessourcenRow, ByRef IsStandardControlxy As Boolean, ControlName As String) As Boolean
         Try
-            If ENV._IntDeactivated Then
+            If Settings._IntDeactivated Then
                 Exit Function
             End If
 
             rRes = ControlManagment.sqlLanguageUpdate.newRowLanguage(ControlManagment.dsLanguageUpdate,
                                                            "", IDRes,
-                                                           "", ENV._Application, ControlManagment.defaultParticipant,
+                                                           "", Settings._Application, ControlManagment.defaultParticipant,
                                                            ResourceTypeToLoad,
                                                            core.Enums.eTypeSub.User, "")
 
@@ -427,7 +427,7 @@ Public Class ControlManagment
                 If rRes Is Nothing Then
                     Dim rNewProt As dsControls.ProtocollRow = ControlManagment.addProtocoll(ControlManagment.dsControls)
                     rNewProt.IDRes = IDRes
-                    rNewProt.Txt = "IDRes '" + IDRes.Trim() + "' could not added to QS2-Database! (Table=Ressources, Application='" + ENV._Application.ToString() + "', TypeRes='" + ResourceTypeToLoad.ToString() + "'" + vbNewLine +
+                    rNewProt.Txt = "IDRes '" + IDRes.Trim() + "' could not added to QS2-Database! (Table=Ressources, Application='" + Settings._Application.ToString() + "', TypeRes='" + ResourceTypeToLoad.ToString() + "'" + vbNewLine +
                                     "TxtGerman='" + TxtGerman + "')"
                     If Not cont Is Nothing Then
                         rNewProt.Cont = cont
@@ -447,19 +447,19 @@ Public Class ControlManagment
     End Function
     Public Function getTypeRessourcesRun(ByRef ModusDesktopManagment As Boolean, ByRef ProductiveFull As Boolean) As Boolean
         Try
-            If QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
+            If QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
                 ModusDesktopManagment = True
                 Return True
 
-            ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
+            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
                 ProductiveFull = True
                 Return True
 
-            ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
+            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
                 ProductiveFull = False
                 Return True
 
-            ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
+            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
                 Return False
 
             End If
@@ -471,19 +471,19 @@ Public Class ControlManagment
 
     Public Function autoTranslateForm(Form As Form) As Boolean
         Try
-            If ENV._IntDeactivated Then
+            If Settings._IntDeactivated Then
                 Exit Function
             End If
 
             Dim ModusDesktopManagment As Boolean = False
             Dim ProductiveFull As Boolean = False
-            If QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
+            If QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
                 ModusDesktopManagment = True
-            ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
+            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
                 ProductiveFull = True
-            ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
+            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
                 ProductiveFull = False
-            ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
+            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
                 Return False
             End If
 
@@ -493,7 +493,7 @@ Public Class ControlManagment
                 ControlManagment.sqlLanguageUpdate.initControl()
                 ControlManagment.sqlLanguageUpdate.getLanguage(System.Guid.NewGuid().ToString(), ControlManagment.dsLanguageUpdate,
                                                core.language.sqlLanguage.eTypSelLang.IDRes,
-                                               core.Enums.eResourceType.Label, ENV._Application)
+                                               core.Enums.eResourceType.Label, Settings._Application)
             End If
 
             ControlManagment.dsLanguageUpdate.Clear()
@@ -504,7 +504,7 @@ Public Class ControlManagment
             Dim IDRes As String = Form.Name + "_" + "FormCaption"
             Me.getRes(IDRes, IDResFound, translatedTxt, eControlGroup.MainSystem, core.Enums.eResourceType.Label, rRes)
             If rRes Is Nothing Then
-                If ENV._AutoAddNewRessources Then
+                If Settings._AutoAddNewRessources Then
                     Me.addNewResAuto(IDRes, "", Nothing, Nothing, eControlGroup.MainSystem, True,
                                              Nothing, core.Enums.eResourceType.Label, Nothing, "", Form.Text.Trim(), rRes, True, "WindowsForm")
                     translatedTxt = Form.Text.Trim()
@@ -513,12 +513,12 @@ Public Class ControlManagment
             End If
 
             If IDResFound Then
-                If ENV._DoNotShowRessources Then
+                If Settings._DoNotShowRessources Then
                     translatedTxt = ""     '"---"
                 End If
                 Form.Text = translatedTxt.Trim()
             Else
-                If Not ENV._DoNotShowRessources Then
+                If Not Settings._DoNotShowRessources Then
                     Form.Text = ""
                 End If
             End If
@@ -529,19 +529,19 @@ Public Class ControlManagment
     End Function
     Public Function autoTranslateToolbars(toolBarMang As Infragistics.Win.UltraWinToolbars.UltraToolbarsManager, parentControl As Control, parentForm As Form) As Boolean
         Try
-            If ENV._IntDeactivated Then
+            If Settings._IntDeactivated Then
                 Exit Function
             End If
 
             Dim ModusDesktopManagment As Boolean = False
             Dim ProductiveFull As Boolean = False
-            If QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
+            If QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
                 ModusDesktopManagment = True
-            ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
+            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
                 ProductiveFull = True
-            ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
+            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
                 ProductiveFull = False
-            ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
+            ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
                 Return False
             End If
 
@@ -551,7 +551,7 @@ Public Class ControlManagment
                 ControlManagment.sqlLanguageUpdate.initControl()
                 ControlManagment.sqlLanguageUpdate.getLanguage(System.Guid.NewGuid().ToString(), ControlManagment.dsLanguageUpdate,
                                                core.language.sqlLanguage.eTypSelLang.IDRes,
-                                               core.Enums.eResourceType.Label, ENV._Application)
+                                               core.Enums.eResourceType.Label, Settings._Application)
             End If
 
             For Each toolBase As ToolBase In toolBarMang.Tools
@@ -569,7 +569,7 @@ Public Class ControlManagment
                 End If
                 Me.getRes(IDRes, IDResFound, translatedTxt, eControlGroup.MainSystem, core.Enums.eResourceType.Label, rRes)
                 If rRes Is Nothing Then
-                    If ENV._AutoAddNewRessources Then
+                    If Settings._AutoAddNewRessources Then
                         Me.addNewResAuto(IDRes, "", Nothing, Nothing, eControlGroup.MainSystem, True,
                                              Nothing, core.Enums.eResourceType.Label, Nothing, "", toolBase.SharedProps.Caption.Trim(), rRes, True, "UltraToolbarsManager")
                         translatedTxt = toolBase.SharedProps.Caption.Trim()
@@ -578,12 +578,12 @@ Public Class ControlManagment
                 End If
 
                 If IDResFound Then
-                    If ENV._DoNotShowRessources Then
+                    If Settings._DoNotShowRessources Then
                         translatedTxt = ""     '"---"
                     End If
                     toolBase.SharedProps.Caption = translatedTxt.Trim()
                 Else
-                    If Not ENV._DoNotShowRessources Then
+                    If Not Settings._DoNotShowRessources Then
                         toolBase.SharedProps.Caption = ""
                     End If
                 End If
@@ -596,7 +596,7 @@ Public Class ControlManagment
     Public Shared Function MessageBox(Txt As String, Caption As String, Buttons As MessageBoxButtons, ico As MessageBoxIcon,
                                         Optional NoTranslation As Boolean = False, Optional Password As String = "") As DialogResult
         Try
-            If ENV._IntDeactivated Or NoTranslation Then
+            If Settings._IntDeactivated Or NoTranslation Then
                 Return MsgBox(Txt.Trim(), Buttons, Caption.Trim())
             End If
 
@@ -606,14 +606,14 @@ Public Class ControlManagment
                 ControlManagment.sqlLanguageUpdate.initControl()
                 ControlManagment.sqlLanguageUpdate.getLanguage(System.Guid.NewGuid().ToString(), ControlManagment.dsLanguageUpdate,
                                                core.language.sqlLanguage.eTypSelLang.IDRes,
-                                               core.Enums.eResourceType.Label, ENV._Application)
+                                               core.Enums.eResourceType.Label, Settings._Application)
             End If
 
             Dim ControlManagment1 As New ControlManagment()
             Dim ModusDesktopManagment As Boolean = False
             Dim ProductiveFull As Boolean = False
             Dim AutoTranslateIsOn As Boolean = ControlManagment1.getTypeRessourcesRun(ModusDesktopManagment, ProductiveFull)
-            If Not AutoTranslateIsOn Or (Not ENV._IsInitialized) Then
+            If Not AutoTranslateIsOn Or (Not Settings._IsInitialized) Then
                 Return MsgBox(Txt.Trim(), Buttons, Caption.Trim())
             End If
 
@@ -626,7 +626,7 @@ Public Class ControlManagment
             Dim IDRes As String = Txt + "_" + "MessageBoxText"
             ControlManagment1.getRes(IDRes, IDResFound, translatedTxt, eControlGroup.MainSystem, core.Enums.eResourceType.Label, rRes)
             If rRes Is Nothing Then
-                If ENV._AutoAddNewRessources Then
+                If Settings._AutoAddNewRessources Then
                     ControlManagment1.addNewResAuto(IDRes, "", Nothing, Nothing, eControlGroup.MainSystem, True,
                                              Nothing, core.Enums.eResourceType.Label, Nothing, "", Txt.Trim(), rRes, True, "MessageBoxText")
                     translatedTxt = Txt.Trim()
@@ -642,7 +642,7 @@ Public Class ControlManagment
                 IDRes = Caption + "_" + "MessageBoxCaption"
                 ControlManagment1.getRes(IDRes, IDResFound, translatedCaption, eControlGroup.MainSystem, core.Enums.eResourceType.Label, rRes)
                 If rRes Is Nothing Then
-                    If ENV._AutoAddNewRessources Then
+                    If Settings._AutoAddNewRessources Then
                         ControlManagment1.addNewResAuto(IDRes, "", Nothing, Nothing, eControlGroup.MainSystem, True,
                                             Nothing, core.Enums.eResourceType.Label, Nothing, "", Caption.Trim(), rRes, True, "MessageBoxCaption")
                         translatedCaption = Caption.Trim()
@@ -652,13 +652,13 @@ Public Class ControlManagment
             End If
 
             If IDResFound Then
-                If ENV._DoNotShowRessources Then
+                If Settings._DoNotShowRessources Then
                     translatedTxt = ""
                     translatedCaption = ""
                 End If
                 Return MsgBox(translatedTxt.Trim(), Buttons, translatedCaption.Trim())
             Else
-                If Not ENV._DoNotShowRessources Then
+                If Not Settings._DoNotShowRessources Then
                     Return MsgBox("", Buttons, "")
                 End If
             End If
@@ -670,7 +670,7 @@ Public Class ControlManagment
 
     Public Shared Function getRes(Txt2 As String, ParamArray pars() As Object) As String
         Try
-            If ENV._IntDeactivated Then
+            If Settings._IntDeactivated Then
                 If pars.Length > 0 Then
                     ControlManagment.doParsMsgBox(Txt2, pars)
                 End If
@@ -683,14 +683,14 @@ Public Class ControlManagment
                 ControlManagment.sqlLanguageUpdate.initControl()
                 ControlManagment.sqlLanguageUpdate.getLanguage(System.Guid.NewGuid().ToString(), ControlManagment.dsLanguageUpdate,
                                                core.language.sqlLanguage.eTypSelLang.IDRes,
-                                               core.Enums.eResourceType.Label, ENV._Application)
+                                               core.Enums.eResourceType.Label, Settings._Application)
             End If
 
             Dim ControlManagment1 As New ControlManagment()
             Dim ModusDesktopManagment As Boolean = False
             Dim ProductiveFull As Boolean = False
             Dim AutoTranslateIsOn As Boolean = ControlManagment1.getTypeRessourcesRun(ModusDesktopManagment, ProductiveFull)
-            If Not AutoTranslateIsOn Or (Not ENV._IsInitialized) Then
+            If Not AutoTranslateIsOn Or (Not Settings._IsInitialized) Then
                 Return Txt2
             End If
 
@@ -702,7 +702,7 @@ Public Class ControlManagment
             Dim IDRes As String = Txt2 + "_" + "AutoRes"
             ControlManagment1.getRes(IDRes, IDResFound, translatedTxt, eControlGroup.MainSystem, core.Enums.eResourceType.Label, rRes)
             If rRes Is Nothing Then
-                If ENV._AutoAddNewRessources Then
+                If Settings._AutoAddNewRessources Then
                     ControlManagment1.addNewResAuto(IDRes, "", Nothing, Nothing, eControlGroup.MainSystem, True,
                                              Nothing, core.Enums.eResourceType.Label, Nothing, "", Txt2.Trim(), rRes, True, "AutoRes")
                     translatedTxt = Txt2.Trim()
@@ -711,7 +711,7 @@ Public Class ControlManagment
             End If
 
             If IDResFound Then
-                If ENV._DoNotShowRessources Then
+                If Settings._DoNotShowRessources Then
                     translatedTxt = ""
                 End If
 
@@ -725,7 +725,7 @@ Public Class ControlManagment
                 End If
                 Return translatedTxt.Trim()
             Else
-                If Not ENV._DoNotShowRessources Then
+                If Not Settings._DoNotShowRessources Then
                     Return "[ResNotFound_" + Txt2.Trim() + "]"
                 Else
                     Return "[ResNotFound]"
@@ -1312,7 +1312,7 @@ Public Class HandleEvent
                 'Me.ToolStripMenuItem_LayoutReset.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Rückgängig, 32, 32)
 
 
-                If ENV._RigthLayoutmanager Then
+                If Settings._RigthLayoutmanager Then
                     Me.ToolStripMenuItem_LayoutManagerGrid = ContextMenuStripToAdd.Items.Add(Me.getControlNameAutoAdded())
                     Me.ToolStripMenuItem_LayoutManagerGrid.Text = "Layout-Manager"
                     Me.ToolStripMenuItem_LayoutManagerGrid.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Table, 32, 32)
@@ -1333,7 +1333,7 @@ Public Class HandleEvent
                     Me.ToolStripMenuItem_ExportGridAsPdf.Text = "Export Pdf"
                     Me.ToolStripMenuItem_ExportGridAsPdf.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_PDF, 32, 32)
 
-                    If ENV._RigthLayoutmanager Then
+                    If Settings._RigthLayoutmanager Then
                         Me.ToolStripMenuItem_PrintGrid = ContextMenuStripToAdd.Items.Add(Me.getControlNameAutoAdded())
                         Me.ToolStripMenuItem_PrintGrid.Text = "Print Grid"
                         Me.ToolStripMenuItem_PrintGrid.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Drucken, 32, 32)
@@ -1361,7 +1361,7 @@ Public Class HandleEvent
 
             End If
 
-            If QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
+            If QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
                 ContextMenuStripToAdd = ContextMenuStrip
                 'Me.ToolStripSeparator1 = ContextMenuStripToAdd.Items.Add(Me.getControlNameAutoAdded())
 
@@ -1694,11 +1694,11 @@ Public Class HandleEvent
     Public Function OpenResManager(ByRef rControl As dsControls.ControlsRow) As Boolean
         Try
             Dim frmRes As New QS2.sitemap.manage.wizardsDevelop.frmRessourcen()
-            frmRes.contRessourcen1.IDApplication = ENV._Application
+            frmRes.contRessourcen1.IDApplication = Settings._Application
             frmRes.contRessourcen1.IDParticipant = ControlManagment.defaultParticipant
             frmRes.doSearchAuto = True
             frmRes.searchAuto = Me._IDRes
-            frmRes.defaultApplication = ENV._Application
+            frmRes.defaultApplication = Settings._Application
             If frmRes.ShowDialog() = DialogResult.OK Then
             End If
 
@@ -1713,11 +1713,11 @@ Public Class HandleEvent
     Public Function OpenCriterias(ByRef rControl As dsControls.ControlsRow) As Boolean
         Try
             Dim frmCrit As New QS2.sitemap.manage.wizardsDevelop.frmCriterias()
-            frmCrit.contCriterias1.IDApplication = ENV._Application
+            frmCrit.contCriterias1.IDApplication = Settings._Application
             frmCrit.contCriterias1.IDParticipant = ControlManagment.defaultParticipant
             frmCrit.doSearchAuto = True
             frmCrit.searchAuto = Me._IDRes
-            frmCrit.defaultApplication = ENV._Application
+            frmCrit.defaultApplication = Settings._Application
             If frmCrit.ShowDialog() = DialogResult.OK Then
             End If
             Me.doBaseElements1.runControlManagment(Me._IDRes, Me._forControl, Me._ContextMenuStrip, False, Me._rRes, False, Me._IsStandardControl,
@@ -1745,7 +1745,7 @@ Public Class HandleEvent
             lstDatasets.Add(ControlManagment.dsControls)
             frmTable1.lstDatasets = lstDatasets
             frmTable1.IDParticipant = ControlManagment.defaultParticipant
-            frmTable1.IDApplication = ENV._Application
+            frmTable1.IDApplication = Settings._Application
             frmTable1.initControl(QS2.ui.print.contTable.eTypeUI.Query, "", True)
             frmTable1.Show()
             frmTable1.Text = "Control-Database"

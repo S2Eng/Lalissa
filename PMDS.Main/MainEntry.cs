@@ -34,7 +34,7 @@ namespace PMDS
                 }
             }       
 
-            QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
+            QS2.Desktop.ControlManagment.Settings.setRights(ENV.HasRight(UserRights.Layout));
             qs2.core.ENV.IsHeadquarter = true;
 
             if (!IsTouch)
@@ -251,7 +251,7 @@ namespace PMDS
                                 return;
                             }
 
-                            QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
+                            QS2.Desktop.ControlManagment.Settings.setRights(ENV.HasRight(UserRights.Layout));
 
                             
                             PMDS.Global.ENV.setStyleInfrag(true);
@@ -320,7 +320,7 @@ namespace PMDS
                         remotingSrv.showMsgBoxTestmodus("User Logged in");
 
                         ENV.SignalQuickfilterChanged(null);
-                        QS2.Desktop.ControlManagment.ENV.initRigth(ENV.HasRight(UserRights.Layout), ENV.adminSecure);
+                        QS2.Desktop.ControlManagment.Settings.initRigth(ENV.HasRight(UserRights.Layout), ENV.adminSecure);
 
                         b.initUserCanSign();
 
@@ -343,7 +343,7 @@ namespace PMDS
                         ENV.COMMANDLINE_PWD = "";
 
 
-                        QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
+                        QS2.Desktop.ControlManagment.Settings.setRights(ENV.HasRight(UserRights.Layout));
                         qs2.ui.RunFromPMDS RunFromPMDS1 = new qs2.ui.RunFromPMDS();
                         RunFromPMDS1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
                         PMDS.Global.ENV.setStyleInfrag(true);

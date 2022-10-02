@@ -18,7 +18,7 @@ Public Class compSql
     Public Function getLayoutGrid(ByVal IDLayout As System.Guid, ByRef dsLayoutGrid1 As dsManage) As Boolean
         Try
             Me.daLayoutGrid.SelectCommand.CommandText = Me.selLayoutGrid
-            Me.daLayoutGrid.SelectCommand.Connection = ENV._conn2
+            Me.daLayoutGrid.SelectCommand.Connection = Settings._conn2
             Me.daLayoutGrid.SelectCommand.Parameters.Clear()
 
             Dim sWhere As String = " where IDLayout = @IDLayout "
@@ -43,7 +43,7 @@ Public Class compSql
     Public Function getLayout(ByRef dsLayout As dsManage, ByVal LayoutName As String, ByVal IDGuid As System.Guid, ByVal key As String) As Boolean
         Try
             Me.daLayout.SelectCommand.CommandText = Me.selLayout
-            Me.daLayout.SelectCommand.Connection = ENV._conn2
+            Me.daLayout.SelectCommand.Connection = Settings._conn2
             Me.daLayout.SelectCommand.Parameters.Clear()
             Me.daLayout.SelectCommand.Parameters.Clear()
 

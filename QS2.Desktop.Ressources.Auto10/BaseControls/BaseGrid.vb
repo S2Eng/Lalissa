@@ -32,7 +32,7 @@ Public Class BaseGrid
     End Sub
     Public Sub doVisibleChanged()
         Try
-            If Not DesignMode And ENV._ApplicationIsRunning Then
+            If Not DesignMode And Settings._ApplicationIsRunning Then
                 Me.initControl()
 
                 Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Me.contextMenuStrip1, Me.IsLoaded, rRes, True, True, Me.DoIDResAuto)
@@ -72,8 +72,8 @@ Public Class BaseGrid
                     Dim LayoutFound As Boolean = False
                     If Not DesignMode Then
                         Dim cLayoutManager1 As New QS2.Desktop.ControlManagment.cLayoutManager2()
-                        cLayoutManager1.doLayoutGrid(Me, Me.IDRes.Trim(), Nothing, LayoutFound, True, Not ENV._IntDeactivated, ENV._AutoAddNewRessources)
-                        'compLayout1.doLayoutGrid(Me, Me.IDRes.Trim(), Nothing, LayoutFound, True, Not ENV._IntDeactivated, ENV._AutoAddNewRessources)
+                        cLayoutManager1.doLayoutGrid(Me, Me.IDRes.Trim(), Nothing, LayoutFound, True, Not Settings._IntDeactivated, Settings._AutoAddNewRessources)
+                        'compLayout1.doLayoutGrid(Me, Me.IDRes.Trim(), Nothing, LayoutFound, True, Not Settings._IntDeactivated, Settings._AutoAddNewRessources)
                         QS2.Desktop.ControlManagment.BaseGrid.doFormatDateTime(Me)
                     End If
                     Me.doBaseElements1.InfoControl.LastLoadedLayout.IsLoaded = True

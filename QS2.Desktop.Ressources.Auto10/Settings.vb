@@ -1,4 +1,4 @@
-﻿Public Class ENV
+﻿Public Class Settings
 
     Public Shared _Application As String = ""
     Public Shared _TypeRessourcesRun As String = ""
@@ -17,41 +17,41 @@
     Public Shared Function init(ByRef Application As String, ByRef TypeRessourcesRun As String, ExtendedView As Boolean,
                                 DoNotShowRessources As Boolean, AutoAddNewRessources As Boolean, IntDeactivated As Boolean, conn As System.Data.SqlClient.SqlConnection) As Boolean
         Try
-            ENV._Application = Application
-            ENV._TypeRessourcesRun = TypeRessourcesRun
-            ENV._ExtendedView = ExtendedView
-            ENV._ApplicationIsRunning = True
-            ENV._DoNotShowRessources = DoNotShowRessources
-            ENV._AutoAddNewRessources = AutoAddNewRessources
-            ENV._IntDeactivated = IntDeactivated
-            ENV._IsInitialized = True
-            ENV._conn2 = conn
+            Settings._Application = Application
+            Settings._TypeRessourcesRun = TypeRessourcesRun
+            Settings._ExtendedView = ExtendedView
+            Settings._ApplicationIsRunning = True
+            Settings._DoNotShowRessources = DoNotShowRessources
+            Settings._AutoAddNewRessources = AutoAddNewRessources
+            Settings._IntDeactivated = IntDeactivated
+            Settings._IsInitialized = True
+            Settings._conn2 = conn
 
             Return True
 
         Catch ex As Exception
-            Throw New Exception("ENV.init: " + ex.ToString())
+            Throw New Exception("Settings.init: " + ex.ToString())
         End Try
     End Function
     Public Shared Function initRigth(RigthLayoutmanager As Boolean, AdminSecure As Boolean) As Boolean
         Try
-            ENV._AdminSecure = AdminSecure
-            ENV._RigthLayoutmanager = RigthLayoutmanager
+            Settings._AdminSecure = AdminSecure
+            Settings._RigthLayoutmanager = RigthLayoutmanager
             Return True
 
         Catch ex As Exception
-            Throw New Exception("ENV.init: " + ex.ToString())
+            Throw New Exception("Settings.init: " + ex.ToString())
         End Try
     End Function
 
     Public Shared Function setRights(EditGridLayouts As Boolean) As Boolean
         Try
-            ENV._EditGridLayouts = EditGridLayouts
+            Settings._EditGridLayouts = EditGridLayouts
 
             Return True
 
         Catch ex As Exception
-            Throw New Exception("ENV.setRights: " + ex.ToString())
+            Throw New Exception("Settings.setRights: " + ex.ToString())
         End Try
 
     End Function

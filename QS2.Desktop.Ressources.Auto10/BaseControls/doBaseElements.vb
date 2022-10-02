@@ -51,7 +51,7 @@ Public Class doBaseElements
                 End If
 
                 Dim ContextMenüStripToTake As System.Windows.Forms.ContextMenuStrip = Nothing
-                If QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
+                If QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
                     If cont.ContextMenuStrip Is Nothing Then
                         cont.ContextMenuStrip = ContextMenuStripNew
                         ContextMenüStripToTake = cont.ContextMenuStrip
@@ -61,7 +61,7 @@ Public Class doBaseElements
                         'ContextMenüStripToTake = cont.ContextMenuStrip
                     End If
 
-                ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
+                ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
                     If cont.ContextMenuStrip Is Nothing Then
                         cont.ContextMenuStrip = ContextMenuStripNew
                         ContextMenüStripToTake = cont.ContextMenuStrip
@@ -71,7 +71,7 @@ Public Class doBaseElements
                         'ContextMenüStripToTake = cont.ContextMenuStrip
                     End If
 
-                ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
+                ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
                     If cont.ContextMenuStrip Is Nothing Then
                         cont.ContextMenuStrip = ContextMenuStripNew
                         ContextMenüStripToTake = cont.ContextMenuStrip
@@ -81,10 +81,10 @@ Public Class doBaseElements
                         'ContextMenüStripToTake = cont.ContextMenuStrip
                     End If
 
-                ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
+                ElseIf QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
                     Exit Function
                 Else
-                    Throw New Exception("doBaseElements.runControlManagment: ENV._TypeRessourcesRun.Trim() '" + QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim() + "' not supported!")
+                    Throw New Exception("doBaseElements.runControlManagment: Settings._TypeRessourcesRun.Trim() '" + QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim() + "' not supported!")
                 End If
 
                 Dim bControlIsDone As Integer = -1
@@ -97,7 +97,7 @@ Public Class doBaseElements
                                         QS2.Desktop.ControlManagment.ControlManagment.eControlGroup.MainSystem,
                                         bControlIsDone, rActControl, ContextMenüStripToTake, QS2.core.Enums.eResourceType.Label,
                                         TxtEnglish, TxtGerman, rRes, doContextMenü, IsStandardControl,
-                                        Me.InfoControl, DoIDResAuto, ENV._ExtendedView)
+                                        Me.InfoControl, DoIDResAuto, Settings._ExtendedView)
 
                 IsLoaded = True
             End If
@@ -130,11 +130,11 @@ Public Class doBaseElements
 
     Public Shared Sub SetRightContextMenü(ByRef cont As System.Windows.Forms.Control)
         Try
-            If QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Or _
-                QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
+            If QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Or
+                QS2.Desktop.ControlManagment.Settings._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
                 cont.ContextMenuStrip = Nothing
             Else
-                If Not ENV._AdminSecure Then
+                If Not Settings._AdminSecure Then
                     cont.ContextMenuStrip = Nothing
                 End If
                 Dim str As String = ""
