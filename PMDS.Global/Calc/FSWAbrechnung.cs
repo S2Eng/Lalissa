@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using System.Drawing;
 using Syncfusion.XlsIO;
 using S2Extensions;
-using static PMDS.Global.db.cEBInterfaceDB;
 using Infragistics.Documents.Excel;
 using ScintillaNET.Demo;
 
@@ -650,7 +649,8 @@ namespace PMDS.Global
                                     return;
                                 }
                             }
-                            
+
+                            int iRechnungen = 0;
                             if (RunAction == eAction.fsw)    //Hochladen. Wenn nein -> nur XML erstellen (z.B. für Test)
                             {
                                 string Log = "";
@@ -662,7 +662,7 @@ namespace PMDS.Global
                                     bool bIsPflegeZAUFF = f.Transaction.bIsPflegeZAUFF;
                                     FilenameXML = f.Transaction.bIsPflegeZAUFF ? FilenameXML : FilenameXMLBW;
                                     ListIDs = f.Transaction.bIsPflegeZAUFF ? ListIDBillsFSW : ListIDBillsFSWBW;
-
+                                    iRechnungen += ListIDs.Count();
                                     ret = Upload(FilenameXML, f.FQFileXML, out string LogsFTP);
                                     Log += "\n" + LogsFTP;
 
@@ -680,9 +680,10 @@ namespace PMDS.Global
                                     }
                                 }
 
-                                string sTxtZAUFFS = ListXMLInfos.Count().sIntToWords("e ") + "Zahlungsaufforderung".sMehrzahlText(ListXMLInfos.Count(), "en");
-                                string sTxtRechnungen = ListIDs.Count().sIntToWords("e") + " Rechnung".sMehrzahlText(ListIDs.Count(), "en") + " wurde".sMehrzahlText(ListIDs.Count(), "n");
-                                DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sTxtZAUFFS + " für " + sTxtRechnungen + " an den FSW gesendet.\n\nWollen Sie die Dateien anzeigen?", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.YesNo);
+                                string sTXTZielumgebung = "Zielumgebung = " + ENV.FSW_FTPMode + "\n";
+                                string sTxtZAUFFS = ListXMLInfos.Count().sIntToWords("e ", true) + " Zahlungsaufforderung".sMehrzahlText(ListXMLInfos.Count(), "en");
+                                string sTxtRechnungen = iRechnungen.sIntToWords("e") + " Rechnung".sMehrzahlText(iRechnungen, "en") + " wurde".sMehrzahlText(iRechnungen, "n");
+                                DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sTXTZielumgebung + sTxtZAUFFS + " für " + sTxtRechnungen + " an den FSW gesendet.\n\nWollen Sie die Dateien anzeigen?", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.YesNo);
                                 if (res == DialogResult.Yes)
                                 {
                                     string resShow = ShowXMLContent(ListXMLInfos, Log);
@@ -1163,29 +1164,6 @@ namespace PMDS.Global
                 throw new Exception("FSWAbrechnung.cs.getDBCalc: " + ex.Message);
             }
         }
-
-        //private bool LeistungszeileBereitsVerrechnet(Guid IDRechnungszeile, Guid IDRechnung)
-        //{
-        //    try
-        //    {
-        //        return (from z in lstZeilen
-        //                  select z).Where(z => z.IDRechnungszeile == IDRechnungszeile && z.IDRechnung == IDRechnung).Any();
-        //        /*
-        //        foreach (Leistungszeile z in lstZeilen)
-        //        {
-        //            if (z.IDRechnungszeile == IDRechnungszeile && z.IDRechnung == IDRechnung)
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //        return false;
-        //        */
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("FSWAbrechnung.cs.getDBCalc: " + ex.Message);
-        //    }
-        //}
 
         private static string Upload (string RemoteFilename, string LocalFQFilename, out string Log)
         {
