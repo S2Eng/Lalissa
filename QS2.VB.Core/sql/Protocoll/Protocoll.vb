@@ -568,13 +568,11 @@ Public Class Protocol : Implements IDisposable
         Next
     End Function
 
-
     Public Sub getLstTablesForObject(ByRef lstTables As System.Collections.Generic.List(Of String),
                                      ByRef dsDefault As DataSet)
 
         Dim dsTemp As New dsObjects()
         lstTables.Add(dsTemp.tblObject.TableName)
-        lstTables.Add(dsTemp.tblAdress.TableName)
 
         Dim sqlObjTemp As New sqlObjects()
         sqlObjTemp.initControl()
@@ -582,22 +580,16 @@ Public Class Protocol : Implements IDisposable
 
         Dim dt As DataTable = dsTemp.Tables(dsTemp.tblObject.TableName).Copy()
         dsDefault.Tables.Add(dt)
-        dt = dsTemp.Tables(dsTemp.tblAdress.TableName).Copy()
-        dsDefault.Tables.Add(dt)
 
     End Sub
+
     Public Sub getLstTablesForStay(ByRef lstTables As System.Collections.Generic.List(Of String),
                                    ByRef dsDefault As DataSet)
 
         Dim dsTemp As New dsObjects()
-        lstTables.Add(dsTemp.tblStay.TableName)
 
         Dim sqlObjTemp As New sqlObjects()
         sqlObjTemp.initControl()
-        sqlObjTemp.getNewRowStay(dsTemp)
-
-        Dim dt As DataTable = dsTemp.Tables(dsTemp.tblStay.TableName).Copy()
-        dsDefault.Tables.Add(dt)
     End Sub
 
 

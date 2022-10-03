@@ -447,12 +447,6 @@
     <Compile Include="comboApplication.Designer.cs">
       <DependentUpon>comboApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="dropDownStays.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="dropDownStays.Designer.cs">
-      <DependentUpon>dropDownStays.cs</DependentUpon>
-    </Compile>
     <Compile Include="ownControls\inherit Infrag\contInfragLblButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -550,9 +544,6 @@
   <ItemGroup>
     <EmbeddedResource Include="comboApplication.resx">
       <DependentUpon>comboApplication.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="dropDownStays.resx">
-      <DependentUpon>dropDownStays.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ownControls\inherit Infrag\contInfragLblButton.resx">
       <DependentUpon>contInfragLblButton.cs</DependentUpon>

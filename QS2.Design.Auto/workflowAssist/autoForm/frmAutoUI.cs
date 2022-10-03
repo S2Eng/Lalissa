@@ -18,7 +18,6 @@ namespace qs2.sitemap.workflowAssist.form
         private string _IDResTitleForm = "Stay";
         public qs2.core.license.doLicense.eApp Application;
         public int numberForm = 0;
-        public qs2.core.vb.dsObjects.tblStayRow rStay;
         public qs2.core.vb.dsObjects.tblObjectRow rPatient;
         public bool SaveWasClicked = false;
         public bool isInEditMode = false;

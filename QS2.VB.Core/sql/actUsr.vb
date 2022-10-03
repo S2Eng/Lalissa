@@ -6,39 +6,15 @@ Imports System.DirectoryServices
 Imports System.DirectoryServices.AccountManagement
 
 Public Class actUsr
-
-
     Public Shared rUsr As dsObjects.tblObjectRow
-    Public Shared loggedInAsWindowsUser As Boolean = False
-    Public Shared rUsrAdr As dsObjects.tblAdressRow
-
     Public Shared valWinMaximized As Integer = -32000
-
     Private Shared dsAdjust1 As New dsAdmin()
-    Public Shared lstRolesUser As New System.Collections.Generic.List(Of businessFramework.cSelListAndObj)
-
     Public Shared __UserHasRigthSetCompleted As Boolean = False
-
-
     Public Shared sqlAdminRights As sqlAdmin = Nothing
     Public Shared dsAdminRights As dsAdmin = Nothing
     Public Shared sqlAdminRights_Systemuser As sqlAdmin = Nothing
     Public Shared dsAdminRights_Systemuser As dsAdmin = Nothing
-
-
-    'Public Shared dsGroupsUserLogedIn As dsAdmin = Nothing
-    'Public Shared dsAdminRightsTmp As dsAdmin = Nothing
     Public Shared UserHasRoleAdministrator As Boolean = False
-
-
-
-
-
-
-
-
-
-
 
     Public Shared Function loadActUsr(ByVal ID As Integer, bDesignMode As Boolean) As Boolean
         Try

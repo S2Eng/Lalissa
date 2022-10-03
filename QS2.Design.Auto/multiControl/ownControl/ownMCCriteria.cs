@@ -614,7 +614,6 @@ namespace qs2.design.auto
                     if (this.rColSys != null)
                     {
                         System.Collections.Generic.List<string> lstTablesNoDateTimeCheck = new System.Collections.Generic.List<string>();
-                        lstTablesNoDateTimeCheck.Add(ownMCCriteria.dsObjectsWork.tblStay.TableName);
 
                         this.defaultDBValue = qs2.core.dbBase.getDefaultDBValue(ref this.rColSys, true, lstTablesNoDateTimeCheck, ref this.NoDefaultValuePossible);
                         this.IsNullableInDb = qs2.core.dbBase.checkColSysNullable(ref this.rColSys);

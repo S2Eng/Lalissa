@@ -512,23 +512,6 @@ namespace qs2.sitemap.workflowAssist
             this.contListElementDropDown1.lockUnlock(bEdit);
         }
         
-        public void loadDropDownProcGroups(qs2.core.vb.dsObjects.tblStayRow rStay, string Application)
-        {
-            int counterProceduresFoundForChapter = 0;
-            this.contListElementDropDown1.loadDropDownProcGroups(rStay, this.cListAssistentElem.IDSelEntry, Application, ref counterProceduresFoundForChapter);
-            if (counterProceduresFoundForChapter > 0)
-            {
-                this.contListElementDropDown1.Visible = true;
-            }
-            else
-            {
-                this.contListElementDropDown1.Visible = false;
-            }
-        }
-        public void saveDropDownProcGroups(qs2.core.vb.dsObjects.tblStayRow rStay, string Application)
-        {
-            this.contListElementDropDown1.saveDropDownProcGroups(rStay, this.cListAssistentElem.IDSelEntry, Application); 
-        }
         public void resetDropDownProcGroupsMain(System.Guid IDElementClicked, ref string ColumnNameClicked)
         {
             if (!this.cListAssistentElem.ID.Equals(IDElementClicked))
@@ -537,79 +520,6 @@ namespace qs2.sitemap.workflowAssist
             }
         }
  
-        public void doAllAssignmentsDropDown(qs2.core.vb.dsObjects.tblStayRow rStay, string Application,
-                                            ref string protocollForAdmin, ref bool ProtocolWindow)
-        {
-            this.contListElementDropDown1.loadRelationsDropDown(rStay, Application, ref protocollForAdmin, ref ProtocolWindow);
-        }
-
-        public void loadSelectedProcGroup(qs2.core.vb.dsObjects.tblStayRow rStay, ref string protocollForAdmin, ref bool ProtocolWindow,
-                                            ref System.Collections.Generic.List<string> lstElementsActive,
-                                            ref qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck, 
-                                            bool AddSchemaAuto, bool callReposition)
-        {
-            if (this.cListAssistentElem.sqlColumn.ToString().Equals("IsFUP", StringComparison.OrdinalIgnoreCase))
-            {
-                return;
-            }
-              
-            System.Collections.Generic.List<qs2.core.generic.retValue> columnsSelect = new System.Collections.Generic.List<qs2.core.generic.retValue>();
-            qs2.core.generic.retValue Column = new qs2.core.generic.retValue();
-            Column.fieldInfo = this.cListAssistentElem.sqlColumn;
-            columnsSelect.Add(Column);
-
-            System.Collections.Generic.List<qs2.core.generic.retValue> columnsWhere = new System.Collections.Generic.List<qs2.core.generic.retValue>();
-            Column = new qs2.core.generic.retValue();
-            Column.fieldInfo = dsObjectsTemp.tblStay.IDColumn.ColumnName;
-            Column.valueStr = rStay.ID.ToString();
-            columnsWhere.Add(Column);
-
-            Column = new qs2.core.generic.retValue();
-            Column.fieldInfo = dsObjectsTemp.tblStay.IDParticipantColumn.ColumnName;
-            Column.valueStr = "'" + rStay.IDParticipant.ToString() + "'";
-            columnsWhere.Add(Column);
-            try
-            {
-                //lthxyxy
-                System.Data.DataTable dt = qs2.core.dbBase.buildSelectCommand(this.cListAssistentElem.sqlTable, columnsSelect, columnsWhere, AddSchemaAuto);
-                if (dt.Rows.Count == 1)
-                {
-                    if (System.Convert.ToInt32(dt.Rows[0][this.cListAssistentElem.sqlColumn]) == 1)
-                    {
-                        object sender = (object)this;
-                        EventArgs evArg = new EventArgs();
-                        this.btnElementClick(sender, evArg, true, true, false, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, 
-                                                ref TypAssignmentToCheck, false, callReposition);
-                    }
-                    else if (System.Convert.ToInt32(dt.Rows[0][this.cListAssistentElem.sqlColumn]) == 0)
-                    {
-                        object sender = (object)this;
-                        EventArgs evArg = new EventArgs();
-                        this.btnElementClick(sender, evArg, false, true, false, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, 
-                                                ref TypAssignmentToCheck, false, callReposition);
-                    }
-                    else
-                    {
-                        //throw new Exception("contListAssistentElem.loadSelectedProcGroup: Error Select for Field '" + this.sqlColumn + "', MedRecNr='" + rStay.MedRecN + "'!");
-                        //lthxy
-                    }
-                }
-                else
-                {
-                    throw new Exception("contListAssistentElem.loadSelectedProcGroup: Error Select for Field '" + this.cListAssistentElem.sqlColumn + "', MedRecNr='" + rStay.MedRecN + "'!");
-                }
-
-            }
-            catch (Exception ex2)
-            {
-                string err = "contListAssistentElem.loadSelectedProcGroup: Error Build Select-Command for ProcGrp0/1 for Sql-Column '" + this.cListAssistentElem.sqlColumn + "' in Table '" + this.cListAssistentElem.sqlTable + "', MedRecNr='" + rStay.MedRecN + "'!" + "\r\n" + ex2.ToString();
-                throw new Exception(err);
-                //qs2.sitemap.workflowAssist.form.contAutoUI.LoadingStayData = false;
-                //qs2.core.Protocol.doExcept(ex.ToString(), "contListAssistentElem.loadSelectedProcGroup", "", false, true, this.OwnLicense.OwnApplication.ToString(),
-                //                            qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                //qs2.design.auto.multiControl.ownMCInfo.checkForProtocol(false);
-            }
-        }
         public void setButtonOK(bool bOk)
         {
             if (!bOk)
@@ -623,79 +533,6 @@ namespace qs2.sitemap.workflowAssist
                 this.cListAssistentElem.isOKOn = true;
             }
             Application.DoEvents();
-        }
-        public void loadIsOk(qs2.core.vb.dsObjects.tblStayRow rStay)
-        {
-            contListAssistentElem.sqlAdminWork = new sqlAdmin();
-            contListAssistentElem.sqlAdminWork.initControl();
-            contListAssistentElem.dsAdminWork.Clear();
-            contListAssistentElem.sqlAdminWork.getSelListEntrysObj(-999, qs2.core.vb.sqlAdmin.eDbTypAuswObj.SubSelList,
-                                                 qs2.core.vb.sqlAdmin.typIDGroup_CompletedChapters,
-                                                contListAssistentElem.dsAdminWork, qs2.core.vb.sqlAdmin.eTypAuswahlObj.IDSelListEntryIDStayTypIDGroup,
-                                                 rStay.IDApplication, cListAssistentElem.IDSelEntry,  "", rStay.ID, rStay.IDParticipant);
-
-            if (contListAssistentElem.dsAdminWork.tblSelListEntriesObj.Rows.Count > 1)
-            {
-                throw new Exception("contListAssistentElem.loadIsOk: this.dsAdminWork.tblSelListEntriesObj.Rows.Count > 1 for MedRecNr '" + rStay.MedRecN.ToString() + "'!");
-            }
-            else if (contListAssistentElem.dsAdminWork.tblSelListEntriesObj.Rows.Count == 1)
-            {
-                this.cListAssistentElem.isOKOn = true;
-                this.setButtonOK(true);
-            }
-            if (contListAssistentElem.dsAdminWork.tblSelListEntriesObj.Rows.Count == 0)
-            {
-                this.cListAssistentElem.isOKOn = false;
-                this.setButtonOK(false);
-            }
-        }
-
-        public void saveIsOk(qs2.core.vb.dsObjects.tblStayRow rStay)
-        {
-            //this.dsAdminWork.Clear();
-            //this.sqlAdminWork.getSelListEntrysObj(-99, sqlAdmin.eDbTypAuswObj.SubSelList, qs2.core.vb.sqlAdmin.typIDGroup_CompletedChapters.ToString(), this.dsAdminWork, sqlAdmin.eTypAuswahlObj.IDSelListEntryIDStayTypIDGroup, rStay.IDApplication.Trim(),
-            //                                    this.IDSelEntry, "", rStay.ID, rStay.IDParticipant.Trim(), -999, "", "");
-            //if (this.dsAdminWork.tblSelListEntriesObj.Rows.Count > 0)
-            //{
-            //    if (!this.isOKOn)
-            //    {
-            //        this.sqlAdminWork.deleteSelListEntryObj(rStay.ID, rStay.IDParticipant, rStay.IDApplication, qs2.core.vb.sqlAdmin.typIDGroup_CompletedChapters, this.IDSelEntry);
-            //    }
-            //}
-            //else
-            //{
-            //    if (this.isOKOn)
-            //    {
-            //        this.dsAdminWork.Clear();
-            //        qs2.core.vb.dsAdmin.tblSelListEntriesObjRow rNewObj = (qs2.core.vb.dsAdmin.tblSelListEntriesObjRow)this.sqlAdminWork.getNewRowSelListObj(this.dsAdminWork);
-            //        rNewObj.IDSelListEntry = this.IDSelEntry;
-            //        rNewObj.IDStay = rStay.ID;
-            //        rNewObj.IDParticipantStay = rStay.IDParticipant;
-            //        rNewObj.IDApplicationStay = rStay.IDApplication;
-            //        rNewObj.typIDGroup = qs2.core.vb.sqlAdmin.typIDGroup_CompletedChapters;
-
-            //        this.sqlAdminWork.daSelListEntrysObj.Update(this.dsAdminWork.tblSelListEntriesObj);
-            //    }
-            //}
-
-            contListAssistentElem.dsAdminWork.Clear();
-            contListAssistentElem.sqlAdminWork = new sqlAdmin();
-            contListAssistentElem.sqlAdminWork.initControl();
-            contListAssistentElem.sqlAdminWork.deleteSelListEntryObj(rStay.ID, rStay.IDParticipant, rStay.IDApplication, qs2.core.vb.sqlAdmin.typIDGroup_CompletedChapters, this.cListAssistentElem.IDSelEntry);
-            if (this.cListAssistentElem.isOKOn)
-            {
-                contListAssistentElem.sqlAdminWork.getSelListEntrysObj(-999, sqlAdmin.eDbTypAuswObj.SubSelList, System.Guid.NewGuid().ToString(), contListAssistentElem.dsAdminWork, sqlAdmin.eTypAuswahlObj.IDSelListEntry, "");
-
-                qs2.core.vb.dsAdmin.tblSelListEntriesObjRow rNewObj = (qs2.core.vb.dsAdmin.tblSelListEntriesObjRow)contListAssistentElem.sqlAdminWork.getNewRowSelListObj(contListAssistentElem.dsAdminWork);
-                rNewObj.IDSelListEntry = this.cListAssistentElem.IDSelEntry;
-                rNewObj.IDStay = rStay.ID;
-                rNewObj.IDParticipantStay = rStay.IDParticipant;
-                rNewObj.IDApplicationStay = rStay.IDApplication;
-                rNewObj.typIDGroup = qs2.core.vb.sqlAdmin.typIDGroup_CompletedChapters;
-
-                contListAssistentElem.sqlAdminWork.daSelListEntrysObj.Update(contListAssistentElem.dsAdminWork.tblSelListEntriesObj);
-            }
-
         }
 
         public void valueChanged(int IDSelListCkicked, bool bOn, ref string ColumnNameClicked)
@@ -720,12 +557,6 @@ namespace qs2.sitemap.workflowAssist
         {
             try
             {
-                //if (this.IsVisibleForStayType)
-                //{
-                //    //this.doVisible();
-                //}
-
-             
             }
             catch (Exception ex)
             {

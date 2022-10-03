@@ -317,12 +317,6 @@ namespace qs2.design.auto.multiControl
                 string sMessage = "";
                 if (!ownControl1.IsEvaluation)
                 {
-                    ownControl1.ownMCDataBind1.setRowAndMC(ref ownControl1, ownMCDataBind.eTypeSetDataAndMC.SurgDtEnd, false);
-                    if (!ownControl1.ownMCFormat1.checkInput(this.ownControl1, ref sMessage, true))
-                    {
-
-                        //return;
-                    }
                     if (!ownControl1.checkValueComboBox(true))
                     {
                         return;
@@ -395,6 +389,7 @@ namespace qs2.design.auto.multiControl
                 //cont.Cursor = Cursors.Default;
             }
         }
+
         public void ControlEnter(object sender, EventArgs e)
         {
             try
@@ -411,7 +406,6 @@ namespace qs2.design.auto.multiControl
                     ownControl1.doActionControl(ownMultiControl.eTypActionControl.selectAll, ref calculatedFormatTmp, false);
                     ownControl1.ownMCTxt1.doFocus(ownControl1, true);
                     this.ownControl1.doActionControl(ownMultiControl.eTypActionControl.SetFocus, ref calculatedFormatTmp, false);
-                    ownControl1.ownMCDataBind1.setRowAndMC(ref ownControl1, ownMCDataBind.eTypeSetDataAndMC.SurgDtEnd, true);
 
                     if (ownControl1.OwnControlType == core.Enums.eControlType.Date ||
                         ownControl1.OwnControlType == core.Enums.eControlType.DateTime ||
@@ -422,37 +416,6 @@ namespace qs2.design.auto.multiControl
 
                     ownControl1.doActionControl(ownMultiControl.eTypActionControl.NoticeValueBeforeChangedFromUser, ref calculatedFormatTmp, false);
 
-                    //if (ownControl1.OwnFldShort.Trim().ToLower().Equals(("SurgDtStart").Trim().ToLower()) ||
-                    //    ownControl1.OwnFldShort.Trim().ToLower().Equals(("SurgDtEnd").Trim().ToLower()))
-                    //{
-                    //    if (ownControl1.DateTime.Value != null)
-                    //    {
-                    //        DateTime SurgDtTmp = ownControl1.DateTime.DateTime;
-                    //        if (SurgDtTmp.Hour == 0 && SurgDtTmp.Minute == 0 && SurgDtTmp.Second == 0)
-                    //        {
-                    //            ownControl1.DateTime.SelectionStart = 0;
-                    //            ownControl1.DateTime.SelectionLength = 10;
-                    //        }
-                    //        if (SurgDtTmp.Year != 0 && SurgDtTmp.Month != 0 && SurgDtTmp.Day != 0)
-                    //        {
-                    //            ownControl1.DateTime.SelectionStart = 0;
-                    //            ownControl1.DateTime.SelectionLength = 10;
-                    //        }
-
-                    //    }
-                    //}
-
-                    //qs2.core.generic.infoControl calculatedFormatTmp = new qs2.core.generic.infoControl();
-                    //ownControl1.ownMCTxt1.doFocus(ownControl1, true);
-                    //qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck = design.auto.ownMCRelationship.eTypAssignments.Chapter;
-                    //bool ProtocolWindow = true;
-                    //System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
-                    //ownControl1.parentAutoUI.doAutoControls.doControlChapters("", workflowAssist.autoForm.doAutoControls.eTypActivityControl.ClearFocus, false, "", ownControl1.ownMCCriteria1.Application,
-                    //                                                    ref ownControl1.ownMCCriteria1.IDParticipant, ref ProtocolWindow, ref lstElementsActive, ref TypAssignmentToCheck, 
-                    //                                                    ref ownControl1.parentAutoUI.contAutoProtokoll1, ref ownControl1.parentAutoUI.dsAdmin1, 
-                    //                                                    ref ownControl1.parentAutoUI.autoUI1, 
-                    //                                                    ref ownControl1.parentAutoUI.dataStay, 
-                    //                                                    ref ownControl1.parentAutoUI.autoPrint, false);  
                 }
             }
             catch (Exception ex)
@@ -476,20 +439,6 @@ namespace qs2.design.auto.multiControl
 
                 ownControl1.doActionControl(ownMultiControl.eTypActionControl.selectAll, ref calculatedFormatTmp, false);
                 ownControl1.ownMCTxt1.doFocus(ownControl1, true);
-                ownControl1.ownMCDataBind1.setRowAndMC(ref ownControl1, ownMCDataBind.eTypeSetDataAndMC.SurgDtEnd, true);
-
-                //qs2.core.generic.infoControl calculatedFormatTmp = new qs2.core.generic.infoControl();
-                //ownControl1.ownMCTxt1.doFocus(ownControl1, true);
-                //qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck = design.auto.ownMCRelationship.eTypAssignments.Chapter;
-                //bool ProtocolWindow = true;
-                //System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
-                //ownControl1.parentAutoUI.doAutoControls.doControlChapters("", workflowAssist.autoForm.doAutoControls.eTypActivityControl.ClearFocus, false, "", ownControl1.ownMCCriteria1.Application,
-                //                                                    ref ownControl1.ownMCCriteria1.IDParticipant, ref ProtocolWindow, ref lstElementsActive, ref TypAssignmentToCheck, 
-                //                                                    ref ownControl1.parentAutoUI.contAutoProtokoll1, ref ownControl1.parentAutoUI.dsAdmin1, 
-                //                                                    ref ownControl1.parentAutoUI.autoUI1, 
-                //                                                    ref ownControl1.parentAutoUI.dataStay, 
-                //                                                    ref ownControl1.parentAutoUI.autoPrint, false);  
-
             }
             catch (Exception ex)
             {

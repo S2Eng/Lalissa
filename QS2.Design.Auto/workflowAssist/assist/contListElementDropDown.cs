@@ -89,33 +89,9 @@ namespace qs2.design.auto.workflowAssist.assist
 
         }
 
-
-        public void loadDropDownProcGroups(qs2.core.vb.dsObjects.tblStayRow rStay, int IDSelListEntrySubList, string Application, ref int counterProceduresFoundForChapter)
-        {
-            this.dsAdminSub.Clear();
-            this.sqlAdminWork.getSelListEntrysObj(IDSelListEntrySubList, qs2.core.vb.sqlAdmin.eDbTypAuswObj.SubSelList  , "Procedures", this.dsAdminSub, qs2.core.vb.sqlAdmin.eTypAuswahlObj.IDSelListEntrySublist, Application);
-            counterProceduresFoundForChapter = this.dsAdminSub.tblSelListEntriesObj.Rows.Count;
-            this.contSelListsObj1.loadData(rStay.ID, dsAdminSub, rStay.IDParticipant, rStay.IDApplication,  - 999, IDSelListEntrySubList, false);
-        }
-        public void saveDropDownProcGroups(qs2.core.vb.dsObjects.tblStayRow rStay, int IDSelListEntrySubList, string Application)
-        {
-            this.contSelListsObj1.save(rStay.ID);
-        }
         public void resetDropDownProcGroupsMain(System.Guid IDElementClicked, int IDSelListEntrySubList,ref string ColumnNameClicked)
         {
             this.contSelListsObj1.resetDropDownProcGroupsMain(true, -999, ref ColumnNameClicked );
-        }
-        public void loadRelationsDropDown(qs2.core.vb.dsObjects.tblStayRow rStay, string Application, 
-                                           ref string protocollForAdmin, ref bool ProtocolWindow)
-        {
-            foreach (Infragistics.Win.UltraWinGrid.UltraGridRow r in this.contSelListsObj1.gridSelListObj.Rows)
-            {
-                DataRowView v = (DataRowView)r.ListObject;
-                qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelListEntry = (qs2.core.vb.dsAdmin.tblSelListEntriesRow)v.Row;
-
-                bool bOnTmp = (bool)r.Cells[qs2.core.generic.columnNameSelection].Value;
-                this.mainControl.cListAssistentElem.assistent.doAssignmentsDropDown(ref protocollForAdmin, ref ProtocolWindow, rSelListEntry.ID, bOnTmp);
-            }
         }
 
         public void lockUnlock(bool bEdit)

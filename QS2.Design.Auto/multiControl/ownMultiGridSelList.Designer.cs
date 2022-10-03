@@ -97,7 +97,6 @@
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             this.panelTop = new System.Windows.Forms.Panel();
-            this.dropDownStays1 = new qs2.sitemap.dropDownStays();
             this.dropDownSelListAndGroup1 = new qs2.sitemap.dropDownSelListAndGroup();
             this.panelButtons = new System.Windows.Forms.Panel();
             this.btnDel = new qs2.sitemap.ownControls.inherit_Infrag.InfragButton();
@@ -136,7 +135,6 @@
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.Transparent;
-            this.panelTop.Controls.Add(this.dropDownStays1);
             this.panelTop.Controls.Add(this.dropDownSelListAndGroup1);
             this.panelTop.Controls.Add(this.panelButtons);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -144,15 +142,6 @@
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(390, 24);
             this.panelTop.TabIndex = 0;
-            // 
-            // dropDownStays1
-            // 
-            this.dropDownStays1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dropDownStays1.Location = new System.Drawing.Point(34, 5);
-            this.dropDownStays1.Name = "dropDownStays1";
-            this.dropDownStays1.Size = new System.Drawing.Size(20, 14);
-            this.dropDownStays1.TabIndex = 2;
-            this.dropDownStays1.Visible = false;
             // 
             // dropDownSelListAndGroup1
             // 
@@ -653,7 +642,6 @@
         private System.Windows.Forms.ToolStripMenuItem criteriasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ressourcenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ressourcenSellistsToolStripMenuItem;
-        private sitemap.dropDownStays dropDownStays1;
         private sitemap.ownControls.inherit_Infrag.InfragButton btnUp;
         private sitemap.ownControls.inherit_Infrag.InfragButton btnDown;
         private System.Windows.Forms.Panel panelGridAll;

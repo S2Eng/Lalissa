@@ -480,46 +480,5 @@ namespace qs2.design.auto.multiControl
             }
         }
 
-        public void setRowAndMC(ref qs2.design.auto.multiControl.ownMultiControl ownControl1, eTypeSetDataAndMC TypeSetDataAndMC,
-                                bool SetFocus)
-        {
-            try
-            {
-                if (TypeSetDataAndMC == eTypeSetDataAndMC.SurgDtEnd)
-                {
-                    if (SetFocus && ownControl1.OwnFldShort.Trim().ToLower().Equals(("SurgDtEnd").Trim().ToLower()))
-                    {
-                        if (ownControl1.Date != null && ownControl1.Date.Value == null)
-                        {
-                            qs2.core.vb.dsObjects.tblStayRow rStayProd = null;
-                            System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiControl> lstMultiControl = new System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiControl>();
-
-                            foreach (qs2.design.auto.multiControl.ownMultiControl ownMultiControlToSet in lstMultiControl)
-                            {
-                                if (rStayProd.IsSurgDtEndNull() && !rStayProd.IsSurgDtStartNull())
-                                {
-                                    if (ownMultiControlToSet.OwnControlType == core.Enums.eControlType.Date &&
-                                        (rStayProd.SurgDtStart.Hour != 0 || rStayProd.SurgDtStart.Minute != 0))
-                                    {
-                                        ownMultiControlToSet.Date.DateTime = rStayProd.SurgDtStart;
-                                        qs2.core.generic.retValue retValue1 = new core.generic.retValue();
-                                        retValue1.valueObj = rStayProd.SurgDtStart;
-                                        ownMultiControlToSet.ownMCDataBind1.setRowValue(ownMultiControlToSet, retValue1.valueObj, true);
-                                       ownMultiControlToSet.ownMCDataBind1.BindControlToData(ownMultiControlToSet, false, true);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCDataBind.setRowAndMC", ownControl1._FldShort, false, true,
-                                                                ownControl1.ownMCCriteria1.Application,
-                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-            }
-        }
     }
 }

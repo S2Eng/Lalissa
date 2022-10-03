@@ -108,8 +108,6 @@ namespace qs2.design.auto.multiControl
                 this.btnDel.initControl();
                 this.btnCancel.initControl();
 
-                this.dropDownStays1.initControl();
-                
                 this.dsAdminShow.tblSelListEntries.Clear();
                 qs2.core.vb.sqlAdmin.ParametersSelListEntries Parameters = new qs2.core.vb.sqlAdmin.ParametersSelListEntries();
 
@@ -117,7 +115,6 @@ namespace qs2.design.auto.multiControl
                                                 this.ownMCCriteria1.Application,
                                                 ref this.dsAdminShow, core.vb.sqlAdmin.eTypAuswahlList.group);
                 
-                this.dropDownStays1.initControl();
                 this.ColorSchemas1.setAppearanceGroupBox(this.grpMultiGrid, false);
 
                 if (this._typMultiControl == qs2.core.vb.sqlAdmin.eTypStayAdditions.multiSelLists)
@@ -151,8 +148,6 @@ namespace qs2.design.auto.multiControl
                     this.dropDownSelListAndGroup1.loadData(this._FldShort[0], this.ownMCCriteria1.Application, true);
                     this.gridData.DisplayLayout.Bands[0].Columns[this.dsAdminShow.tblStayAdditions.IDSelListColumn.ColumnName].ValueList = this.dropDownSelListAndGroup1.ultraDropDownSelListsWithGroup;
                     this.gridData.DisplayLayout.Bands[0].Columns[this.dsAdminShow.tblStayAdditions.IDSelListColumn.ColumnName].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
-
-                    this.gridData.DisplayLayout.Bands[0].Columns[this.dsAdminShow.tblStayAdditions.IDStayChildColumn .ColumnName].ValueList = this.dropDownStays1.infragdropDownStays;
                     this.gridData.DisplayLayout.Bands[0].Columns[this.dsAdminShow.tblStayAdditions.IDStayChildColumn.ColumnName].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
 
                     this.panelBottom.Visible = false;
@@ -516,7 +511,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                qs2.core.vb.dsObjects.tblStayRow rStayTmp = null;
                 bool ParentStayIsNotNull = false;
                 ParentStayIsNotNull = true;
 
@@ -543,27 +537,16 @@ namespace qs2.design.auto.multiControl
                 }
                 else
                 {
-                    //this.gridData.DisplayLayout.Bands[0].Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
                     this.gridData.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
                     this.setUIAddElement(false);
 
-                    if (this._typMultiControl == qs2.core.vb.sqlAdmin.eTypStayAdditions.multiSelLists)
+                    if (this._typMultiControl == qs2.core.vb.sqlAdmin.eTypStayAdditions.assignStay)
                     {
-
-                    }
-                    else if (this._typMultiControl == qs2.core.vb.sqlAdmin.eTypStayAdditions.assignStay)
-                    {
-                        //this.gridData.DisplayLayout.Bands[0].Columns[this.dsAdminShow.tblStayAdditions.IDSelListColumn.ColumnName].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.FormattedText;
-                        //this.gridData.DisplayLayout.Bands[0].Columns[this.dsAdminShow.tblStayAdditions.IDStayChildColumn.ColumnName].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.FormattedText;
-                        
                         this.gridData.DisplayLayout.Bands[0].Columns[this.dsAdminShow.tblStayAdditions.IDSelListColumn.ColumnName].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
                         this.gridData.DisplayLayout.Bands[0].Columns[this.dsAdminShow.tblStayAdditions.IDStayChildColumn.ColumnName].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
                     }
                 }
-                              
-                //this.btnAdd.Visible = this._editable;
-                //this.btnDel.Visible = this._editable;
-
+                
                 if (this._typMultiControl == sqlAdmin.eTypStayAdditions.multiSelLists)
                     this.panelBottom.Visible = editable;
             }
@@ -907,110 +890,17 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                qs2.core.vb.dsObjects.tblStayRow rStayTmp = null;
-                qs2.core.vb.dsAdmin.tblStayAdditionsRow rNewStayAdd = this.sqlAdmin1.addNewStayAddition(this.dsAdminShow.tblStayAdditions);
-                rNewStayAdd.IDGuid = System.Guid.NewGuid();
-
                 bool IsTypeRole = this.CheckIfDoRolesAndUsers();
                 bool IsTypeObject = this.CheckIfTypeObject();
 
-                if (!IsTypeObject && !IsTypeRole)
-                {
-                    if (this.IsQueryControl)
-                    {
-                        rNewStayAdd.IDApplicationStayParent = this.ownMCCriteria1.Application;
-                        rNewStayAdd.IDParticipantStayParent = this.ownMCCriteria1.IDParticipant;
-                    }
-                    else
-                    {
-                        rNewStayAdd.IDStayParent = rStayTmp.ID;
-                        rNewStayAdd.IDApplicationStayParent = rStayTmp.IDApplication;
-                        rNewStayAdd.IDParticipantStayParent = rStayTmp.IDParticipant;
-                    }
-                    //System.Windows.Forms.MessageBox.Show(rNewStayAdd.IDStay.ToString());
-                    rNewStayAdd.IDApplicationStayChild = rNewStayAdd.IDApplicationStayParent;
-                    rNewStayAdd.IDParticipantStayChild = rNewStayAdd.IDParticipantStayParent;
-                    rNewStayAdd.SetIDPatientNull();
-                    rNewStayAdd.IDApplication = "";
-                    rNewStayAdd.typ = this._typMultiControl.ToString();
-                }
-                else if (IsTypeRole && !IsTypeObject)
-                {
-                    if (this.IsQueryControl)
-                    {
-                        rNewStayAdd.IDApplicationStayParent = this.ownMCCriteria1.Application;
-                        rNewStayAdd.IDParticipantStayParent = this.ownMCCriteria1.IDParticipant;
-                    }
-                    else
-                    {
-                        rNewStayAdd.IDStayParent = rStayTmp.ID;
-                        rNewStayAdd.IDApplicationStayParent = rStayTmp.IDApplication;
-                        rNewStayAdd.IDParticipantStayParent = rStayTmp.IDParticipant;
-                    }
-                    //System.Windows.Forms.MessageBox.Show(rNewStayAdd.IDStay.ToString());
-                    rNewStayAdd.IDApplicationStayChild = rNewStayAdd.IDApplicationStayParent;
-                    rNewStayAdd.IDParticipantStayChild = rNewStayAdd.IDParticipantStayParent;
-                    rNewStayAdd.SetIDPatientNull();
-                    rNewStayAdd.IDApplication = "";
-                    rNewStayAdd.IDObject = rLastSelSelListEntry.IDGuid;
-                    rNewStayAdd.typ = qs2.core.vb.sqlAdmin.eTypStayAdditions.multiSelListsRoles.ToString();      // +this.rSelListSelectedRole.IDOwnStr;
-                    rNewStayAdd.IDSelList = this.rSelListSelectedRole.ID;
-                    rNewStayAdd.IDSelListFirst = this.rSelListEntriesMainCbo.ID;
-                }
-                else if (!IsTypeRole && IsTypeObject)
-                {
-                    if (this.IsQueryControl)
-                    {
-                        rNewStayAdd.IDApplicationStayParent = this.ownMCCriteria1.Application;
-                        rNewStayAdd.IDParticipantStayParent = this.ownMCCriteria1.IDParticipant;
-                    }
-                    else
-                    {
-                        rNewStayAdd.IDStayParent = rStayTmp.ID;
-                        rNewStayAdd.IDApplicationStayParent = rStayTmp.IDApplication;
-                        rNewStayAdd.IDParticipantStayParent = rStayTmp.IDParticipant;
-                        rNewStayAdd.IDApplication = rStayTmp.IDApplication;
-                    }
-                    rNewStayAdd.typ = this._typMultiControl.ToString();
-                }
-
-                if (rLastSelSelListEntry != null && !IsTypeRole)
-                {
-                    rNewStayAdd.IDSelList = rLastSelSelListEntry.ID;
-                    rNewStayAdd.IDSelListFirst = this.rSelListEntriesMainCbo.ID;
-                    this.dsAdminShow.tblSelListGroup.Clear();
-                    //this.sqlAdmin1.getSelListGroup(ref this.dsAdminShow, core.vb.sqlAdmin.eTypSelGruppen.IDGruppe, "", this.ownMCCriteria1.IDParticipant,
-                    //                                this.ownMCCriteria1.Application, rLastSelSelListEntry.IDGroup);
-                    //qs2.core.vb.dsAdmin.tblSelListGroupRow rSelSelListEntryGroup = (qs2.core.vb.dsAdmin.tblSelListGroupRow)this.dsAdminShow.tblSelListGroup.Rows[0];
-                }
-                else
-                {
-
-                }
-
-                rNewStayAdd.Sort = -1;
-                rNewStayAdd.Classification = "";
-                rNewStayAdd.Description = "";
-
                 this.gridData.Refresh();
-                Infragistics.Win.UltraWinGrid.UltraGridRow rActRow = this.gridData.Rows.GetRowWithListIndex(this.dsAdminShow.tblStayAdditions.Rows.IndexOf(rNewStayAdd));
-
                 if (this._typMultiControl == core.vb.sqlAdmin.eTypStayAdditions.multiSelLists)
                 {
-                    //rNewStayAdd.Sort = this.getLastSortNumber(rNewStayAdd); //lthxy
                     this.setUIAddElement(false);
                     this.translateRowStayAddition();
                     this.setGridUI(false);
                 }
-
-                //UltraGridRow gridRow = this.gridData.Rows.GetRowWithListIndex(this.dsAdminShow.tblStayAdditions.Rows.IndexOf(rNewStayAdd));
-                //this.gridData.DisplayLayout.ActiveRow = gridRow;
                 Application.DoEvents();
-                if (_typMultiControl != sqlAdmin.eTypStayAdditions.assignStay)
-                {
-                    this.doSortOrder(false, ref rNewStayAdd);
-                }
-
                 return true;
             }
             catch (Exception ex)
@@ -1169,10 +1059,6 @@ namespace qs2.design.auto.multiControl
         }
         public bool doVisible()
         {
-            //if (DesignMode)
-            //    return false;
-
-            qs2.core.vb.dsObjects.tblStayRow rStayTmp = null;
             bool ParentStayIsNotNull = false;
             bool ParentFormIsVisible = false;
             ParentStayIsNotNull = true;

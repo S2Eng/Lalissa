@@ -352,13 +352,6 @@ namespace qs2.sitemap.workflowAssist
             }
         }
 
-        public void loadDropDownProcGroups(qs2.core.vb.dsObjects.tblStayRow rStay, string Application)
-        {
-            foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-            {
-                element.loadDropDownProcGroups(rStay, Application);
-            }  
-        }
         public void doRelationsship()
         {
             foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
@@ -366,25 +359,12 @@ namespace qs2.sitemap.workflowAssist
                 element.doRelationsship(false);
             }
         }
-        public void saveDropDownProcGroups(qs2.core.vb.dsObjects.tblStayRow rStay, string Application)
-        {
-            foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-            {
-                element.saveDropDownProcGroups(rStay, Application);
-            }
-        }
+
         public void resetDropDownProcGroupsMain(System.Guid IDElementClicked, ref string ColumnNameClicked)
         {
             foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
             {
                 element.resetDropDownProcGroupsMain(IDElementClicked, ref ColumnNameClicked);
-            }
-        }
-        public void doAllAssignmentsDropDown(qs2.core.vb.dsObjects.tblStayRow rStay, string Application,  ref string protocollForAdmin, ref bool ProtocolWindow)
-        {
-            foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-            {
-                element.doAllAssignmentsDropDown(rStay, Application, ref protocollForAdmin, ref ProtocolWindow);
             }
         }
 
@@ -489,16 +469,6 @@ namespace qs2.sitemap.workflowAssist
             catch (Exception ex)
             {
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-        }
-
-        public void doAllAssignmentsDropDown(ref string protocollForAdmin, ref bool ProtocolWindow,
-                                bool enabled, qs2.core.Enums.eTypList TypList,
-                                qs2.core.vb.dsObjects.tblStayRow rStay, string Application)
-        {
-            foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-            {
-                element.doAllAssignmentsDropDown(rStay, Application, ref protocollForAdmin, ref ProtocolWindow);
             }
         }
 

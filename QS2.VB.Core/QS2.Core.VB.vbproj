@@ -525,7 +525,6 @@
     <Compile Include="sql\actUsr.vb" />
     <Compile Include="sql\businessFramework.vb" />
     <Compile Include="sql\dbBase.vb" />
-    <Compile Include="sql\products\coreStaysProducts.vb" />
     <Compile Include="sql\Protocoll\dsProtocol.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -898,7 +897,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="sql\products\" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>

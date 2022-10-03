@@ -48,18 +48,12 @@ Public Class contSelectObject
                 Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblObject.DOBColumn.ColumnName).Hidden = False
                 Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblObject.TitleColumn.ColumnName).Hidden = False
                 Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblObject.CreatedColumn.ColumnName).Hidden = False
-                Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblAdress.ZIPColumn.ColumnName).Hidden = False
-                Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblAdress.CityColumn.ColumnName).Hidden = False
-                Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblAdress.StreetColumn.ColumnName).Hidden = False
 
                 Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblObject.LastNameColumn.ColumnName).Header.Caption = qs2.core.language.sqlLanguage.getRes("Lastname")
                 Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblObject.FirstNameColumn.ColumnName).Header.Caption = qs2.core.language.sqlLanguage.getRes("Firstname")
                 Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblObject.DOBColumn.ColumnName).Header.Caption = qs2.core.language.sqlLanguage.getRes("DateOfBirth")
                 Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblObject.TitleColumn.ColumnName).Header.Caption = qs2.core.language.sqlLanguage.getRes("Title")
                 Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblObject.CreatedColumn.ColumnName).Header.Caption = qs2.core.language.sqlLanguage.getRes("Created")
-                Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblAdress.ZIPColumn.ColumnName).Header.Caption = qs2.core.language.sqlLanguage.getRes("ZIP")
-                Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblAdress.CityColumn.ColumnName).Header.Caption = qs2.core.language.sqlLanguage.getRes("City")
-                Me.gridObjects.DisplayLayout.Bands(0).Columns(Me.DsObjects1.tblAdress.StreetColumn.ColumnName).Header.Caption = qs2.core.language.sqlLanguage.getRes("Street")
 
                 Me.lblLastNameU.Text = qs2.core.language.sqlLanguage.getRes("LastName")
                 Me.lblFirstNameU.Text = qs2.core.language.sqlLanguage.getRes("FirstName")

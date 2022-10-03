@@ -2112,30 +2112,6 @@
 
     End Function
 
-    Public Function addNewStayAddition(tStayAdditions As dsAdmin.tblStayAdditionsDataTable) As dsAdmin.tblStayAdditionsRow
-
-        Dim rNew As dsAdmin.tblStayAdditionsRow = tStayAdditions.NewRow()
-        rNew.IDGuid = System.Guid.NewGuid()
-        rNew.IDStayParent = -999
-        rNew.IDApplicationStayParent = ""
-        rNew.IDParticipantStayParent = ""
-        rNew.SetIDStayChildNull()
-        rNew.SetIDApplicationStayChildNull()
-        rNew.SetIDParticipantStayChildNull()
-        rNew.SetIDSelListNull()
-        rNew.typ = ""
-        rNew.Sort = -1
-        rNew.Classification = ""
-        rNew.Description = ""
-        rNew.SetIDSelListFirstNull()
-        rNew.SetIDPatientNull()
-        rNew.IDApplication = ""
-        rNew.SetIDObjectNull()
-
-        tStayAdditions.Rows.Add(rNew)
-        Return rNew
-
-    End Function
     Public Function updateSortStayAddition(ByVal IDGuidStayAddition As System.Guid, Sort As Integer) As Boolean
         Dim ds As New dsAdmin
         Dim cmd As New System.Data.SqlClient.SqlCommand

@@ -326,7 +326,6 @@ namespace qs2.print
                 dsQryResult.Tables.Add(tParameters);
 
                 dsObjects.tblObjectDataTable tObject = new dsObjects.tblObjectDataTable();
-                dsObjects.tblStayDataTable tStay = new dsObjects.tblStayDataTable();
                 qs2.core.vb.doDB.addObjectTablesToDataset(dsQryResult, qs2.core.vb.doDB.tableNameUser, qs2.core.vb.doDB.tableNameUserAdress, false);              
                 qs2.core.vb.doDB.addObjectDataToDataset(dsQryResult, IDUser, qs2.core.vb.doDB.tableNameUser, qs2.core.vb.doDB.tableNameUserAdress, false);
                 qs2.core.vb.doDB.addParticipantTableToDataset(dsQryResult);
