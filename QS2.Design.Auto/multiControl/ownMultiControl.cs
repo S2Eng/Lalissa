@@ -1144,7 +1144,7 @@ namespace qs2.design.auto.multiControl
                     this.ownMCCriteria1.MCRelationship.doRelationship(ownMultiControl1._FldShort, ChapterParent.Trim(), ref retValue1, userChanged, SubRelation,
                                                                         this.ownMCCriteria1.Application,
                                                                         this.ownMCCriteria1.IDParticipant.ToString(),
-                                                                        ref this.parentAutoUI.dataStay, ref parentAutoUI,
+                                                                        ref parentAutoUI,
                                                                         ref typeRunning, ProcGroupDeactivated);
                 }
             }

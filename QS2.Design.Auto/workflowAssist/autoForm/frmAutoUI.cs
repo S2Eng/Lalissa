@@ -36,7 +36,6 @@ namespace qs2.sitemap.workflowAssist.form
         private Timer TimerAppClosesbyuser = null;
         private bool FormSucessfulClosed = false;
         public bool IsInitialized = false;
-        public qs2.design.auto.workflowAssist.autoForm.dataStay dataStay = new design.auto.workflowAssist.autoForm.dataStay();
         private FormWindowState prevState;
         private bool doFctSetUI = true;
         private bool DoNotLoadData = false;

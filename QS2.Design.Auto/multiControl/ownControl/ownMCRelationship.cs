@@ -91,26 +91,12 @@ namespace qs2.design.auto
 
         public void calcRelationForAllParents(string FldShortParent, string ChapterParent, 
                                                 string IDApplication, string IDParticipant,
-                                                ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay,
                                                 ref qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI,
                                                 ref eTypAssignments typeRunning, ref bool GroupRelationsFound, 
                                                 ref bool ReturnValue, ref int SubRelation)
         {
            try
            {
-               //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(FldShortParent, "opCab", false))
-               //{
-               //    string xy = "";
-               //}
-               //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(FldShortParent, "OpValve", false))
-               //{
-               //    string xy = "";
-               //}
-               //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(FldShortParent, "opTavi", false))
-               //{
-               //    string xy = "";
-               //}
-               
                foreach (qs2.core.vb.dsAdmin.tblRelationshipRow rRelation in this.arrRelationships)
                {
                    if (rRelation.Type.Trim().ToLower().Contains(qs2.core.Enums.eConditionTyp.VisibleGroups.ToString().Trim().ToLower()) ||
@@ -151,12 +137,12 @@ namespace qs2.design.auto
                                     {
                                         if (!ownControlChild.ownMCCriteria1._isInitializedCriteria)
                                         {
-                                            this.autoUI1.initMulticontrol(ownControlChild, ref dataStay);
+                                            this.autoUI1.initMulticontrol(ownControlChild);
                                             //this.autoUI1.multicontrolFillData(ref dataStay, ownControlChild);
                                         }
                                         if (ownControlChild.ownMCDataBind1.Binding1 == null)
                                         {
-                                            this.autoUI1.multicontrolFillData(ref dataStay, ownControlChild);
+                                            this.autoUI1.multicontrolFillData(ownControlChild);
                                         }
                                         qs2.core.generic.retValue retValueChild = ownControlChild.ownMCDataBind1.getValueFromRow(ownControlChild);
                                         foreach (string valueInRelation in lstValuesRelationToProve)
@@ -218,7 +204,7 @@ namespace qs2.design.auto
                                 }
                                 ReturnValue = ResultTmp;
                                 this.doVisibleOnOffForGroupRelations(rRelation.FldShortChild.Trim(), rRelation.IDApplicationChild.Trim(), ref parentAutoUI,
-                                                                        ref dataStay, ReturnValue, rRelation.Type.Trim(), ref SubRelation, ref typeRunning);
+                                                                    ReturnValue, rRelation.Type.Trim(), ref SubRelation, ref typeRunning);
 
                             }
                         }
@@ -234,8 +220,7 @@ namespace qs2.design.auto
            }
         }
         public void doVisibleOnOffForGroupRelations(string FldShort, string IDApplication, ref qs2.sitemap.workflowAssist.form.contAutoUI contAutoUI,
-                                                    ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay, bool bValueOnOff,
-                                                    string ConditionTyp, ref int SubRelation, ref eTypAssignments typeRunning)
+                                                    bool bValueOnOff, string ConditionTyp, ref int SubRelation, ref eTypAssignments typeRunning)
         {
             try
             {
@@ -247,12 +232,11 @@ namespace qs2.design.auto
                         qs2.design.auto.multiControl.ownMultiControl ownMultiControlFound = (qs2.design.auto.multiControl.ownMultiControl)rCont.control;
                         if (!ownMultiControlFound.ownMCCriteria1._isInitializedCriteria)
                         {
-                            this.autoUI1.initMulticontrol(ownMultiControlFound, ref dataStay);
-                            //this.autoUI1.multicontrolFillData(ref dataStay, ownMultiControlFound);
+                            this.autoUI1.initMulticontrol(ownMultiControlFound);
                         }
                         if (ownMultiControlFound.ownMCDataBind1.Binding1 == null)
                         {
-                            this.autoUI1.multicontrolFillData(ref dataStay, ownMultiControlFound);
+                            this.autoUI1.multicontrolFillData(ownMultiControlFound);
                         }
 
                         ownMultiControlFound.ownMCUI1.IsVisible_RelationsshipGroups = bValueOnOff;
@@ -311,7 +295,6 @@ namespace qs2.design.auto
 
         public void doRelationship(string FldShortParent, string ChapterParent, ref  qs2.core.generic.retValue retValueParent,
                                         bool userChanged, int SubRelation, string IDApplication, string IDParticipant,
-                                        ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay,
                                         ref qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI,
                                         ref eTypAssignments typeRunning, bool ProcGroupDeactivated)
         {
@@ -376,7 +359,7 @@ namespace qs2.design.auto
                             string ValueEqualsParent = this.doRelationshipGetChild(ref FldShortParent, ref ChapterParent, ref retValueParent, rRelation, userChanged,
                                                                                     eTypActionRelation.doRelation,
                                                                                     IDApplication, IDParticipant,
-                                                                                    ref dataStay, ref parentAutoUI,
+                                                                                    ref parentAutoUI,
                                                                                     ref typeRunning, ProcGroupDeactivated, ref ChildIsProcGrpButton);
                             if (ValueEqualsParent != null)
                             {
@@ -414,7 +397,7 @@ namespace qs2.design.auto
 
                 bool GroupRelationsFound = false;
                 bool ReturnValue = false;
-                this.calcRelationForAllParents(FldShortParent, ChapterParent, IDApplication, IDParticipant, ref dataStay, ref parentAutoUI, ref typeRunning,
+                this.calcRelationForAllParents(FldShortParent, ChapterParent, IDApplication, IDParticipant, ref parentAutoUI, ref typeRunning,
                                                 ref GroupRelationsFound, ref ReturnValue, ref SubRelation);
             }
             catch (Exception ex)
@@ -457,7 +440,6 @@ namespace qs2.design.auto
                                                 ref  qs2.core.generic.retValue retValueParent,
                                                 qs2.core.vb.dsAdmin.tblRelationshipRow rRelation,
                                                 bool userChanged, eTypActionRelation typAction, string IDApplication, string IDParticipant,
-                                                ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay,
                                                 ref qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI,
                                                 ref eTypAssignments typeRunning, bool ProcGroupDeactivated,
                                                 ref bool ChildIsProcGrpButton)
@@ -483,12 +465,11 @@ namespace qs2.design.auto
 
                         if (!ownControlChild.ownMCCriteria1._isInitializedCriteria)
                         {
-                            this.autoUI1.initMulticontrol(ownControlChild, ref dataStay);
-                            //this.autoUI1.multicontrolFillData(ref dataStay, ownControlChild);
+                            this.autoUI1.initMulticontrol(ownControlChild);
                         }
                         if (ownControlChild.ownMCDataBind1.Binding1 == null)
                         {
-                            this.autoUI1.multicontrolFillData(ref dataStay, ownControlChild); 
+                            this.autoUI1.multicontrolFillData(ownControlChild); 
                         }
 
                         bool doActionForRelation = true;
@@ -536,7 +517,7 @@ namespace qs2.design.auto
                                 bValueIsOK = true;
                             }
                         }
-                        this.doRelationsshipTab(Tab, ref IDApplication, ref parentAutoUI, ref dataStay, bValueIsOK, ref rRelation, true, ref ProcGroupDeactivated);
+                        this.doRelationsshipTab(Tab, ref IDApplication, ref parentAutoUI, bValueIsOK, ref rRelation, true, ref ProcGroupDeactivated);
                     }
                     foreach (UltraTab TabPage in lstTabePageReturn)
                     {
@@ -550,7 +531,7 @@ namespace qs2.design.auto
                                 bValueIsOK = true;
                             }
                         }
-                        this.doRelationsshipTabPage(TabPage, ref IDApplication, ref parentAutoUI, ref dataStay, bValueIsOK, ref rRelation, true, ref ProcGroupDeactivated);
+                        this.doRelationsshipTabPage(TabPage, ref IDApplication, ref parentAutoUI, bValueIsOK, ref rRelation, true, ref ProcGroupDeactivated);
                     }
                     foreach (qs2.design.auto.multiControl.ownGroupBox ownGroupBox in lstGroupBoxReturn)
                     {
@@ -564,7 +545,7 @@ namespace qs2.design.auto
                                 bValueIsOK = true;
                             }
                         }
-                        this.doRelationsshipGroupBox(ownGroupBox, ref IDApplication, ref parentAutoUI, ref dataStay, bValueIsOK, ref rRelation, true, true, ProcGroupDeactivated);
+                        this.doRelationsshipGroupBox(ownGroupBox, ref IDApplication, ref parentAutoUI, bValueIsOK, ref rRelation, true, true, ProcGroupDeactivated);
                         ownGroupBox.ownControlUI1.IsVisible_Criteriaxy = bValueIsOK;
                         ownGroupBox.Visible = bValueIsOK;
                         if (ProcGroupDeactivated && !bValueIsOK)
@@ -644,7 +625,7 @@ namespace qs2.design.auto
         }
 
         public void doRelationsshipTab(qs2.design.auto.multiControl.ownTab Tab, ref string IDApplication, ref qs2.sitemap.workflowAssist.form.contAutoUI contAutoUI,
-                                            ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay, bool bValueIsOK,
+                                            bool bValueIsOK,
                                             ref qs2.core.vb.dsAdmin.tblRelationshipRow rRelation, bool DoVisibleTabPage,
                                             ref bool ProcGroupDeactivated)
         {
@@ -680,7 +661,7 @@ namespace qs2.design.auto
         }
 
         public void doRelationsshipTabPage(UltraTab TabePage, ref string IDApplication, ref qs2.sitemap.workflowAssist.form.contAutoUI contAutoUI,
-                                            ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay, bool bValueIsOK,
+                                            bool bValueIsOK,
                                             ref  qs2.core.vb.dsAdmin.tblRelationshipRow rRelation, bool DoVisibleTabPage,
                                             ref bool ProcGroupDeactivated)
         {
@@ -731,7 +712,7 @@ namespace qs2.design.auto
                                 if (!ownGroupBoxFound.ownControlCriteria1._isInitializedCriteria)
                                 {
                                 }
-                                this.doRelationsshipGroupBox(ownGroupBoxFound, ref IDApplication, ref contAutoUI, ref dataStay, bValueIsOK, ref rRelation, false, false, ProcGroupDeactivated);
+                                this.doRelationsshipGroupBox(ownGroupBoxFound, ref IDApplication, ref contAutoUI, bValueIsOK, ref rRelation, false, false, ProcGroupDeactivated);
                                 
                             }
                             else if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownTab)))
@@ -739,7 +720,7 @@ namespace qs2.design.auto
                                 qs2.design.auto.multiControl.ownTab ownTabFound = (qs2.design.auto.multiControl.ownTab)rCont.control;
                                 foreach (UltraTab contTabPageSub in ownTabFound.Tabs)
                                 {
-                                    this.doRelationsshipTabPage(contTabPageSub, ref IDApplication, ref contAutoUI, ref dataStay, bValueIsOK, ref rRelation, false, ref ProcGroupDeactivated);
+                                    this.doRelationsshipTabPage(contTabPageSub, ref IDApplication, ref contAutoUI, bValueIsOK, ref rRelation, false, ref ProcGroupDeactivated);
                                 }
                             }
                         }
@@ -768,7 +749,7 @@ namespace qs2.design.auto
             }
         }
         public void doRelationsshipGroupBox(qs2.design.auto.multiControl.ownGroupBox ownGroupBox, ref string IDApplication, ref qs2.sitemap.workflowAssist.form.contAutoUI contAutoUI,
-                                            ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay, bool bValueIsOK,
+                                            bool bValueIsOK,
                                             ref  qs2.core.vb.dsAdmin.tblRelationshipRow rRelation,
                                             bool doControlsGroupBox, bool DoVisibleGroupBox, bool ProcGroupDeactivated)
         {
@@ -799,7 +780,7 @@ namespace qs2.design.auto
                                 }
                                 if (doControlsGroupBox)
                                 {
-                                    this.doRelationsshipGroupBox(ownGroupBoxFound, ref IDApplication, ref contAutoUI, ref dataStay, bValueIsOK, ref rRelation, false, DoVisibleGroupBox, ProcGroupDeactivated);
+                                    this.doRelationsshipGroupBox(ownGroupBoxFound, ref IDApplication, ref contAutoUI, bValueIsOK, ref rRelation, false, DoVisibleGroupBox, ProcGroupDeactivated);
                                 }
                             }
                             else if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownTab)))
@@ -807,7 +788,7 @@ namespace qs2.design.auto
                                 qs2.design.auto.multiControl.ownTab ownTabFound = (qs2.design.auto.multiControl.ownTab)rCont.control;
                                 foreach (UltraTab contTabPage in ownTabFound.Tabs)
                                 {
-                                    this.doRelationsshipTabPage(contTabPage, ref IDApplication, ref contAutoUI, ref dataStay, bValueIsOK, ref rRelation, false, ref ProcGroupDeactivated);
+                                    this.doRelationsshipTabPage(contTabPage, ref IDApplication, ref contAutoUI, bValueIsOK, ref rRelation, false, ref ProcGroupDeactivated);
                                 }
                             }
                         }
@@ -846,12 +827,12 @@ namespace qs2.design.auto
                     {
                         if (!ownMultiControl1.ownMCCriteria1._isInitializedCriteria)
                         {
-                            this.autoUI1.initMulticontrol(ownMultiControl1, ref ownMultiControl1.parentAutoUI.dataStay);
-                            this.autoUI1.multicontrolFillData(ref ownMultiControl1.parentAutoUI.dataStay, ownMultiControl1);
+                            this.autoUI1.initMulticontrol(ownMultiControl1);
+                            this.autoUI1.multicontrolFillData(ownMultiControl1);
                         }
                         if (ownMultiControl1.ownMCDataBind1.Binding1 == null)
                         {
-                            autoUI1.multicontrolFillData(ref ownMultiControl1.parentAutoUI.dataStay, ownMultiControl1);
+                            autoUI1.multicontrolFillData(ownMultiControl1);
                         }
 
                         bool bIsVisible = ownMultiControl1.getVisiblebyOrder();
@@ -936,11 +917,11 @@ namespace qs2.design.auto
                         {
                             if (!multiControlFound.ownMCCriteria1._isInitializedCriteria)
                             {
-                                this.autoUI1.initMulticontrol(multiControlFound, ref multiControlFound.parentAutoUI.dataStay);
+                                this.autoUI1.initMulticontrol(multiControlFound);
                             }
                             if (multiControlFound.ownMCDataBind1.Binding1 == null)
                             {
-                                this.autoUI1.multicontrolFillData(ref multiControlFound.parentAutoUI.dataStay, multiControlFound);
+                                this.autoUI1.multicontrolFillData(multiControlFound);
                             }
                             qs2.core.generic.retValue retValueParentFound = multiControlFound.ownMCDataBind1.getValueFromRow(multiControlFound);
                             System.Collections.Generic.List<string> lstConditionParent = qs2.core.generic.readStrVariables(rRelChild.Conditions);
@@ -977,11 +958,6 @@ namespace qs2.design.auto
             {
                 if (rRelation.Conditions != "")
                 {
-                    //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControlChild._FldShort, "VSPuIm", false))
-                    //{
-                    //    string xy = "";
-                    //}
-
                     if (ValueEqualsParent != null && bValueIsOKForAllParents)
                     {
                         if (ownControlChild._controlType == core.Enums.eControlType.Picture)
@@ -990,11 +966,6 @@ namespace qs2.design.auto
                             if (ownMCRelationship.setPictureRessource(ownControlChild, rRelation.IDKey, IDParticipant, IDApplication.ToString()))
                             {
                                 ownControlChild.ownMCUI1.IsVisible_RelationsshipMCParent = true;
-                                //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(FldShortParent, "OpSuCoCranNL", false))
-                                //{
-                                //    string xy = "";
-                                //}
-                                //ownControlChild.Visible = true;
                                 return;
                             }
                         }
@@ -1004,30 +975,15 @@ namespace qs2.design.auto
                             {
                                 if (ownControlChild._controlType == core.Enums.eControlType.ComboBox)
                                 {
-                                    //if (ownControlChild._controlType == core.Enums.eControlType.ComboBox)
-                                    //{
-                                    //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControlChild._FldShort, "VSAoIm", false))
-                                    //{
-                                    //    string xy = "";
-                                    //}
                                     qs2.core.generic.retValue retValueChildOrig = ownControlChild.ownMCDataBind1.getValueFromRow(ownControlChild);
                                     ownControlChild.ownMCCriteria1.ownMCCombo1.loadCombo(ownControlChild, rRelation.IDKey, ownControlChild.ownMCCriteria1.CombinationComboBoxAsDropDown, ownControlChild.ownMCCriteria1.ownMCCombo1._ComboBoxCheckThreeStateBoxAsDropDown);
                                     if (userChanged)
                                     {
-                                        //qs2.core.generic.retValue ret = qs2.core.dbBase.getDefaultDBValue(ref ownControlChild.ownMCCriteria1.rColSys, true);
                                         this.setDefaultDBValue(ownControlChild, userChanged, IDApplication, true);
                                     }
                                     else
                                     {
-                                        //ownControlChild.ownControlDataBind1.BindControlToData(ownControlChild, false, ownControlChild.ownControlDataBind1.dataStay);
-                                        //qs2.core.generic.retValue retValue1 = ownControlChild.ownMCDataBind1.getValueFromRow(ownControlChild);
-                                        //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControlChild._FldShort, "VSAoIm", false))
-                                        //{
-                                        //    string xy = "";
-                                        //}
-                                        //ownControlChild.ownMCDataBind1.setRowValue(ownControlChild, retValueChildOrig.valueObj, true);
                                         qs2.core.generic.retValue retValue1 = new core.generic.retValue();
-                                        retValue1.valueObj = ownControlChild.parentAutoUI.dataStay.coreStaysProductsOrig.getField(ownControlChild.OwnFldShort.Trim());
                                         ownControlChild.ownMCDataBind1.setRowValue(ownControlChild, retValue1.valueObj, true);
 
                                     }
@@ -1038,18 +994,9 @@ namespace qs2.design.auto
                             }
                             else
                             {
-                                //if (rRelation.Type.Trim() == qs2.core.Enums.eConditionTyp.Visible.ToString() || rRelation.Type.Trim() == qs2.core.Enums.eConditionTyp.Invisible.ToString())
-                                //{
-                                //    ownControlChild.ownMCUI1.controlIsVisibleRelationsship = (rRelation.Type.Trim() == qs2.core.Enums.eConditionTyp.Visible.ToString() ? true : false);
-                                //}
 
                                 if (rRelation.Type.Trim() == qs2.core.Enums.eConditionTyp.Visible.ToString() || rRelation.Type.Trim() == qs2.core.Enums.eConditionTyp.Invisible.ToString())
                                 {
-                                    //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControlChild._FldShort, "VSPuIm", false))
-                                    //{
-                                    //    string xy = "";
-                                    //}
-
                                     bool bVisibleTemp = (rRelation.Type.Trim() == qs2.core.Enums.eConditionTyp.Visible.ToString() ? true : false);
                                     this.SetVisibleRelationsship(ref typeRunning, ref ownControlChild, ref IDApplication, ref bVisibleTemp);
 
@@ -1057,9 +1004,6 @@ namespace qs2.design.auto
                                     {
                                         this.setDefaultDBValue(ownControlChild, userChanged, IDApplication, true);
                                     }
-                                    //qs2.core.Protocol.doMonitoring("ownMCCriteria.doRelationshipChild", qs2.core.Settings.TagForMonitoring.Trim(), 
-                                    //                                ownControlChild.ownMCUI1.controlIsVisibleRelationsship, null, "", IDApplication.ToString(),
-                                    //                                core.Protocol.eTypeError.Info);
                                 }
                             }
                         }
@@ -1081,7 +1025,6 @@ namespace qs2.design.auto
 
                             //}
                             qs2.core.generic.retValue retValue1 = new core.generic.retValue();
-                            retValue1.valueObj = ownControlChild.parentAutoUI.dataStay.coreStaysProductsOrig.getField(ownControlChild.OwnFldShort.Trim());
                             ownControlChild.ownMCDataBind1.setRowValue(ownControlChild, retValue1.valueObj, true);
                         }
                         else
@@ -1155,15 +1098,11 @@ namespace qs2.design.auto
                 }
                 if (!ownMultiControl1.ownMCCriteria1._isInitializedCriteria)
                 {
-                    this.autoUI1.initMulticontrol(ownMultiControl1, ref ownMultiControl1.parentAutoUI.dataStay);
-                    //this.autoUI1.multicontrolFillData(ref ownMultiControl1.parentAutoUI.dataStay, ownMultiControl1);
+                    this.autoUI1.initMulticontrol(ownMultiControl1);
                 }
                 if (ownMultiControl1.ownMCDataBind1.Binding1 == null)
                 {
-                    //if (qs2.core.Settings.TypeSetDefaultDBValue == 0 || qs2.core.Settings.TypeSetDefaultDBValue == 1)
-                    //{
-                        this.autoUI1.multicontrolFillData(ref ownMultiControl1.parentAutoUI.dataStay, ownMultiControl1);  
-                    //}
+                    this.autoUI1.multicontrolFillData(ownMultiControl1);  
                 }
                 if (ownMultiControl1.ownMCUI1.controlIsDbDataControl(ownMultiControl1))
                 {
@@ -1171,7 +1110,6 @@ namespace qs2.design.auto
                     {
                         ownMultiControl1.ownMCDataBind1.setRowValue(ownMultiControl1, ownMultiControl1.ownMCCriteria1.defaultDBValue.valueObj, true);
                         //ownMultiControl1.ownMCValue1.setValue(ownMultiControl1, ownMultiControl1.ownMCCriteria1.defaultDBValue.valueStr);
-                        ownMultiControl1.Refresh();
                         if (getSelectedText)
                         {
                             ownMultiControl1.ownMCTxt1.getSelectedText(ownMultiControl1, ownMultiControl1.IsInDesignerModus);

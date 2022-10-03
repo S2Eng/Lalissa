@@ -58,13 +58,13 @@ namespace qs2.design.auto.workflowAssist.autoForm
                 System.Guid IDGroupNull = System.Guid.Empty;
                 this.loadControls_rek(ref tabsParent, (Control)freeTop, null, null, true, keyParentFrameFreeBottomTop,
                                         ref typeLoading, ref protocollForAdmin, ref ProtocolWindow, IDGroupNull, false, ref controlLevelNoChapter,
-                                        ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, true, ref SerialNr, ref AutoUI.dataStay, "", "", ref IDGuidParentNull, ref IDGuidsParentNull);
+                                        ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, true, ref SerialNr, "", "", ref IDGuidParentNull, ref IDGuidsParentNull);
                 this.loadControls_rek(ref tabsParent, (Control)freeTopLeft, null, null, true, keyParentFrameFreeBottomTop,
                                         ref typeLoading, ref protocollForAdmin, ref ProtocolWindow, IDGroupNull, false, ref controlLevelNoChapter,
-                                        ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, true, ref SerialNr, ref AutoUI.dataStay, "", "", ref IDGuidParentNull, ref IDGuidsParentNull);
+                                        ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, true, ref SerialNr, "", "", ref IDGuidParentNull, ref IDGuidsParentNull);
                 this.loadControls_rek(ref tabsParent, (Control)freeTopRigth, null, null,  true, keyParentFrameFreeBottomTop,
                                         ref typeLoading, ref protocollForAdmin, ref ProtocolWindow, IDGroupNull, false, ref controlLevelNoChapter,
-                                        ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, true, ref SerialNr, ref AutoUI.dataStay, "", "", ref IDGuidParentNull, ref IDGuidsParentNull);
+                                        ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, true, ref SerialNr,  "", "", ref IDGuidParentNull, ref IDGuidsParentNull);
 
                 System.Guid LastIDGroup = System.Guid.Empty;
                 foreach (UltraTab tabChapter in tabsParent.Tabs)        //Perf = 1.4 Sek
@@ -102,7 +102,7 @@ namespace qs2.design.auto.workflowAssist.autoForm
                         //controlLevelChapter = 2;
                         this.loadControls_rek(ref tabsParent, (Control)tabChapter.TabPage, cTagTab, tabChapter, true, keyParentFrameTab,
                                                     ref typeLoading, ref protocollForAdmin, ref ProtocolWindow, rNewTab.ID, true, ref controlLevelChapter,
-                                                    ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, true, ref SerialNr, ref AutoUI.dataStay,
+                                                    ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, true, ref SerialNr,
                                                     "", "", ref IDGuid, ref IDGuidsParent);
                         //}
                     }
@@ -111,7 +111,7 @@ namespace qs2.design.auto.workflowAssist.autoForm
                 freeBelow.Tag = System.Guid.NewGuid();
                 this.loadControls_rek(ref tabsParent, (Control)freeBelow, null, null, true, keyParentFrameFreeBottomTop,
                                         ref typeLoading, ref protocollForAdmin, ref ProtocolWindow, IDGroupNull, false, ref controlLevelNoChapter,
-                                        ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, true, ref SerialNr, ref AutoUI.dataStay,
+                                        ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, true, ref SerialNr, 
                                         "", "", ref IDGuidParentNull, ref IDGuidsParentNull);
 
                 tabsParent.Tabs[qs2.sitemap.workflowAssist.form.contAutoUI.tabNameProtokoll].Text = qs2.core.language.sqlLanguage.getRes("Protokoll");
@@ -138,23 +138,12 @@ namespace qs2.design.auto.workflowAssist.autoForm
                                 ref qs2.core.vb.dsAdmin dsAdminAutoUI,
                                 ref string Application, ref string Participant,
                                 ref qs2.sitemap.workflowAssist.form.contAutoUI AutoUI, bool mainNode, ref int SerialNr,
-                                ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay, 
                                 string FldShortTabPageParent, string FldShortGroupBoxParent, ref Nullable<Guid> IDGuidParent, ref string IDGuidsParent)
         {
             try
             {
                 foreach (Control cont in parentControl.Controls)
                 {
-                    //if (tab == null)
-                    //{
-                    //    string xy = "";
-                    //}
-
-                    //if (cont.GetType().Equals(typeof(Infragistics.Win.UltraWinTabControl.UltraTab)))
-                    //{
-                    //    return;
-                    //}
-
                     if (cont.GetType().Equals(typeof(qs2.design.auto.multiControl.ownTab)))
                     {
                         qs2.design.auto.multiControl.ownTab ownTab1 = (qs2.design.auto.multiControl.ownTab)cont;
@@ -213,7 +202,7 @@ namespace qs2.design.auto.workflowAssist.autoForm
                                 System.Guid IDGroupNextControls = rNewTab.ID;
                                 this.loadControls_rek(ref tabsParent, (Control)tabCont.TabPage, cTagTab, tabCont, false, keyNewParentFrameTab, ref typeLoading,
                                                         ref protocollForAdmin, ref ProtocolWindow, IDGroupNextControls, false, ref controlLevel,
-                                                        ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, false, ref SerialNr, ref dataStay,
+                                                        ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, false, ref SerialNr, 
                                                         cTagTabPage.IDOwnStrTabPage, FldShortGroupBoxParent, ref IDGuid, ref IDGuidsParent);
                             }
                         }
@@ -241,7 +230,7 @@ namespace qs2.design.auto.workflowAssist.autoForm
                                                                                     ref typeLoading, ref protocollForAdmin, ref ProtocolWindow,
                                                                                     ref LastIDGroup,
                                                                                     ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI,
-                                                                                    ref controlLevel, ref mainNode, ref SerialNr, ref dataStay,
+                                                                                    ref controlLevel, ref mainNode, ref SerialNr, 
                                                                                     FldShortTabPageParent, FldShortGroupBoxParentTmp, ref IDGuid, ref IDGuidsParent);
                             if (cont.GetType().Equals(typeof(qs2.design.auto.multiControl.ownGroupBox)))
                             {
@@ -261,7 +250,7 @@ namespace qs2.design.auto.workflowAssist.autoForm
                             }
                             this.loadControls_rek(ref tabsParent, cont, cTagTab, tab, false, keyParentFrameNew, ref typeLoading,
                                                 ref protocollForAdmin, ref ProtocolWindow, IDGroupNextControls, false, ref controlLevel,
-                                                ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, false, ref SerialNr, ref AutoUI.dataStay,
+                                                ref autoUI1, ref dsAdminAutoUI, ref Application, ref Participant, ref AutoUI, false, ref SerialNr, 
                                                 FldShortTabPageParent, FldShortGroupBoxParentTmp, ref IDGuid2, ref IDGuidsParent);
                         }
 
@@ -333,7 +322,6 @@ namespace qs2.design.auto.workflowAssist.autoForm
                                     ref string Application, ref string Participant,
                                     ref qs2.sitemap.workflowAssist.form.contAutoUI AutoUI,
                                     ref int controlLevel, ref bool mainNode, ref int SerialNr,
-                                    ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay,
                                     string FldShortTabPageParent, string FldShortGroupBoxParent, ref Nullable<Guid> IDGuid, ref string IDGuidsParent)
         {
             try
@@ -343,8 +331,7 @@ namespace qs2.design.auto.workflowAssist.autoForm
                     qs2.core.vb.dsAdmin.dbAutoUIRow rNew = autoUI1.addOwnMultiControl(cont, cTagTab, tab, keyParentFrame, ref dsAdminAutoUI,
                                                             AutoUI, Application, Participant,
                                                             ref typeLoading, ref protocollForAdmin, ref ProtocolWindow, ref LastIDGroup,
-                                                            ref controlLevel, ref mainNode, ref SerialNr, ref dataStay,
-                                                            FldShortTabPageParent, FldShortGroupBoxParent, ref IDGuid, ref IDGuidsParent);
+                                                            ref controlLevel, ref mainNode, ref SerialNr, FldShortTabPageParent, FldShortGroupBoxParent, ref IDGuid, ref IDGuidsParent);
                     return rNew;
                 }
                 else if (cont.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiGridSelList)))

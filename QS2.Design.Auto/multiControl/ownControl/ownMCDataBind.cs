@@ -37,19 +37,9 @@ namespace qs2.design.auto.multiControl
             SurgDtEnd = 0
 
         }
-
-
-
-
-
-
-
-
-
-
-
+        
         public void BindControlToData(qs2.design.auto.multiControl.ownMultiControl ownControl1, bool onlyClearBindings,
-                                        qs2.design.auto.workflowAssist.autoForm.dataStay dataStay, bool getSelectedText)
+                                        bool getSelectedText)
         {
             try
             {
@@ -73,7 +63,7 @@ namespace qs2.design.auto.multiControl
                 }
 
                 if ((this.bindedColumnGenericTables != null && this.RowGenericTables != null && this.TypeBinding == dTypeBinding.Ds) ||
-                    (ownControl1.parentAutoUI.dataStay.coreStaysProducts.ColumnNameExists(ownControl1.ownMCCriteria1.rCriteria.FldShort) && this.TypeBinding == dTypeBinding.AutoDll))
+                    (this.TypeBinding == dTypeBinding.AutoDll))
                 {
                     this.Binding1 = null;
 
@@ -87,10 +77,6 @@ namespace qs2.design.auto.multiControl
                             if (this.TypeBinding == dTypeBinding.Ds)
                             {
                                 this.Binding1 = ownControl1.Numeric.DataBindings.Add("Value", this.RowGenericTables, ownControl1.ownMCCriteria1.rCriteria.FldShort, true);
-                            }
-                            else if (this.TypeBinding == dTypeBinding.AutoDll)
-                            {
-                                this.Binding1 = ownControl1.Numeric.DataBindings.Add("Value", dataStay.coreStaysProducts.r, ownControl1.ownMCCriteria1.rCriteria.FldShort, true);
                             }
                         }
                     }
@@ -161,10 +147,6 @@ namespace qs2.design.auto.multiControl
                             {
                                 this.Binding1 = ownControl1.Textfield.DataBindings.Add("Text", this.RowGenericTables, ownControl1.ownMCCriteria1.rCriteria.FldShort, true);
                             }
-                            else if (this.TypeBinding == dTypeBinding.AutoDll)
-                            {
-                                this.Binding1 = ownControl1.Textfield.DataBindings.Add("Text", dataStay.coreStaysProducts.r, ownControl1.ownMCCriteria1.rCriteria.FldShort, true);
-                            }
                         }
                     }
                     else if (ownControl1._controlType == core.Enums.eControlType.TextfieldMulti)
@@ -176,10 +158,6 @@ namespace qs2.design.auto.multiControl
                             if (this.TypeBinding == dTypeBinding.Ds)
                             {
                                 this.Binding1 = ownControl1.TextfieldMulti.DataBindings.Add("Value", this.RowGenericTables, ownControl1.ownMCCriteria1.rCriteria.FldShort, true);
-                            }
-                            else if (this.TypeBinding == dTypeBinding.AutoDll)
-                            {
-                                this.Binding1 = ownControl1.TextfieldMulti.DataBindings.Add("Value", dataStay.coreStaysProducts.r, ownControl1.ownMCCriteria1.rCriteria.FldShort, true);
                             }
                         }
                     }
@@ -193,10 +171,6 @@ namespace qs2.design.auto.multiControl
                             {
                                 this.Binding1 = ownControl1.CheckBox.DataBindings.Add("Checked", this.RowGenericTables, ownControl1.ownMCCriteria1.rCriteria.FldShort, true);
                             }
-                            else if (this.TypeBinding == dTypeBinding.AutoDll)
-                            {
-                                this.Binding1 = ownControl1.CheckBox.DataBindings.Add("Checked", dataStay.coreStaysProducts.r, ownControl1.ownMCCriteria1.rCriteria.FldShort, true);
-                            }
                         }
                     }
                     else if (ownControl1._controlType == core.Enums.eControlType.ThreeStateCheckBox)
@@ -209,16 +183,8 @@ namespace qs2.design.auto.multiControl
                             {
                                 this.Binding1 = ownControl1.ThreeStateCheckBox.DataBindings.Add("OwnCheckStateInt", this.RowGenericTables, ownControl1.ownMCCriteria1.rCriteria.FldShort, true);
                             }
-                            else if (this.TypeBinding == dTypeBinding.AutoDll)
-                            {
-                                this.Binding1 = ownControl1.ThreeStateCheckBox.DataBindings.Add("OwnCheckStateInt", dataStay.coreStaysProducts.r, ownControl1.ownMCCriteria1.rCriteria.FldShort, true);
-                            }
                         }
                     }
-                }
-                else
-                {
-                    //string xy = "";
                 }
 
                 if (onlyClearBindings)
@@ -304,7 +270,7 @@ namespace qs2.design.auto.multiControl
             try
             {
                 this.setRowValue(ownControl1, infragDateTime.Value, true);
-                ownControl1.ownMCDataBind1.BindControlToData(ownControl1, false, ownControl1.parentAutoUI.dataStay, true);
+                ownControl1.ownMCDataBind1.BindControlToData(ownControl1, false, true);
             }
             catch (Exception ex)
             {
@@ -329,10 +295,6 @@ namespace qs2.design.auto.multiControl
                         {
                             ret = qs2.core.generic.getValue(ownControl1._controlType, this.RowGenericTables[this.bindedColumnGenericTables], ownControl1.Numeric.NumericType, false);
                         }
-                        else if (this.TypeBinding == dTypeBinding.AutoDll)
-                        {
-                            ret = qs2.core.generic.getValue(ownControl1._controlType, ownControl1.parentAutoUI.dataStay.coreStaysProducts.getField(ownControl1._FldShort), ownControl1.Numeric.NumericType, false);
-                        }
                         return ret;
                     }
                     else
@@ -340,10 +302,6 @@ namespace qs2.design.auto.multiControl
                         if (this.TypeBinding == dTypeBinding.Ds)
                         {
                             ret = qs2.core.generic.getValue(ownControl1._controlType, this.RowGenericTables[this.bindedColumnGenericTables], Infragistics.Win.UltraWinEditors.NumericType.Integer, false);
-                        }
-                        else if (this.TypeBinding == dTypeBinding.AutoDll)
-                        {
-                            ret = qs2.core.generic.getValue(ownControl1._controlType, ownControl1.parentAutoUI.dataStay.coreStaysProducts.getField(ownControl1._FldShort), Infragistics.Win.UltraWinEditors.NumericType.Integer, false);
                         }
                         return ret;
                     }
@@ -384,30 +342,19 @@ namespace qs2.design.auto.multiControl
                         this.RowGenericTables[this.bindedColumnGenericTables] = objectVal;
                         if (DoValueToControl)
                         {
-                            ownControl1.ownMCDataBind1.BindControlToData(ownControl1, false, ownControl1.parentAutoUI.dataStay, true);
+                            ownControl1.ownMCDataBind1.BindControlToData(ownControl1, false, true);
                         }
                     }
                     else if (this.TypeBinding == dTypeBinding.AutoDll)
                     {
-
-                        ownControl1.parentAutoUI.dataStay.coreStaysProducts.setField(ownControl1.OwnFldShort, objectVal);
                         if (DoValueToControl)
                         {
-                            ownControl1.ownMCDataBind1.BindControlToData(ownControl1, false, ownControl1.parentAutoUI.dataStay, true);
-                            //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1._FldShort, "VSAOIm", false))
-                            //{
-                            //    string xy = "";
-                            //}
+                            ownControl1.ownMCDataBind1.BindControlToData(ownControl1, false, true);
                         }
                     }
                 }
                 else
                 {
-                    //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1.OwnFldShort, " VSAOIm", false))
-                    //{
-                    //    string xy = "";
-                    //}
-
                     if (this.TypeBinding == dTypeBinding.Ds)
                     {
                         this.RowGenericTables[this.bindedColumnGenericTables] = objectVal;
@@ -418,11 +365,6 @@ namespace qs2.design.auto.multiControl
                     }
                     else if (this.TypeBinding == dTypeBinding.AutoDll)
                     {
-                        ownControl1.parentAutoUI.dataStay.coreStaysProducts.setField(ownControl1.OwnFldShort, objectVal);
-                        //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1._FldShort, "VSAOIm", false))
-                        //{
-                        //    string xy = "";
-                        //}
                         if (DoValueToControl)
                         {
                             this.readValueFromBindingRowToControl(ownControl1, true);
@@ -451,17 +393,6 @@ namespace qs2.design.auto.multiControl
                     else
                     {
                         contDateTime.Value = this.RowGenericTables[ownControl1.ownMCCriteria1.rCriteria.FldShort];
-                    }
-                }
-                else if (this.TypeBinding == dTypeBinding.AutoDll)
-                {
-                    if ((DateTime)ownControl1.parentAutoUI.dataStay.coreStaysProducts.getField(ownControl1.ownMCCriteria1.rCriteria.FldShort) == DateTime.MinValue)
-                    {
-                        contDateTime.Value = null;
-                    }
-                    else
-                    {
-                        contDateTime.Value = ownControl1.parentAutoUI.dataStay.coreStaysProducts.getField(ownControl1.OwnFldShort);
                     }
                 }
             }
@@ -512,7 +443,7 @@ namespace qs2.design.auto.multiControl
             }
         }
 
-        public void setBindingContext(qs2.design.auto.multiControl.ownMultiControl ownControl1, qs2.design.auto.workflowAssist.autoForm.dataStay dataStay)
+        public void setBindingContext(qs2.design.auto.multiControl.ownMultiControl ownControl1)
         {
             try
             {
@@ -532,24 +463,12 @@ namespace qs2.design.auto.multiControl
                             qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
                     }
 
-                    this.bindedColumnGenericTables = this.getColumnGenericTables(ownControl1, dataStay);
-                    if (this.bindedColumnGenericTables != null)
+
+                    if (this.bindedColumnGenericTables == null)
                     {
-                        this.TypeBinding = dTypeBinding.Ds;
-                        this.RowGenericTables = this.getDataRowGenericTables(ownControl1, dataStay);
-                    }
-                    else
-                    {
-                        if (ownControl1.parentAutoUI.dataStay.coreStaysProducts.ColumnNameExists(ownControl1.ownMCCriteria1.rCriteria.FldShort))
-                        {
-                            this.TypeBinding = dTypeBinding.AutoDll;
-                        }
-                        else
-                        {
-                            qs2.core.Protocol.doExcept("No Binding-Context to Database found for Field " + ownControl1.OwnFldShort + "! (Table:" + ownControl1.ownMCCriteria1.rCriteria.SourceTable + "')", "ownMCDataBind.setBindingContext", ownControl1.OwnFldShort, false, true,
-                                    ownControl1.ownMCCriteria1.Application,
-                                    qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                        }
+                        qs2.core.Protocol.doExcept("No Binding-Context to Database found for Field " + ownControl1.OwnFldShort + "! (Table:" + ownControl1.ownMCCriteria1.rCriteria.SourceTable + "')", "ownMCDataBind.setBindingContext", ownControl1.OwnFldShort, false, true,
+                                ownControl1.ownMCCriteria1.Application,
+                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
                     }
                 }
             }
@@ -559,123 +478,6 @@ namespace qs2.design.auto.multiControl
                                                                 ownControl1.ownMCCriteria1.Application,
                                                                 qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
-        }
-        private DataColumn getColumnGenericTables(qs2.design.auto.multiControl.ownMultiControl ownControl1, qs2.design.auto.workflowAssist.autoForm.dataStay dataStay)
-        {
-            try
-            {
-                //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1._FldShort, "VSAOIm", false))
-                //{
-                //    string xy = "";
-                //}
-
-                //System.Data.DataSet dsConvert = this.getDataSetForProdukt(ownControl1, dataStay);
-                if (dataStay.dsObject.Tables.Contains(ownControl1.ownMCCriteria1.rCriteria.SourceTable))
-                {
-                    if (dataStay.dsObject.Tables[ownControl1.ownMCCriteria1.rCriteria.SourceTable].Columns.Contains(ownControl1.ownMCCriteria1.rCriteria.FldShort))
-                    {
-                        return dataStay.dsObject.Tables[ownControl1.ownMCCriteria1.rCriteria.SourceTable].Columns[ownControl1.ownMCCriteria1.rCriteria.FldShort];
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCDataBind.getColumn", ownControl1._FldShort, false, true,
-                                                                ownControl1.ownMCCriteria1.Application,
-                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                return null;
-            }
-        }
-        private DataRow getDataRowGenericTables(qs2.design.auto.multiControl.ownMultiControl ownControl1, qs2.design.auto.workflowAssist.autoForm.dataStay dataStay)
-        {
-            try
-            {
-                //if (ownControl1.ownMCCriteria1.rCriteria.SourceTable.ToLower().Trim().Equals("tblObject"))
-                //{
-                //    string xy = "";
-                //}
-
-                if (dataStay.dsObject.Tables.Contains(ownControl1.ownMCCriteria1.rCriteria.SourceTable))
-                {
-                    return dataStay.dsObject.Tables[ownControl1.ownMCCriteria1.rCriteria.SourceTable].Rows[0];
-                }
-                else
-                {
-                    //System.Data.DataSet dsConvert = this.getDataSetForProdukt(ownControl1, dataStay);
-                    //return dsConvert.Tables[ownControl1.ownMCCriteria1.rCriteria.SourceTable].Rows[0];
-                    throw new Exception("getDataRow: Table '" + ownControl1.ownMCCriteria1.rCriteria.SourceTable + "' is not in dataStay.dsObject!");
-                    //return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCDataBind.getDataRow", ownControl1._FldShort, false, true,
-                                                                ownControl1.ownMCCriteria1.Application,
-                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                return null;
-            }
-        }
-
-
-
-
-        private DataSet getDataSetForProduktxyxy(qs2.design.auto.multiControl.ownMultiControl ownControl1, qs2.design.auto.workflowAssist.autoForm.dataStay dataStay)
-        {
-            try
-            {
-                System.Data.DataSet dsConvert = null;
-                //if (ownControl1.ownMCCriteria1.IDApplication == core.license.doLicense.eApp.CARDIAC)          // OMC.IDApplication.Check
-                //{
-                //    dsConvert = (System.Data.DataSet)dataStay.dsStayCARDIAC;
-                //}
-                //else if (ownControl1.ownMCCriteria1.IDApplication == core.license.doLicense.eApp.VASCULAR)    // OMC.IDApplication.Check
-                //{
-                //    //dsConvert = (System.Data.DataSet)dataStay.dsStayVASCULAR; 
-                //}
-                //if (ownControl1.ownMCCriteria1.IDApplication == core.license.doLicense.eApp.QTH)              // OMC.IDApplication.Check
-                //{
-                //    dsConvert = (System.Data.DataSet)dataStay.dsStayQTH;
-                //}
-                return dsConvert;
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCDataBind.getDataSetForProdukt", ownControl1._FldShort, false, true,
-                                                                ownControl1.ownMCCriteria1.Application,
-                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                return null;
-            }
-        }
-        public object getValueFromRowxyxyxyxy(qs2.design.auto.multiControl.ownMultiControl ownControl1)
-        {
-            //try
-            //{
-            //    //if (this.bindedColumn != null && this.row != null)
-            //    //{
-
-            //    if (ownControl1.ownMCUI1.controlIsDataControl(ownControl1))
-            //    {
-            //        return this.row[this.bindedColumn];
-            //    }
-            //    else
-            //        return null;
-            //}
-            //catch (Exception ex)
-            //{
-            //    qs2.core.Protocol.doExcept(ex.ToString(), "ownMCDataBind.getValueFromRowxyxy", ownControl1._FldShort, false, true,
-            //                                                    ownControl1.ownMCCriteria1.IDApplication.ToString(),
-            //                                                    qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-            //    return null;
-            //}
-            return null;
         }
 
         public void setRowAndMC(ref qs2.design.auto.multiControl.ownMultiControl ownControl1, eTypeSetDataAndMC TypeSetDataAndMC,
@@ -704,11 +506,7 @@ namespace qs2.design.auto.multiControl
                                         qs2.core.generic.retValue retValue1 = new core.generic.retValue();
                                         retValue1.valueObj = rStayProd.SurgDtStart;
                                         ownMultiControlToSet.ownMCDataBind1.setRowValue(ownMultiControlToSet, retValue1.valueObj, true);
-                                       ownMultiControlToSet.ownMCDataBind1.BindControlToData(ownMultiControlToSet, false, ownMultiControlToSet.parentAutoUI.dataStay, true);
-                                    }
-                                    else if (ownMultiControlToSet.OwnControlType == core.Enums.eControlType.Time)
-                                    {
-                                        //ownMultiControlToSet.Time.DateTime = rStayProd.SurgDtStart;
+                                       ownMultiControlToSet.ownMCDataBind1.BindControlToData(ownMultiControlToSet, false, true);
                                     }
                                 }
                             }
@@ -724,6 +522,7 @@ namespace qs2.design.auto.multiControl
                                                                 qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
         }
+
         public void getMCAndStayAndCheckMC(ref qs2.design.auto.multiControl.ownMultiControl ownControlMain, 
                                             ref qs2.core.vb.dsObjects.tblStayRow rStayProd,
                                             eTypeSetDataAndMC TypeSetDataAndMC,
@@ -745,24 +544,15 @@ namespace qs2.design.auto.multiControl
                 }
                 foreach (qs2.design.auto.multiControl.ownMultiControl ownMultiControlToSet in lstMultiControl)
                 {
-                    if (ownControlMain.parentAutoUI.dataStay.dsObject.tblStay.Rows.Count != 1)
-                    {
-                        throw new Exception("ControlLeave: ownControl1.parentAutoUI.dataStay.dsObject.tblStay.Rows.Count!=1 not allowed!");
-                    }
-                    rStayProd = (qs2.core.vb.dsObjects.tblStayRow)ownControlMain.parentAutoUI.dataStay.dsObject.tblStay[0];
                     if (!ownMultiControlToSet.ownMCCriteria1._isInitializedCriteria)
                     {
-                        ownMultiControlToSet.parentAutoUI.autoUI1.initMulticontrol(ownMultiControlToSet, ref ownMultiControlToSet.parentAutoUI.dataStay);
-                        //ownControl1.parentAutoUI.autoUI1.multicontrolFillData(ref ownControl1.parentAutoUI.dataStay, ownControl1);
+                        ownMultiControlToSet.parentAutoUI.autoUI1.initMulticontrol(ownMultiControlToSet);
                     }
                     if (ownMultiControlToSet.ownMCDataBind1.Binding1 == null)
                     {
-                        ownMultiControlToSet.parentAutoUI.autoUI1.multicontrolFillData(ref ownMultiControlToSet.parentAutoUI.dataStay, ownMultiControlToSet);
+                        ownMultiControlToSet.parentAutoUI.autoUI1.multicontrolFillData(ownMultiControlToSet);
                     }
-                    //qs2.core.generic.retValue retValue1 = ownMultiControl1.ownMCDataBind1.getValueFromRow(ownMultiControl1);
-                    //ownMultiControl1.ownMCDataBind1.setRowValue(ownMultiControl1, retValue1.valueObj, false);
                 }
-
             }
             catch (Exception ex)
             {

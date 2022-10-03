@@ -701,7 +701,6 @@
     <Compile Include="workflowAssist\autoForm\contAutoUI.Designer.cs">
       <DependentUpon>contAutoUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="workflowAssist\autoForm\dataStay.cs" />
     <Compile Include="workflowAssist\autoForm\doAutoControls.cs" />
     <Compile Include="workflowAssist\autoForm\doSideLogic.cs" />
     <Compile Include="workflowAssist\autoForm\frmAutoUI.cs">

@@ -42,7 +42,6 @@ namespace qs2.design.auto.multiControl
         public ownMCInfo ownControlInfo1 = new ownMCInfo();
         public ownMCUI ownControlUI1 = new ownMCUI();  
 
-        public qs2.design.auto.workflowAssist.autoForm.dataStay dataStay;
         public qs2.core.ui ui1 = new qs2.core.ui ();
 
         public qs2.core.vb.dsAdmin dsAdminWorker = new qs2.core.vb.dsAdmin();
@@ -520,24 +519,10 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                qs2.design.auto.workflowAssist.autoForm.dataStay dataStayTmp = null;
                 qs2.core.vb.dsObjects.tblStayRow rStayTmp = null;
                 bool ParentStayIsNotNull = false;
-                dataStayTmp = parentAutoUI.dataStay;
                 rStayTmp = parentAutoUI.rStayRead;
                 ParentStayIsNotNull = true;
-
-
-                if (ParentStayIsNotNull)
-                {
-                    if (rStayTmp != null)
-                    {
-                        if (rStayTmp.StayComplete)
-                        {
-                            //editable = false;
-                        }
-                    }
-                }
 
                 this._editable = editable;
                 this.panelTop.Visible  = editable;
@@ -926,11 +911,8 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                qs2.design.auto.workflowAssist.autoForm.dataStay dataStayTmp = null;
                 qs2.core.vb.dsObjects.tblStayRow rStayTmp = null;
-                dataStayTmp = parentAutoUI.dataStay;
                 rStayTmp = parentAutoUI.rStayRead;
-
 
                 qs2.core.vb.dsAdmin.tblStayAdditionsRow rNewStayAdd = this.sqlAdmin1.addNewStayAddition(this.dsAdminShow.tblStayAdditions);
                 rNewStayAdd.IDGuid = System.Guid.NewGuid();
@@ -993,7 +975,6 @@ namespace qs2.design.auto.multiControl
                         rNewStayAdd.IDStayParent = rStayTmp.ID;
                         rNewStayAdd.IDApplicationStayParent = rStayTmp.IDApplication;
                         rNewStayAdd.IDParticipantStayParent = rStayTmp.IDParticipant;
-                        rNewStayAdd.IDPatient = dataStayTmp.rPatient.IDGuid;
                         rNewStayAdd.IDApplication = rStayTmp.IDApplication;
                     }
                     rNewStayAdd.typ = this._typMultiControl.ToString();
@@ -1197,11 +1178,9 @@ namespace qs2.design.auto.multiControl
             //if (DesignMode)
             //    return false;
 
-            qs2.design.auto.workflowAssist.autoForm.dataStay dataStayTmp = null;
             qs2.core.vb.dsObjects.tblStayRow rStayTmp = null;
             bool ParentStayIsNotNull = false;
             bool ParentFormIsVisible = false;
-            dataStayTmp = parentAutoUI.dataStay;
             rStayTmp = parentAutoUI.rStayRead;
             ParentStayIsNotNull = true;
 
@@ -1552,7 +1531,6 @@ namespace qs2.design.auto.multiControl
 
                 this.ownControlInfo1 = null;
                 this.ownControlUI1 = null;
-                this.dataStay = null;
                 this.ui1 = null;
 
                 this.parentAutoUI = null;

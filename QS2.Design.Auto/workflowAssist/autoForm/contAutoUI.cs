@@ -25,7 +25,6 @@ namespace qs2.sitemap.workflowAssist.form
         public qs2.design.auto.workflowAssist.autoForm.doAutoControls doAutoControls = null;
 
         public qs2.core.vb.dsObjects.tblStayRow rStayRead;
-        public qs2.design.auto.workflowAssist.autoForm.dataStay dataStay;
         public static bool LoadingStayData = false;
         public bool _PatientVisible = false;
       

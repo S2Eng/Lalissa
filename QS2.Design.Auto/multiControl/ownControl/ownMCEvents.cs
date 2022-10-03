@@ -969,7 +969,7 @@ namespace qs2.design.auto.multiControl
                             ownControl1._controlType == core.Enums.eControlType.Date ||
                             ownControl1._controlType == core.Enums.eControlType.Time)
                         {
-                            ownControl1.ownMCDataBind1.BindControlToData(ownControl1, false, ownControl1.parentAutoUI.dataStay, true);
+                            ownControl1.ownMCDataBind1.BindControlToData(ownControl1, false, true);
                         }
                         else
                         {

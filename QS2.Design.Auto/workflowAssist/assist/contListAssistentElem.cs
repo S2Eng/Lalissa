@@ -283,7 +283,7 @@ namespace qs2.sitemap.workflowAssist
                         bool ProcGroupDeactivated = false;
                         this.cListAssistentElem.ownMCRelationship.doRelationship(this.cListAssistentElem.rCriteria.FldShort.Trim(), "", ref retValue1, false, SubRelation, this.cListAssistentElem.rCriteria.IDApplication,
                                     qs2.core.license.doLicense.eApp.ALL.ToString(),
-                                    ref this.cListAssistentElem.ListMain.autoUI.dataStay, ref this.cListAssistentElem.ListMain.autoUI, 
+                                    ref this.cListAssistentElem.ListMain.autoUI, 
                                     ref TypActionRelation, ProcGroupDeactivated);
                     }
                     else

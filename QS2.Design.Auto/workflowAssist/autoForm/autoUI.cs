@@ -18,123 +18,24 @@ namespace qs2.design.auto.workflowAssist.autoForm
 {
 
         
-        public class tgWindowHandler
-        {
-            public qs2.sitemap.workflowAssist.form.frmAutoUI produktForm = null;
-            public qs2.sitemap.workflowAssist.form.contAutoUI produktControl = null;
-            public qs2.core.license.doLicense.eApp Application;
-            public qs2.design.auto.workflowAssist.autoForm.autoUI autoUI1 = new autoUI();
-            public bool IsOpend = false;
-            public bool bPreloadStayDone = false;
-            public bool StayFormIsinitialized = false;
-        }
+    public class tgWindowHandler
+    {
+        public qs2.sitemap.workflowAssist.form.frmAutoUI produktForm = null;
+        public qs2.sitemap.workflowAssist.form.contAutoUI produktControl = null;
+        public qs2.core.license.doLicense.eApp Application;
+        public qs2.design.auto.workflowAssist.autoForm.autoUI autoUI1 = new autoUI();
+        public bool IsOpend = false;
+        public bool bPreloadStayDone = false;
+        public bool StayFormIsinitialized = false;
+    }
         
-        public class autoUI
-        {
-        
-
+    public class autoUI
+    {
         public qs2.core.license.doLicense.eApp forApplication;
-            public int numberForm;
-            public bool isIntilaized = false;
-
-            public class cLstRefresh
-            {
-                public string multiControlToRefresh = "";
-                public bool RunRelationship = true;
-            }
-
-
+        public int numberForm;
+        public bool isIntilaized = false;
         public event doMainFormStayUI evdoMainFormStayUI;
         public delegate void doMainFormStayUI(string doFct);
-
-
-        //AddNewProduct
-        public event doVASCULAR evDoVASCULAR;
-        public delegate qs2.core.Enums.cDoProdukt doVASCULAR(qs2.core.Enums.eDoProduktMode DoProduktMode,
-                                        qs2.core.vb.dsAdmin.tblRelationshipRow rRelationsship,
-                                        qs2.core.Enums.eStayTyp StayTyp,
-                                        qs2.core.license.doLicense.eApp Application,
-                                        qs2.core.vb.dsObjects.tblStayRow rStay,
-                                        qs2.core.vb.dsObjects.tblObjectRow rPatient,
-                                        object r,
-                                        System.Collections.Generic.List<qs2.core.vb.dsAdmin.tblStayAdditionsRow> arrStayAdditions,
-                                        ref System.Collections.Generic.List<qs2.design.auto.workflowAssist.autoForm.autoUI.cLstRefresh> lstControlsFormRefresh,
-                                        ref qs2.core.vb.dsAdmin.protokollDataTable protocolToAdd,
-                                        ref qs2.core.vb.dsAdmin.protokollDataTable protocolTotal,
-                                        ref qs2.core.Enums.eCalcMode CalcMode,
-                                        ref dsAdmin.tblStayAdditionsDataTable tStayAdditions,
-                                        ref string sProtocol);
-
-
-        public event doCardiac evDoCardiac;
-        public delegate qs2.core.Enums.cDoProdukt doCardiac(qs2.core.Enums.eDoProduktMode DoProduktMode,
-                                        qs2.core.vb.dsAdmin.tblRelationshipRow rRelationsship,
-                                        qs2.core.Enums.eStayTyp StayTyp,
-                                        qs2.core.license.doLicense.eApp Application,
-                                        qs2.core.vb.dsObjects.tblStayRow rStay,
-                                        qs2.core.vb.dsObjects.tblObjectRow rPatient,
-                                        object r,
-                                        System.Collections.Generic.List<qs2.core.vb.dsAdmin.tblStayAdditionsRow> arrStayAdditions,
-                                        ref System.Collections.Generic.List<qs2.design.auto.workflowAssist.autoForm.autoUI.cLstRefresh> lstControlsFormRefresh,
-                                        ref qs2.core.vb.dsAdmin.protokollDataTable protocolToAdd,
-                                        ref qs2.core.vb.dsAdmin.protokollDataTable protocolTotal,
-                                        ref qs2.core.Enums.eCalcMode CalcMode,
-                                        ref dsAdmin.tblStayAdditionsDataTable tStayAdditions, 
-                                        ref string sProtocol);
-        
-        public event doQTH evDoQTH;
-        public delegate qs2.core.Enums.cDoProdukt doQTH(qs2.core.Enums.eDoProduktMode DoProduktMode,
-                                        qs2.core.vb.dsAdmin.tblRelationshipRow rRelationsship,
-                                        qs2.core.Enums.eStayTyp StayTyp,
-                                        qs2.core.license.doLicense.eApp Application,
-                                        qs2.core.vb.dsObjects.tblStayRow rStay,
-                                        qs2.core.vb.dsObjects.tblObjectRow rPatient,
-                                        object r,
-                                        System.Collections.Generic.List<qs2.core.vb.dsAdmin.tblStayAdditionsRow> arrStayAdditions,
-                                        ref System.Collections.Generic.List<qs2.design.auto.workflowAssist.autoForm.autoUI.cLstRefresh> lstControlsFormRefresh,
-                                        ref qs2.core.vb.dsAdmin.protokollDataTable protocolToAdd,
-                                        ref qs2.core.vb.dsAdmin.protokollDataTable protocolTotal,
-                                        ref qs2.core.Enums.eCalcMode CalcMode,
-                                        ref dsAdmin.tblStayAdditionsDataTable tStayAdditions,
-                                        ref string sProtocol);
-
-        public event doNC evDoNC;
-        public delegate qs2.core.Enums.cDoProdukt doNC(qs2.core.Enums.eDoProduktMode DoProduktMode,
-                                        qs2.core.vb.dsAdmin.tblRelationshipRow rRelationsship,
-                                        qs2.core.Enums.eStayTyp StayTyp,
-                                        qs2.core.license.doLicense.eApp Application,
-                                        qs2.core.vb.dsObjects.tblStayRow rStay,
-                                        qs2.core.vb.dsObjects.tblObjectRow rPatient,
-                                        object r,
-                                        System.Collections.Generic.List<qs2.core.vb.dsAdmin.tblStayAdditionsRow> arrStayAdditions,
-                                        ref System.Collections.Generic.List<qs2.design.auto.workflowAssist.autoForm.autoUI.cLstRefresh> lstControlsFormRefresh,
-                                        ref qs2.core.vb.dsAdmin.protokollDataTable protocolToAdd,
-                                        ref qs2.core.vb.dsAdmin.protokollDataTable protocolTotal,
-                                        ref qs2.core.Enums.eCalcMode CalcMode,
-                                        ref dsAdmin.tblStayAdditionsDataTable tStayAdditions,
-                                        ref string sProtocol);
-
-        public event doTestProduct evDoTestProduct;
-        public delegate qs2.core.Enums.cDoProdukt doTestProduct(qs2.core.Enums.eDoProduktMode DoProduktMode,
-                                        qs2.core.vb.dsAdmin.tblRelationshipRow rRelationsship,
-                                        qs2.core.Enums.eStayTyp StayTyp,
-                                        qs2.core.license.doLicense.eApp Application,
-                                        qs2.core.vb.dsObjects.tblStayRow rStay,
-                                        qs2.core.vb.dsObjects.tblObjectRow rPatient,
-                                        object r,
-                                        System.Collections.Generic.List<qs2.core.vb.dsAdmin.tblStayAdditionsRow> arrStayAdditions,
-                                        ref System.Collections.Generic.List<qs2.design.auto.workflowAssist.autoForm.autoUI.cLstRefresh> lstControlsFormRefresh,
-                                        ref qs2.core.vb.dsAdmin.protokollDataTable protocolToAdd,
-                                        ref qs2.core.vb.dsAdmin.protokollDataTable protocolTotal,
-                                        ref qs2.core.Enums.eCalcMode CalcMode,
-                                        ref dsAdmin.tblStayAdditionsDataTable tStayAdditions,
-                                        ref string sProtocol);
-        
-
-         
-
-
-
 
         public void initialize(string Application)
         {
@@ -148,77 +49,6 @@ namespace qs2.design.auto.workflowAssist.autoForm
 
         public bool DefaultValuesLoaded = false;
 
-
-        public void  doProduktDelegate(qs2.core.Enums.eDoProduktMode DoProduktMode,
-                                             qs2.core.vb.dsAdmin.tblRelationshipRow rRelationsship,
-                                             qs2.core.Enums.eStayTyp StayTyp,
-                                             qs2.core.license.doLicense.eApp Application, 
-                                             qs2.core.vb.dsObjects.tblStayRow rStay, 
-                                             qs2.core.vb.dsObjects.tblObjectRow rPatient,
-                                             dataStay dataStayProdukt, 
-                                             System.Collections.Generic.List<qs2.core.vb.dsAdmin.tblStayAdditionsRow> arrStayAdditions,
-                                             ref System.Collections.Generic.List<qs2.design.auto.workflowAssist.autoForm.autoUI.cLstRefresh> lstControlsFormRefresh,
-                                             ref qs2.core.vb.dsAdmin.protokollDataTable protocolToAdd,
-                                             qs2.core.vb.dsAdmin.protokollDataTable protocolTotal,
-                                             ref System.Collections.Generic.List<qs2.core.generic.retValue> ProcGroups,
-                                             ref qs2.core.Enums.eCalcMode CalcMode,
-                                             ref dsAdmin.tblStayAdditionsDataTable tStayAdditions,
-                                             ref qs2.core.Enums.cDoProdukt retDoProdukt,
-                                             ref string sProtocol)
-        {
-            try 
-            {
-                if (Application == core.license.doLicense.eApp.VASCULAR)
-                {
-                    retDoProdukt = this.evDoVASCULAR.Invoke(DoProduktMode, rRelationsship, StayTyp, Application, rStay, rPatient,
-                                            dataStayProdukt.coreStaysProducts.r,
-                                            arrStayAdditions,
-                                            ref lstControlsFormRefresh, ref protocolToAdd, ref protocolTotal, ref   CalcMode,
-                                            ref tStayAdditions, ref sProtocol);
-                }
-                else if (Application == core.license.doLicense.eApp.CARDIAC)
-                {
-                    retDoProdukt = this.evDoCardiac.Invoke(DoProduktMode, rRelationsship, StayTyp, Application, rStay, rPatient,
-                                                    dataStayProdukt.coreStaysProducts.r,
-                                                    arrStayAdditions,
-                                                    ref lstControlsFormRefresh, ref protocolToAdd, ref protocolTotal,  ref CalcMode,
-                                                    ref tStayAdditions, ref sProtocol);
-
-                }
-                else if (Application == core.license.doLicense.eApp.NC)
-                {
-                    retDoProdukt = this.evDoNC.Invoke(DoProduktMode, rRelationsship, StayTyp, Application, rStay, rPatient,
-                                                    dataStayProdukt.coreStaysProducts.r,
-                                                    arrStayAdditions,
-                                                    ref lstControlsFormRefresh, ref protocolToAdd, ref protocolTotal, ref CalcMode,
-                                                    ref tStayAdditions, ref sProtocol);
-
-                }
-                else if (Application == core.license.doLicense.eApp.QTH)
-                {
-                    retDoProdukt = this.evDoQTH.Invoke(DoProduktMode, rRelationsship, StayTyp, Application, rStay, rPatient,
-                                                dataStayProdukt.coreStaysProducts.r,
-                                                arrStayAdditions,
-                                                ref lstControlsFormRefresh, ref protocolToAdd, ref protocolTotal, ref CalcMode,
-                                                ref tStayAdditions, ref sProtocol);
-
-                }
-                else if (Application == core.license.doLicense.eApp.TestProduct)
-                {
-                    retDoProdukt = this.evDoTestProduct.Invoke(DoProduktMode, rRelationsship, StayTyp, Application, rStay, rPatient,
-                                                        dataStayProdukt.coreStaysProducts.r,
-                                                        arrStayAdditions,
-                                                        ref lstControlsFormRefresh, ref protocolToAdd, ref protocolTotal, ref CalcMode,
-                                                        ref tStayAdditions, ref sProtocol);
-                }
-             
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("autoUI.doProductDelegate: " + ex.ToString());
-            }
-        }
-        
         public qs2.core.vb.dsAdmin.dbAutoUIRow addOwnMultiControl(Control cont, cTabTag cTagTab, UltraTab tab, 
                             System.Guid keyParentFrame, ref qs2.core.vb.dsAdmin dsAdminUI, 
                             qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI,
@@ -226,23 +56,13 @@ namespace qs2.design.auto.workflowAssist.autoForm
                             ref string protocollForAdmin, ref  bool ProtocolWindow,
                             ref System.Guid LastIDGroup,
                             ref int controlLevel, ref bool FirstLevel, ref int SerialNr,
-                            ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay,
                             string FldShortTabPageParent, string FldShortGroupBoxParent, ref Nullable<Guid> IDGuidParent, ref string IDGuidsParent)
         {
             try
             {
-                //if (cont.Name.Trim().ToLower().Equals(("StayComplete").Trim().ToLower()))
-                //{
-                //    string xy = "";
-                //}
-
                 qs2.core.vb.dsAdmin.dbAutoUIRow rNew = this.addAutoUI(ref dsAdminUI);
                 SerialNr += 1;
                 qs2.design.auto.multiControl.ownMultiControl ownMultiControl1 = (qs2.design.auto.multiControl.ownMultiControl)cont;
-                //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownMultiControl1.OwnFldShort, "StayComplete", false))
-                //{
-                //    string xy = "";
-                //}
 
                 ownMultiControl1.parentAutoUI = parentAutoUI;
                 ownMultiControl1.rAutoUI = rNew;
@@ -323,15 +143,11 @@ namespace qs2.design.auto.workflowAssist.autoForm
                 ownGroupBox1.IDGroup = LastIDGroup;
                 rNew.IDGroup = LastIDGroup;
 
-                //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownGroupBox1._FldShort, "GroupBoxNotExists", false))
-                //{
-                //    string xy = "";
-                //}
                 ownGroupBox1.doControl();
                 ownGroupBox1.ownControlCriteria1.getData(ownGroupBox1, ownGroupBox1._FldShort, core.Enums.eControlType.GroupBox, null,
                                                         ref ownGroupBox1.ownControlUI1, null, ref protocollForAdmin, ref ProtocolWindow, ownGroupBox1.OwnFieldForALLProducts, false, false);
                 ownGroupBox1.doVisible();
-                //ownGroupBox1.isLoaded = true;
+    
                 rNew.ControlType = qs2.core.Enums.eControlType.GroupBox.ToString();
                 rNew.key = ownGroupBox1.key;
                 rNew.top = ownGroupBox1.Top;
@@ -352,7 +168,6 @@ namespace qs2.design.auto.workflowAssist.autoForm
             catch (Exception ex)
             {
                 throw new Exception("autoUI.addOwnGroupBox: " + ex.ToString());
-                //return null;
             }
         }
 
@@ -419,7 +234,6 @@ namespace qs2.design.auto.workflowAssist.autoForm
                 //return null;
             }
         }
-
         public qs2.core.vb.dsAdmin.dbAutoUIRow loadOwnTabControl(Control cont, UltraTab tab,
                                     ref qs2.core.vb.dsAdmin dsAdminUI,
                                     qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI,
@@ -438,15 +252,12 @@ namespace qs2.design.auto.workflowAssist.autoForm
                 ownTab1.ownControlCriteria1.parentAutoUI = parentAutoUI;
                 ownTab1.ownControlCriteria1.Application = Application;
                 ownTab1.ownControlCriteria1.IDParticipant = Participant;
-                //ownTab1.doText();
                 ownTab1.parentAutoUI = parentAutoUI;
                 ownTab1.ID = ID;
                 ownTab1.IDGroup = IDGroup;
                 ownTab1.FldShortTabPageParent = FldShortTabPageParent;
                 ownTab1.FldShortGroupBoxParent = FldShortGroupBoxParent;
                 ownTab1.rAutoUI = rNew;
-                //ownTab1.UseAppStyling = qs2.core.Settings.UseAppStylingDefault;
-                //ownTab1.Style = UltraTabControlStyle.Wizard;
 
                 rNew.ID = ownTab1.ID;
                 rNew.IDApplication = Application;
@@ -466,16 +277,10 @@ namespace qs2.design.auto.workflowAssist.autoForm
                                                     null, ref protocollForAdmin, ref ProtocolWindow, ownTab1.OwnFieldForALLProducts, false, false);
                
 
-                //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownTab1._FldShort, "PreOpDiagBAA", false))
-                //{
-                //    string xy = "";
-                //}
                 if (!ownTab1.ownControlUI1.IsVisible_Criteriaxy)
                 {
                     ownTab1.Visible = ownTab1.ownControlUI1.IsVisible_Criteriaxy; 
-                    //string xy = "";
                 }
-                //ownTab1.tagTab = (cTabTag)tab.Tag;
                 this.addTabInfosToRow(ref rNew, cTagTab, tab, keyParentFrame);
 
                 return rNew;
@@ -499,22 +304,11 @@ namespace qs2.design.auto.workflowAssist.autoForm
             {
                 string xy = "";
             }
-            //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(tabPage.Tag.ToString(), "tabPreOpDiagBAA", false))
-            //{
-            //    string xy = "";
-            //}
 
             if (tabCont.Tag != null)
             {
                 qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;
                 tabCont.Text = qs2.core.language.sqlLanguage.getRes(tabPage.Tag.ToString(), core.Enums.eResourceType.Label, ownTab1.ownControlCriteria1.IDParticipant, ownTab1.ownControlCriteria1.Application, ref  rLangFoundReturn).Trim();
-                //ownTab1.ownControlCriteria1.getData(tabCont.TabControl, tabCont.Tag.ToString(), core.Enums.eControlType.TabPage, null, 
-                //                                    ref ownTab1.ownControlUI1, null, ref protocollForAdmin, ref ProtocolWindow, ownTab1.OwnFieldForALLProducts);
-
-                //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(tabCont.Tag.ToString(), "tabCardiac_Complications_Artap", false))
-                //{
-                //    string xy = "";
-                //}
 
                 qs2.design.auto.ownMCCriteria ownMCCriteriaTabPage = new ownMCCriteria();
                 ownMCCriteriaTabPage.Application = Application;
@@ -524,19 +318,6 @@ namespace qs2.design.auto.workflowAssist.autoForm
 
                 bool TabPageIsVisible = autoUI.doVisibleTabPage(ownMCUITabPage);
                 tabPage.Visible = TabPageIsVisible;
-                //ownTab1.Tabs[tabPage.Key].Visible = TabPageIsVisible;
-
-                //if (!ownMCUITabPage.IsVisible_Criteriaxy)
-                //{
-                //    tabPage.Visible = ownMCUITabPage.IsVisible_Criteriaxy;
-                //    ownTab1.Tabs[tabPage.Key].Visible = ownMCUITabPage.IsVisible_Criteriaxy;
-                //}
-                //if (!ownMCUITabPage.IsVisible_LicenseKey)
-                //{
-                //    string xy = "";
-                //    tabPage.Visible = ownMCUITabPage.IsVisible_LicenseKey;
-                //    ownTab1.Tabs[tabPage.Key].Visible = ownMCUITabPage.IsVisible_LicenseKey;
-                //}
             }
             else
             {
@@ -602,8 +383,7 @@ namespace qs2.design.auto.workflowAssist.autoForm
             }
         }
         
-        public void initMulticontrol(qs2.design.auto.multiControl.ownMultiControl ownControlChild,
-                                        ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay)
+        public void initMulticontrol(qs2.design.auto.multiControl.ownMultiControl ownControlChild)
         {
             try
             {
@@ -623,8 +403,7 @@ namespace qs2.design.auto.workflowAssist.autoForm
             }
         }
 
-        public void multicontrolFillData(ref qs2.design.auto.workflowAssist.autoForm.dataStay dataStay,
-                                            qs2.design.auto.multiControl.ownMultiControl ownControlChild)
+        public void multicontrolFillData(qs2.design.auto.multiControl.ownMultiControl ownControlChild)
         {
             try
             {
@@ -632,8 +411,8 @@ namespace qs2.design.auto.workflowAssist.autoForm
                 {
                     if (ownControlChild.ownMCUI1.controlIsDbDataControl(ownControlChild))
                     {
-                        ownControlChild.ownMCDataBind1.setBindingContext(ownControlChild, dataStay);
-                        ownControlChild.ownMCDataBind1.BindControlToData(ownControlChild, false, dataStay, true);
+                        ownControlChild.ownMCDataBind1.setBindingContext(ownControlChild);
+                        ownControlChild.ownMCDataBind1.BindControlToData(ownControlChild, false, true);
                     }
                     qs2.core.generic.infoControl calculatedFormat1 = new qs2.core.generic.infoControl();
                     ownControlChild.doActionControl(design.auto.multiControl.ownMultiControl.eTypActionControl.clearErrorProvider, ref calculatedFormat1, false);
@@ -713,57 +492,49 @@ namespace qs2.design.auto.workflowAssist.autoForm
                                             ref System.Collections.Generic.List<UltraTab> lstTabPageReturn,
                                             ref System.Collections.Generic.List<qs2.design.auto.multiControl.ownTab> lstTab,
                                             ref System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox> lstGroupBoxReturn, bool doNotDataBinding = false)
-       {
-           try
-           {
-               string sWhere = dsAdminAuto.dbAutoUI.FldShortColumn.ColumnName + "='" + FldShort + "' " + qs2.core.sqlTxt.and +
+       {    
+            try
+            {
+                string sWhere = dsAdminAuto.dbAutoUI.FldShortColumn.ColumnName + "='" + FldShort + "' " + qs2.core.sqlTxt.and +
                                 dsAdminAuto.dbAutoUI.IDApplicationColumn.ColumnName + "='" + Application + "' ";
-               if (Chapter.Trim() != "")
-               {
-                   sWhere += qs2.core.sqlTxt.and + dsAdminAuto.dbAutoUI.ChapterColumn.ColumnName + "='" + Chapter.Trim() + "' ";
-               }
+                if (Chapter.Trim() != "")
+                {
+                    sWhere += qs2.core.sqlTxt.and + dsAdminAuto.dbAutoUI.ChapterColumn.ColumnName + "='" + Chapter.Trim() + "' ";
+                }
 
-               qs2.core.vb.dsAdmin.dbAutoUIRow[] arrAutoUIRow = (qs2.core.vb.dsAdmin.dbAutoUIRow[])dsAdminAuto.dbAutoUI.Select(sWhere);
-               foreach (qs2.core.vb.dsAdmin.dbAutoUIRow rCont in arrAutoUIRow)
-               {
-                   //if (rCont.StayTyp.ToString() == loadedStayTyp.ToString())
-                   //{
-                       if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiControl)))
-                       {
-                           qs2.design.auto.multiControl.ownMultiControl ownMultiControl1 = (qs2.design.auto.multiControl.ownMultiControl)rCont.control;
-                           lstMultiControlReturn.Add(ownMultiControl1);
-                           if (!ownMultiControl1.ownMCCriteria1._isInitializedCriteria)
-                           {
-                               ownMultiControl1.parentAutoUI.autoUI1.initMulticontrol(ownMultiControl1, ref ownMultiControl1.parentAutoUI.dataStay);
-                               //ownMultiControl1.parentAutoUI.autoUI1.multicontrolFillData(ref ownMultiControl1.parentAutoUI.dataStay, ownMultiControl1);
-                           }
-                           if (!doNotDataBinding && ownMultiControl1.ownMCDataBind1.Binding1 == null)
-                           {
-                               ownMultiControl1.parentAutoUI.autoUI1.multicontrolFillData(ref ownMultiControl1.parentAutoUI.dataStay, ownMultiControl1);
-                           }
-                       }
-                       else if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownGroupBox)))
-                       {
-                           qs2.design.auto.multiControl.ownGroupBox ownGroupBoxReturn = (qs2.design.auto.multiControl.ownGroupBox)rCont.control;
-                           lstGroupBoxReturn.Add(ownGroupBoxReturn);
-                       }
+                qs2.core.vb.dsAdmin.dbAutoUIRow[] arrAutoUIRow = (qs2.core.vb.dsAdmin.dbAutoUIRow[])dsAdminAuto.dbAutoUI.Select(sWhere);
+                foreach (qs2.core.vb.dsAdmin.dbAutoUIRow rCont in arrAutoUIRow)
+                {
+                    if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiControl)))
+                    {   
+                        qs2.design.auto.multiControl.ownMultiControl ownMultiControl1 = (qs2.design.auto.multiControl.ownMultiControl)rCont.control;
+                        lstMultiControlReturn.Add(ownMultiControl1);
+                        if (!ownMultiControl1.ownMCCriteria1._isInitializedCriteria)
+                        {
+                            ownMultiControl1.parentAutoUI.autoUI1.initMulticontrol(ownMultiControl1);
+                        }
+                        if (!doNotDataBinding && ownMultiControl1.ownMCDataBind1.Binding1 == null)
+                        {
+                            ownMultiControl1.parentAutoUI.autoUI1.multicontrolFillData(ownMultiControl1);
+                        }
+                    }
+                    else if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownGroupBox)))
+                    {
+                        qs2.design.auto.multiControl.ownGroupBox ownGroupBoxReturn = (qs2.design.auto.multiControl.ownGroupBox)rCont.control;
+                        lstGroupBoxReturn.Add(ownGroupBoxReturn);
+                    }
                     else if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownTab)))
                     {
                         qs2.design.auto.multiControl.ownTab ownTabReturn = (qs2.design.auto.multiControl.ownTab)rCont.control;
                         lstTab.Add(ownTabReturn);
                     }
                     else if (rCont.control.GetType().Equals(typeof(UltraTab)))
-                       {
-                           UltraTab TabPageReturn = (UltraTab)rCont.control;
-                           lstTabPageReturn.Add(TabPageReturn);
-                       }
-                   //}
-               }
+                    {
+                        UltraTab TabPageReturn = (UltraTab)rCont.control;
+                        lstTabPageReturn.Add(TabPageReturn);
+                    }
+                }
 
-               if (lstMultiControlReturn.Count > 1)
-               {
-                   //throw new Exception("autoUI.getMultiControl: lstMultiControlReturn.Count > 1 for FldShort '" + FldShort + "'!");
-               }
                if (lstGroupBoxReturn.Count > 1)
                {
                    throw new Exception("autoUI.getMultiControl: lstGroupBoxReturn.Count > 0 for FldShort '" + FldShort + "'!");
@@ -777,79 +548,20 @@ namespace qs2.design.auto.workflowAssist.autoForm
                    if (qs2.core.ENV.adminSecure && qs2.core.ENV.developModus)
                    {
                        string ExceptTxt = "autoUI.getMultiControl: lstMultiControlReturn.Count == 0 && lstGroupBoxReturn.Count == 0 && lstTabPageReturn.Count == 0 for FldShort '" + FldShort + "'!";
-                       //throw new Exception("");
-                       //qs2.core.Protocol.doExcept(ExceptTxt, "autoUI.getMultiControl", "", false, true, Application,
-                       //                             qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Info);  //lthxy
                    }
                }
 
                return true;
-           }
-           catch (Exception ex)
-           {
-               qs2.core.Protocol.doExcept(ex.ToString(), "autoUI.getMultiControl", "", false, true, Application,
-                                           qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-               return false;
-           }
-       }
-
-
-        public static string getTitleWindow(string IDResTitleForm, qs2.core.vb.dsObjects.tblStayRow rStay, string Application,
-                                                ref qs2.core.vb.dsObjects.tblObjectRow rPatient)
-        {
-            string sTitle = "";
-
-            string PatientInfo = "";
-            string Dates = "";
-
-            PatientInfo = qs2.core.language.sqlLanguage.getRes("Patientname") + ": " + rPatient.NameCombination.Trim();
-
-            if (!rStay.IsAdmitDtNull())
-            {
-                Dates = ", " + qs2.core.language.sqlLanguage.getRes("AdmitDt") + ": " + rStay.AdmitDt.ToString("dd.MM.yyyy") + "";
             }
-            
-            if (!rStay.IsSurgDtStartNull())
+            catch (Exception ex)
             {
-                Dates += ", " + qs2.core.language.sqlLanguage.getRes("SurgDtStart") + ": " + rStay.SurgDtStart.ToString("dd.MM.yyyy") + ""; 
+                qs2.core.Protocol.doExcept(ex.ToString(), "autoUI.getMultiControl", "", false, true, Application,
+                                            qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
+                return false;
             }
-
-            sTitle = qs2.core.language.sqlLanguage.getRes(IDResTitleForm) + ": " + rStay.MedRecN.Trim() + " (" +
-                                qs2.core.language.sqlLanguage.getRes(Application.ToString()) + ")" + ", " + PatientInfo.Trim() + Dates.Trim();
-
-            return sTitle.Trim();
         }
 
 
-        public void addToDoMainFormStayUI1(doMainFormStayUI doMainFormStayUI1)
-        {
-            this.evdoMainFormStayUI += doMainFormStayUI1;
-        }
-        public void runDoMainFormStayUI1(string Fct)
-        {
-            this.evdoMainFormStayUI.Invoke(Fct);
-        }
-        //AddNewProduct
-        public void addVASCULAR(doVASCULAR doVASCULAR1)
-        {
-            this.evDoVASCULAR += doVASCULAR1;
-        }
-        public void addCARDIAC(doCardiac doCardiac1)
-        {
-            this.evDoCardiac += doCardiac1;
-        }
-        public void addNC(doNC doNC1)
-        {
-            this.evDoNC += doNC1;
-        }
-        public void addQTH(doQTH doQTH1)
-        {
-            this.evDoQTH += doQTH1;
-        }
-        public void addTestProduct(doTestProduct doTestProduct1)
-        {
-            this.evDoTestProduct += doTestProduct1;
-        }
     }
 
 
@@ -867,6 +579,5 @@ namespace qs2.design.auto.workflowAssist.autoForm
            public bool IsChapter = false;
            public int IDSelListChapter = -999;
            public qs2.sitemap.workflowAssist.contListAssistentElem  element = null;
-           //public bool wasClicked = false;
        }
 }
