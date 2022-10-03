@@ -525,12 +525,6 @@
     <Compile Include="sql\actUsr.vb" />
     <Compile Include="sql\businessFramework.vb" />
     <Compile Include="sql\dbBase.vb" />
-    <Compile Include="sql\Functions\cStoredProcedures.vb" />
-    <Compile Include="sql\Functions\StoredProduedures.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoredProduedures.xsd</DependentUpon>
-    </Compile>
     <Compile Include="sql\products\coreStaysProducts.vb" />
     <Compile Include="sql\Protocoll\dsProtocol.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -826,17 +820,6 @@
     </None>
     <None Include="sql\Admin\dsAdmin.xss">
       <DependentUpon>dsAdmin.xsd</DependentUpon>
-    </None>
-    <None Include="sql\Functions\StoredProduedures.xsc">
-      <DependentUpon>StoredProduedures.xsd</DependentUpon>
-    </None>
-    <None Include="sql\Functions\StoredProduedures.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>StoredProduedures.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="sql\Functions\StoredProduedures.xss">
-      <DependentUpon>StoredProduedures.xsd</DependentUpon>
     </None>
     <None Include="sql\Objects\dsObjects.xsc">
       <DependentUpon>dsObjects.xsd</DependentUpon>
