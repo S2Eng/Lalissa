@@ -277,21 +277,6 @@ Public Class Protocol : Implements IDisposable
                 If Not rNewProt.IsIDGuidObjectNull() Then
                     Me.setObjectForProtocoll(rNewProt.IDGuidObject, rNewProt)
                 End If
-                If Not rNewProt.IsIDStayNull() And rNewProt.IDApplication.Trim() <> "" And rNewProt.IDParticipant.Trim() <> "" Then
-
-                    Using sqlObjectsReadTmp As New sqlObjects()
-                        sqlObjectsReadTmp.initControl()
-                        Dim rStay As dsObjects.tblStayRow = sqlObjectsReadTmp.getStaysRow(rNewProt.IDStay, sqlObjects.eTypSelStay.IDIDApplicationIDParticipant,
-                                                                                       rNewProt.IDApplication.Trim(), Enums.eStayTyp.All, rNewProt.IDParticipant.Trim(), Nothing, False)
-                        If Not rStay Is Nothing Then
-                            rNewProt.MedRecNr = rStay.MedRecN.Trim()
-                            Me.setObjectForProtocoll(rStay.PatIDGuid, rNewProt)
-                        Else
-                            Dim bNotFound As Boolean = True
-                        End If
-
-                    End Using
-                End If
 
                 'If dsProtocolToSave.ProtocolFields.Rows.Count > 0 Then
                 If type = eTypeProtocoll.Obj Or type = eTypeProtocoll.Stay Then

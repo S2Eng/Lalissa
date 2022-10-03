@@ -84,36 +84,5 @@ namespace qs2.sitemap
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
         }
-
-        public void loadData(int IDStay, string Application, string IDParticipant, core.Enums.eStayTyp StayTyp,System.Guid IDPatientGuid)
-        {
-            try
-            {
-                this.dsObjects1.Clear();
-                this.sqlObjects1.getStay(IDStay, "", System.DateTime.Now, System.DateTime.Now, ref this.dsObjects1, core.vb.sqlObjects.eTypSelStay.allPatient, 
-                                        Application, StayTyp, IDParticipant, IDPatientGuid, "", core.Enums.eSearchType.Simple, 
-                                        qs2.core.ENV.IsHeadquarter, -1, null, -1, false, "", "", -1, -1, -1, "");
-                foreach (qs2.core.vb.dsObjects.tblStayRow rStay in this.dsObjects1.tblStay)
-                {
-                    rStay.Description = rStay.ID.ToString();
-                    if (!rStay.IsIDStayParentNull())
-                    {
-                        rStay.Description = rStay.IDStayParent.ToString();
-                        rStay.MedRecN = "      " + rStay.MedRecN;
-                    }
-                    //rStay.Description += rStay.MedRecN.ToString();
-                }
-                this.infragdropDownStays.Refresh();
-
-                this.infragdropDownStays.DisplayLayout.Bands[0].SortedColumns.Clear();
-                this.infragdropDownStays.DisplayLayout.Bands[0].SortedColumns.Add(this.dsObjects1.tblStay.DescriptionColumn .ColumnName, false);
-            }
-            catch (Exception ex)
-            {
-                qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-        }
-
-
     }
 }
