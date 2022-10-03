@@ -36,8 +36,6 @@ namespace qs2.design.auto
         public bool IsKeyDb = false;
 
         public System.Windows.Forms.ErrorProvider errorProvider1 = null;
-        public qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI = null;
-        public qs2.design.auto.workflowAssist.autoForm.cTabTag tagTab;
         public bool _isInitializedGetData = false;
         public bool _isInitializedCriteria = false;
         public bool _isInitializedVar = false;
@@ -728,34 +726,18 @@ namespace qs2.design.auto
                     if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiControl)))
                     {
                         qs2.design.auto.multiControl.ownMultiControl ownMultiControl1 = (qs2.design.auto.multiControl.ownMultiControl)ctl;
-                        this.doChapterAssignmentForControl(ownMultiControl1.OwnFldShort, ref Application, ownMultiControl1.rAutoUI.Chapter.Trim(), "CHAPTERS0",
-                                                            ref ProtocolWindow, ref protocollForAdmin, ownMultiControl1.rAutoUI,
-                                                            ref IDSelListObjChapter0, ref IDSelListObjChapter1, ref ExistsInChapter0, ref ExistsInChapter1,
-                                                            ownMultiControl1.rAutoUI.Chapter.Trim(), ref ownMultiControl1.parentAutoUI.loadedStayTyp);
                     }
                     else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownGroupBox)))
                     {
                         qs2.design.auto.multiControl.ownGroupBox ownGroupBox1 = (qs2.design.auto.multiControl.ownGroupBox)ctl;
-                        this.doChapterAssignmentForControl(ownGroupBox1.OwnFldShort, ref Application, ownGroupBox1.rAutoUI.Chapter.Trim(), "CHAPTERS0",
-                                                            ref ProtocolWindow, ref protocollForAdmin, ownGroupBox1.rAutoUI,
-                                                            ref IDSelListObjChapter0, ref IDSelListObjChapter1, ref ExistsInChapter0, ref ExistsInChapter1,
-                                                            ownGroupBox1.rAutoUI.Chapter.Trim(), ref ownGroupBox1.parentAutoUI.loadedStayTyp);
                     }
                     else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownTab)))
                     {
                         qs2.design.auto.multiControl.ownTab ownTab1 = (qs2.design.auto.multiControl.ownTab)ctl;
-                        this.doChapterAssignmentForControl(ownTab1.OwnFldShort, ref Application, ownTab1.rAutoUI.Chapter.Trim(), "CHAPTERS0",
-                                                            ref ProtocolWindow, ref protocollForAdmin, ownTab1.rAutoUI,
-                                                            ref IDSelListObjChapter0, ref IDSelListObjChapter1, ref ExistsInChapter0, ref ExistsInChapter1,
-                                                            ownTab1.rAutoUI.Chapter.Trim(), ref ownTab1.parentAutoUI.loadedStayTyp);
                     }
                     else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiGridSelList)))
                     {
                         qs2.design.auto.multiControl.ownMultiGridSelList ownMultiGridSelList1 = (qs2.design.auto.multiControl.ownMultiGridSelList)ctl;
-                        this.doChapterAssignmentForControl(ownMultiGridSelList1._FldShortTitle, ref Application, ownMultiGridSelList1.rAutoUI.Chapter.Trim(), "CHAPTERS0",
-                                                            ref ProtocolWindow, ref protocollForAdmin, ownMultiGridSelList1.rAutoUI,
-                                                            ref IDSelListObjChapter0, ref IDSelListObjChapter1, ref ExistsInChapter0, ref ExistsInChapter1,
-                                                            ownMultiGridSelList1.rAutoUI.Chapter.Trim(), ref ownMultiGridSelList1.parentAutoUI.loadedStayTyp);
                     }
                     else
                     {
@@ -842,160 +824,6 @@ namespace qs2.design.auto
             }
         }
        
-        public void doChapterAssignmentForControl(string FldShort, ref string IDApplication2,
-                                                    string IDOwnStrChapterSelListxy, string IDGroupChapterxy,
-                                                    ref bool ProtocolWindow, ref string protocollForAdmin,
-                                                    qs2.core.vb.dsAdmin.dbAutoUIRow rAutoUI,
-                                                    ref Nullable<System.Guid> IDSelListObjChapter0xy, ref Nullable<System.Guid> IDSelListObjChapter1xy,
-                                                    ref bool ExistsInChapter0xy, ref bool ExistsInChapter1xy, string IDChapter,
-                                                    ref core.Enums.eStayTyp StayTyp)
-        {
-            try
-            {
-                if (IDChapter.Trim().ToLower().Equals(("FreeTopBelow").Trim().ToLower()))
-                {
-                    return;
-                }
-                
-                qs2.core.vb.dsAdmin dsAdminUpdate = new core.vb.dsAdmin();
-                qs2.core.vb.sqlAdmin sqlAdminUpdate = new core.vb.sqlAdmin();
-                sqlAdminUpdate.initControl();
-
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(FldShort, "PatWeight", false))
-                {
-                    bool bStop = true;
-                }
-
-                string IDGroupChapter = "Chapters0";
-                qs2.core.vb.dsAdmin.tblSelListGroupRow rSelListGroupCheckChapter = ownMCCriteria.sqlAdminWork.getSelListGroupRow(IDGroupChapter, qs2.core.license.doLicense.eApp.ALL.ToString(), Application.Trim());
-                qs2.core.vb.sqlAdmin.ParametersSelListEntries Parameters = new qs2.core.vb.sqlAdmin.ParametersSelListEntries();
-                ownMCCriteria.sqlAdminWork.getSelListEntrys(ref Parameters, "", this.IDParticipant, IDApplication2.ToString(),
-                                                ref dsAdminUpdate, qs2.core.vb.sqlAdmin.eTypAuswahlList.IDOwnStrIDGroup, "", -999, IDChapter, rSelListGroupCheckChapter.ID);
-                if (dsAdminUpdate.tblSelListEntries.Rows.Count != 1)
-                {
-                    dsAdminUpdate.tblSelListEntries.Clear();
-                    IDGroupChapter = "Chapters1";
-                    rSelListGroupCheckChapter = ownMCCriteria.sqlAdminWork.getSelListGroupRow(IDGroupChapter, qs2.core.license.doLicense.eApp.ALL.ToString(), Application.Trim());
-                    Parameters = new qs2.core.vb.sqlAdmin.ParametersSelListEntries();
-                    ownMCCriteria.sqlAdminWork.getSelListEntrys(ref Parameters, "", this.IDParticipant, IDApplication2.ToString(),
-                                                    ref dsAdminUpdate, qs2.core.vb.sqlAdmin.eTypAuswahlList.IDOwnStrIDGroup, "", -999, IDChapter, rSelListGroupCheckChapter.ID);
-                    if (dsAdminUpdate.tblSelListEntries.Rows.Count != 1)
-                    {
-                        throw new Exception("ownMCCriteria.qs2: dsAdminUpdate.tblSelListEntries.Rows.Count != 1 for IDChapter '" + IDChapter.ToString() + "'!");
-                    }
-                }
-
-                qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelListEntryChapter = (qs2.core.vb.dsAdmin.tblSelListEntriesRow)dsAdminUpdate.tblSelListEntries.Rows[0];
-                qs2.core.vb.dsAdmin.tblSelListEntriesObjRow rNew = null;
-
-                
-                string IDApplicationTmp = IDApplication2.Trim();
-                dsAdminUpdate.tblCriteria.Clear();
-                sqlAdminUpdate.getCriterias(dsAdminUpdate, core.vb.sqlAdmin.eTypSelCriteria.id, FldShort.Trim(), IDApplicationTmp.Trim(), false, false, false, "", "", false);
-                if (dsAdminUpdate.tblCriteria.Rows.Count == 0)
-                {
-                    IDApplicationTmp = qs2.core.license.doLicense.eApp.ALL.ToString();
-                    dsAdminUpdate.tblCriteria.Clear();
-                    sqlAdminUpdate.getCriterias(dsAdminUpdate, core.vb.sqlAdmin.eTypSelCriteria.id, FldShort.Trim(), IDApplicationTmp.Trim(), false, false, false, "", "", false);
-                    if (dsAdminUpdate.tblCriteria.Rows.Count != 1)
-                    {
-                        throw new Exception("ownMCCriteria.qs2: dsAdminUpdate.tblCriteria.Rows.Count != 1 for FldShort '" + FldShort.Trim() + "'!");
-                    }
-                }
-
-                string sqlCommand = "";
-                bool addRow = false;
-                dsAdminUpdate.tblSelListEntriesObj.Clear();
-                ownMCCriteria.sqlAdminWork.getSelListEntrysObj(rSelListEntryChapter.ID, core.vb.sqlAdmin.eDbTypAuswObj.Criterias, IDApplication2.Trim(), dsAdminUpdate, core.vb.sqlAdmin.eTypAuswahlObj.IDSelListEntryFldShort, IDApplicationTmp.Trim(),
-                                                                rSelListEntryChapter.ID, FldShort.Trim(), -999, "", -999, "", "", true, null, sqlCommand);
-                if (dsAdminUpdate.tblSelListEntriesObj.Rows.Count == 0)
-                {
-                    rNew = ownMCCriteria.sqlAdminWork.getNewRowSelListObj(dsAdminUpdate); 
-                    addRow = true;
-                }
-                else if (dsAdminUpdate.tblSelListEntriesObj.Rows.Count == 1)
-                {
-                    rNew = (qs2.core.vb.dsAdmin.tblSelListEntriesObjRow)dsAdminUpdate.tblSelListEntriesObj.Rows[0];
-                    ownMCCriteria.sqlAdminWork.updateSelListEntryObjCreated(rNew.IDGuid, rNew.Created);
-                }
-                else if (dsAdminUpdate.tblSelListEntriesObj.Rows.Count > 1)
-                {
-                    rNew = (qs2.core.vb.dsAdmin.tblSelListEntriesObjRow)dsAdminUpdate.tblSelListEntriesObj.Rows[0];
-                    ownMCCriteria.sqlAdminWork.updateSelListEntryObjCreated(rNew.IDGuid, rNew.Created);
-                }
-
-                if (addRow)
-                {
-                    rNew.FldShort = FldShort.Trim();
-                    if (IDApplication2.Trim().ToLower().Equals(qs2.core.license.doLicense.eApp.ALL.ToString().Trim().ToLower()))
-                    {
-                        //string xy = "";
-                    }
-                    rNew.IDApplication = IDApplicationTmp.Trim();
-                    rNew.IDSelListEntry = rSelListEntryChapter.ID;
-                    rNew.typIDGroup = qs2.core.vb.sqlAdmin.eDbTypAuswObj.Criterias.ToString();
-
-                    rNew.Description = "";
-                    rNew.IDClassification = "";
-                    rNew.Sort = 0;
-                    rNew.SetIDOwnIntNull();
-                    rNew.IDClassification = "";     //"Application=" + IDApplication.Trim();
-                    rNew.Created = dNowAssign.Value;
-                    rNew.Modified = dNowAssign.Value;
-
-                    sqlAdminUpdate.daSelListEntrysObj.SelectCommand.Connection = qs2.core.dbBase.dbConn;
-                    sqlAdminUpdate.daSelListEntrysObj.InsertCommand.Connection = qs2.core.dbBase.dbConn;
-                    sqlAdminUpdate.daSelListEntrysObj.UpdateCommand.Connection = qs2.core.dbBase.dbConn;
-                    sqlAdminUpdate.daSelListEntrysObj.DeleteCommand.Connection = qs2.core.dbBase.dbConn;
-
-                    if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(FldShort, "PatWeight", false))
-                    {
-                        bool bStop = true;
-                    }
-
-                    sqlAdminUpdate.daSelListEntrysObj.Update(dsAdminUpdate.tblSelListEntriesObj);
-
-                    // protocol
-                    string sChapter = "";
-                    if (this.tagTab != null)
-                    {
-                        sChapter = this.tagTab.text.Trim();
-                    }
-                    else
-                    {
-                        sChapter = "";
-                    }
-
-                    string sTxtProt = "FldShort '" + FldShort + "' autom. assigned to chapter '" + sChapter + "' (IDOwnStr='" + rSelListEntryChapter.IDOwnStr.Trim() + "')!";
-                    if (ProtocolWindow)
-                    {
-                        protocollForAdmin += sTxtProt + "\r\n";
-                    }
-
-                    this.parentAutoUI.contAutoProtokoll1.addRow(sChapter, FldShort, sTxtProt + "!", rAutoUI, QS2.Resources.getRes.Allgemein2.ico_Wichtig, true, true, false, false);
-
-                    ownMCCriteria.counterNewCriteriaAssignments += 1;
-                }
-
-                core.vb.dsAdmin dsAdminTmp = new core.vb.dsAdmin();
-                ownMCCriteria.sqlAdminWork.getSelListEntrysObj(rSelListEntryChapter.ID, core.vb.sqlAdmin.eDbTypAuswObj.Criterias, "",
-                                                                dsAdminTmp, core.vb.sqlAdmin.eTypAuswahlObj.FldShortOtherChapters, IDApplicationTmp.Trim(),
-                                                                rSelListEntryChapter.ID, FldShort.Trim(), -999, "", -999, IDApplication2, "", true, null, sqlCommand, "",
-                                                                ownMCCriteria.dNowAssign.Value);
-                if (dsAdminTmp.tblSelListEntriesObj.Rows.Count > 0)
-                {
-                    ownMCCriteria.sqlAdminWork.deleteSelListEntryObjOtherChapters(FldShort.Trim(), IDApplicationTmp.Trim(), core.vb.sqlAdmin.eDbTypAuswObj.Criterias.ToString(),
-                                                                                    rSelListEntryChapter.ID, ownMCCriteria.dNowAssign.Value, IDApplication2.Trim());
-                }
-
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCCriteria.doChapterAssignmentForControl", FldShort, false, true,
-                                                                this.Application, qs2.core.Protocol.alwaysShowExceptionMulticontrol,
-                                                                qs2.core.Protocol.eTypeError.Error);
-            }
-        }
         public void IsInObjArr(ref qs2.core.vb.dsAdmin.vListEntriesWithGroupRow[] arrSelListToProve, ref bool Exists,
                                ref qs2.core.vb.dsAdmin.tblSelListEntriesObjRow[] arrSelListEntriesObj, ref Nullable<System.Guid> IDSelListObj)
         {
@@ -1013,7 +841,6 @@ namespace qs2.design.auto
                     }
                 }
             }
-
         }
 
         public void getLicenseDesignTime(System.Windows.Forms.Control ctl)

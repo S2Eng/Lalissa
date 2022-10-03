@@ -493,7 +493,6 @@ namespace qs2.design.auto.multiControl
                         {
                             qs2.core.vb.dsObjects.tblStayRow rStayProd = null;
                             System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiControl> lstMultiControl = new System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiControl>();
-                            this.getMCAndStayAndCheckMC(ref ownControl1, ref rStayProd, TypeSetDataAndMC, ref lstMultiControl);
 
                             foreach (qs2.design.auto.multiControl.ownMultiControl ownMultiControlToSet in lstMultiControl)
                             {
@@ -522,46 +521,5 @@ namespace qs2.design.auto.multiControl
                                                                 qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
         }
-
-        public void getMCAndStayAndCheckMC(ref qs2.design.auto.multiControl.ownMultiControl ownControlMain, 
-                                            ref qs2.core.vb.dsObjects.tblStayRow rStayProd,
-                                            eTypeSetDataAndMC TypeSetDataAndMC,
-                                            ref System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiControl> lstMultiControl)
-        {
-            try
-            {
-                System.Collections.Generic.List<Infragistics.Win.UltraWinTabControl.UltraTab> lstTabePageReturn = new System.Collections.Generic.List<Infragistics.Win.UltraWinTabControl.UltraTab>();
-                System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox> lstGroupBoxReturn = new System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox>();
-                System.Collections.Generic.List<qs2.design.auto.multiControl.ownTab> lstTab = new List<qs2.design.auto.multiControl.ownTab>();
-                qs2.design.auto.workflowAssist.autoForm.autoUI.getMultiControl(eTypeSetDataAndMC.SurgDtEnd.ToString(),
-                                                                                ownControlMain.parentAutoUI._license.OwnApplication.ToString(),
-                                                                                ref ownControlMain.parentAutoUI.dsAdmin1, "", ref lstMultiControl,
-                                                                                ref lstTabePageReturn, ref lstTab, ref lstGroupBoxReturn);
-
-                if (lstMultiControl.Count == 0)
-                {
-                    throw new Exception("ControlLeave: lstMultiControl.Count != 1) not allowed vor FldShort '" + TypeSetDataAndMC.ToString() + "'!");
-                }
-                foreach (qs2.design.auto.multiControl.ownMultiControl ownMultiControlToSet in lstMultiControl)
-                {
-                    if (!ownMultiControlToSet.ownMCCriteria1._isInitializedCriteria)
-                    {
-                        ownMultiControlToSet.parentAutoUI.autoUI1.initMulticontrol(ownMultiControlToSet);
-                    }
-                    if (ownMultiControlToSet.ownMCDataBind1.Binding1 == null)
-                    {
-                        ownMultiControlToSet.parentAutoUI.autoUI1.multicontrolFillData(ownMultiControlToSet);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCDataBind.setValueToMC", ownControlMain._FldShort, false, true,
-                                                                ownControlMain.ownMCCriteria1.Application,
-                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-            }
-        }
-
-
     }
 }

@@ -687,19 +687,12 @@
     </Compile>
     <Compile Include="workflowAssist\autoForm\AutoControlsUI.cs" />
     <Compile Include="workflowAssist\autoForm\autoLoadControls.cs" />
-    <Compile Include="workflowAssist\autoForm\autoUI.cs" />
     <Compile Include="workflowAssist\autoForm\ColorSchemas.cs" />
     <Compile Include="workflowAssist\autoForm\contAutoProtokoll.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="workflowAssist\autoForm\contAutoProtokoll.Designer.cs">
       <DependentUpon>contAutoProtokoll.cs</DependentUpon>
-    </Compile>
-    <Compile Include="workflowAssist\autoForm\contAutoUI.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="workflowAssist\autoForm\contAutoUI.Designer.cs">
-      <DependentUpon>contAutoUI.cs</DependentUpon>
     </Compile>
     <Compile Include="workflowAssist\autoForm\doAutoControls.cs" />
     <Compile Include="workflowAssist\autoForm\doSideLogic.cs" />
@@ -850,9 +843,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="workflowAssist\autoForm\contAutoProtokoll.resx">
       <DependentUpon>contAutoProtokoll.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="workflowAssist\autoForm\contAutoUI.resx">
-      <DependentUpon>contAutoUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="workflowAssist\autoForm\frmAutoUI.resx">
       <DependentUpon>frmAutoUI.cs</DependentUpon>

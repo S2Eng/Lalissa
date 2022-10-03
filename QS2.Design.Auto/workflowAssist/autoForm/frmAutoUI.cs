@@ -9,10 +9,6 @@ using System.Windows.Forms;
 using Infragistics.Win.UltraWinToolbars;
 using QS2.Resources;
 
-using System.Runtime.InteropServices;
-
-
-
 
 
 namespace qs2.sitemap.workflowAssist.form
@@ -26,8 +22,6 @@ namespace qs2.sitemap.workflowAssist.form
         public qs2.core.vb.dsObjects.tblObjectRow rPatient;
         public bool SaveWasClicked = false;
         public bool isInEditMode = false;
-        public contAutoUI contAutoUI = null;
-        private qs2.design.auto.workflowAssist.autoForm.tgWindowHandler tgWindowHandlerWindow = null;
         public bool evDoRefreshStayListIsInitialized = false;
         public event doRefreshStayList evDoRefreshStayList;
         public delegate void doRefreshStayList();

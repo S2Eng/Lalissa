@@ -91,26 +91,8 @@ namespace qs2.sitemap.workflowAssist
                 else
                 {
                     bool isInEditMode = false;
-                    if (this.cListAssistentElem.ListMain.autoUI != null)
-                    {
-                        isInEditMode = false;
-                    }
-                    else
-                    {
-                        throw new Exception("this.autoUI = null");
-                    }
 
-                    if ((isInEditMode && this.cListAssistentElem._TypList == core.Enums.eTypList.PROCGRP))
-                    {
-                        if (this.cListAssistentElem.ListMain.autoUI.rStayRead.StayComplete)
-                        {
-                            if (!qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightSetCompleted, false))
-                            {
-                                isInEditMode = false;
-                            }
-                        }
-                    }
-
+ 
                     if ((isInEditMode && this.cListAssistentElem._TypList == core.Enums.eTypList.PROCGRP) ||
                             this.cListAssistentElem._TypList == core.Enums.eTypList.CHAPTERS)
                     {
@@ -138,8 +120,6 @@ namespace qs2.sitemap.workflowAssist
                                 {
                                     this.cListAssistentElem.assistent.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
                                 }
-
-                                this.cListAssistentElem.ListMain.SetInfoAnyProcGroupIsOn();
                             }
                         }
                         else
@@ -185,32 +165,13 @@ namespace qs2.sitemap.workflowAssist
                 else
                 {
                     bool isInEditMode = false;
-                    if (this.cListAssistentElem.ListMain.autoUI != null)
-                    {
-                        isInEditMode = false;
-                    }
-                    else
-                    {
-                        throw new Exception("this.autoUI = null");
-                    }
-
-                    if ((isInEditMode && this.cListAssistentElem._TypList == core.Enums.eTypList.PROCGRP))
-                    {
-                        if (this.cListAssistentElem.ListMain.autoUI.rStayRead.StayComplete)
-                        {
-                            if (!qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightSetCompleted, false))
-                            {
-                                isInEditMode = false;
-                            }
-                        }
-                    }
-
                     if ((isInEditMode && this.cListAssistentElem._TypList == core.Enums.eTypList.PROCGRP) ||
                             this.cListAssistentElem._TypList == core.Enums.eTypList.CHAPTERS)
                     {
                         bOK = true;
                     }
                 }
+
                 if (bOK)
                 {
                     //if (!qs2.sitemap.workflowAssist.form.contAutoUI.LoadingStayData)
@@ -277,20 +238,6 @@ namespace qs2.sitemap.workflowAssist
                     retValue1.valueStr = (this.cListAssistentElem._isOn == true ? "1" : "0");
                     retValue1.valueSql = retValue1.valueStr;
                     int SubRelation = 0;
-                    //bool isInEditMode = false;
-                    if (this.cListAssistentElem.ListMain.autoUI != null)
-                    {
-                        bool ProcGroupDeactivated = false;
-                        this.cListAssistentElem.ownMCRelationship.doRelationship(this.cListAssistentElem.rCriteria.FldShort.Trim(), "", ref retValue1, false, SubRelation, this.cListAssistentElem.rCriteria.IDApplication,
-                                    qs2.core.license.doLicense.eApp.ALL.ToString(),
-                                    ref this.cListAssistentElem.ListMain.autoUI, 
-                                    ref TypActionRelation, ProcGroupDeactivated);
-                    }
-                    else
-                    {
-                        throw new Exception("this.autoUI = null");
-                    }
-
                 }
             }
             catch (Exception ex)
@@ -539,20 +486,6 @@ namespace qs2.sitemap.workflowAssist
                                             ref qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck, bool loadSelectProcGroups,
                                             bool callReposition)
         {
-            if (this.cListAssistentElem.assistent != null)
-            {
-                if (this.cListAssistentElem.ListMain.autoUI != null)
-                {
-                    this.cListAssistentElem.assistent.elementClick2(this, isOn, doChapters, reduceCounterForChapter, ref protocollForAdmin, ref ProtocolWindow,
-                                                                ref lstElementsActive, ref TypAssignmentToCheck, true, this.cListAssistentElem.ListMain.autoUI._runAsSystemuser,
-                                                                this.cListAssistentElem.ListMain.autoUI._runAsUser, true, loadSelectProcGroups, callReposition);
-                }
-                else
-                {
-                    throw new Exception("this.autoUI = null");
-                }
-            }
-
             if (this.ownClick2 != null)
                 this.ownClick2(this, e);
         }
@@ -562,25 +495,6 @@ namespace qs2.sitemap.workflowAssist
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
-                if (!qs2.sitemap.workflowAssist.form.contAutoUI.LoadingStayData)
-                {
-                    if (this.cListAssistentElem.isEditable)
-                    {
-                        if (this.cListAssistentElem.ListMain.autoUI.rStayRead.StayComplete)
-                        {
-                            if (qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightSetCompleted, false))
-                            {
-                                this.setButtonOK(!this.cListAssistentElem.isOKOn);
-                            }
-                        }
-                        else
-                        {
-                            this.setButtonOK(!this.cListAssistentElem.isOKOn);
-                        }
-                    }
-                }
-
             }
             catch (Exception ex)
             {

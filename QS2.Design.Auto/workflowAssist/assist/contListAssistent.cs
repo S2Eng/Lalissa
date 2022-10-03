@@ -31,7 +31,6 @@ namespace qs2.sitemap.workflowAssist
         public bool ButtonOKVisible = true;
         public contListAssistent assistentChapters;
 
-        public qs2.sitemap.workflowAssist.form.contAutoUI autoUI;
         public qs2.core.Enums.eTypList TypList;
         public bool _ShowAllStayTypes = false;
         
@@ -274,10 +273,6 @@ namespace qs2.sitemap.workflowAssist
 
                         System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
 
-                        if (TypList == core.Enums.eTypList.CHAPTERS)
-                        {
-                            this.autoUI.lstAllChapters.Add(contButtAssistentElem1.cListAssistentElem.rSelEntries.ID, contButtAssistentElem1.cListAssistentElem);
-                        }
                     }
                 }
 
@@ -393,96 +388,6 @@ namespace qs2.sitemap.workflowAssist
             }
         }
 
-        
-        public void loadSelectedProcGroups2(qs2.core.vb.dsObjects.tblStayRow rStay, ref string protocollForAdmin, ref bool ProtocolWindow,
-                                            ref System.Collections.Generic.List<string> lstElementsActive,
-                                            ref qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck, bool runAsSystemuser, int UserIDSystemuser)
-        {
-            if (!this.RightChaptersIsDone || runAsSystemuser)
-            {
-                string OwnApplicationTmp = "";
-                if (this.autoUI != null)
-                {
-                    OwnApplicationTmp = this.autoUI._license.OwnApplication.ToString();
-                }
-                else
-                {
-                    throw new Exception("this.autoUI = null");
-                }
-
-                foreach (contListAssistentElem chapter in this.assistentChapters.panelButtons.ClientArea.Controls)
-                {
-                    if (runAsSystemuser)
-                    {
-                        chapter.cListAssistentElem.IsVisibleForSystemuser = b.checkRigthButtons(chapter.cListAssistentElem.rSelEntries.ID , UserIDSystemuser);
-                        chapter.Visible = chapter.cListAssistentElem.IsVisibleForSystemuser;
-
-                        bool ChapterAlwaysEditable = false;
-                        this.b.checkChapterClassification(chapter.cListAssistentElem.rSelEntries.ID, UserIDSystemuser, ref ChapterAlwaysEditable, chapter.cListAssistentElem.rSelEntries.IDOwnStr);
-                        chapter.cListAssistentElem.AlwaysEditable = ChapterAlwaysEditable;
-                    }
-                    else
-                    {
-                        chapter.cListAssistentElem.IsVisibleForSystemuser = b.checkRigthButtons(chapter.cListAssistentElem.rSelEntries.ID , qs2.core.vb.actUsr.rUsr.ID);
-                        chapter.Visible = chapter.cListAssistentElem.IsVisibleForSystemuser;
-
-                        bool ChapterAlwaysEditable = false;
-                        this.b.checkChapterClassification(chapter.cListAssistentElem.rSelEntries.ID, qs2.core.vb.actUsr.rUsr.ID, ref ChapterAlwaysEditable, chapter.cListAssistentElem.rSelEntries.IDOwnStr);
-                        chapter.cListAssistentElem.AlwaysEditable = ChapterAlwaysEditable;
-                    }
-                    this.RightChaptersIsDone = true;
-                }
-
-            }
-            foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-            {
-                element.loadSelectedProcGroup(rStay, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, ref TypAssignmentToCheck, true, false);
-            }
-
-            this.repositonAllElements(core.Enums.eTypList.CHAPTERS, this._ShowAllStayTypes, this.assistentChapters);
-        }
-
-        public void setProcGroupsOnOff(qs2.core.vb.dsObjects.tblStayRow rStay, ref string protocollForAdmin, ref bool ProtocolWindow,
-                                    ref System.Collections.Generic.List<string> lstElementsActive,
-                                    ref qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck,
-                                    bool bValue)
-        {
-            foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-            {
-                element.isOn = true;
-            }
-        }
-
-        public void setButtonCompletedChapter2(qs2.core.vb.dsObjects.tblStayRow rStay, ref System.Collections.Generic.SortedDictionary<int, string> lstAllChaptersBeforeActive)
-        {
-            int iCounter = 0;
-            foreach (KeyValuePair<int, string> chapterActive in this.autoUI.lstAllChaptersActive)
-            {
-                contListAssistentElem ChapterElement = (contListAssistentElem)this.panelButtons.ClientArea.Controls[iCounter];
-                string sValue = "";
-                if (!ChapterElement.cListAssistentElem.isReloaded && !lstAllChaptersBeforeActive.TryGetValue(chapterActive.Key, out sValue))
-                {
-                    ChapterElement.loadIsOk(rStay);
-                    ChapterElement.cListAssistentElem.isReloaded = true;
-                }
-                ChapterElement.isOn = ChapterElement.cListAssistentElem.isOKOn;
-                ChapterElement.lockUnlock(ChapterElement.cListAssistentElem.isEditable);
-                iCounter += 1;
-            }
-        }
-
-        public contListAssistentElem getElement(qs2.core.vb.dsObjects.tblStayRow rStay, string IDOwnStr)
-        {
-            foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-            {
-                if (element.cListAssistentElem.element.selListEntryIDOwnStr.Trim().ToLower() == IDOwnStr.Trim().ToLower())
-                {
-                    return element;
-                }
-            }
-            return null;
-        }
-
         public void setElementsEditable(bool isEditable)
         {
             foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
@@ -523,45 +428,10 @@ namespace qs2.sitemap.workflowAssist
 
                         System.Collections.Generic.List<string> lstButtonsActivatedBefore = new List<string>();
                         System.Collections.Generic.SortedDictionary<int, string> lstAllChaptersBeforeActive = new SortedDictionary<int, string>();
-                        foreach (KeyValuePair<int, string> keyPairVis in this.autoUI.lstAllChaptersActive)
-                        {
-                            qs2.design.auto.workflowAssist.assist.cListAssistentElem keyPairOrig = this.autoUI.lstAllChapters[keyPairVis.Key];
-                            lstButtonsActivatedBefore.Add(keyPairOrig.rSelEntries.IDOwnStr.Trim());
-                            lstAllChaptersBeforeActive.Add(keyPairVis.Key, keyPairVis.Value);
-                        }
-                        if (ListAssistentElem.cListAssistentElem.IsVisibleForSystemuser)
-                        {
-                            if (this.autoUI != null)
-                            {
-                                this.autoUI.contListChapters.Visible = false;
-                            }
-                            else
-                            {
-                                throw new Exception("this.autoUI = null");
-                            }
-                            
-                            this.doChapters(ListAssistentElem.cListAssistentElem.element.selListEntryID, ListAssistentElem.isOn, reduceCounterForChapter, runAsSystemuser, UserIDSystemuser, ButtonClickedByUser, ref lstButtonsDeaktivated, ref lstButtonsActivated);
-                        }
 
                         if (callReposition)
                         {
                             this.repositonAllElements(core.Enums.eTypList.CHAPTERS, this._ShowAllStayTypes, this.assistentChapters);
-                        }
-
-                        if (this.autoUI != null)
-                        {
-                            this.autoUI.contListChapters.Width = this.autoUI.contListChaptersTemplate.Width;
-                            this.autoUI.contListChapters.Height = this.autoUI.contListChaptersTemplate.Height;
-                            this.autoUI.contListChapters.Visible = true;
-                        }
-                        else
-                        {
-                            throw new Exception("this.autoUI = null");
-                        }
-
-                        if (ButtonClickedByUser && loadSelectedChapters)
-                        {
-                            this.assistentChapters.setButtonCompletedChapter2(this.autoUI.rStayRead, ref lstAllChaptersBeforeActive);
                         }
                     }
                 }
@@ -582,16 +452,6 @@ namespace qs2.sitemap.workflowAssist
 
             catch (Exception ex)
             {
-                if (this.autoUI != null)
-                {
-                    this.autoUI.contListChapters.Width = this.autoUI.contListChaptersTemplate.Width;
-                    this.autoUI.contListChapters.Height = this.autoUI.contListChaptersTemplate.Height;
-                    this.autoUI.contListChapters.Visible = true;
-                }
-                else
-                {
-                    throw new Exception("this.autoUI = null");
-                }
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
             finally
@@ -624,11 +484,6 @@ namespace qs2.sitemap.workflowAssist
                 else if (this.TypList == core.Enums.eTypList.CHAPTERS)
                 {
                     TypAssignments = design.auto.ownMCRelationship.eTypAssignments.AutoSaveToChapter;
-                }
-
-                if (this.autoUI == null)
-                {
-                    throw new Exception("this.autoUI = null");
                 }
             }
             catch (Exception ex)
@@ -663,154 +518,16 @@ namespace qs2.sitemap.workflowAssist
                 {
                     TypAssignments = design.auto.ownMCRelationship.eTypAssignments.ChapterDropDownList;
                 }
-
-                if (this.autoUI == null)
-                {
-                    throw new Exception("this.autoUI = null");
-                }
-
             }
             catch (Exception ex)
             {
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
-        }
-
-        public void doChapters(int IDSelProcGroup, bool activate, bool reduceCounterForChapter, bool runAsSystemuser, int UserIDSystemuser,
-                          bool ButtonClickedByUser, 
-                          ref System.Collections.Generic.List<qs2.design.auto.workflowAssist.assist.cListAssistentElem> lstButtonsDeaktivated,
-                          ref System.Collections.Generic.List<qs2.design.auto.workflowAssist.assist.cListAssistentElem> lstButtonsActivated)
-        {
-            try
-            {
-                TypList = core.Enums.eTypList.CHAPTERS;
-                this.dsAdmin1.tblSelListEntriesObj.Clear();
-                this.sqlAdmin1.getSelListEntrysObj(IDSelProcGroup, qs2.core.vb.sqlAdmin.eDbTypAuswObj.SubSelList, ("Chapters").ToString() + qs2.core.generic.getStayTypeInt(qs2.core.Enums.eStayTyp.Stay).ToString(), this.dsAdmin1, qs2.core.vb.sqlAdmin.eTypAuswahlObj.sellist, this.license1.OwnApplication.ToString());
-                this.sqlAdmin1.getSelListEntrysObj(IDSelProcGroup, qs2.core.vb.sqlAdmin.eDbTypAuswObj.SubSelList, ("Chapters") + qs2.core.generic.getStayTypeInt(qs2.core.Enums.eStayTyp.FollowUp).ToString(), this.dsAdmin1, qs2.core.vb.sqlAdmin.eTypAuswahlObj.sellist, this.license1.OwnApplication.ToString());
-
-                foreach (qs2.core.vb.dsAdmin.tblSelListEntriesObjRow rObj in this.dsAdmin1.tblSelListEntriesObj)
-                {
-                    qs2.core.vb.dsAdmin.tblSelListEntriesRow rActiveChapter = null;
-                    if (this.autoUI != null)
-                    {
-                        rActiveChapter = this.sqlAdmin1.getSelListEntrysRow("", qs2.core.vb.sqlAdmin.eTypAuswahlList.id, this.autoUI._license.OwnParticipant, this.autoUI._license.OwnApplication.ToString(), "", rObj.IDSelListEntry, "", rObj.IDSelListEntry);
-                    }
-                    else
-                    {
-                        throw new Exception("this.autoUI = null");
-                    }
-
-                    foreach (KeyValuePair<int, qs2.design.auto.workflowAssist.assist.cListAssistentElem>  chapter in this.autoUI.lstAllChapters)
-                    {
-                        if (rActiveChapter != null)    //lth
-                        {
-                            if (chapter.Value.element.selListEntryID.Equals(rActiveChapter.ID))
-                            {
-                                bool IsRigthChapter = false;
-                                if (this.autoUI.loadedStayTyp == core.Enums.eStayTyp.Stay || this.autoUI.loadedStayTyp == core.Enums.eStayTyp.All)
-                                {
-                                    if (!chapter.Value.rSelEntries.IDOwnStr.sContains("FUP"))
-                                    {
-                                        IsRigthChapter = true;
-                                    }
-                                    if (chapter.Value.IDGroupStr.sEquals("Chapters0"))
-                                    {
-                                    }
-                                }
-                                else if (this.autoUI.loadedStayTyp == core.Enums.eStayTyp.FollowUp)
-                                {
-                                    if (chapter.Value.rSelEntries.IDOwnStr.sContains("FUP"))
-                                    {
-                                        IsRigthChapter = true;
-                                    }
-                                    if (chapter.Value.IDGroupStr.sEquals("Chapters1"))
-                                    {
-                                    }
-                                }
-                                if (IsRigthChapter)
-                                {
-                                    if (activate)
-                                    {
-                                        chapter.Value.counterActivated += 1;
-                                        lstButtonsActivated.Add(chapter.Value);
-                                    }
-                                    else
-                                    {
-                                        if (reduceCounterForChapter)
-                                        {
-                                            chapter.Value.counterActivated -= 1;
-                                            lstButtonsDeaktivated.Add(chapter.Value);
-                                        }   
-                                    }
-
-                                    if (chapter.Value.counterActivated < 0)
-                                    {
-                                        chapter.Value.counterActivated = 0;
-                                    }
-                                    if (chapter.Value.counterActivated == 0)
-                                    {
-                                        chapter.Value.IsVisibleForChapterSelection = false;
-                                        if (this.autoUI.lstAllChaptersActive.ContainsKey(chapter.Value.rSelEntries .ID))
-                                        {
-                                            this.autoUI.lstAllChaptersActive.Remove(chapter.Value.rSelEntries.ID);
-                                        }
-                                    }
-                                    else if (chapter.Value.counterActivated >= 1)
-                                    {
-                                        chapter.Value.IsVisibleForChapterSelection = true;
-                                        if (!this.autoUI.lstAllChaptersActive.ContainsKey(chapter.Value.rSelEntries.ID))
-                                        {
-                                            this.autoUI.lstAllChaptersActive.Add(chapter.Value.rSelEntries.ID, chapter.Value.TxtButton.Trim());
-                                        }
-                                        if (this.autoUI == null)
-                                        {
-                                            throw new Exception("this.autoUI = null");
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-        }
-
-        public contListAssistentElem getChapterForMC(string IDOwnStr)
-        {
-            foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-            {
-                if (element.cListAssistentElem.element.selListEntryIDOwnStr.Trim().ToLower() == IDOwnStr.Trim().ToLower())
-                {
-                    return element;
-                }
-            }
-            return null;
-        }
-
-        public bool anyChapterAlwaysEditable()
-        {
-            foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-            {
-                if (element.cListAssistentElem.AlwaysEditable)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
 
         public void resetAllElements(bool enabled, qs2.core.Enums.eTypList TypList, bool ShowAllStayTypes, qs2.core.Enums.eStayTyp StayTypLoaded,
                                             bool runAsSystemuser, int UserIDSystemuser)
         {
-
-            foreach (KeyValuePair<int, qs2.design.auto.workflowAssist.assist.cListAssistentElem> chapterAll in this.autoUI.lstAllChapters)
-            {
-                chapterAll.Value .isReloaded = false;
-            }
 
             this.panelButtons.AutoScroll = false;
             this.panelButtons.Refresh();
@@ -845,14 +562,6 @@ namespace qs2.sitemap.workflowAssist
                     if (TypList == core.Enums.eTypList.PROCGRP)
                     {
                         string OwnApplicationTmp = "";
-                        if (this.autoUI != null)
-                        {
-                            OwnApplicationTmp = this.autoUI._license.OwnApplication.ToString();
-                        }
-                        else
-                        {
-                            throw new Exception("this.autoUI = null");
-                        }
 
                         if (runAsSystemuser)
                         {
@@ -896,29 +605,6 @@ namespace qs2.sitemap.workflowAssist
             }
        } 
 
-        public void clearAllOkButtonsChapters()
-        {
-            foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-            {
-                element.setButtonOK(false);
-            }
-            foreach (KeyValuePair<int, qs2.design.auto.workflowAssist.assist.cListAssistentElem> chapterAll in this.autoUI.lstAllChapters)
-            {
-                chapterAll.Value.isOKOn = false;
-            }
-
-            int iCounter = 0;
-            foreach (KeyValuePair<int, string> keyPairVis in this.autoUI.lstAllChaptersActive)
-            {
-                qs2.design.auto.workflowAssist.assist.cListAssistentElem keyPairOrig = this.autoUI.lstAllChapters[keyPairVis.Key];
-
-                contListAssistentElem ChapterElement = (contListAssistentElem)this.panelButtons.ClientArea.Controls[iCounter];
-                ChapterElement.isOn = false;
-                keyPairOrig.isOKOn = false;
-            }
-
-        }
-
         public void repositonAllElements(qs2.core.Enums.eTypList TypList, bool ShowAllStayTypes, contListAssistent ListAssistentAct)
         {
             try
@@ -955,49 +641,6 @@ namespace qs2.sitemap.workflowAssist
                         Application.DoEvents();
                     }
                 }
-
-                if (TypList == core.Enums.eTypList.CHAPTERS)
-                {
-
-                    foreach (contListAssistentElem element in ListAssistentAct.panelButtons.ClientArea.Controls)
-                    {
-                        element.Visible = false; 
-                        element.Enabled = false; 
-                        element.panelEmpty.Visible = true;      //lthChapterButtonKorrektur
-                        qs2.design.auto.workflowAssist.autoForm.ColorSchemas.setButtonInaktivElement(element, qs2.core.ui.eButtonType.Chapter);
-                    }
-
-                    int iCounter = 0;
-                    foreach (KeyValuePair<int, string> keyPairVis in this.autoUI.lstAllChaptersActive)
-                    {
-                        qs2.design.auto.workflowAssist.assist.cListAssistentElem keyPairOrig = this.autoUI.lstAllChapters[keyPairVis.Key];
-
-                        contListAssistentElem ChapterElement = (contListAssistentElem)ListAssistentAct.panelButtons.ClientArea.Controls[iCounter];
-                        ChapterElement.cListAssistentElem = keyPairOrig;
-                        ChapterElement.btnElement.Text = keyPairOrig.TxtButton.Trim();
-
-                        bool bVisible = true;
-                        if (!ChapterElement.cListAssistentElem.IsVisibleForStayType || !ChapterElement.cListAssistentElem.IsVisibleForChapterSelection || !ChapterElement.cListAssistentElem.IsVisibleClassificationSelList || !ChapterElement.cListAssistentElem.IsVisibleForSystemuser)
-                        {
-                            bVisible = false;
-                        }
-                        if (qs2.core.ENV.developModus)
-                        {
-                            bVisible = true;
-                        }
-                        if (bVisible)
-                        {
-                            ChapterElement.Visible = true;
-                            ChapterElement.Enabled = true;
-                            ChapterElement.panelEmpty.Visible = false;      //lthChapterButtonKorrektur
-                            qs2.design.auto.workflowAssist.autoForm.ColorSchemas.setButtonInaktivElement(ChapterElement, core.ui.eButtonType.Chapter);
-                            ChapterElement.setButtonOK(keyPairOrig.isOKOn);
-                            
-                            iCounter += 1;
-                        }
-                        Application.DoEvents();
-                    }
-                }               
             }
             catch (Exception ex)
             {
@@ -1013,40 +656,6 @@ namespace qs2.sitemap.workflowAssist
                 qs2.design.auto.workflowAssist.autoForm.ColorSchemas.setButtonInaktivElement(chapter, core.ui.eButtonType.Chapter);
             }
         }
-
-        public contListAssistentElem getFirstElement2(ref qs2.core.Enums.eStayTyp StayTyp, bool ShowAllStayTypes, bool SearchForFirstChapter, ref string IDOwnStrReturn)
-        {
-            foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-            {
-                if (ShowAllStayTypes)
-                {
-                    return element;
-                }
-                else
-                {
-                    if (StayTyp == core.Enums.eStayTyp.Stay)
-                    {
-                        if (!element.cListAssistentElem.rSelEntries.IDOwnStr.Trim().ToLower().Contains(("FUP").Trim().ToLower()))
-                        {
-                            if (element.Visible)
-                            {
-                                return element;
-                            }
-                        }
-                    }
-                    else if (StayTyp == core.Enums.eStayTyp.FollowUp)
-                    {
-                        if (element.cListAssistentElem.rSelEntries.IDOwnStr.Trim().ToLower().Contains(("FUP").Trim().ToLower()))
-                        {
-                            return element;
-                        }
-                    }
-                }
-            }
-
-            return null;
-        }
-
         public void getActiveElements(contListAssistent assistent, ref System.Collections.Generic.List<string> lstProcGroupsActive)
         {
             foreach (contListAssistentElem ProcGroup in assistent.panelButtons.ClientArea.Controls)
@@ -1056,86 +665,6 @@ namespace qs2.sitemap.workflowAssist
                     lstProcGroupsActive.Add(ProcGroup.cListAssistentElem.element.selListEntryIDOwnStr);
                 }
             }
-        }
-
-        public string OwnIDRessourceTitle
-        {
-            get
-            {
-                return this.IDRessourceTitle;
-            }
-            set
-            {
-                this.IDRessourceTitle = value;
-            }
-        }
-
-        public bool OwnButtonOKVisible
-        {
-            get
-            {
-                return this.ButtonOKVisible;
-            }
-            set
-            {
-                this.ButtonOKVisible = value;
-            }
-        }
-
-        public void unloadControl()
-        {
-            try
-            {
-                this.ui1 = null;
-
-                foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-                {
-                    element.cListAssistentElem.assistent = null;
-                    element.cListAssistentElem.element = null;
-
-                    element.contListElementDropDown1.contSelListsObj1.gridSelListObj.DataSource = null;
-                    element.contListElementDropDown1.contSelListsObj1.gridSelListObj.DataMember = null;
-                    element.contListElementDropDown1.contSelListsObj1.gridSelListObj.DataBind();
-
-                    element.contListElementDropDown1.contSelListsObj1.arrAuswahlObj = null;
-                    element.contListElementDropDown1.contSelListsObj1.dsAuswahllistenObj = null;
-                    element.contListElementDropDown1.contSelListsObj1.sqlAdmin1 = null;
-                    element.contListElementDropDown1.contSelListsObj1.clSitemap = null;
-                    element.contListElementDropDown1.contSelListsObj1.delonValueChanged = null;
-                    element.contListElementDropDown1.contSelListsObj1._dsAdminSub = null;
-
-                    element.contListElementDropDown1.mainControl = null;
-                    element.contListElementDropDown1.sqlAdminWork = null;
-                    element.contListElementDropDown1.dsAdminSub = null;
-
-                    element.cListAssistentElem.assistent = null;
-                    element.cListAssistentElem.picEnabled = null;
-                    element.cListAssistentElem.picDisabled = null;
-                    element.cListAssistentElem.picMouseOver = null;
-                    element.cListAssistentElem.rCriteria = null;
-                    element.cListAssistentElem.ownMCRelationship = null;
-                }
-            }
-            catch (Exception ex)
-            {
-                string xy = ex.ToString();
-            }
-        }
-
-        public void SetInfoAnyProcGroupIsOn()
-        {
-            bool bAnyProcGroupIsOn = false;
-            foreach (contListAssistentElem element in this.panelButtons.ClientArea.Controls)
-            {
-                if (element.isOn)
-                {
-                    bAnyProcGroupIsOn = true;
-                }
-            }
-
-            this.autoUI.FreeTopRigth.Visible = false;
-            this.autoUI.lblInfoProcGroups.Visible = !bAnyProcGroupIsOn;
-            this.ColorSchemas1.setAppearanceLabel(this.autoUI.lblInfoProcGroups, design.auto.workflowAssist.autoForm.ColorSchemas.eTypeLabel.StayTopLeftInfo);
         }
     }
 }

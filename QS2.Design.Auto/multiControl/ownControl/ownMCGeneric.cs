@@ -40,29 +40,7 @@ namespace qs2.design.auto.multiControl
             }
         }
 
-        public static bool getMulticontrol(string FldSHort, string Application,
-                                            ref qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI,
-                                            string Chapter,
-                                            ref System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiControl> lstMultiControlReturn,
-                                            ref System.Collections.Generic.List<UltraTab> lstTabPageReturn, ref System.Collections.Generic.List<qs2.design.auto.multiControl.ownTab> lstTab,
-                                            ref System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox> lstGroupBoxReturn, bool doNotDataBinding = false)
-        {
-            try
-            {
-                return qs2.design.auto.workflowAssist.autoForm.autoUI.getMultiControl(FldSHort, Application, ref parentAutoUI.dsAdmin1,
-                                                                                        Chapter,
-                                                                                        ref lstMultiControlReturn,
-                                                                                        ref lstTabPageReturn, ref lstTab, ref lstGroupBoxReturn, doNotDataBinding);
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCGeneric.getMulticontrol", FldSHort, false, true,
-                                                                Application,
-                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                return false;
-            }
-        }
-
+ 
         public static int getTabOrder(ref int origOrderLine, ref int origOrderControl)
         {
             string sNewOrderLine = "";

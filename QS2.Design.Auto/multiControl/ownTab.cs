@@ -29,16 +29,12 @@ namespace qs2.design.auto.multiControl
         public qs2.design.auto.ownMCCriteria ownControlCriteria1 = new qs2.design.auto.ownMCCriteria();
         public ownMCInfo ownControlInfo1 = new ownMCInfo();
         public ownMCUI ownControlUI1 = new ownMCUI();
-
         public bool isLoaded = false;
-        public qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI;
         public System.Windows.Forms.ContextMenuStrip ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
         public System.Windows.Forms.ToolStripMenuItem criteriasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-        
+       
         public string _FldShort = "";
         public System.Guid key = System.Guid.NewGuid();
-        //public int _tabIndex = 0;
-        public qs2.design.auto.workflowAssist.autoForm.cTabTag tagTab;
 
         public bool _OwnFieldForALLProducts = false;
 

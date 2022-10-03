@@ -16,21 +16,11 @@ using Infragistics.Win;
 
 namespace qs2.sitemap.workflowAssist.form
 {
-
-
     public partial class contAutoProtokoll : UserControl
     {
-
         public bool isLoaded = false;
-        public qs2.sitemap.workflowAssist.form.contAutoUI mainWindowxy;
         public qs2.core.vb.sqlAdmin sqlAdminWork = new sqlAdmin();
         public core.vb.dsAdmin dsAdminFunctions = new dsAdmin();
-
-
-
-
-
-
 
         public contAutoProtokoll()
         {

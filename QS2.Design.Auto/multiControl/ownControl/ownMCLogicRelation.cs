@@ -220,9 +220,6 @@ namespace qs2.design.auto.multiControl
                                         System.Collections.Generic.List<UltraTab> lstTabePageReturn = new System.Collections.Generic.List<UltraTab>();
                                         System.Collections.Generic.List<qs2.design.auto.multiControl.ownTab> lstTab = new List<qs2.design.auto.multiControl.ownTab>();
                                         System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox> lstOwnGroupBox = new List<multiControl.ownGroupBox>();
-                                        qs2.design.auto.multiControl.ownMCGeneric.getMulticontrol(rNewQryPic.CriteriaFldShort, IDApplication,
-                                                                                                ref this.ownMultiControl1.ownMCCriteria1.parentAutoUI, "",
-                                                                                                ref lstOwnMultiControl1, ref lstTabePageReturn, ref lstTab, ref lstOwnGroupBox);
 
                                         foreach (qs2.design.auto.multiControl.ownMultiControl ownControlQry in lstOwnMultiControl1)
                                         {
@@ -619,9 +616,7 @@ namespace qs2.design.auto.multiControl
                 System.Collections.Generic.List<UltraTab> lstTabePageReturn = new System.Collections.Generic.List<UltraTab>();
                 System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox> lstOwnGroupBox = new List<qs2.design.auto.multiControl.ownGroupBox>();
                 System.Collections.Generic.List<qs2.design.auto.multiControl.ownTab> lstTab = new List<qs2.design.auto.multiControl.ownTab>();
-                qs2.design.auto.multiControl.ownMCGeneric.getMulticontrol(rQryRelation.CriteriaFldShort, ownMultiControlParent.ownMCCriteria1.Application,
-                                                                        ref ownMultiControlParent.ownMCCriteria1.parentAutoUI, "",
-                                                                        ref lstOwnMultiControl1, ref lstTabePageReturn, ref lstTab, ref lstOwnGroupBox);
+
                 foreach (qs2.design.auto.multiControl.ownMultiControl ownControlRelation in lstOwnMultiControl1)
                 {
                     if (rQryRelation.ValueMin.Trim() != "")

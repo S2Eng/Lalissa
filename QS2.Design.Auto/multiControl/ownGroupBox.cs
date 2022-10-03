@@ -30,8 +30,6 @@ namespace qs2.design.auto.multiControl
         public bool isLoaded = false;
 
         public System.Guid key = System.Guid.NewGuid();
-        public qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI;
-        //public int _tabIndex = 0;
 
         public bool _OwnFieldForALLProducts = false;
 
@@ -301,22 +299,6 @@ namespace qs2.design.auto.multiControl
             {
                 this.lockVisibleChanged = false;
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-        }
-
-        public void doVisible()
-        {
-            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv" && this.parentAutoUI != null)
-            {
-                if (!this.isLoaded)
-                {
-                    this.ownControlCriteria1._ControlIsFormatted = true;
-                    if (qs2.core.ENV.ExtendedUI && qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                    {
-                        this.showTabOrder();
-                    }
-                    this.isLoaded = true;
-                }
             }
         }
     }    

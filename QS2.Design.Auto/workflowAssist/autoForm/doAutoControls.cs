@@ -53,17 +53,7 @@ namespace qs2.design.auto.workflowAssist.autoForm
 
         }
         
-        public autoUI autoUI1 = new autoUI();
-
         public static string _prototocollCheck = "";
-
-
-
-
-
-
-
-
 
         public void initClass()
         {
@@ -74,10 +64,5 @@ namespace qs2.design.auto.workflowAssist.autoForm
             }
             this.dsAdminWork.Clear();
         }
-
-
-
-
     }
-
 }

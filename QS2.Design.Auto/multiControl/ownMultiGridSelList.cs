@@ -24,9 +24,6 @@ namespace qs2.design.auto.multiControl
         public string[] _FldShort;
         public string _FldShortTitle = "";
         public int _HeigthAddPanel = 100;
-
-        public qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI;
-
         public bool isLoaded = false;
         public bool isInitialized = false;
         public bool _editable = false;
@@ -521,7 +518,6 @@ namespace qs2.design.auto.multiControl
             {
                 qs2.core.vb.dsObjects.tblStayRow rStayTmp = null;
                 bool ParentStayIsNotNull = false;
-                rStayTmp = parentAutoUI.rStayRead;
                 ParentStayIsNotNull = true;
 
                 this._editable = editable;
@@ -912,8 +908,6 @@ namespace qs2.design.auto.multiControl
             try
             {
                 qs2.core.vb.dsObjects.tblStayRow rStayTmp = null;
-                rStayTmp = parentAutoUI.rStayRead;
-
                 qs2.core.vb.dsAdmin.tblStayAdditionsRow rNewStayAdd = this.sqlAdmin1.addNewStayAddition(this.dsAdminShow.tblStayAdditions);
                 rNewStayAdd.IDGuid = System.Guid.NewGuid();
 
@@ -1181,7 +1175,6 @@ namespace qs2.design.auto.multiControl
             qs2.core.vb.dsObjects.tblStayRow rStayTmp = null;
             bool ParentStayIsNotNull = false;
             bool ParentFormIsVisible = false;
-            rStayTmp = parentAutoUI.rStayRead;
             ParentStayIsNotNull = true;
 
             if (this.IsQueryControl)
@@ -1532,8 +1525,6 @@ namespace qs2.design.auto.multiControl
                 this.ownControlInfo1 = null;
                 this.ownControlUI1 = null;
                 this.ui1 = null;
-
-                this.parentAutoUI = null;
 
                 if (this.ownMCCriteria1 != null)
                 {

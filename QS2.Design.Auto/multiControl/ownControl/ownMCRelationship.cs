@@ -20,7 +20,6 @@ namespace qs2.design.auto
 
         public qs2.core.vb.dsAdmin.tblRelationshipRow[] arrRelationships = null;
         public qs2.core.vb.dsAdmin.tblRelationshipRow[] arrRelationshipsAsChild = null;
-        public qs2.design.auto.workflowAssist.autoForm.autoUI autoUI1 = new qs2.design.auto.workflowAssist.autoForm.autoUI();
 
         public enum eTypAssignments
         {
@@ -77,8 +76,6 @@ namespace qs2.design.auto
                 this.sqlAdmin1 = new qs2.core.vb.sqlAdmin();
                 this.sqlAdmin1.initControl();
 
-                this.autoUI1.initialize(Application);
-
                 this._isInitialized = true;
             }
             catch (Exception ex)
@@ -91,7 +88,6 @@ namespace qs2.design.auto
 
         public void calcRelationForAllParents(string FldShortParent, string ChapterParent, 
                                                 string IDApplication, string IDParticipant,
-                                                ref qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI,
                                                 ref eTypAssignments typeRunning, ref bool GroupRelationsFound, 
                                                 ref bool ReturnValue, ref int SubRelation)
         {
@@ -123,52 +119,15 @@ namespace qs2.design.auto
                                     System.Collections.Generic.List<UltraTab> lstTabePageReturn = new System.Collections.Generic.List<UltraTab>();
                                     System.Collections.Generic.List<qs2.design.auto.multiControl.ownTab> lstTab = new List<qs2.design.auto.multiControl.ownTab>();
                                     System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox> lstGroupBoxReturn = new System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox>();
-                                    qs2.design.auto.multiControl.ownMCGeneric.getMulticontrol(rRelationFoundForGroup.FldShortParent.Trim(), IDApplication,
-                                                                                                ref parentAutoUI, "",
-                                                                                                ref lstOwnMultiControl1, ref lstTabePageReturn, ref lstTab, ref lstGroupBoxReturn);
                                     bool valueMultiControlOK = false;
-                                    if (lstOwnMultiControl1.Count == 0)
-                                    {
-                                        qs2.design.auto.multiControl.ownMCGeneric.getMulticontrol(rRelationFoundForGroup.FldShortParent.Trim(), qs2.core.license.doLicense.eApp.ALL.ToString(),
-                                                                                                ref parentAutoUI, "",
-                                                                                                ref lstOwnMultiControl1, ref lstTabePageReturn, ref lstTab, ref lstGroupBoxReturn);
-                                    }
                                     foreach (qs2.design.auto.multiControl.ownMultiControl ownControlChild in lstOwnMultiControl1)
                                     {
-                                        if (!ownControlChild.ownMCCriteria1._isInitializedCriteria)
-                                        {
-                                            this.autoUI1.initMulticontrol(ownControlChild);
-                                            //this.autoUI1.multicontrolFillData(ref dataStay, ownControlChild);
-                                        }
-                                        if (ownControlChild.ownMCDataBind1.Binding1 == null)
-                                        {
-                                            this.autoUI1.multicontrolFillData(ownControlChild);
-                                        }
                                         qs2.core.generic.retValue retValueChild = ownControlChild.ownMCDataBind1.getValueFromRow(ownControlChild);
                                         foreach (string valueInRelation in lstValuesRelationToProve)
                                         {
                                             if (valueInRelation.Trim().ToLower().Equals(retValueChild.valueStr.Trim().ToLower()))
                                             {
                                                 valueMultiControlOK = true;
-                                            }
-                                        }
-                                    }
-                                    
-                                    foreach(qs2.sitemap.workflowAssist.contListAssistentElem ProcGroupFound in parentAutoUI.contListProdGroups.panelButtons.ClientArea.Controls)
-                                    {
-                                        if (ProcGroupFound.cListAssistentElem.rSelEntries.FldShortColumn.Trim().ToLower().Equals(rRelationFoundForGroup.FldShortParent.Trim().ToLower()))
-                                        {
-                                            foreach (string valueInRelation in lstValuesRelationToProve)
-                                            {
-                                                string sValueProcGroup = "";
-                                                if (ProcGroupFound.isOn)
-                                                    sValueProcGroup = "1";
-                                                else
-                                                    sValueProcGroup = "0";
-                                                if (sValueProcGroup.Trim().ToLower().Equals(valueInRelation.Trim().ToLower()))
-                                                {
-                                                    valueMultiControlOK = true;
-                                                }
                                             }
                                         }
                                     }
@@ -203,14 +162,10 @@ namespace qs2.design.auto
                                     iCounter += 1;
                                 }
                                 ReturnValue = ResultTmp;
-                                this.doVisibleOnOffForGroupRelations(rRelation.FldShortChild.Trim(), rRelation.IDApplicationChild.Trim(), ref parentAutoUI,
-                                                                    ReturnValue, rRelation.Type.Trim(), ref SubRelation, ref typeRunning);
-
                             }
                         }
                     }
                }
-
            }
            catch (Exception ex)
            {
@@ -219,83 +174,9 @@ namespace qs2.design.auto
                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
            }
         }
-        public void doVisibleOnOffForGroupRelations(string FldShort, string IDApplication, ref qs2.sitemap.workflowAssist.form.contAutoUI contAutoUI,
-                                                    bool bValueOnOff, string ConditionTyp, ref int SubRelation, ref eTypAssignments typeRunning)
-        {
-            try
-            {
-                qs2.core.vb.dsAdmin.dbAutoUIRow[] arrAutoUIRow = (qs2.core.vb.dsAdmin.dbAutoUIRow[])contAutoUI.dsAdmin1.dbAutoUI.Select(contAutoUI.dsAdmin1.dbAutoUI.FldShortColumn.ColumnName + "='" + FldShort.Trim() + "' ");
-                foreach (qs2.core.vb.dsAdmin.dbAutoUIRow rCont in arrAutoUIRow)
-                {
-                    if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiControl)))
-                    {
-                        qs2.design.auto.multiControl.ownMultiControl ownMultiControlFound = (qs2.design.auto.multiControl.ownMultiControl)rCont.control;
-                        if (!ownMultiControlFound.ownMCCriteria1._isInitializedCriteria)
-                        {
-                            this.autoUI1.initMulticontrol(ownMultiControlFound);
-                        }
-                        if (ownMultiControlFound.ownMCDataBind1.Binding1 == null)
-                        {
-                            this.autoUI1.multicontrolFillData(ownMultiControlFound);
-                        }
-
-                        ownMultiControlFound.ownMCUI1.IsVisible_RelationsshipGroups = bValueOnOff;
-                        ownMultiControlFound.setVisible();
-                        
-                        if (ConditionTyp.Trim().ToLower().Contains(qs2.core.Enums.eConditionTyp.VisibleGroupsSetDefaultValue.ToString().Trim().ToLower()) && !ownMultiControlFound.ownMCUI1.IsVisible_RelationsshipGroups)
-                        {
-                            this.setDefaultDBValue(ownMultiControlFound, false, ownMultiControlFound.ownMCCriteria1.Application.Trim(), true);
-                        }
-                        if (SubRelation > qs2.core.ui.maxSubrelations)
-                            throw new Exception("doVisibleOnOffForGroupRelations: More than " + qs2.core.ui.maxSubrelations.ToString() + " Subrelations in Criteria-Table defined! Please reduce!");
-
-                        int SubRelationPlus = SubRelation + 1;
-                        string sChapterparent = "";
-                        if (ownMultiControlFound.rAutoUI != null)
-                        {
-                            sChapterparent = ownMultiControlFound.rAutoUI.Chapter;
-                        }
-                        ownMultiControlFound.doRelationsship(ownMultiControlFound.isLoaded, false, SubRelationPlus, typeRunning, sChapterparent, false);
-                    }
-                    else if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownGroupBox)))
-                    {
-                        qs2.design.auto.multiControl.ownGroupBox ownGroupBoxFound = (qs2.design.auto.multiControl.ownGroupBox)rCont.control;
-                        ownGroupBoxFound.ownControlUI1.IsVisible_RelationsshipGroups = bValueOnOff;
-                        ownGroupBoxFound.doVisible2();
-                    }
-                    else if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownTab)))
-                    {
-                        qs2.design.auto.multiControl.ownTab ownTabFound = (qs2.design.auto.multiControl.ownTab)rCont.control;
-                        ownTabFound.ownControlUI1.IsVisible_RelationsshipGroups = bValueOnOff;
-                        bool bIsVisible = false;
-                        ownTabFound.doVisible2(ref bIsVisible);
-                    }
-                    else if (rCont.control.GetType().Equals(typeof(UltraTab)))
-                    {
-                        UltraTab ownTabFound = (UltraTab)rCont.control;
-                        workflowAssist.autoForm.cTabTag TabTag = (workflowAssist.autoForm.cTabTag)ownTabFound.Tag;
-                        TabTag.ownMCUI1.IsVisible_RelationsshipGroups = bValueOnOff;
-                        bool bVisibleCriteria = autoUI.doVisibleTabPage(TabTag.ownMCUI1);
-
-                        bool VisibleSumTabePage = bVisibleCriteria && TabTag.ownMCUI1.IsVisible_RelationsshipGroups;
-                        //bool VisibleSumTabePage = bValueOnOff;
-                        ownTabFound.Visible = VisibleSumTabePage;
-                        //ownTabFound.TabControl.Tabs[ownTabFound.Key].Visible = VisibleSumTabePage;
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCRelationship.doRelationsshipGroupBox", "", false, true,
-                                                                IDApplication,
-                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-            }
-        }
 
         public void doRelationship(string FldShortParent, string ChapterParent, ref  qs2.core.generic.retValue retValueParent,
                                         bool userChanged, int SubRelation, string IDApplication, string IDParticipant,
-                                        ref qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI,
                                         ref eTypAssignments typeRunning, bool ProcGroupDeactivated)
         {
             try
@@ -359,7 +240,6 @@ namespace qs2.design.auto
                             string ValueEqualsParent = this.doRelationshipGetChild(ref FldShortParent, ref ChapterParent, ref retValueParent, rRelation, userChanged,
                                                                                     eTypActionRelation.doRelation,
                                                                                     IDApplication, IDParticipant,
-                                                                                    ref parentAutoUI,
                                                                                     ref typeRunning, ProcGroupDeactivated, ref ChildIsProcGrpButton);
                             if (ValueEqualsParent != null)
                             {
@@ -380,8 +260,6 @@ namespace qs2.design.auto
                     System.Collections.Generic.List<UltraTab> lstTabePageReturn = new System.Collections.Generic.List<UltraTab>();
                     System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox> lstOwnGroupBox = new List<multiControl.ownGroupBox>();
                     System.Collections.Generic.List<qs2.design.auto.multiControl.ownTab> lstTab = new List<qs2.design.auto.multiControl.ownTab>();
-                    qs2.design.auto.multiControl.ownMCGeneric.getMulticontrol(rRelChild.FldShortParent, rRelChild.IDApplicationParent, ref parentAutoUI, "",
-                                                                                ref lstOwnMultiControl, ref lstTabePageReturn, ref lstTab, ref lstOwnGroupBox);
                     foreach (qs2.design.auto.multiControl.ownMultiControl ownControlRelationChild in lstOwnMultiControl)
                     {
                         if (ownControlRelationChild != null)
@@ -397,7 +275,7 @@ namespace qs2.design.auto
 
                 bool GroupRelationsFound = false;
                 bool ReturnValue = false;
-                this.calcRelationForAllParents(FldShortParent, ChapterParent, IDApplication, IDParticipant, ref parentAutoUI, ref typeRunning,
+                this.calcRelationForAllParents(FldShortParent, ChapterParent, IDApplication, IDParticipant, ref typeRunning,
                                                 ref GroupRelationsFound, ref ReturnValue, ref SubRelation);
             }
             catch (Exception ex)
@@ -440,7 +318,6 @@ namespace qs2.design.auto
                                                 ref  qs2.core.generic.retValue retValueParent,
                                                 qs2.core.vb.dsAdmin.tblRelationshipRow rRelation,
                                                 bool userChanged, eTypActionRelation typAction, string IDApplication, string IDParticipant,
-                                                ref qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI,
                                                 ref eTypAssignments typeRunning, bool ProcGroupDeactivated,
                                                 ref bool ChildIsProcGrpButton)
         {
@@ -452,26 +329,9 @@ namespace qs2.design.auto
                     System.Collections.Generic.List<UltraTab> lstTabePageReturn = new System.Collections.Generic.List<UltraTab>();
                     System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox> lstGroupBoxReturn = new System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox>();
                     System.Collections.Generic.List<qs2.design.auto.multiControl.ownTab> lstTab = new List<qs2.design.auto.multiControl.ownTab>();
-                    qs2.design.auto.multiControl.ownMCGeneric.getMulticontrol(rRelation.FldShortChild, IDApplication,
-                                                                                                    ref parentAutoUI, "",
-                                                                                                    ref lstOwnMultiControl1, ref lstTabePageReturn, ref lstTab, ref lstGroupBoxReturn);  // OMC.IDApplication.Check
                     string ValueEqualsParent = null;
                     foreach (qs2.design.auto.multiControl.ownMultiControl ownControlChild in lstOwnMultiControl1)
                     {
-                        //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControlChild.OwnFldShort, " VCardTx", false))
-                        //{
-                        //    string xy = "";
-                        //}
-
-                        if (!ownControlChild.ownMCCriteria1._isInitializedCriteria)
-                        {
-                            this.autoUI1.initMulticontrol(ownControlChild);
-                        }
-                        if (ownControlChild.ownMCDataBind1.Binding1 == null)
-                        {
-                            this.autoUI1.multicontrolFillData(ownControlChild); 
-                        }
-
                         bool doActionForRelation = true;
                         if (rRelation.ConditionsSub.Trim() != "")
                         {
@@ -517,7 +377,7 @@ namespace qs2.design.auto
                                 bValueIsOK = true;
                             }
                         }
-                        this.doRelationsshipTab(Tab, ref IDApplication, ref parentAutoUI, bValueIsOK, ref rRelation, true, ref ProcGroupDeactivated);
+                        this.doRelationsshipTab(Tab, ref IDApplication, bValueIsOK, ref rRelation, true, ref ProcGroupDeactivated);
                     }
                     foreach (UltraTab TabPage in lstTabePageReturn)
                     {
@@ -531,7 +391,6 @@ namespace qs2.design.auto
                                 bValueIsOK = true;
                             }
                         }
-                        this.doRelationsshipTabPage(TabPage, ref IDApplication, ref parentAutoUI, bValueIsOK, ref rRelation, true, ref ProcGroupDeactivated);
                     }
                     foreach (qs2.design.auto.multiControl.ownGroupBox ownGroupBox in lstGroupBoxReturn)
                     {
@@ -545,71 +404,10 @@ namespace qs2.design.auto
                                 bValueIsOK = true;
                             }
                         }
-                        this.doRelationsshipGroupBox(ownGroupBox, ref IDApplication, ref parentAutoUI, bValueIsOK, ref rRelation, true, true, ProcGroupDeactivated);
+                        this.doRelationsshipGroupBox(ownGroupBox, ref IDApplication, bValueIsOK, ref rRelation, true, true, ProcGroupDeactivated);
                         ownGroupBox.ownControlUI1.IsVisible_Criteriaxy = bValueIsOK;
                         ownGroupBox.Visible = bValueIsOK;
-                        if (ProcGroupDeactivated && !bValueIsOK)
-                        {
-                            //string protocollForAdmin = "";
-                            //bool ProtocolWindow = false;
-                            //System.Collections.Generic.List<string> lstElementsActive = new List<string>();
-                            //qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck = eTypAssignments.none;
-                            //design.auto.workflowAssist.autoForm.doAutoControls.eRetDoControls RetDoControls = new design.auto.workflowAssist.autoForm.doAutoControls.eRetDoControls();
-                            //core.vb.dsAdmin.tblStayAdditionsDataTable tStayAdditionsCopy = new core.vb.dsAdmin.tblStayAdditionsDataTable();
-
-                            //ownGroupBox.parentAutoUI.doAutoControls.doControlChapters("", design.auto.workflowAssist.autoForm.doAutoControls.eTypActivityControl.ResetToDefaultValuesParentGuid, false, "", "",
-                            //                                    ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, ref TypAssignmentToCheck,
-                            //                                    ref ownGroupBox.parentAutoUI.contAutoProtokoll1, ref ownGroupBox.parentAutoUI.dsAdmin1, ref ownGroupBox.parentAutoUI.autoUI1,
-                            //                                    ref ownGroupBox.parentAutoUI.dataStay, ref ownGroupBox.parentAutoUI.autoPrint,
-                            //                                    ref RetDoControls, ref ownGroupBox.parentAutoUI._runAsSystemuser, ref ownGroupBox.parentAutoUI._runAsUser, ref tStayAdditionsCopy, ownGroupBox.ID);
-
-                        }
-                        //ownGroupBox.doVisible();
                     }
-
-                    foreach (sitemap.workflowAssist.contListAssistentElem btnProcGrp in parentAutoUI.contListProdGroups.panelButtons.ClientArea.Controls)
-                    {
-                        if (btnProcGrp.cListAssistentElem.rSelEntries.FldShortColumn.Trim().ToLower().Equals(rRelation.FldShortChild.Trim().ToLower()))
-                        {
-                            object sender = (object)btnProcGrp;
-                            EventArgs evArg = new EventArgs();
-                            string protocollForAdmin = "";
-                            bool ProtocolWindow = false;
-                            System.Collections.Generic.List<string> lstElementsActive = new List<string>();
-                            //qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck = qs2.design.auto.ownMCRelationship.eTypAssignments.none;
-
-                            System.Collections.Generic.List<string> lstCondition = qs2.core.generic.readStrVariables(rRelation.Conditions);
-                            bool bValueEqualsParent = false;
-                            ChildIsProcGrpButton = true;
-                            foreach (string condition in lstCondition)
-                            {
-                                if (condition == retValueParent.valueStr && ValueEqualsParent == null)
-                                {
-                                    btnProcGrp.Visible = true;
-                                    //btnProcGrp.btnElementClick(sender, evArg, true, true, false, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, ref TypAssignmentToCheck, false);
-                                    //btnProcGrp.doRelationsship(false);
-                                    btnProcGrp.cListAssistentElem.assistent.doAssignments(ref protocollForAdmin, ref ProtocolWindow, btnProcGrp.cListAssistentElem.IDSelEntry, btnProcGrp.isOn);
-
-                                    ValueEqualsParent = retValueParent.valueStr;
-                                    bValueEqualsParent = true;
-                                }
-                            }
-                            if (!bValueEqualsParent)
-                            {
-                                btnProcGrp.Visible = false;
-                                //btnProcGrp.btnElementClick(sender, evArg, false, true, false, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, ref TypAssignmentToCheck, false);
-                                //btnProcGrp.doRelationsship(false);
-                                btnProcGrp.cListAssistentElem.assistent.doAssignments(ref protocollForAdmin, ref ProtocolWindow, btnProcGrp.cListAssistentElem.IDSelEntry, btnProcGrp.isOn);
-                            }
-
-                            if (protocollForAdmin != "")
-                            {
-                                qs2.core.Protocol.doExcept(protocollForAdmin, "ownMCRelationship.doRelationshipGetChild", btnProcGrp.cListAssistentElem.rSelEntries.FldShortColumn.Trim(), false, true,
-                                                                                IDApplication, qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                            }
-                        }
-                    }
-                    
                     return ValueEqualsParent;
                 }
                 else
@@ -624,7 +422,7 @@ namespace qs2.design.auto
             }
         }
 
-        public void doRelationsshipTab(qs2.design.auto.multiControl.ownTab Tab, ref string IDApplication, ref qs2.sitemap.workflowAssist.form.contAutoUI contAutoUI,
+        public void doRelationsshipTab(qs2.design.auto.multiControl.ownTab Tab, ref string IDApplication, 
                                             bool bValueIsOK,
                                             ref qs2.core.vb.dsAdmin.tblRelationshipRow rRelation, bool DoVisibleTabPage,
                                             ref bool ProcGroupDeactivated)
@@ -632,7 +430,6 @@ namespace qs2.design.auto
             try
             {
                
-                qs2.core.vb.dsAdmin.dbAutoUIRow[] arrAutoUIRow = (qs2.core.vb.dsAdmin.dbAutoUIRow[])contAutoUI.dsAdmin1.dbAutoUI.Select(contAutoUI.dsAdmin1.dbAutoUI.FldShortTabPageParentColumn.ColumnName + "='" + Tab.OwnFldShort.Trim() + "' ");
                 if (rRelation.Type.Trim() == qs2.core.Enums.eConditionTyp.Visible.ToString())
                 {
                     if (DoVisibleTabPage)
@@ -640,17 +437,7 @@ namespace qs2.design.auto
                         Tab.ownControlUI1.IsVisible_RelationsshipMCParent = bValueIsOK;
                         Tab.Visible = bValueIsOK;
                     }
-                    if (!bValueIsOK)
-                    {
-                        foreach (qs2.core.vb.dsAdmin.dbAutoUIRow rCont in arrAutoUIRow)
-                        {
-                            if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownTab)))
-                            {
-                            }
-                        }
-                    }
                 }
-
             }
             catch (Exception ex)
             {
@@ -660,139 +447,15 @@ namespace qs2.design.auto
             }
         }
 
-        public void doRelationsshipTabPage(UltraTab TabePage, ref string IDApplication, ref qs2.sitemap.workflowAssist.form.contAutoUI contAutoUI,
-                                            bool bValueIsOK,
-                                            ref  qs2.core.vb.dsAdmin.tblRelationshipRow rRelation, bool DoVisibleTabPage,
-                                            ref bool ProcGroupDeactivated)
-        {
-            try
-            {
-                qs2.design.auto.workflowAssist.autoForm.cTabTag cTabTag = (qs2.design.auto.workflowAssist.autoForm.cTabTag)TabePage.Tag;
-                qs2.core.vb.dsAdmin.dbAutoUIRow[] arrAutoUIRow = (qs2.core.vb.dsAdmin.dbAutoUIRow[])contAutoUI.dsAdmin1.dbAutoUI.Select(contAutoUI.dsAdmin1.dbAutoUI.FldShortTabPageParentColumn.ColumnName + "='" + cTabTag.IDOwnStrTabPage.Trim() + "' ");
-                if (rRelation.Type.Trim() == qs2.core.Enums.eConditionTyp.Visible.ToString())
-                {
-                    if (DoVisibleTabPage)
-                    {
-                        qs2.design.auto.workflowAssist.autoForm.cTabTag TabTag = (qs2.design.auto.workflowAssist.autoForm.cTabTag)TabePage.Tag;
-                        if (TabTag.ownMCUI1.IsVisible_Criteriaxy && TabTag.ownMCUI1.IsVisible_LicenseKey)
-                        {
-                            autoUI.doVisibleTabPage(TabTag.ownMCUI1);
-                            TabePage.Visible = bValueIsOK;
-                            if (bValueIsOK)
-                            {
-                                TabePage.TabControl.SelectedTab = TabePage;
-                                TabePage.TabControl.ActiveTab = TabePage;
-                                //Application.DoEvents();
-                            }
-                            else
-                            {
-
-                            }
-                        }
-                    }
-                    if (!bValueIsOK)
-                    {
-                        foreach (qs2.core.vb.dsAdmin.dbAutoUIRow rCont in arrAutoUIRow)
-                        {
-                            if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiControl)))
-                            {
-                                qs2.design.auto.multiControl.ownMultiControl ownMultiControlFound = (qs2.design.auto.multiControl.ownMultiControl)rCont.control;
-
-                                bool bMCIsVisibleInOhterChapter = this.checkMCExistsMoreAndVisible(ownMultiControlFound);
-                                if (!bMCIsVisibleInOhterChapter)
-                                {
-                                    this.setDefaultDBValue(ownMultiControlFound, false, IDApplication, true);
-                                }
-                                ownMultiControlFound.doRelationsship(ownMultiControlFound.isLoaded, true, 0, design.auto.ownMCRelationship.eTypAssignments.MCParent,
-                                                                        ownMultiControlFound.rAutoUI.Chapter, false);
-                            }
-                            else if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownGroupBox)))
-                            {
-                                qs2.design.auto.multiControl.ownGroupBox ownGroupBoxFound = (qs2.design.auto.multiControl.ownGroupBox)rCont.control;
-                                if (!ownGroupBoxFound.ownControlCriteria1._isInitializedCriteria)
-                                {
-                                }
-                                this.doRelationsshipGroupBox(ownGroupBoxFound, ref IDApplication, ref contAutoUI, bValueIsOK, ref rRelation, false, false, ProcGroupDeactivated);
-                                
-                            }
-                            else if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownTab)))
-                            {
-                                qs2.design.auto.multiControl.ownTab ownTabFound = (qs2.design.auto.multiControl.ownTab)rCont.control;
-                                foreach (UltraTab contTabPageSub in ownTabFound.Tabs)
-                                {
-                                    this.doRelationsshipTabPage(contTabPageSub, ref IDApplication, ref contAutoUI, bValueIsOK, ref rRelation, false, ref ProcGroupDeactivated);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                //if (TabePage.TabControl.SelectedTab == null)
-                //{
-                //    foreach (UltraTab TabePageFound in TabePage.TabControl.Tabs)
-                //    {
-                //        if (TabePageFound.Visible)
-                //        {
-                //            TabePage.TabControl.ActiveTab = TabePageFound;
-                //            TabePage.TabControl.SelectedTab = TabePageFound;
-                //            Application.DoEvents();
-                //        }
-                //    }
-                //}
-
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCRelationship.doRelationsshipTabPage", "", false, true,
-                                                                IDApplication,
-                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-            }
-        }
-        public void doRelationsshipGroupBox(qs2.design.auto.multiControl.ownGroupBox ownGroupBox, ref string IDApplication, ref qs2.sitemap.workflowAssist.form.contAutoUI contAutoUI,
+        public void doRelationsshipGroupBox(qs2.design.auto.multiControl.ownGroupBox ownGroupBox, ref string IDApplication, 
                                             bool bValueIsOK,
                                             ref  qs2.core.vb.dsAdmin.tblRelationshipRow rRelation,
                                             bool doControlsGroupBox, bool DoVisibleGroupBox, bool ProcGroupDeactivated)
         {
             try
             {
-                qs2.core.vb.dsAdmin.dbAutoUIRow[] arrAutoUIRow = (qs2.core.vb.dsAdmin.dbAutoUIRow[])contAutoUI.dsAdmin1.dbAutoUI.Select(contAutoUI.dsAdmin1.dbAutoUI.FldShortGroupBoxParentColumn.ColumnName + "='" + ownGroupBox._FldShort.Trim() + "' ");
                 if (rRelation.Type.Trim() == qs2.core.Enums.eConditionTyp.Visible.ToString())
                 {
-                    if (!bValueIsOK)
-                    {
-                        foreach (qs2.core.vb.dsAdmin.dbAutoUIRow rCont in arrAutoUIRow)
-                        {
-                            if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiControl)))
-                            {
-                                qs2.design.auto.multiControl.ownMultiControl ownMultiControlFound = (qs2.design.auto.multiControl.ownMultiControl)rCont.control;
-
-                                bool bMCIsVisibleInOhterChapter = this.checkMCExistsMoreAndVisible(ownMultiControlFound);
-                                if (!bMCIsVisibleInOhterChapter)
-                                {
-                                    this.setDefaultDBValue(ownMultiControlFound, false, IDApplication, true);
-                                }
-                            }
-                            else if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownGroupBox)))
-                            {
-                                qs2.design.auto.multiControl.ownGroupBox ownGroupBoxFound = (qs2.design.auto.multiControl.ownGroupBox)rCont.control;
-                                if (!ownGroupBoxFound.ownControlCriteria1._isInitializedCriteria)
-                                {
-                                }
-                                if (doControlsGroupBox)
-                                {
-                                    this.doRelationsshipGroupBox(ownGroupBoxFound, ref IDApplication, ref contAutoUI, bValueIsOK, ref rRelation, false, DoVisibleGroupBox, ProcGroupDeactivated);
-                                }
-                            }
-                            else if (rCont.control.GetType().Equals(typeof(qs2.design.auto.multiControl.ownTab)))
-                            {
-                                qs2.design.auto.multiControl.ownTab ownTabFound = (qs2.design.auto.multiControl.ownTab)rCont.control;
-                                foreach (UltraTab contTabPage in ownTabFound.Tabs)
-                                {
-                                    this.doRelationsshipTabPage(contTabPage, ref IDApplication, ref contAutoUI, bValueIsOK, ref rRelation, false, ref ProcGroupDeactivated);
-                                }
-                            }
-                        }
-                    }
                     if (DoVisibleGroupBox)
                     {
                         ownGroupBox.Visible = bValueIsOK;
@@ -805,52 +468,6 @@ namespace qs2.design.auto
                 qs2.core.Protocol.doExcept(ex.ToString(), "ownMCRelationship.doRelationsshipGroupBox", "", false, true,
                                                                 IDApplication,
                                                                 qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-            }
-        }
-
-        public bool checkMCExistsMoreAndVisible(qs2.design.auto.multiControl.ownMultiControl MCToCheck)
-        {
-            try
-            {
-                System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiControl> lstMultiControl = new System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiControl>();
-                System.Collections.Generic.List<UltraTab> lstTabePageReturn = new System.Collections.Generic.List<UltraTab>();
-                System.Collections.Generic.List<qs2.design.auto.multiControl.ownTab> lstTab = new List<qs2.design.auto.multiControl.ownTab>();
-                System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox> lstGroupBoxReturn = new System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox>();
-                qs2.design.auto.workflowAssist.autoForm.autoUI.getMultiControl(MCToCheck.OwnFldShort.Trim(),
-                                                                                MCToCheck.ownMCCriteria1.Application.Trim(),
-                                                                                ref MCToCheck.parentAutoUI.dsAdmin1, "", ref lstMultiControl,
-                                                                                ref lstTabePageReturn, ref lstTab, ref lstGroupBoxReturn);
-                bool bMCIsVisibleInOhterChapter = false;
-                if (lstMultiControl.Count > 1)
-                {
-                    foreach (qs2.design.auto.multiControl.ownMultiControl ownMultiControl1 in lstMultiControl)
-                    {
-                        if (!ownMultiControl1.ownMCCriteria1._isInitializedCriteria)
-                        {
-                            this.autoUI1.initMulticontrol(ownMultiControl1);
-                            this.autoUI1.multicontrolFillData(ownMultiControl1);
-                        }
-                        if (ownMultiControl1.ownMCDataBind1.Binding1 == null)
-                        {
-                            autoUI1.multicontrolFillData(ownMultiControl1);
-                        }
-
-                        bool bIsVisible = ownMultiControl1.getVisiblebyOrder();
-                        if (bIsVisible)
-                        {
-                            bMCIsVisibleInOhterChapter = true;
-                        }
-                    }
-                }
-            
-                return bMCIsVisibleInOhterChapter;
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCRelationship.checkMCExistsMoreAndVisible", "", false, true,
-                                                                MCToCheck.ownMCCriteria1.Application.Trim(),
-                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                return false;
             }
         }
         public string doRelationshipCheckValue(qs2.core.vb.dsAdmin.tblRelationshipRow rRelation,
@@ -909,30 +526,6 @@ namespace qs2.design.auto
                         System.Collections.Generic.List<UltraTab> lstTabePageReturn = new System.Collections.Generic.List<UltraTab>();
                         System.Collections.Generic.List<qs2.design.auto.multiControl.ownTab> lstTab = new List<qs2.design.auto.multiControl.ownTab>();
                         System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox> lstGroupBoxReturn = new System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox>();
-                        qs2.design.auto.multiControl.ownMCGeneric.getMulticontrol(rRelation.FldShortParent, IDApplication,
-                                                                                    ref ownControlChild.parentAutoUI, "",
-                                                                                    ref lstOwnMultiControl1, ref lstTabePageReturn, ref lstTab, ref lstGroupBoxReturn);
-
-                        foreach (qs2.design.auto.multiControl.ownMultiControl multiControlFound in lstOwnMultiControl1)
-                        {
-                            if (!multiControlFound.ownMCCriteria1._isInitializedCriteria)
-                            {
-                                this.autoUI1.initMulticontrol(multiControlFound);
-                            }
-                            if (multiControlFound.ownMCDataBind1.Binding1 == null)
-                            {
-                                this.autoUI1.multicontrolFillData(multiControlFound);
-                            }
-                            qs2.core.generic.retValue retValueParentFound = multiControlFound.ownMCDataBind1.getValueFromRow(multiControlFound);
-                            System.Collections.Generic.List<string> lstConditionParent = qs2.core.generic.readStrVariables(rRelChild.Conditions);
-                            foreach (string condition in lstConditionParent)
-                            {
-                                if (condition != retValueParentFound.valueStr)
-                                {
-                                    bValueIsOKForAllParents = false;
-                                }
-                            }
-                        }
                     }
                 }
 
@@ -1096,14 +689,7 @@ namespace qs2.design.auto
                 {
                     bool bStop = true;
                 }
-                if (!ownMultiControl1.ownMCCriteria1._isInitializedCriteria)
-                {
-                    this.autoUI1.initMulticontrol(ownMultiControl1);
-                }
-                if (ownMultiControl1.ownMCDataBind1.Binding1 == null)
-                {
-                    this.autoUI1.multicontrolFillData(ownMultiControl1);  
-                }
+
                 if (ownMultiControl1.ownMCUI1.controlIsDbDataControl(ownMultiControl1))
                 {
                     if (qs2.core.ENV.TypeSetDefaultDBValue == 0)

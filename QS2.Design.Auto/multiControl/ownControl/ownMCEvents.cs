@@ -263,9 +263,6 @@ namespace qs2.design.auto.multiControl
                             System.Collections.Generic.List<UltraTab> lstTabePageReturn = new System.Collections.Generic.List<UltraTab>();
                             System.Collections.Generic.List<qs2.design.auto.multiControl.ownTab> lstTab = new List<qs2.design.auto.multiControl.ownTab>();
                             System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox> lstGroupBoxReturn = new System.Collections.Generic.List<qs2.design.auto.multiControl.ownGroupBox>();
-                            qs2.design.auto.multiControl.ownMCGeneric.getMulticontrol(this.ownControl1.OwnFldShort.Trim(), this.ownControl1.ownMCCriteria1.Application.Trim(),
-                                                                                        ref this.ownControl1.parentAutoUI, "",
-                                                                                        ref lstOwnMultiControl1, ref lstTabePageReturn, ref lstTab, ref lstGroupBoxReturn, true);
                             bool valueMultiControlOK = false;
                             if (lstOwnMultiControl1.Count > 0)
                             {
@@ -292,7 +289,6 @@ namespace qs2.design.auto.multiControl
                 catch (Exception ex)
                 {
                     qs2.core.generic.getExep(ex.ToString(), ex.Message);
-                    //cont.Cursor = Cursors.Default;
                 }
                 finally
                 {
@@ -543,7 +539,7 @@ namespace qs2.design.auto.multiControl
                     sender is Infragistics.Win.Misc.UltraDropDownButton || sender is Infragistics.Win.Misc.UltraLabel ||
                     sender is Infragistics.Win.Misc.UltraPanel || sender is Infragistics.Win.Misc.UltraButton)
                 {
-                    if (IsProChapterButton || (this.ownControl1.parentAutoUI != null && this.ownControl1.parentAutoUI.IsInitialized))
+                    if (IsProChapterButton)
                     {
                         if (enter)
                         {
@@ -557,9 +553,6 @@ namespace qs2.design.auto.multiControl
                                 else
                                     ((Infragistics.Win.Misc.UltraLabel)sender).Appearance.FontData.Underline = Infragistics.Win.DefaultableBoolean.False;
                             }
-
-                            //qs2.design.auto.multiControl.ownMCEvents.lLastMCFocused5.Clear();
-                            //qs2.design.auto.multiControl.ownMCEvents.lLastMCFocused5.Add(new core.ui.cHelpData() { FldHort = fldshort, IDApplication = app, HasRes = (rRes != null ? true : false) });
 
                             var rLastSelected = (from l in qs2.design.auto.multiControl.ownMCEvents.lLastMCFocused5
                                                  where l.IDApplication == app

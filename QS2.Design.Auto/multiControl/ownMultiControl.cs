@@ -28,7 +28,6 @@ namespace qs2.design.auto.multiControl
         public string[] _FldShorts;
 
         public qs2.core.Enums.eControlType _controlType;
-        public qs2.sitemap.workflowAssist.form.contAutoUI parentAutoUI; //{ get; set;}
         public qs2.core.vb.dsAdmin.dbAutoUIRow rAutoUI { get; set; } = null;
 
         public UltraTextEditor Textfield { get; set; } = null;
@@ -1144,7 +1143,6 @@ namespace qs2.design.auto.multiControl
                     this.ownMCCriteria1.MCRelationship.doRelationship(ownMultiControl1._FldShort, ChapterParent.Trim(), ref retValue1, userChanged, SubRelation,
                                                                         this.ownMCCriteria1.Application,
                                                                         this.ownMCCriteria1.IDParticipant.ToString(),
-                                                                        ref parentAutoUI,
                                                                         ref typeRunning, ProcGroupDeactivated);
                 }
             }
@@ -1711,36 +1709,11 @@ namespace qs2.design.auto.multiControl
             {
                 if (!this.IsEvaluation)
                 {
-                    this.getChapter();
                     if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(this.OwnFldShort, "StayComplete", false))
                     {
                         if (!qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightSetCompleted, false))
                         {
                             editable = false;
-                        }
-                        else
-                        {
-                            if (editable && this.parentAutoUI.rStayRead.StayComplete)
-                            {
-                                editable = true;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (this.parentAutoUI != null && this.parentAutoUI.rStayRead.StayComplete)
-                        {
-                            if (editable)
-                            {
-                                editable = qs2.core.vb.actUsr.UserHasRigthSetCompleted;
-                                if (this.chapter != null)
-                                {
-                                    if (this.chapter.cListAssistentElem.AlwaysEditable)
-                                    {
-                                        editable = true;
-                                    }
-                                }
-                            }
                         }
                     }
                 }
@@ -2181,7 +2154,6 @@ namespace qs2.design.auto.multiControl
 
                 this.rSelListQry = null;
                 this.rAutoUI = null;
-                this.parentAutoUI = null;
 
                 if (this.ownMCCriteria1 != null)
                 {
@@ -2222,62 +2194,6 @@ namespace qs2.design.auto.multiControl
             }
         }
 
-        public void getChapter()
-        {
-            try
-            {
-                if (!this.chapterDone)
-                {
-                    if (this.rAutoUI != null)
-                    {
-                        if (this.rAutoUI.Chapter.Trim() != "")
-                        {
-                            this.chapter = this.parentAutoUI.contListChapters.getChapterForMC(this.rAutoUI.Chapter.Trim());
-                            if (this.chapter != null)
-                            {
-                                //if (this.rAutoUI.Chapter.Trim().ToLower().Equals(("A").Trim().ToLower()))
-                                //{
-                                //    bool bStop = true;
-                                //}
-                                //if (this.chapter.cListAssistentElem.AlwaysEditable)
-                                //{
-                                //    bool bStop = true;
-                                //}
-                                ownMultiControl.counterMCHasChapters += 1;
-                                //bool ChapterFound = true;
-                            }
-                            else
-                            {
-                                ownMultiControl.counterMCHasNoChapters += 1;
-                                //bool NoChapter = true;
-                            }
-                        }
-                        else
-                        {
-                            ownMultiControl.counterMCHasNoChapters += 1;
-                            //bool NoChapter = true;
-                        }
-                    }
-                    else
-                    {
-                        ownMultiControl.counterMCHasNoChapters += 1;
-                        //bool NoChapter = true;
-                    }
-
-                    this.chapterDone = true;
-                }
-                else
-                {
-                    //bool bChapterDone = true;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ownMultiControl.getChapter: " + ex.ToString());
-            }
-        }
-
         private void ownMultiControl_SizeChanged(object sender, EventArgs e)
         {
             try
@@ -2313,11 +2229,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (!IsEvaluation && this.parentAutoUI != null && this.parentAutoUI.IsInitialized)
-                {
-                    if (!this.IsEvaluation)
-                        this.ownMCEvents1.CheckMouseHoverLeaveContr(sender, e, true, this.OwnFldShort, this.ownMCCriteria1.Application, false);
-                }
 
             }
             catch (Exception ex)
@@ -2337,12 +2248,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (!IsEvaluation && this.parentAutoUI != null && this.parentAutoUI.IsInitialized)
-                {
-                    if (!this.IsEvaluation)
-                        this.ownMCEvents1.CheckMouseHoverLeaveContr(sender, e, false, this.OwnFldShort, this.ownMCCriteria1.Application, false);
-                }
-
             }
             catch (Exception ex)
             {
