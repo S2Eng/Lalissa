@@ -553,12 +553,6 @@
     <Compile Include="print\contQueryDef.Designer.cs">
       <DependentUpon>contQueryDef.cs</DependentUpon>
     </Compile>
-    <Compile Include="print\contRTFViewer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="print\contRTFViewer.Designer.cs">
-      <DependentUpon>contRTFViewer.cs</DependentUpon>
-    </Compile>
     <Compile Include="print\contSelListQueries.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -577,7 +571,6 @@
     <Compile Include="print\contTable.Designer.cs">
       <DependentUpon>contTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="print\cRTFDocuments.cs" />
     <Compile Include="print\doRelationshipEvaluation.cs" />
     <Compile Include="print\drawReportGroups.cs" />
     <Compile Include="print\exportTSQL.cs" />
@@ -616,12 +609,6 @@
     </Compile>
     <Compile Include="print\frmQryRunReport.Designer.cs">
       <DependentUpon>frmQryRunReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="print\frmRTFViewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="print\frmRTFViewer.Designer.cs">
-      <DependentUpon>frmRTFViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="print\frmSqlConsoleForAdmin.cs">
       <SubType>Form</SubType>
@@ -813,9 +800,6 @@
     <EmbeddedResource Include="print\contQueryDef.resx">
       <DependentUpon>contQueryDef.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="print\contRTFViewer.resx">
-      <DependentUpon>contRTFViewer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="print\contSelListQueries.resx">
       <DependentUpon>contSelListQueries.cs</DependentUpon>
     </EmbeddedResource>
@@ -842,9 +826,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="print\frmQryRunReport.resx">
       <DependentUpon>frmQryRunReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="print\frmRTFViewer.resx">
-      <DependentUpon>frmRTFViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="print\frmSqlConsoleForAdmin.resx">
       <DependentUpon>frmSqlConsoleForAdmin.cs</DependentUpon>
