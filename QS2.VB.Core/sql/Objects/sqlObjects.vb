@@ -33,7 +33,6 @@ Public Class sqlObjects
 
         Me.sel_daObject = Me.daObject.SelectCommand.CommandText
         Me.sel_daObjectRel = Me.daObjectRel.SelectCommand.CommandText
-        Me.sel_daAdress = Me.daAdress.SelectCommand.CommandText
 
         Me.sel_daObjectSmall = Me.daObjectSmall.SelectCommand.CommandText
         Me.sel_daObjectApplications = Me.daObjectApplications.SelectCommand.CommandText
@@ -624,183 +623,6 @@ Public Class sqlObjects
             Throw New Exception("sqlObjects.deleteGuid: " + vbNewLine + vbNewLine + ex.ToString())
         End Try
     End Function
-    Public Function deletePatients_AutoStartxyxyxyxy() As Boolean
-        Try
-            Dim dsObjectsUpdate As New dsObjects()
-            Dim sqlObjectsUpdate As New sqlObjects()
-            sqlObjectsUpdate.initControl()
-            sqlObjectsUpdate.getObject(-999, dsObjectsUpdate, eTypSelObj.SelectPatientsForAutoDelete)
-            For Each rPatToDelete As dsObjects.tblObjectRow In dsObjectsUpdate.tblObject
-                Using ProtocollManager As New Protocol()
-                    ProtocollManager.dsNew = dsObjectsUpdate
-                    Dim sInfo As String = ""
-                    If rPatToDelete.NameCombination.Trim() <> "" Then
-                        sInfo = "Auto-Delete Patient: " + rPatToDelete.NameCombination.Trim() + vbNewLine
-                    Else
-                        sInfo = "Auto-Delete Patient: " + rPatToDelete.LastName.Trim() + " " + rPatToDelete.FirstName.Trim() + vbNewLine
-                    End If
-                    ProtocollManager.save2(Protocol.eTypeProtocoll.DeletePatient, rPatToDelete.IDGuid, qs2.core.generic.idMinus,
-                                 qs2.core.license.doLicense.rParticipant.IDParticipant, "", "", sInfo, Protocol.eActionProtocol.None, rPatToDelete.NameCombination.Trim(), "")
-                End Using
-
-                rPatToDelete.Delete()
-            Next
-            'sqlObjectsUpdate.daObject.Update(dsObjectsUpdate.tblObject)
-
-            Return True
-
-            'Dim ds As New dsObjects()
-            'Dim cmd As New SqlClient.SqlCommand()
-
-            'cmd.CommandText = "Delete from " + qs2.core.dbBase.dbSchema + "tblObject where tblObject.IsPatient=1 AND Not (tblObject.IDGuid IN (SELECT PatIDGuid FROM qs2.tblStay)) "
-            'cmd.Connection = qs2.core.dbBase.dbConn
-            'cmd.ExecuteNonQuery()
-
-        Catch ex As Exception
-            Throw New Exception("sqlObjects.deletePatients_AutoStart: " + vbNewLine + vbNewLine + ex.ToString())
-        End Try
-    End Function
-
-    Public Function getAdressMain(ByVal IDGuidObject As System.Guid) As dsObjects.tblAdressRow
-        Dim ds As New dsObjects()
-        Me.getAdressRow(IDGuidObject, ds, eTypSelAdr.IsMainAdress)
-        If ds.tblAdress.Rows.Count = 0 Then
-            Return Nothing
-        ElseIf ds.tblAdress.Rows.Count = 1 Then
-            Return ds.tblAdress.Rows(0)
-        ElseIf ds.tblAdress.Rows.Count > 1 Then
-            Throw New Exception("getAdressMain.id:  More than one Row for IDGuidObject '" + IDGuidObject.ToString() + "' found!")
-            Return Nothing
-        End If
-    End Function
-    Public Function getAdressRow(ByVal IDGuidObject As System.Guid, ByVal ds As dsObjects, ByVal typSel As eTypSelAdr) As dsObjects.tblAdressRow
-        Me.getAdress(IDGuidObject, ds, typSel)
-        If ds.tblAdress.Rows.Count = 0 Then
-            Return Nothing
-        ElseIf ds.tblAdress.Rows.Count = 1 Then
-            Return ds.tblAdress.Rows(0)
-        ElseIf ds.tblAdress.Rows.Count > 1 Then
-            Throw New Exception("getAdressRow.id: More than one Row for IDGuidObject '" + IDGuidObject.ToString() + "' found!")
-            Return Nothing
-        End If
-    End Function
-    Public Function getAdress(ByVal IDGuid As System.Guid, ByRef ds As dsObjects, ByVal typSel As eTypSelAdr) As Boolean
-
-        Me.daAdress.SelectCommand.CommandText = Me.sel_daAdress
-        database.setConnection(Me.daAdress)
-        Me.daAdress.SelectCommand.Parameters.Clear()
-
-        If typSel = eTypSelAdr.id Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblAdress.IDGuidColumn.ColumnName)
-            Me.daAdress.SelectCommand.CommandText += sWhere
-            Me.daAdress.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblAdress.IDGuidColumn.ColumnName), IDGuid)
-
-        ElseIf typSel = eTypSelAdr.idObject Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblAdress.IDGuidObjectColumn.ColumnName)
-            Me.daAdress.SelectCommand.CommandText += sWhere
-            Me.daAdress.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblAdress.IDGuidObjectColumn.ColumnName), IDGuid)
-
-        ElseIf typSel = eTypSelAdr.IsMainAdress Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblAdress.IDGuidObjectColumn.ColumnName) + sqlTxt.and + ds.tblAdress.IsMainAdressColumn.ColumnName + " = 1 "
-            Me.daAdress.SelectCommand.CommandText += sWhere
-            Me.daAdress.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblAdress.IDGuidObjectColumn.ColumnName), IDGuid)
-
-        Else
-            Throw New Exception("sqlObjects.getAdress: typSel '" + typSel.ToString() + "' is wrong!")
-        End If
-
-        Me.daAdress.Fill(ds.tblAdress)
-        Return True
-
-    End Function
-    Public Function getNewRowAdressen(ByVal dsObject1 As dsObjects) As dsObjects.tblAdressRow
-        Dim rNew As dsObjects.tblAdressRow = dsObject1.tblAdress.NewRow()
-        rNew.IDGuid = System.Guid.NewGuid()
-        rNew.CountryID = -1
-        rNew.ZIP = ""
-        rNew.City = ""
-        rNew.Street = ""
-        rNew.PhonePrivat = ""
-        rNew.PhoneBusiness = ""
-        rNew.PhoneMobil = ""
-        rNew.EMail = ""
-        rNew.Web = ""
-        rNew.Fax = ""
-        rNew.IsMainAdress = False
-        rNew.IDGuidObject = System.Guid.Empty
-        dsObject1.tblAdress.Rows.Add(rNew)
-        Return rNew
-    End Function
-
-    Public Function getObjectRelRow(ByVal IDGuidObject As System.Guid, ByVal ds As dsObjects, ByVal typSel As eTypSelAnspr) As dsObjects.tblObjectRelRow
-        Me.getObjectRel(IDGuidObject, ds, typSel)
-        If ds.tblObjectRel.Rows.Count = 0 Then
-            Return Nothing
-        ElseIf ds.tblObjectRel.Rows.Count = 1 Then
-            Return ds.tblObjectRel.Rows(0)
-        ElseIf ds.tblObjectRel.Rows.Count > 1 Then
-            Throw New Exception("getObjectRelRow.id: Mehr als ein Object zu IDGuidObject '" + IDGuidObject.ToString() + "' gefunden!")
-            Return Nothing
-        End If
-    End Function
-    Public Function getObjectRel(ByVal IDGuidObject As System.Guid, ByRef ds As dsObjects, ByVal typSel As eTypSelAnspr) As Boolean
-
-        Me.daObjectRel.SelectCommand.CommandText = Me.sel_daObjectRel
-        database.setConnection(Me.daObjectRel)
-        Me.daObjectRel.SelectCommand.Parameters.Clear()
-
-        If typSel = eTypSelAnspr.id Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblObjectRel.IDGuidColumn.ColumnName)
-            Me.daObjectRel.SelectCommand.CommandText += sWhere
-            Me.daObjectRel.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblObjectRel.IDGuidColumn.ColumnName), IDGuidObject)
-
-        ElseIf typSel = eTypSelAnspr.idObject Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblObjectRel.IDGuidObjectColumn.ColumnName)
-            Me.daObjectRel.SelectCommand.CommandText += sWhere
-            Me.daObjectRel.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblObjectRel.IDGuidObjectColumn.ColumnName), IDGuidObject)
-
-        ElseIf typSel = eTypSelAnspr.idObjectSub Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblObjectRel.IDGuidObjectSubColumn.ColumnName)
-            Me.daObjectRel.SelectCommand.CommandText += sWhere
-            Me.daObjectRel.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblObjectRel.IDGuidObjectSubColumn.ColumnName), IDGuidObject)
-
-        Else
-            Throw New Exception("sqlObjects.getObjectRel: typSel '" + typSel.ToString() + "' is wrong!")
-        End If
-
-        Me.daObjectRel.Fill(ds.tblObjectRel)
-        Return True
-
-    End Function
-    Public Function getNewRowObjectRel(ByVal dsObject1 As dsObjects) As dsObjects.tblObjectRelRow
-        Dim rNew As dsObjects.tblObjectRelRow = dsObject1.tblObjectRel.NewRow()
-        rNew.IDGuid = System.Guid.NewGuid()
-        rNew.IDGuidObject = System.Guid.Empty
-        rNew.IDGuidObjectSub = System.Guid.Empty
-        dsObject1.tblObjectRel.Rows.Add(rNew)
-        Return rNew
-    End Function
-    Public Function deleteObjectRelSub(ByVal IDObject As System.Guid) As Boolean
-        Try
-            Dim ds As New dsObjects()
-            Dim cmd As New SqlClient.SqlCommand
-            cmd.CommandText = "delete " + qs2.core.dbBase.dbSchema + ds.tblObjectRel.TableName + sqlTxt.where + " IDGuidObject='" + IDObject.ToString() + "'"
-            cmd.Connection = qs2.core.dbBase.dbConn
-            cmd.CommandTimeout = 0
-            cmd.ExecuteNonQuery()
-
-            cmd = New SqlClient.SqlCommand
-            cmd.CommandText = "delete " + qs2.core.dbBase.dbSchema + ds.tblObjectRel.TableName + sqlTxt.where + " IDGuidObjectSub='" + IDObject.ToString() + "'"
-            cmd.Connection = qs2.core.dbBase.dbConn
-            cmd.CommandTimeout = 0
-            cmd.ExecuteNonQuery()
-
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("sqlObjects.deleteObjectRelSub: " + vbNewLine + vbNewLine + ex.ToString())
-        End Try
-    End Function
 
     Public Function getSqlWhereSupervisor(ByRef sqlCommand As String, ByRef ds As dsObjects)
 
@@ -816,9 +638,7 @@ Public Class sqlObjects
 
     End Function
 
-
-
-    Public Sub genSqlWhereParticipant(ByRef IsHeadQuarter As Boolean, ByRef sqlWhere As String, ByRef IDParticipant As String, _
+    Public Sub genSqlWhereParticipant(ByRef IsHeadQuarter As Boolean, ByRef sqlWhere As String, ByRef IDParticipant As String,
                                       ByRef orIsAdmin As Boolean)
         Try
             If Not IsHeadQuarter Then

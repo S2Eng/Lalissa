@@ -53,11 +53,6 @@
         Me.SqlCommand2 = New System.Data.SqlClient.SqlCommand()
         Me.SqlCommand3 = New System.Data.SqlClient.SqlCommand()
         Me.SqlCommand4 = New System.Data.SqlClient.SqlCommand()
-        Me.daAdress = New System.Data.SqlClient.SqlDataAdapter()
-        Me.SqlCommand9 = New System.Data.SqlClient.SqlCommand()
-        Me.SqlCommand10 = New System.Data.SqlClient.SqlCommand()
-        Me.SqlCommand11 = New System.Data.SqlClient.SqlCommand()
-        Me.SqlCommand12 = New System.Data.SqlClient.SqlCommand()
         Me.daObjectSmall = New System.Data.SqlClient.SqlDataAdapter()
         Me.SqlCommand17 = New System.Data.SqlClient.SqlCommand()
         Me.daObjectApplications = New System.Data.SqlClient.SqlDataAdapter()
@@ -136,39 +131,6 @@
         Me.SqlCommand4.Connection = Me.dbConn
         Me.SqlCommand4.Parameters.AddRange(New System.Data.SqlClient.SqlParameter() {New System.Data.SqlClient.SqlParameter("@IDGuid", System.Data.SqlDbType.UniqueIdentifier, 0, "IDGuid"), New System.Data.SqlClient.SqlParameter("@IDGuidObject", System.Data.SqlDbType.UniqueIdentifier, 0, "IDGuidObject"), New System.Data.SqlClient.SqlParameter("@IDGuidObjectSub", System.Data.SqlDbType.UniqueIdentifier, 0, "IDGuidObjectSub"), New System.Data.SqlClient.SqlParameter("@Original_IDGuid", System.Data.SqlDbType.UniqueIdentifier, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "IDGuid", System.Data.DataRowVersion.Original, Nothing)})
         '
-        'daAdress
-        '
-        Me.daAdress.DeleteCommand = Me.SqlCommand9
-        Me.daAdress.InsertCommand = Me.SqlCommand10
-        Me.daAdress.SelectCommand = Me.SqlCommand11
-        Me.daAdress.TableMappings.AddRange(New System.Data.Common.DataTableMapping() {New System.Data.Common.DataTableMapping("Table", "tblAdress", New System.Data.Common.DataColumnMapping() {New System.Data.Common.DataColumnMapping("IDGuid", "IDGuid"), New System.Data.Common.DataColumnMapping("CountryID", "CountryID"), New System.Data.Common.DataColumnMapping("ZIP", "ZIP"), New System.Data.Common.DataColumnMapping("City", "City"), New System.Data.Common.DataColumnMapping("Street", "Street"), New System.Data.Common.DataColumnMapping("PhonePrivat", "PhonePrivat"), New System.Data.Common.DataColumnMapping("PhoneBusiness", "PhoneBusiness"), New System.Data.Common.DataColumnMapping("PhoneMobil", "PhoneMobil"), New System.Data.Common.DataColumnMapping("EMail", "EMail"), New System.Data.Common.DataColumnMapping("Web", "Web"), New System.Data.Common.DataColumnMapping("Fax", "Fax"), New System.Data.Common.DataColumnMapping("IsMainAdress", "IsMainAdress"), New System.Data.Common.DataColumnMapping("IDGuidObject", "IDGuidObject")})})
-        Me.daAdress.UpdateCommand = Me.SqlCommand12
-        '
-        'SqlCommand9
-        '
-        Me.SqlCommand9.CommandText = "DELETE FROM [qs2].[tblAdress] WHERE (([IDGuid] = @Original_IDGuid))"
-        Me.SqlCommand9.Connection = Me.dbConn
-        Me.SqlCommand9.Parameters.AddRange(New System.Data.SqlClient.SqlParameter() {New System.Data.SqlClient.SqlParameter("@Original_IDGuid", System.Data.SqlDbType.UniqueIdentifier, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "IDGuid", System.Data.DataRowVersion.Original, Nothing)})
-        '
-        'SqlCommand10
-        '
-        Me.SqlCommand10.CommandText = resources.GetString("SqlCommand10.CommandText")
-        Me.SqlCommand10.Connection = Me.dbConn
-        Me.SqlCommand10.Parameters.AddRange(New System.Data.SqlClient.SqlParameter() {New System.Data.SqlClient.SqlParameter("@IDGuid", System.Data.SqlDbType.UniqueIdentifier, 0, "IDGuid"), New System.Data.SqlClient.SqlParameter("@CountryID", System.Data.SqlDbType.Int, 0, "CountryID"), New System.Data.SqlClient.SqlParameter("@ZIP", System.Data.SqlDbType.NVarChar, 0, "ZIP"), New System.Data.SqlClient.SqlParameter("@City", System.Data.SqlDbType.NVarChar, 0, "City"), New System.Data.SqlClient.SqlParameter("@Street", System.Data.SqlDbType.NVarChar, 0, "Street"), New System.Data.SqlClient.SqlParameter("@PhonePrivat", System.Data.SqlDbType.NVarChar, 0, "PhonePrivat"), New System.Data.SqlClient.SqlParameter("@PhoneBusiness", System.Data.SqlDbType.NVarChar, 0, "PhoneBusiness"), New System.Data.SqlClient.SqlParameter("@PhoneMobil", System.Data.SqlDbType.NVarChar, 0, "PhoneMobil"), New System.Data.SqlClient.SqlParameter("@EMail", System.Data.SqlDbType.NVarChar, 0, "EMail"), New System.Data.SqlClient.SqlParameter("@Web", System.Data.SqlDbType.NVarChar, 0, "Web"), New System.Data.SqlClient.SqlParameter("@Fax", System.Data.SqlDbType.NVarChar, 0, "Fax"), New System.Data.SqlClient.SqlParameter("@IsMainAdress", System.Data.SqlDbType.Bit, 0, "IsMainAdress"), New System.Data.SqlClient.SqlParameter("@IDGuidObject", System.Data.SqlDbType.UniqueIdentifier, 0, "IDGuidObject")})
-        '
-        'SqlCommand11
-        '
-        Me.SqlCommand11.CommandText = "SELECT        IDGuid, CountryID, ZIP, City, Street, PhonePrivat, PhoneBusiness, P" &
-    "honeMobil, EMail, Web, Fax, IsMainAdress, IDGuidObject" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM             qs2.tbl" &
-    "Adress"
-        Me.SqlCommand11.Connection = Me.dbConn
-        '
-        'SqlCommand12
-        '
-        Me.SqlCommand12.CommandText = resources.GetString("SqlCommand12.CommandText")
-        Me.SqlCommand12.Connection = Me.dbConn
-        Me.SqlCommand12.Parameters.AddRange(New System.Data.SqlClient.SqlParameter() {New System.Data.SqlClient.SqlParameter("@IDGuid", System.Data.SqlDbType.UniqueIdentifier, 0, "IDGuid"), New System.Data.SqlClient.SqlParameter("@CountryID", System.Data.SqlDbType.Int, 0, "CountryID"), New System.Data.SqlClient.SqlParameter("@ZIP", System.Data.SqlDbType.NVarChar, 0, "ZIP"), New System.Data.SqlClient.SqlParameter("@City", System.Data.SqlDbType.NVarChar, 0, "City"), New System.Data.SqlClient.SqlParameter("@Street", System.Data.SqlDbType.NVarChar, 0, "Street"), New System.Data.SqlClient.SqlParameter("@PhonePrivat", System.Data.SqlDbType.NVarChar, 0, "PhonePrivat"), New System.Data.SqlClient.SqlParameter("@PhoneBusiness", System.Data.SqlDbType.NVarChar, 0, "PhoneBusiness"), New System.Data.SqlClient.SqlParameter("@PhoneMobil", System.Data.SqlDbType.NVarChar, 0, "PhoneMobil"), New System.Data.SqlClient.SqlParameter("@EMail", System.Data.SqlDbType.NVarChar, 0, "EMail"), New System.Data.SqlClient.SqlParameter("@Web", System.Data.SqlDbType.NVarChar, 0, "Web"), New System.Data.SqlClient.SqlParameter("@Fax", System.Data.SqlDbType.NVarChar, 0, "Fax"), New System.Data.SqlClient.SqlParameter("@IsMainAdress", System.Data.SqlDbType.Bit, 0, "IsMainAdress"), New System.Data.SqlClient.SqlParameter("@IDGuidObject", System.Data.SqlDbType.UniqueIdentifier, 0, "IDGuidObject"), New System.Data.SqlClient.SqlParameter("@Original_IDGuid", System.Data.SqlDbType.UniqueIdentifier, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "IDGuid", System.Data.DataRowVersion.Original, Nothing)})
-        '
         'daObjectSmall
         '
         Me.daObjectSmall.SelectCommand = Me.SqlCommand17
@@ -224,11 +186,6 @@
     Friend WithEvents SqlCommand2 As System.Data.SqlClient.SqlCommand
     Friend WithEvents SqlCommand3 As System.Data.SqlClient.SqlCommand
     Friend WithEvents SqlCommand4 As System.Data.SqlClient.SqlCommand
-    Public WithEvents daAdress As System.Data.SqlClient.SqlDataAdapter
-    Friend WithEvents SqlCommand9 As System.Data.SqlClient.SqlCommand
-    Friend WithEvents SqlCommand10 As System.Data.SqlClient.SqlCommand
-    Friend WithEvents SqlCommand11 As System.Data.SqlClient.SqlCommand
-    Friend WithEvents SqlCommand12 As System.Data.SqlClient.SqlCommand
     Friend WithEvents SqlInsertCommand As System.Data.SqlClient.SqlCommand
     Friend WithEvents SqlCommand17 As SqlClient.SqlCommand
     Public WithEvents daObjectSmall As SqlClient.SqlDataAdapter

@@ -48,7 +48,6 @@ Public Class actUsr
             sqlObjects1.initControl()
 
             actUsr.rUsr = sqlObjects1.getObjectRow(ID, sqlObjects.eTypSelObj.ID)
-            actUsr.rUsrAdr = sqlObjects1.getAdressRow(actUsr.rUsr.IDGuid, dsObjectUsr, sqlObjects.eTypSelAdr.idObject)
             Dim LanguageTmp As String = actUsr.adjustRead(actUsr.rUsr.UserName.Trim(), sqlAdmin.eAdjust.LanguageUser, sqlAdmin.eTypSelAdjust.forUsr, "")
             If Not LanguageTmp Is Nothing AndAlso LanguageTmp.Trim() <> "" Then
                 ENV.language = LanguageTmp

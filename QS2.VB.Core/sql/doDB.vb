@@ -54,7 +54,6 @@ Public Class doDB
             If addAdressData Then
                 If (Not actUsr.rUsrAdr Is Nothing) Then
                     Dim rNewAdr As dsObjects.tblAdressRow = dsToAdd.Tables(tableNameAdress).NewRow()
-                    rNewAdr.ItemArray = sqlObjects1.getAdressRow(rNewUsr.IDGuid, dsObjectUsr, sqlObjects.eTypSelAdr.idObject).ItemArray
                     dsToAdd.Tables(tableNameAdress).Rows.Add(rNewAdr)
                 End If
             End If

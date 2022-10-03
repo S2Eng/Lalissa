@@ -105,6 +105,7 @@ Public Class contSelectObject
             Throw New Exception("contSelectObject.clearData: " + ex.ToString())
         End Try
     End Sub
+
     Public Sub setUI(ByRef bNewPatient As Boolean)
         Try
             Me.grpNewObject.Visible = bNewPatient
@@ -116,6 +117,7 @@ Public Class contSelectObject
             Throw New Exception("contSelectObject.setUI: " + ex.ToString())
         End Try
     End Sub
+
     Public Sub editUI(ByRef bEdit As Boolean)
         Try
             Me._Editable = bEdit
@@ -136,53 +138,6 @@ Public Class contSelectObject
 
         Catch ex As Exception
             Throw New Exception("contSelectObject.editUI: " + ex.ToString())
-        End Try
-    End Sub
-    Public Sub loadGrid(ByRef dsObjectsToCopy As dsObjects)
-        Try
-            For Each rObj As dsObjects.tblObjectRow In dsObjectsToCopy.tblObject
-                Dim rNewObj As dsObjects.tblObjectRow = Me.DsObjects1.tblObject.NewRow()
-                rNewObj.ItemArray = rObj.ItemArray
-                Me.DsObjects1.tblObject.Rows.Add(rNewObj)
-            Next
-            Me.gridObjects.Refresh()
-
-            For Each rRowGrid As Infragistics.Win.UltraWinGrid.UltraGridRow In Me.gridObjects.Rows
-                Dim v As DataRowView = rRowGrid.ListObject
-                Dim rSelObj As dsObjects.tblObjectRow = v.Row
-
-                Dim rAdressMain As dsObjects.tblAdressRow = Me.SqlObjects1.getAdressMain(rSelObj.IDGuid)
-                rRowGrid.Cells(Me.DsObjects1.tblAdress.ZIPColumn.ColumnName).Value = rAdressMain.ZIP.Trim()
-                rRowGrid.Cells(Me.DsObjects1.tblAdress.CityColumn.ColumnName).Value = rAdressMain.City.Trim()
-                rRowGrid.Cells(Me.DsObjects1.tblAdress.StreetColumn.ColumnName).Value = rAdressMain.Street.Trim()
-            Next
-            Me.gridObjects.Refresh()
-
-            Me.TxtGrid(dsObjectsToCopy.tblObject.Rows.Count)
-
-        Catch ex As Exception
-            Throw New Exception("contSelectObject.loadGrid: " + ex.ToString())
-        End Try
-    End Sub
-    Public Sub SearchPatientInGrid(ByRef LastName As String, ByRef FirstName As String, ByRef DOB As Date, ByRef Zip As String, ByRef Country As String, ByRef Street As String)
-        Try
-            'For Each rRowGrid As Infragistics.Win.UltraWinGrid.UltraGridRow In Me.gridObjects.Rows
-            '    Dim v As DataRowView = rRowGrid.ListObject
-            '    Dim rSelObj As dsObjects.tblObjectRow = v.Row
-
-            '    If rSelObj.LastName.Trim().ToLower().Equals(LastName.Trim().ToLower()) And _
-            '        rSelObj.FirstName.Trim().ToLower().Equals(FirstName.Trim().ToLower()) And _
-            '        rSelObj.DOB.Date.Equals(DOB.Date) And _
-            '        rRowGrid.Cells(Me.DsObjects1.tblAdress.ZIPColumn.ColumnName).Value.Trim().ToLower().Equals(Zip.Trim().ToLower()) And _
-            '        rRowGrid.Cells(Me.DsObjects1.tblAdress.CountryIDColumn.ColumnName).Value.Trim().ToLower().Equals(Country.Trim().ToLower()) And _
-            '        rRowGrid.Cells(Me.DsObjects1.tblAdress.StreetColumn.ColumnName).Value.Trim().ToLower().Equals(Street.Trim().ToLower()) Then
-
-            '        Me.gridObjects.ActiveRow = rRowGrid
-            '    End If
-            'Next
-
-        Catch ex As Exception
-            Throw New Exception("contSelectObject.SearchPatientInGrid: " + ex.ToString())
         End Try
     End Sub
 
@@ -295,7 +250,6 @@ Public Class contSelectObject
             End If
 
             Dim rObjNew As dsObjects.tblObjectRow = Nothing
-            Dim rAdrMain As dsObjects.tblAdressRow = Nothing
             Me.SqlObjects1.getObject(qs2.core.generic.idMinus, Me.DsObjects1, sqlObjects.eTypSelObj.ID, sqlObjects.eTypObj.none)
             rObjNew = Me.SqlObjects1.getNewRowObject(Me.DsObjects1)
 
@@ -327,18 +281,6 @@ Public Class contSelectObject
                 rObjNew.Race = Me.cboRace.Value
             End If
 
-            Me.SqlObjects1.getAdress(System.Guid.NewGuid(), Me.DsObjects1, sqlObjects.eTypSelAdr.IsMainAdress)
-            rAdrMain = Me.SqlObjects1.getNewRowAdressen(Me.DsObjects1)
-
-            rAdrMain.CountryID = Me.cboCountry.Value
-            rAdrMain.ZIP = Me.txtZIP.Text.Trim()
-            rAdrMain.City = Me.txtCity.Text.Trim()
-            rAdrMain.Street = Me.txtStreet.Text.Trim()
-            rAdrMain.PhonePrivat = Me.txtPhonePrivat.Text.Trim()
-            rAdrMain.PhoneMobil = ""
-            rAdrMain.EMail = ""
-            rAdrMain.IsMainAdress = True
-
             rObjNew.NameCombination = sqlObjects.getNameCombination(rObjNew)
 
             rObjNew.Created = Now
@@ -353,11 +295,6 @@ Public Class contSelectObject
             sqlObjReadTemp.initControl()
             Dim rObjTemp As dsObjects.tblObjectRow = sqlObjReadTemp.getObjectRow(-99, sqlObjects.eTypSelObj.IDGuid, _
                                                                                  sqlObjects.eTypObj.none, "", "", rObjNew.IDGuid)
-            rAdrMain.IDGuidObject = rObjTemp.IDGuid
-
-            Dim arrAdr(0) As dsObjects.tblAdressRow
-            arrAdr(0) = rAdrMain
-            Me.SqlObjects1.daAdress.Update(arrAdr)
 
             Me.rObjectSelected = rObjNew
             Return True

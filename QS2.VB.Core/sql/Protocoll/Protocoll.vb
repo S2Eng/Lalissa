@@ -578,9 +578,7 @@ Public Class Protocol : Implements IDisposable
 
         Dim sqlObjTemp As New sqlObjects()
         sqlObjTemp.initControl()
-
         sqlObjTemp.getNewRowObject(dsTemp)
-        sqlObjTemp.getNewRowAdressen(dsTemp)
 
         Dim dt As DataTable = dsTemp.Tables(dsTemp.tblObject.TableName).Copy()
         dsDefault.Tables.Add(dt)
