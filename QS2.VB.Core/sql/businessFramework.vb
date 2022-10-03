@@ -1556,33 +1556,6 @@ Public Class businessFramework
         End Try
     End Function
 
-    Public Sub loadENVFromAdjustmentStayType(ByRef sStartTypeStayUIReturn As String)
-        Try
-            Dim oStartTypeStayUI As Object = actUsr.adjustRead("", sqlAdmin.eAdjust.StartTypeStayUI, sqlAdmin.eTypSelAdjust.all, "")
-            If Not oStartTypeStayUI Is Nothing Then
-                Dim sStartTypeStayUI As String = oStartTypeStayUI.ToString().Trim()
-                If sStartTypeStayUI.Trim().ToLower().Trim().Equals(qs2.core.Enums.eStartTypeStayUI.Single.ToString().Trim().ToLower()) Then
-                    qs2.core.ENV.StaysAsExternProcess2 = False
-                ElseIf sStartTypeStayUI.Trim().ToLower().Trim().Equals(qs2.core.Enums.eStartTypeStayUI.Thread.ToString().Trim().ToLower()) Then
-                    qs2.core.ENV.StaysAsExternProcess2 = False
-                    Throw New Exception("loadENVFromAdjustmentStayType: s2.core.Settings.StaysAsThread = True not allowed!")
-                ElseIf sStartTypeStayUI.Trim().ToLower().Trim().Equals(qs2.core.Enums.eStartTypeStayUI.Process.ToString().Trim().ToLower()) Then
-                    qs2.core.ENV.StaysAsExternProcess2 = True
-                Else
-                    Throw New Exception("loadENVFromAdjustment: sStartTypeStayUI '" + sStartTypeStayUI.Trim() + "' not allowed!")
-                End If
-                sStartTypeStayUIReturn = sStartTypeStayUI.Trim()
-            Else
-                actUsr.adjustSave("", sqlAdmin.eAdjust.StartTypeStayUI, sqlAdmin.eTypSelAdjust.all, qs2.core.Enums.eStartTypeStayUI.Process.ToString().Trim())
-                qs2.core.ENV.StaysAsExternProcess2 = True
-                sStartTypeStayUIReturn = qs2.core.Enums.eStartTypeStayUI.Process.ToString().Trim()
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("businessFramework.loadENVFromAdjustmentStayType: " + ex.ToString())
-        End Try
-    End Sub
-
 
     Public Function checkSelListIsUsedInStays(IDSelList As Integer, ByRef sProt As String) As Boolean
         Try

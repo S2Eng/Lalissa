@@ -9,8 +9,6 @@ using qs2.core.db.ERSystem;
 
 namespace qs2.core
 {
-
-
     public class logIn
     {
         public static bool DataThreadIsReady = false;
@@ -86,16 +84,8 @@ namespace qs2.core
 
                         qs2.core.vb.businessFramework b2 = new qs2.core.vb.businessFramework();
                         string loadENVFromAdjustmentStayType = "";
-                        b2.loadENVFromAdjustmentStayType(ref loadENVFromAdjustmentStayType);
-                       
-                        if (!IsPMDS)
-                        {
-                            logIn.startThreadLoadAllData(DbConnStrStayUI);
-                        }
-                        else
-                        {
-                            logIn.startThreadLoadAllData(DbConnStrStayUI);
-                        }
+
+                        logIn.startThreadLoadAllData(DbConnStrStayUI);
                     }
 
                     qs2.core.ENV.SystemIsInitialized = true;

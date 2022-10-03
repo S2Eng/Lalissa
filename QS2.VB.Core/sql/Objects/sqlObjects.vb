@@ -1,30 +1,11 @@
 ﻿Imports qs2.core
 
-
-
-
 Public Class sqlObjects
 
     Public sel_daObject As String = ""
-    Public sel_daObjectRel As String = ""
-    Public sel_daAdress As String = ""
-    Public sel_daObjectRights As String = ""
-    Public sel_daMedArchiv As String = ""
-
-    Public sel_daObjectSmall As String = ""
-    Public sel_daStaySmall As String = ""
-    Public sel_daObjectApplications As String = ""
-
     Public database As New qs2.core.dbBase
-
     Public Shared userName_Supervisor As String = "Supervisor"
-    Public Shared userName_Admin As String = "Admin"
-    Public Shared userName_Superadmin As String = "Superadmin"
-
-
     Public isInitialized As Boolean = False
-
-
 
     Public Sub initControl()
         If Me.isInitialized Then
@@ -32,14 +13,8 @@ Public Class sqlObjects
         End If
 
         Me.sel_daObject = Me.daObject.SelectCommand.CommandText
-        Me.sel_daObjectRel = Me.daObjectRel.SelectCommand.CommandText
-
-        Me.sel_daObjectSmall = Me.daObjectSmall.SelectCommand.CommandText
-        Me.sel_daObjectApplications = Me.daObjectApplications.SelectCommand.CommandText
-
         Me.isInitialized = True
     End Sub
-
 
     Public Enum eTypSelObj
         ID = 2000
@@ -69,6 +44,7 @@ Public Class sqlObjects
         ExtIDIDParticipant = 2025
         AllUsersIDParticipant = 2026
     End Enum
+
     Public Enum eTypObj
         IsPatient = 2050
         IsPersonal = 2051
@@ -82,58 +58,9 @@ Public Class sqlObjects
         idObject = 2061
         IsMainAdress = 2062
     End Enum
-    Public Enum eTypSelAnspr
-        id = 2070
-        idObject = 2071
-        idObjectSub = 2072
-    End Enum
-    Public Enum eTypSelObjRights
-        allObject = 2080
-        right = 2081
-    End Enum
-    Public Enum eTypSelStay
-        all = 2090
-        IDIDParticipant = 2091      'RecordID
-        IDObjectForApplication = 2092
-        allPatient = 2093
-        MedRecN = 2094
-        MedRecNIncidence = 2100
-        OrgUnitStay = 2101
-        FollowUpDate = 2095
-        SurgDt = 2096
-        IDGuidStay = 2097
-        CheckMedRecNrWithoutIDStay = 2098
-        CheckMedRecNr = 2099
-        CheckIncidenceWithoutIDStay = 2112
-        CheckIncidence = 2113
-        SendStay = 2114
-        CPBSerialNumber = 2115
-        IDIDApplicationIDParticipant = 2116
-        allPatientAllAplicationsAllparticipants = 2117
-        AdmDtFromTo = 2118
-        DeleteStaysAutoStart = 2119
-        searchStaysForRecordID = 2120
-        SearchForDeathStatus = 2121
-        allPatientSimple = 2122
-    End Enum
-
-    Public Enum eTypSelMedArchiv
-        IDStay = 3000
-        IDObject = 3001
-        IDGuid = 3002
-        DocuStatus = 3003
-    End Enum
 
     Public sel_daStay As String = ""
-
     Public Shared dsAllUsers As dsObjects = Nothing
-
-
-
-
-
-
-
 
     Public Shared Function loadAllData() As Boolean
         Try
@@ -144,25 +71,12 @@ Public Class sqlObjects
             End If
             sqlObjects.dsAllUsers.Clear()
             sqlObjects.dsAllUsers = sqlObjectsTemp.getAllUsers()
-            sqlObjectsTemp.getObjectApplications(Nothing, sqlObjects.dsAllUsers, eTypObj.all)
 
         Catch ex As Exception
             Throw New Exception("loadAllData: " + ex.ToString())
         End Try
     End Function
 
-    Public Function checkObject(ByVal id As Integer) As Boolean
-        Dim ds As New dsObjects
-        Me.getObject(id, ds, eTypSelObj.ID)
-        If ds.tblObject.Rows.Count = 0 Then
-            Return False
-        ElseIf ds.tblObject.Rows.Count = 1 Then
-            Return True
-        ElseIf ds.tblObject.Rows.Count > 1 Then
-            Throw New Exception("checkObject.id: More than one Row for IDObject '" + id.ToString() + "' found!")
-            Return False
-        End If
-    End Function
     Public Function getObjectRow(ByVal id As Integer, ByVal typSel As eTypSelObj,
                                 Optional ByVal typObj As eTypObj = eTypObj.none,
                                 Optional ByVal nr As String = "",
@@ -180,6 +94,7 @@ Public Class sqlObjects
             Return Nothing
         End If
     End Function
+
     Public Function getObject(ByVal id As Integer, ByRef ds As dsObjects, ByVal typSel As eTypSelObj,
                                 Optional ByVal typObj As eTypObj = eTypObj.none,
                                 Optional ByVal nr As String = "",
@@ -272,15 +187,10 @@ Public Class sqlObjects
                 Dim sWhere As String = sqlTxt.where + ds.tblObject.IsUserColumn.ColumnName + " = 1 "
                 sWhere += getSqlTyp(typObj, sWhere)
                 Me.daObject.SelectCommand.CommandText += sWhere
-                If checkSupervisor Then
-                    'Me.getSqlWhereSupervisor(Me.daObject.SelectCommand.CommandText, ds)
-                End If
 
                 Me.daObject.SelectCommand.CommandText += " and ((" + ds.tblObject.IDParticipantColumn.ColumnName + "='" + Participant.Trim() + "' and " +
                                                         " " + ds.tblObject.IDParticipantColumn.ColumnName + "<>'' "
 
-                'Dim sWhereSubUserGrps As String = " and ID IN (Select IDObject From qs2.tblSelListEntriesObj Where typIDGroup = 'Usergroups') "
-                'Me.daObject.SelectCommand.CommandText += sWhereSubUserGrps
                 Me.daObject.SelectCommand.CommandText += " And ID IN (SELECT DISTINCT qs2.tblObject.ID FROM  qs2.tblObject INNER JOIN qs2.tblSelListEntriesObj ON  " +
                                                     " qs2.tblObject.ID = qs2.tblSelListEntriesObj.IDObject WHERE (qs2.tblSelListEntriesObj.typIDGroup = 'ROLES' and qs2.tblSelListEntriesObj.Active=1)) "
 
@@ -299,7 +209,6 @@ Public Class sqlObjects
                     Me.daObject.SelectCommand.CommandText += " or " + ds.tblObject.UserNameColumn.ColumnName + "='Supervisor') "
                 Else
                     Me.daObject.SelectCommand.CommandText += " and " + ds.tblObject.UserNameColumn.ColumnName + "<>'Supervisor') "
-                    'Me.daObject.SelectCommand.CommandText += " or (" + ds.tblObject.isAdminColumn.ColumnName + "=1 and " + ds.tblObject.IDParticipantColumn.ColumnName + "='') "
                     Me.daObject.SelectCommand.CommandText += " or (" + ds.tblObject.isAdminColumn.ColumnName + "=1 and " + ds.tblObject.IDParticipantColumn.ColumnName + "='" + Participant.Trim() + "'  and (UserName='Admin' or UserName='Superadmin') and UserName<>'Supervisor') "
                 End If
 
@@ -337,127 +246,7 @@ Public Class sqlObjects
             Throw New Exception("getObject: " + ex.ToString())
         End Try
     End Function
-    Public Function getObject2(ByRef ds As dsObjects, ByVal typObj As eTypObj,
-                               ByVal dateSearchFrom As Date, ByVal dateSearchTo As Date,
-                               ByVal lastname As String, ByVal firstname As String, ByVal DOB As DateTime,
-                               ByVal searchUsername As String, ByVal typSel As eTypSelObj, IsHeadQuarter As Boolean,
-                               ByRef IDParticipant As String, INKlauselObjectFields As String, INKlauselSheriffs As String) As Boolean
 
-        Me.daObject.SelectCommand.CommandText = Me.sel_daObject
-        database.setConnection(Me.daObject)
-        Me.daObject.SelectCommand.Parameters.Clear()
-
-        Dim sWhere As String = " where IDGuid<>'" + System.Guid.NewGuid().ToString() + "' "
-        sWhere += getSqlTyp(typObj, sWhere)
-        Me.daObject.SelectCommand.CommandText += sWhere
-        If typSel = eTypSelObj.DOB Then
-            Me.genSqlWhereParticipant(IsHeadQuarter, Me.daObject.SelectCommand.CommandText, IDParticipant, False)
-            Dim Heute As DateTime = Now.Date
-            Dim dateFrom As DateTime = Heute
-            Dim dateTo As DateTime = Heute
-            dateFrom = DateAdd(DateInterval.Year, -99, Heute)
-            dateTo = DateAdd(DateInterval.Year, +99, Heute)
-
-            dateFrom = IIf(IsNothing(dateSearchFrom), dateFrom, dateSearchFrom.Date)
-            dateTo = IIf(IsNothing(dateSearchTo), dateTo, dateSearchTo)
-
-            Me.daObject.SelectCommand.CommandText += sqlTxt.and + ds.tblObject.DOBColumn.ColumnName + ">=@" + ds.tblObject.DOBColumn.ColumnName + "1 " + sqlTxt.and +
-                                                        ds.tblObject.DOBColumn.ColumnName + "<=@" + ds.tblObject.DOBColumn.ColumnName + "2"
-            Me.daObject.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblObject.DOBColumn.ColumnName + "1"), dateFrom)
-            Me.daObject.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblObject.DOBColumn.ColumnName) + "2", dateTo)
-
-            Dim sqlWhereObj As String = Me.getWhereObjectsObj(INKlauselSheriffs, INKlauselObjectFields)
-            If sqlWhereObj.Trim() <> "" Then
-                sqlWhereObj = " " + IIf(Me.daObject.SelectCommand.CommandText.Trim().ToLower().Contains(("where").Trim().ToLower()), sqlTxt.and, sqlTxt.where) + " " + sqlWhereObj
-                Me.daObject.SelectCommand.CommandText += sqlWhereObj
-            End If
-            'If INKlauselSheriffs.Trim() <> "" Then
-            '    Dim sqlWhereObj As String = ""
-            '    sqlWhereObj += " and IDGuid IN (Select PatIDGuid from qs2.tblStay where " + INKlauselSheriffs + " "
-            '    If INKlauselObjectFields.Trim() <> "" Then
-            '        sqlWhereObj += INKlauselObjectFields
-            '    End If
-            '    sqlWhereObj += " ) "
-            '    Me.daObject.SelectCommand.CommandText += sqlWhereObj
-            'End If
-
-        ElseIf typSel = eTypSelObj.likeName Then
-            Dim orIsAdminTmp As Boolean = False
-            If typObj = eTypObj.IsUser Then
-                orIsAdminTmp = True
-            End If
-            Me.genSqlWhereParticipant(IsHeadQuarter, Me.daObject.SelectCommand.CommandText, IDParticipant, orIsAdminTmp)
-            If lastname <> "" Then
-                Me.daObject.SelectCommand.CommandText += sqlTxt.and + ds.tblObject.LastNameColumn.ColumnName + sqlTxt.like + " '" + lastname + "%' "
-            End If
-            If firstname <> "" Then
-                Me.daObject.SelectCommand.CommandText += sqlTxt.and + ds.tblObject.FirstNameColumn.ColumnName + sqlTxt.like + " '" + firstname + "%' "
-            End If
-            If searchUsername <> "" Then
-                Me.daObject.SelectCommand.CommandText += sqlTxt.and + ds.tblObject.UserNameColumn.ColumnName + sqlTxt.like + " '%" + searchUsername + "%' "
-            End If
-
-            Dim sqlWhereObj As String = Me.getWhereObjectsObj(INKlauselSheriffs, INKlauselObjectFields)
-            If sqlWhereObj.Trim() <> "" Then
-                sqlWhereObj = " " + IIf(Me.daObject.SelectCommand.CommandText.Trim().ToLower().Contains(("where").Trim().ToLower()), sqlTxt.and, sqlTxt.where) + " " + sqlWhereObj
-                Me.daObject.SelectCommand.CommandText += sqlWhereObj
-            End If
-
-        ElseIf typSel = eTypSelObj.PatID Then
-            Me.genSqlWhereParticipant(IsHeadQuarter, Me.daObject.SelectCommand.CommandText, IDParticipant, False)
-            If lastname <> "" Then
-                Me.daObject.SelectCommand.CommandText += sqlTxt.and + ds.tblObject.ExtIDColumn.ColumnName + sqlTxt.equals + " '" + lastname + "' "
-            End If
-            Dim sqlWhereObj As String = Me.getWhereObjectsObj(INKlauselSheriffs, INKlauselObjectFields)
-            If sqlWhereObj.Trim() <> "" Then
-                sqlWhereObj = " " + IIf(Me.daObject.SelectCommand.CommandText.Trim().ToLower().Contains(("where").Trim().ToLower()), sqlTxt.and, sqlTxt.where) + " " + sqlWhereObj
-                Me.daObject.SelectCommand.CommandText += sqlWhereObj
-            End If
-
-        ElseIf typSel = eTypSelObj.ID Then
-            If lastname <> "" Then
-                Me.daObject.SelectCommand.CommandText += sqlTxt.and + ds.tblObject.IDColumn.ColumnName + sqlTxt.equals + " '" + lastname + "' "
-            End If
-            Dim sqlWhereObj As String = Me.getWhereObjectsObj(INKlauselSheriffs, INKlauselObjectFields)
-            If sqlWhereObj.Trim() <> "" Then
-                sqlWhereObj = " " + IIf(Me.daObject.SelectCommand.CommandText.Trim().ToLower().Contains(("where").Trim().ToLower()), sqlTxt.and, sqlTxt.where) + " " + sqlWhereObj
-                Me.daObject.SelectCommand.CommandText += sqlWhereObj
-            End If
-
-            'ElseIf typSel = eTypSelObj.MedRecN Then   'Suche in Stay
-            '    If lastname <> "" Then
-
-            '        Me.getStayRow(Val(lastname), qs2.core.vb.sqlObjects.eTypSelStay.MedRecN, "Application", "staytype")
-            '        Me.daObjectSmall.SelectCommand.CommandText += sqlTxt.and + ds.tblObject.ExtIDColumn.ColumnName + sqlTxt.equals + " '" + lastname + "' "
-            '    End If
-        ElseIf typSel = eTypSelObj.AllUser Then
-            Me.genSqlWhereParticipant(IsHeadQuarter, Me.daObject.SelectCommand.CommandText, IDParticipant, False)
-            'Me.daObjectNoSave.SelectCommand.CommandText += sqlTxt.orderBy + ds.tblObject.LastNameColumn.ColumnName + sqlTxt.asc
-
-        ElseIf typSel = eTypSelObj.NameAndDOB Then
-            Me.genSqlWhereParticipant(IsHeadQuarter, Me.daObject.SelectCommand.CommandText, IDParticipant, False)
-            If lastname <> "" Then
-                Me.daObject.SelectCommand.CommandText += sqlTxt.and + ds.tblObject.LastNameColumn.ColumnName + sqlTxt.equals + " '" + lastname + "' "
-            End If
-            If firstname <> "" Then
-                Me.daObject.SelectCommand.CommandText += sqlTxt.and + ds.tblObject.FirstNameColumn.ColumnName + sqlTxt.equals + " '" + firstname + "' "
-            End If
-            If Not IsNothing(DOB) Then
-                Me.daObject.SelectCommand.CommandText += sqlTxt.and + ds.tblObject.DOBColumn.ColumnName + "=@" + ds.tblObject.DOBColumn.ColumnName
-                Me.daObject.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblObject.DOBColumn.ColumnName), DOB)
-            End If
-
-        Else
-            Throw New Exception("sqlObjects.getObject2: typSel '" + typSel.ToString() + "' is wrong!")
-        End If
-
-        Me.getSqlWhereSupervisor(Me.daObject.SelectCommand.CommandText, ds)
-
-        Me.daObject.SelectCommand.CommandText += sqlTxt.orderBy + ds.tblObject.LastNameColumn.ColumnName + sqlTxt.asc
-        Me.daObject.Fill(ds.tblObject)
-        Return True
-
-    End Function
     Public Function getWhereObjectsObj(ByRef INKlauselSheriffs As String, ByRef INKlauselObjectFields As String) As String
         Try
             Dim sqlWhereObj As String = ""
@@ -475,27 +264,13 @@ Public Class sqlObjects
             Throw New Exception("getWhereObjectsObj: " + ex.ToString())
         End Try
     End Function
-    Public Function getWhereObjectsStay(ByRef INKlauselSheriffs As String, ByRef INKlauselObjectFields As String) As String
-        Try
-            Dim sqlWhereObj As String = ""
-            If INKlauselSheriffs.Trim() <> "" Then
-                sqlWhereObj += " " + INKlauselSheriffs + " "
-                If INKlauselObjectFields.Trim() <> "" Then
-                    sqlWhereObj += " " + INKlauselObjectFields + " "
-                End If
-            End If
 
-            Return sqlWhereObj
-
-        Catch ex As Exception
-            Throw New Exception("getWhereObjectsStay: " + ex.ToString())
-        End Try
-    End Function
     Public Function getAllUsers() As dsObjects
         Dim dsAllUsr As New dsObjects()
         Me.getObject(Nothing, dsAllUsr, eTypSelObj.AllUser)
         Return dsAllUsr
     End Function
+
     Public Function getSqlTyp(ByVal typObj As eTypObj, ByRef sWhere As String) As String
         Dim ds As New dsObjects()
         If typObj = eTypObj.IsPatient Then
@@ -518,8 +293,6 @@ Public Class sqlObjects
             Return "[No Name]"
         End If
     End Function
-
-
 
     Public Function getNewRowObject(ByVal dsObject1 As dsObjects) As dsObjects.tblObjectRow
         Dim rNew As dsObjects.tblObjectRow = dsObject1.tblObject.NewRow()
@@ -576,52 +349,6 @@ Public Class sqlObjects
 
         dsObject1.tblObject.Rows.Add(rNew)
         Return rNew
-
-    End Function
-
-    Public Function UpdatePwd(IDGuid As System.Guid, NewPwdDecrypted As String) As Boolean
-        Try
-            Dim ds As New dsObjects()
-            Dim cmd As New SqlClient.SqlCommand()
-            cmd.CommandText = "update " + qs2.core.dbBase.dbSchema + "tblObject set Password=" + sqlTxt.sMonkey + "Password where IDGuid=" + sqlTxt.sMonkey + "IDGuid"
-            cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblObject.PasswordColumn.ColumnName), System.Data.SqlDbType.VarChar, 150, sqlTxt.getColPar(ds.tblObject.PasswordColumn.ColumnName))).Value = NewPwdDecrypted.Trim()
-            cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblObject.IDGuidColumn.ColumnName), System.Data.SqlDbType.UniqueIdentifier, 16, sqlTxt.getColPar(ds.tblObject.IDGuidColumn.ColumnName))).Value = IDGuid
-            cmd.Connection = qs2.core.dbBase.dbConn
-            cmd.ExecuteNonQuery()
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("sqlObjects.UpdatePwd: " + vbNewLine + vbNewLine + ex.ToString())
-        End Try
-    End Function
-
-    Public Function deleteObject(ByVal IDObjectGuid As Guid) As Boolean
-        Try
-            Dim ds As New dsObjects()
-            Dim cmd As New SqlClient.SqlCommand()
-            cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblObject.TableName + " where IDGuid='" + IDObjectGuid.ToString() + "'"
-            cmd.Connection = qs2.core.dbBase.dbConn
-            cmd.CommandTimeout = 0
-            cmd.ExecuteNonQuery()
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("sqlObjects.deleteObject: " + vbNewLine + vbNewLine + ex.ToString())
-        End Try
-    End Function
-    Public Function deleteGuid(ByVal IDGuid As System.Guid) As Boolean
-        Try
-            Dim ds As New dsObjects()
-            Dim cmd As New SqlClient.SqlCommand()
-            cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblObject.TableName + sqlTxt.where + sqlTxt.getColWhere(ds.tblObject.IDGuidColumn.ColumnName)
-            cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblObject.IDGuidColumn.ColumnName), System.Data.SqlDbType.UniqueIdentifier, 16, sqlTxt.getColPar(ds.tblObject.IDGuidColumn.ColumnName))).Value = IDGuid
-            cmd.Connection = qs2.core.dbBase.dbConn
-            cmd.ExecuteNonQuery()
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("sqlObjects.deleteGuid: " + vbNewLine + vbNewLine + ex.ToString())
-        End Try
     End Function
 
     Public Function getSqlWhereSupervisor(ByRef sqlCommand As String, ByRef ds As dsObjects)
@@ -660,88 +387,4 @@ Public Class sqlObjects
             Throw New Exception("genSqlWhereParticipant: " + ex.ToString())
         End Try
     End Sub
-
-    Public Function SearchInSubtables(ByRef SearchWhat As qs2.core.Enums.eSearchInSubtables, strSearch As String) As String
-        Try
-            If SearchWhat = qs2.core.Enums.eSearchInSubtables.CPBNumber Then
-                Return " qs2.tblStay.ID IN  (Select ID from qs2.tblStay_CARDIAC_Z1_Z9 where LTRIM(RTRIM(CPBSerialNo)) = '" + strSearch.Trim + "')"
-            ElseIf SearchWhat = qs2.core.Enums.eSearchInSubtables.IsCongenital Then
-                Return " qs2.tblStay.ID IN  (Select ID from qs2.tblStay_CARDIAC_A_E where IsCongenital = 1)"
-            ElseIf SearchWhat = qs2.core.Enums.eSearchInSubtables.IsAquired Then
-                Return " qs2.tblStay.ID IN  (Select ID from qs2.tblStay_CARDIAC_A_E where IsAquired = 1)"
-            ElseIf SearchWhat = qs2.core.Enums.eSearchInSubtables.UnsentMedArchiv Then
-                Return " qs2.tblStay.ID IN  (Select IDStay from qs2.tblMedArchiv where Result = '')"
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("sqlObjects.getWhereproductStays: " + ex.ToString())
-        End Try
-    End Function
-
-    Public Function getNextIDStay(IDParticipant As String, IDApplication As String) As Integer
-        Dim dt As New DataTable()
-
-        Dim da As New SqlClient.SqlDataAdapter()
-        Dim cmd As New SqlClient.SqlCommand
-        cmd.CommandText = " Select Max(ID) as LastID from " + qs2.core.dbBase.dbSchema + "tblStay where IDParticipant='" + IDParticipant.Trim() + "' and IDApplication = '" + IDApplication + "' "
-        cmd.Connection = qs2.core.dbBase.dbConn
-        da.SelectCommand = cmd
-        da.Fill(dt)
-        If dt.Rows.Count = 1 Then
-            If dt.Rows(0)("LastID") Is System.DBNull.Value Then
-                Return 1
-            Else
-                Return System.Convert.ToInt32(dt.Rows(0)("LastID") + 1)
-            End If
-        ElseIf dt.Rows.Count = 0 Then
-            Return 1
-        ElseIf dt.Rows.Count > 1 Then
-            Throw New Exception("getNextIDStay: Error dt.Rows.Count > 1 !")
-        End If
-    End Function
-    Public Sub getNextExtIDObject(IDParticipant As String, ByRef NextExtIDObject As String)
-
-        Dim dt As New DataTable()          'lthxy
-        Dim da As New SqlClient.SqlDataAdapter()
-        Dim cmd As New SqlClient.SqlCommand
-        cmd.CommandText = "Select Top 1 CONVERT(decimal(20,0), ExtID) AS ExtID from" + qs2.core.dbBase.dbSchema + "tblObject " +
-                   " where IDParticipant = '" + IDParticipant + "'" +
-                   " and isnumeric(ExtID) = 1" +
-                   " order by  CONVERT(decimal(20,0), ExtID) desc"
-
-        cmd.Connection = qs2.core.dbBase.dbConn
-        da.SelectCommand = cmd
-        da.Fill(dt)
-        If dt.Rows.Count = 0 Then
-            NextExtIDObject = "1"
-        Else
-            For Each rObj As DataRow In dt.Rows
-                NextExtIDObject = (rObj("ExtID") + 1).ToString().Trim()
-            Next
-        End If
-    End Sub
-
-    Public Function getObjectApplications(ByVal IDGuid As System.Guid, ByRef ds As dsObjects, ByVal typeSel As eTypObj) As Boolean
-        Try
-            Me.daObjectApplications.SelectCommand.CommandText = Me.sel_daObjectApplications
-            database.setConnection(Me.daObjectApplications)
-            Me.daObjectApplications.SelectCommand.Parameters.Clear()
-
-            If typeSel = eTypObj.all Then
-                Dim sWhere As String = ""
-                Dim sOrderBy As String = " order by IDApplication asc, IDObjectGuid asc "
-                Me.daObjectApplications.SelectCommand.CommandText += sWhere + sOrderBy
-
-            Else
-                Throw New Exception("sqlObjects.getObjectApplications: typeSel '" + typeSel.ToString() + "' is wrong!")
-            End If
-
-            Me.daObjectApplications.Fill(ds.tblObjectApplications)
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("getObjectApplications: " + ex.ToString())
-        End Try
-    End Function
-
 End Class
