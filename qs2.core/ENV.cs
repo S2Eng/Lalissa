@@ -318,7 +318,7 @@ namespace qs2.core
 
         public static System.Drawing.Point LoactionStay;
         public static System.Drawing.Size LoactionSizeStay;
-        public static string IDApplicationActiveFromUser = "";
+        public static string IDApplicationActiveFromUser = "PMDS";
 
         public enum eTypApp
         {

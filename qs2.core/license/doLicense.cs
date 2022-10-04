@@ -1,17 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using qs2.core.language;
 using S2Extensions;
-
 
 namespace qs2.core.license
 {
-
     public class doLicense
     {
-        private static license.dsLicense.ApplicationRow _rApplication;
-        
         public enum eApp
         {
             PMDS = 4,
@@ -19,168 +18,126 @@ namespace qs2.core.license
             ALL = 0
         }
 
+        //private static dsLicense.ApplicationRow _rApplication;
         public static string typFileCodedSel { get; set; } = "QS2 License Files (*.lic)|*.lic";
         public static string typFileCoded { get; set; } = ".lic";
-        public static string sSecretKey { get; set; } = "passwordDR0wSS@P6660juht";         //"qs2_admSecret1234License"
-        public static string IV { get; set; } = "password";                                 //"qs2_adm1"
-        public static license.dsLicense.ParticipantRow rParticipant { get; set; }
-        public static license.dsLicense.VariablesDataTable tVariables { get; set; } = new license.dsLicense.VariablesDataTable();
-        public static dsLicense _dsLicenseAct { get; set; }
+        public static string sSecretKey { get; set; } = "passwordDR0wSS@P6660juht"; //"qs2_admSecret1234License"
+        public static string IV { get; set; } = "password"; //"qs2_adm1"
+        public static dsLicense.ParticipantRow rParticipant { get; set; }
+        public static dsLicense.VariablesDataTable tVariables { get; set; } = new dsLicense.VariablesDataTable();
+        private static dsLicense _dsLicenseAct { get; set; }
 
-        public static license.dsLicense.ApplicationRow rApplication
-        {
-            get
-            {
-                return doLicense._rApplication;
-            }
-            set
-            {
-                doLicense._rApplication = value;
-                if (rApplication != null)
-                {
-                    ENV.IDApplicationActiveFromUser = rApplication.IDApplication.Trim();
-                }
-                else
-                {
-                    ENV.IDApplicationActiveFromUser = "";
-                }
-            }
-        }
-        
-        public System.Collections.Generic.List<string> getLicensFiles()
+        public static dsLicense.ApplicationRow rApplication { get; set; }
+
+        public List<string> getLicensFiles()
         {
             try
             {
-                System.Collections.Generic.List<string> files = new System.Collections.Generic.List<string>();
-                string LicenseFileFull = Path.Combine(qs2.core.ENV.path_config,  "QS2" + license.doLicense.typFileCoded);
-                if (System.IO.File.Exists(LicenseFileFull))
-                {
+                var files = new List<string>();
+                var LicenseFileFull = Path.Combine(ENV.path_config, "QS2" + typFileCoded);
+                if (File.Exists(LicenseFileFull))
                     files.Add(LicenseFileFull);
-                }
                 else
-                {
                     throw new Exception("getLicensFiles: License-File '" + LicenseFileFull.Trim() + "' not exists!");
-                }
                 return files;
-
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw new Exception("getLicensFiles: " + ex.ToString());
+                throw new Exception("getLicensFiles: " + ex);
             }
         }
+
         public void checkParticipantsInLicenseFile(dsLicense dsLicenseAct, bool checkExpired, bool WithMsgBox)
         {
             try
             {
-                DateTime dNow = DateTime.Now;
-                string TxtIDParticipantsexpired = "";
+                var dNow = DateTime.Now;
+                var TxtIDParticipantsexpired = "";
 
                 if (ENV.lstIDParticipantsEncrypted.Count == 0)
+                    throw new Exception(
+                        "checkParticipantsInLicenseFile: No Participant found! (ENV.lstIDParticipantsEncrypted.Count == 0)");
+                var lstParticipantsToDelete = new List<dsLicense.ParticipantRow>();
+                foreach (var rParticipantAct in dsLicenseAct.Participant)
                 {
-                    throw new Exception("checkParticipantsInLicenseFile: No Participant found! (ENV.lstIDParticipantsEncrypted.Count == 0)");
-                }
-                System.Collections.Generic.List<dsLicense.ParticipantRow> lstParticipantsToDelete = new System.Collections.Generic.List<dsLicense.ParticipantRow>();
-                foreach(dsLicense.ParticipantRow rParticipantAct in dsLicenseAct.Participant)
-                {
-                    bool HasRightFromEnv = false;
-                    foreach(string IDParticipantENV in ENV.lstIDParticipantsEncrypted)
-                    {
-                         if (rParticipantAct.IDParticipant.sEquals(IDParticipantENV) || IDParticipantENV.sEquals("all"))
-                         {
+                    var HasRightFromEnv = false;
+                    foreach (var IDParticipantENV in ENV.lstIDParticipantsEncrypted)
+                        if (rParticipantAct.IDParticipant.sEquals(IDParticipantENV) || IDParticipantENV.sEquals("all"))
+                        {
                             HasRightFromEnv = true;
                             if (checkExpired)
-                            {
                                 if (!rParticipantAct.IsGültigBisNull())
-                                {
                                     if (rParticipantAct.GültigBis.Date < dNow.Date)
                                     {
                                         TxtIDParticipantsexpired += rParticipantAct.IDParticipant.Trim() + "\r\n";
                                         HasRightFromEnv = false;
                                     }
-                                }
-                            }
-                         }
-                    }
-                    if (!HasRightFromEnv)
-                    {
-                        lstParticipantsToDelete.Add(rParticipantAct);
-                    }
+                        }
+
+                    if (!HasRightFromEnv) lstParticipantsToDelete.Add(rParticipantAct);
                 }
-                foreach (dsLicense.ParticipantRow rParticipantToDelete in lstParticipantsToDelete)
-                {
-                    rParticipantToDelete.Delete();
-                }
+
+                foreach (var rParticipantToDelete in lstParticipantsToDelete) rParticipantToDelete.Delete();
                 dsLicenseAct.AcceptChanges();
-                doLicense._dsLicenseAct = dsLicenseAct;
+                _dsLicenseAct = dsLicenseAct;
             }
             catch (Exception ex)
             {
-                throw new Exception("checkParticipantsInLicenseFile: " + ex.ToString());
+                throw new Exception("checkParticipantsInLicenseFile: " + ex);
             }
         }
 
-        public void getAppsLicensedForParticipant(license.dsLicense dsLic, string IDParticipantToCheck, bool translateAppname)
+        public void getAppsLicensedForParticipant(dsLicense dsLic, string IDParticipantToCheck, bool translateAppname)
         {
-            foreach (dsLicense.ParticipantRow rParticipantLicensed in doLicense._dsLicenseAct.Participant)
-            {
+            foreach (var rParticipantLicensed in _dsLicenseAct.Participant)
                 if (rParticipantLicensed.IDParticipant.sEquals(IDParticipantToCheck))
                 {
-                    dsLicense.ApplicationRow[] arrAppLicensed = (dsLicense.ApplicationRow[])doLicense._dsLicenseAct.Application.Select(doLicense._dsLicenseAct.Participant.IDParticipantColumn.ColumnName + "='" + rParticipantLicensed.IDParticipant.Trim() + "'", "");
-                    foreach (dsLicense.ApplicationRow rApplicationLicensed in arrAppLicensed)
+                    var arrAppLicensed = (dsLicense.ApplicationRow[]) _dsLicenseAct.Application.Select(
+                        _dsLicenseAct.Participant.IDParticipantColumn.ColumnName + "='" +
+                        rParticipantLicensed.IDParticipant.Trim() + "'", "");
+                    foreach (var rApplicationLicensed in arrAppLicensed)
                     {
-                        qs2.core.license.dsLicense.ApplicationsRow rNewApp = (qs2.core.license.dsLicense.ApplicationsRow)dsLic.Applications.NewRow();
+                        var rNewApp = (dsLicense.ApplicationsRow) dsLic.Applications.NewRow();
                         rNewApp.ID = rApplicationLicensed.IDApplication;
-                        string Translated = qs2.core.language.sqlLanguage.getRes(rApplicationLicensed.IDApplication);
+                        var Translated = sqlLanguage.getRes(rApplicationLicensed.IDApplication);
                         if (translateAppname)
                         {
-                            if (String.IsNullOrWhiteSpace(Translated))
-                            {
-                                Translated = rApplicationLicensed.IDApplication;
-                            }
+                            if (string.IsNullOrWhiteSpace(Translated)) Translated = rApplicationLicensed.IDApplication;
                             rNewApp.Name = Translated;
                         }
                         else
                         {
                             rNewApp.Name = rApplicationLicensed.IDApplication;
                         }
+
                         dsLic.Applications.Rows.Add(rNewApp);
                     }
                 }
-            }
         }
 
-        public void fillTableApplicationsxy(license.dsLicense dsLic, bool OnlyLicensedProducts, bool ShowAll)
+        public void fillTableApplicationsxy(dsLicense dsLic, bool OnlyLicensedProducts, bool ShowAll)
         {
-            foreach (int val in Enum.GetValues(typeof(doLicense.eApp)))
+            foreach (int val in Enum.GetValues(typeof(eApp)))
             {
-                string sApp = Enum.GetName(typeof(doLicense.eApp), val);
-                if ( (qs2.core.ENV.adminSecure && sApp.sEquals(doLicense.eApp.TestProduct)) || !sApp.sEquals(doLicense.eApp.TestProduct) )
+                var sApp = Enum.GetName(typeof(eApp), val);
+                if ((ENV.adminSecure && sApp.sEquals(eApp.TestProduct)) || !sApp.sEquals(eApp.TestProduct))
                 {
-                    bool hasRight = true;
+                    var hasRight = true;
                     if (OnlyLicensedProducts)
                     {
-                        hasRight = this.HasRightForApp(sApp.Trim(), ShowAll);
-                        if ( (!qs2.core.ENV.adminSecure && sApp.sEquals(doLicense.eApp.TestProduct)) || (!qs2.core.ENV.adminSecure && sApp.sEquals(doLicense.eApp.PMDS)) )
-                        {
-                            hasRight = false;
-                        }
+                        hasRight = HasRightForApp(sApp.Trim(), ShowAll);
+                        if ((!ENV.adminSecure && sApp.sEquals(eApp.TestProduct)) ||
+                            (!ENV.adminSecure && sApp.sEquals(eApp.PMDS))) hasRight = false;
 
-                        if ( !ShowAll && sApp.sEquals(doLicense.eApp.ALL.ToString()) )
-                        {
-                            hasRight = false;
-                        }
+                        if (!ShowAll && sApp.sEquals(eApp.ALL.ToString())) hasRight = false;
                     }
 
                     if (hasRight)
                     {
-                        qs2.core.license.dsLicense.ApplicationsRow rNewApp = (qs2.core.license.dsLicense.ApplicationsRow)dsLic.Applications.NewRow();
+                        var rNewApp = (dsLicense.ApplicationsRow) dsLic.Applications.NewRow();
                         rNewApp.ID = sApp;
-                        string Translated = qs2.core.language.sqlLanguage.getRes(sApp);
-                        if (String.IsNullOrWhiteSpace(Translated))
-                        {
-                            Translated = sApp;
-                        }
+                        var Translated = sqlLanguage.getRes(sApp);
+                        if (string.IsNullOrWhiteSpace(Translated)) Translated = sApp;
                         rNewApp.Name = Translated;
                         dsLic.Applications.Rows.Add(rNewApp);
                     }
@@ -190,20 +147,17 @@ namespace qs2.core.license
 
         public bool HasRightForApp(string ApplicationToCheck, bool ShowAll)
         {
-            foreach (dsLicense.ParticipantRow rParticipantLicensed in doLicense._dsLicenseAct.Participant)
-            {
-                if (ShowAll || rParticipantLicensed.IDParticipant.sEquals((qs2.core.license.doLicense.rParticipant.IDParticipant)))
+            foreach (var rParticipantLicensed in _dsLicenseAct.Participant)
+                if (ShowAll || rParticipantLicensed.IDParticipant.sEquals(rParticipant.IDParticipant))
                 {
-                    dsLicense.ApplicationRow[] arrAppLicensed = (dsLicense.ApplicationRow[])doLicense._dsLicenseAct.Application.Select(doLicense._dsLicenseAct.Participant.IDParticipantColumn.ColumnName + "='" + rParticipantLicensed.IDParticipant.Trim() + "'", "");
-                    foreach (dsLicense.ApplicationRow rApplicationLicensed in arrAppLicensed)
-                    {
+                    var arrAppLicensed = (dsLicense.ApplicationRow[]) _dsLicenseAct.Application.Select(
+                        _dsLicenseAct.Participant.IDParticipantColumn.ColumnName + "='" +
+                        rParticipantLicensed.IDParticipant.Trim() + "'", "");
+                    foreach (var rApplicationLicensed in arrAppLicensed)
                         if (rApplicationLicensed.IDApplication.sEquals(ApplicationToCheck))
-                        {
                             return true;
-                        }
-                    }
                 }
-            }
+
             return false;
         }
 
@@ -211,16 +165,16 @@ namespace qs2.core.license
         {
             try
             {
-                System.Text.UTF8Encoding enc = new System.Text.UTF8Encoding();
-                FileStream fsEncrypted = new FileStream(sOutputFilename, FileMode.Create, FileAccess.Write);
+                var enc = new UTF8Encoding();
+                var fsEncrypted = new FileStream(sOutputFilename, FileMode.Create, FileAccess.Write);
 
-                TripleDESCryptoServiceProvider DES = new TripleDESCryptoServiceProvider();
-                DES.Key = ASCIIEncoding.ASCII.GetBytes(qs2.core.license.doLicense.sSecretKey);
-                DES.IV = ASCIIEncoding.ASCII.GetBytes(qs2.core.license.doLicense.IV);
-                ICryptoTransform DES_Encrypt = DES.CreateEncryptor();
-                CryptoStream cryptostream = new CryptoStream(fsEncrypted, DES_Encrypt, CryptoStreamMode.Write);
+                var DES = new TripleDESCryptoServiceProvider();
+                DES.Key = Encoding.ASCII.GetBytes(sSecretKey);
+                DES.IV = Encoding.ASCII.GetBytes(IV);
+                var DES_Encrypt = DES.CreateEncryptor();
+                var cryptostream = new CryptoStream(fsEncrypted, DES_Encrypt, CryptoStreamMode.Write);
 
-                byte[] bytearrayinput = new byte[enc.GetByteCount(sTextDecrypted)];
+                var bytearrayinput = new byte[enc.GetByteCount(sTextDecrypted)];
                 bytearrayinput = enc.GetBytes(sTextDecrypted);
                 cryptostream.Write(bytearrayinput, 0, bytearrayinput.Length);
                 cryptostream.Close();
@@ -229,27 +183,26 @@ namespace qs2.core.license
             }
             catch (Exception e)
             {
-                throw new Exception("doLicense.EncryptStringAndSaveFile:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + e.ToString());
+                throw new Exception("doLicense.EncryptStringAndSaveFile:" + generic.lineBreak + generic.lineBreak + e);
             }
-
         }
 
 
-        public bool SaveAndEncryptFile(string sInputFilename, string sOutputFilename )
+        public bool SaveAndEncryptFile(string sInputFilename, string sOutputFilename)
         {
             try
             {
-                FileStream fsInput = new FileStream(sInputFilename, FileMode.Open, FileAccess.Read);
+                var fsInput = new FileStream(sInputFilename, FileMode.Open, FileAccess.Read);
 
-                FileStream fsEncrypted = new FileStream(sOutputFilename, FileMode.Create, FileAccess.Write);
+                var fsEncrypted = new FileStream(sOutputFilename, FileMode.Create, FileAccess.Write);
 
-                TripleDESCryptoServiceProvider DES = new TripleDESCryptoServiceProvider();
-                DES.Key = ASCIIEncoding.ASCII.GetBytes(qs2.core.license.doLicense.sSecretKey);
-                DES.IV = ASCIIEncoding.ASCII.GetBytes(qs2.core.license.doLicense.IV);
-                ICryptoTransform DES_Encrypt = DES.CreateEncryptor();
-                CryptoStream cryptostream = new CryptoStream(fsEncrypted, DES_Encrypt, CryptoStreamMode.Write);
+                var DES = new TripleDESCryptoServiceProvider();
+                DES.Key = Encoding.ASCII.GetBytes(sSecretKey);
+                DES.IV = Encoding.ASCII.GetBytes(IV);
+                var DES_Encrypt = DES.CreateEncryptor();
+                var cryptostream = new CryptoStream(fsEncrypted, DES_Encrypt, CryptoStreamMode.Write);
 
-                byte[] bytearrayinput = new byte[fsInput.Length];
+                var bytearrayinput = new byte[fsInput.Length];
                 fsInput.Read(bytearrayinput, 0, bytearrayinput.Length);
                 cryptostream.Write(bytearrayinput, 0, bytearrayinput.Length);
                 cryptostream.Close();
@@ -259,24 +212,27 @@ namespace qs2.core.license
             }
             catch (Exception e)
             {
-                throw new Exception("doLicense.SaveAndEncryptFile:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + e.ToString());
+                throw new Exception("doLicense.SaveAndEncryptFile:" + generic.lineBreak + generic.lineBreak + e);
             }
         }
 
-        public string  OpenFileAndDecrypt(String FileName)
+        public string OpenFileAndDecrypt(string FileName)
         {
             try
             {
-                byte[] Key = ASCIIEncoding.ASCII.GetBytes(qs2.core.license.doLicense.sSecretKey);
-                byte[] IV = ASCIIEncoding.ASCII.GetBytes(qs2.core.license.doLicense.IV);
+                var Key = Encoding.ASCII.GetBytes(sSecretKey);
+                var IV = Encoding.ASCII.GetBytes(doLicense.IV);
                 //FileStream fStream = File.Open(FileName, FileMode.Open  );    //Standard ohne weitere Angaben = Lelsen und Schreiben -> daher benötigt man Schreibrechte.
-                FileStream fStream = File.OpenRead(FileName);   //osxy 140522- das öffnet das File nur zum Lesen und shared. Äquvivalent = FileStream fStreamx = File.OpenRead(FileName, FileMode.Open, FileAccess.Read, FileShare.Read);  
+                var
+                    fStream = File
+                        .OpenRead(FileName); //osxy 140522- das öffnet das File nur zum Lesen und shared. Äquvivalent = FileStream fStreamx = File.OpenRead(FileName, FileMode.Open, FileAccess.Read, FileShare.Read);  
 
                 // Create a CryptoStream using the FileStream and the passed key and initialization vector (IV).
-                CryptoStream cStream = new CryptoStream(fStream, new TripleDESCryptoServiceProvider().CreateDecryptor(Key, IV), CryptoStreamMode.Read);
+                var cStream = new CryptoStream(fStream, new TripleDESCryptoServiceProvider().CreateDecryptor(Key, IV),
+                    CryptoStreamMode.Read);
 
-                StreamReader sReader = new StreamReader(cStream);
-                string val = sReader.ReadToEnd();
+                var sReader = new StreamReader(cStream);
+                var val = sReader.ReadToEnd();
 
                 sReader.Close();
                 cStream.Close();
@@ -286,113 +242,119 @@ namespace qs2.core.license
             }
             catch (CryptographicException e)
             {
-                qs2.core.generic.getExep(e.ToString(), e.Message);
+                generic.getExep(e.ToString(), e.Message);
                 return null;
             }
-            catch ( Exception e)
+            catch (Exception e)
             {
-                throw new Exception("doLicense.OpenFileAndDecrypt:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + e.ToString());
+                throw new Exception("doLicense.OpenFileAndDecrypt:" + generic.lineBreak + generic.lineBreak + e);
             }
         }
 
         public static void doLicenseAutoxyxy(string IDParticipantToSearch, string IDApplicationToSearch,
-                                            ref dsLicense.ParticipantRow rPartReturn, ref dsLicense.ApplicationRow rAppReturn)
+            ref dsLicense.ParticipantRow rPartReturn, ref dsLicense.ApplicationRow rAppReturn)
         {
             try
             {
-                qs2.core.license.doLicense doLicense1 = new core.license.doLicense();
-                System.Collections.Generic.List<string> files = doLicense1.getLicensFiles();
+                var doLicense1 = new doLicense();
+                var files = doLicense1.getLicensFiles();
 
-                core.license.dsLicense dsLicenseParticipant = new core.license.dsLicense();
-                foreach (string LicenseFileFound in files)
+                var dsLicenseParticipant = new dsLicense();
+                foreach (var LicenseFileFound in files)
                 {
-                    string xmlString = doLicense1.OpenFileAndDecrypt(LicenseFileFound);
-                    System.IO.StringReader strReader = new System.IO.StringReader(xmlString);
-                    dsLicenseParticipant.ReadXml(strReader, System.Data.XmlReadMode.ReadSchema);
+                    var xmlString = doLicense1.OpenFileAndDecrypt(LicenseFileFound);
+                    var strReader = new StringReader(xmlString);
+                    dsLicenseParticipant.ReadXml(strReader, XmlReadMode.ReadSchema);
                     doLicense1.checkParticipantsInLicenseFile(dsLicenseParticipant, true, true);
-                    foreach (core.license.dsLicense.ParticipantRow rPart in dsLicenseParticipant.Participant)
-                    {
+                    foreach (var rPart in dsLicenseParticipant.Participant)
                         if (rPart.IDParticipant.Trim().ToLower().Equals(IDParticipantToSearch.Trim().ToLower()))
                         {
-                            core.license.dsLicense.ApplicationRow[] arrAppl = (core.license.dsLicense.ApplicationRow[])dsLicenseParticipant.Application.Select(dsLicenseParticipant.Application.IDParticipantColumn.ColumnName + "='" + IDParticipantToSearch.Trim() + "' and " +
-                                                                                                                            dsLicenseParticipant.Application.IDApplicationColumn.ColumnName + "='" + IDApplicationToSearch.Trim() + "'", "");
+                            var arrAppl = (dsLicense.ApplicationRow[]) dsLicenseParticipant.Application.Select(
+                                dsLicenseParticipant.Application.IDParticipantColumn.ColumnName + "='" +
+                                IDParticipantToSearch.Trim() + "' and " +
+                                dsLicenseParticipant.Application.IDApplicationColumn.ColumnName + "='" +
+                                IDApplicationToSearch.Trim() + "'", "");
 
-                            foreach (core.license.dsLicense.ApplicationRow rApp in arrAppl)
-                            {
+                            foreach (var rApp in arrAppl)
                                 if (rApp.IDApplication.Trim().ToLower().Equals(IDApplicationToSearch.Trim().ToLower()))
                                 {
-                                    qs2.core.license.doLicense.tVariables.Clear();
-                                    core.license.dsLicense.VariablesRow[] arrVariables = (core.license.dsLicense.VariablesRow[])dsLicenseParticipant.Variables.Select(dsLicenseParticipant.Variables.IDParticipantColumn.ColumnName + "='" + IDParticipantToSearch.Trim() + "' and " +
-                                                                                                dsLicenseParticipant.Variables.IDApplicationColumn.ColumnName + "='" + IDApplicationToSearch.Trim() + "'", "");
+                                    tVariables.Clear();
+                                    var arrVariables = (dsLicense.VariablesRow[]) dsLicenseParticipant.Variables.Select(
+                                        dsLicenseParticipant.Variables.IDParticipantColumn.ColumnName + "='" +
+                                        IDParticipantToSearch.Trim() + "' and " +
+                                        dsLicenseParticipant.Variables.IDApplicationColumn.ColumnName + "='" +
+                                        IDApplicationToSearch.Trim() + "'", "");
 
-                                    foreach (qs2.core.license.dsLicense.VariablesRow rVariable in arrVariables)
+                                    foreach (var rVariable in arrVariables)
                                     {
-                                        qs2.core.license.dsLicense.VariablesRow rNewVar = (qs2.core.license.dsLicense.VariablesRow)qs2.core.license.doLicense.tVariables.NewRow();
+                                        var rNewVar = (dsLicense.VariablesRow) tVariables.NewRow();
                                         rNewVar.ItemArray = rVariable.ItemArray;
-                                        qs2.core.license.doLicense.tVariables.Rows.Add(rNewVar);
+                                        tVariables.Rows.Add(rNewVar);
                                     }
 
-                                    qs2.core.license.doLicense.rParticipant = rParticipant;
-                                    qs2.core.license.doLicense.rApplication = rApp;
+                                    rParticipant = rParticipant;
+                                    rApplication = rApp;
                                     rPartReturn = rPart;
                                     rAppReturn = rApp;
 
                                     return;
                                 }
-                            }
                         }
-                    }
                 }
 
-                throw new Exception("doLicense.doLicenseAuto: No Participant '" + IDParticipantToSearch.Trim() + "' and Application '" + IDApplicationToSearch.Trim() + 
+                throw new Exception("doLicense.doLicenseAuto: No Participant '" + IDParticipantToSearch.Trim() +
+                                    "' and Application '" + IDApplicationToSearch.Trim() +
                                     "' found in Licensfiles into license-folder for auto-license!");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw new Exception("doLicense.doLicenseAuto:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
+                throw new Exception("doLicense.doLicenseAuto:" + generic.lineBreak + generic.lineBreak + ex);
             }
         }
-        
-        public static void selApplication(string Application, ref System.Collections.Generic.List<string> lstApplicationsLicensed,
-                                            ref bool ApplicationFound)
+
+        public static void selApplication(string Application, ref List<string> lstApplicationsLicensed,
+            ref bool ApplicationFound)
         {
             try
             {
-                qs2.core.license.doLicense.tVariables.Clear();
-                foreach (dsLicense.ParticipantRow rParticipantFromLicense in doLicense._dsLicenseAct.Participant)
-                {
-                    if (rParticipantFromLicense.IDParticipant.Trim().ToLower().Equals(doLicense.rParticipant.IDParticipant.Trim().ToLower()))
+                tVariables.Clear();
+                foreach (var rParticipantFromLicense in _dsLicenseAct.Participant)
+                    if (rParticipantFromLicense.IDParticipant.Trim().ToLower()
+                        .Equals(rParticipant.IDParticipant.Trim().ToLower()))
                     {
-                        string sWhereApplication = doLicense._dsLicenseAct.Application.IDParticipantColumn.ColumnName + "='" + rParticipantFromLicense.IDParticipant.Trim() + "'";
-                        dsLicense.ApplicationRow[] arrApplicationsFromParticipant = (dsLicense.ApplicationRow[])doLicense._dsLicenseAct.Application.Select(sWhereApplication, "");
-                        foreach (dsLicense.ApplicationRow rApplicationsFromLicense in arrApplicationsFromParticipant)
-                        {
-                            if (rApplicationsFromLicense.IDApplication.Trim().ToLower().Equals(Application.Trim().ToLower()))
+                        var sWhereApplication = _dsLicenseAct.Application.IDParticipantColumn.ColumnName + "='" +
+                                                rParticipantFromLicense.IDParticipant.Trim() + "'";
+                        var arrApplicationsFromParticipant =
+                            (dsLicense.ApplicationRow[]) _dsLicenseAct.Application.Select(sWhereApplication, "");
+                        foreach (var rApplicationsFromLicense in arrApplicationsFromParticipant)
+                            if (rApplicationsFromLicense.IDApplication.Trim().ToLower()
+                                .Equals(Application.Trim().ToLower()))
                             {
-                                qs2.core.license.doLicense.rApplication = rApplicationsFromLicense;
+                                rApplication = rApplicationsFromLicense;
                                 lstApplicationsLicensed.Add(rApplicationsFromLicense.IDApplication);
 
-                                string sWhereVariables = doLicense._dsLicenseAct.Variables.IDParticipantColumn.ColumnName + "='" + rParticipantFromLicense.IDParticipant.Trim() + "' and " + doLicense._dsLicenseAct.Variables.IDApplicationColumn.ColumnName + "='" + rApplicationsFromLicense.IDApplication.Trim() + "'";
-                                dsLicense.VariablesRow[] arrVariablesFromLicense = (dsLicense.VariablesRow[])doLicense._dsLicenseAct.Variables.Select(sWhereVariables, "");
-                                foreach (dsLicense.VariablesRow rVariablesFromLicense in arrVariablesFromLicense)
+                                var sWhereVariables = _dsLicenseAct.Variables.IDParticipantColumn.ColumnName + "='" +
+                                                      rParticipantFromLicense.IDParticipant.Trim() + "' and " +
+                                                      _dsLicenseAct.Variables.IDApplicationColumn.ColumnName + "='" +
+                                                      rApplicationsFromLicense.IDApplication.Trim() + "'";
+                                var arrVariablesFromLicense =
+                                    (dsLicense.VariablesRow[]) _dsLicenseAct.Variables.Select(sWhereVariables, "");
+                                foreach (var rVariablesFromLicense in arrVariablesFromLicense)
                                 {
-                                    qs2.core.license.dsLicense.VariablesRow rNewVar = (qs2.core.license.dsLicense.VariablesRow)qs2.core.license.doLicense.tVariables.NewRow();
+                                    var rNewVar = (dsLicense.VariablesRow) tVariables.NewRow();
                                     rNewVar.ItemArray = rVariablesFromLicense.ItemArray;
-                                    qs2.core.license.doLicense.tVariables.Rows.Add(rNewVar);
+                                    tVariables.Rows.Add(rNewVar);
                                 }
 
                                 ApplicationFound = true;
                             }
-                        }
                     }
-                }
 
-                qs2.core.license.doLicense.UpdateLicenseList();
-
+                UpdateLicenseList();
             }
             catch (Exception ex)
             {
-                throw new Exception("doLicense.selApplication:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
+                throw new Exception("doLicense.selApplication:" + generic.lineBreak + generic.lineBreak + ex);
             }
         }
 
@@ -400,49 +362,43 @@ namespace qs2.core.license
         {
             try
             {
-                string licensfile = qs2.core.ENV.path_config + "\\" + "QS2.lic";
+                var licensfile = ENV.path_config + "\\" + "QS2.lic";
 
-                core.license.dsLicense dsLicenseParticipant = new core.license.dsLicense();
-                core.license.dsLicense dsLicenseApplication = new core.license.dsLicense();
-                qs2.core.license.doLicense doLicense1 = new qs2.core.license.doLicense();
-                string xmlString = doLicense1.OpenFileAndDecrypt(licensfile);
-                System.IO.StringReader strReader = new System.IO.StringReader(xmlString);
-                dsLicenseParticipant.ReadXml(strReader, System.Data.XmlReadMode.ReadSchema);
+                var dsLicenseParticipant = new dsLicense();
+                var dsLicenseApplication = new dsLicense();
+                var doLicense1 = new doLicense();
+                var xmlString = doLicense1.OpenFileAndDecrypt(licensfile);
+                var strReader = new StringReader(xmlString);
+                dsLicenseParticipant.ReadXml(strReader, XmlReadMode.ReadSchema);
                 doLicense1.checkParticipantsInLicenseFile(dsLicenseParticipant, true, false);
-             
-                qs2.core.license.doLicense.rParticipant = null;
-                qs2.core.license.doLicense.rApplication = null;
-                qs2.core.license.dsLicense.ParticipantRow[] arrParticipant = (qs2.core.license.dsLicense.ParticipantRow[])dsLicenseParticipant.Participant.Select(dsLicenseParticipant.Participant.IDParticipantColumn.ColumnName + "='" + IDParticipant + "'");
-                qs2.core.license.doLicense.rParticipant = (qs2.core.license.dsLicense.ParticipantRow)arrParticipant[0];
-                qs2.core.license.dsLicense.ApplicationRow[] rApplications = (qs2.core.license.dsLicense.ApplicationRow[])dsLicenseParticipant.Application.Select(dsLicenseParticipant.Participant.IDParticipantColumn.ColumnName + "='" + IDParticipant + "'");
-                foreach (qs2.core.license.dsLicense.ApplicationRow rApplication in rApplications)
-                {
+
+                rParticipant = null;
+                rApplication = null;
+                var arrParticipant = (dsLicense.ParticipantRow[]) dsLicenseParticipant.Participant.Select(
+                    dsLicenseParticipant.Participant.IDParticipantColumn.ColumnName + "='" + IDParticipant + "'");
+                rParticipant = arrParticipant[0];
+                var rApplications = (dsLicense.ApplicationRow[]) dsLicenseParticipant.Application.Select(
+                    dsLicenseParticipant.Participant.IDParticipantColumn.ColumnName + "='" + IDParticipant + "'");
+                foreach (var rApplication in rApplications)
                     if (rApplication.IDApplication.Trim().ToLower().Equals(Application.Trim().ToLower()))
-                    {
-                        qs2.core.license.doLicense.rApplication = rApplication;
-                    }
-                }
+                        doLicense.rApplication = rApplication;
 
-                if (qs2.core.license.doLicense.rParticipant == null)
-                {
+                if (rParticipant == null)
                     throw new Exception("main: qs2.core.license.doLicense.rParticipant=null not allowed!");
-                }
-                if (qs2.core.license.doLicense.rApplication == null)
-                {
+                if (rApplication == null)
                     throw new Exception("main: qs2.core.license.doLicense.rApplication=null not allowed!");
-                }
 
-                System.Collections.Generic.List<string> lstApplicationsLicensed = new System.Collections.Generic.List<string>();
-                bool ApplicationFound = false;
-                qs2.core.license.doLicense.selApplication(Application.Trim(), ref lstApplicationsLicensed, ref ApplicationFound);
+                var lstApplicationsLicensed = new List<string>();
+                var ApplicationFound = false;
+                selApplication(Application.Trim(), ref lstApplicationsLicensed, ref ApplicationFound);
                 if (!ApplicationFound)
-                {
-                    throw new Exception("setParticipantAndApplication: ApplicationFound '" + Application.Trim()  + "' not found in License-File!");
-                }
+                    throw new Exception("setParticipantAndApplication: ApplicationFound '" + Application.Trim() +
+                                        "' not found in License-File!");
             }
             catch (Exception ex)
             {
-                throw new Exception("doLicense.setParticipantAndApplication:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
+                throw new Exception("doLicense.setParticipantAndApplication:" + generic.lineBreak + generic.lineBreak +
+                                    ex);
             }
         }
 
@@ -450,54 +406,39 @@ namespace qs2.core.license
         {
             try
             {
-                foreach (qs2.core.license.dsLicense.VariablesRow licRow in qs2.core.license.doLicense.tVariables.Rows)
-                {
-                    foreach (qs2.core.Enums.cLicense lic in ENV.listLicenses)
+                foreach (dsLicense.VariablesRow licRow in tVariables.Rows)
+                foreach (var lic in ENV.listLicenses)
+                    if (licRow.VarName == lic.Name)
                     {
-                        if (licRow.VarName == lic.Name)
-                        {
-                            if (lic.LicenseType == qs2.core.Enums.eLicenseType.typeBool)
-                            {
-                                lic.bValue =    licRow.VarValue.Trim() == "1" ? true : false;
-                            }
-                            else if (lic.LicenseType == qs2.core.Enums.eLicenseType.typeInt)
-                            {
-                                lic.iValue = System.Convert.ToInt32(licRow.VarValue.Trim());
-                            }
-                            else if (lic.LicenseType == qs2.core.Enums.eLicenseType.typeString)
-                            {
-                                lic.sValue = licRow.VarValue.Trim();
-                            }
-                            else if (lic.LicenseType == qs2.core.Enums.eLicenseType.TypeDateTime)
-                            {
-                                lic.dValue = System.Convert.ToDateTime(licRow.VarValue.Trim()); //yyyy-MM-dd
-                            }
-                        }
+                        if (lic.LicenseType == Enums.eLicenseType.typeBool)
+                            lic.bValue = licRow.VarValue.Trim() == "1" ? true : false;
+                        else if (lic.LicenseType == Enums.eLicenseType.typeInt)
+                            lic.iValue = Convert.ToInt32(licRow.VarValue.Trim());
+                        else if (lic.LicenseType == Enums.eLicenseType.typeString)
+                            lic.sValue = licRow.VarValue.Trim();
+                        else if (lic.LicenseType == Enums.eLicenseType.TypeDateTime)
+                            lic.dValue = Convert.ToDateTime(licRow.VarValue.Trim()); //yyyy-MM-dd
                     }
-                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw new Exception("doLicense.UpdateLicenseList:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
+                throw new Exception("doLicense.UpdateLicenseList:" + generic.lineBreak + generic.lineBreak + ex);
             }
         }
-        public static bool CheckIfRigthLicense(qs2.core.Enums.eLicense eLicense)
+
+        public static bool CheckIfRigthLicense(Enums.eLicense eLicense)
         {
             try
             {
-                foreach( qs2.core.license.dsLicense.VariablesRow rVarFoundInLicense in qs2.core.license.doLicense.tVariables)
-                {
+                foreach (var rVarFoundInLicense in tVariables)
                     if (eLicense.ToString().Trim().ToLower().Equals(rVarFoundInLicense.VarName.Trim().ToLower()))
                     {
-                        qs2.core.Enums.cLicense LicDefFound = doLicense.GetLicense(eLicense);
+                        var LicDefFound = GetLicense(eLicense);
                         if (LicDefFound != null)
                         {
                             if (LicDefFound.LicenseType == Enums.eLicenseType.typeBool)
                             {
-                                if (rVarFoundInLicense.VarValue.Trim().Equals(("1").Trim ()))
-                                {
-                                    return true;
-                                }
+                                if (rVarFoundInLicense.VarValue.Trim().Equals("1".Trim())) return true;
                             }
                             else if (LicDefFound.LicenseType == Enums.eLicenseType.typeInt)
                             {
@@ -508,53 +449,46 @@ namespace qs2.core.license
                             else if (LicDefFound.LicenseType == Enums.eLicenseType.typeInt)
                             {
                             }
-                        } 
+                        }
                     }
-                }
 
                 return false;
             }
             catch (Exception ex)
             {
-                throw new Exception("doLicense.CheckIfRigthLicense:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
+                throw new Exception("doLicense.CheckIfRigthLicense:" + generic.lineBreak + generic.lineBreak + ex);
             }
         }
-        public static qs2.core.Enums.cLicense GetLicense(qs2.core.Enums.eLicense eLicense)
+
+        public static Enums.cLicense GetLicense(Enums.eLicense eLicense)
         {
             try
             {
-                foreach (qs2.core.Enums.cLicense lic in ENV.listLicenses)     //Search by license.enum (e.g. core.qs2.Enums.eLicense.USE_CONGENITAL)
-                {
+                foreach (var lic in
+                         ENV.listLicenses) //Search by license.enum (e.g. core.qs2.Enums.eLicense.USE_CONGENITAL)
                     if (eLicense == lic.License)
-                    {
                         return lic;
-                    }
-                }
 
-                return new qs2.core.Enums.cLicense();
+                return new Enums.cLicense();
             }
             catch (Exception ex)
             {
-                throw new Exception("doLicense.GetLicense (by Enum):" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
+                throw new Exception("doLicense.GetLicense (by Enum):" + generic.lineBreak + generic.lineBreak + ex);
             }
         }
 
-        public static qs2.core.Enums.cLicense GetLicense(string licName)        //Search by Name (e.g. USE_CONGENITAL)
+        public static Enums.cLicense GetLicense(string licName) //Search by Name (e.g. USE_CONGENITAL)
         {
             try
             {
-                foreach (qs2.core.Enums.cLicense lic in ENV.listLicenses)
-                {
+                foreach (var lic in ENV.listLicenses)
                     if (licName.Trim().ToLower() == lic.Name.Trim().ToLower())
-                    {
                         return lic;
-                    }
-                }
                 return null;
             }
             catch (Exception ex)
             {
-                throw new Exception("doLicense.GetLicense (by Name):" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
+                throw new Exception("doLicense.GetLicense (by Name):" + generic.lineBreak + generic.lineBreak + ex);
             }
         }
 
@@ -564,41 +498,27 @@ namespace qs2.core.license
             {
                 qs2.core.license.dsLicense dsParticipant = new core.license.dsLicense();
                 qs2.core.license.dsLicense dsApplication = new core.license.dsLicense();
-                qs2.core.license.doLicense doLicense1 = new core.license.doLicense();
 
-                System.Collections.Generic.List<string> files = doLicense1.getLicensFiles();
-                foreach (string file in files)
-                {
-                    dsParticipant.Clear();
-                    dsApplication.Clear();
-                    string xmlString = doLicense1.OpenFileAndDecrypt(file);
-                    System.IO.StringReader strReader = new System.IO.StringReader(xmlString);
-                    dsParticipant.ReadXml(strReader, System.Data.XmlReadMode.ReadSchema);
-                    doLicense1.checkParticipantsInLicenseFile(dsParticipant, false, true);
-                    
-                    if (dsParticipant.Participant.Rows.Count == 1)
-                    {
-                        qs2.core.license.doLicense.rParticipant = (qs2.core.license.dsLicense.ParticipantRow)dsParticipant.Participant.Rows[0];
-                        qs2.core.license.dsLicense.ApplicationRow[] rApplications = (qs2.core.license.dsLicense.ApplicationRow[])dsParticipant.Application.Select(dsParticipant.Participant.IDParticipantColumn.ColumnName + "='" + qs2.core.license.doLicense.rParticipant.IDParticipant + "'");
-                        foreach (qs2.core.license.dsLicense.ApplicationRow rApplication in rApplications)
-                        {
-                            if (rApplication.IDApplication.Trim().ToLower().Equals(Application.Trim().ToLower()))
-                            {
-                                qs2.core.license.doLicense.rApplication = rApplication;
-                                return true;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        throw new Exception("doLicense.loadParticipantApp: dsParticipant.Participant.Rows.Count != 1!");
-                    }
-                }
-                return false;
+                qs2.core.license.doLicense.rParticipant = dsParticipant.Participant.NewParticipantRow();
+                rParticipant.IDParticipant = "PMDS";
+                rParticipant.LicCustomer = "PMDS";
+
+                qs2.core.license.doLicense.rApplication = dsApplication.Application.NewApplicationRow();
+                rApplication.IDApplication = "PMDS";
+                rApplication.IDParticipant = "ALL";
+
+                dsLicense lic = new dsLicense();
+                var r = lic.Participant.NewParticipantRow();
+                r.IDParticipant = "PMDS";
+                r.LicCustomer = "PMDS";
+                lic.Participant.AddParticipantRow(r);
+                doLicense._dsLicenseAct = lic;
+
+                return true;
             }
             catch (Exception ex)
             {
-                throw new Exception("doLicense.autoLoadParticipantAndApplication: " + ex.ToString());
+                throw new Exception("doLicense.autoLoadParticipantAndApplication: " + ex);
             }
         }
     }
