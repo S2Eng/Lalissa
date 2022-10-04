@@ -522,14 +522,12 @@ namespace qs2.sitemap.workflowAssist
                 string protocollForAdmin = "";
                 bool ProtocolWindow = false;
 
-                this.cListAssistentElem.assistent.resetDropDownProcGroupsMain(this.cListAssistentElem.ID, ref ColumnNameClicked);
                 this.cListAssistentElem.assistent.doAssignmentsDropDown(ref protocollForAdmin, ref ProtocolWindow, IDSelListCkicked, bOn);
 
                 if (protocollForAdmin.Trim() != "")
                 {
                     qs2.design.auto.multiControl.ownMCInfo.openProtocoll(ref protocollForAdmin);
                 }
-
             }
         }
 

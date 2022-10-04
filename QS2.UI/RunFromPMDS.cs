@@ -60,10 +60,10 @@ namespace qs2.ui
                 qs2.core.ENV.connStr = sb.ConnectionString;
                 qs2.core.ENV.readPathes(false, false, true);
 
-                qs2.core.vb.ui.loadStyleInfrag(true, "Light", "run from other System");
+                qs2.core.vb.ui.loadStyleInfrag(true, "Light", "Run from PMDS");
                 qs2.core.ENV.ReadConnInfoDb();
 
-                if (qs2.core.license.doLicense.autoLoadParticipantAndApplication(Application))
+                if (qs2.core.license.doLicense.AutoLoadParticipantAndApplication())
                 {
                     if (qs2.core.logIn.doConnect2(true, false, false, "", true, true))
                     {
@@ -89,7 +89,7 @@ namespace qs2.ui
                 }
                 else
                 {
-                    throw new Exception("RunFromPMDS.LogIn: Error load Participant and Application! (Function autoLoadParticipantAndApplication)");
+                    throw new Exception("RunFromPMDS.LogIn: Error load Participant and Application! (Function AutoLoadParticipantAndApplication)");
                 }
             }
             catch (Exception ex)

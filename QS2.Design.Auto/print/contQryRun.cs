@@ -1177,9 +1177,6 @@ namespace qs2.ui.pint
                 this.Cursor = Cursors.WaitCursor;
 
                 this.defaultApplication = selectedApplication;
-                System.Collections.Generic.List<string> lstApplicationsLicensed = new List<string>();
-                bool ApplicationFound = false;
-                qs2.core.license.doLicense.selApplication(this.defaultApplication.Trim(), ref lstApplicationsLicensed, ref ApplicationFound);
                 this.loadGroups(selectedApplication);
             }
             catch (Exception ex)
@@ -1238,30 +1235,10 @@ namespace qs2.ui.pint
                     this.loadGroups(this.defaultApplication);
                     Application.DoEvents();
                 }
-
-                if (this.Visible)
-                {
-                    if (this.defaultApplication.Trim() != "")
-                    {
-                        System.Collections.Generic.List<string> lstApplicationsLicensed = new List<string>();
-                        bool ApplicationFound = false;
-                        qs2.core.license.doLicense.selApplication(this.defaultApplication.Trim(), ref lstApplicationsLicensed, ref ApplicationFound);
-                    }
-                }
-
-                //if (qs2.ui.print.contQryAdmin.dataChanged)
-                //{
-                //    this.loadGroups(this.defaultApplication);
-                //    qs2.ui.print.contQryAdmin.dataChanged = false;
-                //}
-
             }
             catch (Exception ex)
             {
                 throw new Exception("doVisible: " + ex.ToString());
-            }
-            finally
-            {
             }
         }
 

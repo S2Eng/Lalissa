@@ -63,7 +63,7 @@ namespace qs2.sitemap
             try
             {
                 this.dsLicense1.Applications.Clear();
-                this.doLicense1.fillTableApplicationsxy(this.dsLicense1, this._OnlyLicensedProducts, true);
+                this.doLicense1.FillTableApplications(this.dsLicense1);
                 this.ultraDropDownApp.Refresh();
 
             }

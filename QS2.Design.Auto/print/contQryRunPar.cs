@@ -154,12 +154,6 @@ namespace qs2.ui.print
                     right_QueryReportOwn = true;
                 }
 
-                //Externe Abfragen nur wenn das Recht und wenn die Lizenz vorhanden ist und das Datum gültig ist
-                bool bUseExternalQueries = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightExternalQueries, false) 
-                       && qs2.core.license.doLicense.GetLicense(qs2.core.Enums.eLicense.LIC_QUERYFROMMASTER).bValue
-                       && qs2.core.license.doLicense.GetLicense(qs2.core.Enums.eLicense.LIC_QUERYFROMMASTER_DATE).dValue.Date >= DateTime.Today
-                       && qs2.core.license.doLicense.GetLicense(qs2.core.Enums.eLicense.LIC_STS).bValue;
-
                 this.contSelListQueries1._IsSubQueriesFromMainControl = true;
                 this.grpQueryParameter.Visible = false;
 

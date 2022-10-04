@@ -172,35 +172,21 @@ Public Class contSelChaptFldShort
 
                     Dim lstChaptersToDelete As New System.Collections.Generic.List(Of qs2.core.vb.dsAdmin.tblSelListEntriesRow)
                     For Each rSelListChapter As qs2.core.vb.dsAdmin.tblSelListEntriesRow In Me.DsAdmin1.tblSelListEntries
-                        Dim rigthOK As Boolean = False
-                        If rSelListChapter.Classification.Trim() <> "" Then
-                            Dim LicenseKeyYesFound As Boolean = False
-                            Dim lstLicenseKeys As System.Collections.Generic.List(Of String) = qs2.core.generic.readStrVariables(rSelListChapter.Classification.Trim())
-                            For Each LicensekeyFound As String In lstLicenseKeys
-                                Dim Var As String = ""
-                                Dim VarValue As String = ""
-                                qs2.core.generic.readVariableAndValue(LicensekeyFound, Var, VarValue)
-                                Dim LicenseFoundForSession As qs2.core.Enums.cLicense = qs2.core.license.doLicense.GetLicense(VarValue.Trim())
-                                If Not LicenseFoundForSession Is Nothing Then
-                                    If LicenseFoundForSession.bValue And Not LicenseKeyYesFound Then
-                                        rigthOK = True
-                                        LicenseKeyYesFound = True
-                                    End If
-                                End If
-                            Next
-                        Else
-                            rigthOK = True
-                        End If
+                        Dim rigthOK As Boolean = True
+
                         If qs2.core.ENV.adminSecure Then
                             rigthOK = True
                         End If
+                        
                         If Not rigthOK Then
                             lstChaptersToDelete.Add(rSelListChapter)
                         End If
+                        
                         If Not b.CheckUserHasRightChapter(IDApplication, rSelListChapter.ID, lSelListEntryObj_RolesUsr, db) Then
                             lstChaptersToDelete.Add(rSelListChapter)
                         End If
                     Next
+
                     For Each rSelListChapterToDelete As qs2.core.vb.dsAdmin.tblSelListEntriesRow In lstChaptersToDelete
                         rSelListChapterToDelete.Delete()
                     Next

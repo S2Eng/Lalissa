@@ -129,7 +129,7 @@ namespace qs2.sitemap
             try
             {
                 this.dsLicense1.Applications.Clear();
-                this.doLicense1.fillTableApplicationsxy(this.dsLicense1, this._OnlyLicensedProducts, this._ShowAll);
+                this.doLicense1.FillTableApplications(this.dsLicense1);
 
                 bool ApplicationOK = true;
                 if (qs2.core.license.doLicense.rApplication != null)

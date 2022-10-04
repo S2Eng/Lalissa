@@ -246,11 +246,7 @@
             Me.getSelListEntrysAll(Parameters, "", sqlAdmin.dsAllAdmin, eTypAuswahlList.all, "", license.doLicense.eApp.ALL.ToString())
             Me.getSelListEntrysSort(-999, "", Me.dsAllAdmin, eTypSelListSort.All, "")
 
-            If ClearDataTable Then
-                Dim b As New businessFramework()
-                b.autoGenerateObjectFields(False, False, AddGroup)
-                b.autoGenerateObjectFields(True, False, AddGroup)
-                b.autoGenerateObjectFields(False, True, AddGroup)
+            If  ClearDataTable Then
             End If
 
         Catch ex As Exception
@@ -338,11 +334,8 @@
         Next
 
         If ClearDataTableSelListEntries Then
-            Dim b As New core.vb.businessFramework()
-            b.autoGenerateObjectFields(False, False)
-            b.autoGenerateObjectFields(True, False)
-            b.autoGenerateObjectFields(False, True)
         End If
+
         Me.allCriteriasLoaded = True
     End Sub
 

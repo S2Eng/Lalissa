@@ -138,7 +138,7 @@ namespace qs2.design.auto
                 {
                     ownMCCriteria.dsLicense1 = new core.license.dsLicense();
                     core.license.doLicense doLicense1 = new core.license.doLicense();
-                    doLicense1.getAppsLicensedForParticipant(ownMCCriteria.dsLicense1, qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), true);
+                    doLicense1.GetAppsLicensedForParticipant(ownMCCriteria.dsLicense1);
                 }
 
             }

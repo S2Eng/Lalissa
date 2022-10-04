@@ -885,21 +885,7 @@ namespace qs2.core.db.ERSystem
         {
             try
             {
-                bool LicenseKeyYesFound = false;
-                foreach (string LicensekeyFound in lstLicenseKeys)
-                {
-                    qs2.core.Enums.cLicense LicenseFoundForSession = qs2.core.license.doLicense.GetLicense(LicensekeyFound.Trim());
-                    if (LicenseFoundForSession != null)
-                    {
-                        if (LicenseFoundForSession.bValue == true && !LicenseKeyYesFound)
-                        {
-                            LicenseKeyYesFound = true;
-                            return true;
-                        }
-                    }
-                }
-            
-                return false;
+                return true;
             }
             catch (Exception ex)
             {
