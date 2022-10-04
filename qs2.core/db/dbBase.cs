@@ -227,6 +227,8 @@ namespace qs2.core
                 {
                     string xy = "";
                 }
+                cmd.CommandText = HttpUtility.HtmlDecode(cmd.CommandText);
+
                 da.SelectCommand.CommandTimeout = 0;
                 da.Fill(DataTable1);
                 dsQryAuto1.Tables.Add(DataTable1);
