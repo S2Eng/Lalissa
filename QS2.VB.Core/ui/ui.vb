@@ -379,20 +379,6 @@ Public Class ui
                 cbo.Items.Add(opt)
             End If
 
-            If Application.Trim().ToLower() = qs2.core.license.doLicense.eApp.CARDIAC.ToString().Trim().ToLower() Then
-                If qs2.core.license.doLicense.GetLicense(qs2.core.Enums.eLicense.LIC_CARDIO_TECH).bValue Then
-                    opt = New ValueListItem
-                    opt.DataValue = qs2.core.vb.sqlObjects.eTypSelObj.CPBSerialNumber
-                    opt.DisplayText = qs2.core.language.sqlLanguage.getRes("CPBSerialNo")
-                    If Not optBoxPatient Is Nothing Then
-                        optBoxPatient.Items.Add(opt)
-                    End If
-                    If Not cbo Is Nothing Then
-                        cbo.Items.Add(opt)
-                    End If
-                End If
-            End If
-
         Catch ex As Exception
             Throw New Exception("ui.loadSearchPatients: " + ex.ToString())
         End Try

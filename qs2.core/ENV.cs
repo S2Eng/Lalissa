@@ -137,7 +137,7 @@ namespace qs2.core
         public static bool LoggedInAsDomainUser = false;
         public static string ConnStrQTH = "";
 
-        public static string DefaultApplicationThreadxy = qs2.core.license.doLicense.eApp.CARDIAC.ToString();
+        public static string DefaultApplicationThreadxy = qs2.core.license.doLicense.eApp.PMDS.ToString();
         public static bool StaysAsExternProcess2 = true;
         public static bool IsExternProcess = false;
         public static bool SendSetForgroundToMainStayUI = true;

@@ -71,8 +71,6 @@ Public Class sqlProtocoll
                         Next
 
                         FilterProductsEntries = "(" + FilterProductsEntries + ")"
-                    Else
-                        FilterProductsEntries = "(IDApplication = '" + qs2.core.license.doLicense.eApp.NONE.ToString() + "')"  'User hat kein Produkt zugeordnet -> darf keine Einträge im Log sehen
                     End If
                 End Using
             End If

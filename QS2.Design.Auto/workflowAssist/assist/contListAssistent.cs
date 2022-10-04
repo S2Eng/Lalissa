@@ -189,15 +189,8 @@ namespace qs2.sitemap.workflowAssist
                         {
                             contButtAssistentElem1.btnOK.Visible = false;
                             contButtAssistentElem1.btnOK.Height = 0;
-                            if (Application.ToString().Trim().Equals(qs2.core.license.doLicense.eApp.VASCULAR.ToString(), StringComparison.OrdinalIgnoreCase))
-                            {
-                                contButtAssistentElem1.panelBottom.Visible = true;
-                            }
-                            else
-                            {
-                                contButtAssistentElem1.panelBottom.Height = 0;
-                                contButtAssistentElem1.panelBottom.Visible = false;
-                            }
+                            contButtAssistentElem1.panelBottom.Height = 0;
+                            contButtAssistentElem1.panelBottom.Visible = false;
                             contButtAssistentElem1.Height = this.panelButtons.Height - 30;
                             contButtAssistentElem1.Top = (this.panelButtons.Height - contButtAssistentElem1.Height) / 2;
                         }

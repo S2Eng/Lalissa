@@ -14,14 +14,9 @@ namespace qs2.core.license
         
         public enum eApp
         {
-            CARDIAC = 1,
-            VASCULAR = 2,
-            QTH = 3,
             PMDS = 4,
             TestProduct = 5,
-            NC = 6,
-            ALL = 0,
-            NONE = -1
+            ALL = 0
         }
 
         public static string typFileCodedSel { get; set; } = "QS2 License Files (*.lic)|*.lic";
@@ -31,18 +26,6 @@ namespace qs2.core.license
         public static license.dsLicense.ParticipantRow rParticipant { get; set; }
         public static license.dsLicense.VariablesDataTable tVariables { get; set; } = new license.dsLicense.VariablesDataTable();
         public static dsLicense _dsLicenseAct { get; set; }
-
-        //public static license.dsLicense.ParticipantRow rParticipant
-        //{
-        //    get
-        //    {
-        //        return doLicense._rParticipant;
-        //    }
-        //    set
-        //    {
-        //        doLicense._rParticipant = value;
-        //    }
-        //}
 
         public static license.dsLicense.ApplicationRow rApplication
         {

@@ -336,27 +336,7 @@ namespace qs2.sitemap.workflowAssist
                 this.contListElementDropDown1.Dock = DockStyle.None;
                 this.btnOK.Dock = DockStyle.None;
                 this.panelElement.Dock = DockStyle.None;
-
                 bool PanelBottomVisible = false;
-                if (this.cListAssistentElem._TypList == core.Enums.eTypList.CHAPTERS)
-                {
-                    PanelBottomVisible = false;
-                }
-                else
-                {
-                    if (this.cListAssistentElem.IDApplication.ToString().Trim().Equals(qs2.core.license.doLicense.eApp.VASCULAR.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        PanelBottomVisible = true;
-                    }
-                    else
-                    {
-                        PanelBottomVisible = false;
-                    }
-                }
-                if (IsEvaluation)
-                {
-                    PanelBottomVisible = false;
-                }
 
                 this.btnElement.Top = 0;
                 this.btnOK.Top = 0;
