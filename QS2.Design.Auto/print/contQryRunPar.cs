@@ -843,7 +843,6 @@ namespace qs2.ui.print
                         newElement.OwnLevelLeftWidth = 250;
                         newElement.ownMCTxt1.SelectedText = "";
                         newElement.ownMCTxt1.TextTranslated = "";
-                        newElement.ownMCTxt1.TextRightTranslated = "";
                         newElement.ownMCTxt1.TextCombinationTranslated = "";
 
                         this.drawMulticontrol1.setMultiControl(newElement, rQry, rSelectedSelList, typQueryDef, IDApplication, IDParticipant,
@@ -958,7 +957,6 @@ namespace qs2.ui.print
 
                     newElement.ownMCTxt1.SelectedText = "";
                     newElement.ownMCTxt1.TextTranslated = "";
-                    newElement.ownMCTxt1.TextRightTranslated = "";
 
                     newElement.ownMCCriteria1.initControl();
                     newElement._OwnLevelLeftVisible = true;

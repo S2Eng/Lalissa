@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Infragistics.Win.UltraWinGrid;
 using Infragistics.Win.UltraWinEditors;
-
-
 
 namespace qs2.design.auto
 {

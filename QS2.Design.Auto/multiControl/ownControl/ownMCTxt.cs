@@ -1,77 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-
-
-
 
 namespace qs2.design.auto.multiControl
 {
-
-
-
     public class ownMCTxt
     {
+        private string _SelectedText = "";
 
         public bool toolTipIsInitialized = false;
         public string TextTranslated = "";
-        public string TextRightTranslated = "";
-
-        private string _SelectedText = "";
-
-        public static int counterCallsFctSelectText = 0;
         public string TextCombinationTranslated = "";
         public string TextCombinationEndTranslated = "";
-
-
-
-
-
-
-
+        public string SelectedText { get; set; }
 
         public void doText(qs2.design.auto.multiControl.ownMultiControl ownMultiControl1, bool setFldShortIfNoIDResFound, bool DesignMode)
         {
             try
             {
-                //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownMultiControl1.OwnFldShort, "PreOpDiagGeneral", false))
-                //{
-                //    string xy = "";
-                //}
-
-                if (!DesignMode)
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                 {
                     if (ownMultiControl1._txtIsLoaded)
                     {
                         return;
                     }
                 }
-                //qs2.design.auto.workflowAssist.autoForm.UIPrepareThread.CriteriaThread CriteriaThread = null;
 
-                if (ownMultiControl1._FldShort.Trim() != "")
+                if (!string.IsNullOrWhiteSpace(ownMultiControl1._FldShort))
                 {
                     if (ownMultiControl1._OwnLevelLeftVisible)
                     {
-                        //qs2.design.auto.workflowAssist.autoForm.UIPrepareThread.dicProducts.TryGetValue(ownMultiControl1.OwnFldShort.Trim(), out CriteriaThread);
                         string txtFound = "";
-                        //if (CriteriaThread == null || ownMultiControl1.IsEvaluation)
-                        //{
-                            qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;
-                            txtFound = qs2.core.language.sqlLanguage.getRes(ownMultiControl1._FldShort.Trim(), core.Enums.eResourceType.Label,
-                                                                                    ownMultiControl1.ownMCCriteria1.IDParticipant,
-                                                                                    ownMultiControl1.ownMCCriteria1.Application, ref rLangFoundReturn,
-                                                                                    true, true, core.language.sqlLanguage.eLanguage.NoText,
-                                                                                    ownMultiControl1.IsEvaluation).Trim() + " ";
+                        qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;
+                        txtFound = qs2.core.language.sqlLanguage.getRes(ownMultiControl1._FldShort.Trim(), core.Enums.eResourceType.Label,
+                                                                                ownMultiControl1.ownMCCriteria1.IDParticipant,
+                                                                                ownMultiControl1.ownMCCriteria1.Application, ref rLangFoundReturn,
+                                                                                true, true, core.language.sqlLanguage.eLanguage.NoText,
+                                                                                ownMultiControl1.IsEvaluation).Trim() + " ";
 
-                        //}
-                        //else
-                        //{
-                        //    txtFound = CriteriaThread.txtTranslated;
-                        //}
-
-                        if (!txtFound.Trim().Equals(""))
+                        if (!string.IsNullOrWhiteSpace(txtFound))
                         {
                             ownMultiControl1.infragLabelLeft.Text = txtFound;
                             this.TextTranslated = txtFound;
@@ -103,20 +69,12 @@ namespace qs2.design.auto.multiControl
                          ownMultiControl1._controlType == core.Enums.eControlType.ThreeStateCheckBoxNoDb) &&
                         (!ownMultiControl1._OwnLevelLeftVisible))
                     {
-                        //qs2.design.auto.workflowAssist.autoForm.UIPrepareThread.dicProducts.TryGetValue(ownMultiControl1.OwnFldShort.Trim(), out CriteriaThread);
                         string res = "";
-                        //if (CriteriaThread == null || ownMultiControl1.IsEvaluation)
-                        //{
-                            qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;
-                            res = qs2.core.language.sqlLanguage.getRes(ownMultiControl1._FldShort.Trim(), core.Enums.eResourceType.Label,
-                                                                            ownMultiControl1.ownMCCriteria1.IDParticipant,
-                                                                            ownMultiControl1.ownMCCriteria1.Application, ref rLangFoundReturn,
-                                                                            true, true, core.language.sqlLanguage.eLanguage.NoText, ownMultiControl1.IsEvaluation).Trim();
-                        //}
-                        //else
-                        //{
-                        //    res = CriteriaThread.txtTranslated;
-                        //}
+                        qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;
+                        res = qs2.core.language.sqlLanguage.getRes(ownMultiControl1._FldShort.Trim(), core.Enums.eResourceType.Label,
+                                                                        ownMultiControl1.ownMCCriteria1.IDParticipant,
+                                                                        ownMultiControl1.ownMCCriteria1.Application, ref rLangFoundReturn,
+                                                                        true, true, core.language.sqlLanguage.eLanguage.NoText, ownMultiControl1.IsEvaluation).Trim();
 
                         ownMultiControl1.infragLabelRight.Text = " " + res;
                         this.TextTranslated = res;
@@ -139,24 +97,15 @@ namespace qs2.design.auto.multiControl
                             ownMultiControl1._controlType == core.Enums.eControlType.ThreeStateCheckBox ||
                             ownMultiControl1._controlType == core.Enums.eControlType.ThreeStateCheckBoxNoDb)
                         {
-                            //qs2.design.auto.workflowAssist.autoForm.UIPrepareThread.dicProducts.TryGetValue(ownMultiControl1.OwnFldShort.Trim(), out CriteriaThread);
                             string res = "";
-                            //if (CriteriaThread == null || ownMultiControl1.IsEvaluation)
-                            //{
-                                qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;
-                                res = qs2.core.language.sqlLanguage.getRes(ownMultiControl1._FldShort.Trim(),
-                                                                                core.Enums.eResourceType.LabelRight,
-                                                                                ownMultiControl1.ownMCCriteria1.IDParticipant,
-                                                                                ownMultiControl1.ownMCCriteria1.Application, ref rLangFoundReturn,
-                                                                                true, true, core.language.sqlLanguage.eLanguage.NoText, ownMultiControl1.IsEvaluation).Trim();
-                            //}
-                            //else
-                            //{
-                            //    res = CriteriaThread.txtTranslatedLabelRight;
-                            //}
+                            qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;
+                            res = qs2.core.language.sqlLanguage.getRes(ownMultiControl1._FldShort.Trim(),
+                                                                            core.Enums.eResourceType.LabelRight,
+                                                                            ownMultiControl1.ownMCCriteria1.IDParticipant,
+                                                                            ownMultiControl1.ownMCCriteria1.Application, ref rLangFoundReturn,
+                                                                            true, true, core.language.sqlLanguage.eLanguage.NoText, ownMultiControl1.IsEvaluation).Trim();
 
                             ownMultiControl1.infragLabelRight.Text = " " + res;
-                            this.TextRightTranslated = res;
                             if (ownMultiControl1._controlType == core.Enums.eControlType.CheckBox ||
                                 ownMultiControl1._controlType == core.Enums.eControlType.CheckBoxNoDb)
                             {
@@ -230,25 +179,15 @@ namespace qs2.design.auto.multiControl
                         selListToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("SelList");
                         infoFieldSQLServerToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("infoFieldSQLServer");
                         fielShortsToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("ListFielShorts") + " [" + ownMultiControl1._controlType.ToString() + "]";
-                        //infoToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("Info");
-                        //infoToolStripMenuItem.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Info, 32, 32);
                         infoClassificationToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("Info") + " " + qs2.core.language.sqlLanguage.getRes("Classification");
 
-                        //if (!DesignMode && qs2.core.Settings.adminSecure && qs2.core.vb.actUsr.rUsr.isAdmin)
-                        if (!DesignMode && qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
+                        if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv" && qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
                         {
                             ownMultiControl1.ContextMenuStrip = contextMenuStripSelList;
                             criteriasToolStripMenuItem.Visible = true;
                             ressourcenToolStripMenuItem.Visible = true;
                             infoClassificationToolStripMenuItem.Visible = true;
-                            if (ownMultiControl1._controlType == core.Enums.eControlType.ComboBox)
-                            {
-                                selListToolStripMenuItem.Visible = true;
-                            }
-                            else
-                            {
-                                selListToolStripMenuItem.Visible = false;
-                            }
+                            selListToolStripMenuItem.Visible = ownMultiControl1._controlType == core.Enums.eControlType.ComboBox;
 
                             infoFieldSQLServerToolStripMenuItem.Visible = true;
                             if (ownMultiControl1._FldShorts != null)
@@ -286,23 +225,23 @@ namespace qs2.design.auto.multiControl
                                                     ownMultiControl1.ownMCCriteria1.Application, ref rLangFoundReturn2, true, false);
 
                     //If Tooltip is available -> show always
-                    if (!String.IsNullOrWhiteSpace(txtTip))
+                    if (!string.IsNullOrWhiteSpace(txtTip))
                     {
                         txtToolTip = txtTip;
-                        if (qs2.core.ENV.ExtendedUI && !String.IsNullOrWhiteSpace(txtHelp))
+                        if (qs2.core.ENV.ExtendedUI && !string.IsNullOrWhiteSpace(txtHelp))
                         {
                             txtToolTip += "\n" + txtHelp;
                         }
                     }
                     else
                     {
-                        if (qs2.core.ENV.ExtendedUI && !String.IsNullOrWhiteSpace(txtHelp))
+                        if (qs2.core.ENV.ExtendedUI && !string.IsNullOrWhiteSpace(txtHelp))
                         {
                             txtToolTip = txtHelp;
                         }
                     }
 
-                    if (!String.IsNullOrWhiteSpace(txtToolTip))
+                    if (!string.IsNullOrWhiteSpace(txtToolTip))
                     {
                         if (ownMultiControl1._controlType == core.Enums.eControlType.CheckBox ||
                             ownMultiControl1._controlType == core.Enums.eControlType.CheckBoxNoDb)
@@ -348,11 +287,6 @@ namespace qs2.design.auto.multiControl
                     }
                 }
 
-                //if (this.TextTranslated.Trim() == "")
-                //{
-                //    string xy = "";
-                //}
-
                 ownMultiControl1._txtIsLoaded = true;
             }
             catch (Exception ex)
@@ -363,207 +297,15 @@ namespace qs2.design.auto.multiControl
             }
         }
 
-        public void setToolTipFormatForDbControl(qs2.design.auto.multiControl.ownMultiControl ownControl1)
-        {
-            try
-            {
-                if (this.toolTipIsInitialized)
-                {
-                    return;
-                }
-
-                if (ownControl1.ownMCUI1.controlIsDbDataControl(ownControl1))
-                {
-                    if (ownControl1.ownMCUI1.IsVisible_Criteriaxy && ownControl1.ownMCCriteria1.rCriteria != null)
-                    {
-                        if (ownControl1._controlType == core.Enums.eControlType.Integer ||
-                            ownControl1._controlType == core.Enums.eControlType.Numeric)
-                        {
-                            //if (ownControl1._controlType == core.Enums.eControlType.Integer)
-                            //{
-                            //    string xy = "";
-                            //}
-
-                            string infoToolTip = qs2.core.language.sqlLanguage.getRes("MinValue") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.MinValue.ToString() + qs2.core.generic.lineBreak +
-                                            qs2.core.language.sqlLanguage.getRes("MaxValue") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.MaxValue.ToString() + qs2.core.generic.lineBreak;
-
-                            if (qs2.core.ENV.adminSecure)
-                            {
-                                infoToolTip += qs2.core.language.sqlLanguage.getRes("FormatString") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.FormatString + qs2.core.generic.lineBreak +
-                                               qs2.core.language.sqlLanguage.getRes("MaskInput") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.MaskInput + qs2.core.generic.lineBreak +
-                                               qs2.core.language.sqlLanguage.getRes("ControlType") + ": " + core.Enums.eControlType.Numeric.ToString();
-                                infoToolTip += qs2.core.generic.lineBreak + ownControl1.ownMCTxt1.getToolTippDefaultValueDB(ownControl1);
-
-                                ownControl1.ownMCInfo1.doToolTipxy(ownControl1.Numeric, qs2.core.language.sqlLanguage.getRes("Info"), infoToolTip, ownControl1, false,
-                                    ownControl1.ownMCCriteria1.Application, ownControl1.OwnFieldForALLProducts);
-                            }
-
-                        }
-                        else if (ownControl1._controlType == core.Enums.eControlType.DateTime)
-                        {
-                            if (qs2.core.ENV.adminSecure)
-                            {
-                                string infoToolTip = qs2.core.language.sqlLanguage.getRes("FormatString") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.FormatString + qs2.core.generic.lineBreak +
-                                             qs2.core.language.sqlLanguage.getRes("MaskInput") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.MaskInput + qs2.core.generic.lineBreak +
-                                             qs2.core.language.sqlLanguage.getRes("ControlType") + ": " + core.Enums.eControlType.DateTime.ToString();
-                                infoToolTip += qs2.core.generic.lineBreak + ownControl1.ownMCTxt1.getToolTippDefaultValueDB(ownControl1);
-
-                                ownControl1.ownMCInfo1.doToolTipxy(ownControl1.DateTime, qs2.core.language.sqlLanguage.getRes("Info"), infoToolTip,
-                                                                ownControl1, false, ownControl1.ownMCCriteria1.Application, ownControl1.OwnFieldForALLProducts);
-                            }
-                        }
-                        else if (ownControl1._controlType == core.Enums.eControlType.Date)
-                        {
-                            if (qs2.core.ENV.adminSecure)
-                            {
-                                string infoToolTip = qs2.core.language.sqlLanguage.getRes("FormatString") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.FormatString + qs2.core.generic.lineBreak +
-                                             qs2.core.language.sqlLanguage.getRes("MaskInput") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.MaskInput + qs2.core.generic.lineBreak +
-                                             qs2.core.language.sqlLanguage.getRes("ControlType") + ": " + core.Enums.eControlType.Date.ToString();
-                                infoToolTip += qs2.core.generic.lineBreak + ownControl1.ownMCTxt1.getToolTippDefaultValueDB(ownControl1);
-
-                                ownControl1.ownMCInfo1.doToolTipxy(ownControl1.Date, qs2.core.language.sqlLanguage.getRes("Info"), infoToolTip, ownControl1, false,
-                                                                ownControl1.ownMCCriteria1.Application, ownControl1.OwnFieldForALLProducts);
-                            }
-                        }
-                        else if (ownControl1._controlType == core.Enums.eControlType.Time)
-                        {
-                            if (qs2.core.ENV.adminSecure)
-                            {
-                                string infoToolTip = qs2.core.language.sqlLanguage.getRes("FormatString") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.FormatString + qs2.core.generic.lineBreak +
-                                             qs2.core.language.sqlLanguage.getRes("MaskInput") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.MaskInput + qs2.core.generic.lineBreak +
-                                             qs2.core.language.sqlLanguage.getRes("ControlType") + ": " + core.Enums.eControlType.Time.ToString();
-                                infoToolTip += qs2.core.generic.lineBreak + ownControl1.ownMCTxt1.getToolTippDefaultValueDB(ownControl1);
-
-                                ownControl1.ownMCInfo1.doToolTipxy(ownControl1.Time, qs2.core.language.sqlLanguage.getRes("Info"), infoToolTip, ownControl1, false,
-                                                                ownControl1.ownMCCriteria1.Application, ownControl1.OwnFieldForALLProducts);
-                            }
-                        }
-                        else if (ownControl1._controlType == core.Enums.eControlType.Textfield)
-                        {
-                            string infoToolTip = qs2.core.language.sqlLanguage.getRes("MinLength") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.MinValue.ToString() + qs2.core.generic.lineBreak +
-                                                 qs2.core.language.sqlLanguage.getRes("MaxLength") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.MaxValue.ToString() + qs2.core.generic.lineBreak;
-
-                            if (qs2.core.ENV.adminSecure)
-                            {
-                                infoToolTip += qs2.core.language.sqlLanguage.getRes("ControlType") + ": " + core.Enums.eControlType.Textfield.ToString();
-                                infoToolTip += qs2.core.generic.lineBreak + ownControl1.ownMCTxt1.getToolTippDefaultValueDB(ownControl1);
-
-                                ownControl1.ownMCInfo1.doToolTipxy(ownControl1.Textfield, qs2.core.language.sqlLanguage.getRes("Info"), infoToolTip, ownControl1, false,
-                                    ownControl1.ownMCCriteria1.Application, ownControl1.OwnFieldForALLProducts);
-                            }
-                        }
-                        else if (ownControl1._controlType == core.Enums.eControlType.TextfieldMulti)
-                        {
-                            string infoToolTip = qs2.core.language.sqlLanguage.getRes("MinLength") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.MinValue.ToString() + qs2.core.generic.lineBreak +
-                                                    qs2.core.language.sqlLanguage.getRes("MaxLength") + ": " + ownControl1.ownMCFormat1.calculatedFormat1.MaxValue.ToString() + qs2.core.generic.lineBreak;
-
-                            if (qs2.core.ENV.adminSecure)
-                            {
-                                infoToolTip += qs2.core.language.sqlLanguage.getRes("ControlType") + ": " + core.Enums.eControlType.TextfieldMulti.ToString();
-                                infoToolTip += qs2.core.generic.lineBreak + ownControl1.ownMCTxt1.getToolTippDefaultValueDB(ownControl1);
-                                ownControl1.ownMCInfo1.doToolTipxy(ownControl1.TextfieldMulti, qs2.core.language.sqlLanguage.getRes("Info"), infoToolTip, ownControl1, false, ownControl1.ownMCCriteria1.Application, ownControl1.OwnFieldForALLProducts);
-                            }
-                        }
-                        else if (ownControl1._controlType == core.Enums.eControlType.CheckBox)
-                        {
-                            if (qs2.core.ENV.adminSecure)
-                            {
-                                string infoToolTip = "";
-                                infoToolTip += qs2.core.language.sqlLanguage.getRes("ControlType") + ": " + ownControl1._controlType.ToString();
-                                infoToolTip += qs2.core.generic.lineBreak + ownControl1.ownMCTxt1.getToolTippDefaultValueDB(ownControl1);
-
-                                ownControl1.ownMCInfo1.doToolTipxy(ownControl1.CheckBox, qs2.core.language.sqlLanguage.getRes("Info"), infoToolTip, ownControl1, false,
-                                                                ownControl1.ownMCCriteria1.Application, ownControl1.OwnFieldForALLProducts);
-                            }
-                        }
-                        else if (ownControl1._controlType == core.Enums.eControlType.ThreeStateCheckBox)
-                        {
-                            if (qs2.core.ENV.adminSecure)
-                            {
-                                string infoToolTip = "";
-                                infoToolTip += qs2.core.language.sqlLanguage.getRes("ControlType") + ": " + ownControl1._controlType.ToString();
-                                infoToolTip += qs2.core.generic.lineBreak + ownControl1.ownMCTxt1.getToolTippDefaultValueDB(ownControl1);
-
-                                ownControl1.ownMCInfo1.doToolTipxy(ownControl1.ThreeStateCheckBox, qs2.core.language.sqlLanguage.getRes("Info"), infoToolTip, ownControl1, false,
-                                                                ownControl1.ownMCCriteria1.Application, ownControl1.OwnFieldForALLProducts);
-                            }
-                        }
-                        else if (ownControl1._controlType == core.Enums.eControlType.ComboBox)
-                        {
-                            if (qs2.core.ENV.adminSecure)
-                            {
-                                string infoToolTip = "";
-                                infoToolTip += qs2.core.language.sqlLanguage.getRes("ControlType") + ": " + ownControl1._controlType.ToString();
-                                infoToolTip += qs2.core.generic.lineBreak + ownControl1.ownMCTxt1.getToolTippDefaultValueDB(ownControl1);
-
-                                ownControl1.ownMCInfo1.doToolTipxy(ownControl1.ComboBox, qs2.core.language.sqlLanguage.getRes("Info"), infoToolTip, ownControl1, false,
-                                                                ownControl1.ownMCCriteria1.Application, ownControl1.OwnFieldForALLProducts);
-                            }
-                        }
-                    }
-                }
-
-                this.toolTipIsInitialized = true;
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCTxt.setToolTipFormat", ownControl1._FldShort, false, true,
-                                                                    ownControl1.ownMCCriteria1.Application,
-                                                                    qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-            }
-        }
-        public string getToolTippDefaultValueDB(qs2.design.auto.multiControl.ownMultiControl ownControl1)
-        {
-            try
-            {
-                if (ownControl1.ownMCCriteria1.defaultDBValue != null)
-                {
-                    object valueObj = ownControl1.ownMCCriteria1.defaultDBValue.valueObj;
-                    if (ownControl1.ownMCCriteria1.defaultDBValue.valueObj.GetType().Equals(typeof(System.DBNull)))
-                    {
-                        valueObj = "[null]";
-                    }
-                    return qs2.core.language.sqlLanguage.getRes("DefaultDBValue") + ": " + valueObj.ToString() + " ['" + ownControl1.ownMCCriteria1.defaultDBValue.valueStr + "']";
-                }
-                return "";
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCTxt.getToolTippDefaultValueDB", ownControl1._FldShort, false, true,
-                                                                ownControl1.ownMCCriteria1.Application,
-                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                return "";
-            }
-        }
-
-
-        public string SelectedText
-        {
-            get
-            {
-                return this._SelectedText;
-            }
-            set
-            {
-                this._SelectedText = value;
-            }
-        }
-
         public void getSelectedText(qs2.design.auto.multiControl.ownMultiControl ownMultiControl1, bool DesignMode)
         {
             try
             {
-                if (DesignMode)
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                     return;
-
-                //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownMultiControl1._FldShort, "StayComplete", false))
-                //{
-                //    string xy = "";
-                //}
 
                 string NoSpecification = qs2.core.language.sqlLanguage.getRes("NoSpecification").Trim();
 
-                //ownMCTxt.counterCallsFctSelectText += 1;
 
                 if (ownMultiControl1._controlType == core.Enums.eControlType.Integer ||
                     ownMultiControl1._controlType == core.Enums.eControlType.IntegerNoDb)
@@ -752,44 +494,24 @@ namespace qs2.design.auto.multiControl
                                                                 qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
         }
+
         public void doFocus(qs2.design.auto.multiControl.ownMultiControl ownMultiControl1, bool bOn)
         {
             try
             {
                 Infragistics.Win.DefaultableBoolean InfragOnOff = new Infragistics.Win.DefaultableBoolean();
-                //Infragistics.Win.DefaultableBoolean InfragBold = new Infragistics.Win.DefaultableBoolean();
 
-                //System.Drawing.Color ForeColor = new System.Drawing.Color();
-                //bool UseAppStyling = false;
                 if (bOn)
                 {
                     InfragOnOff = Infragistics.Win.DefaultableBoolean.True;
-                    //ForeColor = System.Drawing.Color.Black;   //System.Drawing.Color.RoyalBlue;  
-                    //UseAppStyling = false;
-                    //InfragBold = Infragistics.Win.DefaultableBoolean.False;
                 }
                 else
                 {
                     InfragOnOff = Infragistics.Win.DefaultableBoolean.False;
-                    //ForeColor = System.Drawing.Color.Black;
-                    //UseAppStyling = false;
-                    //InfragBold = Infragistics.Win.DefaultableBoolean.False;
                 }
-
-                //ownMultiControl1.infragLabelLeft.UseAppStyling = UseAppStyling;
-                //ownMultiControl1.infragLabelRight.UseAppStyling = UseAppStyling;
-                //ownMultiControl1.infragLabelTop.UseAppStyling = UseAppStyling;
-
-                //ownMultiControl1.infragLabelLeft.Appearance.ForeColor = ForeColor;
-                //ownMultiControl1.infragLabelRight.Appearance.ForeColor = ForeColor;
-                //ownMultiControl1.infragLabelTop.Appearance.ForeColor = ForeColor;
 
                 ownMultiControl1.infragLabelLeft.Appearance.FontData.Underline = InfragOnOff;
                 ownMultiControl1.infragLabelRight.Appearance.FontData.Underline = InfragOnOff;
-
-                //ownMultiControl1.infragLabelLeft.Appearance.FontData.Bold = InfragBold;
-                //ownMultiControl1.infragLabelRight.Appearance.FontData.Bold = InfragBold;
-                //ownMultiControl1.infragLabelTop.Appearance.FontData.Bold = InfragBold;
 
                 if (ownMultiControl1._controlType == core.Enums.eControlType.CheckBox ||
                     ownMultiControl1._controlType == core.Enums.eControlType.CheckBoxNoDb)
@@ -810,6 +532,5 @@ namespace qs2.design.auto.multiControl
                                                                 qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
         }
-
     }
 }
