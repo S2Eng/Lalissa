@@ -82,8 +82,7 @@ namespace qs2.design.auto.print
                             FldShortTmp = col.ColumnName.Trim();
                         }
                         bool HasCriteria = false;
-                        rigthOK = ownMCCriteria1.checkAssignments(null, ownMCRelationship.eTypAssignments.Roles, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive,
-                                                                        FldShortTmp, true, sqlAdminWork, ref HasCriteria, false, -999);
+                        rigthOK = true;
 
                         if (!rigthOK && HasCriteria)
                         {
@@ -160,17 +159,6 @@ namespace qs2.design.auto.print
                                     colIsCriteriaComboBox = true;
                                     string FldShortParentReturn = "";
                                     colIsCriteriaComboBoxAndIsInRelation = b.checkColumnComboBoxExistsSelListRelation(IDGroupToLoad.Trim(), IDApplication.Trim(), ref arrRelationship, ref FldShortParentReturn);
-
-                                    //Prüfen, ob die vorherige column FldShortParentReturn ist
-                                    if (!String.IsNullOrWhiteSpace(FldShortParentReturn))
-                                    {
-                                        if (!colPrevPrev.Equals(FldShortParentReturn, StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("InconsistentOrderInQuery") + ": "  + qs2.core.language.sqlLanguage.getRes(FldShortParentReturn) + " / " +
-                                              qs2.core.language.sqlLanguage.getRes(col.ColumnName), System.Windows.Forms.MessageBoxButtons.OK, "");
-                                            return null;                               
-                                        }
-                                    }
                                 }
                                 else if (rCriteriaFound.ControlType.Equals(core.Enums.eControlType.CheckBox.ToString(), StringComparison.OrdinalIgnoreCase))
                                 {

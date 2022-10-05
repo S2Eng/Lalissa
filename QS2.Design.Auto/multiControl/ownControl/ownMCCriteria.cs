@@ -10,8 +10,6 @@ using Infragistics.Win.UltraWinEditors;
 
 namespace qs2.design.auto
 {
-
-    
     public class ownMCCriteria
     {
         public string Application = "";
@@ -27,20 +25,15 @@ namespace qs2.design.auto
         public System.Collections.Generic.List<qs2.core.Enums.cVariables> lstVariablesClassification = new List<core.Enums.cVariables>();
         public System.Collections.Generic.List<string> lstLicenseKeys = new List<string>();
         public qs2.core.vb.dsAdmin.tblSelListEntriesObjRow[] arrSelListEntriesObj = null;
-        public ownMCRelationship MCRelationship = null;
-        public qs2.core.vb.dsAdmin.tblCriteriaOptRow[] arrCriteriaOptxy = null;
-        public qs2.core.vb.dsAdmin.tblSideLogicRow[] arrSideLogicxy = null;
         public qs2.core.SysDB.dsSysDB.COLUMNSRow rColSys = null;
         public bool IsNullableInDb = false;
         public qs2.core.generic.retValue defaultDBValue = null;
         public bool IsKeyDb = false;
 
-        public System.Windows.Forms.ErrorProvider errorProvider1 = null;
         public bool _isInitializedGetData = false;
         public bool _isInitializedCriteria = false;
         public bool _isInitializedVar = false;
 
-        public qs2.design.auto.multiControl.ownMCLogicRelation ownMCLogicRelation1 = null;
         public qs2.design.auto.multiControl.ownMCCombo ownMCCombo1 = new multiControl.ownMCCombo();
 
         public bool DefaultValuesCriteria = false;
@@ -60,29 +53,13 @@ namespace qs2.design.auto
 
         public static Nullable<DateTime> dNowAssign = null;
 
-
-
-
-
-
-
-
-
         public void initControl()
         {
             try
             {
                 if (this._isInitializedVar)
                     return;
-
-                //this.lstVariablesClassification = new List<core.Enums.cVariables>();
                 ownMCCriteria.initSharedDataSets(true);
-
-                this.MCRelationship = new ownMCRelationship();
-                this.MCRelationship.initControl(this.Application);
-
-                this.ownMCLogicRelation1 = new multiControl.ownMCLogicRelation();
-
                 this._isInitializedVar = true;
             }
             catch (Exception ex)
@@ -236,21 +213,8 @@ namespace qs2.design.auto
                         ownControlUI1.IsVisible_Criteriaxy = false;
                     }
 
-                    //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(FldShort, "VSPuImSz", false))
-                    //{
-                    //    string xy = "";
-                    //}
-
-                    //qs2.core.ui.addWatch("Criteria.getRelationsship: start " + FldShort.Trim(), true);
                     qs2.design.auto.ownMCCriteria.dsAdminWork.Clear();
-                    this.MCRelationship.getRelationsship(FldShort, IDApplicationTmp);
-                    //qs2.core.ui.addWatch("Criteria.getCriteriasOpt: start " + FldShort.Trim(), true);
-                    //this.arrCriteriaOpt = ownMCCriteria.sqlAdminWork.getCriteriasOpt(qs2.design.auto.ownMCCriteria.dsAdminWork, qs2.core.vb.sqlAdmin.eTypSelCriteriaOpt.idRam, FldShort, IDApplicationTmp);
-                    //qs2.core.ui.addWatch("Criteria.getSideLogic: start " + FldShort.Trim(), true);
-                    //this.arrSideLogic = ownMCCriteria.sqlAdminWork.getSideLogic(qs2.core.vb.sqlAdmin.dsAllAdmin, core.vb.sqlAdmin.eTypeSideLogic.FldShortApplication, -999, FldShort, IDApplicationTmp);
-                    //qs2.core.ui.addWatch("Criteria.getSysColumnRow: start " + FldShort.Trim(), true);
                     this.rColSys = qs2.core.SysDB.sqlSysDB.getSysColumnRow(this.rCriteria.SourceTable, this.rCriteria.FldShort, qs2.core.SysDB.sqlSysDB.dsSysDBAll, false);
-                    //qs2.core.ui.addWatch("Criteria.getSelListEntrysObj: start " + FldShort.Trim(), true);
                     this.arrSelListEntriesObj = ownMCCriteria.sqlAdminWork.getSelListEntrysObj(-999, core.vb.sqlAdmin.eDbTypAuswObj.Criterias, "", qs2.design.auto.ownMCCriteria.dsAdminWork,
                                                                                 core.vb.sqlAdmin.eTypAuswahlObj.allFldShortRam,
                                                                                 IDApplicationTmp, -999, FldShort, -999, "", -999);
@@ -307,17 +271,9 @@ namespace qs2.design.auto
                                 this.ownMCCombo1.initCombo(ownMultiControl1);
                                 ownMultiControl1.ControlForDropDown.initControl();
                             }
-                            else if (controlType == core.Enums.eControlType.Picture)
-                            {
-                                //string xy = "";
-                            }
 
-                            //qs2.core.ui.addWatch("Criteria.checkAssignments: start " + FldShort.Trim(), true);
                             bool HasCriteria = false;
                             System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
-                            this.checkAssignments(ctl, ownMCRelationship.eTypAssignments.Roles, ref protocollForAdmin, ref ProtocolWindow,
-                                                    ref lstElementsActive, FldShort, false, ownMCCriteria.sqlAdminWork, ref HasCriteria, false, -999);
-                            //qs2.core.ui.addWatch("Criteria.checkAssignments: end " + FldShort.Trim(), true);
                         }
                          
                         ownMultiControl1.ownMCUI1.getColorsFromClassification(ref ownMultiControl1);
@@ -330,7 +286,6 @@ namespace qs2.design.auto
                         }
 
                     }
-                    //string xyxy = "";
                 }
                 else
                 {
@@ -462,8 +417,6 @@ namespace qs2.design.auto
                         }
                         bool HasCriteria = false;
                         System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
-                        this.checkAssignments(ctl, ownMCRelationship.eTypAssignments.Roles, ref protocollForAdmin, ref ProtocolWindow,
-                                                ref lstElementsActive, FldShort, false, ownMCCriteria.sqlAdminWork, ref HasCriteria, false, -999);
                     }
                     else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownTab)))
                     {
@@ -484,8 +437,6 @@ namespace qs2.design.auto
                         }
                         bool HasCriteria = false;
                         System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
-                        this.checkAssignments(ctl, ownMCRelationship.eTypAssignments.Roles, ref protocollForAdmin, ref ProtocolWindow,
-                                                ref lstElementsActive, FldShort, false, ownMCCriteria.sqlAdminWork, ref HasCriteria, false, -999);
                     }
                     else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiGridSelList)))
                     {
@@ -506,16 +457,7 @@ namespace qs2.design.auto
                         }
                         bool HasCriteria = false;
                         System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
-                        this.checkAssignments(ctl, ownMCRelationship.eTypAssignments.Roles, ref protocollForAdmin, ref ProtocolWindow,
-                                                ref lstElementsActive, FldShort, false, ownMCCriteria.sqlAdminWork, ref HasCriteria, false, -999);
                     }
-                    //System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
-                    //this.checkAssignmentsxy(ctl, ownMCRelationship.eTypAssignments.Chapter, ref protocollForAdmin, ref ProtocolWindow,
-                    //                        ref lstElementsActive, ref FldShort);
-
-
-                    //string xyxy = "";
-
                 }
                 else
                 {
@@ -694,134 +636,6 @@ namespace qs2.design.auto
             }
         }
 
-        public bool checkAssignments(System.Windows.Forms.Control ctl, ownMCRelationship.eTypAssignments TypAssignmentToCheck,
-                                    ref string protocollForAdmin, ref bool ProtocolWindow,
-                                    ref System.Collections.Generic.List<string> lstElementsActive,
-                                    string FldShort, bool TranslateSelListInQuery,
-                                    qs2.core.vb.sqlAdmin sqlAdminWork, ref bool HasCriteria, 
-                                    bool RunAsSystemUser, int UserIDSystemuser)
-        {
-            try
-            {
-                if (TypAssignmentToCheck == ownMCRelationship.eTypAssignments.AutoSaveToChapter)
-                {
-                    dsAdminWork.Clear();
-                    string sGroup = "";
-                    Nullable<System.Guid> IDSelListObjChapter0 = null;
-                    bool ExistsInChapter0 = false;
-                    sGroup = "CHAPTERS0";
-                    qs2.core.vb.dsAdmin.vListEntriesWithGroupRow[] arrSelListWithGroup = null;
-                    arrSelListWithGroup = (qs2.core.vb.dsAdmin.vListEntriesWithGroupRow[])sqlAdminWork.getSelListEntrysRelGroup(sGroup, this.IDParticipant, this.Application,
-                                                                                                ref dsAdminWork, core.vb.sqlAdmin.eTypAuswahlList.IDGroupStrAppRam);   // OMC.IDApplication.Check
-                    this.IsInObjArr(ref arrSelListWithGroup, ref ExistsInChapter0, ref this.arrSelListEntriesObj, ref IDSelListObjChapter0);
-                    
-                    Nullable<System.Guid> IDSelListObjChapter1 = null;
-                    bool ExistsInChapter1 = false;
-                    sGroup = "CHAPTERS1";
-                    arrSelListWithGroup = (qs2.core.vb.dsAdmin.vListEntriesWithGroupRow[])sqlAdminWork.getSelListEntrysRelGroup(sGroup, this.IDParticipant, this.Application,
-                                                                                                ref dsAdminWork, core.vb.sqlAdmin.eTypAuswahlList.IDGroupStrAppRam);   // OMC.IDApplication.Check
-                    this.IsInObjArr(ref arrSelListWithGroup, ref ExistsInChapter1, ref this.arrSelListEntriesObj, ref IDSelListObjChapter1);
-
-                    if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiControl)))
-                    {
-                        qs2.design.auto.multiControl.ownMultiControl ownMultiControl1 = (qs2.design.auto.multiControl.ownMultiControl)ctl;
-                    }
-                    else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownGroupBox)))
-                    {
-                        qs2.design.auto.multiControl.ownGroupBox ownGroupBox1 = (qs2.design.auto.multiControl.ownGroupBox)ctl;
-                    }
-                    else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownTab)))
-                    {
-                        qs2.design.auto.multiControl.ownTab ownTab1 = (qs2.design.auto.multiControl.ownTab)ctl;
-                    }
-                    else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiGridSelList)))
-                    {
-                        qs2.design.auto.multiControl.ownMultiGridSelList ownMultiGridSelList1 = (qs2.design.auto.multiControl.ownMultiGridSelList)ctl;
-                    }
-                    else
-                    {
-                        throw new Exception("ownMCCriteria.checkAssignments: Control-Type '" + ctl.GetType().ToString() + "' not allowed for this operation!");
-                    }
-
-                }
-                else if (TypAssignmentToCheck == ownMCRelationship.eTypAssignments.ProcGroup)
-                {
-                    dsAdminWork.Clear();
-                    //System.Collections.Generic.List<string> lstProcGroupsActive = qs2.core.generic.readStrVariables(ProcGroupsActive.Trim());
-                    foreach (string ProcGroupActive in lstElementsActive)
-                    {
-                        dsAdminWork.Clear();
-                        qs2.core.vb.dsAdmin.vListEntriesWithGroupRow[] arrSelListWithGroup = null;
-                        arrSelListWithGroup = (qs2.core.vb.dsAdmin.vListEntriesWithGroupRow[])sqlAdminWork.getSelListEntrysRelGroup(ProcGroupActive, this.IDParticipant, this.Application,
-                                                                                                    ref dsAdminWork, core.vb.sqlAdmin.eTypAuswahlList.IDGroupStrAppRam);    // OMC.IDApplication.Check
-                        Nullable<System.Guid> IDSelListObj = null;
-                        bool Exists = false;
-                        this.IsInObjArr(ref arrSelListWithGroup, ref Exists, ref this.arrSelListEntriesObj, ref IDSelListObj);
-                    }
-                }
-                else if (TypAssignmentToCheck == ownMCRelationship.eTypAssignments.ProcGroupDropDownList)
-                {
-                    dsAdminWork.Clear();
-                }
-                else if (TypAssignmentToCheck == ownMCRelationship.eTypAssignments.ChapterDropDownList)
-                {
-                    dsAdminWork.Clear();
-                }
-                else if (TypAssignmentToCheck == ownMCRelationship.eTypAssignments.Roles)
-                {
-                    dsAdminWork.Clear();
-                    bool rigthOK = false;
-                    int rigthOKnVisible  = -1;
-                    int UserIDTmp = qs2.core.vb.actUsr.rUsr.ID;
-                    if (RunAsSystemUser)
-                    {
-                        UserIDTmp = UserIDSystemuser;
-                    }
-                    rigthOK = b.checkRigthFldShortForRole(FldShort, UserIDTmp, ref Application, ref HasCriteria);
-
-                    if (TranslateSelListInQuery)
-                    {
-                        return rigthOK;
-                    }
-                    else
-                    {
-                        if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiControl)))
-                        {
-                            qs2.design.auto.multiControl.ownMultiControl ownMultiControl1 = (qs2.design.auto.multiControl.ownMultiControl)ctl;
-                            ownMultiControl1.ownMCUI1.IsVisible_Roles = rigthOK;
-                        }
-                        else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownGroupBox)))
-                        {
-                            qs2.design.auto.multiControl.ownGroupBox ownGroupBox1 = (qs2.design.auto.multiControl.ownGroupBox)ctl;
-                            ownGroupBox1.IsVisibleControlAssignmentChapters = rigthOK;
-                        }
-                        else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownTab)))
-                        {
-                            qs2.design.auto.multiControl.ownTab ownTab1 = (qs2.design.auto.multiControl.ownTab)ctl;
-                            ownTab1.IsVisibleControlAssignmentChapters = rigthOK;
-                        }
-                        else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiGridSelList)))
-                        {
-                            qs2.design.auto.multiControl.ownMultiGridSelList ownMultiGridSelList1 = (qs2.design.auto.multiControl.ownMultiGridSelList)ctl;
-                            ownMultiGridSelList1.IsVisibleControlAssignmentChapters = rigthOK;
-                        }
-                        else
-                        {
-                            throw new Exception("ownMCCriteria.checkAssignments: Control-Type '" + ctl.GetType().ToString() + "' not allowed for this operation!");
-                        }
-                    }
-                }
-                return false;
-
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCCriteria.checkAssignments", FldShort, false, true,
-                                                                this.Application, qs2.core.Protocol.alwaysShowExceptionMulticontrol,
-                                                                qs2.core.Protocol.eTypeError.Error);
-                return false;
-            }
-        }
        
         public void IsInObjArr(ref qs2.core.vb.dsAdmin.vListEntriesWithGroupRow[] arrSelListToProve, ref bool Exists,
                                ref qs2.core.vb.dsAdmin.tblSelListEntriesObjRow[] arrSelListEntriesObj, ref Nullable<System.Guid> IDSelListObj)

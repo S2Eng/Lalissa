@@ -1135,10 +1135,6 @@ namespace qs2.design.auto.multiControl
                 {
                     qs2.design.auto.multiControl.ownMultiControl ownMultiControl1 = this;
                     qs2.core.generic.retValue retValue1 = this.ownMCDataBind1.getValueFromRow(ownMultiControl1);
-                    this.ownMCCriteria1.MCRelationship.doRelationship(ownMultiControl1._FldShort, ChapterParent.Trim(), ref retValue1, userChanged, SubRelation,
-                                                                        this.ownMCCriteria1.Application,
-                                                                        this.ownMCCriteria1.IDParticipant.ToString(),
-                                                                        ref typeRunning, ProcGroupDeactivated);
                 }
             }
             catch (Exception ex)

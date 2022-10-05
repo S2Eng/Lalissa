@@ -275,11 +275,6 @@ namespace qs2.design.auto.multiControl
                         }
                     }
 
-                    if (ownMultiControl1._controlType == core.Enums.eControlType.Picture)
-                    {
-                        ownMCRelationship.setPictureRessource(ownMultiControl1, ownMultiControl1._FldShort, ownMultiControl1.ownMCCriteria1.IDParticipant, ownMultiControl1.ownMCCriteria1.Application);
-                    }
-
                     qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn2 = null;
                     string txtToolTip = "";
                     string txtTip = qs2.core.language.sqlLanguage.getRes(ownMultiControl1._FldShort.Trim(), core.Enums.eResourceType.ToolTip,

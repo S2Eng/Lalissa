@@ -508,7 +508,6 @@
     </Compile>
     <Compile Include="multiControl\ownControl\ownMCGeneric.cs" />
     <Compile Include="multiControl\ownControl\ownMCRelationship.cs" />
-    <Compile Include="multiControl\ownControl\ownMCLogicRelation.cs" />
     <Compile Include="multiControl\ownControl\ownMCEvents.cs" />
     <Compile Include="multiControl\ownControl\ownMCCombo.cs" />
     <Compile Include="multiControl\ownControl\ownMCDataBind.cs" />
