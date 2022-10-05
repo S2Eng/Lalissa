@@ -252,7 +252,9 @@ namespace qs2.core.language
                                     bool checkComma = true, bool DoProtocollWhenNotFound = true, eLanguage Language = eLanguage.NoText,
                                     bool CheckLabelForQuery = false)
         {
-            //qs2.core.ui.addWatch(IDRes + "getRes start", true);
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
+                return "IDRes";
+
             if (checkComma)
                 IDRes = language.sqlLanguage.checkComma(IDRes);
 
@@ -278,10 +280,6 @@ namespace qs2.core.language
                 }
                 else
                 {
-                    if (CheckLabelForQuery)
-                    {
-                        string xy = "";
-                    }
                     dsLanguage.RessourcenRow rLangFound = null;
                     sqlLanguage.searchLangRow2(IDRes, typ, IDParticipant, IDApplication, ref rLangFound, ref dsLangResult, CheckLabelForQuery, checkComma, 
                                                 DoProtocollWhenNotFound, Language);
@@ -297,7 +295,6 @@ namespace qs2.core.language
                             {
                                 if (DoProtocollWhenNotFound)
                                     sqlLanguage.doProtNoTranslationFound(IDRes, IDApplication, typ);
-                                //qs2.core.ui.addWatch(IDRes + "getRes end", true);
                                 return "";
                             }
                         }
@@ -317,7 +314,6 @@ namespace qs2.core.language
                             {
                                 if (DoProtocollWhenNotFound)
                                     sqlLanguage.doProtNoTranslationFound(IDRes, IDApplication, typ);
-                                //qs2.core.ui.addWatch(IDRes + "getRes end", true);
                                 return "";
                             }
                         }
@@ -325,25 +321,20 @@ namespace qs2.core.language
                         {
                             if (Language == eLanguage.English)
                             {
-                                //qs2.core.ui.addWatch(IDRes + "getRes end", true);
                                 return rLangFound.English;
                             }
                             else if (Language == eLanguage.German)
                             {
-                                //qs2.core.ui.addWatch(IDRes + "getRes end", true);
                                 return rLangFound.German;
                             }
                             else if (Language == eLanguage.LangUser)
                             {
-                                //qs2.core.ui.addWatch(IDRes + "getRes end", true);
                                 return rLangFound.User;
                             }
-                                
                             else
                             {
                                 if (DoProtocollWhenNotFound)
                                     sqlLanguage.doProtNoTranslationFound(IDRes, IDApplication, typ);
-                                //qs2.core.ui.addWatch(IDRes + "getRes end", true);
                                 return "";
                             }
                         }      

@@ -1,49 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using System.ComponentModel;
-using System.Collections;
-using System.Diagnostics;
 using Infragistics.Win.Misc;
 using Infragistics.Win;
-
 using Infragistics.Win.UltraWinToolTip;
-using QS2.Resources;
-using System.Reflection.Emit;
-
-
-
+using S2Extensions;
 
 namespace qs2.sitemap.ownControls.inherit_Infrag
 {
-    
-    
     public class InfragButton : UltraButton
     {
-
-        public Enum _ico = null;
-        public string _icoTxt = "";
-        public Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
+        private Enum _ico;
+        private string _icoTxt = "";
         private IContainer components;
-        public qs2.core.Enums.eSize _size = new qs2.core.Enums.eSize();
-        public UltraToolTipInfo toolTipButton = new UltraToolTipInfo();
-        public bool _autoTextYN = true;
+        private qs2.core.Enums.eSize _size;
+        private UltraToolTipInfo toolTipButton = new UltraToolTipInfo();
+        private bool _autoTextYN = true;
 
-
-
-
-
-
+        public Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
 
         public InfragButton()
         {
             InitializeComponent();
-            //if (this.DesignMode)
-            //{
-            //    qs2.core.logIn.connectDesignMode();
-            //} 
         }
 
         private void InitializeComponent()
@@ -62,8 +39,6 @@ namespace qs2.sitemap.ownControls.inherit_Infrag
             this._size = core.Enums.eSize.big;
         }
 
-
-
         public void initControl()
         {
             this.ownAutoText();
@@ -71,35 +46,22 @@ namespace qs2.sitemap.ownControls.inherit_Infrag
 
         public string OwnPictureTxt
         {
-            get
-            {
-                return this._icoTxt;
-            }
+            get => this._icoTxt;
             set
             {
                 this._icoTxt = value;
-                if (this._icoTxt.Trim() != "")
+                if (!string.IsNullOrWhiteSpace(_icoTxt))
                 {
-                    if (this._icoTxt.Trim().Equals(QS2.Resources.getRes.ePicture.none.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        this.Appearance.Image = null; 
-                    }
-                    else
-                    {
-                        this.Appearance.Image = QS2.Resources.getRes.getImageFromTxt(this._icoTxt, 32, 32);
-                    }
+                    this.Appearance.Image = this._icoTxt.Trim().Equals(QS2.Resources.getRes.ePicture.none.ToString(), StringComparison.OrdinalIgnoreCase) ? null : QS2.Resources.getRes.getImageFromTxt(_icoTxt, 32, 32);
                 }
-                if (this.DesignMode) this.ownAutoText();
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv") 
+                    this.ownAutoText();
             }
         }
-
         
         public Enum OwnPicture
         {
-            get
-            {
-                return this._ico;
-            }
+            get => this._ico;
             set
             {
                 if (value == null)
@@ -109,116 +71,106 @@ namespace qs2.sitemap.ownControls.inherit_Infrag
                 }
 
                 this._ico = value;
-                if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.ePicture.none.ToString(), StringComparison.OrdinalIgnoreCase))
-                    this.Appearance.Image = null;
-                else
-                {
-                    this.Appearance.Image = QS2.Resources.getRes.getImage(value, 32, 32);
-                }
-                if (this.DesignMode) this.ownAutoText();
+                this.Appearance.Image = this._ico.ToString().Trim().Equals(QS2.Resources.getRes.ePicture.none.ToString(), StringComparison.OrdinalIgnoreCase) ? null : QS2.Resources.getRes.getImage(value, 32, 32);
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv") 
+                    this.ownAutoText();
             }
         }
         
         public bool  OwnAutoTextYN
         {
-            get
-            {
-                return this._autoTextYN;
-            }
+            get => this._autoTextYN;
             set
             {
                 this._autoTextYN = value;
-                if (this.DesignMode) this.ownAutoText();
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv") 
+                    this.ownAutoText();
             }
         }
 
         public void ownAutoText()
         {
-            if (this._autoTextYN & this._size == core.Enums.eSize.big)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
             {
-                if (this.DesignMode)
-                {
-                    return;
-                } 
+                return;
+            }
 
-                if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.Allgemein.ico_Minus.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.Text = qs2.core.language.sqlLanguage.getRes("Delete");
-                }
-                else if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.Allgemein.ico_Speichern.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.Text = qs2.core.language.sqlLanguage.getRes("Save");
-                }
-                else if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.Allgemein.ico_Speichern.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.Text = qs2.core.language.sqlLanguage.getRes("SaveAs");
-                }
-                else if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.Allgemein.ico_Suche.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.Text = qs2.core.language.sqlLanguage.getRes("Search");
-                }
-                else if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.Allgemein.ico_Rückgängig.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.Text = qs2.core.language.sqlLanguage.getRes("Reset");
-                }
-                else if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.Allgemein.ico_Aktualisieren.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.Text = qs2.core.language.sqlLanguage.getRes("Refresh");
-                }
-                else if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.Allgemein.ico_Drucken.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.Text = qs2.core.language.sqlLanguage.getRes("Print");
-                }
-                else if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.Allgemein2.ico_Ordner.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.Text = qs2.core.language.sqlLanguage.getRes("Open");
-                }
-                else if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.Allgemein.ico_Plus.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.Text = qs2.core.language.sqlLanguage.getRes("Add");
-                }
-                else if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.Allgemein2.ico_Info.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.Text = qs2.core.language.sqlLanguage.getRes("about");
-                }
-                else if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.ePicture.ico_adjustments.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.Text = qs2.core.language.sqlLanguage.getRes("adjustments");
-                }
-                else if (this._ico.ToString().Trim().Equals(QS2.Resources.getRes.Allgemein.ico_Bearbeiten.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.Text = qs2.core.language.sqlLanguage.getRes("Edit");
-                }
+            if (!(this._autoTextYN & this._size == core.Enums.eSize.big)) 
+                return;
+            
+            if (this._ico.sEquals(QS2.Resources.getRes.Allgemein.ico_Minus))
+            {
+                this.Text = qs2.core.language.sqlLanguage.getRes("Delete");
+            }
+            else if (this._ico.sEquals(QS2.Resources.getRes.Allgemein.ico_Speichern))
+            {
+                this.Text = qs2.core.language.sqlLanguage.getRes("Save");
+            }
+            else if (this._ico.sEquals(QS2.Resources.getRes.Allgemein.ico_Speichern))
+            {
+                this.Text = qs2.core.language.sqlLanguage.getRes("SaveAs");
+            }
+            else if (this._ico.sEquals(QS2.Resources.getRes.Allgemein.ico_Suche))
+            {
+                this.Text = qs2.core.language.sqlLanguage.getRes("Search");
+            }
+            else if (this._ico.sEquals(QS2.Resources.getRes.Allgemein.ico_Rückgängig))
+            {
+                this.Text = qs2.core.language.sqlLanguage.getRes("Reset");
+            }
+            else if (this._ico.sEquals(QS2.Resources.getRes.Allgemein.ico_Aktualisieren))
+            {
+                this.Text = qs2.core.language.sqlLanguage.getRes("Refresh");
+            }
+            else if (this._ico.sEquals(QS2.Resources.getRes.Allgemein.ico_Drucken))
+            {
+                this.Text = qs2.core.language.sqlLanguage.getRes("Print");
+            }
+            else if (this._ico.sEquals(QS2.Resources.getRes.Allgemein2.ico_Ordner))
+            {
+                this.Text = qs2.core.language.sqlLanguage.getRes("Open");
+            }
+            else if (this._ico.sEquals(QS2.Resources.getRes.Allgemein.ico_Plus))
+            {
+                this.Text = qs2.core.language.sqlLanguage.getRes("Add");
+            }
+            else if (this._ico.sEquals(QS2.Resources.getRes.Allgemein2.ico_Info))
+            {
+                this.Text = qs2.core.language.sqlLanguage.getRes("about");
+            }
+            else if (this._ico.sEquals(QS2.Resources.getRes.ePicture.ico_adjustments))  //Settings!
+            {
+                this.Text = qs2.core.language.sqlLanguage.getRes("adjustments");
+            }
+            else if (this._ico.sEquals(QS2.Resources.getRes.Allgemein.ico_Bearbeiten))
+            {
+                this.Text = qs2.core.language.sqlLanguage.getRes("Edit");
             }
         }
 
         public qs2.core.Enums.eSize OwnSizeMode
         {
-            get
-            {
-                return this._size;
-            }
+            get => this._size;
             set
             {
                 this._size = value;
-                if (this._size == core.Enums.eSize.big )
+                switch (this._size)
                 {
-                    this.Appearance.ImageHAlign = HAlign.Right;
+                    case core.Enums.eSize.big:
+                        this.Appearance.ImageHAlign = HAlign.Right;
+                        break;
+                    case core.Enums.eSize.small:
+                        this.Appearance.ImageHAlign = HAlign.Center;
+                        break;
                 }
-                else if (this._size == core.Enums.eSize.small )
-                {
-                    this.Appearance.ImageHAlign = HAlign.Center;
-                }
-                if (this.DesignMode) this.ownAutoText();
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv") 
+                    this.ownAutoText();
             }
         }
 
         public string  OwnTooltipText
         {
-            get
-            {
-                return this.toolTipButton.ToolTipText;
-            }
+            get => this.toolTipButton.ToolTipText;
             set
             {
                 this.toolTipButton.ToolTipText = value;
@@ -228,29 +180,12 @@ namespace qs2.sitemap.ownControls.inherit_Infrag
 
         public string OwnTooltipTitle
         {
-            get
-            {
-                return this.toolTipButton.ToolTipTitle;
-            }
+            get => this.toolTipButton.ToolTipTitle;
             set
             {
                 this.toolTipButton.ToolTipTitle = value;
                 this.ultraToolTipManager1.SetUltraToolTip(this, this.toolTipButton);
             }
         }
-
-        public Infragistics.Win.UltraWinToolTip.UltraToolTipManager OwnUltraToolTipManager
-        {
-            get
-            {
-                return this.ultraToolTipManager1;
-            }
-            set
-            {
-                this.ultraToolTipManager1 = value;
-            }
-        }
-
     }
-
 }

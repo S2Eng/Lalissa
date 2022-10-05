@@ -76,7 +76,7 @@ Partial Class contSelectField
         Me.UltraTabPageControl2.Controls.Add(Me.ContInfoFieldDB1)
         Me.UltraTabPageControl2.Location = New System.Drawing.Point(1, 23)
         Me.UltraTabPageControl2.Name = "UltraTabPageControl2"
-        Me.UltraTabPageControl2.Size = New System.Drawing.Size(961, 246)
+        Me.UltraTabPageControl2.Size = New System.Drawing.Size(961, 221)
         '
         'ContInfoFieldDB1
         '
@@ -84,7 +84,7 @@ Partial Class contSelectField
         Me.ContInfoFieldDB1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ContInfoFieldDB1.Location = New System.Drawing.Point(0, 0)
         Me.ContInfoFieldDB1.Name = "ContInfoFieldDB1"
-        Me.ContInfoFieldDB1.Size = New System.Drawing.Size(961, 246)
+        Me.ContInfoFieldDB1.Size = New System.Drawing.Size(961, 221)
         Me.ContInfoFieldDB1.TabIndex = 0
         '
         'UltraTabPageControl1
@@ -130,9 +130,9 @@ Partial Class contSelectField
         Me.PanelSelectFrom_Fill_Panel.Controls.Add(Me.UltraTabControlSelectFrom)
         Me.PanelSelectFrom_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default
         Me.PanelSelectFrom_Fill_Panel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelSelectFrom_Fill_Panel.Location = New System.Drawing.Point(0, 25)
+        Me.PanelSelectFrom_Fill_Panel.Location = New System.Drawing.Point(0, 50)
         Me.PanelSelectFrom_Fill_Panel.Name = "PanelSelectFrom_Fill_Panel"
-        Me.PanelSelectFrom_Fill_Panel.Size = New System.Drawing.Size(965, 272)
+        Me.PanelSelectFrom_Fill_Panel.Size = New System.Drawing.Size(965, 247)
         Me.PanelSelectFrom_Fill_Panel.TabIndex = 0
         '
         'UltraTabControlSelectFrom
@@ -144,7 +144,7 @@ Partial Class contSelectField
         Me.UltraTabControlSelectFrom.Location = New System.Drawing.Point(0, 0)
         Me.UltraTabControlSelectFrom.Name = "UltraTabControlSelectFrom"
         Me.UltraTabControlSelectFrom.SharedControlsPage = Me.UltraTabSharedControlsPage1
-        Me.UltraTabControlSelectFrom.Size = New System.Drawing.Size(965, 272)
+        Me.UltraTabControlSelectFrom.Size = New System.Drawing.Size(965, 247)
         Me.UltraTabControlSelectFrom.TabIndex = 0
         UltraTab2.Key = "Database"
         UltraTab2.TabPage = Me.UltraTabPageControl2
@@ -158,7 +158,7 @@ Partial Class contSelectField
         '
         Me.UltraTabSharedControlsPage1.Location = New System.Drawing.Point(-10000, -10000)
         Me.UltraTabSharedControlsPage1.Name = "UltraTabSharedControlsPage1"
-        Me.UltraTabSharedControlsPage1.Size = New System.Drawing.Size(961, 246)
+        Me.UltraTabSharedControlsPage1.Size = New System.Drawing.Size(961, 221)
         '
         '_PanelSelectFrom_Toolbars_Dock_Area_Left
         '
@@ -166,26 +166,26 @@ Partial Class contSelectField
         Me._PanelSelectFrom_Toolbars_Dock_Area_Left.BackColor = System.Drawing.SystemColors.Control
         Me._PanelSelectFrom_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left
         Me._PanelSelectFrom_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._PanelSelectFrom_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 25)
+        Me._PanelSelectFrom_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 50)
         Me._PanelSelectFrom_Toolbars_Dock_Area_Left.Name = "_PanelSelectFrom_Toolbars_Dock_Area_Left"
-        Me._PanelSelectFrom_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(0, 272)
+        Me._PanelSelectFrom_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(0, 247)
         Me._PanelSelectFrom_Toolbars_Dock_Area_Left.ToolbarsManager = Me.toolbarsManagerSelectFrom
         '
         'toolbarsManagerSelectFrom
         '
         Me.toolbarsManagerSelectFrom.DesignerFlags = 1
         Me.toolbarsManagerSelectFrom.DockWithinContainer = Me.PanelSelectFrom
-        Me.toolbarsManagerSelectFrom.LockToolbars = true
+        Me.toolbarsManagerSelectFrom.LockToolbars = True
         Me.toolbarsManagerSelectFrom.OptionSets.Add(OptionSet1)
         Me.toolbarsManagerSelectFrom.ShowFullMenusDelay = 500
-        Me.toolbarsManagerSelectFrom.ShowQuickCustomizeButton = false
+        Me.toolbarsManagerSelectFrom.ShowQuickCustomizeButton = False
         UltraToolbar1.DockedColumn = 0
         UltraToolbar1.DockedRow = 0
-        StateButtonTool3.Checked = true
+        StateButtonTool3.Checked = True
         UltraToolbar1.NonInheritedTools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {StateButtonTool4, StateButtonTool3})
         UltraToolbar1.Text = "UltraToolbar1"
         Me.toolbarsManagerSelectFrom.Toolbars.AddRange(New Infragistics.Win.UltraWinToolbars.UltraToolbar() {UltraToolbar1})
-        StateButtonTool1.Checked = true
+        StateButtonTool1.Checked = True
         StateButtonTool1.OptionSetKey = "lblOnOff"
         StateButtonTool1.SharedPropsInternal.Caption = "Chapter"
         StateButtonTool1.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText
@@ -201,9 +201,9 @@ Partial Class contSelectField
         Me._PanelSelectFrom_Toolbars_Dock_Area_Right.BackColor = System.Drawing.SystemColors.Control
         Me._PanelSelectFrom_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right
         Me._PanelSelectFrom_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._PanelSelectFrom_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(965, 25)
+        Me._PanelSelectFrom_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(965, 50)
         Me._PanelSelectFrom_Toolbars_Dock_Area_Right.Name = "_PanelSelectFrom_Toolbars_Dock_Area_Right"
-        Me._PanelSelectFrom_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(0, 272)
+        Me._PanelSelectFrom_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(0, 247)
         Me._PanelSelectFrom_Toolbars_Dock_Area_Right.ToolbarsManager = Me.toolbarsManagerSelectFrom
         '
         '_PanelSelectFrom_Toolbars_Dock_Area_Bottom
@@ -220,12 +220,12 @@ Partial Class contSelectField
         '_PanelSelectFrom_Toolbars_Dock_Area_Top
         '
         Me._PanelSelectFrom_Toolbars_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelSelectFrom_Toolbars_Dock_Area_Top.BackColor = System.Drawing.SystemColors.Control
+        Me._PanelSelectFrom_Toolbars_Dock_Area_Top.BackColor = System.Drawing.Color.Transparent
         Me._PanelSelectFrom_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top
         Me._PanelSelectFrom_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText
         Me._PanelSelectFrom_Toolbars_Dock_Area_Top.Location = New System.Drawing.Point(0, 0)
         Me._PanelSelectFrom_Toolbars_Dock_Area_Top.Name = "_PanelSelectFrom_Toolbars_Dock_Area_Top"
-        Me._PanelSelectFrom_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(965, 25)
+        Me._PanelSelectFrom_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(965, 50)
         Me._PanelSelectFrom_Toolbars_Dock_Area_Top.ToolbarsManager = Me.toolbarsManagerSelectFrom
         '
         'PanelTop

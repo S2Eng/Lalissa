@@ -1,56 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
 using qs2.core.vb;
-
 using Infragistics.Win.UltraWinGrid;
-using Infragistics.Win;
 using QS2.Resources;
 using Infragistics.Win.UltraWinToolTip;
-using qs2.design.auto.workflowAssist.autoForm;
 using qs2.design.auto.print;
 using S2Extensions;
 
 namespace qs2.ui.print
 {
-
     public partial class contQueryDef : UserControl
     {
-
-        public contQryAdmin mainWindow;
-        public qs2.core.Enums.eTypQueryDef typQueryDef = new qs2.core.Enums.eTypQueryDef();
-        public bool isInEditMode = false;
+        private qs2.core.Enums.eTypQueryDef typQueryDef = new qs2.core.Enums.eTypQueryDef();
+        private bool isInEditMode;
+        private qs2.core.ui ui1 = new qs2.core.ui();
+        private qs2.design.auto.multiControl.ownMCInfo ownControlInfo1 = new qs2.design.auto.multiControl.ownMCInfo();
+        private drawMulticontrol drawMulticontrol1 = new drawMulticontrol();
+        private dsAdmin dsAllCriteriasForQueries = new dsAdmin();
+        private dsAdmin dsViewsQueries = new dsAdmin();
+        private string colChaptersTransl = "ChaptersTransl";
+        private string colChapterTransl = "ChapterTransl";
+        private string colLineNr = "LineNr";
+        private string colControlNr = "ControlNr";
+        private string colSerialNr = "SerialNr";
+        private qs2.core.vb.ui ui2 = new core.vb.ui();
+        
         public dsAdmin.tblSelListEntriesRow rSelList;
-        public qs2.core.ui ui1 = new qs2.core.ui();
-
-        public qs2.design.auto.multiControl.ownMCInfo ownControlInfo1 = new qs2.design.auto.multiControl.ownMCInfo();
-        public drawMulticontrol drawMulticontrol1 = new drawMulticontrol();
-        public dsAdmin dsAllCriteriasForQueries = new dsAdmin();
-        public dsAdmin dsViewsQueries = new dsAdmin();
-        public string colChaptersTransl = "ChaptersTransl";
-        public string colChapterTransl = "ChapterTransl";
-        public string colLineNr = "LineNr";
-        public string colControlNr = "ControlNr";
-        public string colSerialNr = "SerialNr";
-
         public string ApplicationLast = "";
-        public qs2.core.vb.ui ui2 = new core.vb.ui();
-
-        public PMDS.db.Entities.ERModellPMDSEntities db = null;
-
-
-
-
-
-
-
-
+        public contQryAdmin mainWindow;
 
         public contQueryDef()
         {
@@ -153,15 +133,13 @@ namespace qs2.ui.print
                 qs2.core.vb.sqlAdmin.getSelList(null, null, "ViewsQueries", qs2.core.vb.sqlAdmin.eTypSelListID.IDOwnStr, this.dsViewsQueries, sqlAdmin.eTypAuswahlList.group);
 
                 this.initMultiControls(ref this.ownMultiControlParent, 100, "ValueMin");
-
-                this.db = qs2.core.db.ERSystem.businessFramework.getDBContext();
-
             }
             catch (Exception ex)
             {
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
         }
+
         public void loadValueLists()
         {
             try
@@ -219,12 +197,6 @@ namespace qs2.ui.print
                 multiControl.setControl(true);
                 multiControl.infragLabelLeft.Text = translatedRes;
 
-                //if (multiControl.OwnControlType == core.Enums.eControlType.ComboBox)
-                //{
-                //    System.Windows.Forms.Control cont = multiControl.ownMCUI1.doButtonControls(design.auto.multiControl.ownMCEvents.eTypButtonControl.Clear, null, "",
-                //                                                              qs2.core.language.sqlLanguage.getRes("AddEntryToComboBox"), multiControl);
-                //}
-                //multiControl.ownClickButton += new System.EventHandler(this.ButtonClick);
                 multiControl.ownMCEvents1.valueChanged += new System.EventHandler(this.ValueChanged);
             }
             catch (Exception ex)
