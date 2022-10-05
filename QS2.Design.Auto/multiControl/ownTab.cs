@@ -54,16 +54,6 @@ namespace qs2.design.auto.multiControl
 
         public bool lockVisible = false;
 
-        public qs2.design.auto.workflowAssist.autoForm.ColorSchemas ColorSchemas1 = new qs2.design.auto.workflowAssist.autoForm.ColorSchemas();
-
-     
-
-
-
-
-
-
-
         public ownTab()
         {
             this.InitializeComponent();
@@ -213,9 +203,6 @@ namespace qs2.design.auto.multiControl
                 {
                     this.Visible = true;
                 }
-
-                this.ColorSchemas1.setAppearanceMC(null, null, this, core.Enums.eControlType.Tab);
-
             }
             catch (Exception ex)
             {

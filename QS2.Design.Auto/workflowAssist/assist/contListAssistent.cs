@@ -17,9 +17,6 @@ namespace qs2.sitemap.workflowAssist
         
         public bool IsInitialized = false;
         public bool IsInitialized2 = false;
-
-        public qs2.design.auto.workflowAssist.autoForm.ColorSchemas ColorSchemas1 = new qs2.design.auto.workflowAssist.autoForm.ColorSchemas();
-
         public contListAssistent()
         {
             InitializeComponent();

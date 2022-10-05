@@ -67,7 +67,6 @@ namespace qs2.ui
                 {
                     if (qs2.core.logIn.doConnect2(true, false, false, "", true, true))
                     {
-                        qs2.design.auto.workflowAssist.autoForm.ColorSchemas.initColorSchemas();
                         qs2.core.ENV.alwaysNewConnection = false;
                         qs2.core.ENV.StaysAsExternProcess2 = false;
                         qs2.core.vb.sqlObjects sqlObjects1 = new sqlObjects();

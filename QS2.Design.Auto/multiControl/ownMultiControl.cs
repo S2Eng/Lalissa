@@ -143,7 +143,6 @@ namespace qs2.design.auto.multiControl
         public bool hasINCondition = false;
         public string INCondition = "";
         public qs2.core.Enums.eControlType controlTypeINCondition;
-        public qs2.design.auto.workflowAssist.autoForm.ColorSchemas ColorSchemas1 = new qs2.design.auto.workflowAssist.autoForm.ColorSchemas();
 
         public object ValueBeforeChangedFromUser = null;
 
@@ -582,10 +581,6 @@ namespace qs2.design.auto.multiControl
                 this.setLabels2(LabelRightOn, false, false);
                 this.setLabelRightCheckBoxes();
 
-                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
-                {
-                    this.ColorSchemas1.setAppearanceMC(this, null, null, this.OwnControlType);
-                }                
                 this.doControlIsDone = true;
             }
             catch (Exception ex)

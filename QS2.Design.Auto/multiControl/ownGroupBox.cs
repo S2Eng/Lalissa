@@ -48,9 +48,7 @@ namespace qs2.design.auto.multiControl
         public bool IsVisibleControlAssignmentChapters = false;
         public bool IsVisible_RelationsshipGroupsxy = true;
         public bool _OwnDoNotPrint = false;
-        public qs2.design.auto.workflowAssist.autoForm.ColorSchemas ColorSchemas1 = new qs2.design.auto.workflowAssist.autoForm.ColorSchemas();
-
-     
+   
 
 
 
@@ -292,7 +290,6 @@ namespace qs2.design.auto.multiControl
             {
                 this.lockVisibleChanged = true;
                 this.Visible = (this.ownControlUI1.IsVisible_Criteriaxy && this.ownControlUI1.IsVisible_LicenseKey && this.IsVisibleControlAssignmentChapters && this.ownControlUI1.IsVisible_RelationsshipGroups);
-                this.ColorSchemas1.setAppearanceMC(null, this, null, core.Enums.eControlType.GroupBox);
                 this.lockVisibleChanged = false;
             }
             catch (Exception ex)

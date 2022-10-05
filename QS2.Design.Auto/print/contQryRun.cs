@@ -53,10 +53,6 @@ namespace qs2.ui.pint
 
         public qs2.core.db.ERSystem.businessFramework b2 = new core.db.ERSystem.businessFramework();
         public qs2.core.vb.businessFramework b = new businessFramework();
-
-        public qs2.design.auto.workflowAssist.autoForm.AutoControlsUI AutoControlsUI1 { get; set; }= new design.auto.workflowAssist.autoForm.AutoControlsUI();
-        public qs2.design.auto.workflowAssist.autoForm.ColorSchemas ColorSchemas1 = new design.auto.workflowAssist.autoForm.ColorSchemas();
-
         public Panel actGroupPanel = null;
         public Infragistics.Win.Misc.UltraButton actGroupButt = null;
         public bool FirstVisibleDone = false;
@@ -388,8 +384,7 @@ namespace qs2.ui.pint
                 Infragistics.Win.Misc.UltraButton btnClicked = (Infragistics.Win.Misc.UltraButton)sender;
                 this.actGroupButt = btnClicked;
                 this.setColorButtonGroupsInaktive();
-                qs2.design.auto.workflowAssist.autoForm.ColorSchemas.setButtonAktiv(this.actGroupButt, core.ui.eButtonType.QueryGroups);
-                
+               
                 this.actGroupPanel = null;
                 foreach (Panel actPnl in this.panelTabs2.Controls)
                 {
@@ -416,11 +411,6 @@ namespace qs2.ui.pint
         {
             try
             {
-                foreach (Panel pnlButtons in this.panelTabs2.Controls)
-                {
-                    this.ColorSchemas1.setAppearancePanelWin(pnlButtons, design.auto.workflowAssist.autoForm.ColorSchemas.eTypeUIPanelWin.PanelQueries, false);
-                }
-
             }
             catch (Exception ex)
             {
@@ -577,11 +567,6 @@ namespace qs2.ui.pint
         {
             try
             {
-                foreach (Infragistics.Win.Misc.UltraButton btnGrp in this.panelGroups.Controls)
-                {
-                    qs2.design.auto.workflowAssist.autoForm.ColorSchemas.setButtonInaktiv(btnGrp, core.ui.eButtonType.QueryGroups);
-                }
-
             }
             catch (Exception ex)
             {
@@ -592,11 +577,6 @@ namespace qs2.ui.pint
         {
             try
             {
-                foreach (qs2.sitemap.workflowAssist.contListAssistentElem contListElem in pnl.Controls)
-                {
-                    qs2.design.auto.workflowAssist.autoForm.ColorSchemas.setButtonInaktivElement(contListElem, core.ui.eButtonType.Queries);
-                }
-
             }
             catch (Exception ex)
             {
@@ -654,7 +634,6 @@ namespace qs2.ui.pint
                     tgReportButton tgButt = (tgReportButton)reportButt.Tag;
 
                     this.doTabsUI(false, eTypActionReports.buttInaktive);
-                    qs2.design.auto.workflowAssist.autoForm.ColorSchemas.setButtonAktivElement(reportButt, core.ui.eButtonType.Queries);
 
                     string protocollForAdmin = "";
                     bool ProtocolWindow = false;
@@ -904,10 +883,6 @@ namespace qs2.ui.pint
                     {
                         contReportButt.Visible = bValue;
                         contReportButt.isOn = bValue;
-                    }
-                    else if (typ == eTypActionReports.buttInaktive)
-                    {
-                        qs2.design.auto.workflowAssist.autoForm.ColorSchemas.setButtonInaktivElement(contReportButt, core.ui.eButtonType.Queries);
                     }
                 }
 
@@ -1200,7 +1175,6 @@ namespace qs2.ui.pint
                 {
                     this.doVisible();
                     //this.firstLoadGroupsIsDone = false;
-                    this.AutoControlsUI1.run2(this, this.components);
 
                     if (!this.FirstVisibleDone)
                     {
@@ -1209,7 +1183,6 @@ namespace qs2.ui.pint
                         if (this.actGroupPanel != null)
                         {
                             this.setColorQueryButtonsInactive(this.actGroupPanel);
-                            qs2.design.auto.workflowAssist.autoForm.ColorSchemas.setButtonAktiv(this.actGroupButt, core.ui.eButtonType.QueryGroups);
                         }
 
                     }

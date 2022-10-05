@@ -74,7 +74,6 @@ namespace qs2.sitemap.workflowAssist
 
         private void contButtAssistentElem_Load(object sender, EventArgs e)
         {
-            qs2.design.auto.workflowAssist.autoForm.ColorSchemas.setButtonInaktivElement(this, core.ui.eButtonType.Main);
         }
         
         private void btnElement_Click_1(object sender, EventArgs e)

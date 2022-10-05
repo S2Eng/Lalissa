@@ -680,7 +680,6 @@
       <DependentUpon>contListElementDropDown.cs</DependentUpon>
     </Compile>
     <Compile Include="workflowAssist\autoForm\AutoControlsUI.cs" />
-    <Compile Include="workflowAssist\autoForm\ColorSchemas.cs" />
     <Compile Include="workflowAssist\autoForm\contAutoProtokoll.cs">
       <SubType>UserControl</SubType>
     </Compile>

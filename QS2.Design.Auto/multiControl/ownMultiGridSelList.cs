@@ -69,7 +69,6 @@ namespace qs2.design.auto.multiControl
                             
         public bool lockVisible = false;
         public dsAdmin dsAdminTmp = new dsAdmin();
-        public qs2.design.auto.workflowAssist.autoForm.ColorSchemas ColorSchemas1 = new workflowAssist.autoForm.ColorSchemas();
 
         public delegate void eMCValueChanged();
         public ownMultiControl.eMCValueChanged MCValueChanged;
@@ -115,8 +114,6 @@ namespace qs2.design.auto.multiControl
                                                 this.ownMCCriteria1.Application,
                                                 ref this.dsAdminShow, core.vb.sqlAdmin.eTypAuswahlList.group);
                 
-                this.ColorSchemas1.setAppearanceGroupBox(this.grpMultiGrid, false);
-
                 if (this._typMultiControl == qs2.core.vb.sqlAdmin.eTypStayAdditions.multiSelLists)
                 {
                     this.gridData.DisplayLayout.Bands[0].Hidden = false;
