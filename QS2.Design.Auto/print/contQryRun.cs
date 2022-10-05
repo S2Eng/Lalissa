@@ -54,7 +54,7 @@ namespace qs2.ui.pint
         public qs2.core.db.ERSystem.businessFramework b2 = new core.db.ERSystem.businessFramework();
         public qs2.core.vb.businessFramework b = new businessFramework();
 
-        public qs2.design.auto.workflowAssist.autoForm.AutoControlsUI AutoControlsUI1 = new design.auto.workflowAssist.autoForm.AutoControlsUI();
+        public qs2.design.auto.workflowAssist.autoForm.AutoControlsUI AutoControlsUI1 { get; set; }= new design.auto.workflowAssist.autoForm.AutoControlsUI();
         public qs2.design.auto.workflowAssist.autoForm.ColorSchemas ColorSchemas1 = new design.auto.workflowAssist.autoForm.ColorSchemas();
 
         public Panel actGroupPanel = null;

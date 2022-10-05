@@ -506,12 +506,6 @@
     <Compile Include="multiControl\contOnwMultiControlGrid.Designer.cs">
       <DependentUpon>contOnwMultiControlGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="multiControl\frmMCHelp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="multiControl\frmMCHelp.Designer.cs">
-      <DependentUpon>frmMCHelp.cs</DependentUpon>
-    </Compile>
     <Compile Include="multiControl\ownControl\ownMCGeneric.cs" />
     <Compile Include="multiControl\ownControl\ownMCRelationship.cs" />
     <Compile Include="multiControl\ownControl\ownMCLogicRelation.cs" />
@@ -693,23 +687,13 @@
     <Compile Include="workflowAssist\autoForm\contAutoProtokoll.Designer.cs">
       <DependentUpon>contAutoProtokoll.cs</DependentUpon>
     </Compile>
-    <Compile Include="workflowAssist\autoForm\doAutoControls.cs" />
-    <Compile Include="workflowAssist\autoForm\doSideLogic.cs" />
-    <Compile Include="workflowAssist\autoForm\frmAutoUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="workflowAssist\autoForm\frmAutoUI.Designer.cs">
-      <DependentUpon>frmAutoUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="multiControl\ownControl\ownMCCriteria.cs" />
-    <Compile Include="workflowAssist\autoForm\UIPrepareThread.cs" />
     <Compile Include="workflowAssist\license.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="workflowAssist\license.Designer.cs">
       <DependentUpon>license.cs</DependentUpon>
     </Compile>
-    <Compile Include="Workflow\Workflow.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\qs2.core\QS2.Core.csproj">
@@ -755,9 +739,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="multiControl\contOnwMultiControlGrid.resx">
       <DependentUpon>contOnwMultiControlGrid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="multiControl\frmMCHelp.resx">
-      <DependentUpon>frmMCHelp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="multiControl\ownControl.resx">
       <DependentUpon>ownControl.cs</DependentUpon>
@@ -843,9 +824,6 @@
     <EmbeddedResource Include="workflowAssist\autoForm\contAutoProtokoll.resx">
       <DependentUpon>contAutoProtokoll.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="workflowAssist\autoForm\frmAutoUI.resx">
-      <DependentUpon>frmAutoUI.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
@@ -855,11 +833,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="print\Charts\" />
-    <Folder Include="Resources\" />
-    <Folder Include="workflowAssist\administration\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="icudt.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

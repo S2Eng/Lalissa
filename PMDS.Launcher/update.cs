@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using System.Diagnostics;
@@ -153,7 +151,7 @@ namespace Launcher
                 {
                     if (bDoUpdate)
                     {
-                        if (lastInstNext_Root.Trim() == "" || !System.IO.Directory.Exists(lastInstNext_Root))
+                        if (lastInstNext_Root.Trim() == "" || !Directory.Exists(lastInstNext_Root))
                         {
                             update.ActualVersion = ActualVersionTmp.Trim();
                             bDoUpdate = false;
@@ -161,7 +159,7 @@ namespace Launcher
                             bSwitchedBackToActualVersion = true;
                             FirstInstallation = true;
                         }
-                        if (lastInstNext_Config.Trim() == "" || !System.IO.Directory.Exists(lastInstNext_Config))
+                        if (lastInstNext_Config.Trim() == "" || !Directory.Exists(lastInstNext_Config))
                         {
                             update.ActualVersion = ActualVersionTmp.Trim();
                             bDoUpdate = false;
