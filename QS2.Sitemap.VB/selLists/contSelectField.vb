@@ -45,7 +45,7 @@ Public Class contSelectField
             Me.UltraTabControlAll.Style = Infragistics.Win.UltraWinTabControl.UltraTabControlStyle.Wizard
             Me.UltraTabControlSelectFrom.Style = Infragistics.Win.UltraWinTabControl.UltraTabControlStyle.Wizard
 
-            Me.selectedTab = eTab.Chapter
+            Me.selectedTab = eTab.Database
             Me.loadRes()
 
             Me.btnOK.Width = 130
@@ -80,39 +80,20 @@ Public Class contSelectField
             End If
 
             If Not Me.rSelQuery Is Nothing Then
+                Me.selectTab(eTab.Database.ToString())
+                Me.selectedTab = eTab.Database
 
                 If Me.modeQueryUI = core.Enums.eTypeQuery.User And _
                         Me.rSelQuery.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleView.ToString().ToLower()) And _
                         Me.rSelQuery.TypeStr.Trim().ToLower().Equals(core.Enums.eTypeQuery.User.ToString().Trim().ToLower()) Then
 
                     Me.toolbarsManagerSelectFrom.Visible = False
-                    Me.selectTab(eTab.Chapter.ToString())
-                    Me.selectedTab = eTab.Chapter
 
                 ElseIf Me.modeQueryUI = core.Enums.eTypeQuery.Admin And _
                         Me.rSelQuery.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleView.ToString().ToLower()) And _
                         Me.SelectedTypQueryDef.Trim().ToLower() = qs2.core.Enums.eTypQueryDef.SelectFields.ToString().Trim().ToLower() Then
 
                     Me.toolbarsManagerSelectFrom.Visible = True
-                    Me.selectTab(eTab.Chapter.ToString())
-                    Me.selectedTab = eTab.Chapter
-
-                ElseIf Me.modeQueryUI = core.Enums.eTypeQuery.Admin And _
-                        Me.rSelQuery.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleFunction.ToString().ToLower()) And _
-                        (Me.SelectedTypQueryDef.Trim().ToLower() = qs2.core.Enums.eTypQueryDef.SelectFields.ToString().Trim().ToLower() Or _
-                        Me.SelectedTypQueryDef.Trim().ToLower() = qs2.core.Enums.eTypQueryDef.WhereConditions.ToString().Trim().ToLower()) Then
-
-                    Me.selectTab(eTab.Database.ToString())
-                    Me.selectedTab = eTab.Database
-
-                ElseIf Me.modeQueryUI = core.Enums.eTypeQuery.Admin And _
-                        Me.rSelQuery.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleFunction.ToString().ToLower()) And _
-                        (Me.SelectedTypQueryDef.Trim().ToLower() = qs2.core.Enums.eTypQueryDef.InputParameters.ToString().Trim().ToLower() Or _
-                        Me.SelectedTypQueryDef.Trim().ToLower() = qs2.core.Enums.eTypQueryDef.InputParameters.ToString().Trim().ToLower()) Then
-
-                    Me.selectTab(eTab.Database.ToString())
-                    Me.selectedTab = eTab.Database
-
                 End If
             End If
 

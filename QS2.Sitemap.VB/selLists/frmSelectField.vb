@@ -1,16 +1,7 @@
-﻿Imports qs2.core.vb
-Imports qs2.sitemap
-Imports qs2.Resources
-
-
-
+﻿
 Public Class frmSelectField
 
-
     Public typpUI As New sitemap.workflowAssist.contInfoFieldDB.eTypUI
-
-
-
 
     Private Sub frmSelChaptFldShort_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
@@ -30,7 +21,9 @@ Public Class frmSelectField
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
         End Try
     End Sub
+   
     Public Sub loadRes()
+
         Try
             If Me.typpUI = workflowAssist.contInfoFieldDB.eTypUI.selectionColumns Then
                 Me.Text = qs2.core.language.sqlLanguage.getRes("SelectAField")

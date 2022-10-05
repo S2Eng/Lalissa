@@ -23,12 +23,12 @@ Partial Class contSelectField
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim UltraTab1 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
         Dim UltraTab2 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
+        Dim UltraTab1 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
         Dim OptionSet1 As Infragistics.Win.UltraWinToolbars.OptionSet = New Infragistics.Win.UltraWinToolbars.OptionSet("lblOnOff")
         Dim UltraToolbar1 As Infragistics.Win.UltraWinToolbars.UltraToolbar = New Infragistics.Win.UltraWinToolbars.UltraToolbar("UltraToolbar1")
-        Dim StateButtonTool3 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("Chapter", "lblOnOff")
         Dim StateButtonTool4 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("Database", "lblOnOff")
+        Dim StateButtonTool3 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("Chapter", "lblOnOff")
         Dim StateButtonTool1 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("Chapter", "lblOnOff")
         Dim StateButtonTool2 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("Database", "lblOnOff")
         Dim LabelTool1 As Infragistics.Win.UltraWinToolbars.LabelTool = New Infragistics.Win.UltraWinToolbars.LabelTool("lblOnOff")
@@ -36,10 +36,9 @@ Partial Class contSelectField
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(contSelectField))
         Dim UltraTab3 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
-        Me.UltraTabPageControl1 = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
-        Me.ContSelChaptFldShort1 = New qs2.sitemap.vb.contSelChaptFldShort()
         Me.UltraTabPageControl2 = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
         Me.ContInfoFieldDB1 = New qs2.sitemap.workflowAssist.contInfoFieldDB()
+        Me.UltraTabPageControl1 = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
         Me.UltraTabPageControl3 = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
         Me.PanelGrid = New System.Windows.Forms.Panel()
         Me.PanelSelectFrom = New System.Windows.Forms.Panel()
@@ -57,43 +56,27 @@ Partial Class contSelectField
         Me.btnOK = New qs2.sitemap.ownControls.inherit_Infrag.InfragButton()
         Me.UltraTabControlAll = New Infragistics.Win.UltraWinTabControl.UltraTabControl()
         Me.UltraTabSharedControlsPage2 = New Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage()
-        Me.UltraTabPageControl1.SuspendLayout()
-        Me.UltraTabPageControl2.SuspendLayout()
-        Me.UltraTabPageControl3.SuspendLayout()
-        Me.PanelGrid.SuspendLayout()
-        Me.PanelSelectFrom.SuspendLayout()
-        Me.PanelSelectFrom_Fill_Panel.SuspendLayout()
-        CType(Me.UltraTabControlSelectFrom, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.UltraTabControlSelectFrom.SuspendLayout()
-        CType(Me.toolbarsManagerSelectFrom, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelBottom.SuspendLayout()
-        CType(Me.UltraTabControlAll, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.UltraTabControlAll.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'UltraTabPageControl1
-        '
-        Me.UltraTabPageControl1.Controls.Add(Me.ContSelChaptFldShort1)
-        Me.UltraTabPageControl1.Location = New System.Drawing.Point(1, 23)
-        Me.UltraTabPageControl1.Name = "UltraTabPageControl1"
-        Me.UltraTabPageControl1.Size = New System.Drawing.Size(961, 246)
-        '
-        'ContSelChaptFldShort1
-        '
-        Me.ContSelChaptFldShort1.BackColor = System.Drawing.Color.Transparent
-        Me.ContSelChaptFldShort1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.ContSelChaptFldShort1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ContSelChaptFldShort1.Location = New System.Drawing.Point(0, 0)
-        Me.ContSelChaptFldShort1.Name = "ContSelChaptFldShort1"
-        Me.ContSelChaptFldShort1.Size = New System.Drawing.Size(961, 246)
-        Me.ContSelChaptFldShort1.TabIndex = 0
+        Me.ContSelChaptFldShort1 = New qs2.sitemap.vb.contSelChaptFldShort()
+        Me.UltraTabPageControl2.SuspendLayout
+        Me.UltraTabPageControl1.SuspendLayout
+        Me.UltraTabPageControl3.SuspendLayout
+        Me.PanelGrid.SuspendLayout
+        Me.PanelSelectFrom.SuspendLayout
+        Me.PanelSelectFrom_Fill_Panel.SuspendLayout
+        CType(Me.UltraTabControlSelectFrom,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.UltraTabControlSelectFrom.SuspendLayout
+        CType(Me.toolbarsManagerSelectFrom,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.PanelBottom.SuspendLayout
+        CType(Me.UltraTabControlAll,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.UltraTabControlAll.SuspendLayout
+        Me.SuspendLayout
         '
         'UltraTabPageControl2
         '
         Me.UltraTabPageControl2.Controls.Add(Me.ContInfoFieldDB1)
-        Me.UltraTabPageControl2.Location = New System.Drawing.Point(-10000, -10000)
+        Me.UltraTabPageControl2.Location = New System.Drawing.Point(1, 23)
         Me.UltraTabPageControl2.Name = "UltraTabPageControl2"
-        Me.UltraTabPageControl2.Size = New System.Drawing.Size(961, 221)
+        Me.UltraTabPageControl2.Size = New System.Drawing.Size(961, 246)
         '
         'ContInfoFieldDB1
         '
@@ -101,8 +84,15 @@ Partial Class contSelectField
         Me.ContInfoFieldDB1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ContInfoFieldDB1.Location = New System.Drawing.Point(0, 0)
         Me.ContInfoFieldDB1.Name = "ContInfoFieldDB1"
-        Me.ContInfoFieldDB1.Size = New System.Drawing.Size(961, 221)
+        Me.ContInfoFieldDB1.Size = New System.Drawing.Size(961, 246)
         Me.ContInfoFieldDB1.TabIndex = 0
+        '
+        'UltraTabPageControl1
+        '
+        Me.UltraTabPageControl1.Controls.Add(Me.ContSelChaptFldShort1)
+        Me.UltraTabPageControl1.Location = New System.Drawing.Point(-10000, -10000)
+        Me.UltraTabPageControl1.Name = "UltraTabPageControl1"
+        Me.UltraTabPageControl1.Size = New System.Drawing.Size(961, 246)
         '
         'UltraTabPageControl3
         '
@@ -156,13 +146,13 @@ Partial Class contSelectField
         Me.UltraTabControlSelectFrom.SharedControlsPage = Me.UltraTabSharedControlsPage1
         Me.UltraTabControlSelectFrom.Size = New System.Drawing.Size(965, 272)
         Me.UltraTabControlSelectFrom.TabIndex = 0
-        UltraTab1.Key = "Chapter"
-        UltraTab1.TabPage = Me.UltraTabPageControl1
-        UltraTab1.Text = "Chapter"
         UltraTab2.Key = "Database"
         UltraTab2.TabPage = Me.UltraTabPageControl2
         UltraTab2.Text = "Database"
-        Me.UltraTabControlSelectFrom.Tabs.AddRange(New Infragistics.Win.UltraWinTabControl.UltraTab() {UltraTab1, UltraTab2})
+        UltraTab1.Key = "Chapter"
+        UltraTab1.TabPage = Me.UltraTabPageControl1
+        UltraTab1.Text = "Chapter"
+        Me.UltraTabControlSelectFrom.Tabs.AddRange(New Infragistics.Win.UltraWinTabControl.UltraTab() {UltraTab2, UltraTab1})
         '
         'UltraTabSharedControlsPage1
         '
@@ -173,7 +163,7 @@ Partial Class contSelectField
         '_PanelSelectFrom_Toolbars_Dock_Area_Left
         '
         Me._PanelSelectFrom_Toolbars_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelSelectFrom_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.Transparent
+        Me._PanelSelectFrom_Toolbars_Dock_Area_Left.BackColor = System.Drawing.SystemColors.Control
         Me._PanelSelectFrom_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left
         Me._PanelSelectFrom_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText
         Me._PanelSelectFrom_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 25)
@@ -185,17 +175,17 @@ Partial Class contSelectField
         '
         Me.toolbarsManagerSelectFrom.DesignerFlags = 1
         Me.toolbarsManagerSelectFrom.DockWithinContainer = Me.PanelSelectFrom
-        Me.toolbarsManagerSelectFrom.LockToolbars = True
+        Me.toolbarsManagerSelectFrom.LockToolbars = true
         Me.toolbarsManagerSelectFrom.OptionSets.Add(OptionSet1)
         Me.toolbarsManagerSelectFrom.ShowFullMenusDelay = 500
-        Me.toolbarsManagerSelectFrom.ShowQuickCustomizeButton = False
+        Me.toolbarsManagerSelectFrom.ShowQuickCustomizeButton = false
         UltraToolbar1.DockedColumn = 0
         UltraToolbar1.DockedRow = 0
-        StateButtonTool3.Checked = True
-        UltraToolbar1.NonInheritedTools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {StateButtonTool3, StateButtonTool4})
+        StateButtonTool3.Checked = true
+        UltraToolbar1.NonInheritedTools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {StateButtonTool4, StateButtonTool3})
         UltraToolbar1.Text = "UltraToolbar1"
         Me.toolbarsManagerSelectFrom.Toolbars.AddRange(New Infragistics.Win.UltraWinToolbars.UltraToolbar() {UltraToolbar1})
-        StateButtonTool1.Checked = True
+        StateButtonTool1.Checked = true
         StateButtonTool1.OptionSetKey = "lblOnOff"
         StateButtonTool1.SharedPropsInternal.Caption = "Chapter"
         StateButtonTool1.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText
@@ -208,7 +198,7 @@ Partial Class contSelectField
         '_PanelSelectFrom_Toolbars_Dock_Area_Right
         '
         Me._PanelSelectFrom_Toolbars_Dock_Area_Right.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelSelectFrom_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.Transparent
+        Me._PanelSelectFrom_Toolbars_Dock_Area_Right.BackColor = System.Drawing.SystemColors.Control
         Me._PanelSelectFrom_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right
         Me._PanelSelectFrom_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText
         Me._PanelSelectFrom_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(965, 25)
@@ -219,7 +209,7 @@ Partial Class contSelectField
         '_PanelSelectFrom_Toolbars_Dock_Area_Bottom
         '
         Me._PanelSelectFrom_Toolbars_Dock_Area_Bottom.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelSelectFrom_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.Transparent
+        Me._PanelSelectFrom_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.SystemColors.Control
         Me._PanelSelectFrom_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom
         Me._PanelSelectFrom_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText
         Me._PanelSelectFrom_Toolbars_Dock_Area_Bottom.Location = New System.Drawing.Point(0, 297)
@@ -230,7 +220,7 @@ Partial Class contSelectField
         '_PanelSelectFrom_Toolbars_Dock_Area_Top
         '
         Me._PanelSelectFrom_Toolbars_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelSelectFrom_Toolbars_Dock_Area_Top.BackColor = System.Drawing.Color.Transparent
+        Me._PanelSelectFrom_Toolbars_Dock_Area_Top.BackColor = System.Drawing.SystemColors.Control
         Me._PanelSelectFrom_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top
         Me._PanelSelectFrom_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText
         Me._PanelSelectFrom_Toolbars_Dock_Area_Top.Location = New System.Drawing.Point(0, 0)
@@ -245,7 +235,7 @@ Partial Class contSelectField
         Me.PanelTop.Name = "PanelTop"
         Me.PanelTop.Size = New System.Drawing.Size(965, 23)
         Me.PanelTop.TabIndex = 1
-        Me.PanelTop.Visible = False
+        Me.PanelTop.Visible = false
         '
         'PanelBottom
         '
@@ -263,8 +253,8 @@ Partial Class contSelectField
         Me.btnCancel.Appearance = Appearance1
         Me.btnCancel.Location = New System.Drawing.Point(473, 3)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.OwnAutoTextYN = False
-        Me.btnCancel.OwnPicture = qs2.Resources.getRes.ePicture.none
+        Me.btnCancel.OwnAutoTextYN = false
+        Me.btnCancel.OwnPicture = QS2.Resources.getRes.ePicture.none
         Me.btnCancel.OwnPictureTxt = ""
         Me.btnCancel.OwnSizeMode = qs2.core.Enums.eSize.big
         Me.btnCancel.OwnTooltipText = ""
@@ -275,13 +265,13 @@ Partial Class contSelectField
         '
         'btnOK
         '
-        Appearance2.Image = CType(resources.GetObject("Appearance2.Image"), Object)
+        Appearance2.Image = CType(resources.GetObject("Appearance2.Image"),Object)
         Appearance2.ImageHAlign = Infragistics.Win.HAlign.Right
         Me.btnOK.Appearance = Appearance2
         Me.btnOK.Location = New System.Drawing.Point(406, 3)
         Me.btnOK.Name = "btnOK"
-        Me.btnOK.OwnAutoTextYN = True
-        Me.btnOK.OwnPicture = qs2.Resources.getRes.Allgemein.ico_OK
+        Me.btnOK.OwnAutoTextYN = true
+        Me.btnOK.OwnPicture = QS2.Resources.getRes.Allgemein.ico_OK
         Me.btnOK.OwnPictureTxt = ""
         Me.btnOK.OwnSizeMode = qs2.core.Enums.eSize.big
         Me.btnOK.OwnTooltipText = ""
@@ -311,29 +301,39 @@ Partial Class contSelectField
         Me.UltraTabSharedControlsPage2.Name = "UltraTabSharedControlsPage2"
         Me.UltraTabSharedControlsPage2.Size = New System.Drawing.Size(965, 355)
         '
+        'ContSelChaptFldShort1
+        '
+        Me.ContSelChaptFldShort1.BackColor = System.Drawing.Color.Transparent
+        Me.ContSelChaptFldShort1.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ContSelChaptFldShort1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ContSelChaptFldShort1.Location = New System.Drawing.Point(0, 0)
+        Me.ContSelChaptFldShort1.Name = "ContSelChaptFldShort1"
+        Me.ContSelChaptFldShort1.Size = New System.Drawing.Size(961, 246)
+        Me.ContSelChaptFldShort1.TabIndex = 0
+        '
         'contSelectField
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Transparent
         Me.Controls.Add(Me.UltraTabControlAll)
         Me.Name = "contSelectField"
         Me.Size = New System.Drawing.Size(969, 381)
-        Me.UltraTabPageControl1.ResumeLayout(False)
-        Me.UltraTabPageControl2.ResumeLayout(False)
-        Me.UltraTabPageControl3.ResumeLayout(False)
-        Me.PanelGrid.ResumeLayout(False)
-        Me.PanelSelectFrom.ResumeLayout(False)
-        Me.PanelSelectFrom_Fill_Panel.ResumeLayout(False)
-        CType(Me.UltraTabControlSelectFrom, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.UltraTabControlSelectFrom.ResumeLayout(False)
-        CType(Me.toolbarsManagerSelectFrom, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelBottom.ResumeLayout(False)
-        CType(Me.UltraTabControlAll, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.UltraTabControlAll.ResumeLayout(False)
-        Me.ResumeLayout(False)
+        Me.UltraTabPageControl2.ResumeLayout(false)
+        Me.UltraTabPageControl1.ResumeLayout(false)
+        Me.UltraTabPageControl3.ResumeLayout(false)
+        Me.PanelGrid.ResumeLayout(false)
+        Me.PanelSelectFrom.ResumeLayout(false)
+        Me.PanelSelectFrom_Fill_Panel.ResumeLayout(false)
+        CType(Me.UltraTabControlSelectFrom,System.ComponentModel.ISupportInitialize).EndInit
+        Me.UltraTabControlSelectFrom.ResumeLayout(false)
+        CType(Me.toolbarsManagerSelectFrom,System.ComponentModel.ISupportInitialize).EndInit
+        Me.PanelBottom.ResumeLayout(false)
+        CType(Me.UltraTabControlAll,System.ComponentModel.ISupportInitialize).EndInit
+        Me.UltraTabControlAll.ResumeLayout(false)
+        Me.ResumeLayout(false)
 
-    End Sub
+End Sub
     Friend WithEvents UltraTabControlSelectFrom As Infragistics.Win.UltraWinTabControl.UltraTabControl
     Friend WithEvents UltraTabSharedControlsPage1 As Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage
     Friend WithEvents UltraTabPageControl1 As Infragistics.Win.UltraWinTabControl.UltraTabPageControl
