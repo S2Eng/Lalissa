@@ -679,7 +679,6 @@
     <Compile Include="workflowAssist\assist\contListElementDropDown.Designer.cs">
       <DependentUpon>contListElementDropDown.cs</DependentUpon>
     </Compile>
-    <Compile Include="workflowAssist\autoForm\AutoControlsUI.cs" />
     <Compile Include="multiControl\ownControl\ownMCCriteria.cs" />
     <Compile Include="workflowAssist\license.cs">
       <SubType>Component</SubType>
@@ -823,7 +822,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="workflowAssist\autoForm\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="icudt.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

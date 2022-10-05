@@ -1,47 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using qs2.core.vb;
 using QS2.Resources;
 using Infragistics.Win.Misc;
-using static qs2.design.auto.multiControl.ownMCEvents;
 
 namespace qs2.sitemap.workflowAssist
 {
-
-
     public partial class contListAssistentElem : UserControl
     {
+        private bool isLoaded;
+        private qs2.design.auto.multiControl.ownMCEvents mcEvent1 = new design.auto.multiControl.ownMCEvents();
+
         public event EventHandler ownClick2;
         public event delDoActionEvaluation dDoActionEvaluation;
         public delegate void delDoActionEvaluation(string type, int IDSelListEntry, string Application, string QueryName);
-
-        public bool isLoaded = false;
-       
-        public static qs2.core.vb.sqlAdmin sqlAdminWork = new qs2.core.vb.sqlAdmin();
-        public static qs2.core.vb.dsAdmin dsAdminWork = new qs2.core.vb.dsAdmin();
-        public static qs2.core.vb.dsObjects dsObjectsTemp = new qs2.core.vb.dsObjects();             
-        
-        public qs2.design.auto.workflowAssist.assist.cListAssistentElem cListAssistentElem = new design.auto.workflowAssist.assist.cListAssistentElem();
-        private qs2.design.auto.multiControl.ownMCEvents mcEvent1 = new design.auto.multiControl.ownMCEvents();
-
-
-
-
-
-
-
+        public qs2.design.auto.workflowAssist.assist.cListAssistentElem cListAssistentElem { get; set; }= new design.auto.workflowAssist.assist.cListAssistentElem();
 
         public contListAssistentElem()
         {
             InitializeComponent();
         }
+
         public void InitControl(qs2.core.Enums.eTypList TypList, string Application, string Participant,
                                 int IDSelListEntrySublist, bool useDropDownControl, string GroupToLoad)
         {
@@ -68,7 +46,6 @@ namespace qs2.sitemap.workflowAssist
             {
                 this.contextMenuStrip1 = null;
             }
-            
             this.isLoaded = true;
         }
 
@@ -90,55 +67,39 @@ namespace qs2.sitemap.workflowAssist
                 else
                 {
                     bool isInEditMode = false;
-
- 
-                    if ((isInEditMode && this.cListAssistentElem._TypList == core.Enums.eTypList.PROCGRP) ||
-                            this.cListAssistentElem._TypList == core.Enums.eTypList.CHAPTERS)
-                    {
-                        bOK = true;  
-                    }
                 }
+
                 if (bOK)
                 {
-                    //if (!qs2.sitemap.workflowAssist.form.contAutoUI.LoadingStayData)
-                    //{
-                        string protocollForAdmin = "";
-                        bool ProtocolWindow = false;
-                        System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
-                        qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck = design.auto.ownMCRelationship.eTypAssignments.none;
-                    
-                        if (this.cListAssistentElem._TypList == core.Enums.eTypList.PROCGRP)
+                    string protocollForAdmin = "";
+                    bool ProtocolWindow = false;
+                    System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
+                    qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck = design.auto.ownMCRelationship.eTypAssignments.none;
+                
+                    if (this.cListAssistentElem._TypList == core.Enums.eTypList.PROCGRP)
+                    {
+                        if (this.cListAssistentElem.isEditable)
                         {
-                            if (this.cListAssistentElem.isEditable)
-                            {
-                                this.Cursor = Cursors.WaitCursor;
-                                this.btnElementClick(sender, e, !this.isOn, true, true, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, 
-                                                    ref TypAssignmentToCheck, true, true);
-                       
-                                if (this.cListAssistentElem.assistent != null)
-                                {
-                                    this.cListAssistentElem.assistent.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
-                                }
-                            }
-                        }
-                        else
-                        {
+                            this.Cursor = Cursors.WaitCursor;
                             this.btnElementClick(sender, e, !this.isOn, true, true, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, 
                                                 ref TypAssignmentToCheck, true, true);
-                            if (this.cListAssistentElem.assistent != null)
-                            {
-                                this.cListAssistentElem.assistent.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
-                            }
+
+                            this.cListAssistentElem.assistent?.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
                         }
-                    
-                        this.Cursor = Cursors.WaitCursor;
-                        this.doRelationsship(true);
-                    
-                        if (protocollForAdmin.Trim() != "")
-                        {
-                            qs2.design.auto.multiControl.ownMCInfo.openProtocoll(ref protocollForAdmin);
-                        }
-                    //}
+                    }
+                    else
+                    {
+                        this.btnElementClick(sender, e, !this.isOn, true, true, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, 
+                                            ref TypAssignmentToCheck, true, true);
+                        this.cListAssistentElem.assistent?.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
+                    }
+                
+                    this.Cursor = Cursors.WaitCursor;
+                
+                    if (!string.IsNullOrWhiteSpace(protocollForAdmin))
+                    {
+                        qs2.design.auto.multiControl.ownMCInfo.openProtocoll(ref protocollForAdmin);
+                    }
                 }
             }
             catch (Exception ex)
@@ -150,6 +111,7 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.Default;
             }
         }
+
         public void btnElement_Click(object sender, EventArgs e)
         {
             try
@@ -164,17 +126,10 @@ namespace qs2.sitemap.workflowAssist
                 else
                 {
                     bool isInEditMode = false;
-                    if ((isInEditMode && this.cListAssistentElem._TypList == core.Enums.eTypList.PROCGRP) ||
-                            this.cListAssistentElem._TypList == core.Enums.eTypList.CHAPTERS)
-                    {
-                        bOK = true;
-                    }
                 }
 
                 if (bOK)
                 {
-                    //if (!qs2.sitemap.workflowAssist.form.contAutoUI.LoadingStayData)
-                    //{
                     string protocollForAdmin = "";
                     bool ProtocolWindow = false;
                     System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
@@ -188,10 +143,7 @@ namespace qs2.sitemap.workflowAssist
                             this.btnElementClick(sender, e, !this.isOn, true, true, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, 
                                                 ref TypAssignmentToCheck, true, true);
 
-                            if (this.cListAssistentElem.assistent != null)
-                            {
-                                this.cListAssistentElem.assistent.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
-                            }
+                            this.cListAssistentElem.assistent?.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
                         }
                     }
                     else
@@ -205,13 +157,11 @@ namespace qs2.sitemap.workflowAssist
                     }
 
                     this.Cursor = Cursors.WaitCursor;
-                    this.doRelationsship(true);
 
-                    if (protocollForAdmin.Trim() != "")
+                    if (!string.IsNullOrWhiteSpace(protocollForAdmin))
                     {
                         qs2.design.auto.multiControl.ownMCInfo.openProtocoll(ref protocollForAdmin);
                     }
-                    //}
                 }
             }
             catch (Exception ex)
@@ -221,27 +171,6 @@ namespace qs2.sitemap.workflowAssist
             finally
             {
                 this.Cursor = Cursors.Default;
-            }
-        }
-
-
-        public void doRelationsship(bool ButtonClickedByUser)
-        {
-            try
-            {
-                if (this.cListAssistentElem.rCriteria != null)
-                {
-                    design.auto.ownMCRelationship.eTypAssignments TypActionRelation = design.auto.ownMCRelationship.eTypAssignments.MCParent;
-                    core.generic.retValue retValue1 = new core.generic.retValue();
-                    retValue1.valueObj = this.cListAssistentElem._isOn;
-                    retValue1.valueStr = (this.cListAssistentElem._isOn == true ? "1" : "0");
-                    retValue1.valueSql = retValue1.valueStr;
-                    int SubRelation = 0;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("contListAssistentElem.doRelationsship:" + ex.ToString());
             }
         }
 
@@ -295,169 +224,6 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.Default;
             }
         }
-        public void setPicture2()
-        {
-            try
-            {
-                if (this.cListAssistentElem._isOn)
-                {
-                    if (this.cListAssistentElem.assistent.ImgListEnabled.Images.Count > 0)
-                    {
-                        this.btnElement.ImageList = this.cListAssistentElem.assistent.ImgListEnabled;
-                        this.btnElement.Appearance.Image = this.cListAssistentElem.assistent.ImgListEnabled.Images[0];
-                    }
-                }
-                else
-                {
-                    if (this.cListAssistentElem.assistent.ImgListDisabled.Images.Count > 0)
-                    {
-                        this.btnElement.ImageList = this.cListAssistentElem.assistent.ImgListDisabled;
-                        this.btnElement.Appearance.Image = this.cListAssistentElem.assistent.ImgListDisabled.Images[0];
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
-        }
-        public void SetUIxyxy(bool IsEvaluation)
-        {
-            try
-            {
-                this.btnElement.Dock = DockStyle.None;
-                this.panelBottom.Dock = DockStyle.None;
-                this.contListElementDropDown1.Dock = DockStyle.None;
-                this.btnOK.Dock = DockStyle.None;
-                this.panelElement.Dock = DockStyle.None;
-                bool PanelBottomVisible = false;
-
-                this.btnElement.Top = 0;
-                this.btnOK.Top = 0;
-                this.contListElementDropDown1.Top = 0;
-                this.panelBottom.Left = 0;
-
-                if (this.cListAssistentElem._TypList == core.Enums.eTypList.PROCGRP)
-                {
-                    this.panelElement.Top = 0;
-                    this.panelElement.Left = 0;
-
-                    if (PanelBottomVisible)
-                    {
-                        int heigthButtonBottom = 16;
-
-                        this.panelBottom.Visible = true;
-                        this.panelBottom.Height = heigthButtonBottom;
-                        this.panelBottom.Top = this.Height - heigthButtonBottom;
-                        this.panelBottom.Width = this.Width;
-
-                        this.panelElement.Width = this.Width;
-                        this.panelElement.Height = this.Height - heigthButtonBottom;
-
-                        this.contListElementDropDown1.Width = 45;
-                        this.contListElementDropDown1.Left = this.panelBottom.Width - 45;
-                        this.contListElementDropDown1.Height = this.panelBottom.Height;
-
-                    }
-                    else
-                    {
-                        this.panelBottom.Visible = false;
-                        this.panelBottom.Height = 0;
-                        this.panelElement.Width = this.Width;
-                        this.panelElement.Height = this.Height;
-
-                        this.contListElementDropDown1.Width = 0;
-                        this.contListElementDropDown1.Height = 0;
-                        this.contListElementDropDown1.Visible = false;
-                    }
-
-                    this.btnElement.Left = 0;
-                    this.btnElement.Width = this.panelElement.Width;
-                    this.btnElement.Height = this.panelElement.Height;
-
-                    this.btnOK.Visible = false;
-                    this.btnOK.Width = 0;
-                    this.btnOK.Height = 0;
-
-                }
-                else if (this.cListAssistentElem._TypList == core.Enums.eTypList.CHAPTERS)
-                {
-                    this.panelElement.Top = 0;
-                    this.panelElement.Left = 0;
-                    this.panelElement.Width = this.Width;
-                    this.panelElement.Height = this.Height;
-
-                    this.panelBottom.Height = 0;
-                    this.panelBottom.Visible = false;
-
-                    if (this.cListAssistentElem.ListMain.ButtonOKVisible)
-                    {
-                        this.btnOK.Visible = true;
-                        this.btnOK.Width = 25;
-                        this.btnOK.Height = this.panelElement.Height;
-
-                        this.btnElement.Left = this.btnOK.Width;
-                        this.btnElement.Width = this.panelElement.Width - this.btnOK.Width;
-                        this.btnElement.Height = this.panelElement.Height;
-                    }
-                    else
-                    {
-                        this.btnOK.Visible = false;
-                        this.btnOK.Width = 0;
-                        this.btnOK.Height = 0;
-
-                        this.btnElement.Left = 0;
-                        this.btnElement.Width = this.panelElement.Width;
-                        this.btnElement.Height = this.panelElement.Height;
-                    }
-
-                    this.contListElementDropDown1.Width = 0;
-                    this.contListElementDropDown1.Height = 0;
-                    this.contListElementDropDown1.Visible = false;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("setButtonOK: " + ex.ToString());
-            }
-        }
-
-        public void doLayout(bool bOn)
-        {
-            try
-            {
-                if (!bOn)
-                {
-                    this.SuspendLayout();
-                    this.btnElement.SuspendLayout();
-                    this.panelBottom.SuspendLayout();
-                    this.contListElementDropDown1.SuspendLayout();
-                    this.btnOK.SuspendLayout();
-                    this.panelElement.SuspendLayout();
-                }
-                else
-                {
-                    this.PerformLayout();
-                    this.btnElement.PerformLayout();
-                    this.panelBottom.PerformLayout();
-                    this.contListElementDropDown1.PerformLayout();
-                    this.btnOK.PerformLayout();
-                    this.panelElement.PerformLayout();
-                    
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("setButtonOK: " + ex.ToString());
-            }
-        }     
 
         public void btnElementClick(object sender, EventArgs e, bool isOn, bool doChapters, bool reduceCounterForChapter,
                                             ref string protocollForAdmin, ref bool ProtocolWindow,
@@ -465,8 +231,7 @@ namespace qs2.sitemap.workflowAssist
                                             ref qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck, bool loadSelectProcGroups,
                                             bool callReposition)
         {
-            if (this.ownClick2 != null)
-                this.ownClick2(this, e);
+            this.ownClick2?.Invoke(this, e);
         }
 
         private void btnMultiSelect_Click_1(object sender, EventArgs e)
@@ -485,12 +250,6 @@ namespace qs2.sitemap.workflowAssist
             }
         }
 
-        public void lockUnlock(bool bEdit)
-        {
-            this.cListAssistentElem.isEditable = bEdit;
-            this.contListElementDropDown1.lockUnlock(bEdit);
-        }
-        
         public void resetDropDownProcGroupsMain(System.Guid IDElementClicked, ref string ColumnNameClicked)
         {
             if (!this.cListAssistentElem.ID.Equals(IDElementClicked))
@@ -504,12 +263,10 @@ namespace qs2.sitemap.workflowAssist
             if (!bOk)
             {
                 this.btnOK.Appearance.Image = null;
-                this.cListAssistentElem.isOKOn = false;
             }
             else
             {
                 this.btnOK.Appearance.Image = getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32 );
-                this.cListAssistentElem.isOKOn = true;
             }
             Application.DoEvents();
         }
@@ -541,19 +298,6 @@ namespace qs2.sitemap.workflowAssist
             }
         }
 
-        public void doVisiblexyxyxy()
-        {
-            try
-            {
-                //this.Visible = this.IsVisibleForStayType;
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("contListAssistentElem.doVisible: " + "\r\n" + ex.ToString());
-            }
-        }
-
         private void criteriasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -579,6 +323,7 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void infoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -596,6 +341,7 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void ressourcenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -613,6 +359,7 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void selListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -631,6 +378,7 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void infoFieldSQLServerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -717,34 +465,7 @@ namespace qs2.sitemap.workflowAssist
                         IDResTmp = "Chapter_" + cListAssistentElem.rSelEntries.IDOwnStr;
 
                     mcEvent1.CheckMouseHoverLeaveContr(sender, e, enter, IDResTmp, cListAssistentElem.IDApplication, true);
-
-                    //if (enter)
-                    //{
-                    //    var rRes = (from r in qs2.core.language.sqlLanguage.dsLanguageAll.Ressourcen
-                    //                where r.IDRes == IDResTmp && r.IDApplication == cListAssistentElem.IDApplication && r.Type == "Help" && r.IDLanguageUser == "ALL" && r.IDParticipant == "ALL"
-                    //                select new { r.IDRes, r.German, r.English }).FirstOrDefault();
-
-                    //    var rLastSelected = (from l in qs2.design.auto.multiControl.ownMCEvents.lLastMCFocused
-                    //                            where l.IDApplication == cListAssistentElem.IDApplication
-                    //                            select new { l.FldHort, l.IDApplication }).FirstOrDefault();
-                    //    if (rLastSelected == null)
-                    //        qs2.design.auto.multiControl.ownMCEvents.lLastMCFocused.Add(new cHelpData() { FldHort = IDResTmp, IDApplication = cListAssistentElem.IDApplication, HasRes = (rRes != null ? true : false) });
-                    //    else
-                    //    {
-                    //        qs2.design.auto.multiControl.ownMCEvents.lLastMCFocused.First().FldHort = IDResTmp;
-                    //        qs2.design.auto.multiControl.ownMCEvents.lLastMCFocused.First().HasRes = (rRes != null ? true : false);
-                    //    } 
-                    //}
-                    //else
-                    //{
-                    //    var rLastSelected = (from l in qs2.design.auto.multiControl.ownMCEvents.lLastMCFocused
-                    //                            where l.IDApplication == cListAssistentElem.IDApplication
-                    //                            select new { l.FldHort, l.IDApplication }).FirstOrDefault();
-                    //    if (rLastSelected != null)
-                    //        qs2.design.auto.multiControl.ownMCEvents.lLastMCFocused.Clear();
-                    //}
                 }
-
             }
             catch (Exception ex)
             {
@@ -788,5 +509,4 @@ namespace qs2.sitemap.workflowAssist
             }
         }
     }
-
 }

@@ -448,8 +448,8 @@ namespace qs2.ui.pint
                         contReportButt = new qs2.sitemap.workflowAssist.contListAssistentElem();
                         contReportButt.cListAssistentElem.IsQuerySystem = true;
                         contReportButt.cListAssistentElem.IDSelEntry = KeyValuePairButton.Value.rSelListEntryFound.ID;
-                        contReportButt.cListAssistentElem.sqlTable = KeyValuePairButton.Value.rSelListEntryFound._Table;
-                        contReportButt.cListAssistentElem.sqlColumn = KeyValuePairButton.Value.rSelListEntryFound.FldShortColumn;
+ //                       contReportButt.cListAssistentElem.sqlTable = KeyValuePairButton.Value.rSelListEntryFound._Table;
+ //                       contReportButt.cListAssistentElem.sqlColumn = KeyValuePairButton.Value.rSelListEntryFound.FldShortColumn;
                         contReportButt.InitControl(core.Enums.eTypList.CHAPTERS, this.getSelectedApplication(), this.IDParticipant, -999, false,"");
 
                         if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.ReportGroups)

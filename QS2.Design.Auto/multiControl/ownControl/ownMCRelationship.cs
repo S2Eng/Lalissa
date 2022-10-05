@@ -1,25 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using Infragistics.Win.UltraWinTabControl;
-using qs2.design.auto.workflowAssist.autoForm;
-
-
 
 namespace qs2.design.auto
 {
-
-
-
     public class ownMCRelationship
     {
-
-        public qs2.core.vb.sqlAdmin sqlAdmin1 = null;
-
-        public qs2.core.vb.dsAdmin.tblRelationshipRow[] arrRelationships = null;
-        public qs2.core.vb.dsAdmin.tblRelationshipRow[] arrRelationshipsAsChild = null;
+        public qs2.core.vb.sqlAdmin sqlAdmin1;
+        public qs2.core.vb.dsAdmin.tblRelationshipRow[] arrRelationships;
+        public qs2.core.vb.dsAdmin.tblRelationshipRow[] arrRelationshipsAsChild;
 
         public enum eTypAssignments
         {
