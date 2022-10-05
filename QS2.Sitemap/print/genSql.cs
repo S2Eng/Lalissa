@@ -242,48 +242,6 @@ namespace qs2.sitemap.print
             }
         }
 
-        public bool calcJoinStandard(qs2.core.vb.dsAdmin.tblQueriesDefDataTable tFields,
-                    qs2.core.vb.dsAdmin.tblQueriesDefDataTable tConditions,
-                    ref qs2.core.vb.dsAdmin dsJoinsResult,
-                    ref string prot, ref dsAdmin.tblSelListEntriesRow rSelListEntry)
-        {
-            try
-            {
-                this.initControl();
-                dsObjects dsObjTemp = new dsObjects();
-
-                qs2.core.vb.dsAdmin dsJoinsAllFields = new qs2.core.vb.dsAdmin();
-                dsJoinsAllFields.tblQueriesDef.Columns.Add(qs2.core.generic.columnNameIDJoin, typeof(System.Guid));
-                dsJoinsAllFields.tblQueriesDef.Columns.Add(qs2.core.generic.columnNameType, typeof(string));
-
-                qs2.core.vb.dsAdmin dsJoinsOnlyTables = new qs2.core.vb.dsAdmin();
-                dsJoinsOnlyTables.tblQueriesDef.Columns.Add(qs2.core.generic.columnNameIDJoin, typeof(System.Guid));
-                dsJoinsOnlyTables.tblQueriesDef.Columns.Add(qs2.core.generic.columnNameType, typeof(string));
-
-                int Sort = 0;
-
-                this.doSqlFields(tFields, dsJoinsOnlyTables, dsJoinsAllFields, ref prot, true, ref Sort, ref rSelListEntry);
-                this.doTablesConditions(tConditions, dsJoinsOnlyTables, dsJoinsAllFields, ref Sort, ref prot);
-
-                // build Conditions
-                int SortNeu = -1;
-
-                
-                foreach (dsAdmin.tblQueriesDefRow rQryTable in dsJoinsResult.tblQueriesDef)
-                {
-                    rQryTable.SetControlTypeNull();
-                    rQryTable.Typ = core.Enums.eTypQueryDef.Joins.ToString();
-                    rQryTable.IDSelList = rSelListEntry.ID;
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genSql.calcJoinStandard:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-        }
-
         public bool calcJoinTable(qs2.core.vb.dsAdmin.tblQueriesDefDataTable tFields,
                     qs2.core.vb.dsAdmin.tblQueriesDefDataTable tConditions,
                     ref qs2.core.vb.dsAdmin dsJoinsResult,

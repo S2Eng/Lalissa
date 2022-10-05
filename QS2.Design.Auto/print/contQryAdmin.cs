@@ -75,24 +75,18 @@ namespace qs2.ui.print
                 this.btnCancel.initControl();
 
                 this.contFields.mainWindow = this;
-                this.contInputParemeters.mainWindow = this;
-                this.contJoins.mainWindow = this;
                 this.contConditions.mainWindow = this;
 
                 this.contFields.initControl(core.Enums.eTypQueryDef.SelectFields);
                 this.contConditions.initControl(core.Enums.eTypQueryDef.WhereConditions);
-                this.contJoins.initControl(core.Enums.eTypQueryDef.Joins);
-                this.contInputParemeters.initControl(core.Enums.eTypQueryDef.InputParameters);
 
                 if (this.typeQuery == core.Enums.eTypeQuery.Admin)
                 {
                     extendedViewToolStripMenuItem.Checked = true;
-                    this.btnDoAutoJoin.Visible = true;
                     this.btnEditQuery.Visible = false;
                 }
                 else if (this.typeQuery == core.Enums.eTypeQuery.User)
                 {
-                    this.btnDoAutoJoin.Visible = false;
                     this.panelButtonsUnten.Visible = false;
 
                     if (!qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
@@ -129,7 +123,6 @@ namespace qs2.ui.print
                 this.btnEdit.initControl();
                 this.btnClose.initControl();
                 this.btnTestQuery.initControl();
-                this.btnDoAutoJoin.initControl();
                 this.btnManageQuery.initControl();
                 this.btnEditQuery.initControl();
                 this.btnDeleteQuery.initControl();
@@ -159,20 +152,14 @@ namespace qs2.ui.print
 
                 this.setNumberForSelectedControlDefault();
 
-                //this.btnAddQuery.OwnTooltipText = qs2.core.language.sqlLanguage.getRes("AddQuery");
-
                 this.extendedViewToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("ExtendedView");
 
                 this.btnTestQuery.OwnTooltipText = qs2.core.language.sqlLanguage.getRes("TestQuery");
-                this.btnDoAutoJoin.OwnTooltipText = qs2.core.language.sqlLanguage.getRes("DoAutoJoin");
-                
-                //this.btnTestQuery.OwnTooltipText = qs2.core.language.sqlLanguage.getRes("AddQuery");
                 this.btnTestQuery.Appearance.Image = getRes.getImage(QS2.Resources.getRes.ePicture.ico_sys, 32, 32);
-                this.btnDoAutoJoin.Appearance.Image = getRes.getImage(QS2.Resources.getRes.ePicture.ico_modifyQuery, 32, 32);
-                //this.btnManageQuery.Appearance.Image = getRes.getImage(qs2.Resources.getRes.ePicture.ico_selListsObj  , 32, 32 );
 
                 this.exportToTSqlToolStripMenuItem.Image = getRes.getImage(QS2.Resources.getRes.ePicture.ico_sys, 32, 32);
                 this.exportAllQueriesToTSqlToolStripMenuItem.Image = getRes.getImage(QS2.Resources.getRes.ePicture.ico_sys, 32, 32);
+
                 this.btnUserRights.Appearance.Image = getRes.getImage(getRes.Allgemein.ico_OK, 32, 32);
 
             }
@@ -230,14 +217,10 @@ namespace qs2.ui.print
             try
             {
                 this.contFields.clear();
-                this.contInputParemeters.clear();
                 this.contConditions.clear();
-                this.contJoins.clear();
 
                 this.contFields.rSelList = null;
-                this.contInputParemeters.rSelList = null;
                 this.contConditions.rSelList = null;
-                this.contJoins.rSelList = null;
 
                 this.setNumberForSelectedControlDefault();
 
@@ -324,14 +307,10 @@ namespace qs2.ui.print
             try
             {
                 this.contFields.clear();
-                this.contInputParemeters.clear();
                 this.contConditions.clear();
-                this.contJoins.clear();
 
                 this.contFields.loadData(rSelList);
                 this.contConditions.loadData(rSelList);
-                this.contJoins.loadData(rSelList);
-                this.contInputParemeters.loadData(rSelList);
 
                 this.loadSQL(rSelList);
 
@@ -367,11 +346,8 @@ namespace qs2.ui.print
                this.btnTestQuery.Enabled = !bEdit;
 
                this.contFields.edit(bEdit);
-               this.contJoins.edit(bEdit);
                this.contConditions.edit(bEdit);
-               this.contInputParemeters.edit(bEdit);
                
-               this.btnDoAutoJoin.Enabled = bEdit;
                this.exportToTSqlToolStripMenuItem.Visible = !bEdit;
                this.exportAllQueriesToTSqlToolStripMenuItem.Visible = !bEdit;
            }
@@ -388,41 +364,11 @@ namespace qs2.ui.print
                 qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelListQuery = this.contSelListQueries.getSelectedQuery(false);
                 if (rSelListQuery != null)
                 {
-                    if (this.contFields.save(rSelListQuery) && this.contConditions.save(rSelListQuery) &&
-                            this.contJoins.save(rSelListQuery) && this.contInputParemeters.save(rSelListQuery))
-                    {
-                        //string protokoll = "";
-                        //dsAdmin.tblQueriesDefDataTable tQryPar = this.getParValues();
-
-                        //System.Collections.Generic.List<System.Data.SqlClient.SqlParameter> parameters = new System.Collections.Generic.List<System.Data.SqlClient.SqlParameter>();
-                        //string sql = this.genSql1.doSql(this.contFields.dsAdmin1.tblQueriesDef, this.contConditions.dsAdmin1.tblQueriesDef, this.contInputParemeters.dsAdmin1.tblQueriesDef, ref protokoll, null, false, parameters);
-                        //this.contFields.rSelList.Sql = sql.Trim();
-                        //this.txtSQL.Text = sql.Trim();
-                        //dsAdmin.tblSelListEntriesRow[] arrSelListEntry = new  dsAdmin.tblSelListEntriesRow[1];
-                        //arrSelListEntry.SetValue(this.contFields.rSelList, 0);
-                        //this.sqlAdmin1.daSelListEntrys.Update(arrSelListEntry);
-
-                        //if (!protokoll.Trim().Equals(""))
-                        //{
-                        //    qs2.core.vb.frmProtokoll frmProtokoll1 = new qs2.core.vb.frmProtokoll();
-                        //    frmProtokoll1.doTitle(qs2.core.language.sqlLanguage.getRes("SqlForQuery"));
-                        //    frmProtokoll1.txtProtokoll.Text  = protokoll;
-                        //    frmProtokoll1.Show();
-                        //}
-
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoQuerySelected") + "!", MessageBoxButtons.OK, "");
-                    return false;
+                    return this.contFields.save(rSelListQuery) && this.contConditions.save(rSelListQuery);
                 }
 
+                qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoQuerySelected") + "!", MessageBoxButtons.OK, "");
+                return false;
             }
             catch (Exception ex)
             {
@@ -452,11 +398,6 @@ namespace qs2.ui.print
         {
             try
             {
-                //if (this.typeQuery == qs2.core.Enums.eTypeQuery.User)
-                //{
-                //    this.doAutoJoin();   
-                //}
-
                 dsAdmin.tblSelListEntriesRow rSelectedSelList = this.contSelListQueries.getSelectedQuery(false);
                 if (rSelectedSelList != null)
                 {
@@ -465,29 +406,9 @@ namespace qs2.ui.print
                         if (rSelectedSelList.TypeQry.Trim().Equals(qs2.core.print.print.eQueryType.FullMode.ToString(), StringComparison.OrdinalIgnoreCase))
                         {
                             DialogResult doAutoJoins = qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("doAutoJoins") + "?", MessageBoxButtons.YesNo, "");
-                            if (doAutoJoins == DialogResult.Yes)
-                            {
-                                this.doAutoJoin(true);
-                            }
-                        }
-                        else
-                        {
-                            this.contJoins.clear();
-                        }
-                    }
-                    else if (this.typeQuery == qs2.core.Enums.eTypeQuery.User)
-                    {
-                        if (rSelectedSelList.TypeQry.Trim().Equals(qs2.core.print.print.eQueryType.FullMode.ToString(), StringComparison.OrdinalIgnoreCase))
-                        {
-                            this.doAutoJoin(false);
-                        }
-                        else
-                        {
-                            this.contJoins.clear();
                         }
                     }
 
-                    //this.checkIDGuidStayAuto();
                     if (this.save())
                     {
                         this.edit(false);
@@ -496,7 +417,6 @@ namespace qs2.ui.print
                         contQryAdmin.dataChanged = true;
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -737,94 +657,6 @@ namespace qs2.ui.print
           {
               string countStr = (count > 0 ? " (" + count.ToString() + ")" : "");
               
-              if (typQueryDef == core.Enums.eTypQueryDef.SelectFields)
-                    this.toolbarsManagerControlSelection.Tools[qs2.core.Enums.eTypQueryDef.SelectFields.ToString()].SharedProps.Caption = " " + qs2.core.language.sqlLanguage.getRes("Fields") + countStr;
-              else if (typQueryDef == core.Enums.eTypQueryDef.InputParameters)
-                    this.toolbarsManagerControlSelection.Tools[qs2.core.Enums.eTypQueryDef.InputParameters.ToString()].SharedProps.Caption = qs2.core.language.sqlLanguage.getRes("InputParameters") + countStr;
-              else if (typQueryDef == core.Enums.eTypQueryDef.Joins)
-                    this.toolbarsManagerControlSelection.Tools[qs2.core.Enums.eTypQueryDef.Joins.ToString()].SharedProps.Caption = qs2.core.language.sqlLanguage.getRes("Joins") + countStr;
-              else if (typQueryDef == core.Enums.eTypQueryDef.WhereConditions)
-                    this.toolbarsManagerControlSelection.Tools[qs2.core.Enums.eTypQueryDef.WhereConditions.ToString()].SharedProps.Caption = qs2.core.language.sqlLanguage.getRes("Conditions") + countStr;
-          }
-          catch (Exception ex)
-          {
-              qs2.core.generic.getExep(ex.ToString(), ex.Message);
-          }
-      }
-      private void btnDoAutoJoin_Click(object sender, EventArgs e)
-      {
-          try
-          {
-                this.Cursor = Cursors.WaitCursor;
-                this.doAutoJoin(true);                
-          }
-          catch (Exception ex)
-          {
-              qs2.core.generic.getExep(ex.ToString(), ex.Message);
-          }
-          finally
-          {
-              this.Cursor = Cursors.Default;
-          }
-      }
-      public void doAutoJoin(bool changeToJoins)
-      {
-          try
-          {
-              System.Collections.Generic.List<string> tables = new System.Collections.Generic.List<string>();
-              //string sqlTables = "";
-              string prot = "";
-              
-              qs2.sitemap.print.genSql genSql1 = new qs2.sitemap.print.genSql();
-              dsAdmin dsAutoJoinsFounded = new dsAdmin();
-
-              if (qs2.core.ENV.autoJoin == 1 || qs2.core.ENV.autoJoin == 3)
-              {
-                  genSql1.calcJoinStandard(this.contFields.dsAdmin1.tblQueriesDef, this.contConditions.dsAdmin1.tblQueriesDef, ref dsAutoJoinsFounded,
-                          ref prot, ref this.contJoins.rSelList);
-              }
-              if (qs2.core.ENV.autoJoin == 2 || qs2.core.ENV.autoJoin == 3)
-              {
-                  genSql1.calcJoinTable(this.contFields.dsAdmin1.tblQueriesDef, this.contConditions.dsAdmin1.tblQueriesDef, ref dsAutoJoinsFounded,
-                                              ref prot, ref this.contJoins.rSelList);
-              }
-
-              DialogResult deleteOldJoins = DialogResult.Yes;
-              if (this.typeQuery == qs2.core.Enums.eTypeQuery.User)
-              {
-                  deleteOldJoins = DialogResult.Yes;
-              }
-              else if (this.typeQuery == qs2.core.Enums.eTypeQuery.Admin)
-              {
-                  deleteOldJoins = qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("DeleteOldJoins") + "?", MessageBoxButtons.YesNo, "");
-              }
-
-              if (dsAutoJoinsFounded.tblQueriesDef.Rows.Count > 0)
-              {
-                  if (changeToJoins)
-                  {
-                      //if (this.typeQuery == qs2.core.Enums.eTypeQuery.Admin)
-                      //{
-                          this.ultraTabControlFields.ActiveTab = this.ultraTabControlFields.Tabs[core.Enums.eTypQueryDef.Joins.ToString()];
-                          this.ultraTabControlFields.SelectedTab = this.ultraTabControlFields.Tabs[core.Enums.eTypQueryDef.Joins.ToString()];
-                          Infragistics.Win.UltraWinToolbars.StateButtonTool statButt = (Infragistics.Win.UltraWinToolbars.StateButtonTool)this.toolbarsManagerControlSelection.Tools[core.Enums.eTypQueryDef.Joins.ToString()];
-                          statButt.Checked = true;
-                      //}
-                  }
-                  this.contJoins.doAutoJoins(dsAutoJoinsFounded, deleteOldJoins);
-                  //this.edit(true);
-
-                  //this.contFields.rSelList._Table = sqlTables;
-              }
-              else
-              {
-                  this.contJoins.doAutoJoins(dsAutoJoinsFounded, deleteOldJoins);
-                  if (this.typeQuery == qs2.core.Enums.eTypeQuery.Admin)
-                  {
-                      qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoJoinsFound") + "!", MessageBoxButtons.OK, "");
-                  }
-              }
-
           }
           catch (Exception ex)
           {
@@ -908,8 +740,6 @@ namespace qs2.ui.print
 
       public void ExtendedView(bool bOn)
       {
-          this.toolbarsManagerControlSelection.Tools[core.Enums.eTypQueryDef.Joins.ToString()].SharedProps.Visible = bOn;
-          this.toolbarsManagerControlSelection.Tools[core.Enums.eTypQueryDef.InputParameters.ToString()].SharedProps.Visible = bOn;
       }
 
       private void extendedViewToolStripMenuItem_Click(object sender, EventArgs e)
@@ -961,14 +791,10 @@ namespace qs2.ui.print
                 this.sqlAdmin1.deleteSelListEntry(rSelectedQuery.ID);
            
                 this.contFields.clear();
-                this.contInputParemeters.clear();
                 this.contConditions.clear();
-                this.contJoins.clear();
 
                 this.contFields.rSelList = null;
-                this.contInputParemeters.rSelList = null;
                 this.contConditions.rSelList = null;
-                this.contJoins.rSelList = null;
 
                 this.contSelListQueries.loadQueries(null, this.getSelectedApplication(), this.IDParticipant, null, this.getTypeSelListForPrivate(), -999, false);
                 contQryAdmin.dataChanged = true;

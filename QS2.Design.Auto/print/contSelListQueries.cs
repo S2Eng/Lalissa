@@ -389,9 +389,7 @@ namespace qs2.ui.print
                 if (mainWindowQueryManage != null)
                 {
                     mainWindowQueryManage.contFields.clear();
-                    mainWindowQueryManage.contInputParemeters.clear();
                     mainWindowQueryManage.contConditions.clear();
-                    mainWindowQueryManage.contJoins.clear();
                 }
 
                 loadQueries(null, Application, Participant, _InfoQryMain, _allNotPrivateFromOtherUsersxy,

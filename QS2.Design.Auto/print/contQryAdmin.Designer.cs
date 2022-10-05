@@ -31,19 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(contQryAdmin));
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.UltraWinToolbars.OptionSet optionSet1 = new Infragistics.Win.UltraWinToolbars.OptionSet("lblOnOff");
-            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("UltraToolbar1");
-            Infragistics.Win.UltraWinToolbars.LabelTool labelTool4 = new Infragistics.Win.UltraWinToolbars.LabelTool("SelectFields");
-            Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool4 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("WhereConditions", "lblOnOff");
-            Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool5 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("Joins", "lblOnOff");
-            Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool6 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("InputParameters", "lblOnOff");
-            Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool1 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("WhereConditions", "lblOnOff");
-            Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool2 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("Joins", "lblOnOff");
-            Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool3 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("InputParameters", "lblOnOff");
-            Infragistics.Win.UltraWinToolbars.LabelTool labelTool1 = new Infragistics.Win.UltraWinToolbars.LabelTool("lblOnOff");
-            Infragistics.Win.UltraWinToolbars.LabelTool labelTool2 = new Infragistics.Win.UltraWinToolbars.LabelTool("SelectFields");
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -54,16 +41,11 @@
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.contConditions = new qs2.ui.print.contQueryDef();
-            this.ultraTabPageControl3 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.contJoins = new qs2.ui.print.contQueryDef();
-            this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.contInputParemeters = new qs2.ui.print.contQueryDef();
             this.ultraTabPageControlQueryDef = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panelQueryAdmin = new System.Windows.Forms.Panel();
@@ -73,13 +55,7 @@
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.panelFields = new System.Windows.Forms.Panel();
             this.contFields = new qs2.ui.print.contQueryDef();
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
-            this.toolbarsManagerControlSelection = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this.panelButt = new System.Windows.Forms.Panel();
-            this.btnDoAutoJoin = new qs2.sitemap.ownControls.inherit_Infrag.InfragButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSave = new qs2.sitemap.ownControls.inherit_Infrag.InfragButton();
             this.btnCancel = new qs2.sitemap.ownControls.inherit_Infrag.InfragButton();
@@ -112,8 +88,6 @@
             this.sqlAdmin1 = new qs2.core.vb.sqlAdmin(this.components);
             this.UltraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.ultraTabPageControl2.SuspendLayout();
-            this.ultraTabPageControl3.SuspendLayout();
-            this.ultraTabPageControl1.SuspendLayout();
             this.ultraTabPageControlQueryDef.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -125,7 +99,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControlFields)).BeginInit();
             this.ultraTabControlFields.SuspendLayout();
             this.panelFields.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.toolbarsManagerControlSelection)).BeginInit();
             this.panelButt.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelButtClose.SuspendLayout();
@@ -153,30 +126,6 @@
             this.contConditions.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.contConditions, "contConditions");
             this.contConditions.Name = "contConditions";
-            // 
-            // ultraTabPageControl3
-            // 
-            this.ultraTabPageControl3.Controls.Add(this.contJoins);
-            resources.ApplyResources(this.ultraTabPageControl3, "ultraTabPageControl3");
-            this.ultraTabPageControl3.Name = "ultraTabPageControl3";
-            // 
-            // contJoins
-            // 
-            this.contJoins.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.contJoins, "contJoins");
-            this.contJoins.Name = "contJoins";
-            // 
-            // ultraTabPageControl1
-            // 
-            this.ultraTabPageControl1.Controls.Add(this.contInputParemeters);
-            resources.ApplyResources(this.ultraTabPageControl1, "ultraTabPageControl1");
-            this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            // 
-            // contInputParemeters
-            // 
-            this.contInputParemeters.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.contInputParemeters, "contInputParemeters");
-            this.contInputParemeters.Name = "contInputParemeters";
             // 
             // ultraTabPageControlQueryDef
             // 
@@ -215,10 +164,6 @@
             this.panelConditionsInputPar.BackColor = System.Drawing.Color.Transparent;
             this.panelConditionsInputPar.Controls.Add(this.panelControls);
             this.panelConditionsInputPar.Controls.Add(this.panelFields);
-            this.panelConditionsInputPar.Controls.Add(this._panelConditionsInputPar_Toolbars_Dock_Area_Left);
-            this.panelConditionsInputPar.Controls.Add(this._panelConditionsInputPar_Toolbars_Dock_Area_Right);
-            this.panelConditionsInputPar.Controls.Add(this._panelConditionsInputPar_Toolbars_Dock_Area_Bottom);
-            this.panelConditionsInputPar.Controls.Add(this._panelConditionsInputPar_Toolbars_Dock_Area_Top);
             resources.ApplyResources(this.panelConditionsInputPar, "panelConditionsInputPar");
             this.panelConditionsInputPar.Name = "panelConditionsInputPar";
             // 
@@ -231,9 +176,7 @@
             // ultraTabControlFields
             // 
             this.ultraTabControlFields.Controls.Add(this.ultraTabSharedControlsPage2);
-            this.ultraTabControlFields.Controls.Add(this.ultraTabPageControl1);
             this.ultraTabControlFields.Controls.Add(this.ultraTabPageControl2);
-            this.ultraTabControlFields.Controls.Add(this.ultraTabPageControl3);
             resources.ApplyResources(this.ultraTabControlFields, "ultraTabControlFields");
             this.ultraTabControlFields.Name = "ultraTabControlFields";
             this.ultraTabControlFields.SharedControlsPage = this.ultraTabSharedControlsPage2;
@@ -241,18 +184,8 @@
             ultraTab2.TabPage = this.ultraTabPageControl2;
             resources.ApplyResources(ultraTab2, "ultraTab2");
             ultraTab2.ForceApplyResources = "";
-            ultraTab4.Key = "Joins";
-            ultraTab4.TabPage = this.ultraTabPageControl3;
-            resources.ApplyResources(ultraTab4, "ultraTab4");
-            ultraTab4.ForceApplyResources = "";
-            ultraTab1.Key = "InputParameters";
-            ultraTab1.TabPage = this.ultraTabPageControl1;
-            resources.ApplyResources(ultraTab1, "ultraTab1");
-            ultraTab1.ForceApplyResources = "";
             this.ultraTabControlFields.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
-            ultraTab2,
-            ultraTab4,
-            ultraTab1});
+            ultraTab2});
             // 
             // ultraTabSharedControlsPage2
             // 
@@ -271,136 +204,15 @@
             resources.ApplyResources(this.contFields, "contFields");
             this.contFields.Name = "contFields";
             // 
-            // _panelConditionsInputPar_Toolbars_Dock_Area_Left
-            // 
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.Transparent;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
-            resources.ApplyResources(this._panelConditionsInputPar_Toolbars_Dock_Area_Left, "_panelConditionsInputPar_Toolbars_Dock_Area_Left");
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Left.Name = "_panelConditionsInputPar_Toolbars_Dock_Area_Left";
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Left.ToolbarsManager = this.toolbarsManagerControlSelection;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Left.UseAppStyling = false;
-            // 
-            // toolbarsManagerControlSelection
-            // 
-            this.toolbarsManagerControlSelection.DesignerFlags = 1;
-            this.toolbarsManagerControlSelection.DockWithinContainer = this.panelConditionsInputPar;
-            this.toolbarsManagerControlSelection.LockToolbars = true;
-            this.toolbarsManagerControlSelection.OptionSets.Add(optionSet1);
-            this.toolbarsManagerControlSelection.ShowFullMenusDelay = 500;
-            this.toolbarsManagerControlSelection.ShowQuickCustomizeButton = false;
-            ultraToolbar1.DockedColumn = 0;
-            ultraToolbar1.DockedRow = 0;
-            resources.ApplyResources(labelTool4.SharedProps, "labelTool4.SharedProps");
-            labelTool4.ForceApplyResources = "SharedProps";
-            stateButtonTool4.Checked = true;
-            resources.ApplyResources(stateButtonTool4.SharedProps, "stateButtonTool4.SharedProps");
-            stateButtonTool4.ForceApplyResources = "SharedProps";
-            resources.ApplyResources(stateButtonTool5.SharedProps, "stateButtonTool5.SharedProps");
-            stateButtonTool5.ForceApplyResources = "SharedProps";
-            resources.ApplyResources(stateButtonTool6.SharedProps, "stateButtonTool6.SharedProps");
-            stateButtonTool6.ForceApplyResources = "SharedProps";
-            ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            labelTool4,
-            stateButtonTool4,
-            stateButtonTool5,
-            stateButtonTool6});
-            resources.ApplyResources(ultraToolbar1, "ultraToolbar1");
-            this.toolbarsManagerControlSelection.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
-            ultraToolbar1});
-            stateButtonTool1.Checked = true;
-            stateButtonTool1.OptionSetKey = "lblOnOff";
-            resources.ApplyResources(stateButtonTool1.SharedPropsInternal, "stateButtonTool1.SharedPropsInternal");
-            stateButtonTool1.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            resources.ApplyResources(stateButtonTool1.SharedProps, "stateButtonTool1.SharedProps");
-            stateButtonTool1.ForceApplyResources = "SharedProps|SharedPropsInternal";
-            stateButtonTool2.OptionSetKey = "lblOnOff";
-            resources.ApplyResources(stateButtonTool2.SharedPropsInternal, "stateButtonTool2.SharedPropsInternal");
-            stateButtonTool2.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            resources.ApplyResources(stateButtonTool2.SharedProps, "stateButtonTool2.SharedProps");
-            stateButtonTool2.ForceApplyResources = "SharedProps|SharedPropsInternal";
-            stateButtonTool3.OptionSetKey = "lblOnOff";
-            resources.ApplyResources(stateButtonTool3.SharedPropsInternal, "stateButtonTool3.SharedPropsInternal");
-            stateButtonTool3.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            resources.ApplyResources(stateButtonTool3.SharedProps, "stateButtonTool3.SharedProps");
-            stateButtonTool3.ForceApplyResources = "SharedProps|SharedPropsInternal";
-            resources.ApplyResources(labelTool1.SharedPropsInternal, "labelTool1.SharedPropsInternal");
-            resources.ApplyResources(labelTool1.SharedProps, "labelTool1.SharedProps");
-            labelTool1.ForceApplyResources = "SharedProps|SharedPropsInternal";
-            resources.ApplyResources(appearance1, "appearance1");
-            labelTool2.SharedPropsInternal.AppearancesSmall.Appearance = appearance1;
-            resources.ApplyResources(labelTool2.SharedPropsInternal, "labelTool2.SharedPropsInternal");
-            labelTool2.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.TextOnlyAlways;
-            labelTool2.SharedPropsInternal.Width = 280;
-            resources.ApplyResources(labelTool2.SharedProps, "labelTool2.SharedProps");
-            labelTool2.ForceApplyResources = "SharedProps|SharedPropsInternal";
-            this.toolbarsManagerControlSelection.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            stateButtonTool1,
-            stateButtonTool2,
-            stateButtonTool3,
-            labelTool1,
-            labelTool2});
-            this.toolbarsManagerControlSelection.UseAppStyling = false;
-            this.toolbarsManagerControlSelection.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.toolbarsManagerControlSelection_ToolClick);
-            // 
-            // _panelConditionsInputPar_Toolbars_Dock_Area_Right
-            // 
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Right.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.Transparent;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
-            resources.ApplyResources(this._panelConditionsInputPar_Toolbars_Dock_Area_Right, "_panelConditionsInputPar_Toolbars_Dock_Area_Right");
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Right.Name = "_panelConditionsInputPar_Toolbars_Dock_Area_Right";
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Right.ToolbarsManager = this.toolbarsManagerControlSelection;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Right.UseAppStyling = false;
-            // 
-            // _panelConditionsInputPar_Toolbars_Dock_Area_Bottom
-            // 
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Bottom.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.Transparent;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText;
-            resources.ApplyResources(this._panelConditionsInputPar_Toolbars_Dock_Area_Bottom, "_panelConditionsInputPar_Toolbars_Dock_Area_Bottom");
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Bottom.Name = "_panelConditionsInputPar_Toolbars_Dock_Area_Bottom";
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Bottom.ToolbarsManager = this.toolbarsManagerControlSelection;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Bottom.UseAppStyling = false;
-            // 
-            // _panelConditionsInputPar_Toolbars_Dock_Area_Top
-            // 
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Top.BackColor = System.Drawing.Color.Transparent;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
-            resources.ApplyResources(this._panelConditionsInputPar_Toolbars_Dock_Area_Top, "_panelConditionsInputPar_Toolbars_Dock_Area_Top");
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Top.Name = "_panelConditionsInputPar_Toolbars_Dock_Area_Top";
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Top.ToolbarsManager = this.toolbarsManagerControlSelection;
-            this._panelConditionsInputPar_Toolbars_Dock_Area_Top.UseAppStyling = false;
-            // 
             // panelButt
             // 
             this.panelButt.BackColor = System.Drawing.Color.Transparent;
-            this.panelButt.Controls.Add(this.btnDoAutoJoin);
             this.panelButt.Controls.Add(this.panel1);
             this.panelButt.Controls.Add(this.panelButtClose);
             this.panelButt.Controls.Add(this.btnTestQuery);
             this.panelButt.Controls.Add(this.dropDownApplications1);
             resources.ApplyResources(this.panelButt, "panelButt");
             this.panelButt.Name = "panelButt";
-            // 
-            // btnDoAutoJoin
-            // 
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
-            this.btnDoAutoJoin.Appearance = appearance2;
-            resources.ApplyResources(this.btnDoAutoJoin, "btnDoAutoJoin");
-            this.btnDoAutoJoin.Name = "btnDoAutoJoin";
-            this.btnDoAutoJoin.OwnAutoTextYN = false;
-            this.btnDoAutoJoin.OwnPicture = QS2.Resources.getRes.ePicture.none;
-            this.btnDoAutoJoin.OwnPictureTxt = "";
-            this.btnDoAutoJoin.OwnSizeMode = qs2.core.Enums.eSize.small;
-            this.btnDoAutoJoin.OwnTooltipText = "";
-            this.btnDoAutoJoin.OwnTooltipTitle = null;
-            this.btnDoAutoJoin.Click += new System.EventHandler(this.btnDoAutoJoin_Click);
             // 
             // panel1
             // 
@@ -412,9 +224,9 @@
             // 
             // btnSave
             // 
-            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
-            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnSave.Appearance = appearance3;
+            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnSave.Appearance = appearance2;
             resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.Name = "btnSave";
             this.btnSave.OwnAutoTextYN = true;
@@ -427,8 +239,8 @@
             // 
             // btnCancel
             // 
-            appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnCancel.Appearance = appearance4;
+            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnCancel.Appearance = appearance3;
             resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.OwnAutoTextYN = false;
@@ -441,8 +253,8 @@
             // 
             // btnEdit
             // 
-            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnEdit.Appearance = appearance5;
+            appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnEdit.Appearance = appearance4;
             resources.ApplyResources(this.btnEdit, "btnEdit");
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.OwnAutoTextYN = false;
@@ -461,8 +273,8 @@
             // 
             // btnClose
             // 
-            appearance6.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnClose.Appearance = appearance6;
+            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnClose.Appearance = appearance5;
             resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.Name = "btnClose";
             this.btnClose.OwnAutoTextYN = false;
@@ -475,8 +287,8 @@
             // 
             // btnTestQuery
             // 
-            appearance7.ImageHAlign = Infragistics.Win.HAlign.Center;
-            this.btnTestQuery.Appearance = appearance7;
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Center;
+            this.btnTestQuery.Appearance = appearance6;
             resources.ApplyResources(this.btnTestQuery, "btnTestQuery");
             this.btnTestQuery.Name = "btnTestQuery";
             this.btnTestQuery.OwnAutoTextYN = false;
@@ -509,9 +321,9 @@
             // btnUserRights
             // 
             resources.ApplyResources(this.btnUserRights, "btnUserRights");
-            appearance8.Image = ((object)(resources.GetObject("appearance8.Image")));
-            appearance8.ImageHAlign = Infragistics.Win.HAlign.Center;
-            this.btnUserRights.Appearance = appearance8;
+            appearance7.Image = ((object)(resources.GetObject("appearance7.Image")));
+            appearance7.ImageHAlign = Infragistics.Win.HAlign.Center;
+            this.btnUserRights.Appearance = appearance7;
             this.btnUserRights.Name = "btnUserRights";
             this.btnUserRights.OwnAutoTextYN = false;
             this.btnUserRights.OwnPicture = QS2.Resources.getRes.Allgemein.ico_Bearbeiten;
@@ -530,9 +342,9 @@
             // btnEditQuery
             // 
             resources.ApplyResources(this.btnEditQuery, "btnEditQuery");
-            appearance9.Image = ((object)(resources.GetObject("appearance9.Image")));
-            appearance9.ImageHAlign = Infragistics.Win.HAlign.Center;
-            this.btnEditQuery.Appearance = appearance9;
+            appearance8.Image = ((object)(resources.GetObject("appearance8.Image")));
+            appearance8.ImageHAlign = Infragistics.Win.HAlign.Center;
+            this.btnEditQuery.Appearance = appearance8;
             this.btnEditQuery.Name = "btnEditQuery";
             this.btnEditQuery.OwnAutoTextYN = false;
             this.btnEditQuery.OwnPicture = QS2.Resources.getRes.Allgemein.ico_Bearbeiten;
@@ -545,9 +357,9 @@
             // btnDeleteQuery
             // 
             resources.ApplyResources(this.btnDeleteQuery, "btnDeleteQuery");
-            appearance10.Image = ((object)(resources.GetObject("appearance10.Image")));
-            appearance10.ImageHAlign = Infragistics.Win.HAlign.Center;
-            this.btnDeleteQuery.Appearance = appearance10;
+            appearance9.Image = ((object)(resources.GetObject("appearance9.Image")));
+            appearance9.ImageHAlign = Infragistics.Win.HAlign.Center;
+            this.btnDeleteQuery.Appearance = appearance9;
             this.btnDeleteQuery.Name = "btnDeleteQuery";
             this.btnDeleteQuery.OwnAutoTextYN = false;
             this.btnDeleteQuery.OwnPicture = QS2.Resources.getRes.Allgemein.ico_Loeschen;
@@ -560,9 +372,9 @@
             // btnManageQuery
             // 
             resources.ApplyResources(this.btnManageQuery, "btnManageQuery");
-            appearance11.Image = ((object)(resources.GetObject("appearance11.Image")));
-            appearance11.ImageHAlign = Infragistics.Win.HAlign.Center;
-            this.btnManageQuery.Appearance = appearance11;
+            appearance10.Image = ((object)(resources.GetObject("appearance10.Image")));
+            appearance10.ImageHAlign = Infragistics.Win.HAlign.Center;
+            this.btnManageQuery.Appearance = appearance10;
             this.btnManageQuery.Name = "btnManageQuery";
             this.btnManageQuery.OwnAutoTextYN = false;
             this.btnManageQuery.OwnPicture = QS2.Resources.getRes.Allgemein.ico_Plus;
@@ -702,8 +514,6 @@
             this.Controls.Add(this.gridBagLayoutPanelAll);
             this.Name = "contQryAdmin";
             this.ultraTabPageControl2.ResumeLayout(false);
-            this.ultraTabPageControl3.ResumeLayout(false);
-            this.ultraTabPageControl1.ResumeLayout(false);
             this.ultraTabPageControlQueryDef.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -715,7 +525,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControlFields)).EndInit();
             this.ultraTabControlFields.ResumeLayout(false);
             this.panelFields.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.toolbarsManagerControlSelection)).EndInit();
             this.panelButt.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panelButtClose.ResumeLayout(false);
@@ -750,7 +559,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripAdminQuery;
         private sitemap.dropDownApplications dropDownApplications1;
         private Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage ultraTabSharedControlsPage2;
-        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl1;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl2;
         public Infragistics.Win.UltraWinTabControl.UltraTabControl ultraTabControlFields;
         private sitemap.ownControls.inherit_Infrag.InfragButton btnTestQuery;
@@ -766,24 +574,15 @@
         private System.Windows.Forms.Panel panel1;
         private sitemap.ownControls.inherit_Infrag.InfragButton btnClose;
         public System.Windows.Forms.Panel panelButtClose;
-        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl3;
-        private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _panelConditionsInputPar_Toolbars_Dock_Area_Left;
-        private Infragistics.Win.UltraWinToolbars.UltraToolbarsManager toolbarsManagerControlSelection;
-        private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _panelConditionsInputPar_Toolbars_Dock_Area_Right;
-        private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _panelConditionsInputPar_Toolbars_Dock_Area_Top;
-        private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _panelConditionsInputPar_Toolbars_Dock_Area_Bottom;
         private System.Windows.Forms.Panel panelControls;
         private System.Windows.Forms.Panel panelFields;
-        private sitemap.ownControls.inherit_Infrag.InfragButton btnDoAutoJoin;
         public qs2.ui.print.contSelListQueries contSelListQueries;
         private sitemap.ownControls.inherit_Infrag.InfragButton btnManageQuery;
         private System.Windows.Forms.ToolStripMenuItem extendedViewToolStripMenuItem;
         private sitemap.ownControls.inherit_Infrag.InfragButton btnDeleteQuery;
         private sitemap.ownControls.inherit_Infrag.InfragButton btnEditQuery;
-        public contQueryDef contInputParemeters;
         public contQueryDef contConditions;
         public contQueryDef contFields;
-        public contQueryDef contJoins;
         public sitemap.comboApplication comboApplication1;
         private System.Windows.Forms.ToolStripMenuItem exportToTSqlToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportAllQueriesToTSqlToolStripMenuItem;
