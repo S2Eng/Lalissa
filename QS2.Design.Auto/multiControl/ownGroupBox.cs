@@ -1,81 +1,22 @@
 ﻿using Infragistics.Win.Misc;
-using Infragistics.Win;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using qs2.sitemap.ownControls;
-
-
-
 
 
 namespace qs2.design.auto.multiControl
 {
-
     //[Designer(typeof(qs2.sitemap.workflowAssist.wizardsDevelop.DesignerWizardCheck))]
     public class ownGroupBox : UltraGroupBox
     {
+        private string _FldShort = "";
+        private qs2.design.auto.ownMCCriteria ownControlCriteria1 = new qs2.design.auto.ownMCCriteria();
+        private ownMCInfo ownControlInfo1 = new ownMCInfo();
 
-        public string _FldShort = "";
-        public qs2.design.auto.ownMCCriteria ownControlCriteria1 = new qs2.design.auto.ownMCCriteria();
-        public ownMCInfo ownControlInfo1 = new ownMCInfo();
-        public ownMCUI ownControlUI1 = new ownMCUI();
-        private IContainer components;
+        public bool OwnFieldForALLProducts { get; set; }
 
-        public bool isLoaded = false;
-
-        public System.Guid key = System.Guid.NewGuid();
-
-        public bool _OwnFieldForALLProducts = false;
-
-        public System.Guid ID = System.Guid.Empty;
-        public System.Guid IDGroup = System.Guid.Empty;
-
-        public int _OwnOrderLineNr = 1;
-        public int _OwnOrderControlNr = 1;
-        public int _OwnOrder = 1;
-
-        public bool lockVisibleChanged = false;
-
-        public qs2.core.vb.dsAdmin.dbAutoUIRow rAutoUI = null;
-
-        public bool IsVisibleControlxy = false;
-        public bool IsVisibleControlAssignmentChapters = false;
-        public bool IsVisible_RelationsshipGroupsxy = true;
-        public bool _OwnDoNotPrint = false;
-   
-
-
-
-        public ownGroupBox()
-        {
-            this.InitializeComponent();
-            if (!this.DesignMode) this.VisibleChanged += new System.EventHandler(this.ownGroupBox_VisibleChanged);
-        }
-
-
-        public void doControl()
-        {
-            this.HeaderAppearance.FontData.SizeInPoints = ownMultiControl.fontsize;
-            this.doText();
-            if (!this.DesignMode)
-            {
-                //if (this.DesignMode )
-                //    this.controlData1.getLicense(this.DesignMode, this);
-                //this.controlData1.getData(this, this._FldShort, core.Enums.eControlType.GroupBox, null);
-            }
-            if (this.DesignMode)
-                this.ownControlCriteria1.getLicenseDesignTime(this);
-
-        }
         private void doText()
         {
-            if (this.DesignMode)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 this.ownControlCriteria1.getLicenseDesignTime(this);
 
             if (this.OwnFldShort.Trim() != "")
@@ -118,12 +59,8 @@ namespace qs2.design.auto.multiControl
                 }
             }
         }
-        public void showTabOrder()
-        {
-            //this.ownControlInfo1.doToolTip(this, "TabIndex", this._tabIndex.ToString(), this, true, this.ownControlCriteria1.IDApplication.ToString(), this.OwnFieldForALLProducts);
-     
-        }
-        public string OwnFldShort
+
+        private string OwnFldShort
         {
             get
             {
@@ -132,7 +69,7 @@ namespace qs2.design.auto.multiControl
             set
             {
                 this._FldShort = value;
-                if (this.DesignMode)
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 {
                     this.Text = "[" + this._FldShort + "]";
                     if (qs2.core.ENV.developSimulateControls)
@@ -142,63 +79,6 @@ namespace qs2.design.auto.multiControl
                 }
             }
         }
-        public bool OwnFieldForALLProducts
-        {
-            get
-            {
-                return this._OwnFieldForALLProducts;
-            }
-            set
-            {
-                this._OwnFieldForALLProducts = value;
-                //if (this.DesignMode) this.doControl();
-            }
-        }
-
-        public int OwnOrderLineNr
-        {
-            get
-            {
-                return this._OwnOrderLineNr;
-            }
-            set
-            {
-                this._OwnOrderLineNr = value;
-            }
-        }
-        public int OwnOrderControlNr
-        {
-            get
-            {
-                return this._OwnOrderControlNr;
-            }
-            set
-            {
-                this._OwnOrderControlNr = value;
-            }
-        }
-        public int OwnOrder
-        {
-            get
-            {
-                return this._OwnOrder;
-            }
-            set
-            {
-                this._OwnOrder = value;
-            }
-        }
-        public bool OwnDoNotPrint
-        {
-            get
-            {
-                return this._OwnDoNotPrint;
-            }
-            set
-            {
-                this._OwnDoNotPrint = value;
-            }
-        }
 
         public void InitializeComponent()
         {
@@ -206,7 +86,6 @@ namespace qs2.design.auto.multiControl
             this.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
-
         }
  
         private void loadedDatToolStripMenuItem_Click(object sender, EventArgs e)
@@ -225,6 +104,7 @@ namespace qs2.design.auto.multiControl
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void loadedRessourcenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -239,63 +119,6 @@ namespace qs2.design.auto.multiControl
             finally
             {
                 this.Cursor = Cursors.Default;
-            }
-        }
-        private void ownGroupBox_VisibleChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                //this.SuspendLayout();
-
-                if (this.lockVisibleChanged)
-                {
-                    return;
-                }
-                //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(this._FldShort, "GroupBoxNotExists", false))
-                //{
-                //    string xy = "";
-                //}
-
-                //if (!this.ownControlUI1.IsVisible_Criteriaxy)
-                //{
-                //    string xy = "";
-                //}
-                if (!DesignMode)
-                {
-                    this.lockVisibleChanged = true;
-                    this.doVisible2();
-                    this.TabIndex = this.OwnOrderLineNr * 10 + this.OwnOrderControlNr;
-                    this.lockVisibleChanged = false;
-                }
-                else
-                {
-                    this.Visible = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                this.lockVisibleChanged = false;
-                //this.ResumeLayout();
-                qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-            finally
-            {
-                //this.ResumeLayout();
-            }
-        }
-  
-        public void doVisible2()
-        {
-            try
-            {
-                this.lockVisibleChanged = true;
-                this.Visible = (this.ownControlUI1.IsVisible_Criteriaxy && this.ownControlUI1.IsVisible_LicenseKey && this.IsVisibleControlAssignmentChapters && this.ownControlUI1.IsVisible_RelationsshipGroups);
-                this.lockVisibleChanged = false;
-            }
-            catch (Exception ex)
-            {
-                this.lockVisibleChanged = false;
-                qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
         }
     }    

@@ -12,46 +12,31 @@ namespace qs2.design.auto
 {
     public class ownMCCriteria
     {
+        private bool NoDefaultValuePossible = false;
+        private static List<qs2.core.vb.businessFramework.cSelListAndObj> lstRolesForUserActive;
+        private static List<qs2.core.vb.businessFramework.cSelListAndObj> lstRolesForUserAll;
+        private static qs2.core.db.ERSystem.businessFramework b2 = new core.db.ERSystem.businessFramework();
+        private System.Collections.Generic.List<string> lstLicenseKeys = new List<string>();
+        private bool _isInitializedVar;
+        private static qs2.core.vb.businessFramework b;
+
         public string Application = "";
         public string IDParticipant = "";
-        public bool _ControlIsFormatted = false;
-
-        public static qs2.core.vb.dsAdmin dsAdminWork = null;
-        public static qs2.core.vb.sqlAdmin sqlAdminWork = null;
-        public static qs2.core.vb.dsObjects dsObjectsWork = null;
-        public static qs2.core.vb.sqlObjects sqlObjectsWork = null;
-
-        public qs2.core.vb.dsAdmin.tblCriteriaRow rCriteria = null;
+        public bool _ControlIsFormatted;
+        public static qs2.core.vb.dsAdmin dsAdminWork;
+        public static qs2.core.vb.sqlAdmin sqlAdminWork;
+        public static qs2.core.vb.dsObjects dsObjectsWork;
+        public static qs2.core.vb.sqlObjects sqlObjectsWork;
+        public qs2.core.vb.dsAdmin.tblCriteriaRow rCriteria;
         public System.Collections.Generic.List<qs2.core.Enums.cVariables> lstVariablesClassification = new List<core.Enums.cVariables>();
-        public System.Collections.Generic.List<string> lstLicenseKeys = new List<string>();
-        public qs2.core.vb.dsAdmin.tblSelListEntriesObjRow[] arrSelListEntriesObj = null;
-        public qs2.core.SysDB.dsSysDB.COLUMNSRow rColSys = null;
-        public bool IsNullableInDb = false;
-        public qs2.core.generic.retValue defaultDBValue = null;
-        public bool IsKeyDb = false;
-
-        public bool _isInitializedGetData = false;
-        public bool _isInitializedCriteria = false;
-        public bool _isInitializedVar = false;
-
+        public qs2.core.SysDB.dsSysDB.COLUMNSRow rColSys;
+        public qs2.core.generic.retValue defaultDBValue;
+        public bool _isInitializedGetData;
+        public bool _isInitializedCriteria;
         public qs2.design.auto.multiControl.ownMCCombo ownMCCombo1 = new multiControl.ownMCCombo();
+        public string CombinationComboBoxAsDropDown = qs2.core.sqlTxt.and.Trim();
+        public static core.license.dsLicense dsLicense1;
 
-        public bool DefaultValuesCriteria = false;
-
-        public static int counterNewCriteriaAssignments = 0;
-
-        public static qs2.core.vb.businessFramework b = null;
-
-        public string CombinationComboBoxAsDropDown = qs2.core.sqlTxt.and.ToString().Trim();
-        public bool NoDefaultValuePossible = false;
-        public bool defaultValueIsLoaded = false;
-        public static List<qs2.core.vb.businessFramework.cSelListAndObj> lstRolesForUserActive = null;
-        public static List<qs2.core.vb.businessFramework.cSelListAndObj> lstRolesForUserAll = null;
-
-        public static qs2.core.db.ERSystem.businessFramework b2 = new core.db.ERSystem.businessFramework();
-        public static core.license.dsLicense dsLicense1 = null;
-
-        public static Nullable<DateTime> dNowAssign = null;
 
         public void initControl()
         {
@@ -141,11 +126,6 @@ namespace qs2.design.auto
                 this.initControl();
                 qs2.design.auto.ownMCCriteria.dsAdminWork.Clear();
 
-                //if (ownControlUI1 != null)
-                //{
-
-                //}
-
                 if (FldShort.Trim() == "")
                 {
                     if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
@@ -155,9 +135,7 @@ namespace qs2.design.auto
                     }
                 }
 
-                //qs2.core.generic.CheckMemorySizeProcess();
                 string IDApplicationTmp;
-                // OMC.IDApplication.Check
                 qs2.core.vb.dsAdmin.tblCriteriaRow[] arrCriteria = null;
                 if (FieldForALLProducts)
                 {
@@ -215,76 +193,47 @@ namespace qs2.design.auto
 
                     qs2.design.auto.ownMCCriteria.dsAdminWork.Clear();
                     this.rColSys = qs2.core.SysDB.sqlSysDB.getSysColumnRow(this.rCriteria.SourceTable, this.rCriteria.FldShort, qs2.core.SysDB.sqlSysDB.dsSysDBAll, false);
-                    this.arrSelListEntriesObj = ownMCCriteria.sqlAdminWork.getSelListEntrysObj(-999, core.vb.sqlAdmin.eDbTypAuswObj.Criterias, "", qs2.design.auto.ownMCCriteria.dsAdminWork,
-                                                                                core.vb.sqlAdmin.eTypAuswahlObj.allFldShortRam,
-                                                                                IDApplicationTmp, -999, FldShort, -999, "", -999);
-
 
                     if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiControl)))
                     {
                         qs2.design.auto.multiControl.ownMultiControl ownMultiControl1 = (qs2.design.auto.multiControl.ownMultiControl)ctl;
                         ownMultiControlExcept = ownMultiControl1;
 
-                        if (ownMultiControl1.hasINCondition)
+                        this.loadDefaultDBValue(ref ownMultiControl1);
+
+                        if (controlType == core.Enums.eControlType.ComboBox || controlType == core.Enums.eControlType.ComboBoxNoDb)
                         {
-                            //bool HasInCondition = true;
+                            this.ownMCCombo1.initCombo(ownMultiControl1);
+                            if (this.ownMCCombo1.TypeComboBox == qs2.core.Enums.cVariablesValues.Roles)
+                            {
+                                ownMultiControl1.setLabels2(false, false, true);
+                            }
+                            else
+                            {
+                                if (!this.rCriteria.UserDefined)
+                                {
+                                    ownMultiControl1.setLabels2(false, true, false);
+                                }
+                            }
                         }
-                        else
+                        else if (controlType == core.Enums.eControlType.ComboBoxCheckThreeStateBox)
                         {
-                            //qs2.core.ui.addWatch("Criteria.loadDefaultDBValue: start " + FldShort.Trim(), true);
-                            this.loadDefaultDBValue(ref ownMultiControl1);
-                            //qs2.core.ui.addWatch("Criteria.loadDefaultDBValue: end " + FldShort.Trim(), true);
-
-                            if (controlType == core.Enums.eControlType.ComboBox ||
-                                controlType == core.Enums.eControlType.ComboBoxNoDb)
-                            {
-                                //qs2.core.ui.addWatch("Criteria.initCombo: start " + FldShort.Trim(), true);
-                                this.ownMCCombo1.initCombo(ownMultiControl1);
-                                //qs2.core.ui.addWatch("Criteria.initCombo: end " + FldShort.Trim(), true);
-                                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownMultiControl1.OwnFldShort, "Surgeon", false))
-                                {
-                                    bool bStop = true;
-                                }
-                                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownMultiControl1.OwnFldShort, "Surg_Assist1", false))
-                                {
-                                    bool bStop = true;
-                                }
-
-                                if (this.ownMCCombo1.TypeComboBox == qs2.core.Enums.cVariablesValues.Roles)
-                                {
-                                    ownMultiControl1.setLabels2(false, false, true);
-                                }
-                                else
-                                {
-                                    if (!this.rCriteria.UserDefined)
-                                    {
-                                        ownMultiControl1.setLabels2(false, true, false);
-                                    }
-                                }
-                            }
-                            else if (controlType == core.Enums.eControlType.ComboBoxCheckThreeStateBox)
-                            {
-                                this.ownMCCombo1.initCombo(ownMultiControl1);
-                            }
-                            else if (controlType == core.Enums.eControlType.ComboBoxAsDropDown)
-                            {
-                                this.ownMCCombo1.initCombo(ownMultiControl1);
-                                ownMultiControl1.ControlForDropDown.initControl();
-                            }
-
-                            bool HasCriteria = false;
-                            System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
+                            this.ownMCCombo1.initCombo(ownMultiControl1);
                         }
-                         
+                        else if (controlType == core.Enums.eControlType.ComboBoxAsDropDown)
+                        {
+                            this.ownMCCombo1.initCombo(ownMultiControl1);
+                            ownMultiControl1.ControlForDropDown.initControl();
+                        }
+
                         ownMultiControl1.ownMCUI1.getColorsFromClassification(ref ownMultiControl1);
-                        if (ownMultiControl1.OwnOnlyForProducts.Trim() != "")
+                        if (!string.IsNullOrWhiteSpace(ownMultiControl1.OwnOnlyForProducts))
                         {
                             if (!ownMultiControl1.OwnOnlyForProducts.Trim().ToLower().Contains(IDApplicationTmp.Trim().ToLower()))
                             {
                                 ownControlUI1.IsVisible_Criteriaxy = false;
                             }
                         }
-
                     }
                 }
                 else
@@ -301,7 +250,6 @@ namespace qs2.design.auto
                                             qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
         }
-
         
         public void getData(System.Windows.Forms.Control ctl, string FldShort,
                                 qs2.core.Enums.eControlType controlType,
@@ -318,45 +266,30 @@ namespace qs2.design.auto
                 if (this._isInitializedCriteria)
                     return;
 
-
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(FldShort, "MedRecN", false))
-                {
-                    //string xy = "";
-                }
-
                 if (this.rCriteria != null)
                 {
                     if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiControl)))
                     {
                         qs2.design.auto.multiControl.ownMultiControl ownMultiControl1 = (qs2.design.auto.multiControl.ownMultiControl)ctl;
                         ownMultiControlExcept = ownMultiControl1;
-                        //this.loadDefaultDBValue(ref ownMultiControl1);
 
                         if (!ownMultiControl1.hasINCondition)
                         {
                             if (controlType == core.Enums.eControlType.ComboBox ||
                                 controlType == core.Enums.eControlType.ComboBoxNoDb)
                             {
-                                //this.ownMCCombo1.initCombo(ownMultiControl1);
-                                //qs2.core.ui.addWatch("Criteria.loadCombo: start " + FldShort.Trim(), true);
                                 this.ownMCCombo1.loadCombo(ownMultiControl1, "", this.CombinationComboBoxAsDropDown, false);
-                                //qs2.core.ui.addWatch("Criteria.loadCombo: end " + FldShort.Trim(), true);
                                 if (this.rCriteria.UserDefined)
                                 {
                                     if (this.ownMCCombo1.TypeComboBox == core.Enums.cVariablesValues.SelList)
                                     {
                                         ownMultiControl1.ownMCUI1.doButtonAddSelList(ownMultiControl1);
                                     }
-                                    else
-                                    {
-                                        //string xy = "";
-                                    }
                                 }
 
                             }
                             else if (controlType == core.Enums.eControlType.ComboBoxCheckThreeStateBox)
                             {
-                                //this.ownMCCombo1.initCombo(ownMultiControl1);
                                 this.ownMCCombo1.loadComboThreeStateCheckBox(ownMultiControl1, ControlWasCheckBox, false);
                             }
                             else if (controlType == core.Enums.eControlType.ComboBoxAsDropDown)
@@ -366,37 +299,10 @@ namespace qs2.design.auto
                                 {
                                     IDGroupOther = "ComboBoxCheckThreeStateBox";
                                 }
-                                //this.ownMCCombo1.initCombo(ownMultiControl1);
                                 ownMultiControl1.ControlForDropDown.initControl();
                                 this.ownMCCombo1.loadCombo(ownMultiControl1, IDGroupOther.Trim(), this.CombinationComboBoxAsDropDown, ComboBoxCheckThreeStateBoxAsDropDown);
                             }
-                            else if (controlType == core.Enums.eControlType.Picture)
-                            {
-                                //this.ownControlPictures1.getRelationshipPictures(ref ownMultiControlPicture, this.arrRelationships, this.IDApplication.ToString());
-
-                                //qs2.design.auto.multiControl.ownMultiControl ownControl1 = (qs2.design.auto.multiControl.ownMultiControl)ctl;
-                                //foreach (string IDResPic in ownControl1._FldShorts)
-                                //{
-                                //    qs2.core.language.dsLanguage.RessourcenRow rResHelp = qs2.core.language.sqlLanguage.getResRow(IDResPic, core.Enums.eResourceType.PictureEnabled, this.IDParticipant, this.IDApplication.ToString());
-                                //    if (rResHelp != null)
-                                //    {
-                                //        if (!rResHelp.IsfileBytesNull())
-                                //        {
-                                //            qs2.core.print.dsQryAuto.picturesRow rResPicNew = (qs2.core.print.dsQryAuto.picturesRow)this.tResPictures.NewRow();
-                                //            rResPicNew.IDRessource = rResHelp.IDRes;
-                                //            rResPicNew.picture = rResHelp.fileBytes;
-                                //            rResPicNew.fileType = rResHelp.fileTyp;
-                                //            this.tResPictures.Rows.Add(rResPicNew);
-                                //        }
-                                //    }
-                                //}
-                            }
-                            //bool HasCriteria = false;
-                            //System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
-                            //this.checkAssignments(ctl, ownMCRelationship.eTypAssignments.Roles, ref protocollForAdmin, ref ProtocolWindow,
-                            //                        ref lstElementsActive, FldShort, false, ownMCCriteria.sqlAdminWork, ref HasCriteria, false, -999);
                         }
-
                     }
                     else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownGroupBox)))
                     {
@@ -436,7 +342,6 @@ namespace qs2.design.auto
                             ownControlUI1.IsVisible_Criteriaxy = false;
                         }
                         bool HasCriteria = false;
-                        System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
                     }
                     else if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiGridSelList)))
                     {
@@ -456,7 +361,6 @@ namespace qs2.design.auto
                             ownControlUI1.IsVisible_Criteriaxy = false;
                         }
                         bool HasCriteria = false;
-                        System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
                     }
                 }
                 else
@@ -478,15 +382,7 @@ namespace qs2.design.auto
         {
             try
             {
-                //if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownGroupBox)))
-                //{
-
-                //}
-                //else
-                //{
                 ownControlUI1.IsVisible_Criteriaxy = false;
-                // if (this.parentAutoUI != null)
-                //this.parentAutoUI.contAutoProtokoll1.addRow(this.tagTab.text, FldShort, qs2.core.language.sqlLanguage.getRes("NoCriteriaForControl") + "!", null, core.vb.qs2.Resources.getRes.ePicture.ico_sys, true);   
 
                 bool doProt = true;
                 if (ctl.GetType().Equals(typeof(qs2.design.auto.multiControl.ownMultiControl)))
@@ -505,8 +401,6 @@ namespace qs2.design.auto
                                                 this.Application,
                                                 qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
                 }
-                //}
-
             }
             catch (Exception ex)
             {
@@ -520,24 +414,17 @@ namespace qs2.design.auto
         {
             try
             {
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownMultiControl1._FldShort, "IDParticipant", false))
-                {
-                    //string xy = "";
-                }
-
                 bool IsDefaultValue = false;
                 if (!this.rCriteria.IsDefaultValuesNull())
                 {
-                    if (!this.rCriteria.DefaultValues.Trim().Equals(""))
+                    if (!string.IsNullOrWhiteSpace(rCriteria.DefaultValues))
                     {
-                        //qs2.core.generic.retValue ret = new qs2.core.generic.retValue();
                         this.defaultDBValue = qs2.core.generic.getValue(ownMultiControl1._controlType, this.rCriteria.DefaultValues.Trim(),
                                                                                     Infragistics.Win.UltraWinEditors.NumericType.Integer, false);
                         IsDefaultValue = true;
-                        this.DefaultValuesCriteria = true;
-
                     }
                 }
+
                 if (!this.rCriteria.IsDefaultValuesCustomerNull())
                 {
                     if (!this.rCriteria.DefaultValuesCustomer.Trim().Equals(""))
@@ -546,8 +433,6 @@ namespace qs2.design.auto
                         this.defaultDBValue = qs2.core.generic.getValue(ownMultiControl1._controlType, this.rCriteria.DefaultValuesCustomer.Trim(),
                                                                                     Infragistics.Win.UltraWinEditors.NumericType.Integer, false);
                         IsDefaultValue = true;
-                        this.DefaultValuesCriteria = true;
-
                     }
                 }
 
@@ -558,9 +443,6 @@ namespace qs2.design.auto
                         System.Collections.Generic.List<string> lstTablesNoDateTimeCheck = new System.Collections.Generic.List<string>();
 
                         this.defaultDBValue = qs2.core.dbBase.getDefaultDBValue(ref this.rColSys, true, lstTablesNoDateTimeCheck, ref this.NoDefaultValuePossible);
-                        this.IsNullableInDb = qs2.core.dbBase.checkColSysNullable(ref this.rColSys);
-                        this.IsKeyDb = qs2.core.SysDB.sqlSysDB.IsKeyInDb(this.rCriteria.SourceTable, this.rCriteria.FldShort, qs2.core.SysDB.sqlSysDB.dsSysDBAll);
-                        //ownMultiControl1.ownMCDataBind1.setRowValue(ownMultiControl1, this.defaultDBValue.valueObj);
                     }
                     else
                     {
@@ -621,38 +503,12 @@ namespace qs2.design.auto
                         }
                     }
                 }
-
-                this.defaultValueIsLoaded = true;
-                if (this.defaultDBValue == null)
-                {
-                    //bool HasNoDefaultValue = true;
-                }
             }
             catch (Exception ex)
             {
                 qs2.core.Protocol.doExcept(ex.ToString(), "ownMCCriteria.loadDefaultDBValue", ownMultiControl1._FldShort, false, true,
                                                                 this.Application, qs2.core.Protocol.alwaysShowExceptionMulticontrol,
                                                                 qs2.core.Protocol.eTypeError.Error);
-            }
-        }
-
-       
-        public void IsInObjArr(ref qs2.core.vb.dsAdmin.vListEntriesWithGroupRow[] arrSelListToProve, ref bool Exists,
-                               ref qs2.core.vb.dsAdmin.tblSelListEntriesObjRow[] arrSelListEntriesObj, ref Nullable<System.Guid> IDSelListObj)
-        {
-            if (arrSelListEntriesObj != null)
-            {
-                foreach (qs2.core.vb.dsAdmin.tblSelListEntriesObjRow rObj in arrSelListEntriesObj)
-                {
-                    foreach (qs2.core.vb.dsAdmin.vListEntriesWithGroupRow rSelListWithGroup in arrSelListToProve)
-                    {
-                        if (rObj.IDSelListEntry.Equals(rSelListWithGroup.s_ID))
-                        {
-                            IDSelListObj = rObj.IDGuid;
-                            Exists = true;
-                        }
-                    }
-                }
             }
         }
 
