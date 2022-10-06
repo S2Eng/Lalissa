@@ -1,36 +1,14 @@
 using System;
 using System.Drawing;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
-using System.Reflection;
-using System.Text;
-
-using PMDS.GUI;
 using PMDS.Global;
 using PMDS.BusinessLogic;
 using PMDS.Data.Global;
-
-using Infragistics.Win;
-using Infragistics.Win.UltraWinExplorerBar;
 using Infragistics.Win.UltraWinStatusBar;
 using Infragistics.Win.UltraWinToolbars;
-using PMDS.Global.db.ERSystem;
-using PMDS.db.Entities;
-using System.Data.Common;
-using System.Data.Entity;
-using System.Data.Entity.Core.EntityClient;
-using System.Data.Entity.Infrastructure;
-using System.Data.OleDb;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Configuration;
-using System.Data;
 using System.IO;
-using PMDS.Global.db.Patient;
-using System.Diagnostics;
 using PMDS.Global.Remote;
 using PMDS.GUI.GUI.Main;
 using PMDS.GUI.Arztabrechnung;

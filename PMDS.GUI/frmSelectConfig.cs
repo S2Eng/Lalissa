@@ -24,18 +24,8 @@ namespace PMDS.GUI
         public string _ConfigPath = "";
         public string _ConfigFileDefault = "";
         public bool _runWithDefaultConfigFile = false;
-
         public string lastSelectedFile = "";
-
-        public QS2.Desktop.Txteditor.doEditor doEditor1 = new QS2.Desktop.Txteditor.doEditor();
-
         public PMDS.Global.db.ERSystem.PMDSBusinessUI bUI = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
-
-
-
-
-
-
 
         public frmSelectConfig()
         {
@@ -58,7 +48,6 @@ namespace PMDS.GUI
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
                 this.btnOK.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Beenden, QS2.Resources.getRes.ePicTyp.ico);
                 this.btnRefresh.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Aktualisieren, 32, 32);
-                this.btnSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Speichern, 32, 32);
 
                 if (HideButtonOK)
                 {
@@ -98,7 +87,7 @@ namespace PMDS.GUI
                 //this.cItmTg_SelectedDatabase = null;
 
                 this.cboConfigFiles.Items.Clear();
-                this.textControl1.Text = "";
+                this.txtConfigFile.Text = "";
 
                 Infragistics.Win.ValueListItem itmSel = null;
                 int iCounter = 0;
@@ -128,71 +117,8 @@ namespace PMDS.GUI
         {
             try
             {
-                //this.cItmTg_SelectedDatabase = null;
-                this.textControl1.Text = "";
-                //var OpenFile = new System.IO.StreamReader(ItmTgConfig.fileNameFull.Trim());
-                TXTextControl.StreamType streamType = TXTextControl.StreamType.PlainText;
-                this.doEditor1.showFile(ref ItmTgConfig.fileNameFull, ref streamType, ref this.textControl1);
-                //this.textControl1.Landscape = false;
-
+                this.txtConfigFile.Text = File.ReadAllText(ItmTgConfig.fileNameFull);
                 this.lastSelectedFile = ItmTgConfig.fileNameOnly.Trim();
-
-
-                //this.textControl1.Selection.SectionFormat.PageSize.Width = 1000;
-
-
-                //TXTextControl.LoadSettings loadsettings1 = new TXTextControl.LoadSettings();
-                //this.textControl1.Load(ItmTgConfig.fileNameFull, TXTextControl.StreamType.PlainText, loadsettings1);
-
-
-
-                //this.doEditor1.getText(TXTextControl.StringStreamType.PlainText, this.textControl1);
-                //this.textControl1.Text = OpenFile.ReadToEnd();
-
-
-                //System.Collections.Generic.List<string> lstDatabasesActDeact = new List<string>();
-                //PMDS.Global.Other.cConfig.readConfig(ItmTgConfig.fileNameFull, "", true, ref lstDatabasesActDeact);
-
-                //System.Collections.Generic.List<string> lstDatabasesAct = new List<string>();
-                //System.Collections.Generic.List<string> lstDatabasesDeact = new List<string>();
-                //foreach (string db in lstDatabasesActDeact)
-                //{
-                //    if (db.Trim().ToLower().StartsWith(("DSNMain").Trim().ToLower()))
-                //    {
-                //        lstDatabasesAct.Add(db);
-                //    }
-                //    else if (db.Trim().ToLower().StartsWith(("//DSNMain").Trim().ToLower()))
-                //    {
-                //        lstDatabasesDeact.Add(db);
-                //    }
-                //}
-
-
-                //foreach (string db in lstDatabasesAct)
-                //{
-                //    Infragistics.Win.ValueListItem itm = this.cboDatabases.Items.Add(db.Trim(), db.Trim());
-                //    cItmTg ctmTg = new cItmTg();
-                //    ctmTg.IsDatabase = true;
-                //    ctmTg.Database = db.Trim();
-                //    ctmTg.ConnStringInConfig = db.Trim();
-                //    ctmTg.fileNameOnly = ItmTgConfig.fileNameOnly;
-                //    ctmTg.Dir = ItmTgConfig.Dir;
-                //    ctmTg.fileNameFull = ItmTgConfig.fileNameFull;
-                //    itm.Tag = ctmTg;
-                //}
-                //foreach (string db in lstDatabasesDeact)
-                //{
-                //    Infragistics.Win.ValueListItem itm = this.cboDatabases.Items.Add(db.Trim(), db.Trim());
-                //    cItmTg ctmTg = new cItmTg();
-                //    ctmTg.IsDatabase = true;
-                //    ctmTg.Database = db.Trim();
-                //    ctmTg.ConnStringInConfig = db.Trim();
-                //    ctmTg.fileNameOnly = ItmTgConfig.fileNameOnly;
-                //    ctmTg.Dir = ItmTgConfig.Dir;
-                //    ctmTg.fileNameFull = ItmTgConfig.fileNameFull;
-                //    itm.Tag = ctmTg;
-                //}
-
             }
             catch (Exception ex)
             {
@@ -211,18 +137,7 @@ namespace PMDS.GUI
                     this.cboConfigFiles.Focus();
                     return false;
                 }
-
-                //if (this.cboDatabases.SelectedItem == null)
-                //{
-                //    System.Windows.Forms.MessageBox.Show("Database: selection required!", "PMDS", MessageBoxButtons.OK);
-                //    this.cboDatabases.Focus();
-                //    return false;
-                //}
-
                 this.cItmTg_SelectedConfig = (Global.db.ERSystem.PMDSBusinessUI.cItmTg)this.cboConfigFiles.SelectedItem.Tag;
-                //this.cItmTg_SelectedDatabase = (cItmTg)this.cboDatabases.SelectedItem.Tag;
-
-
                 return true;
             }
             catch (Exception ex)
@@ -236,7 +151,6 @@ namespace PMDS.GUI
             try
             {
                 Process.Start(@ItmTgSel.fileNameFull.Trim());
-
             }
             catch (Exception ex)
             {
@@ -247,10 +161,10 @@ namespace PMDS.GUI
         {
             try
             {
-                string qs2Config = this._ConfigPath + "\\qs2.config";
+                string qs2Config = System.IO.Path.Combine(_ConfigPath, "qs2.config");
                 if (System.IO.File.Exists(@qs2Config.Trim()))
                 {
-                    Process.Start(@qs2Config.Trim());
+                    Process.Start(qs2Config);
                 }
                 else
                 {
@@ -268,8 +182,6 @@ namespace PMDS.GUI
         {
             try
             {
-                string sTxtForSave  = this.doEditor1.getText(TXTextControl.StringStreamType.PlainText, this.textControl1);
-                File.WriteAllText(ItmTgSel.fileNameFull, sTxtForSave);
             }
             catch (Exception ex)
             {

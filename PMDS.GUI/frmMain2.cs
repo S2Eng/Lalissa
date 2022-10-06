@@ -2029,7 +2029,7 @@ namespace PMDS
                 this.Location = new Point(UsableScreen.X, UsableScreen.Y);
                 this.Width = UsableScreen.Width;
                 this.Height = UsableScreen.Height;
-
+                
                 //Minimumsize abhängig von der Taskbar-Position festlegen
                 if (TaskbarPos == ENV.TaskbarPosition.Oben || TaskbarPos == ENV.TaskbarPosition.Unten)
                 {

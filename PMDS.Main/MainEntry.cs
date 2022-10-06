@@ -1,20 +1,15 @@
 using System;
 using System.Windows.Forms;
-
 using PMDS.Global;
 using PMDS.GUI;
 using PMDS.BusinessLogic;
-
-using System.Configuration;
 using PMDS.Global.Remote;
 using System.Linq;
 using System.Diagnostics;
 using S2Extensions;
-using qs2.ui;
 
 namespace PMDS
 {
-
 	public static class MainEntry
     {
         static bool ProcessStartup(Form frm, UserRights right, string RightsErrorText, bool bNoLoginRequired, bool testWindow, bool IsTouch  )
@@ -88,17 +83,6 @@ namespace PMDS
 					}
 #endif
 
-                //qs2.core.generic.evdoLog += new qs2.core.generic.doLog(Settings.errorLogging);
-
-
-                //if (qs2.core.generic.evdoLog != null)
-                //    qs2.core.generic.evdoLog.Invoke(exep, "");
-                //else
-                //{
-                //    string infoExceptTmp = "The following error occured: " + qs2.core.generic.lineBreak + "(This error can influence the quality of the application!)" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + "Please contact your administrator." + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak;
-                //    System.Windows.Forms.QS2.Desktop.ControlManagment.ControlManagment.MessageBox(infoExceptTmp + exep.ToString(), "Info Error");
-                //}
-
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
@@ -122,9 +106,7 @@ namespace PMDS
                 //<20130212> Simple Install-Parameter integriert, für Einfache direkte installation -> siehe 
                 ENV.SimpleInstall = searchKeyArg("SimpleInstall", args);
                 ENV.StartFromShare = searchKeyArg("StartFromShare", args);
-                //remotingSrv.showMsgBoxTestmodus("StartFromShare: " + Settings.StartFromShare);
                 string LogPathPMDSFromLauncher = searchKeyArg("logPathPMDS", args);
-
                 string sDoOrigPathConfig = searchKeyArg("DoOrigPathConfig", args);
                 if (sDoOrigPathConfig.Trim() == "1")
                 {
@@ -217,8 +199,6 @@ namespace PMDS
                             }
 
                             bool IsInit = GuiWorkflow.Init(frm);
-
-                            //PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
                             if (ENV.ActiveUser == null)
                             {
                                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
@@ -258,7 +238,7 @@ namespace PMDS
                             qs2.core.ENV.IsHeadquarter = true;
                             PMDS.Global.db.ERSystem.EFEntities EFEntities1 = new Global.db.ERSystem.EFEntities();
                             EFEntities1.init2(true);
-
+                            frm.Show();
                             Application.Run(frm);
                         }
                        

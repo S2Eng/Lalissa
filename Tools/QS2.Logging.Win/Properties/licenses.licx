@@ -1,7 +1,6 @@
-TXTextControl.TextControl, TXTextControl.Windows.Forms, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
-TXTextControl.ServerTextControl, TXTextControl.Server, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
-TXTextControl.Proofing.TXSpellChecker, TXSpell.Windows.Forms, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
-
+TXTextControl.TextControl, TXTextControl.Windows.Forms, Version=30.0.1500.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
+TXTextControl.ServerTextControl, TXTextControl.Server, Version=30.0.1500.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
+TXTextControl.Proofing.TXSpellChecker, TXSpell.Windows.Forms, Version=9.0.800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638
 
 Infragistics.Win.Misc.UltraGridBagLayoutPanel, Infragistics4.Win.Misc.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb
 Infragistics.Win.UltraWinSchedule.UltraMonthViewSingle, Infragistics4.Win.UltraWinSchedule.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb

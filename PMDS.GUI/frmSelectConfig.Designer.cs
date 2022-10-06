@@ -36,7 +36,6 @@
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Default, "Reload", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             this.btnOK = new QS2.Desktop.ControlManagment.BaseButton();
@@ -48,11 +47,11 @@
             this.lblDatabases2 = new Infragistics.Win.Misc.UltraLabel();
             this.lblOpenConfig = new QS2.Desktop.ControlManagment.BaseLabel();
             this.btnRefresh = new QS2.Desktop.ControlManagment.BaseButton();
-            this.textControl1 = new TXTextControl.TextControl();
-            this.btnSave = new QS2.Desktop.ControlManagment.BaseButton();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.lblOpenQS2Config = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.txtConfigFile = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             ((System.ComponentModel.ISupportInitialize)(this.cboConfigFiles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtConfigFile)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -63,7 +62,7 @@
             this.btnOK.Appearance = appearance1;
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.IsStandardControl = false;
-            this.btnOK.Location = new System.Drawing.Point(362, 471);
+            this.btnOK.Location = new System.Drawing.Point(824, 471);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(63, 27);
@@ -80,7 +79,7 @@
             this.btnAbort.Appearance = appearance2;
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(425, 471);
+            this.btnAbort.Location = new System.Drawing.Point(741, 471);
             this.btnAbort.Margin = new System.Windows.Forms.Padding(4);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(75, 27);
@@ -178,38 +177,6 @@
             this.ultraToolTipManager1.SetUltraToolTip(this.btnRefresh, ultraToolTipInfo1);
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // textControl1
-            // 
-            this.textControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textControl1.BorderStyle = TXTextControl.BorderStyle.FixedSingle;
-            this.textControl1.Font = new System.Drawing.Font("Arial", 10F);
-            this.textControl1.Location = new System.Drawing.Point(83, 62);
-            this.textControl1.Name = "textControl1";
-            this.textControl1.Size = new System.Drawing.Size(806, 404);
-            this.textControl1.TabIndex = 5;
-            this.textControl1.UserNames = null;
-            this.textControl1.ViewMode = TXTextControl.ViewMode.Normal;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance9.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance9.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSave.Appearance = appearance9;
-            this.btnSave.AutoWorkLayout = false;
-            this.btnSave.IsStandardControl = false;
-            this.btnSave.Location = new System.Drawing.Point(801, 471);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(87, 27);
-            this.btnSave.TabIndex = 105;
-            this.btnSave.Tag = "";
-            this.btnSave.Text = "Speichern";
-            this.btnSave.Visible = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // ultraToolTipManager1
             // 
             this.ultraToolTipManager1.AutoPopDelay = 0;
@@ -238,16 +205,29 @@
             this.lblOpenQS2Config.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.lblOpenQS2Config.Click += new System.EventHandler(this.lblOpenQS2Config_Click);
             // 
+            // txtConfigFile
+            // 
+            this.txtConfigFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConfigFile.AutoSize = false;
+            this.txtConfigFile.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConfigFile.Location = new System.Drawing.Point(83, 64);
+            this.txtConfigFile.Multiline = true;
+            this.txtConfigFile.Name = "txtConfigFile";
+            this.txtConfigFile.Scrollbars = System.Windows.Forms.ScrollBars.Both;
+            this.txtConfigFile.Size = new System.Drawing.Size(806, 400);
+            this.txtConfigFile.TabIndex = 113;
+            // 
             // frmSelectConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 502);
+            this.Controls.Add(this.txtConfigFile);
             this.Controls.Add(this.lblOpenQS2Config);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAbort);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.textControl1);
             this.Controls.Add(this.txtConfigPath);
             this.Controls.Add(this.cboConfigFiles);
             this.Controls.Add(this.btnRefresh);
@@ -261,6 +241,7 @@
             this.Load += new System.EventHandler(this.frmSelectConfig_Load);
             this.VisibleChanged += new System.EventHandler(this.frmSelectConfig_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.cboConfigFiles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtConfigFile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,9 +258,8 @@
         internal Infragistics.Win.Misc.UltraLabel lblDatabases2;
         internal QS2.Desktop.ControlManagment.BaseLabel lblOpenConfig;
         public QS2.Desktop.ControlManagment.BaseButton btnRefresh;
-        private TXTextControl.TextControl textControl1;
-        public QS2.Desktop.ControlManagment.BaseButton btnSave;
         private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
         internal QS2.Desktop.ControlManagment.BaseLabel lblOpenQS2Config;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtConfigFile;
     }
 }
