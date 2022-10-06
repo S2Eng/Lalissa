@@ -541,8 +541,6 @@ namespace PMDS.GUI
             if (ENV._IDKlinik == ENV._IDKlinikNoKlinikSelected)
             {
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Dem angemeldeten Benutzer wurde keine Klinik zugeordnet! " + "\r\n" + "PMDS wird beendet.");
-                PMDS.Global.Remote.ICommunicationService ICommunicationService1 = new Global.Remote.ICommunicationService();
-                ICommunicationService1.CloseIPCClient();
             }
 
             List<Guid> ag = new List<Guid>();

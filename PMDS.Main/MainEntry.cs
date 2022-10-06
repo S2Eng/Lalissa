@@ -2,9 +2,6 @@ using System;
 using System.Windows.Forms;
 using PMDS.Global;
 using PMDS.GUI;
-using PMDS.BusinessLogic;
-using PMDS.Global.Remote;
-using System.Linq;
 using System.Diagnostics;
 using S2Extensions;
 
@@ -111,7 +108,6 @@ namespace PMDS
                 if (sDoOrigPathConfig.Trim() == "1")
                 {
                     ENV.DoOrigPathConfig = true;
-                    remotingSrv.showMsgBoxTestmodus("DoOrigPathConfig: true");
                 }
 
                 ENV.ConfigFileLauncher = searchKeyArg("ConfigFileLauncher", args);
@@ -119,7 +115,6 @@ namespace PMDS
 
                 //<20120209> Pfad zum Config-Directory MUSS mitgegeben werden!!    /PMDS/<bindir>/Config wird automatisch angehängt!
                 ENV.sConfigRootDir = searchKeyArg("ConfigPath", args);
-                remotingSrv.showMsgBoxTestmodus("ConfigPath: " +  ENV.sConfigRootDir);
 
                 string typ = searchKeyArg("typ", args).ToLower();
                 ENV.StartupTyp = typ;
@@ -149,7 +144,6 @@ namespace PMDS
                     }
                 }
                 string configFileRead = searchKeyArg("ConfigFile", args);
-                remotingSrv.showMsgBoxTestmodus("ConfigFile: " + configFileRead);
 
                 ENV.OrigConfigFile = configFileRead;
                 if (!String.IsNullOrWhiteSpace(configFileRead))
@@ -281,119 +275,6 @@ namespace PMDS
                     frm.nurDepot = true;
 
                     ProcessStartup(frm, UserRights.AbrechnungStarten, QS2.Desktop.ControlManagment.ControlManagment.getRes("Sie verfügen nicht über die notwendigen Rechte um die Abrechnung direkt zu starten"), false, false, false);            // Abrechnung starten 
-                }
-                else if (typ == "schnellrückmeldung")
-                {
-                    remotingSrv.showMsgBoxTestmodus("start schnellrückmeldung");
-
-                    remotingSrv.varsToCallIPCServer = new CommunicationStatusVars();
-                    remotingSrv.varsToCallIPCServer.URIGuidClient = searchKeyArg("URIGuidClient", args);
-                    remotingSrv.URIGuidSrv = searchKeyArg("URIGuidSrv", args);
-                    string sSrvNr = searchKeyArg("SrvNr", args);
-                    string sUserID = searchKeyArg("UserID", args);
-                    Guid gUserID = new Guid(sUserID.Trim());
-                    string sLoggedInAsSuperUser = searchKeyArg("LoggedInAsSuperUser", args);
-                    if (sLoggedInAsSuperUser.Trim() == "1")
-                    {
-                        ENV.LoggedInAsSuperUser = true;
-                    }
-                    ENV.UsrPwdEnc = searchKeyArg("UsrPwdEnc", args);
-                    string sIDAnmeldungen = searchKeyArg("IDAnmeldungen", args);
-                    if (!String.IsNullOrWhiteSpace(sIDAnmeldungen.Trim()))
-                    {
-                        ENV.IDAnmeldungen = new Guid(sIDAnmeldungen.Trim());
-                    }
-                    remotingSrv.IPCClientTestmodus = searchKeyArg("IPCClientTestmodus", args);
-
-                    remotingSrv.varsToCallIPCServer.SrvNr = System.Convert.ToInt32(sSrvNr.Trim());
-                    remotingSrv.UriMainPMDS += "_" + remotingSrv.URIGuidSrv.Trim();
-                    remotingSrv.PortMainPMDS += "_" + remotingSrv.URIGuidSrv.Trim();
-                    remotingSrv.varsToCallIPCServer.UriClientUIQS2 += "_" + remotingSrv.varsToCallIPCServer.URIGuidClient.Trim();
-                    int PortClientTmp = remotingSrv.PortClientFrom + remotingSrv.varsToCallIPCServer.SrvNr;
-                    remotingSrv.varsToCallIPCServer.PortClientUIQS2 = PortClientTmp.ToString() + "_" + remotingSrv.varsToCallIPCServer.URIGuidClient.Trim();
-
-                    remotingSrv.showMsgBoxTestmodus("vars initialized");
-
-                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
-                    {
-                        IQueryable<PMDS.db.Entities.Benutzer> tBenutzer = db.Benutzer.Where(b1 => b1.ID == gUserID);
-                        if (tBenutzer.Count() != 1)
-                        {
-                            throw new Exception("MainEntry: typ=Schnellrückmeldung - tBenutzer.Count()!=1 not allowed for IDBenutzer '" + gUserID.ToString() + "'!");
-                        }
-                        PMDS.db.Entities.Benutzer rBenutzer = tBenutzer.First();
-
-                        if (!ENV.LoggedInAsSuperUser)
-                        {
-                            if (String.IsNullOrWhiteSpace(ENV.UsrPwdEnc))
-                            {
-                                throw new Exception("MainEntry: typ=Schnellrückmeldung - Settings.UsrPwdEnc='' not allowed!");
-                            }
-                            if (ENV.UsrPwdEnc.Trim() != rBenutzer.Passwort.Trim())
-                            {
-                                throw new Exception("MainEntry: typ=Schnellrückmeldung - Settings.UsrPwdEnc<>rBenutzer.Passwort not allowed!");
-                            }
-                        }
-                        ENV.setUSERID = rBenutzer.ID;
-                        remotingSrv.showMsgBoxTestmodus("User Logged in");
-
-                        ENV.SignalQuickfilterChanged(null);
-                        QS2.Desktop.ControlManagment.Settings.initRigth(ENV.HasRight(UserRights.Layout), ENV.adminSecure);
-
-                        b.initUserCanSign();
-
-                        var tBenAbt = from ba in db.BenutzerAbteilung
-                                      where ba.IDBenutzer == rBenutzer.ID
-                                      select new
-                                      {
-                                          ba.ID,
-                                          ba.IDBenutzer,
-                                          ba.IDAbteilung
-                                      };
-
-                        ENV.CurrentUserAbteilungen.Clear();
-                        foreach (var rbenAbt in tBenAbt)
-                            ENV.CurrentUserAbteilungen.Add(rbenAbt.IDAbteilung);
-
-                        ENV.UserWithAbteilungLoggedOn(rBenutzer.ID, rBenutzer.IDBerufsstand.Value, Gruppe.ByBenutzer(rBenutzer.ID), rBenutzer.PflegerJN.Value);
-
-                        ENV.COMMANDLINE_USER = "";
-                        ENV.COMMANDLINE_PWD = "";
-
-
-                        QS2.Desktop.ControlManagment.Settings.setRights(ENV.HasRight(UserRights.Layout));
-                        qs2.ui.RunFromPMDS RunFromPMDS1 = new qs2.ui.RunFromPMDS();
-                        RunFromPMDS1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
-                        PMDS.Global.ENV.setStyleInfrag(true);
-                        qs2.core.ENV.IsHeadquarter = true;
-                        PMDS.Global.db.ERSystem.EFEntities EFEntities1 = new Global.db.ERSystem.EFEntities();
-                        EFEntities1.init2(true);
-                        remotingSrv.showMsgBoxTestmodus("environment initialized");
-
-                        remotingSrv remotingSrv1 = new remotingSrv();
-                        remotingSrv1.run(remotingSrv.varsToCallIPCServer.PortClientUIQS2.Trim(), remotingSrv.varsToCallIPCServer.UriClientUIQS2.Trim(), remotingSrv.varsToCallIPCServer.SrvNr, true);
-                        remotingSrv.showMsgBoxTestmodus("ipc channel registerd");
-
-
-                        PMDS.Global.Remote.remotingClient.frmMainFormIPCClient1 = new GUI.Remote.frmMainFormIPCClient();
-                        System.Drawing.Point p = new System.Drawing.Point(-300, -300);
-                        PMDS.Global.Remote.remotingClient.frmMainFormIPCClient1.TopMost = false;
-                        PMDS.Global.Remote.remotingClient.frmMainFormIPCClient1.Location = p;
-                        PMDS.Global.Remote.remotingClient.frmMainFormIPCClient1.FormBorderStyle = FormBorderStyle.None;
-                        PMDS.Global.Remote.remotingClient.frmMainFormIPCClient1.MaximizeBox = false;
-                        PMDS.Global.Remote.remotingClient.frmMainFormIPCClient1.MinimizeBox = false;
-                        PMDS.Global.Remote.remotingClient.frmMainFormIPCClient1.Height = 200;
-                        PMDS.Global.Remote.remotingClient.frmMainFormIPCClient1.Width = 200;
-                        PMDS.Global.Remote.remotingClient.frmMainFormIPCClient1.ShowInTaskbar = false;
-
-                        remotingClient remotingClient1 = new remotingClient();
-                        cParComm cParComm1 = new cParComm();
-                        remotingClient.cCallFctReturn CallFctReturn = null;
-                        remotingClient1.callFct(ICommunicationService.eTypeCallTo.MainPMDS, ICommunicationService.eTypeFct.LogInFinished, cParComm1, ref CallFctReturn);
-                        remotingSrv.showMsgBoxTestmodus("logged in ready sended to Main-Pmds");
-
-                        Application.Run(PMDS.Global.Remote.remotingClient.frmMainFormIPCClient1);
-                    }
                 }
                 else
                 {

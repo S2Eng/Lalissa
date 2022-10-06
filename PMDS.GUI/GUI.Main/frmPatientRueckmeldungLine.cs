@@ -1,17 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using PMDS.Data.Global;
 using PMDS.Global;
 using PMDS.BusinessLogic;
-using PMDS.Global.db.Global;
 using PMDS.DB;
 using System.Linq;
-using PMDS.Global.Remote;
 using System.Runtime.InteropServices;
 
 namespace PMDS.GUI
@@ -157,9 +150,6 @@ namespace PMDS.GUI
                     }
                 }
 
-                if (remotingClient.frmLoadingWait1 != null)
-                    remotingClient.frmLoadingWait1.Visible = false;
-
                 if (aktRow > maxLinesSR)
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox(QS2.Desktop.ControlManagment.ControlManagment.getRes("Sie haben ") + aktRow.ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(" Meldungen ausgewählt, es können aber nur ") + maxLinesSR.ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(" Meldungen auf einmal in der Liste anzeigt werden.\r\n") +
                                         QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte wiederholen Sie die Schnellrückmeldung für die restlichen Meldungen."), QS2.Desktop.ControlManagment.ControlManagment.getRes("Hinweis"), MessageBoxButtons.OK, true);
@@ -167,8 +157,6 @@ namespace PMDS.GUI
 
             catch (Exception ex)
             {
-                if (remotingClient.frmLoadingWait1 != null)
-                    remotingClient.frmLoadingWait1.Visible = false;
                 pnlMain.ResumeLayout();
                 this.TopMost = false;
                 this.Visible = false;
@@ -326,8 +314,6 @@ namespace PMDS.GUI
                 }
 
                 this.DialogResult = DialogResult.OK;
-
-                remotingSrv.writeClosedSchnellrückmeldung(true);
                 this.Close();
             }
             catch (Exception ex)
@@ -375,7 +361,6 @@ namespace PMDS.GUI
         {
             try
             {
-                remotingSrv.writeClosedSchnellrückmeldung(false);
 
             }
             catch (Exception ex)

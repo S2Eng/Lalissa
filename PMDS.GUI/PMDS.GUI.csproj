@@ -1647,15 +1647,6 @@
     <Compile Include="Quickfilter\frmQuickfilter2.Designer.cs">
       <DependentUpon>frmQuickfilter2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Remote\frmMainFormIPCClient.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Remote\frmMainFormIPCClient.Designer.cs">
-      <DependentUpon>frmMainFormIPCClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Remote\ICommunicationService.cs" />
-    <Compile Include="Remote\remotingClient.cs" />
-    <Compile Include="Remote\remotingSrv.cs" />
     <Compile Include="STAMP\frmSTAMPMeldung.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4889,9 +4880,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Quickfilter\frmQuickfilter2.resx">
       <DependentUpon>frmQuickfilter2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Remote\frmMainFormIPCClient.resx">
-      <DependentUpon>frmMainFormIPCClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="STAMP\frmSTAMPMeldung.resx">
       <DependentUpon>frmSTAMPMeldung.cs</DependentUpon>

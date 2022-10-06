@@ -11,7 +11,6 @@ using Infragistics.Win.UltraWinToolbars;
 using PMDS.Global.db.ERSystem;
 using System.Linq;
 using System.IO;
-using PMDS.Global.Remote;
 using PMDSClient.Sitemap;
 using PMDS.Global.PMDSClient;
 using S2Extensions;
@@ -2043,7 +2042,6 @@ namespace PMDS
                     {
                         PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
                         PMDSBusiness1.checkEndAnonymLogIn();
-                        remotingSrv.killProcessIPCClient();
 
                         WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
                         WCFServiceClient1.ELGALogOut(ENV.USERID, ENV.lic_ELGA);
@@ -2081,7 +2079,6 @@ namespace PMDS
                         PMDSBusiness1.checkEndAnonymLogIn();
                         PMDS.DB.PMDSBusinessComm.closeAllThreads = true;
                         PMDS.DB.PMDSBusinessComm.threadLoadData = null;
-                        remotingSrv.killProcessIPCClient();
 
                         WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
                         WCFServiceClient1.ELGALogOut(ENV.USERID, ENV.lic_ELGA);

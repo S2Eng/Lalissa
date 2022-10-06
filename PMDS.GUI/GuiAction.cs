@@ -1,29 +1,20 @@
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using System.Drawing.Printing;
 using System.IO;
 using System.Data;
 using System.Text.RegularExpressions;
-
 using PMDS.BusinessLogic;
 using PMDS.Global;
 using PMDS.Global.db.ERSystem;
 using PMDS.DB;
-using PMDS.Data.Global;
-using PMDS.Data.Patient;
 using PMDS.Data.PflegePlan;
 using PMDS.GUI.BaseControls;
 using System.Linq;
-
-using PMDS.Global.db.Global;
 using PMDS.Global.db.Patient;
-using PMDS.Global.Remote;
-
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Graphics;
 using Patagames.Pdf.Net;
-
 using PMDS.GUI.ELGA;
 using static PMDS.Global.db.ERSystem.ELGABusiness;
 using Syncfusion.Pdf.Parsing;
@@ -31,10 +22,7 @@ using S2Extensions;
 
 namespace PMDS.GUI
 {
-
     public delegate void GuiActionDoneDelegate(SiteEvents ev);
-
-
 
 	public class GuiAction
 	{
