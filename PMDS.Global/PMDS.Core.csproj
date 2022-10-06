@@ -596,12 +596,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSTAMP_Kostentragungen.xsd</DependentUpon>
     </Compile>
-    <Compile Include="frmFSWOverwriteData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmFSWOverwriteData.Designer.cs">
-      <DependentUpon>frmFSWOverwriteData.cs</DependentUpon>
-    </Compile>
     <Compile Include="PMDSClient\PMDSClientWrapper.cs" />
     <Compile Include="PMDSClient\WCFService\WcfDTOs.cs" />
     <Compile Include="PMDSClient\WCFService\WCFServiceClient.cs" />
@@ -2335,9 +2329,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="db\Sys\sqlSys.resx">
       <DependentUpon>sqlSys.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmFSWOverwriteData.resx">
-      <DependentUpon>frmFSWOverwriteData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pdf.Net.SDK.licx" />
     <EmbeddedResource Include="ScintillaTextEditor\TextEditMainForm.resx">
