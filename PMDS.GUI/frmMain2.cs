@@ -1,51 +1,28 @@
 using System;
 using System.Drawing;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
-using System.Reflection;
-using System.Text;
-
 using PMDS.GUI;
 using PMDS.Global;
 using PMDS.BusinessLogic;
 using PMDS.Data.Global;
-
-using Infragistics.Win;
-using Infragistics.Win.UltraWinExplorerBar;
 using Infragistics.Win.UltraWinStatusBar;
 using Infragistics.Win.UltraWinToolbars;
 using PMDS.Global.db.ERSystem;
-using PMDS.db.Entities;
-using System.Data.Common;
-using System.Data.Entity;
-using System.Data.Entity.Core.EntityClient;
-using System.Data.Entity.Infrastructure;
-using System.Data.OleDb;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Configuration;
-using System.Data;
 using System.IO;
-using PMDS.Global.db.Patient;
-using System.Diagnostics;
 using PMDS.Global.Remote;
-using PMDS.GUI.ELGA;
 using PMDSClient.Sitemap;
 using PMDS.Global.PMDSClient;
+using S2Extensions;
 
 namespace PMDS
 {
-
     public class frmMain : frmBase, IPMDSMenuFramework, IPMDSHeader
     {
-        protected IPMDSGUIObject _topGUI = null;
-        public ucHeader ucHeader1;
+        private IPMDSGUIObject _topGUI;
         private System.Windows.Forms.Splitter splitter1;
-        private Infragistics.Win.Misc.UltraPopupControlContainer ultraPopupControlContainer1;
-        public UltraToolbarsManager ultraToolbarsManager1;
+        private PMDS.UI.Sitemap.UIFct UISitemap;
         private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _frmBase_Toolbars_Dock_Area_Left;
         private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _frmBase_Toolbars_Dock_Area_Right;
         private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _frmBase_Toolbars_Dock_Area_Top;
@@ -53,61 +30,49 @@ namespace PMDS
         private QS2.Desktop.ControlManagment.BasePanel pnlMain;
         private Infragistics.Win.Misc.UltraGridBagLayoutManager ultraGridBagLayoutManager1;
         private QS2.Desktop.ControlManagment.BasePanel panelControlGesamt;
-        public QS2.Desktop.ControlManagment.BasePanel panelStart;
         private System.ComponentModel.IContainer components;
         private QS2.Desktop.ControlManagment.BasePanel panelControl;
         private QS2.Desktop.ControlManagment.BaseLabel lblIsLoading;
-
-        public ucMain _SitemapStart = new ucMain();
-        public PMDS.UI.Sitemap.UIFct UISitemap;
         private ContextMenuStrip contextMenuStripLogging;
         private ToolStripMenuItem loggingToolStripMenuItem;
-
-        public System.Windows.Forms.FormWindowState prevWindowState = System.Windows.Forms.FormWindowState.Normal;
-        private DB.Global.DBStandardProzeduren dbStandardProzeduren1;
+        private System.Windows.Forms.FormWindowState prevWindowState = System.Windows.Forms.FormWindowState.Normal;
         private Data.PflegePlan.dsPDxEintraege dsPDxEintraege1;
         private TXTextControl.TextControl textControl1;
-
-        //public QS2.Desktop.ControlManagment.ControlWorker ControlWorker = new QS2.Desktop.ControlManagment.ControlWorker();
-        //public QS2.Desktop.ControlManagment.ControlManagment ControlManagment = new QS2.Desktop.ControlManagment.ControlManagment();
         private Timer timerControlManager;
-        public Infragistics.Win.AppStyling.Runtime.AppStylistRuntime appStylistRuntime1;
         private ToolStripMenuItem styleAppToolStripMenuItem;
         private Timer timerCheckConnectionAndNetwork;
         private Panel PanelStatusbar;
-        public UltraStatusBar ultraStatusBar1;
-        public PMDS.DB.PMDSBusiness b = new PMDS.DB.PMDSBusiness();
-
-        public bool _KlientenlisteOnTop = true;
-
-        public PMDS.GUI.Verordnungen.frmVOMain frmVOMain1 = null;
-        public PMDS.GUI.Verordnungen.frmVOMain frmVOMain2 = null;
-
-        public int foundUnreadedMessages = -1;
+        private bool _KlientenlisteOnTop = true;
+        private PMDS.GUI.Verordnungen.frmVOMain frmVOMain1;
+        private PMDS.GUI.Verordnungen.frmVOMain frmVOMain2;
         private ToolStripMenuItem openConfigManagerToolStripMenuItem;
-        public static bool newVersionAvailable = false;
-
-        public static cRights Rights = null;
-        public class cRights
+        private static bool newVersionAvailable;
+        private static cRights Rights;
+        private PMDS.DB.PMDSBusiness b = new PMDS.DB.PMDSBusiness();
+        private class cRights
         {
-            public bool Aufnahme = false;
-            public bool Bewerber = false;
-            public bool ImportGibodat = false;
-            public bool QS2 = false;
-            public bool KlientenberichtDrucken = false;
+            public bool Aufnahme;
+            public bool Bewerber;
+            public bool ImportGibodat;
+            public bool QS2;
+            public bool KlientenberichtDrucken;
             public bool Abrechnung = false;
-            public bool btnTransferCalcData = false;
-            public bool btnExportCalculations = false;
-            public bool btnVerordnungen = false;
-            public bool btnPatientAufenthalteLöschen = false;
-
-            public bool ArchivTerminMail = false;
-            public bool Entlassung = false;
-            public bool Versetzung = false;
-
-            public bool SuchtgiftschrankSchluessel = false;
-            public bool STAMP;
+            public bool btnTransferCalcData;
+            public bool btnExportCalculations;
+            public bool btnVerordnungen;
+            public bool btnPatientAufenthalteLöschen;
+            public bool SuchtgiftschrankSchluessel;
         }
+        private ELGABusiness bElga = new ELGABusiness();
+        private Timer timerELGA;
+        private static bool IsInitialized;
+
+        public ucHeader ucHeader1;
+        public UltraToolbarsManager ultraToolbarsManager1;
+        public QS2.Desktop.ControlManagment.BasePanel panelStart;
+        public Infragistics.Win.AppStyling.Runtime.AppStylistRuntime appStylistRuntime1;
+        public UltraStatusBar ultraStatusBar1;
+        public bool CloseAnyway;
 
         public class cRightsStammdaten
         {
@@ -150,11 +115,6 @@ namespace PMDS
             public bool LogManager = false;
         }
 
-        public ELGABusiness bElga = new ELGABusiness();
-        private Timer timerELGA;
-        public static bool IsInitialized = false;
-
-        public bool CloseAnyway = false;
 
         public frmMain()
         {
@@ -174,9 +134,6 @@ namespace PMDS
             catch (Exception ex)
             {
                 PMDS.Global.ENV.HandleException(ex);
-            }
-            finally
-            {
             }
         }
 
@@ -205,24 +162,19 @@ namespace PMDS
         {
             if (frmMain.Rights == null)
             {
-                frmMain.Rights = new cRights();
-
-                frmMain.Rights.Aufnahme = ENV.HasRight(UserRights.Aufnahme);
-                frmMain.Rights.Bewerber = ENV.HasRight(UserRights.BewerberStarten);
-                frmMain.Rights.ImportGibodat = ENV.HasRight(UserRights.ImportGibodat);
-                frmMain.Rights.QS2 = ENV.HasRight(UserRights.QS2);
-                frmMain.Rights.KlientenberichtDrucken = ENV.HasRight(UserRights.KlientenberichtDrucken);
-                //frmMain.Rights.Abrechnung = Settings.HasRight(UserRights.Abrechnung);
-                frmMain.Rights.btnTransferCalcData = (ENV.HasRight(UserRights.AbrechnungenÜberspielen) || ENV.adminSecure);
-                frmMain.Rights.btnExportCalculations = ENV.HasRight(UserRights.AbrechnungenExportieren) || ENV.adminSecure;
-                frmMain.Rights.SuchtgiftschrankSchluessel = ENV.HasRight(UserRights.SuchtgiftschrankSchluessel);
-                frmMain.Rights.btnVerordnungen = ENV.lic_VO;
-                frmMain.Rights.btnPatientAufenthalteLöschen = ENV.HasRight(UserRights.deleteKlient) || ENV.adminSecure;
-
-                frmMain.Rights.ArchivTerminMail = ENV.HasRight(UserRights.ArchivTerminMail);
-                frmMain.Rights.Entlassung = ENV.HasRight(UserRights.Entlassung);
-                frmMain.Rights.Versetzung = ENV.HasRight(UserRights.Versetzung);
-                frmMain.Rights.STAMP = ENV.HasRight(UserRights.STAMPMeldung);
+                frmMain.Rights = new cRights
+                {
+                    Aufnahme = ENV.HasRight(UserRights.Aufnahme),
+                    Bewerber = ENV.HasRight(UserRights.BewerberStarten),
+                    ImportGibodat = ENV.HasRight(UserRights.ImportGibodat),
+                    QS2 = ENV.HasRight(UserRights.QS2),
+                    KlientenberichtDrucken = ENV.HasRight(UserRights.KlientenberichtDrucken),
+                    btnTransferCalcData = (ENV.HasRight(UserRights.AbrechnungenÜberspielen) || ENV.adminSecure),
+                    btnExportCalculations = ENV.HasRight(UserRights.AbrechnungenExportieren) || ENV.adminSecure,
+                    SuchtgiftschrankSchluessel = ENV.HasRight(UserRights.SuchtgiftschrankSchluessel),
+                    btnVerordnungen = ENV.lic_VO,
+                    btnPatientAufenthalteLöschen = ENV.HasRight(UserRights.deleteKlient) || ENV.adminSecure
+                };
             }
 
             this.ultraToolbarsManager1.Tools["Aufnahme"].SharedProps.Visible = frmMain.Rights.Aufnahme;
@@ -237,7 +189,6 @@ namespace PMDS
             this.ultraToolbarsManager1.Tools["btnSuchtgiftschrankSchlüssel"].SharedProps.Visible = frmMain.Rights.SuchtgiftschrankSchluessel;
             this.ultraToolbarsManager1.Tools["btnVerordnungen"].SharedProps.Visible = frmMain.Rights.btnVerordnungen;
             this.ultraToolbarsManager1.Tools["btnPatientAufenthalteLöschen"].SharedProps.Visible = frmMain.Rights.btnPatientAufenthalteLöschen;
-            
             this.ultraToolbarsManager1.Tools["btnQS2Reports"].SharedProps.Visible = false;
             this.ultraToolbarsManager1.Tools["btnQS2Queries"].SharedProps.Visible = frmMain.Rights.QS2;
             this.ultraToolbarsManager1.Tools["btnQS2ManageQueriesUser"].SharedProps.Visible = frmMain.Rights.QS2;
@@ -258,45 +209,41 @@ namespace PMDS
 
             AnyMenüItemStammdaten = false;
             AllMenüItemsStammdaten = false;
-            RightsStammdaten = new cRightsStammdaten();
-
-            RightsStammdaten.Einrichtung = ENV.HasRight(UserRights.EinrichtungVerwalten);
-            RightsStammdaten.Benutzer = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;
-            RightsStammdaten.Gruppenrechte = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;                    //ultraToolbarsManager1.Tools["Gruppenrechte"].SharedProps.Visible = Settings.HasRight(UserRights.ManageUser);
-            RightsStammdaten.VerwaltungEinrichtungUndBenutzer = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure; //ultraToolbarsManager1.Tools["btnVerwaltungKlinikenUser"].SharedProps.Visible = Settings.HasRight(UserRights.ManageUser);
-            RightsStammdaten.VerwaltungFortbildungen = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure;          //ultraToolbarsManager1.Tools["btnVerwaltungFortbildungen"].SharedProps.Visible = Settings.HasRight(UserRights.ManageUser);
-
-            RightsStammdaten.Auswahllisten = ENV.HasRight(UserRights.AuswahllistenVerwalten);
-            RightsStammdaten.Zusatzeinträge = ENV.HasRight(UserRights.ZusatzEintraegeVerwalten);
-            RightsStammdaten.Textbausteine = ENV.HasRight(UserRights.TextbausteineVerwalten);
-            RightsStammdaten.Dokumentenverwaltung = ENV.HasRight(UserRights.Dokumentenverwaltung);
-            RightsStammdaten.ExterneEinrichtungen = ENV.HasRight(UserRights.ExterneEinrichungenVerwalten);
-
-            RightsStammdaten.Standardprozeduren = ENV.HasRight(UserRights.StandardprozedurenVerwalten);
-            RightsStammdaten.Assessments = ENV.HasRight(UserRights.AssessmentsVerwalten);
-            RightsStammdaten.Medikamente = ENV.HasRight(UserRights.MedikamenteVerwalten);
-            RightsStammdaten.Pflegerichtlinien = ENV.HasRight(UserRights.PflegerichtlinienVerwalten);
-            RightsStammdaten.Ärzteverwaltung = ENV.HasRight(UserRights.AerzteVerwalten);
-            RightsStammdaten.Arztabrechnung = ENV.HasRight(UserRights.Arztabrechnung);
-            RightsStammdaten.ÄrzteZusammenführen = ENV.HasRight(UserRights.ÄrzteZusammenführen);
-            RightsStammdaten.Befundimport = ENV.HasRight(UserRights.Befundimport);
-
-            RightsStammdaten.Quickfilter = ENV.HasRight(UserRights.QuickfilterVerwalten);
-            RightsStammdaten.LayoutManager = ENV.HasRight(UserRights.LayoutmanagerVerwalten);
-            RightsStammdaten.MedizinischeTypen = ENV.HasRight(UserRights.MedizinischeTypenVerwalten);
-            RightsStammdaten.MedizinscheDialoge = ENV.HasRight(UserRights.MedizinischeDialogeVerwalten);
-            RightsStammdaten.WundbilderSkalieren = ENV.HasRight(UserRights.WundbilderSkalieren);
-
-            RightsStammdaten.QS2 = ENV.HasRight(UserRights.QS2Verwalten);
-            RightsStammdaten.QS2AbfragebVerwaltenAdmin = ENV.HasRight(UserRights.QS2Verwalten);
-            RightsStammdaten.QS2Ressourcen = ENV.HasRight(UserRights.QS2Verwalten);
-            RightsStammdaten.QS2InformationenFelderSQLServer = ENV.HasRight(UserRights.QS2Verwalten);
-            RightsStammdaten.QS2Kriterien = ENV.HasRight(UserRights.QS2Verwalten);
-            RightsStammdaten.QS2Auswahllisten = ENV.HasRight(UserRights.QS2Verwalten);
-
-            RightsStammdaten.Archiveinstellungen = ENV.HasRight(UserRights.ArchiveinstellungenVerwalten);
-            RightsStammdaten.EMailKonten = ENV.HasRight(UserRights.EMailKontenVerwalten);
-            RightsStammdaten.LogManager = false;
+            RightsStammdaten = new cRightsStammdaten
+            {
+                Einrichtung = ENV.HasRight(UserRights.EinrichtungVerwalten),
+                Benutzer = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure,
+                Gruppenrechte = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure, //ultraToolbarsManager1.Tools["Gruppenrechte"].SharedProps.Visible = Settings.HasRight(UserRights.ManageUser);
+                VerwaltungEinrichtungUndBenutzer = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure, //ultraToolbarsManager1.Tools["btnVerwaltungKlinikenUser"].SharedProps.Visible = Settings.HasRight(UserRights.ManageUser);
+                VerwaltungFortbildungen = ENV.HasRight(UserRights.ManageUser) || ENV.adminSecure, //ultraToolbarsManager1.Tools["btnVerwaltungFortbildungen"].SharedProps.Visible = Settings.HasRight(UserRights.ManageUser);
+                Auswahllisten = ENV.HasRight(UserRights.AuswahllistenVerwalten),
+                Zusatzeinträge = ENV.HasRight(UserRights.ZusatzEintraegeVerwalten),
+                Textbausteine = ENV.HasRight(UserRights.TextbausteineVerwalten),
+                Dokumentenverwaltung = ENV.HasRight(UserRights.Dokumentenverwaltung),
+                ExterneEinrichtungen = ENV.HasRight(UserRights.ExterneEinrichungenVerwalten),
+                Standardprozeduren = ENV.HasRight(UserRights.StandardprozedurenVerwalten),
+                Assessments = ENV.HasRight(UserRights.AssessmentsVerwalten),
+                Medikamente = ENV.HasRight(UserRights.MedikamenteVerwalten),
+                Pflegerichtlinien = ENV.HasRight(UserRights.PflegerichtlinienVerwalten),
+                Ärzteverwaltung = ENV.HasRight(UserRights.AerzteVerwalten),
+                Arztabrechnung = ENV.HasRight(UserRights.Arztabrechnung),
+                ÄrzteZusammenführen = ENV.HasRight(UserRights.ÄrzteZusammenführen),
+                Befundimport = ENV.HasRight(UserRights.Befundimport),
+                Quickfilter = ENV.HasRight(UserRights.QuickfilterVerwalten),
+                LayoutManager = ENV.HasRight(UserRights.LayoutmanagerVerwalten),
+                MedizinischeTypen = ENV.HasRight(UserRights.MedizinischeTypenVerwalten),
+                MedizinscheDialoge = ENV.HasRight(UserRights.MedizinischeDialogeVerwalten),
+                WundbilderSkalieren = ENV.HasRight(UserRights.WundbilderSkalieren),
+                QS2 = ENV.HasRight(UserRights.QS2Verwalten),
+                QS2AbfragebVerwaltenAdmin = ENV.HasRight(UserRights.QS2Verwalten),
+                QS2Ressourcen = ENV.HasRight(UserRights.QS2Verwalten),
+                QS2InformationenFelderSQLServer = ENV.HasRight(UserRights.QS2Verwalten),
+                QS2Kriterien = ENV.HasRight(UserRights.QS2Verwalten),
+                QS2Auswahllisten = ENV.HasRight(UserRights.QS2Verwalten),
+                Archiveinstellungen = ENV.HasRight(UserRights.ArchiveinstellungenVerwalten),
+                EMailKonten = ENV.HasRight(UserRights.EMailKontenVerwalten),
+                LogManager = false
+            };
 
             AnyMenüItemStammdaten =
             (
@@ -396,10 +343,9 @@ namespace PMDS
                 {
                     if (ParDelegSendMain.foundUnreadedMessages > 0)
                     {
-                        string TxtMessaged = QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachrichten") + " (" + ParDelegSendMain.foundUnreadedMessages.ToString() + ")";
-                        string TxtMessagedunreaded = QS2.Desktop.ControlManagment.ControlManagment.getRes("Ungelesene Nachrichten") + ": " + ParDelegSendMain.foundUnreadedMessages.ToString() + "";
+                        var TxtMessaged = QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachrichten") + " (" + ParDelegSendMain.foundUnreadedMessages.ToString() + ")";
+                        var TxtMessagedunreaded = QS2.Desktop.ControlManagment.ControlManagment.getRes("Ungelesene Nachrichten") + ": " + ParDelegSendMain.foundUnreadedMessages.ToString() + "";
                         PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.btnMessages.Invoke((MethodInvoker)delegate { PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.btnMessages.Text = TxtMessaged; });
-                        //PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.btnMessages.Appearance.ForeColor = Color.Red;
                         this.ultraStatusBar1.Invoke((MethodInvoker)delegate { this.ultraStatusBar1.Panels["UnreadedMessages"].Text = TxtMessagedunreaded; });
                         if (PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1 != null)
                         {
@@ -407,13 +353,12 @@ namespace PMDS
                             if (PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1 != null && (ParDelegSendMain.foundUnreadedMessages > 0))
                             {
                                 PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1.ultraStatusBar1.Invoke((MethodInvoker)delegate { PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1.contMessenger1.lblNewMessages.Visible = true; });
-                                this.foundUnreadedMessages = -1;
                             }
                         }
                     }
                     else
                     {
-                        string TxtMessaged = QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachrichten");
+                        var TxtMessaged = QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachrichten");
                         PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.btnMessages.Invoke((MethodInvoker)delegate { PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.btnMessages.Text = TxtMessaged; });
                         this.ultraStatusBar1.Invoke((MethodInvoker)delegate { this.ultraStatusBar1.Panels["UnreadedMessages"].Text = ""; });
                         if (PMDS.GUI.GuiWorkflow._guiworkflow._SitemapStart.frmMessenger1 != null)
@@ -583,15 +528,6 @@ namespace PMDS
             }
 
             GuiWorkflow.checkUserAcitvity();
-            if (bKlientenListeOnTop)
-            {
-                //this._SitemapStart.loadEinrichtungen();
-            }
-            else
-            {
-
-            }
-
             ultraToolbarsManager1.Tools["btnLoadDesignMode"].SharedProps.Visible = ENV.adminSecure;
 
             if (ENV.adminSecure)
@@ -625,29 +561,14 @@ namespace PMDS
                 }
             }
 
-            if (this.IsLoaded && bKlientenListeOnTop)
-            {
-                //this._SitemapStart.ucPatientPicker1.RefreshList();
-            }
-
             if (bKlientenListeOnTop)
             {
                 UltraStatusPanel panelAbt = ultraStatusBar1.Panels["Abteilung"];
                 panelAbt.Text = "";
             }
-
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Anzeigen/ verstecken des Menüs Benutzerwechsel (Darf nur bei Klientenliste aktiv sein)
-        /// </summary>
-        //----------------------------------------------------------------------------
-        private void ShowHideMenuAbrechnung(bool bShow)
-        {
-            ultraToolbarsManager1.Tools["Abrechnung"].SharedProps.Visible = false;      // bShow;
-        }
-
+ 
         //----------------------------------------------------------------------------
         /// <summary>
         /// Anzeigen/ verstecken des Menüs Benutzerwechsel (Darf nur bei Klientenliste aktiv sein)
@@ -659,7 +580,6 @@ namespace PMDS
             ultraToolbarsManager1.Tools["Benutzerwechsel"].SharedProps.Visible = true; // bKlientenListeOnTop;
             ultraToolbarsManager1.Tools["Arbeitsstationsperren"].SharedProps.Visible = true;  //bKlientenListeOnTop;
         }
-
 
         //----------------------------------------------------------------------------
         /// <summary>
@@ -961,7 +881,6 @@ namespace PMDS
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel9 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel7 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.ultraPopupControlContainer1 = new Infragistics.Win.Misc.UltraPopupControlContainer(this.components);
             this.contextMenuStripLogging = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.loggingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.styleAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -979,7 +898,6 @@ namespace PMDS
             this.lblIsLoading = new QS2.Desktop.ControlManagment.BaseLabel();
             this.panelStart = new QS2.Desktop.ControlManagment.BasePanel();
             this.textControl1 = new TXTextControl.TextControl();
-            this.dbStandardProzeduren1 = new PMDS.DB.Global.DBStandardProzeduren(this.components);
             this.dsPDxEintraege1 = new PMDS.Data.PflegePlan.dsPDxEintraege();
             this.timerControlManager = new System.Windows.Forms.Timer(this.components);
             this.appStylistRuntime1 = new Infragistics.Win.AppStyling.Runtime.AppStylistRuntime(this.components);
@@ -1686,7 +1604,6 @@ namespace PMDS
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PMDS";
-            this.Activated += new System.EventHandler(this.frmMainModern_Activated);
             this.Closing += new System.ComponentModel.CancelEventHandler(this.frmMainModern_Closing);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainModern_FormClosing);
             this.Load += new System.EventHandler(this.frmMainModern_Load);
@@ -2165,7 +2082,6 @@ namespace PMDS
                         PMDS.DB.PMDSBusinessComm.closeAllThreads = true;
                         PMDS.DB.PMDSBusinessComm.threadLoadData = null;
                         remotingSrv.killProcessIPCClient();
-                        //Process.GetCurrentProcess().Kill();
 
                         WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
                         WCFServiceClient1.ELGALogOut(ENV.USERID, ENV.lic_ELGA);
@@ -2177,16 +2093,15 @@ namespace PMDS
                         }
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 PMDS.Global.ENV.HandleException(ex);
             }
         }
+
         public void checkListeDekursEntwürfe(ref int iDekursEntwürfeOffen, ref bool bEndPMDS, bool CloseAnyway, Nullable<DateTime> IDTimeRepeat = null)
         {
-
             if (CloseAnyway)
             {
                 iDekursEntwürfeOffen = 0;
@@ -2291,12 +2206,9 @@ namespace PMDS
             UltraStatusPanel panelUser = ultraStatusBar1.Panels["User"];
             UltraStatusPanel panelAbt = ultraStatusBar1.Panels["Abteilung"];
 
-            //string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
             // datenbank anzeigen
             panelUser.Text = ENV.String("GUI.STATUS_USER", new BusinessLogic.Benutzer(ENV.USERID).FullName);
             panelAbt.Text = ENV.String("GUI.STATUS_ABT", GuiUtil.Abteilung());
-            //panelVersion.Text	= Settings.String("GUI.STATUS_VERSION", version);
         }
 
         //----------------------------------------------------------------------------
@@ -2376,33 +2288,24 @@ namespace PMDS
             GuiWorkflow.mainWindow = this;
 
             // Hauptmenüs ein/ausblenden
-
             ultraToolbarsManager1.Tools["Drucken"].SharedProps.Visible = ENV.HasRight(UserRights.DruckenInterneBerichte);
 
             // Untermenüs
             ultraToolbarsManager1.Tools["Aufnahme"].SharedProps.Visible = ENV.HasRight(UserRights.Aufnahme);
             ultraToolbarsManager1.Tools["Entlassen"].SharedProps.Visible = ENV.HasRight(UserRights.Entlassung);
-
             ultraToolbarsManager1.Tools["Versetzen"].SharedProps.Visible = ENV.HasRight(UserRights.Versetzung);
             ultraToolbarsManager1.Tools["Bereichsversetzung"].SharedProps.Visible = ENV.HasRight(UserRights.Versetzung);
             ultraToolbarsManager1.Tools["Abrechnung"].SharedProps.Visible = false;          // Settings.HasRight(UserRights.AbrechnungStarten);
             ultraToolbarsManager1.Tools["ImportGibodat"].SharedProps.Visible = ENV.HasRight(UserRights.ImportGibodat);
             ultraToolbarsManager1.Tools["btnSTAMP"].SharedProps.Visible = ENV.HasRight(UserRights.STAMPMeldung);
-
-
             ultraToolbarsManager1.Tools["RezepteVerwalten"].SharedProps.Visible = ENV.HasRight(UserRights.RezepteVerwalten);
             ultraToolbarsManager1.Tools["Historie"].SharedProps.Visible = ENV.HasRight(UserRights.Historie);
-            //ultraToolbarsManager1.Tools["Orem"].SharedProps.Visible                 = Settings.HasRight(UserRights.CreateClassification);
             ultraToolbarsManager1.Tools["Bemerkung"].SharedProps.Visible = ENV.HasRight(UserRights.Rueckmelden);
-
             ultraToolbarsManager1.Tools["Urlaub"].SharedProps.Visible = ENV.HasRight(UserRights.Urlaube);
             ultraToolbarsManager1.Tools["Bezugsperson"].SharedProps.Visible = ENV.HasRight(UserRights.BezugspersonAendern);
-
             ultraToolbarsManager1.Tools["Barcodeverarbeitung"].SharedProps.Visible = false; // Settings.HasRight(UserRights.BarcodeVerarbeitung); ;
-
             ultraToolbarsManager1.Tools["DatenarchivierungKlient"].SharedProps.Visible = (ENV.HasRight(UserRights.Historie) && (ENV.ArchivPath != "")) || ENV.adminSecure;
             ultraToolbarsManager1.Tools["DatenarchivierungAlle"].SharedProps.Visible = (ENV.HasRight(UserRights.Historie) && (ENV.ArchivPath != "")) || ENV.adminSecure;
-
             ultraToolbarsManager1.Tools["btnTransferCalcData"].SharedProps.Visible = ENV.HasRight(UserRights.AbrechnungenÜberspielen) || ENV.adminSecure;
             ultraToolbarsManager1.Tools["btnExportCalculations"].SharedProps.Visible = ENV.HasRight(UserRights.AbrechnungenExportieren) || ENV.adminSecure;
 
@@ -2417,19 +2320,16 @@ namespace PMDS
             //Menü-Item Stammdaten
             this.setRightsStammdaten(out bool AnyMenüItemStammdaten, out bool AllMenüItemsStammdaten, out cRightsStammdaten RightsStammaten);
             ultraToolbarsManager1.Tools["mnuStammdaten"].SharedProps.Visible = AnyMenüItemStammdaten || AllMenüItemsStammdaten || ENV.HasRight(UserRights.MenüStammdaten);
-
             ultraToolbarsManager1.Tools["KlinikVerwaltung"].SharedProps.Visible = RightsStammaten.Einrichtung || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["BenutzerVerwaltung"].SharedProps.Visible = RightsStammaten.Benutzer;
             ultraToolbarsManager1.Tools["Gruppenrechte"].SharedProps.Visible = RightsStammaten.Gruppenrechte;
             ultraToolbarsManager1.Tools["btnVerwaltungKlinikenUser"].SharedProps.Visible = RightsStammaten.VerwaltungEinrichtungUndBenutzer;
             ultraToolbarsManager1.Tools["btnVerwaltungFortbildungen"].SharedProps.Visible = RightsStammaten.VerwaltungFortbildungen;
-
             ultraToolbarsManager1.Tools["Auswahllisten"].SharedProps.Visible = RightsStammaten.Auswahllisten || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["Zusatzeintraege"].SharedProps.Visible = RightsStammaten.Zusatzeinträge || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnTextbausteine"].SharedProps.Visible = RightsStammaten.Textbausteine || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnManageDocuments"].SharedProps.Visible = RightsStammaten.Dokumentenverwaltung || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["EinrichtungenVerwaltung"].SharedProps.Visible = RightsStammaten.ExterneEinrichtungen || AllMenüItemsStammdaten;
-
             ultraToolbarsManager1.Tools["Standardprozeduren"].SharedProps.Visible = RightsStammaten.Standardprozeduren || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["Formulare"].SharedProps.Visible = RightsStammaten.Assessments || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["MedikamenteVerwalten"].SharedProps.Visible = RightsStammaten.Medikamente || AllMenüItemsStammdaten;
@@ -2438,19 +2338,16 @@ namespace PMDS
             ultraToolbarsManager1.Tools["btnArztabrechnung"].SharedProps.Visible = RightsStammaten.Arztabrechnung || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnÄrzteMergen"].SharedProps.Visible = RightsStammaten.ÄrzteZusammenführen || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnImportBefunde"].SharedProps.Visible = RightsStammaten.Befundimport || AllMenüItemsStammdaten;
-
             ultraToolbarsManager1.Tools["QuickFilter"].SharedProps.Visible = RightsStammaten.Quickfilter || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnLayoutManager"].SharedProps.Visible = RightsStammaten.LayoutManager || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["MedizinischetypenVerwaltung"].SharedProps.Visible = RightsStammaten.MedizinischeTypen || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["Medizinische_Dialoge"].SharedProps.Visible = RightsStammaten.MedizinscheDialoge || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnWundBilderScale"].SharedProps.Visible = RightsStammaten.WundbilderSkalieren || AllMenüItemsStammdaten;
-
             ultraToolbarsManager1.Tools["btnQS2ManageQueries"].SharedProps.Visible = RightsStammaten.QS2AbfragebVerwaltenAdmin || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnQS2Ressourcen"].SharedProps.Visible = RightsStammaten.QS2Ressourcen || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnQS2InformationFieldsSqlServer"].SharedProps.Visible = RightsStammaten.QS2InformationenFelderSQLServer || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnQS2Criterias"].SharedProps.Visible = RightsStammaten.QS2Kriterien || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnQS2SelLists"].SharedProps.Visible = RightsStammaten.QS2Auswahllisten || AllMenüItemsStammdaten;
-
             ultraToolbarsManager1.Tools["ArchivStammdaten"].SharedProps.Visible = RightsStammaten.Archiveinstellungen || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnUserAccounts"].SharedProps.Visible = RightsStammaten.EMailKonten || AllMenüItemsStammdaten;
             ultraToolbarsManager1.Tools["btnQS2LogManager"].SharedProps.Visible = RightsStammaten.LogManager;
@@ -2460,11 +2357,6 @@ namespace PMDS
 		{
 			switch(e)
 			{
-				// Startseite
-                //case SiteEvents.Home:
-                //    GuiWorkflow.ShowStartPage();
-                //    break;
-
 				// Arbeitsstation sperren
 				case SiteEvents.Lock:
 					frmLoginLocked.ProcessLocked();
@@ -2473,16 +2365,6 @@ namespace PMDS
 				// neu anloggen
 				case SiteEvents.LogOn:
 					frmLogin.ProcessLogin();
-
-                    //DialogResult res = frm.ShowDialog();
-                    //if (res != DialogResult.OK)
-                    //    return false;
-                    //else
-                    //{
-                    //    return true;
-                    //}
-
-
 					break;
 
 				// Passwort ändern
@@ -2506,9 +2388,6 @@ namespace PMDS
 				default:
 					GuiAction.ActionFromEvent(e);
 					break;
-
-
-
 			}
 		}
 
@@ -2578,17 +2457,6 @@ namespace PMDS
                             if (!frmPatientDelete1.contPatientDelete1.abort)
                             {
                                 PMDS.GUI.GuiAction.refreshGridPatientenStart();
-
-                                //this._SitemapStart.RefreshPatientSearch(true);
-                                //this._SitemapStart.RefreshPatientSearch(true);
-                                //_RefreshShouldBeAfterVisible = true;
-                                //this._SitemapStart.ucPatientGroup1.RefreshGUI((true);
-                                //ucPatientGroupPicker1.SetPatientID(IDPatient);
-
-                                //PMDS.GUI.GuiAction.GuiActionDone(SiteEvents.Urlaub);
-
-                                //this._SitemapStart.setHistorieOnOff();
-                                //this._SitemapStart.ucPatientPicker1.RefreshList();
                             }
                         }
                         break;
@@ -2605,23 +2473,14 @@ namespace PMDS
                         else
                             this.Visible = true;
                         frmLock1.Dispose();
-                        //ucQuickNavigator1_SiteMapEvent(SiteEvents.LogOn, ref bUsed);
                         break;
 
                     case "btnELGAPasswortÄndern":
-                        //frmELGAChangePassword frmELGAChangePassword1 = new frmELGAChangePassword();
-                        //frmELGAChangePassword1.initControl();
-                        //frmELGAChangePassword1.ShowDialog(this);
-                        //if (!frmELGAChangePassword1.contELGAChangePassword1.abort)
-                        //{
-
-                        //}
                         GuiAction.ChangePassword(true, true);
                         break;
 
                     case "Benutzerwechsel":
                         PMDS.Global.UIGlobal.NewLogIn("pmds", true);
-                        //ucQuickNavigator1_SiteMapEvent(SiteEvents.LogOn, ref bUsed);
                         break;
                     
                     case "Passwort":
@@ -2652,13 +2511,13 @@ namespace PMDS
 
                     case "Verwaltung":
                         break;
-                    case "Medizinische_Dialoge":        //Neu nach 08.06.2007 MDA
+                    case "Medizinische_Dialoge":       
                         GuiAction.MedizinischeDialoge();
                         break;
-                    case "Standardprozeduren":        //Neu nach 11.06.2007 MDA
+                    case "Standardprozeduren":        
                         GuiAction.Standardprozeduren();
                         break;
-                    case "Bewerber":        //Neu nach 26.06.2007 MDA
+                    case "Bewerber":        
                         GuiAction.Bewerberverwaltung();
                         break;
 
@@ -2730,7 +2589,7 @@ namespace PMDS
                         frmManageDocuments1.ShowDialog(this);
                         break;
 
-                    case "btnArztabrechnung":        //lthArztabrechnung
+                    case "btnArztabrechnung": 
                         PMDS.GUI.Arztabrechnung.frmArztabrechnungManage frmArztabrechnungManage1 = new GUI.Arztabrechnung.frmArztabrechnungManage();
                         frmArztabrechnungManage1.initControl();
                         frmArztabrechnungManage1.Show();
@@ -2869,14 +2728,7 @@ namespace PMDS
                         args.IDAufenthalt = BusinessLogic.Aufenthalt.LastByPatient(ENV.CurrentIDPatient);
 
                         GuiAction.ActionFromEvent((SiteEvents)Enum.Parse(typeof(SiteEvents), e.Tool.Key, true), args, null, null);
-
-                        if (e.Tool.Key.ToString() == SiteEvents.KlinikVerwaltung.ToString())
-                        {
-                            //this._SitemapStart.lstKlinikenLoaded = false;
-                            //this._SitemapStart.loadEinrichtungen();
-                        }
                         break;
-
                 }
             }
             catch (Exception ex)
@@ -2900,26 +2752,6 @@ namespace PMDS
                 PMDS.Global.ENV.HandleException(ex);
             }
         }
-
-        private void frmMainModern_Activated(object sender, EventArgs e)
-         {
-            try
-            {
-                //GuiWorkflow.setHistorieOnOff();
-
-            }
-            catch (Exception ex)
-            {
-                PMDS.Global.ENV.HandleException(ex);
-            }
-        }
-
-        private void ultraLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
 
         public void showInfoStatusBar(bool infoLoad, string txt, bool ein)
         {
@@ -2975,11 +2807,6 @@ namespace PMDS
             }
         }
 
-        private void ultraStatusBar1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void MyLayout(object sender, System.Windows.Forms.LayoutEventArgs e)
         {
             try
@@ -2988,9 +2815,6 @@ namespace PMDS
                 {
                     this.WindowState = FormWindowState.Maximized;
                     this.WindowState = FormWindowState.Normal;
-
-                    //                this.Width += 1;
-                    //                this.Width -= 1;
                 }
                 this.prevWindowState = this.WindowState;
             }
@@ -3004,14 +2828,6 @@ namespace PMDS
         {
             try
             {
-                //if (QS2.Desktop.ControlManagment.ControlWorker.isBack)
-                //{
-                //    this.ControlWorker.run(Application.OpenForms, this.components, PMDS.Global.Settings.TypeRessourcesRun);
-                //}
-                //else
-                //{
-                //    string xy = "";
-                //}
             }
             catch (Exception ex)
             {
@@ -3023,25 +2839,22 @@ namespace PMDS
         {
             try
             {
-                if (PMDS.GUI.GuiWorkflow._guiworkflow != null) PMDS.GUI.GuiWorkflow._guiworkflow.setWidthHeigtSiteMapStart(this.panelStart.Width, this.panelStart.Height);
-                //if (this.WindowState == FormWindowState.Maximized && this.WindowState != FormWindowState.Minimized)
-                //{
-                    if (this.Visible)
-                    {
-                        ENV.fMainWindowResized(this.Size);
-                    }
-                //}
-                //else
-                //{
-                //    string xy = "";
-                //}
+                if (PMDS.GUI.GuiWorkflow._guiworkflow != null)
+                {
+                    PMDS.GUI.GuiWorkflow._guiworkflow.setWidthHeigtSiteMapStart(this.panelStart.Width, this.panelStart.Height);
+                }
 
+                if (this.Visible)
+                {
+                    ENV.fMainWindowResized(this.Size);
+                }
             }
             catch (Exception ex)
             {
                 ENV.HandleException(ex);
             }
         }
+
         private void frmMainModern_ResizeEnd(object sender, EventArgs e)
         {
             try
@@ -3056,6 +2869,7 @@ namespace PMDS
                 ENV.HandleException(ex);
             }
         }
+
         private void frmMainModern_VisibleChanged(object sender, EventArgs e)
         {
             try
@@ -3104,9 +2918,6 @@ namespace PMDS
                     frmInfoNewVersion1.TopMost = true;
                     frmInfoNewVersion1.Show();
                     frmInfoNewVersion1.TopMost = false;
-
-                    //PMDS.Data.Global.db.iCounterExceptNetwork = 0;
-                    //PMDS.Data.Global.db.checkConnectionAndNetworkTimer();
                 }
             }
             catch (Exception ex)
@@ -3125,14 +2936,14 @@ namespace PMDS
                     var binDir = dirInfo.Name;
                     var pathVersionRunning = dirInfo.Parent.Name;
                     System.Collections.Generic.List<string> lstDatabasesActDeact = new List<string>();
-                    string sActualVersion = PMDS.Global.Other.cConfig.readConfig(ENV.ConfigFileLauncher, "ActualVersion", false, ref lstDatabasesActDeact);
-                    string sUpdateVersion = PMDS.Global.Other.cConfig.readConfig(ENV.ConfigFileLauncher, "UpdateVersion", false, ref lstDatabasesActDeact);
+                    var sActualVersion = PMDS.Global.Other.cConfig.readConfig(ENV.ConfigFileLauncher, "ActualVersion", false, ref lstDatabasesActDeact);
+                    var sUpdateVersion = PMDS.Global.Other.cConfig.readConfig(ENV.ConfigFileLauncher, "UpdateVersion", false, ref lstDatabasesActDeact);
                     if (sUpdateVersion.Trim() != "")
                     {
                         sActualVersion = sUpdateVersion;
                     }
 
-                    if (binDir.Trim().ToLower() != ("Debug").Trim().ToLower() && !pathVersionRunning.Trim().ToLower().Equals(sActualVersion.Trim().ToLower()))
+                    if (!binDir.sEquals("debug") && !pathVersionRunning.sEquals(sActualVersion))
                     {
                         qs2.core.generic.Wait(8);
                         frmMain.newVersionAvailable = true;
@@ -3150,21 +2961,16 @@ namespace PMDS
             }
         }
 
-
-
         public void TextException3()
         {
             try
             {
-                //throw new Exception("Test own Exception!!");
                 AppException.throwException("TextException3: " + "Test own Exception!!", 1005);
 
             }
             catch (Exception ex)
             {
-                //AppException.throwException( "TextException3: " + ex.ToString(), 2);
                 AppException.throwException(ex, "TextException3: ", 2, "");
-                //throw new Exception(ex.ToString());
             }
         }
         public void TextException2()
@@ -3175,20 +2981,7 @@ namespace PMDS
             }
             catch (Exception ex)
             {
-                //AppException.throwException("TextException2: " + ex.ToString(), 3);
                 AppException.throwException(ex, "", 3, "");
-                //throw new Exception(ex.ToString());
-            }
-        }
-        public void TextException1()
-        {
-            try
-            {
-                this.TextException2();
-            }
-            catch ( AppException  ex)
-            {
-                PMDS.Global.ENV.HandleException(ex);
             }
         }
 
@@ -3245,24 +3038,20 @@ namespace PMDS
                     {
                         if (ELGABusiness.ELGALogInInitializedAtStart.Value)
                         {
-                            if (ELGABusiness.ELGAStatusbarStatus != null && ELGABusiness.ELGAStatusbarStatus.SessionStopped != null && ELGABusiness.ELGAStatusbarStatus.SessionStopped)
+                            if (ELGABusiness.ELGAStatusbarStatus != null && ELGABusiness.ELGAStatusbarStatus.SessionStopped)
                             {
                                 this.timerELGA.Enabled = false;
                                 this.timerELGA.Stop();
                             }
-
                             this.bElga.handleLogIn(this.ultraStatusBar1, false, true);
                         }
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 PMDS.Global.ENV.HandleException(ex);
             }
         }
-
     }
-
 }
