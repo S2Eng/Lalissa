@@ -70,7 +70,6 @@ Public Class sqlObjects
                 sqlObjects.dsAllUsers = New dsObjects()
             End If
             sqlObjects.dsAllUsers.Clear()
-            sqlObjects.dsAllUsers = sqlObjectsTemp.getAllUsers()
 
         Catch ex As Exception
             Throw New Exception("loadAllData: " + ex.ToString())
@@ -263,12 +262,6 @@ Public Class sqlObjects
         Catch ex As Exception
             Throw New Exception("getWhereObjectsObj: " + ex.ToString())
         End Try
-    End Function
-
-    Public Function getAllUsers() As dsObjects
-        Dim dsAllUsr As New dsObjects()
-        Me.getObject(Nothing, dsAllUsr, eTypSelObj.AllUser)
-        Return dsAllUsr
     End Function
 
     Public Function getSqlTyp(ByVal typObj As eTypObj, ByRef sWhere As String) As String

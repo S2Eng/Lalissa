@@ -316,7 +316,6 @@
         Me.getRelationsship(sqlAdmin.dsAllAdmin, eTypSelRelationship.all, "", license.doLicense.eApp.ALL.ToString(), "")
         Me.getSelListGroup(sqlAdmin.dsAllAdmin, eTypSelGruppen.all, "", "", license.doLicense.eApp.ALL.ToString())
         Me.loadAllSelListEntries(ClearDataTableSelListEntries)
-        Me.getSideLogic(sqlAdmin.dsAllAdmin, eTypeSideLogic.all, -999, "", "")
         qs2.core.vb.sqlObjects.loadAllData()
 
         Dim arrSelListEntrieiesGroupUsers() As dsAdmin.tblSelListGroupRow = sqlAdmin.dsAllAdmin.tblSelListGroup.Select(sqlAdmin.dsAllAdmin.tblSelListGroup.IDGroupStrColumn.ColumnName + "='Users'", "")
@@ -2166,6 +2165,7 @@
             Throw New Exception("sqlAdmin.addRowQueriesDef: " + ex.ToString())
         End Try
     End Function
+
     Public Sub addRowQueriesDef2(ByRef rNew As qs2.core.vb.dsAdmin.tblQueriesDefRow)
 
         rNew.IDGuid = System.Guid.NewGuid()
@@ -2218,106 +2218,8 @@
 
         Me.daQueryJoinsTemp.Fill(ds.tblQueryJoinsTemp)
         Return True
-
     End Function
 
-
-    Public Function getSideLogic(ByVal ds As dsAdmin, ByVal typeSideLogic As eTypeSideLogic, _
-                                 ByVal ID As Integer, ByVal FldShort As String, ByVal Application As String) As dsAdmin.tblSideLogicRow()
-
-        Me.daSideLogic.SelectCommand.CommandText = Me.sel_daSelSideLogic
-        database.setConnection(Me.daSideLogic)
-        Me.daSideLogic.SelectCommand.Parameters.Clear()
-
-        Dim orderBy As String = ds.tblSideLogic.IDApplicationColumn.ColumnName + sqlTxt.asc + ", " + _
-                                   ds.tblSideLogic.FldShortColumn.ColumnName + sqlTxt.asc
-
-        If typeSideLogic = eTypeSideLogic.all Then
-            Me.daSideLogic.SelectCommand.CommandText += sqlTxt.orderBy + orderBy
-
-        ElseIf typeSideLogic = eTypeSideLogic.FldShortApplication Then
-            Dim sWhere As String = ds.tblSideLogic.FldShortColumn.ColumnName + "='" + FldShort + "' and " + _
-                                 ds.tblSideLogic.IDApplicationColumn.ColumnName + "='" + Application + "'"
-            Dim arrSideLogic As dsAdmin.tblSideLogicRow() = ds.tblSideLogic.Select(sWhere, orderBy)
-            Return arrSideLogic
-
-        ElseIf typeSideLogic = eTypeSideLogic.IDSelList Or typeSideLogic = eTypeSideLogic.IDObj Then
-            Dim sWhere As String = ds.tblSideLogic.TypeColumn.ColumnName + "='" + typeSideLogic.ToString() + "' and " + _
-                                  ds.tblSideLogic.IDColumn.ColumnName + "=" + ID.ToString() + ""
-            Dim arrSideLogic As dsAdmin.tblSideLogicRow() = ds.tblSideLogic.Select(sWhere, orderBy)
-            Return arrSideLogic
-
-        Else
-            Throw New Exception("sqlAdmin.getSideLogic: typSel '" + typeSideLogic.ToString() + "' is wrong!")
-        End If
-
-        Me.daSideLogic.Fill(ds.tblSideLogic)
-        Return Nothing
-
-    End Function
-
-    Public Function getNewRowSideLogic(ByVal tSideLogic As dsAdmin.tblSideLogicDataTable) As dsAdmin.tblSideLogicRow
-        Dim rNew As dsAdmin.tblSideLogicRow = tSideLogic.NewRow()
-        rNew.IDGuid = System.Guid.NewGuid()
-        rNew.Type = ""
-        rNew.Action = ""
-        rNew.SetFldShortNull()
-        rNew.Chapter = ""
-        rNew.SetIDApplicationNull()
-        rNew.SetIDNull()
-        tSideLogic.Rows.Add(rNew)
-
-        Return rNew
-    End Function
-
-    Public Function getNextIDOwnIntSelList(ByRef IDGroup As Integer, Optional countAll As Boolean = False, Optional doSupervisor As Boolean = True) As Integer
-        Try
-            Dim dsAdminRead As New dsAdmin()
-            Dim sqlAdminRead As New sqlAdmin()
-            sqlAdminRead.initControl()
-            'sqlAdminRead.getSelListGroup(dsAdminRead, eTypSelGruppen.IDGruppe, "", "", "", IDGroup)
-            Dim Parameters As New qs2.core.vb.sqlAdmin.ParametersSelListEntries()
-            sqlAdminRead.getSelListEntrys(Parameters, "", "ALL", "", dsAdminRead, sqlAdmin.eTypAuswahlList.IDGroup, "", 0, "", IDGroup, "", "")
-
-            Dim nextIDOwnInt As Integer = 0
-            If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() And doSupervisor Then
-                nextIDOwnInt = 0
-            Else
-                nextIDOwnInt = 10000
-            End If
-
-            For Each rSelList As dsAdmin.tblSelListEntriesRow In dsAdminRead.tblSelListEntries
-                If Not rSelList.IsIDOwnIntNull() Then
-                    If countAll Then
-                        nextIDOwnInt = IIf(nextIDOwnInt < rSelList.IDOwnInt, rSelList.IDOwnInt, nextIDOwnInt)
-                    Else
-                        If rSelList.IDOwnInt >= 10000 Then
-                            nextIDOwnInt = IIf(nextIDOwnInt < rSelList.IDOwnInt, rSelList.IDOwnInt, nextIDOwnInt)
-                        End If
-                    End If
-                End If
-                'If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                '    If Not rSelList.IsIDOwnIntNull() Then
-                '        If rSelList.IDOwnInt < 999 Then
-                '            nextIDOwnInt = IIf(nextIDOwnInt < rSelList.IDOwnInt, rSelList.IDOwnInt, nextIDOwnInt)
-                '        End If
-                '    End If
-                'Else
-                '    If Not rSelList.IsIDOwnIntNull() Then
-                '        If rSelList.IDOwnInt >= 10000 Then
-                '            nextIDOwnInt = IIf(nextIDOwnInt < rSelList.IDOwnInt, rSelList.IDOwnInt, nextIDOwnInt)
-                '        End If
-                '    End If
-
-                'End If
-            Next
-            Return (nextIDOwnInt + 1)
-
-        Catch ex As Exception
-            Throw New Exception("getNextIDOwnIntSelList: " + ex.ToString())
-            Return 5000
-        End Try
-    End Function
     Public Sub getNextIDSelListGeneric(ByRef newIDSelList As Integer, ByRef NextIDOwnStr As String, ByRef NextIDOwnInt As Integer,
                                             ByRef IDGroup As Integer)
         Try
@@ -2331,47 +2233,6 @@
             Throw New Exception("sqlAdmin.getNextIDSelListGeneric: " + vbNewLine + vbNewLine + ex.ToString())
         End Try
     End Sub
-    Public Function getNextIDSelListEntries(ByRef ds As dsAdmin, ByRef typSel As eTypSelListGetMaxID, ByRef nrCircleManuell As Integer) As dsAdmin.tblSelListEntriesRow()
-
-        Dim sqlWhere As String = "SELECT MAX(ID) AS MaxID FROM qs2.tblSelListEntries"
-
-        Me.daMaxSelListGroupID.SelectCommand.CommandText = sqlWhere
-        database.setConnection(Me.daMaxSelListGroupID)
-        Me.daMaxSelListGroupID.SelectCommand.Parameters.Clear()
-        If typSel = eTypSelListGetMaxID.GetMaxIDGeneric Then
-            Dim sWhere As String = sqlTxt.where + ds.tblSelListEntries.IDColumn.ColumnName + " >= " + (nrCircleManuell).ToString()
-            Me.daMaxSelListGroupID.SelectCommand.CommandText += sWhere
-        Else
-            Throw New Exception("sqlAdmin.getNextIDSelListEntries: typSel '" + typSel.ToString() + "' is wrong!")
-        End If
-
-        Me.daMaxSelListGroupID.Fill(ds.SelListMaxIDs)
-
-    End Function
-
-    Public Function calcNextIDSelList(ByRef IDNotCalculated As Integer) As Integer
-
-        'If IDNotCalculated = -1 Then
-        '    Return 9999
-        'ElseIf IDNotCalculated >= 0 Then
-        '    If IDNotCalculated < 10 Then
-        '        Return 1000 + IDNotCalculated
-        '    ElseIf IDNotCalculated < 100 Then
-        '        Return 1000 + IDNotCalculated
-        '    ElseIf IDNotCalculated < 1000 Then
-        '        Return 1000 + IDNotCalculated
-        '    ElseIf IDNotCalculated < 10000 Then
-        '        Return IDNotCalculated
-        '    Else
-        '        Throw New Exception("sqlAdmin.getNextID:  IDNotCalculated >= 10000!")
-        '    End If
-        'Else
-        '    Throw New Exception("sqlAdmin.getNextIDSelListGeneric: IDNotCalculated < -1!")
-        'End If
-
-        Return (IDNotCalculated + 1)
-
-    End Function
 
     Public Function getNextIDSelListGroupGeneric() As Integer
         Try
@@ -2379,7 +2240,6 @@
             If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
                 nrCircleManuell = 1000
             Else
-                'nrCircleManuell = 100000
                 Throw New Exception("sqlAdmin: getNextIDSelListGroupGeneric: To add a new group is for normal Users not allowed!")
             End If
             Dim nrCircleMaxManuell As Integer = nrCircleManuell + 999
@@ -2420,45 +2280,6 @@
         Me.daMaxSelListGroupID.Fill(ds.SelListMaxIDs)
 
     End Function
-    Public Function getMaxSelListID(ByRef typSel As eTypSelListGetMaxID, _
-                                    ByRef IDGroup As Integer) As Integer
-
-        Dim ds As New dsAdmin()
-        Me.daMaxSelListID.SelectCommand.CommandText = Me.sel_daMaxSelListID
-        database.setConnection(Me.daMaxSelListID)
-        Me.daMaxSelListID.SelectCommand.Parameters.Clear()
-
-        If typSel = eTypSelListGetMaxID.GetMaxIDGeneric Then
-            Dim sWhere As String = sqlTxt.where + ds.tblSelListEntries.IDGroupColumn.ColumnName + "=" + IDGroup.ToString() + ""
-            Me.daMaxSelListID.SelectCommand.CommandText += sWhere
-        Else
-            Throw New Exception("sqlAdmin.getMaxSelListID: typSel '" + typSel.ToString() + "' is wrong!")
-        End If
-
-        Me.daMaxSelListID.Fill(ds.SelListMaxIDs)
-        If ds.SelListMaxIDs.Rows.Count = 0 Then
-            Return 1
-
-        ElseIf ds.SelListMaxIDs.Rows.Count = 1 Then
-            Dim rRowFound As dsAdmin.SelListMaxIDsRow = ds.SelListMaxIDs.Rows(0)
-            If rRowFound Is Nothing Then
-                Return 1
-            Else
-                If rRowFound.IsMaxIDNull() Then
-                    Return 1
-                Else
-                    Return (rRowFound.MaxID + 1)
-                End If
-            End If
-
-        ElseIf ds.SelListMaxIDs.Rows.Count > 1 Then
-            Throw New Exception("getMaxSelListID: Error -> ds.SelListMaxIDs.Rows.Count > 1 for IDGroup '" + IDGroup.ToString() + "'!")
-        End If
-
-        Return True
-
-    End Function
-
 
     Public Function getNewRowProtocol(ByVal tProtokoll As dsAdmin.protokollDataTable) As dsAdmin.protokollRow
         Dim rNew As dsAdmin.protokollRow = tProtokoll.NewRow()
@@ -2497,25 +2318,6 @@
         End Try
     End Function
 
-    Public Function getAllUsersWithRoles(ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList) As Boolean
-        Try
-            Me.daGetAllUsersWithRoles.SelectCommand.CommandText = Me.sel_GetAllUsersWithRoles
-            database.setConnection(Me.daGetAllUsersWithRoles)
-            Me.daGetAllUsersWithRoles.SelectCommand.Parameters.Clear()
-
-            If typSel = eTypAuswahlList.all Then
-                Dim sWhere As String = ""
-            Else
-                Throw New Exception("sqlAdmin.getAllUsersWithRoles: typSel '" + typSel.ToString() + "' is wrong!")
-            End If
-
-            Me.daGetAllUsersWithRoles.Fill(ds.getAllUsersWithRoles)
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("getAllUsersWithRoles: " + ex.ToString())
-        End Try
-    End Function
     Public Function getButtonsForUser(ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList) As Boolean
         Try
             Me.daGetButtonsForUser.SelectCommand.CommandText = Me.sel_GetButtonsForUser

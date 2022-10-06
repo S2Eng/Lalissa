@@ -841,8 +841,6 @@ namespace PMDS.Global
                     PMDS.Global.db.cEBInterfaceDB.Transaction Transaction = XmlInfo.Transaction;
                     IWorkbook workbook = app.Workbooks.Create(i);
                     IWorksheet sheetHeader = workbook.Worksheets.Create("Übersicht");
-                    IWorksheet sheetZAUF = workbook.Worksheets.Create("Zahlungsaufforderung");
-                    IWorksheet sheetZAUFKorr = workbook.Worksheets.Create("Korr. Zahlungsaufforderung");
                     sheetHeader.Range["A1"].Text = "Abrechnung FSW " + Transaction.TransactionID;
                 }
                 return true;

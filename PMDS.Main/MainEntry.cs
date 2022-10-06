@@ -244,7 +244,45 @@ namespace PMDS
                        
                     }
                 }
-                else if (typ == "schnellrückmeldung")                                                                                                                                                         
+                else if (typ.sEquals("touch"))
+                {
+                    if (infoStartMain != null)
+                        infoStartMain.Close();
+
+                    qs2.ui.RunFromPMDS RunFromPMDS1 = new qs2.ui.RunFromPMDS();
+                    RunFromPMDS1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+                    PMDS.Global.ENV.setStyleInfrag(true);
+                    qs2.core.ENV.IsHeadquarter = true;
+                    ProcessStartup(new frmQM(), UserRights.Rueckmelden, QS2.Desktop.ControlManagment.ControlManagment.getRes("Sie verfügen nicht über die notwendigen Rechte um Klientenrückmeldungen zu tätigen"), true, false, true);                    // Quickmeldung starten 
+                }
+                else if (typ.sEquals("abrech") || typ.sEquals("calc"))
+                {
+                    ENV.StartupMode = typ;
+                    qs2.ui.RunFromPMDS RunFromPMDS1 = new qs2.ui.RunFromPMDS();
+                    RunFromPMDS1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+                    PMDS.Global.ENV.setStyleInfrag(true);
+                    qs2.core.ENV.IsHeadquarter = true;
+                    PMDS.Calc.Logic.calculation.delgetDBContext += new Calc.Logic.calculation.getDBContext(PMDS.DB.PMDSBusiness.getDBContext2);
+                    PMDS.Calc.Logic.calculation.delCallFctMainSystem += new Calc.Logic.calculation.CallFctMainSystem(ENV.CallFctMainSystem);
+
+                    PMDS.Global.db.ERSystem.EFEntities EFEntities1 = new Global.db.ERSystem.EFEntities();
+                    EFEntities1.init2(true);
+                    if (infoStartMain != null)
+                        infoStartMain.Close();
+                    ProcessStartup(new PMDS.Calc.UI.Admin.frmMainCalc(), UserRights.AbrechnungStarten, QS2.Desktop.ControlManagment.ControlManagment.getRes("Sie verfügen nicht über die notwendigen Rechte um die Abrechnung direkt zu starten"), false, false, false);            // Abrechnung starten 
+                }
+                else if (typ.sEquals("depotabrech"))
+                {
+                    ENV.StartupMode = typ;
+                    if (infoStartMain != null)
+                        infoStartMain.Close();
+                    PMDS.Global.ENV.setStyleInfrag(true);
+                    PMDS.Calc.UI.Admin.frmMainCalc frm = new PMDS.Calc.UI.Admin.frmMainCalc();
+                    frm.nurDepot = true;
+
+                    ProcessStartup(frm, UserRights.AbrechnungStarten, QS2.Desktop.ControlManagment.ControlManagment.getRes("Sie verfügen nicht über die notwendigen Rechte um die Abrechnung direkt zu starten"), false, false, false);            // Abrechnung starten 
+                }
+                else if (typ == "schnellrückmeldung")
                 {
                     remotingSrv.showMsgBoxTestmodus("start schnellrückmeldung");
 
@@ -305,13 +343,13 @@ namespace PMDS
                         b.initUserCanSign();
 
                         var tBenAbt = from ba in db.BenutzerAbteilung
-                                               where ba.IDBenutzer == rBenutzer.ID
-                                               select new 
-                                               { 
-                                                   ba.ID,
-                                                   ba.IDBenutzer,
-                                                   ba.IDAbteilung
-                                               };
+                                      where ba.IDBenutzer == rBenutzer.ID
+                                      select new
+                                      {
+                                          ba.ID,
+                                          ba.IDBenutzer,
+                                          ba.IDAbteilung
+                                      };
 
                         ENV.CurrentUserAbteilungen.Clear();
                         foreach (var rbenAbt in tBenAbt)

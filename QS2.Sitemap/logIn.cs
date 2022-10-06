@@ -80,7 +80,6 @@ namespace qs2.core
                     {
                         qs2.core.vb.sqlAdmin sqlAdmin1 = new qs2.core.vb.sqlAdmin();
                         sqlAdmin1.initControl();
-                        sqlAdmin1.getAllUsersWithRoles(ref sqlAdmin.dsAllAdmin, sqlAdmin.eTypAuswahlList.all);
 
                         qs2.core.vb.businessFramework b2 = new qs2.core.vb.businessFramework();
                         string loadENVFromAdjustmentStayType = "";
@@ -120,7 +119,6 @@ namespace qs2.core
         {
             try
             {
-
                 qs2.core.dbBase._IDThreadDBOperations = System.Threading.Thread.CurrentThread.ManagedThreadId;
                 qs2.core.dbBase db = new qs2.core.dbBase();
                 db.setConnectionDB2(false, logIn.DbConnStrStayUI, "ThreadLoadAllData");
