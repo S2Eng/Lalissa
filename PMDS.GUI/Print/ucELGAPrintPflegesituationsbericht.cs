@@ -8,14 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.CompilerServices;
-using qs2.core.vb;
 using PMDS.Global;
-using Infragistics.Win.UltraWinGrid;
-using PMDS.Klient;
-using System.Reflection;
 using System.Xml;
 using System.IO;
-using PMDS.db.Entities;
 using Infragistics.Win.UltraWinListView;
 
 using MARC.Everest.DataTypes.Interfaces;
@@ -23,16 +18,9 @@ using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
 using MARC.Everest.RMIM.UV.CDAr2.Vocabulary;
 using MARC.Everest.Xml;
 using MARC.Everest.DataTypes;
-using PMDS.BusinessLogic;
 
 using System.Text.RegularExpressions;
 using Syncfusion.Pdf.Parsing;
-
-using System.Xml.XPath;
-using System.Xml.Xsl;
-
-using System.Diagnostics;
-using Microsoft.Win32;
 
 namespace PMDS.GUI.Print
 {

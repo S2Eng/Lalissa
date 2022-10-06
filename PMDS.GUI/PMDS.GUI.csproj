@@ -116,263 +116,175 @@
     </Reference>
     <Reference Include="Infragistics4.Documents.Core.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Core.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Documents.Core.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Documents.Excel.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Excel.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Documents.Excel.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Documents.IO.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.IO.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Documents.IO.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Documents.Reports.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Reports.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Documents.Reports.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Documents.TextDocument.CSharp.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.CSharp.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Documents.TextDocument.CSharp.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Documents.TextDocument.TSql.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.TSql.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Documents.TextDocument.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Documents.TextDocument.TSql.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Documents.TextDocument.VisualBasic.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.VisualBasic.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Documents.TextDocument.VisualBasic.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Documents.Word.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Word.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Documents.Word.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Math.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Math.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.Core.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.Core.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataProvider.Adomd.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Adomd.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataProvider.Flat.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Flat.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataProvider.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataProvider.Xmla.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Xmla.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataSource.Flat.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Flat.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataSource.Mdx.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Mdx.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataSource.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Olap.DataSource.Xmla.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Xmla.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Math.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Shared.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Shared.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Shared.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Undo.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Undo.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Undo.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.AppStylistSupport.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.AppStylistSupport.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.DataVisualization.Barcode.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.Barcode.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.DataVisualization.Shared.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.Shared.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.DataVisualization.UltraDataChart.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraDataChart.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.DataVisualization.UltraGauges.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraGauges.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.DataVisualization.UltraGeographicMap.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraGeographicMap.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.DataVisualization.UltraSparkline.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraSparkline.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.AppStylistSupport.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.Misc.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.Misc.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.Misc.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.Portable.Core.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.Portable.Core.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.Portable.Core.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.SupportDialogs.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.SupportDialogs.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.SupportDialogs.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinCalcManager.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinCalcManager.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinCalcManager.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinCalcManager.v21.2.FormulaBuilder, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinCalcManager.v21.2.FormulaBuilder.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.UltraWinCarousel.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinCarousel.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.UltraWinChart.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinChart.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinCalcManager.v21.2.FormulaBuilder.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinDataSource.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinDataSource.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinDataSource.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinDock.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinDock.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinDock.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinEditors.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinEditors.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinEditors.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinExplorerBar.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinExplorerBar.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinExplorerBar.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinFormattedText.WordWriter.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinFormattedText.WordWriter.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinFormattedText.WordWriter.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinGanttView.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGanttView.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.UltraWinGauge.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGauge.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinGanttView.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinGrid.DocumentExport.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.DocumentExport.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinGrid.DocumentExport.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinGrid.ExcelExport.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.ExcelExport.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinGrid.ExcelExport.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinGrid.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinGrid.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinGrid.WordWriter.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.WordWriter.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.UltraWinInkProvider.Ink17.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinInkProvider.Ink17.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinGrid.WordWriter.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinListBar.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinListBar.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinListBar.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinListView.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinListView.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinListView.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinLiveTileView.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinLiveTileView.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinLiveTileView.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinMaskedEdit.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinMaskedEdit.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinMaskedEdit.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinOfficeNavBar.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinOfficeNavBar.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.UltraWinPivotGrid.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinPivotGrid.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinOfficeNavBar.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinPrintPreviewDialog.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinPrintPreviewDialog.v21.2.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.UltraWinRadialMenu.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinRadialMenu.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinPrintPreviewDialog.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinSchedule.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSchedule.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinSchedule.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinSpellChecker.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSpellChecker.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinSpellChecker.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinSpreadsheet.ChartAdapter.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSpreadsheet.ChartAdapter.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinSpreadsheet.ChartAdapter.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinSpreadsheet.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSpreadsheet.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinSpreadsheet.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinStatusBar.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinStatusBar.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinStatusBar.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinTabbedMdi.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinTabbedMdi.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinTabbedMdi.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinTabControl.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinTabControl.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinTabControl.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinToolbars.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinToolbars.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinToolbars.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinTree.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinTree.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.UltraWinTree.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Infragistics\2021.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v21.2.dll</HintPath>
+      <HintPath>..\Dlls\Infragistics\Infragistics4.Win.v21.2.dll</HintPath>
     </Reference>
     <Reference Include="MARC.Everest">
       <HintPath>..\Dlls\MARC.Everest.dll</HintPath>
@@ -431,60 +343,57 @@
     <Reference Include="SqlKata, Version=2.3.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SqlKata.2.3.7\lib\netstandard2.0\SqlKata.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Compression.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Compression.Base, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.Compression.Base.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Grid.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Grid.Base, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.Grid.Base.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.Grid.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Grid.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Grid.Windows, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.Grid.Windows.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.Grid.Windows.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.HTMLUI.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.HTMLUI.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Pdf.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Pdf.Base, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.Pdf.Base.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Pdf.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Pdf.Windows, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.Pdf.Windows.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.Pdf.Windows.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.PdfViewer.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.PdfViewer.Windows, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.PdfViewer.Windows.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.PdfViewer.Windows.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Scripting.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Shared.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Shared.Base, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.Shared.Base.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.Shared.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Shared.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Shared.Windows, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.Shared.Windows.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.Shared.Windows.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SpellChecker.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.SpellChecker.Base.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.SpellChecker.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Tools.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Tools.Base, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.Tools.Base.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.Tools.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Tools.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Tools.Windows, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.Tools.Windows.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.Tools.Windows.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.XlsIO.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.XlsIO.Base, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.XlsIO.Base.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.XlsIO.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.XlsIO.Windows, Version=19.4460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Syncfusion.XlsIO.Windows.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion\Syncfusion.XlsIO.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
