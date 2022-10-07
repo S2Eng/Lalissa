@@ -988,47 +988,6 @@ namespace qs2.ui.print
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
         }
-        public void doColUnvisibleObjects()
-        {
-            try
-            {
-                System.Collections.Generic.List<string> lstUnvisibleCols = new System.Collections.Generic.List<string>();
-
-                qs2.core.vb.businessFramework b = new businessFramework();
-                dsAdmin.tblSelListEntriesRow[] arrSelListObjFieldInDB = null;
-                b.getAllObjectFieldsInProductStay(ref arrSelListObjFieldInDB, false, this.IDApplicationTmp);
-
-                foreach (UltraGridColumn gridCol in this.ultraGrid1.DisplayLayout.Bands[0].Columns)
-                {
-                    string ColNameTmp = "";
-                    if (gridCol.ToString().Trim().ToLower().StartsWith(qs2.core.generic.prefixColAutoTranslate.Trim().ToLower()))
-                    {
-                        ColNameTmp = gridCol.ToString().Trim().Substring(qs2.core.generic.prefixColAutoTranslate.Trim().Length, gridCol.ToString().Length - qs2.core.generic.prefixColAutoTranslate.Trim().Length);
-                    }
-                    else
-                    {
-                        ColNameTmp = gridCol.ToString();
-                    }
-                    var arrObjectFieldSelList = from rObjectFieldSelList in arrSelListObjFieldInDB.AsEnumerable()
-                                                where rObjectFieldSelList.FldShortColumn == ColNameTmp.Trim()
-                                                select rObjectFieldSelList;
-
-                    if (arrObjectFieldSelList.Count() > 0)
-                    {
-                        this.ultraGrid1.DisplayLayout.Bands[0].Columns[gridCol.ToString().Trim()].Hidden = true;
-                        //foreach (dsAdmin.tblSelListEntriesRow rQryCondition in arrObjectFieldSelList)
-                        //{
-                        //}
-                    }
-                }
-                
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("doColUnvisibleObjects: " + ex.ToString());
-            }
-        }
-
         public void setColsVisibleUnvisible(bool bOn)
         {
             foreach (string columnName in this.translateQuery1.lstUnvisibleCols)

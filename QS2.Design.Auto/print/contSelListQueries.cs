@@ -73,10 +73,7 @@ namespace qs2.ui.print
 
                 sqlAdminTmp3.initControl();
 
-                if (showSubQueryAssignmentAllQueries)
-                    btnSubQueriesAll.Visible = actUsr.checkRights(Enums.eRights.rightManageQueries, false);
-                else
-                    btnSubQueriesAll.Visible = false;
+                btnSubQueriesAll.Visible = showSubQueryAssignmentAllQueries;
             }
             catch (Exception ex)
             {

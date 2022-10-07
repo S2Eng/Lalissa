@@ -11,7 +11,7 @@ namespace qs2.core
 {
     public class logIn
     {
-        public static bool DataThreadIsReady = false;
+
         public static string DbConnStrStayUI = "";
 
         public static bool doConnect2(bool loadAllRessources, bool DesignerMode, bool CheckVersionDB, string DbConnStrStayUI, bool IsPMDS, bool doNotDecryptPwd = false)
@@ -133,8 +133,6 @@ namespace qs2.core
                 qs2.core.SysDB.sqlSysDB sqlColumns1 = new qs2.core.SysDB.sqlSysDB();
                 sqlColumns1.initControl();               
                 sqlColumns1.loadAllSysDatabase();
-               
-                logIn.DataThreadIsReady = true;
             }
             catch (Exception ex)
             {

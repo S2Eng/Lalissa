@@ -297,43 +297,6 @@ namespace qs2.design.auto
             }
         }
 
-        public void LoadDocuments(ref Infragistics.Win.UltraWinEditors.UltraComboEditor cbo, string IDApplication, string IDParticipant, int IDUser)
-        {
-            try
-            {
-                cbo.Items.Clear();
-                cbo.Value = null;
-                cbo.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-
-                qs2.core.db.ERSystem.businessFramework b2 = new core.db.ERSystem.businessFramework();
-                qs2.core.vb.businessFramework b = new businessFramework();
-                core.vb.dsAdmin dsAdmin1 = new dsAdmin();
-                core.vb.sqlAdmin sqlAdmin1 = new sqlAdmin();
-                sqlAdmin1.initControl();
-
-                System.Collections.Generic.List<cSelListAndObj> lstRolesForUserActive = new System.Collections.Generic.List<cSelListAndObj>();
-                b.getAllRolesForUser(actUsr.rUsr.ID, ref lstRolesForUserActive, true);
-
-                SortedDictionary<string, qs2.ui.pint.contQryRun.cButton> dictButtons = new SortedDictionary<string, qs2.ui.pint.contQryRun.cButton>();
-                qs2.core.ui.addWatch("loadButtons START", true);
-                this.loadButtons(null, null, core.Enums.eTypRunQuery.DocumentGroups, ref sqlAdmin1, ref dsAdmin1,
-                                    IDApplication, IDParticipant, ref b2, ref b, ref dictButtons, true, ref lstRolesForUserActive);
-                qs2.core.ui.addWatch("loadButtons END", true);
-                cbo.Items.Add(-100," ");
-                foreach (KeyValuePair<string, qs2.ui.pint.contQryRun.cButton> p in dictButtons)
-                {
-                    string sTransl = qs2.core.language.sqlLanguage.getRes(p.Value.rSelListEntrySubListFound.IDRessource);
-                    cbo.Items.Add(p.Value.rSelListEntrySubListFound.ID, (String.IsNullOrEmpty(sTransl) ? p.Value.rSelListEntrySubListFound.IDRessource : sTransl));
-                    cbo.SortStyle = Infragistics.Win.ValueListSortStyle.AscendingByValue;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ui.LoadDocuments: " + ex.ToString());
-            }
-        }
-
         public void loadButtons(dsAdmin.tblSelListEntriesRow rSelListGroup1, Panel newPnlGroup1,
                                 qs2.core.Enums.eTypRunQuery typRunQuery, ref sqlAdmin sqlAdmin1, ref dsAdmin dsAdmin1, string IDApplication, string IDParticipant,
                                 ref qs2.core.db.ERSystem.businessFramework b2, ref qs2.core.vb.businessFramework b,

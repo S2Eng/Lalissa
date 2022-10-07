@@ -143,37 +143,11 @@ namespace qs2.ui.pint
                 this.contQryRunPar1.typRunQuery = this.typRunQuery;
                 this.contQryRunPar1.initControl(defaultApplication, this.IDParticipant);
 
-                //this.loadGroups(this.defaultApplication);
-
-                if (this.typRunQuery == core.Enums.eTypRunQuery.ReportGroups || this.typRunQuery == core.Enums.eTypRunQuery.QueryGroups)
-                {
-                    this.panelTopLeft.Visible = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightManageQueries, false) || qs2.core.vb.actUsr.IsAdminSecureOrSupervisor();
-                    this.toolbarsManagerAdmin.Tools[eTypToolbar.ReportGroups.ToString()].SharedProps.Visible = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightManageQueries, false);
-                }
-                else if (this.typRunQuery == core.Enums.eTypRunQuery.DocumentGroups)
-                {
-                    this.panelTopLeft.Visible = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightManageQueries, false) || qs2.core.vb.actUsr.IsAdminSecureOrSupervisor();
-                    this.toolbarsManagerAdmin.Tools[eTypToolbar.ReportGroups.ToString()].SharedProps.Visible = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightEditDocuments, false);
-                }
-
-                if ( qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                {
-                    this.toolbarsManagerAdmin.Tools[eTypToolbar.Reports.ToString()].SharedProps.Visible = true;
-                }
-                else
-                {
-                    this.toolbarsManagerAdmin.Tools[eTypToolbar.Reports.ToString()].SharedProps.Visible = false;
-                }
-
-
-                if (qs2.core.license.doLicense.rApplication.IDApplication.Trim().Equals(qs2.core.license.doLicense.eApp.PMDS.ToString().Trim(), StringComparison.OrdinalIgnoreCase))
-                {
-                    this.toolbarsManagerAdmin.Tools[eTypToolbar.btnManageQueries.ToString()].SharedProps.Visible = false;
-                }
+                this.panelTopLeft.Visible = true;
+                this.toolbarsManagerAdmin.Tools[eTypToolbar.ReportGroups.ToString()].SharedProps.Visible = true;
+                this.toolbarsManagerAdmin.Tools[eTypToolbar.btnManageQueries.ToString()].SharedProps.Visible = false;
 
                 this.sqlAdminTmp3.initControl();
-                b.getAllRolesForUser(actUsr.rUsr.ID, ref lstRolesForUserActive, false);
-
                 this.isLoaded = true;
             }
             catch (Exception ex)
@@ -197,21 +171,6 @@ namespace qs2.ui.pint
                     this.toolbarsManagerAdmin.Tools[eTypToolbar.ReportGroups.ToString()].SharedProps.Caption = qs2.core.language.sqlLanguage.getRes(eTypToolbar.QueryGroups.ToString());
                     this.toolbarsManagerAdmin.Tools[eTypToolbar.Reports.ToString()].SharedProps.Visible = false;
                     this.toolbarsManagerAdmin.Tools[eTypToolbar.Documents.ToString()].SharedProps.Visible = false;
-                }
-                else if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.ReportGroups)
-                {
-                    this.toolbarsManagerAdmin.Tools[eTypToolbar.ReportGroups.ToString()].SharedProps.Caption = qs2.core.language.sqlLanguage.getRes(eTypToolbar.ReportGroups.ToString());
-                    this.toolbarsManagerAdmin.Tools[eTypToolbar.Documents.ToString()].SharedProps.Visible = false;
-                }
-                else if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.DocumentGroups)
-                {
-                    this.toolbarsManagerAdmin.Tools[eTypToolbar.ReportGroups.ToString()].SharedProps.Visible = false;
-                    this.toolbarsManagerAdmin.Tools[eTypToolbar.Reports.ToString()].SharedProps.Visible = false;
-
-                    this.toolbarsManagerAdmin.Tools[eTypToolbar.ReportGroups.ToString()].SharedProps.Visible = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightEditDocuments, false);
-                    this.toolbarsManagerAdmin.Tools[eTypToolbar.ReportGroups.ToString()].SharedProps.Caption = qs2.core.language.sqlLanguage.getRes(eTypToolbar.DocumentGroups.ToString());
-
-                    this.toolbarsManagerAdmin.Tools[eTypToolbar.Documents.ToString()].SharedProps.Visible = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightEditDocuments, false);
                 }
 
                 this.toolbarsManagerAdmin.Tools[eTypToolbar.btnAssignSubqueries.ToString()].SharedProps.Caption = qs2.core.language.sqlLanguage.getRes("AssignSubqueries");

@@ -27,7 +27,7 @@ Public Class actUsr
                 actUsr.loadRolesUser()
             End If
 
-            actUsr.UserHasRigthSetCompleted = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightSetCompleted, False)
+            actUsr.UserHasRigthSetCompleted = True
             Return True
 
         Catch ex As Exception
@@ -48,69 +48,6 @@ Public Class actUsr
         End Try
     End Sub
 
-    Public Shared Function checkRights(ByVal right As qs2.core.Enums.eRights, ByVal message As Boolean, Optional IDUserOptional As Integer = -1) As Boolean
-        Dim sExcept As String = right.ToString() + ";"
-        Try
-            Dim IDUserTmp As Integer = -1
-            Dim UserNameTmp As String = ""
-            If IDUserOptional > 0 Then
-                Dim sqlObjectsRead As New sqlObjects()
-                sqlObjectsRead.initControl()
-                sExcept += ";1;"
-                Dim rUsrOptional As dsObjects.tblObjectRow = sqlObjectsRead.getObjectRow(IDUserOptional, sqlObjects.eTypSelObj.ID)
-                If rUsrOptional Is Nothing Then
-                    Throw New Exception("checkRights: rUsrOptional Is Nothing for UserID '" + IDUserOptional.ToString() + "'!")
-                End If
-                IDUserTmp = rUsrOptional.ID
-                UserNameTmp = rUsrOptional.UserName.Trim()
-
-                Dim sqlAdminTmp = New core.vb.sqlAdmin()
-                sqlAdminTmp.initControl()
-
-                actUsr.sqlAdminRights_Systemuser = New sqlAdmin()
-                actUsr.sqlAdminRights_Systemuser.initControl()
-                actUsr.dsAdminRights_Systemuser = New dsAdmin()
-                sqlAdminTmp.getAllUsersWithRights(actUsr.dsAdminRights_Systemuser, core.vb.sqlAdmin.eTypAuswahlList.all, IDUserOptional)
-
-                Dim sWhere As String = "ID=" + IDUserTmp.ToString() + " and IDOwnStr='" + right.ToString() + "'"
-                Dim arrRight() As dsAdmin.getAllUsersWithRightsRow = actUsr.dsAdminRights_Systemuser.getAllUsersWithRights.Select(sWhere)
-                sExcept += ";3;"
-                If arrRight.Length > 0 Then
-                    Return True
-                End If
-
-            Else
-                IDUserTmp = qs2.core.vb.actUsr.rUsr.ID
-                UserNameTmp = actUsr.rUsr.UserName.Trim()
-
-                If actUsr.sqlAdminRights Is Nothing Then
-                    actUsr.sqlAdminRights = New sqlAdmin()
-                    actUsr.sqlAdminRights.initControl()
-                    actUsr.dsAdminRights = New dsAdmin()
-                    actUsr.sqlAdminRights.getAllUsersWithRights(actUsr.dsAdminRights, sqlAdmin.eTypAuswahlList.all, IDUserTmp)
-                End If
-
-                If UserNameTmp.Trim().ToLower = qs2.core.vb.sqlObjects.userName_Supervisor.Trim().ToLower() Or
-                    UserNameTmp.Trim().ToLower = qs2.core.vb.sqlObjects.userName_Supervisor.Trim().ToLower() Then
-                    Return True
-                End If
-                If qs2.core.ENV.adminSecure Then
-                    Return True
-                End If
-
-                Dim sWhere As String = "ID=" + IDUserTmp.ToString() + " and IDOwnStr='" + right.ToString() + "'"
-                Dim arrRight() As dsAdmin.getAllUsersWithRightsRow = actUsr.dsAdminRights.getAllUsersWithRights.Select(sWhere)
-                If arrRight.Length > 0 Then
-                    Return True
-                End If
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("actUsr.checkRight: Right: " + sExcept + vbNewLine + vbNewLine + ex.ToString())
-            Return False
-        Finally
-        End Try
-    End Function
 
     Public Shared Property UserHasRigthSetCompleted() As Boolean
         Get

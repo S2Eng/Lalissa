@@ -59,8 +59,8 @@ namespace qs2.design.auto.multiControl
                 {
                     if (ownControl1.IsEvaluation)
                     {
-                        this.right_QueryReportOthers = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightQueryReportOthers, false);
-                        this.right_QueryReportOwn = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightQueryReportOwn, false);
+                        this.right_QueryReportOthers = true;
+                        this.right_QueryReportOwn = true;
                     }
 
                     if (ownControl1.ownMCCriteria1.rCriteria != null)
@@ -762,18 +762,8 @@ namespace qs2.design.auto.multiControl
                     ownControl1.ComboBox.Items.Add(-1, " ");
                 }
 
-                System.Collections.Generic.List<core.vb.businessFramework.cSelListAndObj> lstRolesForUserActive = new List<core.vb.businessFramework.cSelListAndObj>();
-                if (ownControl1.IsEvaluation)
-                {
-                    qs2.core.vb.businessFramework b = new core.vb.businessFramework();
-                    b.getAllRolesForUser(qs2.core.vb.actUsr.rUsr.ID, ref lstRolesForUserActive, false);      
-                }
-
                 if (bListAllUsers)
                 {
-                    //ownControl1.ownMCCriteria1.sqlAdmin1.getSelListEntrysObj(rActiveUser.ID, core.vb.sqlAdmin.eDbTypAuswObj.Roles, "Roles", ownControl1.ownMCCriteria1.dsAdmin1, core.vb.sqlAdmin.eTypAuswahlObj.obj, qs2.core.license.doLicense.eApp.ALL.ToString());
-                    //qs2.core.vb.dsAdmin.tblSelListEntriesObjRow[] arrRolesLoggedOnUsr = null;
-                    //arrRolesLoggedOnUsr = (qs2.core.vb.dsAdmin.tblSelListEntriesObjRow[])ownControl1.ownMCCriteria1.dsAdmin1.tblSelListEntriesObj.Select("", ownControl1.ownMCCriteria1.dsAdmin1.tblSelListEntriesObj.ActiveColumn.ColumnName + " asc ");
                     System.Collections.Generic.List<qs2.core.vb.dsAdmin.tblSelListEntriesRow> lstRoleToLoad = new List<core.vb.dsAdmin.tblSelListEntriesRow>();
                     foreach (qs2.core.vb.dsAdmin.tblSelListEntriesRow rRole in arrRoles)
                     {
@@ -816,25 +806,12 @@ namespace qs2.design.auto.multiControl
                             }
                             if (bAppOK)
                             {
-                                //if (rUsrFound.LastName.Trim().ToLower().Contains(("Kardiologe").Trim().ToLower()))
-                                //{
-                                //    string xy = "";
-                                //}
-
                                 //get Role from User
                                 ownMCCriteria.dsAdminWork.tblSelListEntriesObj.Clear();
                                 qs2.core.vb.dsAdmin.tblSelListEntriesObjRow[] arrSelListObjs = ownMCCriteria.sqlAdminWork.getSelListEntrysObj(rUsrFound.ID, core.vb.sqlAdmin.eDbTypAuswObj.Roles, "Roles", ownMCCriteria.dsAdminWork, core.vb.sqlAdmin.eTypAuswahlObj.objRAM, qs2.core.license.doLicense.eApp.ALL.ToString());
 
-                                // get Role from User-LoggedIn
-                                //qs2.core.vb.dsAdmin.tblSelListEntriesObjRow[] arrRolesActUsr = null;
-                                //arrRolesActUsr = (qs2.core.vb.dsAdmin.tblSelListEntriesObjRow[])ownControl1.ownMCCriteria1.dsAdminWork.tblSelListEntriesObj.Select("", ownControl1.ownMCCriteria1.dsAdmin1.tblSelListEntriesObj.ActiveColumn.ColumnName + " asc ");
-
                                 foreach (qs2.core.vb.dsAdmin.tblSelListEntriesObjRow rObjActUsr in arrSelListObjs)
                                 {
-                                    //if (rObjActUsr.IDSelListEntry.Equals(10020009))
-                                    //{
-                                    //    string xy = "";
-                                    //}
                                     foreach (qs2.core.vb.dsAdmin.tblSelListEntriesRow rRoleToLoad in lstRoleToLoad)
                                     {
                                         if (rObjActUsr.IDSelListEntry.Equals(rRoleToLoad.ID))
@@ -842,34 +819,9 @@ namespace qs2.design.auto.multiControl
                                             bool RoleFromUserIsOK = false;
                                             if (ownControl1.IsEvaluation)
                                             {
-                                                foreach (core.vb.businessFramework.cSelListAndObj RolesLoggedInUser in lstRolesForUserActive)
-                                                {
-                                                    if (rRoleToLoad.IDOwnInt.Equals(RolesLoggedInUser.rSelList.IDOwnInt))
-                                                    {
-                                                        RoleFromUserIsOK = true;
-                                                        //!qs2.core.vb.actUsr.rUsr.isAdmin
-                                                    }
-                                                }
                                             }
                                             else
                                             {
-                                                //List<qs2.core.vb.businessFramework.cSelListAndObj> lstRolesToCheck = null;
-                                                //if (qs2.core.vb.actUsr.rUsr.isAdmin)
-                                                //{
-                                                //    lstRolesToCheck = ownMCCriteria.lstRolesForUserActive;
-                                                //}
-                                                //else
-                                                //{
-                                                //    lstRolesToCheck = ownMCCriteria.lstRolesForUserAll;
-                                                //}
-                                                //foreach (core.vb.businessFramework.cSelListAndObj RolesLoggedInUser in lstRolesToCheck)
-                                                //{
-                                                //    if (rRoleToLoad.IDOwnInt.Equals(RolesLoggedInUser.rSelList.IDOwnInt))
-                                                //    {
-                                                //        RoleFromUserIsOK = true;
-                                                //        //!qs2.core.vb.actUsr.rUsr.isAdmin
-                                                //    }
-                                                //}
                                                 if (!qs2.core.vb.actUsr.UserHasRoleAdministrator)
                                                 {
                                                     if (rObjActUsr.Active)
@@ -883,20 +835,8 @@ namespace qs2.design.auto.multiControl
                                                 }
                                             }
 
-                                            //foreach (core.vb.businessFramework.cSelListAndObj RolesLoggedInUser in qs2.design.auto.ownMCCriteria.lstRolesForUserActive)
-                                            //{
-                                            //    if (RolesLoggedInUser.rSelListObj.IDOwnInt == 999999999)
-                                            //    {
-                                            //        if (rRoleToLoad.IDOwnInt != 6666 && rUsrFound.Active)
-                                            //        {
-                                            //            RoleFromUserIsOK = false;
-                                            //        }
-                                            //    }
-                                            //}
-
                                             if (RoleFromUserIsOK)
                                             {
-                                                //ownMCCriteria.dsObjectsWork.tblObject.Clear();
                                                 qs2.core.vb.dsObjects.tblObjectRow[] arrObjFound = (qs2.core.vb.dsObjects.tblObjectRow[])dsObjectsDropDown.tblObject.Select("ID=" + rUsrFound.ID.ToString() + "", "");
                                                 if (arrObjFound.Length == 0)
                                                 {
@@ -904,7 +844,6 @@ namespace qs2.design.auto.multiControl
                                                     {
                                                         if (ownControl1.OwnControlType == core.Enums.eControlType.ComboBoxAsDropDown)
                                                         {
-                                                            //ownMCCriteria.dsObjectsWork.Clear();
                                                             qs2.core.vb.dsObjects.tblObjectRow rNewObj = (qs2.core.vb.dsObjects.tblObjectRow)ownMCCriteria.sqlObjectsWork.getNewRowObject(dsObjectsDropDown);
                                                             rNewObj.ItemArray = rUsrFound.ItemArray;
                                                             rNewObj.Active = rObjActUsr.Active;

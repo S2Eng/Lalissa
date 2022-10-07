@@ -141,11 +141,10 @@ namespace qs2.ui.print
                     this.ultraToolbarsManager1.Visible = false;
                 }
 
-                this.right_QueryReportOwn = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightQueryReportOwn, false);
+                this.right_QueryReportOwn = true;
                 if (!qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
                 {
                     this.openResultsInTableToolStripMenuItem.Visible = false;
-                    //this.generateSqlCommandForCommandLineToolStripMenuItem.Visible = true;
                 }
                 else
                 {
@@ -176,24 +175,8 @@ namespace qs2.ui.print
                     this.btnRunReport.Text = qs2.core.language.sqlLanguage.getRes("RunQuery");
                     this.ultraToolbarsManager1.Tools["btnManageQueries"].SharedProps.Visible = false;
                     this.openResultsInTableToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("RunQuery") + " " + qs2.core.language.sqlLanguage.getRes("TableViewer");
-                    this.generateSqlCommandForCommandLineToolStripMenuItem.Visible = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightQueryReportOthers, false);
+                    this.generateSqlCommandForCommandLineToolStripMenuItem.Visible = true;
                 }
-                else if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.ReportGroups)
-                {
-                    this.btnRunReport.Appearance.Image = getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Drucken , 32, 32);
-                    this.btnRunReport.Text = qs2.core.language.sqlLanguage.getRes("RunReport");
-                    this.openResultsInTableToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("RunReport") + " " + qs2.core.language.sqlLanguage.getRes("TableViewer");
-                    this.generateSqlCommandForCommandLineToolStripMenuItem.Visible = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightQueryReportOthers, false);
-                }
-
-                else if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.DocumentGroups)
-                {
-                    this.btnRunReport.Appearance.Image = getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Drucken, 32, 32);
-                    this.btnRunReport.Text = qs2.core.language.sqlLanguage.getRes("RunDocument");
-                    this.openResultsInTableToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("RunDocument") + " " + qs2.core.language.sqlLanguage.getRes("TableViewer");
-                    this.generateSqlCommandForCommandLineToolStripMenuItem.Visible = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightQueryReportOthers, false);
-                }
-
                 this.generateSqlCommandForCommandLineToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("GenerateSqlCommandForCommandLine");
                 
                 this.ultraToolbarsManager1.Tools["btnManageQueries"].SharedProps.Caption = qs2.core.language.sqlLanguage.getRes("ManageQueries");
@@ -202,10 +185,6 @@ namespace qs2.ui.print
                 this.popUpQueries.SharedProps.Caption = qs2.core.language.sqlLanguage.getRes("AdministrateQueries");
                 this.popUpQueries.SharedProps.AppearancesSmall.Appearance.Image = getRes.getImage(QS2.Resources.getRes.ePicture.ico_Queries, 32, 32);
                 this.popUpService.SharedProps.AppearancesSmall.Appearance.Image = getRes.getImage(QS2.Resources.getRes.ePicture.ico_service, 32, 32);
-
-                //this.grpQueryParameter.Text = qs2.core.language.sqlLanguage.getRes("NoQueriesDefined") + "!";
-                //this.lblNoQueriesDefined.Visible = false;
-
 
                 this.lblQuerySub.Text = qs2.core.language.sqlLanguage.getRes("SubQuery");
                 this.historyToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("History");
@@ -503,63 +482,34 @@ namespace qs2.ui.print
                     if (doParameterForQuery1.ColumnExistsInTable(TableNameTmp.Trim(), QryColumn.Trim()))
                     {
                         bool containsQryColumn = false;
-                        //foreach (qs2.core.vb.dsAdmin.tblQueriesDefRow rQry in InfoQryRunPar.dsConditionsUI.tblQueriesDef)
-                        //{
-                        //    if (rQry.QryColumn.Trim().ToLower().Equals(QryColumn.Trim().ToLower()))
-                        //    {
-                        //        containsQryColumn = true;
-                        //    }
-                        //}
                         if (!containsQryColumn)
                         {
-                            bool RoleOK = false;
-                            qs2.core.vb.businessFramework b = new businessFramework();
-                            RoleOK = b.checkRolesUser(true, InfoQryRunPar.Application.Trim(), QryColumn, InfoQryRunPar.rSelListQry._Table.Trim());
+                            qs2.core.vb.dsAdmin.tblQueriesDefRow rNewParObj = this.sqlAdmin1.addRowQueriesDef(InfoQryRunPar.dsConditionsUI.tblQueriesDef);
+                            rNewParObj.IsSQLServerField = false;
+                            rNewParObj.CriteriaFldShort = QryColumn.Trim();
+                            rNewParObj.QryColumn = QryColumn.Trim();
+                            rNewParObj.ComboAsDropDown = true;
+                            rNewParObj.ComboAsDropDownCondition = " or ";
+                            rNewParObj.Combination = (counterParAdded == 0 ? " and " : " or "); 
+                            rNewParObj.QryTable = InfoQryRunPar.rSelListQry._Table.Trim();
+                            rNewParObj.UserInput = true;
+                            rNewParObj.ControlType = core.Enums.eControlType.ComboBox.ToString();
+                            rNewParObj.Condition = " = ";
+                            rNewParObj.ParticipantOwn = qs2.core.license.doLicense.eApp.ALL.ToString();
+                            rNewParObj.CriteriaApplication = qs2.core.license.doLicense.eApp.ALL.ToString();
+                            rNewParObj.ApplicationOwn = InfoQryRunPar.Application.Trim();
+                            rNewParObj.Typ = core.Enums.eTypQueryDef.WhereConditions.ToString();
+                            rNewParObj.Sort = Sort;
 
-                            //if (qs2.core.Settings.ControlOpenStayType == 0)
-                            //{
-                            //    RoleOK = b.checkRolesUser(false, InfoQryRunPar.Application.Trim(), QryColumn, InfoQryRunPar.rSelListQry._Table.Trim());
-                            //}
-                            //else
-                            //{
-                            //    RoleOK = b.checkRolesUser(true, InfoQryRunPar.Application.Trim(), QryColumn, InfoQryRunPar.rSelListQry._Table.Trim());
-                            //}
-                            if (RoleOK)
+                            if (rNewParObjFirst != null)
                             {
-                                qs2.core.vb.dsAdmin.tblQueriesDefRow rNewParObj = this.sqlAdmin1.addRowQueriesDef(InfoQryRunPar.dsConditionsUI.tblQueriesDef);
-                                rNewParObj.IsSQLServerField = false;
-                                rNewParObj.CriteriaFldShort = QryColumn.Trim();
-                                rNewParObj.QryColumn = QryColumn.Trim();
-                                rNewParObj.ComboAsDropDown = true;
-                                rNewParObj.ComboAsDropDownCondition = " or ";
-                                rNewParObj.Combination = (counterParAdded == 0 ? " and " : " or "); 
-                                rNewParObj.QryTable = InfoQryRunPar.rSelListQry._Table.Trim();
-                                rNewParObj.UserInput = true;
-                                rNewParObj.ControlType = core.Enums.eControlType.ComboBox.ToString();
-                                rNewParObj.Condition = " = ";
-                                rNewParObj.ParticipantOwn = qs2.core.license.doLicense.eApp.ALL.ToString();
-                                rNewParObj.CriteriaApplication = qs2.core.license.doLicense.eApp.ALL.ToString();
-                                rNewParObj.ApplicationOwn = InfoQryRunPar.Application.Trim();
-                                rNewParObj.Typ = core.Enums.eTypQueryDef.WhereConditions.ToString();
-                                rNewParObj.Sort = Sort;
-
-                                if (rNewParObjFirst != null)
-                                {
-                                    rNewParObjFirst = rNewParObj;
-                                }
-                                rNewParObjLast = rNewParObj;
-                                lstObjectParsAdded.Add(rNewParObj);
-
-                                counterParAdded += 1;
+                                rNewParObjFirst = rNewParObj;
                             }
+                            rNewParObjLast = rNewParObj;
+                            lstObjectParsAdded.Add(rNewParObj);
                         }
                     }
-                    else
-                    {
-                        //bool NotExistsInTable = true;
-                    }
                 }
-
             }
             catch (Exception ex)
             {

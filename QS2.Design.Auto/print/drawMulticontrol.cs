@@ -394,9 +394,8 @@ namespace qs2.ui
                     multiControl.OwnControlType == core.Enums.eControlType.ComboBoxNoDb ||
                     multiControl.OwnControlType == core.Enums.eControlType.ComboBoxAsDropDown)
                 {
-                    bool right_QueryReportOthers = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightQueryReportOthers, false);
-                    bool right_QueryReportOwn = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightQueryReportOwn, false);
-                    bool right_QueryReportOwnPlusAssistenz = qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightQueryReportOwnPlusAssistenz, false);
+                    bool right_QueryReportOthers = true;
+                    bool right_QueryReportOwnPlusAssistenz = true;
 
                     if (right_QueryReportOthers)
                     {
@@ -404,18 +403,6 @@ namespace qs2.ui
                         System.Windows.Forms.Control contMC = multiControl.ownMCUI1.doButtonControls(design.auto.multiControl.ownMCEvents.eTypButtonControl.Clear, null, "",
                                                                 qs2.core.language.sqlLanguage.getRes("DeleteSelection"), multiControl);
 
-                        qs2.core.vb.businessFramework b = new businessFramework();
-                        dsAdmin.tblSelListEntriesRow[] arrSelListsSheriff = null;
-                        b.getAllObjectFieldsInProductStay(ref arrSelListsSheriff, true, IDApplication);
-                        var SheriffFields = from rSelList in arrSelListsSheriff.AsEnumerable()
-                                            where rSelList.FldShortColumn == multiControl.OwnFldShort.Trim()
-                                            select rSelList;
-
-                        if (SheriffFields.Count() > 0)
-                        {
-                            //multiControl.panelButtons.Controls.Clear();
-                            multiControl.ownMCUI1.doCheckBoxAdd(multiControl);
-                        }
                     }
                     else if (right_QueryReportOwnPlusAssistenz)
                     {
@@ -425,25 +412,17 @@ namespace qs2.ui
                     {
                         multiControl.panelButtons.Controls.Clear();
                     }
-                    //multiControl.panelButtons.Visible = true;
-                    //multiControl.panelButtonsOnOff.Visible = true;
-                    //multiControl.panelButtonsVisible = true;
-                    //multiControl.panelButtons.Controls[0].Visible = true;
                 }
                 else if (multiControl.OwnControlType == core.Enums.eControlType.ComboBoxCheckThreeStateBox)
                 {
                     multiControl.ownMCCriteria1.ownMCCombo1.loadComboThreeStateCheckBox(multiControl, ControlWasCheckBox, false);
                 }
-                //else if (multiControl.OwnControlType == core.Enums.eControlType.ComboBoxAsDropDown)
-                //{
-                //    multiControl.ownMCCriteria1.ownMCCombo1.loadCombo(multiControl, "");
-                //}
+
                 if (!multiControl.ownMCCriteria1.ownMCCombo1.SelectionComboBoxCanNotCleared)
                 {
                     multiControl.ownMCValue1.clearValue(multiControl, true, true);
                 }
               
-                //multiControl.ownMCValue1.setValue(multiControl, "");
                 if (ValueTxtTmp.Trim() != "" && !multiControl.ownMCCriteria1.ownMCCombo1.SelectionComboBoxCanNotCleared)
                 {
                     multiControl.ownMCValue1.setValue(multiControl, ValueTxtTmp);

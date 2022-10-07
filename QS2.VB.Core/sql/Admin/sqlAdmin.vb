@@ -305,15 +305,14 @@
     Public Sub loadAll(ClearDataTableSelListEntries As Boolean)
         Me.allCriteriasLoaded = False
 
-        If Not ENV.VSDesignerMode Then
+        If System.Diagnostics.Process.GetCurrentProcess().ProcessName <> "devenv" Then
             Me.getButtonsForUser(sqlAdmin.dsAllAdmin, eTypAuswahlList.all)
-            Me.getChaptersAlwaysEditableAllUsers(sqlAdmin.dsAllAdmin, eTypAuswahlList.all)
         End If
         Me.getCriterias(sqlAdmin.dsAllAdmin, eTypSelCriteria.search, "", license.doLicense.eApp.ALL.ToString(), False, False, False, "", "", False)
-        Me.getSelListEntrysObj(-999, eDbTypAuswObj.Criterias, "", sqlAdmin.dsAllAdmin, eTypAuswahlObj.AllSelListObjects, "")
-        Me.getSelListEntrysRelGroup("", "", "", sqlAdmin.dsAllAdmin, eTypAuswahlList.all)
-        Me.getCriteriasOpt(sqlAdmin.dsAllAdmin, eTypSelCriteriaOpt.all, "", license.doLicense.eApp.ALL.ToString())
-        Me.getRelationsship(sqlAdmin.dsAllAdmin, eTypSelRelationship.all, "", license.doLicense.eApp.ALL.ToString(), "")
+        'Me.getSelListEntrysObj(-999, eDbTypAuswObj.Criterias, "", sqlAdmin.dsAllAdmin, eTypAuswahlObj.AllSelListObjects, "")
+        'Me.getSelListEntrysRelGroup("", "", "", sqlAdmin.dsAllAdmin, eTypAuswahlList.all)
+        'Me.getCriteriasOpt(sqlAdmin.dsAllAdmin, eTypSelCriteriaOpt.all, "", license.doLicense.eApp.ALL.ToString())
+        'Me.getRelationsship(sqlAdmin.dsAllAdmin, eTypSelRelationship.all, "", license.doLicense.eApp.ALL.ToString(), "")
         Me.getSelListGroup(sqlAdmin.dsAllAdmin, eTypSelGruppen.all, "", "", license.doLicense.eApp.ALL.ToString())
         Me.loadAllSelListEntries(ClearDataTableSelListEntries)
         qs2.core.vb.sqlObjects.loadAllData()

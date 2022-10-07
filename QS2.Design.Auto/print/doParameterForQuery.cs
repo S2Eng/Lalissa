@@ -66,8 +66,7 @@ namespace qs2.print
 
                 System.Collections.Generic.List<core.vb.businessFramework.cSelListAndObj> lstRolesForUserActive = new List<core.vb.businessFramework.cSelListAndObj>();
                 qs2.core.vb.businessFramework b = new core.vb.businessFramework();
-                b.getAllRolesForUser(qs2.core.vb.actUsr.rUsr.ID, ref lstRolesForUserActive, false);
-
+                
                 string sExceptInfo = "1.check";
                 if (!this.checkSorts(tQryDefToSetValues, sExceptInfo))
                 {
@@ -289,7 +288,6 @@ namespace qs2.print
 
                 System.Collections.Generic.List<core.vb.businessFramework.cSelListAndObj> lstRolesForUserActive = new List<core.vb.businessFramework.cSelListAndObj>();
                 qs2.core.vb.businessFramework b = new core.vb.businessFramework();
-                b.getAllRolesForUser(qs2.core.vb.actUsr.rUsr.ID, ref lstRolesForUserActive, false);
 
                 string sExceptInfo = "1.check";
                 if (!this.checkSorts(tQryDefToSetValues, sExceptInfo))
@@ -1194,10 +1192,6 @@ namespace qs2.print
                 qs2.core.vb.businessFramework b = new businessFramework();
                 qs2.core.vb.dsAdmin dsAdminTmp = new qs2.core.vb.dsAdmin();
                 dsAdmin.tblSelListEntriesRow[] arrSelListObjFieldInDB = null;
-                b.getAllObjectFieldsInProductStay(ref arrSelListObjFieldInDB, false, infoQryRunPar.Application);
-                dsAdmin.tblSelListEntriesRow[] arrSelListObjFieldInDBSheriff = null;
-                b.getAllObjectFieldsInProductStay(ref arrSelListObjFieldInDBSheriff, true, infoQryRunPar.Application);
-
                 var rQueriesDefUICbo = from rQueriesDef in tQryDefToSetValues.AsEnumerable()
                                        where (rQueriesDef.ControlType == core.Enums.eControlType.ComboBox.ToString().Trim() ||
                                                rQueriesDef.ControlType == core.Enums.eControlType.ComboBoxNoDb.ToString().Trim())
@@ -1922,10 +1916,6 @@ namespace qs2.print
                 qs2.sitemap.print.genSql genSql1 = new sitemap.print.genSql();
                 qs2.core.vb.businessFramework b = new businessFramework();
                 dsAdmin.tblSelListEntriesRow[] arrSelListObjFieldInDB = null;
-                if (!infoQryRunPar.Application.Trim().ToLower().Equals(qs2.core.license.doLicense.eApp.PMDS.ToString().Trim().ToLower()))
-                {
-                    b.getAllObjectFieldsInProductStay(ref arrSelListObjFieldInDB, false, infoQryRunPar.Application);
-                }
 
                 int iCounter = 0;
                 //string sEnter = "\r\n";

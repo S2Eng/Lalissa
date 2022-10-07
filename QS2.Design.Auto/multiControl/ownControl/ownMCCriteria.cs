@@ -77,27 +77,12 @@ namespace qs2.design.auto
                     ownMCCriteria.dsAdminWork = new core.vb.dsAdmin();
                 }
 
-                if (GetAllRolesUser)
-                {
-                    if (ownMCCriteria.lstRolesForUserActive == null)
-                    {
-                        ownMCCriteria.lstRolesForUserActive = new List<qs2.core.vb.businessFramework.cSelListAndObj>();
-                        ownMCCriteria.b.getAllRolesForUser(qs2.core.vb.actUsr.rUsr.ID, ref ownMCCriteria.lstRolesForUserActive, true);
-                    }
-                    if (ownMCCriteria.lstRolesForUserAll == null)
-                    {
-                        ownMCCriteria.lstRolesForUserAll = new List<qs2.core.vb.businessFramework.cSelListAndObj>();
-                        ownMCCriteria.b.getAllRolesForUser(qs2.core.vb.actUsr.rUsr.ID, ref ownMCCriteria.lstRolesForUserAll, false);
-                    }
-                }
-
                 if (ownMCCriteria.dsLicense1 == null)
                 {
                     ownMCCriteria.dsLicense1 = new core.license.dsLicense();
                     core.license.doLicense doLicense1 = new core.license.doLicense();
                     doLicense1.GetAppsLicensedForParticipant(ownMCCriteria.dsLicense1);
                 }
-
             }
             catch (Exception ex)
             {

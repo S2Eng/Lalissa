@@ -1698,16 +1698,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (!this.IsEvaluation)
-                {
-                    if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(this.OwnFldShort, "StayComplete", false))
-                    {
-                        if (!qs2.core.vb.actUsr.checkRights(core.Enums.eRights.rightSetCompleted, false))
-                        {
-                            editable = false;
-                        }
-                    }
-                }
                 this._isEnabled = editable;
 
                 if (this._control != null)
