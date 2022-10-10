@@ -19,7 +19,6 @@ namespace qs2.design.auto.workflowAssist.assist
         public Image picDisabled = null;
         public contListAssistent ListMain = null;
         public qs2.design.auto.multiControl.ownMCInfo ownMCInfo1 = new design.auto.multiControl.ownMCInfo();
-        public qs2.core.Enums.eTypList _TypList;
         public contListAssistent assistent;
     }
 }

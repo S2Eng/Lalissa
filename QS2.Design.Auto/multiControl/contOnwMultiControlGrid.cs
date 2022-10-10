@@ -55,12 +55,12 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (this.DesignMode)
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 {
                     return;
                 }
 
-                if (!this.IsInitialized && !qs2.core.ENV.VisualStudioModus)
+                if (!this.IsInitialized)
                 {
                     this.btnSelectAll.Text = qs2.core.language.sqlLanguage.getRes("All4");
                     this.lblSelectNone.Text = qs2.core.language.sqlLanguage.getRes("None");
@@ -498,7 +498,7 @@ namespace qs2.design.auto.multiControl
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                if (!qs2.core.ENV.VisualStudioModus)
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                 {
                      this.doVisible();
                 }

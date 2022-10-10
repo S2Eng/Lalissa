@@ -68,10 +68,6 @@ Public Class cTranslate
                                         core.Enums.eResourceType.Label.ToString(), Enums.eTypeSub.Supervisor, qs2.core.license.doLicense.eApp.ALL.ToString(),
                                         False, False)
 
-            If ENV.VSDesignerMode Then
-            Else
-            End If
-
             Dim isNew As Boolean = False
             Dim isUpdated As Boolean = False
             If dsLanguage1.Ressourcen.Rows.Count = 0 Then

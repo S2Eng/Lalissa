@@ -318,16 +318,11 @@ namespace qs2.design.auto.multiControl
                                 string sTxtTranslated = qs2.core.language.sqlLanguage.getRes("ValueExeedsLimits");
                                 sTxtTranslated = System.String.Format(sTxtTranslated, this.calculatedFormat1.MinValue.ToString(qs2.core.generic.FormatInteger), this.calculatedFormat1.MaxValue.ToString(qs2.core.generic.FormatInteger));
                                 message = sTxtTranslated;
-                                //message = qs2.core.language.sqlLanguage.getRes("ValueMustBetween") + " " + this.calculatedFormat1.MinValue.ToString(qs2.core.generic.FormatInteger) + " " + qs2.core.language.sqlLanguage.getRes("and") + " " + this.calculatedFormat1.MaxValue.ToString(qs2.core.generic.FormatInteger);
-                                this.calculatedFormat1.protokollText = message;
                                 qs2.core.generic.infoControl calculatedFormatTmp = new qs2.core.generic.infoControl();
                                 ownControl1.doActionControl(ownMultiControl.eTypActionControl.showError, ref calculatedFormatTmp, false);
                                 if (withMsgBox)
                                 {
                                     qs2.core.generic.showMessageBox(message, System.Windows.Forms.MessageBoxButtons.OK, "");
-                                    //string sMessageInfoDefaultValue = qs2.core.language.sqlLanguage.getRes("UserInfoDefaultValue{0}");
-                                    //sMessageInfoDefaultValue = string.Format(sMessageInfoDefaultValue.Trim(), ownControl1.ownMCCriteria1.defaultDBValue.valueStr);
-                                    //qs2.core.generic.showMessageBox(message + "\r\n" + sMessageInfoDefaultValue, System.Windows.Forms.MessageBoxButtons.OK, "");
                                 }
                                 return false;
                             }
@@ -347,16 +342,11 @@ namespace qs2.design.auto.multiControl
                                 string sTxtTranslated = qs2.core.language.sqlLanguage.getRes("ValueExeedsLimits");
                                 sTxtTranslated = System.String.Format(sTxtTranslated, this.calculatedFormat1.MinValue.ToString(qs2.core.generic.FormatInteger), this.calculatedFormat1.MaxValue.ToString(qs2.core.generic.FormatInteger));
                                 message = sTxtTranslated;
-                                //message = qs2.core.language.sqlLanguage.getRes("ValueMustBetween") + " " + this.calculatedFormat1.MinValue.ToString(qs2.core.generic.FormatInteger) + " " + qs2.core.language.sqlLanguage.getRes("and") + " " + this.calculatedFormat1.MaxValue.ToString(qs2.core.generic.FormatInteger);
-                                this.calculatedFormat1.protokollText = message;
                                 qs2.core.generic.infoControl calculatedFormatTmp = new qs2.core.generic.infoControl();
                                 ownControl1.doActionControl(ownMultiControl.eTypActionControl.showError, ref calculatedFormatTmp, false);
                                 if (withMsgBox)
                                 {
                                     qs2.core.generic.showMessageBox(message, System.Windows.Forms.MessageBoxButtons.OK, "");
-                                    //string sMessageInfoDefaultValue = qs2.core.language.sqlLanguage.getRes("UserInfoDefaultValue{0}");
-                                    //sMessageInfoDefaultValue = string.Format(sMessageInfoDefaultValue.Trim(), ownControl1.ownMCCriteria1.defaultDBValue.valueStr);
-                                    //qs2.core.generic.showMessageBox(message + "\r\n" + sMessageInfoDefaultValue, System.Windows.Forms.MessageBoxButtons.OK, "");
                                 }
                                 return false;
                             }
@@ -378,7 +368,6 @@ namespace qs2.design.auto.multiControl
                         }
                         else
                         {
-                            this.calculatedFormat1.protokollText = message;
                             ownControl1.doActionControl(ownMultiControl.eTypActionControl.showError, ref calculatedFormatTmp, false);
                             if (withMsgBox)
                                 qs2.core.generic.showMessageBox(message, System.Windows.Forms.MessageBoxButtons.OK, "");
@@ -401,43 +390,11 @@ namespace qs2.design.auto.multiControl
                         }
                         else
                         {
-                            this.calculatedFormat1.protokollText = message;
                             ownControl1.doActionControl(ownMultiControl.eTypActionControl.showError, ref calculatedFormatTmp, false);
                             if (withMsgBox)
                                 qs2.core.generic.showMessageBox(message, System.Windows.Forms.MessageBoxButtons.OK, "");
                             return false;
                         }
-
-                        /*
-                        if (qs2.core.generic.sEquals(ownControl1.TextfieldMulti.Text, "'", core.Enums.eCompareMode.Contains))
-                        {
-                            message = qs2.core.language.sqlLanguage.getRes("ValueMayNotContainSingleQuotes", "ALL", "ALL", "Der Wert darf kein Hochkomma enthalten", false, true);
-                            this.calculatedFormat1.protokollText = message;
-                            qs2.core.generic.infoControl calculatedFormatTmp = new qs2.core.generic.infoControl();
-                            ownControl1.doActionControl(ownMultiControl.eTypActionControl.showError, ref calculatedFormatTmp, false);
-                            if (withMsgBox)
-                            {
-                                qs2.core.generic.showMessageBox(message, System.Windows.Forms.MessageBoxButtons.OK, "");
-                            }
-                            return false;
-                        }
-
-                        if (ownControl1.TextfieldMulti.Text.Length >= this.calculatedFormat1.MinValue && ownControl1.TextfieldMulti.Text.Length <= this.calculatedFormat1.MaxValue)
-                        {
-                            qs2.core.generic.infoControl calculatedFormatTmp = new qs2.core.generic.infoControl();
-                            ownControl1.doActionControl(ownMultiControl.eTypActionControl.clearError, ref calculatedFormatTmp, false);
-                            return true;
-                        }
-
-                        else
-                        {
-                            message = qs2.core.language.sqlLanguage.getRes("ValueLengthMustBetween") + " " + this.calculatedFormat1.MinValue.ToString() + " " + qs2.core.language.sqlLanguage.getRes("and") + " " + this.calculatedFormat1.MaxValue.ToString();
-                            this.calculatedFormat1.protokollText = message;
-                            qs2.core.generic.infoControl calculatedFormatTmp = new qs2.core.generic.infoControl();
-                            ownControl1.doActionControl(ownMultiControl.eTypActionControl.showError, ref calculatedFormatTmp, false);
-                            return false;
-                        }
-                        */
                     }
                 }
                 return true;

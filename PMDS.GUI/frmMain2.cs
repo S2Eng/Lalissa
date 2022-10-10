@@ -2942,7 +2942,7 @@ namespace PMDS
 
                     if (!binDir.sEquals("debug") && !pathVersionRunning.sEquals(sActualVersion))
                     {
-                        qs2.core.generic.Wait(8);
+                        qs2.core.generic.WaitMilli(8000);
                         frmMain.newVersionAvailable = true;
                     }
                     else

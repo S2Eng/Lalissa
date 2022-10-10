@@ -1413,7 +1413,7 @@ namespace qs2.ui.print
                 }
                 else if (e.Tool.Key.Equals("openReportDirectory"))
                 {
-                    qs2.core.generic.openWindowsExplorer(qs2.core.ENV.path_reports + "\\" + this.infoReport.Application);
+                    System.Diagnostics.Process.Start("explorer.exe", System.IO.Path.Combine(qs2.core.ENV.path_reports , this.infoReport.Application));
                 }                   
                 else if(e.Tool.Key.Substring(0, 9).Equals(eTypToolbar.EditQuery.ToString()))
                 {

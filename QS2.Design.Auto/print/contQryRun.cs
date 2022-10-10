@@ -407,7 +407,7 @@ namespace qs2.ui.pint
                         contReportButt = new qs2.sitemap.workflowAssist.contListAssistentElem();
                         contReportButt.cListAssistentElem.IsQuerySystem = true;
                         contReportButt.cListAssistentElem.IDSelEntry = KeyValuePairButton.Value.rSelListEntryFound.ID;
-                        contReportButt.InitControl(core.Enums.eTypList.CHAPTERS, this.getSelectedApplication(), this.IDParticipant, -999, false,"");
+                        contReportButt.InitControl(this.getSelectedApplication(), this.IDParticipant, -999, false,"");
 
                         if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
                         {
@@ -984,17 +984,6 @@ namespace qs2.ui.pint
                     else
                         throw new Exception(excepStr);
                 }
-
-                else if (e.Tool.Key.Equals(eTypToolbar.btnManageQueries.ToString()))
-                {
-                    qs2.core.ENV.cParsCalMainFunction pars = new qs2.core.ENV.cParsCalMainFunction();
-                }   
-                else if (e.Tool.Key.Equals(eTypToolbar.btnAssignSubqueries.ToString()))
-                {
-                    qs2.design.auto.print.frmAllQueriesEditSmall frmAllQueriesEditSmall1 = new design.auto.print.frmAllQueriesEditSmall();
-                    frmAllQueriesEditSmall1.initControl();
-                    frmAllQueriesEditSmall1.ShowDialog(this);
-                }   
                 else
                     throw new Exception(excepStr);
             }

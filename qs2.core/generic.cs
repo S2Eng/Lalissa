@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -12,10 +11,10 @@ using System.Windows.Forms;
 
 namespace qs2.core
 {
-
-
     public class generic
     {
+        private static int minValueDefaultText = 0;
+
         public static event doLog evdoLog;
         public delegate void doLog(string ex, string title);
 
@@ -24,8 +23,6 @@ namespace qs2.core
 
         public static string incorrSel = "Incorrect selection";
         public static int idMinus = -999999;
-
-        public static string columnNameSelection2 = "Select";
         public static string columnNameSelection = "Selection";
         public static string columnNameText = "Text";
         public static string columnNameSort = "Sort";
@@ -50,10 +47,8 @@ namespace qs2.core
         public static string columnCheckOn = "CheckOn";
         public static string columnIsObjectComboBox = "IsObjectComboBox ";
         public static string columnNoCheckClamps = "NoCheckClamps";
-
         public static string columnNameEnglish = "English";
         public static string columnNameGerman = "German";
-
         public static string columnParameterForReport = "ParameterForReport";
         public static string columnParameterLabelTranslated = "ParameterLabelTranslated";
         public static string columnParameterCombinationTranslated = "CombinationTranslated";
@@ -65,84 +60,37 @@ namespace qs2.core
         public static string columnAutoAddedCol = "AutoAddedCol";
         public static string columnClampEbene = "ClampEbene";
         public static string columnClampKey = "ClampKey";
-
-        public static string CriteriaApplicationParameters = "Parameters";
-
         public static string typBytes = "Bytes";
-
         public static string maskInputInteger = "{LOC}nnn,nnn,nnn,nnn,nnn,nnn";
         public static string FormatInteger = "###,###,###,###,###,##0";
-
         public static string maskInputDecimal = "{LOC}nnn,nnn,nnn,nnn,nnn,nnn.nn";
         public static string FormatDecimal = "###,###,###,###,###,##0.00";
-
         public static int maxValueDefaultNumeric = 2147483647;
         public static int minValueDefaultNumeric = -2147483648;
-
         public static int maxValueDefaultText = 32767;
-        public static int minValueDefaultText = 0;
-
         public static string maskInputDateTime = "{date} {time}";
         public static string FormatDateTime = "g";
-
         public static string maskInputDate = "{date}";
         public static string FormatDate = "d";
-
         public static string maskInputTime = "{LOC}hh:mm";
         public static string FormatTime = "HH:mm";
-
         public static string lineBreak = "\r\n";
 
-        public enum eStatusTmp
-        {
-            Done = 0,
-            ForDelete = 1
-        }
-
         [DllImport("kernel32.dll")]
-        public static extern int SetProcessWorkingSetSize(IntPtr process, int minimumWorkingSetSize,
-            int maximumWorkingSetSize);
-
-        public static int lnMaxSizeMemory = 1300000000;
-        public static int lnMinSizeMemory = 20;
-        
+        public static extern int SetProcessWorkingSetSize(IntPtr process, int minimumWorkingSetSize, int maximumWorkingSetSize);
 
         public static string TransEmpty = "TransEmptyEnvironment_";
         public static string prefixColAutoTranslate = "autoColTrans_";
         public static string prefixColAutoTranslateFunctions = "TRANS_";
-
-        public static event dException eException;
         public delegate void dException(bool IsExternProcess);
-
-        [DllImport("User32.dll")]
-        private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
-
-        internal struct LASTINPUTINFO
-        {
-            public uint cbSize;
-            public uint dwTime;
-        }
-
-
-        public static Form FrmProgress { get; set; } 
-
-
-
-        public static void onException(bool IsExternProcess)
-        {
-            if (eException != null)
-                eException(IsExternProcess);
-        }
 
         public static void getExep(string ex, string title, string additionalInformation)
         {
             qs2.core.generic.getExep(additionalInformation + " - " + ex.ToString(), title);
         }
 
-
         public static void getExep(string ex, string title)
         {
-            qs2.core.generic.onException(qs2.core.ENV.StaysAsExternProcess2);
             if (qs2.core.generic.evdoLog != null)
                 qs2.core.generic.evdoLog.Invoke(ex, "");
             else
@@ -151,15 +99,11 @@ namespace qs2.core
                 System.Windows.Forms.MessageBox.Show(info + ex.ToString(), "Info Error");
             }
         }
+
         public static void doProtocoll(string txt, string info, int IDStay, string IDApplication, string IDParticipant)
         {
             if (qs2.core.generic.evWriteProtocoll != null)
                 qs2.core.generic.evWriteProtocoll.Invoke(txt, info, IDStay, IDApplication, IDParticipant);
-        }
-
-        public static void openWindowsExplorer(string path)
-        {
-            System.Diagnostics.Process.Start("explorer.exe", path);
         }
         
         public static DialogResult showMessageBox(string txt, MessageBoxButtons typButtons, string title)
@@ -173,10 +117,6 @@ namespace qs2.core
                 Infragistics.Win.UltraMessageBox.UltraMessageBoxInfo UltraMessageBoxInfo1 = new Infragistics.Win.UltraMessageBox.UltraMessageBoxInfo();
                 UltraMessageBoxInfo1.Buttons = typButtons;
                 UltraMessageBoxInfo1.Text = txt;
-                //if (frm != null)
-                //{
-                //    UltraMessageBoxInfo1.Owner = frm;
-                //}
                 
                 if (typButtons == MessageBoxButtons.YesNo || typButtons == MessageBoxButtons.YesNoCancel)
                 {
@@ -207,44 +147,6 @@ namespace qs2.core
 
         }
 
-        public static DialogResult showMessageBoxNoTranslate(string txt, MessageBoxButtons typButtons, string title)
-        {
-            try
-            {
-                Infragistics.Win.UltraMessageBox.UltraMessageBoxManager UltraMessageBoxManager1 = new Infragistics.Win.UltraMessageBox.UltraMessageBoxManager();
-                Infragistics.Win.UltraMessageBox.UltraMessageBoxInfo UltraMessageBoxInfo1 = new Infragistics.Win.UltraMessageBox.UltraMessageBoxInfo();
-                UltraMessageBoxInfo1.Buttons = typButtons;
-                UltraMessageBoxInfo1.Text = txt;
-
-                if (typButtons == MessageBoxButtons.YesNo || typButtons == MessageBoxButtons.YesNoCancel)
-                {
-                    UltraMessageBoxInfo1.Icon = MessageBoxIcon.Question;
-                    UltraMessageBoxInfo1.DefaultButton = MessageBoxDefaultButton.Button2;
-                }
-                else
-                {
-                    UltraMessageBoxInfo1.Icon = MessageBoxIcon.Information;
-                }
-                UltraMessageBoxInfo1.Caption = title;
-                Application.DoEvents();
-
-                Form frm = new Form();
-                frm.TopMost = true;
-                UltraMessageBoxInfo1.Owner = frm;
-                UltraMessageBoxInfo1.StartPosition = Infragistics.Win.UltraMessageBox.DialogStartPosition.Manual;
-                UltraMessageBoxInfo1.StartLocation = new Point(100, 100);
-                UltraMessageBoxInfo1.Appearance.BackColor = Color.LightSteelBlue;
-                DialogResult res = UltraMessageBoxManager1.ShowMessageBox(UltraMessageBoxInfo1);
-                return res;
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("generic.showMessageBox:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-
-        }
-
         public static System.Collections.Generic.List<string> getVarsBy(string str, string delimiter)
         {
             System.Collections.Generic.List<string> lstVars = new System.Collections.Generic.List<string>();
@@ -254,7 +156,6 @@ namespace qs2.core
             {
                 lstVars.Add(ArgPar.Trim());
             }
-
             return lstVars;
         }
 
@@ -292,7 +193,6 @@ namespace qs2.core
 
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -300,7 +200,6 @@ namespace qs2.core
             }
         }
 
-        // Fkt. Get Variablen by Semikolon
         public static System.Collections.Generic.List<string> readStrVariables(string str)
         {
             System.Collections.Generic.List<string> result = new System.Collections.Generic.List<string>();
@@ -344,12 +243,6 @@ namespace qs2.core
                     }
                 }
             }
-
-            if (result.Count == 0 && str.Length > 0)
-            {
-                string xy = "";
-            }
-
             return result;
         }
 
@@ -374,12 +267,7 @@ namespace qs2.core
             {
                 string sResTyp = Enum.GetName(typeof(Enums.eResourceType), val);
                 if (valList != null) valList.ValueListItems.Add(sResTyp);
-                if (cbo != null) cbo.Items.Add(sResTyp, sResTyp);
-
-                //if (valList != null)
-                //    valList.ValueListItems.Add(sResTyp, qs2.core.language.sqlLanguage.getRes(sResTyp));
-                //if (cbo != null)
-                //    cbo.Items.Add(sResTyp, qs2.core.language.sqlLanguage.getRes(sResTyp));
+                cbo?.Items.Add(sResTyp, sResTyp);
 
             }
         }
@@ -389,14 +277,8 @@ namespace qs2.core
             foreach (int val in Enum.GetValues(typeof(Enums.eSpecialDefinitionsMinValue)))
             {
                 string sResTyp = Enum.GetName(typeof(Enums.eSpecialDefinitionsMinValue), val);
-                if (valList != null)
-                {
-                    valList.ValueListItems.Add(sResTyp, qs2.core.language.sqlLanguage.getRes(sResTyp));  
-                }
-                if (cbo != null)
-                {
-                    cbo.Items.Add(sResTyp, qs2.core.language.sqlLanguage.getRes(sResTyp)); 
-                }
+                valList?.ValueListItems.Add(sResTyp, qs2.core.language.sqlLanguage.getRes(sResTyp));
+                cbo?.Items.Add(sResTyp, qs2.core.language.sqlLanguage.getRes(sResTyp));
             }
         }
 
@@ -405,14 +287,8 @@ namespace qs2.core
             foreach (int val in Enum.GetValues(typeof(Enums.eSpecialDefinitionsMaxValue)))
             {
                 string sResTyp = Enum.GetName(typeof(Enums.eSpecialDefinitionsMaxValue), val);
-                if (valList != null)
-                {
-                    valList.ValueListItems.Add(sResTyp, qs2.core.language.sqlLanguage.getRes(sResTyp));
-                }
-                if (cbo != null)
-                {
-                    cbo.Items.Add(sResTyp, qs2.core.language.sqlLanguage.getRes(sResTyp));
-                }
+                valList?.ValueListItems.Add(sResTyp, qs2.core.language.sqlLanguage.getRes(sResTyp));
+                cbo?.Items.Add(sResTyp, qs2.core.language.sqlLanguage.getRes(sResTyp));
             }
         }
 
@@ -421,8 +297,8 @@ namespace qs2.core
             foreach (int val in Enum.GetValues(typeof(Enums.eTypeSub)))
             {
                 string sResTyp = Enum.GetName(typeof(Enums.eTypeSub), val);
-                if (valList != null) valList.ValueListItems.Add(sResTyp);
-                if (cbo != null) cbo.Items.Add(sResTyp, sResTyp);
+                valList?.ValueListItems.Add(sResTyp);
+                cbo?.Items.Add(sResTyp, sResTyp);
             }
         }
 
@@ -431,10 +307,8 @@ namespace qs2.core
             foreach (int val in Enum.GetValues(typeof(Enums.eTypQueryDef)))
             {
                 string sResTyp = Enum.GetName(typeof(Enums.eTypQueryDef), val);
-                if (valList != null)
-                    valList.ValueListItems.Add(sResTyp, sResTyp);
-                if (cbo != null)
-                    cbo.Items.Add(sResTyp, sResTyp);
+                valList?.ValueListItems.Add(sResTyp, sResTyp);
+                cbo?.Items.Add(sResTyp, sResTyp);
             }
         }
 
@@ -443,10 +317,8 @@ namespace qs2.core
             foreach (int val in Enum.GetValues(typeof(ui.eAutoFitStyle)))
             {
                 string sResTyp = Enum.GetName(typeof(ui.eAutoFitStyle), val);
-                if (valList != null)
-                    valList.ValueListItems.Add(sResTyp, sResTyp);
-                if (cbo != null)
-                    cbo.Items.Add(sResTyp, sResTyp);
+                valList?.ValueListItems.Add(sResTyp, sResTyp);
+                cbo?.Items.Add(sResTyp, sResTyp);
             }
         }
 
@@ -638,8 +510,6 @@ namespace qs2.core
             conditions.Add(qs2.core.sqlTxt.smallerEquals);
             conditions.Add(qs2.core.sqlTxt.greater);
             conditions.Add(qs2.core.sqlTxt.greaterEquals);
-            //conditions.Add("*");
-
             conditions.Add(qs2.core.sqlTxt.isNull);
             conditions.Add(qs2.core.sqlTxt.isNotNull);
             conditions.Add(qs2.core.sqlTxt.between);
@@ -649,16 +519,12 @@ namespace qs2.core
         
             foreach (string condition in conditions)
             {
-                if (valList != null)
-                    valList.ValueListItems.Add(condition, qs2.core.language.sqlLanguage.getRes(condition));
-                if (cbo != null)
-                    cbo.Items.Add(condition, qs2.core.language.sqlLanguage.getRes(condition));
+                valList?.ValueListItems.Add(condition, qs2.core.language.sqlLanguage.getRes(condition));
+                cbo?.Items.Add(condition, qs2.core.language.sqlLanguage.getRes(condition));
             }
 
-            if (valList != null)
-                valList.ValueListItems.Add("", "");
-            if (cbo != null)
-                cbo.Items.Add("", "");
+            valList?.ValueListItems.Add("", "");
+            cbo?.Items.Add("", "");
         }
 
         public static qs2.core.generic.retValue getValue(qs2.core.Enums.eControlType controlType, object value,
@@ -1036,10 +902,7 @@ namespace qs2.core
             }
 
             int actPosNextSpace = -1;
-            if (separatorToSearchEnd.Trim() == "")
-                actPosNextSpace = qs2.core.generic.nextPos(strToSearch, separatorToSearchBetween, actPos);
-            else
-                actPosNextSpace = qs2.core.generic.nextPos(strToSearch, separatorToSearchEnd, actPos);
+            actPosNextSpace = qs2.core.generic.nextPos(strToSearch, separatorToSearchEnd.Trim() == "" ? separatorToSearchBetween : separatorToSearchEnd, actPos);
 
             if (actPosNextSpace != -1)
             {
@@ -1071,9 +934,6 @@ namespace qs2.core
             public object valueObj = null;
             public string valueSql = "";
             public string fieldInfo = "";
-            public int IDSelListEntry = -999;
-            public string IDOwnStr = "";
-            public bool IsOn = false;
             public string sType = "";
         }
 
@@ -1085,224 +945,8 @@ namespace qs2.core
             public double MaxValue = 0;
             public char PromptChar = System.Convert.ToChar("_");
             public Infragistics.Win.UltraWinEditors.NumericType NumericType;
-            public string protokollText = "";
-        }
-
-        public static byte[] StreamToByte(System.IO.Stream stream)
-        {
-            long originalPosition = 0;
-
-            if (stream.CanSeek)
-            {
-                originalPosition = stream.Position;
-                stream.Position = 0;
-            }
-
-            try
-            {
-                byte[] readBuffer = new byte[4096];
-
-                int totalBytesRead = 0;
-                int bytesRead;
-
-                while ((bytesRead = stream.Read(readBuffer, totalBytesRead, readBuffer.Length - totalBytesRead)) > 0)
-                {
-                    totalBytesRead += bytesRead;
-
-                    if (totalBytesRead == readBuffer.Length)
-                    {
-                        int nextByte = stream.ReadByte();
-                        if (nextByte != -1)
-                        {
-                            byte[] temp = new byte[readBuffer.Length * 2];
-                            Buffer.BlockCopy(readBuffer, 0, temp, 0, readBuffer.Length);
-                            Buffer.SetByte(temp, totalBytesRead, (byte)nextByte);
-                            readBuffer = temp;
-                            totalBytesRead++;
-                        }
-                    }
-                }
-
-                byte[] buffer = readBuffer;
-                if (readBuffer.Length != totalBytesRead)
-                {
-                    buffer = new byte[totalBytesRead];
-                    Buffer.BlockCopy(readBuffer, 0, buffer, 0, totalBytesRead);
-                }
-                return buffer;
-            }
-            finally
-            {
-                if (stream.CanSeek)
-                {
-                    stream.Position = originalPosition;
-                }
-            }
-        }
-
-        public static byte[] StringToBytes(string str)
-        {
-            byte[] bytes = new byte[str.Length * sizeof(char)];
-            System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
-            return bytes;
-        }
-
-        public static string BytesToString(byte[] bytes)
-        {
-            char[] chars = new char[bytes.Length / sizeof(char)];
-            System.Buffer.BlockCopy(bytes, 0, chars, 0, bytes.Length);
-            return new string(chars);
-        }
-
-        public class NetworkConnection : IDisposable
-        {
-            string _networkName;
-
-            public NetworkConnection(string networkName,
-                NetworkCredential credentials)
-            {
-                _networkName = networkName;
-
-                var netResource = new NetResource()
-                {
-                    Scope = ResourceScope.GlobalNetwork,
-                    ResourceType = ResourceType.Disk,
-                    DisplayType = ResourceDisplaytype.Share,
-                    RemoteName = networkName
-                };
-
-                var userName = string.IsNullOrEmpty(credentials.Domain)
-                    ? credentials.UserName
-                    : string.Format(@"{0}\{1}", credentials.Domain, credentials.UserName);
-
-                var result = WNetAddConnection2(
-                    netResource,
-                    credentials.Password,
-                    userName,
-                    0);
-            }
-
-            ~NetworkConnection()
-            {
-                Dispose(false);
-            }
-
-            public void Dispose()
-            {
-                Dispose(true);
-                GC.SuppressFinalize(this);
-            }
-
-            protected virtual void Dispose(bool disposing)
-            {
-                WNetCancelConnection2(_networkName, 0, true);
-            }
-
-            [DllImport("mpr.dll")]
-            private static extern int WNetAddConnection2(NetResource netResource,
-                string password, string username, int flags);
-
-            [DllImport("mpr.dll")]
-            private static extern int WNetCancelConnection2(string name, int flags,
-                bool force);
-        }
-
-        [StructLayout(LayoutKind.Sequential)]
-        public class NetResource
-        {
-            public ResourceScope Scope;
-            public ResourceType ResourceType;
-            public ResourceDisplaytype DisplayType;
-            public int Usage;
-            public string LocalName;
-            public string RemoteName;
-            public string Comment;
-            public string Provider;
-        }
-
-        public enum ResourceScope : int
-        {
-            Connected = 1,
-            GlobalNetwork,
-            Remembered,
-            Recent,
-            Context
-        };
-
-        public enum ResourceType : int
-        {
-            Any = 0,
-            Disk = 1,
-            Print = 2,
-            Reserved = 8,
-        }
-
-        public enum ResourceDisplaytype : int
-        {
-            Generic = 0x0,
-            Domain = 0x01,
-            Server = 0x02,
-            Share = 0x03,
-            File = 0x04,
-            Group = 0x05,
-            Network = 0x06,
-            Root = 0x07,
-            Shareadmin = 0x08,
-            Directory = 0x09,
-            Tree = 0x0a,
-            Ndscontainer = 0x0b
         }
  
-        public static void IgnoreBadCertificates()
-        {
-            System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(AcceptAllCertifications);
-        }
-
-        private static bool AcceptAllCertifications(object sender, System.Security.Cryptography.X509Certificates.X509Certificate certification, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
-        {
-            return true;
-        }
-
-        public static System.Text.Encoding GetEncoding ()
-        {
-            if ( qs2.core.ENV.Encoding == "ascii")
-                return System.Text.ASCIIEncoding.ASCII;
-            else if ( ENV.Encoding == "utf-8")
-                return System.Text.UTF8Encoding.UTF8;
-
-            return System.Text.Encoding.Default;
-        }
-
-        public static string GetMD5Hash(string TextToHash)
-        {
-            //Prüfen ob Daten übergeben wurden.
-            if ((TextToHash == null) || (TextToHash.Length == 0))
-            {
-                return string.Empty;
-            }
-
-            //MD5 Hash aus dem String berechnen. Dazu muss der string in ein Byte[]
-            //zerlegt werden. Danach muss das Resultat wieder zurück in ein string.
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] textToHash = Encoding.Default.GetBytes(TextToHash);
-            byte[] result = md5.ComputeHash(textToHash);
-
-            return System.BitConverter.ToString(result);
-        }
-
-        public static void Wait(int WaitSeconds)
-        {
-            Stopwatch stopwatch = Stopwatch.StartNew();
-            bool bEndWait = false;
-            while (!bEndWait)
-            {
-                if (stopwatch.ElapsedMilliseconds >= WaitSeconds * 1000)
-                {
-                    bEndWait = true;
-                }
-                System.Threading.Thread.Sleep(1);
-            }
-        }
         public static void WaitMilli(int WaitMilliseconds)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
@@ -1316,329 +960,6 @@ namespace qs2.core
                 System.Threading.Thread.Sleep(1);
             }
         }
-
-        public class ModeDetector
-        {
-            /// <summary>
-            /// Gets a value indicating whether the assembly was built in debug mode.
-            /// </summary>
-            public virtual bool IsDebug
-            {
-                get
-                {
-                    bool isDebug = false;
-
-                    #if (DEBUG)
-                            isDebug = true;
-                    #else
-                            isDebug = false;
-                    #endif
-
-                    return isDebug;
-                }
-            }
-
-            /// <summary>
-            /// Gets a value indicating whether the assembly was built in release mode.
-            /// </summary>
-            public bool IsRelease
-            {
-                get { return !IsDebug; }
-            }
-        }
-
-
-        public static void InitiateSSLTrust()
-        {
-            try
-            {
-                //Change SSL checks so that all checks pass
-                ServicePointManager.ServerCertificateValidationCallback =
-                   new RemoteCertificateValidationCallback(
-                        delegate
-                        { return true; }
-                    );
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("generic.InitiateSSLTrust: " + ex);
-            }
-        }
-
-        public static System.Net.ICredentials SetProxyCredentials(string url)
-        {
-            try
-            {
-                var proxy = WebRequest.DefaultWebProxy;
-                System.Uri uri = new System.Uri(url);
-                if (!proxy.IsBypassed(uri))
-                {
-
-                    //Mit den Anmeldeinformationen des Users
-                    //handler.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
-
-                    //Mit eingabe des Passworts                   
-                    //string promptValue = Prompt.ShowDialog(qs2.core.language.sqlLanguage.getRes("EnterPassword"), "ProxyAuthentification");
-                    //string uName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-                    //proxy.Credentials = new NetworkCredential(uName, promptValue);
-                    //return proxy.Credentials;
-
-                    string pw = Console.ReadLine();
-                    string promptValue = Prompt.ShowDialog("Password", "Send data");
-                    string uName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-                    proxy.Credentials = new NetworkCredential(uName, promptValue);
-                    return proxy.Credentials;
-                }
-
-                else
-                {
-                    return null;
-                }
-            }
-            catch
-            {
-                //Kein Proxy erforderlich, nichts tun
-                return null;
-            }
-        }
-
-        private static class Prompt
-        {
-            public static string ShowDialog(string text, string caption)
-            {
-                Form prompt = new Form()
-                {
-                    Width = 300,
-                    Height = 150,
-                    FormBorderStyle = FormBorderStyle.FixedToolWindow,
-                    Text = caption,
-                    StartPosition = FormStartPosition.CenterScreen
-                };
-                Label textLabel = new Label() { Left = 50, Top = 20, Width = 200, Text = text };
-                TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 200 };
-                textBox.PasswordChar = '*';
-                textBox.Font = new System.Drawing.Font(textBox.Font.FontFamily, 10);
-                Button confirmation = new Button() { Text = "Ok", Left = 150, Width = 100, Top = 80, DialogResult = DialogResult.OK };
-                confirmation.Click += (sender, e) => { prompt.Close(); };
-                prompt.Controls.Add(textBox);
-                prompt.Controls.Add(confirmation);
-                prompt.Controls.Add(textLabel);
-                prompt.AcceptButton = confirmation;
-
-                return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
-            }
-        }
-
-        public static uint GetIdleTime()
-        {
-            try
-            {
-                LASTINPUTINFO lastInPut = new LASTINPUTINFO();
-                lastInPut.cbSize = (uint)System.Runtime.InteropServices.Marshal.SizeOf(lastInPut);
-                GetLastInputInfo(ref lastInPut);
-
-                return ((uint)Environment.TickCount - lastInPut.dwTime);
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("generic.GetIdleTime: " + ex.ToString());
-            }
-        }
-
-        public static string getLineForEntrySheet(string txt, int maxSigns, string SignToAdd, bool AddReturn)
-        {
-            try
-            {
-                string txtReturn = "";
-                if (txt.Trim().Length <= maxSigns)
-                {
-                    string SignsAdded = "";
-                    int signsToAdd = maxSigns - txt.Trim().Length;
-                    for (int i = 0; i <= signsToAdd; i++)
-                    {
-                        SignsAdded += SignToAdd;
-                    }
-                    txtReturn = txt.Trim() + " " + SignsAdded;
-                }
-                else
-                {
-                    if (SignToAdd == " ")
-                    {
-                        throw new Exception("getLineForEntrySheet: SignToAdd <> '' not allowed!");
-                    }
-                    else
-                    {
-                        txtReturn = txt.Trim() + " " + "_______________________________";
-                    }
-                }
-                if (AddReturn)
-                {
-                    txtReturn = txtReturn;
-                    //txtReturn = txtReturn + "\r\n";
-                }
-
-                return txtReturn;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("generic.getLineForEntrySheet:" + "\r\n" + ex.ToString());
-            }
-        }
-
-        public static bool CheckIllegalCharacter (string PathOrFileName, bool CheckPath)
-        {
-            try
-            {
-                if (CheckPath)
-                {
-                    int IllegalCharacterIndex = PathOrFileName.IndexOfAny(System.IO.Path.GetInvalidPathChars());
-                    if (IllegalCharacterIndex >= 0)
-                    {
-                        qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("IllegalCharacterInPath") + " " + System.IO.Path.GetInvalidPathChars()[IllegalCharacterIndex] + ": " + PathOrFileName, MessageBoxButtons.OK, "");
-                        return false;
-                    }
-                }
-                else        //CheckFileName
-                {
-                    string TmpFile = qs2.core.language.sqlLanguage.getRes(PathOrFileName);
-                    int IllegalCharacterIndex = TmpFile.IndexOfAny(System.IO.Path.GetInvalidFileNameChars());
-                    if (IllegalCharacterIndex >= 0)
-                    {
-                        qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("IllegalCharacterInFilename") + " " + System.IO.Path.GetInvalidFileNameChars()[IllegalCharacterIndex] + ": " + PathOrFileName, MessageBoxButtons.OK, "");
-                        return false;
-                    }
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("generic.CheckIllegalCharacter:" + "\r\n" + ex.ToString());
-            }
-        }
-
-        public static bool CheckOpenFile (string FullName, bool ShowMessage = true)
-        {
-            try
-            {
-                if (File.Exists(FullName))         //os 201120: Bringt in Salzburg false, obwohl das File existiert und volle Berechtigung gegeben ist.
-                {
-                    FileInfo fi = new FileInfo(FullName);
-                    using (FileStream stream = fi.Open(FileMode.Open, FileAccess.Read, FileShare.Read))
-                    {
-                        stream.Close();
-                    }
-                    return true;
-                }
-                else
-                {
-                    try
-                    {
-                        using (FileStream stream = File.OpenRead(FullName))
-                        {
-                            stream.Close();
-                        }
-                        return true;
-                    }
-                    catch
-                    {
-                        if (ShowMessage)
-                        {
-                            qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("FileDoesNotExist") + ": " + FullName, MessageBoxButtons.OK, "");
-                        }
-                        return false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("FileCanNotbeOpened") + ": " + FullName, MessageBoxButtons.OK, "");
-                return false;
-            }
-        }
-
-        public static bool CheckFolderWritable(string sCheckPath)
-        {
-            try
-            {
-                // Attempt to get a list of security permissions from the folder. 
-                // This will raise an exception if the path is read only or do not have access to view the permissions. 
-                System.Security.AccessControl.DirectorySecurity ds = Directory.GetAccessControl(sCheckPath);
-                return true;
-            }
-            catch (UnauthorizedAccessException)
-            {
-                qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("PathNotExists") + ": " + sCheckPath, MessageBoxButtons.OK, "");
-                return false;
-            }
-        }
-
-        public static bool FrmProgressInit(int Min, int Max, string Text = "")
-        {
-            try
-            {
-                FrmProgress = new Form();
-                Infragistics.Win.UltraWinProgressBar.UltraProgressBar PBar = new Infragistics.Win.UltraWinProgressBar.UltraProgressBar();
-                PBar.Dock = DockStyle.Fill;
-                Size FrmSize = new Size(300, 30);
-                FrmProgress.FormBorderStyle = FormBorderStyle.None;
-                FrmProgress.StartPosition = FormStartPosition.CenterScreen;
-                FrmProgress.Size = FrmSize;
-                PBar.Minimum = Min;
-                PBar.Maximum = Max;
-                if (!String.IsNullOrWhiteSpace(Text))
-                    PBar.Text = Text;
-                FrmProgress.Controls.Add(PBar);
-                FrmProgress.Show();
-                Application.DoEvents();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                FrmProgress.Close();
-                return false;
-                //qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("FileCanNotbeOpened") + ": " + FullName, MessageBoxButtons.OK, "");
-            }
-        }
-
-        public static void FrmProgressUpdate(int Value, string Text = "")
-        {
-            try
-            {
-                foreach (Control ctl in FrmProgress.Controls)
-                {
-                    if (ctl.GetType() == typeof(Infragistics.Win.UltraWinProgressBar.UltraProgressBar))
-                    {
-                        Infragistics.Win.UltraWinProgressBar.UltraProgressBar PBar = (Infragistics.Win.UltraWinProgressBar.UltraProgressBar)ctl;
-                        PBar.Value = Value;
-
-                        if (!string.IsNullOrWhiteSpace(Text))
-                            PBar.Text = Text;
-                        
-                        Application.DoEvents();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                FrmProgress.Close();
-            }
-        }
-
-        public static void FrmProgressClose()
-        {
-            try
-            {
-                if (FrmProgress != null)
-                    FrmProgress.Close();
-            }
-            catch (Exception ex)
-            {
-                if (FrmProgress != null)
-                    FrmProgress.Close();
-            }
-        }
-
         public static void TogglePassword(object sender)
         {
             if (Control.ModifierKeys.HasFlag(Keys.Control))
@@ -1666,19 +987,5 @@ namespace qs2.core
                 throw new Exception("qs2.generic.TranslateEx: " + ex.ToString());
             }
         }
-
-        public static string getResEx(string IDRes, string sDefault)
-        {
-            try
-            {
-                return string.IsNullOrWhiteSpace(qs2.core.language.sqlLanguage.getRes(IDRes)) ? sDefault : qs2.core.language.sqlLanguage.getRes(IDRes);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("qs2.generic.getResEx: " + ex.ToString());
-            }
-        }
-
-
     }
 }

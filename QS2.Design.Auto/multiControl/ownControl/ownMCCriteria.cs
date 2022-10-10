@@ -37,8 +37,8 @@ namespace qs2.design.auto
             {
                 if (this._isInitializedVar)
                     return;
-                this.Application = qs2.core.ENV.developApplication;
-                this.IDParticipant = qs2.core.ENV.developParticipant;
+                this.Application = qs2.core.license.doLicense.rApplication.IDApplication;
+                this.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant;
                 ownMCCriteria.initSharedDataSets(true);
                 this._isInitializedVar = true;
             }

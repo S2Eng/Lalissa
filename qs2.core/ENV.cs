@@ -7,116 +7,66 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using QS2.functions.vb;
-using S2Extensions;
-
-
-
 
 namespace qs2.core
 {
-
     public class ENV
     {
+        private static string errorPathMsg = "Path {0} does not exist!";
+        private static Encryption Encryption1 = new Encryption();
+        private static string path_rootBin = "";
+        private static string path_bin = "";
+        private static string ExeConfig = "QS2.exe.config";
+        private static string IDParticipant = "";
+        private static System.Collections.Generic.List<string> lstIDParticipantsEncrypted = new List<string>();
+        private static System.Collections.Generic.List<string> lstConnStr = new System.Collections.Generic.List<string>();
+        private static string TagForMonitoring = "";
+        private static string developPath_config = "";
+        private static string developConfigFile = "";
+        private static string configFileDevelop = "";
+        private static string developPath = "";
 
         public static bool UseWatch = false;
         public static string ReferenceVersion = "";
         public static string AssemblyVersion = "";
         public static string DBVersionFromDatabase = "";
         public static string MinDBVersion = "";
-
         public static bool ConnectedOnDesignerDB_QS2_Dev = false;
-        public static bool alwaysNewConnection = false;
-        public static bool VisualStudioModus = (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
-
-        public static Encryption Encryption1 = new Encryption();
-        public static bool VSDesignerMode = false;
-
         public static bool SystemIsInitialized = false;
-        public static bool UserHasLoggedIn = false;
-
-        public static string UserNameFromEnvironment = "";
-        public static string QS2DefaultProduct = "";
-
-        public static string Product = "QS2";
-        public static string UrlQS2Service = "";
-        public static string path_rootBin = "";
-
-        public static string path_bin = "";
-
-        public static bool ResetControlsToDefaultValues = false;
-        public static bool CheckValuesInDeactivatedChapters = false;
-        public static bool ResetValuesOnCheck = false;
-
         public static string path_config = "";
-        public static string ExeConfig = "QS2.exe.config";
-
         public static string path_reports = "";
         public static string path_log = "";
         public static string path_temp = "";
-
-        public static string IDParticipant = "";
         public static bool IsHeadquarter = false;
-        public static System.Collections.Generic.List<string> lstIDParticipantsEncrypted = new List<string>();
-
-        public static System.Collections.Generic.List<string> path_AddInsDevelop = new System.Collections.Generic.List<string>();
-
         public static string fileConfig = "";
         public static string configFile = "";
-
         public static string connStr = "";
-        public static System.Collections.Generic.List<string> lstConnStr = new System.Collections.Generic.List<string>();
         public static bool TrustedConnection = false;
         public static int LDAPPort = 389;
         public static bool WriteERConnectionString = false;
-
         public static string Server = "";
         public static string Database = "";
         public static string userDb = "";
         public static string pwdDbEncrypted = "";
         public static string pwdDbDecrypted = "";
-
         public static bool adminSecure = false;
         public static bool developModus = false;
         public static bool protocolAllTranslationErrors = false;
         public static string Domäne = "";
         public static string language = "";
-        public static string TagForMonitoring = "";
         public static string EMailService = "ServiceCenter@s2-engineering.com";
-
-        public static string developPath_config = "";
-        public static string developConfigFile = "";
-
-        public static string configFileDevelop = "";
-        public static string developPath = "";
-        public static string developApplication = "";
         public static string developParticipant = "develop";
         public static bool developSimulateControls = true;
-        public static bool StaysAsExternProcess2 = true;
-
-        public static string errorPathMsg = "Path {0} does not exist!";
         public static bool ExtendedUI = false;
-
         public static int ApplicationSelection = 1;
         public static string StandardFieldsQueries = "";
         public static bool ShowAllRowsQueryResult;
         public static string Encoding = "default";
         public static bool UseAppStylingDefault = true;
         public static int ColorSchema = 2;
-
-
-        public static DateTime DemoExpiration = new DateTime(2020, 10, 31);
-        public static DateTime NoExpiration = new DateTime(2999, 12, 31);
-        public static DateTime Expired = new DateTime(1900, 01, 01);
-
-
         public static System.Collections.Generic.List<Form> lstOpendChildForms = new List<Form>();
-
-        // 2017 new Config-Variables
-
         public static System.Drawing.Point LoactionMain;
         public static System.Drawing.Size LoactionSizeMain;
-        public static System.Windows.Forms.Form MainForm;
-
         public static System.Drawing.Point LoactionStay;
         public static System.Drawing.Size LoactionSizeStay;
 
@@ -134,12 +84,12 @@ namespace qs2.core
             QS2PopUpContainerSysDatabase = 60015,
             QS2PopUpContainerLayouts = 600017,
         }
+
         public enum ePath
         {
             log = 60051,
             reports = 60055,
         }
-
 
         public enum eVarIni
         {
@@ -148,83 +98,23 @@ namespace qs2.core
             DefaultDomain = 60104,
             language = 60105,
             developPath = 60106,
-            CheckWindowsPassword = 60108,
-            UseDomain = 60109,
             LDAPPort = 60123,
             developApplication = 60110,
             developSimulateControls = 60111,
-            CountAutoForm = 60112,
             ExtendedUI = 60113,
-            autoJoin = 60115,
             ApplicationSelection = 60116,
             StandardFieldsQueries = 60117,
             ShowAllRowsQueryResult = 60118,
-            rightIsAdmin = 60119,
             developModus = 60120,
-            autoLoadPatients = 60121,
             protocolAllTranslationErrors = 60122,
-
-            monitoring = 60163,
-
             path_config = 60140,
             EMailService = 60146,
             LogPath = 60147,
-
-            autoLogIn = 60160,
-            autoLogInUser = 60161,
-            autoLogInPwd = 60162,
-            UrlQS2Service = 60166,
-
-            ButtProcGrpWidth = 60266,
-            ButtChapterHeigth = 60267,
-            ButtProcGrpImageSizeWidth = 60268,
-            ButtProcGrpImageSizeHeigth = 60269,
-
-            ViewUserDefined = 60270,
-            EasyFunctions = 60271,
-
-            NoQS2LicenceNecessary = 60272,
-            XMonthDeleteStaysStartUp = 60273,
-            DeletePatientsNoStayStartUp = 60274,
-
-            AutoNumberPatients = 60275,
-            AutoNumberStays = 60276,
-
             developPath_config = 60277,
             developConfigFile = 60278,
-
-            ShowTooltips = 60279,
-            TypeSetDefaultDBValue = 60280,
-
             IDParticipant = 60282,
-            IgnoreRoles = 60283,
-            DefaultApplicationThread = 60284,
-            UseStartupArgs = 60285,
             WriteERConnectionString = 60288,
-            LockAfterMinutesInactivity = 60289,
-            ResetControlsToDefaultValues = 60290,
-            CheckValuesInDeactivatedChapters = 60291,
-            ResetValuesOnCheck = 60292,
-            dbVS = 60294,
-            VisualStudioModus = 60296,
-            ConnStrQTH = 60297
-        }
-
-        public enum eTypeFunction
-        {
-            loadManageQueryuser = 0,
-        }
-
-        public delegate void dCallFunctionMain(eTypeFunction TypeFunction, cParsCalMainFunction pars);
-
-
-        public class cParsCalMainFunction
-        {
-        }
-
-        public enum eTypeSetting
-        {
-            tString = 2,
+            dbVS = 60294
         }
 
         public static bool readPathes(bool designMode, bool createPatReports, bool IsOhterLogin)
@@ -312,6 +202,7 @@ namespace qs2.core
                     System.IO.Directory.CreateDirectory(reportPathApp);
             }
         }
+
         public static bool readConfig(string configFile, bool DesignMode)
         {
             try
@@ -391,8 +282,6 @@ namespace qs2.core
                                     ENV.IDParticipant = sValue;
                                     ENV.readParticipants();
                                 }
-                                else if (sVar.Equals(eVarIni.UrlQS2Service.ToString(), sc))
-                                    ENV.UrlQS2Service = sValue;
 
                                 else if (sVar.Equals(eVarIni.path_config.ToString(), sc))
                                 {
@@ -410,9 +299,6 @@ namespace qs2.core
                                     }
                                 }
 
-                                else if (sVar.Equals(eVarIni.developApplication.ToString(), sc))
-                                    ENV.developApplication = sValue;
-
                                 else if (sVar.Equals(eVarIni.developPath_config.ToString(), sc))
                                     ENV.developPath_config = sValue;
 
@@ -425,15 +311,6 @@ namespace qs2.core
                                 else if (sVar.Equals(eVarIni.ExtendedUI.ToString(), sc))
                                     ENV.ExtendedUI = GetBoolValue(sValue);
 
-                                else if (sVar.Equals(eVarIni.ResetControlsToDefaultValues.ToString(), sc))
-                                    ENV.ResetControlsToDefaultValues = GetBoolValue(sValue);
-
-                                else if (sVar.Equals(eVarIni.CheckValuesInDeactivatedChapters.ToString(), sc))
-                                    ENV.CheckValuesInDeactivatedChapters = GetBoolValue(sValue);
-
-                                else if (sVar.Equals(eVarIni.ResetValuesOnCheck.ToString(), sc))
-                                    ENV.ResetValuesOnCheck = GetBoolValue(sValue);
-
                                 else if (sVar.Equals(eVarIni.ApplicationSelection.ToString(), sc))
                                     ENV.ApplicationSelection = GetIntValue(sValue);
 
@@ -442,9 +319,6 @@ namespace qs2.core
 
                                 else if (sVar.Equals(eVarIni.ShowAllRowsQueryResult.ToString(), sc))
                                     ENV.ShowAllRowsQueryResult = GetBoolValue(sValue);
-
-                                else if (sVar.Equals("QS2DefaultProduct", sc))
-                                    ENV.QS2DefaultProduct = sValue;
 
                                 else if (sVar.Equals("Encoding", sc))
                                     ENV.Encoding = sValue.ToLower();
@@ -457,9 +331,6 @@ namespace qs2.core
 
                                 else if (sVar.Equals("UseAppStylingDefault", sc))
                                     ENV.UseAppStylingDefault = GetBoolValue(sValue);
-
-                                else if (sVar.Equals(eVarIni.VisualStudioModus.ToString(), sc))
-                                    ENV.VisualStudioModus = GetBoolValue(sValue);
 
                                 else if (sVar.Equals("ColorSchema", sc))
                                 {
@@ -482,52 +353,6 @@ namespace qs2.core
             catch (Exception ex)
             {
                 throw new Exception("readConfig: " + ex.ToString());
-            }
-        }
-
-        private static string[] SplitMultiValues(string ENVValue)
-        {
-            try
-            {
-                int iParticipants = ENV.lstIDParticipantsEncrypted.Count();
-                string[] RetValue = new string[iParticipants];
-                string[] Delimiters = new string[] { "};" };
-                //ENVValue {Wert für 91090};{Wert für 91091}; 
-                string[] Values = ENVValue.Split(Delimiters, StringSplitOptions.RemoveEmptyEntries);
-
-                if (iParticipants < Values.Length)  //es wurden mehr Variablen angegeben als Participants
-                {
-                    string val = Values[0].Replace("{", "").Replace("}", "");
-                    qs2.core.generic.showMessageBoxNoTranslate("Configuration error found at " + ENVValue + ".\nUsing first value (" + val + ")", MessageBoxButtons.OK, "");
-                    RetValue[0] = val;
-                    return RetValue;
-                }
-
-                int i = -1;
-                if (Values.Length > 1)
-                {
-                    foreach (string Value in Values)
-                    {
-                        if (Value.StartsWith("{"))
-                        {
-                            i++;
-                            RetValue[i] = Value.Replace("{", "").Replace("}", "");
-                        }
-                    }
-                    if (i == Values.Count() - 1)
-                    {
-                        return RetValue;
-                    }
-                    else
-                    {
-                        return new string[] { ENVValue };
-                    }
-                }
-                return new string[] { ENVValue };
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("SplitMultiValues: " + ex.ToString());
             }
         }
 
@@ -586,7 +411,6 @@ namespace qs2.core
                 {
                     throw new Exception("ENV.readParticipants: No Participant found in ENV.IDParticipant!");
                 }
-
             }
             catch (Exception ex)
             {
@@ -607,18 +431,6 @@ namespace qs2.core
 
             ENV.userDb = SqlBuilder.UserID;
             ENV.pwdDbEncrypted = SqlBuilder.Password;
-        }
-
-        public static void CallFunctionMain(eTypeFunction TypeFunction, cParsCalMainFunction pars)
-        {
-            try
-            {
-                
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ENV.CallFunctionMain:" + ex.ToString());
-            }
         }
     }
 }

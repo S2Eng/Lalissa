@@ -20,7 +20,7 @@ namespace qs2.sitemap.workflowAssist
             InitializeComponent();
         }
 
-        public void InitControl(qs2.core.Enums.eTypList TypList, string Application, string Participant,
+        public void InitControl(string Application, string Participant,
                                 int IDSelListEntrySublist, bool useDropDownControl, string GroupToLoad)
         {
             if (this.isLoaded)
@@ -29,13 +29,12 @@ namespace qs2.sitemap.workflowAssist
             this.cListAssistentElem.ID = System.Guid.NewGuid();
             this.assignRightsUsersToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("AssignRightsUsers");
 
-            this.cListAssistentElem._TypList = TypList;
             this.btnOK.Tag = false;
 
             if (useDropDownControl)
             {
                 this.contListElementDropDown1.mainControl = this;
-                this.contListElementDropDown1.InitControl(TypList, Application, Participant, IDSelListEntrySublist, GroupToLoad);
+                this.contListElementDropDown1.InitControl(Application, Participant, IDSelListEntrySublist, GroupToLoad);
             }
 
             this.ContextMenuStrip = this.contextMenuStrip1;
@@ -426,9 +425,7 @@ namespace qs2.sitemap.workflowAssist
                 if (sender is UltraButton && cListAssistentElem.rSelEntries != null)
                 {
                     string IDResTmp = cListAssistentElem.rSelEntries.FldShortColumn;
-                    if (this.cListAssistentElem._TypList == core.Enums.eTypList.CHAPTERS)
-                        IDResTmp = "Chapter_" + cListAssistentElem.rSelEntries.IDOwnStr;
-
+                    IDResTmp = "Chapter_" + cListAssistentElem.rSelEntries.IDOwnStr;
                     mcEvent1.CheckMouseHoverLeaveContr(sender, e, enter, IDResTmp, cListAssistentElem.IDApplication, true);
                 }
             }

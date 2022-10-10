@@ -18,7 +18,7 @@ namespace qs2.design.auto.workflowAssist.assist
             InitializeComponent();
         }
 
-        public void InitControl(qs2.core.Enums.eTypList TypList, string Application, string Participant,
+        public void InitControl(string Application, string Participant,
                                 int IDSelListEntrySublist, string GroupToLoad)
         {
             if (this.isLoaded)

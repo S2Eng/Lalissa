@@ -474,7 +474,6 @@ namespace qs2.design.auto.multiControl
                         DataRowView v2 = (DataRowView)actRowGridSelList.ListObject;
                         qs2.core.vb.dsAdmin.tblStayAdditionsRow rSelStayAdditionsRow = (qs2.core.vb.dsAdmin.tblStayAdditionsRow)v2.Row;
                         qs2.core.generic.retValue retValue = new core.generic.retValue();
-                        retValue.IDSelListEntry = rSelStayAdditionsRow.IDSelList;
                         retValue.fieldInfo = "qs2.tblStay.CongenitalData";
                         retValue.sType = rSelStayAdditionsRow.typ.Trim();
                         if (rSelStayAdditionsRow.typ.Trim().ToLower().Equals(core.vb.sqlAdmin.eTypStayAdditions.multiSelListsRoles.ToString().Trim().ToLower()))
@@ -1028,10 +1027,9 @@ namespace qs2.design.auto.multiControl
                 {
                     this.lockVisible = true;
                     
-                    if (!qs2.core.ENV.VisualStudioModus)
+                    if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                     {
-                        if (!this.DesignMode)
-                            this.doVisible();
+                        this.doVisible();
                     }
 
                 }

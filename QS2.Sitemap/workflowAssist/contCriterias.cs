@@ -621,7 +621,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
             }
             else
             {
-                if (qs2.core.ENV.VisualStudioModus )
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 {
                     e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit;
                 }

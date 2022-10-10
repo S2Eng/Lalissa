@@ -1089,10 +1089,6 @@ namespace qs2.design.auto.print
                     {
                         emptyStrings = "   ";
                     }
-                    string newSelList = sCheckBox + txtSelListEntry.Trim();
-                    newSelList = qs2.core.generic.getLineForEntrySheet(newSelList.Trim(), nBiggestSelList + 2, " ", false);
-                    lstTxtAllSelListEntries += newLine + emptyStrings + newSelList;
-
                     actCol += 1;
                     iCounter += 1;
                 }
