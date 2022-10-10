@@ -1,25 +1,13 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Text;
 using System.Windows.Forms;
-using PMDS.BusinessLogic.Abrechnung;
-using PMDS.Abrechnung.Global;
-using PMDS.Calc.UI.Admin;
 using PMDS.Global;
-using PMDS.GUI;
-using PMDS.DB.Global;
-
 using PMDS.Global.db.Global.ds_abrechnung;
 using PMDS.Data.Global;
 
-
-
 namespace PMDS.Calc.UI.Admin
 {
-
     public partial class ucManFreiBuch : QS2.Desktop.ControlManagment.BaseControl
     {
         public event EventHandler ValueChanged;
