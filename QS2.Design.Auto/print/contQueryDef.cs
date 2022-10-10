@@ -1286,7 +1286,7 @@ namespace qs2.ui.print
                                         rAddedEditedLast = this.add(add, rSelectedCriteria.FldShort, rSelectedCriteria.SourceTable,
                                                                 rSelectedCriteria.IDApplication,
                                                                 selRowGridCriteria.Cells[qs2.core.generic.columnNameText].Value.ToString(), true,
-                                                                false, "", ref selRowGrid, rSelectedCriteria, ref protocoll, "", null, core.Enums.eStayTyp.All, false);
+                                                                false, "", ref selRowGrid, rSelectedCriteria, ref protocoll, "", null, false);
                                     }
                                     this.translateGrid();
                                     if (rAddedEditedLast != null)
@@ -1310,7 +1310,7 @@ namespace qs2.ui.print
                                         rAddedEditedLast = this.add(add, rSelectedSysDB.COLUMN_NAME, rSelectedSysDB.TABLE_NAME, "",
                                                                     selRowGridSysDB.Cells[qs2.core.generic.columnNameText].Value.ToString(),
                                                                     false, true, rSelectedSysDB.DATA_TYPE, ref selRowGrid, null, ref protocoll,
-                                                                    SchemaSysDB, null, core.Enums.eStayTyp.All, false);
+                                                                    SchemaSysDB, null, false);
                                     }
                                     this.translateGrid();
                                     if (rAddedEditedLast != null)
@@ -1332,7 +1332,7 @@ namespace qs2.ui.print
                         else
                         {
                             UltraGridRow selRowGrid = null;
-                            qs2.core.vb.dsAdmin.tblQueriesDefRow rAddedEdited = this.add(add, "", "", "", "", false, true, "", ref selRowGrid, null, ref protocoll, "", null, core.Enums.eStayTyp.All, false);
+                            qs2.core.vb.dsAdmin.tblQueriesDefRow rAddedEdited = this.add(add, "", "", "", "", false, true, "", ref selRowGrid, null, ref protocoll, "", null, false);
                             this.translateGrid();
                             if (rAddedEdited != null)
                             {
@@ -1366,7 +1366,7 @@ namespace qs2.ui.print
         }
         public void addDblClick(int selectedTab, System.Collections.Generic.List<UltraGridRow> selRowsGrid,
                                     ref string protocoll, bool add, qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelListSelChapter,
-                                    core.Enums.eStayTyp StayTypeToShowChapters, bool addPlaceholder)
+                                    bool addPlaceholder)
         {
             try
             {
@@ -1389,13 +1389,9 @@ namespace qs2.ui.print
                                                     rSelectedCriteria.IDApplication,
                                                     selRowGridCriteria.Cells[qs2.core.generic.columnNameText].Value.ToString(), true,
                                                     false, "", ref selRowGrid, rSelectedCriteria, ref protocoll,
-                                                    "", rSelListSelChapter, StayTypeToShowChapters, addPlaceholder);
+                                                    "", rSelListSelChapter, addPlaceholder);
                         }
                         this.translateGrid();
-                        //if (rAddedEditedLast != null)
-                        //{
-                        //    this.loadMulticontrols(ref rAddedEditedLast, ref protocollForAdmin, ref protocolWindow);
-                        //}
                     }
                     else if (selectedTab == 1)          //sitemap.vb.contSelectField.eTab.Database
                     {
@@ -1413,7 +1409,7 @@ namespace qs2.ui.print
                             rAddedEditedLast = this.add(add, rSelectedSysDB.COLUMN_NAME, rSelectedSysDB.TABLE_NAME, "",
                                                         selRowGridSysDB.Cells[qs2.core.generic.columnNameText].Value.ToString(),
                                                         false, true, rSelectedSysDB.DATA_TYPE, ref selRowGrid, null, ref protocoll,
-                                                        SchemaSysDB, rSelListSelChapter, StayTypeToShowChapters, addPlaceholder);
+                                                        SchemaSysDB, rSelListSelChapter, addPlaceholder);
                         }
                         this.translateGrid();
                         //if (rAddedEditedLast != null)
@@ -1502,7 +1498,7 @@ namespace qs2.ui.print
                     qs2.core.vb.dsAdmin.tblQueriesDefRow rNewQuery = this.add(true, rSysDB.COLUMN_NAME, rSysDB.TABLE_NAME, "", ColumnTranslated,
                                                                                 false, true, rSysDB.DATA_TYPE, ref selRowGrid,
                                                                                 null, ref protocoll,
-                                                                                SchemaSysDB, null, core.Enums.eStayTyp.All, false);
+                                                                                SchemaSysDB, null, false);
                     rNewQuery.Label = ColumnTranslated;
                     selRowGrid.Cells[qs2.core.generic.columnNameText].Value = ColumnTranslated;
                 }
@@ -1583,7 +1579,7 @@ namespace qs2.ui.print
                                 rAddedEditedLast = this.add(add, rSelectedSysDB.COLUMN_NAME, rSelectedSysDB.TABLE_NAME, "",
                                                             selRowGridSysDB.Cells[qs2.core.generic.columnNameText].Value.ToString(),
                                                             false, true, rSelectedSysDB.DATA_TYPE, ref selRowGrid, null, ref protocoll,
-                                                            SchemaSysDB, null, core.Enums.eStayTyp.All, false);
+                                                            SchemaSysDB, null, false);
                             }
                             if (rAddedEditedLast != null)
                             {
@@ -1617,7 +1613,7 @@ namespace qs2.ui.print
                                                         ref UltraGridRow selRowGrid,
                                                         qs2.core.vb.dsAdmin.tblCriteriaRow rSelectedCriteria, ref string protocoll,
                                                         string SchemaSysDb, qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelListSelChapter, 
-                                                        qs2.core.Enums.eStayTyp StayTypeToShowChapters, bool AddPlaceholder)
+                                                        bool AddPlaceholder)
         {
             try
             {
@@ -1826,10 +1822,6 @@ namespace qs2.ui.print
                 {
                     rNewEdit.Chapter = rSelListSelChapter.IDOwnStr;
                 }
-
-
-                dsAdmin.tblSelListEntriesRow rSelListEntryQuery = this.mainWindow.contSelListQueries.getSelectedQuery(false);
-                core.Enums.eStayTyp StayType = ui2.getQueryChapterType(rSelListEntryQuery.Classification);
 
                 rNewEdit.ChaptersDone = true;
 

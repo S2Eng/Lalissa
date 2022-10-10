@@ -1801,11 +1801,6 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
             rNew.Created = Now
             rNew.Sql = ""
             rNew.Description = ""
-            'If Me.IDParticipantToAdd.Trim() <> "" Then
-            '    rNew.IDParticipant = Me.IDParticipantToAdd.Trim()
-            'Else
-            '    rNew.IDParticipant = qs2.core.license.doLicense.eApp.ALL.ToString()
-            'End If
 
             If Me.doAutoRessource Then
                 rNew.IDRessource = qs2.core.Enums.ePrefix.auto.ToString() + "_" + qs2.core.vb.actUsr.rUsr.UserName + "_" + System.Guid.NewGuid().ToString()
@@ -1813,7 +1808,6 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
 
             Dim selRowGrid As UltraGridRow = Me.gridSelList.Rows.GetRowWithListIndex(Me.DsAdmin1.tblSelListEntries.Rows.IndexOf(rNew))
             Me.gridSelList.ActiveRow = selRowGrid
-            'Me.gridSelList.ActiveCell = selRowGrid.Cells(Me.DsAdmin1.tblSelListEntries.IDRessourceColumn.ColumnName)
 
             If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
                 rNew.TypeStr = qs2.core.Enums.eTypeSub.Supervisor.ToString()

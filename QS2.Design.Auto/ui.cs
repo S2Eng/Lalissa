@@ -316,12 +316,8 @@ namespace qs2.design.auto
                 dsAdmin dsAdminForButtons = new dsAdmin();
 
                 string IDGroupToLoad = "";
-                if (typRunQuery == qs2.core.Enums.eTypRunQuery.ReportGroups)
-                    IDGroupToLoad = "Reports";
-                else if (typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
+                if (typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
                     IDGroupToLoad = "Queries";
-                else if (typRunQuery == qs2.core.Enums.eTypRunQuery.DocumentGroups)
-                    IDGroupToLoad = "Documents";
 
                 if (rSelListGroup1 != null)
                 {
@@ -444,8 +440,7 @@ namespace qs2.design.auto
                                     }
                                 }
 
-                                if (bRightIsOk && HasUserHasRight && bIDParticipant && typRunQuery != qs2.core.Enums.eTypRunQuery.DocumentGroups &&
-                                    typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
+                                if (bRightIsOk && HasUserHasRight && bIDParticipant && typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
                                 {
                                     if (rSelListEntryFound._Private && !qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
                                     {

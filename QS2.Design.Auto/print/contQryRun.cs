@@ -407,15 +407,9 @@ namespace qs2.ui.pint
                         contReportButt = new qs2.sitemap.workflowAssist.contListAssistentElem();
                         contReportButt.cListAssistentElem.IsQuerySystem = true;
                         contReportButt.cListAssistentElem.IDSelEntry = KeyValuePairButton.Value.rSelListEntryFound.ID;
- //                       contReportButt.cListAssistentElem.sqlTable = KeyValuePairButton.Value.rSelListEntryFound._Table;
- //                       contReportButt.cListAssistentElem.sqlColumn = KeyValuePairButton.Value.rSelListEntryFound.FldShortColumn;
                         contReportButt.InitControl(core.Enums.eTypList.CHAPTERS, this.getSelectedApplication(), this.IDParticipant, -999, false,"");
 
-                        if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.ReportGroups)
-                        {
-                            contReportButt.ContextMenuStrip = null;
-                        }
-                        else if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
+                        if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
                         {
                             contReportButt.ContextMenuStrip = contReportButt.contextMenuStripQueriesReports;
                             contReportButt.dDoActionEvaluation += new qs2.sitemap.workflowAssist.contListAssistentElem.delDoActionEvaluation(this.doContextMenüButton);
@@ -425,14 +419,7 @@ namespace qs2.ui.pint
                         newPnlGroup.Controls.Add(contReportButt);
                         contReportButt.btnOK.Visible = false;
                         contReportButt.Width = this.ButtonWidth;
-                        if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.DocumentGroups)
-                        {
-                            contReportButt.Height = this.ButtonHeigthSmall;
-                            contReportButt.btnElement.Appearance.TextVAlign = VAlign.Middle;
-                        }
-                        else
-                            contReportButt.Height = this.ButtonHeigth;
-
+                        contReportButt.Height = this.ButtonHeigth;
                         contReportButt.btnOK.Tag = "QS2";
 
                         //contReportButt.SetUI(true);
@@ -468,9 +455,7 @@ namespace qs2.ui.pint
                             }
                             else
                             {
-                                if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.ReportGroups)
-                                    contReportButt.btnElement.Appearance.Image = getRes.getImage(QS2.Resources.getRes.ePicture.reportDefault, getRes.ePicTyp.jpg);
-                                else if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
+                                if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
                                     contReportButt.btnElement.Appearance.Image = getRes.getImage(QS2.Resources.getRes.ePicture.queryDefault, getRes.ePicTyp.jpg);
                             }
                         }
@@ -481,17 +466,9 @@ namespace qs2.ui.pint
                     tgButt.rSelListGroup = rSelListGroup;
                     tgButt.rSelListObjs.Clear();
                     tgButt.rSelListsReports = null;
-
-                    if (this.typRunQuery == qs2.core.Enums.eTypRunQuery.ReportGroups || this.typRunQuery == qs2.core.Enums.eTypRunQuery.DocumentGroups)
-                    {
-                        this.drawReportGroups1.loadButtonDataReports(contReportButt, KeyValuePairButton.Value.rSelListEntryFound, this.getSelectedApplication());
-                    }
-                    else
-                    {
-                        tgButt.rSelListsQry.Add(KeyValuePairButton.Value.rSelListEntryFound);
-                        tgButt.rSelListObjs.Add(KeyValuePairButton.Value.rObj);
-                        tgButt.rSelListsReports = null;
-                    }
+                    tgButt.rSelListsQry.Add(KeyValuePairButton.Value.rSelListEntryFound);
+                    tgButt.rSelListObjs.Add(KeyValuePairButton.Value.rObj);
+                    tgButt.rSelListsReports = null;
 
                     nr += 1;
                     if (firstReportButt == null) firstReportButt = contReportButt;
@@ -705,10 +682,6 @@ namespace qs2.ui.pint
                         {
                             this.frmQryRunReport1.loadTitleWindow(rQryFirst.IDRessource);  
                         }
-                    }
-                    else if (this.typRunQuery == core.Enums.eTypRunQuery.ReportGroups)
-                    {
-                        this.frmQryRunReport1.loadTitleWindow(infoReportNew.rSelListReport.IDRessource);
                     }
 
                     if (counterPar > 0)
@@ -990,14 +963,6 @@ namespace qs2.ui.pint
                     {
                         this.openManageGroupsReports(eTypToolbar.QueryGroups);
                     }
-                    else if (this.typRunQuery == core.Enums.eTypRunQuery.ReportGroups)
-                    {
-                        this.openManageGroupsReports(eTypToolbar.ReportGroups);
-                    }
-                    else if (this.typRunQuery == core.Enums.eTypRunQuery.DocumentGroups)
-                    {
-                        this.openManageGroupsReports(eTypToolbar.DocumentGroups);
-                    }
                     else
                         throw new Exception(excepStr);
                 }
@@ -1007,14 +972,6 @@ namespace qs2.ui.pint
                     {
                         this.openManageGroupsReports(eTypToolbar.Queries);
                     }
-                    else if (this.typRunQuery == core.Enums.eTypRunQuery.ReportGroups)
-                    {
-                        this.openManageGroupsReports(eTypToolbar.Reports);
-                    }
-                    else if (this.typRunQuery == core.Enums.eTypRunQuery.DocumentGroups)
-                    {
-                        this.openManageGroupsReports(eTypToolbar.Documents);
-                    }
                     else
                         throw new Exception(excepStr);
                 }
@@ -1023,14 +980,6 @@ namespace qs2.ui.pint
                     if (this.typRunQuery == core.Enums.eTypRunQuery.QueryGroups)
                     {
                         this.openManageGroupsReports(eTypToolbar.Queries);
-                    }
-                    else if (this.typRunQuery == core.Enums.eTypRunQuery.ReportGroups)
-                    {
-                        this.openManageGroupsReports(eTypToolbar.Reports);
-                    }
-                    else if (this.typRunQuery == core.Enums.eTypRunQuery.DocumentGroups)
-                    {
-                        this.openManageGroupsReports(eTypToolbar.Documents);
                     }
                     else
                         throw new Exception(excepStr);

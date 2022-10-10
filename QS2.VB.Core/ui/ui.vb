@@ -72,9 +72,9 @@ Public Class ui
         Return True
 
     End Function
-    Public Shared Function getEnumAsList(ByRef typEnum As Type, _
-                                  ByRef valList As Infragistics.Win.ValueList, _
-                                  ByRef cbo As Infragistics.Win.UltraWinEditors.UltraComboEditor, _
+    Public Shared Function getEnumAsList(ByRef typEnum As Type,
+                                  ByRef valList As Infragistics.Win.ValueList,
+                                  ByRef cbo As Infragistics.Win.UltraWinEditors.UltraComboEditor,
                                   ByRef clearLists As Boolean) As System.Collections.Generic.List(Of String)
 
         If clearLists Then
@@ -142,7 +142,7 @@ Public Class ui
         End Try
     End Function
 
-  
+
     Public Shared Sub gridLayoutGrid_SelectionDrag(sender As Object, e As ComponentModel.CancelEventArgs)
         Try
             Dim grid As UltraGrid = sender
@@ -171,7 +171,7 @@ Public Class ui
         End Try
     End Sub
 
-    Public Shared Sub gridLayoutGrid_DragDrop(sender As Object, e As Windows.Forms.DragEventArgs, ByRef SelRows As SelectedRowsCollection, _
+    Public Shared Sub gridLayoutGrid_DragDrop(sender As Object, e As Windows.Forms.DragEventArgs, ByRef SelRows As SelectedRowsCollection,
                                                ByRef ugrOver As UltraGridRow)
         Try
             Dim grid As UltraGrid = sender
@@ -194,26 +194,5 @@ Public Class ui
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
         End Try
     End Sub
-    
-    Public Function getQueryChapterType(Classification As String) As core.Enums.eStayTyp
-        Try
-            Dim lstClassification As System.Collections.Generic.List(Of String) = qs2.core.generic.readStrVariables(Classification.Trim())
-            For Each entryClassification As String In lstClassification
-                Dim sValue As String = ""
-                qs2.core.vb.funct.getVariablesLefRightOfPoint(entryClassification.Trim(), "Type", sValue, "=")
-                If sValue.Trim.ToLower().Equals(core.Enums.eTypList.PROCGRP.ToString().Trim().ToLower() + "0") Then
-                    Return Enums.eStayTyp.Stay
-                ElseIf sValue.Trim.ToLower().Equals(core.Enums.eTypList.PROCGRP.ToString().Trim().ToLower() + "1") Then
-                    Return Enums.eStayTyp.FollowUp
-                Else
-                    Return Enums.eStayTyp.All
-                End If
-            Next
 
-            Return Enums.eStayTyp.All
-
-        Catch ex As Exception
-            Throw New Exception("ui.getQueryChapterType: " + ex.ToString())
-        End Try
-    End Function
 End Class

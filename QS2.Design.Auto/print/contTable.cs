@@ -535,43 +535,7 @@ namespace qs2.ui.print
             }
         }
 
-        public bool openStay(ref System.Data.DataRow rSelRow, ref UltraGridRow selRowGrid, bool showMsgBox)
-        {
-            try
-            {
-                foreach (DataColumn rSelCol in rSelRow.Table.Columns)
-                {
-                    if (rSelCol.DataType.Equals(typeof(System.Guid)) && rSelRow[rSelCol.ColumnName.Trim()].ToString() != "")
-                    {
-                        qs2.core.db.ERSystem.businessFramework b = new core.db.ERSystem.businessFramework();
-                        PMDS.db.Entities.tblStay rStay = b.checkIsStay((Guid)rSelRow[rSelCol.ColumnName.Trim()]);
-                        if (rStay != null)
-                        {
-                            qs2.core.ENV.cParsCalMainFunction pars = new qs2.core.ENV.cParsCalMainFunction();
-                            pars.IDGuidStay = rStay.IDGuid;
-                            pars.IDApplication = rStay.IDApplication.Trim();
-                            pars.StayTyp = (qs2.core .Enums.eStayTyp)rStay.StayTyp;
-                            pars.newStay = false;
-                            pars.OpenFromEvaluation = true;
-                            qs2.core.ENV.CallFunctionMain(core.ENV.eTypeFunction.loadStay, pars);
-                            return true;
-                        }
-                    }
-                }
-
-                if (showMsgBox)
-                {
-                    qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoStayInfoFoundInQuery") + "!", MessageBoxButtons.OK, "");
-                }
-                return false;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("contTable.openStay: " + ex.ToString());
-            }
-        }
-
-        public void setTitleGrid()
+         public void setTitleGrid()
         {
             try
             {
@@ -642,17 +606,6 @@ namespace qs2.ui.print
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
-                
-                if (this.ui1.evDoubleClickOK(ref sender, ref e, ref this.ultraGrid1))
-                {
-                    UltraGridRow selRowGrid = null;
-                    System.Data.DataRow rSelRow = this.getSelectedRow(true, selRowGrid);
-                    if (rSelRow != null)
-                    {
-                        this.openStay(ref rSelRow, ref selRowGrid, false);
-                    }
-                }
 
             }
             catch (Exception ex)

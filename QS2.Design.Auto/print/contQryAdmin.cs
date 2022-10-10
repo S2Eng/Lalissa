@@ -424,47 +424,6 @@ namespace qs2.ui.print
             }
         }
 
-        public void checkIDGuidStayAutoxy()
-        {
-            try
-            {
-                throw new Exception("checkIDGuidStayAutoxy: Fct deactivated!");
-
-                dsAdmin.tblSelListEntriesRow rSelectedQuery = this.contSelListQueries.getSelectedQuery(false);
-                if (rSelectedQuery != null)
-                {
-                    qs2.core.SysDB.dsSysDB ds = new core.SysDB.dsSysDB();
-                    qs2.core.SysDB.dsSysDB.COLUMNSRow[] arrColSys = qs2.core.SysDB.sqlSysDB.getAllSysColumnsForTable("", ds);
-                    foreach (qs2.core.SysDB.dsSysDB.COLUMNSRow rSysDB in arrColSys)
-                    {
-                        string ColumnTranslated = qs2.core.language.sqlLanguage.getRes(rSysDB.COLUMN_NAME, true, true);
-                        if (ColumnTranslated.Trim() == "")
-                            ColumnTranslated = rSysDB.COLUMN_NAME;
-
-                        string protocoll = "";
-                        string SchemaSysDB = "";
-                        if (!rSysDB.IsTABLE_SCHEMANull())
-                        {
-                            SchemaSysDB = rSysDB.TABLE_SCHEMA.Trim();
-                        }
-
-                        UltraGridRow selRowGrid = null;
-                        qs2.core.vb.dsAdmin.tblQueriesDefRow rNewQuery = this.contFields.add(true, rSysDB.COLUMN_NAME, rSysDB.TABLE_NAME, "", ColumnTranslated,
-                                         false, true, rSysDB.DATA_TYPE, ref selRowGrid,
-                                         null, ref protocoll,
-                                         SchemaSysDB, null, core.Enums.eStayTyp.All, false);
-
-                    }
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("addIDGuidStayAuto: " + ex.ToString());
-            }
-        }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
            try

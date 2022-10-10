@@ -45,7 +45,7 @@ namespace qs2.sitemap.workflowAssist
         public delegate void onSelection(bool close);
 
         public onAddWithoutClosing delOnAddWithoutClosing;
-        public delegate void onAddWithoutClosing(int selectedTab, System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow> selRowsGrid, ref string protocoll, bool add, qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelList, core.Enums.eStayTyp StayTypeToShowChapters, bool addPlaceholder); 
+        public delegate void onAddWithoutClosing(int selectedTab, System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow> selRowsGrid, ref string protocoll, bool add, qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelList, bool addPlaceholder); 
  
         public qs2.core.ui ui1 = new qs2.core.ui();
 

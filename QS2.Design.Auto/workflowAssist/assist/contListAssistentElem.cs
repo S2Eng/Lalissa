@@ -38,14 +38,7 @@ namespace qs2.sitemap.workflowAssist
                 this.contListElementDropDown1.InitControl(TypList, Application, Participant, IDSelListEntrySublist, GroupToLoad);
             }
 
-            if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-            {
-                this.ContextMenuStrip = this.contextMenuStrip1;
-            }
-            else
-            {
-                this.contextMenuStrip1 = null;
-            }
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.isLoaded = true;
         }
 
@@ -75,25 +68,11 @@ namespace qs2.sitemap.workflowAssist
                     bool ProtocolWindow = false;
                     System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
                     qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck = design.auto.ownMCRelationship.eTypAssignments.none;
-                
-                    if (this.cListAssistentElem._TypList == core.Enums.eTypList.PROCGRP)
-                    {
-                        if (this.cListAssistentElem.isEditable)
-                        {
-                            this.Cursor = Cursors.WaitCursor;
-                            this.btnElementClick(sender, e, !this.isOn, true, true, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, 
-                                                ref TypAssignmentToCheck, true, true);
-
-                            this.cListAssistentElem.assistent?.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
-                        }
-                    }
-                    else
-                    {
-                        this.btnElementClick(sender, e, !this.isOn, true, true, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, 
-                                            ref TypAssignmentToCheck, true, true);
-                        this.cListAssistentElem.assistent?.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
-                    }
-                
+                    
+                    this.btnElementClick(sender, e, !this.isOn, true, true, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, 
+                                        ref TypAssignmentToCheck, true, true);
+                    this.cListAssistentElem.assistent?.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
+                    
                     this.Cursor = Cursors.WaitCursor;
                 
                     if (!string.IsNullOrWhiteSpace(protocollForAdmin))
@@ -135,25 +114,11 @@ namespace qs2.sitemap.workflowAssist
                     System.Collections.Generic.List<string> lstElementsActive = new System.Collections.Generic.List<string>();
                     qs2.design.auto.ownMCRelationship.eTypAssignments TypAssignmentToCheck = design.auto.ownMCRelationship.eTypAssignments.none;
 
-                    if (this.cListAssistentElem._TypList == core.Enums.eTypList.PROCGRP)
+                    this.btnElementClick(sender, e, !this.isOn, true, true, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, 
+                                        ref TypAssignmentToCheck, true, true);
+                    if (this.cListAssistentElem.assistent != null)
                     {
-                        if (this.cListAssistentElem.isEditable)
-                        {
-                            this.Cursor = Cursors.WaitCursor;
-                            this.btnElementClick(sender, e, !this.isOn, true, true, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, 
-                                                ref TypAssignmentToCheck, true, true);
-
-                            this.cListAssistentElem.assistent?.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
-                        }
-                    }
-                    else
-                    {
-                        this.btnElementClick(sender, e, !this.isOn, true, true, ref protocollForAdmin, ref ProtocolWindow, ref lstElementsActive, 
-                                            ref TypAssignmentToCheck, true, true);
-                        if (this.cListAssistentElem.assistent != null)
-                        {
-                            this.cListAssistentElem.assistent.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
-                        }
+                        this.cListAssistentElem.assistent.doAssignments(ref protocollForAdmin, ref ProtocolWindow, this.cListAssistentElem.IDSelEntry, this.isOn);
                     }
 
                     this.Cursor = Cursors.WaitCursor;

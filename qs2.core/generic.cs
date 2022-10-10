@@ -426,44 +426,6 @@ namespace qs2.core
             }
         }
 
-        public static void getStayTypes(Infragistics.Win.ValueList valList, Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)
-        {
-            foreach (int val in Enum.GetValues(typeof(Enums.eStayTyp)))
-            {
-                string sResTyp = Enum.GetName(typeof(Enums.eStayTyp), val);
-                if (valList != null)
-                    valList.ValueListItems.Add(val, qs2.core.language.sqlLanguage.getRes(sResTyp));
-                if (cbo != null)
-                    cbo.Items.Add(val, qs2.core.language.sqlLanguage.getRes(sResTyp));
-            }
-        }
-
-        public static int getStayTypeInt(Enums.eStayTyp typ)
-        {
-            foreach (int val in Enum.GetValues(typeof(Enums.eStayTyp)))
-            {
-                string sResTyp = Enum.GetName(typeof(Enums.eStayTyp), val);
-                if (sResTyp == typ.ToString())
-                    return val;
-            }
-            return qs2.core.generic.idMinus;
-        }
-
-        public static void getOPTypes(Infragistics.Win.ValueList valList, Infragistics.Win.UltraWinEditors.UltraComboEditor cbo, bool notSurgery)
-        {
-            foreach (int val in Enum.GetValues(typeof(Enums.eOPTyp)))
-            {
-                string sResTyp = Enum.GetName(typeof(Enums.eOPTyp), val);
-                if (!(notSurgery && sResTyp == Enums.eOPTyp.Surgery.ToString()))
-                {
-                    if (valList != null)
-                        valList.ValueListItems.Add(val, qs2.core.language.sqlLanguage.getRes(sResTyp));
-                    if (cbo != null)
-                        cbo.Items.Add(val, qs2.core.language.sqlLanguage.getRes(sResTyp));
-                }
-            }
-        }
-
         public static void getTypQueryDefs(Infragistics.Win.ValueList valList, Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)
         {
             foreach (int val in Enum.GetValues(typeof(Enums.eTypQueryDef)))

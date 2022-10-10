@@ -491,14 +491,6 @@ namespace qs2.core
 
         public class cParsCalMainFunction
         {
-            public System.Guid IDGuidStay = System.Guid.Empty;
-            public string IDApplication = "";
-            public bool newStay = false;
-            public qs2.core.Enums.eStayTyp StayTyp;
-            public bool OpenFromEvaluation = false;
-
-            public object UICoontrol = null;
-            public object UIComponents = null;
         }
 
         public class cVarsSettings

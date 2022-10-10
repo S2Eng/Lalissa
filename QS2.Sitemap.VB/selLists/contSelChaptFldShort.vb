@@ -1,8 +1,6 @@
 ﻿Imports Infragistics.Win.UltraWinGrid
-Imports Infragistics.Win
-Imports qs2.Resources
 Imports Infragistics.Win.UltraWinToolTip
-
+Imports S2Extensions
 Public Class contSelChaptFldShort
 
 
@@ -23,12 +21,11 @@ Public Class contSelChaptFldShort
     Public delOnAddWithoutClosing As onAddWithoutClosing
     Public Delegate Sub onAddWithoutClosing(selectedTab As Integer, selRowsGrid As System.Collections.Generic.List(Of Infragistics.Win.UltraWinGrid.UltraGridRow),
                                             ByRef protocoll As String, add As Boolean, rSelListSelChapter As qs2.core.vb.dsAdmin.tblSelListEntriesRow,
-                                            StayTypeToShowChapters As qs2.core.Enums.eStayTyp, addPlaceholder As Boolean)
+                                             addPlaceholder As Boolean)
 
     Public rSelQuery As qs2.core.vb.dsAdmin.tblSelListEntriesRow = Nothing
     Public SelectedTypQueryDef As String = ""
     Public modeQueryUI As qs2.core.Enums.eTypeQuery = Nothing
-    Public StayTypeToShowChapters As qs2.core.Enums.eStayTyp = core.Enums.eStayTyp.All
 
     Public SelectionWithoutClosing As Boolean = False
     Public protocoll As String = ""
@@ -144,24 +141,14 @@ Public Class contSelChaptFldShort
             With db
                 If withChapters Then
                     Dim Parameters As New qs2.core.vb.sqlAdmin.ParametersSelListEntries()
-                    If Me.rSelQuery.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleView.ToString().ToLower()) And
-                            Me.rSelQuery.TypeStr.Trim().ToLower().Equals(core.Enums.eTypeQuery.User.ToString().Trim().ToLower()) And
+                    If Me.rSelQuery.TypeQry.sEquals(qs2.core.print.print.eQueryType.SimpleView) And
+                            Me.rSelQuery.TypeStr.sEquals(core.Enums.eTypeQuery.User) And
                             (Me.modeQueryUI = core.Enums.eTypeQuery.User Or Me.modeQueryUI = core.Enums.eTypeQuery.Admin) Then
 
-                        Me.StayTypeToShowChapters = ui3.getQueryChapterType(Me.rSelQuery.Classification)
+                        Me.SqlAdmin1.getSelListEntrys(Parameters, "Chapters0", Me.IDParticipant, Me.IDApplication, Me.DsAdmin1, core.vb.sqlAdmin.eTypAuswahlList.group)
+                        Me.SqlAdmin1.getSelListEntrys(Parameters, "Chapters1", Me.IDParticipant, Me.IDApplication, Me.DsAdmin1, core.vb.sqlAdmin.eTypAuswahlList.group)
+                        Me.SqlAdmin1.getSelListEntrys(Parameters, "Chapters0", Me.IDParticipant, qs2.core.license.doLicense.eApp.ALL.ToString(), Me.DsAdmin1, core.vb.sqlAdmin.eTypAuswahlList.group)
 
-                        If Me.StayTypeToShowChapters = core.Enums.eStayTyp.Stay Then
-                            Me.SqlAdmin1.getSelListEntrys(Parameters, "Chapters0", Me.IDParticipant, Me.IDApplication, Me.DsAdmin1, core.vb.sqlAdmin.eTypAuswahlList.group)
-
-                        ElseIf Me.StayTypeToShowChapters = core.Enums.eStayTyp.FollowUp Then
-                            Me.SqlAdmin1.getSelListEntrys(Parameters, "Chapters1", Me.IDParticipant, Me.IDApplication, Me.DsAdmin1, core.vb.sqlAdmin.eTypAuswahlList.group)
-
-                        Else
-                            Me.SqlAdmin1.getSelListEntrys(Parameters, "Chapters0", Me.IDParticipant, Me.IDApplication, Me.DsAdmin1, core.vb.sqlAdmin.eTypAuswahlList.group)
-                            Me.SqlAdmin1.getSelListEntrys(Parameters, "Chapters1", Me.IDParticipant, Me.IDApplication, Me.DsAdmin1, core.vb.sqlAdmin.eTypAuswahlList.group)
-                            Me.SqlAdmin1.getSelListEntrys(Parameters, "Chapters0", Me.IDParticipant, qs2.core.license.doLicense.eApp.ALL.ToString(), Me.DsAdmin1, core.vb.sqlAdmin.eTypAuswahlList.group)
-
-                        End If
                     Else
                         Me.SqlAdmin1.getSelListEntrys(Parameters, "Chapters0", Me.IDParticipant, Me.IDApplication, Me.DsAdmin1, core.vb.sqlAdmin.eTypAuswahlList.group)
                         Me.SqlAdmin1.getSelListEntrys(Parameters, "Chapters1", Me.IDParticipant, Me.IDApplication, Me.DsAdmin1, core.vb.sqlAdmin.eTypAuswahlList.group)
@@ -583,7 +570,7 @@ Public Class contSelChaptFldShort
             Me.Cursor = Windows.Forms.Cursors.WaitCursor
             If Me.SelectionWithoutClosing Then
                 'If Not Me.ContSelChaptFldShort1.delOnAddWithoutClosing Is Nothing Then
-                Me.delOnAddWithoutClosing.Invoke(0, Me.getSelectedRows(False), Me.protocoll, Me.add, Nothing, StayTypeToShowChapters, True)
+                Me.delOnAddWithoutClosing.Invoke(0, Me.getSelectedRows(False), Me.protocoll, Me.add, Nothing, True)
                 'End If
             End If
 

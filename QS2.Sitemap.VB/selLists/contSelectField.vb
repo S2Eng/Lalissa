@@ -171,7 +171,7 @@ Public Class contSelectField
     Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOK.Click
         Try
             Me.Cursor = Windows.Forms.Cursors.WaitCursor
-            Me.doSelect(Not Me.SelectionWithoutClosing, Me.ContSelChaptFldShort1.rSelListSelChapter2, Me.ContSelChaptFldShort1.StayTypeToShowChapters)
+            Me.doSelect(Not Me.SelectionWithoutClosing, Me.ContSelChaptFldShort1.rSelListSelChapter2)
 
         Catch ex As Exception
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
@@ -193,13 +193,14 @@ Public Class contSelectField
 
     Public Sub onGridDoubleClick(ByVal close As Boolean)
         Try
-            Me.doSelect(Not Me.SelectionWithoutClosing, Me.ContSelChaptFldShort1.rSelListSelChapter2, Me.ContSelChaptFldShort1.StayTypeToShowChapters)
+            Me.doSelect(Not Me.SelectionWithoutClosing, Me.ContSelChaptFldShort1.rSelListSelChapter2)
 
         Catch ex As Exception
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
         End Try
     End Sub
-    Public Sub doSelect(ByVal close As Boolean, ByRef rSelListSelChapter As qs2.core.vb.dsAdmin.tblSelListEntriesRow, StayTypeToShowChapters As qs2.core.Enums.eStayTyp)
+
+    Public Sub doSelect(ByVal close As Boolean, ByRef rSelListSelChapter As qs2.core.vb.dsAdmin.tblSelListEntriesRow)
         Try
             Me.Cursor = Windows.Forms.Cursors.WaitCursor
 
@@ -209,8 +210,7 @@ Public Class contSelectField
                     If (close) Then Me.mainWindow.Close()
                 End If
                 If Me.ContSelChaptFldShort1.SelectionWithoutClosing Then
-                    'If Not Me.ContSelChaptFldShort1.delOnAddWithoutClosing Is Nothing Then
-                    Me.ContSelChaptFldShort1.delOnAddWithoutClosing.Invoke(0, Me.ContSelChaptFldShort1.getSelectedRows(False), Me.ContSelChaptFldShort1.protocoll, Me.add, rSelListSelChapter, StayTypeToShowChapters, False)
+                    Me.ContSelChaptFldShort1.delOnAddWithoutClosing.Invoke(0, Me.ContSelChaptFldShort1.getSelectedRows(False), Me.ContSelChaptFldShort1.protocoll, Me.add, rSelListSelChapter, False)
                     'End If
                 End If
 
@@ -219,10 +219,9 @@ Public Class contSelectField
                     Me.abort = False
                     If (close) Then Me.mainWindow.Close()
                 End If
+
                 If Me.ContSelChaptFldShort1.SelectionWithoutClosing Then
-                    'If Not Me.ContInfoFieldDB1.delOnAddWithoutClosing Is Nothing Then
-                    Me.ContInfoFieldDB1.delOnAddWithoutClosing.Invoke(1, Me.ContInfoFieldDB1.getSelectedRowsColumns(False), Me.ContInfoFieldDB1.protocoll, Me.add, Nothing, StayTypeToShowChapters, False)
-                    'End If
+                    Me.ContInfoFieldDB1.delOnAddWithoutClosing.Invoke(1, Me.ContInfoFieldDB1.getSelectedRowsColumns(False), Me.ContInfoFieldDB1.protocoll, Me.add, Nothing, False)
                 End If
             End If
 

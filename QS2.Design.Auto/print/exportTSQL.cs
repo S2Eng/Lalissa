@@ -187,31 +187,6 @@ namespace qs2.print
 
                 // check all Reports-Groups
                 dsAdminTmp.Clear();
-                Parameters = new qs2.core.vb.sqlAdmin.ParametersSelListEntries();
-                this.sqlAdminWork.getSelListEntrys(ref Parameters, qs2.core.Enums.eTypRunQuery.ReportGroups.ToString(),
-                                    qs2.core.license.doLicense.eApp.ALL.ToString(), IDApplication, ref dsAdminTmp,
-                                    core.vb.sqlAdmin.eTypAuswahlList.group);
-                foreach (qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelListReportGroup in dsAdminTmp.tblSelListEntries)
-                {
-                    this.sqlAdminWork.getSelListEntrysObj(rSelListReportGroup.ID, core.vb.sqlAdmin.eDbTypAuswObj.SubSelList, "Reports", dsAdminTmp, core.vb.sqlAdmin.eTypAuswahlObj.sellist, IDApplication);
-                    foreach (qs2.core.vb.dsAdmin.tblSelListEntriesObjRow rObjReportInReportGroups in dsAdminTmp.tblSelListEntriesObj)
-                    {
-                        foreach (qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelListReportsForQuery in tSelListReports)
-                        {
-                            if (rObjReportInReportGroups.IDSelListEntry.Equals(rSelListReportsForQuery.ID))
-                            {
-                                // Insert Report-Group and Report-Group-Ressource if not exists
-                                this.genTSQLInsertSelList(rSelListReportGroup, IDApplication, ref sbResultSkript, false, true, "Insert Report-Group '" + rSelListReportGroup.IDRessource + "'!");
-                                this.checkGenRessource(rSelListReportGroup.IDRessource, IDApplication, ref sbResultSkript, ref sbInfoQuery, true);
-                                
-                                // Insert Report-Group to Report
-                                this.genTSQLInsertSelListObj(rObjReportInReportGroups, IDApplication, ref sbResultSkript, false,
-                                                            "Delete and Insert Report to ReportGroup '" + rSelListReportGroup.IDRessource + "'!", true);
-                            }
-                        }
-                    }
-                }
-
             }
             catch (Exception ex)
             {

@@ -302,25 +302,6 @@ namespace qs2.ui.print
                         rQueryDef.Delete();
                     }
                     InfoQryRunPar.dsConditionsUI.tblQueriesDef.AcceptChanges();
-
-                    //dsAdmin.tblQueriesDefRow rNewQryDefCondition = this.addNewParameter(InfoQryRunPar.dsConditionsUI.tblQueriesDef, InfoQryRunPar.Application.Trim(), "",
-                    //                                   "", "", "", InfoQryRunPar.rSelListQry.ID, core.Enums.eControlType.Integer);
-                    //rNewQryDefCondition.Combination = qs2.core.sqlTxt.and;
-                    //rNewQryDefCondition.CombinationEnd = "";
-                    //rNewQryDefCondition.Sort = 0;
-                    //rNewQryDefCondition.QryTable = InfoQryRunPar.rSelListQry._Table;
-                    //rNewQryDefCondition.freeSql = " where IDGuid='" + this.IDGuid.Value.ToString() + "' ";
-                    //rNewQryDefCondition[qs2.core.generic.columnAutoAddedCol] = true;
-                    //rNewQryDefCondition[qs2.core.generic.columnRemoved] = false;
-                }
-
-                if (this.typRunQuery == core.Enums.eTypRunQuery.ReportGroups || this.typRunQuery == core.Enums.eTypRunQuery.DocumentGroups)
-                {
-                    qs2.design.auto.multiControl.ownMultiControl multiControlHeaderQry = this.addParameter(null, InfoQryRunPar.rSelListQry, core.Enums.eTypQueryDef.WhereConditions, InfoQryRunPar.Application, InfoQryRunPar.Participant, ref this.MultiControlNrToLoad, ref this.lastTopMultiControl, ref elementHeigth, qs2.core.sqlTxt.equals, false, "", true, false, InfoQryRunPar.isSubQuery, false, ref protocollForAdmin, ref protocolWindow, ref InfoQryRunPar.IDQueryGroup, ref counterPar, ref lstAllMCs);
-                }
-
-                if (!resetTop)
-                {
                 }
                 
                 if (this.right_QueryReportOwn && !IsSubQuery)
@@ -383,34 +364,9 @@ namespace qs2.ui.print
                     }
                 }
 
-                if (!onlyWhereClausel)
-                {
-                    //if (countMultiControls == 0)
-                    //    multiControlHeaderQry.Visible = false;
-                    if (this.typRunQuery == core.Enums.eTypRunQuery.ReportGroups || InfoQryRunPar.rSelListQry.IDRessource.Trim().ToLower().EndsWith(("KaplanMeier").Trim().ToLower()))
-                    {
-                        this.sqlAdmin1.getQueriesDef(InfoQryRunPar.rSelListQry.ID, InfoQryRunPar.dsInputFieldsUI, core.vb.sqlAdmin.eTypSelQueryDef.typ, core.Enums.eTypQueryDef.InputParameters, qs2.core.license.doLicense.eApp.ALL.ToString(), InfoQryRunPar.Application);
-                        countMultiControls = 0;
-                        //qs2.design.auto.multiControl.ownMultiControl multiControlParameters = this.addParameter(null, InfoQryRunPar.rSelListQry, core.Enums.eTypQueryDef.WhereConditions, InfoQryRunPar.Application, InfoQryRunPar.Participant, ref this.MultiControlNrToLoad, ref this.lastTopMultiControl, ref elementHeigth, qs2.core.sqlTxt.equals, false, "", true, true);
-
-                        foreach (qs2.core.vb.dsAdmin.tblQueriesDefRow rQry in InfoQryRunPar.dsInputFieldsUI.tblQueriesDef)
-                        {
-                            if (rQry.UserInput && !rQry.FunctionPar)
-                            {
-                                this.addParameter(rQry, InfoQryRunPar.rSelListQry, core.Enums.eTypQueryDef.InputParameters, InfoQryRunPar.Application, InfoQryRunPar.Participant, ref  this.MultiControlNrToLoad, ref this.lastTopMultiControl, ref elementHeigth, "", false, "", false, false, InfoQryRunPar.isSubQuery, true, ref protocollForAdmin, ref protocolWindow, ref InfoQryRunPar.IDQueryGroup, ref counterPar, ref lstAllMCs);
-                                countMultiControls += 1;
-                            }
-                        }
-
-                        //if (countMultiControls == 0)
-                        //    multiControlParameters.Visible = false;
-                    }
-                }
-
                 this.panelParameters.AutoScroll = true;
                 System.Drawing.Size sizeScroll = new System.Drawing.Size(0, this.lastTopMultiControl + elementHeigth + 5);
                 this.panelParameters.AutoScrollMinSize = sizeScroll;
-                //this.panelAdd.SetAutoScrollMargin(sizeScroll.Width, sizeScroll.Height );
 
                 if (!onlyWhereClausel)
                 {
@@ -1712,11 +1668,6 @@ namespace qs2.ui.print
                 {
                     typeSelect = sqlProtocoll.eSelProtocoll.RunQuery;
                     IDRessourceTitle = qs2.core.language.sqlLanguage.getRes("ExecutingQuery");
-                }
-                else if (this.typRunQuery == core.Enums.eTypRunQuery.ReportGroups)
-                {
-                      typeSelect = sqlProtocoll.eSelProtocoll.RunReport;
-                      IDRessourceTitle = qs2.core.language.sqlLanguage.getRes("OpenReport");
                 }
                 this.genReport1.showProtocol(Info, infoReport, typeSelect, IDRessourceTitle);
             }
