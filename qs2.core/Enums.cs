@@ -5,11 +5,6 @@ namespace qs2.core
 
     public class Enums
     {
-        public enum eTypList
-        {
-            CHAPTERS = 10101
-        }
-
         public enum eControlType
         {
             Textfield = 0,

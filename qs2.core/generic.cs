@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Net;
-using System.Net.Security;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
 
 namespace qs2.core
@@ -18,7 +13,6 @@ namespace qs2.core
         public static event doLog evdoLog;
         public delegate void doLog(string ex, string title);
 
-        public static event writeProtocoll evWriteProtocoll;
         public delegate void writeProtocoll(string txt, string info, int IDStay, string IDApplication, string IDParticipant);
 
         public static string incorrSel = "Incorrect selection";
@@ -100,12 +94,6 @@ namespace qs2.core
             }
         }
 
-        public static void doProtocoll(string txt, string info, int IDStay, string IDApplication, string IDParticipant)
-        {
-            if (qs2.core.generic.evWriteProtocoll != null)
-                qs2.core.generic.evWriteProtocoll.Invoke(txt, info, IDStay, IDApplication, IDParticipant);
-        }
-        
         public static DialogResult showMessageBox(string txt, MessageBoxButtons typButtons, string title)
         {
             try

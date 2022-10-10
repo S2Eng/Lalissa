@@ -1,58 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Infragistics.Win;
-using System.Drawing;
-using Infragistics.Win.Misc;
-using Infragistics.Win.UltraWinEditors;
 using Infragistics.Win.UltraWinGrid;
-using System.Windows.Forms;
-
-using Infragistics.Win.UltraWinGrid;
-using Infragistics.Win;
-
-
-
 
 namespace qs2.sitemap
 {
-
-    
     public class ui
     {
-
-        public void aktivateButtonxyxyxy(List<cButt> buttons, int aktiv, bool BackgroundTransparentInaktiv)
-        {
-            foreach (cButt itm in buttons)
-            {
-                if (itm.nr == aktiv)
-                    itm.on = true;
-                else
-                    itm.on = false;
-            }
-            this.setUIButtonsxyxyxy(buttons, BackgroundTransparentInaktiv);
-        }
-        public void setUIButtonsxyxyxy(List<cButt> buttons, bool BackgroundTransparentInaktiv)
-        {
-            //foreach (cButt itm in buttons)
-            //{
-            //    if (itm.on)
-            //        qs2.core.ui.setAktiv(itm.butt, -1, false);
-            //    else
-            //        qs2.core.ui.setInaktiv(itm.butt, -1, BackgroundTransparentInaktiv);
-            //}
-        }
-
-
         public class cButt
         {
-            //public UltraButton butt;
-            public bool on = false;
-            public int nr = -1;
-            public int  selListEntryID;
             public string selListEntryIDOwnStr;
-            public qs2.core.Enums.eTypList TypList;
         }
 
         public static void loadGridCriterias(UltraGridBand band, qs2.core.vb.dsAdmin ds)
@@ -85,7 +40,6 @@ namespace qs2.sitemap
             band.Columns[ds.tblCriteria.UsedCustomerColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("UsedCustomer");
 
             band.Columns[qs2.core.generic.columnNameText].Header.Caption = qs2.core.language.sqlLanguage.getRes("Translation");
-            //band.Columns[qs2.core.generic.columnNameText].Hidden = true;
         }
 
         public static void translateCriterias(RowsCollection rows, 
@@ -121,16 +75,6 @@ namespace qs2.sitemap
                         rGridCrit.Cells[columnNewTranslation].Value = "";   
                     }
 
-                    //string resFoundLevelRight = qs2.core.language.sqlLanguage.getRes(rCrit.FldShort, core.Enums.eResourceType.LabelRight, qs2.core.license.doLicense.rParticipant.IDParticipant, rCrit.IDApplication);
-                    //if (resFoundLevelRight.Trim() == "")
-                    //{
-                    //    if (this.chkLeaveNotFoundedTextEmpty.Checked)
-                    //        rGridCrit.Cells[qs2.core.generic.columnNameText].ToolTipText  = "";
-                    //    else
-                    //        rGridCrit.Cells[qs2.core.generic.columnNameText].ToolTipText = rCrit.FldShort;
-                    //}
-                    //else
-                    //    rGridCrit.Cells[qs2.core.generic.columnNameText].ToolTipText = resFoundLevelRight;
                 }
             }
             catch (Exception ex)

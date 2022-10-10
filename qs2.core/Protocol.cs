@@ -55,7 +55,6 @@ namespace qs2.core
             {
                 qs2.core.generic.getExep(sExcepSum.ToString(), "");
             }
-            qs2.core.generic.doProtocoll("Error Stay - " + fctName + " - Field: " + FieldName.Trim() + "\r\n" + "\r\n" + exception, "", -999, Application, qs2.core.license.doLicense.rParticipant.IDParticipant.Trim());
         }
     }
 }

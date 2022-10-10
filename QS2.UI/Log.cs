@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
 
 namespace qs2.ui.Logging
 {
-
-
     public class Log
     {
-       
         public static void doLog(string ex, string title)
         {
             try
@@ -26,7 +18,6 @@ namespace qs2.ui.Logging
                 {
                     IDParticipantTmp = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim();
                 }
-                qs2.core.generic.doProtocoll(ex, "", -999, IDApplicationTmp, IDParticipantTmp.Trim());
 
                 bool doGermanTxt = false;
                 if (qs2.core.ENV.language == core.language.sqlLanguage.eLanguage.English.ToString())
@@ -48,14 +39,11 @@ namespace qs2.ui.Logging
 
                 QS2.Logging.Settings.init(qs2.core.ENV.path_log, true, qs2.core.ENV.adminSecure);
                 QS2.Logging.Settings.doLog(ex.ToString(), title, "QS2-System", doGermanTxt);
-
             }
             catch (Exception ex1)
             {
                 throw new Exception("qs2.ui. Log.cs: " + ex1.ToString());
             }
         }
-
-
     }
 }   
