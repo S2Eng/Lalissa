@@ -142,7 +142,6 @@ Public Class contSelChaptFldShort
 
             Dim db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
             With db
-                Dim lSelListEntryObj_RolesUsr As List(Of Integer) = b.GetRolesForUser(IDApplication, qs2.core.vb.actUsr.rUsr.ID, db)
                 If withChapters Then
                     Dim Parameters As New qs2.core.vb.sqlAdmin.ParametersSelListEntries()
                     If Me.rSelQuery.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleView.ToString().ToLower()) And
@@ -177,12 +176,8 @@ Public Class contSelChaptFldShort
                         If qs2.core.ENV.adminSecure Then
                             rigthOK = True
                         End If
-                        
+
                         If Not rigthOK Then
-                            lstChaptersToDelete.Add(rSelListChapter)
-                        End If
-                        
-                        If Not b.CheckUserHasRightChapter(IDApplication, rSelListChapter.ID, lSelListEntryObj_RolesUsr, db) Then
                             lstChaptersToDelete.Add(rSelListChapter)
                         End If
                     Next
@@ -258,32 +253,6 @@ Public Class contSelChaptFldShort
                                           Me.chkOnlyShowPreferedFields.Checked, "", "", False)
             End If
 
-            Dim lstCriteriasToDelete As New System.Collections.Generic.List(Of qs2.core.vb.dsAdmin.tblCriteriaRow)
-            Dim b As New qs2.core.vb.businessFramework()
-            For Each rCritGridRow As UltraGridRow In Me.gridCriterias.Rows
-                Dim v As System.Data.DataRowView = rCritGridRow.ListObject
-                Dim rCrit As qs2.core.vb.dsAdmin.tblCriteriaRow = v.Row
-
-                Dim rigthOK As Boolean = b.checkRigthFldShortForRole(rCrit.FldShort.Trim(), qs2.core.vb.actUsr.rUsr.ID, rCrit.IDApplication.Trim(), True)
-                If qs2.core.ENV.developModus Then
-                    rigthOK = True
-                End If
-                If Not rigthOK Then
-                    lstCriteriasToDelete.Add(rCrit)
-                End If
-
-                Dim HasLicenseKey = False
-                HasLicenseKey = Me.b.checkLicenseKey(rCrit.FldShort.Trim(), rCrit.IDApplication.Trim(), dsAdminTmp2)
-                If qs2.core.ENV.developModus Then
-                    HasLicenseKey = True
-                End If
-                If Not HasLicenseKey Then
-                    lstCriteriasToDelete.Add(rCrit)
-                End If
-            Next
-            For Each rCrit As qs2.core.vb.dsAdmin.tblCriteriaRow In lstCriteriasToDelete
-                rCrit.Delete()
-            Next
             Me.DsAdmin1.tblCriteria.AcceptChanges()
             Me.gridCriterias.Refresh()
             qs2.sitemap.ui.translateCriterias(Me.gridCriterias.Rows, Me.IDParticipant, core.Enums.eResourceType.Label, True, False, "", True)

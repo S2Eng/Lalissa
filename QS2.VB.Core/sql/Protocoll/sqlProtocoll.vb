@@ -53,27 +53,6 @@ Public Class sqlProtocoll
             Dim GuidUsr As Guid = If(actUsr.rUsr Is Nothing, Guid.Empty, actUsr.rUsr.IDGuid)
             Dim UserName As String = If(actUsr.rUsr Is Nothing, "NO USER LOGGED IN", actUsr.rUsr.UserName.Trim())
 
-            If FilterUserApps And Not qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                Dim lstUsrApps As New List(Of String) From {"", qs2.core.license.doLicense.eApp.ALL.ToString()} 'ALL und Empty als Default, wenn User mindestens ein Produkt hat
-                Dim b As businessFramework = New businessFramework()
-
-                Using db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
-                    Dim tObjectApplications As IQueryable(Of PMDS.db.Entities.tblObjectApplications) = b.getProductsForUser(GuidUsr, db)
-
-                    If tObjectApplications.Any() Then
-                        For Each rApp As PMDS.db.Entities.tblObjectApplications In tObjectApplications
-                            lstUsrApps.Add(rApp.IDApplication)
-                        Next
-
-                        For Each Product As String In lstUsrApps
-                            FilterProductsEntries += IIf(String.IsNullOrWhiteSpace(FilterProductsEntries), "", " OR ")
-                            FilterProductsEntries += "IDApplication = '" + Product + "'"
-                        Next
-
-                        FilterProductsEntries = "(" + FilterProductsEntries + ")"
-                    End If
-                End Using
-            End If
 
             Me.daProtocol.SelectCommand.CommandText = sqlProtocoll.seldaProtocol
             Me.daProtocol.SelectCommand.CommandTimeout = 0

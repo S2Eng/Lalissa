@@ -1333,10 +1333,10 @@
         Dim ds As New dsAdmin
         Dim cmd As New System.Data.SqlClient.SqlCommand
         cmd.Parameters.Clear()
-        cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblSelListEntriesObj.TableName + sqlTxt.where + sqlTxt.getColWhere(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName) + sqlTxt.and + _
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDStayColumn.ColumnName) + sqlTxt.and + _
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDParticipantStayColumn.ColumnName) + sqlTxt.and + _
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName) + sqlTxt.and + _
+        cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblSelListEntriesObj.TableName + sqlTxt.where + sqlTxt.getColWhere(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName) + sqlTxt.and +
+                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDStayColumn.ColumnName) + sqlTxt.and +
+                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDParticipantStayColumn.ColumnName) + sqlTxt.and +
+                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName) + sqlTxt.and +
                             sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDSelListEntryColumn.ColumnName)
 
         cmd.Connection = qs2.core.dbBase.dbConn
@@ -1688,10 +1688,10 @@
 
     End Function
 
-    Public Function getCriterias(ByVal ds As dsAdmin, ByVal typSel As eTypSelCriteria, _
-                                 ByVal FldShort As String, _
-                                 ByVal IDApplication As String, ByVal onlyNotInChapters As Boolean, _
-                                 ByVal doPreferedVisibleUnvisible As Boolean, ByVal bOnlyPrefered As Boolean, _
+    Public Function getCriterias(ByVal ds As dsAdmin, ByVal typSel As eTypSelCriteria,
+                                 ByVal FldShort As String,
+                                 ByVal IDApplication As String, ByVal onlyNotInChapters As Boolean,
+                                 ByVal doPreferedVisibleUnvisible As Boolean, ByVal bOnlyPrefered As Boolean,
                                  Chapter As String, IDGroupStr As String, ApplicationAndAll As Boolean) As dsAdmin.tblCriteriaRow()
         Try
             Me.daCriteria.SelectCommand.CommandText = Me.sel_daSelCriteria
@@ -1787,12 +1787,12 @@
     Public Function getSqlWhereForChapter(Chapters As String, IDApplication As String, typIDGroup As String, IDGroupStr As String)
         Try
             Dim sWhere As String = ""
-            sWhere = " SELECT  qs2.tblCriteria.FldShort " + _
-                        " FROM qs2.tblCriteria INNER JOIN " + _
-                        " qs2.tblSelListEntriesObj ON qs2.tblCriteria.FldShort = qs2.tblSelListEntriesObj.FldShort AND  " + _
-                        " qs2.tblCriteria.IDApplication = qs2.tblSelListEntriesObj.IDApplication INNER JOIN " + _
-                        " qs2.tblSelListGroup INNER JOIN  " + _
-                        " qs2.tblSelListEntries ON qs2.tblSelListGroup.ID = qs2.tblSelListEntries.IDGroup ON qs2.tblSelListEntriesObj.IDSelListEntry = qs2.tblSelListEntries.ID " + _
+            sWhere = " SELECT  qs2.tblCriteria.FldShort " +
+                        " FROM qs2.tblCriteria INNER JOIN " +
+                        " qs2.tblSelListEntriesObj ON qs2.tblCriteria.FldShort = qs2.tblSelListEntriesObj.FldShort AND  " +
+                        " qs2.tblCriteria.IDApplication = qs2.tblSelListEntriesObj.IDApplication INNER JOIN " +
+                        " qs2.tblSelListGroup INNER JOIN  " +
+                        " qs2.tblSelListEntries ON qs2.tblSelListGroup.ID = qs2.tblSelListEntries.IDGroup ON qs2.tblSelListEntriesObj.IDSelListEntry = qs2.tblSelListEntries.ID " +
                         " WHERE qs2.tblSelListGroup.IDGroupStr = '" + IDGroupStr.ToString() + "' and qs2.tblSelListEntriesObj.typIDGroup = '" + typIDGroup.Trim() + "' AND qs2.tblSelListEntries.IDOwnStr = '" + Chapters.Trim() + "'  "
 
             'Dim sWhere As String = ""
@@ -1890,8 +1890,8 @@
         cmd.ExecuteNonQuery()
         Return True
     End Function
-    Public Function getCriteriasOpt(ByVal ds As dsAdmin, ByVal typSel As eTypSelCriteriaOpt, _
-                                 ByVal FldShort As String, _
+    Public Function getCriteriasOpt(ByVal ds As dsAdmin, ByVal typSel As eTypSelCriteriaOpt,
+                                 ByVal FldShort As String,
                                  ByVal Application As String) As dsAdmin.tblCriteriaOptRow()
 
         Me.daCriteriaOpt.SelectCommand.CommandText = Me.sel_daSelCriteriaOpt
@@ -1935,8 +1935,8 @@
 
     End Function
 
-    Public Function getRelationsship(ByVal ds As dsAdmin, ByVal typSel As eTypSelRelationship, _
-                             ByVal FldShort As String, _
+    Public Function getRelationsship(ByVal ds As dsAdmin, ByVal typSel As eTypSelRelationship,
+                             ByVal FldShort As String,
                              ByVal IDApplication As String, ByVal IDKey As String) As dsAdmin.tblRelationshipRow()
 
         Me.daRelationship.SelectCommand.CommandText = Me.sel_daSelRelationship
@@ -2113,8 +2113,8 @@
         Return True
     End Function
 
-    Public Function getQueriesDef(ByVal ID As Integer, ByVal ds As dsAdmin, ByVal typSel As eTypSelQueryDef, _
-                                   ByVal typQueryDef As qs2.core.Enums.eTypQueryDef, _
+    Public Function getQueriesDef(ByVal ID As Integer, ByVal ds As dsAdmin, ByVal typSel As eTypSelQueryDef,
+                                   ByVal typQueryDef As qs2.core.Enums.eTypQueryDef,
                                    ByVal IDParticipant As String, ByVal IDApplication As String) As Boolean
         Try
 

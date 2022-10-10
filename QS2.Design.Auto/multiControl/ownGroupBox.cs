@@ -16,9 +16,6 @@ namespace qs2.design.auto.multiControl
 
         private void doText()
         {
-            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
-                this.ownControlCriteria1.getLicenseDesignTime(this);
-
             if (this.OwnFldShort.Trim() != "")
             {
                 qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;

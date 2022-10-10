@@ -87,9 +87,9 @@ Public Class contSelListsObj
         End Try
     End Sub
 
-    Public Sub initControl(ByVal captionVisible As Infragistics.Win.DefaultableBoolean, ByVal textCaption As String, _
-                        ByVal showColumnIDDescription As Boolean, ByVal showColumnID As Boolean, ByVal lstClassification As System.Collections.ArrayList, _
-                        ByVal AutoFitStyle As Infragistics.Win.UltraWinGrid.AutoFitStyle, _
+    Public Sub initControl(ByVal captionVisible As Infragistics.Win.DefaultableBoolean, ByVal textCaption As String,
+                        ByVal showColumnIDDescription As Boolean, ByVal showColumnID As Boolean, ByVal lstClassification As System.Collections.ArrayList,
+                        ByVal AutoFitStyle As Infragistics.Win.UltraWinGrid.AutoFitStyle,
                         ByVal typUI As eTypUI, showComboApplications As Boolean, IDApplication As String, IDParticipant As String)
         Try
             Me._typUI = typUI
@@ -508,7 +508,7 @@ Public Class contSelListsObj
             Throw New Exception("contSelListsObj.rejectChanges: " + ex.ToString())
         End Try
     End Sub
-    Public Function addRow(ByVal r As Infragistics.Win.UltraWinGrid.UltraGridRow, _
+    Public Function addRow(ByVal r As Infragistics.Win.UltraWinGrid.UltraGridRow,
                            ByVal rDs As qs2.core.vb.dsAdmin.tblSelListEntriesRow) As qs2.core.vb.dsAdmin.tblSelListEntriesObjRow
         Try
             Dim rNew As qs2.core.vb.dsAdmin.tblSelListEntriesObjRow = Me.sqlAdmin1.getNewRowSelListObj(Me.dsAuswahllistenObj)
@@ -825,7 +825,7 @@ Public Class contSelListsObj
         End Try
     End Sub
 
-    Public Sub resetDropDownProcGroupsMain(resetAll As Boolean, IDSelListEntryToKeep As Integer, _
+    Public Sub resetDropDownProcGroupsMain(resetAll As Boolean, IDSelListEntryToKeep As Integer,
                                            ByRef ColumnNameClicked As String)
 
         For Each r As Infragistics.Win.UltraWinGrid.UltraGridRow In Me.gridSelListObj.Rows
@@ -878,7 +878,7 @@ Public Class contSelListsObj
 
                 frm.ContSelListsObj1.typDB = sqlAdmin.eDbTypAuswObj.SubSelList
                 frm.ContSelListsObj1.typ = contSelListsObj.eTyp.saveForSelList
-                frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal, _
+                frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal,
                               True, Me.IDApplicationToAssignForSublists, rGroup.IDParticipant,
                               Me.SubListObjToLoad, rSelListGroupSelected.IDRessource)
 
@@ -917,7 +917,7 @@ Public Class contSelListsObj
 
                 frm.ContSelListsObj1.typDB = sqlAdmin.eDbTypAuswObj.SubSelList
                 frm.ContSelListsObj1.typ = contSelListsObj.eTyp.saveForSelList
-                frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal, _
+                frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal,
                               True, Me.IDApplicationToAssignForSublists, rGroup.IDParticipant,
                               Me.SubListObjToLoad2, rSelListGroupSelected.IDRessource)
 
@@ -957,7 +957,7 @@ Public Class contSelListsObj
 
                 frm.ContSelListsObj1.typDB = sqlAdmin.eDbTypAuswObj.SubSelList
                 frm.ContSelListsObj1.typ = contSelListsObj.eTyp.saveForSelList
-                frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal, _
+                frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal,
                               True, Me.IDApplicationToAssignForSublists, rGroup.IDParticipant,
                               Me.SubListObjToLoad, rSelListGroupSelected.IDRessource)
 
@@ -996,7 +996,7 @@ Public Class contSelListsObj
 
                 frm.ContSelListsObj1.typDB = sqlAdmin.eDbTypAuswObj.SubSelList
                 frm.ContSelListsObj1.typ = contSelListsObj.eTyp.saveForSelList
-                frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal, _
+                frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal,
                               True, Me.IDApplicationToAssignForSublists, rGroup.IDParticipant,
                               Me.SubListObjToLoad, rSelListGroupSelected.IDRessource)
 
@@ -1013,38 +1013,16 @@ Public Class contSelListsObj
 
     Private Sub BuildSqlCheckedTrueToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuildSqlCheckedTrueToolStripMenuItem.Click
         Try
-            Me.Cursor = Windows.Forms.Cursors.WaitCursor
-
-            Dim selRowGrid As Infragistics.Win.UltraWinGrid.UltraGridRow = Nothing
-            Dim rSelListSelected As dsAdmin.tblSelListEntriesRow = Me.getSelectedRow(True, selRowGrid)
-            If Not rSelListSelected Is Nothing Then
-                Dim rGroup As dsAdmin.tblSelListGroupRow = Me.sqlAdmin1.getSelListGroupRowID(rSelListSelected.IDGroup)
-                Dim b As New businessFramework()
-                b.buildSqlCheckedUncheckedSelListObj(True, rSelListSelected, Me._IDApplication, Me._idObject_IDSelListEntrySublist_IDStay, Me.grpToLoad.Trim())
-            End If
 
         Catch ex As Exception
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
-        Finally
-            Me.Cursor = Windows.Forms.Cursors.Default
         End Try
     End Sub
     Private Sub BuildSqlCheckedFalseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuildSqlCheckedFalseToolStripMenuItem.Click
         Try
-            Me.Cursor = Windows.Forms.Cursors.WaitCursor
-
-            Dim selRowGrid As Infragistics.Win.UltraWinGrid.UltraGridRow = Nothing
-            Dim rSelListSelected As dsAdmin.tblSelListEntriesRow = Me.getSelectedRow(True, selRowGrid)
-            If Not rSelListSelected Is Nothing Then
-                Dim rGroup As dsAdmin.tblSelListGroupRow = Me.sqlAdmin1.getSelListGroupRowID(rSelListSelected.IDGroup)
-                Dim b As New businessFramework()
-                b.buildSqlCheckedUncheckedSelListObj(False, rSelListSelected, Me._IDApplication, Me._idObject_IDSelListEntrySublist_IDStay, Me.grpToLoad.Trim())
-            End If
 
         Catch ex As Exception
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
-        Finally
-            Me.Cursor = Windows.Forms.Cursors.Default
         End Try
     End Sub
 

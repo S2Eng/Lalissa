@@ -8,8 +8,6 @@ namespace qs2.design.auto
     public class ownMCCriteria
     {
         private bool NoDefaultValuePossible = false;
-        private static List<qs2.core.vb.businessFramework.cSelListAndObj> lstRolesForUserActive;
-        private static List<qs2.core.vb.businessFramework.cSelListAndObj> lstRolesForUserAll;
         private static qs2.core.db.ERSystem.businessFramework b2 = new core.db.ERSystem.businessFramework();
         private System.Collections.Generic.List<string> lstLicenseKeys = new List<string>();
         private bool _isInitializedVar;
@@ -39,6 +37,8 @@ namespace qs2.design.auto
             {
                 if (this._isInitializedVar)
                     return;
+                this.Application = qs2.core.ENV.developApplication;
+                this.IDParticipant = qs2.core.ENV.developParticipant;
                 ownMCCriteria.initSharedDataSets(true);
                 this._isInitializedVar = true;
             }
@@ -491,12 +491,5 @@ namespace qs2.design.auto
                                                                 qs2.core.Protocol.eTypeError.Error);
             }
         }
-
-        public void getLicenseDesignTime(System.Windows.Forms.Control ctl)
-        {
-            this.Application = qs2.core.ENV.developApplication;
-            this.IDParticipant = qs2.core.ENV.developParticipant;
-        }
     }
-
 }

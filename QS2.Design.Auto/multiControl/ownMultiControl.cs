@@ -160,12 +160,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (this.DesignMode)
-                {
-                    this.setControl(false);
-                    this.ownMCCriteria1.getLicenseDesignTime(this);
-                }
-
                 this.ownMCTxt1.doText(this, false, this.DesignMode);
             }
             catch (Exception ex)

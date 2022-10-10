@@ -113,7 +113,6 @@ namespace qs2.design.auto.print
                             qs2.core.vb.dsAdmin dsSelListFound = new qs2.core.vb.dsAdmin();
 
                             bool colIsCriteriaComboBox = false;
-                            bool colIsCriteriaComboBoxAndIsInRelation = false;
                             dsAdmin.tblRelationshipRow[] arrRelationship = null;
                             bool colIsDbComboBox = false;
                             string SQLValueListSelect = "";
@@ -158,7 +157,7 @@ namespace qs2.design.auto.print
                                     SQLValueListSelect = rCriteriaFound.SQLValueListSelect;
                                     colIsCriteriaComboBox = true;
                                     string FldShortParentReturn = "";
-                                    colIsCriteriaComboBoxAndIsInRelation = b.checkColumnComboBoxExistsSelListRelation(IDGroupToLoad.Trim(), IDApplication.Trim(), ref arrRelationship, ref FldShortParentReturn);
+                                    //colIsCriteriaComboBoxAndIsInRelation = b.checkColumnComboBoxExistsSelListRelation(IDGroupToLoad.Trim(), IDApplication.Trim(), ref arrRelationship, ref FldShortParentReturn);
                                 }
                                 else if (rCriteriaFound.ControlType.Equals(core.Enums.eControlType.CheckBox.ToString(), StringComparison.OrdinalIgnoreCase))
                                 {
@@ -207,25 +206,25 @@ namespace qs2.design.auto.print
                                     }
                                 }
 
-                                if (colIsCriteriaComboBoxAndIsInRelation)
-                                {
-                                    string colPrevNotTrans = "";
-                                    if (colPrev.sEquals(qs2.core.generic.prefixColAutoTranslate, S2Extensions.Enums.eCompareMode.StartsWith))
-                                    {
-                                        colPrevNotTrans = colPrevPrev;
-                                    }
-                                    else
-                                    {
-                                        colPrevNotTrans = colPrev.Trim();
-                                    }
+                                //if (colIsCriteriaComboBoxAndIsInRelation)
+                                //{
+                                //    string colPrevNotTrans = "";
+                                //    if (colPrev.sEquals(qs2.core.generic.prefixColAutoTranslate, S2Extensions.Enums.eCompareMode.StartsWith))
+                                //    {
+                                //        colPrevNotTrans = colPrevPrev;
+                                //    }
+                                //    else
+                                //    {
+                                //        colPrevNotTrans = colPrev.Trim();
+                                //    }
 
-                                    System.Collections.Specialized.ListDictionary lstTranslationsFounded = new System.Collections.Specialized.ListDictionary();
-                                    this.translateSelListComboBox(ref dtFromQuery, ref ErrField, ref ErrFieldSub, col,
-                                                                    ref lstTranslationsFounded,
-                                                                   ref colCount, ref objTranslated, arrSelListEntries, ref protocol,
-                                                                   ref TranslationFound, ref IDGroupToLoad, true, arrRelationship, colPrevNotTrans, IDApplication,
-                                                                   ref SubSelListCboDone, ref arrRelationsParentEqualsValue);
-                                }
+                                //    System.Collections.Specialized.ListDictionary lstTranslationsFounded = new System.Collections.Specialized.ListDictionary();
+                                //    this.translateSelListComboBox(ref dtFromQuery, ref ErrField, ref ErrFieldSub, col,
+                                //                                    ref lstTranslationsFounded,
+                                //                                   ref colCount, ref objTranslated, arrSelListEntries, ref protocol,
+                                //                                   ref TranslationFound, ref IDGroupToLoad, true, arrRelationship, colPrevNotTrans, IDApplication,
+                                //                                   ref SubSelListCboDone, ref arrRelationsParentEqualsValue);
+                                //}
                             }
                             else if (colIsCheckBox || colIsThreeStateCheckBox)
                             {

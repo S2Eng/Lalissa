@@ -124,78 +124,14 @@ namespace qs2.sitemap
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
         }
+
         public void loadApplications(bool setDefault)
         {
             try
             {
                 this.dsLicense1.Applications.Clear();
                 this.doLicense1.FillTableApplications(this.dsLicense1);
-
-                bool ApplicationOK = true;
-                if (qs2.core.license.doLicense.rApplication != null)
-                {
-                    if (qs2.core.license.doLicense.rApplication.IDApplication.Trim().Equals(qs2.core.license.doLicense.eApp.PMDS.ToString().Trim(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        ApplicationOK = false;
-                    }
-                }
-
-                if (ApplicationOK)
-                {
-                    if (!qs2.core.ENV.VSDesignerMode)
-                    {
-                        using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
-                        {
-                            IQueryable<PMDS.db.Entities.tblObjectApplications> tObjectApplications = this.b.getProductsForUser(actUsr.rUsr.IDGuid, db);
-                            if (!qs2.core.ENV.developModus && tObjectApplications.Count() > 0)
-                            {
-                                System.Collections.Generic.List<qs2.core.license.dsLicense.ApplicationsRow> lstAppLicensed = new List<core.license.dsLicense.ApplicationsRow>();
-                                foreach (qs2.core.license.dsLicense.ApplicationsRow rAppLic in this.dsLicense1.Applications)
-                                {
-                                    bool bAppExists = false;
-                                    foreach (PMDS.db.Entities.tblObjectApplications rApp in tObjectApplications)
-                                    {
-                                        if (rApp.IDApplication.Trim().ToLower().Equals(rAppLic.Name.ToLower()))
-                                        {
-                                            bAppExists = true;
-                                        }
-                                    }
-                                    if (!bAppExists)
-                                    {
-                                        lstAppLicensed.Add(rAppLic);
-                                    }
-                                }
-
-                                foreach (qs2.core.license.dsLicense.ApplicationsRow rAppLic in lstAppLicensed)
-                                {
-                                    if (this._ShowAll)
-                                    {
-                                        if (!rAppLic.ID.Trim().ToLower().Equals(("ALL").Trim().ToLower()))
-                                        {
-                                            rAppLic.Delete();
-                                        }
-                                    }
-                                    else
-                                    {
-                                        rAppLic.Delete();
-                                    }
-                                }
-                                this.dsLicense1.AcceptChanges();
-                            }
-                        }
-
-
-                    }
-                    this.cboApplications.Refresh();
-
-                    //if (setDefault)
-                    //    this.cboApplications.Value = this.defaultApplication.ToString();
-                }
-                else
-                {
-                    this.cboApplications.Refresh();
-                }
-
+                this.cboApplications.Refresh();
             }
             catch (Exception ex)
             {

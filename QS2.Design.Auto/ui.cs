@@ -444,9 +444,8 @@ namespace qs2.design.auto
                                     }
                                 }
 
-                                if (bRightIsOk && HasUserHasRight && bIDParticipant && 
-                                    (typRunQuery != qs2.core.Enums.eTypRunQuery.DocumentGroups || b.checkUserRightsReportDocu(rSelListEntryFound.ID)) &&
-                                    (typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups || b.checkRolesReportDocu(rSelListEntryFound.ID, ref lstRolesForUserActive)))
+                                if (bRightIsOk && HasUserHasRight && bIDParticipant && typRunQuery != qs2.core.Enums.eTypRunQuery.DocumentGroups &&
+                                    typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
                                 {
                                     if (rSelListEntryFound._Private && !qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
                                     {

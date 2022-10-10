@@ -281,10 +281,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (this.DesignMode)
-                {
-                    this.ownMCCriteria1.getLicenseDesignTime(this);
-                }
                 this.panelAdd.Height = this._HeigthAddPanel;
                 this.doText();
             }

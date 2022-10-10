@@ -1078,79 +1078,9 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
                 End If
 
                 If res = MsgBoxResult.Yes Then
-                    Using db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()
-                        Dim sProt2 As String = ""
-                        Dim sDeleteOK As Boolean = True
-                        Dim sProt As String = ""
-                        Dim b As New qs2.core.vb.businessFramework()
-                        If Me.mainWindow._OnlyOwnSelListsEditable Then
-                            For Each rGrid As Infragistics.Win.UltraWinGrid.UltraGridRow In rSelected
-                                Dim v As DataRowView = rGrid.ListObject
-                                Dim rSelList As qs2.core.vb.dsAdmin.tblSelListEntriesRow = v.Row
-
-                                Dim bIsQueryGroup As Boolean = False
-                                Dim bSelListRowIdEditable As Boolean = False
-                                If Me.checkIsQueryGroupsEditable(Me.IDGruppeStr, rSelList, bSelListRowIdEditable) Then
-                                    bIsQueryGroup = True
-                                End If
-
-                                If Me.mainWindow._OnlyOwnSelListsEditable Then
-                                    If bIsQueryGroup Then
-                                        If Not rSelList.TypeStr.sEquals("User") Then
-                                            sDeleteOK = False
-                                        End If
-                                    Else
-                                        If b.checkSelListIsUsedInStays(rSelList.ID, sProt) Then
-                                            sDeleteOK = False
-                                        End If
-                                        If rSelList.TypeStr.sEquals("User") Then
-                                            If Not rSelList.IDParticipant.sEquals(qs2.core.license.doLicense.rParticipant.IDParticipant) Then
-                                                sDeleteOK = False
-                                            End If
-                                        Else
-                                            sDeleteOK = False
-                                        End If
-                                    End If
-
-                                    If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                                        sDeleteOK = True
-                                    End If
-                                Else
-                                    sDeleteOK = True
-                                End If
-                            Next
-                        End If
-
-                        If sDeleteOK Then
-                            Dim bStaysOK As Boolean = b.CheckSelListNrInStays(rGroup.IDApplication, qs2.core.license.doLicense.rParticipant.IDParticipant, rGroup.IDGroupStr,
-                                                                              rSelectedSelList.ID, rSelectedSelList.IDOwnInt, Me.IDGuidStay, db, sProt2)
-                            If bStaysOK Then
-                                For Each rGrid As Infragistics.Win.UltraWinGrid.UltraGridRow In rSelected
-                                    'Me.compSelListEntrys.deleteSelListEntry(Me.UltraGrid1.ActiveRow.Cells(Me.DsAuswahllisten1.tblSelListEntrys.IDColumn.ColumnName).Value)
-                                    rGrid.Delete(False)
-                                    'Me.UltraGrid1.DeleteSelectedRows(False)
-                                Next
-                            Else
-                                Dim frmProtocol1 As New frmProtocol()
-                                frmProtocol1.initControl()
-                                frmProtocol1.Text = qs2.core.language.sqlLanguage.getRes("DeleteSelListEntry")
-                                frmProtocol1.Show()
-                                frmProtocol1.ContProtocol1.setText(sProt2)
-                            End If
-                        Else
-                            'qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("SelListIsUsedInStaysAndCanNotDelete") + "!" + vbNewLine + vbNewLine + sProt.Trim(), Windows.Forms.MessageBoxButtons.OK, "")
-                            Dim sInfoSum As String = qs2.core.language.sqlLanguage.getRes("SelListCanNotDeletedWrongParticipant") + vbNewLine + vbNewLine +
-                                                 "" + sProt.Trim()
-
-                            Dim frmProt As New frmProtocol()
-                            frmProt.initControl()
-                            frmProt.Show()
-                            frmProt.Text = qs2.core.language.sqlLanguage.getRes("DeleteSelListEntry")
-                            frmProt.ContProtocol1.setText(sInfoSum.Trim())
-                            Exit Sub
-                        End If
-                        'Me.loadAuswahllistenByGruppe()
-                    End Using
+                    For Each rGrid As Infragistics.Win.UltraWinGrid.UltraGridRow In rSelected
+                        rGrid.Delete(False)
+                    Next
                 End If
             Else
                 qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoRecord"), Windows.Forms.MessageBoxButtons.OK, "")
@@ -1160,6 +1090,7 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
         End Try
     End Sub
+
     Private Sub deleteRowsGroup()
         Try
             Dim b As New qs2.core.vb.businessFramework()

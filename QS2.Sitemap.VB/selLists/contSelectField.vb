@@ -83,14 +83,14 @@ Public Class contSelectField
                 Me.selectTab(eTab.Database.ToString())
                 Me.selectedTab = eTab.Database
 
-                If Me.modeQueryUI = core.Enums.eTypeQuery.User And _
-                        Me.rSelQuery.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleView.ToString().ToLower()) And _
+                If Me.modeQueryUI = core.Enums.eTypeQuery.User And
+                        Me.rSelQuery.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleView.ToString().ToLower()) And
                         Me.rSelQuery.TypeStr.Trim().ToLower().Equals(core.Enums.eTypeQuery.User.ToString().Trim().ToLower()) Then
 
                     Me.toolbarsManagerSelectFrom.Visible = False
 
-                ElseIf Me.modeQueryUI = core.Enums.eTypeQuery.Admin And _
-                        Me.rSelQuery.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleView.ToString().ToLower()) And _
+                ElseIf Me.modeQueryUI = core.Enums.eTypeQuery.Admin And
+                        Me.rSelQuery.TypeQry.Trim().ToLower().Equals(qs2.core.print.print.eQueryType.SimpleView.ToString().ToLower()) And
                         Me.SelectedTypQueryDef.Trim().ToLower() = qs2.core.Enums.eTypQueryDef.SelectFields.ToString().Trim().ToLower() Then
 
                     Me.toolbarsManagerSelectFrom.Visible = True

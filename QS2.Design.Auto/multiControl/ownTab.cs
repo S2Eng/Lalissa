@@ -66,12 +66,6 @@ namespace qs2.design.auto.multiControl
         }
 
 
-        public void doControlxy()
-        {
-            if (this.DesignMode)
-                this.ownControlCriteria1.getLicenseDesignTime(this);
-        }
-        
         private void InitializeComponent()
         {
             this.ultraTabSharedControlsPage5 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
@@ -92,18 +86,6 @@ namespace qs2.design.auto.multiControl
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
-        }
-
-        public void doText()
-        {
-            if (this.DesignMode)
-                this.ownControlCriteria1.getLicenseDesignTime(this);
-
-            if (!this.DesignMode && qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-            {
-                this.ContextMenuStrip = this.ContextMenuStrip1;
-                this.criteriasToolStripMenuItem1.Text = qs2.core.language.sqlLanguage.getRes("Criterias") + " [" + qs2.core.Enums.eControlType.TabPage.ToString() + "]";
-            }
         }
 
         private void loadedDatToolStripMenuItem_Click(object sender, EventArgs e)
