@@ -988,7 +988,6 @@ namespace qs2.ui.pint
                 else if (e.Tool.Key.Equals(eTypToolbar.btnManageQueries.ToString()))
                 {
                     qs2.core.ENV.cParsCalMainFunction pars = new qs2.core.ENV.cParsCalMainFunction();
-                    qs2.core.ENV.CallFunctionMain(core.ENV.eTypeFunction.loadManageQueryuser, pars);
                 }   
                 else if (e.Tool.Key.Equals(eTypToolbar.btnAssignSubqueries.ToString()))
                 {

@@ -53,7 +53,6 @@ namespace qs2.ui
                     sb.IntegratedSecurity = false;
                     sb.UserID = Usr;
                     sb.Password = Pwd;
-                    qs2.core.ENV.autoLogInPwdDecrypted = Pwd;
                     qs2.core.ENV.pwdDbDecrypted = Pwd;
                 }
 

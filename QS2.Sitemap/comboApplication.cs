@@ -175,12 +175,6 @@ namespace qs2.sitemap
                 this.Cursor = Cursors.WaitCursor;
                 if (this.cboApplications.Focused)
                 {
-                    if (this.IsMainApplicationComboBox)
-                    {
-                        qs2.core.ENV.IDApplicationActiveFromUser = this.getSelectedApplication().ToString();
-                        //qs2.core.license.doLicense.GetLicense() 
-
-                    }
                     if (this.evOnChange != null)
                     {
                         this.evOnChange.Invoke(this.getSelectedApplication().ToString());
