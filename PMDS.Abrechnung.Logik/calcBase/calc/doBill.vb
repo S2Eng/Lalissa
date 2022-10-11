@@ -285,7 +285,7 @@ Public Class doBill
 
                     For Each abwesenheit As dbCalc.AbwesenheitenRow In dbCalc.Abwesenheiten
                         Dim cAbwNew As New cAbw()
-                        cAbwNew.Text = "Von " + abwesenheit.Von.ToString(Me.dateFormat) + " bis " & IIf(abwesenheit.Bis.ToString(Me.dateFormat) = Me.dat2999, "laufend ", abwesenheit.Bis.ToString(Me.dateFormat)) + " wegen " + abwesenheit.Grund
+                        cAbwNew.Text = "Von " + abwesenheit.Von.ToString(Me.dateFormat) + " bis " & IIf(abwesenheit.Bis.ToString(Me.dateFormat) = dat2999, "laufend ", abwesenheit.Bis.ToString(Me.dateFormat)) + " wegen " + abwesenheit.Grund
                         listAbwSimple.Add(cAbwNew)
                     Next
 
@@ -440,7 +440,7 @@ Public Class doBill
                                          ByRef abwesenheit As dbCalc.AbwesenheitenRow) As String
 
         sTxtVon = "von " + abwesenheit.Von.ToString(Me.dateFormat)
-        sTxtVonBis = sTxtVon + " bis " & IIf(abwesenheit.Bis.ToString(Me.dateFormat) = Me.dat2999, "laufend ", abwesenheit.Bis.ToString(Me.dateFormat))
+        sTxtVonBis = sTxtVon + " bis " & IIf(abwesenheit.Bis.ToString(Me.dateFormat) = dat2999, "laufend ", abwesenheit.Bis.ToString(Me.dateFormat))
         sTxtVonBisGrund = abwesenheit.Grund.Trim()    'sTxtVonBis.Trim() + " wegen " + 
     End Function
     Public Sub doNextMonth(ByRef calc As calcData, ByRef rKost As dbCalc.KostenträgerRow, ByRef RollungJN As Boolean,
@@ -503,7 +503,7 @@ Public Class doBill
             'Dim OffenesAcconto As Decimal = booking.sollMinusHaben(Me.rowKlient(calc.dbCalc).ID, rKost.IDKost, Me.dat1900, Me.rowMonat(calc.dbCalc).Ende, "Kundenforderungen", "", eCalcRun.month)
 
             'Keine Einschränkung für Zeitraum. Auch Zahlungen, die für die Zukunft eingetragen sind, werden berücksichtigt. os, 2009-10-08
-            Dim OffenesAcconto As Decimal = booking.sollMinusHaben(Me.rowKlient(calc.dbCalc).ID, False, rKost.IDKost, Me.dat1900, Me.dat2999, "Kundenforderungen", "", eCalcRun.month, IDKlinik)
+            Dim OffenesAcconto As Decimal = booking.sollMinusHaben(Me.rowKlient(calc.dbCalc).ID, False, rKost.IDKost, dat1900, dat2999, "Kundenforderungen", "", eCalcRun.month, IDKlinik)
 
             Dim AccontoVerwendbar As Decimal = 0
             If OffenesAcconto <> 0 And Not RollungJN And Not Me.rowKlient(calc.dbCalc).calcRun = eCalcRun.freeBill Then  'Kontostand nur bei Monatsabrechnung berücksichtigen

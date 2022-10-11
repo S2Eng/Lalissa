@@ -144,15 +144,15 @@ namespace WCFServicePMDS
             {
                 throw new Exception("getEhrDocuments: Fct not activated!");
 
-                var tPat = (from p in ELGAChache.lEhrDocumentClientDto
-                            where p.ID == ID
-                            select new
-                            {
-                                IDUser = p.IDUser,
-                                documentClient = p.documentClient
-                            }).ToList();
+                //var tPat = (from p in ELGAChache.lEhrDocumentClientDto
+                //            where p.ID == ID
+                //            select new
+                //            {
+                //                IDUser = p.IDUser,
+                //                documentClient = p.documentClient
+                //            }).ToList();
 
-                return tPat.First().documentClient;
+                //return tPat.First().documentClient;
 
             }
             catch (Exception ex)
@@ -166,11 +166,11 @@ namespace WCFServicePMDS
             {
                 throw new Exception("addDocuToChache: Fct not activated!");
 
-                if (ELGAChache.lEhrDocumentClientDto == null)
-                {
-                    ELGAChache.lEhrDocumentClientDto = new ConcurrentBag<ELGADocumentUsr>();
-                }
-                ELGAChache.lEhrDocumentClientDto.Add(new ELGAChache.ELGADocumentUsr() { ID = ID, IDUser = session.IDUser,  documentClient = elgaDocu });
+                //if (ELGAChache.lEhrDocumentClientDto == null)
+                //{
+                //    ELGAChache.lEhrDocumentClientDto = new ConcurrentBag<ELGADocumentUsr>();
+                //}
+                //ELGAChache.lEhrDocumentClientDto.Add(new ELGAChache.ELGADocumentUsr() { ID = ID, IDUser = session.IDUser,  documentClient = elgaDocu });
 
             }
             catch (Exception ex)
@@ -184,30 +184,30 @@ namespace WCFServicePMDS
             {
                 throw new Exception("clearEhrDocuments: Fct not activated!");
 
-                if (ELGAChache.lEhrDocumentClientDto != null)
-                {
-                    Guid IDUsrTmp = session.IDUser;
-                    var tDocu = (from p in ELGAChache.lEhrDocumentClientDto
-                                 where p.IDUser == IDUsrTmp
-                                 select new
-                                 {
-                                     IDUser = p.IDUser,
-                                     documentClient = p.documentClient
-                                 }).ToList();
+                //if (ELGAChache.lEhrDocumentClientDto != null)
+                //{
+                //    Guid IDUsrTmp = session.IDUser;
+                //    var tDocu = (from p in ELGAChache.lEhrDocumentClientDto
+                //                 where p.IDUser == IDUsrTmp
+                //                 select new
+                //                 {
+                //                     IDUser = p.IDUser,
+                //                     documentClient = p.documentClient
+                //                 }).ToList();
 
-                    System.Collections.Generic.List<documentClientDto> lEhrDocuToDelete = new List<documentClientDto>();
-                    foreach (var rDocu in tDocu)
-                    {
-                        lEhrDocuToDelete.Add(rDocu.documentClient);
-                    }
-                    foreach (var rDocu in lEhrDocuToDelete)
-                    {
-                        ELGAChache.ELGADocumentUsr rDocuRet;
-                        ELGAChache.lEhrDocumentClientDto.TryTake(out rDocuRet);
-                    }
-                }
+                //    System.Collections.Generic.List<documentClientDto> lEhrDocuToDelete = new List<documentClientDto>();
+                //    foreach (var rDocu in tDocu)
+                //    {
+                //        lEhrDocuToDelete.Add(rDocu.documentClient);
+                //    }
+                //    foreach (var rDocu in lEhrDocuToDelete)
+                //    {
+                //        ELGAChache.ELGADocumentUsr rDocuRet;
+                //        ELGAChache.lEhrDocumentClientDto.TryTake(out rDocuRet);
+                //    }
+                //}
 
-                return true;
+                //return true;
             }
             catch (Exception ex)
             {

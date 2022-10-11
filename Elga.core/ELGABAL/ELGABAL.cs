@@ -113,7 +113,7 @@ namespace WCFServicePMDS
             }
             catch (Exception ex)
             {
-                session.Errors = "Unbekannter Fehler beim Abmelden von ELGA.";
+                session.Errors = "Unbekannter Fehler beim Abmelden von ELGA: " + ex.Message.ToString();
                 session.ELGAStateID = "";
                 return false;
             }
@@ -379,7 +379,6 @@ namespace WCFServicePMDS
                     }
                     else
                     {
-                        bool bNoDataFound = true;
                         throw new Exception("ELGABAL.updatePatient: npatient found in response-data! (ehrPatientRsp1.responseData=null)");
                     }
                     return retDto;
@@ -461,8 +460,6 @@ namespace WCFServicePMDS
                 {
                     throw new Exception("ELGABAL.addContactDischarge: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                 }
-                ehrPatientClientDto ehrPatientClientDtoBack = null;
-
                 retDto = this.listContacts(ref parsIn, authUniversalID, ELGAUrl);                
 
                 trsClientInvalidateContactRq trsClientInvalidateContactRq1 = new trsClientInvalidateContactRq();
@@ -1165,80 +1162,80 @@ namespace WCFServicePMDS
 
                 //documentClientDto changedDocument
 
-                ELGAParOutDto retDto = this.initParOut();
+                //ELGAParOutDto retDto = this.initParOut();
 
-                EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
+                //EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
 
-                if (parsIn.sObjectDto.SozVersNrLocalPatID.Trim() == "")
-                {
-                    throw new Exception("ELGABAL.updateDocument: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
-                }
-                ehrPatientClientDto ehrPatientClientDtoBack = null;
-                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID, ELGAUrl);
+                //if (parsIn.sObjectDto.SozVersNrLocalPatID.Trim() == "")
+                //{
+                //    throw new Exception("ELGABAL.updateDocument: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
+                //}
+                //ehrPatientClientDto ehrPatientClientDtoBack = null;
+                //this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID, ELGAUrl);
 
-                //changedDocument.bytes = documentBytesToSubmit;
+                ////changedDocument.bytes = documentBytesToSubmit;
 
-                string[] arrInst = new string[1] { "" + parsIn.DocumentAdd.KlinikName.Trim() + "^^^^^^^^^" + "urn:oid:" + parsIn.DocumentAdd.KlinikOrganisationID.Trim() + "" };
+                //string[] arrInst = new string[1] { "" + parsIn.DocumentAdd.KlinikName.Trim() + "^^^^^^^^^" + "urn:oid:" + parsIn.DocumentAdd.KlinikOrganisationID.Trim() + "" };
 
-                // Create a SubmissionSet (because every XDS-action needs a new own one, e.g. for our updateDocument)
-                submissionSetClientDto submissionSet2 = new submissionSetClientDto();
+                //// Create a SubmissionSet (because every XDS-action needs a new own one, e.g. for our updateDocument)
+                //submissionSetClientDto submissionSet2 = new submissionSetClientDto();
 
-                authorMetadataClientDto submissionSetAuthorMetadata2 = new authorMetadataClientDto();
-                submissionSetAuthorMetadata2.person = parsIn.DocumentAdd.Author.Trim();
-                submissionSetAuthorMetadata2.institution = arrInst;
-                authorMetadataClientDto[] arrSubmissionSetAuthorMetadata2 = new authorMetadataClientDto[1] { submissionSetAuthorMetadata2 };
+                //authorMetadataClientDto submissionSetAuthorMetadata2 = new authorMetadataClientDto();
+                //submissionSetAuthorMetadata2.person = parsIn.DocumentAdd.Author.Trim();
+                //submissionSetAuthorMetadata2.institution = arrInst;
+                //authorMetadataClientDto[] arrSubmissionSetAuthorMetadata2 = new authorMetadataClientDto[1] { submissionSetAuthorMetadata2 };
 
-                submissionSet2.author = arrSubmissionSetAuthorMetadata2;
-                submissionSet2.name = parsIn.DocumentAdd.Documentname.Trim();
-                submissionSet2.description = parsIn.DocumentAdd.Description.Trim();
+                //submissionSet2.author = arrSubmissionSetAuthorMetadata2;
+                //submissionSet2.name = parsIn.DocumentAdd.Documentname.Trim();
+                //submissionSet2.description = parsIn.DocumentAdd.Description.Trim();
 
-                //New Document
-                documentClientDto NewDocument = new documentClientDto();
+                ////New Document
+                //documentClientDto NewDocument = new documentClientDto();
 
-                authorMetadataClientDto newDocumentAuthorMetadata = new authorMetadataClientDto();
-                newDocumentAuthorMetadata.person = parsIn.DocumentAdd.Author.Trim();
+                //authorMetadataClientDto newDocumentAuthorMetadata = new authorMetadataClientDto();
+                //newDocumentAuthorMetadata.person = parsIn.DocumentAdd.Author.Trim();
 
-                newDocumentAuthorMetadata.institution = arrInst;
-                authorMetadataClientDto[] arrSubmissionSetAuthorMetadata2New = new authorMetadataClientDto[1] { newDocumentAuthorMetadata };
-                NewDocument.author = arrSubmissionSetAuthorMetadata2New;
+                //newDocumentAuthorMetadata.institution = arrInst;
+                //authorMetadataClientDto[] arrSubmissionSetAuthorMetadata2New = new authorMetadataClientDto[1] { newDocumentAuthorMetadata };
+                //NewDocument.author = arrSubmissionSetAuthorMetadata2New;
 
-                NewDocument.name = parsIn.DocumentAdd.Documentname.Trim();
-                NewDocument.description = parsIn.DocumentAdd.Description.Trim();
-                NewDocument.bytes = parsIn.DocumentAdd.bDocument;
-                //submittingDocument.patientId = xdsPatientPid;
-                //submittingDocument.logicalId = ehrPatIdRsp_LocalID.stateID;
-                NewDocument.legalAuthenticator = "document.legalAuthenticator";
-                NewDocument.languageCode = "DE-TI";
-                NewDocument.mimeType = "text/xml";
+                //NewDocument.name = parsIn.DocumentAdd.Documentname.Trim();
+                //NewDocument.description = parsIn.DocumentAdd.Description.Trim();
+                //NewDocument.bytes = parsIn.DocumentAdd.bDocument;
+                ////submittingDocument.patientId = xdsPatientPid;
+                ////submittingDocument.logicalId = ehrPatIdRsp_LocalID.stateID;
+                //NewDocument.legalAuthenticator = "document.legalAuthenticator";
+                //NewDocument.languageCode = "DE-TI";
+                //NewDocument.mimeType = "text/xml";
 
-                this.setIheClassificationForDocument(ref NewDocument, ref submissionSet2);
+                //this.setIheClassificationForDocument(ref NewDocument, ref submissionSet2);
 
-                sourceSubmissionClientDto sourceSubmission = new sourceSubmissionClientDto();
-                documentClientDto[] arrDsubmittingDocument = new documentClientDto[] { NewDocument };
-                sourceSubmission.documents = arrDsubmittingDocument;
-                sourceSubmission.submissionSet = submissionSet2;
+                //sourceSubmissionClientDto sourceSubmission = new sourceSubmissionClientDto();
+                //documentClientDto[] arrDsubmittingDocument = new documentClientDto[] { NewDocument };
+                //sourceSubmission.documents = arrDsubmittingDocument;
+                //sourceSubmission.submissionSet = submissionSet2;
 
-                xdsSrcApRpReq request = new xdsSrcApRpReq();
-                request.patient = ehrPatientClientDtoBack;
-                request.stateID = parsIn.session.ELGAStateID;
-                //request.oldDocument = changedDocument;
-                request.srcSubmission = sourceSubmission;
+                //xdsSrcApRpReq request = new xdsSrcApRpReq();
+                //request.patient = ehrPatientClientDtoBack;
+                //request.stateID = parsIn.session.ELGAStateID;
+                ////request.oldDocument = changedDocument;
+                //request.srcSubmission = sourceSubmission;
 
-                xdsSrcSubmitRsp xdsSrcSubmitRsp1 = objWsLogin.replace(request);
+                //xdsSrcSubmitRsp xdsSrcSubmitRsp1 = objWsLogin.replace(request);
 
-                if (xdsSrcSubmitRsp1.responseDetail.listError.Count() == 0)
-                {
-                    documentClientDto documentClientDtoBack = null;
-                    submissionSetClientDto submissionSet = null;
-                    this.queryDocuments(ref parsIn, true, UniqueId, ref documentClientDtoBack, ref submissionSet, authUniversalID, ELGAUrl);
-                    retDto.bOK = true;
-                    return retDto;
-                }
-                else
-                {
-                    this.getErrosElgaFct(xdsSrcSubmitRsp1.responseDetail.listError, ref retDto);
-                    return retDto;
-                }
+                //if (xdsSrcSubmitRsp1.responseDetail.listError.Count() == 0)
+                //{
+                //    documentClientDto documentClientDtoBack = null;
+                //    submissionSetClientDto submissionSet = null;
+                //    this.queryDocuments(ref parsIn, true, UniqueId, ref documentClientDtoBack, ref submissionSet, authUniversalID, ELGAUrl);
+                //    retDto.bOK = true;
+                //    return retDto;
+                //}
+                //else
+                //{
+                //    this.getErrosElgaFct(xdsSrcSubmitRsp1.responseDetail.listError, ref retDto);
+                //    return retDto;
+                //}
             }
             catch (Exception ex)
             {
@@ -1480,10 +1477,6 @@ namespace WCFServicePMDS
                                 }
                             }
                         }
-                    }
-                    else
-                    {
-                        bool bNoDataFound = true;
                     }
 
                     if (OneDocuMustFound)

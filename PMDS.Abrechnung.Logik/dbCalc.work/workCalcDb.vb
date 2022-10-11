@@ -179,7 +179,7 @@ Public Class workCalcDb
 
     Public Function SetBMDExportTyp(NewBMDExportTyp As PMDS.Calc.Logic.workCalcDb.eBMDExportTyp, FSW_FibuKonto As String)
         Try
-            Me.FSW_FibuKonto = FSW_FibuKonto
+            FSW_FibuKonto = FSW_FibuKonto
             BMDExportTyp = NewBMDExportTyp
         Catch ex As Exception
             calcBase.doExept(ex)

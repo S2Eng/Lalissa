@@ -561,7 +561,7 @@ Public Class doSr
                     rNewAbw.Name = ""
 
                     Dim sAbwTxt As String = " - von " + rAbw.Von.ToString(Me.dateFormat)
-                    sAbwTxt += " bis " & IIf(rAbw.Bis = Me.dat2999, "laufend", rAbw.Bis.ToString(Me.dateFormat))
+                    sAbwTxt += " bis " & IIf(rAbw.Bis = dat2999, "laufend", rAbw.Bis.ToString(Me.dateFormat))
                     sAbwTxt += " , Grund: " + rAbw.Grund.Trim()
                     rNewAbw.ID = sAbwTxt
 

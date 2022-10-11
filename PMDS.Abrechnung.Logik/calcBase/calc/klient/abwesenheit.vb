@@ -23,7 +23,7 @@ Public Class abwesenheit
 
                     von = DateSerial(Year(r("von")), Month(r("von")), VB.Day(r("von")))
                     If IsDBNull(r("bis")) Then
-                        bis = Me.dat2999
+                        bis = dat2999
                     Else
                         bis = DateSerial(Year(r("bis")), Month(r("bis")), VB.Day(r("bis")))
                     End If
@@ -69,7 +69,7 @@ Public Class abwesenheit
                     EndeKuerzung = Me.Min((rAbw.Bis), Me.rowMonat(Calc.dbCalc).Ende)
                     LetzterTag = EndeKuerzung
                 Else
-                    If System.DateTime.FromOADate(rAbw.Bis.ToOADate) = Me.dat2999 Then                           'Wenn noch nicht zurückgekehrt, 
+                    If System.DateTime.FromOADate(rAbw.Bis.ToOADate) = dat2999 Then                           'Wenn noch nicht zurückgekehrt, 
                         EndeKuerzung = Me.rowMonat(Calc.dbCalc).Ende
                         LetzterTag = Me.rowMonat(Calc.dbCalc).Ende
                     Else
@@ -110,7 +110,7 @@ Public Class abwesenheit
                     dIterate2 = dIterate2.AddDays(1)
                 End While
 
-                If LetzterTag > EndeKuerzung And LetzterTag <> Me.dat2999 Then
+                If LetzterTag > EndeKuerzung And LetzterTag <> dat2999 Then
                     Dim abrechMonat As Date = Me.rowMonat(Calc.dbCalc).Beginn
                     Dim iLastDayInMonth As Integer = DateTime.DaysInMonth(abrechMonat.Year, abrechMonat.Month)
                     Dim dLastDayinMonth As New Date(abrechMonat.Year, abrechMonat.Month, iLastDayInMonth)

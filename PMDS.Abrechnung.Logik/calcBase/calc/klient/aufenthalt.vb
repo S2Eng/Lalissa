@@ -21,7 +21,7 @@ Public Class Aufenthalt
 
                     von = DateSerial(Year(r("Aufnahmezeitpunkt")), Month(r("Aufnahmezeitpunkt")), VB.Day(r("Aufnahmezeitpunkt")))
                     If IsDBNull(r("Entlassungszeitpunkt")) Then
-                        bis = Me.dat2999
+                        bis = dat2999
                     Else
                         bis = DateSerial(Year(r("Entlassungszeitpunkt")), Month(r("Entlassungszeitpunkt")), VB.Day(r("Entlassungszeitpunkt")))
                     End If
@@ -45,7 +45,7 @@ Public Class Aufenthalt
             Else
                 Dim rNew As dbCalc.AufenthalteRow = calc.dbCalc.Aufenthalte.NewRow()
                 rNew.Von = abrechVon
-                rNew.Bis = Me.dat2999
+                rNew.Bis = dat2999
                 rNew.Nummer = 1
                 rNew.IDKlient = IDKlient
                 rNew.GSBG = 0

@@ -42,7 +42,7 @@ Public Class leistung
                     For Each r As DataRow In qryLeist.table.Rows
                         von = Me.Max((abrechVon), DateSerial(Year(r("GueltigAb")), Month(r("GueltigAb")), VB.Day(r("GueltigAb"))))
                         If IsDBNull(r("GueltigBis")) Then
-                            bis = Me.dat2999
+                            bis = dat2999
                         Else
                             bis = DateSerial(Year(r("GueltigBis")), Month(r("GueltigBis")), VB.Day(r("GueltigBis")))
                         End If
@@ -78,7 +78,7 @@ Public Class leistung
                                     For Each rPreise As DataRow In qryPreise.table.Rows
 
                                         If Not bFirst Then
-                                            rPreise("GueltigBis") = Me.Min(IIf(rPreise("GueltigBis") Is System.DBNull.Value, Me.dat2999, rPreise("GueltigBis")), abrechBis)
+                                            rPreise("GueltigBis") = Me.Min(IIf(rPreise("GueltigBis") Is System.DBNull.Value, dat2999, rPreise("GueltigBis")), abrechBis)
                                             bFirst = True
                                             GueltigAbNext = rPreise("GueltigAb")
                                         Else

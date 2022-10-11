@@ -123,7 +123,7 @@ Public Class print
                 If Not col.print Then Continue For
                 Dim type As String = col.value.GetType.ToString()
 
-                Dim fld As TXTextControl.TextField
+                Dim fld As New TXTextControl.TextField
                 Dim asField As Boolean = False
 
                 If addFieldAdVar Then
