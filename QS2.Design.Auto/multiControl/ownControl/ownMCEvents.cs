@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
 using System.Windows.Forms;
-using Infragistics.Win.Misc;
-using Infragistics.Win.UltraWinGrid;
 using Infragistics.Win.UltraWinTabControl;
-using qs2.core;
 
 namespace qs2.design.auto.multiControl
 {
-
-
     public class ownMCEvents
     {
 
@@ -860,7 +853,7 @@ namespace qs2.design.auto.multiControl
         {
             System.Windows.Forms.ToolStripDropDownItem Itm = (System.Windows.Forms.ToolStripDropDownItem)sender;
             qs2.core.language.dsLanguage.RessourcenRow rRessource = (qs2.core.language.dsLanguage.RessourcenRow)Itm.Tag;
-            string pictureToOpen = this.funct1.saveFileFromBytes(qs2.core.ENV.path_temp, qs2.core.language.sqlLanguage.getRes("HelpForField") + " " + this.ownControl1._FldShort, rRessource.fileType, rRessource.fileBytes);
+            string pictureToOpen = this.funct1.saveFileFromBytes(qs2.core.ENV.PathTemp, qs2.core.language.sqlLanguage.getRes("HelpForField") + " " + this.ownControl1._FldShort, rRessource.fileType, rRessource.fileBytes);
             this.funct1.openFile(pictureToOpen, rRessource.fileType, false);
         }
         public void clear(bool AllToNull)

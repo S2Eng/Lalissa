@@ -88,15 +88,7 @@ namespace qs2.ui.print
                 else if (this.typeQuery == core.Enums.eTypeQuery.User)
                 {
                     this.panelButtonsUnten.Visible = false;
-
-                    if (!qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                    {
-                        this.ExtendedView(false);
-                    }
-                    else
-                    {
-                        this.ExtendedView(false);
-                    }
+                    this.ExtendedView(false);
                 }
 
                 if (this.contSelListQueries.rSelListEntryToLoad != null)
@@ -190,19 +182,13 @@ namespace qs2.ui.print
                 this.dropDownApplications1.initControl(false);
                 this.dropDownApplications1.loadData();
 
-                bool onlyLicensedProducts = true;
-                if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                {
-                    onlyLicensedProducts = false;
-                }
-
                 if (this.typeQuery == core.Enums.eTypeQuery.Admin)
                 {
-                    this.comboApplication1.initControlxy(true, onlyLicensedProducts, true);
+                    this.comboApplication1.initControlxy(true, false, true);
                 }
                 else if (this.typeQuery == core.Enums.eTypeQuery.User)
                 {
-                    this.comboApplication1.initControlxy(false, onlyLicensedProducts, true);
+                    this.comboApplication1.initControlxy(false, false, true);
                 }
                 this.comboApplication1.setApplication(defaultApplication);
             }

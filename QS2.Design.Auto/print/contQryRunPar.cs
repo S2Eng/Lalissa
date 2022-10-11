@@ -1,49 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
 using Infragistics.Win.UltraWinGrid;
 using qs2.core.vb;
-using qs2.ui.pint;
 using QS2.Resources;
-
-
 
 namespace qs2.ui.print
 {
-
-
     public partial class contQryRunPar : UserControl
     {
+        private qs2.print.genReport genReport1 = new qs2.print.genReport();
+        private List<qs2.ui.print.infoQry> lstInfoQry = new List<qs2.ui.print.infoQry>();
+        private List<qs2.ui.print.infoQry> lstInfoQryRunning = new List<qs2.ui.print.infoQry>();
+        private drawMulticontrol drawMulticontrol1 = new drawMulticontrol();
+        private bool isLoaded = false;
+        private int MultiControlNrToLoad = 1;
+        private int lastTopMultiControl = 0;
+        private int lastTopMultiControlBevorSubQuery = 0;
+        private int elementHeigth = 22;
+        private bool right_QueryReportOwn = false;
+        private qs2.design.auto.print.doRelationshipEvaluation doRelationshipEvaluation1 = new qs2.design.auto.print.doRelationshipEvaluation();
+        private bool isStayReport = false;
+        private Guid? IDGuid = null;
+        private delegate void eMCValueChanged2();
+        private eMCValueChanged2 MCValueChanged2;
 
-        public qs2.core.vb.funct funct1 = new qs2.core.vb.funct();
-        public qs2.print.genReport genReport1 = new qs2.print.genReport();
-        
+        public static bool lockClickQueryReportButtons = false;
         public frmQryRunReport mainWindow;
         public Infragistics.Win.UltraWinToolbars.PopupMenuTool popUpService;
         public Infragistics.Win.UltraWinToolbars.PopupMenuTool popUpQueries;
-
-        public UltraGridRow rowGridSelList;
         public qs2.core.Enums.eTypRunQuery typRunQuery = new qs2.core.Enums.eTypRunQuery();
-
         public qs2.ui.print.infoReport infoReport = new qs2.ui.print.infoReport();
-        public System.Collections.Generic.List<qs2.ui.print.infoQry> lstInfoQry = new System.Collections.Generic.List<qs2.ui.print.infoQry>();
-        public System.Collections.Generic.List<qs2.ui.print.infoQry> lstInfoQryRunning = new System.Collections.Generic.List<qs2.ui.print.infoQry>();
-        
-        public drawMulticontrol drawMulticontrol1 = new drawMulticontrol();
-        public bool isLoaded = false;
-
-
-        public int  MultiControlNrToLoad = 1;
-        public int lastTopMultiControl = 0;
-        public int lastTopMultiControlBevorSubQuery = 0;
-
-        public int elementHeigth = 22;
+        public UltraGridRow rowGridSelList;
 
         public enum eTypToolbar
         {
@@ -51,38 +40,6 @@ namespace qs2.ui.print
             SaveXSD = 1,
             GenSqlAndOpen = 2
         }
-
-        public enum eActionElement
-        {
-            getTranslatedText = 0
-        }
-        public enum eActionType
-        {
-            NormalRows = 0,
-            BeetweenRows = 1,
-            DeleteRows = 2,
-            GetSqlWhere = 3,
-            WriteSqlWhere = 4
-        }
-        public static bool lockClickQueryReportButtons = false;
-        public bool right_QueryReportOwn = false;
-        public qs2.design.auto.print.doRelationshipEvaluation doRelationshipEvaluation1 = new qs2.design.auto.print.doRelationshipEvaluation();
-
-        public bool isStayReport = false;
-        public Nullable<Guid> IDGuid = null;
-
-        public delegate void eMCValueChanged2();
-        public eMCValueChanged2 MCValueChanged2;
-
-
-
-
-
-
-
-
-
-
 
         public contQryRunPar()
         {
@@ -119,51 +76,22 @@ namespace qs2.ui.print
                 this.drawMulticontrol1.initControl();
                 this.loadRes();
                 this.setUIQuery(false);
-                this.panelParameters.Visible = false;
-
-
-                if (!qs2.core.vb.actUsr.rUsr.isAdmin && !qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                {
-                    this.popUpService.SharedProps.Visible = false;
-                    this.menuStripManageQuerySubSelect.Visible = false;
-                    this.panelService.Visible = false;
-                }
-                else
-                {
-                    this.panelService.Visible = true;
-                }
-                if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                {
-                    this.ultraToolbarsManager1.Visible = true;
-                }
-                else
-                {
-                    this.ultraToolbarsManager1.Visible = false;
-                }
-
+                this.panelParameters.Visible = true;
+                this.ultraToolbarsManager1.Visible = true;
                 this.right_QueryReportOwn = true;
-                if (!qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                {
-                    this.openResultsInTableToolStripMenuItem.Visible = false;
-                }
-                else
-                {
-                    this.generateSqlCommandForCommandLineToolStripMenuItem.Visible = true;
-                    this.panelService.Visible = true;
-                    right_QueryReportOwn = true;
-                }
-
+                this.generateSqlCommandForCommandLineToolStripMenuItem.Visible = true;
+                this.panelService.Visible = true;
                 this.contSelListQueries1._IsSubQueriesFromMainControl = true;
                 this.grpQueryParameter.Visible = false;
 
                 this.isLoaded = true;
-
             }
             catch (Exception ex)
             {
                 throw new Exception("contQryRunPar.initControl: " + ex.ToString());
             }
         }
+
         public void loadRes()
         {
             try
@@ -1413,7 +1341,7 @@ namespace qs2.ui.print
                 }
                 else if (e.Tool.Key.Equals("openReportDirectory"))
                 {
-                    System.Diagnostics.Process.Start("explorer.exe", System.IO.Path.Combine(qs2.core.ENV.path_reports , this.infoReport.Application));
+                    System.Diagnostics.Process.Start("explorer.exe", System.IO.Path.Combine(qs2.core.ENV.PathReports , this.infoReport.Application));
                 }                   
                 else if(e.Tool.Key.Substring(0, 9).Equals(eTypToolbar.EditQuery.ToString()))
                 {

@@ -87,6 +87,8 @@ Public Class funct
                 Return openFileDialog.FileName
             End If
 
+            Return ""
+
         Catch ex As Exception
             Throw New Exception("funct.selectFile:" + vbNewLine + vbNewLine + ex.ToString())
         Finally
@@ -110,6 +112,8 @@ Public Class funct
             If SaveFileDialog.ShowDialog() = DialogResult.OK Then
                 Return SaveFileDialog.FileName
             End If
+
+            Return ""
 
         Catch ex As Exception
             Throw New Exception("funct.saveFile:" + vbNewLine + vbNewLine + ex.ToString())
@@ -242,7 +246,7 @@ Public Class funct
             If openTemporär Then
                 Dim IDNewFileNameTemp As New System.Guid
                 IDNewFileNameTemp = System.Guid.NewGuid
-                dateiTemp = Path.Combine(qs2.core.ENV.path_temp, IDNewFileNameTemp.ToString, dateiTyp)
+                dateiTemp = Path.Combine(qs2.core.ENV.PathTemp, IDNewFileNameTemp.ToString, dateiTyp)
                 System.IO.File.Copy(file, dateiTemp)
             Else
                 dateiTemp = file
@@ -459,8 +463,8 @@ Public Class funct
 
     End Sub
 
-    Public Function setFilter(ByVal col As String, ByVal oper As FilterLogicalOperator, _
-                          ByVal filterVal As Object, ByVal compxy As Infragistics.Win.UltraWinGrid.FilterComparisionOperator, _
+    Public Sub setFilter(ByVal col As String, ByVal oper As FilterLogicalOperator,
+                          ByVal filterVal As Object, ByVal compxy As Infragistics.Win.UltraWinGrid.FilterComparisionOperator,
                           ByVal grid As UltraGrid, ByVal bandIndex As Integer)
 
         Dim condition As FilterCondition
@@ -468,15 +472,15 @@ Public Class funct
         grid.DisplayLayout.Bands(bandIndex).ColumnFilters(col).LogicalOperator = oper
         condition = grid.DisplayLayout.Bands(bandIndex).ColumnFilters(col).FilterConditions.Add(FilterComparisionOperator.Contains, filterVal)
 
-    End Function
+    End Sub
 
-    Public Function clearAllFilter(ByVal grid As UltraGrid)
+    Public Sub clearAllFilter(ByVal grid As UltraGrid)
         For Each band As UltraGridBand In grid.DisplayLayout.Bands
             For Each colFilter As ColumnFilter In band.ColumnFilters
                 colFilter.ClearFilterConditions()
             Next
         Next
-    End Function
+    End Sub
 
     Public Sub gridAdvancedView(ByVal bOn As Boolean, ByRef grid As UltraGrid, _
                             ByVal lstColAktivate As System.Collections.Generic.List(Of String), _

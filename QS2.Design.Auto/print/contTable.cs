@@ -106,14 +106,7 @@ namespace qs2.ui.print
                 qs2.core.vb.funct.setStyleGrid(ref this.ultraGrid1, false,  true);
                 this.doRes(selectDatasets);
 
-                if (actUsr.rUsr.isAdmin || qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                {
-                    this.layoutManagerToolStripMenuItem.Visible = true;
-                }
-                else
-                {
-                    this.layoutManagerToolStripMenuItem.Visible = false;
-                }
+                this.layoutManagerToolStripMenuItem.Visible = true;
 
                 this.chkShowAllRows.Checked = qs2.core.ENV.ShowAllRowsQueryResult;
                 this.showAllRowsToolStripMenuItem.Checked = qs2.core.ENV.ShowAllRowsQueryResult;
@@ -1128,14 +1121,11 @@ namespace qs2.ui.print
                 frmLayoutManager1.ContLayoutGrid1.cLayoutManager1._LayoutKey = this.LayoutKey;
                 frmLayoutManager1.ContLayoutGrid1.cLayoutManager1.gridUIToSave = this.ultraGrid1;
                 frmLayoutManager1.ContLayoutGrid1.cLayoutManager1.typLayoutGrid = cLayoutManager.eTypLayoutGrid.onlyFirstBand;
-                frmLayoutManager1.initControl("", false, "", qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() );
+                frmLayoutManager1.initControl("", false, "", true);
                 frmLayoutManager1.ContLayoutGrid1.loadData(this.LayoutKey.Trim(), this.LayoutKey.Trim(), true, true, true);
                 qs2.core.ENV.lstOpendChildForms.Add(frmLayoutManager1);
                 frmLayoutManager1.Show();
-                //if (!frmLayoutManager1.ContLayoutGrid1.layoutDeleted)
-                //{
-                //    this.compLayout1.doLayoutGrid(this.ultraGrid1, this.LayoutKey, null);
-                //}
+
             }
             catch (Exception ex)
             {

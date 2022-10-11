@@ -247,7 +247,7 @@ namespace qs2.design.auto
                 System.Diagnostics.ProcessStartInfo ProcessStartInfo = new System.Diagnostics.ProcessStartInfo();
                 ProcessStartInfo.Arguments = " ?typ=" + sTypeToStart.Trim() + "";
 
-                string sConfigPath = qs2.core.ENV.path_config.Trim();
+                string sConfigPath = qs2.core.ENV.PathConfig.Trim();
                 string sConfigFile = qs2.core.ENV.configFile.Trim();
                 string sIDUser = IDUser.ToString().Trim();
 
@@ -334,126 +334,41 @@ namespace qs2.design.auto
 
                 foreach (dsAdmin.tblSelListEntriesObjRow rObj in dsAdminForButtons.tblSelListEntriesObj)
                 {
-                    //if (rObj.IDParticipant.Trim() == "ALL" || rObj.IDParticipant.Trim() == "")
-                    //{
                     dsAdmin.tblSelListEntriesRow rSelListEntryFound = sqlAdmin1.getSelListEntrysRow("", sqlAdmin.eTypAuswahlList.id, qs2.core.license.doLicense.eApp.ALL.ToString(), IDApplication, "", 0, "", rObj.IDSelListEntry);
                     if (rSelListEntryFound != null)
                     {
-                        bool bHasLicenseKey = false;
-                        if (rSelListEntryFound.LicenseKey.Trim() == "")
-                        {
-                            bHasLicenseKey = true;
-                        }
-                        else
-                        {
-                            System.Collections.Generic.List<string> lstLicenseKeys = new List<string>();
-                            lstLicenseKeys = b.getVariablesLicenseKeys(rSelListEntryFound.LicenseKey.Trim());
-                            bHasLicenseKey = b2.checkLicenseKey(lstLicenseKeys, rSelListEntryFound.FldShortColumn.Trim(), IDApplication);
-                        }
-                        if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                        {
-                            bHasLicenseKey = true;
-                        }
+                        dsAdmin.tblSelListEntriesRow rSelListEntryFound2 = sqlAdmin1.getSelListEntrysRow("", sqlAdmin.eTypAuswahlList.id, qs2.core.license.doLicense.eApp.ALL.ToString(), IDApplication, "", 0, "", rObj.IDSelListEntrySublist);
+                        dsAdmin.tblSelListGroupRow rSelListGroupRow2 = sqlAdmin1.getSelListGroupRowID(rSelListEntryFound2.IDGroup);
+                        dsAdmin.tblSelListGroupRow rSelListGroupRow = sqlAdmin1.getSelListGroupRowID(rSelListEntryFound.IDGroup);
 
-                        if (bHasLicenseKey)
+                        qs2.ui.pint.contQryRun.cButton NewButton = new qs2.ui.pint.contQryRun.cButton();
+                        NewButton.rObj = rObj;
+                        NewButton.rSelListEntrySubListFound = rSelListEntryFound2;
+                        NewButton.rSelListEntryFound = rSelListEntryFound;
+
+                        bool bExistsInGroup = false;
+                        foreach (KeyValuePair<string, qs2.ui.pint.contQryRun.cButton> KeyValuePairButton in dictButtons)
                         {
-                            dsAdmin.tblSelListEntriesRow rSelListEntryFound2 = sqlAdmin1.getSelListEntrysRow("", sqlAdmin.eTypAuswahlList.id, qs2.core.license.doLicense.eApp.ALL.ToString(), IDApplication, "", 0, "", rObj.IDSelListEntrySublist);
-                            dsAdmin.tblSelListGroupRow rSelListGroupRow2 = sqlAdmin1.getSelListGroupRowID(rSelListEntryFound2.IDGroup);
-                            dsAdmin.tblSelListGroupRow rSelListGroupRow = sqlAdmin1.getSelListGroupRowID(rSelListEntryFound.IDGroup);
-
-                            qs2.ui.pint.contQryRun.cButton NewButton = new qs2.ui.pint.contQryRun.cButton();
-                            NewButton.rObj = rObj;
-                            NewButton.rSelListEntrySubListFound = rSelListEntryFound2;
-                            NewButton.rSelListEntryFound = rSelListEntryFound;
-
-                            bool bExistsInGroup = false;
-                            foreach (KeyValuePair<string, qs2.ui.pint.contQryRun.cButton> KeyValuePairButton in dictButtons)
+                            if (KeyValuePairButton.Value.rObj.IDSelListEntry.Equals(rSelListEntryFound.ID))
                             {
-                                if (KeyValuePairButton.Value.rObj.IDSelListEntry.Equals(rSelListEntryFound.ID))
-                                {
-                                    bExistsInGroup = true;
-                                }
+                                bExistsInGroup = true;
                             }
-                            if (!bExistsInGroup || IsStayUI)
+                        }
+                        if (!bExistsInGroup || IsStayUI)
+                        {
+                            string TranslatedText = "";
+                            qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;
+                            string idResFound = qs2.core.language.sqlLanguage.getRes(rSelListEntryFound.IDRessource, core.Enums.eResourceType.Label, IDParticipant, IDApplication, ref rLangFoundReturn);
+                            if (idResFound.Trim() == "")
+                                TranslatedText = NewButton.rSelListEntryFound.IDRessource;
+                            else
+                                TranslatedText = idResFound;
+
+                            NewButton.TranslatedTxt = TranslatedText.Trim();
+
+                            if (typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
                             {
-                                string TranslatedText = "";
-                                qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;
-                                string idResFound = qs2.core.language.sqlLanguage.getRes(rSelListEntryFound.IDRessource, core.Enums.eResourceType.Label, IDParticipant, IDApplication, ref rLangFoundReturn);
-                                if (idResFound.Trim() == "")
-                                    TranslatedText = NewButton.rSelListEntryFound.IDRessource;
-                                else
-                                    TranslatedText = idResFound;
-
-                                NewButton.TranslatedTxt = TranslatedText.Trim();
-
-                                bool bRightIsOk = true;
-                                if (rSelListEntryFound.Classification.Trim().ToLower().Contains(("Right=").Trim().ToLower()) && !qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                                {
-                                    bRightIsOk = false;
-                                    System.Collections.Generic.List<string> lstVarClassification = qs2.core.generic.readStrVariables(rSelListEntryFound.Classification.Trim());
-                                    foreach (string defVarClassification in lstVarClassification)
-                                    {
-                                        string VariableFound = "";
-                                        string ValueFound = "";
-                                        qs2.core.generic.readVariableAndValue(defVarClassification, ref VariableFound, ref ValueFound);
-                                        if (ValueFound.Trim() != "")
-                                        {
-                                            System.Collections.Generic.List<string> lstVariables = new List<string>();
-                                            qs2.core.generic.getValues(ValueFound, "|", ref lstVariables);
-                                            foreach (string varUser in lstVariables)
-                                            {
-                                                if (varUser.Trim().ToLower().Equals((qs2.core.vb.actUsr.rUsr.UserName.Trim()).Trim().ToLower()))
-                                                {
-                                                    bRightIsOk = true;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                                bool HasUserHasRight = true;
-                                if (typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
-                                {
-                                    if (!rSelListEntryFound.CreatedUser.Trim().ToLower().Equals(actUsr.rUsr.UserName.Trim().ToLower()))
-                                    {
-                                        if (rSelListEntryFound.TypeStr.Trim().ToLower().Equals(("User").Trim().ToLower()) && !rSelListEntryFound.Published)
-                                        {
-                                            HasUserHasRight = false;
-                                            dsAdminTmp3.Clear();
-                                            sqlAdminTmp3.getSelListEntrysObj(actUsr.rUsr.ID, core.vb.sqlAdmin.eDbTypAuswObj.UserQueries, core.vb.sqlAdmin.eDbTypAuswObj.UserQueries.ToString(), dsAdminTmp3, core.vb.sqlAdmin.eTypAuswahlObj.IDSelListEntryIDObject, "", rSelListEntryFound.ID);
-                                            if (dsAdminTmp3.tblSelListEntriesObj.Rows.Count > 0)
-                                            {
-                                                HasUserHasRight = true;
-                                            }
-                                        }
-                                    }
-                                }
-
-                                bool bIDParticipant = true;
-                                if (typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
-                                {
-                                    bIDParticipant = false;
-                                    if (rSelListEntryFound.IDParticipant.Trim() == "" || rSelListEntryFound.IDParticipant.Trim().ToLower().Equals(qs2.core.license.doLicense.eApp.ALL.ToString().Trim().ToLower()) ||
-                                        rSelListEntryFound.IDParticipant.Trim().ToLower().Equals(qs2.core.license.doLicense.rParticipant.IDParticipant.Trim().ToLower()))
-                                    {
-                                        bIDParticipant = true;
-                                    }
-                                }
-
-                                if (bRightIsOk && HasUserHasRight && bIDParticipant && typRunQuery == qs2.core.Enums.eTypRunQuery.QueryGroups)
-                                {
-                                    if (rSelListEntryFound._Private && !qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                                    {
-                                        if (rSelListEntryFound.CreatedUser.Trim().ToLower().Equals((qs2.core.vb.actUsr.rUsr.UserName.Trim()).Trim().ToLower()))
-                                        {
-                                            dictButtons.Add(TranslatedText + System.Guid.NewGuid().ToString(), NewButton);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        dictButtons.Add(TranslatedText + System.Guid.NewGuid().ToString(), NewButton);
-                                    }
-                                }
+                                dictButtons.Add(TranslatedText + System.Guid.NewGuid().ToString(), NewButton);
                             }
                         }
                     }

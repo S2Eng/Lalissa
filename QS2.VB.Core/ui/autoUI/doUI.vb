@@ -460,7 +460,7 @@ Public Class doUI
                         colFound.Header.Caption = qs2.core.language.sqlLanguage.getRes(bandFound.Key + "." + colFound.Key, False)
                         colFound.Header.ToolTipText = colFound.Header.Caption
                     Catch ex As Exception
-                        If ENV.adminSecure Then
+                        If ENV.AdminSecure Then
                             Me.addRessourceAuto(newRessourcesAdded, bandFound.Key + "." + colFound.Key, colFound.Key, bandFound.Key)
                         Else
                             Throw New Exception("AutoUI.doBand: TranslateGridBand - ResID for Column '" + bandFound.Key + "." + colFound.Key + "' !")

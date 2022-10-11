@@ -1,39 +1,14 @@
-﻿Imports Infragistics.Win.UltraWinToolTip
-Imports Infragistics.Win.UltraWinGrid
+﻿Imports Infragistics.Win.UltraWinGrid
 Imports Infragistics.Win
-
 
 Public Class ui
 
-
-    Public Shared Sub loadStyleInfrag(bUserdefined As Boolean, loadDefaultStyle As String, app As String)
+    Public Shared Sub loadStyleInfrag()
         Try
-            If qs2.core.ENV.ColorSchema = 1 Then
-                Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(core.ENV.path_config, "Dark.isl"))
-            ElseIf qs2.core.ENV.ColorSchema = 2 Then
-                Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(core.ENV.path_config, "Light.isl"))
-            End If
+            Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(core.ENV.PathConfig, "Dark.isl"))
 
         Catch ex As Exception
             Throw New Exception("loadStyleInfrag: " + ex.ToString())
-        End Try
-    End Sub
-    Public Shared Sub getWatchProtokoll()
-        Try
-            Dim frmProtocol1 As New qs2.core.vb.frmProtocol()
-            frmProtocol1.ContProtocol1.TypeProtocolWindow = contProtocol.eTypeProtocolWindow.protocol
-            frmProtocol1.initControl()
-
-            frmProtocol1.ContProtocol1.lblTitleError.Visible = True
-            frmProtocol1.ContProtocol1.pictureBoxError.Visible = True
-            frmProtocol1.Text = "Protocol Watch Functions"
-            frmProtocol1.Show()
-            frmProtocol1.ContProtocol1.setText(qs2.core.ui.watchResult.Trim())
-
-            qs2.core.ui.watchResult = ""
-
-        Catch ex As Exception
-            Throw New Exception("getWatchProtokoll: " + ex.ToString())
         End Try
     End Sub
 
@@ -70,8 +45,8 @@ Public Class ui
         ui.getEnumAsList(ePMDS_TouchDoku.GetType(), ValueListToLoad, cbo, False)
 
         Return True
-
     End Function
+
     Public Shared Function getEnumAsList(ByRef typEnum As Type,
                                   ByRef valList As Infragistics.Win.ValueList,
                                   ByRef cbo As Infragistics.Win.UltraWinEditors.UltraComboEditor,
@@ -152,6 +127,7 @@ Public Class ui
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
         End Try
     End Sub
+
     Public Shared Sub gridLayoutGrid_DragOver(sender As Object, e As Windows.Forms.DragEventArgs)
         Try
             e.Effect = Windows.Forms.DragDropEffects.Move
@@ -194,5 +170,4 @@ Public Class ui
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
         End Try
     End Sub
-
 End Class

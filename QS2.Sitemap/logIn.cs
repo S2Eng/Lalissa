@@ -24,8 +24,8 @@ namespace qs2.core
                 {
                     if (!doNotDecryptPwd)
                     {
-                        ENV.pwdDbDecrypted = Encryption1.StringDecrypt(qs2.core.ENV.pwdDbEncrypted, QS2.functions.vb.Encryption.keyForEncryptingStrings);
-                        ENV.connStr = ENV.connStr.Replace(qs2.core.ENV.pwdDbEncrypted, ENV.pwdDbDecrypted);
+                        ENV.PwdDbDecrypted = Encryption1.StringDecrypt(qs2.core.ENV.PwdDbEncrypted, QS2.functions.vb.Encryption.keyForEncryptingStrings);
+                        ENV.connStr = ENV.connStr.Replace(qs2.core.ENV.PwdDbEncrypted, ENV.PwdDbDecrypted);
                     }
                 }
 
@@ -89,7 +89,7 @@ namespace qs2.core
 
                     qs2.core.ENV.SystemIsInitialized = true;
 
-                    QS2.Desktop.Txteditor.Settings.init(qs2.core.ENV.path_temp, qs2.core.ENV.path_log, true, qs2.core .ENV.adminSecure);
+                    QS2.Desktop.Txteditor.Settings.init(qs2.core.ENV.PathTemp, qs2.core.ENV.PathLog, true, qs2.core .ENV.AdminSecure);
                     qs2.core.dbBase.checkConnectedOnDesignerDB();
 
                     return true;

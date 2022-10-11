@@ -104,8 +104,8 @@ Public Class frmSelLists
                     Me.Text += resFound
                 End If
             Else
-                Me.Text = qs2.core.language.sqlLanguage.getRes("SelectionLists") + " (" + _
-                           qs2.core.language.sqlLanguage.getRes("ActiveLanguage") + ": " + qs2.core.language.sqlLanguage.getRes(qs2.core.ENV.language.ToString()) + ")"
+                Me.Text = qs2.core.language.sqlLanguage.getRes("SelectionLists") + " (" +
+                           qs2.core.language.sqlLanguage.getRes("ActiveLanguage") + ": " + qs2.core.language.sqlLanguage.getRes(qs2.core.ENV.Language.ToString()) + ")"
 
             End If
 

@@ -146,7 +146,7 @@ namespace qs2.sitemap.workflowAssist
                     this.ultraGridColumnes.DisplayLayout.Bands[0].Columns[this.dsSysDB1.COLUMNS.TABLE_CATALOGColumn.ColumnName].Hidden = true;
                     this.ultraGridColumnes.DisplayLayout.Bands[0].Columns[this.dsSysDB1.COLUMNS.TABLE_SCHEMAColumn.ColumnName].Hidden = true;
 
-                    if (qs2.core.ENV.adminSecure)
+                    if (qs2.core.ENV.AdminSecure)
                     {
                         this.ultraGridColumnes.DisplayLayout.Bands[0].Columns[this.dsSysDB1.COLUMNS.ORDINAL_POSITIONColumn.ColumnName].Hidden = false;
                     }

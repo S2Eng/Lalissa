@@ -568,11 +568,7 @@ namespace qs2.design.auto.multiControl
 
                     qs2.core.language.dsLanguage.RessourcenRow rResHelp = qs2.core.language.sqlLanguage.getResRow(this._FldShortTitle.Trim(), core.Enums.eResourceType.Help, this.ownMCCriteria1.IDParticipant,
                                                                                                         this.ownMCCriteria1.Application);
-                    //if (rResHelp != null)
-                    //    if (!rResHelp.IsfileBytesNull())
-                    //        this.doButtonControls(eTypButtonControl.Help, rResHelp.fileBytes);
-
-                    if (!this.DesignMode && qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
+                    if (!this.DesignMode)
                     {
                         this.ContextMenuStrip = this.contextMenuStrip1;
                         this.criteriasToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("Criterias") + " [" + qs2.core.Enums.eControlType.GridMultiSelect.ToString() + "]";

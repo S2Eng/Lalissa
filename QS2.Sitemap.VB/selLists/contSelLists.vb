@@ -3,8 +3,6 @@ Imports Infragistics.Win.UltraWinToolTip
 Imports Infragistics.Win.UltraWinGrid
 Imports Infragistics.Win
 Imports qs2.Resources
-Imports PMDS.db.Entities
-Imports System.Runtime.CompilerServices
 Imports S2Extensions
 
 Public Class contSelLists
@@ -102,12 +100,7 @@ Public Class contSelLists
             Me.lstTypeQueries = New System.Collections.Generic.List(Of KeyValuePair(Of String, String))
 
             Me.dsAdminWork = New qs2.core.vb.dsAdmin()
-
-            If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                Me.mainWindow._OnlyOwnSelListsEditable = False
-            Else
-                Me.mainWindow._OnlyOwnSelListsEditable = True
-            End If
+            Me.mainWindow._OnlyOwnSelListsEditable = False
 
             Me.DropDownApplications1.initControl(False)
             Me.DropDownApplications1.loadData()
@@ -128,32 +121,16 @@ Public Class contSelLists
             Me.SetPictureToolStripMenuItem.Visible = False
 
             'Me.TranslateEntryToolStripMenuItem.Visible = True
+            Me.CopySellistAndRessourceToolStripMenuItem.Visible = True
+            Me.btnEncryptsSaveToTheClipboardForDelivery.Visible = True
+            Me.ClearCopiedRowsInRamToolStripMenuItem.Visible = True
+            Me.ToolStripMenuItemSpace01.Visible = True
 
-            If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                Me.CopySellistAndRessourceToolStripMenuItem.Visible = True
-                Me.btnEncryptsSaveToTheClipboardForDelivery.Visible = True
-                Me.ClearCopiedRowsInRamToolStripMenuItem.Visible = True
-                Me.ToolStripMenuItemSpace01.Visible = True
+            Me.btnAddGroup.Visible = True
+            Me.btnDelGroup.Visible = True
+            Me.btnEditGroup.Visible = True
 
-                Me.btnAddGroup.Visible = True
-                Me.btnDelGroup.Visible = True
-                Me.btnEditGroup.Visible = True
-
-                Me.btnDelGroup.Enabled = True
-
-            Else
-                Me.CopySellistAndRessourceToolStripMenuItem.Visible = False
-                Me.btnEncryptsSaveToTheClipboardForDelivery.Visible = False
-                Me.ClearCopiedRowsInRamToolStripMenuItem.Visible = False
-                Me.ToolStripMenuItemSpace01.Visible = False
-
-                Me.btnAddGroup.Visible = False
-                Me.btnDelGroup.Visible = False
-                Me.btnEditGroup.Visible = False
-
-                Me.btnAddGroup.Enabled = False
-                Me.btnDelGroup.Enabled = False
-            End If
+            Me.btnDelGroup.Enabled = True
 
             If qs2.core.ENV.ConnectedOnDesignerDB_QS2_Dev Then
                 Me.lblAutoAddRessources.Visible = True
@@ -356,11 +333,7 @@ Public Class contSelLists
             End If
 
             If Me.mainWindow.typeUI = frmSelLists.eTypeUI.Administration Then
-                If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                    Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.IDColumn.ColumnName).Hidden = False
-                Else
-                    Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.IDColumn.ColumnName).Hidden = True
-                End If
+                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.IDColumn.ColumnName).Hidden = False
                 Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.LicenseKeyColumn.ColumnName).Hidden = False
                 Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.ForServicesColumn.ColumnName).Hidden = False
             Else
@@ -388,26 +361,7 @@ Public Class contSelLists
             Me.ClearPictureToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("ClearPicture")
             Me.OpenPictureToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("OpenPicture")
             Me.InfoRessourceToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("InfoTranslation")
-
-            If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                Me.InfoRessourceToolStripMenuItem.Visible = True
-            End If
-
-            If (Not qs2.core.vb.actUsr.IsAdminSecureOrSupervisor()) And Me.mainWindow.typeUI = frmSelLists.eTypeUI.Administration Then
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.TypeQryColumn.ColumnName).Hidden = True
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.TableColumn.ColumnName).Hidden = True
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.IsMainColumn.ColumnName).Hidden = True
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.FldShortColumnColumn.ColumnName).Hidden = True
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.VersionNrFromColumn.ColumnName).Hidden = True
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.VersionNrToColumn.ColumnName).Hidden = True
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.LicenseKeyColumn.ColumnName).Hidden = True
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.SqlColumn.ColumnName).Hidden = True
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.DescriptionColumn.ColumnName).Hidden = True
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.SubQueryColumn.ColumnName).Hidden = True
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.ExternColumn.ColumnName).Hidden = True
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.PublishedColumn.ColumnName).Hidden = True
-                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.UITypeColumn.ColumnName).Hidden = True
-            End If
+            Me.InfoRessourceToolStripMenuItem.Visible = True
 
             If Me.mainWindow.typeUI = frmSelLists.eTypeUI.manageQueryGroups Then
                 Me.gridSelList.DisplayLayout.Bands(0).Columns(qs2.core.generic.columnNameText).Hidden = False
@@ -510,7 +464,7 @@ Public Class contSelLists
                 If Me.checkIsQueryGroupsEditable(rGroup.IDGroupStr, Nothing, bSelListRowIdEditablt) And Not Me._ShowOnlyUserSelLists Then
                     Me.compSelListEntrys.getSelListEntrys(Parameters, 0, "", "", Me.DsAdmin1, sqlAdmin.eTypAuswahlList.IDGroup, "", 0, "", rGroup.ID)
                 Else
-                    If Not qs2.core.ENV.adminSecure And Me._ShowOnlyUserSelLists Then
+                    If Not qs2.core.ENV.AdminSecure And Me._ShowOnlyUserSelLists Then
                         Me.compSelListEntrys.getSelListEntrys(Parameters, 0, qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), "", Me.DsAdmin1, sqlAdmin.eTypAuswahlList.IDGroupParticipantAndAll, "", 0, "", rGroup.ID)
                     Else
                         Select Case Me.mainWindow.typeUI
@@ -559,11 +513,7 @@ Public Class contSelLists
                     Me.btnDown.Visible = False
                 Else
                     Me.gridSelList.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText
-                    If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Or Me.mainWindow.typeUI = frmSelLists.eTypeUI.manageQueryGroups Then
-                        Me.btnDel.Visible = True
-                    Else
-                        Me.btnDel.Visible = False
-                    End If
+                    Me.btnDel.Visible = True
                     Me.btnAdd.Visible = True
                     Me.btnSave2.Visible = True
                     Me.PanelButtEdit.Visible = IIf(Me.mainWindow.typeUI = frmSelLists.eTypeUI.selectRow, False, True)
@@ -647,12 +597,9 @@ Public Class contSelLists
                 Me.lstAddedRows.Clear()
                 Me.UIForSelList(rGroup)
 
-                If actUsr.IsAdminSecureOrSupervisor() Then
-                    Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.TypeStrColumn.ColumnName).Hidden = False
-                    Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.TypeStrColumn.ColumnName).Header.Caption = qs2.core.language.sqlLanguage.getRes("Type")
-                Else
+                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.TypeStrColumn.ColumnName).Hidden = False
+                Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.TypeStrColumn.ColumnName).Header.Caption = qs2.core.language.sqlLanguage.getRes("Type")
 
-                End If
             End If
 
         Catch ex As Exception
@@ -717,13 +664,9 @@ Public Class contSelLists
                 Me.isInEditModeGroup = False
             End If
 
-            If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                Me.btnAddGroup.Enabled = Me.isInEditModeGroup
-                Me.btnDelGroup.Enabled = Me.isInEditModeGroup
-            Else
-                Me.btnAddGroup.Enabled = False
-                Me.btnDelGroup.Enabled = False
-            End If
+            Me.btnAddGroup.Enabled = Me.isInEditModeGroup
+            Me.btnDelGroup.Enabled = Me.isInEditModeGroup
+
             qs2.core.ui.editGrid(Me.isInEditModeGroup, Me.gridGroup, False, Infragistics.Win.UltraWinGrid.AllowAddNew.No)
 
         Catch ex As Exception
@@ -793,20 +736,7 @@ Public Class contSelLists
 
     Public Function saveSelListEntries() As Boolean
         Try
-            'If Me.DsAdmin1.tblSelListEntries.Rows.Count = 0 Then
-            '    qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoRecords"), Windows.Forms.MessageBoxButtons.OK, "")
-            '    Exit Function
-            'End If
             Dim rGrp As dsAdmin.tblSelListGroupRow = Me.getSelGroupRow(False)
-            For Each rSelList As dsAdmin.tblSelListEntriesRow In Me.DsAdmin1.tblSelListEntries
-                If rSelList.RowState = DataRowState.Deleted Then
-                    'If rGrp.IDGroupStr = "Queries" Then
-                    '    rSelList.RejectChanges()
-                    '    qs2.core.vb.sqlAdmin.deleteSelListEntryAllQryAdminxy(rSelList.ID, rGrp.IDApplication)
-                    '    rSelList.Delete()
-                    'End If
-                End If
-            Next
 
             For Each rowGrid As UltraGridRow In Me.gridSelList.Rows
                 Dim v As DataRowView = rowGrid.ListObject
@@ -818,25 +748,9 @@ Public Class contSelLists
                         Throw New Exception("contSelList.saveSelListEntries: rSelList.ID < 0 !")
                     End If
                     Dim sIDSelList As String = rSelList.ID
-                    If sIDSelList.Length <> 8 And qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                        'Throw New Exception("contSelList.saveSelListEntries: sIDSelList.Length <> 8 !")
-                    End If
                     Dim IDSelListLast As Integer = -999
                     Dim sIDSelListLLast As String = sIDSelList.Substring(4, sIDSelList.Length - 4)
                     IDSelListLast = sIDSelListLLast
-
-                    'If (rSelList.IDOwnInt <> IDSelListLast And rSelList.IDOwnInt <> -1) Or _
-                    '    (IDSelListLast <> 9999 And rSelList.IDOwnInt = -1) Then                    'lthxy
-
-                    '    Dim txt As String = qs2.core.language.sqlLanguage.getRes("IDOwnIntNotEqualWithID")
-                    '    rSelList.SetColumnError(rowGrid.Cells(Me.DsAdmin1.tblSelListEntries.IDOwnIntColumn.ColumnName).Column.Index, txt)
-                    '    Me.gridSelList.ActiveRow = rowGrid
-                    '    Me.gridSelList.ActiveRow.Activate()
-                    '    Me.gridSelList.ActiveCell = rowGrid.Cells(Me.DsAdmin1.tblSelListEntries.IDOwnIntColumn.ColumnName)
-                    '    qs2.core.generic.showMessageBox(txt, Windows.Forms.MessageBoxButtons.OK, "")
-                    '    Return False
-
-                    'End If
 
                     If rSelList.IDRessource = "" Then
                         Dim txt As String = qs2.core.language.sqlLanguage.getRes("NoDescription")
@@ -1041,7 +955,7 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
             Dim doLanguage1 As New qs2.core.language.doLanguage()
             doLanguage1.doAuto(dsResAdded, dsResModified, dsResDeleted, rGrp.IDApplication,
                                qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), True,
-                               qs2.core.vb.actUsr.IsAdminSecureOrSupervisor, SearchWithparticipantAllEmpty)    'qs2.core.license.doLicense.eApp.ALL.ToString()
+                               True, SearchWithparticipantAllEmpty)    'qs2.core.license.doLicense.eApp.ALL.ToString()
             Return True
 
         Catch ex As Exception
@@ -1445,99 +1359,9 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
                     Exit Sub
                 End If
 
-                If actUsr.IsAdminSecureOrSupervisor() Then
-                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                    Exit Sub
-                End If
+                e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
+                Exit Sub
 
-                If e.Cell.Column.ToString() = qs2.core.generic.columnNameEnglish.Trim() Then
-                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                    Exit Sub
-                End If
-
-                If e.Cell.Column.ToString() = qs2.core.generic.columnNameGerman.Trim() Then
-                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                    Exit Sub
-                End If
-
-                If Me.lstAddedRows.Contains(e.Cell.Row.Cells(Me.DsAdmin1.tblSelListEntries.IDGuidColumn.ColumnName).Value) Then         'Row is added
-                    e.Cell.Activation = IIf(e.Cell.Column.ToString().Equals(qs2.core.generic.columnNameText, StringComparison.OrdinalIgnoreCase) Or
-                        e.Cell.Column.ToString().Equals(qs2.core.generic.columnNameSort, StringComparison.OrdinalIgnoreCase) Or
-                        e.Cell.Column.ToString().Equals(qs2.core.generic.columnNameSortCustomer, StringComparison.OrdinalIgnoreCase), Edit.AllowEdit, Edit.NoEdit)
-
-                    If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                        e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                    End If
-                Else
-                    If Not qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                        Select Case e.Cell.Column.ToString().Trim().ToUpperInvariant()
-                            Case qs2.core.generic.columnNameSortCustomer.ToUpperInvariant()
-                                e.Cell.Activation = Edit.AllowEdit
-
-                            Case qs2.core.generic.columnNameText.ToUpperInvariant()
-                                e.Cell.Activation = IIf(e.Cell.Row.Cells(Me.DsAdmin1.tblSelListEntries.IDParticipantColumn.ColumnName).Value.ToString().Trim().Equals(qs2.core.license.doLicense.rParticipant.IDParticipant.Trim(), StringComparison.OrdinalIgnoreCase), Edit.AllowEdit, Edit.NoEdit)
-
-                            Case Else
-                                e.Cell.Activation = Edit.NoEdit
-                        End Select
-                    Else
-
-                        e.Cell.Activation = IIf(e.Cell.Column.ToString().Equals(qs2.core.generic.columnNameText, StringComparison.OrdinalIgnoreCase), Edit.AllowEdit, Edit.NoEdit)
-
-                        If Not Me.doAutoRessource Then
-                            If e.Cell.Column.ToString() <> Me.DsAdmin1.tblSelListEntries.IDRessourceColumn.ColumnName Then
-                                Dim v As DataRowView = e.Cell.Row.ListObject
-                                Dim rSelEntry As dsAdmin.tblSelListEntriesRow = v.Row
-
-                                Dim rGroup As dsAdmin.tblSelListGroupRow = Me.getSelGroupRow(False)
-                                e.Cell.Row.Cells(qs2.core.generic.columnNameText).Value = qs2.core.language.sqlLanguage.getRes(rSelEntry.IDRessource, rGroup.IDParticipant, rGroup.IDApplication).Trim()
-                            End If
-                        Else
-                            If e.Cell.Row.Cells(Me.DsAdmin1.tblSelListEntries.IDParticipantColumn.ColumnName).Value.ToString().Trim().ToLower() = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim().ToLower() Then
-                                If e.Cell.Column.ToString().Trim().ToLower() = ("Text").Trim().ToLower() Then
-                                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                                Else
-                                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
-                                End If
-                            Else
-                                e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
-                            End If
-
-                            If e.Cell.Column.ToString() = Me.DsAdmin1.tblSelListEntries.IDRessourceColumn.ColumnName Then
-                                e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
-                            End If
-                        End If
-
-                        If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                            e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                        End If
-                        If Me.IsQuery() Then
-                            If e.Cell.Column.ToString() = Me.DsAdmin1.tblSelListEntries.TypeQryColumn.ColumnName Or
-                                e.Cell.Column.ToString() = Me.DsAdmin1.tblSelListEntries.TableColumn.ColumnName Then
-                                e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                            End If
-                        End If
-                    End If
-                    If Me.mainWindow.typeUI = frmSelLists.eTypeUI.manageQueryGroups And e.Cell.Column.ToString().Trim().ToLower() = qs2.core.generic.columnNameText.Trim().ToLower() Then
-                        If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                            e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                        Else
-                            If e.Cell.Row.Cells(Me.DsAdmin1.tblSelListEntries.IDParticipantColumn.ColumnName).Value.ToString().Trim().ToLower() = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim().ToLower() Then
-                                e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                            Else
-                                e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
-                            End If
-                        End If
-
-                        Dim bSelListRowIdEditable As Boolean = False
-                        Dim v As DataRowView = e.Cell.Row.ListObject
-                        Dim rSelList As dsAdmin.tblSelListEntriesRow = v.Row
-                        Me.checkIsQueryGroupsEditable(Me.IDGruppeStr, rSelList, bSelListRowIdEditable)
-                        If bSelListRowIdEditable Then
-                            e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                        End If
-                    End If
-                End If
             Else
                 e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
             End If
@@ -1588,14 +1412,7 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
                         End If
                     End If
 
-                    If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                        sDeleteOK = True
-                    End If
-                    If sDeleteOK Then
-                        Me.btnDel.Visible = True
-                    Else
-                        Me.btnDel.Visible = False
-                    End If
+                    Me.btnDel.Visible = True
                 End If
             End If
 
@@ -1744,7 +1561,7 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
             Dim actGridRow As Infragistics.Win.UltraWinGrid.UltraGridRow = Nothing
             Dim rSelSelListEntry As dsAdmin.tblSelListEntriesRow = Me.getSelListEntry(False, actGridRow)
             If Not rSelSelListEntry Is Nothing Then
-                Me.funct1.openFile(Me.funct1.saveFileFromBytes(qs2.core.ENV.path_temp, "picture for entry " + rSelSelListEntry.IDRessource, funct.fileTypeJpg, rSelSelListEntry.picture), "", True, False, True, False, Nothing)
+                Me.funct1.openFile(Me.funct1.saveFileFromBytes(qs2.core.ENV.PathTemp, "picture for entry " + rSelSelListEntry.IDRessource, funct.fileTypeJpg, rSelSelListEntry.picture), "", True, False, True, False, Nothing)
                 'Process.Start(System.Environment.GetFolderPath(System.Environment.SpecialFolder.System) + "\mspaint.exe", "")
             End If
 
@@ -1809,13 +1626,8 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
             Dim selRowGrid As UltraGridRow = Me.gridSelList.Rows.GetRowWithListIndex(Me.DsAdmin1.tblSelListEntries.Rows.IndexOf(rNew))
             Me.gridSelList.ActiveRow = selRowGrid
 
-            If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                rNew.TypeStr = qs2.core.Enums.eTypeSub.Supervisor.ToString()
-                rNew.IDParticipant = qs2.core.license.doLicense.eApp.ALL.ToString()
-            Else
-                rNew.TypeStr = qs2.core.Enums.eTypeSub.User.ToString()
-                rNew.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim()
-            End If
+            rNew.TypeStr = qs2.core.Enums.eTypeSub.Supervisor.ToString()
+            rNew.IDParticipant = qs2.core.license.doLicense.eApp.ALL.ToString()
 
             lstAddedRows.Add(rNew.IDGuid)
             Return rNew
@@ -1915,74 +1727,18 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
             Dim retValue As Integer
             Using db As PMDS.db.Entities.ERModellPMDSEntities = qs2.core.db.ERSystem.businessFramework.getDBContext()     'Gesamte Datenbank für alle Participants
                 With db
-                    If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                        Dim MaxIDInt? = 0
-                        MaxIDInt = (From t In db.tblSelListEntries
+                    Dim MaxIDInt? = 0
+                    MaxIDInt = (From t In db.tblSelListEntries
                                     Where t.IDGroup = IDGroup And t.IDOwnInt < 999
                                     Order By t.ID Descending
                                     Select t.IDOwnInt).FirstOrDefault + 1
-                        If Not IsNothing(MaxIDInt) Then
-                            Return MaxIDInt
-                        Else
-                            Return 1
-                        End If
+                    If Not IsNothing(MaxIDInt) Then
+                        Return MaxIDInt
                     Else
-                        Dim MaxIDOwnInt? = 0
-                        MaxIDOwnInt = (From t In db.tblSelListEntries
-                                       Where t.IDGroup = IDGroup
-                                       Order By t.ID Descending
-                                       Select t.IDOwnInt).FirstOrDefault + 1
-
-                        If Not IsNothing(MaxIDOwnInt) Then
-
-                            retValue = Math.Max(10001, IIf(MaxIDOwnInt > 10000, 0, 10000) + Convert.ToInt32(MaxIDOwnInt))
-
-                            'Einträge ohne Commit in der DsAdmin sind berücksichtigen (mehrere Einträge ohne speichern)
-                            Dim LastSel = From sel In Me.DsAdmin1.tblSelListEntries
-                                          Where Not String.IsNullOrEmpty(sel.IDRessource)
-                                          Select sel
-
-                            If (LastSel.Count > 0) Then
-                                For Each s In LastSel
-                                    If s.IDOwnInt >= retValue Then
-                                        retValue = s.IDOwnInt + 1
-                                    End If
-                                Next
-                            End If
-
-                            Return retValue
-                        Else
-                            Return 10001
-                        End If
+                        Return 1
                     End If
                 End With
             End Using
-
-            'Dim nextIDOwnInt As Integer = 0
-            'If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-            '    nextIDOwnInt = 0
-            'Else
-            '    nextIDOwnInt = 10000
-            'End If
-
-
-            'For Each rSelList As dsAdmin.tblSelListEntriesRow In Me.DsAdmin1.tblSelListEntries
-            '    If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-            '        If Not rSelList.IsIDOwnIntNull() Then
-            '            If rSelList.IDOwnInt < 999 Then
-            '                nextIDOwnInt = IIf(nextIDOwnInt < rSelList.IDOwnInt, rSelList.IDOwnInt, nextIDOwnInt)
-            '            End If
-            '        End If
-            '    Else
-            '        If Not rSelList.IsIDOwnIntNull() Then
-            '            If rSelList.IDOwnInt >= 10000 Then
-            '                nextIDOwnInt = IIf(nextIDOwnInt < rSelList.IDOwnInt, rSelList.IDOwnInt, nextIDOwnInt)
-            '            End If
-            '        End If
-
-            '    End If
-            'Next
-            'Return (nextIDOwnInt + 1)
 
         Catch ex As Exception
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
@@ -2054,19 +1810,14 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
 
     Private Sub gridGroup_BeforeCellActivate(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinGrid.CancelableCellEventArgs) Handles gridGroup.BeforeCellActivate
         If Me.isInEditModeGroup Then
-            If Not qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
+            If e.Cell.Column.ToString() = qs2.core.generic.columnNameText Or e.Cell.Column.ToString() = Me.DsAdmin1.tblSelListGroup.IDColumn.ColumnName Then
                 e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
             Else
-                If e.Cell.Column.ToString() = qs2.core.generic.columnNameText Or e.Cell.Column.ToString() = Me.DsAdmin1.tblSelListGroup.IDColumn.ColumnName Then
-                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
-                Else
-                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                End If
-                If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                    If e.Cell.Column.ToString() = Me.DsAdmin1.tblSelListGroup.IDColumn.ColumnName Then
-                        e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                    End If
-                End If
+                e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
+            End If
+
+            If e.Cell.Column.ToString() = Me.DsAdmin1.tblSelListGroup.IDColumn.ColumnName Then
+                e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
             End If
         Else
             e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
@@ -2260,19 +2011,10 @@ rSelListEntrySorto.IDParticipant = qs2.core.license.doLicense.rParticipant.IDPar
 
                 Dim firstItm As Boolean = True
                 For Each itm As System.Collections.Generic.KeyValuePair(Of String, String) In Me.lstTypeQueries
-                    Dim bShow As Boolean = True
-                    If Not qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() And
-                        (itm.Key.ToString().Trim().ToLower() = qs2.core.print.print.eQueryType.SimpleFunction.ToString().ToLower() Or
-                          itm.Key.ToString().Trim().ToLower() = qs2.core.print.print.eQueryType.FullMode.ToString().ToLower()) Then
-                        bShow = False
+                    Dim item As ValueListItem = Me.gridSelList.DisplayLayout.ValueLists("TypeQry").ValueListItems.Add(itm.Key, itm.Value)
+                    If firstItm Then
                     End If
-                    bShow = True
-                    If bShow Then
-                        Dim item As ValueListItem = Me.gridSelList.DisplayLayout.ValueLists("TypeQry").ValueListItems.Add(itm.Key, itm.Value)
-                        If firstItm Then
-                        End If
-                        firstItm = False
-                    End If
+                    firstItm = False
                 Next
             Else
                 Me.gridSelList.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListEntries.TableColumn.ColumnName).Style = ColumnStyle.DropDown

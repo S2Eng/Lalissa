@@ -289,40 +289,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
         {
             try
             {
-                if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                {
-                    qs2.core.ui.delGridRowYN(e);
-                }
-                else
-                {
-                    //if (e.Cell.Column.ToString() == this.dsLanguage1.Ressourcen.fileTypeColumn.ColumnName || e.Cell.Column.ToString() == this.dsLanguage1.Ressourcen.fileBytesColumn.ColumnName)
-                    //{
-                    //    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
-                    //}
-                    //else
-                    //{
-                    //    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit;
-                    //}
-                    UltraGridRow selRowGrid = null;
-                    qs2.core.language.dsLanguage.RessourcenRow rSelRow = this.getSelectedRow(true, selRowGrid);
-                    if (rSelRow != null)
-                    {
-                        if (rSelRow.IDParticipant.Trim().ToLower().Equals(qs2.core.license.doLicense.rParticipant.IDParticipant.Trim().ToLower()) &&
-                            rSelRow.TypeSub.Trim().ToLower().Equals(("User").Trim().ToLower()))
-                        {
-                            qs2.core.ui.delGridRowYN(e);
-                        }
-                        else
-                        {
-                            e.Cancel = true; 
-                        }
-                    }
-                    else
-                    {
-                        e.Cancel = true; 
-                    }
-                }
-
+                qs2.core.ui.delGridRowYN(e);
             }
             catch (Exception ex)
             {
@@ -531,7 +498,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 {
                     if (!rResSel.IsfileBytesNull ())
                     {
-                        string pictureToOpen = this.funct1.saveFileFromBytes(qs2.core.ENV.path_temp, "picture.res " + rResSel.IDRes, rResSel.fileType, rResSel.fileBytes);
+                        string pictureToOpen = this.funct1.saveFileFromBytes(qs2.core.ENV.PathTemp, "picture.res " + rResSel.IDRes, rResSel.fileType, rResSel.fileBytes);
                         this.funct1.openFile(pictureToOpen, rResSel.fileType, false);
                     }
                     else
@@ -631,45 +598,14 @@ namespace qs2.sitemap.manage.wizardsDevelop
         {
             try
             {
-                if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
+                if (e.Cell.Column.ToString() == this.dsLanguage1.Ressourcen.fileTypeColumn.ColumnName || e.Cell.Column.ToString() == this.dsLanguage1.Ressourcen.fileBytesColumn.ColumnName)
                 {
-                    if (e.Cell.Column.ToString() == this.dsLanguage1.Ressourcen.fileTypeColumn.ColumnName || e.Cell.Column.ToString() == this.dsLanguage1.Ressourcen.fileBytesColumn.ColumnName)
-                    {
-                        e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
-                    }
-                    else
-                    {
-                        e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit;
-                    }
+                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
                 }
                 else
                 {
-                    if (e.Cell.Row.Cells[this.dsLanguage1.Ressourcen.IDParticipantColumn.ColumnName].Value.ToString().Trim().ToLower() == qs2.core.license.doLicense.rParticipant.IDParticipant.Trim().ToLower() &&
-                        e.Cell.Row.Cells[this.dsLanguage1.Ressourcen.IDParticipantColumn.ColumnName].Value.ToString().Trim().ToLower() != qs2.core.license.doLicense.eApp.ALL.ToString().Trim().ToLower())
-                    {
-                        e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit;
-                    }
-                    else
-                    {
-                        if (this.lstAddedRows.Contains((System.Guid)e.Cell.Row.Cells[this.dsLanguage1.Ressourcen.IDGuidColumn.ColumnName].Value))
-                        {
-                            if (e.Cell.Column.ToString() == this.dsLanguage1.Ressourcen.fileTypeColumn.ColumnName || e.Cell.Column.ToString() == this.dsLanguage1.Ressourcen.fileBytesColumn.ColumnName ||
-                                 e.Cell.Column.ToString() == this.dsLanguage1.Ressourcen.IDParticipantColumn.ColumnName || e.Cell.Column.ToString() == this.dsLanguage1.Ressourcen.TypeSubColumn.ColumnName)
-                            {
-                                e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
-                            }
-                            else
-                            {
-                                e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit;
-                            }
-                        }
-                        else
-                        {
-                            e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
-                        }
-                    }
+                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit;
                 }
-
             }
             catch (Exception ex)
             {
@@ -730,7 +666,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
 
         public void addRessource()
         {
-            core.Enums.eTypeSub AddMode = qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() ? core.Enums.eTypeSub.Supervisor : core.Enums.eTypeSub.User;
+            core.Enums.eTypeSub AddMode = core.Enums.eTypeSub.Supervisor;
             qs2.core.language.dsLanguage.RessourcenRow rNewRes = this.sqlLanguage1.newRowLanguage(ref this.dsLanguage1, 
                                                                                             "", "", "", "", "", 
                                                                                             core.Enums.eResourceType.Label, AddMode, "");
@@ -751,16 +687,9 @@ namespace qs2.sitemap.manage.wizardsDevelop
             Infragistics.Win.UltraWinGrid.UltraGridRow gridRow = this.gridRes.Rows.GetRowWithListIndex(this.dsLanguage1.Ressourcen.Rows.IndexOf(rNewRes));
             this.gridRes.ActiveRow = gridRow;
 
-            if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-            {
-                rNewRes.IDParticipant = qs2.core.license.doLicense.eApp.ALL.ToString();
-                rNewRes.CreatedUser = "";
-                rNewRes.TypeSub = "";
-            }
-            else
-            {
-                rNewRes.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim();
-            }
+            rNewRes.IDParticipant = qs2.core.license.doLicense.eApp.ALL.ToString();
+            rNewRes.CreatedUser = "";
+            rNewRes.TypeSub = "";
 
             this.lstAddedRows.Add(rNewRes.IDGuid);
         }

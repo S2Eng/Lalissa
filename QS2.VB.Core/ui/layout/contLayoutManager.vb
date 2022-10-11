@@ -84,7 +84,7 @@ Public Class contLayoutManager
 
             Me.gridLayoutGrid.AllowDrop = True
 
-            If Not ENV.adminSecure Then
+            If Not ENV.AdminSecure Then
                 Me.ContLayoutSelection1.CboLayout1.Enabled = False
             End If
 
@@ -176,10 +176,6 @@ Public Class contLayoutManager
             Else
                 Me.gridLayoutGrid.DisplayLayout.Bands(0).Columns(Me.DsLayout1.LayoutGrids.TypeColColumn.ColumnName).Hidden = True
                 Me.PanelOben.Height = 187
-            End If
-
-            If Not qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                Me.lblCopyLayout.Visible = False
             End If
 
         Catch ex As Exception
@@ -317,60 +313,27 @@ Public Class contLayoutManager
         End Try
     End Sub
 
-    Public Function validate() As Boolean
-        Try
-            'Me.ErrorProvider1.SetError(Me.btnAdd, "")
-
-            'For Each rGrid As UltraGridRow In Me.gridSelListObj.Rows
-            '    Dim v As DataRowView = rGrid.ListObject
-            '    Dim rSelListObj As dsAuswahllisten.AuswahllistenObjRow = v.Row
-
-            '    rSelListObj.SetColumnError(Me.DsAuswahllisten1.AuswahllistenObj.IDAuswahlColumn.ColumnName, "")
-
-            '    If rSelListObj.RowState <> DataRowState.Deleted Then
-            '        If Me.typDB = compAuswahllisten.eDbTypAuswObj.RiskClassesInsuranceMasterData Then
-            '            If rSelListObj.AuswahlTxt.Trim() = "" Then
-            '                Me.gridSelListObj.ActiveRow = rGrid
-            '                Dim str As String = compAutoUI.getRes("InputRequired")
-            '                rSelListObj.SetColumnError(Me.DsAuswahllisten1.AuswahllistenObj.AuswahlTxtColumn.ColumnName, str)
-            '                Me.ErrorProvider1.SetError(Me.btnAdd, str)
-            '                ITSCont.core.SystemDb.doUI.doMessageBox("InputRequired", "SelList", "!")
-            '                Return False
-            '            End If
-            '        End If
-            '    End If
-            'Next
-
-            Return True
-
-        Catch ex As Exception
-            qs2.core.generic.getExep(ex.ToString(), ex.Message)
-        End Try
-    End Function
-
-
-
     Private Sub gridVermGruppe_BeforeCellActivate(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinGrid.CancelableCellEventArgs) Handles gridLayoutGrid.BeforeCellActivate
         Try
             If Not Me.editable Then
                 e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
             Else
-                If e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.VisibleColumn.ColumnName.Trim().ToLower() Or _
-                   e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.ColumnCaptionColumn.ColumnName.Trim().ToLower() Or _
-                   e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.ColumnWithColumn.ColumnName.Trim().ToLower() Or _
-                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.OrderByColumn.ColumnName.Trim().ToLower() Or _
-                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.DescColumn.ColumnName.Trim().ToLower() Or _
-                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.SortColumn.ColumnName.Trim().ToLower() Or _
-                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.GridAutoNewlineColumn.ColumnName.Trim().ToLower() Or _
-                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.AutoSizeHeigthColumnColumn.ColumnName.Trim().ToLower() Or _
-                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.ColMinHeigthColumn.ColumnName.Trim().ToLower() Or _
-                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.ColMaxHeigthColumn.ColumnName.Trim().ToLower() Or _
-                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.GroupByColumn.ColumnName.Trim().ToLower() Or _
+                If e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.VisibleColumn.ColumnName.Trim().ToLower() Or
+                   e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.ColumnCaptionColumn.ColumnName.Trim().ToLower() Or
+                   e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.ColumnWithColumn.ColumnName.Trim().ToLower() Or
+                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.OrderByColumn.ColumnName.Trim().ToLower() Or
+                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.DescColumn.ColumnName.Trim().ToLower() Or
+                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.SortColumn.ColumnName.Trim().ToLower() Or
+                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.GridAutoNewlineColumn.ColumnName.Trim().ToLower() Or
+                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.AutoSizeHeigthColumnColumn.ColumnName.Trim().ToLower() Or
+                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.ColMinHeigthColumn.ColumnName.Trim().ToLower() Or
+                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.ColMaxHeigthColumn.ColumnName.Trim().ToLower() Or
+                    e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.GroupByColumn.ColumnName.Trim().ToLower() Or
                     e.Cell.Column.ToString().Trim().ToLower() = Me.DsLayout1.LayoutGrids.TypeUIColumn.ColumnName.Trim().ToLower() Then
 
                     e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
                 Else
-                    If e.Cell.Column.ToString() = Me.DsLayout1.LayoutGrids.ColumnNameColumn.ColumnName And _
+                    If e.Cell.Column.ToString() = Me.DsLayout1.LayoutGrids.ColumnNameColumn.ColumnName And
                         Me._ManageMode Then
 
                         e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
@@ -620,31 +583,31 @@ Public Class contLayoutManager
             Me.Cursor = Windows.Forms.Cursors.WaitCursor
 
             If Me.ContLayout1.validateData() Then
-                If Me.validate() Then
-                    Me.ContLayout1.GetUIToRow()
-                    If Me.cLayoutManager1.saveData(Me.DsLayout1, Me.CompLayout1) Then
-                        Me.abort = False
-                        Me.ContLayoutSelection1.CboLayout1.LoadData()
-                        If Me.isNew Then
-                            Me.ContLayoutSelection1.CboLayout1.lastIDLayoutSelected = Me.cLayoutManager1.rLayout.IDGuid
-                        End If
-                        Me.loadData(Me.cLayoutManager1.rLayout.Key.Trim(), "", False, False, Me.chkShowOnlyVisibleColumns.Checked)
-                        Me.ContLayoutSelection1.CboLayout1.SelectLayout(Me.cLayoutManager1.rLayout.IDGuid)
 
-                        Me.SetLayoutToGrid()
-                        If Not Me.delonSaveClick Is Nothing Then
-                            Me.delonSaveClick.Invoke(Me.cLayoutManager1.rLayout)
-                        End If
-
-                        'qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("DataSaved") + "!", Windows.Forms.MessageBoxButtons.OK, "")
-                        If Not Me._ManageMode Then
-                            'Me.mainWindow.Close()
-                        End If
-                    Else
-                        Throw New Exception("contLayoutGrid.btnSave_Click: Error Save Layout!")
+                Me.ContLayout1.GetUIToRow()
+                If Me.cLayoutManager1.saveData(Me.DsLayout1, Me.CompLayout1) Then
+                    Me.abort = False
+                    Me.ContLayoutSelection1.CboLayout1.LoadData()
+                    If Me.isNew Then
+                        Me.ContLayoutSelection1.CboLayout1.lastIDLayoutSelected = Me.cLayoutManager1.rLayout.IDGuid
                     End If
+                    Me.loadData(Me.cLayoutManager1.rLayout.Key.Trim(), "", False, False, Me.chkShowOnlyVisibleColumns.Checked)
+                    Me.ContLayoutSelection1.CboLayout1.SelectLayout(Me.cLayoutManager1.rLayout.IDGuid)
+
+                    Me.SetLayoutToGrid()
+                    If Not Me.delonSaveClick Is Nothing Then
+                        Me.delonSaveClick.Invoke(Me.cLayoutManager1.rLayout)
+                    End If
+
+                    'qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("DataSaved") + "!", Windows.Forms.MessageBoxButtons.OK, "")
+                    If Not Me._ManageMode Then
+                        'Me.mainWindow.Close()
+                    End If
+                Else
+                    Throw New Exception("contLayoutGrid.btnSave_Click: Error Save Layout!")
                 End If
             End If
+
 
         Catch ex As Exception
             qs2.core.generic.getExep(ex.ToString(), ex.Message)

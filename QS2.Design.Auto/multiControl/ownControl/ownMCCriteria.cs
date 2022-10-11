@@ -39,7 +39,7 @@ namespace qs2.design.auto
                     return;
                 this.Application = qs2.core.license.doLicense.rApplication.IDApplication;
                 this.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant;
-                ownMCCriteria.initSharedDataSets(true);
+                ownMCCriteria.initSharedDataSets();
                 this._isInitializedVar = true;
             }
             catch (Exception ex)
@@ -49,7 +49,7 @@ namespace qs2.design.auto
             }
         }
         
-        public static void initSharedDataSets(bool GetAllRolesUser)
+        public static void initSharedDataSets()
         {
             try
             {
@@ -108,11 +108,8 @@ namespace qs2.design.auto
 
                 if (FldShort.Trim() == "")
                 {
-                    if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                    {
-                        qs2.core.Protocol.doExcept("FldShort='' for ControlName '" + ctl.Name + "'  ", "ownMCCriteria.getData", "", false, true, this.Application,
-                                                    qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                    }
+                    qs2.core.Protocol.doExcept("FldShort='' for ControlName '" + ctl.Name + "'  ", "ownMCCriteria.getData", "", false, true, this.Application,
+                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
                 }
 
                 string IDApplicationTmp;
@@ -144,7 +141,7 @@ namespace qs2.design.auto
                     }
                     else
                     {
-                        if (qs2.core.ENV.developModus)
+                        if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                         {
                             ownControlUI1.IsVisible_LicenseKey = true; 
                         }
@@ -375,7 +372,7 @@ namespace qs2.design.auto
                     }
                 }
 
-                if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() && doProt)
+                if (doProt)
                 {
                     qs2.core.Protocol.doExcept("No Criteria found for Field " + FldShort + "", "ownMCCriteria.getData", FldShort, false, true,
                                                 this.Application,

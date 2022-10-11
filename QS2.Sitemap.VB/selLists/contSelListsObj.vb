@@ -150,8 +150,8 @@ Public Class contSelListsObj
 
             ElseIf Me._typUI = eTypUI.Roles Then
                 Me.PanelOben.Visible = False
-                Me.AssignCriteriaToolStripMenuItem.Visible = qs2.core.vb.actUsr.IsAdminSecureOrSupervisor()
-                Me.AssignCriteriaCustomerToolStripMenuItem.Visible = qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Or qs2.core.vb.actUsr.rUsr.isAdmin
+                Me.AssignCriteriaToolStripMenuItem.Visible = True
+                Me.AssignCriteriaCustomerToolStripMenuItem.Visible = True
                 Me.ToolStripMenuItemSpace01.Visible = True
                 Me.gridSelListObj.DisplayLayout.Bands(0).Columns(qs2.core.generic.columnActive).Hidden = False
 
@@ -162,9 +162,7 @@ Public Class contSelListsObj
                 Me.ComboApplication.Visible = True
                 Me.lblApplication.Visible = True
                 Dim onlyLicensedProducts As Boolean = True
-                If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                    onlyLicensedProducts = False
-                End If
+                onlyLicensedProducts = False
                 Me.ComboApplication.initControlxy(True, onlyLicensedProducts, True)
                 Me.ComboApplication.cboApplications.Value = Me._IDApplication
             Else
@@ -180,15 +178,9 @@ Public Class contSelListsObj
                 Me.gridSelListObj.DisplayLayout.ValueLists(qs2.core.generic.columnNameClassification).ValueListItems.Add(itmClassification, qs2.core.language.sqlLanguage.getRes(itmClassification))
             Next
 
-            If actUsr.IsAdminSecureOrSupervisor() Then
-                Me.BuildSqlCheckedTrueToolStripMenuItem.Visible = True
-                Me.BuildSqlCheckedFalseToolStripMenuItem.Visible = True
-                Me.ToolStripMenuItemSpace10.Visible = True
-            Else
-                Me.BuildSqlCheckedTrueToolStripMenuItem.Visible = False
-                Me.BuildSqlCheckedFalseToolStripMenuItem.Visible = False
-                Me.ToolStripMenuItemSpace10.Visible = False
-            End If
+            Me.BuildSqlCheckedTrueToolStripMenuItem.Visible = True
+            Me.BuildSqlCheckedFalseToolStripMenuItem.Visible = True
+            Me.ToolStripMenuItemSpace10.Visible = True
 
             If Me.grpToLoad.Trim() <> "Right" And Me.grpToLoad.Trim() <> "ProcGrp0" And
                 Me.grpToLoad.Trim() <> "ProcGrp1" And Me.grpToLoad.Trim() <> "Chapters0" And Me.grpToLoad.Trim() <> "Chapters1" Then
@@ -569,7 +561,7 @@ Public Class contSelListsObj
                 rNew._To = r.Cells(Me.dsAuswahllistenObj.tblSelListEntriesObj.ToColumn.ColumnName).Value
             End If
 
-            If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() And qs2.core.ENV.ConnectedOnDesignerDB_QS2_Dev Then
+            If qs2.core.ENV.ConnectedOnDesignerDB_QS2_Dev Then
                 rNew.IDParticipant = ""
             Else
                 rNew.IDParticipant = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim()

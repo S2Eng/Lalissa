@@ -265,15 +265,12 @@ namespace qs2.design.auto.multiControl
 
         public static void openProtocoll(ref string protocollForAdmin)
         {
-            if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() || qs2.core.vb.actUsr.rUsr.isAdmin)
-            {
-                qs2.core.vb.frmProtocol frmProtokoll1 = new qs2.core.vb.frmProtocol();
-                frmProtokoll1.initControl();
-                frmProtokoll1.Text = "Stay - Info Customizing";
-                qs2.core.ENV.lstOpendChildForms.Add(frmProtokoll1);
-                frmProtokoll1.Show();
-                frmProtokoll1.ContProtocol1.setText(protocollForAdmin.Trim());
-            }
+            qs2.core.vb.frmProtocol frmProtokoll1 = new qs2.core.vb.frmProtocol();
+            frmProtokoll1.initControl();
+            frmProtokoll1.Text = "Stay - Info Customizing";
+            qs2.core.ENV.lstOpendChildForms.Add(frmProtokoll1);
+            frmProtokoll1.Show();
+            frmProtokoll1.ContProtocol1.setText(protocollForAdmin.Trim());
         }
 
         public static void checkForProtocol(bool openAlways)
@@ -294,7 +291,7 @@ namespace qs2.design.auto.multiControl
         {
             if (FldShortActuell.ToLower().Trim() == FldShortToCheck.ToLower().Trim())
             {
-                if (qs2.core.ENV.developModus)
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 {
                     if (showMsgBox)
                     {

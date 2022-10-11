@@ -57,58 +57,5 @@ Public Class actUsr
             actUsr.__UserHasRigthSetCompleted = value
         End Set
     End Property
-
-    Public Shared Function IsAdminSecureOrSupervisor() As Boolean
-        Try
-            If IsNothing(actUsr.rUsr) Then
-                Return False
-            End If
-
-            If actUsr.rUsr.UserName.Equals(qs2.core.vb.sqlObjects.userName_Supervisor, StringComparison.OrdinalIgnoreCase) Or qs2.core.ENV.adminSecure Then
-                Return True
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("actUsr.IsAdminSecureOrSupervisor: " + vbNewLine + vbNewLine + ex.ToString())
-            Return False
-        End Try
-    End Function
-
-    Public Shared Sub getLoggedInUserHasRoleAdministrator()
-        Try
-            Dim sWhereObjSelList As String = qs2.core.vb.sqlAdmin.dsAllAdmin.tblSelListEntriesObj.typIDGroupColumn.ColumnName + "='Roles' and " +
-                                            qs2.core.vb.sqlAdmin.dsAllAdmin.tblSelListEntriesObj.IDObjectColumn.ColumnName + "=" + actUsr.rUsr.ID.ToString() + ""
-            Dim arrObjRolesLoggedInUser() As dsAdmin.tblSelListEntriesObjRow = qs2.core.vb.sqlAdmin.dsAllAdmin.tblSelListEntriesObj.Select(sWhereObjSelList, "")
-            For Each rObjRole As dsAdmin.tblSelListEntriesObjRow In arrObjRolesLoggedInUser
-                Dim sWhereSelList As String = qs2.core.vb.sqlAdmin.dsAllAdmin.tblSelListEntries.IDColumn.ColumnName + "=" + rObjRole.IDSelListEntry.ToString() + ""
-                Dim arrSelListRolesUserLoeggedIn() As dsAdmin.tblSelListEntriesRow = qs2.core.vb.sqlAdmin.dsAllAdmin.tblSelListEntries.Select(sWhereSelList, "")
-                If arrSelListRolesUserLoeggedIn.Length <> 1 Then
-                    Throw New Exception("getLoggedInUserHasRoleAdministrator: arrObjRolesLoggedInUser.Length<>1 for IDSelList '" + rObjRole.IDSelListEntry.ToString() + "'!")
-                End If
-                Dim rSelListRole As dsAdmin.tblSelListEntriesRow = arrSelListRolesUserLoeggedIn(0)
-                If rSelListRole.IDOwnInt = 11 And rObjRole.Active Then
-                    actUsr.UserHasRoleAdministrator = True
-                End If
-            Next
-
-        Catch ex As Exception
-            Throw New Exception("getLoggedInUserHasRoleAdministrator: " + ex.ToString())
-        End Try
-    End Sub
-
-    Public Function SetDirectorySearcher() As DirectorySearcher
-
-        Try
-
-            Dim dEntry As New DirectoryEntry("LDAP://" + ENV.Domäne + ":" + ENV.LDAPPort.ToString())
-            Dim dSearcher As New DirectorySearcher(dEntry)
-            Return dSearcher
-
-        Catch ex As Exception
-            Return New DirectorySearcher
-
-        End Try
-
-    End Function
 End Class
 

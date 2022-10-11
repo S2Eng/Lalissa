@@ -181,7 +181,7 @@ namespace qs2.design.auto.multiControl
                         fielShortsToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("ListFielShorts") + " [" + ownMultiControl1._controlType.ToString() + "]";
                         infoClassificationToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("Info") + " " + qs2.core.language.sqlLanguage.getRes("Classification");
 
-                        if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv" && qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
+                        if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                         {
                             ownMultiControl1.ContextMenuStrip = contextMenuStripSelList;
                             criteriasToolStripMenuItem.Visible = true;
@@ -194,23 +194,6 @@ namespace qs2.design.auto.multiControl
                             {
                                 fielShortsToolStripMenuItem.Visible = true;
                             }
-                        }
-                        else if (!DesignMode && !qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                        {
-                            ownMultiControl1.ContextMenuStrip = contextMenuStripSelList;
-                            criteriasToolStripMenuItem.Visible = false;
-                            ressourcenToolStripMenuItem.Visible = false;
-                            if (ownMultiControl1._controlType == core.Enums.eControlType.ComboBox ||
-                                ownMultiControl1._controlType == core.Enums.eControlType.ComboBoxNoDb)
-                            {
-                                selListToolStripMenuItem.Visible = true;
-                            }
-                            infoFieldSQLServerToolStripMenuItem.Visible = false;
-                            if (ownMultiControl1._FldShorts != null)
-                            {
-                                fielShortsToolStripMenuItem.Visible = false;
-                            }
-                            infoClassificationToolStripMenuItem.Visible = false;
                         }
                     }
 

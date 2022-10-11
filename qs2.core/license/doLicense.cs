@@ -50,7 +50,7 @@ namespace qs2.core.license
             }
         }
 
-        public static bool AutoLoadParticipantAndApplication()
+        public static void SetLicensePMDS()
         {
             try
             {
@@ -77,8 +77,6 @@ namespace qs2.core.license
                 lic.Application.AddApplicationRow(l);
 
                 doLicense.dsLicenseAct = lic;
-
-                return true;
             }
             catch (Exception ex)
             {

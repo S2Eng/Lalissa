@@ -121,7 +121,7 @@ Public Class contAddQueryType
             For Each itm As System.Collections.Generic.KeyValuePair(Of String, String) In Me.lstTypeQueries
                 Dim bShow As Boolean = True
                 ' And Not qs2.core.vb.actUsr.rUsr.isAdmin 
-                If Not qs2.core.ENV.adminSecure And
+                If Not qs2.core.ENV.AdminSecure And
                     (itm.Key.ToString().Trim().ToLower() = qs2.core.print.print.eQueryType.SimpleFunction.ToString().ToLower() Or
                       itm.Key.ToString().Trim().ToLower() = qs2.core.print.print.eQueryType.FullMode.ToString().ToLower()) Then
                     bShow = False

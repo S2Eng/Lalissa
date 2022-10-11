@@ -102,16 +102,12 @@ namespace qs2.ui.print
                     .Hidden = false;
                 cboQuerySelect.DisplayLayout.Bands[0].Columns[dsAdmin1.tblSelListEntries.TableColumn.ColumnName]
                     .Hidden = false;
-
-                if (actUsr.IsAdminSecureOrSupervisor())
-                {
-                    cboQuerySelect.DisplayLayout.Bands[0].Columns[dsAdmin1.tblSelListEntries.IDColumn.ColumnName]
-                        .Hidden = false;
-                    cboQuerySelect.DisplayLayout.Bands[0].Columns[dsAdmin1.tblSelListEntries.IDColumn.ColumnName]
-                        .Width = 100;
-                    cboQuerySelect.DisplayLayout.Bands[0]
-                        .Columns[dsAdmin1.tblSelListEntries.IDRessourceColumn.ColumnName].Hidden = false;
-                }
+                cboQuerySelect.DisplayLayout.Bands[0].Columns[dsAdmin1.tblSelListEntries.IDColumn.ColumnName]
+                    .Hidden = false;
+                cboQuerySelect.DisplayLayout.Bands[0].Columns[dsAdmin1.tblSelListEntries.IDColumn.ColumnName]
+                    .Width = 100;
+                cboQuerySelect.DisplayLayout.Bands[0]
+                    .Columns[dsAdmin1.tblSelListEntries.IDRessourceColumn.ColumnName].Hidden = false;
 
                 cboQuerySelect.DisplayLayout.Bands[0]
                     .Columns[dsAdmin1.tblSelListEntries.FldShortColumnColumn.ColumnName].Hidden = true;
@@ -249,14 +245,7 @@ namespace qs2.ui.print
                             if (dsAdminTmp3.tblSelListEntriesObj.Rows.Count > 0) HasUserHasRight = true;
                         }
 
-                    var bIDParticipant = false;
-                    if (rSelList.IDParticipant.Trim() == "" || rSelList.IDParticipant.Trim().ToLower()
-                            .Equals(doLicense.eApp.ALL.ToString().Trim().ToLower()) ||
-                        rSelList.IDParticipant.Trim().ToLower()
-                            .Equals(doLicense.rParticipant.IDParticipant.Trim().ToLower()))
-                        bIDParticipant = true;
-
-                    if (actUsr.IsAdminSecureOrSupervisor()) bIDParticipant = true;
+                    var bIDParticipant = true;
 
                     if (SubQueries)
                     {
@@ -279,7 +268,8 @@ namespace qs2.ui.print
                                 bOk = true;
                         }
 
-                        if (actUsr.IsAdminSecureOrSupervisor() && typeQuery == Enums.eTypeQuery.Admin) bOk = true;
+                        if (typeQuery == Enums.eTypeQuery.Admin) 
+                            bOk = true;
 
                         if (bOk && HasUserHasRight && bIDParticipant)
                         {

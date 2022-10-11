@@ -244,7 +244,7 @@
             End If
             Dim Parameters As New qs2.core.vb.sqlAdmin.ParametersSelListEntries()
             Me.getSelListEntrysAll(Parameters, "", sqlAdmin.dsAllAdmin, eTypAuswahlList.all, "", license.doLicense.eApp.ALL.ToString())
-            Me.getSelListEntrysSort(-999, "", Me.dsAllAdmin, eTypSelListSort.All, "")
+            Me.getSelListEntrysSort(-999, "", dsAllAdmin, eTypSelListSort.All, "")
 
             If  ClearDataTable Then
             End If
@@ -347,7 +347,6 @@
             Return ds.tblAdjust.Rows(0)
         ElseIf ds.tblAdjust.Rows.Count > 1 Then
             Throw New Exception("getAdjustRow.id: More than one Row for setting '" + setting.ToString() + "' found!")
-            Return Nothing
         Else
             Throw New Exception("sqlAdmin.getAdjustRow: TypSel '" + typSel.ToString() + "' is wrong!")
         End If
@@ -355,7 +354,7 @@
     Public Function getAdjust(UsrToLoad As String, ByVal setting As eAdjust, ByRef ds As dsAdmin, ByVal typSel As eTypSelAdjust, IDParticipant As String) As Boolean
 
         Me.daAdjust.SelectCommand.CommandText = Me.sel_daAdjust
-        Me.database.setConnection(Me.daAdjust)
+        database.setConnection(Me.daAdjust)
         Me.daAdjust.SelectCommand.Parameters.Clear()
 
         If typSel = eTypSelAdjust.forClient Then
@@ -835,9 +834,7 @@
                 ElseIf typSel = eTypAuswahlList.group Then
                     Dim sWhere As String = sqlTxt.where + sWhereGrp
                     sWhere += " and (IDParticipant='" + IDParticipant.Trim() + "'"
-                    If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                        sWhere += " or IDParticipant='ALL' or IDParticipant = ''"
-                    End If
+                    sWhere += " or IDParticipant='ALL' or IDParticipant = ''"
                     sWhere += ") "
                     daSelListEntrys.SelectCommand.CommandText += sWhere + sqlTxt.orderBy + ds.tblSelListEntries.IDRessourceColumn.ColumnName + sqlTxt.asc
                     Me.daSelListEntrys.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblSelListEntries.IDGroupColumn.ColumnName), Parameters.rGrpFound.ID)
@@ -2226,7 +2223,7 @@
                 Throw New Exception("sqlAdmin.getNextIDSelListGeneric:NextIDOwnInt < 0 for new SelListEntry!")
             End If
 
-            newIDSelList = System.Convert.ToInt32(IDGroup.ToString() + NextIDOwnInt.ToString().PadLeft(IIf(qs2.core.vb.actUsr.IsAdminSecureOrSupervisor(), 4, 5), "0").ToString())
+            newIDSelList = System.Convert.ToInt32(IDGroup.ToString() + NextIDOwnInt.ToString().PadLeft(4, "0").ToString())
 
         Catch ex As Exception
             Throw New Exception("sqlAdmin.getNextIDSelListGeneric: " + vbNewLine + vbNewLine + ex.ToString())
@@ -2235,13 +2232,8 @@
 
     Public Function getNextIDSelListGroupGeneric() As Integer
         Try
-            Dim nrCircleManuell As Integer = -1
-            If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                nrCircleManuell = 1000
-            Else
-                Throw New Exception("sqlAdmin: getNextIDSelListGroupGeneric: To add a new group is for normal Users not allowed!")
-            End If
-            Dim nrCircleMaxManuell As Integer = nrCircleManuell + 999
+            Dim nrCircleManuell As Integer = 1000
+            Dim nrCircleMaxManuell As Integer = 1999
 
             Dim dsNextID As New dsAdmin()
             Me.getMaxSelListGroup(dsNextID, eTypSelListGetMaxID.GetMaxIDGeneric, nrCircleManuell, nrCircleMaxManuell)

@@ -6,14 +6,8 @@ Public Class cTranslate
     Public Function saveTranslation(IDRes As String, translatedTxtGerm As String, translatedTxtEng As String, translatedTxtUser As String,
                                     IDApplication As String, doLoadAllRessources As Boolean) As Boolean
         Try
-            Dim IDPartipantTmp As String = ""
-            If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                IDPartipantTmp = qs2.core.license.doLicense.eApp.ALL.ToString()
-            Else
-                IDPartipantTmp = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim()
-            End If
-
-            Dim rLanguageFound As qs2.core.language.dsLanguage.RessourcenRow = Nothing
+            Dim IDPartipantTmp = qs2.core.license.doLicense.eApp.ALL.ToString()
+            Dim rLanguageFound As qs2.core.language.dsLanguage.RessourcenRow
             Dim sqlLanguage1 As New qs2.core.language.sqlLanguage()
             Dim dsLanguage1 As New qs2.core.language.dsLanguage()
             sqlLanguage1.getLanguageRow(IDRes, dsLanguage1, IDApplication, IDPartipantTmp,

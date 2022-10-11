@@ -297,7 +297,7 @@ namespace qs2.print
             try
             {
                 qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("ErrorExecuteSql") + "!", MessageBoxButtons.OK, "");
-                if (qs2.core.ENV.adminSecure && qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
+                if (qs2.core.ENV.AdminSecure)
                 {
                     if (qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("OpenSqlFileYN") + "?", MessageBoxButtons.YesNo, "") == DialogResult.Yes)
                     {
@@ -384,7 +384,7 @@ namespace qs2.print
                     this.addStandardTablesToDs(dsQryResult, typRunQuery, infoQry1);
                 }
 
-                string fileToSave = this.funct1.saveFile(false, qs2.core.vb.funct.xmlFileType, fileNameDefault, System.IO.Path.Combine(qs2.core.ENV.path_reports, Application));
+                string fileToSave = this.funct1.saveFile(false, qs2.core.vb.funct.xmlFileType, fileNameDefault, System.IO.Path.Combine(qs2.core.ENV.PathReports, Application));
                 if (fileToSave != null)
                 {
                     string fileToSaveXsd = Path.Combine(Path.GetFullPath(fileToSave), Path.GetFileNameWithoutExtension(fileToSave) + ".xsd");
@@ -417,7 +417,7 @@ namespace qs2.print
         {
             try
             {
-                string fileToOpen = this.funct1.saveFileFromString(qs2.core.ENV.path_temp, title, qs2.core.vb.funct.fileTypeTxt, sql);
+                string fileToOpen = this.funct1.saveFileFromString(qs2.core.ENV.PathTemp, title, qs2.core.vb.funct.fileTypeTxt, sql);
                 this.funct1.openFile(fileToOpen, "", false);
             }
             catch (Exception ex)
@@ -452,7 +452,7 @@ namespace qs2.print
             {
                 string txt = qs2.core.language.sqlLanguage.getRes("AssignedQueries") + ":" + qs2.core.generic.lineBreak + "     " + IDResQueries;
 
-                string fileToOpen = this.funct1.saveFileFromString(qs2.core.ENV.path_temp, title, qs2.core.vb.funct.fileTypeTxt, txt);
+                string fileToOpen = this.funct1.saveFileFromString(qs2.core.ENV.PathTemp, title, qs2.core.vb.funct.fileTypeTxt, txt);
                 this.funct1.openFile(fileToOpen, "", false);
             }
             catch (Exception ex)
@@ -471,8 +471,8 @@ namespace qs2.print
 
                 if (!qs2.core.ENV.TrustedConnection)
                 {
-                    info.ConnectionInfo.UserID = qs2.core.ENV.userDb;
-                    info.ConnectionInfo.Password = qs2.core.ENV.pwdDbDecrypted;
+                    info.ConnectionInfo.UserID = qs2.core.ENV.UserDb;
+                    info.ConnectionInfo.Password = qs2.core.ENV.PwdDbDecrypted;
                 }
                 else
                 {

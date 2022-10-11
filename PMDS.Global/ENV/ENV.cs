@@ -246,7 +246,7 @@ namespace PMDS.Global
         public static int ELGAStatusRed = 10;
         public static string ELGAUser = "s2-engineering";
         public static string ELGAPwd = "KLqHC0hznj91OH0PiCIWBw==";
-        public static string ELGACommunityDomain = "1.3.6.1.4.1.48288.2.990.2";     //Tiany CPID (Domäne der Tiany in ELGA)
+        public static string ELGACommunityDomain = "1.3.6.1.4.1.48288.2.990.2";     //Tiany CPID (Domain der Tiany in ELGA)
 
         //tian -Spielwiese
         //public static System.ServiceModel.EndpointAddress ELGAUrl = new System.ServiceModel.EndpointAddress(new Uri("http://hnelga01.tiani-spirit.com:8181/SpiritEhrWsRemoting/EhrWSRemoting"));
@@ -2075,7 +2075,7 @@ namespace PMDS.Global
 
         public static void HandleException(Exception e, string sType = "Exception", bool ShowMsgBox = true, bool checkOutOfMemory = true, string TitleAlternative = null, bool sendEMail = true)
         {
-            QS2.Logging.Settings.init(ENV.LOGPATH, true, qs2.core.ENV.adminSecure);
+            QS2.Logging.Settings.init(ENV.LOGPATH, true, qs2.core.ENV.AdminSecure);
             string sHostName = System.Net.Dns.GetHostName();
             string IPAdress = "";
 

@@ -133,7 +133,7 @@ Public Class sqlProtocoll
                     TypSel = eSelProtocoll.RunQuery Or TypSel = eSelProtocoll.RunReport Then
                 sWhere = sqlTxt.where + sqlTxt.getColWhere(dsProtocoll.Protocol.TypeColumn.ColumnName)
 
-                If Not ENV.adminSecure Then
+                If Not ENV.AdminSecure Then
                     sWhere += " and [User]  ='" + UserName.Trim() + "' "
                 End If
                 sWhere = AddUserAppFilter(sWhere, FilterProductsEntries, FilterUserApps)

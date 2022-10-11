@@ -10,19 +10,19 @@ namespace qs2.core
 {
     public class ENV
     {
-        private static string errorPathMsg = "Path {0} does not exist!";
-        private static Encryption Encryption1 = new Encryption();
-        private static string path_rootBin = "";
-        private static string path_bin = "";
-        private static string ExeConfig = "QS2.exe.config";
-        private static string IDParticipant = "";
-        private static System.Collections.Generic.List<string> lstIDParticipantsEncrypted = new List<string>();
-        private static System.Collections.Generic.List<string> lstConnStr = new System.Collections.Generic.List<string>();
-        private static string TagForMonitoring = "";
-        private static string developPath_config = "";
-        private static string developConfigFile = "";
-        private static string configFileDevelop = "";
-        private static string developPath = "";
+        private static string _errorPathMsg = "Path {0} does not exist!";
+        private static Encryption _encryption1 = new Encryption();
+        private static string _pathRootBin = "";
+        private static string _pathBin = "";
+        private static string _exeConfig = "QS2.exe.config";
+        private static string _idParticipant = "";
+        private static List<string> _lstIdParticipantsEncrypted = new List<string>();
+        private static List<string> _lstConnStr = new List<string>();
+        private static string _tagForMonitoring = "";
+        private static string _developPathConfig = "";
+        private static string _developConfigFile = "";
+        private static string _configFileDevelop = "";
+        private static string _developPath = "";
 
         public static bool UseWatch = false;
         public static string ReferenceVersion = "";
@@ -31,38 +31,37 @@ namespace qs2.core
         public static string MinDBVersion = "";
         public static bool ConnectedOnDesignerDB_QS2_Dev = false;
         public static bool SystemIsInitialized = false;
-        public static string path_config = "";
-        public static string path_reports = "";
-        public static string path_log = "";
-        public static string path_temp = "";
+        public static string PathConfig = "";
+        public static string PathReports = "";
+        public static string PathLog = "";
+        public static string PathTemp = "";
         public static bool IsHeadquarter = false;
         public static string fileConfig = "";
         public static string configFile = "";
         public static string connStr = "";
-        public static bool TrustedConnection = false;
+        public static bool TrustedConnection;
         public static int LDAPPort = 389;
-        public static bool WriteERConnectionString = false;
+        public static bool WriteERConnectionString;
         public static string Server = "";
         public static string Database = "";
-        public static string userDb = "";
-        public static string pwdDbEncrypted = "";
-        public static string pwdDbDecrypted = "";
-        public static bool adminSecure = false;
-        public static bool developModus = false;
-        public static bool protocolAllTranslationErrors = false;
-        public static string Domäne = "";
-        public static string language = "";
+        public static string UserDb = "";
+        public static string PwdDbEncrypted = "";
+        public static string PwdDbDecrypted = "";
+        public static bool AdminSecure;
+        public static bool protocolAllTranslationErrors;
+        public static string Domain = "";
+        public static string Language = "";
         public static string EMailService = "ServiceCenter@s2-engineering.com";
         public static string developParticipant = "develop";
         public static bool developSimulateControls = true;
-        public static bool ExtendedUI = false;
+        public static bool ExtendedUI;
         public static int ApplicationSelection = 1;
         public static string StandardFieldsQueries = "";
         public static bool ShowAllRowsQueryResult;
         public static string Encoding = "default";
         public static bool UseAppStylingDefault = true;
-        public static int ColorSchema = 2;
-        public static System.Collections.Generic.List<Form> lstOpendChildForms = new List<Form>();
+        //public static int ColorSchema = 2;
+        public static List<Form> lstOpendChildForms = new List<Form>();
         public static System.Drawing.Point LoactionMain;
         public static System.Drawing.Size LoactionSizeMain;
         public static System.Drawing.Point LoactionStay;
@@ -122,58 +121,58 @@ namespace qs2.core
                 string strExceptionText = "readPathes: Root directory of QS2 may not be in first level of directory tree! ";
                 if (!designMode)
                 {
-                    ENV.path_bin = System.Windows.Forms.Application.StartupPath;
-                    ENV.path_rootBin = Directory.GetParent(System.Windows.Forms.Application.StartupPath).ToString();
-                    if (ENV.path_rootBin == null)
+                    ENV._pathBin = System.Windows.Forms.Application.StartupPath;
+                    ENV._pathRootBin = Directory.GetParent(System.Windows.Forms.Application.StartupPath).ToString();
+                    if (ENV._pathRootBin == null)
                         throw new Exception(strExceptionText + System.Windows.Forms.Application.StartupPath.ToString());
                 }
                 else
                 {
-                    ENV.configFileDevelop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + Path.DirectorySeparatorChar.ToString() + "qs2VS.config";    //Kann niemals erste Ebene sein!!
-                    ENV.readConfig(ENV.configFileDevelop, designMode);
+                    ENV._configFileDevelop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + Path.DirectorySeparatorChar.ToString() + "qs2VS.config";    //Kann niemals erste Ebene sein!!
+                    ENV.readConfig(ENV._configFileDevelop, designMode);
 
-                    ENV.path_config = ENV.developPath_config;
-                    ENV.configFile = ENV.developConfigFile;
+                    ENV.PathConfig = ENV._developPathConfig;
+                    ENV.configFile = ENV._developConfigFile;
 
-                    ENV.path_bin = ENV.developPath;
-                    ENV.path_rootBin = Directory.GetParent(ENV.path_bin).ToString();
-                    if (ENV.path_rootBin == null)
-                        throw new Exception(strExceptionText + ENV.path_bin.ToString());
+                    ENV._pathBin = ENV._developPath;
+                    ENV._pathRootBin = Directory.GetParent(ENV._pathBin).ToString();
+                    if (ENV._pathRootBin == null)
+                        throw new Exception(strExceptionText + ENV._pathBin.ToString());
 
-                    ENV.fileConfig = Path.Combine(ENV.path_config, ENV.configFile);
+                    ENV.fileConfig = Path.Combine(ENV.PathConfig, ENV.configFile);
                     ENV.readConfig(ENV.fileConfig, designMode);
                 }
 
-                if (!System.IO.Directory.Exists(ENV.path_config))
-                    throw new Exception(string.Format(ENV.errorPathMsg, ENV.path_config));
+                if (!System.IO.Directory.Exists(ENV.PathConfig))
+                    throw new Exception(string.Format(ENV._errorPathMsg, ENV.PathConfig));
 
                 if (!IsOhterLogin)
                 {
-                    if (ENV.path_log.Trim() == "")
-                        ENV.path_log = Path.Combine(ENV.path_config, ENV.ePath.log.ToString());
+                    if (ENV.PathLog.Trim() == "")
+                        ENV.PathLog = Path.Combine(ENV.PathConfig, ENV.ePath.log.ToString());
 
-                    if (!System.IO.Directory.Exists(ENV.path_log))
-                        System.IO.Directory.CreateDirectory(ENV.path_log);
+                    if (!System.IO.Directory.Exists(ENV.PathLog))
+                        System.IO.Directory.CreateDirectory(ENV.PathLog);
                 }
 
-                ENV.path_temp = Path.Combine(Path.GetTempPath(), "QS2");
-                if (!System.IO.Directory.Exists(ENV.path_temp))
+                ENV.PathTemp = Path.Combine(Path.GetTempPath(), "QS2");
+                if (!System.IO.Directory.Exists(ENV.PathTemp))
                 {
-                    System.IO.Directory.CreateDirectory(ENV.path_temp);
+                    System.IO.Directory.CreateDirectory(ENV.PathTemp);
                 }
 
-                if (!System.IO.Directory.Exists(ENV.path_temp))
-                    System.IO.Directory.CreateDirectory(ENV.path_temp);
+                if (!System.IO.Directory.Exists(ENV.PathTemp))
+                    System.IO.Directory.CreateDirectory(ENV.PathTemp);
 
-                ENV.path_reports = Path.Combine(ENV.path_bin, ENV.ePath.reports.ToString());
+                ENV.PathReports = Path.Combine(ENV._pathBin, ENV.ePath.reports.ToString());
                 if (createPatReports)
                 {
                     ENV.checkPathReports(designMode);
                 }
 
-                ENV.ExeConfig = Path.Combine(ENV.path_config, ENV.ExeConfig);
-                if (!System.IO.File.Exists(ENV.ExeConfig))
-                    throw new Exception("readPathes: File '" + ENV.ExeConfig + "' does not exist!");
+                ENV._exeConfig = Path.Combine(ENV.PathConfig, ENV._exeConfig);
+                if (!System.IO.File.Exists(ENV._exeConfig))
+                    throw new Exception("readPathes: File '" + ENV._exeConfig + "' does not exist!");
 
                 qs2.core.language.sqlLanguage sqlLanguage1 = new qs2.core.language.sqlLanguage();
                 sqlLanguage1.initControl();
@@ -189,13 +188,13 @@ namespace qs2.core
 
         public static void checkPathReports(bool designMode)
         {
-            if (!System.IO.Directory.Exists(ENV.path_reports))
-                System.IO.Directory.CreateDirectory(ENV.path_reports);
+            if (!System.IO.Directory.Exists(ENV.PathReports))
+                System.IO.Directory.CreateDirectory(ENV.PathReports);
 
             foreach (int val in Enum.GetValues(typeof(license.doLicense.eApp)))
             {
                 string sApp = Enum.GetName(typeof(license.doLicense.eApp), val);
-                string reportPathApp = Path.Combine(ENV.path_reports,sApp);
+                string reportPathApp = Path.Combine(ENV.PathReports,sApp);
                 if (!System.IO.Directory.Exists(reportPathApp))
                     System.IO.Directory.CreateDirectory(reportPathApp);
             }
@@ -229,41 +228,38 @@ namespace qs2.core
                                         ENV.connStr = sValue;
                                         dbDone = true;
                                     }
-                                    ENV.lstConnStr.Add(sValue);
+                                    ENV._lstConnStr.Add(sValue);
                                 }
 
                                 else if (sVar.Equals(eVarIni.dbVS.ToString(), sc) && DesignMode)
                                 {
                                     ENV.connStr = sValue;
-                                    ENV.lstConnStr.Clear();
+                                    ENV._lstConnStr.Clear();
                                 }
 
                                 else if (sVar.Equals(eVarIni.LogPath.ToString(), sc))
-                                    ENV.path_log = sValue;
+                                    ENV.PathLog = sValue;
 
                                 else if (sVar.Equals(eVarIni.adminSecure.ToString(), sc))
-                                    ENV.adminSecure = GetBoolValue(sValue);
-
-                                else if (sVar.Equals(eVarIni.developModus.ToString(), sc))
-                                    ENV.developModus = GetBoolValue(sValue);
+                                    ENV.AdminSecure = GetBoolValue(sValue);
 
                                 else if (sVar.Equals(eVarIni.protocolAllTranslationErrors.ToString(), sc))
                                     ENV.protocolAllTranslationErrors = GetBoolValue(sValue);
 
-                                else if (sVar.Equals(TagForMonitoring.ToString(), sc))
-                                    ENV.TagForMonitoring = sValue;
+                                else if (sVar.Equals(_tagForMonitoring.ToString(), sc))
+                                    ENV._tagForMonitoring = sValue;
 
                                 else if (sVar.Equals(eVarIni.DefaultDomain.ToString(), sc))
-                                    ENV.Domäne = sValue;
+                                    ENV.Domain = sValue;
 
                                 else if (sVar.Equals(eVarIni.language.ToString(), sc))
-                                    ENV.language = sValue;
+                                    ENV.Language = sValue;
 
                                 else if (sVar.Equals(eVarIni.EMailService.ToString(), sc))
                                     ENV.EMailService = sValue;
 
                                 else if (sVar.Equals(eVarIni.developPath.ToString(), sc))
-                                    ENV.developPath = sValue;
+                                    ENV._developPath = sValue;
 
                                 else if (sVar.Equals(eVarIni.WriteERConnectionString.ToString(), sc))
                                     ENV.WriteERConnectionString = GetBoolValue(sValue);
@@ -277,7 +273,7 @@ namespace qs2.core
                                     {
                                         throw new Exception("readConfig: ENV.IDParticipant=='' not allowed!");
                                     }
-                                    ENV.IDParticipant = sValue;
+                                    ENV._idParticipant = sValue;
                                     ENV.readParticipants();
                                 }
 
@@ -285,23 +281,23 @@ namespace qs2.core
                                 {
                                     if (sValue == ("programdata"))
                                     {
-                                        ENV.path_config = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "qs2", "config");
-                                        if (!Directory.Exists(ENV.path_config))
-                                            Directory.CreateDirectory(ENV.path_config);
+                                        ENV.PathConfig = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "qs2", "config");
+                                        if (!Directory.Exists(ENV.PathConfig))
+                                            Directory.CreateDirectory(ENV.PathConfig);
                                     }
                                     else
                                     {
-                                        ENV.path_config = sValue;
-                                        if (!Directory.Exists(ENV.path_config))
-                                            Directory.CreateDirectory(ENV.path_config);
+                                        ENV.PathConfig = sValue;
+                                        if (!Directory.Exists(ENV.PathConfig))
+                                            Directory.CreateDirectory(ENV.PathConfig);
                                     }
                                 }
 
                                 else if (sVar.Equals(eVarIni.developPath_config.ToString(), sc))
-                                    ENV.developPath_config = sValue;
+                                    ENV._developPathConfig = sValue;
 
                                 else if (sVar.Equals(eVarIni.developConfigFile.ToString(), sc))
-                                    ENV.developConfigFile = sValue;
+                                    ENV._developConfigFile = sValue;
 
                                 else if (sVar.Equals(eVarIni.developSimulateControls.ToString(), sc))
                                     ENV.developSimulateControls = GetBoolValue(sValue);
@@ -329,18 +325,6 @@ namespace qs2.core
 
                                 else if (sVar.Equals("UseAppStylingDefault", sc))
                                     ENV.UseAppStylingDefault = GetBoolValue(sValue);
-
-                                else if (sVar.Equals("ColorSchema", sc))
-                                {
-                                    if (sValue == "1")
-                                    {
-                                        ENV.ColorSchema = 1;
-                                    }
-                                    else if (sValue == "2")
-                                    {
-                                        ENV.ColorSchema = 2;
-                                    }
-                                }
                             }
                         }
                     }
@@ -395,17 +379,17 @@ namespace qs2.core
             try
             {
                 System.Collections.Generic.List<string> lstIDParticipantsDecrypted = new List<string>();
-                lstIDParticipantsDecrypted = qs2.core.generic.readStrVariables(ENV.IDParticipant.Trim());
+                lstIDParticipantsDecrypted = qs2.core.generic.readStrVariables(ENV._idParticipant.Trim());
                 foreach (string IDParticipant in lstIDParticipantsDecrypted)
                 {
-                    string IDParticipantDecrypted = Encryption1.StringDecrypt(IDParticipant.Trim(), Encryption.keyForEncryptingStrings);
+                    string IDParticipantDecrypted = _encryption1.StringDecrypt(IDParticipant.Trim(), Encryption.keyForEncryptingStrings);
                     if (IDParticipantDecrypted.Trim() != "")
                     {
-                        ENV.lstIDParticipantsEncrypted.Add(IDParticipantDecrypted);
+                        ENV._lstIdParticipantsEncrypted.Add(IDParticipantDecrypted);
                     }
                 }
 
-                if (ENV.lstIDParticipantsEncrypted.Count == 0)
+                if (ENV._lstIdParticipantsEncrypted.Count == 0)
                 {
                     throw new Exception("ENV.readParticipants: No Participant found in ENV.IDParticipant!");
                 }
@@ -427,8 +411,8 @@ namespace qs2.core
             if (SqlBuilder.IntegratedSecurity) 
                 return;
 
-            ENV.userDb = SqlBuilder.UserID;
-            ENV.pwdDbEncrypted = SqlBuilder.Password;
+            ENV.UserDb = SqlBuilder.UserID;
+            ENV.PwdDbEncrypted = SqlBuilder.Password;
         }
     }
 }

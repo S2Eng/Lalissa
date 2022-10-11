@@ -160,7 +160,7 @@ Public Class contSelChaptFldShort
                     For Each rSelListChapter As qs2.core.vb.dsAdmin.tblSelListEntriesRow In Me.DsAdmin1.tblSelListEntries
                         Dim rigthOK As Boolean = True
 
-                        If qs2.core.ENV.adminSecure Then
+                        If qs2.core.ENV.AdminSecure Then
                             rigthOK = True
                         End If
 
@@ -223,15 +223,8 @@ Public Class contSelChaptFldShort
                                                                                                          rSelObj.FldShort, IDApplicationToSearch, False, True,
                                                                                                          Me.chkOnlyShowPreferedFields.Checked, "", "", False)
                     For Each rCrit As qs2.core.vb.dsAdmin.tblCriteriaRow In arrCriterias
-
-                        If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                            If rCrit.UseInQueries And rCrit.Used Then
-                                arrCriterias.CopyToDataTable(Me.DsAdmin1.tblCriteria, LoadOption.Upsert)
-                            End If
-                        Else
-                            If rCrit.UseInQueries And rCrit.Used Then
-                                arrCriterias.CopyToDataTable(Me.DsAdmin1.tblCriteria, LoadOption.Upsert)
-                            End If
+                        If rCrit.UseInQueries And rCrit.Used Then
+                            arrCriterias.CopyToDataTable(Me.DsAdmin1.tblCriteria, LoadOption.Upsert)
                         End If
                     Next
                 Next

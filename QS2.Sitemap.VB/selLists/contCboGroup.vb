@@ -47,10 +47,6 @@ Public Class contCboGroup
             Me.cboGroup.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListGroup.IDApplicationColumn.ColumnName).Header.Caption = qs2.core.language.sqlLanguage.getRes("Application")
             Me.cboGroup.DisplayLayout.Bands(0).Columns(Me.DsAdmin1.tblSelListGroup.IDGroupStrColumn.ColumnName).Header.Caption = qs2.core.language.sqlLanguage.getRes("Key")
 
-            If Not qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-            Else
-            End If
-
             Me.isLoaded = True
 
         Catch ex As Exception

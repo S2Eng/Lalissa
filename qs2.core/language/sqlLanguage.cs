@@ -260,7 +260,7 @@ namespace qs2.core.language
 
             language.sqlLanguage.checkParticipant(ref IDParticipant);
             
-            if (qs2.core.ENV.language == eLanguage.NoText.ToString())
+            if (qs2.core.ENV.Language == eLanguage.NoText.ToString())
             {
                 return "";
             }
@@ -304,11 +304,11 @@ namespace qs2.core.language
                     {
                         if (Language == eLanguage.NoText)
                         {
-                            if (qs2.core.ENV.language == eLanguage.English.ToString())
+                            if (qs2.core.ENV.Language == eLanguage.English.ToString())
                                 return rLangFound.English;
-                            else if (qs2.core.ENV.language == eLanguage.German.ToString())
+                            else if (qs2.core.ENV.Language == eLanguage.German.ToString())
                                 return rLangFound.German;
-                            else if (qs2.core.ENV.language == eLanguage.LangUser.ToString())
+                            else if (qs2.core.ENV.Language == eLanguage.LangUser.ToString())
                                 return rLangFound.User;
                             else
                             {
@@ -383,27 +383,20 @@ namespace qs2.core.language
 
         public static void doProtNoTranslationFound(string IDRes, string IDApplication, Enums.eResourceType typ)
         {
-            //if (!Protocol.alwaysShowExceptionMulticontrol)
-            //{
                 if (qs2.core.ENV.protocolAllTranslationErrors)
                 {
                     if (IDRes.Trim() != "")
                     {
-                        if (IDRes.Trim().ToLower() == ("Prozeduren").Trim().ToLower())
-                        {
-                            string xy = "";
-                        }
-                        
                         qs2.core.Protocol.doExcept("No translation found for IDRessource '" + IDRes + "' [Type " + typ.ToString () + "]!", "sqlLanguage.getRes", "", false, true, "", false, qs2.core.Protocol.eTypeError.Info);
 
                     }
                 }
-            //}
         }
+
         public static dsLanguage.RessourcenRow getResRow(string IDRes, Enums.eResourceType typ, string IDParticipant, string IDApplication)
         {
             language.sqlLanguage.checkParticipant(ref IDParticipant);
-            if (qs2.core.ENV.language == eLanguage.NoText.ToString())
+            if (qs2.core.ENV.Language == eLanguage.NoText.ToString())
             {
                 return null;
             }
@@ -433,8 +426,8 @@ namespace qs2.core.language
                     }
                 }
             }
-            return null;
         }
+
         private static dsLanguage.RessourcenRow searchLangRowxy(dsLanguage ds, Enums.eResourceType ResourceType, 
                                                             string IDParticipant, string IDApplication,
                                                             string IDRes, bool CheckLabelForQuery)
@@ -454,45 +447,32 @@ namespace qs2.core.language
             IDRes = IDRes.Replace("'", "''");
             string selIDRes = sqlTxt.and + ds.Ressourcen.IDResColumn.ColumnName + "='" + IDRes + "'";
             
-            dsLanguage.RessourcenRow rLangFound;
             if (IDParticipant == "" || IDApplication == "")
                 throw new Exception("searchLangRow: IDParticipant or IDApplication is null!");      //return null;  //(dsLanguage.RessourcenRow)ds.Ressourcen.Rows[0];
-            else
-            {
-                dsLanguage.RessourcenRow[] arrLang = (dsLanguage.RessourcenRow[])ds.Ressourcen.Select(ds.Ressourcen.IDParticipantColumn.ColumnName + "='" + IDParticipant + "'" + sqlTxt.and + ds.Ressourcen.IDApplicationColumn.ColumnName + "='" + IDApplication + "'" + selTyp + selIDRes);
-                if (arrLang.Length > 0)
-                    return arrLang[0];
-                else
-                {
-                    arrLang = (dsLanguage.RessourcenRow[])ds.Ressourcen.Select(ds.Ressourcen.IDParticipantColumn.ColumnName + "='" + IDParticipant + "'" + sqlTxt.and + ds.Ressourcen.IDApplicationColumn.ColumnName + "='" + license.doLicense.eApp.ALL + "'" + selTyp + selIDRes);
-                    if (arrLang.Length > 0)
-                        return arrLang[0];
-                    else
-                    {
-                        arrLang = (dsLanguage.RessourcenRow[])ds.Ressourcen.Select(ds.Ressourcen.IDParticipantColumn.ColumnName + "='" + license.doLicense.eApp.ALL + "'" + sqlTxt.and + ds.Ressourcen.IDApplicationColumn.ColumnName + "='" + IDApplication + "'" + selTyp + selIDRes);
-                        if (arrLang.Length > 0)
-                            return arrLang[0];
-                        else
-                        {
-                            arrLang = (dsLanguage.RessourcenRow[])ds.Ressourcen.Select(ds.Ressourcen.IDParticipantColumn.ColumnName + "='" + license.doLicense.eApp.ALL + "'" + sqlTxt.and + ds.Ressourcen.IDApplicationColumn.ColumnName + "='" + license.doLicense.eApp.ALL + "'" + selTyp + selIDRes);
-                            if (arrLang.Length > 0)
-                                return arrLang[0];
-                            else
-                            {
-                                arrLang = (dsLanguage.RessourcenRow[])ds.Ressourcen.Select(ds.Ressourcen.IDParticipantColumn.ColumnName + "=''" + sqlTxt.and + ds.Ressourcen.IDApplicationColumn.ColumnName + "='" + license.doLicense.eApp.ALL + "'" + selTyp + selIDRes);
-                                if (arrLang.Length > 0)
-                                    return arrLang[0];
-                                else
-                                {
-                                    return null;
-                                }
-                            }   
-                        }
-                    }
-                }
-            }
+
+            dsLanguage.RessourcenRow[] arrLang = (dsLanguage.RessourcenRow[])ds.Ressourcen.Select(ds.Ressourcen.IDParticipantColumn.ColumnName + "='" + IDParticipant + "'" + sqlTxt.and + ds.Ressourcen.IDApplicationColumn.ColumnName + "='" + IDApplication + "'" + selTyp + selIDRes);
+            if (arrLang.Length > 0)
+                return arrLang[0];
+            
+            arrLang = (dsLanguage.RessourcenRow[])ds.Ressourcen.Select(ds.Ressourcen.IDParticipantColumn.ColumnName + "='" + IDParticipant + "'" + sqlTxt.and + ds.Ressourcen.IDApplicationColumn.ColumnName + "='" + license.doLicense.eApp.ALL + "'" + selTyp + selIDRes);
+            if (arrLang.Length > 0)
+                return arrLang[0];
+            
+            arrLang = (dsLanguage.RessourcenRow[])ds.Ressourcen.Select(ds.Ressourcen.IDParticipantColumn.ColumnName + "='" + license.doLicense.eApp.ALL + "'" + sqlTxt.and + ds.Ressourcen.IDApplicationColumn.ColumnName + "='" + IDApplication + "'" + selTyp + selIDRes);
+            if (arrLang.Length > 0)
+                return arrLang[0];
+            
+            arrLang = (dsLanguage.RessourcenRow[])ds.Ressourcen.Select(ds.Ressourcen.IDParticipantColumn.ColumnName + "='" + license.doLicense.eApp.ALL + "'" + sqlTxt.and + ds.Ressourcen.IDApplicationColumn.ColumnName + "='" + license.doLicense.eApp.ALL + "'" + selTyp + selIDRes);
+            if (arrLang.Length > 0)
+                return arrLang[0];
+
+            arrLang = (dsLanguage.RessourcenRow[])ds.Ressourcen.Select(ds.Ressourcen.IDParticipantColumn.ColumnName + "=''" + sqlTxt.and + ds.Ressourcen.IDApplicationColumn.ColumnName + "='" + license.doLicense.eApp.ALL + "'" + selTyp + selIDRes);
+            if (arrLang.Length > 0)
+                return arrLang[0];
+
             return null;
         }
+
         public static void checkParticipant(ref string IDParticipant)
         {
             if (IDParticipant.Trim().ToLower().Equals(license.doLicense.eApp.ALL.ToString().Trim().ToLower()) || IDParticipant.Trim() == "")
@@ -663,33 +643,9 @@ namespace qs2.core.language
             catch (Exception ex)
             {
                 throw new Exception("sqlLanguage.getLanguageRow:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                return null;
             }
         }
 
-        public bool deleteRessourcexy(string IDRes, string Application, string Participant, string Type, string IDLanguageUser)
-        {
-            dsLanguage.RessourcenDataTable tRessourcen = new dsLanguage.RessourcenDataTable();
-
-            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-            cmd.Parameters.Clear();
-            cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + tRessourcen.TableName +
-                                sqlTxt.where + sqlTxt.getColWhere(tRessourcen.IDResColumn.ColumnName) +
-                                sqlTxt.where + sqlTxt.getColWhere(tRessourcen.IDApplicationColumn.ColumnName) +
-                                sqlTxt.where + sqlTxt.getColWhere(tRessourcen.IDParticipantColumn.ColumnName) +
-                                sqlTxt.where + sqlTxt.getColWhere(tRessourcen.TypeColumn.ColumnName) +
-                                sqlTxt.where + sqlTxt.getColWhere(tRessourcen.IDLanguageUserColumn.ColumnName);
-
-            cmd.Connection = qs2.core.dbBase.dbConn;
-            cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(tRessourcen.IDResColumn.ColumnName), System.Data.SqlDbType.NVarChar)).Value = IDRes;
-            cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(tRessourcen.IDApplicationColumn.ColumnName), System.Data.SqlDbType.NVarChar)).Value = Application;
-            cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(tRessourcen.IDParticipantColumn.ColumnName), System.Data.SqlDbType.NVarChar)).Value = Participant;
-            cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(tRessourcen.TypeColumn.ColumnName), System.Data.SqlDbType.NVarChar)).Value = Type;
-            cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(tRessourcen.IDLanguageUserColumn.ColumnName), System.Data.SqlDbType.NVarChar)).Value = IDLanguageUser;
-
-            cmd.ExecuteNonQuery();
-            return true;
-        }
         public bool deleteRessource(string sWhere)
         {
             dsLanguage.RessourcenDataTable tRessourcen = new dsLanguage.RessourcenDataTable();
@@ -701,6 +657,7 @@ namespace qs2.core.language
             cmd.ExecuteNonQuery();
             return true;
         }
+
         public bool sys_deleteAllRessource()
         {
             dsLanguage.RessourcenDataTable tRessourcen = new dsLanguage.RessourcenDataTable();
@@ -736,10 +693,8 @@ namespace qs2.core.language
             catch (Exception ex)
             {
                 throw new Exception("sys_SaveAllRessourcesToDatabase: " + ex.ToString());
-                return false;
             }
         }
-
 
         public dsLanguage.RessourcenRow newRowLanguage(ref dsLanguage dsLanguage1, string txt, string IDRes, string usrName, 
                                                             string Application, string Participant, 

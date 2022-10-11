@@ -24,16 +24,16 @@ namespace qs2.ui
 
                 sqlAdmin.dsAllAdmin = new dsAdmin();
 
-                qs2.core.ENV.path_config = path_config;
+                qs2.core.ENV.PathConfig = path_config;
                 qs2.core.ENV.configFile = configFile;
 
                 qs2.core.generic.evdoLog += new qs2.core.generic.doLog(qs2.ui.Logging.Log.doLog);
-                qs2.core.ENV.fileConfig = System.IO.Path.Combine(qs2.core.ENV.path_config, qs2.core.ENV.configFile);
+                qs2.core.ENV.fileConfig = System.IO.Path.Combine(qs2.core.ENV.PathConfig, qs2.core.ENV.configFile);
                 if (!System.IO.File.Exists(qs2.core.ENV.fileConfig))
                     throw new Exception("RunFromPMDS.LogIn: Config-File '" + qs2.core.ENV.fileConfig + "' does not exist!");
 
                 qs2.core.ENV.readConfig(qs2.core.ENV.fileConfig, false);
-                qs2.core.ENV.path_log = PathLog;
+                qs2.core.ENV.PathLog = PathLog;
 
                 SqlConnectionStringBuilder sb = new SqlConnectionStringBuilder
                 {
@@ -51,39 +51,31 @@ namespace qs2.ui
                     sb.IntegratedSecurity = false;
                     sb.UserID = Usr;
                     sb.Password = Pwd;
-                    qs2.core.ENV.pwdDbDecrypted = Pwd;
+                    qs2.core.ENV.PwdDbDecrypted = Pwd;
                 }
 
                 qs2.core.ENV.connStr = sb.ConnectionString;
                 qs2.core.ENV.readPathes(false, false, true);
-
-                qs2.core.vb.ui.loadStyleInfrag(true, "Light", "Run from PMDS");
                 qs2.core.ENV.ReadConnInfoDb();
-
-                if (qs2.core.license.doLicense.AutoLoadParticipantAndApplication())
+                qs2.core.vb.ui.loadStyleInfrag();
+                
+                qs2.core.license.doLicense.SetLicensePMDS();
+                if (qs2.core.logIn.doConnect2(true, false, false, "", true, true))
                 {
-                    if (qs2.core.logIn.doConnect2(true, false, false, "", true, true))
-                    {
-                        qs2.core.vb.sqlObjects sqlObjects1 = new sqlObjects();
-                        sqlObjects1.initControl();
-                        Guid IDGuidObjBack = System.Guid.Empty;
+                    qs2.core.vb.sqlObjects sqlObjects1 = new sqlObjects();
+                    sqlObjects1.initControl();
 
-                        sqlObjects sqlObjectsAutoLogIn = new sqlObjects();
-                        sqlObjectsAutoLogIn.initControl();
-                        dsObjects.tblObjectRow rObjAutoLogIn = sqlObjectsAutoLogIn.getObjectRow(-99, sqlObjects.eTypSelObj.UserName, sqlObjects.eTypObj.IsUser, "", "Supervisor");
-                        actUsr.loadActUsr(rObjAutoLogIn.ID, false);
-                        qs2.design.auto.ownMCCriteria.initSharedDataSets(false);
-                        RunFromPMDS.IsInitialized = true;
-                        return true;
-                    }
-                    else
-                    {
-                        throw new Exception("RunFromPMDS.LogIn: LogIn-Error!");
-                    }
+                    sqlObjects sqlObjectsAutoLogIn = new sqlObjects();
+                    sqlObjectsAutoLogIn.initControl();
+                    dsObjects.tblObjectRow rObjAutoLogIn = sqlObjectsAutoLogIn.getObjectRow(-99, sqlObjects.eTypSelObj.UserName, sqlObjects.eTypObj.IsUser, "", "Supervisor");
+                    actUsr.loadActUsr(rObjAutoLogIn.ID, false);
+                    qs2.design.auto.ownMCCriteria.initSharedDataSets();
+                    RunFromPMDS.IsInitialized = true;
+                    return true;
                 }
                 else
                 {
-                    throw new Exception("RunFromPMDS.LogIn: Error load Participant and Application! (Function AutoLoadParticipantAndApplication)");
+                    throw new Exception("RunFromPMDS.LogIn: LogIn-Error!");
                 }
             }
             catch (Exception ex)

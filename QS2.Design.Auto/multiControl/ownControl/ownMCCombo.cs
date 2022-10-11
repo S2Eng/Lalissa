@@ -584,20 +584,6 @@ namespace qs2.design.auto.multiControl
                         }
                         dsAdminDropDown.AcceptChanges();
                     }
-
-                    if (ownControl1.IsEvaluation)
-                    {
-                        //qs2.core.vb.dsAdmin.tblSelListEntriesRow rNew = (qs2.core.vb.dsAdmin.tblSelListEntriesRow)sqlAdminWork.getNewRowSelList(ownControl1.ownMCCriteria1.dsAdmin1);
-                    }
-                }
-                else
-                {
-                    //if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                    //{
-                    //    //qs2.core.Protocol.doExcept("No Entries found for SelList " + IDGruppeToSearch + "", "ownMCCombo.getSelListEntries", 
-                    //    //                    ownControl1._FldShort, false, true, ownControl1.ownMCCriteria1.Application,
-                    //    //                    qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                    //}
                 }
                 if (ownControl1.OwnControlType == core.Enums.eControlType.ComboBoxAsDropDown)
                 {

@@ -119,12 +119,7 @@ namespace qs2.ui.pint
 
                 this.sqlAdmin1.initControl();
                 this.loadRes();
-                bool onlyLicensedProducts = true;
-                if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                {
-                    onlyLicensedProducts = false;
-                }
-                this.comboApplication1.initControlxy(false, onlyLicensedProducts, false);
+                this.comboApplication1.initControlxy(false, false, false);
                 this.comboApplication1.setApplication(this.defaultApplication);
                 this.comboApplication1.Visible = showCmbApplication;
 

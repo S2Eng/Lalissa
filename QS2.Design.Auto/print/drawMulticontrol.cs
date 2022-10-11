@@ -357,7 +357,7 @@ namespace qs2.ui
                         multiControl.ownMCFormat1.setFormatNoCriteria(multiControl, NumericType);
                     }
 
-                    if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() && qs2.core.ENV.developModus)
+                    if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                     {
                         string txtToolTip = qs2.core.language.sqlLanguage.getRes("IsParameter");
                         if (rQry.FunctionPar)

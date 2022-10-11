@@ -77,18 +77,10 @@ namespace qs2.ui.print
                 }
 
                 this.panelGrid.ContextMenuStrip = this.contextMenuStrip1;
-                if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                {
-                    this.deleteFieldToolStripMenuItem.Visible = true;
-                    this.sortByChapterToolStripMenuItem.Visible = true;
-                }
-                else
-                {
-                    this.deleteFieldToolStripMenuItem.Visible = false;
-                    this.sortByChapterToolStripMenuItem.Visible = true;
-                }
+                this.deleteFieldToolStripMenuItem.Visible = true;
+                this.sortByChapterToolStripMenuItem.Visible = true;
 
-                if (qs2.core.ENV.adminSecure)
+                if (qs2.core.ENV.AdminSecure)
                 {
                     this.criteriasToolStripMenuItem.Visible = true;
                     this.tooltippsAnzeigenToolStripMenuItem.Visible = true;
@@ -396,7 +388,7 @@ namespace qs2.ui.print
                     this.gridQueryDef.DisplayLayout.Bands[0].Columns[this.colChapterTransl].Width = 200;
                     this.gridQueryDef.DisplayLayout.Bands[0].Columns[this.dsAdmin1.tblQueriesDef.PlaceholderColumn.ColumnName].Hidden = false;
 
-                    if (qs2.core.ENV.adminSecure)
+                    if (qs2.core.ENV.AdminSecure)
                     {
                         this.gridQueryDef.DisplayLayout.Bands[0].Columns[this.colChaptersTransl].Hidden = false;
                         this.gridQueryDef.DisplayLayout.Bands[0].Columns[this.colChaptersTransl].Width = 200;
@@ -537,36 +529,8 @@ namespace qs2.ui.print
         {
             try
             {
-                bool IsVisible = false;
-                if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                {
-                    IsVisible = true;
-                }
-                else
-                {
-                    if (rSelectedSelList.TypeStr.Trim().ToLower().Equals(("User").Trim().ToLower()))
-                    {
-                        if (qs2.core.vb.actUsr.rUsr.isAdmin)
-                        {
-                            IsVisible = true;
-                        }
-                        else
-                        {
-                            if (rSelectedSelList.CreatedUser.Trim().ToLower().Equals((qs2.core.vb.actUsr.rUsr.UserName.Trim().ToLower())))
-                            {
-                                IsVisible = true;
-                            }
-                            else
-                            {
-                                IsVisible = false;
-                            }
-                        }
-                    }
-                }
-
-                this.btnAdd.Visible = IsVisible;
-                this.btnDel.Visible = IsVisible;
-
+                this.btnAdd.Visible = true;
+                this.btnDel.Visible = true;
             }
             catch (Exception ex)
             {
@@ -596,11 +560,6 @@ namespace qs2.ui.print
                             rowGridQuery.Cells[qs2.core.generic.columnNameText].Value = rSelQuery.QryColumn;
                         else
                             rowGridQuery.Cells[qs2.core.generic.columnNameText].Value = resFoundLevel;
-
-                        if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                        {
-                            //this.doToolTipRow(rowGridQuery, rSelQuery);
-                        }
 
                         rowGridQuery.Cells[this.colSerialNr].Value = -1;
                         rowGridQuery.Cells[this.colLineNr].Value = -1;
@@ -756,12 +715,6 @@ namespace qs2.ui.print
         {
             try
             {
-                //rowGridQuery.Tag = arrCriterias[0];
-                if (!qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                {
-                    return;
-                }
-
                 if (rSelQuery.Placeholder)
                 {
                     rowGridQuery.ToolTipText += qs2.core.language.sqlLanguage.getRes("Placeholder");
@@ -2141,7 +2094,7 @@ namespace qs2.ui.print
 
                     DataRowView v = (DataRowView)e.Row.ListObject;
                     qs2.core.vb.dsAdmin.tblQueriesDefRow rQry = (qs2.core.vb.dsAdmin.tblQueriesDefRow)v.Row;
-                    if (qs2.core.ENV.adminSecure)
+                    if (qs2.core.ENV.AdminSecure)
                     {
                         if (rQry.IsSQLServerField)
                         {

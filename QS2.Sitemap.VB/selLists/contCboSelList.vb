@@ -61,11 +61,7 @@ Public Class contCboSelList
             ElseIf dontShowQuickButton Then
                 Me.cboSelList.ButtonsRight(0).Visible = False
             Else
-                If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                    Me.cboSelList.ButtonsRight(0).Visible = True
-                Else
-                    Me.cboSelList.ButtonsRight(0).Visible = False
-                End If
+                Me.cboSelList.ButtonsRight(0).Visible = True
             End If
 
             Me.isLoaded = True

@@ -529,30 +529,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
             }
             else
             {
-                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
-                {
-                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit;
-                }
-                else
-                {
-                    if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-                    {
-                        e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit;
-                    }
-                    else
-                    {
-                        if (this.lstAddedContainsSelRow((string)e.Cell.Row.Cells[this.dsAdmin1.tblCriteria.IDApplicationColumn.ColumnName].Value,
-                                                        (string)e.Cell.Row.Cells[this.dsAdmin1.tblCriteria.FldShortColumn.ColumnName].Value))
-                        {
-                            e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit;
-                        }
-                        else
-                        {
-                            e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
-                        }
-                    }
-                }
-
+                e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit;
             }
         }
 
@@ -591,14 +568,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
         }
        private void gridInfrag1_BeforeRowsDeleted(object sender, Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventArgs e)
        {
-           if (qs2.core.vb.actUsr.IsAdminSecureOrSupervisor())
-           {
-               qs2.core.ui.delGridRowYN(e);
-           }
-           else
-           {
-               e.Cancel = true;
-           }
+            qs2.core.ui.delGridRowYN(e);
        }
        
        private void chkCriteriaOpt_CheckedChanged(object sender, EventArgs e)

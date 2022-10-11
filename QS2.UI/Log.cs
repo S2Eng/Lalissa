@@ -20,15 +20,15 @@ namespace qs2.ui.Logging
                 }
 
                 bool doGermanTxt = false;
-                if (qs2.core.ENV.language == core.language.sqlLanguage.eLanguage.English.ToString())
+                if (qs2.core.ENV.Language == core.language.sqlLanguage.eLanguage.English.ToString())
                 {
                     doGermanTxt = false;
                 }
-                else if (qs2.core.ENV.language == core.language.sqlLanguage.eLanguage.German.ToString())
+                else if (qs2.core.ENV.Language == core.language.sqlLanguage.eLanguage.German.ToString())
                 {
                     doGermanTxt = true;
                 }
-                else if (qs2.core.ENV.language == core.language.sqlLanguage.eLanguage.LangUser.ToString())
+                else if (qs2.core.ENV.Language == core.language.sqlLanguage.eLanguage.LangUser.ToString())
                 {
                     doGermanTxt = false;
                 }
@@ -37,7 +37,7 @@ namespace qs2.ui.Logging
                     doGermanTxt = false;
                 }
 
-                QS2.Logging.Settings.init(qs2.core.ENV.path_log, true, qs2.core.ENV.adminSecure);
+                QS2.Logging.Settings.init(qs2.core.ENV.PathLog, true, qs2.core.ENV.AdminSecure);
                 QS2.Logging.Settings.doLog(ex.ToString(), title, "QS2-System", doGermanTxt);
             }
             catch (Exception ex1)

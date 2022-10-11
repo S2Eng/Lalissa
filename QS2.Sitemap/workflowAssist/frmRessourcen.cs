@@ -48,7 +48,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
         public void loadRes()
         {
             this.Text = qs2.core.language.sqlLanguage.getRes("RessourcenManager") + " (" +
-                        qs2.core.language.sqlLanguage.getRes("ActiveLanguage") + ": " + qs2.core.language.sqlLanguage.getRes(qs2.core.ENV.language.ToString()) + ")";
+                        qs2.core.language.sqlLanguage.getRes("ActiveLanguage") + ": " + qs2.core.language.sqlLanguage.getRes(qs2.core.ENV.Language.ToString()) + ")";
         
         }
 

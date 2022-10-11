@@ -59,11 +59,7 @@ Public Class contProtocol
                 Me.btnRefresh.Visible = False
                 Me.btnClear.Visible = False
             Else
-                If qs2.core.vb.actUsr.IsAdminSecureOrSupervisor() Then
-                    Me.btnClear.Visible = True
-                Else
-                    Me.btnClear.Visible = False
-                End If
+                Me.btnClear.Visible = True
             End If
 
         Catch ex As Exception
