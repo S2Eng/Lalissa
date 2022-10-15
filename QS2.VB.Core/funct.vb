@@ -1,17 +1,8 @@
 ﻿Imports System.Windows.Forms
 Imports System.IO
-Imports System.Security
-Imports System.Security.Cryptography
-Imports System
-
-Imports System.Text
-Imports Microsoft.VisualBasic
-
-Imports Microsoft.Win32
 Imports Infragistics.Win.UltraWinGrid
 Imports Infragistics.Win
 Imports S2Extensions
-
 
 Public Class funct
 
@@ -32,13 +23,7 @@ Public Class funct
     Public Shared fileTypeFastReport As String = ".frx"
     Public Shared fileTypePDF As String = ".pdf"
     Public Shared fileTypeRTF As String = ".rtf"
-
     Public Shared typLogFile As String = "QS2 Log-File (*.xml)|*.xml"
-
-    Public doLicense1 As New qs2.core.license.doLicense()
-
-
-    Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Integer, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Integer) As Integer
 
     Public Shared typeString As String = "System.String"
     Public Shared typeBoolean As String = "System.Boolean"
@@ -121,90 +106,6 @@ Public Class funct
         End Try
     End Function
 
-    Public Function checkComboBox(ByRef cmb As Infragistics.Win.UltraWinEditors.UltraComboEditor, ByVal auswahlPflicht As Boolean, _
-                                  Optional ByVal setFocus As Boolean = True) As Boolean
-        Try
-            'If cmb.Focused Then
-
-            Dim bFound As Boolean = False
-            If auswahlPflicht Then
-                If cmb.Value Is Nothing Then
-                    qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("InputNotExisting"), MessageBoxButtons.OK, "")
-                    If setFocus Then cmb.Focus()
-                    Return False
-                End If
-            Else
-                If cmb.Value Is Nothing Then
-                    Return True
-                End If
-            End If
-
-            For Each itm As Infragistics.Win.ValueListItem In cmb.Items
-                If cmb.Value.ToString = itm.DataValue.ToString Then
-                    cmb.SelectedItem = itm
-                    Return True
-                End If
-            Next
-            If Not bFound Then
-                qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("InputNotExisting"), MessageBoxButtons.OK, "")
-                If setFocus Then cmb.Focus()
-                Return False
-            End If
-            Return False
-
-        Catch ex As Exception
-            Throw New Exception("funct.checkComboBox:" + vbNewLine + vbNewLine + ex.ToString())
-        End Try
-    End Function
-  
-    Public Function checkComboBoxGrid(ByRef cmb As Infragistics.Win.UltraWinGrid.UltraCombo, _
-                                  ByVal auswahlPflicht As Boolean, _
-                                  ByVal table As DataTable, ByVal key As String, ByVal keyIsInteger As Boolean) As Boolean
-        Try
-            'If cmb.Focused Then
-            If auswahlPflicht Then
-                If cmb.SelectedRow Is Nothing Then
-                    qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("InputNotExisting"), MessageBoxButtons.OK, "")
-                    cmb.Focus()
-                    Return False
-                End If
-            Else
-                If cmb.SelectedRow Is Nothing And cmb.Text = "" Then
-                    Return True
-                End If
-            End If
-
-            Dim keyToSearch As String = ""
-            If Not cmb.SelectedRow Is Nothing Then
-                keyToSearch = cmb.Value.ToString()
-            End If
-
-            Dim arrKeyFound() As DataRow = Nothing
-            If keyIsInteger Then
-                If keyToSearch.Trim() = "" Then
-                    qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("InputNotExisting"), MessageBoxButtons.OK, "")
-                    cmb.Focus()
-                    Return False
-                Else
-                    arrKeyFound = table.Select(key + "=" + keyToSearch + "")
-                End If
-            Else
-                arrKeyFound = table.Select(key + "='" + keyToSearch + "'")
-            End If
-
-            If arrKeyFound.Length > 0 Then
-                Return True
-            Else
-                qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("InputNotExisting"), MessageBoxButtons.OK, "")
-                cmb.Focus()
-                Return False
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("funct.checkComboBoxGrid:" + vbNewLine + vbNewLine + ex.ToString())
-        End Try
-    End Function
-   
     Public Shared Function getEnumAsList(ByVal typEnum As Type, ByVal valList As Infragistics.Win.ValueList) As System.Collections.Generic.List(Of String)
 
         Dim result As New System.Collections.Generic.List(Of String)()
@@ -736,27 +637,17 @@ Public Class funct
             resultDs.Tables.Add(newDataTable)
         Next
     End Sub
-    
-    Public Shared Sub getVariablesLefRightOfPoint(ByVal strToSearch As String, ByRef leftStr As String, ByRef rightStr As String, _
+
+    Public Shared Sub getVariablesLefRightOfPoint(ByVal strToSearch As String, ByRef leftStr As String, ByRef rightStr As String,
                                            Separator As String)
 
-        Dim posPoint As Integer = strToSearch.IndexOf(Separator.Trim())
-        If posPoint <> -1 Then
-            leftStr = strToSearch.Substring(0, posPoint).Trim()
-            rightStr = strToSearch.Substring(posPoint + 1, strToSearch.Length - (posPoint + 1)).Trim()
-        Else
-            Throw New Exception("funct.getVariablesLefRightOfPoint: In variable '" + strToSearch + "' is no Separator '" + Separator.Trim() + "'!")
+        Dim res As String() = strToSearch.Split(Separator, 1, StringSplitOptions.RemoveEmptyEntries)
+        If res.Length = 2 Then
+            leftStr = res(0)
+            rightStr = res(1)
+        ElseIf res.Length = 0 Then
+            Throw New Exception("funct.getVariablesLefRightOfPoint: In variable '" + strToSearch + "' is no separator!")
         End If
-
     End Sub
-    
-    Public Shared Function ContainsSpecialChars(s As String) As String
-        Try
-            Return s.IndexOfAny("[~`!@#$%^&*()-+=|{}':;.,<>/?]".ToCharArray) <> -1
-
-        Catch ex As Exception
-            Throw New Exception("funct.ContainsSpecialChars: " + vbNewLine + vbNewLine + ex.ToString())
-        End Try
-    End Function
 
 End Class
