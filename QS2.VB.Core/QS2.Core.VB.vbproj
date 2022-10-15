@@ -578,20 +578,6 @@
     <Compile Include="ui\layout\frmLayoutManager.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Workflow\compWorkflow.Designer.vb">
-      <DependentUpon>compWorkflow.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Workflow\compWorkflow.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Workflow\dsWorkflow.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsWorkflow.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Workflow\dsWorkflow.vb">
-      <DependentUpon>dsWorkflow.xsd</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pdf.Net.SDK.licx" />
@@ -723,17 +709,6 @@
     </None>
     <None Include="sql\Protocoll\dsProtocol.xss">
       <DependentUpon>dsProtocol.xsd</DependentUpon>
-    </None>
-    <None Include="Workflow\dsWorkflow.xsc">
-      <DependentUpon>dsWorkflow.xsd</DependentUpon>
-    </None>
-    <None Include="Workflow\dsWorkflow.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsWorkflow.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="Workflow\dsWorkflow.xss">
-      <DependentUpon>dsWorkflow.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
