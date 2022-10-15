@@ -7,29 +7,10 @@ using System.Diagnostics;
 using System.Linq;
 using S2Extensions;
 
-
 namespace qs2.core.db.ERSystem
 {
-
     public class businessFramework
     {
-
-        public enum eTypIDGroup
-        {
-            Usergroups = 0,
-            Roles = 1,
-            Right = 2,
-            Reports = 3,
-            Queries = 4,
-            Procedures = 5,
-            Criteria = 6,
-            CompletedChapter = 7,
-            Chapters0 = 8,
-            Chapters1 = 9,
-            ProcGrp0 = 10,
-            ProcGrp1 = 11
-        }
-
         public List<Guid> GetSelListDocuments(string IDApplication, string IDParticipant)
         {
             try
@@ -48,112 +29,6 @@ namespace qs2.core.db.ERSystem
             catch (Exception ex)
             {
                 throw new Exception("businessFramework.checkUsercode: " + ex.ToString());
-            }
-        }
-
-        public tblObject getObject(int IDObject)
-        {
-            try
-            {
-                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
-                {
-                    System.Linq.IQueryable<tblObject> tObject = db.tblObject.Where(o => (o.ID == IDObject));
-                    tblObject rObject = tObject.First();
-                    return rObject;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("businessFramework.getObject: " + ex.ToString());
-            }
-        }
-        
-        public tblObject getObject(string ExtID, string IDParticipant, PMDS.db.Entities.ERModellPMDSEntities db)
-        {
-            try
-            {
-                if (ExtID.Trim() == "")
-                {
-                    throw new Exception("getObject: ExtID='' not allowed!");
-                }
-                if (IDParticipant.Trim() == "")
-                {
-                    throw new Exception("getObject: IDParticipant='' not allowed!");
-                }
-
-                System.Linq.IQueryable<tblObject> tObject = db.tblObject.Where(o => (o.ExtID == ExtID.Trim() && o.IDParticipant == IDParticipant.Trim()));
-                if (tObject.Count() == 1)
-                {
-                    tblObject rObject = tObject.First();
-                    return rObject;
-                }
-                else if (tObject.Count() == 0)
-                {
-                    return null;
-                }
-                else
-                {
-                    throw new Exception("tObject.Count()>1 not allowed for ID'" + ExtID.Trim() + "'!");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("businessFramework.getObject: " + ex.ToString());
-            }
-        }
-
-        public tblObject getUser(string UserNameDomain, PMDS.db.Entities.ERModellPMDSEntities db, string IDParticipant, ref int iUsersFound)
-        {
-            try
-            {
-                System.Linq.IQueryable<tblObject> tObject = db.tblObject.Where(o => (o.UserNameDomain == UserNameDomain && o.IDParticipant == IDParticipant && o.IsUser == true));
-                if (tObject.Count() == 1)
-                {
-                    tblObject rObject = tObject.First();
-                    iUsersFound = 1;
-                    return rObject;
-                }
-                else if (tObject.Count() > 1)
-                {
-                    iUsersFound = 2;
-                    return null;
-                }
-                else
-                {
-                    iUsersFound = 0;
-                    return null;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("businessFramework.getUser: " + ex.ToString());
-            }
-        }
-        public bool checkUserNameParticipant(string UserName, string IDParticipant, Guid IDGuidObject, PMDS.db.Entities.ERModellPMDSEntities db)
-        {
-            try
-            {
-                System.Linq.IQueryable<tblObject> tObject = db.tblObject.Where(o => (o.UserName == UserName && o.IDParticipant == IDParticipant && 
-                                                                                o.IDGuid != IDGuidObject && o.IsUser == true));
-                if (tObject.Count() == 1)
-                {
-                    return false;
-                }
-                else if (tObject.Count() > 1)
-                {
-                    throw new Exception("checkUserNameParticipant: tObject.Count() > 1 for UserName '" + UserName.Trim() + "'!");
-                }
-                else
-                {
-                    return true;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("businessFramework.checkUserNameParticipant: " + ex.ToString());
             }
         }
 
@@ -257,79 +132,6 @@ namespace qs2.core.db.ERSystem
             }
         }
 
-
-        public bool CheckIfSelListIDResExists(string IDRes)
-        {
-            try
-            {
-                using (PMDS.db.Entities.ERModellPMDSEntities db = qs2.core.db.ERSystem.businessFramework.getDBContext())
-                {
-                    System.Linq.IQueryable<tblSelListEntries> tSelListEntries = db.tblSelListEntries.Where(o => (o.IDRessource == IDRes));
-                    if (tSelListEntries.Count() > 0)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                throw new System.Data.Entity.Validation.DbEntityValidationException(qs2.core.db.ERSystem.businessFramework.getDbEntityValidationException(ex), ex);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("businessFramework.CheckIfSelListIDResExists: " + ex.ToString());
-            }
-        }
-
-        public System.Linq.IQueryable<tblSelListEntriesObj> getSelListObjDoubledSelListsxy(int IDSelListEntry, int IDSelListEntrySublist, string typIDGroup,
-                                                                                        PMDS.db.Entities.ERModellPMDSEntities db)
-        {
-            try
-            {
-                System.Linq.IQueryable<tblSelListEntriesObj> tSelListEntriesObj = db.tblSelListEntriesObj.Where(o => (o.IDSelListEntry == IDSelListEntry && o.IDSelListEntrySublist == IDSelListEntrySublist &&
-                                                                                                o.typIDGroup == typIDGroup && o.FldShort == null && o.IDApplication == null && 
-                                                                                                o.IDObject == null && 
-                                                                                                o.IDStay == null && o.IDApplicationStay == null && o.IDParticipantStay == null &&
-                                                                                                (o.IDParticipant == "" || o.IDParticipant == "All")));
-                return tSelListEntriesObj;
-
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                throw new System.Data.Entity.Validation.DbEntityValidationException(qs2.core.db.ERSystem.businessFramework.getDbEntityValidationException(ex), ex);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("businessFramework.getSelListObjDoubledSelLists: " + ex.ToString());
-            }
-        }
-        public System.Linq.IQueryable<tblSelListEntriesObj> getSelListObjDoubledFldShortsxy(int IDSelListEntry, string FldShort, string IDApplication,  string typIDGroup,
-                                                                                            PMDS.db.Entities.ERModellPMDSEntities db)
-        {
-            try
-            {
-                System.Linq.IQueryable<tblSelListEntriesObj> tSelListEntriesObj = db.tblSelListEntriesObj.Where(o => (o.IDSelListEntry == IDSelListEntry && o.IDSelListEntrySublist == null &&
-                                                                                                o.typIDGroup == typIDGroup && o.FldShort == FldShort && o.IDApplication == IDApplication &&
-                                                                                                o.IDObject == null &&
-                                                                                                o.IDStay == null && o.IDApplicationStay == null && o.IDParticipantStay == null &&
-                                                                                                (o.IDParticipant == "" || o.IDParticipant == "All")));
-                return tSelListEntriesObj;
-
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                throw new System.Data.Entity.Validation.DbEntityValidationException(qs2.core.db.ERSystem.businessFramework.getDbEntityValidationException(ex), ex);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("businessFramework.getSelListObjDoubledFldShorts: " + ex.ToString());
-            }
-        }
-        
         public bool checkLicenseKey(System.Collections.Generic.List<string> lstLicenseKeys, string FldShort, string Application)
         {
             try
@@ -340,21 +142,6 @@ namespace qs2.core.db.ERSystem
             {
                 throw new Exception("businessFramework.checkLicenseKey - FldShort:" + FldShort.Trim() + ", Application:" + Application.Trim() + "\r\n" + ex.ToString());
             }
-        }
-
-        public static string getDbEntityValidationException(System.Data.Entity.Validation.DbEntityValidationException ex)
-        {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            foreach (var failure in ex.EntityValidationErrors)
-            {
-                sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
-                foreach (var error in failure.ValidationErrors)
-                {
-                    sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
-                    sb.AppendLine();
-                }
-            }
-            return "Entity Validation Failed - errors follow:\n" + sb.ToString();
         }
 
         public static PMDS.db.Entities.ERModellPMDSEntities getDBContext()
@@ -368,39 +155,6 @@ namespace qs2.core.db.ERSystem
             catch (Exception ex)
             {
                 throw new Exception("businessFramework.getDBContext: " + ex.ToString());
-            }
-        }
-
-        public static void setERConnectionOleDb(ref PMDS.db.Entities.ERModellPMDSEntities DBContext)
-        {
-            try
-            {
-                System.Data.Common.DbConnectionStringBuilder OLEDBBuilder = new System.Data.Common.DbConnectionStringBuilder();
-                OLEDBBuilder["Data Source"] = dbBase.Server;
-                OLEDBBuilder["Initial Catalog"] = dbBase.Database;
-                OLEDBBuilder["Provider"] = dbBase.Provider;
-                OLEDBBuilder["Persist Security Info"] = true;
-                OLEDBBuilder["MARS Connection"] = true;
-                if (dbBase.User != null)
-                {
-                    if (dbBase.User.Trim() != "")
-                    {
-                        OLEDBBuilder["User ID"] = dbBase.User;
-                        OLEDBBuilder["Password"] = dbBase.PwdDecrypted;
-                    }
-                }
-                else
-                {
-                    OLEDBBuilder["Integrated Security"] = "SSPI";
-                }
-
-                DBContext.Database.Connection.ConnectionString = OLEDBBuilder.ConnectionString;
-                DBContext.Database.Connection.Open();
-                return;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("businessFramework.setConnection: " + ex.ToString());
             }
         }
 

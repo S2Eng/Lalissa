@@ -49,18 +49,14 @@ namespace qs2.core
         public static string PwdDbDecrypted = "";
         public static bool AdminSecure;
         public static bool protocolAllTranslationErrors;
-        public static string Domain = "";
         public static string Language = "";
         public static string EMailService = "ServiceCenter@s2-engineering.com";
-        public static string developParticipant = "develop";
         public static bool developSimulateControls = true;
         public static bool ExtendedUI;
         public static int ApplicationSelection = 1;
         public static string StandardFieldsQueries = "";
         public static bool ShowAllRowsQueryResult;
-        public static string Encoding = "default";
         public static bool UseAppStylingDefault = true;
-        //public static int ColorSchema = 2;
         public static List<Form> lstOpendChildForms = new List<Form>();
         public static System.Drawing.Point LoactionMain;
         public static System.Drawing.Size LoactionSizeMain;
@@ -249,9 +245,6 @@ namespace qs2.core
                                 else if (sVar.Equals(_tagForMonitoring.ToString(), sc))
                                     ENV._tagForMonitoring = sValue;
 
-                                else if (sVar.Equals(eVarIni.DefaultDomain.ToString(), sc))
-                                    ENV.Domain = sValue;
-
                                 else if (sVar.Equals(eVarIni.language.ToString(), sc))
                                     ENV.Language = sValue;
 
@@ -313,9 +306,6 @@ namespace qs2.core
 
                                 else if (sVar.Equals(eVarIni.ShowAllRowsQueryResult.ToString(), sc))
                                     ENV.ShowAllRowsQueryResult = GetBoolValue(sValue);
-
-                                else if (sVar.Equals("Encoding", sc))
-                                    ENV.Encoding = sValue.ToLower();
 
                                 else if (sVar.Equals("ReferenceVersion", sc))
                                     ENV.ReferenceVersion = sValue;

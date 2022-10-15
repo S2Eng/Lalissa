@@ -535,8 +535,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="db\ERSystem\EFEntities.cs" />
-    <Compile Include="db\ERSystem\ERHelper.cs" />
     <Compile Include="ExceptionHandler\ExceptionHand.cs" />
     <Compile Include="Impersonation.cs" />
     <Compile Include="db\ERSystem\businessFramework.cs" />

@@ -102,11 +102,9 @@ namespace qs2.core
                 dbBase._dbConnThreadMain = new System.Data.SqlClient.SqlConnection(qs2.core.ENV.connStr);
                 dbBase._dbConnThreadMain.Open();        
 
-                if (!DesignerMode)
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                 {
                     qs2.core.db.ERSystem.businessFramework.getDBContext();
-                    EFEntities ef = new EFEntities();
-                    ef.Init2();
                 }
                 return true;
             }
