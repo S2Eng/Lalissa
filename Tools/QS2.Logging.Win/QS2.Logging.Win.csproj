@@ -359,16 +359,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QS2.functions.vb\QS2.Functions.vb.vbproj">
-      <Project>{2411e49c-1e98-41cf-bb11-32e995046cd8}</Project>
-      <Name>QS2.Functions.vb</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QS2.Resources\QS2.Resources.vbproj">
-      <Project>{54e427e6-ff54-4671-bf5e-1e606453bf0c}</Project>
-      <Name>QS2.Resources</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
