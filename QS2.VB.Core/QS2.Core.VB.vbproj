@@ -528,22 +528,10 @@
     <Compile Include="sql\Objects\sqlObjects.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ui\contSelectObject.Designer.vb">
-      <DependentUpon>contSelectObject.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ui\contSelectObject.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="ui\frmProtocol.Designer.vb">
       <DependentUpon>frmProtocol.vb</DependentUpon>
     </Compile>
     <Compile Include="ui\frmProtocol.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ui\frmSelectObject.Designer.vb">
-      <DependentUpon>frmSelectObject.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ui\frmSelectObject.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ui\layout\cboLayout.Designer.vb">
@@ -632,17 +620,11 @@
     <EmbeddedResource Include="sql\Objects\sqlObjects.resx">
       <DependentUpon>sqlObjects.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ui\contSelectObject.resx">
-      <DependentUpon>contSelectObject.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ui\frmActivity.resx">
       <DependentUpon>frmActivity.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ui\frmProtocol.resx">
       <DependentUpon>frmProtocol.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ui\frmSelectObject.resx">
-      <DependentUpon>frmSelectObject.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ui\layout\cboLayout.resx">
       <DependentUpon>cboLayout.vb</DependentUpon>
