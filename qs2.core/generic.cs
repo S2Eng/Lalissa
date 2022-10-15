@@ -15,7 +15,6 @@ namespace qs2.core
 
         public delegate void writeProtocoll(string txt, string info, int IDStay, string IDApplication, string IDParticipant);
 
-        public static string incorrSel = "Incorrect selection";
         public static int idMinus = -999999;
         public static string columnNameSelection = "Selection";
         public static string columnNameText = "Text";
