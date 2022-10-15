@@ -262,11 +262,11 @@ namespace PMDS.Global.db.ERSystem
                 {
                     new SqlParameter {ParameterName="Eintrittsdatum", Value=dat, DbType= DbType.Date, SourceColumn= "@Eintrittsdatum"}
                 };
-                IEnumerable<vBenutzer> t = db.Database.SqlQuery<vBenutzer>(strSQl, pars);
-                foreach (vBenutzer r in t)
-                {
-                    string xyxy = "";
-                }
+                //IEnumerable<vBenutzer> t = db.Database.SqlQuery<vBenutzer>(strSQl, pars);
+                //foreach (vBenutzer r in t)
+                //{
+                //    string xyxy = "";
+                //}
 
                 bool bOK = true;
 
