@@ -1,17 +1,6 @@
-﻿using Infragistics.Win.UltraWinSchedule;
-using Infragistics.Win.UltraWinSchedule.CalendarCombo;
-using MARC.Everest.RMIM.UV.NE2010.COCT_MT840000UV09;
-using PMDS.BusinessLogic;
-using PMDS.DB;
-using PMDS.Global;
-using qs2.core.vb.QS2Service1;
-using Syncfusion.Windows.Forms.Tools;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PMDS.GUI.Print
 {

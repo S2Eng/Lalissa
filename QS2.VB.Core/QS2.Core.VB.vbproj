@@ -427,11 +427,6 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service References\QS2Service1\Reference.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="sql\DTOs.vb" />
     <Compile Include="sql\Helper\dsHelper.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -672,44 +667,6 @@
     <None Include="app.config" />
     <None Include="Diagram Main-Functions qs2.core.vb.cd" />
     <None Include="packages.config" />
-    <None Include="Service References\QS2Service1\dsService.xsd" />
-    <None Include="Service References\QS2Service1\qs2.core.vb.QS2Service1.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\QS2Service1\qs2.core.vb.QS2Service1.cServiceInput2.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\QS2Service1\qs2.core.vb.QS2Service1.cServiceResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\QS2Service1\qs2.core.vb.QS2Service1.cServiceResult12.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\QS2Service1\qs2.core.vb.QS2Service1.dsService.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\QS2Service1\QS2Service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\QS2Service1\QS2Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\QS2Service1\QS2Service2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\QS2Service1\QS2Service3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\QS2Service1\QS2Service4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\QS2Service1\QS2Service5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\QS2Service1\QS2Service6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\QS2Service1\Service.wsdl" />
     <None Include="sql\Helper\dsHelper.xsc">
       <DependentUpon>dsHelper.xsd</DependentUpon>
     </None>
@@ -832,24 +789,6 @@
   <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\QS2Service1\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\QS2Service1\QS2Service.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\QS2Service1\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\QS2Service1\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\QS2Service1\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.vb</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="icudt.dll">
