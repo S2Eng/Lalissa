@@ -47,14 +47,13 @@ namespace qs2.print
                                     qs2.core.Enums.eTypRunQuery typRunQuery,
                                     qs2.ui.print.infoQry infoQryRunPar,
                                     ref string WhereClauselForSimpleFunctions, ref bool viewIsFunction,
-                                    ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
                                     bool SqlForAdmin, bool CheckBrackets, ref bool BracketsOK)
         {
             try
             {
                 bool noParticipant = this.noParticipant(infoQryRunPar.rSelListQry.Classification.Trim());
                 infoQryRunPar.Sql = this.generateSql2(withParameters, lstMultiControl, lstReturnMultiGrids, infoQryRunPar, typRunQuery, false,
-                                                        ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref lstParForExternFct, ref noParticipant, SqlForAdmin,
+                                                        ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref noParticipant, SqlForAdmin,
                                                         CheckBrackets, ref BracketsOK, ref infoQryRunPar.SqlWhereAdmin);
                 return infoQryRunPar.Sql;
             }
@@ -71,7 +70,6 @@ namespace qs2.print
                                     qs2.ui.print.infoQry infoQryRunPar,
                                     qs2.core.Enums.eTypRunQuery typRunQuery, bool saveResult,
                                     ref string WhereClauselForSimpleFunctions, ref bool viewIsFunction,
-                                    ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
                                     ref bool noParticipant, bool SqlForAdmin, bool CheckBrackets, ref bool BracketsOK, ref string sqlWhereAdminReturn)
         {
             try
@@ -141,7 +139,7 @@ namespace qs2.print
                                                         withParameters, infoQryRunPar.parametersSql, ref  lstSubQueries,
                                                         infoQryRunPar.rSelListQry, ref lstSqlFix,
                                                         ref sqlWhereReturn, ref WhereClauselForSimpleFunctions, ref viewIsFunction,
-                                                        ref lstParForExternFct, ref infoQryRunPar.sqlForAdmin, ref DataSql, ref sqlWhereAdminReturn);
+                                                        ref infoQryRunPar.sqlForAdmin, ref DataSql, ref sqlWhereAdminReturn);
                 infoQryRunPar.SqlWhereFromSql = sqlWhereReturn;
                 infoQryRunPar.WhereClauselForSimpleFunctions = WhereClauselForSimpleFunctions;
 
@@ -171,8 +169,7 @@ namespace qs2.print
         }
 
         public void openQuery(qs2.core.Enums.eTypRunQuery typRunQuery, qs2.ui.print.infoQry infoQryRunPar, bool dataSetViewer, 
-                                ref bool viewIsFunction,
-                                ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct, bool SqlForAdmin)
+                                ref bool viewIsFunction, bool SqlForAdmin)
         {
             try
             {

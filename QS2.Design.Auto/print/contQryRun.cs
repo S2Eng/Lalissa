@@ -690,9 +690,6 @@ namespace qs2.ui.pint
                     {
                         this.frmQryRunReport1.Visible = false;
                         bool viewIsFunction = false;
-                        System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct = new List<core.vb.QS2Service1.cSqlParameter>();
-                        //this.frmQryRunReport1.contQryRunReport1.doReportQuery(false, this.frmQryRunReport1.contQryRunReport1.chkDoQueryReportExtern.Checked,
-                        //                                                        ref viewIsFunction, ref lstParForExternFct, false, false, false);
                     }
                 }
                 else

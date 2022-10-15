@@ -986,8 +986,7 @@ namespace qs2.ui.print
             {
                 this.Cursor = Cursors.WaitCursor;
                 bool viewIsFunction = false;
-                System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct = new List<core.vb.QS2Service1.cSqlParameter>();
-                this.doReportQuery(false, ref viewIsFunction, ref lstParForExternFct, false);
+                this.doReportQuery(false, ref viewIsFunction, false);
             }
             catch (Exception ex)
             {
@@ -999,9 +998,7 @@ namespace qs2.ui.print
             }
         }
 
-        public bool doReportQuery(bool datasetViewer, ref bool viewIsFunction,
-                                    ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct, 
-                                    bool SqlForAdmin, bool getWhereSql = false)
+        public bool doReportQuery(bool datasetViewer, ref bool viewIsFunction, bool SqlForAdmin, bool getWhereSql = false)
         {
             try
             {
@@ -1027,7 +1024,7 @@ namespace qs2.ui.print
                         infoQryRunPar.isStayReport = this.isStayReport;
                         infoQryRunPar.IDGuid = this.IDGuid;
                         this.genReport1.runQueryReport2(true, lstMultiControl, ref lstReturnMultiGrids, this.typRunQuery, infoQryRunPar,
-                                                        ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref lstParForExternFct, SqlForAdmin, true, ref BracketsOK);
+                                                        ref WhereClauselForSimpleFunctions, ref viewIsFunction, SqlForAdmin, true, ref BracketsOK);
                         SqlWhereInfoTotal += " " + infoQryRunPar.SqlWhereInfo + "\r\n";
                         WhereClauselForSimpleFunctions += " " + WhereClauselForSimpleFunctionsTmp;
                         sqlTotal3 += infoQryRunPar.sqlForAdmin.Trim() + "\r\n" + "\r\n";
@@ -1041,7 +1038,7 @@ namespace qs2.ui.print
                             }
                             else
                             {
-                                this.genReport1.openQuery(typRunQuery, infoQryRunPar, datasetViewer, ref viewIsFunction, ref lstParForExternFct, SqlForAdmin);
+                                this.genReport1.openQuery(typRunQuery, infoQryRunPar, datasetViewer, ref viewIsFunction, SqlForAdmin);
                             }
                             int countQryRunPar = 0;
                             foreach (qs2.ui.print.infoQry infoQryRunParCheck in this.lstInfoQryRunning)
@@ -1178,13 +1175,12 @@ namespace qs2.ui.print
                             System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiGridSelList> lstMultiControlMultiGrid = new System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiGridSelList>();
 
                             this.runInfoSubQuery(infoQryRunPar, ref lstMultiControl, ref lstMultiControlMultiGrid);
-                            System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct = new List<core.vb.QS2Service1.cSqlParameter>();
                             bool noParticipant = this.genReport1.noParticipant(infoQryRunPar.rSelListQry.Classification.Trim());
                             bool BracketsOK = false;
                             infoQryRunPar.isStayReport = this.isStayReport;
                             infoQryRunPar.IDGuid = this.IDGuid;
                             this.genReport1.generateSql2(true, lstMultiControl, lstMultiControlMultiGrid, infoQryRunPar, this.typRunQuery, false,
-                                                        ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref lstParForExternFct, ref noParticipant, false, true, ref BracketsOK, ref infoQryRunPar.SqlWhereAdmin);
+                                                        ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref noParticipant, false, true, ref BracketsOK, ref infoQryRunPar.SqlWhereAdmin);
                      
                             if (!BracketsOK)
                                 qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("QueryClampsNotOK"), MessageBoxButtons.OK, "");
@@ -1239,13 +1235,12 @@ namespace qs2.ui.print
                         System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiGridSelList> lstMultiControlMultiGrid = new System.Collections.Generic.List<qs2.design.auto.multiControl.ownMultiGridSelList>();
 
                         this.runInfoSubQuery(infoQryRunPar, ref lstMultiControl, ref lstMultiControlMultiGrid);
-                        System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct = new List<core.vb.QS2Service1.cSqlParameter>();
                         bool noParticipant = this.genReport1.noParticipant(infoQryRunPar.rSelListQry.Classification.Trim());
                         bool ClampsOK = false;
                         infoQryRunPar.isStayReport = this.isStayReport;
                         infoQryRunPar.IDGuid = this.IDGuid;
                         this.genReport1.generateSql2(true, lstMultiControl, lstMultiControlMultiGrid, infoQryRunPar, this.typRunQuery, true,
-                                                        ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref lstParForExternFct, ref noParticipant, false, true, ref ClampsOK, ref infoQryRunPar.SqlWhereAdmin);
+                                                        ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref noParticipant, false, true, ref ClampsOK, ref infoQryRunPar.SqlWhereAdmin);
 
                         if (!ClampsOK)
                             qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("QueryClampsNotOK"), MessageBoxButtons.OK, "");
@@ -1534,8 +1529,7 @@ namespace qs2.ui.print
             {
                 this.Cursor = Cursors.WaitCursor;
                 bool viewIsFunction = false;
-                System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct = new List<core.vb.QS2Service1.cSqlParameter>();
-                this.doReportQuery(true, ref viewIsFunction, ref lstParForExternFct, false);
+                this.doReportQuery(true, ref viewIsFunction, false);
             }
             catch (Exception ex)
             {
@@ -1631,8 +1625,7 @@ namespace qs2.ui.print
             {
                 this.Cursor = Cursors.WaitCursor;
                 bool viewIsFunction = false;
-                System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct = new List<core.vb.QS2Service1.cSqlParameter>();
-                this.doReportQuery(true, ref viewIsFunction, ref lstParForExternFct, false);
+                this.doReportQuery(true, ref viewIsFunction, false);
 
             }
             catch (Exception ex)

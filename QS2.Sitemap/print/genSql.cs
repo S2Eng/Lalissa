@@ -78,7 +78,6 @@ namespace qs2.sitemap.print
                                     dsAdmin.tblSelListEntriesRow rSelListQry,
                                     ref System.Collections.Generic.List<sqlFix> lstSqlFix,
                                     ref string sqlWhereReturn, ref string WhereClauselForSimpleFunctionsReturn, ref bool viewIsFunction,
-                                    ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
                                     ref string sqlForAdmin, ref cDataSql DataSql, ref string sqlWhereAdminReturn)
         {
             try
@@ -106,7 +105,7 @@ namespace qs2.sitemap.print
                 string SqlWhereAdmin = "";
                 this.doSqlConditions(tConditions, tParFct, ref prot, withParameters, parametersSql, false,
                                         ref sqlParameterFunction, rSelListQry, true, ref lstSqlFix, ref sqlWhereConditions,
-                                        ref WhereClauselForSimpleFunctions, false, ref lstParForExternFct, false, ref SqlWhereAdmin, ref DataSql);
+                                        ref WhereClauselForSimpleFunctions, false, false, ref SqlWhereAdmin, ref DataSql);
 
                 
                 foreach (qs2.sitemap.print.genSql.subQuery subQuery in lstSubQueries)
@@ -114,7 +113,7 @@ namespace qs2.sitemap.print
                     this.doSqlConditions(subQuery.tQryConditionsSub, subQuery.tParFunctParSub, ref prot, 
                                         withParameters, parametersSql, false, ref sqlParameterFunction, rSelListQry, false,
                                         ref lstSqlFix, ref sqlWhereConditionsSubQuery,
-                                        ref WhereClauselForSimpleFunctions, true, ref lstParForExternFct, false, ref SqlWhereAdmin, ref DataSql);
+                                        ref WhereClauselForSimpleFunctions, true, false, ref SqlWhereAdmin, ref DataSql);
                 }  
 
                 System.Collections.Generic.List<string> tables = new System.Collections.Generic.List<string>();
@@ -131,7 +130,7 @@ namespace qs2.sitemap.print
                 string SqlWhereNoParFunct = "";
                 this.doTables2(ref tables, tConditions, tParFct, ref prot, withParameters, parametersSql, 
                                 ref sqlParameterFunctionTables, rSelListQry, ref lstSqlFix, ref sqlTables,
-                                ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref lstParForExternFct, ref SqlWhereNoParFunct,
+                                ref WhereClauselForSimpleFunctions, ref viewIsFunction, ref SqlWhereNoParFunct,
                                 ref DataSql);
                 
                 sqlTables = (!sqlTables.Trim().Equals("") ? qs2.core.sqlTxt.from + sqlTables : "");
@@ -375,7 +374,6 @@ namespace qs2.sitemap.print
                                     dsAdmin.tblSelListEntriesRow rSelListQry,
                                     ref System.Collections.Generic.List<sqlFix> lstSqlFix,
                                     ref string sqlTables, ref string WhereClauselForSimpleFunctions, ref bool viewIsFunction,
-                                    ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
                                     ref string SqlWhereNoParFunct, ref cDataSql DataSql)
         {
             try
@@ -399,7 +397,7 @@ namespace qs2.sitemap.print
 
                         string dummyWhereNotUsed = "";
                         this.doSqlConditions(tConditions, tParFct, ref prot, true, parametersSql,  true, ref sqlParameterFunctionTmp, rSelListQry,
-                                                false, ref lstSqlFix, ref sqlWhere, ref dummyWhereNotUsed, false, ref lstParForExternFct, true, ref SqlWhereNoParFunct, ref DataSql);
+                                                false, ref lstSqlFix, ref sqlWhere, ref dummyWhereNotUsed, false, true, ref SqlWhereNoParFunct, ref DataSql);
 
                         string sqlParameterFunctionSum = "";
                         if (WhereClauselForSimpleFunctions.Trim() == "")
@@ -611,7 +609,7 @@ namespace qs2.sitemap.print
                                     ref System.Collections.Generic.List<sqlFix> lstSqlFix,
                                     ref string sqlWhere,
                                     ref string WhereClauselForSimpleFunctions,
-                                    bool IsIsSubQuery, ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
+                                    bool IsIsSubQuery, 
                                     bool IsFunction, ref string SqlWhereAdmin, ref cDataSql DataSql)
         {
             try
@@ -687,7 +685,7 @@ namespace qs2.sitemap.print
                                     conditionToAdd = this.getCondition(rQry, tableCorrected, rQry.ControlType, ref parametersSql, withParameters,
                                     doFunctionParameters, ref sqlParameterFunction,
                                     ref WhereClauselForSimpleFunctions, ref doWhereClauselForSimpleFunctions, ref rSelListQry,
-                                    ref iCounterConditions, ref lstParForExternFct, ref SqlWhereAdmin);
+                                    ref iCounterConditions, ref SqlWhereAdmin);
 
                                     if (!String.IsNullOrWhiteSpace(conditionToAdd))
                                     {
@@ -725,7 +723,7 @@ namespace qs2.sitemap.print
                                     string conditionToAdd = this.getCondition(rQry, tableCorrected, rCriteria.ControlType, ref parametersSql,
                                                             withParameters, doFunctionParameters, ref sqlParameterFunction,
                                                             ref WhereClauselForSimpleFunctions, ref doWhereClauselForSimpleFunctions, ref rSelListQry,
-                                                            ref iCounterConditions, ref lstParForExternFct, ref SqlWhereAdmin);
+                                                            ref iCounterConditions, ref SqlWhereAdmin);
 
                                     // add Combination and Condition to Sql
                                     if (!String.IsNullOrWhiteSpace(conditionToAdd))
@@ -829,7 +827,6 @@ namespace qs2.sitemap.print
                                     bool doFunctionParameters, ref string sqlParameterFunction,
                                     ref string WhereClauselForSimpleFunctions, ref bool doWhereClauselForSimpleFunctions, 
                                     ref dsAdmin.tblSelListEntriesRow rSelListQry,  ref int iCounterConditions,
-                                    ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
                                     ref string SqlWhereAdmin)
         {
             try
@@ -1003,7 +1000,7 @@ namespace qs2.sitemap.print
                                 bool doLike = false;
                                 string ReturnValue = "";
                                 this.getValueForFct(table, doFunctionParameters, ref sqlParameterFunction, ref doWhereClauselForSimpleFunctions, ref rSelListQry,
-                                                        ref controlType, ref ValueMinTxtForSql, ref ReturnValue, ref doLike, ref noInput, ref lstParForExternFct, rQry.QryColumn.Trim());
+                                                        ref controlType, ref ValueMinTxtForSql, ref ReturnValue, ref doLike, ref noInput, rQry.QryColumn.Trim());
                                 sqlParameterFunction += (sqlParameterFunction.Trim().Equals("") ? "," + ReturnValue : "," + ReturnValue);
                             }
                             return "";
@@ -1190,7 +1187,6 @@ namespace qs2.sitemap.print
                                 ref dsAdmin.tblSelListEntriesRow rSelListQryxy,
                                 ref core.Enums.eControlType controlType, ref string ValueMinTxtForSql, ref string ReturnValue,
                                 ref bool doLike, ref bool noInput,
-                                ref System.Collections.Generic.List<qs2.core.vb.QS2Service1.cSqlParameter> lstParForExternFct,
                                 string ParName)
         {
             try
