@@ -5,26 +5,15 @@ using System.Reflection;
 using System.Drawing;
 using System.ComponentModel;
 using System.IO;
-using System.Text.RegularExpressions;
-using System.Text;
-using System.Collections.Specialized;
 using System.Data;
 using System.Data.OleDb;
-
 using RBU;
 using System.Collections.Generic;
 using PMDS.Global.db.Patient;
-
 using System.Configuration;
-using System.Data.SqlClient;
-using System.Data.Entity;
-using System.Data.Entity.Core.EntityClient;
-using System.Data.Entity.Infrastructure;
-using System.Net;
 using Infragistics.Win.UltraWinTree;
 using System.Threading;
 using System.Linq;
-using PMDS.Global.db.ERSystem;
 using System.Security.Permissions;
 using System.Security;
 using MARC.Everest.Formatters.XML.ITS1;
@@ -37,17 +26,8 @@ using S2Extensions;
 
 namespace PMDS.Global
 {
-
     public class ENV
     {
-        public enum pdfDruckTyp
-        {
-            einzelblatt = 0,
-            massenblatt = 1,
-            pdf = 2,
-            vorschau = 3
-        }
-
         public enum eKlientenberichtTyp
         {
             full = 0,
@@ -92,12 +72,6 @@ namespace PMDS.Global
             Oben = 4
         }
 
-        public enum RezeptdruckTyp
-        {
-            MedikamenteBestellen = 0,
-            RezeptDruck = 1,
-            Beides = 2
-        }
         public enum eFctCallMainFctPlan
         {
             Dekurs = 0,
@@ -110,25 +84,18 @@ namespace PMDS.Global
 
         public static string IGStyle = "pmds";
         public static string StartupMode = "pmds";
-        public static bool VisualStudioMode = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
         public static Guid VersionNr = new Guid("10000000-1009-1000-0000-000000000001");
-
         public static string ERConnectionName = "ERModellPMDSEntities";
-
-        //public const string PdfiumKey = "52433553494d50032923be84e16cd6ae0bce153446af7918d52303038286fd2b0597de34bf5bb65e2a161a268e74107bd7da7c1adb202edff3e8c55a13bff7afa38569c96e45ff0cdef48e36b8df77e907676788cae00126f52c5eaadbb3c424062e8e0e5feb6faf89900306ee469aa40664bdf84b2e4fce7497c19f3f9d2d877dc1be192cb695f4";  //Version 3.10.5
         public const string PdfiumKey = "EEF63308-0101E307-06060B50-44464955-4D5F434F-52501500-6F734073-322D656E-67696E65-6572696E-672E636F-6D40006E-50A02F72-7589BDC9-FA775FFE-E4C11070-8AECCB91-AA05BDDC-9064397A-0128DB07-08CA4E9D-1701E8DB-F0CAEA1E-386F13D9-6F207B8F-4FFCD647-D4BDA0FC-669139";
         public const string ChilkatKey = "S2ENGN.CB1022023_XfLzJ7t36L5K";  //Version 9.5.0.89 - 29.11.2021
-
         public static System.Data.OleDb.OleDbConnection conGiboDat;
         public static string IDApplication = qs2.core.license.doLicense.eApp.PMDS.ToString();
-
         public static string pmdsRelease = "Release 5";
         public static int pmdsDBVersion = 51000;
         public static string StartupTyp = "";                       //Mit welchem Paramter ?typ wurde gestartet
         public static string typRechNr = "Standard";
         public static string MainCaption = "PMDS";
         public static PMDS.db.Entities.Benutzer ActiveUser;
-
         public static string MedikamenteImportType = "ftp";         //oder file, oder service
         public static string ApoToken = "";                         //bei service
         public static bool ApoZusatzdaten;                             //oder file, oder service
@@ -248,7 +215,7 @@ namespace PMDS.Global
         public static string ELGAPwd = "KLqHC0hznj91OH0PiCIWBw==";
         public static string ELGACommunityDomain = "1.3.6.1.4.1.48288.2.990.2";     //Tiany CPID (Domain der Tiany in ELGA)
 
-        //tian -Spielwiese
+        //tiani -Spielwiese
         //public static System.ServiceModel.EndpointAddress ELGAUrl = new System.ServiceModel.EndpointAddress(new Uri("http://hnelga01.tiani-spirit.com:8181/SpiritEhrWsRemoting/EhrWSRemoting"));
 
         //Migrationsumgebung ohne Proxy
@@ -258,7 +225,6 @@ namespace PMDS.Global
         public static System.ServiceModel.EndpointAddress ELGAUrl = new System.ServiceModel.EndpointAddress(new Uri("http://10.2.13.90:80/SpiritEhrWsRemoting/EhrWSRemoting"));
 
         public static string ELGAUrlGDAIndex = "http://10.2.13.90:80/GdaIndexWs";
-
 
         public static int MedVerabreichenDefault = -1;
         public static bool UseEinzelverordnungMax24;
@@ -326,8 +292,6 @@ namespace PMDS.Global
         public static bool WCFServiceOnlyLocal;
         public static string WCFHostManager = "WCFHostManager";
         public static string WCFServicePMDSDebugPath = "";
-
-        public static string SchnellrückmeldungAsProcess = "0";
 
         public static string DekursRegex = "";
         public static string DekursRegexBeschreibung = "";
@@ -415,8 +379,7 @@ namespace PMDS.Global
         public static event EventHandler NotfallChanged;             // Signalisiert dass sich in der Konfiguraton des Notfalls was geändert hat
         public static event ENVNeuerPatientDelegate NeuerPatient;               // Signalisiert dass ein neuer Klient hinzugefügt wurde
         public static event EventHandler KlientChanged;              // Signalisiert das speicher der Klientnenifos
-        public static event CurrentQuickFilterChangedDelegate CurrentQuickFilterChanged;  // Signalisiert dass ein Quickfilter in der Oberfläche gedrückt wurde
-
+        
         public static string COMMANDLINE_USER = "";                                             // Wenn über die Commandozeile ein Benutzer übergeben wird wird er hier verspeichert
         public static string COMMANDLINE_PWD = "";
         public static bool COMMANDLINE_bshowSplash = true;
@@ -430,8 +393,6 @@ namespace PMDS.Global
 
         public delegate void benutzerSMTPDatenSpeichernDelegate(System.Guid IDBenutzer);
         public static benutzerSMTPDatenSpeichernDelegate evBenutzerSMTPDatenSpeichern;
-
-        public static System.Guid idManBuch = new System.Guid("00000000-0000-0000-0020-000000000000");
 
         public static event ZusatzeintragChangedDelegate ZusatzeintragChanged;
 
@@ -468,18 +429,12 @@ namespace PMDS.Global
             public string Txt = "";
         }
 
-
-
-
-
-
         private static Guid _CurrentIDPatient = Guid.Empty;
         private static Guid _SelectedAufenthalt;
         private static Guid _CurrentIDAbteilung = Guid.Empty;
         private static Guid _CurrentIDBereich = Guid.Empty;
         private static Guid _IDBereich = System.Guid.Empty;
         private static Ansichtinfo _Ansichtinfo = new Ansichtinfo();
-
 
         public static Guid _IDKlinikNoKlinikSelected = new System.Guid("094b644b-92e5-4711-aad8-912bf4660909");
         public static Guid _IDKlinik = _IDKlinikNoKlinikSelected;
@@ -489,8 +444,6 @@ namespace PMDS.Global
         private static Guid _abteilung;
         private static Guid _berufID;
         private static PMDS.Global.db.Patient.dsGruppe _rights = null;
-        public static string UsrPwdEnc;
-
 
         private static Guid _CurrentIDBezugsPfleger = Guid.Empty;
         private static Guid _CurrentIDEvaluierung = Guid.Empty;
@@ -505,22 +458,12 @@ namespace PMDS.Global
             public DateTime At;
 
         }
-
-
-
-
-
-
-
-
-
-
-
         public static Guid CurrentIDPatient
         {
             get { return ENV._CurrentIDPatient; }
 
         }
+        
         public static Guid setCurrentIDPatient
         {
             set
@@ -568,7 +511,6 @@ namespace PMDS.Global
             set { ENV._CurrentIDAbteilung = value; }
         }
 
-
         public static TerminlisteAnsichtsmodi AnsichtsModus
         {
             get { return ENV.CurrentAnsichtinfo.Ansichtsmodus; }
@@ -579,9 +521,7 @@ namespace PMDS.Global
             get { return ENV._Ansichtinfo; }
         }
 
-
-
-
+        
         public static Guid USERID
         {
             get { return ENV._userid; }
@@ -1805,20 +1745,6 @@ namespace PMDS.Global
                 localRptConfigPath += ".config";
             }
 
-
-
-            //if (Settings.StartFromShare.Trim() == "0" || Settings.DoOrigPathConfig)
-            //{
-            //    //Settings.ReportConfigPath = System.IO.Directory.GetParent(Settings.pathConfig) + "\\reports";
-            //    //Settings.ReportConfigPath = System.IO.Path.Combine(System.IO.Directory.GetParent(Settings.pathConfig).ToString(), "reports");
-            //    Settings.ReportConfigPath = Settings.RptConfigPath;
-            //}
-            //else
-            //{
-            //    Settings.ReportConfigPath = System.IO.Path.Combine(Settings.sConfigRootDir, Settings.getAdditionalFolder(), System.IO.Path.GetFileName(Settings.sRootDir), localRptConfigPath);                           //<120118> neu für Configdateien der DynReports in pathConfig
-            //}
-            //Settings.check_Path(Settings.ReportConfigPath, true);
-
             ENV.ReportPathDatenerhebung = System.IO.Path.Combine(ENV.sRootDir, "DynReportsDatenerhebung");
             ENV.check_Path(ENV.ReportPathDatenerhebung, false);
 
@@ -1826,7 +1752,6 @@ namespace PMDS.Global
             ENV.check_Path(ENV.pathForms, false);
             ENV.Image_Path = ENV.pathForms;
 
-            //Settings.path_Temp = System.IO.Path.GetTempPath() + "\\PMDS";
             ENV.path_Temp = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "PMDS");
             ENV.check_Path(ENV.path_Temp, true);
             QS2.functions.vb.FileFunctions.path_temp = PMDS.Global.ENV.path_Temp;
@@ -2228,7 +2153,6 @@ namespace PMDS.Global
             {
                 string sExcept = "Settings.thread_sendExceptionAsSMTPEMail: " + ex.ToString();
                 PMDS.Global.ENV.HandleException(new Exception(sExcept), "Exception", false);
-                //throw new Exception(sExcept);
             }
         }
 
@@ -2252,45 +2176,12 @@ namespace PMDS.Global
                                 DatabaseServerTmp = DatabaseServerTmp.Trim().Substring(0, DatabaseServerTmp.Trim().Length - iPosTmp - 1);
                             }
                         }
-
-                        //IPHostEntry host;
-                        //string localIP = "?";
-                        //host = Dns.GetHostEntry(Dns.GetHostName());
-                        //foreach (IPAddress ip in host.AddressList)
-                        //{
-                        //    if (ip.AddressFamily.ToString() == "InterNetwork")
-                        //    {
-                        //        localIP = ip.ToString();
-                        //    }
-                        //}
-
-                        //IPHostEntry ip = System.Net.Dns.GetHostByName(DatabaseServerTmp.Trim());
-                        //IPAddress[] IPaddr = ip.AddressList;
-                        //for (int i = 0; i < IPaddr.Length; i++)
-                        //{
-                        //    Console.WriteLine("IP Address {0}: {1} ", i, IPaddr[i].ToString());
-                        //}
-
-                        //System.Net.IPAddress[] localIPs = System.Net.Dns.GetHostAddresses("s2e\\" + DatabaseServerTmp.Trim() + "");
-                        //if (localIPs.Length > 1)
-                        //{
-                        //    IPAdress = localIPs[1].ToString();
-                        //}
-
                     }
                     catch (Exception ex2)
                     {
                         Exception exTmp = new Exception("Error - Error to get Servername from ConnectionString '" + RBU.DataBase.Srv.Trim() + "'" + ex2);
                         ENV.HandleException(exTmp, "checkExceptionDBNetLib", true);
                     }
-
-                    //if (IPAdress.Trim() == "")
-                    //{
-                    //    Exception exTmp = new Exception("Error (DBNETLIB) - IPAdress for Server '" + RBU.DataBase.Srv.Trim() + "' = empty!");
-                    //    Settings.HandleException(exTmp, "ExceptionGetIPAdress", true);
-                    //}
-                    //else
-                    //{
 
                     bool ServerIsAailable = false;
                     try
@@ -2344,7 +2235,6 @@ namespace PMDS.Global
                             ENV.HandleException(exTmp2, "checkExceptionDBNetLib", false);
                         }
                     }
-                    //}
                 }
             }
         }
@@ -2778,6 +2668,7 @@ namespace PMDS.Global
         link = 4,
         line = 10
     }
+
     public class cAdminFile
     {
         public bool exists = false;
