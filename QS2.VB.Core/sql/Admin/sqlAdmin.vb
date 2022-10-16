@@ -1,10 +1,6 @@
 ﻿Public Class sqlAdmin
 
     Public database As New qs2.core.dbBase
-    Public gen As New qs2.core.generic
-
-    Public sel_daAdjust As String = ""
-    Public settingAll As String = "all_11110000-9999-0000-0000-000000000000"
 
     Public sel_daSelListGroup As String = ""
     Public sel_daSelListEntrys As String = ""
@@ -14,27 +10,15 @@
     Public sel_daSelCriteria As String = ""
     Public sel_daSelCriteriaOpt As String = ""
     Public sel_daSelRelationship As String = ""
-    Public sel_daSelStayAddistions As String = ""
     Public sel_daSelQueriesDef As String = ""
     Public sel_daSelQueryJoinsTemp As String = ""
-    Public sel_daSelSideLogic As String = ""
     Public sel_daMaxSelListGroupID As String = ""
-    Public sel_daMaxSelListID As String = ""
-    Public sel_davSelListEntriesObj As String = ""
-    Public sel_GetAllUsersWithRoles As String = ""
     Public sel_GetButtonsForUser As String = ""
-    Public sel_GetChaptersAlwaysEditableAllUsers As String = ""
-    Public sel_GetCriteriasForUser As String = ""
-    Public sel_GetCriteriasUserForUser As String = ""
-    Public sel_GetAllUsersWithRights As String = ""
-    Public allCriteriasLoaded As Boolean = False
 
     Public Shared dsAllAdmin As dsAdmin = New dsAdmin()
-    Public Shared dsAllAdminAll As dsAdmin = New dsAdmin()
     Public Shared typIDGroup_CompletedChapters As String = "CompletedChapter"
     Public Shared typIDGroup_ProceduresToStay As String = "ProceduresToStay"
     Public Shared groupNameCriterias As String = "CRITERIAS"
-    Public Shared ChapterFreeTopBelow As String = "FreeTopBelow"
 
     Public Enum eTypStayAdditions
         multiSelLists = 48200
@@ -48,38 +32,6 @@
         Public GroupNotFoundInAnyApplication As Boolean = False
     End Class
 
-    Public Enum eAdjust
-        'client
-        applicationAutoStart = 48000
-        dirDefault = 48001
-        styleUI = 48002
-
-        mainLeft = 48010
-        mainTop = 48011
-        mainHeigth = 48012
-        mainWidth = 48013
-        defaultSearchUser = 48014
-
-        'all
-        defaultCountryxy = 48020
-        LanguageUser = 48021
-        EACTS_ExportNumber = 48022
-
-        ControlOpenStayType = 48024
-        ControlOpenStayTypeRoles = 48025
-        StartTypeStayUI = 48026
-        ControlOpenStayTypeIDParticipant = 48027
-        ControlOpenStayTypeRolesIDParticipant = 48028
-        UploadPrintAllChapters = 48029
-
-        StayUIOpenForm = 48030
-    End Enum
-    Public Enum eTypSelAdjust
-        forClient = 48100
-        forUsr = 48101
-        all = 48102
-        allGrid = 48103
-    End Enum
     Public Enum eTypSelGruppen
         all = 49000
         IDGruppeStr = 49001
@@ -91,12 +43,12 @@
         ProductAndAll = 49007
         IDGruppeStrNoAppPart = 49008
     End Enum
+
     Public Enum eTypAuswahlList
         IDGroup = 50000
         group = 50001
         IDOwnInt = 50002
         IDOwnStr = 50003
-        typ = 50004
         id = 50005
         all = 50006
         IDGroupRam = 50007
@@ -107,15 +59,16 @@
         IDGroupStrAppRam = 50012
         IDRam = 50013
         IDOwnStrIDGroup = 50023
-        AllFldShortsUser = 50024
         IDGroupParticipantAndAll = 50025
         groupParticipantOwnOrAll = 50026
         IDParticipantUserSelList = 50027
     End Enum
+
     Public Enum eTypSelListSort
         All = 0
         IDSelListIDParticipantIDRam = 1
     End Enum
+
     Public Enum eTypSelListGetMaxID
         GetMaxIDGeneric = 52300
     End Enum
@@ -133,7 +86,6 @@
         AllSelListObjects = 51008
         IDStayTypIDGroup = 51009
         IDGuid = 51010
-        CompletedChaptersStay = 51011
         IDSelListEntryFldShort = 51012
         RAMRightUser = 51016
         IDSelListEntryIDObject = 51017
@@ -141,16 +93,13 @@
         objOnly = 51019
         FldShortOtherChapters = 51020
     End Enum
+
     Public Enum eDbTypAuswObj
-        Usergroups = 51050
         SubSelList = 51051
         Criterias = 51052
         ProceduresToStay = 51053
         Roles = 51054
-        Userrights = 51055
-        CompletedChapter = 51056
         UserQueries = 51057
-        CriteriasUser = 51058
         UserDocuments = 51059
     End Enum
 
@@ -179,33 +128,14 @@
         idRamAllChild = 51403
         IDRamAllGroup = 51404
     End Enum
-    Public Enum eTypSelStayAdditions
-        idStay = 51500
-        idStayAll = 51501
-        idObject = 51502
-        idStay2 = 51503
-        idStayORIdPatient = 51504
-        IDGuid = 51505
-    End Enum
 
     Public Enum eTypSelQueryDef
         typ = 51600
         IDSelList = 51601
     End Enum
+
     Public Enum eTypSelQueryJoinsTemp
         all = 51700
-    End Enum
-
-    Public Enum eTypeSideLogic
-        all = 51810
-        FldShortApplication = 51811
-        IDSelList = 51812
-        IDObj = 51813
-        Relationship = 51814
-    End Enum
-
-    Public Enum eTypeSelvSelListEntriesObj
-        All = 0
     End Enum
 
     Public Shared IDClassificationChapterAlwaysEditable As String = "Type=EditableWhenCompleted;"
@@ -216,23 +146,13 @@
         Me.sel_daSelListEntrysSort = Me.daSelListEntriesSort.SelectCommand.CommandText
         Me.sel_daSelListEntrysRelGroup = Me.davListEntriesWithGroup.SelectCommand.CommandText
         Me.sel_daSelListEntrysObj = Me.daSelListEntrysObj.SelectCommand.CommandText
-        Me.sel_daAdjust = Me.daAdjust.SelectCommand.CommandText
         Me.sel_daSelCriteria = Me.daCriteria.SelectCommand.CommandText
         Me.sel_daSelCriteriaOpt = Me.daCriteriaOpt.SelectCommand.CommandText
         Me.sel_daSelRelationship = Me.daRelationship.SelectCommand.CommandText
-        Me.sel_daSelStayAddistions = Me.daStayAdditions.SelectCommand.CommandText
         Me.sel_daSelQueriesDef = Me.daQueriesDef.SelectCommand.CommandText
         Me.sel_daSelQueryJoinsTemp = Me.daQueryJoinsTemp.SelectCommand.CommandText
-        Me.sel_daSelSideLogic = Me.daSideLogic.SelectCommand.CommandText
         Me.sel_daMaxSelListGroupID = Me.daMaxSelListGroupID.SelectCommand.CommandText
-        Me.sel_daMaxSelListID = Me.daMaxSelListID.SelectCommand.CommandText
-        Me.sel_davSelListEntriesObj = Me.davSelListEntriesObj.SelectCommand.CommandText
-        Me.sel_GetAllUsersWithRoles = Me.daGetAllUsersWithRoles.SelectCommand.CommandText
         Me.sel_GetButtonsForUser = Me.daGetButtonsForUser.SelectCommand.CommandText
-        Me.sel_GetChaptersAlwaysEditableAllUsers = Me.daGetChaptersAlwaysEditableAllUsers.SelectCommand.CommandText
-        Me.sel_GetCriteriasForUser = Me.daGetCriteriasForUser.SelectCommand.CommandText
-        Me.sel_GetCriteriasUserForUser = Me.daGetCriteriasUserForUser.SelectCommand.CommandText
-        Me.sel_GetAllUsersWithRights = Me.daGetAllUsersWithRights.SelectCommand.CommandText
     End Sub
 
 
@@ -245,9 +165,6 @@
             Dim Parameters As New qs2.core.vb.sqlAdmin.ParametersSelListEntries()
             Me.getSelListEntrysAll(Parameters, "", sqlAdmin.dsAllAdmin, eTypAuswahlList.all, "", license.doLicense.eApp.ALL.ToString())
             Me.getSelListEntrysSort(-999, "", dsAllAdmin, eTypSelListSort.All, "")
-
-            If  ClearDataTable Then
-            End If
 
         Catch ex As Exception
             Throw New Exception("loadAllSelListEntries: " + ex.ToString())
@@ -303,8 +220,6 @@
     End Sub
 
     Public Sub loadAll(ClearDataTableSelListEntries As Boolean)
-        Me.allCriteriasLoaded = False
-
         If System.Diagnostics.Process.GetCurrentProcess().ProcessName <> "devenv" Then
             Me.getButtonsForUser(sqlAdmin.dsAllAdmin, eTypAuswahlList.all)
         End If
@@ -330,207 +245,7 @@
             rNewSelListEntry.IDOwnStr = rObject.UserName
             rNewSelListEntry.IDGroup = arrSelListEntrieiesGroupUsers(0).ID
         Next
-
-        If ClearDataTableSelListEntries Then
-        End If
-
-        Me.allCriteriasLoaded = True
     End Sub
-
-    Public Function getAdjustRow(UsrToLoad As String, ByVal setting As eAdjust, ByVal typSel As eTypSelAdjust, IDParticipant As String) As dsAdmin.tblAdjustRow
-
-        Dim ds As New dsAdmin
-        Me.getAdjust(UsrToLoad, setting, ds, typSel, IDParticipant)
-        If ds.tblAdjust.Rows.Count = 0 Then
-            Return Nothing
-        ElseIf ds.tblAdjust.Rows.Count = 1 Then
-            Return ds.tblAdjust.Rows(0)
-        ElseIf ds.tblAdjust.Rows.Count > 1 Then
-            Throw New Exception("getAdjustRow.id: More than one Row for setting '" + setting.ToString() + "' found!")
-        Else
-            Throw New Exception("sqlAdmin.getAdjustRow: TypSel '" + typSel.ToString() + "' is wrong!")
-        End If
-    End Function
-    Public Function getAdjust(UsrToLoad As String, ByVal setting As eAdjust, ByRef ds As dsAdmin, ByVal typSel As eTypSelAdjust, IDParticipant As String) As Boolean
-
-        Me.daAdjust.SelectCommand.CommandText = Me.sel_daAdjust
-        database.setConnection(Me.daAdjust)
-        Me.daAdjust.SelectCommand.Parameters.Clear()
-
-        If typSel = eTypSelAdjust.forClient Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblAdjust.settingColumn.ColumnName) + sqlTxt.and + sqlTxt.getColWhere(ds.tblAdjust.clientColumn.ColumnName) + sqlTxt.and + ds.tblAdjust.usrSettingColumn.ColumnName + " = 0 "
-            Me.daAdjust.SelectCommand.CommandText += sWhere
-            Me.daAdjust.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblAdjust.settingColumn.ColumnName), setting.ToString())
-            Me.daAdjust.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblAdjust.clientColumn.ColumnName), My.Computer.Name)
-
-        ElseIf typSel = eTypSelAdjust.forUsr Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblAdjust.settingColumn.ColumnName) + sqlTxt.and + sqlTxt.getColWhere(ds.tblAdjust.clientColumn.ColumnName) + sqlTxt.and + ds.tblAdjust.usrSettingColumn.ColumnName + " = 1 "
-            Me.daAdjust.SelectCommand.CommandText += sWhere
-            Me.daAdjust.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblAdjust.settingColumn.ColumnName), setting.ToString())
-            Me.daAdjust.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblAdjust.clientColumn.ColumnName), UsrToLoad.Trim())
-
-        ElseIf typSel = eTypSelAdjust.all Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblAdjust.settingColumn.ColumnName) + sqlTxt.and + ds.tblAdjust.clientColumn.ColumnName + "='" + Me.settingAll + "' " + sqlTxt.and + ds.tblAdjust.usrSettingColumn.ColumnName + " = 0 "
-            Me.daAdjust.SelectCommand.CommandText += sWhere
-            Me.daAdjust.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblAdjust.settingColumn.ColumnName), setting.ToString())
-
-        ElseIf typSel = eTypSelAdjust.allGrid Then
-            Dim sWhere As String = sqlTxt.where + " client like '" + typSel.ToString() + "%'" + sqlTxt.and + ds.tblAdjust.usrSettingColumn.ColumnName + " = 0 "
-            'Dim sWhere As String = sqlTxt.where + " setting='" + setting.ToString() + "' " + sqlTxt.and + " client like '" + typSel.ToString() + "%'" + sqlTxt.and + ds.tblAdjust.usrSettingColumn.ColumnName + " = 0 "
-            Me.daAdjust.SelectCommand.CommandText += sWhere
-            Me.daAdjust.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblAdjust.settingColumn.ColumnName), setting.ToString())
-
-        Else
-            Throw New Exception("sqlAdmin.getAdjust: TypSel '" + typSel.ToString() + "' is wrong!")
-        End If
-
-        Me.daAdjust.Fill(ds.tblAdjust)
-        Return True
-    End Function
-    Public Function deleteAdjustment(ByVal type As String) As Boolean
-        Try
-            Dim ds As New dsAdmin
-            Dim cmd As New System.Data.SqlClient.SqlCommand
-            cmd.Parameters.Clear()
-            cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblAdjust.TableName + sqlTxt.where + " setting like '" + type.Trim() + "%' "
-            cmd.Connection = qs2.core.dbBase.dbConn
-            cmd.ExecuteNonQuery()
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("deleteAdjustment: " + ex.ToString())
-        End Try
-    End Function
-
-    Public Function newRowAdjustment(ds As dsAdmin) As dsAdmin.tblAdjustRow
-        Try
-            Dim rNew As dsAdmin.tblAdjustRow = ds.tblAdjust.NewRow()
-            rNew.setting = ""
-            rNew.client = ""
-            rNew.usrSetting = False
-            rNew.type = ""
-            rNew.str = ""
-            rNew.dbl = 0
-            rNew.bool = False
-            rNew.SetdatNull()
-            rNew.SetbytNull()
-
-            ds.tblAdjust.Rows.Add(rNew)
-            Return rNew
-
-        Catch ex As Exception
-            Throw New Exception("newRowAdjustment: " + ex.ToString())
-        End Try
-    End Function
-
-    Public Function storeVal(ByVal rAdjust As dsAdmin.tblAdjustRow, ByVal val As Object,
-                         Optional ByVal bytes() As Byte = Nothing) As String
-
-        If bytes Is Nothing Then
-            Dim bool As Boolean = False
-            Dim int32 As Int32 = 0
-            Dim int64 As Int64 = 0
-            Dim dbl As Double = 0
-            Dim dec As Decimal = 0
-            Dim int As Decimal = 0
-            Dim str As String = ""
-            Dim guid As System.Guid = System.Guid.NewGuid()
-            Dim dat As Date
-            Dim datTim As DateTime
-
-
-            Dim typ As System.Type
-            typ = val.GetType
-            If typ.ToString = bool.GetType.ToString() Then
-                rAdjust.str = ""
-                rAdjust.dbl = 0
-                rAdjust.bool = val
-                rAdjust.SetdatNull()
-                rAdjust.SetbytNull()
-
-            ElseIf typ.ToString = int.GetType.ToString() Or typ.ToString = int32.GetType.ToString() Or typ.ToString = int64.GetType.ToString() Or typ.ToString = dbl.GetType.ToString() Or typ.ToString = dec.GetType.ToString() Then
-                rAdjust.str = ""
-                rAdjust.dbl = val
-                rAdjust.bool = False
-                rAdjust.SetdatNull()
-                rAdjust.SetbytNull()
-
-            ElseIf typ.ToString = str.GetType.ToString() Or typ.ToString = guid.GetType.ToString() Then
-                rAdjust.str = val.ToString()
-                rAdjust.dbl = 0
-                rAdjust.bool = False
-                rAdjust.SetdatNull()
-                rAdjust.SetbytNull()
-
-            ElseIf typ.ToString = dat.GetType.ToString() Or typ.ToString = datTim.GetType.ToString() Then
-                rAdjust.str = ""
-                rAdjust.dbl = 0
-                rAdjust.bool = False
-                If val = Nothing Then
-                    rAdjust.SetdatNull()
-                Else
-                    rAdjust.dat = val
-                End If
-                rAdjust.SetbytNull()
-
-            Else
-                Throw New Exception("sqlAdmin.storeVal: TypSel '" + typ.ToString() + "' is wrong!")
-            End If
-            rAdjust.type = typ.ToString
-
-        Else
-            rAdjust.str = ""
-            rAdjust.dbl = 0
-            rAdjust.bool = False
-            rAdjust.SetdatNull()
-            rAdjust.byt = bytes
-
-            rAdjust.type = qs2.core.generic.typBytes
-        End If
-
-    End Function
-    Public Function getVal(ByVal rAdjust As dsAdmin.tblAdjustRow, ByVal bytes() As Byte) As Object
-        Dim bool As Boolean = False
-        Dim int32 As Int32 = 0
-        Dim int64 As Int64 = 0
-        Dim dbl As Double = 0
-        Dim dec As Decimal = 0
-        Dim int As Decimal = 0
-        Dim str As String = ""
-        Dim guid As System.Guid = System.Guid.NewGuid()
-        Dim dat As Date
-        Dim datTim As DateTime
-
-
-        If rAdjust.type = bool.GetType.ToString() Then
-            Return rAdjust.bool
-
-        ElseIf rAdjust.type.ToString = int.GetType.ToString() Or rAdjust.type.ToString = int32.GetType.ToString() Or
-                rAdjust.type.ToString = int64.GetType.ToString() Or rAdjust.type.ToString = dbl.GetType.ToString() Or
-                rAdjust.type.ToString = dec.GetType.ToString() Then
-            Return rAdjust.dbl
-
-        ElseIf rAdjust.type.ToString = str.GetType.ToString() Or rAdjust.type.ToString = guid.GetType.ToString() Then
-            Return rAdjust.str
-
-        ElseIf rAdjust.type.ToString = dat.GetType.ToString() Or rAdjust.type.ToString = datTim.GetType.ToString() Then
-            If rAdjust.IsdatNull() Then
-                Return Nothing
-            Else
-                Return rAdjust.dat
-            End If
-
-        ElseIf rAdjust.type = qs2.core.generic.typBytes Then
-            If rAdjust.IsbytNull() Then
-                bytes = Nothing
-            Else
-                bytes = rAdjust.byt
-            End If
-
-        Else
-            Throw New Exception("sqlAdmin.getVal: TypSel '" + rAdjust.type.ToString() + "' is wrong!")
-        End If
-    End Function
 
     Public Function getSelListGroupRow_ParticAppl(ByRef Parameters As ParametersSelListEntries, ByVal IDGroup As String, ByVal IDParticipant As String,
                                                   ByVal IDApplication As String, ByVal doExecptIfNotFound As Boolean) As dsAdmin.tblSelListGroupRow
@@ -566,26 +281,8 @@
             End If
             Return checkRow
         End If
-
-        'No longer up to four SQL-Queries for one SelListGroupRow
-        'Dim rGrp As dsAdmin.tblSelListGroupRow = Me.getSelListGroupRow(IDGroup, IDParticipant, IDApplication)
-        'If rGrp Is Nothing Then
-        '    rGrp = Me.getSelListGroupRow(IDGroup, IDParticipant, qs2.core.license.doLicense.eApp.ALL.ToString())
-        '    If rGrp Is Nothing Then
-        '        rGrp = Me.getSelListGroupRow(IDGroup, qs2.core.license.doLicense.eApp.ALL.ToString(), IDApplication)
-        '        If rGrp Is Nothing Then
-        '            rGrp = Me.getSelListGroupRow(IDGroup, qs2.core.license.doLicense.eApp.ALL.ToString(), qs2.core.license.doLicense.eApp.ALL.ToString())
-        '            If rGrp Is Nothing Then
-        '                Parameters.GroupNotFoundInAnyApplication = True
-        '                If doExecptIfNotFound Then
-        '                    Throw New Exception("getSelListGroupRow_PartApp: No Group-Entry for IDGroup '" + IDGroup.ToString() + "' exists in table tblSelListGroup !")
-        '                End If
-        '            End If
-        '        End If
-        '    End If
-        'End If
-        'Return rGrp
     End Function
+
     Public Function getSelListGroupRow(ByVal IDGroup As String, ByVal IDParticipant As String, ByVal IDApplication As String) As dsAdmin.tblSelListGroupRow
 
         Dim ds As New dsAdmin
@@ -625,7 +322,7 @@
                                   Optional ByVal str As String = "") As dsAdmin.tblSelListGroupRow()
 
         Me.daSelListGroup.SelectCommand.CommandText = Me.sel_daSelListGroup
-        database.setConnection(Me.daSelListGroup)
+        core.dbBase.setConnection(Me.daSelListGroup)
         Me.daSelListGroup.SelectCommand.Parameters.Clear()
 
         If typSel = eTypSelGruppen.all Then
@@ -701,29 +398,8 @@
 
         dsAdmin1.tblSelListGroup.Rows.Add(rNew)
         Return rNew
-
     End Function
 
-
-    Public Function getSelListEntrysRow(ByVal IDGroup As String,
-                                        ByVal typSel As eTypAuswahlList,
-                                        Optional ByVal typ As String = "",
-                                        Optional ByVal IDOwnInt As Integer = 0,
-                                        Optional ByVal IDOwnStr As String = "",
-                                        Optional ByVal ID As Integer = 0) As dsAdmin.tblSelListEntriesRow
-
-        Dim ds As New dsAdmin
-        Dim Parameters As New qs2.core.vb.sqlAdmin.ParametersSelListEntries()
-        Me.getSelListEntrysAll(Parameters, IDGroup, ds, typSel, qs2.core.license.doLicense.rParticipant.IDParticipant, qs2.core.license.doLicense.rApplication.IDApplication, typ, IDOwnInt, IDOwnStr, ID)
-        If ds.tblSelListEntries.Rows.Count = 0 Then
-            Return Nothing
-        ElseIf ds.tblSelListEntries.Rows.Count = 1 Then
-            Return ds.tblSelListEntries.Rows(0)
-        ElseIf ds.tblSelListEntries.Rows.Count > 1 Then
-            Throw New Exception("getSelListEntrysRow.id: More than one Row for idNr '" + IDOwnInt.ToString() + "' found!")
-            Return Nothing
-        End If
-    End Function
     Public Function getSelListEntrysRow(ByVal IDGroup As String,
                                         ByVal typSel As eTypAuswahlList,
                                         ByVal IDParticipant As String, ByVal Application As String,
@@ -744,6 +420,7 @@
             Return Nothing
         End If
     End Function
+
     Public Function getSelListEntrysAll(ByRef Parameters As ParametersSelListEntries, ByVal IDGroup As String,
                                       ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList,
                                       ByVal IDParticipant As String, ByVal IDApplication As String,
@@ -753,20 +430,9 @@
                                         Optional ByVal ID As Integer = 0) As Boolean
 
         Me.getSelListEntrys(Parameters, IDGroup, IDParticipant, IDApplication, ds, typSel, typ, IDOwnInt, IDOwnStr, ID)
-        If ds.tblSelListEntries.Rows.Count = 0 Then
-            'Me.getSelListEntrys(IDGroup, qs2.core.vb.actUsr.rParticipant.IDParticipant, qs2.core.license.doLicense.AppALL, ds, typSel, typ, IDOwnInt, IDOwnStr)
-            'If ds.tblSelListEntrys.Rows.Count = 0 Then
-            '    Me.getSelListEntrys(IDGroup, qs2.core.license.doLicense.AppALL, qs2.core.vb.actUsr.rApplication.IDApplication, ds, typSel, typ, IDOwnInt, IDOwnStr)
-            '    If ds.tblSelListEntrys.Rows.Count = 0 Then
-            '        Me.getSelListEntrys(IDGroup, qs2.core.license.doLicense.AppALL, qs2.core.license.doLicense.AppALL, ds, typSel, typ, IDOwnInt, IDOwnStr)
-            '        If ds.tblSelListEntrys.Rows.Count = 0 Then
-            'Throw New Exception("getSelListEntrysAll: No SelListEntrys for IDGroup '" + IDGroup.ToString() + "' exists in table SelListEntrys !")
-            '        End If
-            '    End If
-            'End If
-        End If
         Return True
     End Function
+
     Public Function getSelListEntrys(ByRef Parameters As ParametersSelListEntries, ByVal IDGroup As String,
                                         ByVal IDParticipant As String, ByVal IDApplication As String,
                                         ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList,
@@ -779,7 +445,7 @@
                                         Optional allNotPrivateFromOtherUsers As Boolean = False) As dsAdmin.tblSelListEntriesRow()
         Try
             Me.daSelListEntrys.SelectCommand.CommandText = Me.sel_daSelListEntrys
-            database.setConnection(Me.daSelListEntrys)
+            core.dbBase.setConnection(Me.daSelListEntrys)
             Me.daSelListEntrys.SelectCommand.Parameters.Clear()
 
             If typSel = eTypAuswahlList.IDGroup Then
@@ -860,9 +526,6 @@
                         sWhere += sqlTxt.and + sqlTxt.ClampRight + ds.tblSelListEntries.CreatedUserColumn.ColumnName + sqlTxt.equals + "'" + qs2.core.vb.actUsr.rUsr.UserName.Trim() + "'" + sqlTxt.ClampLeft
                     End If
 
-                    'sWhere += sqlTxt.or + sqlTxt.ClampRight + ds.tblSelListEntries.CreatedUserColumn.ColumnName + sqlTxt.notEquals + "'" + qs2.core.vb.actUsr.rUsr.UserName.Trim() + "'"
-                    'sWhere += sqlTxt.and + ds.tblSelListEntries.PrivateColumn.ColumnName + sqlTxt.equals + "0" + sqlTxt.ClampLeft + sqlTxt.ClampLeft
-
                     Me.daSelListEntrys.SelectCommand.CommandText += sWhere + sqlTxt.orderBy + ds.tblSelListEntries.IDRessourceColumn.ColumnName + sqlTxt.asc
                     Me.daSelListEntrys.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblSelListEntries.IDGroupColumn.ColumnName), Parameters.rGrpFound.ID)
                     Me.daSelListEntrys.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblSelListEntries.TypeStrColumn.ColumnName), typ)
@@ -897,6 +560,7 @@
             Throw New Exception("getSelListEntrys: " + ex.ToString())
         End Try
     End Function
+
     Public Function deleteSelListEntry(ByVal ID As Integer) As Boolean
         Dim ds As New dsAdmin
         Dim cmd As New System.Data.SqlClient.SqlCommand
@@ -906,37 +570,8 @@
         cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntries.IDColumn.ColumnName), System.Data.SqlDbType.Int, 4, sqlTxt.getColPar(ds.tblSelListEntries.IDColumn.ColumnName))).Value = ID
         cmd.ExecuteNonQuery()
         Return True
+    End Function
 
-    End Function
-    Public Function deleteSelListEntryObject_IDObject(ByVal IDObject As Integer) As Boolean
-        Try
-            Dim ds As New dsAdmin
-            Dim cmd As New System.Data.SqlClient.SqlCommand
-            cmd.Parameters.Clear()
-            cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblSelListEntriesObj.TableName + sqlTxt.where + " IDObject='" + IDObject.ToString() + "'"
-            cmd.Connection = qs2.core.dbBase.dbConn
-            cmd.CommandTimeout = 0
-            cmd.ExecuteNonQuery()
-            Return True
-        Catch ex As Exception
-            Throw New Exception("sqlAdmin.deleteSelListEntryObject_IDObject: " + ex.ToString())
-        End Try
-    End Function
-    Public Function deleteSelListEntryObject_IDObjectGuid(ByVal IDObjectGuid As Guid) As Boolean
-        Try
-            Dim ds As New dsAdmin
-            Dim cmd As New System.Data.SqlClient.SqlCommand
-            cmd.Parameters.Clear()
-            cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblSelListEntriesObj.TableName + sqlTxt.where + " IDObjectGuid='" + IDObjectGuid.ToString() + "'"
-            cmd.Connection = qs2.core.dbBase.dbConn
-            cmd.CommandTimeout = 0
-            cmd.ExecuteNonQuery()
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("sqlAdmin.deleteSelListEntryObject_IDObjectGuid: " + ex.ToString())
-        End Try
-    End Function
     Public Function deleteSelListEntriesSort(IDSelListEntry As Integer, IDParticipant As String) As Boolean
         Try
             Dim ds As New dsAdmin
@@ -952,42 +587,12 @@
         End Try
     End Function
 
-    Public Function updateStayAdditionsIDObject(ByVal IDObjectGuidNew As Guid, ByVal IDObjectGuidOld As Guid) As Boolean
-        Try
-            Dim ds As New dsAdmin
-            Dim cmd As New System.Data.SqlClient.SqlCommand
-            cmd.Parameters.Clear()
-            cmd.CommandText = "Update" + qs2.core.dbBase.dbSchema + ds.tblStayAdditions.TableName + " set IDObject='" + IDObjectGuidNew.ToString() + "' where IDObject='" + IDObjectGuidOld.ToString() + "'"
-            cmd.Connection = qs2.core.dbBase.dbConn
-            cmd.CommandTimeout = 0
-            cmd.ExecuteNonQuery()
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("sqlAdmin.updateStayAdditionsIDObject: " + ex.ToString())
-        End Try
-    End Function
-
-    Public Shared Function deleteSelListEntryAllQryAdminxy(ByVal IDOwnInt As Integer, ByVal Application As String) As Boolean
-
-        Dim ds As New dsAdmin
-        Dim cmd As New System.Data.SqlClient.SqlCommand
-        cmd.Parameters.Clear()
-        cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblQueriesDef.TableName + sqlTxt.where + sqlTxt.getColWhere(ds.tblQueriesDef.IDSelListColumn.ColumnName) + sqlTxt.and + sqlTxt.getColWhere(ds.tblQueriesDef.ApplicationOwnColumn.ColumnName)
-        cmd.Connection = qs2.core.dbBase.dbConn
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblQueriesDef.IDSelListColumn.ColumnName), System.Data.SqlDbType.Int, 4, sqlTxt.getColPar(ds.tblQueriesDef.IDSelListColumn.ColumnName))).Value = IDOwnInt
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblQueriesDef.ApplicationOwnColumn.ColumnName), System.Data.SqlDbType.VarChar, 30, sqlTxt.getColPar(ds.tblQueriesDef.ApplicationOwnColumn.ColumnName))).Value = Application
-
-        cmd.ExecuteNonQuery()
-        Return True
-
-    End Function
     Public Function getSelListEntrysRelGroup(ByVal IDGroup As String,
                                       ByVal IDParticipant As String, ByVal IDApplication As String,
                                       ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList) As dsAdmin.vListEntriesWithGroupRow()
 
         Me.davListEntriesWithGroup.SelectCommand.CommandText = Me.sel_daSelListEntrysRelGroup
-        database.setConnection(Me.davListEntriesWithGroup)
+        core.dbBase.setConnection(Me.davListEntriesWithGroup)
         Me.davListEntriesWithGroup.SelectCommand.Parameters.Clear()
 
         If typSel = eTypAuswahlList.group Then
@@ -998,9 +603,6 @@
                 Me.davListEntriesWithGroup.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.vListEntriesWithGroup.g_IDApplicationColumn.ColumnName), IDApplication.ToString())
             End If
             Me.davListEntriesWithGroup.SelectCommand.CommandText += sWhere + sqlTxt.orderBy + ds.vListEntriesWithGroup.g_IDApplicationColumn.ColumnName + sqlTxt.asc + "," + ds.vListEntriesWithGroup.s_IDRessourceColumn.ColumnName + sqlTxt.asc
-
-        ElseIf typSel = eTypAuswahlList.all Then
-            Dim str As String = ""
 
         ElseIf typSel = eTypAuswahlList.IDGroupStrAppRam Then
             Dim sWhere As String = ds.vListEntriesWithGroup.g_IDGroupStrColumn.ColumnName + "='" + IDGroup + "'" + sqlTxt.and +
@@ -1014,19 +616,16 @@
 
         Me.davListEntriesWithGroup.Fill(ds.vListEntriesWithGroup)
         Return Nothing
-
     End Function
-
 
     Public Function getSelListEntrysSort(ID As Integer, IDParticipant As String,
                                            ds As dsAdmin, typeSel As eTypSelListSort, sWhere As String) As dsAdmin.tblSelListEntriesSortRow()
         Try
             Me.daSelListEntriesSort.SelectCommand.CommandText = Me.sel_daSelListEntrysSort
-            database.setConnection(Me.daSelListEntriesSort)
+            core.dbBase.setConnection(Me.daSelListEntriesSort)
             Me.daSelListEntriesSort.SelectCommand.Parameters.Clear()
 
             If typeSel = eTypSelListSort.IDSelListIDParticipantIDRam Then
-                'Dim sWhereTmp As String = ds.tblSelListEntriesSort.IDSelListEntryColumn.ColumnName + "=" + ID.ToString() + " and " + ds.tblSelListEntriesSort.IDParticipantColumn.ColumnName + "='" + IDParticipant.Trim() + "'"
                 Dim sWhereTmp As String = "IDParticipant='" + IDParticipant.Trim() + "' and " + sWhere
                 Dim sOrderBy As String = " Sort asc"
                 Dim arrSellistEntriesSort() As dsAdmin.tblSelListEntriesSortRow = sqlAdmin.dsAllAdmin.tblSelListEntriesSort.Select(sWhereTmp, sOrderBy)
@@ -1045,7 +644,6 @@
             Throw New Exception("getSelListEntrysSort: " + ex.ToString())
         End Try
     End Function
-
 
     Public Function getSelListEntrysObj(ByVal ID As Integer,
                                         ByVal typDB As eDbTypAuswObj,
@@ -1067,7 +665,7 @@
 
         Try
             Me.daSelListEntrysObj.SelectCommand.CommandText = Me.sel_daSelListEntrysObj
-            database.setConnection(Me.daSelListEntrysObj)
+            core.dbBase.setConnection(Me.daSelListEntrysObj)
             Me.daSelListEntrysObj.SelectCommand.Parameters.Clear()
 
             If typSel = eTypAuswahlObj.obj Then
@@ -1094,9 +692,6 @@
                 Return arrSelListObjs
 
             ElseIf typSel = eTypAuswahlObj.IDGuid Then
-                If IDGuid Is Nothing Then
-                    Dim str As String = ""
-                End If
                 Dim sWhere As String = sqlTxt.where + ds.tblSelListEntriesObj.IDGuidColumn.ColumnName + "='" + IDGuid.ToString() + "'"
                 Me.daSelListEntrysObj.SelectCommand.CommandText += sWhere
 
@@ -1131,17 +726,11 @@
                                         sqlTxt.getColWhere(ds.tblSelListEntriesObj.FldShortColumn.ColumnName) + sqlTxt.and +
                                         sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDApplicationColumn.ColumnName)
 
-                'Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDSelListEntryColumn.ColumnName) + sqlTxt.and +
-                '                        sqlTxt.getColWhere(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName) + sqlTxt.and +
-                '                        sqlTxt.getColWhere(ds.tblSelListEntriesObj.FldShortColumn.ColumnName) + sqlTxt.and +
-                '                        sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDApplicationColumn.ColumnName) + sqlTxt.and +
-                '                        sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDClassificationColumn.ColumnName)
                 Me.daSelListEntrysObj.SelectCommand.CommandText += sWhere
                 Me.daSelListEntrysObj.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDSelListEntryColumn.ColumnName), ID)
                 Me.daSelListEntrysObj.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName), typDB.ToString())
                 Me.daSelListEntrysObj.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblSelListEntriesObj.FldShortColumn.ColumnName), FldShort.Trim())
                 Me.daSelListEntrysObj.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDApplicationColumn.ColumnName), IDApplication.Trim())
-                'Me.daSelListEntrysObj.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDClassificationColumn.ColumnName), "Application=" + Group.Trim())
 
             ElseIf typSel = eTypAuswahlObj.FldShortOtherChapters Then
                 Dim sWhere As String = sqlTxt.where + " IDSelListEntry<>" + ID.ToString() + " " + sqlTxt.and +
@@ -1262,6 +851,7 @@
             Throw New Exception("sqlAdmin.getSelListEntrysObj: " + ex.ToString())
         End Try
     End Function
+
     Public Function getNewRowSelListObj(ByVal dsAdmin1 As dsAdmin) As dsAdmin.tblSelListEntriesObjRow
         Dim rNew As dsAdmin.tblSelListEntriesObjRow = dsAdmin1.tblSelListEntriesObj.NewRow()
         rNew.IDGuid = System.Guid.NewGuid()
@@ -1293,132 +883,8 @@
 
         dsAdmin1.tblSelListEntriesObj.Rows.Add(rNew)
         Return rNew
-
     End Function
 
-    Public Function deleteSelListEntryObj(ByVal IDStay As Integer, IDParticipantStay As String, IDApplicationStay As String, typIDGroup As String) As Boolean
-        Dim ds As New dsAdmin
-        Dim cmd As New System.Data.SqlClient.SqlCommand
-        cmd.Parameters.Clear()
-        cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblSelListEntriesObj.TableName + sqlTxt.where + sqlTxt.getColWhere(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName) + sqlTxt.and +
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDStayColumn.ColumnName) + sqlTxt.and +
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDParticipantStayColumn.ColumnName) + sqlTxt.and +
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName)
-
-        cmd.Connection = qs2.core.dbBase.dbConn
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName), System.Data.SqlDbType.NVarChar, 50, sqlTxt.getColPar(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName))).Value = typIDGroup
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDStayColumn.ColumnName), System.Data.SqlDbType.Int, 4, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDStayColumn.ColumnName))).Value = IDStay
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDParticipantStayColumn.ColumnName), System.Data.SqlDbType.NVarChar, 150, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDParticipantStayColumn.ColumnName))).Value = IDParticipantStay
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName), System.Data.SqlDbType.NVarChar, 30, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName))).Value = IDApplicationStay
-
-        cmd.ExecuteNonQuery()
-        Return True
-    End Function
-    Public Function sys_deleteSelListEntryCriterias(IDApplication As String) As Boolean
-        Dim ds As New dsAdmin
-        Dim cmd As New System.Data.SqlClient.SqlCommand
-        cmd.Parameters.Clear()
-        cmd.CommandText = " delete from qs2.tblSelListEntriesObj where typIDGroup='Criterias' and " +
-                            " IDSelListEntry in (Select qs2.tblSelListEntries.ID from qs2.tblSelListEntries, qs2.tblSelListGroup " +
-                            " where qs2.tblSelListEntries.IDGroup=qs2.tblSelListGroup.ID And qs2.tblSelListGroup.IDApplication='" + IDApplication.Trim() + "') "
-
-        cmd.Connection = qs2.core.dbBase.dbConn
-        cmd.ExecuteNonQuery()
-        Return True
-    End Function
-    Public Function deleteSelListEntryObj(ByVal IDStay As Integer, IDParticipantStay As String, IDApplicationStay As String, typIDGroup As String, IDSelListEntry As Integer) As Boolean
-        Dim ds As New dsAdmin
-        Dim cmd As New System.Data.SqlClient.SqlCommand
-        cmd.Parameters.Clear()
-        cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblSelListEntriesObj.TableName + sqlTxt.where + sqlTxt.getColWhere(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName) + sqlTxt.and +
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDStayColumn.ColumnName) + sqlTxt.and +
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDParticipantStayColumn.ColumnName) + sqlTxt.and +
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName) + sqlTxt.and +
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDSelListEntryColumn.ColumnName)
-
-        cmd.Connection = qs2.core.dbBase.dbConn
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName), System.Data.SqlDbType.NVarChar, 50, sqlTxt.getColPar(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName))).Value = typIDGroup
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDStayColumn.ColumnName), System.Data.SqlDbType.Int, 4, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDStayColumn.ColumnName))).Value = IDStay
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDParticipantStayColumn.ColumnName), System.Data.SqlDbType.NVarChar, 150, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDParticipantStayColumn.ColumnName))).Value = IDParticipantStay
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName), System.Data.SqlDbType.NVarChar, 30, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName))).Value = IDApplicationStay
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDSelListEntryColumn.ColumnName), System.Data.SqlDbType.Int, 4, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDSelListEntryColumn.ColumnName))).Value = IDSelListEntry
-
-        cmd.ExecuteNonQuery()
-        Return True
-    End Function
-    Public Function updateSelListEntryObjCreated(ByVal IDGuid As Guid, dCreated As Date) As Boolean
-        Dim ds As New dsAdmin
-        Dim cmd As New System.Data.SqlClient.SqlCommand
-        cmd.Parameters.Clear()
-        cmd.CommandText = " update qs2.tblSelListEntriesObj set Created=@Created, Modified=@Modified where IDGuid='" + IDGuid.ToString() + "' "
-
-        cmd.Connection = qs2.core.dbBase.dbConn
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter("@Created", System.Data.SqlDbType.DateTime, 0, "Created")).Value = dCreated
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter("@Modified", System.Data.SqlDbType.DateTime, 0, "Modified")).Value = dCreated
-
-        cmd.ExecuteNonQuery()
-        Return True
-    End Function
-    Public Function deleteSelListEntryObjOtherChapters(FldShort As String, IDApplicationCrit As String, typIDGroup As String, IDSelListEntryNot As Integer,
-                                                       dat As DateTime, IDApplicationChapter As String) As Boolean
-        Dim ds As New dsAdmin
-        Dim cmd As New System.Data.SqlClient.SqlCommand
-        cmd.Parameters.Clear()
-        cmd.CommandText = " delete from qs2.tblSelListEntriesObj where " +
-                            " IDSelListEntry<>'" + IDSelListEntryNot.ToString() + "' and typIDGroup='" + typIDGroup.Trim() + "' and " +
-                            " IDApplication='" + IDApplicationCrit.Trim() + "' and FldShort='" + FldShort.Trim() + "' and Created<>@Created and " +
-                            " IDSelListEntry in (Select qs2.tblSelListEntries.ID from qs2.tblSelListEntries, qs2.tblSelListGroup " +
-                            " where qs2.tblSelListEntries.IDGroup=qs2.tblSelListGroup.ID And qs2.tblSelListGroup.IDApplication='" + IDApplicationChapter.Trim() + "') "
-
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter("@Created", System.Data.SqlDbType.DateTime, 0, "Created")).Value = dat
-
-        cmd.Connection = qs2.core.dbBase.dbConn
-        cmd.ExecuteNonQuery()
-        Return True
-    End Function
-    Public Function deleteSelListEntryObj(ByVal IDGuid As System.Guid) As Boolean
-        Dim ds As New dsAdmin
-        Dim cmd As New System.Data.SqlClient.SqlCommand
-        cmd.Parameters.Clear()
-        cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblSelListEntriesObj.TableName + sqlTxt.where + sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDGuidColumn.ColumnName)
-        cmd.Connection = qs2.core.dbBase.dbConn
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDGuidColumn.ColumnName), System.Data.SqlDbType.UniqueIdentifier, 16, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDGuidColumn.ColumnName))).Value = IDGuid
-        cmd.ExecuteNonQuery()
-        Return True
-    End Function
-    Public Function deleteStayByID(ByVal IDStay As Integer, IDParticipantStay As String, IDApplication As String) As Boolean
-        Dim ds As New dsAdmin
-        Dim cmd As New System.Data.SqlClient.SqlCommand
-        cmd.Parameters.Clear()
-        cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblSelListEntriesObj.TableName + sqlTxt.where +
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDStayColumn.ColumnName) + sqlTxt.and +
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDParticipantStayColumn.ColumnName) + sqlTxt.and +
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName)
-
-        cmd.Connection = qs2.core.dbBase.dbConn
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDStayColumn.ColumnName), System.Data.SqlDbType.Int, 4, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDStayColumn.ColumnName))).Value = IDStay
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDParticipantStayColumn.ColumnName), System.Data.SqlDbType.NVarChar, 150, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDParticipantStayColumn.ColumnName))).Value = IDParticipantStay
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName), System.Data.SqlDbType.NVarChar, 30, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName))).Value = IDApplication
-
-        cmd.ExecuteNonQuery()
-        Return True
-    End Function
-    Public Function deleteSelListEntryObj(IDApplicationStay As String, typIDGroup As String, IDSelListEntry As Integer) As Boolean
-        Dim ds As New dsAdmin
-        Dim cmd As New System.Data.SqlClient.SqlCommand
-        cmd.Parameters.Clear()
-        cmd.CommandText = sqlTxt.delete + qs2.core.dbBase.dbSchema + ds.tblSelListEntriesObj.TableName + sqlTxt.where + sqlTxt.getColWhere(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName) + sqlTxt.and +
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName) + sqlTxt.and +
-                            sqlTxt.getColWhere(ds.tblSelListEntriesObj.IDSelListEntryColumn.ColumnName)
-
-        cmd.Connection = qs2.core.dbBase.dbConn
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName), System.Data.SqlDbType.NVarChar, 50, sqlTxt.getColPar(ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName))).Value = typIDGroup
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName), System.Data.SqlDbType.NVarChar, 30, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDApplicationStayColumn.ColumnName))).Value = IDApplicationStay
-        cmd.Parameters.Add(New System.Data.SqlClient.SqlParameter(sqlTxt.getColPar(ds.tblSelListEntriesObj.IDSelListEntryColumn.ColumnName), System.Data.SqlDbType.Int, 4, sqlTxt.getColPar(ds.tblSelListEntriesObj.IDSelListEntryColumn.ColumnName))).Value = IDSelListEntry
-
-        cmd.ExecuteNonQuery()
-        Return True
-    End Function
     Public Function deleteSelListEntryObj(ByVal IDSelListEntry As Integer) As Boolean
         Dim ds As New dsAdmin
         Dim cmd As New System.Data.SqlClient.SqlCommand
@@ -1429,6 +895,7 @@
         cmd.ExecuteNonQuery()
         Return True
     End Function
+
     Public Function deleteSelListEntrySublistObj(ByVal IDSelListEntrySublist As Integer) As Boolean
         Dim ds As New dsAdmin
         Dim cmd As New System.Data.SqlClient.SqlCommand
@@ -1439,6 +906,7 @@
         cmd.ExecuteNonQuery()
         Return True
     End Function
+
     Public Function deleteSelListEntryObj(ByVal IDSelListEntry As Integer, typIDGroup As String) As Boolean
         Try
             Dim ds As New dsAdmin
@@ -1454,43 +922,6 @@
         End Try
     End Function
 
-    Public Function getSelListObjDoubledSelLists(ByRef ds As dsAdmin, ByRef IDSelListEntry As Integer, ByRef IDSelListEntrySublist As Integer, ByRef typIDGroup As String) As Boolean
-        Try
-            Me.daSelListEntrysObj.SelectCommand.CommandText = Me.sel_daSelListEntrysObj
-            database.setConnection(Me.daSelListEntrysObj)
-            Me.daSelListEntrysObj.SelectCommand.Parameters.Clear()
-
-            Dim sWhere As String = ""
-            sWhere = " where IDSelListEntry=" + IDSelListEntry.ToString() + " and IDSelListEntrySublist=" + IDSelListEntrySublist.ToString() + " and FldShort is null and IDApplication is null and typIDGroup='" + typIDGroup.Trim() + "' and " +
-                        "IDObject is null and IDStay is null and IDApplicationStay is null and IDParticipantStay is null and (IDParticipant='' or IDParticipant='ALL') "
-
-            Me.daSelListEntrysObj.SelectCommand.CommandText += sWhere
-            Me.daSelListEntrysObj.Fill(ds.tblSelListEntriesObj)
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("sqlAdmin.getSelListObjDoubledSelLists: " + ex.ToString())
-        End Try
-    End Function
-    Public Function getSelListObjDoubledFldShorts(ByRef ds As dsAdmin, ByRef IDSelListEntry As Integer, ByRef FldShort As String, IDApplication As String, ByRef typIDGroup As String) As Boolean
-        Try
-            Me.daSelListEntrysObj.SelectCommand.CommandText = Me.sel_daSelListEntrysObj
-            database.setConnection(Me.daSelListEntrysObj)
-            Me.daSelListEntrysObj.SelectCommand.Parameters.Clear()
-
-            Dim sWhere As String = ""
-            sWhere = " where IDSelListEntry=" + IDSelListEntry.ToString() + " and IDSelListEntrySublist is null and FldShort='" + FldShort.Trim() + "' and IDApplication='" + IDApplication.Trim() + "' and typIDGroup='" + typIDGroup.Trim() + "' and " +
-                        "IDObject is null and IDStay is null and IDApplicationStay is null and IDParticipantStay is null and (IDParticipant='' or IDParticipant='ALL') "
-
-            Me.daSelListEntrysObj.SelectCommand.CommandText += sWhere
-            Me.daSelListEntrysObj.Fill(ds.tblSelListEntriesObj)
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("sqlAdmin.getSelListObjDoubledSelLists: " + ex.ToString())
-        End Try
-    End Function
-
     Public Shared Function getSelList(ByVal lst As Infragistics.Win.ValueList,
                    ByVal cbo As Infragistics.Win.UltraWinEditors.UltraComboEditor,
                    ByVal gruppe As String, ByVal typID As eTypSelListID, ByVal dsAdmin1 As dsAdmin,
@@ -1502,7 +933,6 @@
             Throw New Exception("sqlAdmin.getSelList: " + vbNewLine + vbNewLine + ex.ToString())
         End Try
     End Function
-
 
     Public Shared Function loadSelList(ByVal lst As Infragistics.Win.ValueList,
                             ByVal cbo As Infragistics.Win.UltraWinEditors.UltraComboEditor,
@@ -1553,23 +983,7 @@
                 End If
             End If
 
-            'For Each r As dsAdmin.tblSelListEntriesRow In dsAdmin1.tblSelListEntries
-            '    Dim resFound As String = qs2.core.language.sqlLanguage.getRes(r.IDRessource, qs2.core.license.doLicense.rParticipant.IDParticipant, qs2.core.license.doLicense.rApplication.IDApplication)
-            '    If resFound.Trim() = "" Then
-            '        resFound = r.IDRessource
-            '    End If
-            'Next
-
-            'Dim rSelListGroup As dsAdmin.tblSelListGroupRow = sqlAdmin1.getSelListGroupRow(gruppe.Trim(), "", "")
-            'Dim arrSelLists As dsAdmin.tblSelListEntriesRow() = Nothing
-            'If rSelListGroup.SortColumn.Trim() <> "" Then
-            '    arrSelLists = dsAdmin1.tblSelListEntries.Select("", dsAdmin1.tblSelListEntries.IDRessourceColumn.ColumnName)
-            'Else
-            '    arrSelLists = dsAdmin1.tblSelListEntries.Select("", rSelListGroup.SortColumn.Trim())
-            'End If
-
             For Each r As dsAdmin.tblSelListEntriesRow In dsAdmin1.tblSelListEntries
-
                 Dim resFound As String = qs2.core.language.sqlLanguage.getRes(r.IDRessource, qs2.core.license.doLicense.rParticipant.IDParticipant, qs2.core.license.doLicense.rApplication.IDApplication)
                 If resFound.Trim() = "" Then
                     resFound = r.IDRessource
@@ -1615,6 +1029,7 @@
             Throw New Exception("sqlAdmin.loadSelList: " + vbNewLine + vbNewLine + ex.ToString())
         End Try
     End Function
+
     Public Function getNewRowSelList(ByVal dsAdmin1 As dsAdmin, addCreatedUser As Boolean) As dsAdmin.tblSelListEntriesRow
         Dim rNew As dsAdmin.tblSelListEntriesRow = dsAdmin1.tblSelListEntries.NewRow()
         rNew.ID = -999
@@ -1652,37 +1067,6 @@
 
         dsAdmin1.tblSelListEntries.Rows.Add(rNew)
         Return rNew
-
-    End Function
-    Public Function addRowSelListSmall(ByVal dsHelper1 As dsHelper) As dsHelper.SelListSmallRow
-        Dim rNew As dsHelper.SelListSmallRow = dsHelper1.SelListSmall.NewRow()
-        rNew.ID = System.Guid.NewGuid()
-        rNew.IDOwnInt = -999
-        rNew.IDOwnStr = ""
-        rNew.SelList = ""
-        rNew.IDSelList = -999
-        rNew.IDGroupStr = ""
-        rNew.Application = ""
-
-        dsHelper1.SelListSmall.Rows.Add(rNew)
-        Return rNew
-
-    End Function
-    Public Function addRowSelListSmall1(ByVal dsHelper1 As dsHelper) As dsHelper.SelListSmall1Row
-        Dim rNew As dsHelper.SelListSmall1Row = dsHelper1.SelListSmall1.NewRow()
-        rNew.ID = System.Guid.NewGuid()
-        rNew.IDOwnInt = -999
-        rNew.IDOwnStr = ""
-        rNew.SelList = ""
-        rNew.IDSelList = -999
-        rNew.IDGroupStr = ""
-        rNew.Application = ""
-        rNew.IDOwnIntParent = -999
-        rNew.IDSelListParent = -999
-
-        dsHelper1.SelListSmall1.Rows.Add(rNew)
-        Return rNew
-
     End Function
 
     Public Function getCriterias(ByVal ds As dsAdmin, ByVal typSel As eTypSelCriteria,
@@ -1692,7 +1076,7 @@
                                  Chapter As String, IDGroupStr As String, ApplicationAndAll As Boolean) As dsAdmin.tblCriteriaRow()
         Try
             Me.daCriteria.SelectCommand.CommandText = Me.sel_daSelCriteria
-            database.setConnection(Me.daCriteria)
+            core.dbBase.setConnection(Me.daCriteria)
             Me.daCriteria.SelectCommand.Parameters.Clear()
 
             If typSel = eTypSelCriteria.search Then
@@ -1719,8 +1103,6 @@
                     sWhereSearch += " (" + ds.tblCriteria.IDApplicationColumn.ColumnName + "=" + sqlTxt.sMonkey + ds.tblCriteria.IDApplicationColumn.ColumnName + "1" + sqlTxt.or + ds.tblCriteria.IDApplicationColumn.ColumnName + "=" + sqlTxt.sMonkey + ds.tblCriteria.IDApplicationColumn.ColumnName + "2 ) "
                     Me.daCriteria.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblCriteria.IDApplicationColumn.ColumnName + "1"), IDApplication.ToString())
                     Me.daCriteria.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblCriteria.IDApplicationColumn.ColumnName + "2"), license.doLicense.eApp.ALL.ToString())       'license.doLicense.eApp.ALL.ToString()
-
-                    'Dim sWhereSearch As String = (sqlTxt.select + ds.tblCriteria.FldShortColumn.ColumnName + ", " + sqlTxt.select + ds.tblCriteria.IDApplicationColumn.ColumnName + sqlTxt.from + ds.tblCriteria .TableName + sqlTxt .where + ds.tblCriteria.FldShortColumn + sql#
                     sWhereSearch += sqlTxt.and + "((" + sqlTxt.select + sqlTxt.countAll +
                                                 sqlTxt.from + qs2.core.dbBase.dbSchema + ds.tblSelListEntriesObj.TableName +
                                                 sqlTxt.where + " " + ds.tblSelListEntriesObj.typIDGroupColumn.ColumnName + "='Criterias'" + " and (" + ds.tblSelListEntriesObj.FldShortColumn.ColumnName + " = " + ds.tblCriteria.TableName + "." + ds.tblCriteria.FldShortColumn.ColumnName + ") AND (" + ds.tblSelListEntriesObj.IDApplicationColumn.ColumnName + " = " + ds.tblCriteria.TableName + "." + ds.tblCriteria.IDApplicationColumn.ColumnName + ")) = 0)"
@@ -1764,10 +1146,6 @@
                 End If
 
             ElseIf typSel = eTypSelCriteria.application Then
-                'Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblCriteria.IDApplicationColumn.ColumnName)
-                'Me.daCriteria.SelectCommand.CommandText += sWhere
-                'Me.daCriteria.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblCriteria.IDApplicationColumn.ColumnName), IDApplication.ToString())
-
                 Dim arrCriterias() As dsAdmin.tblCriteriaRow = sqlAdmin.dsAllAdmin.tblCriteria.Select(ds.tblCriteria.IDApplicationColumn.ColumnName + "='" + IDApplication.ToString() + "' ")
                 Return arrCriterias
 
@@ -1781,6 +1159,7 @@
             Throw New Exception("sqlAdmin.getCriterias: " + ex.ToString())
         End Try
     End Function
+
     Public Function getSqlWhereForChapter(Chapters As String, IDApplication As String, typIDGroup As String, IDGroupStr As String)
         Try
             Dim sWhere As String = ""
@@ -1791,23 +1170,13 @@
                         " qs2.tblSelListGroup INNER JOIN  " +
                         " qs2.tblSelListEntries ON qs2.tblSelListGroup.ID = qs2.tblSelListEntries.IDGroup ON qs2.tblSelListEntriesObj.IDSelListEntry = qs2.tblSelListEntries.ID " +
                         " WHERE qs2.tblSelListGroup.IDGroupStr = '" + IDGroupStr.ToString() + "' and qs2.tblSelListEntriesObj.typIDGroup = '" + typIDGroup.Trim() + "' AND qs2.tblSelListEntries.IDOwnStr = '" + Chapters.Trim() + "'  "
-
-            'Dim sWhere As String = ""
-            'sWhere = " SELECT  qs2.tblCriteria.FldShort " + _
-            '            " FROM qs2.tblCriteria INNER JOIN " + _
-            '            " qs2.tblSelListEntriesObj ON qs2.tblCriteria.FldShort = qs2.tblSelListEntriesObj.FldShort AND  " + _
-            '            " qs2.tblCriteria.IDApplication = qs2.tblSelListEntriesObj.IDApplication INNER JOIN " + _
-            '            " qs2.tblSelListGroup INNER JOIN  " + _
-            '            " qs2.tblSelListEntries ON qs2.tblSelListGroup.ID = qs2.tblSelListEntries.IDGroup ON qs2.tblSelListEntriesObj.IDSelListEntry = qs2.tblSelListEntries.ID " + _
-            '            " WHERE qs2.tblSelListGroup.IDGroupStr = '" + IDGroupStr.ToString() + "' and qs2.tblSelListEntriesObj.typIDGroup = '" + typIDGroup.Trim() + "' AND qs2.tblSelListEntries.IDOwnStr = '" + Chapters.Trim() + "' AND " + _
-            '            " (qs2.tblCriteria.IDApplication = '" + IDApplication.Trim() + "' OR qs2.tblCriteria.IDApplication = 'ALL') "
-
             Return sWhere
 
         Catch ex As Exception
             Throw New Exception("sqlAdmin.getSqlWhereForChapter: " + ex.ToString())
         End Try
     End Function
+
     Public Function addRowCriteria(ByVal ds As qs2.core.vb.dsAdmin) As qs2.core.vb.dsAdmin.tblCriteriaRow
 
         Dim rNew As qs2.core.vb.dsAdmin.tblCriteriaRow = ds.tblCriteria.NewRow()
@@ -1838,31 +1207,7 @@
         rNew.UsedCustomer = True
 
         ds.tblCriteria.Rows.Add(rNew)
-        'ds.tblCriteria.Rows.InsertAt(rNew, 0)
         Return rNew
-
-    End Function
-    Public Function addRowCriteriaSmall(ByVal dsHelper1 As dsHelper) As dsHelper.CriteriasSmallRow
-        Dim rNew As dsHelper.CriteriasSmallRow = dsHelper1.CriteriasSmall.NewRow()
-        rNew.FldShort = ""
-        rNew.ID = System.Guid.NewGuid()
-        rNew.Field = ""
-        rNew.FldShort = ""
-        rNew.ControlType = ""
-        rNew.MinVal = ""
-        rNew.MaxVal = ""
-        rNew.MinLength = -1
-        rNew.MaxLength = -1
-        rNew.DefaultValue = ""
-        rNew.Chapter = ""
-        rNew.FldShortSelList = ""
-        rNew.Application = ""
-        rNew.Editable = False
-        rNew.FUP = False
-
-        dsHelper1.CriteriasSmall.Rows.Add(rNew)
-        Return rNew
-
     End Function
 
     Public Function updateDefaultValuesCustomer(ByVal FldShort As String, ByVal IDApplication As String, DefaultValuesCustomer As String, DefaultValuesCustomerIsNull As Boolean,
@@ -1887,12 +1232,13 @@
         cmd.ExecuteNonQuery()
         Return True
     End Function
+
     Public Function getCriteriasOpt(ByVal ds As dsAdmin, ByVal typSel As eTypSelCriteriaOpt,
                                  ByVal FldShort As String,
                                  ByVal Application As String) As dsAdmin.tblCriteriaOptRow()
 
         Me.daCriteriaOpt.SelectCommand.CommandText = Me.sel_daSelCriteriaOpt
-        database.setConnection(Me.daCriteriaOpt)
+        core.dbBase.setConnection(Me.daCriteriaOpt)
         Me.daCriteriaOpt.SelectCommand.Parameters.Clear()
 
         If typSel = eTypSelCriteriaOpt.all Then
@@ -1919,25 +1265,13 @@
 
         Me.daCriteriaOpt.Fill(ds.tblCriteriaOpt)
     End Function
-    Public Function getNewRowCriteriaOpt(ByVal tCriteriaOpt As dsAdmin.tblCriteriaOptDataTable) As dsAdmin.tblCriteriaOptRow
-        Dim rNew As dsAdmin.tblCriteriaOptRow = tCriteriaOpt.NewRow()
-        rNew.FldShort = ""
-        rNew.IDApplication = ""
-        rNew.Parameter = ""
-        rNew.Value = ""
-        rNew.Referenze = ""
-
-        tCriteriaOpt.Rows.Add(rNew)
-        Return rNew
-
-    End Function
 
     Public Function getRelationsship(ByVal ds As dsAdmin, ByVal typSel As eTypSelRelationship,
                              ByVal FldShort As String,
                              ByVal IDApplication As String, ByVal IDKey As String) As dsAdmin.tblRelationshipRow()
 
         Me.daRelationship.SelectCommand.CommandText = Me.sel_daSelRelationship
-        database.setConnection(Me.daRelationship)
+        core.dbBase.setConnection(Me.daRelationship)
         Me.daRelationship.SelectCommand.Parameters.Clear()
 
         If typSel = eTypSelRelationship.all Then                                                    'lth   IDApplicationParent - IDApplicationChild fehlt noch!           
@@ -1964,9 +1298,6 @@
 
         ElseIf typSel = eTypSelRelationship.IDRamAllGroup Then
             Dim sWhere As String = ds.tblRelationship.IDKeyColumn.ColumnName + " like '%" + IDKey.Trim() + "%' "
-            'Dim sWhere As String = ds.tblRelationship.IDKeyColumn.ColumnName + " like '%" + IDKey.Trim() + "%' " + sqlTxt.and + _
-            '                        " (" + ds.tblRelationship.IDApplicationParentColumn.ColumnName + "='" + IDApplication + "' or " + _
-            '                        " " + ds.tblRelationship.IDApplicationParentColumn.ColumnName + "='" + qs2.core.license.doLicense.eApp.ALL.ToString() + "') "
             Dim arrRelationsship() As dsAdmin.tblRelationshipRow = sqlAdmin.dsAllAdmin.tblRelationship.Select(sWhere, ds.tblRelationship.SortColumn.ColumnName + sqlTxt.asc)
             Return arrRelationsship
 
@@ -1975,129 +1306,6 @@
         End If
 
         Me.daRelationship.Fill(ds.tblRelationship)
-    End Function
-    Public Function getNewRowRelationsship(ByVal tRelationship As dsAdmin.tblRelationshipDataTable) As dsAdmin.tblRelationshipRow
-        Dim rNew As dsAdmin.tblRelationshipRow = tRelationship.NewRow()
-        rNew.FldShortParent = ""
-        rNew.IDApplicationParent = ""
-        rNew.SetFldShortChildNull()
-        rNew.SetIDApplicationChildNull()
-        rNew.Conditions = ""
-        rNew.Type = ""
-        rNew.TypeSub = ""
-        rNew.IDKey = ""
-        rNew.IDGuid = System.Guid.NewGuid()
-        rNew.ConditionsSub = ""
-        rNew.Sort = -1
-
-        tRelationship.Rows.Add(rNew)
-        Return rNew
-
-    End Function
-
-
-    Public Function getStayAdditions(ByVal IDStay As Integer, ByVal IDParticipant As String, ByVal ds As dsAdmin, ByVal typSel As eTypSelStayAdditions,
-                                     ByVal typStayAdditions As core.vb.sqlAdmin.eTypStayAdditions,
-                                     ByVal IDApplication As String, IDObject As System.Guid, ByVal typStayAdditions2 As String,
-                                     ByVal ClearStayAdditions As Boolean, Optional IDGuid As Nullable(Of Guid) = Nothing) As Boolean
-
-        Me.daStayAdditions.SelectCommand.CommandText = Me.sel_daSelStayAddistions
-        database.setConnection(Me.daStayAdditions)
-        Me.daStayAdditions.SelectCommand.Parameters.Clear()
-
-        If ClearStayAdditions Then
-            ds.tblStayAdditions.Clear()
-        End If
-
-
-        If typSel = eTypSelStayAdditions.idStay Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblStayAdditions.IDStayParentColumn.ColumnName)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDStayParentColumn.ColumnName), IDStay)
-
-            sWhere += sqlTxt.and + sqlTxt.getColWhere(ds.tblStayAdditions.IDParticipantStayParentColumn.ColumnName)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDParticipantStayParentColumn.ColumnName), IDParticipant)
-
-            If (typStayAdditions2.Trim() = "") Then
-                sWhere += " and " + ds.tblStayAdditions.typColumn.ColumnName + "='" + typStayAdditions.ToString() + "' "
-            Else
-                sWhere += " and ( " + ds.tblStayAdditions.typColumn.ColumnName + "='" + typStayAdditions.ToString() + "' or " +
-                            ds.tblStayAdditions.typColumn.ColumnName + "='" + typStayAdditions2.ToString() + "' ) "
-            End If
-
-            sWhere += sqlTxt.and + sqlTxt.getColWhere(ds.tblStayAdditions.IDApplicationStayParentColumn.ColumnName)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDApplicationStayParentColumn.ColumnName), IDApplication)
-
-            Me.daStayAdditions.SelectCommand.CommandText += sWhere + sqlTxt.orderBy + ds.tblStayAdditions.SortColumn.ColumnName + sqlTxt.asc
-
-        ElseIf typSel = eTypSelStayAdditions.idStayORIdPatient Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.ClampRight + sqlTxt.getColWhere(ds.tblStayAdditions.IDStayParentColumn.ColumnName)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDStayParentColumn.ColumnName), IDStay)
-
-            sWhere += sqlTxt.and + sqlTxt.getColWhere(ds.tblStayAdditions.IDParticipantStayParentColumn.ColumnName)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDParticipantStayParentColumn.ColumnName), IDParticipant)
-
-            sWhere += sqlTxt.or + sqlTxt.getColWhere(ds.tblStayAdditions.IDPatientColumn.ColumnName)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDPatientColumn.ColumnName), IDObject)
-
-            sWhere += sqlTxt.ClampLeft
-
-            If (typStayAdditions2.Trim() = "") Then
-                sWhere += " and " + ds.tblStayAdditions.typColumn.ColumnName + "='" + typStayAdditions.ToString() + "' "
-            Else
-                sWhere += " and ( " + ds.tblStayAdditions.typColumn.ColumnName + "='" + typStayAdditions.ToString() + "' or " +
-                            ds.tblStayAdditions.typColumn.ColumnName + "='" + typStayAdditions2.ToString() + "' ) "
-            End If
-
-            sWhere += sqlTxt.and + sqlTxt.getColWhere(ds.tblStayAdditions.IDApplicationStayParentColumn.ColumnName)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDApplicationStayParentColumn.ColumnName), IDApplication)
-
-            Me.daStayAdditions.SelectCommand.CommandText += sWhere + sqlTxt.orderBy + ds.tblStayAdditions.SortColumn.ColumnName + sqlTxt.asc
-
-        ElseIf typSel = eTypSelStayAdditions.idStay2 Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblStayAdditions.IDStayParentColumn.ColumnName)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDStayParentColumn.ColumnName), IDStay)
-
-            sWhere += sqlTxt.and + sqlTxt.getColWhere(ds.tblStayAdditions.IDParticipantStayParentColumn.ColumnName)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDParticipantStayParentColumn.ColumnName), IDParticipant)
-
-            sWhere += sqlTxt.and + sqlTxt.getColWhere(ds.tblStayAdditions.IDApplicationStayParentColumn.ColumnName)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDApplicationStayParentColumn.ColumnName), IDApplication)
-
-            Me.daStayAdditions.SelectCommand.CommandText += sWhere + sqlTxt.orderBy + ds.tblStayAdditions.SortColumn.ColumnName + sqlTxt.asc
-
-        ElseIf typSel = eTypSelStayAdditions.IDGuid Then
-            Dim sWhere As String = sqlTxt.where + " IDGuid= '" + IDGuid.ToString() + "'"
-            Me.daStayAdditions.SelectCommand.CommandText += sWhere
-
-        ElseIf typSel = eTypSelStayAdditions.idObject Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblStayAdditions.IDPatientColumn.ColumnName)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDPatientColumn.ColumnName), IDObject)
-
-            sWhere += sqlTxt.and + sqlTxt.getColWhere(ds.tblStayAdditions.typColumn.ColumnName)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.typColumn.ColumnName), typStayAdditions.ToString())
-
-            'sWhere += sqlTxt.and + sqlTxt.getColWhere(ds.tblStayAdditions.IDApplicationColumn.ColumnName)
-            'Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDApplicationColumn.ColumnName), IDApplication)
-
-            Me.daStayAdditions.SelectCommand.CommandText += sWhere + sqlTxt.orderBy + ds.tblStayAdditions.SortColumn.ColumnName + sqlTxt.asc
-
-        ElseIf typSel = eTypSelStayAdditions.idStayAll Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblStayAdditions.IDStayParentColumn.ColumnName) + sqlTxt.and +
-                                    sqlTxt.getColWhere(ds.tblStayAdditions.IDParticipantStayParentColumn.ColumnName) + sqlTxt.and +
-                                    sqlTxt.getColWhere(ds.tblStayAdditions.IDApplicationStayParentColumn.ColumnName)
-
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDStayParentColumn.ColumnName), IDStay)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDParticipantStayParentColumn.ColumnName), IDParticipant)
-            Me.daStayAdditions.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblStayAdditions.IDApplicationStayParentColumn.ColumnName), IDApplication)
-            Me.daStayAdditions.SelectCommand.CommandText += sWhere + sqlTxt.orderBy + ds.tblStayAdditions.SortColumn.ColumnName + sqlTxt.asc
-
-        Else
-            Throw New Exception("sqlAdmin.getStayAdditions: typSel '" + typSel.ToString() + "' is wrong!")
-        End If
-
-        Me.daStayAdditions.Fill(ds.tblStayAdditions)
-        Return True
-
     End Function
 
     Public Function updateSortStayAddition(ByVal IDGuidStayAddition As System.Guid, Sort As Integer) As Boolean
@@ -2117,7 +1325,7 @@
 
 
             Me.daQueriesDef.SelectCommand.CommandText = Me.sel_daSelQueriesDef
-            database.setConnection(Me.daQueriesDef)
+            core.dbBase.setConnection(Me.daQueriesDef)
             Me.daQueriesDef.SelectCommand.Parameters.Clear()
 
             If typSel = eTypSelQueryDef.typ Then
@@ -2153,8 +1361,6 @@
             Dim rNew As qs2.core.vb.dsAdmin.tblQueriesDefRow = tblQueriesDef.NewtblQueriesDefRow
             Me.addRowQueriesDef2(rNew)
             tblQueriesDef.Rows.InsertAt(rNew, 0)
-            'tblQueriesDef.AddtblQueriesDefRow(rNew)
-            'tblQueriesDef.Rows.Add(rNew)
             Return rNew
 
         Catch ex As Exception
@@ -2201,7 +1407,7 @@
     Public Function getQueryJoinsTemp(ByVal IDGuid As System.Guid, ByVal ds As dsAdmin, ByVal typSel As eTypSelQueryJoinsTemp) As Boolean
 
         Me.daQueryJoinsTemp.SelectCommand.CommandText = Me.sel_daSelQueryJoinsTemp
-        database.setConnection(Me.daQueryJoinsTemp)
+        core.dbBase.setConnection(Me.daQueryJoinsTemp)
         Me.daQueryJoinsTemp.SelectCommand.Parameters.Clear()
 
         If typSel = eTypSelQueryJoinsTemp.all Then
@@ -2258,10 +1464,10 @@
     Public Function getMaxSelListGroup(ByRef ds As dsAdmin, ByRef typSel As eTypSelListGetMaxID, ByRef nrCircleManuell As Integer, ByRef nrCircleMaxManuell As Integer) As dsAdmin.tblSelListEntriesRow()
 
         Me.daMaxSelListGroupID.SelectCommand.CommandText = Me.sel_daMaxSelListGroupID
-        database.setConnection(Me.daMaxSelListGroupID)
+        core.dbBase.setConnection(Me.daMaxSelListGroupID)
         Me.daMaxSelListGroupID.SelectCommand.Parameters.Clear()
         If typSel = eTypSelListGetMaxID.GetMaxIDGeneric Then
-            Dim sWhere As String = sqlTxt.where + ds.tblSelListEntries.IDColumn.ColumnName + " >= " + (nrCircleManuell).ToString() + sqlTxt.and + _
+            Dim sWhere As String = sqlTxt.where + ds.tblSelListEntries.IDColumn.ColumnName + " >= " + (nrCircleManuell).ToString() + sqlTxt.and +
                                             ds.tblSelListEntries.IDColumn.ColumnName + " <= " + (nrCircleMaxManuell).ToString()
             Me.daMaxSelListGroupID.SelectCommand.CommandText += sWhere
         Else
@@ -2269,44 +1475,6 @@
         End If
 
         Me.daMaxSelListGroupID.Fill(ds.SelListMaxIDs)
-
-    End Function
-
-    Public Function getNewRowProtocol(ByVal tProtokoll As dsAdmin.protokollDataTable) As dsAdmin.protokollRow
-        Dim rNew As dsAdmin.protokollRow = tProtokoll.NewRow()
-        rNew.TextSub = ""
-        rNew.TextControl = ""
-        rNew.TextMessage = ""
-        rNew.rowAutoUI = ""
-        rNew.ID = System.Guid.NewGuid()
-        rNew.sys = False
-        rNew.admin = False
-        rNew.supress = False
-        tProtokoll.Rows.Add(rNew)
-
-        Return rNew
-    End Function
-
-    Public Function getvSelListEntriesObj(ds As DataSet, ByVal typeSel As eTypeSelvSelListEntriesObj) As Boolean
-        Try
-            Me.davSelListEntriesObj.SelectCommand.CommandText = Me.sel_davSelListEntriesObj
-            database.setConnection(Me.davSelListEntriesObj)
-            Me.davSelListEntriesObj.SelectCommand.Parameters.Clear()
-
-            If typeSel = eTypeSelvSelListEntriesObj.All Then
-                Dim sWhere As String = ""
-
-            Else
-                Throw New Exception("sqlAdmin.getvSelListEntriesObj: typSel '" + typeSel.ToString() + "' is wrong!")
-            End If
-
-            Me.davSelListEntriesObj.Fill(ds)
-            ds.Tables(0).TableName = "vSelListEntriesObj"
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("sqlAdmin.getvSelListEntriesObj: " + ex.ToString())
-        End Try
     End Function
 
     Public Function getButtonsForUser(ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList) As Boolean
@@ -2328,112 +1496,4 @@
             Throw New Exception("getButtonsForUser: " + ex.ToString())
         End Try
     End Function
-    Public Function getChaptersAlwaysEditableAllUsers(ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList) As Boolean
-        Try
-            Me.daGetChaptersAlwaysEditableAllUsers.SelectCommand.CommandText = Me.sel_GetChaptersAlwaysEditableAllUsers
-            database.setConnection(Me.daGetChaptersAlwaysEditableAllUsers)
-            Me.daGetChaptersAlwaysEditableAllUsers.SelectCommand.Parameters.Clear()
-
-            If typSel = eTypAuswahlList.all Then
-                Dim sWhere As String = ""
-            Else
-                Throw New Exception("sqlAdmin.getChaptersAlwaysEditableAllUsers: typSel '" + typSel.ToString() + "' is wrong!")
-            End If
-
-            Me.daGetChaptersAlwaysEditableAllUsers.Fill(ds.GetChaptersAlwaysEditableAllUsers)
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("getButtonsForUser: " + ex.ToString())
-        End Try
-    End Function
-
-    Public Function getCriteriasForUser(ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList, IDUser As Integer) As Boolean
-        Try
-            Me.daGetCriteriasForUser.SelectCommand.CommandText = Me.sel_GetCriteriasForUser
-            database.setConnection(Me.daGetCriteriasForUser)
-            Me.daGetCriteriasForUser.SelectCommand.Parameters.Clear()
-
-            If typSel = eTypAuswahlList.AllFldShortsUser Then
-                Dim sWhere As String = " where IDObject=" + IDUser.ToString()
-                Me.daGetCriteriasForUser.SelectCommand.CommandText += sWhere
-
-            Else
-                Throw New Exception("sqlAdmin.getCriteriasForUser: typSel '" + typSel.ToString() + "' is wrong!")
-            End If
-
-            Me.daGetCriteriasForUser.Fill(ds.getCriteriasForUser)
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("getCriteriasForUser: " + ex.ToString())
-        End Try
-    End Function
-    Public Function getCriteriasUserForUser(ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList, IDUser As Integer) As Boolean
-        Try
-            Me.daGetCriteriasUserForUser.SelectCommand.CommandText = Me.sel_GetCriteriasUserForUser
-            database.setConnection(Me.daGetCriteriasUserForUser)
-            Me.daGetCriteriasUserForUser.SelectCommand.Parameters.Clear()
-
-            If typSel = eTypAuswahlList.AllFldShortsUser Then
-                Dim sWhere As String = " where IDObject=" + IDUser.ToString()
-                Me.daGetCriteriasUserForUser.SelectCommand.CommandText += sWhere
-
-            Else
-                Throw New Exception("sqlAdmin.getCriteriasUserForUser: typSel '" + typSel.ToString() + "' is wrong!")
-            End If
-
-            Me.daGetCriteriasUserForUser.Fill(ds.getCriteriasUserForUser)
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("getCriteriasUserForUser: " + ex.ToString())
-        End Try
-    End Function
-    Public Function getAllUsersWithRights(ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList, IDUser As Integer) As Boolean
-        Try
-            Me.daGetAllUsersWithRights.SelectCommand.CommandText = Me.sel_GetAllUsersWithRights
-            database.setConnection(Me.daGetAllUsersWithRights)
-            Me.daGetAllUsersWithRights.SelectCommand.Parameters.Clear()
-
-            If typSel = eTypAuswahlList.all Then
-                Dim sWhere As String = " where ID=" + IDUser.ToString()
-                Me.daGetAllUsersWithRights.SelectCommand.CommandText += sWhere
-            Else
-                Throw New Exception("sqlAdmin.getAllUsersWithRights: typSel '" + typSel.ToString() + "' is wrong!")
-            End If
-
-            Me.daGetAllUsersWithRights.Fill(ds.getAllUsersWithRights)
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("getAllUsersWithRights: " + ex.ToString())
-        End Try
-    End Function
-
-    Public Function getValueForProductField(FldShort As String, TableName As String, ByRef oValueReturn As Object,
-                                            ID As Integer, IDApplication As String, IDParticipant As String) As Boolean
-        Try
-            Dim dt As New DataTable()
-            Dim cmd As New System.Data.SqlClient.SqlCommand
-            Dim da As New System.Data.SqlClient.SqlDataAdapter()
-            da.SelectCommand = cmd
-            cmd.Parameters.Clear()
-            Dim sWhere As String = " ID=" + ID.ToString() + " and IDApplication='" + IDApplication.ToString() + "' and IDParticipant='" + IDParticipant.ToString() + "'"
-            cmd.CommandText = " Select " + FldShort.Trim() + " from qs2." + TableName.Trim() + " where " + sWhere
-            cmd.Connection = qs2.core.dbBase.dbConn
-            cmd.CommandTimeout = 0
-            da.Fill(dt)
-            If dt.Rows.Count <> 1 Then
-                Throw New Exception("getValueForProductField: dt.Rows.Count <> 1 for Stay '" + sWhere + "' not allowed!")
-            End If
-            Dim r As DataRow = dt.Rows(0)
-            oValueReturn = r(0)
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("getValueForProductField: " + ex.ToString())
-        End Try
-    End Function
-
 End Class

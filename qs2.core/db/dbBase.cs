@@ -26,13 +26,10 @@ namespace qs2.core
         public static string PwdDecrypted = "";
         public static string PwdEncrypted = "";
         public static bool TrustedConnection = false;
-        
         public static System.DateTime minDateTime = new System.DateTime(1900, 1, 1);
         public static string tableNameQueries = "Qry";
         public static string tableNameDsQueries = "ds";
-
         public static string prefixFunction = "fnc";
-
         public static string dbSchema = " qs2.";
 
         public enum DBTypeSqlServer
@@ -80,8 +77,7 @@ namespace qs2.core
             none = -1
         }
         
-        private static System.Data.SqlClient.SqlConnection _dbConnThreadMain = null;
-        public static int _IDThreadMain = -999;
+        private static System.Data.SqlClient.SqlConnection _dbConnThreadMain;
 
         public bool setConnectionDB2(string DbConnStrStayUI, string Info)
         {
