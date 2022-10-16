@@ -184,11 +184,11 @@ namespace qs2.ui.print
 
                 if (this.typeQuery == core.Enums.eTypeQuery.Admin)
                 {
-                    this.comboApplication1.initControlxy(true, false, true);
+                    this.comboApplication1.initControlxy(true);
                 }
                 else if (this.typeQuery == core.Enums.eTypeQuery.User)
                 {
-                    this.comboApplication1.initControlxy(false, false, true);
+                    this.comboApplication1.initControlxy(false);
                 }
                 this.comboApplication1.setApplication(defaultApplication);
             }

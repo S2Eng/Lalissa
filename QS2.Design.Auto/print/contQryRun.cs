@@ -119,7 +119,7 @@ namespace qs2.ui.pint
 
                 this.sqlAdmin1.initControl();
                 this.loadRes();
-                this.comboApplication1.initControlxy(false, false, false);
+                this.comboApplication1.initControlxy(false);
                 this.comboApplication1.setApplication(this.defaultApplication);
                 this.comboApplication1.Visible = showCmbApplication;
 

@@ -110,7 +110,7 @@ Public Class contSelLists
             Me.editSelList(False)
             Me.editGroup()
 
-            Me.ComboApplication1.initControlxy(alwaysShowApplicationSelection, False, True)
+            Me.ComboApplication1.initControlxy(alwaysShowApplicationSelection)
             Me.ComboApplication1.setApplication(Me.defaultApplication)
 
             Me.btnUserRights.Appearance.Image = getRes.getImage(getRes.Allgemein.ico_OK, 32, 32)

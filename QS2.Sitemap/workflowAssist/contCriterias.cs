@@ -84,7 +84,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
             this.chkTranslateRessources.Checked = true;
             this.cboResTyp.Visible = true;
 
-            this.comboApplication1.initControlxy(true, false, true);
+            this.comboApplication1.initControlxy(true);
             this.comboApplication1.setApplication(typApplication);
 
             this.cboResTyp.Value = core.Enums.eResourceType.Label;
@@ -209,7 +209,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
             this.dropDownApplications1.loadData();
             System.Collections.Generic.List<string> ControlTypes = qs2.core.vb.funct.getEnumAsList(typeof(qs2.core.Enums.eControlType), this.gridInfrag1xyxy.DisplayLayout.ValueLists["ControlTypes"]);
 
-            this.comboApplication1.initControlxy(true, false, true);
+            this.comboApplication1.initControlxy(true);
             this.comboApplication1.setApplication(IDApplication);
 
             this.dropDownSelListAndGroup1.initControl(true,false,  false,false, false, false);

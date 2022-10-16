@@ -1,48 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using qs2.core.vb;
-using Infragistics.Win.UltraWinGrid;
-using Infragistics.Win;
-
-
-
-
 
 namespace qs2.sitemap
 {
-
-
-
     public partial class comboApplication : UserControl
     {
-
-        public string defaultApplication = core.license.doLicense.eApp.ALL.ToString();
-        //public string defaultParticipant = "";
-        public qs2.core.license.doLicense doLicense1 = new qs2.core.license.doLicense();
+        private qs2.core.license.doLicense doLicense1 = new qs2.core.license.doLicense();
+        private bool _ownLabelVisible = true;
+        private bool isLoaded;
 
         public event onChange evOnChange;
         public delegate void onChange(string selectedApplication);
-
-        public bool _ownLabelVisible = true;
-        public bool isLoaded = false;
-
-        public bool IsMainApplicationComboBox = false;
-        public bool _OnlyLicensedProducts = false;
-        public bool _ShowAll  = false;
-        public businessFramework b = new businessFramework();
-
-
-        
-
-
-
 
         public comboApplication()
         {
@@ -50,7 +18,7 @@ namespace qs2.sitemap
         }
 
 
-        public void initControlxy(bool showAlways, bool OnlyLicensedProducts, bool ShowAll)
+        public void initControlxy(bool showAlways)
         {
             try
             {
@@ -58,30 +26,18 @@ namespace qs2.sitemap
                 {
                     this.sqlAdmin1.initControl();
                     this.loadRes();
-                    this._OnlyLicensedProducts = OnlyLicensedProducts;
-                    this._ShowAll = ShowAll;
-
                     this.loadApplications(true);
 
                     if (!showAlways)
                     {
-                        if (qs2.core.ENV.ApplicationSelection == 0)
-                        {
-                            this.showUI(false);
-                            this.extendedViewToolStripMenuItem.Checked = false;
-                        }
-                        else
-                        {
-                            this.showUI(true);
-                            this.extendedViewToolStripMenuItem.Checked = true;
-                        }
+                        this.showUI(qs2.core.ENV.ApplicationSelection != 0);
+                        this.extendedViewToolStripMenuItem.Checked = qs2.core.ENV.ApplicationSelection != 0;
                     }
                     else
                     {
                         this.showUI(true);
                         this.extendedViewToolStripMenuItem.Checked = true;
                     }
-
                     this.isLoaded = true;
                 }
             }
@@ -90,6 +46,7 @@ namespace qs2.sitemap
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
         }
+
         public void loadRes()
         {
             try
@@ -102,6 +59,7 @@ namespace qs2.sitemap
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
         }
+
         public void setUI()
         {
             try

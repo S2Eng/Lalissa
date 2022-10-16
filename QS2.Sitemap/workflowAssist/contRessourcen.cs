@@ -58,7 +58,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
         }
         public void initControl(string typApplication, string searchString)
         {
-            this.comboApplication1.initControlxy(true, false, true);
+            this.comboApplication1.initControlxy(true);
             this.comboApplication1.setApplication(typApplication.ToString());
 
             //this.cboTyp.Value = core.Enums.eResourceType.Label;
@@ -124,7 +124,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
             qs2.core.generic.getResourceTypes(this.gridRes.DisplayLayout.ValueLists["ResTypes"], this.cboTyp);
             qs2.core.generic.getTypeSub(this.gridRes.DisplayLayout.ValueLists["TypeSub"], null);
 
-            this.comboApplication1.initControlxy(true, false, true);
+            this.comboApplication1.initControlxy(true);
             this.comboApplication1.setApplication(this.IDApplication);
 
             qs2.core.vb.ui.loadImagesFromRessources(null, this.gridRes.DisplayLayout.ValueLists["Images"]);

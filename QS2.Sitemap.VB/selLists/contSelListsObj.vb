@@ -1,17 +1,10 @@
 ﻿Imports qs2.core.vb
-Imports VB = Microsoft.VisualBasic
 Imports Infragistics.Win.UltraWinGrid
 
-
-
-
 Public Class contSelListsObj
-
     Public sqlAdmin1 As New qs2.core.vb.sqlAdmin()
-
     Public dsAuswahllistenObj As New qs2.core.vb.dsAdmin
     Public arrAuswahlObj As qs2.core.vb.dsAdmin.tblSelListEntriesObjRow()
-
     Public _idObject_IDSelListEntrySublist_IDStay As Integer = -999
     Public _IDSelListEntry As Integer = -999
     Public _IDSelListEntrySublist As Integer = -999
@@ -19,17 +12,15 @@ Public Class contSelListsObj
     Public _IDApplicationStay As String = ""
     Public typDB As qs2.core.vb.sqlAdmin.eDbTypAuswObj
     Public grpToLoad As String
-
     Public SubListObjToLoad As String = ""
     Public SubListObjToLoad2 As String = ""
     Public SubListObjToLoad3 As String = ""
     Public SubListObjToLoad4 As String = ""
-
     Private _IDApplication As String = ""
     Private _IDParticipantAll As String = ""
 
-
     Public typ As New eTyp
+
     Public Enum eTyp
         savedForObject = 0
         saveForSelList = 1
@@ -37,6 +28,7 @@ Public Class contSelListsObj
     End Enum
 
     Public _typUI As New eTypUI()
+
     Public Enum eTypUI
         normal = 0
         Procedures = 1
@@ -45,38 +37,18 @@ Public Class contSelListsObj
         SaveSubQueries = 4
     End Enum
 
-    Public clSitemap As New qs2.sitemap.ui()
-
     Public delonValueChanged As onValueChanged
     Public Delegate Sub onValueChanged(IDSelList As Integer, bOn As Boolean, ByRef ColumnNameClicked As String)
-
     Private editable As Boolean = False
     Public TypeStr As String = ""
-    Private _showComboApplications As Boolean = False
-
     Public mainWindow As frmSelListsObj = Nothing
     Private _textCaption As String = ""
     Private _captionVisible As Infragistics.Win.DefaultableBoolean = Infragistics.Win.DefaultableBoolean.True
-
     Public _dsAdminSub As dsAdmin = Nothing
-
     Public IDApplicationToAssignForSublists As String = ""
-    Public IDParticipantToAssignForSublists As String = ""
-
-    Public protToSave As String = ""
-
     Public colEditableWhenCompleted As String = "EditableWhenCompleted"
     Public _gridExpandAll As Boolean = False
-
     Public hideComboApplications As Boolean = False
-
-
-
-
-
-
-
-
 
     Private Sub contVermGruppeObject_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
@@ -93,7 +65,6 @@ Public Class contSelListsObj
                         ByVal typUI As eTypUI, showComboApplications As Boolean, IDApplication As String, IDParticipant As String)
         Try
             Me._typUI = typUI
-            Me._showComboApplications = showComboApplications
             Me._IDApplication = IDApplication
             Me._IDParticipantAll = IDParticipant
             Me._captionVisible = captionVisible
@@ -161,9 +132,7 @@ Public Class contSelListsObj
                 Me.PanelOben.Visible = True
                 Me.ComboApplication.Visible = True
                 Me.lblApplication.Visible = True
-                Dim onlyLicensedProducts As Boolean = True
-                onlyLicensedProducts = False
-                Me.ComboApplication.initControlxy(True, onlyLicensedProducts, True)
+                Me.ComboApplication.initControlxy(True)
                 Me.ComboApplication.cboApplications.Value = Me._IDApplication
             Else
                 Me.ComboApplication.Visible = False
@@ -199,6 +168,7 @@ Public Class contSelListsObj
             Throw New Exception("contSelListsObj.initControl: " + ex.ToString())
         End Try
     End Sub
+
     Public Sub setTitleGrid()
         If Me._captionVisible = Infragistics.Win.DefaultableBoolean.True Then
             Dim sTranlatedTitle As String = qs2.core.language.sqlLanguage.getRes(Me._textCaption, Me._IDParticipantAll, Me._IDApplication, True)
@@ -264,6 +234,7 @@ Public Class contSelListsObj
             Throw New Exception("contSelListsObj.reloadData: " + ex.ToString())
         End Try
     End Sub
+
     Public Sub loadData(ByVal idObject_IDSelListEntrySublist_IDStay As Integer, ByVal dsAdminSub As dsAdmin,
                         ByVal IDParticipantStay As String, ByVal IDApplicationStay As String,
                         ByVal IDSelListEntry As Integer, ByVal IDSelListEntrySublist As Integer, gridExpandAll As Boolean)
@@ -276,7 +247,6 @@ Public Class contSelListsObj
             Me.dsAuswahllistenObj.Clear()
             Me._IDParticipantStay = IDParticipantStay
             Me._IDApplicationStay = IDApplicationStay
-            Me.protToSave = ""
             Me._gridExpandAll = gridExpandAll
 
             Dim Parameters As New qs2.core.vb.sqlAdmin.ParametersSelListEntries()
@@ -334,8 +304,6 @@ Public Class contSelListsObj
                     Next
                     If Not bFound Then
                         rGrid.Hidden = True
-                        'rSelEntryGrid.Delete()
-                        'Me.gridSelListObj.Refresh()
                     End If
                 Next
             End If
@@ -421,7 +389,6 @@ Public Class contSelListsObj
 
             Me.gridSelListObj.DisplayLayout.Bands(0).SortedColumns.Clear()
             Me.gridSelListObj.DisplayLayout.Bands(0).SortedColumns.Add(qs2.core.generic.columnNameText, False)
-            'Me.gridVermGruppe.Refresh()
 
             If Me.typ = eTyp.saveForSelList And Me.grpToLoad.Trim().ToLower().Equals(("CHAPTERS0").Trim().ToLower()) Then
                 Me.gridSelListObj.DisplayLayout.Bands(0).Columns(Me.colEditableWhenCompleted).Hidden = False
@@ -437,23 +404,15 @@ Public Class contSelListsObj
             Throw New Exception("contSelListsObj.loadData: " + ex.ToString())
         End Try
     End Sub
+
     Public Sub save(ByVal idObject_IDSelListEntrySublist_IDStay As Integer)
         Try
             Dim sqlDelete As String = ""
             Me._idObject_IDSelListEntrySublist_IDStay = idObject_IDSelListEntrySublist_IDStay
             If Not Me.arrAuswahlObj Is Nothing Then
                 For Each rSelListObj As dsAdmin.tblSelListEntriesObjRow In Me.arrAuswahlObj
+
                     Dim bDelete As Boolean = False
-                    'If Not r.IsIDApplicationNull() Then
-                    '    If r.IDApplication.Trim().ToLower() = Me._IDApplication.Trim().ToLower() Then
-                    '        bDelete = True
-                    '    End If
-                    'Else
-                    '    bDelete = True
-                    'End If
-                    'If bDelete Then
-                    'rSelListObj.IDSelListEntry
-                    'Dim rSelListFound As dsAdmin.tblSelListEntriesRow = Me.sqlAdmin1.getSelListEntrysRow(Me.grpToLoad, sqlAdmin.eTypAuswahlList.id, "", -999, "", rSelListObj.IDSelListEntry)
                     For Each gridRow As Infragistics.Win.UltraWinGrid.UltraGridRow In Me.gridSelListObj.Rows
                         Dim v As DataRowView = gridRow.ListObject
                         Dim rSelListGrid As dsAdmin.tblSelListEntriesRow = v.Row
@@ -483,23 +442,13 @@ Public Class contSelListsObj
                     Dim rNew As qs2.core.vb.dsAdmin.tblSelListEntriesObjRow = Me.addRow(r, rDs)
                 End If
             Next
-
             Me.sqlAdmin1.daSelListEntrysObj.Update(Me.dsAuswahllistenObj.tblSelListEntriesObj)
 
         Catch ex As Exception
             Throw New Exception("contSelListsObj.save: " + ex.ToString())
         End Try
     End Sub
-    Public Sub rejectChangesxy()
-        Try
-            For Each r As qs2.core.vb.dsAdmin.tblSelListEntriesObjRow In Me.arrAuswahlObj
-                r.RejectChanges()
-            Next
 
-        Catch ex As Exception
-            Throw New Exception("contSelListsObj.rejectChanges: " + ex.ToString())
-        End Try
-    End Sub
     Public Function addRow(ByVal r As Infragistics.Win.UltraWinGrid.UltraGridRow,
                            ByVal rDs As qs2.core.vb.dsAdmin.tblSelListEntriesRow) As qs2.core.vb.dsAdmin.tblSelListEntriesObjRow
         Try
@@ -525,7 +474,6 @@ Public Class contSelListsObj
                 rNew.IDApplicationStay = Me._IDApplicationStay
                 rNew.IDSelListEntrySublist = Me._IDSelListEntrySublist
                 rNew.SetIDObjectNull()
-
             End If
 
             rNew.IDSelListEntry = rDs.ID
@@ -585,10 +533,6 @@ Public Class contSelListsObj
             Throw New Exception("contSelListsObj.addRow: " + ex.ToString())
         End Try
     End Function
-    Public Sub resizeControl(ByVal w As Double, ByVal h As Double)
-        Me.Width = w
-        Me.Height = h
-    End Sub
 
     Public Sub doChange(resetAll As Boolean, IDSelListEntryToKeep As Integer, bOn As Boolean, ByRef ColumnNameClicked As String)
         If Me._typUI = eTypUI.Procedures Then
@@ -641,6 +585,7 @@ Public Class contSelListsObj
             Me.Cursor = Windows.Forms.Cursors.Default
         End Try
     End Sub
+
     Public Sub selectAll(ByVal Yes As Boolean)
         Try
             For Each r As Infragistics.Win.UltraWinGrid.UltraGridRow In Me.gridSelListObj.Rows
@@ -667,6 +612,7 @@ Public Class contSelListsObj
             Me.Cursor = Windows.Forms.Cursors.Default
         End Try
     End Sub
+
     Private Sub AssignCriteriaCustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AssignCriteriaCustomerToolStripMenuItem.Click
         Try
 
@@ -777,6 +723,7 @@ Public Class contSelListsObj
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
         End Try
     End Sub
+
     Private Sub gridSelListObj2_CellChange(sender As System.Object, e As Infragistics.Win.UltraWinGrid.CellEventArgs) Handles gridSelListObj.CellChange
         Try
             Me.gridSelListObj.UpdateData()
@@ -809,7 +756,6 @@ Public Class contSelListsObj
                 ElseIf e.Cell.Column.ToString().Trim().ToLower().Equals((qs2.core.generic.columnActive.Trim()).ToLower()) Then
                     sTxtChanged += "" + e.Cell.Column.ToString() + " changed to value " + e.Cell.Value.ToString() + " "
                 End If
-                Me.protToSave += sTxtChanged + vbNewLine
             End If
 
         Catch ex As Exception
@@ -852,7 +798,6 @@ Public Class contSelListsObj
             Dim rSelListGroupSelected As dsAdmin.tblSelListEntriesRow = Me.getSelectedRow(True, selRowGrid)
             If Not rSelListGroupSelected Is Nothing Then
                 Dim rGroup As dsAdmin.tblSelListGroupRow = Me.sqlAdmin1.getSelListGroupRowID(rSelListGroupSelected.IDGroup)
-                'Dim sublist As String = "Right"
 
                 Dim frm As New frmSelListsObj()
                 frm.ContSelListsObj1.TypeStr = TypeStr
@@ -862,12 +807,6 @@ Public Class contSelListsObj
                 frm.ContSelListsObj1.grpToLoad = Me.SubListObjToLoad     'rGroup.IDGroupStr
                 frm.ContSelListsObj1.hideComboApplications = True
                 Dim lstClassification As New System.Collections.ArrayList()
-                'If tagMenü.rGroup.IDGroupStr.ToLower().Trim() = ("Queries").ToLower().Trim() Then
-                '    lstClassification.Add(qs2.core.Enums.eTypSubReport.MainReport.ToString())
-                '    lstClassification.Add(qs2.core.Enums.eTypSubReport.SubReport.ToString())
-                '    lstClassification.Add("")
-                'End If
-
                 frm.ContSelListsObj1.typDB = sqlAdmin.eDbTypAuswObj.SubSelList
                 frm.ContSelListsObj1.typ = contSelListsObj.eTyp.saveForSelList
                 frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal,
@@ -875,7 +814,6 @@ Public Class contSelListsObj
                               Me.SubListObjToLoad, rSelListGroupSelected.IDRessource)
 
                 frm.ShowDialog(Me)
-
             End If
 
         Catch ex As Exception
@@ -892,8 +830,6 @@ Public Class contSelListsObj
             Dim rSelListGroupSelected As dsAdmin.tblSelListEntriesRow = Me.getSelectedRow(True, selRowGrid)
             If Not rSelListGroupSelected Is Nothing Then
                 Dim rGroup As dsAdmin.tblSelListGroupRow = Me.sqlAdmin1.getSelListGroupRowID(rSelListGroupSelected.IDGroup)
-                'Dim sublist As String = "Right"
-
                 Dim frm As New frmSelListsObj()
                 frm.ContSelListsObj1.TypeStr = TypeStr
                 frm.ContSelListsObj1._idObject_IDSelListEntrySublist_IDStay = rSelListGroupSelected.ID
@@ -901,18 +837,11 @@ Public Class contSelListsObj
                 frm.ContSelListsObj1._IDApplication = Me.IDApplicationToAssignForSublists
                 frm.ContSelListsObj1.grpToLoad = Me.SubListObjToLoad2     'rGroup.IDGroupStr
                 Dim lstClassification As New System.Collections.ArrayList()
-                'If tagMenü.rGroup.IDGroupStr.ToLower().Trim() = ("Queries").ToLower().Trim() Then
-                '    lstClassification.Add(qs2.core.Enums.eTypSubReport.MainReport.ToString())
-                '    lstClassification.Add(qs2.core.Enums.eTypSubReport.SubReport.ToString())
-                '    lstClassification.Add("")
-                'End If
-
                 frm.ContSelListsObj1.typDB = sqlAdmin.eDbTypAuswObj.SubSelList
                 frm.ContSelListsObj1.typ = contSelListsObj.eTyp.saveForSelList
                 frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal,
                               True, Me.IDApplicationToAssignForSublists, rGroup.IDParticipant,
                               Me.SubListObjToLoad2, rSelListGroupSelected.IDRessource)
-
                 frm.ShowDialog(Me)
 
             End If
@@ -932,8 +861,6 @@ Public Class contSelListsObj
             Dim rSelListGroupSelected As dsAdmin.tblSelListEntriesRow = Me.getSelectedRow(True, selRowGrid)
             If Not rSelListGroupSelected Is Nothing Then
                 Dim rGroup As dsAdmin.tblSelListGroupRow = Me.sqlAdmin1.getSelListGroupRowID(rSelListGroupSelected.IDGroup)
-                'Dim sublist As String = "Right"
-
                 Dim frm As New frmSelListsObj()
                 frm.ContSelListsObj1.TypeStr = TypeStr
                 frm.ContSelListsObj1._idObject_IDSelListEntrySublist_IDStay = rSelListGroupSelected.ID
@@ -941,12 +868,6 @@ Public Class contSelListsObj
                 frm.ContSelListsObj1._IDApplication = Me.IDApplicationToAssignForSublists
                 frm.ContSelListsObj1.grpToLoad = Me.SubListObjToLoad3     'rGroup.IDGroupStr
                 Dim lstClassification As New System.Collections.ArrayList()
-                'If tagMenü.rGroup.IDGroupStr.ToLower().Trim() = ("Queries").ToLower().Trim() Then
-                '    lstClassification.Add(qs2.core.Enums.eTypSubReport.MainReport.ToString())
-                '    lstClassification.Add(qs2.core.Enums.eTypSubReport.SubReport.ToString())
-                '    lstClassification.Add("")
-                'End If
-
                 frm.ContSelListsObj1.typDB = sqlAdmin.eDbTypAuswObj.SubSelList
                 frm.ContSelListsObj1.typ = contSelListsObj.eTyp.saveForSelList
                 frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal,
@@ -954,7 +875,6 @@ Public Class contSelListsObj
                               Me.SubListObjToLoad, rSelListGroupSelected.IDRessource)
 
                 frm.ShowDialog(Me)
-
             End If
 
         Catch ex As Exception
@@ -963,6 +883,7 @@ Public Class contSelListsObj
             Me.Cursor = Windows.Forms.Cursors.Default
         End Try
     End Sub
+
     Private Sub OpenSelListObj4ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenSelListObj4ToolStripMenuItem.Click
         Try
             Me.Cursor = Windows.Forms.Cursors.WaitCursor
@@ -971,8 +892,6 @@ Public Class contSelListsObj
             Dim rSelListGroupSelected As dsAdmin.tblSelListEntriesRow = Me.getSelectedRow(True, selRowGrid)
             If Not rSelListGroupSelected Is Nothing Then
                 Dim rGroup As dsAdmin.tblSelListGroupRow = Me.sqlAdmin1.getSelListGroupRowID(rSelListGroupSelected.IDGroup)
-                'Dim sublist As String = "Right"
-
                 Dim frm As New frmSelListsObj()
                 frm.ContSelListsObj1.TypeStr = TypeStr
                 frm.ContSelListsObj1._idObject_IDSelListEntrySublist_IDStay = rSelListGroupSelected.ID
@@ -980,12 +899,6 @@ Public Class contSelListsObj
                 frm.ContSelListsObj1._IDApplication = Me.IDApplicationToAssignForSublists
                 frm.ContSelListsObj1.grpToLoad = Me.SubListObjToLoad4     'rGroup.IDGroupStr
                 Dim lstClassification As New System.Collections.ArrayList()
-                'If tagMenü.rGroup.IDGroupStr.ToLower().Trim() = ("Queries").ToLower().Trim() Then
-                '    lstClassification.Add(qs2.core.Enums.eTypSubReport.MainReport.ToString())
-                '    lstClassification.Add(qs2.core.Enums.eTypSubReport.SubReport.ToString())
-                '    lstClassification.Add("")
-                'End If
-
                 frm.ContSelListsObj1.typDB = sqlAdmin.eDbTypAuswObj.SubSelList
                 frm.ContSelListsObj1.typ = contSelListsObj.eTyp.saveForSelList
                 frm.loadData(lstClassification, AutoFitStyle.ExtendLastColumn, contSelListsObj.eTypUI.normal,
@@ -993,7 +906,6 @@ Public Class contSelListsObj
                               Me.SubListObjToLoad, rSelListGroupSelected.IDRessource)
 
                 frm.ShowDialog(Me)
-
             End If
 
         Catch ex As Exception
@@ -1010,6 +922,7 @@ Public Class contSelListsObj
             qs2.core.generic.getExep(ex.ToString(), ex.Message)
         End Try
     End Sub
+
     Private Sub BuildSqlCheckedFalseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuildSqlCheckedFalseToolStripMenuItem.Click
         Try
 
