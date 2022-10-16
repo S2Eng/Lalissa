@@ -1,97 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using qs2.core.vb;
 using System.Threading;
-using qs2.core.db.ERSystem;
 
 namespace qs2.core
 {
     public class logIn
     {
 
-        public static string DbConnStrStayUI = "";
+        private static string DbConnStr = "";
 
-        public static bool doConnect2(bool loadAllRessources, bool DesignerMode, bool CheckVersionDB, string DbConnStrStayUI, bool IsPMDS, bool doNotDecryptPwd = false)
+        public static bool doConnect2()
         {
             try
             {
-                qs2.core.vb.funct funct1 = new qs2.core.vb.funct();
-                QS2.functions.vb.Encryption Encryption1 = new QS2.functions.vb.Encryption();
-                if (!qs2.core.ENV.TrustedConnection)
-                {
-                    if (!doNotDecryptPwd)
-                    {
-                        ENV.PwdDbDecrypted = Encryption1.StringDecrypt(qs2.core.ENV.PwdDbEncrypted, QS2.functions.vb.Encryption.keyForEncryptingStrings);
-                        ENV.connStr = ENV.connStr.Replace(qs2.core.ENV.PwdDbEncrypted, ENV.PwdDbDecrypted);
-                    }
-                }
-
                 dbBase db = new dbBase();
-                if (db.setConnectionDB2(DesignerMode, DbConnStrStayUI, "Connect"))
+                if (db.setConnectionDB2(DbConnStr, "Connect"))
                 {
                     if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                     {
                         qs2.core.db.ERSystem.businessFramework.InsertERConnections();      //Vor der ersten benutzung der app.config setzen!!
                     }
-            
-                    qs2.core.db.ERSystem.businessFramework b = new db.ERSystem.businessFramework();
-                    string DBVersionFromDatabase = "";
-                    string ReferenzExeVersion = "";
-                    bool bDBVersionOk = false;
 
-                    if (CheckVersionDB && System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
-                    {
-                        bDBVersionOk = b.checkDBVersion(ENV.AssemblyVersion, ref DBVersionFromDatabase);        //Exe-Version muss größer oder gleich DB-Version sein
-                        ENV.DBVersionFromDatabase = DBVersionFromDatabase;
-
-                        if (!bDBVersionOk)
-                        {
-                            qs2.core.generic.showMessageBox("Incompatible version with database: \r\n" +
-                                                            "Minimal expected version: " + ENV.AssemblyVersion + "\r\n" +
-                                                            "Your version: " + ENV.DBVersionFromDatabase, MessageBoxButtons.OK, "");
-                            return false;
-                        }
-
-                        if (!String.IsNullOrWhiteSpace(ENV.MinDBVersion))                                       //DB-Version muss größer oder gleich der Minimalen DB-Version sein (wenn angegeben)
-                        {
-                            qs2.core.db.ERSystem.businessFramework frw = new db.ERSystem.businessFramework();
-                            if (!frw.CompareVersionStrings(DBVersionFromDatabase, ENV.MinDBVersion))
-                            {
-                                qs2.core.generic.showMessageBox("Incompatible version with minimal database version: \r\n" +
-                                                                "Minimal expected version: " + ENV.MinDBVersion + "\r\n" +
-                                                                "Your version: " + ENV.DBVersionFromDatabase, MessageBoxButtons.OK, "");
-                                return false;
-                            }
-                        }
-
-                        if (!b.checkReferenzVersion(ENV.AssemblyVersion, ENV.ReferenceVersion, ref ReferenzExeVersion))
-                            {
-                                qs2.core.generic.showMessageBox("Incompatible version with reference version: \r\n" +
-                                                                "Minimal expected version: " + ReferenzExeVersion + "\r\n" +
-                                                                "Your version: " + ENV.DBVersionFromDatabase, MessageBoxButtons.OK, "");
-                                return false;
-                            }
-                    }
-
-                    if (loadAllRessources)
-                    {
-                        qs2.core.vb.sqlAdmin sqlAdmin1 = new qs2.core.vb.sqlAdmin();
-                        sqlAdmin1.initControl();
-
-                        qs2.core.vb.businessFramework b2 = new qs2.core.vb.businessFramework();
-                        string loadENVFromAdjustmentStayType = "";
-
-                        logIn.startThreadLoadAllData(DbConnStrStayUI);
-                    }
+                    logIn.LoadAllData(DbConnStr);
 
                     qs2.core.ENV.SystemIsInitialized = true;
-
-                    QS2.Desktop.Txteditor.Settings.init(qs2.core.ENV.PathTemp, qs2.core.ENV.PathLog, true, qs2.core .ENV.AdminSecure);
-                    qs2.core.dbBase.checkConnectedOnDesignerDB();
-
+                    QS2.Desktop.Txteditor.Settings.init(qs2.core.ENV.PathTemp, qs2.core.ENV.PathLog, true, qs2.core.ENV.AdminSecure);
                     return true;
                 }
                 else
@@ -106,22 +39,13 @@ namespace qs2.core
             }
         }
          
-        public static void startThreadLoadAllData(string DbConnStrStayUI)
-        {
-            logIn.DbConnStrStayUI = DbConnStrStayUI;
-            ThreadStart job = new ThreadStart(logIn.ThreadLoadAllData);
-            Thread thread = new Thread(job);
-            thread.SetApartmentState (ApartmentState.STA);
-            thread.Start();
-        }
-
-        public static void ThreadLoadAllData()
+        private static void LoadAllData(string DbConnStr)
         {
             try
             {
-                qs2.core.dbBase._IDThreadDBOperations = System.Threading.Thread.CurrentThread.ManagedThreadId;
+                logIn.DbConnStr = DbConnStr;
                 qs2.core.dbBase db = new qs2.core.dbBase();
-                db.setConnectionDB2(false, logIn.DbConnStrStayUI, "ThreadLoadAllData");
+                db.setConnectionDB2(logIn.DbConnStr, "LoadAllData");
                 
                 qs2.core.language.sqlLanguage sqlLanguage1 = new qs2.core.language.sqlLanguage();
                 sqlLanguage1.loadAllRessources();

@@ -80,16 +80,10 @@ namespace qs2.core
             none = -1
         }
         
-        public static System.Data.SqlClient.SqlConnection _dbConnThreadMain = null;
+        private static System.Data.SqlClient.SqlConnection _dbConnThreadMain = null;
         public static int _IDThreadMain = -999;
 
-        public static System.Data.SqlClient.SqlConnection _dbConnThreadStayUI = null;
-        public static int _IDThreadStayUI = -999;
-
-        public static System.Data.SqlClient.SqlConnection _dbConnThreadDBOperations = null;
-        public static int _IDThreadDBOperations = -999;
-
-        public bool setConnectionDB2(bool DesignerMode, string DbConnStrStayUI, string Info)
+        public bool setConnectionDB2(string DbConnStrStayUI, string Info)
         {
             try
             {
@@ -812,25 +806,5 @@ namespace qs2.core
                 throw new Exception("dbBase.getType: " + ex.ToString());
             }
         }
-
-        public static void checkConnectedOnDesignerDB()
-        {
-            try
-            {
-                if (qs2.core.dbBase.Database.Trim().ToLower().Equals(("QS2_DEV").Trim().ToLower()))
-                {
-                    qs2.core.ENV.ConnectedOnDesignerDB_QS2_Dev = true;
-                    qs2.core.ENV.ExtendedUI = true;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("logIn.checkDesignerDB: " + ex.ToString());
-            }
-
-        }
-
     }
-
 }

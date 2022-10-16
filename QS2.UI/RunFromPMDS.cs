@@ -60,7 +60,7 @@ namespace qs2.ui
                 qs2.core.vb.ui.loadStyleInfrag();
                 
                 qs2.core.license.doLicense.SetLicensePMDS();
-                if (qs2.core.logIn.doConnect2(true, false, false, "", true, true))
+                if (qs2.core.logIn.doConnect2())
                 {
                     qs2.core.vb.sqlObjects sqlObjects1 = new sqlObjects();
                     sqlObjects1.initControl();
