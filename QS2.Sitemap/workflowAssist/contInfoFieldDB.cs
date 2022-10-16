@@ -3,6 +3,8 @@ using System.Data;
 using System.Windows.Forms;
 using S2Extensions;
 
+//Used in Lellissa: do not remove
+
 namespace qs2.sitemap.workflowAssist
 {
     public partial class contInfoFieldDB : UserControl
@@ -189,7 +191,7 @@ namespace qs2.sitemap.workflowAssist
                                 if ((qs2.core.dbBase.dbSchema + rTable.TABLE_NAME).sEquals(tableToShow))
                                 {
                                     rowGrid.Hidden = false;
-                                    if (firstTableToSelect.Trim().Equals(""))
+                                    if (string.IsNullOrWhiteSpace(firstTableToSelect))
                                     {
                                         firstTableToSelect = rTable.TABLE_NAME.Trim();
                                         this.gridRowToSelect = rowGrid;
@@ -263,16 +265,11 @@ namespace qs2.sitemap.workflowAssist
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
                 this.searchColumn(this.txtSearchTextColumn.Text.Trim());
             }
             catch (Exception ex)
             {
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
             }
         }
 
@@ -299,7 +296,6 @@ namespace qs2.sitemap.workflowAssist
                         Infragistics.Win.UltraWinGrid.FilterLogicalOperator.Or,
                         txt, Infragistics.Win.UltraWinGrid.FilterComparisionOperator.StartsWith,
                         this.ultraGridColumnes, this.ultraGridColumnes.DisplayLayout.Bands[0].Index);
-
                 }
             }
             catch (Exception ex)
@@ -316,10 +312,8 @@ namespace qs2.sitemap.workflowAssist
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
-
                 this.funct1.clearAllFilter(this.ultraGridTables);
-                if (txt.Trim() != "")
+                if (!string.IsNullOrWhiteSpace(txt))
                 {
                     this.funct1.setFilter(this.dsSysDB1.TablesCatalog.TABLE_NAMEColumn.ColumnName,
                                             Infragistics.Win.UltraWinGrid.FilterLogicalOperator.Or,
@@ -331,17 +325,12 @@ namespace qs2.sitemap.workflowAssist
             {
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
         }
         
         private void btnClose_Click(object sender, EventArgs e)
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
                 this.mainWindow.Close();
 
             }
@@ -349,46 +338,23 @@ namespace qs2.sitemap.workflowAssist
             {
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
         }
         
-        private void ultraGridTables_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ultraGridColumnes_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ultraGridTables_BeforeRowActivate(object sender, Infragistics.Win.UltraWinGrid.RowEventArgs e)
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
-
-                if (this.ultraGridTables.Focused)
+                if (this.ultraGridTables.Focused && !e.Row.IsGroupByRow && !e.Row.IsFilterRow && !e.Row.IsFilteredOut)
                 {
-                    if (!e.Row.IsGroupByRow && !e.Row.IsFilterRow && !e.Row.IsFilteredOut)
-                    {
-                        e.Row.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
-                        DataRowView v = (DataRowView)e.Row.ListObject;
-                        qs2.core.SysDB.dsSysDB.TablesCatalogRow rTable = (qs2.core.SysDB.dsSysDB.TablesCatalogRow)v.Row;
-                        this.loadColumnsForTable(rTable);
-                    }
+                    e.Row.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+                    DataRowView v = (DataRowView)e.Row.ListObject;
+                    qs2.core.SysDB.dsSysDB.TablesCatalogRow rTable = (qs2.core.SysDB.dsSysDB.TablesCatalogRow)v.Row;
+                    this.loadColumnsForTable(rTable);
                 }
             }
             catch (Exception ex)
             {
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
             }
         }
 
@@ -396,22 +362,14 @@ namespace qs2.sitemap.workflowAssist
         {
             try
             {
-                    if (this.typUI == eTypUI.selectionColumns)
-                    {
-                        this.loadColumns(rTable.TABLE_NAME);
-                    }
-                    else if (this.typUI != eTypUI.selectionTables)
-                    {
-
-                    }
+                if (this.typUI == eTypUI.selectionColumns)
+                {
+                    this.loadColumns(rTable.TABLE_NAME);
+                }
             }
             catch (Exception ex)
             {
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
             }
         }
 
@@ -419,51 +377,12 @@ namespace qs2.sitemap.workflowAssist
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
                 e.Row.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
 
             }
             catch (Exception ex)
             {
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
-        }
-
-        private void ultraGridTables_AfterRowActivate(object sender, EventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-                           
-            }
-            catch (Exception ex)
-            {
-                qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
-        }
-
-        private void ultraGridColumnes_AfterRowActivate(object sender, EventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-
-            }
-            catch (Exception ex)
-            {
-                qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
             }
         }
 
@@ -633,7 +552,6 @@ namespace qs2.sitemap.workflowAssist
                     qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoEntrySelected"), MessageBoxButtons.OK, "");
                     return null;
                 }
-
             }
             catch (Exception ex)
             {
@@ -646,31 +564,21 @@ namespace qs2.sitemap.workflowAssist
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
-            
                 Infragistics.Win.UltraWinGrid.UltraGridRow actGridRow = null;
                 core.SysDB.dsSysDB.COLUMNSRow rSelCol = this.getSelectedColumn(true, ref actGridRow);
-                if (rSelCol != null)
+                if (rSelCol != null && this.delDoTranslate.Invoke(rSelCol.COLUMN_NAME, this.IDApplication, actGridRow.Cells[qs2.core.generic.columnNameText].Value.ToString().Trim()))
                 {
-                    if (this.delDoTranslate.Invoke(rSelCol.COLUMN_NAME, this.IDApplication,
-                                             actGridRow.Cells[qs2.core.generic.columnNameText].Value.ToString().Trim()))
+                    Infragistics.Win.UltraWinGrid.UltraGridRow actGridRowTable = null;
+                    core.SysDB.dsSysDB.TablesCatalogRow rSelTable = this.getSelectedTable(true, ref actGridRowTable);
+                    if (rSelTable != null)
                     {
-                        Infragistics.Win.UltraWinGrid.UltraGridRow actGridRowTable = null;
-                        core.SysDB.dsSysDB.TablesCatalogRow rSelTable = this.getSelectedTable(true, ref actGridRowTable);
-                        if (rSelTable != null)
-                        {
-                            this.loadColumnsForTable(rSelTable);
-                        }
+                        this.loadColumnsForTable(rSelTable);
                     }
                 }
             }
             catch (Exception ex)
             {
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
             }
         }
     }

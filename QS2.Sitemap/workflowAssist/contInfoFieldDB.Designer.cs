@@ -306,9 +306,7 @@
             this.ultraGridColumnes.Size = new System.Drawing.Size(651, 276);
             this.ultraGridColumnes.TabIndex = 0;
             this.ultraGridColumnes.Text = "Table INFORMATION_SCHEMA.COLUMNS";
-            this.ultraGridColumnes.AfterRowActivate += new System.EventHandler(this.ultraGridColumnes_AfterRowActivate);
             this.ultraGridColumnes.BeforeRowActivate += new Infragistics.Win.UltraWinGrid.RowEventHandler(this.ultraGridColumnes_BeforeRowActivate);
-            this.ultraGridColumnes.Click += new System.EventHandler(this.ultraGridColumnes_Click);
             this.ultraGridColumnes.DoubleClick += new System.EventHandler(this.ultraGridColumnes_DoubleClick);
             // 
             // contextMenuStrip1
@@ -517,9 +515,7 @@
             this.ultraGridTables.Size = new System.Drawing.Size(269, 276);
             this.ultraGridTables.TabIndex = 594;
             this.ultraGridTables.Text = "Table INFORMATION_SCHEMA.COLUMNS";
-            this.ultraGridTables.AfterRowActivate += new System.EventHandler(this.ultraGridTables_AfterRowActivate);
             this.ultraGridTables.BeforeRowActivate += new Infragistics.Win.UltraWinGrid.RowEventHandler(this.ultraGridTables_BeforeRowActivate);
-            this.ultraGridTables.Click += new System.EventHandler(this.ultraGridTables_Click);
             this.ultraGridTables.DoubleClick += new System.EventHandler(this.ultraGridTables_DoubleClick);
             // 
             // gridBagLayoutPanelTables
