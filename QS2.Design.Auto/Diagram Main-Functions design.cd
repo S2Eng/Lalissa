@@ -68,26 +68,6 @@
           <NewMemberFileName>workflowAssist\autoForm\autoUI.cs</NewMemberFileName>
         </TypeIdentifier>
       </Class>
-      <Delegate Name="qs2.design.auto.workflowAssist.autoForm.autoUI.doVASCULAR" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>workflowAssist\autoForm\autoUI.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-      <Delegate Name="qs2.design.auto.workflowAssist.autoForm.autoUI.doCardiac" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>workflowAssist\autoForm\autoUI.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-      <Delegate Name="qs2.design.auto.workflowAssist.autoForm.autoUI.doQTH" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>workflowAssist\autoForm\autoUI.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-      <Delegate Name="qs2.design.auto.workflowAssist.autoForm.autoUI.doTestProduct" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>workflowAssist\autoForm\autoUI.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
     </NestedTypes>
     <TypeIdentifier>
       <HashCode>AgQIAABAAAAAAAAQAKEAQEiSAgBBAAARgAAIEAAVDgA=</HashCode>

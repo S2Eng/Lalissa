@@ -446,19 +446,12 @@ namespace qs2.design.auto.multiControl
                     System.Collections.Generic.List<Infragistics.Win.ValueListItem> lstToDeleteItems = new List<Infragistics.Win.ValueListItem>();
                     foreach (KeyValuePair<int, qs2.core.vb.dsAdmin.tblSelListEntriesRow> keyPairSelList in lstSelListOrderByParticipant)
                     {
-                        //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(rSelListEntry.IDRessource, "cmbCARDIAC_RefCardDept2_-1", false))
-                        //{
-                        //    string xy = "";
-                        //}
-
                         qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;
                         string IDRessourceFound = qs2.core.language.sqlLanguage.getRes(keyPairSelList.Value.IDRessource, core.Enums.eResourceType.Label, ownControl1.ownMCCriteria1.IDParticipant,
                                                                                             ownControl1.ownMCCriteria1.Application, ref rLangFoundReturn).Trim() + " ";
                         if (IDRessourceFound.Trim() == "")
                         {
                             keyPairSelList.Value.Description = keyPairSelList.Value.IDRessource;
-                            //if (ownControl1.ownMCCriteria1.rCriteria.UserDefined)
-                            //    rSelListEntry.Description = rSelListEntry.IDRessource;
                         }
                         else
                         {

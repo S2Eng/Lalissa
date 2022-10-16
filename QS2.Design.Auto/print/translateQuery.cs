@@ -807,8 +807,6 @@ namespace qs2.design.auto.print
                             {
                                 if (r[col.ColumnName].GetType().Equals(typeof(string)))
                                 {
-                                    //int startIndex = -1;
-                                    //string var = qs2.core.generic.readStrBetween(defTrans, ref startIndex, "(", ")", true, true, true);
                                     System.Collections.Generic.List<string> lstDefTrans = qs2.core.generic.readStrVariables(r[col.ColumnName].ToString());
                                     System.Collections.Generic.List<cVariables> lstVariables = new System.Collections.Generic.List<cVariables>();
                                     foreach (string defTrans in lstDefTrans)
@@ -816,16 +814,12 @@ namespace qs2.design.auto.print
                                         cVariables cVariableNew = new cVariables();
                                         qs2.core.vb.funct.getVariablesLefRightOfPoint(defTrans, ref cVariableNew.definition, ref cVariableNew.value, "=");
                                         lstVariables.Add(cVariableNew);
-                                        // Type = IDOwnStr; IDGroupStr = ProcGrp0; IDApplication = VASCULAR;
-                                        // Type=IDOwnInt;FldShort=Mt30Stat;IDApplication=ALL;
                                     }
                                     if (lstVariables.Count != 3)
                                     {
                                         throw new Exception("translateQuery.translateColumnsTRANS: lstVariables.Count != 3 !");
                                     }
 
-                                    //tblObject.ID AS IDObjectNameCombination, 
-                                    //'Type=ID;Table=tblObject;TransColumn=NameCombination;' AS TRANS_IDObjectNameCombination, 
                                     string colValueNameValue = col.ColumnName.Substring(qs2.core.generic.prefixColAutoTranslateFunctions.Length, col.ColumnName.Length - qs2.core.generic.prefixColAutoTranslateFunctions.Length);
                                     if (r[colValueNameValue] != System.DBNull.Value)
                                     {

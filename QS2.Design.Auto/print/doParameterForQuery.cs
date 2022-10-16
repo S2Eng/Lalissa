@@ -1954,10 +1954,7 @@ namespace qs2.print
                                 CombinationTmp = WhereTranslated.Trim() + sBracket;
                             }
                             string EuroscoreTranslated = "";
-                            if (b.checkFieldsForTranslateSelList(ValueMinTmp.Trim(), rQryContitionFound.QryColumn.Trim(), infoQryRunPar.Application.Trim(), ref EuroscoreTranslated))
-                            {
-                                ValueMinTmp = EuroscoreTranslated.Trim();
-                            }
+
                             if (rQryContitionFound.QryColumn.Trim() != "")
                             {
                                 SqlWhereTmp = CombinationTmp.Trim() + " " + ColumnTranslated + " " + ConditionTmp.Trim() + " " + ValueMinTmp.Trim() + " " + AndTranslated.Trim() + " " + MaxTmp.Trim() + " " + CombinationEndTmp.Trim() + "";
@@ -1983,10 +1980,6 @@ namespace qs2.print
                                 CombinationTmp = WhereTranslated.Trim() + sBracket;
                             }
                             string EuroscoreTranslated = "";
-                            if (b.checkFieldsForTranslateSelList(ValueMinTmp.Trim(), rQryContitionFound.QryColumn.Trim(), infoQryRunPar.Application.Trim(), ref EuroscoreTranslated))
-                            {
-                                ValueMinTmp = EuroscoreTranslated.Trim();
-                            }
                             if (rQryContitionFound.QryColumn.Trim() != "")
                             {
                                 SqlWhereTmp = CombinationTmp.Trim() + " " + ColumnTranslated + " " + ConditionTmp.Trim() + " " + ValueMinTmp.Trim() + " " + CombinationEndTmp.Trim() + "";
@@ -2000,7 +1993,6 @@ namespace qs2.print
                         iCounter += 1;
                     }
                 }
-
             }
             catch (Exception ex)
             {

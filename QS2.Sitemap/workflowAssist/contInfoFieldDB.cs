@@ -1,32 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using qs2.core.vb;
-
-
 
 
 namespace qs2.sitemap.workflowAssist
 {
-
-
     public partial class contInfoFieldDB : UserControl
     {
+        private bool _doUnvisibleAllOtherTables;
+        private qs2.core.SysDB.sqlSysDB sqlSysDB1 = new qs2.core.SysDB.sqlSysDB();
+        private qs2.core.vb.funct funct1 = new qs2.core.vb.funct();
+        private qs2.core.ui ui1 = new qs2.core.ui();
+        private Infragistics.Win.UltraWinGrid.UltraGridRow gridRowToSelect = null;
 
-        //public string table = "";
         public string searchColumnText= "";
         public string IDApplication = "";
         public string IDParticipant = "";
-        public qs2.core.vb.funct funct1 = new qs2.core.vb.funct();
-
         public qs2.sitemap.workflowAssist.frmInfoFieldDB mainWindow;
-        public qs2.core.SysDB.sqlSysDB sqlSysDB1 = new qs2.core.SysDB.sqlSysDB();
+        public bool withTranslation;
+        public onSelection delOnSelection;
+        public delegate void onSelection(bool close);
+        public onAddWithoutClosing delOnAddWithoutClosing;
+        public delegate void onAddWithoutClosing(int selectedTab, System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow> selRowsGrid, ref string protocoll, bool add, qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelList, bool addPlaceholder);
+        public System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow> selRowsGrid = new System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow>();
+        public onTranslate delDoTranslate;
+        public delegate bool onTranslate(string IDRes, string  IDApplication, string defaultText);
+        public string protocoll = "";
 
         public eTypUI typUI = new eTypUI();
         public enum eTypUI
@@ -35,40 +34,6 @@ namespace qs2.sitemap.workflowAssist
             selectionTables = 1,
             showOnly = 2
         }
-
-        public bool abort = true;
-        public bool selected = false;
-
-        public bool withTranslation = false;
-
-        public onSelection delOnSelection;
-        public delegate void onSelection(bool close);
-
-        public onAddWithoutClosing delOnAddWithoutClosing;
-        public delegate void onAddWithoutClosing(int selectedTab, System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow> selRowsGrid, ref string protocoll, bool add, qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelList, bool addPlaceholder); 
- 
-        public qs2.core.ui ui1 = new qs2.core.ui();
-
-        public System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow> selRowsGrid = new System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow>();
-        public Infragistics.Win.UltraWinGrid.UltraGridRow gridRowToSelect = null;
-
-        public onTranslate delDoTranslate;
-        public delegate bool onTranslate(string IDRes, string  IDApplication, string defaultText);
-
-        public qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelQuery = null;
-        public string SelectedTypQueryDef = "";
-        public qs2.core.Enums.eTypeQuery modeQueryUI;
-        public bool _doUnvisibleAllOtherTables = false;
-        
-        public bool SelectionWithoutClosing = false;
-        public bool add = false;
-        public string protocoll = "";
-
-
-
-
-
-
 
         public contInfoFieldDB()
         {
@@ -102,20 +67,14 @@ namespace qs2.sitemap.workflowAssist
                     this.loadColumns("");
                 }
 
-                if (!this.DesignMode)
-                {
-                    this.translateEntryToolStripMenuItem.Visible = true;
-                }
-                else
-                {
-                    this.translateEntryToolStripMenuItem.Visible = true;
-                }
+                this.translateEntryToolStripMenuItem.Visible = true;
             }
             catch (Exception ex)
             {
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
         }
+
         public void loadRes()
         {
             try
@@ -157,7 +116,6 @@ namespace qs2.sitemap.workflowAssist
                   
                     this.ultraGridColumnes.DisplayLayout.Bands[0].Columns[this.dsSysDB1.COLUMNS.COLUMN_DEFAULTColumn.ColumnName].Hidden = true;
                     this.ultraGridColumnes.DisplayLayout.Bands[0].Columns[this.dsSysDB1.COLUMNS.IS_NULLABLEColumn.ColumnName].Hidden = true;
-                    //this.ultraGridColumnes.DisplayLayout.Bands[0].Columns[this.dsSysDB1.COLUMNS.DATA_TYPEColumn.ColumnName].Hidden = true;
                     this.ultraGridColumnes.DisplayLayout.Bands[0].Columns[this.dsSysDB1.COLUMNS.CHARACTER_MAXIMUM_LENGTHColumn.ColumnName].Hidden = true;
                     this.ultraGridColumnes.DisplayLayout.Bands[0].Columns[this.dsSysDB1.COLUMNS.CHARACTER_OCTET_LENGTHColumn.ColumnName].Hidden = true;
                     this.ultraGridColumnes.DisplayLayout.Bands[0].Columns[this.dsSysDB1.COLUMNS.NUMERIC_PRECISIONColumn.ColumnName].Hidden = true;
@@ -183,6 +141,7 @@ namespace qs2.sitemap.workflowAssist
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
         }
+
         public void getTitleGridColumns()
         {
             try
@@ -227,10 +186,6 @@ namespace qs2.sitemap.workflowAssist
                             qs2.core.SysDB.dsSysDB.TablesCatalogRow rTable = (qs2.core.SysDB.dsSysDB.TablesCatalogRow)v.Row;
                             foreach (string tableToShow in lstTablesToShow)
                             {
-                                //if (rTable.TABLE_NAME.Trim().ToLower().Contains(("Cardiac_ReportBasis").Trim().ToLower()))
-                                //{
-                                //    string xyxy = "";
-                                //}
                                 if ((qs2.core.dbBase.dbSchema + rTable.TABLE_NAME).Trim().ToLower() == tableToShow.Trim().ToLower())
                                 {
                                     rowGrid.Hidden = false;
@@ -289,17 +244,16 @@ namespace qs2.sitemap.workflowAssist
 
                 this.getTitleGridColumns();
 
-                if (this.txtSearchTextColumn.Text.Trim() != "")
+                if (!string.IsNullOrWhiteSpace(this.txtSearchTextColumn.Text))
                 {
                     this.searchColumn(this.txtSearchTextColumn.Text);
                 }
 
-                if (this.searchColumnText.Trim() != "")
+                if (!string.IsNullOrWhiteSpace(this.searchColumnText))
                 {
                     this.txtSearchTextColumn.Text = this.searchColumnText.Trim();
                     this.searchColumn(this.txtSearchTextColumn.Text);
                 }
-
             }
             catch (Exception ex)
             {
@@ -323,6 +277,7 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.Default;
             }
         }
+
         public void searchColumn(string txt)
         {
             try
@@ -330,7 +285,7 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.WaitCursor;
 
                 this.funct1.clearAllFilter(this.ultraGridColumnes);
-                if (txt.Trim() != "")
+                if (!string.IsNullOrWhiteSpace(txt))
                 {
                     this.funct1.setFilter(this.dsSysDB1.COLUMNS.TABLE_NAMEColumn.ColumnName,
                                             Infragistics.Win.UltraWinGrid.FilterLogicalOperator.Or,
@@ -358,6 +313,7 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.Default;
             }
         }
+        
         public void searchTable(string txt)
         {
             try
@@ -383,6 +339,7 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.Default;
             }
         }
+        
         private void btnClose_Click(object sender, EventArgs e)
         {
             try
@@ -437,6 +394,7 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.Default;
             }
         }
+
         public void loadColumnsForTable(qs2.core.SysDB.dsSysDB.TablesCatalogRow rTable)
         {
             try
@@ -459,6 +417,7 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void ultraGridColumnes_BeforeRowActivate(object sender, Infragistics.Win.UltraWinGrid.RowEventArgs e)
         {
             try
@@ -559,17 +518,13 @@ namespace qs2.sitemap.workflowAssist
                 return false;
             }
         }
+
         public System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow> getSelectedRowsColumns(bool withMsgBox)
         {
             try
             {
                 System.Collections.Generic.List< Infragistics.Win.UltraWinGrid.UltraGridRow> rSelected = new  System.Collections.Generic.List< Infragistics.Win.UltraWinGrid.UltraGridRow>();
                 qs2.core.ui.getSelectedGridRows(this.ultraGridColumnes, rSelected, true);
-                if (rSelected.Count == 0)
-                {
-                    //qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoRecord"), MessageBoxButtons.OK, "");
-                }
-
                 return rSelected;
             }
             catch (Exception ex)
@@ -578,17 +533,13 @@ namespace qs2.sitemap.workflowAssist
                 return null;
             }
         }
+
         public System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow> getSelectedRowsTables(bool withMsgBox)
         {
             try
             {
                 System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow> rSelected = new System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow>();
                 qs2.core.ui.getSelectedGridRows(this.ultraGridTables, rSelected, true);
-                if (rSelected.Count == 0)
-                {
-                    //qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoRecord"), MessageBoxButtons.OK, "");
-                }
-
                 return rSelected;
             }
             catch (Exception ex)
@@ -597,6 +548,7 @@ namespace qs2.sitemap.workflowAssist
                 return null;
             }
         }
+
         private void ultraGridColumnes_DoubleClick(object sender, EventArgs e)
         {
             try
@@ -605,12 +557,6 @@ namespace qs2.sitemap.workflowAssist
                 {
                     if (this.delOnSelection != null)
                         this.delOnSelection.Invoke(true);
-
-                    //if (this.delOnAddWithoutClosing != null)
-                    //{
-                    //    this.delOnAddWithoutClosing.Invoke(1, this.getSelectedRowsColumns(false), ref this.protocoll, true);
-                    //}
-
                 }
             }
             catch (Exception ex)
@@ -625,7 +571,6 @@ namespace qs2.sitemap.workflowAssist
             {
                 this.Cursor = Cursors.WaitCursor;
                 this.loadTables(null, this._doUnvisibleAllOtherTables);
-
             }
             catch (Exception ex)
             {
@@ -647,11 +592,6 @@ namespace qs2.sitemap.workflowAssist
                     {
                         if (this.delOnSelection != null)
                             this.delOnSelection.Invoke(true);
-
-                        //if (this.delOnAddWithoutClosing != null)
-                        //{
-                        //    this.delOnAddWithoutClosing.Invoke(1, this.getSelectedRowsTables(false), ref this.protocoll, true);
-                        //}
                     } 
                 }
             }
@@ -660,6 +600,7 @@ namespace qs2.sitemap.workflowAssist
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
         }
+
         public core.SysDB.dsSysDB.COLUMNSRow getSelectedColumn(bool msgBox, ref Infragistics.Win.UltraWinGrid.UltraGridRow actRow)
         {
             try
@@ -676,7 +617,6 @@ namespace qs2.sitemap.workflowAssist
                     qs2.core.generic.showMessageBox(qs2.core.language.sqlLanguage.getRes("NoEntrySelected"), MessageBoxButtons.OK, "");
                     return null;
                 }
-
             }
             catch (Exception ex)
             {
@@ -684,6 +624,7 @@ namespace qs2.sitemap.workflowAssist
                 return null;
             }
         }
+
         public core.SysDB.dsSysDB.TablesCatalogRow getSelectedTable(bool msgBox, ref Infragistics.Win.UltraWinGrid.UltraGridRow actRow)
         {
             try
@@ -708,6 +649,7 @@ namespace qs2.sitemap.workflowAssist
                 return null;
             }
         }
+
         private void translateEntryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -740,6 +682,5 @@ namespace qs2.sitemap.workflowAssist
                 this.Cursor = Cursors.Default;
             }
         }
-
     }
 }

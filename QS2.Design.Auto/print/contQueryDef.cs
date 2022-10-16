@@ -1170,9 +1170,7 @@ namespace qs2.ui.print
 
                         frmSelect.ContSelectField1.SelectionWithoutClosing = SelectionWithoutClosing;
                         frmSelect.ContSelectField1.ContSelChaptFldShort1.SelectionWithoutClosing = SelectionWithoutClosing;
-                        frmSelect.ContSelectField1.ContInfoFieldDB1.SelectionWithoutClosing = SelectionWithoutClosing;
                         frmSelect.ContSelectField1.add = add;
-                        frmSelect.ContSelectField1.ContInfoFieldDB1.add = add;
                         frmSelect.ContSelectField1.ContSelChaptFldShort1.add = add;
 
                         if (SelectionWithoutClosing)
@@ -1213,10 +1211,6 @@ namespace qs2.ui.print
                         frmSelect.ContSelectField1.ContSelChaptFldShort1.modeQueryUI = this.mainWindow.typeQuery;
                         frmSelect.ContSelectField1.ContSelChaptFldShort1.rSelQuery = rSelList;
                         frmSelect.ContSelectField1.ContSelChaptFldShort1.SelectedTypQueryDef = this.typQueryDef.ToString();
-
-                        frmSelect.ContSelectField1.ContInfoFieldDB1.modeQueryUI = this.mainWindow.typeQuery;
-                        frmSelect.ContSelectField1.ContInfoFieldDB1.rSelQuery = rSelList;
-                        frmSelect.ContSelectField1.ContInfoFieldDB1.SelectedTypQueryDef = this.typQueryDef.ToString();
 
                         frmSelect.ContSelectField1.IDApplication = this.mainWindow.getSelectedApplication();
                         frmSelect.ContSelectField1.IDParticipant = qs2.core.license.doLicense.eApp.ALL.ToString();

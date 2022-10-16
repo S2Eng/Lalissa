@@ -610,6 +610,7 @@ namespace qs2.ui.print
                 throw new Exception("contQryRunPar.translateTitle: " + ex.ToString());
             }
         }
+
         public qs2.design.auto.multiControl.ownMultiControl addParameter(qs2.core.vb.dsAdmin.tblQueriesDefRow rQry, dsAdmin.tblSelListEntriesRow rSelectedSelList, 
                                 qs2.core.Enums.eTypQueryDef typQueryDef, string IDApplication, string IDParticipant,
                                 ref int nrToLoad, ref int lastTop, ref int elementHeigth, string subCondition, bool addAdditionalLabel, 
@@ -630,11 +631,6 @@ namespace qs2.ui.print
                         IsMultiGrid = true;
                     }
                 }
-
-                //if (!IDApplication.Trim().ToLower().Equals(qs2.core.license.doLicense.eApp.CARDIAC.ToString().Trim().ToLower()))
-                //{
-                //    throw new Exception("addParameterControls:  IDApplication only allowed for Cardiac!");
-                //}
 
                 qs2.design.auto.multiControl.ownMultiControl newElement = null;
                 qs2.design.auto.multiControl.ownMultiGridSelList newElementMultiGridSelList = null;
@@ -862,8 +858,6 @@ namespace qs2.ui.print
                             newElementMultiControlSelList.Visible = true;
                             newElementMultiControlSelList.doVisible();
                             newElementMultiControlSelList.clearUI();
-
-                            ControlFound = true;
                             return true;
                         }
                     }
@@ -888,45 +882,6 @@ namespace qs2.ui.print
                     newElementMultiControl.IsBetweenControlSecondValue = false;
 
                     this.panelParameters.Controls.Add(newElementMultiControl);
-                    return true;
-                }
-                else if (!ControlFound && SearchForGrid)
-                {
-                    newElementMultiControlSelList = new design.auto.multiControl.ownMultiGridSelList();
-                    newElementMultiControlSelList.Visible = true;
-
-                    newElementMultiControlSelList.ownMCCriteria1.Application = IDApplication;
-                    newElementMultiControlSelList.ownMCCriteria1.IDParticipant = qs2.core.license.doLicense.eApp.ALL.ToString();
-                    newElementMultiControlSelList.IsQueryControl = true;
-                    newElementMultiControlSelList._typMultiControl = sqlAdmin.eTypStayAdditions.multiSelLists;
-                    newElementMultiControlSelList.OwnFldShortTitle = "gridConFactors";
-
-                    string[] fldShorts = new string[4];
-                    fldShorts[0] = "Cardiac_conFactorClass";
-                    fldShorts[1] = "Cardiac_conFactorGroup";
-                    fldShorts[2] = "Cardiac_conFactorSubGroup";
-                    fldShorts[3] = "Cardiac_conFactor";
-
-                    newElementMultiControlSelList._FldShort = fldShorts;
-                    newElementMultiControlSelList.doText();
-                    newElementMultiControlSelList.initControl();
-
-                    newElementMultiControlSelList.setEditable(true);
-                    newElementMultiControlSelList.IsInUseInparameterList = true;
-                    newElementMultiControlSelList.Height = 400;
-                    newElementMultiControlSelList.Left = this.panelParameters.Left;
-                    newElementMultiControlSelList.Width = this.panelParameters.Width - 20;
-
-                    newElementMultiControlSelList.IsVisibleControl = true;
-                    newElementMultiControlSelList.ownControlUI1.IsVisible_Criteriaxy = true;
-                    newElementMultiControlSelList.IsVisibleControlAssignmentChapters = true;
-                    newElementMultiControlSelList.Visible = true;
-                    newElementMultiControlSelList.doVisible();
-
-                    this.panelParameters.Controls.Add(newElementMultiControlSelList);
-                    newElementMultiControlSelList.Top = 0;
-
-                    Application.DoEvents();
                     return true;
                 }
 
