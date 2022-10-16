@@ -383,12 +383,6 @@
     <Compile Include="comboApplication.Designer.cs">
       <DependentUpon>comboApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="ownControls\inherit Infrag\contInfragLblButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ownControls\inherit Infrag\contInfragLblButton.Designer.cs">
-      <DependentUpon>contInfragLblButton.cs</DependentUpon>
-    </Compile>
     <Compile Include="print\genSql.cs" />
     <Compile Include="logIn.cs" />
     <Compile Include="ownControls\inherit Infrag\InfragCheckBox.cs">
@@ -480,9 +474,6 @@
   <ItemGroup>
     <EmbeddedResource Include="comboApplication.resx">
       <DependentUpon>comboApplication.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ownControls\inherit Infrag\contInfragLblButton.resx">
-      <DependentUpon>contInfragLblButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ownControls\inherit Infrag\InfragCheckBox.resx">
       <DependentUpon>InfragCheckBox.cs</DependentUpon>

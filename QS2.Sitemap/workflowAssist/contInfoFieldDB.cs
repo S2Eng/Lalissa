@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-
+using S2Extensions;
 
 namespace qs2.sitemap.workflowAssist
 {
@@ -11,7 +11,7 @@ namespace qs2.sitemap.workflowAssist
         private qs2.core.SysDB.sqlSysDB sqlSysDB1 = new qs2.core.SysDB.sqlSysDB();
         private qs2.core.vb.funct funct1 = new qs2.core.vb.funct();
         private qs2.core.ui ui1 = new qs2.core.ui();
-        private Infragistics.Win.UltraWinGrid.UltraGridRow gridRowToSelect = null;
+        private Infragistics.Win.UltraWinGrid.UltraGridRow gridRowToSelect;
 
         public string searchColumnText= "";
         public string IDApplication = "";
@@ -26,8 +26,8 @@ namespace qs2.sitemap.workflowAssist
         public onTranslate delDoTranslate;
         public delegate bool onTranslate(string IDRes, string  IDApplication, string defaultText);
         public string protocoll = "";
-
         public eTypUI typUI = new eTypUI();
+
         public enum eTypUI
         {
             selectionColumns = 0,
@@ -186,7 +186,7 @@ namespace qs2.sitemap.workflowAssist
                             qs2.core.SysDB.dsSysDB.TablesCatalogRow rTable = (qs2.core.SysDB.dsSysDB.TablesCatalogRow)v.Row;
                             foreach (string tableToShow in lstTablesToShow)
                             {
-                                if ((qs2.core.dbBase.dbSchema + rTable.TABLE_NAME).Trim().ToLower() == tableToShow.Trim().ToLower())
+                                if ((qs2.core.dbBase.dbSchema + rTable.TABLE_NAME).sEquals(tableToShow))
                                 {
                                     rowGrid.Hidden = false;
                                     if (firstTableToSelect.Trim().Equals(""))
@@ -212,8 +212,6 @@ namespace qs2.sitemap.workflowAssist
                 {
                     this.ultraGridTables.ActiveRow = this.gridRowToSelect;
                 }
-
-                //this.activateRow();
             }
             catch (Exception ex)
             {
@@ -327,7 +325,6 @@ namespace qs2.sitemap.workflowAssist
                                             Infragistics.Win.UltraWinGrid.FilterLogicalOperator.Or,
                                             txt, Infragistics.Win.UltraWinGrid.FilterComparisionOperator.StartsWith,
                                             this.ultraGridTables, this.ultraGridTables.DisplayLayout.Bands[0].Index);
-
                 }
             }
             catch (Exception ex)
@@ -504,10 +501,7 @@ namespace qs2.sitemap.workflowAssist
                 {
                     this.selRowsGrid.Clear();
                     this.selRowsGrid = this.getSelectedRowsTables(msgBox);
-                    if (this.selRowsGrid.Count > 0)
-                        return true;
-                    else
-                        return false;
+                    return this.selRowsGrid.Count > 0;
                 }
                 else
                     return false;
@@ -534,7 +528,7 @@ namespace qs2.sitemap.workflowAssist
             }
         }
 
-        public System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow> getSelectedRowsTables(bool withMsgBox)
+        private System.Collections.Generic.List<Infragistics.Win.UltraWinGrid.UltraGridRow> getSelectedRowsTables(bool withMsgBox)
         {
             try
             {
@@ -555,8 +549,7 @@ namespace qs2.sitemap.workflowAssist
             {
                 if (this.ui1.evDoubleClickOK(ref sender,ref e, ref this.ultraGridColumnes))
                 {
-                    if (this.delOnSelection != null)
-                        this.delOnSelection.Invoke(true);
+                    this.delOnSelection?.Invoke(true);
                 }
             }
             catch (Exception ex)
@@ -590,8 +583,7 @@ namespace qs2.sitemap.workflowAssist
                 {
                     if (this.ui1.evDoubleClickOK(ref sender, ref e, ref this.ultraGridTables))
                     {
-                        if (this.delOnSelection != null)
-                            this.delOnSelection.Invoke(true);
+                        this.delOnSelection?.Invoke(true);
                     } 
                 }
             }
@@ -670,7 +662,6 @@ namespace qs2.sitemap.workflowAssist
                             this.loadColumnsForTable(rSelTable);
                         }
                     }
-                       
                 }
             }
             catch (Exception ex)

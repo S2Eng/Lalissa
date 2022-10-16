@@ -1,31 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Infragistics.Win.UltraWinGrid;
 using Infragistics.Win.UltraWinEditors;
-using Infragistics.Win.FormattedLinkLabel;
-using Infragistics.Win;
-using Infragistics.Win.Misc;
-
-
 
 
 namespace qs2.sitemap.ownControls.inherit_Infrag
 {
-
-    
-
     public class InfragCheckBox : UltraCheckEditor
     {
-
-
         public event dAfterCheckStateChanged evOnAfterCheckStateChanged;
         public delegate void dAfterCheckStateChanged(object sender, EventArgs e);
-
-
-
-
+        
         public int OwnCheckStateInt
         {
             get
@@ -39,24 +22,24 @@ namespace qs2.sitemap.ownControls.inherit_Infrag
             }
             set
             {
-                if (value == 0)
-                    this.CheckState = System.Windows.Forms.CheckState.Unchecked;
-                else  if (value == 1)
-                    this.CheckState = System.Windows.Forms.CheckState.Checked;
-                else
-                    this.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+                switch (value)
+                {
+                    case 0:
+                        this.CheckState = System.Windows.Forms.CheckState.Unchecked;
+                        break;
+                    case 1:
+                        this.CheckState = System.Windows.Forms.CheckState.Checked;
+                        break;
+                    default:
+                        this.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+                        break;
+                }
             }
         }
+
         public int OwnTabIndex
         {
-            get
-            {
-                return base.TabIndex;
-            }
-            set
-            {
-                base.TabIndex = value;
-            }
+            set => base.TabIndex = value;
         }
 
         public void ControlAfterCheckStateChanged(object sender, EventArgs e)
@@ -65,17 +48,19 @@ namespace qs2.sitemap.ownControls.inherit_Infrag
             {
                 if (this.Focused)
                 {
-                    if (this.CheckState == System.Windows.Forms.CheckState.Unchecked)
-                        this.OwnCheckStateInt = 0;
-                    else if (this.CheckState == System.Windows.Forms.CheckState.Checked)
-                        this.OwnCheckStateInt = 1;
-                    else
+                    switch (this.CheckState)
                     {
-                        this.OwnCheckStateInt = -1; 
+                        case System.Windows.Forms.CheckState.Unchecked:
+                            this.OwnCheckStateInt = 0;
+                            break;
+                        case System.Windows.Forms.CheckState.Checked:
+                            this.OwnCheckStateInt = 1;
+                            break;
+                        default:
+                            this.OwnCheckStateInt = -1;
+                            break;
                     }
-
-                    if (this.evOnAfterCheckStateChanged != null)
-                        this.evOnAfterCheckStateChanged.Invoke(sender, e);
+                    this.evOnAfterCheckStateChanged?.Invoke(sender, e);
                 }
             }
             catch (Exception ex)
@@ -95,28 +80,11 @@ namespace qs2.sitemap.ownControls.inherit_Infrag
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
         }
-        public void Leave(object sender, EventArgs e)
-        {
-            try
-            {
 
-            }
-            catch (Exception ex)
-            {
-                qs2.core.generic.getExep(ex.ToString(), ex.Message);
-            }
-        }
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            this.ResumeLayout(false);
-        }
         public  void initControl()
         {
             this.AfterCheckStateChanged += new Infragistics.Win.CheckEditor.AfterCheckStateChangedHandler(this.ControlAfterCheckStateChanged);
             base.Enter += new System.EventHandler(this.Enter);
-            base.Leave += new System.EventHandler(this.Leave);
         }
-
     }
 }
