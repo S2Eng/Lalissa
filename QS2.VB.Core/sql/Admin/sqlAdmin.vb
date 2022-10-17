@@ -1404,24 +1404,6 @@
         rNew.Placeholder = False
     End Sub
 
-    Public Function getQueryJoinsTemp(ByVal IDGuid As System.Guid, ByVal ds As dsAdmin, ByVal typSel As eTypSelQueryJoinsTemp) As Boolean
-
-        Me.daQueryJoinsTemp.SelectCommand.CommandText = Me.sel_daSelQueryJoinsTemp
-        core.dbBase.setConnection(Me.daQueryJoinsTemp)
-        Me.daQueryJoinsTemp.SelectCommand.Parameters.Clear()
-
-        If typSel = eTypSelQueryJoinsTemp.all Then
-            Dim orderBy As String = sqlTxt.orderBy + "[" + ds.tblQueryJoinsTemp.OrderColumn.ColumnName + "]" + sqlTxt.asc
-            Me.daQueryJoinsTemp.SelectCommand.CommandText += orderBy
-
-        Else
-            Throw New Exception("sqlAdmin.getQueryJoinsTemp: typSel '" + typSel.ToString() + "' is wrong!")
-        End If
-
-        Me.daQueryJoinsTemp.Fill(ds.tblQueryJoinsTemp)
-        Return True
-    End Function
-
     Public Sub getNextIDSelListGeneric(ByRef newIDSelList As Integer, ByRef NextIDOwnStr As String, ByRef NextIDOwnInt As Integer,
                                             ByRef IDGroup As Integer)
         Try

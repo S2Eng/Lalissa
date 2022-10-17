@@ -1,17 +1,9 @@
 ﻿Partial Class dsAdmin
     Partial Public Class AdminStaysDataTable
-        Private Sub AdminStaysDataTable_ColumnChanging(sender As Object, e As DataColumnChangeEventArgs) Handles Me.ColumnChanging
-
-
-        End Sub
 
     End Class
 
     Partial Class tblSideLogicDataTable
-
-        Private Sub tblSideLogicDataTable_tblSideLogicRowChanging(sender As System.Object, e As tblSideLogicRowChangeEvent) Handles Me.tblSideLogicRowChanging
-
-        End Sub
 
     End Class
 
@@ -41,10 +33,6 @@
     End Class
 
     Partial Class dbAutoUIDataTable
-
-        Private Sub dbAutoUIDataTable_dbAutoUIRowChanging(ByVal sender As System.Object, ByVal e As dbAutoUIRowChangeEvent) Handles Me.dbAutoUIRowChanging
-
-        End Sub
 
     End Class
 

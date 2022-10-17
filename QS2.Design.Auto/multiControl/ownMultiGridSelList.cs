@@ -54,8 +54,6 @@ namespace qs2.design.auto.multiControl
         public bool IsVisibleControl = false;
         public bool IsVisibleControlAssignmentChapters = false;
 
-        public qs2.core.vb.dsAdmin.dbAutoUIRow rAutoUI = null;
-
         public bool IsQueryControl = false;
         public qs2.core.vb.dsAdmin.tblQueriesDefRow rQry;
         public qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelListQry;

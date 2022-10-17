@@ -1,58 +1,20 @@
-﻿using Infragistics.Win.Misc;
-using Infragistics.Win;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Windows.Forms;
-using qs2.sitemap.ownControls;
-
-using Infragistics.Win.UltraWinTabs;
-
 using Infragistics.Win.UltraWinTabControl;
-using Infragistics.Win;
-
-
-
-
 
 namespace qs2.design.auto.multiControl
 {
-
-
     //[Designer(typeof(qs2.design.auto.multiControl.DesignerWizardCheck))]
     public class ownTab : UltraTabControl
     {
-        public qs2.design.auto.ownMCCriteria ownControlCriteria1 = new qs2.design.auto.ownMCCriteria();
-        public ownMCInfo ownControlInfo1 = new ownMCInfo();
-        public ownMCUI ownControlUI1 = new ownMCUI();
-        public bool isLoaded = false;
-        public System.Windows.Forms.ContextMenuStrip ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
-        public System.Windows.Forms.ToolStripMenuItem criteriasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-       
-        public string _FldShort = "";
-        public System.Guid key = System.Guid.NewGuid();
-
-        public bool _OwnFieldForALLProducts = false;
-
-        public System.Guid ID = System.Guid.Empty;
-        public System.Guid IDGroup = System.Guid.Empty;
-
-        public int _OwnOrderLineNr = 1;
-        public int _OwnOrderControlNr = 1;
-        public int _OwnOrder = 1;
-
-        public string FldShortTabPageParent = "";
-        public string FldShortGroupBoxParent = "";
-        public qs2.core.vb.dsAdmin.dbAutoUIRow rAutoUI = null;
-
-        public bool IsVisibleControlAssignmentChapters = false;
+        private qs2.design.auto.ownMCCriteria ownControlCriteria1 = new qs2.design.auto.ownMCCriteria();
+        private ownMCInfo ownControlInfo1 = new ownMCInfo();
+        private ownMCUI ownControlUI1 = new ownMCUI();
+        private System.Windows.Forms.ContextMenuStrip ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+        private System.Windows.Forms.ToolStripMenuItem criteriasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+        private bool _OwnFieldForALLProducts = false;
         private UltraTabSharedControlsPage ultraTabSharedControlsPage5;
-
-        public bool lockVisible = false;
+        private bool lockVisible = false;
 
         public ownTab()
         {
@@ -61,10 +23,7 @@ namespace qs2.design.auto.multiControl
             this.criteriasToolStripMenuItem1.Text = "Criterias";
             this.criteriasToolStripMenuItem1.Click += new System.EventHandler(this.loadedDatToolStripMenuItem_Click);
             this.ContextMenuStrip1.Items.Add(this.criteriasToolStripMenuItem1);
-
-            //if (!this.DesignMode) this.VisibleChanged += new System.EventHandler(this.ownTab_VisibleChanged);
         }
-
 
         private void InitializeComponent()
         {
@@ -105,79 +64,17 @@ namespace qs2.design.auto.multiControl
             }
         }
 
-        public string OwnFldShort
+        private bool OwnFieldForALLProducts
         {
-            get
-            {
-                return this._FldShort;
-            }
-            set
-            {
-                this._FldShort = value;
-                //if (this.DesignMode)
-                //{
-                //    this.Text = "[" + this._FldShort + "]";
-                //    if (qs2.core.Settings.developSimulateControls)
-                //    {
-                //        this.doText();
-                //    }
-                //}
-            }
-        }
-
-        public bool OwnFieldForALLProducts
-        {
-            get
-            {
-                return this._OwnFieldForALLProducts;
-            }
-            set
-            {
-                this._OwnFieldForALLProducts = value;
-                //if (this.DesignMode) this.doControl();
-            }
-        }
-
-
-        public int OwnOrderLineNr
-        {
-            get
-            {
-                return this._OwnOrderLineNr;
-            }
-            set
-            {
-                this._OwnOrderLineNr = value;
-            }
-        }
-        public int OwnOrderControlNr
-        {
-            get
-            {
-                return this._OwnOrderControlNr;
-            }
-            set
-            {
-                this._OwnOrderControlNr = value;
-            }
-        }
-        public int OwnOrder
-        {
-            get
-            {
-                return this._OwnOrder;
-            }
-            set
-            {
-                this._OwnOrder = value;
-            }
+            get => this._OwnFieldForALLProducts;
+            set => this._OwnFieldForALLProducts = value;
         }
 
         private void ownTab_VisibleChanged_1(object sender, EventArgs e)
         {
             try
             {
-                if (!DesignMode)
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                 {
                     this.setTab();
                 }
@@ -191,11 +88,12 @@ namespace qs2.design.auto.multiControl
                 qs2.core.generic.getExep(ex.ToString(), ex.Message);
             }
         }
+
         public void setTab()
         {
             try
             {
-                if (!DesignMode)
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                 {
                     bool bIsVisible = false;
                     this.doVisible2(ref bIsVisible);
@@ -229,6 +127,7 @@ namespace qs2.design.auto.multiControl
             }
 
         }
+
         public void doVisible2(ref bool bIsVisible)
         {
             try
@@ -236,18 +135,8 @@ namespace qs2.design.auto.multiControl
                 if (!this.lockVisible)
                 {
                     this.lockVisible = true;
-                    //if (!this.ownControlUI1.IsVisible_LicenseKey)
-                    //{
-                    //    string xy = "";
-                    //}
                   bIsVisible = this.ownControlUI1.IsVisible_Criteriaxy && this.ownControlUI1.IsVisible_LicenseKey && this.ownControlUI1.IsVisible_RelationsshipMCParent && this.ownControlUI1.IsVisible_RelationsshipGroups;
                     this.Visible = bIsVisible;
-
-                    //if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(this.OwnFldShort, "tabOpAoDis", false))
-                    //{
-                    //    string xy = "";
-                    //}
-                    //this.Visible = (this.ownControlUI1.IsVisible_Criteriaxy && this.IsVisibleControlAssignmentChapters);
                 }
             }
             catch (Exception ex)

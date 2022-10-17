@@ -28,8 +28,6 @@ namespace qs2.design.auto.multiControl
         public string[] _FldShorts;
 
         public qs2.core.Enums.eControlType _controlType;
-        public qs2.core.vb.dsAdmin.dbAutoUIRow rAutoUI { get; set; } = null;
-
         public UltraTextEditor Textfield { get; set; } = null;
         public UltraNumericEditor Numeric { get; set; } = null;
         public UltraComboEditor ComboBox { get; set; } = null;
@@ -1120,8 +1118,7 @@ namespace qs2.design.auto.multiControl
             }
         }
 
-        public void doRelationsship(bool isLoaded, bool userChanged, int SubRelation, ownMCRelationship.eTypAssignments typeRunning, string ChapterParent,
-                                    bool ProcGroupDeactivated)
+        public void doRelationsship(bool isLoaded, bool userChanged, int SubRelation, ownMCRelationship.eTypAssignments typeRunning, bool ProcGroupDeactivated)
         {
             try
             {
@@ -2128,7 +2125,6 @@ namespace qs2.design.auto.multiControl
                 }
 
                 this.rSelListQry = null;
-                this.rAutoUI = null;
 
                 if (this.ownMCCriteria1 != null)
                 {

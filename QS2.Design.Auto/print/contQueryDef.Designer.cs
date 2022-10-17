@@ -854,7 +854,6 @@
             this.multiValueMin.OwnOrderLineNr = 1;
             this.multiValueMin.ownValue = "";
             this.multiValueMin.Picture = null;
-            this.multiValueMin.rAutoUI = null;
             this.multiValueMin.Size = new System.Drawing.Size(479, 20);
             this.multiValueMin.TabIndex = 0;
             this.multiValueMin.TextfieldMulti = null;
@@ -901,7 +900,6 @@
             this.multiMax.OwnOrderLineNr = 1;
             this.multiMax.ownValue = "";
             this.multiMax.Picture = null;
-            this.multiMax.rAutoUI = null;
             this.multiMax.Size = new System.Drawing.Size(479, 20);
             this.multiMax.TabIndex = 1;
             this.multiMax.TextfieldMulti = null;
@@ -947,7 +945,6 @@
             this.ownMultiControlParent.OwnOrderLineNr = 1;
             this.ownMultiControlParent.ownValue = "";
             this.ownMultiControlParent.Picture = null;
-            this.ownMultiControlParent.rAutoUI = null;
             this.ownMultiControlParent.Size = new System.Drawing.Size(296, 20);
             this.ownMultiControlParent.TabIndex = 2;
             this.ownMultiControlParent.TextfieldMulti = null;

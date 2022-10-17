@@ -210,7 +210,7 @@ namespace qs2.design.auto.multiControl
                             //}
 
                             qs2.core.generic.retValue retValueAfterChange = this.ownControl1.ownMCDataBind1.getValueFromRow(this.ownControl1);
-                            this.ownControl1.doRelationsship(true, true, 0, ownMCRelationship.eTypAssignments.MCParent, this.ownControl1.rAutoUI.Chapter, false);
+                            this.ownControl1.doRelationsship(true, true, 0, ownMCRelationship.eTypAssignments.MCParent, false);
                         }
 
                         if (this.ownControl1.ownMCUI1.lstColors != null && this.ownControl1.ownMCUI1.lstColors.Count > 0)

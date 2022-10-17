@@ -119,11 +119,6 @@ namespace qs2.print
                     {
                         BracketsOK = false;
                     }
-
-                    subQuery.rSelListQrySub = InfoQryRunParSub.rSelListQry;
-                    subQuery.rSelListQryObjSub = InfoQryRunParSub.rSelListQryObj;
-                    subQuery.rSelListReportSub = null;
-                    subQuery.rSelListQrySub = InfoQryRunParSub.rSelListQry;
                     subQuery.tQryConditionsSub = InfoQryRunParSub.dsConditionsForQuery.tblQueriesDef;
                     subQuery.tParFunctParSub = InfoQryRunParSub.dsParFctForQuery.tblQueriesDef;
 

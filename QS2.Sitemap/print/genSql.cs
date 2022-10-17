@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using qs2.core;
 using qs2.core.vb;
 using System.Globalization;
 using System.Web;
-using System.IO;
-using Infragistics.Win;
 using S2Extensions;
 
 namespace qs2.sitemap.print
 {
-
-
     public class genSql
     {
         public sqlAdmin sqlAdmin1;
@@ -28,16 +20,11 @@ namespace qs2.sitemap.print
 
         public class sqlFix
         {
-            public string SqlCommand = "";
-            public bool sqlConditionExists = false;
             public System.Collections.Generic.List<string> lstSqlFixparameter = new System.Collections.Generic.List<string>();
         }
+
         public class subQuery
         {
-            public dsAdmin.tblSelListEntriesRow rSelListQrySub = null;
-            public dsAdmin.tblSelListEntriesObjRow rSelListQryObjSub = null;
-            public dsAdmin.tblSelListEntriesRow rSelListReportSub = null;
-
             public dsAdmin.tblQueriesDefDataTable tQryConditionsSub = new dsAdmin.tblQueriesDefDataTable();
             public dsAdmin.tblQueriesDefDataTable tParFunctParSub = new dsAdmin.tblQueriesDefDataTable();
         }
@@ -48,6 +35,7 @@ namespace qs2.sitemap.print
         }
 
         public static int ParAliasNextNr = 0;
+        
         public class cInnerJoin
         {
             public System.Collections.Generic.List<string> lstTablesForinnerJoin = new List<string>();
@@ -180,9 +168,9 @@ namespace qs2.sitemap.print
             catch (Exception ex)
             {
                 throw new Exception("genSql.doSql:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-                //return "";
             }
         }
+        
         public void genInnerJoin(ref cDataSql DataSql, ref dsAdmin.tblSelListEntriesRow rSelListQry,
  
         ref string sqlInnerJoins, ref string sqlWhereConditionsEnd, ref string SqlWhereAdmin)
@@ -238,107 +226,6 @@ namespace qs2.sitemap.print
             catch (Exception ex)
             {
                 throw new Exception("genSql.genInnerJoin:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-        }
-
-        public bool calcJoinTable(qs2.core.vb.dsAdmin.tblQueriesDefDataTable tFields,
-                    qs2.core.vb.dsAdmin.tblQueriesDefDataTable tConditions,
-                    ref qs2.core.vb.dsAdmin dsJoinsResult,
-                    ref string prot, ref dsAdmin.tblSelListEntriesRow rSelListEntry)
-        {
-            try
-            {
-                this.initControl();
-                dsObjects dsObjTemp = new dsObjects();
-
-                qs2.core.vb.dsAdmin dsJoinsAllFields = new qs2.core.vb.dsAdmin();
-                dsJoinsAllFields.tblQueriesDef.Columns.Add(qs2.core.generic.columnNameIDJoin, typeof(System.Guid));
-                dsJoinsAllFields.tblQueriesDef.Columns.Add(qs2.core.generic.columnNameType, typeof(string));
-
-                qs2.core.vb.dsAdmin dsJoinsOnlyTables   = new qs2.core.vb.dsAdmin();
-                dsJoinsOnlyTables.tblQueriesDef.Columns.Add(qs2.core.generic.columnNameIDJoin, typeof(System.Guid));
-                dsJoinsOnlyTables.tblQueriesDef.Columns.Add(qs2.core.generic.columnNameType, typeof(string));
-
-                this.sqlAdmin1.getQueryJoinsTemp(System.Guid.Empty, dsJoinsResult, sqlAdmin.eTypSelQueryJoinsTemp.all);
-                
-                int SortNeu = -1;
-                int Sort = 0;
-                this.doSqlFields(tFields, dsJoinsOnlyTables, dsJoinsAllFields, ref prot, true, ref Sort, ref rSelListEntry);
-                this.doTablesConditions(tConditions, dsJoinsOnlyTables, dsJoinsAllFields, ref Sort, ref prot);
-
-                System.Collections.Generic.List<dsAdmin.tblQueryJoinsTempRow> arrJoinsFound = new System.Collections.Generic.List<dsAdmin.tblQueryJoinsTempRow>();
-                this.getJoinsFromTemp(dsJoinsResult.tblQueryJoinsTemp, ref arrJoinsFound, dsJoinsOnlyTables);
-                foreach (dsAdmin.tblQueryJoinsTempRow rJoinTempFrom in arrJoinsFound)
-                {
-                    SortNeu += 1;
-                    string nextCombonation = (SortNeu == 0 ? qs2.core.sqlTxt.where : qs2.core.sqlTxt.and);
-                    this.addNewJoinDsResult(nextCombonation, rJoinTempFrom.FromTable, rJoinTempFrom.FromColumn, qs2.core.sqlTxt.equals, ref SortNeu, ref dsJoinsResult);
-
-                    SortNeu += 1;
-                    this.addNewJoinDsResult("", rJoinTempFrom.ToTable, rJoinTempFrom.ToColumn, "", ref SortNeu, ref dsJoinsResult);
-                }
-
-                foreach (dsAdmin.tblQueriesDefRow rQryTable in dsJoinsResult.tblQueriesDef)
-                {
-                    rQryTable.SetControlTypeNull();
-                    rQryTable.Typ = core.Enums.eTypQueryDef.Joins.ToString();
-                    rQryTable.IDSelList = rSelListEntry.ID;
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genSql.calcJoinTable:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-        }
-
-        public void getJoinsFromTemp(dsAdmin.tblQueryJoinsTempDataTable tblQueryJoinsTemp, 
-                                    ref System.Collections.Generic.List<dsAdmin.tblQueryJoinsTempRow> arrJoinTempFound,
-                                    qs2.core.vb.dsAdmin dsJoinsOnlyTables)
-        {
-            foreach (dsAdmin.tblQueryJoinsTempRow rJoinTemp in tblQueryJoinsTemp)
-            {
-                bool tableFoundFrom = false;
-                bool tableFoundTo = false;
-                foreach (dsAdmin.tblQueriesDefRow rQryTable in dsJoinsOnlyTables.tblQueriesDef)
-                {
-                    if (rJoinTemp.FromTable.Trim() == rQryTable.QryTable.Trim())
-                    {
-                        tableFoundFrom = true;
-                    }
-                }
-                foreach (dsAdmin.tblQueriesDefRow rQryTable in dsJoinsOnlyTables.tblQueriesDef)
-                {
-                    if (rJoinTemp.ToTable.Trim() == rQryTable.QryTable.Trim())
-                    {
-                        tableFoundTo = true;
-                    }
-                }
-                if ((tableFoundFrom && tableFoundTo) || (tableFoundFrom && rJoinTemp.alwaysDoJoin))
-                {
-                    arrJoinTempFound.Add(rJoinTemp);
-                }
-            }
-        }
-        
-        public bool addNewJoinDsResult(string Combination, string table, string column,
-                                        string condition, ref int Sort, ref dsAdmin dsJoinsResult)
-        {
-            try
-            {
-                qs2.core.vb.dsAdmin.tblQueriesDefRow rNewJoin = this.sqlAdmin1.addRowQueriesDef(dsJoinsResult.tblQueriesDef);
-                rNewJoin.Combination = Combination;
-                rNewJoin.QryTable = table;
-                rNewJoin.QryColumn = column;
-                rNewJoin.Condition = condition;
-                rNewJoin.Sort = Sort;   
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genSql.addNewJoinDsResult:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
             }
         }
 
@@ -759,14 +646,13 @@ namespace qs2.sitemap.print
                         {
                             sqlFix = new sqlFix();
                         }
-                        if (SqlFixSub.ToLower().Trim().StartsWith(("Var=").Trim().ToLower()))
+                        if (SqlFixSub.sEquals("Var=", Enums.eCompareMode.StartsWith))
                         {
                             sqlFix.lstSqlFixparameter.Add(SqlFixSub.Trim().Substring(4, SqlFixSub.Trim().Length - 4));
                             nextSqlFix = false;
                         }
-                        else if (SqlFixSub.ToLower().Trim().StartsWith(("Sql=").Trim().ToLower()))
+                        else if (SqlFixSub.sEquals("Sql=", Enums.eCompareMode.StartsWith))
                         {
-                            sqlFix.SqlCommand = SqlFixSub.Trim().Substring(4, SqlFixSub.Trim().Length - 4);
                             nextSqlFix = true;
                             lstSqlFix.Add(sqlFix);
                         }
@@ -775,52 +661,6 @@ namespace qs2.sitemap.print
             }
         }
     
-        public void doTablesConditions(qs2.core.vb.dsAdmin.tblQueriesDefDataTable tConditions, dsAdmin dsJoinsOnlyTables, dsAdmin dsJoinsAllFields, 
-                                        ref int Sort, ref string prot)
-        {
-            try
-            {
-                dsAdmin.tblQueriesDefRow[] arrQueries = (dsAdmin.tblQueriesDefRow[])tConditions.Select("", tConditions.SortColumn.ColumnName + qs2.core.sqlTxt.asc);
-                if (arrQueries.Length > 0)
-                {
-                    foreach (qs2.core.vb.dsAdmin.tblQueriesDefRow rQry in arrQueries)
-                    {
-                        if (rQry.IsSQLServerField)
-                        {
-                            System.Guid IDJoin = System.Guid.NewGuid();
-                            IDJoin = this.addQry("", rQry.QryTable, "", "", "", ref Sort, dsJoinsOnlyTables, eTypDoJoins.tableEntry, IDJoin);
-                            this.addQry("", rQry.QryTable, rQry.QryColumn, "", "", ref Sort, dsJoinsAllFields, eTypDoJoins.fieldEntry, IDJoin);
-                            Sort += 1;
-                        }
-                        else
-                        {
-                            qs2.core.vb.dsAdmin.tblCriteriaRow rCriteria = this.getCriteria(rQry.CriteriaFldShort, rQry.CriteriaApplication, ref prot);
-                            if (rCriteria == null)
-                            {
-                                this.addProtEntry(qs2.core.sqlTxt.errTxtNoCriteriaRow + rQry.CriteriaFldShort, ref prot);
-                            }
-                            else
-                            {
-                                if (rCriteria.SourceTable.Trim() == "")
-                                    this.addProtEntry(qs2.core.sqlTxt.errTxtNoCriteriaSourceTable + rQry.CriteriaFldShort, ref prot);
-                                else
-                                {
-                                    System.Guid IDJoin = System.Guid.NewGuid();
-                                    IDJoin = this.addQry("", rCriteria.SourceTable.Trim(), "", "", "", ref Sort, dsJoinsOnlyTables, eTypDoJoins.tableEntry, IDJoin);
-                                    this.addQry("", rCriteria.SourceTable.Trim(), rCriteria.FldShort, "", "", ref Sort, dsJoinsAllFields, eTypDoJoins.fieldEntry, IDJoin);
-                                    Sort += 1;
-                                }
-                            }
-                        }
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("genSql.doTablesConditions:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
-            }
-        }
         public string getCondition(qs2.core.vb.dsAdmin.tblQueriesDefRow rQry, 
                                     string table, string ControlType,
                                     ref System.Collections.Generic.List<System.Data.SqlClient.SqlParameter> parametersSql, bool withParameters,
