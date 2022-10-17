@@ -59,8 +59,6 @@ Partial Public Class dsAdmin
     
     Private tabletblSelListEntriesSort As tblSelListEntriesSortDataTable
     
-    Private tablegetCriteriasUserForUser As getCriteriasUserForUserDataTable
-    
     Private relationtblSelListGroup_tblSelListEntries As Global.System.Data.DataRelation
     
     Private relationtblCriteria_tblSelListEntriesObj As Global.System.Data.DataRelation
@@ -152,9 +150,6 @@ Partial Public Class dsAdmin
             End If
             If (Not (ds.Tables("tblSelListEntriesSort")) Is Nothing) Then
                 MyBase.Tables.Add(New tblSelListEntriesSortDataTable(ds.Tables("tblSelListEntriesSort")))
-            End If
-            If (Not (ds.Tables("getCriteriasUserForUser")) Is Nothing) Then
-                MyBase.Tables.Add(New getCriteriasUserForUserDataTable(ds.Tables("getCriteriasUserForUser")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -345,16 +340,6 @@ Partial Public Class dsAdmin
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property getCriteriasUserForUser() As getCriteriasUserForUserDataTable
-        Get
-            Return Me.tablegetCriteriasUserForUser
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
      Global.System.ComponentModel.BrowsableAttribute(true),  _
      Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Visible)>  _
     Public Overrides Property SchemaSerializationMode() As Global.System.Data.SchemaSerializationMode
@@ -470,9 +455,6 @@ Partial Public Class dsAdmin
             End If
             If (Not (ds.Tables("tblSelListEntriesSort")) Is Nothing) Then
                 MyBase.Tables.Add(New tblSelListEntriesSortDataTable(ds.Tables("tblSelListEntriesSort")))
-            End If
-            If (Not (ds.Tables("getCriteriasUserForUser")) Is Nothing) Then
-                MyBase.Tables.Add(New getCriteriasUserForUserDataTable(ds.Tables("getCriteriasUserForUser")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -608,12 +590,6 @@ Partial Public Class dsAdmin
                 Me.tabletblSelListEntriesSort.InitVars
             End If
         End If
-        Me.tablegetCriteriasUserForUser = CType(MyBase.Tables("getCriteriasUserForUser"),getCriteriasUserForUserDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tablegetCriteriasUserForUser) Is Nothing) Then
-                Me.tablegetCriteriasUserForUser.InitVars
-            End If
-        End If
         Me.relationtblSelListGroup_tblSelListEntries = Me.Relations("tblSelListGroup_tblSelListEntries")
         Me.relationtblCriteria_tblSelListEntriesObj = Me.Relations("tblCriteria_tblSelListEntriesObj")
         Me.relationtblCriteria_tblRelationship1 = Me.Relations("tblCriteria_tblRelationship1")
@@ -664,8 +640,6 @@ Partial Public Class dsAdmin
         MyBase.Tables.Add(Me.tablegetAllUsersWithRights)
         Me.tabletblSelListEntriesSort = New tblSelListEntriesSortDataTable()
         MyBase.Tables.Add(Me.tabletblSelListEntriesSort)
-        Me.tablegetCriteriasUserForUser = New getCriteriasUserForUserDataTable()
-        MyBase.Tables.Add(Me.tablegetCriteriasUserForUser)
         Me.relationtblSelListGroup_tblSelListEntries = New Global.System.Data.DataRelation("tblSelListGroup_tblSelListEntries", New Global.System.Data.DataColumn() {Me.tabletblSelListGroup.IDColumn}, New Global.System.Data.DataColumn() {Me.tabletblSelListEntries.IDGroupColumn}, false)
         Me.Relations.Add(Me.relationtblSelListGroup_tblSelListEntries)
         Me.relationtblCriteria_tblSelListEntriesObj = New Global.System.Data.DataRelation("tblCriteria_tblSelListEntriesObj", New Global.System.Data.DataColumn() {Me.tabletblCriteria.IDApplicationColumn, Me.tabletblCriteria.FldShortColumn}, New Global.System.Data.DataColumn() {Me.tabletblSelListEntriesObj.IDApplicationColumn, Me.tabletblSelListEntriesObj.FldShortColumn}, false)
@@ -784,12 +758,6 @@ Partial Public Class dsAdmin
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerializegetCriteriasUserForUser() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Private Sub SchemaChanged(ByVal sender As Object, ByVal e As Global.System.ComponentModel.CollectionChangeEventArgs)
         If (e.Action = Global.System.ComponentModel.CollectionChangeAction.Remove) Then
             Me.InitVars
@@ -896,9 +864,6 @@ Partial Public Class dsAdmin
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Public Delegate Sub tblSelListEntriesSortRowChangeEventHandler(ByVal sender As Object, ByVal e As tblSelListEntriesSortRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Delegate Sub getCriteriasUserForUserRowChangeEventHandler(ByVal sender As Object, ByVal e As getCriteriasUserForUserRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -8727,300 +8692,6 @@ Partial Public Class dsAdmin
     End Class
     
     '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class getCriteriasUserForUserDataTable
-        Inherits Global.System.Data.TypedTableBase(Of getCriteriasUserForUserRow)
-        
-        Private columnIDObject As Global.System.Data.DataColumn
-        
-        Private columnFldShort As Global.System.Data.DataColumn
-        
-        Private columnIDApplication As Global.System.Data.DataColumn
-        
-        Private columnnVisible As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "getCriteriasUserForUser"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property IDObjectColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnIDObject
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property FldShortColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnFldShort
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property IDApplicationColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnIDApplication
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property nVisibleColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnnVisible
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As getCriteriasUserForUserRow
-            Get
-                Return CType(Me.Rows(index),getCriteriasUserForUserRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event getCriteriasUserForUserRowChanging As getCriteriasUserForUserRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event getCriteriasUserForUserRowChanged As getCriteriasUserForUserRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event getCriteriasUserForUserRowDeleting As getCriteriasUserForUserRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event getCriteriasUserForUserRowDeleted As getCriteriasUserForUserRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Sub AddgetCriteriasUserForUserRow(ByVal row As getCriteriasUserForUserRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddgetCriteriasUserForUserRow(ByVal IDObject As Integer, ByVal FldShort As String, ByVal IDApplication As String, ByVal nVisible As Integer) As getCriteriasUserForUserRow
-            Dim rowgetCriteriasUserForUserRow As getCriteriasUserForUserRow = CType(Me.NewRow,getCriteriasUserForUserRow)
-            Dim columnValuesArray() As Object = New Object() {IDObject, FldShort, IDApplication, nVisible}
-            rowgetCriteriasUserForUserRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowgetCriteriasUserForUserRow)
-            Return rowgetCriteriasUserForUserRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As getCriteriasUserForUserDataTable = CType(MyBase.Clone,getCriteriasUserForUserDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New getCriteriasUserForUserDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnIDObject = MyBase.Columns("IDObject")
-            Me.columnFldShort = MyBase.Columns("FldShort")
-            Me.columnIDApplication = MyBase.Columns("IDApplication")
-            Me.columnnVisible = MyBase.Columns("nVisible")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnIDObject = New Global.System.Data.DataColumn("IDObject", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnIDObject)
-            Me.columnFldShort = New Global.System.Data.DataColumn("FldShort", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnFldShort)
-            Me.columnIDApplication = New Global.System.Data.DataColumn("IDApplication", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnIDApplication)
-            Me.columnnVisible = New Global.System.Data.DataColumn("nVisible", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnnVisible)
-            Me.columnIDObject.AllowDBNull = false
-            Me.columnFldShort.MaxLength = 60
-            Me.columnIDApplication.MaxLength = 30
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function NewgetCriteriasUserForUserRow() As getCriteriasUserForUserRow
-            Return CType(Me.NewRow,getCriteriasUserForUserRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New getCriteriasUserForUserRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(getCriteriasUserForUserRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.getCriteriasUserForUserRowChangedEvent) Is Nothing) Then
-                RaiseEvent getCriteriasUserForUserRowChanged(Me, New getCriteriasUserForUserRowChangeEvent(CType(e.Row,getCriteriasUserForUserRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.getCriteriasUserForUserRowChangingEvent) Is Nothing) Then
-                RaiseEvent getCriteriasUserForUserRowChanging(Me, New getCriteriasUserForUserRowChangeEvent(CType(e.Row,getCriteriasUserForUserRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.getCriteriasUserForUserRowDeletedEvent) Is Nothing) Then
-                RaiseEvent getCriteriasUserForUserRowDeleted(Me, New getCriteriasUserForUserRowChangeEvent(CType(e.Row,getCriteriasUserForUserRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.getCriteriasUserForUserRowDeletingEvent) Is Nothing) Then
-                RaiseEvent getCriteriasUserForUserRowDeleting(Me, New getCriteriasUserForUserRowChangeEvent(CType(e.Row,getCriteriasUserForUserRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub RemovegetCriteriasUserForUserRow(ByVal row As getCriteriasUserForUserRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As dsAdmin = New dsAdmin()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "getCriteriasUserForUserDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class tblSelListEntriesObjRow
@@ -13072,114 +12743,6 @@ Partial Public Class dsAdmin
     End Class
     
     '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
-    Partial Public Class getCriteriasUserForUserRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tablegetCriteriasUserForUser As getCriteriasUserForUserDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tablegetCriteriasUserForUser = CType(Me.Table,getCriteriasUserForUserDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property IDObject() As Integer
-            Get
-                Return CType(Me(Me.tablegetCriteriasUserForUser.IDObjectColumn),Integer)
-            End Get
-            Set
-                Me(Me.tablegetCriteriasUserForUser.IDObjectColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property FldShort() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablegetCriteriasUserForUser.FldShortColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Der Wert für Spalte FldShort in Tabelle getCriteriasUserForUser ist DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablegetCriteriasUserForUser.FldShortColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property IDApplication() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablegetCriteriasUserForUser.IDApplicationColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Der Wert für Spalte IDApplication in Tabelle getCriteriasUserForUser ist DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablegetCriteriasUserForUser.IDApplicationColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property nVisible() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tablegetCriteriasUserForUser.nVisibleColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Der Wert für Spalte nVisible in Tabelle getCriteriasUserForUser ist DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablegetCriteriasUserForUser.nVisibleColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsFldShortNull() As Boolean
-            Return Me.IsNull(Me.tablegetCriteriasUserForUser.FldShortColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetFldShortNull()
-            Me(Me.tablegetCriteriasUserForUser.FldShortColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsIDApplicationNull() As Boolean
-            Return Me.IsNull(Me.tablegetCriteriasUserForUser.IDApplicationColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetIDApplicationNull()
-            Me(Me.tablegetCriteriasUserForUser.IDApplicationColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsnVisibleNull() As Boolean
-            Return Me.IsNull(Me.tablegetCriteriasUserForUser.nVisibleColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetnVisibleNull()
-            Me(Me.tablegetCriteriasUserForUser.nVisibleColumn) = Global.System.Convert.DBNull
-        End Sub
-    End Class
-    
-    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -13777,42 +13340,6 @@ Partial Public Class dsAdmin
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property Row() As tblSelListEntriesSortRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Class getCriteriasUserForUserRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As getCriteriasUserForUserRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New(ByVal row As getCriteriasUserForUserRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Row() As getCriteriasUserForUserRow
             Get
                 Return Me.eventRow
             End Get

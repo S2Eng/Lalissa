@@ -1227,28 +1227,6 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="getCriteriasUserForUser" msprop:Generator_RowEvHandlerName="getCriteriasUserForUserRowChangeEventHandler" msprop:Generator_RowDeletedName="getCriteriasUserForUserRowDeleted" msprop:Generator_RowDeletingName="getCriteriasUserForUserRowDeleting" msprop:Generator_RowEvArgName="getCriteriasUserForUserRowChangeEvent" msprop:Generator_TablePropName="getCriteriasUserForUser" msprop:Generator_RowChangedName="getCriteriasUserForUserRowChanged" msprop:Generator_RowChangingName="getCriteriasUserForUserRowChanging" msprop:Generator_TableClassName="getCriteriasUserForUserDataTable" msprop:Generator_RowClassName="getCriteriasUserForUserRow" msprop:Generator_TableVarName="tablegetCriteriasUserForUser" msprop:Generator_UserTableName="getCriteriasUserForUser">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="IDObject" msprop:Generator_ColumnPropNameInRow="IDObject" msprop:Generator_ColumnPropNameInTable="IDObjectColumn" msprop:Generator_ColumnVarNameInTable="columnIDObject" msprop:Generator_UserColumnName="IDObject" type="xs:int" />
-              <xs:element name="FldShort" msprop:Generator_ColumnPropNameInRow="FldShort" msprop:Generator_ColumnPropNameInTable="FldShortColumn" msprop:Generator_ColumnVarNameInTable="columnFldShort" msprop:Generator_UserColumnName="FldShort" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="60" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="IDApplication" msprop:Generator_ColumnPropNameInRow="IDApplication" msprop:Generator_ColumnPropNameInTable="IDApplicationColumn" msprop:Generator_ColumnVarNameInTable="columnIDApplication" msprop:Generator_UserColumnName="IDApplication" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="nVisible" msprop:Generator_ColumnPropNameInRow="nVisible" msprop:Generator_ColumnPropNameInTable="nVisibleColumn" msprop:Generator_ColumnVarNameInTable="columnnVisible" msprop:Generator_UserColumnName="nVisible" type="xs:int" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint11">

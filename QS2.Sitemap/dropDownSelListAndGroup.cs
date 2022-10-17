@@ -136,7 +136,7 @@ namespace qs2.sitemap
             try
             {
                 if (clear) this.dsAdmin1.vListEntriesWithGroup.Clear();
-                this.sqlAdmin1.getSelListEntrysRelGroup(group, "", Application, ref this.dsAdmin1, qs2.core.vb.sqlAdmin.eTypAuswahlList.group);
+                this.sqlAdmin1.getSelListEntrysRelGroup(group, Application, ref this.dsAdmin1, qs2.core.vb.sqlAdmin.eTypAuswahlList.group);
                 this.ultraDropDownSelListsWithGroup.Refresh();
 
                 foreach ( UltraGridRow  rGridEntryObj in this.ultraDropDownSelListsWithGroup.Rows)

@@ -220,31 +220,10 @@
     End Sub
 
     Public Sub loadAll(ClearDataTableSelListEntries As Boolean)
-        If System.Diagnostics.Process.GetCurrentProcess().ProcessName <> "devenv" Then
-            Me.getButtonsForUser(sqlAdmin.dsAllAdmin, eTypAuswahlList.all)
-        End If
         Me.getCriterias(sqlAdmin.dsAllAdmin, eTypSelCriteria.search, "", license.doLicense.eApp.ALL.ToString(), False, False, False, "", "", False)
-        'Me.getSelListEntrysObj(-999, eDbTypAuswObj.Criterias, "", sqlAdmin.dsAllAdmin, eTypAuswahlObj.AllSelListObjects, "")
-        'Me.getSelListEntrysRelGroup("", "", "", sqlAdmin.dsAllAdmin, eTypAuswahlList.all)
-        'Me.getCriteriasOpt(sqlAdmin.dsAllAdmin, eTypSelCriteriaOpt.all, "", license.doLicense.eApp.ALL.ToString())
-        'Me.getRelationsship(sqlAdmin.dsAllAdmin, eTypSelRelationship.all, "", license.doLicense.eApp.ALL.ToString(), "")
         Me.getSelListGroup(sqlAdmin.dsAllAdmin, eTypSelGruppen.all, "", "", license.doLicense.eApp.ALL.ToString())
         Me.loadAllSelListEntries(ClearDataTableSelListEntries)
         qs2.core.vb.sqlObjects.loadAllData()
-
-        Dim arrSelListEntrieiesGroupUsers() As dsAdmin.tblSelListGroupRow = sqlAdmin.dsAllAdmin.tblSelListGroup.Select(sqlAdmin.dsAllAdmin.tblSelListGroup.IDGroupStrColumn.ColumnName + "='Users'", "")
-        Dim arrAllUsers() As dsObjects.tblObjectRow = sqlObjects.dsAllUsers.tblObject.Select(sqlObjects.dsAllUsers.tblObject.IsUserColumn.ColumnName + "=1", sqlObjects.dsAllUsers.tblObject.NameCombinationColumn.ColumnName + " asc")
-        For Each rObject As dsObjects.tblObjectRow In arrAllUsers
-            Dim rNewSelListEntry As dsAdmin.tblSelListEntriesRow = Me.getNewRowSelList(sqlAdmin.dsAllAdmin, False)
-            rNewSelListEntry.ID = rObject.ID
-            rNewSelListEntry.IDRessource = rObject.NameCombination
-            rNewSelListEntry.IDGuid = rObject.IDGuid
-            rNewSelListEntry.IDOwnInt = rObject.ID
-            rNewSelListEntry._Private = rObject.IsUser
-            rNewSelListEntry.Extern = rObject.Active
-            rNewSelListEntry.IDOwnStr = rObject.UserName
-            rNewSelListEntry.IDGroup = arrSelListEntrieiesGroupUsers(0).ID
-        Next
     End Sub
 
     Public Function getSelListGroupRow_ParticAppl(ByRef Parameters As ParametersSelListEntries, ByVal IDGroup As String, ByVal IDParticipant As String,
@@ -587,9 +566,9 @@
         End Try
     End Function
 
-    Public Function getSelListEntrysRelGroup(ByVal IDGroup As String,
-                                      ByVal IDParticipant As String, ByVal IDApplication As String,
-                                      ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList) As dsAdmin.vListEntriesWithGroupRow()
+    Public Sub getSelListEntrysRelGroup(ByVal IDGroup As String,
+                                      ByVal IDApplication As String,
+                                      ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList)
 
         Me.davListEntriesWithGroup.SelectCommand.CommandText = Me.sel_daSelListEntrysRelGroup
         core.dbBase.setConnection(Me.davListEntriesWithGroup)
@@ -603,20 +582,10 @@
                 Me.davListEntriesWithGroup.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.vListEntriesWithGroup.g_IDApplicationColumn.ColumnName), IDApplication.ToString())
             End If
             Me.davListEntriesWithGroup.SelectCommand.CommandText += sWhere + sqlTxt.orderBy + ds.vListEntriesWithGroup.g_IDApplicationColumn.ColumnName + sqlTxt.asc + "," + ds.vListEntriesWithGroup.s_IDRessourceColumn.ColumnName + sqlTxt.asc
-
-        ElseIf typSel = eTypAuswahlList.IDGroupStrAppRam Then
-            Dim sWhere As String = ds.vListEntriesWithGroup.g_IDGroupStrColumn.ColumnName + "='" + IDGroup + "'" + sqlTxt.and +
-                                    ds.vListEntriesWithGroup.g_IDApplicationColumn.ColumnName + "='" + IDApplication + "'"
-            Dim arrSelListWithGroup() As dsAdmin.vListEntriesWithGroupRow = sqlAdmin.dsAllAdmin.vListEntriesWithGroup.Select(sWhere)
-            Return arrSelListWithGroup
-
-        Else
-            Throw New Exception("sqlAdmin.getSelListEntrysRelGroup: typSel '" + typSel.ToString() + "' is wrong!")
         End If
 
         Me.davListEntriesWithGroup.Fill(ds.vListEntriesWithGroup)
-        Return Nothing
-    End Function
+    End Sub
 
     Public Function getSelListEntrysSort(ID As Integer, IDParticipant As String,
                                            ds As dsAdmin, typeSel As eTypSelListSort, sWhere As String) As dsAdmin.tblSelListEntriesSortRow()
@@ -1308,16 +1277,6 @@
         Me.daRelationship.Fill(ds.tblRelationship)
     End Function
 
-    Public Function updateSortStayAddition(ByVal IDGuidStayAddition As System.Guid, Sort As Integer) As Boolean
-        Dim ds As New dsAdmin
-        Dim cmd As New System.Data.SqlClient.SqlCommand
-        cmd.Parameters.Clear()
-        cmd.CommandText = " update qs2.tblStayAdditions set Sort=" + Sort.ToString() + " where IDGuid='" + IDGuidStayAddition.ToString() + "'"
-        cmd.Connection = qs2.core.dbBase.dbConn
-        cmd.ExecuteNonQuery()
-        Return True
-    End Function
-
     Public Function getQueriesDef(ByVal ID As Integer, ByVal ds As dsAdmin, ByVal typSel As eTypSelQueryDef,
                                    ByVal typQueryDef As qs2.core.Enums.eTypQueryDef,
                                    ByVal IDParticipant As String, ByVal IDApplication As String) As Boolean
@@ -1459,23 +1418,4 @@
         Me.daMaxSelListGroupID.Fill(ds.SelListMaxIDs)
     End Function
 
-    Public Function getButtonsForUser(ByRef ds As dsAdmin, ByVal typSel As eTypAuswahlList) As Boolean
-        Try
-            Me.daGetButtonsForUser.SelectCommand.CommandText = Me.sel_GetButtonsForUser
-            database.setConnection(Me.daGetButtonsForUser)
-            Me.daGetButtonsForUser.SelectCommand.Parameters.Clear()
-
-            If typSel = eTypAuswahlList.all Then
-                Dim sWhere As String = ""
-            Else
-                Throw New Exception("sqlAdmin.getButtonsForUser: typSel '" + typSel.ToString() + "' is wrong!")
-            End If
-
-            Me.daGetButtonsForUser.Fill(ds.getButtonsForUser)
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("getButtonsForUser: " + ex.ToString())
-        End Try
-    End Function
 End Class

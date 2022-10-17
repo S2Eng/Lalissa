@@ -407,58 +407,6 @@ namespace qs2.design.auto.multiControl
                                                                 qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
         }
-   
-
-        public bool saveData()
-        {
-            try
-            {
-                this.sqlAdmin1.daStayAdditions.Update(this.dsAdminShow.tblStayAdditions);
-                foreach (qs2.core.vb.dsAdmin.tblStayAdditionsRow rStayAdditionsRow in this.dsAdminShow.tblStayAdditions)
-                {
-                    this.sqlAdmin1.updateSortStayAddition(rStayAdditionsRow.IDGuid, rStayAdditionsRow.Sort);
-                }
-                
-                return true;
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMultiGridSelList.saveData", "", false, true,
-                                                                this.ownMCCriteria1.Application,
-                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                return false;
-            }
-        }
-        public void getTableAdditions(ref dsAdmin.tblStayAdditionsDataTable tStayAdditionsCopy)
-        {
-            try
-            {
-                if (!tStayAdditionsCopy.Columns.Contains(qs2.core.generic.columnNameText))
-                {
-                    tStayAdditionsCopy.Columns.Add(qs2.core.generic.columnNameText, typeof(string));
-                    tStayAdditionsCopy.Columns[qs2.core.generic.columnNameText].SetOrdinal(0);
-                    tStayAdditionsCopy.PrimaryKey = null;
-                }
-                
-                foreach (dsAdmin.tblStayAdditionsRow rStayAdditionToCopy in this.dsAdminShow.tblStayAdditions)
-                {
-                    if (rStayAdditionToCopy.RowState != DataRowState.Deleted)
-                    {
-                        dsAdmin.tblStayAdditionsRow rNewStayAddition = (dsAdmin.tblStayAdditionsRow)tStayAdditionsCopy.NewRow();
-                        rNewStayAddition.ItemArray = rStayAdditionToCopy.ItemArray;
-                        tStayAdditionsCopy.Rows.Add(rNewStayAddition);
-                    }
-                }
-                
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMultiGridSelList.getTableAdditions", "", false, true,
-                                                                this.ownMCCriteria1.Application,
-                                                                qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-            }
-        }
-
         public void getSelListsAdded(System.Collections.Generic.List<qs2.core.generic.retValue> lstUserInput)
         {
             try
@@ -1363,61 +1311,6 @@ namespace qs2.design.auto.multiControl
                                                                 this.ownMCCriteria1.Application,
                                                                 qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
                 return 5000;
-            }
-        }
-
-        public void unloadControl()
-        {
-            try
-            {
-                try
-                {
-                    this.dsAdminShow.Clear();
-                    this.dsAdminWorker.Clear();
-
-                    this.gridData.DataSource = null;
-                    this.gridData.DataMember = null;
-                    this.gridData.DataBind();
-                    Application.DoEvents();
-                    this.ownMCCriteria1.ownMCCombo1 = null;
-
-                    this.gridData.Dispose();
-                    this.gridData = null;
-
-                    this.dsAdminShow = null;
-                    this.dsAdminWorker = null;
-                }
-                catch (Exception ex2)
-                {
-                    string xy = ex2.ToString();
-                    //throw new Exception(ex2.ToString());
-                }
-
-                this.ownControlInfo1 = null;
-                this.ownControlUI1 = null;
-                this.ui1 = null;
-
-                if (this.ownMCCriteria1 != null)
-                {
-                    this.ownMCCriteria1.rCriteria = null;
-                    this.ownMCCriteria1.rColSys = null;
-                }
-
-                foreach (qs2.design.auto.multiControl.contMultiGridSelListElement element in this.panelAdd.Controls)
-                {
-                    element.cboSelListEntrySelection.DataSource = null;
-                    element.cboSelListEntrySelection.DataMember = null;
-                    element.cboSelListEntrySelection.DataBind();
-
-                    element.mainControl = null;
-                }
-
-                this.ownMCCriteria1 = null;
-
-            }
-            catch (Exception ex)
-            {
-                string xy = ex.ToString();
             }
         }
 

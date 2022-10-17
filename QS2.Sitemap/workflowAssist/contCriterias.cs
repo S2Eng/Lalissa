@@ -78,7 +78,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
         public void initControl(string typApplication, string searchString)
         {
             this.chkRelationsship.Checked = true;
-            this.chkCriteriaOpt.Checked = true;
             this.chkChapters.Checked = true;
 
             this.chkTranslateRessources.Checked = true;
@@ -89,10 +88,8 @@ namespace qs2.sitemap.manage.wizardsDevelop
 
             this.cboResTyp.Value = core.Enums.eResourceType.Label;
             this.txtSearch.Text = searchString.Trim();
-            //this.loadData();
-
-            //this.gridInfrag1.Rows.ExpandAll(true);
         }
+
         public void loadRes()
         {
             try
@@ -110,7 +107,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 this.btnClose.Text = qs2.core.language.sqlLanguage.getRes("Close");
 
                 this.lblSearch.Text = qs2.core.language.sqlLanguage.getRes("Search");
-                this.chkCriteriaOpt.Text = qs2.core.language.sqlLanguage.getRes("ShowTabOptionsCriteria");
                 this.chkRelationsship.Text = qs2.core.language.sqlLanguage.getRes("ShowTabRelationsship");
                 this.chkChapters.Text = qs2.core.language.sqlLanguage.getRes("ShowTabChapters");
                 this.chkTranslateRessources.Text = qs2.core.language.sqlLanguage.getRes("TranslateRessources");
@@ -148,7 +144,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblSelListEntriesObj.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblSelListEntriesObj.IDSelListEntryColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("Chapter");
                 this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblSelListEntriesObj.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblSelListEntriesObj.DescriptionColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("Description");
 
-                this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblCriteriaOpt.ParentRelations[0].RelationName].Hidden = !this.chkCriteriaOpt.Checked;
                 this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblRelationship.ParentRelations[0].RelationName].Hidden = !this.chkRelationsship.Checked;
 
                 this.setUIAddNewBox();
@@ -158,7 +153,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
 
                 this.btnExpandAll.Text = qs2.core.language.sqlLanguage.getRes("ExpandAll");
                 this.btnCollapsAll.Text = qs2.core.language.sqlLanguage.getRes("CollapsAll");
-                this.chkCriteriaOpt.Visible = false;
 
                 if (this._TypeUI == eTypeUI.EditDefaultValues)
                 {
@@ -236,13 +230,8 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 if (this.cboResTyp.Value != null)
                     enumTypResSearch = qs2.core.generic.searchEnumRessourcenTyp((String)this.cboResTyp.Value);
 
-        
-                this.sqlAdmin1.getCriterias(this.dsAdmin1, sqlAdmin.eTypSelCriteria.search, this.txtSearch.Text.Trim(), enumAppFound.ToString(), false, false, false, "", "", false);
-                if (this.chkCriteriaOpt.Checked )
-                {
-                    this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblCriteriaOpt.ParentRelations[0].RelationName].Hidden = !this.chkCriteriaOpt.Checked;
-                    this.sqlAdmin1.getCriteriasOpt(this.dsAdmin1, sqlAdmin.eTypSelCriteriaOpt.all, "", core.license.doLicense.eApp.ALL.ToString());
-                }
+        this.sqlAdmin1.getCriterias(this.dsAdmin1, sqlAdmin.eTypSelCriteria.search, this.txtSearch.Text.Trim(), enumAppFound.ToString(), false, false, false, "", "", false);
+
                 if (this.chkRelationsship.Checked)
                 {
                     this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblRelationship.ParentRelations[0].RelationName].Hidden = !this.chkRelationsship.Checked;
@@ -325,8 +314,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                     qs2.core.dbBase.setConnection2(this.sqlAdmin1.daSelListEntrysObj);
 
                     this.sqlAdmin1.daCriteria.Update(this.dsAdmin1.tblCriteria);
-                    if (this.chkCriteriaOpt.Checked)
-                        this.sqlAdmin1.daCriteriaOpt.Update(this.dsAdmin1.tblCriteriaOpt);
                     if (this.chkRelationsship.Checked)
                         this.sqlAdmin1.daRelationship.Update(this.dsAdmin1.tblRelationship);
                     if (this.chkChapters.Checked)
@@ -571,26 +558,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
             qs2.core.ui.delGridRowYN(e);
        }
        
-       private void chkCriteriaOpt_CheckedChanged(object sender, EventArgs e)
-       {
-           try
-           {
-               this.Cursor = Cursors.WaitCursor;
-               if (this.chkCriteriaOpt.Focused)
-               {
-                   this.loadData();
-               }
-           }
-           catch (Exception ex)
-           {
-               qs2.core.generic.getExep(ex.ToString(), ex.Message);
-           }
-           finally
-           {
-               this.Cursor = Cursors.Default;
-           }
-       }
-
        private void chkRelationsship_CheckedChanged(object sender, EventArgs e)
        {
            try

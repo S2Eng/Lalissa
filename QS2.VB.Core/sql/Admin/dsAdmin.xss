@@ -7,26 +7,25 @@
 <DiagramLayout xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ex:showrelationlabel="False" ViewPortX="32" ViewPortY="-47" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:tblSelListEntriesObj" ZOrder="1" X="106" Y="885" Height="523" Width="179" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="519" />
-    <Shape ID="DesignTable:tblCriteriaOpt" ZOrder="16" X="698" Y="789" Height="162" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
-    <Shape ID="DesignTable:tblSelListGroup" ZOrder="19" X="45" Y="-37" Height="295" Width="155" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="291" />
+    <Shape ID="DesignTable:tblCriteriaOpt" ZOrder="15" X="698" Y="789" Height="162" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
+    <Shape ID="DesignTable:tblSelListGroup" ZOrder="18" X="45" Y="-37" Height="295" Width="155" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="291" />
     <Shape ID="DesignTable:tblSelListEntries" ZOrder="2" X="42" Y="296" Height="561" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="557" />
-    <Shape ID="DesignTable:tblCriteria" ZOrder="12" X="696" Y="240" Height="504" Width="178" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="500" />
-    <Shape ID="DesignTable:tblRelationship" ZOrder="18" X="687" Y="-31" Height="238" Width="154" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="234" />
-    <Shape ID="DesignTable:protokoll" ZOrder="23" X="910" Y="712" Height="181" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="177" />
+    <Shape ID="DesignTable:tblCriteria" ZOrder="11" X="696" Y="240" Height="504" Width="178" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="500" />
+    <Shape ID="DesignTable:tblRelationship" ZOrder="17" X="687" Y="-31" Height="238" Width="154" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="234" />
+    <Shape ID="DesignTable:protokoll" ZOrder="22" X="910" Y="712" Height="181" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="177" />
     <Shape ID="DesignTable:tblQueriesDef" ZOrder="3" X="471" Y="75" Height="637" Width="208" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="633" />
-    <Shape ID="DesignTable:SelListMaxIDs" ZOrder="17" X="279" Y="621" Height="48" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="44" />
-    <Shape ID="DesignTable:tblStayAdditions" ZOrder="13" X="273" Y="280" Height="333" Width="173" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="329" />
-    <Shape ID="DesignTable:vListEntriesWithGroup" ZOrder="14" X="375" Y="806" Height="581" Width="203" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="577" />
-    <Shape ID="DesignTable:vSelListEntriesObj" ZOrder="11" X="987" Y="949" Height="257" Width="223" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
-    <Shape ID="DesignTable:getAllUsersWithRoles" ZOrder="10" X="1087" Y="50" Height="67" Width="191" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="63" />
-    <Shape ID="DesignTable:getButtonsForUser" ZOrder="9" X="1084" Y="135" Height="67" Width="175" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="86" />
-    <Shape ID="DesignTable:getCriteriasForUser" ZOrder="8" X="1145" Y="215" Height="86" Width="178" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
-    <Shape ID="DesignTable:getAllUsersWithRights" ZOrder="7" X="1153" Y="321" Height="67" Width="197" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="63" />
-    <Shape ID="DesignTable:tblSelListEntriesSort" ZOrder="5" X="691" Y="998" Height="105" Width="182" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
-    <Shape ID="DesignTable:getCriteriasUserForUser" ZOrder="4" X="1336" Y="205" Height="105" Width="211" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
+    <Shape ID="DesignTable:SelListMaxIDs" ZOrder="16" X="279" Y="621" Height="48" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="44" />
+    <Shape ID="DesignTable:tblStayAdditions" ZOrder="12" X="273" Y="280" Height="333" Width="173" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="329" />
+    <Shape ID="DesignTable:vListEntriesWithGroup" ZOrder="13" X="375" Y="806" Height="581" Width="203" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="577" />
+    <Shape ID="DesignTable:vSelListEntriesObj" ZOrder="10" X="987" Y="949" Height="257" Width="223" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
+    <Shape ID="DesignTable:getAllUsersWithRoles" ZOrder="9" X="1087" Y="50" Height="67" Width="191" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="63" />
+    <Shape ID="DesignTable:getButtonsForUser" ZOrder="8" X="1084" Y="135" Height="67" Width="175" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="86" />
+    <Shape ID="DesignTable:getCriteriasForUser" ZOrder="7" X="1145" Y="215" Height="86" Width="178" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
+    <Shape ID="DesignTable:getAllUsersWithRights" ZOrder="6" X="1153" Y="321" Height="67" Width="197" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="63" />
+    <Shape ID="DesignTable:tblSelListEntriesSort" ZOrder="4" X="691" Y="998" Height="105" Width="182" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:tblSelListGroup_tblSelListEntries" ZOrder="24" LineWidth="11">
+    <Connector ID="DesignRelation:tblSelListGroup_tblSelListEntries" ZOrder="23" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>124</X>
@@ -38,7 +37,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:tblCriteria_tblSelListEntriesObj" ZOrder="6" LineWidth="11">
+    <Connector ID="DesignRelation:tblCriteria_tblSelListEntriesObj" ZOrder="5" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>754</X>
@@ -58,7 +57,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:tblCriteria_tblRelationship1" ZOrder="22" LineWidth="11">
+    <Connector ID="DesignRelation:tblCriteria_tblRelationship1" ZOrder="21" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>768</X>
@@ -70,7 +69,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:tblCriteria_tblCriteriaOpt" ZOrder="21" LineWidth="11">
+    <Connector ID="DesignRelation:tblCriteria_tblCriteriaOpt" ZOrder="20" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>776</X>
@@ -82,7 +81,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:tblCriteria_tblQueriesDef" ZOrder="20" LineWidth="11">
+    <Connector ID="DesignRelation:tblCriteria_tblQueriesDef" ZOrder="19" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>696</X>
@@ -94,7 +93,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:tblSelListEntries_tblStayAdditions" ZOrder="15" LineWidth="11">
+    <Connector ID="DesignRelation:tblSelListEntries_tblStayAdditions" ZOrder="14" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>200</X>
