@@ -8,12 +8,9 @@
     Public sel_daSelListEntrysObj As String = ""
     Public sel_daSelListEntrysRelGroup As String = ""
     Public sel_daSelCriteria As String = ""
-    Public sel_daSelCriteriaOpt As String = ""
     Public sel_daSelRelationship As String = ""
     Public sel_daSelQueriesDef As String = ""
-    Public sel_daSelQueryJoinsTemp As String = ""
     Public sel_daMaxSelListGroupID As String = ""
-    Public sel_GetButtonsForUser As String = ""
 
     Public Shared dsAllAdmin As dsAdmin = New dsAdmin()
     Public Shared typIDGroup_CompletedChapters As String = "CompletedChapter"
@@ -134,10 +131,6 @@
         IDSelList = 51601
     End Enum
 
-    Public Enum eTypSelQueryJoinsTemp
-        all = 51700
-    End Enum
-
     Public Shared IDClassificationChapterAlwaysEditable As String = "Type=EditableWhenCompleted;"
 
     Public Sub initControl()
@@ -147,12 +140,9 @@
         Me.sel_daSelListEntrysRelGroup = Me.davListEntriesWithGroup.SelectCommand.CommandText
         Me.sel_daSelListEntrysObj = Me.daSelListEntrysObj.SelectCommand.CommandText
         Me.sel_daSelCriteria = Me.daCriteria.SelectCommand.CommandText
-        Me.sel_daSelCriteriaOpt = Me.daCriteriaOpt.SelectCommand.CommandText
         Me.sel_daSelRelationship = Me.daRelationship.SelectCommand.CommandText
         Me.sel_daSelQueriesDef = Me.daQueriesDef.SelectCommand.CommandText
-        Me.sel_daSelQueryJoinsTemp = Me.daQueryJoinsTemp.SelectCommand.CommandText
         Me.sel_daMaxSelListGroupID = Me.daMaxSelListGroupID.SelectCommand.CommandText
-        Me.sel_GetButtonsForUser = Me.daGetButtonsForUser.SelectCommand.CommandText
     End Sub
 
 
@@ -266,13 +256,10 @@
 
         Dim ds As New dsAdmin
         Me.getSelListGroup(ds, eTypSelGruppen.IDGruppeStr, IDGroup, IDParticipant, IDApplication)
-        If ds.tblSelListGroup.Rows.Count = 0 Then
+        If ds.tblSelListGroup.Rows.Count = 0 Or ds.tblSelListGroup.Rows.Count > 1 Then
             Return Nothing
-        ElseIf ds.tblSelListGroup.Rows.Count = 1 Then
+        Else
             Return ds.tblSelListGroup.Rows(0)
-        ElseIf ds.tblSelListGroup.Rows.Count > 1 Then
-            'Throw New Exception("getSelListGroupRow.idGroup: More than one Row for IDGroup '" + idGruppe.ToString() + "' found!")
-            Return Nothing
         End If
     End Function
 
@@ -335,22 +322,6 @@
             Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblSelListGroup.IDColumn.ColumnName)
             Me.daSelListGroup.SelectCommand.CommandText += sWhere
             Me.daSelListGroup.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblSelListGroup.IDColumn.ColumnName), ID.ToString())
-
-        ElseIf typSel = eTypSelGruppen.SelListUsr Then
-            Dim sWhere As String = sqlTxt.where + ds.tblSelListGroup.ClassificationColumn.ColumnName + sqlTxt.likePerc + str.Trim() + sqlTxt.likePercEnd +
-                                    sqlTxt.and + sqlTxt.getColWhere(ds.tblSelListGroup.IDApplicationColumn.ColumnName)
-
-            Me.daSelListGroup.SelectCommand.CommandText += sWhere
-            Me.daSelListGroup.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblSelListGroup.IDApplicationColumn.ColumnName), IDApplication.ToString())
-
-        ElseIf typSel = eTypSelGruppen.IDGruppeRam Then
-            Dim arrSelListGroup() As dsAdmin.tblSelListGroupRow = sqlAdmin.dsAllAdmin.tblSelListGroup.Select(ds.tblSelListGroup.IDGroupStrColumn.ColumnName + "='" + IDGroup + "'" + sqlTxt.and + ds.tblSelListGroup.IDParticipantColumn.ColumnName + "='" + IDParticipant + "'" + sqlTxt.and + ds.tblSelListGroup.IDApplicationColumn.ColumnName + "='" + IDApplication + "'")
-            Return arrSelListGroup
-
-        ElseIf typSel = eTypSelGruppen.IDRam Then
-            Dim arrSelListGroup() As dsAdmin.tblSelListGroupRow = sqlAdmin.dsAllAdmin.tblSelListGroup.Select(ds.tblSelListGroup.IDColumn.ColumnName + "=" + ID.ToString() + "")
-            Return arrSelListGroup
-
         Else
             Throw New Exception("sqlAdmin.getSelListGroup: typSel '" + typSel.ToString() + "' is wrong!")
         End If

@@ -2,67 +2,34 @@
 using PMDS.Global;
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.Data.Entity;
-using System.Data.Entity.Core.EntityClient;
-using System.Data.Entity.Infrastructure;
-using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Configuration;
 using System.Data;
-using System.IO;
-using PMDS.Global.db.Patient;
-using System.Drawing;
-using PMDS.Global.db.ERSystem;
-using Patagames.Pdf.Net;
-using Patagames.Pdf.Enums;
 using System.Threading;
-using PMDS.DB;
 using System.Net.NetworkInformation;
 using System.Net;
 using System.Net.Sockets;
-using MARC.Everest.DataTypes;
-
 
 namespace PMDS.DB
 {
-    
     public class PMDSBusinessComm
     {
-        
         public static string uniqueIDMachine = "";
-        public static Guid IDMachinesProtocoll = new Guid("00000001-0045-0000-0000-000000001111");
-
         public static bool threadsRunning = false;
-
+        public static Thread threadLoadData = null;
+        public static bool closeAllThreads = false;
 
         public enum eClientsMessage
         {
             MessageToAllClients = 0,
-
         }
+
         public enum eTypeMessage
         {
             ReloadRAMAll = 0
         }
-        
-        public static Thread threadLoadData = null;
-        public static bool closeAllThreads = false;
-
-
-
-
-
-
-
-
-
-
-
-        public bool startThreadCheckingData()
+       
+        public void startThreadCheckingData()
         {
             try
             {
@@ -72,17 +39,14 @@ namespace PMDS.DB
                     object objThread = new object();
                     objThread = 0;
                     PMDSBusinessComm.threadLoadData.Start(objThread);
-                    return true;
                 }
-
-                return false;
-
             }
             catch (Exception ex)
             {
                 throw new Exception("PMDSBusinessComm.startThreadCheckingData: " + ex.ToString());
             }
         }
+
         public void threadCheckLoadingData(object obj)
         {
             int iFctCalled = (int)obj;
@@ -106,9 +70,7 @@ namespace PMDS.DB
                         if (PMDS.DB.PMDSBusinessComm.closeAllThreads)
                         {
                             bEnd = true;
-                            //Thread.CurrentThread.Abort();
                         }
-                              
                     }
                     catch (Exception ex3)
                     {
@@ -123,31 +85,23 @@ namespace PMDS.DB
                         }
                     }
                 }
-
             }
             catch (Exception ex)
             {
-                if (PMDS.DB.PMDSBusinessComm.closeAllThreads)
-                {
-                    string sExcept = "PMDSBusinessComm.threadCheckLoadingData: " + "\r\n" + ex.ToString();
-                    PMDS.Global.ENV.HandleException(new Exception(sExcept), "", false, false);
-                    //Thread.CurrentThread.Abort();
-                    //Thread.CurrentThread.Abort();
-                }
-                else
-                {
-                    string sExcept = "PMDSBusinessComm.threadCheckLoadingData: " + "\r\n" + ex.ToString();
-                    PMDS.Global.ENV.HandleException(new Exception(sExcept), "", false, false);
-                }
+                string sExcept = "PMDSBusinessComm.threadCheckLoadingData: " + "\r\n" + ex.ToString();
+                PMDS.Global.ENV.HandleException(new Exception(sExcept), "", false, false);
             }
         }
-
-
 
         public static void setUniqueIDMachine()
         {
             try
             {
+                if (string.IsNullOrEmpty(Environment.MachineName))
+                {
+                    throw new Exception("PMDSBusinessComm.setUniqueIDMachine: Environment.MachineName is null or '' not allowed!");
+                }
+
                 var macAddr =
                     (
                         from nic in NetworkInterface.GetAllNetworkInterfaces()
@@ -155,38 +109,31 @@ namespace PMDS.DB
                         select nic.GetPhysicalAddress().ToString()
                     ).FirstOrDefault();
 
-                //if (macAddr == null || macAddr.ToString() == "")
-                //{
-                //    throw new Exception("PMDSBusinessComm.setUniqueIDMachine: macAddr is null or '' not allowed!");
-                //}
-                
-                if (macAddr == null || macAddr.ToString() == "")
+                if (string.IsNullOrEmpty(macAddr))
                     macAddr = "not detected";
 
-                if (Environment.MachineName == null || Environment.MachineName.Trim() == "")
+                string LocalIPAdress = "";
+                using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
                 {
-                    throw new Exception("PMDSBusinessComm.setUniqueIDMachine: Environment.MachineName is null or '' not allowed!");
+                    socket.Connect("8.8.8.8", 65530);
+                    IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+                    LocalIPAdress = endPoint.Address.ToString();
                 }
-
-                PMDSBusinessComm.uniqueIDMachine = "" + Environment.MachineName.Trim() + "_" + PMDSBusinessComm.GetLocalIPAddress() + "_" + macAddr.ToString() + "";
-
+/*  Uses just first active IP-Address
+                foreach (var ip in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+                {
+                    if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        LocalIPAdress = ip.ToString();
+                    }
+                }
+*/
+                PMDSBusinessComm.uniqueIDMachine = Environment.MachineName + "_" + LocalIPAdress + "_" + macAddr;
             }
             catch (Exception ex)
             {
-                throw new Exception("PMDSBusinessComm.loadDataStart: " + ex.ToString());
+                throw new Exception("PMDSBusinessComm.loadDataStart: " + ex);
             }
-        }
-        public static string GetLocalIPAddress()
-        {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    return ip.ToString();
-                }
-            }
-            throw new Exception("PMDSBusinessComm.GetLocalIPAddress: No network adapters with an IPv4 address in the system!");
         }
 
         public static void registerClient(string uniqueIDMachine)
@@ -204,6 +151,7 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusinessComm.registerClients: " + ex.ToString());
             }
         }
+
         public static void newCommAsyncToClients(eClientsMessage ClientsMessage, eTypeMessage TypeMessage,  PMDS.db.Entities.ERModellPMDSEntities db, Nullable<Guid> FromIDUser = null,
                                                 List<Guid> lstToUsers = null, string Title = "", string Message = "", Nullable<DateTime> IDTimeRepeat = null)
         {
@@ -239,7 +187,6 @@ namespace PMDS.DB
                 cmdUpdate.Connection = RBU.DataBase.CONNECTIONSqlClient;
                 cmdUpdate.CommandTimeout = 0;
                 cmdUpdate.ExecuteNonQuery();
-
             }
             catch (Exception ex)
             {
@@ -250,6 +197,7 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusinessComm.newCommAsyncToClients: " + ex.ToString());
             }
         }
+
         public static void newMessageToClients2(eClientsMessage ClientsMessage, PMDS.db.Entities.ERModellPMDSEntities db, Nullable<Guid> FromIDUser = null,
                                             List<Guid> lstToUsers = null, string Title = "", string Message = "", Nullable<DateTime> IDTimeRepeat = null)
         {
@@ -284,7 +232,7 @@ namespace PMDS.DB
             }
         }
 
-        public static bool checkCommAsyncForClient(eClientsMessage ClientsMessage, eTypeMessage TypeMessage)
+        public static void checkCommAsyncForClient(eClientsMessage ClientsMessage, eTypeMessage TypeMessage)
         {
             try
             {
@@ -294,16 +242,17 @@ namespace PMDS.DB
                     string sTypeMessage = TypeMessage.ToString();
 
                     var rComm = (from c in db.CommAsync
-                                 where c.ClientsMessage == sClientsMessage && c.TypeMessage == sTypeMessage
-                                 orderby c.Created descending
-                                 select new {c.ID}).FirstOrDefault();
+                        where c.ClientsMessage == sClientsMessage && c.TypeMessage == sTypeMessage
+                        orderby c.Created descending
+                        select new {c.ID}).FirstOrDefault();
 
                     if (rComm != null)
                     {
                         var rCommClients = (from cc in db.CommAsyncClients
-                                   where cc.IDCommAsync == rComm.ID && cc.IDClient == PMDSBusinessComm.uniqueIDMachine.Trim() && cc.Done
-                                            select new
-                                   { cc.ID }).FirstOrDefault();
+                            where cc.IDCommAsync == rComm.ID &&
+                                  cc.IDClient == PMDSBusinessComm.uniqueIDMachine.Trim() && cc.Done
+                            select new
+                                {cc.ID}).FirstOrDefault();
                         if (rCommClients == null)
                         {
                             CommAsyncClients newCommClients = new CommAsyncClients();
@@ -322,25 +271,21 @@ namespace PMDS.DB
                             }
                             else
                             {
-                                throw new Exception("PMDSBusinessComm.checkCommAsyncForClient: TypeMessage - no action defined for TypeMessage '" + TypeMessage.ToString() + "'!");
+                                throw new Exception(
+                                    "PMDSBusinessComm.checkCommAsyncForClient: TypeMessage - no action defined for TypeMessage '" +
+                                    TypeMessage.ToString() + "'!");
                             }
-
-                            return true;
                         }
-                        else
-                            return false;
                     }
-                    else
-                        return false;
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception("PMDSBusinessComm.checkCommAsyncForClient: " + ex.ToString());
             }
         }
-        public static bool checkMessageForClient2()
+
+        public static void checkMessageForClient2()
         {
             try
             {
@@ -357,23 +302,15 @@ namespace PMDS.DB
 
                     if (tMU3.Any())
                     {
-                        //foreach (var rProt in tMU3)
-                        //{
-                        //}
-
                         cParDelegSendMain ParDelegSendMain = new cParDelegSendMain();
                         ParDelegSendMain.foundUnreadedMessages = tMU3.Count();
                         ENV.SignalMainChanged(eSendMain.ShowMessagesUnread, ParDelegSendMain);
-
-                        return true;
                     }
                     else
                     {
                         cParDelegSendMain ParDelegSendMain = new cParDelegSendMain();
                         ParDelegSendMain.foundUnreadedMessages = tMUnreaded2.Count();
                         ENV.SignalMainChanged(eSendMain.ShowMessagesUnread, ParDelegSendMain);
-
-                        return false;
                     }
                 }
             }
@@ -382,8 +319,5 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusinessComm.checkMessageForClient2: " + ex.ToString());
             }
         }
-
     }
-
-
 }
