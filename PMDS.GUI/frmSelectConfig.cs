@@ -1,31 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
 
 namespace PMDS.GUI
 {
-
     public partial class frmSelectConfig : Form
     {
-        public Global.db.ERSystem.PMDSBusinessUI.cItmTg cItmTg_SelectedConfig = null;
-        //public cItmTg cItmTg_SelectedDatabase = null;
+        private string _ConfigPath = "";
+        private string _ConfigFileDefault = "";
+        private string lastSelectedFile = "";
+        private PMDS.Global.db.ERSystem.PMDSBusinessUI bUI = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
 
+        public Global.db.ERSystem.PMDSBusinessUI.cItmTg cItmTg_SelectedConfig;
         public bool abort = true;
-        public string _ConfigPath = "";
-        public string _ConfigFileDefault = "";
-        public bool _runWithDefaultConfigFile = false;
-        public string lastSelectedFile = "";
-        public PMDS.Global.db.ERSystem.PMDSBusinessUI bUI = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
 
         public frmSelectConfig()
         {
@@ -84,8 +72,6 @@ namespace PMDS.GUI
             try
             {
                 this.cItmTg_SelectedConfig = null;
-                //this.cItmTg_SelectedDatabase = null;
-
                 this.cboConfigFiles.Items.Clear();
                 this.txtConfigFile.Text = "";
 
@@ -93,12 +79,7 @@ namespace PMDS.GUI
                 int iCounter = 0;
                 bool runWithDefaultConfigFile = false;
                 int iCounterConfigsFound = 0;
-                this.bUI.searchConfigDirForConfigs(FirstLoad, this._ConfigPath, this.cboConfigFiles, this._ConfigFileDefault, ref runWithDefaultConfigFile, ref this.lastSelectedFile, ref iCounterConfigsFound, ref itmSel);
-                //if (runWithDefaultConfigFile)
-                //{
-                //    this.abort = true;
-                //    this.Close();
-                //}
+                this.bUI.searchConfigDirForConfigs(FirstLoad, this._ConfigPath, this.cboConfigFiles, this._ConfigFileDefault, ref this.lastSelectedFile, ref iCounterConfigsFound, ref itmSel);
 
                 if (itmSel != null)
                 {

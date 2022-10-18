@@ -1020,9 +1020,8 @@ namespace PMDS.Global.db.ERSystem
             return sb.ToString();
         }
 
-
         public void searchConfigDirForConfigs(bool FirstLoad, string ConfigPath, Infragistics.Win.UltraWinEditors.UltraComboEditor cboConfigFiles, string ConfigFileDefault, 
-                                                ref bool runWithDefaultConfigFile, ref string lastSelectedFile, ref int iCounterConfigsFound, ref Infragistics.Win.ValueListItem itmSel)
+                                                ref string lastSelectedFile, ref int iCounterConfigsFound, ref Infragistics.Win.ValueListItem itmSel)
         {
             try
             {
@@ -1034,12 +1033,12 @@ namespace PMDS.Global.db.ERSystem
                 string[] FilesFoundInDirectory = System.IO.Directory.GetFiles(ConfigPath, "*.config", System.IO.SearchOption.TopDirectoryOnly);
                 foreach (string fil in FilesFoundInDirectory)
                 {
-                    string onlyFileName = System.IO.Path.GetFileName(fil.Trim()).ToLower();
-                    string OrigDirName = System.IO.Path.GetDirectoryName(fil.Trim());
-                    string sExtension = System.IO.Path.GetExtension(fil.Trim()).ToLower();
+                    string onlyFileName = System.IO.Path.GetFileName(fil).ToLower();
+                    string OrigDirName = System.IO.Path.GetDirectoryName(fil);
+                    string sExtension = System.IO.Path.GetExtension(fil).ToLower();
 
-                    if (sExtension.Equals(".config") 
-                        && onlyFileName.Contains("pmds") 
+                    if (sExtension.Equals(".config")
+                        && (onlyFileName.Contains("pmds") || onlyFileName.Contains("lellissa")) 
                         && !onlyFileName.Contains("qs2")
                         && !onlyFileName.Trim().ToLower().Contains("pmds_pws")
                         && !onlyFileName.Contains("abrechnung") 
@@ -1077,12 +1076,6 @@ namespace PMDS.Global.db.ERSystem
                         iCounterConfigsFound += 1;
                     }
                 }
-
-                if (FirstLoad && iCounterConfigsFound == 1)
-                {
-                    runWithDefaultConfigFile = true;
-                }
-
             }
             catch (Exception ex)
             {

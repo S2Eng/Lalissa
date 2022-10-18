@@ -11,28 +11,27 @@ namespace qs2.ui
     public class RunFromPMDS
 
     {
-        public static bool IsInitialized = false;
+        private static bool IsInitialized;
 
-        public bool LogIn(string path_config, string configFile, string Application, string Srv, string DB, string Usr, string Pwd, bool IsTrustedConnection, string PathLog)
+        public bool LogIn(string configFile, string Srv, string DB, string Usr, string Pwd, bool IsTrustedConnection, string PathLog)
         {
             try
             {
-                if (RunFromPMDS.IsInitialized)
+                if (IsInitialized)
                 {
                     return true;
                 }
 
                 sqlAdmin.dsAllAdmin = new dsAdmin();
 
-                qs2.core.ENV.PathConfig = path_config;
-                qs2.core.ENV.configFile = configFile;
+                qs2.core.ENV.PathConfig = System.IO.Path.GetDirectoryName(configFile);
+                qs2.core.ENV.configFile = System.IO.Path.GetFileName(configFile);
 
                 qs2.core.generic.evdoLog += new qs2.core.generic.doLog(qs2.ui.Logging.Log.doLog);
-                qs2.core.ENV.fileConfig = System.IO.Path.Combine(qs2.core.ENV.PathConfig, qs2.core.ENV.configFile);
-                if (!System.IO.File.Exists(qs2.core.ENV.fileConfig))
-                    throw new Exception("RunFromPMDS.LogIn: Config-File '" + qs2.core.ENV.fileConfig + "' does not exist!");
+                if (!System.IO.File.Exists(configFile))
+                    throw new Exception("RunFromPMDS.LogIn: Config-File '" + configFile + "' does not exist!");
 
-                qs2.core.ENV.readConfig(qs2.core.ENV.fileConfig, false);
+                qs2.core.ENV.readConfig(configFile, false);
                 qs2.core.ENV.PathLog = PathLog;
 
                 SqlConnectionStringBuilder sb = new SqlConnectionStringBuilder

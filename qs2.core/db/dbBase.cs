@@ -79,15 +79,10 @@ namespace qs2.core
         
         private static System.Data.SqlClient.SqlConnection _dbConnThreadMain;
 
-        public bool setConnectionDB2(string DbConnStrStayUI, string Info)
+        public bool setConnectionDB2()
         {
             try
             {
-                if (!String.IsNullOrWhiteSpace(DbConnStrStayUI))
-                {
-                    qs2.core.ENV.connStr = DbConnStrStayUI;
-                }
-
                 dbBase.getVarConnStr(qs2.core.ENV.connStr);
                 dbBase._dbConnThreadMain = new System.Data.SqlClient.SqlConnection(qs2.core.ENV.connStr);
                 dbBase._dbConnThreadMain.Open();        
@@ -232,26 +227,8 @@ namespace qs2.core
         {
             try
             {
-
                 dsResult = new System.Data.DataSet(datasetName);
                 System.Data.DataTable DataTable1 = new System.Data.DataTable(tableName);
-
-                //NICHT LÖSCHEN  ------------- Für MSOLEDBSQL statt SQLNativeClient ---------------- NICHT LÖSCHEN!!!!
-                //OleDbConnectionStringBuilder oleDBSB = new OleDbConnectionStringBuilder(qs2.core.dbBase.dbConn.ConnectionString);
-                //if (String.IsNullOrWhiteSpace(oleDBSB.Provider))
-                //{
-                //    oleDBSB.Provider = "MSOLEDBSQL";
-                //}
-
-                //using (OleDbConnection conn = new OleDbConnection(oleDBSB.ConnectionString))
-                //{
-                //    conn.Open();
-                //    using (OleDbDataAdapter da = new OleDbDataAdapter(sqlCommand, conn))
-                //    {
-                //        da.Fill(DataTable1);
-                //    }
-                //    dsResult.Tables.Add(DataTable1);
-                //}
 
                 using (System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(qs2.core.dbBase.dbConn.ConnectionString))
                 {
@@ -284,80 +261,7 @@ namespace qs2.core
                 throw new Exception("dbBase.fillDataSet:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
             }
         }
-
-        public static System.Data.DataTable buildSelectCommand(string TableName,
-                                                                System.Collections.Generic.List<qs2.core.generic.retValue> columnsSelect,
-                                                                System.Collections.Generic.List<qs2.core.generic.retValue> columnsWhere,
-                                                                bool AddSchema)
-        {
-            string sqlCommand = "";
-            string sqlColumns = "";
-            string sqlWhere = "";
-            foreach (qs2.core.generic.retValue colSelect in columnsSelect)
-            {
-                string sqlTemp = colSelect.fieldInfo.Trim();
-                sqlColumns += (sqlColumns.Trim() == "" ? "" : ",") + sqlTemp.Trim();
-            }
-            foreach (qs2.core.generic.retValue colWhere in columnsWhere)
-            {
-                string sqlTemp = colWhere.fieldInfo.Trim() + "=" + colWhere.valueStr.Trim() + " ";
-                sqlWhere += (sqlWhere.Trim() == "" ? qs2.core.sqlTxt.where : qs2.core.sqlTxt.and) + sqlTemp.Trim();
-            }
-            sqlCommand = sqlTxt.select + sqlColumns + sqlTxt.from + (AddSchema == true ? dbBase.dbSchema : "") + TableName + sqlWhere;
-
-            System.Data.DataTable DataTableResult = new System.Data.DataTable();
-            System.Data.SqlClient.SqlDataAdapter da = new System.Data.SqlClient.SqlDataAdapter();
-            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-            da.SelectCommand = cmd;
-            cmd.CommandText = sqlCommand;
-            cmd.Connection = qs2.core.dbBase.dbConn;
-            da.SelectCommand.CommandTimeout = 0;
-            da.Fill(DataTableResult);
-            return DataTableResult;
-        }
-
-        public static bool buildUpdateCommand(string TableName, System.Collections.Generic.List<qs2.core.generic.retValue> columnToUpdate,
-                                                System.Collections.Generic.List<qs2.core.generic.retValue> columnsWhere,
-                                                bool SchemaIncluded)
-        {
-            string sqlCommand = "";
-            try
-            {
-                string sqlColumnsWithValues = "";
-                string sqlWhere = "";
-                foreach (qs2.core.generic.retValue col in columnToUpdate)
-                {
-                    string sqlTemp = col.fieldInfo.Trim() + "=" + col.valueStr;
-                    sqlColumnsWithValues += (sqlColumnsWithValues.Trim() == "" ? "" : ",") + sqlTemp.Trim();
-                }
-                foreach (qs2.core.generic.retValue colWhere in columnsWhere)
-                {
-                    string sqlTemp = colWhere.fieldInfo.Trim() + "=" + colWhere.valueStr.Trim() + " ";
-                    sqlWhere += (sqlWhere.Trim() == "" ? qs2.core.sqlTxt.where : qs2.core.sqlTxt.and) + sqlTemp.Trim();
-                }
-
-                if (SchemaIncluded)
-                {
-                    sqlCommand = " Update " +  dbBase .dbSchema + TableName + " set " + sqlColumnsWithValues + sqlWhere;
-                }
-                else
-                {
-                    sqlCommand = " Update " + dbBase.dbSchema + qs2.core.dbBase.dbSchema + TableName + " set " + sqlColumnsWithValues + sqlWhere;
-                }
-                
-                System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-                cmd.CommandText = sqlCommand;
-                cmd.Connection = qs2.core.dbBase.dbConn;
-                cmd.CommandTimeout = 0;
-                cmd.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Sql-Command '" + sqlCommand.Trim() + "' is wrong!" + "\r\n" + ex.ToString());
-            }
-        }
-
+        
         public static qs2.core.generic.retValue getDefaultDBValue(ref qs2.core.SysDB.dsSysDB.COLUMNSRow rColSys, 
                                                             bool onlyDateTimeWithoutDefaultValue,
                                                             System.Collections.Generic.List<string> lstTablesNoDateTimeCheck,
@@ -490,35 +394,7 @@ namespace qs2.core
             }
         }
 
-        public static bool checkColSysNullable(ref qs2.core.SysDB.dsSysDB.COLUMNSRow rColSys)
-        {
-            try
-            {
-                if (rColSys.IsIS_NULLABLENull())
-                {
-                    throw new Exception("dbBase.checkColSysNullable: rColSys.IsIS_NULLABLENull()=True");
-                    //qs2.core.dbBase.setResultDbNull(ref ret);
-                }
-                else
-                {
-                    if (rColSys.IS_NULLABLE.ToLower() == qs2.core.dbBase.Yes.ToLower())
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("dbBase.checkColSysNullable: " + ex.ToString());
-                return false;
-            }
-        }
-        
-        public static void getDefaultDBValueDateTime(ref qs2.core.SysDB.dsSysDB.COLUMNSRow rColSys, bool onlyDateTimeWithoutDefaultValue, 
+       public static void getDefaultDBValueDateTime(ref qs2.core.SysDB.dsSysDB.COLUMNSRow rColSys, bool onlyDateTimeWithoutDefaultValue, 
                                                                     ref qs2.core.generic.retValue ret)
         {
             if (!rColSys.IsCOLUMN_DEFAULTNull())
@@ -543,150 +419,6 @@ namespace qs2.core
         {
             retValueToSet.valueObj = System.DBNull.Value;
             retValueToSet.valueStr = "";
-        }
-
-        public static void initRow(System.Data.DataRow r, int id, bool doID)
-        {
-            foreach (System.Data.DataColumn col in r.Table.Columns)
-            {
-                if (col.ColumnName.Equals(qs2.core.sqlTxt.columnID) && doID)
-                {
-                     r[qs2.core.sqlTxt.columnID] = id;
-                }
-                else
-                {
-                    qs2.core.SysDB.dsSysDB.COLUMNSRow rColSys = qs2.core.SysDB.sqlSysDB.getSysColumnRow(r.Table.TableName, col.ColumnName, qs2.core.SysDB.sqlSysDB.dsSysDBAll, false);
-                    if (rColSys != null)
-                    {
-                        bool NoDefaultValuePossible = false;
-                        System.Collections.Generic.List<string> lstTablesNoDateTimeCheck = new System.Collections.Generic.List<string>();
-                        qs2.core.generic.retValue retValue1 = qs2.core.dbBase.getDefaultDBValue(ref rColSys, true, lstTablesNoDateTimeCheck, ref NoDefaultValuePossible);
-                        r[col.ColumnName] = retValue1.valueObj;
-                    }
-                    else
-                    {
-                        qs2.core.dbBase.initColumnManuell(ref r, col);
-                    }
-                }
-            }
-        }
-
-        public static void initColumnManuell(ref System.Data.DataRow r, System.Data.DataColumn col)
-        {
-            if (col.DataType.FullName.ToString().Equals(typeof(System.Boolean).FullName))
-            {
-                r[col.ColumnName] = false;
-            }
-            else if (col.DataType.FullName.ToString().Equals(typeof(System.String).FullName))
-            {
-                r[col.ColumnName] = "";
-            }
-            else if (col.DataType.FullName.ToString().Equals(typeof(System.Double).FullName) ||
-                        col.DataType.FullName.ToString().Equals(typeof(System.Decimal).FullName))
-            {
-                r[col.ColumnName] = 0;
-            }
-            else if (col.DataType.FullName.ToString().Equals(typeof(System.Int32).FullName) ||
-                        col.DataType.FullName.ToString().Equals(typeof(System.Int16).FullName) ||
-                        col.DataType.FullName.ToString().Equals(typeof(System.Int64).FullName))
-            {
-                r[col.ColumnName] = -1;
-            }
-            else if (col.DataType.FullName.ToString().Equals(typeof(System.DateTime).FullName))
-            {
-                r[col.ColumnName] = System.DBNull.Value;
-            }
-        }
-
-        public static void initRowStayxy(System.Data.DataRow r, int id)
-        {
-            foreach (System.Data.DataColumn col in r.Table.Columns )
-            {
-                if (col.DataType.FullName.ToString().Equals(typeof(System.Boolean).FullName))
-                {
-                    r[col.ColumnName] = false;
-                }
-                else if (col.DataType.FullName.ToString().Equals(typeof(System.String).FullName))
-                {
-                    r[col.ColumnName] = "";
-                }
-                else if (   col.DataType.FullName.ToString().Equals(typeof(System.Double).FullName) ||
-                            col.DataType.FullName.ToString().Equals(typeof(System.Decimal).FullName))
-                {
-                    r[col.ColumnName] = 0;
-                }
-                else if (col.DataType.FullName.ToString().Equals(typeof(System.Int32).FullName) ||
-                            col.DataType.FullName.ToString().Equals(typeof(System.Int16).FullName) ||
-                            col.DataType.FullName.ToString().Equals(typeof(System.Int64).FullName))
-                {
-                    r[col.ColumnName] = -1;
-                }
-                else if (col.DataType.FullName.ToString().Equals(typeof(System.DateTime).FullName))
-                {
-                    r[col.ColumnName] = System.DBNull.Value;
-                }
-            }
-
-            r[qs2.core.sqlTxt.columnID] = id;
-        }
-
-        public static bool setRowDateTimeNullxy(DateTime dateTimeValue)
-        {
-            if (dateTimeValue.Year.Equals(dbBase.minDateTime))
-                return true;
-            else
-                return false;
-        }
-
-        public static void setRowDateTimeTo1900ForWorkingxy(System.Data.DataSet ds)
-        {
-            foreach (System.Data.DataTable table in ds.Tables)
-            {
-                foreach (System.Data.DataRow row in table.Rows)
-                {
-                    foreach (System.Data.DataColumn col in row.Table.Columns)
-                    {
-                        if (col.ColumnName == "Dis2MortDt30Day")
-                        {
-                            string xy = "";
-                        }
-                        if (col.DataType.Equals(typeof(System.DateTime)))
-                        {
-                            if (row[col.ColumnName].GetType().Equals(typeof(System.DBNull)))
-                            {
-                                if (row[col.ColumnName] == System.DBNull.Value)
-                                {
-                                    row[col.ColumnName] = qs2.core.dbBase.minDateTime;
-                                }
-                            }
-                        }
-                    }
-
-                }
-            }
-        }
-
-        public static void registerColumnChangingxyxxy(System.Data.DataSet ds, bool register )
-        {
-            foreach (System.Data.DataTable table in ds.Tables)
-            {
-                if (register)
-                    table.ColumnChanging += new System.Data.DataColumnChangeEventHandler(qs2.core.dbBase.ColumnChanging);
-                else
-                    table.ColumnChanging -= new System.Data.DataColumnChangeEventHandler(qs2.core.dbBase.ColumnChanging);
-            }
-        }
-
-        public static void ColumnChanging(object sender, System.Data.DataColumnChangeEventArgs e)
-        {
-            if (e.Column.DataType.Equals(typeof(System.DateTime)))
-            {
-                if (e.Row[e.Column].Equals(System.DBNull.Value))
-                {
-                    e.Row[e.Column] = qs2.core.dbBase.minDateTime;
-                }
-
-            }
         }
 
         public static bool viewIsFunction2(string viewName)
@@ -726,80 +458,6 @@ namespace qs2.core
             {
                 throw new Exception("dbBase.getFunctionName:" + qs2.core.generic.lineBreak + qs2.core.generic.lineBreak + ex.ToString());
                 return "";
-            }
-        }
-
-
-        public static void getOleDbException(OleDbException e)
-        {
-            string errorMessages = "";
-            for (int i = 0; i < e.Errors.Count; i++)
-            {
-                errorMessages += "Index #" + i + "\n" +
-                                 "Message: " + e.Errors[i].Message + "\n" +
-                                 "NativeError: " + e.Errors[i].NativeError + "\n" +
-                                 "Source: " + e.Errors[i].Source + "\n" +
-                                 "SQLState: " + e.Errors[i].SQLState + "\n";
-            }
-
-            string txtLog = DateTime.Now.ToString() + " getOleDbException: Error - " + "\r\n" + "\r\n" + errorMessages + "\r\n" + "\r\n" + e.ToString();
-            //return txtLog.Trim();
-            throw new Exception(txtLog);
-        }
-
-
-        public static dbBase.eTypeInt getType(Type DataType)
-        {
-            try
-            {
-                dbBase.eTypeInt typeRet = dbBase.eTypeInt.none;
-                if (DataType.Equals(typeof(string)))
-                {
-                    typeRet = dbBase.eTypeInt.t_string;
-                }
-                else if (DataType.Equals(typeof(int)) || DataType.Equals(typeof(Int32)) ||
-                        DataType.Equals(typeof(Int16)) || DataType.Equals(typeof(Int64)))
-                {
-                    typeRet = dbBase.eTypeInt.t_int;
-                }
-                else if (DataType.Equals(typeof(Double)) || DataType.Equals(typeof(Decimal)))
-                {
-                    typeRet = dbBase.eTypeInt.t_dbl;
-                }
-                else if (DataType.Equals(typeof(DateTime)))
-                {
-                    typeRet = dbBase.eTypeInt.t_DateTime;
-                }
-                else if (DataType.Equals(typeof(System.DBNull)))
-                {
-                    typeRet = dbBase.eTypeInt.t_DBNull;
-                }
-                else if (DataType.Equals(typeof(System.Guid)))
-                {
-                    typeRet = dbBase.eTypeInt.t_Guid;
-                }
-                else if (DataType.Equals(typeof(System.Byte[])))
-                {
-                    typeRet = dbBase.eTypeInt.t_Binary;
-                }
-                else if (DataType.Equals(typeof(System.Boolean)))
-                {
-                    typeRet = dbBase.eTypeInt.t_Boolean;
-                }
-                else if (DataType.Equals(typeof(Nullable)))
-                {
-                    throw new Exception("getType: rColKeysDBDev.DataType '" + DataType.ToString() + "' not possible!");
-                }
-                else
-                {
-                    throw new Exception("getType: rColKeysDBDev.DataType '" + DataType.ToString() + "' not possible!");
-                }
-
-                return typeRet;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("dbBase.getType: " + ex.ToString());
             }
         }
     }

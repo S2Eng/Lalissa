@@ -1202,39 +1202,6 @@
         Return True
     End Function
 
-    Public Function getCriteriasOpt(ByVal ds As dsAdmin, ByVal typSel As eTypSelCriteriaOpt,
-                                 ByVal FldShort As String,
-                                 ByVal Application As String) As dsAdmin.tblCriteriaOptRow()
-
-        Me.daCriteriaOpt.SelectCommand.CommandText = Me.sel_daSelCriteriaOpt
-        core.dbBase.setConnection(Me.daCriteriaOpt)
-        Me.daCriteriaOpt.SelectCommand.Parameters.Clear()
-
-        If typSel = eTypSelCriteriaOpt.all Then
-            If FldShort <> "" Then
-                Dim sWhereSearch As String = ""
-                sWhereSearch = ds.tblCriteriaOpt.FldShortColumn.ColumnName + sqlTxt.likePerc + FldShort + sqlTxt.likePercEnd + sqlTxt.or + ds.tblCriteriaOpt.IDApplicationColumn.ColumnName + sqlTxt.likePerc + FldShort + sqlTxt.likePercEnd
-                Me.daCriteria.SelectCommand.CommandText += sqlTxt.where + sWhereSearch
-            End If
-            Me.daCriteria.SelectCommand.CommandText += sqlTxt.orderBy + ds.tblCriteria.FldShortColumn.ColumnName + sqlTxt.asc
-
-        ElseIf typSel = eTypSelCriteriaOpt.id Then
-            Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblCriteriaOpt.FldShortColumn.ColumnName) + sqlTxt.and + sqlTxt.getColWhere(ds.tblCriteriaOpt.IDApplicationColumn.ColumnName)
-            Me.daCriteriaOpt.SelectCommand.CommandText += sWhere
-            Me.daCriteriaOpt.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblCriteriaOpt.FldShortColumn.ColumnName), FldShort.ToString())
-            Me.daCriteriaOpt.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblCriteriaOpt.IDApplicationColumn.ColumnName), Application)
-
-        ElseIf typSel = eTypSelCriteriaOpt.idRam Then
-            Dim arrCriteriasOpt() As dsAdmin.tblCriteriaOptRow = sqlAdmin.dsAllAdmin.tblCriteriaOpt.Select(ds.tblCriteriaOpt.FldShortColumn.ColumnName + "='" + FldShort + "' " + sqlTxt.and + ds.tblCriteriaOpt.IDApplicationColumn.ColumnName + "='" + Application + "'")
-            Return arrCriteriasOpt
-
-        Else
-            Throw New Exception("sqlAdmin.getCriteriasOpt: typSel '" + typSel.ToString() + "' is wrong!")
-        End If
-
-        Me.daCriteriaOpt.Fill(ds.tblCriteriaOpt)
-    End Function
-
     Public Function getRelationsship(ByVal ds As dsAdmin, ByVal typSel As eTypSelRelationship,
                              ByVal FldShort As String,
                              ByVal IDApplication As String, ByVal IDKey As String) As dsAdmin.tblRelationshipRow()

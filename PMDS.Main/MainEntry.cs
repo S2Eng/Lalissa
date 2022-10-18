@@ -12,7 +12,7 @@ namespace PMDS
         static bool ProcessStartup(Form frm, UserRights right, string RightsErrorText, bool bNoLoginRequired, bool testWindow, bool IsTouch  )
         {
             qs2.ui.RunFromPMDS RunFromPMDS1 = new qs2.ui.RunFromPMDS();
-            RunFromPMDS1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+            RunFromPMDS1.LogIn(ENV.sConfigFile, RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, ENV.LOGPATH);
 
             if (!bNoLoginRequired)  
             {
@@ -100,8 +100,6 @@ namespace PMDS
                 }
 
                 PMDS.DB.PMDSBusinessComm.setUniqueIDMachine();
-                //<20130212> Simple Install-Parameter integriert, für Einfache direkte installation -> siehe 
-                ENV.SimpleInstall = searchKeyArg("SimpleInstall", args);
                 ENV.StartFromShare = searchKeyArg("StartFromShare", args);
                 string LogPathPMDSFromLauncher = searchKeyArg("logPathPMDS", args);
                 string sDoOrigPathConfig = searchKeyArg("DoOrigPathConfig", args);
@@ -120,7 +118,7 @@ namespace PMDS
                 ENV.StartupTyp = typ;
 
                 ENV.OrigConfigDir = ENV.sConfigRootDir;
-                if (!String.IsNullOrWhiteSpace(ENV.sConfigRootDir))
+                if (!string.IsNullOrWhiteSpace(ENV.sConfigRootDir))
                 {
                     ENV.initClass(LogPathPMDSFromLauncher);
                 }
@@ -128,13 +126,12 @@ namespace PMDS
                 {
                     if (Application.StartupPath.Trim().EndsWith(("Debug").Trim(), StringComparison.CurrentCultureIgnoreCase))
                     {
-                        if (String.IsNullOrWhiteSpace(ENV.sConfigRootDir))
+                        if (string.IsNullOrWhiteSpace(ENV.sConfigRootDir))
                         {
                             System.IO.DirectoryInfo dirInfo = System.IO.Directory.GetParent(Application.StartupPath);
                             dirInfo = System.IO.Directory.GetParent(dirInfo.FullName);
                             ENV.sConfigRootDir = dirInfo.FullName;
-                            PMDS.Global.ENV.sConfigFile = "PMDS.config";
-                            ENV.SimpleInstall = "1";
+                            PMDS.Global.ENV.sConfigFile = "Lellissa_Dev.config";
                             ENV.initClass(LogPathPMDSFromLauncher);
                         }
                     }
@@ -176,10 +173,10 @@ namespace PMDS
                 PMDS.GUI.VB.General.MainCallFcts = new GUI.VB.General.dMainCallFcts(ucSiteMapPMDS.MainCallDel);
                 PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
 
-                if (typ == "pmds" || String.IsNullOrWhiteSpace(typ))                                                                                                                                                            // PMDS starten
+                if (typ == "pmds" || typ == "lellissa" || String.IsNullOrWhiteSpace(typ))                                                                                                                                                            // PMDS starten
                 {
                     qs2.ui.RunFromPMDS RunFromPMDS1 = new qs2.ui.RunFromPMDS();
-                    RunFromPMDS1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+                    RunFromPMDS1.LogIn(ENV.sConfigFile, RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, ENV.LOGPATH);
 
                     if (ENV.CheckLicense())
                     {
@@ -244,7 +241,7 @@ namespace PMDS
                         infoStartMain.Close();
 
                     qs2.ui.RunFromPMDS RunFromPMDS1 = new qs2.ui.RunFromPMDS();
-                    RunFromPMDS1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+                    RunFromPMDS1.LogIn(ENV.sConfigFile, RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, ENV.LOGPATH);
                     PMDS.Global.ENV.setStyleInfrag(true);
                     qs2.core.ENV.IsHeadquarter = true;
                     ProcessStartup(new frmQM(), UserRights.Rueckmelden, QS2.Desktop.ControlManagment.ControlManagment.getRes("Sie verfügen nicht über die notwendigen Rechte um Klientenrückmeldungen zu tätigen"), true, false, true);                    // Quickmeldung starten 
@@ -253,7 +250,7 @@ namespace PMDS
                 {
                     ENV.StartupMode = typ;
                     qs2.ui.RunFromPMDS RunFromPMDS1 = new qs2.ui.RunFromPMDS();
-                    RunFromPMDS1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+                    RunFromPMDS1.LogIn(ENV.sConfigFile, RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, ENV.LOGPATH);
                     PMDS.Global.ENV.setStyleInfrag(true);
                     qs2.core.ENV.IsHeadquarter = true;
                     PMDS.Calc.Logic.calculation.delgetDBContext += new Calc.Logic.calculation.getDBContext(PMDS.DB.PMDSBusiness.getDBContext2);
@@ -316,11 +313,10 @@ namespace PMDS
                     !ENV.StartFromShare.sEquals("1"))
                 {
                     PMDS.Global.db.ERSystem.PMDSBusinessUI bUI = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
-                    bool runWithDefaultConfigFile = false;
                     string lastSelectedFile = "";
                     int iCounterConfigsFound = 0;
                     Infragistics.Win.ValueListItem itmSel = null;
-                    bUI.searchConfigDirForConfigs(true, ConfigPathToCheck, null, ConfigFileDefault, ref runWithDefaultConfigFile, ref lastSelectedFile, ref iCounterConfigsFound, ref itmSel);
+                    bUI.searchConfigDirForConfigs(true, ConfigPathToCheck, null, ConfigFileDefault, ref lastSelectedFile, ref iCounterConfigsFound, ref itmSel);
                     if (iCounterConfigsFound == 1)
                     {
                         return null;
@@ -346,28 +342,13 @@ namespace PMDS
                         {
                             return frmSelectConfig1.cItmTg_SelectedConfig;
                         }
-                        else
-                        {
-                            if (frmSelectConfig1._runWithDefaultConfigFile)
-                            {
-                                return null;
-                            }
-                            else
-                            {
-                                //remotingSrv.killProcessIPCClient();
-                                Process currentProcess = Process.GetCurrentProcess();
-                                currentProcess.Kill();
-
-                                throw new Exception("MainEntry.checkSelectConfigs: PMDS.Main.exe stopped by remotingSrv.killProcessIPCClient()!");
-                            }
-                        }
                     }
                 }
                 else
                 {
                     return null;
                 }
-
+                return null;
             }
             catch (Exception ex)
             {

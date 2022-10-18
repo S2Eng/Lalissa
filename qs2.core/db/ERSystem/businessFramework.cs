@@ -168,7 +168,7 @@ namespace qs2.core.db.ERSystem
                 sqlDBBuilder.InitialCatalog = dbBase.Database;
                 sqlDBBuilder.PersistSecurityInfo = true;
                 sqlDBBuilder.MultipleActiveResultSets = true;
-                if (!String.IsNullOrWhiteSpace(dbBase.User) && !String.IsNullOrWhiteSpace(dbBase.PwdDecrypted))
+                if (!string.IsNullOrWhiteSpace(dbBase.User) && !string.IsNullOrWhiteSpace(dbBase.PwdDecrypted))
                 {
                         sqlDBBuilder.UserID = dbBase.User;
                         sqlDBBuilder.Password = dbBase.PwdDecrypted;
@@ -188,27 +188,11 @@ namespace qs2.core.db.ERSystem
             }
         }
 
-        public static void InsertERConnections()
+        public static bool WriteERConnectionStringSqlDb()
         {
             try
             {
-                if (qs2.core.ENV.WriteERConnectionString)
-                {
-                    Boolean MustSaveQS2 = false;
-                    MustSaveQS2 = WriteERConnectionSqlDb("ERModellPMDSEntities");
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Main.InsertERConnection: " + ex.ToString());
-            }
-        }
-
-        private static bool WriteERConnectionSqlDb(string ConnectionName)
-        {
-            try
-            {
+                string ConnectionName = "ERModellPMDSEntities";
                 string providerName = "System.Data.SqlClient";
                 System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                 var connection = config.ConnectionStrings.ConnectionStrings[ConnectionName];
@@ -219,49 +203,50 @@ namespace qs2.core.db.ERSystem
                 {
                     return true;
                 }
+
+                SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder
+                {
+                    DataSource = dbBase.Server,
+                    InitialCatalog = dbBase.Database,
+                    ApplicationName = "EntityFramework",
+                    MultipleActiveResultSets = true
+                };
+
+                if (dbBase.User != null)
+                {
+                    if (!string.IsNullOrWhiteSpace(dbBase.User))
+                    {
+                        sqlBuilder.UserID = dbBase.User;
+                        sqlBuilder.Password = dbBase.PwdDecrypted;
+                    }
+                }
                 else
                 {
-                    SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
-                    sqlBuilder.DataSource = dbBase.Server;
-                    sqlBuilder.InitialCatalog = dbBase.Database;
-                    sqlBuilder.ApplicationName = "EntityFramework";
-                    sqlBuilder.MultipleActiveResultSets = true;
-                    if (dbBase.User != null)
-                    {
-                        if (dbBase.User.Trim() != "")
-                        {
-                            sqlBuilder.UserID = dbBase.User;
-                            sqlBuilder.Password = dbBase.PwdDecrypted;
-                        }
-                    }
-                    else
-                    {
-                        sqlBuilder.IntegratedSecurity = true;
-                    }
-
-                    ConnectionStringsSection csSection = config.ConnectionStrings;
-                    ConnectionStringSettingsCollection csCollection = csSection.ConnectionStrings;
-                    ConnectionStringSettings cs = csCollection[ConnectionName];
-                    if (cs != null)
-                    {
-                        csCollection.RemoveAt(csCollection.IndexOf(cs));
-                        ConfigurationManager.RefreshSection("connectionStrings");
-                    }
-
-                    Configuration configNew = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                    csSection.ConnectionStrings.Add(
-                        new ConnectionStringSettings(ConnectionName,
-                            sqlBuilder.ConnectionString,
-                            providerName));
-
-                    configNew.Save(ConfigurationSaveMode.Modified, false);
-                    ConfigurationManager.RefreshSection("connectionStrings");
-                    return true;
+                    sqlBuilder.IntegratedSecurity = true;
                 }
+
+                ConnectionStringsSection csSection = config.ConnectionStrings;
+                ConnectionStringSettingsCollection csCollection = csSection.ConnectionStrings;
+                ConnectionStringSettings cs = csCollection[ConnectionName];
+                if (cs != null)
+                {
+                    csCollection.RemoveAt(csCollection.IndexOf(cs));
+                    ConfigurationManager.RefreshSection("connectionStrings");
+                }
+
+                Configuration configNew = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                csSection.ConnectionStrings.Add(
+                    new ConnectionStringSettings(ConnectionName,
+                        sqlBuilder.ConnectionString,
+                        providerName));
+
+                configNew.Save(ConfigurationSaveMode.Modified, false);
+                ConfigurationManager.RefreshSection("connectionStrings");
+                return true;
             }
             catch (Exception ex)
             {
-                throw new Exception("businessFranmework.WriteERConnectionSqlDb: " + ex.ToString());
+                throw new Exception("businessFranmework.WriteERConnectionStringSqlDb: " + ex.ToString());
 
             }
         }

@@ -104,61 +104,6 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tblCriteriaOpt" msprop:Generator_RowClassName="tblCriteriaOptRow" msprop:Generator_RowEvHandlerName="tblCriteriaOptRowChangeEventHandler" msprop:Generator_RowDeletedName="tblCriteriaOptRowDeleted" msprop:Generator_RowDeletingName="tblCriteriaOptRowDeleting" msprop:Generator_RowEvArgName="tblCriteriaOptRowChangeEvent" msprop:Generator_TablePropName="tblCriteriaOpt" msprop:Generator_RowChangedName="tblCriteriaOptRowChanged" msprop:Generator_RowChangingName="tblCriteriaOptRowChanging" msprop:Generator_TableClassName="tblCriteriaOptDataTable" msprop:Generator_UserTableName="tblCriteriaOpt" msprop:Generator_TableVarName="tabletblCriteriaOpt">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="FldShort" msprop:Generator_ColumnPropNameInRow="FldShort" msprop:Generator_ColumnPropNameInTable="FldShortColumn" msprop:Generator_ColumnVarNameInTable="columnFldShort" msprop:Generator_UserColumnName="FldShort">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="60" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="IDApplication" msprop:Generator_ColumnPropNameInRow="IDApplication" msprop:Generator_ColumnPropNameInTable="IDApplicationColumn" msprop:Generator_ColumnVarNameInTable="columnIDApplication" msprop:Generator_UserColumnName="IDApplication">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Parameter" msprop:Generator_ColumnPropNameInRow="Parameter" msprop:Generator_ColumnPropNameInTable="ParameterColumn" msprop:Generator_ColumnVarNameInTable="columnParameter" msprop:Generator_UserColumnName="Parameter">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Value" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnPropNameInTable="ValueColumn" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_UserColumnName="Value">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="200" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Referenze" msprop:Generator_ColumnPropNameInRow="Referenze" msprop:Generator_ColumnPropNameInTable="ReferenzeColumn" msprop:Generator_ColumnVarNameInTable="columnReferenze" msprop:Generator_UserColumnName="Referenze">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="VersionNrFrom" msprop:Generator_ColumnPropNameInRow="VersionNrFrom" msprop:Generator_ColumnPropNameInTable="VersionNrFromColumn" msprop:Generator_ColumnVarNameInTable="columnVersionNrFrom" msprop:Generator_UserColumnName="VersionNrFrom">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="VersionNrTo" msprop:Generator_ColumnPropNameInRow="VersionNrTo" msprop:Generator_ColumnPropNameInTable="VersionNrToColumn" msprop:Generator_ColumnVarNameInTable="columnVersionNrTo" msprop:Generator_UserColumnName="VersionNrTo">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="tblSelListGroup" msprop:Generator_RowClassName="tblSelListGroupRow" msprop:Generator_RowEvHandlerName="tblSelListGroupRowChangeEventHandler" msprop:Generator_RowDeletedName="tblSelListGroupRowDeleted" msprop:Generator_RowDeletingName="tblSelListGroupRowDeleting" msprop:Generator_RowEvArgName="tblSelListGroupRowChangeEvent" msprop:Generator_TablePropName="tblSelListGroup" msprop:Generator_RowChangedName="tblSelListGroupRowChanged" msprop:Generator_RowChangingName="tblSelListGroupRowChanging" msprop:Generator_TableClassName="tblSelListGroupDataTable" msprop:Generator_UserTableName="tblSelListGroup" msprop:Generator_TableVarName="tabletblSelListGroup">
           <xs:complexType>
             <xs:sequence>
@@ -1234,12 +1179,6 @@
       <xs:field xpath="mstns:IDGuid" />
     </xs:unique>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:tblCriteriaOpt" />
-      <xs:field xpath="mstns:FldShort" />
-      <xs:field xpath="mstns:IDApplication" />
-      <xs:field xpath="mstns:Parameter" />
-    </xs:unique>
-    <xs:unique name="tblSelListGroup_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:tblSelListGroup" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
@@ -1292,7 +1231,6 @@
       <msdata:Relationship name="tblSelListGroup_tblSelListEntries" msdata:parent="tblSelListGroup" msdata:child="tblSelListEntries" msdata:parentkey="ID" msdata:childkey="IDGroup" msprop:Generator_UserParentTable="tblSelListGroup" msprop:Generator_UserChildTable="tblSelListEntries" msprop:Generator_RelationVarName="relationtblSelListGroup_tblSelListEntries" msprop:Generator_ChildPropName="GettblSelListEntriesRows" msprop:Generator_ParentPropName="tblSelListGroupRow" msprop:Generator_UserRelationName="tblSelListGroup_tblSelListEntries" />
       <msdata:Relationship name="tblCriteria_tblSelListEntriesObj" msdata:parent="tblCriteria" msdata:child="tblSelListEntriesObj" msdata:parentkey="IDApplication FldShort" msdata:childkey="IDApplication FldShort" msprop:Generator_ChildPropName="GettblSelListEntriesObjRows" msprop:Generator_UserChildTable="tblSelListEntriesObj" msprop:Generator_RelationVarName="relationtblCriteria_tblSelListEntriesObj" msprop:Generator_UserRelationName="tblCriteria_tblSelListEntriesObj" msprop:Generator_UserParentTable="tblCriteria" msprop:Generator_ParentPropName="tblCriteriaRowParent" />
       <msdata:Relationship name="tblCriteria_tblRelationship1" msdata:parent="tblCriteria" msdata:child="tblRelationship" msdata:parentkey="FldShort IDApplication" msdata:childkey="FldShortParent IDApplicationParent" msprop:Generator_ChildPropName="GettblRelationshipRows" msprop:Generator_UserChildTable="tblRelationship" msprop:Generator_RelationVarName="relationtblCriteria_tblRelationship1" msprop:Generator_UserRelationName="tblCriteria_tblRelationship1" msprop:Generator_UserParentTable="tblCriteria" msprop:Generator_ParentPropName="tblCriteriaRowParent" />
-      <msdata:Relationship name="tblCriteria_tblCriteriaOpt" msdata:parent="tblCriteria" msdata:child="tblCriteriaOpt" msdata:parentkey="IDApplication FldShort" msdata:childkey="IDApplication FldShort" msprop:Generator_ChildPropName="GettblCriteriaOptRows" msprop:Generator_UserChildTable="tblCriteriaOpt" msprop:Generator_RelationVarName="relationtblCriteria_tblCriteriaOpt" msprop:Generator_UserRelationName="tblCriteria_tblCriteriaOpt" msprop:Generator_UserParentTable="tblCriteria" msprop:Generator_ParentPropName="tblCriteriaRowParent" />
       <msdata:Relationship name="tblCriteria_tblQueriesDef" msdata:parent="tblCriteria" msdata:child="tblQueriesDef" msdata:parentkey="FldShort IDApplication" msdata:childkey="CriteriaFldShort CriteriaApplication" msprop:Generator_ChildPropName="GettblQueriesDefRows" msprop:Generator_UserChildTable="tblQueriesDef" msprop:Generator_RelationVarName="relationtblCriteria_tblQueriesDef" msprop:Generator_UserRelationName="tblCriteria_tblQueriesDef" msprop:Generator_UserParentTable="tblCriteria" msprop:Generator_ParentPropName="tblCriteriaRowParent" />
       <msdata:Relationship name="tblSelListEntries_tblStayAdditions" msdata:parent="tblSelListEntries" msdata:child="tblStayAdditions" msdata:parentkey="ID" msdata:childkey="IDSelListFirst" msprop:Generator_ChildPropName="GettblStayAdditionsRows" msprop:Generator_UserChildTable="tblStayAdditions" msprop:Generator_RelationVarName="relationtblSelListEntries_tblStayAdditions" msprop:Generator_UserRelationName="tblSelListEntries_tblStayAdditions" msprop:Generator_UserParentTable="tblSelListEntries" msprop:Generator_ParentPropName="tblSelListEntriesRow" />
     </xs:appinfo>

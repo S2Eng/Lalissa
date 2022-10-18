@@ -398,13 +398,40 @@ IF OBJECT_ID('[qs2].[tblStay]') IS NOT NULL
 GO
 
 
+DELETE FROM qs2.Ressourcen WHERE IDApplication = 'CARDIAC'
+GO
+
+DELETE FROM qs2.Ressourcen WHERE IDApplication = 'VASCULAR'
+GO
+
+DELETE FROM qs2.tblRelationship WHERE IDApplicationParent = 'CARDIAC'
+GO
+
+DELETE FROM qs2.tblRelationship WHERE IDApplicationChild = 'CARDIAC'
+GO
+
+DELETE FROM qs2.tblRelationship WHERE IDApplicationParent = 'VASCULAR'
+GO
+
+DELETE FROM qs2.tblRelationship WHERE IDApplicationChild = 'VASCULAR'
+GO
+
+DELETE FROM qs2.tblCriteria where IDApplication = 'CARDIAC'
+GO
+
+DELETE FROM qs2.tblCriteria where IDApplication = 'VASCULAR'
+GO
+
+DELETE FROM qs2.tblRelationship WHERE FldShortParent in (SELECT FldShortChild FROM qs2.tblCriteria WHERE IDApplication = 'ALL' AND (SourceTable = 'tblStay' or SourceTable = ''))
+GO
+
+DELETE FROM qs2.tblRelationship WHERE FldShortChild in (SELECT FldShortChild FROM qs2.tblCriteria WHERE IDApplication = 'ALL' AND (SourceTable = 'tblStay' or SourceTable = ''))
+GO
+
+DELETE FROM qs2.tblCriteria WHERE IDApplication = 'ALL' AND (SourceTable = 'tblStay' or SourceTable = '')
+GO
 
 
-
-
-
-
-select * from qs2.vSelListEntriesObj
 
 SELECT 
     referencing_schema_name, referencing_entity_name, referencing_id, 

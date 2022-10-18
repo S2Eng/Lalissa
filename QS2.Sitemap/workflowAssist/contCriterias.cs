@@ -117,15 +117,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 this.gridInfrag1xyxy.DisplayLayout.Bands[0].Columns[qs2.core.generic.columnNameText].Hidden = true;
                 this.gridInfrag1xyxy.DisplayLayout.Bands[0].Columns[qs2.core.generic.columnNewTranslation].Header.Caption = qs2.core.language.sqlLanguage.getRes("NewTranslation");
 
-                this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblCriteriaOpt.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblCriteriaOpt.FldShortColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("FldShort");
-                this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblCriteriaOpt.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblCriteriaOpt.IDApplicationColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("Application");
-                this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblCriteriaOpt.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblCriteriaOpt.ParameterColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("Parameter");
-                this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblCriteriaOpt.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblCriteriaOpt.ValueColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("Value");
-                this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblCriteriaOpt.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblCriteriaOpt.ReferenzeColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("Referenze");
-                this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblCriteriaOpt.ParentRelations[0].RelationName].Header.Caption = qs2.core.language.sqlLanguage.getRes("CriteriaOpt");
-                this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblCriteriaOpt.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblCriteriaOpt.VersionNrFromColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("VersionFrom");
-                this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblCriteriaOpt.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblCriteriaOpt.VersionNrToColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("VersionTo");
-
                 this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblRelationship.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblRelationship.FldShortParentColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("FldShortParent");
                 this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblRelationship.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblRelationship.IDApplicationParentColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("Application") + "Parent";
                 this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblRelationship.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblRelationship.IDApplicationChildColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("Application") + " Child";
@@ -192,7 +183,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
         {
             this.gridInfrag1xyxy.DisplayLayout.AddNewBox.Prompt = qs2.core.language.sqlLanguage.getRes("Add");
             this.gridInfrag1xyxy.DisplayLayout.Bands[0].AddButtonCaption = qs2.core.language.sqlLanguage.getRes("Criteria"); ;
-            this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblCriteriaOpt.ParentRelations[0].RelationName].AddButtonCaption = qs2.core.language.sqlLanguage.getRes("CriteriaOption"); ;
             this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblRelationship.ParentRelations[0].RelationName].AddButtonCaption = qs2.core.language.sqlLanguage.getRes("Relationship"); ;
             this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblSelListEntriesObj.ParentRelations[0].RelationName].AddButtonCaption = qs2.core.language.sqlLanguage.getRes("Chapter"); ;
         }
@@ -220,7 +210,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 this.isInEditMode = false;
 
                 this.dsAdmin1.tblCriteria.Clear();
-                this.dsAdmin1.tblCriteriaOpt.Clear();
                 this.dsAdmin1.tblRelationship.Clear();
                 this.dsAdmin1.tblSelListEntriesObj.Clear();
                 
@@ -479,13 +468,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 e.Row.Cells[this.dsAdmin1.tblRelationship.SortColumn.ColumnName].Value = -1;
 
             }
-            else if (e.Row.Band.Index == 3)
-            {
-                e.Row.Cells[this.dsAdmin1.tblCriteriaOpt.IDApplicationColumn.ColumnName].Value = enumAppFound.ToString();
-                e.Row.Cells[this.dsAdmin1.tblCriteriaOpt.ParameterColumn.ColumnName].Value = "";
-                e.Row.Cells[this.dsAdmin1.tblCriteriaOpt.ValueColumn.ColumnName].Value = "";
-                e.Row.Cells[this.dsAdmin1.tblCriteriaOpt.ReferenzeColumn.ColumnName].Value = "";
-            }
             else if (e.Row.Band.Index == 1)
             {
                 e.Row.Cells[this.dsAdmin1.tblSelListEntriesObj.typIDGroupColumn .ColumnName].Value = sqlAdmin.eDbTypAuswObj.Criterias.ToString();
@@ -497,7 +479,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 e.Row.Cells[this.dsAdmin1.tblSelListEntriesObj.IDClassificationColumn.ColumnName].Value = "";
                 e.Row.Cells[this.dsAdmin1.tblSelListEntriesObj.SortColumn.ColumnName].Value = -1;
             }
-
         }
 
         private void gridInfrag1_BeforeCellActivate(object sender, CancelableCellEventArgs e)
