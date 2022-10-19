@@ -11652,27 +11652,6 @@ namespace PMDS.DB
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //Connect and Exception-handling
         public static PMDS.db.Entities.ERModellPMDSEntities getDBContext2()
         {
@@ -11683,7 +11662,6 @@ namespace PMDS.DB
 
         public static PMDS.db.Entities.ERModellPMDSEntities getDBContext()
         {
-            string sInfoExcept = "";
             try
             {
                 PMDS.db.Entities.ERModellPMDSEntities DBContext = new PMDS.db.Entities.ERModellPMDSEntities();
@@ -11701,7 +11679,7 @@ namespace PMDS.DB
                         PMDSBusiness.iFctCalled += 1;
                         if (PMDSBusiness.iFctCalled >= 5)
                         {
-                            Exception exTmp2 = new Exception("PMDSBusiness.getDBContext: " + PMDSBusiness.iFctCalled.ToString() + "th retry" + "\r\n" + sInfoExcept + "\r\n");
+                            Exception exTmp2 = new Exception("PMDSBusiness.getDBContext: " + PMDSBusiness.iFctCalled.ToString() + ". try" + "\n\n");
                             ENV.HandleException(exTmp2, "ExceptionDBNetLibNextCall", false);
                         }
                         qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
@@ -11711,12 +11689,12 @@ namespace PMDS.DB
                     }
                     catch (Exception ex2)
                     {
-                        throw new Exception("PMDSBusiness.getDBContext: " + "\r\n" + sInfoExcept + "\r\n" + "\r\n" + ex2.ToString());
+                        throw new Exception("PMDSBusiness.getDBContext: " + "\n\n\n"  + ex2.ToString());
                     }
                 }
                 else
                 {
-                    throw new Exception("PMDSBusiness.getDBContext: " + "\r\n" + sInfoExcept + "\r\n" + "\r\n" + ex.ToString());
+                    throw new Exception("PMDSBusiness.getDBContext: " + "\n\n\n" + ex.ToString());
                 }
             }
         }
@@ -11777,9 +11755,7 @@ namespace PMDS.DB
                 sqlBuilder.MultipleActiveResultSets = true;
                 sqlBuilder.IntegratedSecurity = true;
                 sqlBuilder.MaxPoolSize = 5000;
-
-
-                //Für SQL-User
+                
                 if (User != null)
                 {
                     if (User.Trim() != "")
@@ -11792,9 +11768,7 @@ namespace PMDS.DB
 
                 DBContext.Database.Connection.ConnectionString = sqlBuilder.ConnectionString;
                 DBContext.Database.Connection.Open();
-
                 return;
-
             }
             catch (Exception ex)
             {
