@@ -340,7 +340,6 @@
             this.txtLand.BerufsstandGruppeJNA = -1;
             this.txtLand.ExactMatch = false;
             this.txtLand.Group = "LND";
-            this.txtLand.ID_PEP = -1;
             this.txtLand.Location = new System.Drawing.Point(216, 68);
             this.txtLand.MaxLength = 20;
             this.txtLand.Name = "txtLand";
@@ -586,7 +585,6 @@
             this.cmbAkdGrad.BerufsstandGruppeJNA = -1;
             this.cmbAkdGrad.ExactMatch = false;
             this.cmbAkdGrad.Group = "TIT";
-            this.cmbAkdGrad.ID_PEP = -1;
             this.cmbAkdGrad.Location = new System.Drawing.Point(384, 21);
             this.cmbAkdGrad.MaxLength = 40;
             this.cmbAkdGrad.Name = "cmbAkdGrad";

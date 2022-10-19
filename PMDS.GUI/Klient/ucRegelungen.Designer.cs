@@ -1205,7 +1205,6 @@ namespace PMDS.GUI
             this.cmbPostregel.BerufsstandGruppeJNA = -1;
             this.cmbPostregel.ExactMatch = false;
             this.cmbPostregel.Group = "PRG";
-            this.cmbPostregel.ID_PEP = -1;
             this.cmbPostregel.IgnoreUnterdruecken = true;
             this.cmbPostregel.Location = new System.Drawing.Point(111, 145);
             this.cmbPostregel.MaxLength = 255;

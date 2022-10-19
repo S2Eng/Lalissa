@@ -175,7 +175,6 @@
             this.cmbGewVon.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
             this.cmbGewVon.BerufsstandGruppeJNA = -1;
             this.cmbGewVon.Group = "GWV";
-            this.cmbGewVon.ID_PEP = -1;
             this.cmbGewVon.Location = new System.Drawing.Point(104, 18);
             this.cmbGewVon.Name = "cmbGewVon";
             this.cmbGewVon.ShowAddButton = true;
@@ -200,7 +199,6 @@
             this.cmbMarkiert.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
             this.cmbMarkiert.BerufsstandGruppeJNA = -1;
             this.cmbMarkiert.Group = "WMA";
-            this.cmbMarkiert.ID_PEP = -1;
             this.cmbMarkiert.Location = new System.Drawing.Point(440, 18);
             this.cmbMarkiert.Name = "cmbMarkiert";
             this.cmbMarkiert.ShowAddButton = true;

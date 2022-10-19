@@ -398,7 +398,6 @@ namespace PMDS.GUI
             this.txtTitel.BerufsstandGruppeJNA = -1;
             this.txtTitel.ExactMatch = false;
             this.txtTitel.Group = "TIT";
-            this.txtTitel.ID_PEP = -1;
             this.txtTitel.IgnoreUnterdruecken = true;
             this.txtTitel.Location = new System.Drawing.Point(101, 143);
             this.txtTitel.Name = "txtTitel";
@@ -418,7 +417,6 @@ namespace PMDS.GUI
             this.txtSexus.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.txtSexus.ExactMatch = false;
             this.txtSexus.Group = "SEX";
-            this.txtSexus.ID_PEP = -1;
             this.txtSexus.IgnoreUnterdruecken = true;
             this.txtSexus.Location = new System.Drawing.Point(101, 85);
             this.txtSexus.Name = "txtSexus";
@@ -467,7 +465,6 @@ namespace PMDS.GUI
             this.cmbLand.BerufsstandGruppeJNA = -1;
             this.cmbLand.ExactMatch = false;
             this.cmbLand.Group = "LND";
-            this.cmbLand.ID_PEP = -1;
             this.cmbLand.IgnoreUnterdruecken = true;
             this.cmbLand.Location = new System.Drawing.Point(101, 259);
             this.cmbLand.MaxLength = 20;
@@ -510,7 +507,6 @@ namespace PMDS.GUI
             this.cboTitelPost.BerufsstandGruppeJNA = -1;
             this.cboTitelPost.ExactMatch = false;
             this.cboTitelPost.Group = "TTP";
-            this.cboTitelPost.ID_PEP = -1;
             this.cboTitelPost.IgnoreUnterdruecken = true;
             this.cboTitelPost.Location = new System.Drawing.Point(379, 143);
             this.cboTitelPost.MaxLength = 40;
@@ -531,7 +527,6 @@ namespace PMDS.GUI
             this.cmbAnrede.BerufsstandGruppeJNA = -1;
             this.cmbAnrede.ExactMatch = false;
             this.cmbAnrede.Group = "ANR";
-            this.cmbAnrede.ID_PEP = -1;
             this.cmbAnrede.IgnoreUnterdruecken = true;
             this.cmbAnrede.Location = new System.Drawing.Point(379, 84);
             this.cmbAnrede.MaxLength = 15;
@@ -565,7 +560,6 @@ namespace PMDS.GUI
             this.cmbStaatsB.BerufsstandGruppeJNA = -1;
             this.cmbStaatsB.ExactMatch = false;
             this.cmbStaatsB.Group = "SBS";
-            this.cmbStaatsB.ID_PEP = -1;
             this.cmbStaatsB.IgnoreUnterdruecken = true;
             this.cmbStaatsB.Location = new System.Drawing.Point(379, 173);
             this.cmbStaatsB.MaxLength = 255;
@@ -598,7 +592,6 @@ namespace PMDS.GUI
             this.cmbFAM.BerufsstandGruppeJNA = -1;
             this.cmbFAM.ExactMatch = false;
             this.cmbFAM.Group = "FAM";
-            this.cmbFAM.ID_PEP = -1;
             this.cmbFAM.IgnoreUnterdruecken = true;
             this.cmbFAM.Location = new System.Drawing.Point(101, 173);
             this.cmbFAM.MaxLength = 15;

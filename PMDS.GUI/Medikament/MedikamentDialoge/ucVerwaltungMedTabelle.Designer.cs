@@ -253,7 +253,6 @@
             this.cbEinheit.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbEinheit.ExactMatch = false;
             this.cbEinheit.Group = "MEH";
-            this.cbEinheit.ID_PEP = -1;
             this.cbEinheit.IgnoreUnterdruecken = true;
             this.cbEinheit.Location = new System.Drawing.Point(528, 55);
             this.cbEinheit.Name = "cbEinheit";
@@ -319,7 +318,6 @@
             this.cbGroup.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbGroup.ExactMatch = false;
             this.cbGroup.Group = "MGR";
-            this.cbGroup.ID_PEP = -1;
             this.cbGroup.IgnoreUnterdruecken = true;
             this.cbGroup.Location = new System.Drawing.Point(97, 55);
             this.cbGroup.Name = "cbGroup";

@@ -315,7 +315,6 @@ namespace PMDS.GUI
             this.cmbSTAMP_AustrittWohin.BerufsstandGruppeJNA = -1;
             this.cmbSTAMP_AustrittWohin.ExactMatch = false;
             this.cmbSTAMP_AustrittWohin.Group = "AWO";
-            this.cmbSTAMP_AustrittWohin.ID_PEP = -1;
             this.cmbSTAMP_AustrittWohin.IgnoreUnterdruecken = true;
             this.cmbSTAMP_AustrittWohin.Location = new System.Drawing.Point(181, 1);
             this.cmbSTAMP_AustrittWohin.Margin = new System.Windows.Forms.Padding(4);

@@ -323,7 +323,6 @@
             this.txtLand.BerufsstandGruppeJNA = -1;
             this.txtLand.ExactMatch = false;
             this.txtLand.Group = "LND";
-            this.txtLand.ID_PEP = -1;
             this.txtLand.IgnoreUnterdruecken = true;
             this.txtLand.Location = new System.Drawing.Point(185, 68);
             this.txtLand.MaxLength = 20;
@@ -493,7 +492,6 @@
             this.cbFachrichtung.BerufsstandGruppeJNA = -1;
             this.cbFachrichtung.ExactMatch = true;
             this.cbFachrichtung.Group = "FAR";
-            this.cbFachrichtung.ID_PEP = -1;
             this.cbFachrichtung.IgnoreUnterdruecken = true;
             this.cbFachrichtung.Location = new System.Drawing.Point(101, 53);
             this.cbFachrichtung.MaxLength = 255;
@@ -513,7 +511,6 @@
             this.cmbAkdGrad.BerufsstandGruppeJNA = -1;
             this.cmbAkdGrad.ExactMatch = false;
             this.cmbAkdGrad.Group = "TIT";
-            this.cmbAkdGrad.ID_PEP = -1;
             this.cmbAkdGrad.IgnoreUnterdruecken = true;
             this.cmbAkdGrad.Location = new System.Drawing.Point(353, 25);
             this.cmbAkdGrad.MaxLength = 40;

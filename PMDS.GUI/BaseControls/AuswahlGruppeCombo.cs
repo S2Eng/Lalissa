@@ -152,13 +152,13 @@ namespace PMDS.GUI.BaseControls
         }
         public bool ExactMatch
         {
-            get { return _ExactMatch; }
-            set { _ExactMatch = value; }
+            get => _ExactMatch;
+            set => _ExactMatch = value;
         }
         public bool PflichtJN
         {
-            get { return _PflichtJN; }
-            set { _PflichtJN = value; }
+            get => _PflichtJN;
+            set => _PflichtJN = value;
         }
         public bool AutoOpenCBO
         {
@@ -168,23 +168,18 @@ namespace PMDS.GUI.BaseControls
         
         public bool ShowAddButton
 		{
-			get { return _addBtn.Visible;  }
-			set { _addBtn.Visible = value; }
-		}
+			set => _addBtn.Visible = value;
+        }
 
         public bool AddEmptyEntry
         {
-            get { return _addEmptyEnry; }
-            set { _addEmptyEnry = value; }
+            set => _addEmptyEnry = value;
         }
 
 		public new bool ReadOnly
 		{
-			get
-            {
-                return base.ReadOnly;
-            }
-			set	
+			get => base.ReadOnly;
+            set	
 			{	
 				_addBtn.Visible = !value;	
 				base.ReadOnly = value;
@@ -193,16 +188,16 @@ namespace PMDS.GUI.BaseControls
 
 		public string Group
 		{
-			get	{	return _group;	}
-			set
+			get => _group;
+            set
             {
                 try
                 {
-                    _group = value;
-                    if (String.IsNullOrWhiteSpace(value))
-                        return;
-
-                    RefreshList();
+                    if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv" && !string.IsNullOrWhiteSpace(value) && value != _group)
+                    {
+                        _group = value;
+                        RefreshList();
+                    }
                 }
                 catch(Exception ex)
                 {
@@ -213,14 +208,15 @@ namespace PMDS.GUI.BaseControls
 
         public bool IgnoreUnterdruecken
         {
-            get { return _ignoreUnterdruecken; }
             set
             {
                 try
                 {
-                    _ignoreUnterdruecken = value;
-                    if (!DesignMode)
-                       RefreshList();
+                    if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv" && value != _ignoreUnterdruecken)
+                    {
+                        _ignoreUnterdruecken = value;
+                        RefreshList();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -231,14 +227,15 @@ namespace PMDS.GUI.BaseControls
 
         public bool SelectDistinct
         {
-            get { return _selectdistinct; }
             set
             {
                 try
                 {
-                    _selectdistinct = value;
-                    if (!DesignMode)
+                    if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv" && value != _selectdistinct)
+                    {
+                        _selectdistinct = value;
                         RefreshList();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -271,23 +268,6 @@ namespace PMDS.GUI.BaseControls
 					Value = value;
 			}
 		}
-
-        public int ID_PEP
-        {
-            get
-            {
-                if (Value == null  || Value.Equals(Guid.Empty))
-                    return -1;
-                return  System.Convert.ToInt32 (Value);
-            }
-            set
-            {
-                if (value == -1)
-                    Value = null;
-                else
-                    Value = value;
-            }
-        }
 
 		private void addBtn_Click(object sender, EditorButtonEventArgs e)
 		{

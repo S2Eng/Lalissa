@@ -696,7 +696,6 @@ namespace PMDS.GUI
             this.cbImportant.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbImportant.ExactMatch = false;
             this.cbImportant.Group = "BER";
-            this.cbImportant.ID_PEP = -1;
             this.cbImportant.IgnoreUnterdruecken = true;
             this.cbImportant.Location = new System.Drawing.Point(95, 37);
             this.cbImportant.Margin = new System.Windows.Forms.Padding(4);

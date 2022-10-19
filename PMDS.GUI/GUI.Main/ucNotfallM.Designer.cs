@@ -199,7 +199,6 @@
             this.cbImportant.BerufsstandGruppeJNA = -1;
             this.cbImportant.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbImportant.Group = "BER";
-            this.cbImportant.ID_PEP = -1;
             this.cbImportant.Location = new System.Drawing.Point(212, 6);
             this.cbImportant.Name = "cbImportant";
             this.cbImportant.ShowAddButton = true;

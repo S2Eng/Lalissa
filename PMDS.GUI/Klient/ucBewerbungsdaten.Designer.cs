@@ -499,7 +499,6 @@
             this.cmbPflegeart.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cmbPflegeart.ExactMatch = false;
             this.cmbPflegeart.Group = "PAR";
-            this.cmbPflegeart.ID_PEP = -1;
             this.cmbPflegeart.Location = new System.Drawing.Point(135, 133);
             this.cmbPflegeart.MaxLength = 100;
             this.cmbPflegeart.Name = "cmbPflegeart";
@@ -602,7 +601,6 @@
             this.cmbPrioritaet.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cmbPrioritaet.ExactMatch = false;
             this.cmbPrioritaet.Group = "PRI";
-            this.cmbPrioritaet.ID_PEP = -1;
             this.cmbPrioritaet.Location = new System.Drawing.Point(358, 20);
             this.cmbPrioritaet.MaxLength = 10;
             this.cmbPrioritaet.Name = "cmbPrioritaet";

@@ -331,7 +331,6 @@ namespace PMDS.GUI
             this.cboTitel.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cboTitel.ExactMatch = false;
             this.cboTitel.Group = "TIT";
-            this.cboTitel.ID_PEP = -1;
             this.cboTitel.Location = new System.Drawing.Point(90, 22);
             this.cboTitel.Name = "cboTitel";
             this.cboTitel.PflichtJN = false;
@@ -395,7 +394,6 @@ namespace PMDS.GUI
             this.cboELGA_AuthorSpeciality.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cboELGA_AuthorSpeciality.ExactMatch = false;
             this.cboELGA_AuthorSpeciality.Group = "ROL";
-            this.cboELGA_AuthorSpeciality.ID_PEP = -1;
             this.cboELGA_AuthorSpeciality.Location = new System.Drawing.Point(90, 235);
             this.cboELGA_AuthorSpeciality.Name = "cboELGA_AuthorSpeciality";
             this.cboELGA_AuthorSpeciality.PflichtJN = false;

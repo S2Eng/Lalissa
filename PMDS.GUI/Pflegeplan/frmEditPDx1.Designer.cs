@@ -396,7 +396,6 @@
             this.cmbCode.BerufsstandGruppeJNA = -1;
             this.cmbCode.ExactMatch = false;
             this.cmbCode.Group = "PDC";
-            this.cmbCode.ID_PEP = -1;
             this.cmbCode.IgnoreUnterdruecken = true;
             this.cmbCode.Location = new System.Drawing.Point(524, 234);
             this.cmbCode.Margin = new System.Windows.Forms.Padding(4);
@@ -420,7 +419,6 @@
             this.cmbPDXKuerzel.ExactMatch = false;
             this.cmbPDXKuerzel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDXKuerzel.Group = "PDK";
-            this.cmbPDXKuerzel.ID_PEP = -1;
             this.cmbPDXKuerzel.IgnoreUnterdruecken = true;
             this.cmbPDXKuerzel.Location = new System.Drawing.Point(399, 313);
             this.cmbPDXKuerzel.Margin = new System.Windows.Forms.Padding(4);

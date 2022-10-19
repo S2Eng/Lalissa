@@ -771,7 +771,6 @@
             this.cbPackungsEinheit.BerufsstandGruppeJNA = -1;
             this.cbPackungsEinheit.ExactMatch = true;
             this.cbPackungsEinheit.Group = "MEH";
-            this.cbPackungsEinheit.ID_PEP = -1;
             this.cbPackungsEinheit.IgnoreUnterdruecken = false;
             this.cbPackungsEinheit.Location = new System.Drawing.Point(303, 2);
             this.cbPackungsEinheit.Margin = new System.Windows.Forms.Padding(4);
@@ -918,7 +917,6 @@
             this.cmbEinheit.BerufsstandGruppeJNA = -1;
             this.cmbEinheit.ExactMatch = true;
             this.cmbEinheit.Group = "MEH";
-            this.cmbEinheit.ID_PEP = -1;
             this.cmbEinheit.IgnoreUnterdruecken = true;
             this.cmbEinheit.Location = new System.Drawing.Point(572, 335);
             this.cmbEinheit.Margin = new System.Windows.Forms.Padding(4);
@@ -939,7 +937,6 @@
             this.cbImportant.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbImportant.ExactMatch = false;
             this.cbImportant.Group = "BER";
-            this.cbImportant.ID_PEP = -1;
             this.cbImportant.IgnoreUnterdruecken = true;
             this.cbImportant.Location = new System.Drawing.Point(156, 589);
             this.cbImportant.Margin = new System.Windows.Forms.Padding(5);
@@ -998,7 +995,6 @@
             this.cmbApplikationsform.BerufsstandGruppeJNA = -1;
             this.cmbApplikationsform.ExactMatch = true;
             this.cmbApplikationsform.Group = "APF";
-            this.cmbApplikationsform.ID_PEP = -1;
             this.cmbApplikationsform.IgnoreUnterdruecken = false;
             this.cmbApplikationsform.Location = new System.Drawing.Point(153, 155);
             this.cmbApplikationsform.Margin = new System.Windows.Forms.Padding(4);

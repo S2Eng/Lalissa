@@ -182,7 +182,6 @@ namespace PMDS.GUI
             this.cboLand.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cboLand.ExactMatch = false;
             this.cboLand.Group = "LND";
-            this.cboLand.ID_PEP = -1;
             this.cboLand.Location = new System.Drawing.Point(90, 61);
             this.cboLand.Name = "cboLand";
             this.cboLand.PflichtJN = false;

@@ -433,7 +433,6 @@ namespace PMDS.GUI.STAMP
             this.cmbGemeinde.BerufsstandGruppeJNA = -1;
             this.cmbGemeinde.ExactMatch = false;
             this.cmbGemeinde.Group = "GKZ";
-            this.cmbGemeinde.ID_PEP = -1;
             this.cmbGemeinde.IgnoreUnterdruecken = true;
             this.cmbGemeinde.Location = new System.Drawing.Point(83, 1);
             this.cmbGemeinde.MaxLength = 40;
@@ -479,7 +478,6 @@ namespace PMDS.GUI.STAMP
             this.cmbBundesland.BerufsstandGruppeJNA = -1;
             this.cmbBundesland.ExactMatch = false;
             this.cmbBundesland.Group = "BLD";
-            this.cmbBundesland.ID_PEP = -1;
             this.cmbBundesland.IgnoreUnterdruecken = true;
             this.cmbBundesland.Location = new System.Drawing.Point(83, 1);
             this.cmbBundesland.MaxLength = 40;
@@ -525,7 +523,6 @@ namespace PMDS.GUI.STAMP
             this.cmbLand.BerufsstandGruppeJNA = -1;
             this.cmbLand.ExactMatch = false;
             this.cmbLand.Group = "LND";
-            this.cmbLand.ID_PEP = -1;
             this.cmbLand.IgnoreUnterdruecken = true;
             this.cmbLand.Location = new System.Drawing.Point(83, 0);
             this.cmbLand.MaxLength = 40;
@@ -728,7 +725,6 @@ namespace PMDS.GUI.STAMP
             this.cmbFinanzierung.BerufsstandGruppeJNA = -1;
             this.cmbFinanzierung.ExactMatch = false;
             this.cmbFinanzierung.Group = "SFI";
-            this.cmbFinanzierung.ID_PEP = -1;
             this.cmbFinanzierung.IgnoreUnterdruecken = true;
             this.cmbFinanzierung.Location = new System.Drawing.Point(112, 19);
             this.cmbFinanzierung.MaxLength = 40;

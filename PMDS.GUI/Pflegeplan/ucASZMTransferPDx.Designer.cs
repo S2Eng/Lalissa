@@ -223,7 +223,6 @@
             this.cbArea.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
             this.cbArea.BerufsstandGruppeJNA = -1;
             this.cbArea.Group = "LOA";
-            this.cbArea.ID_PEP = -1;
             this.cbArea.Location = new System.Drawing.Point(129, 21);
             this.cbArea.MaxLength = 50;
             this.cbArea.Name = "cbArea";
@@ -238,7 +237,6 @@
             this.cbSide.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
             this.cbSide.BerufsstandGruppeJNA = -1;
             this.cbSide.Group = "LOS";
-            this.cbSide.ID_PEP = -1;
             this.cbSide.Location = new System.Drawing.Point(129, 48);
             this.cbSide.MaxLength = 50;
             this.cbSide.Name = "cbSide";

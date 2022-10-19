@@ -281,7 +281,6 @@
             this.cbDekuskala.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbDekuskala.ExactMatch = false;
             this.cbDekuskala.Group = "DES";
-            this.cbDekuskala.ID_PEP = -1;
             this.cbDekuskala.IgnoreUnterdruecken = true;
             this.cbDekuskala.Location = new System.Drawing.Point(104, 34);
             this.cbDekuskala.Name = "cbDekuskala";
@@ -302,7 +301,6 @@
             this.cbWundart.BerufsstandGruppeJNA = -1;
             this.cbWundart.ExactMatch = false;
             this.cbWundart.Group = "WAT";
-            this.cbWundart.ID_PEP = -1;
             this.cbWundart.IgnoreUnterdruecken = true;
             this.cbWundart.Location = new System.Drawing.Point(104, 7);
             this.cbWundart.Name = "cbWundart";

@@ -176,7 +176,6 @@
             this.txtLand.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.txtLand.ExactMatch = false;
             this.txtLand.Group = "LND";
-            this.txtLand.ID_PEP = -1;
             this.txtLand.Location = new System.Drawing.Point(184, 68);
             this.txtLand.MaxLength = 20;
             this.txtLand.Name = "txtLand";
@@ -487,7 +486,6 @@
             this.cbKontaktart.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbKontaktart.ExactMatch = false;
             this.cbKontaktart.Group = "KAT";
-            this.cbKontaktart.ID_PEP = -1;
             this.cbKontaktart.Location = new System.Drawing.Point(109, 55);
             this.cbKontaktart.MaxLength = 255;
             this.cbKontaktart.Name = "cbKontaktart";
@@ -506,7 +504,6 @@
             this.cmbAkdGrad.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cmbAkdGrad.ExactMatch = false;
             this.cmbAkdGrad.Group = "TIT";
-            this.cmbAkdGrad.ID_PEP = -1;
             this.cmbAkdGrad.Location = new System.Drawing.Point(361, 24);
             this.cmbAkdGrad.MaxLength = 40;
             this.cmbAkdGrad.Name = "cmbAkdGrad";
@@ -525,7 +522,6 @@
             this.cboVerwandschaft.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cboVerwandschaft.ExactMatch = false;
             this.cboVerwandschaft.Group = "VWV";
-            this.cboVerwandschaft.ID_PEP = -1;
             this.cboVerwandschaft.Location = new System.Drawing.Point(109, 79);
             this.cboVerwandschaft.MaxLength = 15;
             this.cboVerwandschaft.Name = "cboVerwandschaft";

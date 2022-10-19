@@ -360,7 +360,6 @@
             this.cmbRelegion.BerufsstandGruppeJNA = -1;
             this.cmbRelegion.ExactMatch = false;
             this.cmbRelegion.Group = "KON";
-            this.cmbRelegion.ID_PEP = -1;
             this.cmbRelegion.IgnoreUnterdruecken = true;
             this.cmbRelegion.Location = new System.Drawing.Point(560, 53);
             this.cmbRelegion.Margin = new System.Windows.Forms.Padding(4);

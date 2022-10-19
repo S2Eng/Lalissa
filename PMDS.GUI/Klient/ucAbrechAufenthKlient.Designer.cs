@@ -561,7 +561,6 @@ namespace PMDS.GUI
             this.cmbBetreuungsstufe.BerufsstandGruppeJNA = -1;
             this.cmbBetreuungsstufe.ExactMatch = false;
             this.cmbBetreuungsstufe.Group = "BST";
-            this.cmbBetreuungsstufe.ID_PEP = -1;
             this.cmbBetreuungsstufe.IgnoreUnterdruecken = true;
             this.cmbBetreuungsstufe.Location = new System.Drawing.Point(126, 203);
             this.cmbBetreuungsstufe.MaxLength = 40;

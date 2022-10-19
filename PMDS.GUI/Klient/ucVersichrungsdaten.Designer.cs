@@ -129,7 +129,6 @@ namespace PMDS.GUI
             this.cboSozVersLeerGrund.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cboSozVersLeerGrund.ExactMatch = false;
             this.cboSozVersLeerGrund.Group = "SVE";
-            this.cboSozVersLeerGrund.ID_PEP = -1;
             this.cboSozVersLeerGrund.IgnoreUnterdruecken = true;
             this.cboSozVersLeerGrund.Location = new System.Drawing.Point(106, 43);
             this.cboSozVersLeerGrund.MaxLength = 25;
@@ -167,7 +166,6 @@ namespace PMDS.GUI
             this.cboSozVersStatus.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cboSozVersStatus.ExactMatch = false;
             this.cboSozVersStatus.Group = "SVS";
-            this.cboSozVersStatus.ID_PEP = -1;
             this.cboSozVersStatus.IgnoreUnterdruecken = true;
             this.cboSozVersStatus.Location = new System.Drawing.Point(106, 93);
             this.cboSozVersStatus.MaxLength = 25;
@@ -216,7 +214,6 @@ namespace PMDS.GUI
             this.cmbKlasse.BerufsstandGruppeJNA = -1;
             this.cmbKlasse.ExactMatch = false;
             this.cmbKlasse.Group = "KLA";
-            this.cmbKlasse.ID_PEP = -1;
             this.cmbKlasse.IgnoreUnterdruecken = true;
             this.cmbKlasse.Location = new System.Drawing.Point(106, 168);
             this.cmbKlasse.MaxLength = 25;

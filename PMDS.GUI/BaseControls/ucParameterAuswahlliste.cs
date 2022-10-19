@@ -29,13 +29,6 @@ namespace PMDS.GUI.BaseControls
             }
         }
 
-        public int VALUE_PEP
-        {
-            get
-            {
-                return cbList.ID_PEP;
-            }
-        }
         public string VALUE_TEXT
         {
             get

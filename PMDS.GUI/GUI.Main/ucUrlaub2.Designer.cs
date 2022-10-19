@@ -86,7 +86,6 @@
             this.txtUrlaub.BerufsstandGruppeJNA = -1;
             this.txtUrlaub.ExactMatch = false;
             this.txtUrlaub.Group = "URL";
-            this.txtUrlaub.ID_PEP = -1;
             this.txtUrlaub.IgnoreUnterdruecken = true;
             this.txtUrlaub.Location = new System.Drawing.Point(164, 5);
             this.txtUrlaub.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -191,7 +190,6 @@
             this.auswahlSTAMP_Awesenheitsgrund.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.auswahlSTAMP_Awesenheitsgrund.ExactMatch = true;
             this.auswahlSTAMP_Awesenheitsgrund.Group = "SAG";
-            this.auswahlSTAMP_Awesenheitsgrund.ID_PEP = -1;
             this.auswahlSTAMP_Awesenheitsgrund.IgnoreUnterdruecken = true;
             this.auswahlSTAMP_Awesenheitsgrund.Location = new System.Drawing.Point(164, 4);
             this.auswahlSTAMP_Awesenheitsgrund.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);

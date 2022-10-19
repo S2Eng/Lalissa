@@ -278,7 +278,6 @@ namespace PMDS.GUI
             this.cboELGA_AuthorSpeciality.BerufsstandGruppeJNA = 0;
             this.cboELGA_AuthorSpeciality.ExactMatch = true;
             this.cboELGA_AuthorSpeciality.Group = "FAR";
-            this.cboELGA_AuthorSpeciality.ID_PEP = -1;
             this.cboELGA_AuthorSpeciality.IgnoreUnterdruecken = true;
             this.cboELGA_AuthorSpeciality.Location = new System.Drawing.Point(90, 290);
             this.cboELGA_AuthorSpeciality.Name = "cboELGA_AuthorSpeciality";
@@ -458,7 +457,6 @@ namespace PMDS.GUI
             this.cbBerufsstand.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbBerufsstand.ExactMatch = false;
             this.cbBerufsstand.Group = "BER";
-            this.cbBerufsstand.ID_PEP = -1;
             this.cbBerufsstand.IgnoreUnterdruecken = true;
             this.cbBerufsstand.Location = new System.Drawing.Point(90, 111);
             this.cbBerufsstand.Name = "cbBerufsstand";

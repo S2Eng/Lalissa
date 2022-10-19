@@ -520,7 +520,6 @@
             this.cbPackungsEinheit.BerufsstandGruppeJNA = -1;
             this.cbPackungsEinheit.ExactMatch = true;
             this.cbPackungsEinheit.Group = "MEH";
-            this.cbPackungsEinheit.ID_PEP = -1;
             this.cbPackungsEinheit.IgnoreUnterdruecken = false;
             this.cbPackungsEinheit.Location = new System.Drawing.Point(475, 165);
             this.cbPackungsEinheit.Margin = new System.Windows.Forms.Padding(4);
@@ -569,7 +568,6 @@
             this.cmbApplikationsform.BerufsstandGruppeJNA = -1;
             this.cmbApplikationsform.ExactMatch = true;
             this.cmbApplikationsform.Group = "APF";
-            this.cmbApplikationsform.ID_PEP = -1;
             this.cmbApplikationsform.IgnoreUnterdruecken = false;
             this.cmbApplikationsform.Location = new System.Drawing.Point(181, 200);
             this.cmbApplikationsform.Margin = new System.Windows.Forms.Padding(4);
@@ -593,7 +591,6 @@
             this.cbEinheit.BerufsstandGruppeJNA = -1;
             this.cbEinheit.ExactMatch = true;
             this.cbEinheit.Group = "DRF";
-            this.cbEinheit.ID_PEP = -1;
             this.cbEinheit.IgnoreUnterdruecken = true;
             this.cbEinheit.Location = new System.Drawing.Point(181, 70);
             this.cbEinheit.Margin = new System.Windows.Forms.Padding(4);
@@ -617,7 +614,6 @@
             this.cbGroup.BerufsstandGruppeJNA = -1;
             this.cbGroup.ExactMatch = false;
             this.cbGroup.Group = "MGR";
-            this.cbGroup.ID_PEP = -1;
             this.cbGroup.IgnoreUnterdruecken = true;
             this.cbGroup.Location = new System.Drawing.Point(181, 38);
             this.cbGroup.Margin = new System.Windows.Forms.Padding(4);

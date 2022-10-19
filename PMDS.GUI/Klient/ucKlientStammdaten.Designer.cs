@@ -669,7 +669,6 @@ namespace PMDS.GUI
             this.cmbHaupwohnsitzgemeinde.BerufsstandGruppeJNA = -1;
             this.cmbHaupwohnsitzgemeinde.ExactMatch = false;
             this.cmbHaupwohnsitzgemeinde.Group = "GKZ";
-            this.cmbHaupwohnsitzgemeinde.ID_PEP = -1;
             this.cmbHaupwohnsitzgemeinde.IgnoreUnterdruecken = true;
             this.cmbHaupwohnsitzgemeinde.Location = new System.Drawing.Point(160, 117);
             this.cmbHaupwohnsitzgemeinde.MaxLength = 40;
@@ -745,7 +744,6 @@ namespace PMDS.GUI
             this.txtLand.BerufsstandGruppeJNA = -1;
             this.txtLand.ExactMatch = false;
             this.txtLand.Group = "LND";
-            this.txtLand.ID_PEP = -1;
             this.txtLand.IgnoreUnterdruecken = true;
             this.txtLand.Location = new System.Drawing.Point(112, 87);
             this.txtLand.MaxLength = 20;
@@ -1063,7 +1061,6 @@ namespace PMDS.GUI
             this.txtLandNWS.BerufsstandGruppeJNA = -1;
             this.txtLandNWS.ExactMatch = false;
             this.txtLandNWS.Group = "LND";
-            this.txtLandNWS.ID_PEP = -1;
             this.txtLandNWS.IgnoreUnterdruecken = true;
             this.txtLandNWS.Location = new System.Drawing.Point(203, 89);
             this.txtLandNWS.MaxLength = 20;
@@ -1549,7 +1546,6 @@ namespace PMDS.GUI
             this.cboTitelPost.BerufsstandGruppeJNA = -1;
             this.cboTitelPost.ExactMatch = false;
             this.cboTitelPost.Group = "TTP";
-            this.cboTitelPost.ID_PEP = -1;
             this.cboTitelPost.IgnoreUnterdruecken = true;
             this.cboTitelPost.Location = new System.Drawing.Point(309, 151);
             this.cboTitelPost.MaxLength = 40;
@@ -1641,7 +1637,6 @@ namespace PMDS.GUI
             this.cmbStaatsB.BerufsstandGruppeJNA = -1;
             this.cmbStaatsB.ExactMatch = false;
             this.cmbStaatsB.Group = "SBS";
-            this.cmbStaatsB.ID_PEP = -1;
             this.cmbStaatsB.IgnoreUnterdruecken = true;
             this.cmbStaatsB.Location = new System.Drawing.Point(309, 181);
             this.cmbStaatsB.MaxLength = 255;
@@ -1662,7 +1657,6 @@ namespace PMDS.GUI
             this.cmbAkdGrad.BerufsstandGruppeJNA = -1;
             this.cmbAkdGrad.ExactMatch = false;
             this.cmbAkdGrad.Group = "TIT";
-            this.cmbAkdGrad.ID_PEP = -1;
             this.cmbAkdGrad.IgnoreUnterdruecken = true;
             this.cmbAkdGrad.Location = new System.Drawing.Point(90, 151);
             this.cmbAkdGrad.MaxLength = 40;
@@ -1684,7 +1678,6 @@ namespace PMDS.GUI
             this.cmbKonfession.BerufsstandGruppeJNA = -1;
             this.cmbKonfession.ExactMatch = false;
             this.cmbKonfession.Group = "KON";
-            this.cmbKonfession.ID_PEP = -1;
             this.cmbKonfession.IgnoreUnterdruecken = true;
             this.cmbKonfession.Location = new System.Drawing.Point(90, 211);
             this.cmbKonfession.MaxLength = 255;
@@ -1705,7 +1698,6 @@ namespace PMDS.GUI
             this.cmbAnrede.BerufsstandGruppeJNA = -1;
             this.cmbAnrede.ExactMatch = false;
             this.cmbAnrede.Group = "ANR";
-            this.cmbAnrede.ID_PEP = -1;
             this.cmbAnrede.IgnoreUnterdruecken = true;
             this.cmbAnrede.Location = new System.Drawing.Point(309, 89);
             this.cmbAnrede.MaxLength = 15;
@@ -1738,7 +1730,6 @@ namespace PMDS.GUI
             this.cmbFAM.BerufsstandGruppeJNA = -1;
             this.cmbFAM.ExactMatch = false;
             this.cmbFAM.Group = "FAM";
-            this.cmbFAM.ID_PEP = -1;
             this.cmbFAM.IgnoreUnterdruecken = true;
             this.cmbFAM.Location = new System.Drawing.Point(90, 181);
             this.cmbFAM.MaxLength = 15;
@@ -1781,7 +1772,6 @@ namespace PMDS.GUI
             this.cmbSexus.BerufsstandGruppeJNA = -1;
             this.cmbSexus.ExactMatch = false;
             this.cmbSexus.Group = "SEX";
-            this.cmbSexus.ID_PEP = -1;
             this.cmbSexus.IgnoreUnterdruecken = true;
             this.cmbSexus.Location = new System.Drawing.Point(90, 89);
             this.cmbSexus.MaxLength = 15;
@@ -2254,7 +2244,6 @@ namespace PMDS.GUI
             this.cmbstatur.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cmbstatur.ExactMatch = false;
             this.cmbstatur.Group = "STA";
-            this.cmbstatur.ID_PEP = -1;
             this.cmbstatur.IgnoreUnterdruecken = true;
             this.cmbstatur.Location = new System.Drawing.Point(137, 115);
             this.cmbstatur.MaxLength = 50;
@@ -2276,7 +2265,6 @@ namespace PMDS.GUI
             this.cmbHaarFarbe.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cmbHaarFarbe.ExactMatch = false;
             this.cmbHaarFarbe.Group = "HFR";
-            this.cmbHaarFarbe.ID_PEP = -1;
             this.cmbHaarFarbe.IgnoreUnterdruecken = true;
             this.cmbHaarFarbe.Location = new System.Drawing.Point(137, 85);
             this.cmbHaarFarbe.MaxLength = 255;
@@ -2298,7 +2286,6 @@ namespace PMDS.GUI
             this.cmbAugenFarbe.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cmbAugenFarbe.ExactMatch = false;
             this.cmbAugenFarbe.Group = "AFR";
-            this.cmbAugenFarbe.ID_PEP = -1;
             this.cmbAugenFarbe.IgnoreUnterdruecken = true;
             this.cmbAugenFarbe.Location = new System.Drawing.Point(137, 55);
             this.cmbAugenFarbe.MaxLength = 255;
@@ -3253,7 +3240,6 @@ namespace PMDS.GUI
             this.cboRezGebBef_WiderrufGrund.BerufsstandGruppeJNA = -1;
             this.cboRezGebBef_WiderrufGrund.ExactMatch = false;
             this.cboRezGebBef_WiderrufGrund.Group = "RGW";
-            this.cboRezGebBef_WiderrufGrund.ID_PEP = -1;
             this.cboRezGebBef_WiderrufGrund.IgnoreUnterdruecken = true;
             this.cboRezGebBef_WiderrufGrund.Location = new System.Drawing.Point(176, 138);
             this.cboRezGebBef_WiderrufGrund.MaxLength = 40;

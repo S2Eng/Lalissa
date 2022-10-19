@@ -459,7 +459,6 @@
             this.cmbTyp.BerufsstandGruppeJNA = -1;
             this.cmbTyp.ExactMatch = false;
             this.cmbTyp.Group = "DTH";
-            this.cmbTyp.ID_PEP = -1;
             this.cmbTyp.Location = new System.Drawing.Point(151, 3);
             this.cmbTyp.MaxLength = 50;
             this.cmbTyp.Name = "cmbTyp";

@@ -1175,7 +1175,6 @@
             this.auswahlGruppeCombo9.BerufsstandGruppeJNA = -1;
             this.auswahlGruppeCombo9.ExactMatch = false;
             this.auswahlGruppeCombo9.Group = "ANR";
-            this.auswahlGruppeCombo9.ID_PEP = -1;
             this.auswahlGruppeCombo9.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo9.Location = new System.Drawing.Point(456, 33);
             this.auswahlGruppeCombo9.Name = "auswahlGruppeCombo9";
@@ -1194,7 +1193,6 @@
             this.auswahlGruppeCombo10.BerufsstandGruppeJNA = -1;
             this.auswahlGruppeCombo10.ExactMatch = false;
             this.auswahlGruppeCombo10.Group = "TIT";
-            this.auswahlGruppeCombo10.ID_PEP = -1;
             this.auswahlGruppeCombo10.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo10.Location = new System.Drawing.Point(301, 33);
             this.auswahlGruppeCombo10.Name = "auswahlGruppeCombo10";
@@ -1213,7 +1211,6 @@
             this.auswahlGruppeCombo11.BerufsstandGruppeJNA = -1;
             this.auswahlGruppeCombo11.ExactMatch = false;
             this.auswahlGruppeCombo11.Group = "HFR";
-            this.auswahlGruppeCombo11.ID_PEP = -1;
             this.auswahlGruppeCombo11.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo11.Location = new System.Drawing.Point(533, 121);
             this.auswahlGruppeCombo11.Name = "auswahlGruppeCombo11";
@@ -1232,7 +1229,6 @@
             this.auswahlGruppeCombo12.BerufsstandGruppeJNA = -1;
             this.auswahlGruppeCombo12.ExactMatch = false;
             this.auswahlGruppeCombo12.Group = "AFR";
-            this.auswahlGruppeCombo12.ID_PEP = -1;
             this.auswahlGruppeCombo12.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo12.Location = new System.Drawing.Point(533, 97);
             this.auswahlGruppeCombo12.Name = "auswahlGruppeCombo12";
@@ -1251,7 +1247,6 @@
             this.auswahlGruppeCombo13.BerufsstandGruppeJNA = -1;
             this.auswahlGruppeCombo13.ExactMatch = false;
             this.auswahlGruppeCombo13.Group = "LND";
-            this.auswahlGruppeCombo13.ID_PEP = -1;
             this.auswahlGruppeCombo13.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo13.Location = new System.Drawing.Point(245, 122);
             this.auswahlGruppeCombo13.Name = "auswahlGruppeCombo13";
@@ -1270,7 +1265,6 @@
             this.auswahlGruppeCombo14.BerufsstandGruppeJNA = -1;
             this.auswahlGruppeCombo14.ExactMatch = false;
             this.auswahlGruppeCombo14.Group = "KON";
-            this.auswahlGruppeCombo14.ID_PEP = -1;
             this.auswahlGruppeCombo14.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo14.Location = new System.Drawing.Point(73, 145);
             this.auswahlGruppeCombo14.Name = "auswahlGruppeCombo14";
@@ -1289,7 +1283,6 @@
             this.auswahlGruppeCombo15.BerufsstandGruppeJNA = -1;
             this.auswahlGruppeCombo15.ExactMatch = false;
             this.auswahlGruppeCombo15.Group = "FAM";
-            this.auswahlGruppeCombo15.ID_PEP = -1;
             this.auswahlGruppeCombo15.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo15.Location = new System.Drawing.Point(73, 121);
             this.auswahlGruppeCombo15.Name = "auswahlGruppeCombo15";
@@ -1308,7 +1301,6 @@
             this.auswahlGruppeCombo16.BerufsstandGruppeJNA = -1;
             this.auswahlGruppeCombo16.ExactMatch = false;
             this.auswahlGruppeCombo16.Group = "SEX";
-            this.auswahlGruppeCombo16.ID_PEP = -1;
             this.auswahlGruppeCombo16.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo16.Location = new System.Drawing.Point(73, 97);
             this.auswahlGruppeCombo16.Name = "auswahlGruppeCombo16";
@@ -1327,7 +1319,6 @@
             this.auswahlGruppeCombo17.BerufsstandGruppeJNA = -1;
             this.auswahlGruppeCombo17.ExactMatch = false;
             this.auswahlGruppeCombo17.Group = "KLA";
-            this.auswahlGruppeCombo17.ID_PEP = -1;
             this.auswahlGruppeCombo17.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo17.Location = new System.Drawing.Point(108, 259);
             this.auswahlGruppeCombo17.Name = "auswahlGruppeCombo17";
@@ -1346,7 +1337,6 @@
             this.auswahlGruppeCombo18.BerufsstandGruppeJNA = -1;
             this.auswahlGruppeCombo18.ExactMatch = false;
             this.auswahlGruppeCombo18.Group = "KRK";
-            this.auswahlGruppeCombo18.ID_PEP = -1;
             this.auswahlGruppeCombo18.IgnoreUnterdruecken = true;
             this.auswahlGruppeCombo18.Location = new System.Drawing.Point(108, 211);
             this.auswahlGruppeCombo18.Name = "auswahlGruppeCombo18";

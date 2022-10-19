@@ -390,7 +390,6 @@ namespace PMDS.GUI
             this.cmbKonfession.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
             this.cmbKonfession.BerufsstandGruppeJNA = -1;
             this.cmbKonfession.Group = "KON";
-            this.cmbKonfession.ID_PEP = -1;
             this.cmbKonfession.Location = new System.Drawing.Point(330, 125);
             this.cmbKonfession.MaxLength = 255;
             this.cmbKonfession.Name = "cmbKonfession";
@@ -415,7 +414,6 @@ namespace PMDS.GUI
             this.cmbSexus.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
             this.cmbSexus.BerufsstandGruppeJNA = -1;
             this.cmbSexus.Group = "SEX";
-            this.cmbSexus.ID_PEP = -1;
             this.cmbSexus.Location = new System.Drawing.Point(130, 125);
             this.cmbSexus.MaxLength = 15;
             this.cmbSexus.Name = "cmbSexus";
@@ -497,7 +495,6 @@ namespace PMDS.GUI
             this.cmbPriortaet.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
             this.cmbPriortaet.BerufsstandGruppeJNA = -1;
             this.cmbPriortaet.Group = "PRI";
-            this.cmbPriortaet.ID_PEP = -1;
             this.cmbPriortaet.Location = new System.Drawing.Point(130, 102);
             this.cmbPriortaet.MaxLength = 40;
             this.cmbPriortaet.Name = "cmbPriortaet";
@@ -512,7 +509,6 @@ namespace PMDS.GUI
             this.cmbPflegeart.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
             this.cmbPflegeart.BerufsstandGruppeJNA = -1;
             this.cmbPflegeart.Group = "PAR";
-            this.cmbPflegeart.ID_PEP = -1;
             this.cmbPflegeart.Location = new System.Drawing.Point(331, 102);
             this.cmbPflegeart.MaxLength = 40;
             this.cmbPflegeart.Name = "cmbPflegeart";

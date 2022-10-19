@@ -129,7 +129,6 @@ namespace PMDS.GUI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbFachrichtung.BerufsstandGruppeJNA = -1;
             this.cbFachrichtung.Group = "FAR";
-            this.cbFachrichtung.ID_PEP = -1;
             this.cbFachrichtung.Location = new System.Drawing.Point(504, 23);
             this.cbFachrichtung.Margin = new System.Windows.Forms.Padding(4);
             this.cbFachrichtung.Name = "cbFachrichtung";

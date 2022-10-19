@@ -822,27 +822,20 @@ namespace PMDS.GUI
                 foreach (IBerichtParameterGUI u in this.pnlParameter.Controls)
                 {
                     PMDS.Print.CR.BerichtParameter a = u.BERICHTPARAMETER;
-                    if (u.GetType().Name == "ucParameterAuswahlliste" && ENV.StartupTyp == "auswpep")
+                    if (a.Typ == PMDS.Print.CR.BerichtParameter.BerichtParameterTyp.Datum)
                     {
-                        a.Value = (object) ((ucParameterAuswahlliste)u).VALUE_PEP;
-                    }
-                    else
-                    {
-                        if (a.Typ == PMDS.Print.CR.BerichtParameter.BerichtParameterTyp.Datum)
+                        if (u.VALUE == null || (System.DateTime)u.VALUE == System.DateTime.MinValue)
                         {
-                            if (u.VALUE == null || (System.DateTime)u.VALUE == System.DateTime.MinValue)
-                            {
-                                a.Value = DateTime.MinValue;
-                            }
-                            else
-                            {
-                                a.Value = u.VALUE;
-                            }
+                            a.Value = DateTime.MinValue;
                         }
                         else
+                        {
                             a.Value = u.VALUE;
-
+                        }
                     }
+                    else
+                        a.Value = u.VALUE;
+
 
                     l.Add(a);
                     // ein _txt als Parameter anhängen
