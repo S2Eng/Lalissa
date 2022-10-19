@@ -33,11 +33,9 @@ namespace qs2.core
                     QS2.Desktop.Txteditor.Settings.init(qs2.core.ENV.PathTemp, qs2.core.ENV.PathLog, true, qs2.core.ENV.AdminSecure);
                     return true;
                 }
-                else
-                {
-                    qs2.core.generic.showMessageBox("Could not connect to Database!", MessageBoxButtons.OK, "");
-                    return false;
-                } 
+
+                qs2.core.generic.showMessageBox("Could not connect to Database!", MessageBoxButtons.OK, "");
+                return false;
             }
             catch (Exception ex)
             {

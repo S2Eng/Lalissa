@@ -2191,7 +2191,6 @@ namespace PMDS.DB
             try
             {
                 TextControl1.Text = "";
-                QS2.Desktop.Txteditor.doEditor doEditor1 = new QS2.Desktop.Txteditor.doEditor();
                 TXTextControl.LoadSettings LoadSettings1 = new TXTextControl.LoadSettings();
                 TextControl1.Load(PflegeplanTextOrig.Trim(), TXTextControl.StringStreamType.PlainText, LoadSettings1);
                 TXTextControl.AppendSettings appSett = new TXTextControl.AppendSettings();

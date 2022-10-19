@@ -418,7 +418,7 @@ Public Class General
             txt = txt.Replace(":", "")
             Return txt
 
-        Catch ex As Exception   
+        Catch ex As Exception
             Throw New Exception("General.checkSonderSigns: " + ex.ToString())
         End Try
     End Function

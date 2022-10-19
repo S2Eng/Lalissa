@@ -1,10 +1,7 @@
 ﻿Public Class Settings
 
-    Private Shared _SystemIsInitialized As Boolean = False
-
     Public Shared _path_temp As String = ""
     Public Shared _path_log As String = ""
-    Public Shared _path_Config As String = ""
     Public Shared _adminSecure As Boolean = False
     Public Shared delDoRes As dGetRes
     Public Delegate Function dGetRes(ByVal IDRes As String) As String
@@ -23,7 +20,6 @@
 
         Settings._path_temp = path_temp
         Settings._path_log = path_log
-        Settings._SystemIsInitialized = SystemIsInitialized
         Settings._adminSecure = adminSecure
 
         QS2.Logging.Settings.init(path_log, SystemIsInitialized, adminSecure)

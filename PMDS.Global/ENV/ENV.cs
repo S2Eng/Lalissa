@@ -1492,7 +1492,6 @@ namespace PMDS.Global
 
                 QS2.Logging.Settings.init(ENV._LOGPATH, true, ENV.adminSecure);
                 QS2.Desktop.ControlManagment.Settings.init(ref PMDS.Global.ENV.IDApplication, ref PMDS.Global.ENV.TypeRessourcesRun, ENV.adminSecure, ENV.DoNotShowRessources, ENV.AutoAddNewRessources, ENV.IntDeactivated, DataBase.CONNECTIONSqlClient);
-                QS2.Desktop.Txteditor.Settings.init(ENV.path_Temp, ENV._LOGPATH, true, ENV.adminSecure);
                 PMDSClient.PMDSClientWrapper.init();
 
                 return true;
