@@ -192,30 +192,6 @@
   <data name="&gt;&gt;gridInfrag1xyxy.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="chkChapters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 42</value>
-  </data>
-  <data name="chkChapters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>313, 15</value>
-  </data>
-  <data name="chkChapters.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="chkChapters.Text" xml:space="preserve">
-    <value>Chapters</value>
-  </data>
-  <data name="&gt;&gt;chkChapters.Name" xml:space="preserve">
-    <value>chkChapters</value>
-  </data>
-  <data name="&gt;&gt;chkChapters.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinEditors.UltraCheckEditor, Infragistics4.Win.UltraWinEditors.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;chkChapters.Parent" xml:space="preserve">
-    <value>panelTop</value>
-  </data>
-  <data name="&gt;&gt;chkChapters.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="btnAddCriteria.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -249,13 +225,13 @@
     <value>btnAddCriteria</value>
   </data>
   <data name="&gt;&gt;btnAddCriteria.Type" xml:space="preserve">
-    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.8325.23295, Culture=neutral, PublicKeyToken=null</value>
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.8327.21583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnAddCriteria.Parent" xml:space="preserve">
     <value>panelTop</value>
   </data>
   <data name="&gt;&gt;btnAddCriteria.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="comboApplication1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -273,13 +249,13 @@
     <value>comboApplication1</value>
   </data>
   <data name="&gt;&gt;comboApplication1.Type" xml:space="preserve">
-    <value>qs2.sitemap.comboApplication, qs2.sitemap, Version=1.0.8325.23295, Culture=neutral, PublicKeyToken=null</value>
+    <value>qs2.sitemap.comboApplication, qs2.sitemap, Version=1.0.8327.21583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboApplication1.Parent" xml:space="preserve">
     <value>panelTop</value>
   </data>
   <data name="&gt;&gt;comboApplication1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="chkTranslateRessources.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -306,7 +282,7 @@
     <value>panelTop</value>
   </data>
   <data name="&gt;&gt;chkTranslateRessources.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="txtSearch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -333,7 +309,7 @@
     <value>panelTop</value>
   </data>
   <data name="&gt;&gt;txtSearch.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="cboResTyp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -360,7 +336,7 @@
     <value>panelTop</value>
   </data>
   <data name="&gt;&gt;cboResTyp.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="btnCollapsAll.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -399,7 +375,7 @@
     <value>panelTop</value>
   </data>
   <data name="&gt;&gt;btnCollapsAll.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="btnExpandAll.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -438,31 +414,7 @@
     <value>panelTop</value>
   </data>
   <data name="&gt;&gt;btnExpandAll.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="chkRelationsship.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 28</value>
-  </data>
-  <data name="chkRelationsship.Size" type="System.Drawing.Size, System.Drawing">
-    <value>313, 15</value>
-  </data>
-  <data name="chkRelationsship.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="chkRelationsship.Text" xml:space="preserve">
-    <value>Relationsship</value>
-  </data>
-  <data name="&gt;&gt;chkRelationsship.Name" xml:space="preserve">
-    <value>chkRelationsship</value>
-  </data>
-  <data name="&gt;&gt;chkRelationsship.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinEditors.UltraCheckEditor, Infragistics4.Win.UltraWinEditors.v21.2, Version=21.2.20212.46, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;chkRelationsship.Parent" xml:space="preserve">
-    <value>panelTop</value>
-  </data>
-  <data name="&gt;&gt;chkRelationsship.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="btnSearch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -499,13 +451,13 @@
     <value>btnSearch</value>
   </data>
   <data name="&gt;&gt;btnSearch.Type" xml:space="preserve">
-    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.8325.23295, Culture=neutral, PublicKeyToken=null</value>
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.8327.21583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnSearch.Parent" xml:space="preserve">
     <value>panelTop</value>
   </data>
   <data name="&gt;&gt;btnSearch.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="appearance24.TextHAlignAsString" xml:space="preserve">
     <value>Right</value>
@@ -535,7 +487,7 @@
     <value>panelTop</value>
   </data>
   <data name="&gt;&gt;lblSearch.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="panelTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -664,7 +616,7 @@
     <value>dropDownSelListAndGroup1</value>
   </data>
   <data name="&gt;&gt;dropDownSelListAndGroup1.Type" xml:space="preserve">
-    <value>qs2.sitemap.dropDownSelListAndGroup, qs2.sitemap, Version=1.0.8325.23295, Culture=neutral, PublicKeyToken=null</value>
+    <value>qs2.sitemap.dropDownSelListAndGroup, qs2.sitemap, Version=1.0.8327.21583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dropDownSelListAndGroup1.Parent" xml:space="preserve">
     <value>panelButt</value>
@@ -694,7 +646,7 @@
     <value>btnClose</value>
   </data>
   <data name="&gt;&gt;btnClose.Type" xml:space="preserve">
-    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.8325.23295, Culture=neutral, PublicKeyToken=null</value>
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.8327.21583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnClose.Parent" xml:space="preserve">
     <value>panelButt</value>
@@ -724,7 +676,7 @@
     <value>btnEdit</value>
   </data>
   <data name="&gt;&gt;btnEdit.Type" xml:space="preserve">
-    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.8325.23295, Culture=neutral, PublicKeyToken=null</value>
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.8327.21583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnEdit.Parent" xml:space="preserve">
     <value>panelButt</value>
@@ -763,7 +715,7 @@
     <value>btnSave</value>
   </data>
   <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
-    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.8325.23295, Culture=neutral, PublicKeyToken=null</value>
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.8327.21583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
     <value>panelButt</value>
@@ -793,7 +745,7 @@
     <value>btnCancel</value>
   </data>
   <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
-    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.8325.23295, Culture=neutral, PublicKeyToken=null</value>
+    <value>qs2.sitemap.ownControls.inherit_Infrag.InfragButton, qs2.sitemap, Version=1.0.8327.21583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
     <value>panelButt</value>
@@ -817,7 +769,7 @@
     <value>dropDownApplications1</value>
   </data>
   <data name="&gt;&gt;dropDownApplications1.Type" xml:space="preserve">
-    <value>qs2.sitemap.dropDownApplications, qs2.sitemap, Version=1.0.8325.23295, Culture=neutral, PublicKeyToken=null</value>
+    <value>qs2.sitemap.dropDownApplications, qs2.sitemap, Version=1.0.8327.21583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dropDownApplications1.Parent" xml:space="preserve">
     <value>panelButt</value>
@@ -877,13 +829,13 @@
     <value>dsAdmin1</value>
   </data>
   <data name="&gt;&gt;dsAdmin1.Type" xml:space="preserve">
-    <value>qs2.core.vb.dsAdmin, qs2.core.vb, Version=1.0.8325.23293, Culture=neutral, PublicKeyToken=null</value>
+    <value>qs2.core.vb.dsAdmin, qs2.core.vb, Version=1.0.8327.19563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;sqlAdmin1.Name" xml:space="preserve">
     <value>sqlAdmin1</value>
   </data>
   <data name="&gt;&gt;sqlAdmin1.Type" xml:space="preserve">
-    <value>qs2.core.vb.sqlAdmin, qs2.core.vb, Version=1.0.8325.23293, Culture=neutral, PublicKeyToken=null</value>
+    <value>qs2.core.vb.sqlAdmin, qs2.core.vb, Version=1.0.8327.19563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>contCriterias</value>

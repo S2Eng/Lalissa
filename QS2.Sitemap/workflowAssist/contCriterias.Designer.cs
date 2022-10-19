@@ -62,7 +62,6 @@
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn225 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("tblCriteria_tblSelListEntriesObj");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn226 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("tblCriteria_tblRelationship1");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn227 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("tblCriteria_tblCriteriaOpt");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn228 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("tblCriteria_tblQueriesDef");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn229 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Text", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("English", 1);
@@ -106,15 +105,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn263 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDGuid");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn264 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ConditionsSub");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn265 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Sort");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("tblCriteria_tblCriteriaOpt", 0);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn266 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FldShort");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn267 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDApplication");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn268 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Parameter");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn269 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Value");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn270 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Referenze");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn271 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("VersionNrFrom");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn272 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("VersionNrTo");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand5 = new Infragistics.Win.UltraWinGrid.UltraGridBand("tblCriteria_tblQueriesDef", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("tblCriteria_tblQueriesDef", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn273 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDGuid");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn274 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("UserInput");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn275 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FunctionPar");
@@ -180,7 +171,6 @@
             this.exportAsExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dsAdmin1 = new qs2.core.vb.dsAdmin();
             this.panelTop = new System.Windows.Forms.Panel();
-            this.chkChapters = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.btnAddCriteria = new qs2.sitemap.ownControls.inherit_Infrag.InfragButton();
             this.comboApplication1 = new qs2.sitemap.comboApplication();
             this.chkTranslateRessources = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
@@ -188,7 +178,6 @@
             this.cboResTyp = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.btnCollapsAll = new Infragistics.Win.Misc.UltraLabel();
             this.btnExpandAll = new Infragistics.Win.Misc.UltraLabel();
-            this.chkRelationsship = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.btnSearch = new qs2.sitemap.ownControls.inherit_Infrag.InfragButton();
             this.lblSearch = new Infragistics.Win.Misc.UltraLabel();
             this.sqlAdmin1 = new qs2.core.vb.sqlAdmin(this.components);
@@ -206,11 +195,9 @@
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsAdmin1)).BeginInit();
             this.panelTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkChapters)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTranslateRessources)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboResTyp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkRelationsship)).BeginInit();
             this.panelButt.SuspendLayout();
             this.PanelDoAutoRes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutoResOnlyAddRes)).BeginInit();
@@ -292,13 +279,11 @@
             ultraGridColumn3.Header.VisiblePosition = 13;
             ultraGridColumn3.Width = 127;
             ultraGridColumn225.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            ultraGridColumn225.Header.VisiblePosition = 30;
+            ultraGridColumn225.Header.VisiblePosition = 29;
             ultraGridColumn226.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            ultraGridColumn226.Header.VisiblePosition = 29;
-            ultraGridColumn227.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            ultraGridColumn227.Header.VisiblePosition = 28;
+            ultraGridColumn226.Header.VisiblePosition = 28;
             ultraGridColumn228.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            ultraGridColumn228.Header.VisiblePosition = 31;
+            ultraGridColumn228.Header.VisiblePosition = 30;
             ultraGridColumn229.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
             ultraGridColumn229.Header.VisiblePosition = 0;
             ultraGridColumn229.Width = 179;
@@ -336,7 +321,6 @@
             ultraGridColumn3,
             ultraGridColumn225,
             ultraGridColumn226,
-            ultraGridColumn227,
             ultraGridColumn228,
             ultraGridColumn229,
             ultraGridColumn1,
@@ -463,31 +447,6 @@
             ultraGridColumn264,
             ultraGridColumn265});
             ultraGridBand3.HeaderVisible = true;
-            ultraGridColumn266.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            ultraGridColumn266.Header.VisiblePosition = 0;
-            ultraGridColumn266.Width = 160;
-            ultraGridColumn267.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            ultraGridColumn267.Header.VisiblePosition = 1;
-            ultraGridColumn267.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
-            ultraGridColumn268.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            ultraGridColumn268.Header.VisiblePosition = 2;
-            ultraGridColumn268.Width = 265;
-            ultraGridColumn269.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            ultraGridColumn269.Header.VisiblePosition = 3;
-            ultraGridColumn269.Width = 255;
-            ultraGridColumn270.Header.VisiblePosition = 4;
-            ultraGridColumn271.Header.VisiblePosition = 5;
-            ultraGridColumn272.Header.VisiblePosition = 6;
-            ultraGridColumn272.Width = 127;
-            ultraGridBand4.Columns.AddRange(new object[] {
-            ultraGridColumn266,
-            ultraGridColumn267,
-            ultraGridColumn268,
-            ultraGridColumn269,
-            ultraGridColumn270,
-            ultraGridColumn271,
-            ultraGridColumn272});
-            ultraGridBand4.HeaderVisible = true;
             ultraGridColumn273.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
             ultraGridColumn273.Header.VisiblePosition = 0;
             ultraGridColumn274.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
@@ -543,7 +502,7 @@
             ultraGridColumn6.Header.VisiblePosition = 29;
             ultraGridColumn7.Header.VisiblePosition = 30;
             ultraGridColumn8.Header.VisiblePosition = 31;
-            ultraGridBand5.Columns.AddRange(new object[] {
+            ultraGridBand4.Columns.AddRange(new object[] {
             ultraGridColumn273,
             ultraGridColumn274,
             ultraGridColumn275,
@@ -576,12 +535,11 @@
             ultraGridColumn6,
             ultraGridColumn7,
             ultraGridColumn8});
-            ultraGridBand5.Hidden = true;
+            ultraGridBand4.Hidden = true;
             this.gridInfrag1xyxy.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.gridInfrag1xyxy.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.gridInfrag1xyxy.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
             this.gridInfrag1xyxy.DisplayLayout.BandsSerializer.Add(ultraGridBand4);
-            this.gridInfrag1xyxy.DisplayLayout.BandsSerializer.Add(ultraGridBand5);
             this.gridInfrag1xyxy.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             appearance5.BackColor = System.Drawing.SystemColors.ActiveBorder;
             appearance5.BackColor2 = System.Drawing.SystemColors.ControlDark;
@@ -675,7 +633,6 @@
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.Transparent;
-            this.panelTop.Controls.Add(this.chkChapters);
             this.panelTop.Controls.Add(this.btnAddCriteria);
             this.panelTop.Controls.Add(this.comboApplication1);
             this.panelTop.Controls.Add(this.chkTranslateRessources);
@@ -683,17 +640,10 @@
             this.panelTop.Controls.Add(this.cboResTyp);
             this.panelTop.Controls.Add(this.btnCollapsAll);
             this.panelTop.Controls.Add(this.btnExpandAll);
-            this.panelTop.Controls.Add(this.chkRelationsship);
             this.panelTop.Controls.Add(this.btnSearch);
             this.panelTop.Controls.Add(this.lblSearch);
             resources.ApplyResources(this.panelTop, "panelTop");
             this.panelTop.Name = "panelTop";
-            // 
-            // chkChapters
-            // 
-            resources.ApplyResources(this.chkChapters, "chkChapters");
-            this.chkChapters.Name = "chkChapters";
-            this.chkChapters.CheckedChanged += new System.EventHandler(this.chkChapters_CheckedChanged);
             // 
             // btnAddCriteria
             // 
@@ -777,12 +727,6 @@
             this.btnExpandAll.UseAppStyling = false;
             this.btnExpandAll.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnExpandAll.Click += new System.EventHandler(this.btnExpandAll_Click);
-            // 
-            // chkRelationsship
-            // 
-            resources.ApplyResources(this.chkRelationsship, "chkRelationsship");
-            this.chkRelationsship.Name = "chkRelationsship";
-            this.chkRelationsship.CheckedChanged += new System.EventHandler(this.chkRelationsship_CheckedChanged);
             // 
             // btnSearch
             // 
@@ -932,11 +876,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsAdmin1)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkChapters)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTranslateRessources)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboResTyp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkRelationsship)).EndInit();
             this.panelButt.ResumeLayout(false);
             this.PanelDoAutoRes.ResumeLayout(false);
             this.PanelDoAutoRes.PerformLayout();
@@ -952,9 +894,7 @@
         private sitemap.ownControls.inherit_Infrag.InfragButton btnSearch;
         private Infragistics.Win.UltraWinGrid.UltraGrid gridInfrag1xyxy;
         private qs2.core.vb.sqlAdmin sqlAdmin1;
-        private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkRelationsship;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkTranslateRessources;
-        private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkChapters;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem exportAsExcelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filterToolStripMenuItem;

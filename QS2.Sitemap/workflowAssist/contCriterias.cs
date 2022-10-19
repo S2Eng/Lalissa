@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using qs2.core.vb;
 using Infragistics.Win.UltraWinGrid;
+using S2Extensions;
 
 namespace qs2.sitemap.manage.wizardsDevelop
 {
@@ -24,8 +25,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
 
         public class cKey
         {
-            public string FldShort = "";
-            public string IDApplication = "";
+
         }
         
         public enum eTypeUI
@@ -77,9 +77,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
         }
         public void initControl(string typApplication, string searchString)
         {
-            this.chkRelationsship.Checked = true;
-            this.chkChapters.Checked = true;
-
             this.chkTranslateRessources.Checked = true;
             this.cboResTyp.Visible = true;
 
@@ -95,7 +92,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
             try
             {
                 this.sqlAdmin1.initControl();
-
                 this.btnCancel.initControl();
                 this.btnSave.initControl();
                 this.btnSearch.initControl();
@@ -107,8 +103,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 this.btnClose.Text = qs2.core.language.sqlLanguage.getRes("Close");
 
                 this.lblSearch.Text = qs2.core.language.sqlLanguage.getRes("Search");
-                this.chkRelationsship.Text = qs2.core.language.sqlLanguage.getRes("ShowTabRelationsship");
-                this.chkChapters.Text = qs2.core.language.sqlLanguage.getRes("ShowTabChapters");
                 this.chkTranslateRessources.Text = qs2.core.language.sqlLanguage.getRes("TranslateRessources");
 
                 this.gridInfrag1xyxy.DisplayLayout.GroupByBox.Prompt = qs2.core.language.sqlLanguage.getRes("DragAColumneTo") + " ...";
@@ -135,8 +129,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblSelListEntriesObj.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblSelListEntriesObj.IDSelListEntryColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("Chapter");
                 this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblSelListEntriesObj.ParentRelations[0].RelationName].Columns[this.dsAdmin1.tblSelListEntriesObj.DescriptionColumn.ColumnName].Header.Caption = qs2.core.language.sqlLanguage.getRes("Description");
 
-                this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblRelationship.ParentRelations[0].RelationName].Hidden = !this.chkRelationsship.Checked;
-
                 this.setUIAddNewBox();
 
                 this.exportAsExcelToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("ExportAsExcel");
@@ -148,8 +140,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 if (this._TypeUI == eTypeUI.EditDefaultValues)
                 {
                     this.mainWindow.Text = qs2.core.language.sqlLanguage.getRes("btnEditCriteriaDefaultValues");
-                    this.chkChapters.Visible = false;
-                    this.chkRelationsship.Visible = false;
 
                     foreach (UltraGridColumn col in this.gridInfrag1xyxy.DisplayLayout.Bands[0].Columns)
                     {
@@ -171,7 +161,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                     this.btnExpandAll.Visible = false;
                     this.btnCollapsAll.Visible = false;
                 }
-
             }
             catch (Exception ex)
             {
@@ -198,9 +187,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
 
             this.dropDownSelListAndGroup1.initControl(true,false,  false,false, false, false);
             this.dropDownSelListAndGroup1.IDParticipant = this.IDParticipant;
-            this.dropDownSelListAndGroup1.loadData("Chapters0", core.license.doLicense.eApp.ALL.ToString(), true);
-            this.dropDownSelListAndGroup1.loadData("Chapters1", core.license.doLicense.eApp.ALL.ToString(), false);
-
         }
 
         public void loadData()
@@ -219,20 +205,8 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 if (this.cboResTyp.Value != null)
                     enumTypResSearch = qs2.core.generic.searchEnumRessourcenTyp((String)this.cboResTyp.Value);
 
-        this.sqlAdmin1.getCriterias(this.dsAdmin1, sqlAdmin.eTypSelCriteria.search, this.txtSearch.Text.Trim(), enumAppFound.ToString(), false, false, false, "", "", false);
+                this.sqlAdmin1.getCriterias(this.dsAdmin1, sqlAdmin.eTypSelCriteria.search, this.txtSearch.Text.Trim(), enumAppFound.ToString(), false, false, false, "", "", false);
 
-                if (this.chkRelationsship.Checked)
-                {
-                    this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblRelationship.ParentRelations[0].RelationName].Hidden = !this.chkRelationsship.Checked;
-                    this.sqlAdmin1.getRelationsship(this.dsAdmin1, sqlAdmin.eTypSelRelationship.all, "", core.license.doLicense.eApp.ALL.ToString(), "");
-                }
-                if (this.chkChapters.Checked)
-                {
-                    this.gridInfrag1xyxy.DisplayLayout.Bands[this.dsAdmin1.tblSelListEntriesObj.ParentRelations[0].RelationName].Hidden = !this.chkChapters.Checked;
-                    this.dropDownSelListAndGroup1.loadData("Chapters0", enumAppFound.ToString(), true);
-                    this.dropDownSelListAndGroup1.loadData("Chapters1", enumAppFound.ToString(), false);
-                    this.sqlAdmin1.getSelListEntrysObj(0, sqlAdmin.eDbTypAuswObj.Criterias, "NONE", this.dsAdmin1, sqlAdmin.eTypAuswahlObj.allCriterias, core.license.doLicense.eApp.ALL.ToString());
-                }
                 this.gridInfrag1xyxy.Text = qs2.core.language.sqlLanguage.getRes("Criterias") + " (" + this.dsAdmin1.tblCriteria.Rows.Count.ToString() + ")";
                 
                 if (this.chkTranslateRessources.Checked)
@@ -303,10 +277,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                     qs2.core.dbBase.setConnection2(this.sqlAdmin1.daSelListEntrysObj);
 
                     this.sqlAdmin1.daCriteria.Update(this.dsAdmin1.tblCriteria);
-                    if (this.chkRelationsship.Checked)
-                        this.sqlAdmin1.daRelationship.Update(this.dsAdmin1.tblRelationship);
-                    if (this.chkChapters.Checked)
-                        this.sqlAdmin1.daSelListEntrysObj.Update(this.dsAdmin1.tblSelListEntriesObj);
 
                     System.Data.DataRow[] arrNewTranslation = (System.Data.DataRow[])this.dsAdmin1.tblCriteria.Select(qs2.core.generic.columnNewTranslation + "<>''", "");
                     foreach (DataRow rCriteriaFound in arrNewTranslation)
@@ -485,8 +455,8 @@ namespace qs2.sitemap.manage.wizardsDevelop
         {
             if (this._TypeUI == eTypeUI.EditDefaultValues)
             {
-                if (e.Cell.Column.ToString().Trim().ToLower().Equals(this.dsAdmin1.tblCriteria.DefaultValuesCustomerColumn.ColumnName.Trim().ToLower()) ||
-                    e.Cell.Column.ToString().Trim().ToLower().Equals(this.dsAdmin1.tblCriteria.UsedCustomerColumn.ColumnName.Trim().ToLower()))
+                if (e.Cell.Column.sEquals(this.dsAdmin1.tblCriteria.DefaultValuesCustomerColumn.ColumnName) ||
+                    e.Cell.Column.sEquals(this.dsAdmin1.tblCriteria.UsedCustomerColumn.ColumnName))
                 {
                     e.Cell.Activation = Activation.AllowEdit;
                 }
@@ -505,8 +475,8 @@ namespace qs2.sitemap.manage.wizardsDevelop
         {
             try
             {
-                if (e.Cell.Column.ToString().Trim().ToLower().Equals(this.dsAdmin1.tblCriteria.UsedCustomerColumn.ColumnName.Trim().ToLower()) ||
-                    e.Cell.Column.ToString().Trim().ToLower().Equals(this.dsAdmin1.tblCriteria.UsedColumn.ColumnName.Trim().ToLower()))
+                if (e.Cell.Column.sEquals(this.dsAdmin1.tblCriteria.UsedCustomerColumn.ColumnName) ||
+                    e.Cell.Column.sEquals(this.dsAdmin1.tblCriteria.UsedColumn.ColumnName))
                 {
                     this.gridInfrag1xyxy.UpdateData();
                     if ((bool)e.Cell.Row.Cells[this.dsAdmin1.tblCriteria.UsedColumn.ColumnName].Value == false)
@@ -522,43 +492,11 @@ namespace qs2.sitemap.manage.wizardsDevelop
             }
         }
 
-        public bool lstAddedContainsSelRow(string IDApplication, string FldShort)
-        {
-            foreach (cKey KeyFound in this.lstAddedRows)
-            {
-                if (KeyFound.FldShort.Trim().ToLower().Equals(FldShort.Trim().ToLower()) &&
-                    KeyFound.IDApplication.Trim().ToLower().Equals(IDApplication.Trim().ToLower()))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-       private void gridInfrag1_BeforeRowsDeleted(object sender, Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventArgs e)
+        private void gridInfrag1_BeforeRowsDeleted(object sender, Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventArgs e)
        {
             qs2.core.ui.delGridRowYN(e);
        }
        
-       private void chkRelationsship_CheckedChanged(object sender, EventArgs e)
-       {
-           try
-           {
-               this.Cursor = Cursors.WaitCursor;
-               if (this.chkRelationsship.Focused)
-               {
-                   this.loadData();
-               }
-           }
-           catch (Exception ex)
-           {
-               qs2.core.generic.getExep(ex.ToString(), ex.Message);
-           }
-           finally
-           {
-               this.Cursor = Cursors.Default;
-           }
-       }
-
        private void chkTranslateRessources_CheckedChanged(object sender, EventArgs e)
        {
            try
@@ -568,26 +506,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
                {
                    this.cboResTyp.Visible = this.chkTranslateRessources.Checked;
                    this.loadData();
-               }
-           }
-           catch (Exception ex)
-           {
-               qs2.core.generic.getExep(ex.ToString(), ex.Message);
-           }
-           finally
-           {
-               this.Cursor = Cursors.Default;
-           }
-       }
-
-       private void chkChapters_CheckedChanged(object sender, EventArgs e)
-       {
-           try
-           {
-               this.Cursor = Cursors.WaitCursor;
-               if (this.chkChapters.Focused)
-               {
-                    this.loadData();
                }
            }
            catch (Exception ex)
@@ -764,11 +682,6 @@ namespace qs2.sitemap.manage.wizardsDevelop
            this.gridInfrag1xyxy.Refresh();
            UltraGridRow gridRow = this.gridInfrag1xyxy.Rows.GetRowWithListIndex(this.dsAdmin1.tblCriteria.Rows.IndexOf(rNewCriteria));
            this.gridInfrag1xyxy.ActiveRow = gridRow;
-
-           cKey NewKey = new cKey();
-           NewKey.FldShort = rNewCriteria.FldShort.Trim();
-           NewKey.IDApplication = rNewCriteria.IDApplication.Trim();
-           this.lstAddedRows.Add(NewKey);
        }
 
        private void contCriterias_VisibleChanged(object sender, EventArgs e)
@@ -776,15 +689,11 @@ namespace qs2.sitemap.manage.wizardsDevelop
            try
            {
                this.Cursor = Cursors.WaitCursor;
-               if (this.Visible)
+               if (this.Visible && !this.VisibleIsInitialized)
                {
-                   if (!this.VisibleIsInitialized)
-                   {
-                       this.loadData();
-                       this.VisibleIsInitialized = true;
-                   }
+                   this.loadData();
+                   this.VisibleIsInitialized = true;
                }
-
            }
            catch (Exception ex)
            {
@@ -795,6 +704,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
                this.Cursor = Cursors.Default;
            }
        }
+
         private void btnEdit_Click_1(object sender, EventArgs e)
         {
             try
@@ -811,6 +721,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void btnCancel_Click_1(object sender, EventArgs e)
         {
             try
@@ -828,6 +739,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void btnSave_Click_1(object sender, EventArgs e)
         {
             try
@@ -845,6 +757,7 @@ namespace qs2.sitemap.manage.wizardsDevelop
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void btnClose_Click_1(object sender, EventArgs e)
         {
             try

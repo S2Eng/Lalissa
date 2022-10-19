@@ -322,6 +322,15 @@
             Dim sWhere As String = sqlTxt.where + sqlTxt.getColWhere(ds.tblSelListGroup.IDColumn.ColumnName)
             Me.daSelListGroup.SelectCommand.CommandText += sWhere
             Me.daSelListGroup.SelectCommand.Parameters.AddWithValue(sqlTxt.getColPar(ds.tblSelListGroup.IDColumn.ColumnName), ID.ToString())
+
+        ElseIf typSel = eTypSelGruppen.IDGruppeRam Then
+            Dim arrSelListGroup() As dsAdmin.tblSelListGroupRow = sqlAdmin.dsAllAdmin.tblSelListGroup.Select(ds.tblSelListGroup.IDGroupStrColumn.ColumnName + "='" + IDGroup + "'" + sqlTxt.and + ds.tblSelListGroup.IDParticipantColumn.ColumnName + "='" + IDParticipant + "'" + sqlTxt.and + ds.tblSelListGroup.IDApplicationColumn.ColumnName + "='" + IDApplication + "'")
+            Return arrSelListGroup
+
+        ElseIf typSel = eTypSelGruppen.IDRam Then
+            Dim arrSelListGroup() As dsAdmin.tblSelListGroupRow = sqlAdmin.dsAllAdmin.tblSelListGroup.Select(ds.tblSelListGroup.IDColumn.ColumnName + "=" + ID.ToString() + "")
+            Return arrSelListGroup
+
         Else
             Throw New Exception("sqlAdmin.getSelListGroup: typSel '" + typSel.ToString() + "' is wrong!")
         End If
