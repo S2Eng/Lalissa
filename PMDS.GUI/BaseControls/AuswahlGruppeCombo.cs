@@ -1,9 +1,6 @@
 using System;
-
 using PMDS.Global;using PMDS.Data.Global;
 using PMDS.BusinessLogic;
-using System.Drawing;
-
 using Infragistics.Win.UltraWinEditors;
 using System.ComponentModel;
 using Infragistics.Win;
@@ -13,7 +10,6 @@ using System.Linq;
 
 namespace PMDS.GUI.BaseControls
 {
-
 	public class AuswahlGruppeCombo : Infragistics.Win.UltraWinEditors.UltraComboEditor
 	{
 		private EditorButton _addBtn = new EditorButton("");
@@ -21,25 +17,18 @@ namespace PMDS.GUI.BaseControls
         private bool    _addEmptyEnry;
         private bool _ignoreUnterdruecken = true;     //Column Unterdruecken aus Auswahlliste igonorieren: standardmäßig alle anzeigen
         private bool _selectdistinct;
-
         private int _BerufsstandGruppeJNA = -1;
+        private bool VisibleIsInitialized;
+        private bool _sys;
+        private bool _ExactMatch;
+        private bool _PflichtJN;
+        private bool _autoOpenCBO;
+        private bool IsInitialized;
+        private AuswahlGruppe _grp;
 
-        public bool VisibleIsInitialized = false;
         public int _SupressLevelHierarchie = -100000;
 
-        public bool _sys = false;
-        public bool _ExactMatch = false;
-        public bool _PflichtJN = false;
-        public bool _autoOpenCBO = false;
-
-        public bool IsInitialized = false;
-        public AuswahlGruppe _grp = null;
-
-
-
-
-
-
+        
         private void InitializeComponent()
         {
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -57,44 +46,10 @@ namespace PMDS.GUI.BaseControls
 
         public AuswahlGruppeCombo()
 		{
-            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
-            {
-                //if (Group == "FAM")
-                //{
-                //    bool bStop2 = true;
-                //}
-
-                //if (Settings.AppRunning && Group.Trim() != "")
-                //{
-                //    this.initControl();
-                //}
-
-                //if (Settings.HasRight(UserRights.AuswahllistenVerwalten) && Settings.AppRunning)
-                //{
-                //    //    if (sys)
-                //    //    {
-                //    //        _addBtn.Text = "+";
-                //    //        _addBtn.Click += new EditorButtonEventHandler(addBtn_Click);
-                //    //        this.ButtonsRight.Add(_addBtn);
-                //    //    }
-                //    //    else
-                //    //    {
-                //    //        bool bStop = true;
-                //    //    }
-
-                //    //    //Neu nach 03.07.2007 MDA
-                //    Settings.AuswahlGruppeListChanged += new AuswahlGruppeListChangedDelegate(ENV_AuswahlGruppeListChanged);
-                //}
-            }
 		}
 
         public void initControl()
         {
-            //if (Group == "WAT")
-            //{
-            //    bool bStop2 = true;
-            //}
-
             if (!this.IsInitialized && System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 _grp = new AuswahlGruppe(Group);
@@ -119,22 +74,7 @@ namespace PMDS.GUI.BaseControls
                         this.ButtonsRight.Add(_addBtn);
                         ENV.AuswahlGruppeListChanged += new AuswahlGruppeListChangedDelegate(ENV_AuswahlGruppeListChanged);
                     }
-                   
-                    //if (this.ButtonsRight.Count > 0)
-                    //{
-                    //    this.ButtonsRight[0].Visible = false;
-                    //}
                 }
-                else
-                {
-                    bool bStop = true;
-                }
-
-                if (this.ExactMatch)
-                {
-
-                }
-
                 this.IsInitialized = true;
             }
         }
@@ -151,59 +91,39 @@ namespace PMDS.GUI.BaseControls
                 if (_addEmptyEnry)
                     this.Items.Add(Guid.Empty, " ");
 
-                if (ENV.StartupTyp != "auswpep")
+                List<string> lItems = new List<string>(); //für distinct
+
+                dsAuswahlGruppe.AuswahlListeDataTable t = _grp.AuswahlListe;
+                foreach (dsAuswahlGruppe.AuswahlListeRow r in new AuswahlGruppe(Group).AuswahlListe)
                 {
-
-                    List<string> lItems = new List<string>();   //üfr distinct
-
-                    dsAuswahlGruppe.AuswahlListeDataTable t = _grp.AuswahlListe;
-                    foreach (dsAuswahlGruppe.AuswahlListeRow r in new AuswahlGruppe(Group).AuswahlListe)
+                    if (r.IDAuswahlListeGruppe.Trim()
+                        .Equals("BER", StringComparison.CurrentCultureIgnoreCase)) //Berufsgruppen - Sonderbehandlung
                     {
-                        if (r.IDAuswahlListeGruppe.Trim().Equals("BER", StringComparison.CurrentCultureIgnoreCase))         //Berufsgruppen - Sonderbehandlung
+                        if (r.Hierarche >= this._SupressLevelHierarchie &&
+                            ((!r.IstGruppe && this._BerufsstandGruppeJNA == 0) ||
+                             (r.IstGruppe && this._BerufsstandGruppeJNA == 1) || this._BerufsstandGruppeJNA == -1)
+                           )
                         {
-                            if (r.Hierarche >= this._SupressLevelHierarchie && 
-                                ((!r.IstGruppe && this._BerufsstandGruppeJNA == 0) || (r.IstGruppe && this._BerufsstandGruppeJNA == 1) || this._BerufsstandGruppeJNA == -1)
-                               )
-                            {
-                                this.Items.Add(r.ID, r.Bezeichnung);
-                            }
+                            this.Items.Add(r.ID, r.Bezeichnung);
                         }
-                        else
+                    }
+                    else
+                    {
+                        if (this._ignoreUnterdruecken)
                         {
-                            if (this._ignoreUnterdruecken)
+                            this.Items.Add(r.ID, r.Bezeichnung);
+                            lItems.Add(r.Bezeichnung);
+                        }
+                        else if (!r.Unterdruecken) //unterdrückte nicht anzeigen
+                        {
+                            if (_selectdistinct && !lItems.Where(a => a == r.Bezeichnung).Any()) //nur eindeutige Rows
                             {
                                 this.Items.Add(r.ID, r.Bezeichnung);
                                 lItems.Add(r.Bezeichnung);
                             }
-                            else if (!r.Unterdruecken)          //unterdrückte nicht anzeigen
+                            else if (!_selectdistinct)
                             {
-                                if (_selectdistinct && !lItems.Where(a => a == r.Bezeichnung).Any())        //nur eindeutige Rows
-                                {
-                                    this.Items.Add(r.ID, r.Bezeichnung);
-                                    lItems.Add(r.Bezeichnung);
-                                }
-                                else if (!_selectdistinct) 
-                                {
-                                    this.Items.Add(r.ID, r.Bezeichnung);
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    using (System.Data.OleDb.OleDbDataAdapter da = new System.Data.OleDb.OleDbDataAdapter())
-                    {
-                        System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
-                        cmd.Connection = DBPep.ConnPep;
-                        cmd.CommandText = Group;
-                        da.SelectCommand = cmd;
-                        using (System.Data.DataTable dt = new System.Data.DataTable())
-                        {
-                            da.Fill(dt);
-                            foreach (System.Data.DataRow r in dt.Rows)
-                            {
-                                this.Items.Add(r[0].ToString(), r[1].ToString());
+                                this.Items.Add(r.ID, r.Bezeichnung);
                             }
                         }
                     }
@@ -215,9 +135,9 @@ namespace PMDS.GUI.BaseControls
             }
         }
 
-        void ENV_AuswahlGruppeListChanged(string Grop)
+        void ENV_AuswahlGruppeListChanged(string Group)
         {
-            if (Grop == _group)
+            if (Group == _group)
             {
                 object oldValue = Value;
                 RefreshList();
@@ -227,8 +147,8 @@ namespace PMDS.GUI.BaseControls
 
         public bool sys
         {
-            get { return _sys; }
-            set { _sys = value; }
+            get => _sys;
+            set => _sys = value;
         }
         public bool ExactMatch
         {
@@ -329,27 +249,20 @@ namespace PMDS.GUI.BaseControls
 
         public int BerufsstandGruppeJNA
         {
-            get
-            {
-                return this._BerufsstandGruppeJNA;
-            }
-            set
-            {
-                this._BerufsstandGruppeJNA = value;
-            }
+            get => _BerufsstandGruppeJNA;
+            set => _BerufsstandGruppeJNA = value;
         }
 
 		[Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Guid ID
 		{
-			get	
-			{
-				if (Value == null)
+			get
+            {
+                if (Value == null)
 					return Guid.Empty;
-				else
-					return (Guid)Value;
-			}
+                return (Guid)Value;
+            }
 			set	
 			{
 				if (value == Guid.Empty)
@@ -358,14 +271,14 @@ namespace PMDS.GUI.BaseControls
 					Value = value;
 			}
 		}
+
         public int ID_PEP
         {
             get
             {
                 if (Value == null  || Value.Equals(Guid.Empty))
                     return -1;
-                else
-                    return  System.Convert.ToInt32 (Value);
+                return  System.Convert.ToInt32 (Value);
             }
             set
             {
@@ -375,26 +288,11 @@ namespace PMDS.GUI.BaseControls
                     Value = value;
             }
         }
-        public string TEXT
-        {
-            set
-            {
-                foreach (ValueListItem item in this.Items)
-                {
-                    if (item.DisplayText == value)
-                    {
-                        this.SelectedItem = item;
-                        break;
-                    }
-                }
-            }
-        }
 
 		private void addBtn_Click(object sender, EditorButtonEventArgs e)
 		{
 			object oldValue = Value;
-
-			frmAuswahl frm = new frmAuswahl(Group);
+            frmAuswahl frm = new frmAuswahl(Group);
 			frm.ShowDialog();
 			RefreshList();
             ENV.SignalAuswahlGruppeListChanged(Group);
@@ -408,24 +306,11 @@ namespace PMDS.GUI.BaseControls
             {
                 if (this.Visible && !this.VisibleIsInitialized)
                 {
-                    //this.DropDownStyle = DropDownStyle.DropDown;
-                    //this.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                    //this.AutoSuggestFilterMode = AutoSuggestFilterMode.Contains;
-
-                    if (this.sys)
-                    {
-                    }
-                    if (this.ExactMatch)
-                    {
-                    }
-
                     this.VisibleIsInitialized = true;
                 }
-
             }
             catch (Exception ex)
             {
-
                 PMDS.Global.ENV.HandleException(ex);
             }
         }

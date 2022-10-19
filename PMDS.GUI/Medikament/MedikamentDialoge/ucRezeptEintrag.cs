@@ -84,17 +84,14 @@ namespace PMDS.GUI
 
                 this.cbImportant._SupressLevelHierarchie = PMDSBusinessUI.SupressLevelHierarchieActiveInUI;
                 this.cbImportant.Group = "BER";
-                this.cbImportant.RefreshList();
 
                 PMDS.BusinessLogic.Medikament _medikament = new PMDS.BusinessLogic.Medikament();
-                //InitCmbMedikament(true);
+
                 this.txtMedikament.Text = "";
                 cmbHerrichten.Text = "";
                 cmbVerabreichungsart.Text = "";
-                //zp1.Visible = false;
                 cbBis.Checked = false;
 
-                //os191220
                 dtpAbgebenVon.DateTime = dtFrom;
 
                 this.PMDSBusinessUI1.loadCboPackungsanzahl((Infragistics.Win.UltraWinEditors.UltraComboEditor)this.cbPackungsanzahl, null);

@@ -1506,9 +1506,8 @@ namespace PMDS.GUI
 			if(DesignMode)
 				return;
 
-            this.cbBerufsstand._SupressLevelHierarchie = PMDSBusinessUI.SupressLevelHierarchieActiveInUI;
+            cbBerufsstand._SupressLevelHierarchie = PMDSBusinessUI.SupressLevelHierarchieActiveInUI;
             cbBerufsstand.Group = "BER";
-            this.cbBerufsstand.RefreshList();
 
             cbArea.Group		= "LOA";
 			cbSide.Group		= "LOS";
