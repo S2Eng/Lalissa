@@ -1,30 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
+using S2Extensions;
 
 namespace PMDS.GUI.Klient
 {
-
-
     public partial class cboAuswahllisteMulti : UserControl
     {
-        public string _Gruppe = "";
+        private string _Gruppe = "";
+        private string colAuswahl = "Auswahl";
+        private PMDS.DB.PMDSBusiness b = new PMDS.DB.PMDSBusiness();
 
-        public bool isInitialized = false;
-        public string colAuswahl = "Auswahl";
-        public PMDS.DB.PMDSBusiness b = new PMDS.DB.PMDSBusiness();
         public event EventHandler AfterCheck;
-
-
-
-
-
+        public bool isInitialized;
+        
         public cboAuswahllisteMulti()
         {
             InitializeComponent();
@@ -42,13 +32,10 @@ namespace PMDS.GUI.Klient
                 if (!this.isInitialized)
                 {
                     this._Gruppe = Gruppe;
-
                     this.dropDownSelList.PopupItem = (Infragistics.Win.IPopupItem)this.ultraToolbarsManager1.Tools["popSelList"];
                     this.dropDownSelList.Appearance.TextHAlign = Infragistics.Win.HAlign.Left;
-                    
                     this.isInitialized = true;
                 }
-
             }
             catch (Exception ex)
             {
@@ -65,11 +52,7 @@ namespace PMDS.GUI.Klient
                     IQueryable <PMDS.db.Entities.AuswahlListe> tAuswahlListe = this.b.GetAuswahlliste(db, this._Gruppe.Trim(), -100000, false);
                     this.auswahlListeBindingSource.DataSource = tAuswahlListe.ToList();
                     this.gridAuswahllisten.Refresh();
-                    //foreach (PMDS.db.Entities.AuswahlListe rAuswahlListe in tAuswahlListe)
-                    //{
-                    //}
                 }
-
             }
             catch (Exception ex)
             {
@@ -81,46 +64,32 @@ namespace PMDS.GUI.Klient
         {
             try
             {
-                string sSelectedRows = "";
-
-                foreach (UltraGridRow rowGrid in this.gridAuswahllisten.Rows)
-                {
-                    PMDS.db.Entities.AuswahlListe rAuswahlListe = (PMDS.db.Entities.AuswahlListe)(rowGrid.ListObject);
-                    if ((bool)rowGrid.Cells[this.colAuswahl.Trim()].Value == true)
-                    {
-                        sSelectedRows += rAuswahlListe.Bezeichnung.ToString() + ";";
-                    }
-                }
-
-                return sSelectedRows;
+                return (from rowGrid in this.gridAuswahllisten.Rows 
+                        let rAuswahlListe = (PMDS.db.Entities.AuswahlListe) (rowGrid.ListObject) 
+                        where (bool) rowGrid.Cells[this.colAuswahl.Trim()].Value 
+                        select rAuswahlListe).Aggregate("", (current, rAuswahlListe) => current + (rAuswahlListe.Bezeichnung + ";"));
             }
             catch (Exception ex)
             {
                 throw new Exception("cboSprachenMulti.getSelectedRows: " + ex.ToString());
             }
         }
+
         public string getSelectedRowsID()
         {
             try
             {
-                string sSelectedRows = "";
-
-                foreach (UltraGridRow rowGrid in this.gridAuswahllisten.Rows)
-                {
-                    PMDS.db.Entities.AuswahlListe rAuswahlListe = (PMDS.db.Entities.AuswahlListe)(rowGrid.ListObject);
-                    if ((bool)rowGrid.Cells[this.colAuswahl.Trim()].Value == true)
-                    {
-                        sSelectedRows += rAuswahlListe.ID.ToString() + ";";
-                    }
-                }
-
-                return sSelectedRows;
+                return (from rowGrid in this.gridAuswahllisten.Rows 
+                    let rAuswahlListe = (PMDS.db.Entities.AuswahlListe) (rowGrid.ListObject) 
+                    where (bool) rowGrid.Cells[this.colAuswahl.Trim()].Value 
+                    select rAuswahlListe).Aggregate("", (current, rAuswahlListe) => current + (rAuswahlListe.ID + ";"));
             }
             catch (Exception ex)
             {
                 throw new Exception("cboSprachenMulti.getSelectedRowsID: " + ex.ToString());
             }
         }
+
         public void setSelectedRows(string lstColumns)
         {
             try
@@ -133,16 +102,13 @@ namespace PMDS.GUI.Klient
                      rowGrid.Cells[this.colAuswahl.Trim()].Value = false;
                 }
                 
-                foreach (string IDSelList in lstSelLists)
+                foreach (var rowGrid in from IDSelList in lstSelLists 
+                            from rowGrid in this.gridAuswahllisten.Rows 
+                            let rAuswahlListe = (PMDS.db.Entities.AuswahlListe)(rowGrid.ListObject) 
+                            where rAuswahlListe.Bezeichnung.Trim().Equals(IDSelList.Trim()) 
+                            select rowGrid)
                 {
-                    foreach (UltraGridRow rowGrid in this.gridAuswahllisten.Rows)
-                    {
-                        PMDS.db.Entities.AuswahlListe rAuswahlListe = (PMDS.db.Entities.AuswahlListe)(rowGrid.ListObject);
-                        if (rAuswahlListe.Bezeichnung.Trim().Equals(IDSelList.Trim()))
-                        {
-                            rowGrid.Cells[this.colAuswahl.Trim()].Value = true;
-                        }
-                    }
+                    rowGrid.Cells[this.colAuswahl.Trim()].Value = true;
                 }
 
                 this.setSelectedTxt();
@@ -164,17 +130,9 @@ namespace PMDS.GUI.Klient
                     rowGrid.Cells[this.colAuswahl.Trim()].Value = false;
                 }
 
-                foreach (string IDSelList in lstSelLists)
+                foreach (var rowGrid in from IDSelList in lstSelLists select new Guid(IDSelList.Trim()) into IDSelListGuid from rowGrid in this.gridAuswahllisten.Rows let rAuswahlListe = (PMDS.db.Entities.AuswahlListe)(rowGrid.ListObject) where rAuswahlListe.ID.Equals(IDSelListGuid) select rowGrid)
                 {
-                    Guid IDSelListGuid = new Guid(IDSelList.Trim());
-                    foreach (UltraGridRow rowGrid in this.gridAuswahllisten.Rows)
-                    {
-                        PMDS.db.Entities.AuswahlListe rAuswahlListe = (PMDS.db.Entities.AuswahlListe)(rowGrid.ListObject);
-                        if (rAuswahlListe.ID.Equals(IDSelListGuid))
-                        {
-                            rowGrid.Cells[this.colAuswahl.Trim()].Value = true;
-                        }
-                    }
+                    rowGrid.Cells[this.colAuswahl.Trim()].Value = true;
                 }
 
                 this.setSelectedTxt();
@@ -190,15 +148,10 @@ namespace PMDS.GUI.Klient
             try
             {
                 this.dropDownSelList.Text = "";
-                foreach (UltraGridRow rowGrid in this.gridAuswahllisten.Rows)
+                foreach (var rowGrid in this.gridAuswahllisten.Rows.Where(rowGrid => (bool)rowGrid.Cells[this.colAuswahl.Trim()].Value))
                 {
-                    PMDS.db.Entities.AuswahlListe rAuswahlListe = (PMDS.db.Entities.AuswahlListe)(rowGrid.ListObject);
-                    if ((bool)rowGrid.Cells[this.colAuswahl.Trim()].Value == true)
-                    {
-                        this.dropDownSelList.Text += rowGrid.Cells["Bezeichnung"].Value.ToString().Trim() + ";";
-                    }
+                    this.dropDownSelList.Text += rowGrid.Cells["Bezeichnung"].Value.ToString().Trim() + ";";
                 }
-
             }
             catch (Exception ex)
             {
@@ -211,12 +164,10 @@ namespace PMDS.GUI.Klient
             try
             {
                 this.dropDownSelList.Text = "";
-                foreach (UltraGridRow rowGrid in this.gridAuswahllisten.Rows)
+                foreach (var rowGrid in from rowGrid in this.gridAuswahllisten.Rows let rAuswahlListe = (PMDS.db.Entities.AuswahlListe)(rowGrid.ListObject) select rowGrid)
                 {
-                    PMDS.db.Entities.AuswahlListe rAuswahlListe = (PMDS.db.Entities.AuswahlListe)(rowGrid.ListObject);
                     rowGrid.Cells[this.colAuswahl.Trim()].Value = bOn;
                 }
-
             }
             catch (Exception ex)
             {
@@ -229,21 +180,14 @@ namespace PMDS.GUI.Klient
         {
             try
             {
-                if (e.Cell.Column.ToString().Trim().ToLower().Equals(this.colAuswahl.Trim().ToLower()))
-                {
-                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit;
-                }
-                else
-                {
-                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
-                }
-
+                e.Cell.Activation = e.Cell.Column.sEquals(this.colAuswahl) ? Infragistics.Win.UltraWinGrid.Activation.AllowEdit : Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             }
             catch (Exception ex)
             {
                 PMDS.Global.ENV.HandleException(ex);
             }
         }
+
         private void gridAuswahllisten_BeforeRowsDeleted(object sender, Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventArgs e)
         {
             try
@@ -256,27 +200,22 @@ namespace PMDS.GUI.Klient
                 PMDS.Global.ENV.HandleException(ex);
             }
         }
+
         private void gridAuswahllisten_CellChange(object sender, CellEventArgs e)
         {
             try
             {
-                if (e.Cell.Column.ToString().Trim().ToLower().Equals(this.colAuswahl.Trim().ToLower()))
+                if (e.Cell.Column.sEquals(this.colAuswahl))
                 {
                     this.gridAuswahllisten.UpdateData();
                     this.setSelectedTxt();
-                    if (this.AfterCheck != null)
-                    {
-                        this.AfterCheck(sender, e);
-                    }
+                    this.AfterCheck?.Invoke(sender, e);
                 }
-
             }
             catch (Exception ex)
             {
                 PMDS.Global.ENV.HandleException(ex);
             }
         }
-
     }
-
 }

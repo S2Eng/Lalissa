@@ -13,6 +13,7 @@ using PMDS.DB;
 
 using System.Linq;
 using Infragistics.Win.UltraWinGrid;
+using S2Extensions;
 
 namespace PMDS.GUI
 {
@@ -408,13 +409,6 @@ namespace PMDS.GUI
 			try
 			{
 				BindingContext[viewAuswahl].PositionChanged += new EventHandler(ucAuswahl_PositionChanged);
-
-                if (ENV.AppRunning)
-                {
-                    this.cboBerufsgruppen.initControl("BER");
-                    this.cboBerufsgruppen.loadData();
-                }
-
             }
 			catch(Exception ex)
 			{
@@ -682,15 +676,19 @@ namespace PMDS.GUI
                 this.chkGegenzeichnenJN.Checked = false;
                 this.cboBerufsgruppen.setAllSelectedOnOff(false);
 
-                if (IDSelList.Trim() != "" && IDSelList.Trim().ToLower().Equals(("DDF").Trim().ToLower()))
+                if (!string.IsNullOrWhiteSpace(IDSelList) && IDSelList.sEquals("DDF"))
                 {
+                    if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv" && !this.cboBerufsgruppen.isInitialized)
+                    {
+                        this.cboBerufsgruppen.initControl("BER");
+                        this.cboBerufsgruppen.loadData();
+                    }
                     this.panelDetailBottom.Visible = true;
                 }
                 else
                 {
                     this.panelDetailBottom.Visible = false;
                 }
-
             }
             catch (Exception ex)
             {
