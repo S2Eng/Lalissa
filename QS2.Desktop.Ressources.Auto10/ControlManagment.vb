@@ -1311,6 +1311,7 @@ Public Class HandleEvent
             Throw New Exception("HandleEvent.OpenResManager: " + ex.ToString())
         End Try
     End Function
+
     Public Function OpenCriterias(ByRef rControl As dsControls.ControlsRow) As Boolean
         Try
             Dim frmCrit As New QS2.sitemap.manage.wizardsDevelop.frmCriterias()
@@ -1319,8 +1320,7 @@ Public Class HandleEvent
             frmCrit.doSearchAuto = True
             frmCrit.searchAuto = Me._IDRes
             frmCrit.defaultApplication = Settings._Application
-            If frmCrit.ShowDialog() = DialogResult.OK Then
-            End If
+            frmCrit.ShowDialog()
             Me.doBaseElements1.runControlManagment(Me._IDRes, Me._forControl, Me._ContextMenuStrip, False, Me._rRes, False, Me._IsStandardControl,
                                                    Me._DoIDResAuto)
             Return True

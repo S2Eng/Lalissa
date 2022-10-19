@@ -136,7 +136,7 @@ namespace qs2.design.auto.multiControl
             this.doValueChanged(cont);
             
             this.runPictures();
-            this.ownControl1.ownMCTxt1.getSelectedText(this.ownControl1, this.ownControl1.IsInDesignerModus);
+            this.ownControl1.ownMCTxt1.getSelectedText(this.ownControl1);
             if (this.ownControl1.IsEvaluation)
             {
                 qs2.design.auto.print.doRelationshipEvaluation doRelationshipEvaluation1 = new print.doRelationshipEvaluation();
@@ -274,7 +274,7 @@ namespace qs2.design.auto.multiControl
                         ownMCEvents.LastMCDateTimeFocused = null;
                     }
 
-                    this.ownControl1.ownMCTxt1.getSelectedText(this.ownControl1, this.ownControl1.IsInDesignerModus);
+                    this.ownControl1.ownMCTxt1.getSelectedText(this.ownControl1);
 
                     if (this.valueChanged != null)
                         this.valueChanged(this.ownControl1, e);

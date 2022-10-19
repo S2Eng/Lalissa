@@ -191,7 +191,6 @@ namespace qs2.ui
                                     multiControl._controlType == core.Enums.eControlType.Time))
                             {
                                 multiControl.hasINCondition = true;
-                                multiControl.INCondition = rQry.Condition.Trim();
                                 multiControl.controlTypeINCondition = multiControl.OwnControlType;
                                 multiControl.OwnControlType = core.Enums.eControlType.Textfield;
                             }
@@ -295,7 +294,6 @@ namespace qs2.ui
                             multiControl._controlType == core.Enums.eControlType.Time))
                     {
                         multiControl.hasINCondition = true;
-                        multiControl.INCondition = rQry.Condition.Trim();
                         multiControl.controlTypeINCondition = multiControl.OwnControlType;
                         multiControl.OwnControlType = core.Enums.eControlType.Textfield;
                         controlType = multiControl.OwnControlType;
@@ -362,7 +360,6 @@ namespace qs2.ui
                         string txtToolTip = qs2.core.language.sqlLanguage.getRes("IsParameter");
                         if (rQry.FunctionPar)
                             txtToolTip += " (" + qs2.core.language.sqlLanguage.getRes("Function") + ")";
-                        multiControl.ownMCInfo1.doToolTipxy(multiControl.infragLabelLeft, qs2.core.language.sqlLanguage.getRes("Info"), txtToolTip, cont, false, IDApplication, multiControl.OwnFieldForALLProducts);
                     }
 
                     if (multiControl.hasINCondition)
@@ -427,33 +424,14 @@ namespace qs2.ui
                 {
                     multiControl.ownMCValue1.setValue(multiControl, ValueTxtTmp);
                 }
-                else
-                {
-                    
-                }
+
                 multiControl.setEditable(editable, false);
-                //multiControl.setLabels(false);
 
                 if (multiControl.OwnControlType == core.Enums.eControlType.ComboBox ||
                     multiControl.OwnControlType == core.Enums.eControlType.ComboBoxNoDb)
                 {
-                    multiControl.ownMCTxt1.getSelectedText(multiControl, multiControl.IsInDesignerModus);
+                    multiControl.ownMCTxt1.getSelectedText(multiControl);
                 }
-                else
-                {
-
-                }
-
-                if (multiControl.OwnControlType == core.Enums.eControlType.ComboBox ||
-                    multiControl.OwnControlType == core.Enums.eControlType.ComboBoxNoDb)
-                {
-                    
-                }
-                else
-                {
-
-                }
-
                 multiControl.Visible = true;
                 
             }

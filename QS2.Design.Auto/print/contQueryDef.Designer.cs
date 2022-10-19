@@ -834,11 +834,9 @@
             this.multiValueMin.Numeric = null;
             this.multiValueMin.OwnControlType = qs2.core.Enums.eControlType.Textfield;
             this.multiValueMin.OwnDefaultValue = "";
-            this.multiValueMin.OwnDoNotPrint = false;
             this.multiValueMin.OwnFieldForALLProducts = false;
             this.multiValueMin.OwnFldShort = "";
             this.multiValueMin.OwnFldShorts = null;
-            this.multiValueMin.OwnInfoTop = false;
             this.multiValueMin.OwnLevelLeftFontDataBold = Infragistics.Win.DefaultableBoolean.False;
             this.multiValueMin.OwnLevelLeftOrientationHoriz = Infragistics.Win.HAlign.Right;
             this.multiValueMin.OwnLevelLeftVisible = true;
@@ -849,9 +847,6 @@
             this.multiValueMin.OwnLevelTopVisible = false;
             this.multiValueMin.OwnNotResetValue = false;
             this.multiValueMin.OwnOnlyForProducts = "";
-            this.multiValueMin.OwnOrder = 1;
-            this.multiValueMin.OwnOrderControlNr = 1;
-            this.multiValueMin.OwnOrderLineNr = 1;
             this.multiValueMin.ownValue = "";
             this.multiValueMin.Picture = null;
             this.multiValueMin.Size = new System.Drawing.Size(479, 20);
@@ -880,11 +875,9 @@
             this.multiMax.Numeric = null;
             this.multiMax.OwnControlType = qs2.core.Enums.eControlType.Textfield;
             this.multiMax.OwnDefaultValue = "";
-            this.multiMax.OwnDoNotPrint = false;
             this.multiMax.OwnFieldForALLProducts = false;
             this.multiMax.OwnFldShort = "";
             this.multiMax.OwnFldShorts = null;
-            this.multiMax.OwnInfoTop = false;
             this.multiMax.OwnLevelLeftFontDataBold = Infragistics.Win.DefaultableBoolean.False;
             this.multiMax.OwnLevelLeftOrientationHoriz = Infragistics.Win.HAlign.Right;
             this.multiMax.OwnLevelLeftVisible = true;
@@ -895,9 +888,6 @@
             this.multiMax.OwnLevelTopVisible = false;
             this.multiMax.OwnNotResetValue = false;
             this.multiMax.OwnOnlyForProducts = "";
-            this.multiMax.OwnOrder = 1;
-            this.multiMax.OwnOrderControlNr = 1;
-            this.multiMax.OwnOrderLineNr = 1;
             this.multiMax.ownValue = "";
             this.multiMax.Picture = null;
             this.multiMax.Size = new System.Drawing.Size(479, 20);
@@ -925,11 +915,9 @@
             this.ownMultiControlParent.Numeric = null;
             this.ownMultiControlParent.OwnControlType = qs2.core.Enums.eControlType.Textfield;
             this.ownMultiControlParent.OwnDefaultValue = "";
-            this.ownMultiControlParent.OwnDoNotPrint = false;
             this.ownMultiControlParent.OwnFieldForALLProducts = false;
             this.ownMultiControlParent.OwnFldShort = "";
             this.ownMultiControlParent.OwnFldShorts = null;
-            this.ownMultiControlParent.OwnInfoTop = false;
             this.ownMultiControlParent.OwnLevelLeftFontDataBold = Infragistics.Win.DefaultableBoolean.False;
             this.ownMultiControlParent.OwnLevelLeftOrientationHoriz = Infragistics.Win.HAlign.Right;
             this.ownMultiControlParent.OwnLevelLeftVisible = true;
@@ -940,9 +928,6 @@
             this.ownMultiControlParent.OwnLevelTopVisible = false;
             this.ownMultiControlParent.OwnNotResetValue = false;
             this.ownMultiControlParent.OwnOnlyForProducts = "";
-            this.ownMultiControlParent.OwnOrder = 1;
-            this.ownMultiControlParent.OwnOrderControlNr = 1;
-            this.ownMultiControlParent.OwnOrderLineNr = 1;
             this.ownMultiControlParent.ownValue = "";
             this.ownMultiControlParent.Picture = null;
             this.ownMultiControlParent.Size = new System.Drawing.Size(296, 20);

@@ -1,49 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using qs2.sitemap.ownControls;
 using qs2.sitemap.ownControls.inherit_Infrag;
-
-using Infragistics.Win.UltraWinGrid;
 using Infragistics.Win.UltraWinEditors;
 using Infragistics.Win.FormattedLinkLabel;
 using Infragistics.Win;
 using Infragistics.Win.Misc;
-using QS2.Resources;
 using qs2.sitemap.workflowAssist;
 
 namespace qs2.design.auto.multiControl
 {
-
-
     public partial class ownMultiControl : UserControl
     {
+
+        private int _OwnLevelLeftWidth = 0;
+        private int _OwnLevelRightWidth = 0;
+
         public string _FldShort = "";
         public string[] _FldShorts;
 
         public qs2.core.Enums.eControlType _controlType;
-        public UltraTextEditor Textfield { get; set; } = null;
-        public UltraNumericEditor Numeric { get; set; } = null;
-        public UltraComboEditor ComboBox { get; set; } = null;
-        public UltraDropDownButton DropDown { get; set; }= null;
-        public Infragistics.Win.Misc.UltraPopupControlContainer DropDownPopupControlContainer { get; set; } = null;
-        public qs2.design.auto.multiControl.contOnwMultiControlGrid ControlForDropDown { get; set; } = null;
-        public UltraDateTimeEditor Date { get; set; } = null;
-        public UltraDateTimeEditor DateTime { get; set; } = null;
-        public UltraDateTimeEditor Time { get; set; } = null;
-        public InfragCheckBox ThreeStateCheckBox { get; set; } = null;
-        public UltraPictureBox Picture { get; set; } = null;
-        public UltraCheckEditor CheckBox { get; set; } = null;
-        public UltraFormattedTextEditor TextfieldMulti { get; set; } = null;
+        public UltraTextEditor Textfield { get; set; }
+        public UltraNumericEditor Numeric { get; set; }
+        public UltraComboEditor ComboBox { get; set; }
+        public UltraDropDownButton DropDown { get; set; }
+        public Infragistics.Win.Misc.UltraPopupControlContainer DropDownPopupControlContainer { get; set; }
+        public qs2.design.auto.multiControl.contOnwMultiControlGrid ControlForDropDown { get; set; }
+        public UltraDateTimeEditor Date { get; set; }
+        public UltraDateTimeEditor DateTime { get; set; }
+        public UltraDateTimeEditor Time { get; set; }
+        public InfragCheckBox ThreeStateCheckBox { get; set; }
+        public UltraPictureBox Picture { get; set; }
+        public UltraCheckEditor CheckBox { get; set; }
+        public UltraFormattedTextEditor TextfieldMulti { get; set; }
 
         public System.Windows.Forms.Control _control;
-
         public ownMCCriteria ownMCCriteria1 = new ownMCCriteria();
         public ownMCDataBind ownMCDataBind1 = new ownMCDataBind();
         public ownMCEvents ownMCEvents1 = new ownMCEvents();
@@ -52,66 +42,41 @@ namespace qs2.design.auto.multiControl
         public ownMCInfo ownMCInfo1 = new ownMCInfo();
         public ownMCTxt ownMCTxt1 = new ownMCTxt();
         public ownMCUI ownMCUI1 = new ownMCUI();
+        public bool _isEnabled;
 
-        public bool isLoaded = false;
-        public bool _isEnabled = false;
-
-        public System.Guid key = System.Guid.NewGuid();
-
-        private int _OwnLevelLeftWidth = 0;
-        private int _OwnLevelRightWidth = 0;
-        public bool _OwnLevelLeftVisible { get; set; } = false;
-        private bool _OwnLevelTopVisible = false;
-        public bool _OwnLevelRightVisible { get; set; } = false;
+        public bool _OwnLevelLeftVisible { get; set; }
+        private bool _OwnLevelTopVisible;
+        public bool _OwnLevelRightVisible { get; set; }
         private Infragistics.Win.HAlign _OwnLevelLeftOrientationHoriz;
         private Infragistics.Win.HAlign _OwnLevelRightOrientationHoriz;
         private Infragistics.Win.DefaultableBoolean _OwnLevelLeftFontDataBold = DefaultableBoolean.False;
 
-        private int _OwnOrderLineNr = 1;
-        private int _OwnOrderControlNr = 1;
-        private int _OwnOrder = 1;
-
-        private bool _OwnFieldForALLProducts = false;
+        private bool _OwnFieldForALLProducts;
         private string _OwnOnlyForProducts = "";
-        private bool _OwnNotResetValue = false;
-        private bool _OwnDoNotPrint = false;
-        private bool _OwnInfoTop = false;
-        
-        //public qs2.core.vb.funct funct1 { get; set; } = new qs2.core.vb.funct();
-        //public qs2.core.generic generic1 { get; set; } = new qs2.core.generic();
-
+        private bool _OwnNotResetValue;
+        private bool _OwnDoNotPrint;
 
         //Queries
+        private bool panelButtonsVisible;
+        private bool visibleIsInProgress;
+
         public qs2.core.vb.dsAdmin.tblQueriesDefRow rQry;
         public qs2.core.vb.dsAdmin.tblSelListEntriesRow rSelListQry;
-
-
         public bool placeFix = false;
         public bool isSubQuery = false;
-        public bool PropertyVisibleIsActive = false;
-
-        public bool panelButtonsVisible = false;
-
-        public bool visibleIsInProgress = false;
-        public bool valueTaken = false;
-
         public System.Guid ID = System.Guid.Empty;
-        public System.Guid IDGroup = System.Guid.Empty;
         public System.Guid IDGroupReport = System.Guid.Empty;
-
         public bool _txtIsLoaded = false;
 
         public enum eTypActionControl
         {
             selectAll = 0,
-            CheckMinMaxxy = 1,
             clearErrorProvider = 2,
             showError = 3,
             setEditableAndFocus = 4,
             GetControlInfo = 5,
             ClearFocus = 6,
             SetFocus = 7,
-            TabIndexOnOff = 8,
             place = 9,
             clearMC = 10,
             NoticeValueBeforeChangedFromUser = 11,
@@ -119,30 +84,23 @@ namespace qs2.design.auto.multiControl
         }
         public bool doControlIsDone = false;
         public bool isParameterHeader = false;
-        public System.Guid ParIDGuid = System.Guid.Empty;
-        public bool TranslatedValueFound = false;
-
         public bool IsEvaluation = false;
-        public static int fontsize = 10;
+        private static int fontsize = 10;
 
         public int countButtonsRigth = 1;
         public qs2.design.auto.multiControl.ownMultiControl ownMultiControlChild = null;
         public bool IsBetweenControlSecondValue = false;
         public bool IsInUseInparameterList = false;
 
-        public bool TxtBoxForComboIsInitialized = false;
+        private bool TxtBoxForComboIsInitialized = false;
         public bool IsComboBoxWithTxtBox = false;
         
         public contListAssistentElem chapter = null;
-        public bool chapterDone = false;
-        public static int counterMCHasChapters = 0;
-        public static int counterMCHasNoChapters = 0;
 
         public bool hasINCondition = false;
-        public string INCondition = "";
         public qs2.core.Enums.eControlType controlTypeINCondition;
 
-        public object ValueBeforeChangedFromUser = null;
+        private object ValueBeforeChangedFromUser;
 
         public delegate void eMCValueChanged();
         public ownMultiControl.eMCValueChanged MCValueChanged;
@@ -151,7 +109,6 @@ namespace qs2.design.auto.multiControl
         public ownMultiControl()
         {
             InitializeComponent();
-
         }
 
         public void doControl()
@@ -976,42 +933,6 @@ namespace qs2.design.auto.multiControl
             }
         }
 
-        public int OwnOrderLineNr
-        {
-            get
-            {
-                return this._OwnOrderLineNr;
-            }
-            set
-            {
-                this._OwnOrderLineNr = value;
-            }
-        }
-
-        public int OwnOrderControlNr
-        {
-            get
-            {
-                return this._OwnOrderControlNr;
-            }
-            set
-            {
-                this._OwnOrderControlNr = value;
-            }
-        }
-
-        public int OwnOrder
-        {
-            get
-            {
-                return this._OwnOrder;
-            }
-            set
-            {
-                this._OwnOrder = value;
-            }
-        }
-
         public bool OwnNotResetValue
         {
             get
@@ -1024,28 +945,13 @@ namespace qs2.design.auto.multiControl
             }
         }
 
-        public bool OwnDoNotPrint
-        {
-            get
-            {
-                return this._OwnDoNotPrint;
-            }
-            set
-            {
-                this._OwnDoNotPrint = value;
-            }
-        }
-
         public Infragistics.Win.HAlign OwnLevelRightOrientationHoriz
         {
-            get
-            {
-                return this._OwnLevelRightOrientationHoriz;
-            }
             set
             {
                 this._OwnLevelRightOrientationHoriz = value;
-                if (this.DesignMode) this.doControl();
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv") 
+                    this.doControl();
             }
         }
 
@@ -1064,54 +970,18 @@ namespace qs2.design.auto.multiControl
 
         public bool OwnFieldForALLProducts
         {
-            get
-            {
-                return this._OwnFieldForALLProducts;
-            }
-            set
-            {
-                this._OwnFieldForALLProducts = value;
-            }
+            get => this._OwnFieldForALLProducts;
+            set => this._OwnFieldForALLProducts = value;
         }
 
         public string OwnOnlyForProducts
         {
-            get
-            {
-                return this._OwnOnlyForProducts;
-            }
-            set
-            {
-                this._OwnOnlyForProducts = value;
-            }
-        }
-
-        public bool OwnInfoTop
-        {
-            get
-            {
-                return this._OwnInfoTop;
-            }
-            set
-            {
-                this._OwnInfoTop = value;
-            }
-        }
-
-        public bool IsInDesignerModus
-        {
-            get
-            {
-                return this.DesignMode;
-            }
+            get => this._OwnOnlyForProducts;
+            set => this._OwnOnlyForProducts = value;
         }
 
         public object ownValue
         {
-            get
-            {
-                return "";
-            }
             set
             {
 
@@ -1950,7 +1820,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                this.PropertyVisibleIsActive = false;
                 this.Visible = this.getVisiblebyOrder();
             }
             catch (Exception ex)
@@ -1958,15 +1827,14 @@ namespace qs2.design.auto.multiControl
                 qs2.core.Protocol.doExcept(ex.ToString(), "ownMultiControl.setVisible", "", false, true,
                                                                 this.ownMCCriteria1.Application,
                                                                 qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                this.PropertyVisibleIsActive = false;
             }
         }
+
         public bool getVisiblebyOrder()
         {
             bool bTmpVisibleSum = false;
             try
             {
-                this.PropertyVisibleIsActive = true;
 
                 if (!this.ownMCUI1.IsVisible_Criteriaxy)
                 {
@@ -1976,7 +1844,6 @@ namespace qs2.design.auto.multiControl
                 {
                     bTmpVisibleSum = (this.ownMCUI1.IsVisible_Criteriaxy && this.ownMCUI1.IsVisible_LicenseKey && this.ownMCUI1.IsVisible_Roles && this.ownMCUI1.IsVisible_RelationsshipMCParent && this.ownMCUI1.IsVisible_RelationsshipGroups);
                 }
-                this.PropertyVisibleIsActive = false;
 
                 return bTmpVisibleSum;
             }
@@ -1985,25 +1852,7 @@ namespace qs2.design.auto.multiControl
                 qs2.core.Protocol.doExcept(ex.ToString(), "ownMultiControl.setVisible", "", false, true,
                                                                 this.ownMCCriteria1.Application,
                                                                 qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-                this.PropertyVisibleIsActive = false;
                 return bTmpVisibleSum;
-            }
-        }
-
-        public void infoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-                this.ownMCEvents1.Info(this, e);
-            }
-            catch (Exception ex)
-            {
-                this.getExep(ex.ToString(), ex.Message);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
             }
         }
 
@@ -2021,147 +1870,6 @@ namespace qs2.design.auto.multiControl
             finally
             {
                 this.Cursor = Cursors.Default;
-            }
-        }
-
-        public void unloadControl()
-        {
-            try
-            {
-                try
-                {
-                    if (this.Numeric != null)
-                    {
-                        this.Numeric.Dispose();
-                        this.Numeric = null;
-                    }
-
-                    if (this.ComboBox != null)
-                    {
-                        this.ComboBox.DataSource = null;
-                        this.ComboBox.DataMember = null;
-                        this.ComboBox.DataBind();
-                        Application.DoEvents();
-                        this.ownMCCriteria1.ownMCCombo1 = null;
-
-                        this.ComboBox.Dispose();
-                        this.ComboBox = null;
-                    }
-
-                    if (this.DateTime != null)
-                    {
-                        this.DateTime.Dispose();
-                        this.DateTime = null;
-                    }
-
-                    if (this.Date != null)
-                    {
-                        this.Date.Dispose();
-                        this.Date = null;
-                    }
-
-                    if (this.Time != null)
-                    {
-                        this.Time.Dispose();
-                        this.Time = null;
-                    }
-
-                    if (this.Textfield != null)
-                    {
-                        this.Textfield.Dispose();
-                        this.Textfield = null;
-                    }
-
-                    if (this.TextfieldMulti != null)
-                    {
-                        this.TextfieldMulti.Dispose();
-                        this.TextfieldMulti = null;
-                    }
-
-                    if (this.CheckBox != null)
-                    {
-                        this.CheckBox.Dispose();
-                        this.CheckBox = null;
-                    }
-
-                    if (this.ThreeStateCheckBox != null)
-                    {
-                        this.ThreeStateCheckBox.Dispose();
-                        this.ThreeStateCheckBox = null;
-                    }
-
-                    if (this.infragLabelLeft != null)
-                    {
-                        this.infragLabelLeft.Dispose();
-                        this.infragLabelLeft = null;
-                    }
-
-                    if (this.Picture != null)
-                    {
-                        this.Picture.Image = null;
-                        this.Picture.Dispose();
-                        this.Picture = null;
-                    }
-
-                }
-                catch (Exception ex2)
-                {
-                    string xy = ex2.ToString();
-                    //throw new Exception(ex2.ToString());
-                }
-
-                if (this._control != null)
-                {
-                    if (this._control.DataBindings != null)
-                    {
-                        this._control.DataBindings.Clear();
-                    }
-                }
-
-                if (this.ownMCDataBind1 != null)
-                {
-                    this.ownMCDataBind1.Binding1 = null;
-                    this.ownMCDataBind1.RowGenericTables = null;
-                }
-
-                this.rSelListQry = null;
-
-                if (this.ownMCCriteria1 != null)
-                {
-                    this.ownMCCriteria1.rCriteria = null;
-                    this.ownMCCriteria1.rColSys = null;
-                }
-
-                this.ownMCCriteria1 = null;
-                this.ownMCDataBind1 = null;
-                this.ownMCEvents1 = null;
-                this.ownMCFormat1 = null;
-                this.ownMCValue1 = null;
-                this.ownMCInfo1 = null;
-                this.ownMCTxt1 = null;
-                this.ownMCUI1 = null;
-
-                if (this._control != null)
-                {
-                    this._control.Dispose();
-                    this._control = null;
-                }
-
-                if (this.infragLabelLeft != null)
-                {
-                    this.infragLabelLeft.Dispose();
-                    this.infragLabelLeft = null;
-                }
-                if (this.infragLabelRight != null)
-                {
-                    this.infragLabelRight.Dispose();
-                    this.infragLabelRight = null;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                string xy = ex.ToString();
             }
         }
 

@@ -61,15 +61,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownMultiControl1.OwnFldShort, "Surgeon", false))
-                {
-                    bool bStop = true;
-                }
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownMultiControl1.OwnFldShort, "Surg_Assist1", false))
-                {
-                    bool bStop = true;
-                }
-
                 Infragistics.Win.Misc.UltraButton button = null;
                 if (ownMultiControl1.panelButtons.Controls.Count >= 1)
                 {
@@ -125,10 +116,6 @@ namespace qs2.design.auto.multiControl
                     button.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Loeschen, 32, 32);
                 }
 
-                if (toolTipText.Trim() != "")
-                    ownMultiControl1.ownMCInfo1.doToolTipxy(button, qs2.core.language.sqlLanguage.getRes("Info"), toolTipText, ownMultiControl1, false,
-                                                            ownMultiControl1.ownMCCriteria1.Application, ownMultiControl1.OwnFieldForALLProducts);
-
                 if (ownMultiControl1.IsEvaluation)
                 {
                     ownMultiControl1.countButtonsRigth = 1;
@@ -158,42 +145,19 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownMultiControl1.OwnFldShort, "Surgeon", false))
-                {
-                    bool bStop = true;
-                }
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownMultiControl1.OwnFldShort, "Surg_Assist1", false))
-                {
-                    bool bStop = true;
-                }
-
-                //if (ownMultiControl1.panelButtons.Controls.Count >= 1)
-                //{
-                //    return (Infragistics.Win.Misc.UltraButton)ownMultiControl1.panelButtons.Controls[0];
-                //    //button = ( Infragistics.Win.Misc.UltraButton)this.ownMultiControl1.panelButtons.Controls[0];
-                //}
-
                 Infragistics.Win.UltraWinEditors.UltraCheckEditor CheckEdtor = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
                 ownMultiControl1.panelButtons.Controls.Add(CheckEdtor);
 
-                //button.ShowFocusRect = false;
                 System.Drawing.Size sizeChkBox = new System.Drawing.Size(30, 19);
                 CheckEdtor.Size = sizeChkBox;
                 CheckEdtor.TabStop = false;
                 CheckEdtor.TabIndex = 1;
-
-                //System.Drawing.Point locButt = new System.Drawing.Point(1, 1);
-                //button.Location = locButt;
                 CheckEdtor.Left = 22;
                 CheckEdtor.Top = 1;
-
-                //qs2.core.ui.setInaktiv(button);
-                //CheckEdtor.Dock = System.Windows.Forms.DockStyle.Fill;
                 CheckEdtor.Visible = true;
                 CheckEdtor.Appearance.ImageHAlign = Infragistics.Win.HAlign.Center;
                 CheckEdtor.Appearance.ImageVAlign = Infragistics.Win.VAlign.Middle;
                 ownMultiControl1.ownMCEvents1.ownControl1 = ownMultiControl1;
-                //CheckEdtor.Click += new System.EventHandler(ownMultiControl1.ownMCEvents1.ButtonClick);
                 ownMultiControl1.panelButtons.Visible = true;
                 ownMultiControl1.panelButtonsOnOff.Visible = true;
 
@@ -520,11 +484,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownMultiControl1.OwnFldShort, "LogEuroScore_II", false))
-                {
-                    string xy = "";
-                }
-
                 foreach (core.Enums.cVariables var in ownMultiControl1.ownMCCriteria1.lstVariablesClassification)
                 {
                     if (var.definition.Trim().ToLower().Equals(("BackColor").Trim().ToLower()))
@@ -643,11 +602,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownMultiControl1.OwnFldShort, "LogEuroScore_II", false))
-                {
-                    string xy = "";
-                }
-
                 if (this.lstColors.Count > 0)
                 {
                     bool AnyValueEqualsDefinition = false;

@@ -223,24 +223,6 @@ namespace qs2.design.auto.multiControl
                             txtToolTip = txtHelp;
                         }
                     }
-
-                    if (!string.IsNullOrWhiteSpace(txtToolTip))
-                    {
-                        if (ownMultiControl1._controlType == core.Enums.eControlType.CheckBox ||
-                            ownMultiControl1._controlType == core.Enums.eControlType.CheckBoxNoDb)
-                        {
-                            ownMultiControl1.ownMCInfo1.doToolTipxy(ownMultiControl1.CheckBox, qs2.core.language.sqlLanguage.getRes("Info"), txtToolTip, ownMultiControl1, false, ownMultiControl1.ownMCCriteria1.Application, ownMultiControl1.OwnFieldForALLProducts);
-                        }
-                        else if (ownMultiControl1._controlType == core.Enums.eControlType.ThreeStateCheckBox ||
-                                ownMultiControl1._controlType == core.Enums.eControlType.ThreeStateCheckBoxNoDb)
-                        {
-                            ownMultiControl1.ownMCInfo1.doToolTipxy(ownMultiControl1.ThreeStateCheckBox, qs2.core.language.sqlLanguage.getRes("Info"), txtToolTip, ownMultiControl1, false, ownMultiControl1.ownMCCriteria1.Application, ownMultiControl1.OwnFieldForALLProducts);
-                        }
-                        else
-                        {
-                            ownMultiControl1.ownMCInfo1.doToolTipxy((ownMultiControl1._OwnLevelLeftVisible == true ? ownMultiControl1.infragLabelLeft : (ownMultiControl1._OwnLevelRightVisible == true ? ownMultiControl1.infragLabelRight : null)), qs2.core.language.sqlLanguage.getRes("Info"), txtToolTip, ownMultiControl1, false, ownMultiControl1.ownMCCriteria1.Application, ownMultiControl1.OwnFieldForALLProducts);
-                        }
-                    }                   
                 }
 
                 if (ownMultiControl1._controlType == core.Enums.eControlType.CheckBox ||
@@ -280,7 +262,7 @@ namespace qs2.design.auto.multiControl
             }
         }
 
-        public void getSelectedText(qs2.design.auto.multiControl.ownMultiControl ownMultiControl1, bool DesignMode)
+        public void getSelectedText(qs2.design.auto.multiControl.ownMultiControl ownMultiControl1)
         {
             try
             {

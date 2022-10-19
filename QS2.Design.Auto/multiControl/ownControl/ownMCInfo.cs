@@ -1,64 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-
-
 
 namespace qs2.design.auto.multiControl
 {
-
-
-
     public class ownMCInfo
     {
-
-        public static qs2.core.vb.contProtocol contTotalProtocol2 = null;
-        public static qs2.core.vb.contProtocol contTotalMonitoring2 = null;
-
-
-
-
-
-
-
-        public void doToolTipxy(System.Windows.Forms.Control cont, string title, string text, System.Windows.Forms.Control parentControl,
-                            bool HideToolTip, string IDApplicationxy, bool OwnFieldForALLProductsxy)
-        {
-            try
-            {
-                if (cont == null) 
-                    return;
-
-                Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager();
-                ultraToolTipManager1.SetUltraToolTip(cont, null);
-
-                ultraToolTipManager1.AutoPopDelay = 0;
-                ultraToolTipManager1.ContainingControl = parentControl;
-                ultraToolTipManager1.InitialDelay = 0;
-                ultraToolTipManager1.UseAppStyling = true;
-                ultraToolTipManager1.ToolTipImage = Infragistics.Win.ToolTipImage.Info;
-                if (HideToolTip) 
-                    ultraToolTipManager1.HideToolTip();
-                Infragistics.Win.UltraWinToolTip.UltraToolTipInfo toolTipInfo = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo();
-                toolTipInfo.ToolTipText = text;
-                toolTipInfo.ToolTipTitle = title;
-                ultraToolTipManager1.SetUltraToolTip(cont, toolTipInfo);
-            }
-            catch (Exception ex)
-            {
-                qs2.core.Protocol.doExcept(ex.ToString(), "ownMCInfo.doToolTip", "", false, true, IDApplicationxy,
-                                            qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
-            }
-        }
+        private static qs2.core.vb.contProtocol contTotalProtocol2 = null;
 
         public void showInfoCriterias(System.Windows.Forms.Control ctl, string fldShort, string IDApplication, string IDParticipant, bool OwnFieldForALLProducts)
         {
             try
             {
                 qs2.sitemap.manage.wizardsDevelop.frmCriterias frmCriterias1 = new qs2.sitemap.manage.wizardsDevelop.frmCriterias();
-                //frmCriterias1.contCriterias1.ownMultiControl1 = this;
                 if (OwnFieldForALLProducts)
                 {
                     frmCriterias1.contCriterias1.IDApplication = qs2.core.license.doLicense.eApp.ALL.ToString();
@@ -66,7 +18,7 @@ namespace qs2.design.auto.multiControl
                 }
                 else
                 {
-                    frmCriterias1.contCriterias1.IDApplication = IDApplication.ToString();
+                    frmCriterias1.contCriterias1.IDApplication = IDApplication;
                     frmCriterias1.defaultApplication = IDApplication;
                 }
                 frmCriterias1.contCriterias1.IDParticipant = IDParticipant;
@@ -81,6 +33,7 @@ namespace qs2.design.auto.multiControl
                                             qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
         }
+
         public void showInfoRessourcen(System.Windows.Forms.Control ctl, string fldShort, string IDApplication, string IDParticipant, bool OwnFieldForALLProducts)
         {
             try
@@ -108,6 +61,7 @@ namespace qs2.design.auto.multiControl
                                             qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
         }
+
         public void showInfoFldShorts(System.Windows.Forms.Control ctl, string[] fldShorts, string title, string IDApplicationxy, bool OwnFieldForALLProductsxy)
         {
             try
@@ -131,6 +85,7 @@ namespace qs2.design.auto.multiControl
                                             qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
         }
+
         public void infoClassification(qs2.design.auto.multiControl.ownMultiControl ownControl1, string IDApplicationxy)
         {
             try
@@ -153,6 +108,7 @@ namespace qs2.design.auto.multiControl
                                             qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
         }
+
         public bool showInfoSelList(System.Windows.Forms.Control ctl, string fldShort, string Application,
                                         string IDParticipant, bool addSelList, qs2.design.auto.multiControl.ownMultiControl ownMultiControl1,
                                         bool OwnFieldForALLProducts, bool sysMode, bool OnlyOwnSelListsEditable)
@@ -166,22 +122,17 @@ namespace qs2.design.auto.multiControl
                 frmSelList.ContSelList1.IDParticipantToAdd = qs2.core.license.doLicense.rParticipant.IDParticipant.Trim();
                 frmSelList.ContSelList1.IDApplicationCalled = Application.Trim();
                 qs2.core.generic.retValue selectedValue = new qs2.core.generic.retValue();
-                if (ownMultiControl1 != null)
+                if (ownMultiControl1 != null && (ownMultiControl1.OwnControlType == core.Enums.eControlType.ComboBox ||
+                                                 ownMultiControl1.OwnControlType == core.Enums.eControlType.ComboBoxNoDb))
                 {
-                    if (ownMultiControl1.OwnControlType == core.Enums.eControlType.ComboBox ||
-                        ownMultiControl1.OwnControlType == core.Enums.eControlType.ComboBoxNoDb)
-                    {
-                        selectedValue = ownMultiControl1.ownMCValue1.getValue(ownMultiControl1, false);
-                    }
+                    selectedValue = ownMultiControl1.ownMCValue1.getValue(ownMultiControl1, false);
                 }
 
                 if (!sysMode)
                 {
-                    //frmSelList.TypeStr = qs2.core.Enums.eTypeQuery.User.ToString();
                     frmSelList.typeUI = sitemap.vb.frmSelLists.eTypeUI.manageQueryGroups;
                     frmSelList.ContSelList1.doAutoRessource = true;
                     frmSelList.ContSelList1.IDGruppeStr = fldShort;
-                    //frmSelList.ContSelList1.TypeStr = core.Enums.eTypeQuery.User.ToString();
                     frmSelList.ContSelList1.Username = qs2.core.vb.actUsr.rUsr.UserName;
                     frmSelList._Private = false;
                 }
@@ -201,25 +152,17 @@ namespace qs2.design.auto.multiControl
                 }
                 frmSelList.ContSelList1.IDParticipant = IDParticipant;
                 frmSelList.ShowDialog(ctl);
-                if (addSelList)
+                if (addSelList && frmSelList.ContSelList1.savedClicked && ownMultiControl1 != null)
                 {
-                    if (frmSelList.ContSelList1.savedClicked)
-                    {
-                        if (ownMultiControl1 != null)
-                        {
-                            ownMultiControl1.ownMCCriteria1.ownMCCombo1.loadCombo(ownMultiControl1, "", ownMultiControl1.ownMCCriteria1.CombinationComboBoxAsDropDown, ownMultiControl1.ownMCCriteria1.ownMCCombo1._ComboBoxCheckThreeStateBoxAsDropDown);
-                        }
-                    }
+                    ownMultiControl1.ownMCCriteria1.ownMCCombo1.loadCombo(ownMultiControl1, "", ownMultiControl1.ownMCCriteria1.CombinationComboBoxAsDropDown, ownMultiControl1.ownMCCriteria1.ownMCCombo1._ComboBoxCheckThreeStateBoxAsDropDown);
                 }
+
                 if (ownMultiControl1 != null)
                 {
-                    if (ownMultiControl1.OwnControlType == core.Enums.eControlType.ComboBox ||
-                            ownMultiControl1.OwnControlType == core.Enums.eControlType.ComboBoxNoDb)
+                    if ((ownMultiControl1.OwnControlType == core.Enums.eControlType.ComboBox ||
+                         ownMultiControl1.OwnControlType == core.Enums.eControlType.ComboBoxNoDb) && selectedValue.valueStr.Trim() != "")
                     {
-                        if (selectedValue.valueStr.Trim() != "")
-                        {
-                            ownMultiControl1.ownMCValue1.setValue(ownMultiControl1, selectedValue.valueStr);
-                        }
+                        ownMultiControl1.ownMCValue1.setValue(ownMultiControl1, selectedValue.valueStr);
                     }
                 }
 
@@ -232,21 +175,14 @@ namespace qs2.design.auto.multiControl
                 return false;
             }
         }
+
         public void infoFieldDB(System.Windows.Forms.Control ctl, string fldShort, string IDApplication, string IDParticipant, bool OwnFieldForALLProducts)
         {
             try
             {
                 qs2.sitemap.workflowAssist.frmInfoFieldDB frmInfoDB = new qs2.sitemap.workflowAssist.frmInfoFieldDB();
                 frmInfoDB.contInfoFieldDB1.searchColumnText = fldShort;
-                if (OwnFieldForALLProducts)
-                {
-                    frmInfoDB.contInfoFieldDB1.IDApplication = IDApplication.ToString();
-                    //frmInfoDB.contInfoFieldDB1.IDApplication = qs2.core.license.doLicense.eApp.ALL.ToString();
-                }
-                else
-                {
-                    frmInfoDB.contInfoFieldDB1.IDApplication = IDApplication.ToString();
-                }
+                frmInfoDB.contInfoFieldDB1.IDApplication = IDApplication;
                 frmInfoDB.contInfoFieldDB1.IDParticipant = IDParticipant;
                 frmInfoDB.contInfoFieldDB1.txtSearchTextColumn.Text = fldShort;
                 frmInfoDB.ShowDialog(ctl);
@@ -256,11 +192,6 @@ namespace qs2.design.auto.multiControl
                 qs2.core.Protocol.doExcept(ex.ToString(), "ownMCInfo.infoFieldDB", fldShort, true, false, IDApplication,
                                         qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
-        }
-
-        public static void addToProtocoll(string txtToAdd, ref string protocollForAdmin)
-        {
-            protocollForAdmin += txtToAdd.Trim() + "\r\n";
         }
 
         public static void openProtocoll(ref string protocollForAdmin)
@@ -275,34 +206,10 @@ namespace qs2.design.auto.multiControl
 
         public static void checkForProtocol(bool openAlways)
         {
-            if (qs2.core.Protocol.totalProtocol.Trim() != "" || openAlways)
+            if ((qs2.core.Protocol.totalProtocol.Trim() != "" || openAlways) && !openAlways)
             {
-                if (!openAlways)
-                {
-                    string sTxtAll = qs2.core.generic.lineBreak + qs2.core.Protocol.totalProtocol.Trim() +
-                                                ownMCInfo.contTotalProtocol2.getTxt();
-                    ownMCInfo.contTotalProtocol2.setText(sTxtAll);
-                    qs2.core.Protocol.totalProtocol = "";
-                }
-            }
-        }
-
-        public static bool stopWhenFldShort(string FldShortActuell, string FldShortToCheck, bool showMsgBox)
-        {
-            if (FldShortActuell.ToLower().Trim() == FldShortToCheck.ToLower().Trim())
-            {
-                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
-                {
-                    if (showMsgBox)
-                    {
-                        System.Windows.Forms.MessageBox.Show("Actuell Position for FldShort '" + FldShortToCheck + "'");
-                    }
-                }
-                return true;
-            }
-            else
-            {
-                return false;
+                ownMCInfo.contTotalProtocol2.setText(qs2.core.generic.lineBreak + qs2.core.Protocol.totalProtocol.Trim() + ownMCInfo.contTotalProtocol2.getTxt());
+                qs2.core.Protocol.totalProtocol = "";
             }
         }
     }

@@ -662,9 +662,6 @@ namespace qs2.ui.print
                         newElement.infragLabelLeft.Appearance.ForeColor = System.Drawing.Color.Black;
                         newElement.infragLabelLeft.UseAppStyling = qs2.core.ENV.UseAppStylingDefault;
                         newElement.msPanelControls3.Visible = true;
-
-                        newElement.OwnOrderLineNr = 1;
-                        newElement.OwnOrderControlNr = nrToLoad;
                         newElement.rQry = rQry;
                         newElement.rSelListQry = rSelectedSelList;
                         newElement.isSubQuery = isSubQuery;
@@ -743,23 +740,7 @@ namespace qs2.ui.print
                         }
 
                         newElement.infragLabelRight.Text = newElement.ownMCTxt1.TextCombinationEndTranslated;
-
-                        //newElement.infragLabelLeft.Text = sCombination + sCondition + newElement.infragLabelLeft.Text + sCombinationEnd;
-
-                        newElement.OwnOrderLineNr = nrToLoad;
                         newElement.TabIndex = nrToLoad;
-
-                        //if (newElement.OwnControlType.Trim().ToLower() == core.Enums.eControlType.ComboBox.ToString().Trim().ToLower())
-                        //{
-                        //    if (newElement.ownMCCriteria1.ownMCCombo1.TypeComboBox == qs2.design.auto.ownMCCriteria.cVariablesValues.Roles)
-                        //    {
-                        //        if (newElement.ComboBox.Rows.Count > 0)
-                        //        {
-                        //            newElement.ComboBox.SelectedRow = newElement.ComboBox.Rows[0];
-                        //        }
-                        //    }
-                        //}
-
                         counterPar += 1;
                     }
                 }

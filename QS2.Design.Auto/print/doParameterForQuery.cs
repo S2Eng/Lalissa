@@ -776,7 +776,6 @@ namespace qs2.print
                             }
                             rQryCondition[qs2.core.generic.columnMultiControl] = ownControl;
                             ownControlVisibleOnUI = ownControl;
-                            ownControl.valueTaken = true;
                         }
                     }
                 }

@@ -182,9 +182,6 @@ namespace qs2.ui.print
                 string translatedRes = qs2.core.language.sqlLanguage.getRes(IDRes);
                 multiControl.placeFix = true;
                 multiControl.Visible = false;
-                multiControl.OwnOrderLineNr = 1;
-                multiControl.OwnOrderControlNr = tabIndex;
-
                 multiControl.ownMCCriteria1.initControl();
                 multiControl.setControl(true);
                 multiControl.infragLabelLeft.Text = translatedRes;

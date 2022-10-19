@@ -1,34 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using qs2.core.vb;
-
-
 
 namespace qs2.sitemap.manage.wizardsDevelop
 {
-
-
     public partial class frmCriterias : Form
     {
+        private bool isInitialized;
 
-        public bool doSearchAuto = false;
+        public bool doSearchAuto { get; set; } = false;
         public string searchAuto = "";
         public string defaultApplication;
-        public bool isInitialized = false;
-
-
-
-
-
-
-
-
 
         public frmCriterias()
         {
@@ -47,26 +28,15 @@ namespace qs2.sitemap.manage.wizardsDevelop
             {
                 this.contCriterias1.mainWindow = this;
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.ePicture.ico_Criterias, 32, 32);
-                this.loadRes();
+                this.Text = qs2.core.language.sqlLanguage.getRes("CriteriasManager") + " (" +
+                            qs2.core.language.sqlLanguage.getRes("ActiveLanguage") + ": " + qs2.core.language.sqlLanguage.getRes(qs2.core.ENV.Language) + ")";
                 this.contCriterias1.initControl(TypeUI);
 
                 if (this.doSearchAuto)
                     this.contCriterias1.initControl(this.defaultApplication, this.searchAuto);
 
-                //if (this.contCriterias1.ownMultiControl1 != null)
-                //    this.contCriterias1.loadInfoControl(this.defaultApplication);
-
                 this.isInitialized = true;
             }
         }
-
-        public void loadRes()
-        {
-            this.Text = qs2.core.language.sqlLanguage.getRes("CriteriasManager") + " (" +
-                        qs2.core.language.sqlLanguage.getRes("ActiveLanguage") + ": " + qs2.core.language.sqlLanguage.getRes(qs2.core.ENV.Language.ToString()) + ")";
-        
-      
-        }
-
     }
 }

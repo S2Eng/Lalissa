@@ -43,25 +43,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                //return;
-
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1.OwnFldShort, "vac1surg", false))
-                {
-                    string xy = "";
-                }
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1.OwnFldShort, "vac2surg", false))
-                {
-                    string xy = "";
-                }
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1.OwnFldShort, "vac3surg", false))
-                {
-                    string xy = "";
-                }
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1.OwnFldShort, "Surgeon", false))
-                {
-                    string xy = "";
-                }
-
                 if ((this.bindedColumnGenericTables != null && this.RowGenericTables != null && this.TypeBinding == dTypeBinding.Ds) ||
                     (this.TypeBinding == dTypeBinding.AutoDll))
                 {
@@ -195,7 +176,7 @@ namespace qs2.design.auto.multiControl
 
                 if (getSelectedText)
                 {
-                    ownControl1.ownMCTxt1.getSelectedText(ownControl1, ownControl1.IsInDesignerModus);
+                    ownControl1.ownMCTxt1.getSelectedText(ownControl1);
                 }
 
             }
@@ -414,7 +395,7 @@ namespace qs2.design.auto.multiControl
                 this.Binding1.ReadValue();
                 if (getSelectedText)
                 {
-                    ownControl1.ownMCTxt1.getSelectedText(ownControl1, ownControl1.IsInDesignerModus);
+                    ownControl1.ownMCTxt1.getSelectedText(ownControl1);
                 }
                 this.isDoingReadValueFromBindingRowToControl = false;
             }
@@ -448,11 +429,6 @@ namespace qs2.design.auto.multiControl
             try
             {
                 this.TypeBinding = dTypeBinding.noBinding;
-
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1.OwnFldShort, "CIOthDesc", false))
-                {
-                    string xy = "";
-                }
 
                 if (ownControl1.ownMCCriteria1.rCriteria != null)
                 {

@@ -106,19 +106,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (this.ComboBoxIsInitialized)
-                {
-                    //return true;
-                }
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1.OwnFldShort, "Surgeon", false))
-                {
-                    string xy = "";
-                }
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1.OwnFldShort, "vac1surg", false))
-                {
-                    string xy = "";
-                }
-
                 string IDGroupStr = "";
                 if (IDGroupStrOther.Trim() != "")
                 {
@@ -205,11 +192,6 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1.OwnFldShort, "RefCardDept", false))
-                {
-                    string xy = "";
-                }
-
                 this.clearCombo2xy(ownControl1);
                 qs2.design.auto.ownMCCriteria.dsAdminWork.Clear();
                 // OMC.IDApplication.Check
@@ -363,15 +345,6 @@ namespace qs2.design.auto.multiControl
                 if (rGrp.Classification.Trim().ToLower().Equals(("Key=IDOwnStr").Trim().ToLower()))
                 {
                     KeyIsIDOwnStr = true;
-                }
-
-                //if (ComboBoxCheckThreeStateBoxAsDropDown)
-                //{
-                //    string xy = "";
-                //}
-                if (qs2.design.auto.multiControl.ownMCInfo.stopWhenFldShort(ownControl1.OwnFldShort, "TAVI_Reason", false))
-                {
-                    bool bStop = true;
                 }
 
                 int iSortNew = 3000;

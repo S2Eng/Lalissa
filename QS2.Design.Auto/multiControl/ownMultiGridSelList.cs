@@ -499,22 +499,12 @@ namespace qs2.design.auto.multiControl
         {
             try
             {
-                if (this._FldShortTitle.Trim() != "")
+                if (!string.IsNullOrEmpty(_FldShortTitle))
                 {
                     qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn = null;
                     this.grpMultiGrid.Text = qs2.core.language.sqlLanguage.getRes(this._FldShortTitle.Trim(), core.Enums.eResourceType.Label, this.ownMCCriteria1.IDParticipant, this.ownMCCriteria1.Application, ref rLangFoundReturn).Trim() + " ";
-                  
-                    qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn2 = null;
-                    string txtToolTip = qs2.core.language.sqlLanguage.getRes(this._FldShortTitle.Trim(), core.Enums.eResourceType.ToolTip, this.ownMCCriteria1.IDParticipant, this.ownMCCriteria1.Application, ref  rLangFoundReturn2).Trim();
-                    if (!qs2.core.ENV.ExtendedUI)
-                    {
-                        if (txtToolTip != "")
-                            this.ownControlInfo1.doToolTipxy(this.grpMultiGrid, qs2.core.language.sqlLanguage.getRes("Info"), txtToolTip, this, false, this.ownMCCriteria1.Application, this.OwnFieldForALLProducts);
-                    }
 
-                    qs2.core.language.dsLanguage.RessourcenRow rResHelp = qs2.core.language.sqlLanguage.getResRow(this._FldShortTitle.Trim(), core.Enums.eResourceType.Help, this.ownMCCriteria1.IDParticipant,
-                                                                                                        this.ownMCCriteria1.Application);
-                    if (!this.DesignMode)
+                    if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                     {
                         this.ContextMenuStrip = this.contextMenuStrip1;
                         this.criteriasToolStripMenuItem.Text = qs2.core.language.sqlLanguage.getRes("Criterias") + " [" + qs2.core.Enums.eControlType.GridMultiSelect.ToString() + "]";
@@ -531,6 +521,7 @@ namespace qs2.design.auto.multiControl
                                                         qs2.core.Protocol.alwaysShowExceptionMulticontrol, qs2.core.Protocol.eTypeError.Error);
             }
         }
+
         public void showTabOrder()
         {
             //this.ownControlInfo1.doToolTip(this, "TabIndex", this._tabIndex.ToString(), this, true, this.ownMCCriteria1.IDApplication.ToString(), this.OwnFieldForALLProducts);
@@ -1085,11 +1076,6 @@ namespace qs2.design.auto.multiControl
 
             if (e.Rows[0].Band.Index != indexBand)
                 e.Cancel = true;
-
-            //if (e.Rows[0].Band.Index == indexBand)
-            //    qs2.core.ui.delGridRowYN(e);
-            //else
-            //    e.Cancel = true;
 
             if (this.MCValueChanged != null)
                 this.MCValueChanged.Invoke();

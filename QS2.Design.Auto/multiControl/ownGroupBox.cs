@@ -50,9 +50,6 @@ namespace qs2.design.auto.multiControl
                 else
                 {
                     qs2.core.language.dsLanguage.RessourcenRow rLangFoundReturn2 = null;
-                    string txtToolTip = qs2.core.language.sqlLanguage.getRes(this._FldShort.Trim(), core.Enums.eResourceType.ToolTip, this.ownControlCriteria1.IDParticipant, this.ownControlCriteria1.Application.ToString(), ref  rLangFoundReturn2).Trim();
-                    if (txtToolTip != "")
-                        this.ownControlInfo1.doToolTipxy(this, qs2.core.language.sqlLanguage.getRes("Info"), txtToolTip, this, false, this.ownControlCriteria1.Application, this.OwnFieldForALLProducts);
                 }
             }
         }
