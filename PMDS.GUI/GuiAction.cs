@@ -11,6 +11,7 @@ using PMDS.DB;
 using PMDS.Data.PflegePlan;
 using PMDS.GUI.BaseControls;
 using System.Linq;
+using Patagames.Pdf.Enums;
 using PMDS.Global.db.Patient;
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Graphics;
@@ -586,6 +587,26 @@ namespace PMDS.GUI
                             }
 
                             filenamePDFA = System.IO.Path.Combine(ENV.ArchivPath, KlientNameGebDat + ".PDF");
+
+                            //Option with Patagames
+                            //PdfCommon.Initialize();
+                            //using (var mainDoc = Patagames.Pdf.Net.PdfDocument.CreateNew())
+                            //{
+                            //    foreach (var p in lstSourceFiles)
+                            //    {
+                            //        using (var doc = Patagames.Pdf.Net.PdfDocument.Load(p))
+                            //        {
+                            //            mainDoc.Pages.ImportPages(
+                            //                doc,
+                            //                string.Format("1-{0}", doc.Pages.Count),
+                            //                mainDoc.Pages.Count
+                            //            );
+                            //        }
+                            //    }
+                            //    mainDoc.Save(@"c:\ResultDocument.pdf", SaveFlags.NoIncremental);
+                            //}
+                            //PdfCommon.Release();
+
                             using (Syncfusion.Pdf.PdfDocument finalDoc = new Syncfusion.Pdf.PdfDocument(PdfConformanceLevel.Pdf_A1B))
                             {
                                 finalDoc.Compression = PdfCompressionLevel.Best;

@@ -79,21 +79,25 @@ namespace PMDS.GUI
 		{
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("AuswahlListe", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAuswahlListeGruppe");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Reihenfolge");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IstGruppe");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GehörtzuGruppe");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Hierarche");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Beschreibung");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAuswahlListeGruppe");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Reihenfolge");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IstGruppe");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GehörtzuGruppe");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Hierarche");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Beschreibung");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Unterdruecken");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ELGA_ID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ELGA_Code");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ELGA_CodeSystem");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ELGA_DisplayName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ELGA_Version");
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucAuswahl));
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.btnUp = new QS2.Desktop.ControlManagment.BaseButton();
-            this.dsAuswahlGruppe1 = new PMDS.Global.db.Global.dsAuswahlGruppe();
-            this.viewAuswahl = new System.Data.DataView();
             this.dgAuswahl = new QS2.Desktop.ControlManagment.BaseGrid();
             this.btnDown = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelDetailBottom = new System.Windows.Forms.Panel();
@@ -104,13 +108,15 @@ namespace PMDS.GUI
             this.btnAdd = new PMDS.GUI.ucButton(this.components);
             this.btnDel = new PMDS.GUI.ucButton(this.components);
             this.UPopupContBerufsgruppen = new Infragistics.Win.Misc.UltraPopupControlContainer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dsAuswahlGruppe1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewAuswahl)).BeginInit();
+            this.viewAuswahl = new System.Data.DataView();
+            this.dsAuswahlGruppe1 = new PMDS.Global.db.Global.dsAuswahlGruppe();
             ((System.ComponentModel.ISupportInitialize)(this.dgAuswahl)).BeginInit();
             this.panelDetailBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpDetails)).BeginInit();
             this.grpDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkGegenzeichnenJN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewAuswahl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsAuswahlGruppe1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnUp
@@ -125,17 +131,6 @@ namespace PMDS.GUI
             this.btnUp.Text = "<";
             this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
-            // dsAuswahlGruppe1
-            // 
-            this.dsAuswahlGruppe1.DataSetName = "dsAuswahlGruppe";
-            this.dsAuswahlGruppe1.Locale = new System.Globalization.CultureInfo("de-AT");
-            this.dsAuswahlGruppe1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // viewAuswahl
-            // 
-            this.viewAuswahl.AllowNew = false;
-            this.viewAuswahl.Table = this.dsAuswahlGruppe1.AuswahlListe;
-            // 
             // dgAuswahl
             // 
             this.dgAuswahl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -145,60 +140,64 @@ namespace PMDS.GUI
             this.dgAuswahl.DataSource = this.viewAuswahl;
             this.dgAuswahl.DisplayLayout.AddNewBox.Prompt = "Add ...";
             ultraGridBand1.AddButtonCaption = "AuswahlListeGruppe";
-            ultraGridColumn9.Header.Editor = null;
-            ultraGridColumn9.Header.VisiblePosition = 0;
-            ultraGridColumn9.Hidden = true;
-            ultraGridColumn9.RowLayoutColumnInfo.OriginX = 0;
-            ultraGridColumn9.RowLayoutColumnInfo.OriginY = 0;
-            ultraGridColumn9.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(43, 0);
-            ultraGridColumn9.RowLayoutColumnInfo.SpanX = 2;
-            ultraGridColumn9.RowLayoutColumnInfo.SpanY = 2;
-            ultraGridColumn10.Header.Caption = "Gruppe";
-            ultraGridColumn10.Header.Editor = null;
-            ultraGridColumn10.Header.VisiblePosition = 1;
-            ultraGridColumn10.Hidden = true;
-            ultraGridColumn10.RowLayoutColumnInfo.OriginX = 2;
-            ultraGridColumn10.RowLayoutColumnInfo.OriginY = 0;
-            ultraGridColumn10.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(51, 0);
-            ultraGridColumn10.RowLayoutColumnInfo.SpanX = 2;
-            ultraGridColumn10.RowLayoutColumnInfo.SpanY = 2;
-            ultraGridColumn11.Header.Editor = null;
-            ultraGridColumn11.Header.VisiblePosition = 3;
-            ultraGridColumn11.Hidden = true;
-            ultraGridColumn11.RowLayoutColumnInfo.OriginX = 6;
-            ultraGridColumn11.RowLayoutColumnInfo.OriginY = 0;
-            ultraGridColumn11.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(42, 0);
-            ultraGridColumn11.RowLayoutColumnInfo.SpanX = 2;
-            ultraGridColumn11.RowLayoutColumnInfo.SpanY = 2;
-            ultraGridColumn12.Header.Editor = null;
-            ultraGridColumn12.Header.VisiblePosition = 2;
-            ultraGridColumn12.MaxLength = 255;
-            ultraGridColumn12.RowLayoutColumnInfo.OriginX = 4;
-            ultraGridColumn12.RowLayoutColumnInfo.OriginY = 0;
-            ultraGridColumn12.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(273, 0);
-            ultraGridColumn12.RowLayoutColumnInfo.SpanX = 2;
-            ultraGridColumn12.RowLayoutColumnInfo.SpanY = 2;
-            ultraGridColumn13.Header.Caption = "Ist Gruppe";
-            ultraGridColumn13.Header.Editor = null;
-            ultraGridColumn13.Header.VisiblePosition = 4;
-            ultraGridColumn14.Header.Caption = "Gehört zu Gruppe";
-            ultraGridColumn14.Header.Editor = null;
-            ultraGridColumn14.Header.VisiblePosition = 5;
-            ultraGridColumn14.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(233, 0);
-            ultraGridColumn15.Header.Editor = null;
-            ultraGridColumn15.Header.VisiblePosition = 6;
-            ultraGridColumn16.Header.Editor = null;
-            ultraGridColumn16.Header.VisiblePosition = 7;
-            ultraGridColumn16.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(186, 0);
+            ultraGridColumn7.Header.VisiblePosition = 0;
+            ultraGridColumn7.Hidden = true;
+            ultraGridColumn7.RowLayoutColumnInfo.OriginX = 0;
+            ultraGridColumn7.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn7.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(43, 0);
+            ultraGridColumn7.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn7.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn8.Header.Caption = "Gruppe";
+            ultraGridColumn8.Header.VisiblePosition = 1;
+            ultraGridColumn8.Hidden = true;
+            ultraGridColumn8.RowLayoutColumnInfo.OriginX = 2;
+            ultraGridColumn8.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn8.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(51, 0);
+            ultraGridColumn8.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn8.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn17.Header.VisiblePosition = 3;
+            ultraGridColumn17.Hidden = true;
+            ultraGridColumn17.RowLayoutColumnInfo.OriginX = 6;
+            ultraGridColumn17.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn17.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(42, 0);
+            ultraGridColumn17.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn17.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn18.Header.VisiblePosition = 2;
+            ultraGridColumn18.MaxLength = 255;
+            ultraGridColumn18.RowLayoutColumnInfo.OriginX = 4;
+            ultraGridColumn18.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn18.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(273, 0);
+            ultraGridColumn18.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn18.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn19.Header.Caption = "Ist Gruppe";
+            ultraGridColumn19.Header.VisiblePosition = 4;
+            ultraGridColumn20.Header.Caption = "Gehört zu Gruppe";
+            ultraGridColumn20.Header.VisiblePosition = 5;
+            ultraGridColumn20.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(233, 0);
+            ultraGridColumn21.Header.VisiblePosition = 6;
+            ultraGridColumn22.Header.VisiblePosition = 7;
+            ultraGridColumn22.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(186, 0);
+            ultraGridColumn23.Header.VisiblePosition = 8;
+            ultraGridColumn24.Header.VisiblePosition = 9;
+            ultraGridColumn25.Header.VisiblePosition = 10;
+            ultraGridColumn26.Header.VisiblePosition = 11;
+            ultraGridColumn27.Header.VisiblePosition = 12;
+            ultraGridColumn28.Header.VisiblePosition = 13;
             ultraGridBand1.Columns.AddRange(new object[] {
-            ultraGridColumn9,
-            ultraGridColumn10,
-            ultraGridColumn11,
-            ultraGridColumn12,
-            ultraGridColumn13,
-            ultraGridColumn14,
-            ultraGridColumn15,
-            ultraGridColumn16});
+            ultraGridColumn7,
+            ultraGridColumn8,
+            ultraGridColumn17,
+            ultraGridColumn18,
+            ultraGridColumn19,
+            ultraGridColumn20,
+            ultraGridColumn21,
+            ultraGridColumn22,
+            ultraGridColumn23,
+            ultraGridColumn24,
+            ultraGridColumn25,
+            ultraGridColumn26,
+            ultraGridColumn27,
+            ultraGridColumn28});
             ultraGridBand1.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
             this.dgAuswahl.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.dgAuswahl.DisplayLayout.GroupByBox.Prompt = "Drag a column header here to group by that column.";
@@ -322,6 +321,17 @@ namespace PMDS.GUI
             this.btnDel.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
+            // viewAuswahl
+            // 
+            this.viewAuswahl.AllowNew = false;
+            this.viewAuswahl.Table = this.dsAuswahlGruppe1.AuswahlListe;
+            // 
+            // dsAuswahlGruppe1
+            // 
+            this.dsAuswahlGruppe1.DataSetName = "dsAuswahlGruppe";
+            this.dsAuswahlGruppe1.Locale = new System.Globalization.CultureInfo("de-AT");
+            this.dsAuswahlGruppe1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // ucAuswahl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,13 +344,13 @@ namespace PMDS.GUI
             this.Name = "ucAuswahl";
             this.Size = new System.Drawing.Size(806, 600);
             this.Load += new System.EventHandler(this.ucAuswahl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dsAuswahlGruppe1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewAuswahl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAuswahl)).EndInit();
             this.panelDetailBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grpDetails)).EndInit();
             this.grpDetails.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chkGegenzeichnenJN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewAuswahl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsAuswahlGruppe1)).EndInit();
             this.ResumeLayout(false);
 
 		}

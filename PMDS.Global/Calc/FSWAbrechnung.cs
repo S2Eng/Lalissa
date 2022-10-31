@@ -9,7 +9,6 @@ using System.IO;
 using System.Globalization;
 using System.Windows.Forms;
 using System.Drawing;
-using Syncfusion.XlsIO;
 using S2Extensions;
 using Infragistics.Documents.Excel;
 using ScintillaNET.Demo;
@@ -39,17 +38,21 @@ namespace PMDS.Global
             public bool bIsvalid { get; set; }= true;
         }
 
-        public bool UseUploadToFSW { get; set; } = true;
         private List<string> ListIDBillsFSW { get; set; } = new List<string>();                   //Sammelt die Rechungen des FSW
         private List<string> ListIDBillsFSWBW { get; set; } = new List<string>();                 //Sammelt die Rechungen des FSW für betreutes Wohnen
-
-        //private List<Leistungszeile> lstZeilen = new List<Leistungszeile>();
         private List<Chilkat.Xml> ListFSWXml = new List<Chilkat.Xml>();
        
-
         private db.cEBInterfaceDB.Transaction Transaction { get; set; } = db.cEBInterfaceDB.NewTransaction(true);
         private db.cEBInterfaceDB.Transaction TransactionBW { get; set; } = db.cEBInterfaceDB.NewTransaction(false);
-        private ExcelEngine _FSWXlsx = new ExcelEngine();
+        //private ExcelEngine _FSWXlsx = new ExcelEngine();
+        private List<xlsxWorkbook> _FSWXlsx = new List<xlsxWorkbook>();
+
+        public class  xlsxWorkbook
+        {
+            public Workbook wb;
+            public string Filename;
+        }
+
         private eAction _RunAction;
         private List<XlsVorschauZeile> lstXlsVorschauZeilen = new List<XlsVorschauZeile>();
 
@@ -643,7 +646,7 @@ namespace PMDS.Global
                                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Konvertieren in Excel (XLSX): " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     return;
                                 }
-                                if (!SaveXLSX(_FSWXlsx, ref FQFileXLSX, out Msg))   //Xlsx Speichern
+                                if (!SaveXLSX(_FSWXlsx, out Msg))   //Xlsx Speichern
                                 {
                                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exceldatei für eZAUFF wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     return;
@@ -824,30 +827,27 @@ namespace PMDS.Global
             }
         }
 
-        public static bool MakeXLSX(ref List<XMLInfo> lXMLInfos, ref ExcelEngine xlsxref, out string Message)
+        public static bool MakeXLSX(ref List<XMLInfo> lXMLInfos, ref List<xlsxWorkbook> xlsxref, out string message)
         {
-            //https://help.syncfusion.com/file-formats/xlsio/overview
-
-            xlsxref = new ExcelEngine();
-            IApplication app = xlsxref.Excel;
-            app.DefaultVersion = ExcelVersion.Xlsx;
-            Message = ""; 
-
+            message = "";
             try
             {
-                int i = 1;
+                xlsxref.Clear();
                 foreach(XMLInfo XmlInfo in lXMLInfos)
                 {
-                    PMDS.Global.db.cEBInterfaceDB.Transaction Transaction = XmlInfo.Transaction;
-                    IWorkbook workbook = app.Workbooks.Create(i);
-                    IWorksheet sheetHeader = workbook.Worksheets.Create("Übersicht");
-                    sheetHeader.Range["A1"].Text = "Abrechnung FSW " + Transaction.TransactionID;
+                    Workbook workbook1 = new Workbook(WorkbookFormat.Excel2007);
+                    Worksheet worksheet1 = workbook1.Worksheets.Add("Übersicht");
+                    worksheet1.Rows[0].Cells[0].Value = "Abrechnung FSW " + XmlInfo.Transaction.TransactionID;
+                    xlsxWorkbook wb = new xlsxWorkbook();
+                    wb.Filename = "eZAUF_" + XmlInfo.Transaction.TransactionID + (XmlInfo.Transaction.bIsPflegeZAUFF ? "" : "BW") + ".xlsx";
+                    wb.wb = workbook1;
+                    xlsxref.Add(wb);
                 }
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
-                Message = ex.Message;
+                message = ex.Message;
                 return false;
             }
         }
@@ -1050,32 +1050,28 @@ namespace PMDS.Global
             }
         }
 
-        public static bool SaveXLSX(ExcelEngine excelEngine, ref string FQFilename, out string Message)
+        public static bool SaveXLSX(List<xlsxWorkbook> lstWorkbooks, out string Message)
         {
             Message = "";
-            string Filter = "";
             try
             {
-                using (SaveFileDialog dlg = new SaveFileDialog())
+                using (FolderBrowserDialog dlg = new FolderBrowserDialog())
                 {
-                    dlg.InitialDirectory = ENV.FSW_EZAUF;
-                    dlg.FileName = FQFilename;
-                    dlg.Filter = "FSW-Zahlungsaufforderungen|*.xlsx";
+                    dlg.SelectedPath = ENV.FSW_EZAUF;
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
-                        FQFilename = dlg.FileName;
-                        excelEngine.Excel.Workbooks[0].SaveAs(dlg.FileName);
+
+                        foreach (xlsxWorkbook workbook in lstWorkbooks)
+                        {
+                            workbook.wb.Save(Path.Combine(dlg.SelectedPath, workbook.Filename));
+                        }
                         return true;
                     }
-                    else
-                    {
-                        throw new Exception("Speichern abgebrochen");
-                    }
                 }
+                return false;
             }
             catch (Exception ex)
             {
-                FQFilename = "";
                 Message = ex.Message;
                 return false;
             }
