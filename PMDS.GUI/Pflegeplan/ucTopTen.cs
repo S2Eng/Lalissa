@@ -1160,7 +1160,7 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         private void RefreshdgPDXEntfern()
         {
-            if (cbTopTen.Value != null)
+            if (cbTopTen.Value != null && !string.IsNullOrWhiteSpace(cbTopTen.Value.ToString()))
             {
                 dgPDXEntfern.DataSource = _PDx.GetPDxFromPDxGruppeID((Guid)cbTopTen.Value);
             }
