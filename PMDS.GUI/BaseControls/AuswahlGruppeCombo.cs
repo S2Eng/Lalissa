@@ -26,7 +26,7 @@ namespace PMDS.GUI.BaseControls
         private AuswahlGruppe _grp;
 
         public bool AddEmptyEntry { get; set; }
-        public int _SupressLevelHierarchie { get; set; } = -100000;
+        public int _SupressLevelHierarchie { get; set; }= -100000;
 
         
         private void InitializeComponent()
