@@ -10,6 +10,7 @@ using PMDS.DB;
 using PMDS.Global;
 using PMDS.db.Entities;
 using System.Linq;
+using Infragistics.Win.UltraWinSpellChecker;
 
 
 namespace PMDS.GUI.GUI.Main
@@ -220,6 +221,18 @@ namespace PMDS.GUI.GUI.Main
         {
             try
             {
+                //Prüfen, ob es eine offene Abwesenheit gibt
+                using (PMDS.db.Entities.ERModellPMDSEntities dbCheckStatus = PMDSBusiness.getDBContext())
+                {
+                    if ((from uv in dbCheckStatus.UrlaubVerlauf
+                            where uv.IDAufenthalt == rAufenthaltAct.ID && uv.EndeDatum == null
+                            select uv).Any())
+                    {
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Abwesenheitsstatus hat sich geändert.\nEs kann aktuell keine erneute Abwesenheit erfasst werden.", "", MessageBoxButtons.OK);
+                        return false;
+                    }
+                }
+
                 if (!this.ValidateFields())
                 {
                     return false;

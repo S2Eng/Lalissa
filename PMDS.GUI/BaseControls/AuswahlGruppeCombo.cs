@@ -14,7 +14,6 @@ namespace PMDS.GUI.BaseControls
 	{
 		private EditorButton _addBtn = new EditorButton("");
 		private string _group = "";
-        private bool    _addEmptyEnry;
         private bool _ignoreUnterdruecken = true;     //Column Unterdruecken aus Auswahlliste igonorieren: standardm‰ﬂig alle anzeigen
         private bool _selectdistinct;
         private int _BerufsstandGruppeJNA = -1;
@@ -26,7 +25,8 @@ namespace PMDS.GUI.BaseControls
         private bool IsInitialized;
         private AuswahlGruppe _grp;
 
-        public int _SupressLevelHierarchie = -100000;
+        public bool AddEmptyEntry { get; set; }
+        public int _SupressLevelHierarchie { get; set; } = -100000;
 
         
         private void InitializeComponent()
@@ -88,7 +88,7 @@ namespace PMDS.GUI.BaseControls
             this.Items.Clear();
             try
             {
-                if (_addEmptyEnry)
+                if (AddEmptyEntry)
                     this.Items.Add(Guid.Empty, " ");
 
                 List<string> lItems = new List<string>(); //f¸r distinct
@@ -171,10 +171,10 @@ namespace PMDS.GUI.BaseControls
 			set => _addBtn.Visible = value;
         }
 
-        public bool AddEmptyEntry
-        {
-            set => _addEmptyEnry = value;
-        }
+        //public bool AddEmptyEntry
+        //{
+        //    set => AddEmptyEntry = value;
+        //}
 
 		public new bool ReadOnly
 		{

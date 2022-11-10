@@ -2490,6 +2490,7 @@ namespace PMDS.Global.db.ERSystem
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Datei nicht gefunden.");
 
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Abwesenheitsstatus hat sich geändert.\nEs kann aktuell keine erneute Abwesenheit erfasst werden.", "", MessageBoxButtons.OK);
 
                 bool bCheckOK = true;
 
