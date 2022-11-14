@@ -193,5 +193,9 @@ namespace PMDS.GUI
 
         }
 
+        private void dtpErstelltAm_ValueChanged(object sender, EventArgs e)
+        {
+            this.ucPersoenlicheDatenPOP1.Datum = dtpErstelltAm.DateTime;
+        }
     }
 }

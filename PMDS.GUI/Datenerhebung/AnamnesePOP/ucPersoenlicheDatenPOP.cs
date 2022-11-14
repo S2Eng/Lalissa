@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 using PMDS.Global;
@@ -11,18 +12,15 @@ using PMDS.Data.Patient;
 using PMDS.Klient;
 using PMDS.GUI.Klient;
 using System.Linq;
+using TXTextControl;
 
 namespace PMDS.GUI
 {
     public partial class ucPersoenlicheDatenPOP : ucAnamneseModellgruppeBase
     {
         private KlientDetails _klient;
-        public PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness(); 
-
-
-
-
-
+        public PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
+        public DateTime Datum = DateTime.Now;
 
         public ucPersoenlicheDatenPOP()
         {
@@ -82,34 +80,30 @@ namespace PMDS.GUI
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    //os191224
-                    var rPatInfo = (from p in db.Patient
-                                    where p.ID == this.Klient.ID
-                                    select new
-                                    { p.Amputation_Prozent }
-                                       ).First();
-                    //PMDS.db .Entities.Patient rPatient = this.b.getPatient(this.Klient.ID, db);
-                    if (HeightCm != 0)
-                    {
-                        double BMI = Math.Round((WeightKg * (double)(100 - rPatInfo.Amputation_Prozent) / 100) / System.Math.Pow((HeightCm / 100), 2), 1);
-                        return BMI;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                    //os221114
+                    System.Globalization.CultureInfo ci = System.Threading.Thread.CurrentThread.CurrentCulture;
+                    var lAmputationen = (from m in db.MedizinischeDaten
+                        where m.IDPatient == this.Klient.ID
+                              && m.ICDCode.StartsWith("Z89./")
+                              && m.Von <= Datum
+                        select m).ToList();
 
+                    double AmpProzent = 0;
+                    foreach (db.Entities.MedizinischeDaten rA in lAmputationen)
+                    {
+                        if (double.TryParse(rA.ICDCode.Trim().Replace("Z89./", "").Replace("%", "").Replace(".", ci.NumberFormat.CurrencyDecimalSeparator), out double AmpProzTmp))
+                        {
+                            AmpProzent += AmpProzTmp;
+                        }
+                    }
+                    return (HeightCm != 0 ? Math.Round((WeightKg * (double)(100 - AmpProzent) / 100) / System.Math.Pow((HeightCm / 100), 2), 1) : 0);
+                }
             }
             catch (Exception ex)
             {
                 throw new Exception("CalculateBMI: " + ex.ToString());
             }
         }
-
-
-
-
 
         private void btnDatenUebernehmen_Click(object sender, EventArgs e)
         {

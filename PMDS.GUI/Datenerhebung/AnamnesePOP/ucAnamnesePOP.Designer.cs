@@ -119,6 +119,7 @@
             // dtpErstelltAm
             // 
             this.dtpErstelltAm.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpErstelltAm.ValueChanged += new System.EventHandler(this.dtpErstelltAm_ValueChanged);
             // 
             // cmbErstelltAm
             // 
