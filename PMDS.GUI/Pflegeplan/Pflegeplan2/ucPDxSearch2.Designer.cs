@@ -36,8 +36,8 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucPDxSearch2));
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -45,20 +45,16 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab5 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab6 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             this.ultraTabPageControlAbteilungen = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.tvSpecific = new PMDS.GUI.ucASZMSelectorTreeView2();
             this.ultraTabPageControlAlleAbteilungen = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.tvGenerell = new PMDS.GUI.ucASZMSelectorTreeView2();
             this.ultraTabPageControlKeineEinträge = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.label2 = new QS2.Desktop.ControlManagment.BaseLableWin();
             this.label1 = new QS2.Desktop.ControlManagment.BaseLableWin();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.panelAllgemeineFavoriten = new QS2.Desktop.ControlManagment.BasePanel();
-            this.ultraLabel6 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.cbTop10Allgemein = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.pnlFavoriten = new QS2.Desktop.ControlManagment.BasePanel();
             this.cbTop10 = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.lblAbteilung = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -78,9 +74,6 @@ namespace PMDS.GUI
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.TabMain = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
-            this.dsPdxBezeichnung = new dsIDTextBezeichnung();
-            this.dsPDxEintragSpecific = new dsPDxEintrag();
-            this.dsPDxEintragGenerell = new dsPDxEintrag();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ultraGridBagLayoutManager1 = new Infragistics.Win.Misc.UltraGridBagLayoutManager(this.components);
             this.panelAll = new QS2.Desktop.ControlManagment.BasePanel();
@@ -88,12 +81,15 @@ namespace PMDS.GUI
             this.panelUnten2 = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelAll3 = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
+            this.dsPdxBezeichnung = new PMDS.Global.db.Global.dsIDTextBezeichnung();
+            this.dsPDxEintragSpecific = new PMDS.Global.db.Pflegeplan.dsPDxEintrag();
+            this.dsPDxEintragGenerell = new PMDS.Global.db.Pflegeplan.dsPDxEintrag();
+            this.tvGenerell = new PMDS.GUI.ucASZMSelectorTreeView2();
+            this.tvSpecific = new PMDS.GUI.ucASZMSelectorTreeView2();
             this.ultraTabPageControlAbteilungen.SuspendLayout();
             this.ultraTabPageControlAlleAbteilungen.SuspendLayout();
             this.ultraTabPageControlKeineEinträge.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
-            this.panelAllgemeineFavoriten.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbTop10Allgemein)).BeginInit();
             this.pnlFavoriten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbTop10)).BeginInit();
             this.ultraTabPageControl2.SuspendLayout();
@@ -107,63 +103,39 @@ namespace PMDS.GUI
             this.panelUnten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabMain)).BeginInit();
             this.TabMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsPdxBezeichnung)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintragSpecific)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintragGenerell)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutManager1)).BeginInit();
             this.panelAll.SuspendLayout();
             this.panelMitte.SuspendLayout();
             this.panelUnten2.SuspendLayout();
             this.panelAll3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPdxBezeichnung)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintragSpecific)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintragGenerell)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraTabPageControlAbteilungen
             // 
             this.ultraTabPageControlAbteilungen.Controls.Add(this.tvSpecific);
-            this.ultraTabPageControlAbteilungen.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControlAbteilungen.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControlAbteilungen.Name = "ultraTabPageControlAbteilungen";
-            this.ultraTabPageControlAbteilungen.Size = new System.Drawing.Size(428, 260);
+            this.ultraTabPageControlAbteilungen.Size = new System.Drawing.Size(428, 243);
             this.ultraTabPageControlAbteilungen.Tag = "Dontpatch";
-            // 
-            // tvSpecific
-            // 
-            this.tvSpecific.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvSpecific.Location = new System.Drawing.Point(0, 0);
-            this.tvSpecific.Name = "tvSpecific";
-            this.tvSpecific.Size = new System.Drawing.Size(428, 260);
-            this.tvSpecific.TabIndex = 3;
-            this.tvSpecific.TreeviewAfterNodeSelectEventHandler += new Infragistics.Win.UltraWinTree.AfterNodeSelectEventHandler(this.tv_TreeviewAfterNodeSelectEventHandler);
-            this.tvSpecific.TreeviewBeforeNodeSelectEventArgs += new Infragistics.Win.UltraWinTree.BeforeNodeSelectEventHandler(this.tv_TreeviewBeforeNodeSelectEventArgs);
-            this.tvSpecific.TreeviewBeforeNodeChangedEventHandler += new Infragistics.Win.UltraWinTree.BeforeNodeChangedEventHandler(this.tv_TreeviewBeforeNodeChangedEventHandler);
-            this.tvSpecific.TreeviewBeforeCheckEventHandler += new Infragistics.Win.UltraWinTree.BeforeCheckEventHandler(this.tv_TreeviewBeforeCheckEventHandler);
             // 
             // ultraTabPageControlAlleAbteilungen
             // 
             this.ultraTabPageControlAlleAbteilungen.Controls.Add(this.tvGenerell);
             this.ultraTabPageControlAlleAbteilungen.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControlAlleAbteilungen.Name = "ultraTabPageControlAlleAbteilungen";
-            this.ultraTabPageControlAlleAbteilungen.Size = new System.Drawing.Size(428, 260);
-            // 
-            // tvGenerell
-            // 
-            this.tvGenerell.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvGenerell.Location = new System.Drawing.Point(0, 0);
-            this.tvGenerell.Name = "tvGenerell";
-            this.tvGenerell.Size = new System.Drawing.Size(428, 260);
-            this.tvGenerell.TabIndex = 3;
-            this.tvGenerell.TreeviewAfterNodeSelectEventHandler += new Infragistics.Win.UltraWinTree.AfterNodeSelectEventHandler(this.tv_TreeviewAfterNodeSelectEventHandler);
-            this.tvGenerell.TreeviewBeforeNodeSelectEventArgs += new Infragistics.Win.UltraWinTree.BeforeNodeSelectEventHandler(this.tv_TreeviewBeforeNodeSelectEventArgs);
-            this.tvGenerell.TreeviewBeforeNodeChangedEventHandler += new Infragistics.Win.UltraWinTree.BeforeNodeChangedEventHandler(this.tv_TreeviewBeforeNodeChangedEventHandler);
-            this.tvGenerell.TreeviewBeforeCheckEventHandler += new Infragistics.Win.UltraWinTree.BeforeCheckEventHandler(this.tv_TreeviewBeforeCheckEventHandler);
+            this.ultraTabPageControlAlleAbteilungen.Size = new System.Drawing.Size(428, 243);
             // 
             // ultraTabPageControlKeineEinträge
             // 
             this.ultraTabPageControlKeineEinträge.Controls.Add(this.label2);
             this.ultraTabPageControlKeineEinträge.Controls.Add(this.label1);
-            this.ultraTabPageControlKeineEinträge.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControlKeineEinträge.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControlKeineEinträge.Name = "ultraTabPageControlKeineEinträge";
-            this.ultraTabPageControlKeineEinträge.Size = new System.Drawing.Size(428, 260);
+            this.ultraTabPageControlKeineEinträge.Size = new System.Drawing.Size(428, 243);
             // 
             // label2
             // 
@@ -189,65 +161,29 @@ namespace PMDS.GUI
             // 
             // ultraTabPageControl1
             // 
-            this.ultraTabPageControl1.Controls.Add(this.panelAllgemeineFavoriten);
             this.ultraTabPageControl1.Controls.Add(this.pnlFavoriten);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(428, 41);
-            // 
-            // panelAllgemeineFavoriten
-            // 
-            this.panelAllgemeineFavoriten.BackColor = System.Drawing.Color.White;
-            this.panelAllgemeineFavoriten.Controls.Add(this.ultraLabel6);
-            this.panelAllgemeineFavoriten.Controls.Add(this.cbTop10Allgemein);
-            this.panelAllgemeineFavoriten.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAllgemeineFavoriten.Location = new System.Drawing.Point(268, 0);
-            this.panelAllgemeineFavoriten.Name = "panelAllgemeineFavoriten";
-            this.panelAllgemeineFavoriten.Size = new System.Drawing.Size(160, 41);
-            this.panelAllgemeineFavoriten.TabIndex = 31;
-            // 
-            // ultraLabel6
-            // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel6.Appearance = appearance1;
-            this.ultraLabel6.AutoSize = true;
-            this.ultraLabel6.Location = new System.Drawing.Point(7, 3);
-            this.ultraLabel6.Name = "ultraLabel6";
-            this.ultraLabel6.Size = new System.Drawing.Size(111, 14);
-            this.ultraLabel6.TabIndex = 16;
-            this.ultraLabel6.Text = "Allgemeine Favoriten";
-            // 
-            // cbTop10Allgemein
-            // 
-            this.cbTop10Allgemein.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbTop10Allgemein.DisplayMember = "Text";
-            this.cbTop10Allgemein.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList;
-            this.cbTop10Allgemein.Location = new System.Drawing.Point(5, 17);
-            this.cbTop10Allgemein.MaxDropDownItems = 15;
-            this.cbTop10Allgemein.Name = "cbTop10Allgemein";
-            this.cbTop10Allgemein.Size = new System.Drawing.Size(151, 22);
-            this.cbTop10Allgemein.TabIndex = 2;
-            this.cbTop10Allgemein.ValueMember = "ID";
-            this.cbTop10Allgemein.AfterCloseUp += new System.EventHandler(this.cbTop10_AfterCloseUp);
-            this.cbTop10Allgemein.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cbTop10_BeforeDropDown);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(428, 58);
             // 
             // pnlFavoriten
             // 
+            this.pnlFavoriten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFavoriten.BackColor = System.Drawing.Color.White;
             this.pnlFavoriten.Controls.Add(this.cbTop10);
             this.pnlFavoriten.Controls.Add(this.lblAbteilung);
-            this.pnlFavoriten.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlFavoriten.Location = new System.Drawing.Point(0, 0);
             this.pnlFavoriten.Name = "pnlFavoriten";
-            this.pnlFavoriten.Size = new System.Drawing.Size(268, 41);
+            this.pnlFavoriten.Size = new System.Drawing.Size(431, 61);
             this.pnlFavoriten.TabIndex = 30;
             // 
             // cbTop10
             // 
             this.cbTop10.DisplayMember = "Text";
             this.cbTop10.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList;
-            this.cbTop10.Location = new System.Drawing.Point(5, 17);
+            this.cbTop10.Location = new System.Drawing.Point(5, 27);
             this.cbTop10.MaxDropDownItems = 15;
             this.cbTop10.Name = "cbTop10";
             this.cbTop10.Size = new System.Drawing.Size(260, 22);
@@ -258,8 +194,8 @@ namespace PMDS.GUI
             // 
             // lblAbteilung
             // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.lblAbteilung.Appearance = appearance2;
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.lblAbteilung.Appearance = appearance1;
             this.lblAbteilung.AutoSize = true;
             this.lblAbteilung.Location = new System.Drawing.Point(5, 3);
             this.lblAbteilung.Name = "lblAbteilung";
@@ -273,7 +209,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.Controls.Add(this.pnlAnamnesen);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(428, 41);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(428, 58);
             // 
             // pnlAnamnesen
             // 
@@ -283,13 +219,13 @@ namespace PMDS.GUI
             this.pnlAnamnesen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAnamnesen.Location = new System.Drawing.Point(0, 0);
             this.pnlAnamnesen.Name = "pnlAnamnesen";
-            this.pnlAnamnesen.Size = new System.Drawing.Size(428, 41);
+            this.pnlAnamnesen.Size = new System.Drawing.Size(428, 58);
             this.pnlAnamnesen.TabIndex = 35;
             // 
             // ultraLabel4
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel4.Appearance = appearance3;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel4.Appearance = appearance2;
             this.ultraLabel4.AutoSize = true;
             this.ultraLabel4.Location = new System.Drawing.Point(5, 3);
             this.ultraLabel4.Name = "ultraLabel4";
@@ -301,7 +237,7 @@ namespace PMDS.GUI
             // 
             this.cbAnamnesen.DisplayMember = "Text";
             this.cbAnamnesen.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList;
-            this.cbAnamnesen.Location = new System.Drawing.Point(5, 17);
+            this.cbAnamnesen.Location = new System.Drawing.Point(5, 27);
             this.cbAnamnesen.Name = "cbAnamnesen";
             this.cbAnamnesen.Size = new System.Drawing.Size(260, 22);
             this.cbAnamnesen.TabIndex = 1;
@@ -312,9 +248,9 @@ namespace PMDS.GUI
             // ultraTabPageControl3
             // 
             this.ultraTabPageControl3.Controls.Add(this.pnlSuche);
-            this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
-            this.ultraTabPageControl3.Size = new System.Drawing.Size(428, 41);
+            this.ultraTabPageControl3.Size = new System.Drawing.Size(428, 58);
             // 
             // pnlSuche
             // 
@@ -324,13 +260,13 @@ namespace PMDS.GUI
             this.pnlSuche.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSuche.Location = new System.Drawing.Point(0, 0);
             this.pnlSuche.Name = "pnlSuche";
-            this.pnlSuche.Size = new System.Drawing.Size(428, 41);
+            this.pnlSuche.Size = new System.Drawing.Size(428, 58);
             this.pnlSuche.TabIndex = 35;
             // 
             // ultraLabel5
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel5.Appearance = appearance4;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel5.Appearance = appearance3;
             this.ultraLabel5.AutoSize = true;
             this.ultraLabel5.Location = new System.Drawing.Point(6, 3);
             this.ultraLabel5.Name = "ultraLabel5";
@@ -340,7 +276,7 @@ namespace PMDS.GUI
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(5, 18);
+            this.tbSearch.Location = new System.Drawing.Point(5, 27);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(260, 21);
             this.tbSearch.TabIndex = 1;
@@ -351,9 +287,9 @@ namespace PMDS.GUI
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance5.Image = ((object)(resources.GetObject("appearance5.Image")));
-            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnCancel.Appearance = appearance5;
+            appearance4.Image = ((object)(resources.GetObject("appearance4.Image")));
+            appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnCancel.Appearance = appearance4;
             this.btnCancel.AutoWorkLayout = false;
             this.btnCancel.IsStandardControl = false;
             this.btnCancel.Location = new System.Drawing.Point(288, 1);
@@ -366,9 +302,9 @@ namespace PMDS.GUI
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance6.Image = ((object)(resources.GetObject("appearance6.Image")));
-            appearance6.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.btnOk.Appearance = appearance6;
+            appearance5.Image = ((object)(resources.GetObject("appearance5.Image")));
+            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnOk.Appearance = appearance5;
             this.btnOk.AutoWorkLayout = false;
             this.btnOk.IsStandardControl = false;
             this.btnOk.Location = new System.Drawing.Point(376, 1);
@@ -380,9 +316,11 @@ namespace PMDS.GUI
             // 
             // tabASZM
             // 
-            appearance7.FontData.BoldAsString = "True";
-            appearance7.ForeColor = System.Drawing.Color.Black;
-            this.tabASZM.ActiveTabAppearance = appearance7;
+            appearance6.FontData.BoldAsString = "True";
+            appearance6.ForeColor = System.Drawing.Color.Black;
+            this.tabASZM.ActiveTabAppearance = appearance6;
+            appearance7.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tabASZM.Appearance = appearance7;
             this.tabASZM.Controls.Add(this.ultraTabSharedControlsPage3);
             this.tabASZM.Controls.Add(this.ultraTabPageControlAlleAbteilungen);
             this.tabASZM.Controls.Add(this.ultraTabPageControlAbteilungen);
@@ -391,7 +329,7 @@ namespace PMDS.GUI
             this.tabASZM.Location = new System.Drawing.Point(0, 0);
             this.tabASZM.Name = "tabASZM";
             this.tabASZM.SharedControlsPage = this.ultraTabSharedControlsPage3;
-            this.tabASZM.Size = new System.Drawing.Size(432, 286);
+            this.tabASZM.Size = new System.Drawing.Size(432, 269);
             this.tabASZM.Style = Infragistics.Win.UltraWinTabControl.UltraTabControlStyle.PropertyPageSelected;
             this.tabASZM.TabIndex = 3;
             ultraTab1.Key = "Abteilung";
@@ -417,7 +355,7 @@ namespace PMDS.GUI
             // 
             this.ultraTabSharedControlsPage3.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage3.Name = "ultraTabSharedControlsPage3";
-            this.ultraTabSharedControlsPage3.Size = new System.Drawing.Size(428, 260);
+            this.ultraTabSharedControlsPage3.Size = new System.Drawing.Size(428, 243);
             // 
             // panelUnten
             // 
@@ -440,19 +378,21 @@ namespace PMDS.GUI
             appearance8.BackColor = System.Drawing.Color.White;
             appearance8.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.TabMain.ActiveTabAppearance = appearance8;
+            appearance9.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.TabMain.Appearance = appearance9;
             this.TabMain.Controls.Add(this.ultraTabSharedControlsPage1);
             this.TabMain.Controls.Add(this.ultraTabPageControl1);
             this.TabMain.Controls.Add(this.ultraTabPageControl2);
             this.TabMain.Controls.Add(this.ultraTabPageControl3);
             this.TabMain.Dock = System.Windows.Forms.DockStyle.Top;
-            appearance9.BackColor = System.Drawing.Color.White;
-            appearance9.FontData.BoldAsString = "True";
-            appearance9.ForeColor = System.Drawing.Color.Black;
-            this.TabMain.HotTrackAppearance = appearance9;
+            appearance10.BackColor = System.Drawing.Color.White;
+            appearance10.FontData.BoldAsString = "True";
+            appearance10.ForeColor = System.Drawing.Color.Black;
+            this.TabMain.HotTrackAppearance = appearance10;
             this.TabMain.Location = new System.Drawing.Point(0, 0);
             this.TabMain.Name = "TabMain";
             this.TabMain.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.TabMain.Size = new System.Drawing.Size(432, 67);
+            this.TabMain.Size = new System.Drawing.Size(432, 84);
             this.TabMain.Style = Infragistics.Win.UltraWinTabControl.UltraTabControlStyle.PropertyPageSelected;
             this.TabMain.TabIndex = 0;
             ultraTab4.Key = "Favoriten";
@@ -475,25 +415,7 @@ namespace PMDS.GUI
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(428, 41);
-            // 
-            // dsPdxBezeichnung
-            // 
-            this.dsPdxBezeichnung.DataSetName = "dsIDTextBezeichnung";
-            this.dsPdxBezeichnung.Locale = new System.Globalization.CultureInfo("de-DE");
-            this.dsPdxBezeichnung.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dsPDxEintragSpecific
-            // 
-            this.dsPDxEintragSpecific.DataSetName = "dsPDxEintrag";
-            this.dsPDxEintragSpecific.Locale = new System.Globalization.CultureInfo("de-DE");
-            this.dsPDxEintragSpecific.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dsPDxEintragGenerell
-            // 
-            this.dsPDxEintragGenerell.DataSetName = "dsPDxEintrag";
-            this.dsPDxEintragGenerell.Locale = new System.Globalization.CultureInfo("de-DE");
-            this.dsPDxEintragGenerell.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(428, 58);
             // 
             // errorProvider1
             // 
@@ -504,9 +426,9 @@ namespace PMDS.GUI
             this.panelAll.Controls.Add(this.panelMitte);
             this.panelAll.Controls.Add(this.panelUnten2);
             this.panelAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAll.Location = new System.Drawing.Point(0, 67);
+            this.panelAll.Location = new System.Drawing.Point(0, 84);
             this.panelAll.Name = "panelAll";
-            this.panelAll.Size = new System.Drawing.Size(432, 316);
+            this.panelAll.Size = new System.Drawing.Size(432, 299);
             this.panelAll.TabIndex = 32;
             // 
             // panelMitte
@@ -515,14 +437,14 @@ namespace PMDS.GUI
             this.panelMitte.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMitte.Location = new System.Drawing.Point(0, 0);
             this.panelMitte.Name = "panelMitte";
-            this.panelMitte.Size = new System.Drawing.Size(432, 286);
+            this.panelMitte.Size = new System.Drawing.Size(432, 269);
             this.panelMitte.TabIndex = 34;
             // 
             // panelUnten2
             // 
             this.panelUnten2.Controls.Add(this.panelUnten);
             this.panelUnten2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelUnten2.Location = new System.Drawing.Point(0, 286);
+            this.panelUnten2.Location = new System.Drawing.Point(0, 269);
             this.panelUnten2.Name = "panelUnten2";
             this.panelUnten2.Size = new System.Drawing.Size(432, 30);
             this.panelUnten2.TabIndex = 33;
@@ -543,6 +465,48 @@ namespace PMDS.GUI
             this.ultraToolTipManager1.InitialDelay = 0;
             this.ultraToolTipManager1.ToolTipImage = Infragistics.Win.ToolTipImage.Info;
             // 
+            // dsPdxBezeichnung
+            // 
+            this.dsPdxBezeichnung.DataSetName = "dsIDTextBezeichnung";
+            this.dsPdxBezeichnung.Locale = new System.Globalization.CultureInfo("de-DE");
+            this.dsPdxBezeichnung.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dsPDxEintragSpecific
+            // 
+            this.dsPDxEintragSpecific.DataSetName = "dsPDxEintrag";
+            this.dsPDxEintragSpecific.Locale = new System.Globalization.CultureInfo("de-DE");
+            this.dsPDxEintragSpecific.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dsPDxEintragGenerell
+            // 
+            this.dsPDxEintragGenerell.DataSetName = "dsPDxEintrag";
+            this.dsPDxEintragGenerell.Locale = new System.Globalization.CultureInfo("de-DE");
+            this.dsPDxEintragGenerell.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tvGenerell
+            // 
+            this.tvGenerell.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvGenerell.Location = new System.Drawing.Point(0, 0);
+            this.tvGenerell.Name = "tvGenerell";
+            this.tvGenerell.Size = new System.Drawing.Size(428, 243);
+            this.tvGenerell.TabIndex = 3;
+            this.tvGenerell.TreeviewAfterNodeSelectEventHandler += new Infragistics.Win.UltraWinTree.AfterNodeSelectEventHandler(this.tv_TreeviewAfterNodeSelectEventHandler);
+            this.tvGenerell.TreeviewBeforeNodeSelectEventArgs += new Infragistics.Win.UltraWinTree.BeforeNodeSelectEventHandler(this.tv_TreeviewBeforeNodeSelectEventArgs);
+            this.tvGenerell.TreeviewBeforeNodeChangedEventHandler += new Infragistics.Win.UltraWinTree.BeforeNodeChangedEventHandler(this.tv_TreeviewBeforeNodeChangedEventHandler);
+            this.tvGenerell.TreeviewBeforeCheckEventHandler += new Infragistics.Win.UltraWinTree.BeforeCheckEventHandler(this.tv_TreeviewBeforeCheckEventHandler);
+            // 
+            // tvSpecific
+            // 
+            this.tvSpecific.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvSpecific.Location = new System.Drawing.Point(0, 0);
+            this.tvSpecific.Name = "tvSpecific";
+            this.tvSpecific.Size = new System.Drawing.Size(428, 243);
+            this.tvSpecific.TabIndex = 3;
+            this.tvSpecific.TreeviewAfterNodeSelectEventHandler += new Infragistics.Win.UltraWinTree.AfterNodeSelectEventHandler(this.tv_TreeviewAfterNodeSelectEventHandler);
+            this.tvSpecific.TreeviewBeforeNodeSelectEventArgs += new Infragistics.Win.UltraWinTree.BeforeNodeSelectEventHandler(this.tv_TreeviewBeforeNodeSelectEventArgs);
+            this.tvSpecific.TreeviewBeforeNodeChangedEventHandler += new Infragistics.Win.UltraWinTree.BeforeNodeChangedEventHandler(this.tv_TreeviewBeforeNodeChangedEventHandler);
+            this.tvSpecific.TreeviewBeforeCheckEventHandler += new Infragistics.Win.UltraWinTree.BeforeCheckEventHandler(this.tv_TreeviewBeforeCheckEventHandler);
+            // 
             // ucPDxSearch2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -559,9 +523,6 @@ namespace PMDS.GUI
             this.ultraTabPageControlKeineEinträge.ResumeLayout(false);
             this.ultraTabPageControlKeineEinträge.PerformLayout();
             this.ultraTabPageControl1.ResumeLayout(false);
-            this.panelAllgemeineFavoriten.ResumeLayout(false);
-            this.panelAllgemeineFavoriten.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbTop10Allgemein)).EndInit();
             this.pnlFavoriten.ResumeLayout(false);
             this.pnlFavoriten.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbTop10)).EndInit();
@@ -578,15 +539,15 @@ namespace PMDS.GUI
             this.panelUnten.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TabMain)).EndInit();
             this.TabMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dsPdxBezeichnung)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintragSpecific)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintragGenerell)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutManager1)).EndInit();
             this.panelAll.ResumeLayout(false);
             this.panelMitte.ResumeLayout(false);
             this.panelUnten2.ResumeLayout(false);
             this.panelAll3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dsPdxBezeichnung)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintragSpecific)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPDxEintragGenerell)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -600,7 +561,6 @@ namespace PMDS.GUI
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl3;
         private QS2.Desktop.ControlManagment.BaseLabel lblAbteilung;
         private Infragistics.Win.UltraWinGrid.UltraCombo cbTop10;
-        private Infragistics.Win.UltraWinGrid.UltraCombo cbTop10Allgemein;
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel4;
         private Infragistics.Win.UltraWinGrid.UltraCombo cbAnamnesen;
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel5;
@@ -630,8 +590,6 @@ namespace PMDS.GUI
         private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
         private QS2.Desktop.ControlManagment.BaseButton btnCancel;
         private QS2.Desktop.ControlManagment.BaseButton btnOk;
-        private QS2.Desktop.ControlManagment.BasePanel panelAllgemeineFavoriten;
-        private QS2.Desktop.ControlManagment.BaseLabel ultraLabel6;
         public ucASZMSelectorTreeView2 tvSpecific;
     }
 }

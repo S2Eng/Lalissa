@@ -113,8 +113,6 @@ namespace PMDS.GUI
                 {
                     cbTop10.SelectedRow = null;
                     cbTop10.ActiveRow = null;
-                    cbTop10Allgemein.SelectedRow = null;
-                    cbTop10Allgemein.ActiveRow = null;
                     cbAnamnesen.SelectedRow = null;
                     cbAnamnesen.ActiveRow = null;
                     tbSearch.Text = "";
@@ -352,7 +350,6 @@ namespace PMDS.GUI
             ultraGridColumn13.Hidden = true;
             ultraGridBand11.ColHeadersVisible = false;
             ultraGridBand11.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            cbTop10Allgemein.DisplayLayout.BandsSerializer.Add(ultraGridBand11);
 
             UltraGridColumn ultraGridColumn111 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Text");
             UltraGridColumn ultraGridColumn112 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
@@ -390,13 +387,9 @@ namespace PMDS.GUI
         {
             if (_PDx == null) return;
             cbTop10.DataSource = _PDx.GetAllPDxGruppeFromAbteilung(EnvPflegePlan.CurrentKlientenAbteilung,PFLEGEPLANMODUS == PflegePlanModus.Wunde);
-            cbTop10Allgemein.DataSource = _PDx.GetAllPDxGruppeFromAbteilung(Guid.Empty,PFLEGEPLANMODUS == PflegePlanModus.Wunde);        // Generelle Abteilung
 
             if (cbTop10.Rows.Count > 0)
                 cbTop10.ActiveRow = cbTop10.Rows[0];
-
-            if (cbTop10.ActiveRow == null && cbTop10Allgemein.Rows.Count > 0)
-                cbTop10Allgemein.ActiveRow = cbTop10Allgemein.Rows[0];
 
             cbAnamnesen.DataSource = _pdxAnamnese.GetAllAnamnesen(ENV.CurrentIDPatient);
             if (cbAnamnesen.Rows.Count > 0)
@@ -432,11 +425,7 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         private void ShowHideTabs()
         {
-            if (ENV.OnlyOneFavoritenComboinPlanung)
-            {
-                panelAllgemeineFavoriten.Visible = false;
-                lblAbteilung.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Favoriten");
-            }
+            lblAbteilung.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Favoriten");
             
             TAB_KEINE.Visible = !(tvGenerell.HASNODES || tvSpecific.HASNODES);
 
@@ -513,11 +502,6 @@ namespace PMDS.GUI
                     if (cbTop10.ActiveRow != null)
                     {
                         _SelectedPDX = (Guid)cbTop10.ActiveRow.Cells["ID"].Value;
-                        RefreshASZM();
-                    }
-                    else if (cbTop10Allgemein.ActiveRow != null)
-                    {
-                        _SelectedPDX = (Guid)cbTop10Allgemein.ActiveRow.Cells["ID"].Value;
                         RefreshASZM();
                     }
                     else
@@ -1503,7 +1487,6 @@ namespace PMDS.GUI
         private void InitSaershControls()
         {
             cbTop10.ActiveRow = null;
-            cbTop10Allgemein.ActiveRow = null;
             cbAnamnesen.ActiveRow = null;
             tbSearch.Clear();
         }
@@ -1516,23 +1499,15 @@ namespace PMDS.GUI
             UltraCombo c = (UltraCombo)sender;
             if (c.ActiveRow == null) return;
             
-            if (c.Equals(cbTop10Allgemein) || c.Equals(cbAnamnesen))
+            if (c.Equals(cbAnamnesen))
             {
                 tabASZM.SelectedTab = tabASZM.Tabs["Generell"];
 
-                if (c.Equals(cbTop10Allgemein))
-                {
-                    cbTop10.ActiveRow = null;
-                    cbTop10.Value = null;
-                }
             }
             else
             {
                 tabASZM.SelectedTab = tabASZM.Tabs["Abteilung"];
-                cbTop10Allgemein.ActiveRow = null;
-                cbTop10Allgemein.Value = null;
             }
-
 
             try
             {
@@ -1591,8 +1566,6 @@ namespace PMDS.GUI
             _pdxAnamnese.Read();
             cbTop10.DisplayLayout.Bands[0].ColHeadersVisible = false;
             cbTop10.DisplayLayout.Bands[0].RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
-            cbTop10Allgemein.DisplayLayout.Bands[0].ColHeadersVisible = false;
-            cbTop10Allgemein.DisplayLayout.Bands[0].RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
 
             cbAnamnesen.DisplayLayout.Bands[0].ColHeadersVisible = false;
             cbAnamnesen.DisplayLayout.Bands[0].RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;

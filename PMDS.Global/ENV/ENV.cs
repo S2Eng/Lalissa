@@ -306,7 +306,6 @@ namespace PMDS.Global
         public static bool RezeptUseErstattungscode = true;
         public static int RezeptanforderungZeitraum = -7;
 
-        public static bool OnlyOneFavoritenComboinPlanung = true;
         public static bool BezugspersonenJN;
         public static string MedikamenteAbgebenTabText = "Medikamente verabreichen";
 
@@ -1360,7 +1359,6 @@ namespace PMDS.Global
                 SetENVValue("ELGAUrl", ref ELGAUrl);
                 SetENVValue("ELGAUrlGDAIndex", ref ELGAUrlGDAIndex);
 
-                SetENVValue("OnlyOneFavoritenComboinPlanung", ref ENV.OnlyOneFavoritenComboinPlanung, "0");
                 SetENVValue("BezugspersonenJN", ref ENV.BezugspersonenJN);
 
                 SetENVValue("DoNotShowRessources", ref ENV.DoNotShowRessources);

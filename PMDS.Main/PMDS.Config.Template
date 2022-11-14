@@ -12,8 +12,6 @@ adminSecure = 1
 // RezepteDrucken  Medikamente bestellen, RezepteDrucken 0 : Mediakmente bestellen  1 : Rezepte drucken  2 : beides
 // IQuickNurAbt = 1 oder 0 ;Interventionen/Bereich - Quick-Buttons nur Abteilung oder Abteiung und gesamtes Haus
 // BezugspersonenJN 0 = aus; 1 = an; Ausblenden der Bezugspersonenbezogenen Dinge auf der Startseite
-// OnlyOneFavoritenComboinPlanung  In Pflegeplanung die zweite Favoritencombo
-//		0 : nicht ausblenden, Text der Station anpassen  1 : ausblenden, Text auf "Favoriten" setzen
 // MedikamenteAbgebenTabText               = "wurde bereitgestellt" oder "Medikamente verabreichen"; Text des Registers in Medikamtion wird angepasst
 // -------------------------------------------------------------
 PFLEGEMODELLE                           = Krohwinkel,Biografie
@@ -21,7 +19,6 @@ SHOW_PP_TOOLTIP                         = ON;1000;50000
 RezepteDrucken           		            = 2
 IQuickNurAbt 				                    = 0
 BezugspersonenJN 			                  = 0
-OnlyOneFavoritenComboinPlanung 		      = 1
 MedikamenteAbgebenTabText               = wurde bereitgestellt
 
 ANAMNESE_ABLAUF                         = 72

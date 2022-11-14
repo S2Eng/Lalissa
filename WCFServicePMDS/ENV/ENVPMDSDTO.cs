@@ -59,7 +59,6 @@ namespace WCFServicePMDS
         public int RezepteDrucken { get; set; }
         public int IQuickNurAbt { get; set; }   //lth wird das noch benötigt
         public bool BezugspersonenJN { get; set; }
-        public bool OnlyOneFavoritenComboInPlanung { get; set; }
         public int RezeptDruck { get; set; }
         public int RezeptBestellModus { get; set; }
         public int ANAMNESE_ABLAUF { get; set; }   //lth wird das noch benötigt
