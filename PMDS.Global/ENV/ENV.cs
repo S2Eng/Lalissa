@@ -1085,46 +1085,28 @@ namespace PMDS.Global
 
         public static bool HasRight(UserRights right)
         {
-            if (ENV.adminSecure)
+            var iRight = (int)right;
+            if (ENV.adminSecure || ENV._rights == null || ENV._rights.GruppenRecht.Any(u => u.IDRecht == iRight))
             {
                 return true;
             }
-            else
+
+            if (ENV.USERID == Guid.Empty)
             {
-                if (ENV._rights == null)
+                return false;
+            }
+
+            var PMDSBusiness1 = new DB.PMDSBusiness();
+            using (var db = PMDS.DB.PMDSBusiness.getDBContext())
+            {
+                if (PMDSBusiness1.getBenutzerRecht(db, ENV.USERID, iRight) != null)
                 {
                     return true;
                 }
-                else
-                {
-                    bool bHasRigth = false;
-                    foreach (PMDS.Global.db.Patient.dsGruppe.GruppenRechtRow rRight in ENV._rights.GruppenRecht)
-                    {
-                        if (rRight.IDRecht == (int)right)
-                        {
-                            bHasRigth = true;
-                            return true;
-                        }
-                    }
-
-                    if (!bHasRigth && ENV.USERID != null && ENV.USERID != Guid.Empty)
-                    {
-                        int iRight = (int)right;
-                        PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
-                        using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
-                        {
-                            PMDS.db.Entities.BenutzerRechte rBenutzerRechteExists = PMDSBusiness1.getBenutzerRecht(db, ENV.USERID, iRight);
-                            if (rBenutzerRechteExists != null)
-                            {
-                                return true;
-                            }
-                        }
-                    }
-
-                    return false;
-                }
             }
+            return false;
         }
+
         public static bool HasRightUser(UserRights right, Guid IDUser)
         {
             int iRight = (int)right;
