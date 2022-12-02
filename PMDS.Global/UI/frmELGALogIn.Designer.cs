@@ -36,18 +36,21 @@
             this.contELGALogIn1.BackColor = System.Drawing.Color.White;
             this.contELGALogIn1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contELGALogIn1.Location = new System.Drawing.Point(0, 0);
+            this.contELGALogIn1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.contELGALogIn1.Name = "contELGALogIn1";
-            this.contELGALogIn1.Size = new System.Drawing.Size(383, 111);
+            this.contELGALogIn1.Size = new System.Drawing.Size(447, 145);
             this.contELGALogIn1.TabIndex = 0;
             // 
             // frmELGALogIn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(383, 111);
+            this.ClientSize = new System.Drawing.Size(447, 145);
             this.Controls.Add(this.contELGALogIn1);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmELGALogIn";

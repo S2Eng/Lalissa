@@ -58,10 +58,10 @@
             this.btnAbort.Appearance = appearance1;
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(196, 76);
-            this.btnAbort.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAbort.Location = new System.Drawing.Point(229, 99);
+            this.btnAbort.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Size = new System.Drawing.Size(85, 28);
+            this.btnAbort.Size = new System.Drawing.Size(99, 37);
             this.btnAbort.TabIndex = 100;
             this.btnAbort.Tag = "";
             this.btnAbort.Text = "Abbrechen";
@@ -75,10 +75,10 @@
             this.btnELGALogIn.Appearance = appearance2;
             this.btnELGALogIn.AutoWorkLayout = false;
             this.btnELGALogIn.IsStandardControl = false;
-            this.btnELGALogIn.Location = new System.Drawing.Point(282, 76);
-            this.btnELGALogIn.Margin = new System.Windows.Forms.Padding(4);
+            this.btnELGALogIn.Location = new System.Drawing.Point(329, 99);
+            this.btnELGALogIn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnELGALogIn.Name = "btnELGALogIn";
-            this.btnELGALogIn.Size = new System.Drawing.Size(93, 28);
+            this.btnELGALogIn.Size = new System.Drawing.Size(108, 37);
             this.btnELGALogIn.TabIndex = 101;
             this.btnELGALogIn.Tag = "";
             this.btnELGALogIn.Text = "LogIn ELGA";
@@ -89,18 +89,20 @@
             appearance3.BackColor = System.Drawing.Color.White;
             this.txtELGAUser.Appearance = appearance3;
             this.txtELGAUser.BackColor = System.Drawing.Color.White;
-            this.txtELGAUser.Location = new System.Drawing.Point(110, 14);
+            this.txtELGAUser.Location = new System.Drawing.Point(128, 18);
+            this.txtELGAUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtELGAUser.Name = "txtELGAUser";
-            this.txtELGAUser.Size = new System.Drawing.Size(265, 21);
+            this.txtELGAUser.Size = new System.Drawing.Size(309, 26);
             this.txtELGAUser.TabIndex = 0;
             // 
             // lblELGAUser
             // 
             appearance4.TextVAlignAsString = "Middle";
             this.lblELGAUser.Appearance = appearance4;
-            this.lblELGAUser.Location = new System.Drawing.Point(19, 16);
+            this.lblELGAUser.Location = new System.Drawing.Point(22, 21);
+            this.lblELGAUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblELGAUser.Name = "lblELGAUser";
-            this.lblELGAUser.Size = new System.Drawing.Size(113, 16);
+            this.lblELGAUser.Size = new System.Drawing.Size(132, 21);
             this.lblELGAUser.TabIndex = 117;
             this.lblELGAUser.Text = "ELGA-Benutzer:";
             // 
@@ -109,10 +111,11 @@
             appearance5.BackColor = System.Drawing.Color.White;
             this.txtELGAPwd.Appearance = appearance5;
             this.txtELGAPwd.BackColor = System.Drawing.Color.White;
-            this.txtELGAPwd.Location = new System.Drawing.Point(110, 37);
+            this.txtELGAPwd.Location = new System.Drawing.Point(128, 48);
+            this.txtELGAPwd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtELGAPwd.Name = "txtELGAPwd";
             this.txtELGAPwd.PasswordChar = '*';
-            this.txtELGAPwd.Size = new System.Drawing.Size(265, 21);
+            this.txtELGAPwd.Size = new System.Drawing.Size(309, 26);
             this.txtELGAPwd.TabIndex = 1;
             this.txtELGAPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtELGAPwd_KeyDown);
             // 
@@ -120,9 +123,10 @@
             // 
             appearance6.TextVAlignAsString = "Middle";
             this.lblELGAPwd.Appearance = appearance6;
-            this.lblELGAPwd.Location = new System.Drawing.Point(19, 39);
+            this.lblELGAPwd.Location = new System.Drawing.Point(22, 51);
+            this.lblELGAPwd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblELGAPwd.Name = "lblELGAPwd";
-            this.lblELGAPwd.Size = new System.Drawing.Size(113, 16);
+            this.lblELGAPwd.Size = new System.Drawing.Size(132, 21);
             this.lblELGAPwd.TabIndex = 119;
             this.lblELGAPwd.Text = "ELGA-Passwort:";
             // 
@@ -138,15 +142,16 @@
             // 
             appearance7.TextVAlignAsString = "Middle";
             this.lblELGAValidDays.Appearance = appearance7;
-            this.lblELGAValidDays.Location = new System.Drawing.Point(19, 82);
+            this.lblELGAValidDays.Location = new System.Drawing.Point(22, 107);
+            this.lblELGAValidDays.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblELGAValidDays.Name = "lblELGAValidDays";
-            this.lblELGAValidDays.Size = new System.Drawing.Size(160, 16);
+            this.lblELGAValidDays.Size = new System.Drawing.Size(187, 21);
             this.lblELGAValidDays.TabIndex = 120;
             this.lblELGAValidDays.Click += new System.EventHandler(this.lblELGAValidDays_Click);
             // 
             // contELGALogIn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblELGAValidDays);
@@ -156,8 +161,10 @@
             this.Controls.Add(this.lblELGAUser);
             this.Controls.Add(this.btnAbort);
             this.Controls.Add(this.btnELGALogIn);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "contELGALogIn";
-            this.Size = new System.Drawing.Size(385, 108);
+            this.Size = new System.Drawing.Size(449, 141);
             this.Load += new System.EventHandler(this.contLogIn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtELGAUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGAPwd)).EndInit();

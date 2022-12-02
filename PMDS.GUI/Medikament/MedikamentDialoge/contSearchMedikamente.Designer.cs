@@ -54,6 +54,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Aktuell");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Erstattungscode");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Kassenzeichen");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Lieferant");
             this.txtMedikament = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lblMedikament = new QS2.Desktop.ControlManagment.BaseLabel();
             this.btnSearch = new QS2.Desktop.ControlManagment.BaseButton();
@@ -73,10 +74,11 @@
             // 
             this.txtMedikament.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMedikament.Location = new System.Drawing.Point(78, 13);
+            this.txtMedikament.Location = new System.Drawing.Point(91, 17);
+            this.txtMedikament.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMedikament.MaxLength = 25;
             this.txtMedikament.Name = "txtMedikament";
-            this.txtMedikament.Size = new System.Drawing.Size(331, 21);
+            this.txtMedikament.Size = new System.Drawing.Size(362, 26);
             this.txtMedikament.TabIndex = 0;
             // 
             // lblMedikament
@@ -84,9 +86,10 @@
             appearance1.TextHAlignAsString = "Left";
             appearance1.TextVAlignAsString = "Middle";
             this.lblMedikament.Appearance = appearance1;
-            this.lblMedikament.Location = new System.Drawing.Point(9, 9);
+            this.lblMedikament.Location = new System.Drawing.Point(10, 12);
+            this.lblMedikament.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblMedikament.Name = "lblMedikament";
-            this.lblMedikament.Size = new System.Drawing.Size(81, 29);
+            this.lblMedikament.Size = new System.Drawing.Size(94, 38);
             this.lblMedikament.TabIndex = 185;
             this.lblMedikament.Text = "Medikament";
             // 
@@ -96,9 +99,10 @@
             this.btnSearch.AutoWorkLayout = false;
             this.btnSearch.ImageSize = new System.Drawing.Size(12, 12);
             this.btnSearch.IsStandardControl = false;
-            this.btnSearch.Location = new System.Drawing.Point(412, 8);
+            this.btnSearch.Location = new System.Drawing.Point(457, 10);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(67, 32);
+            this.btnSearch.Size = new System.Drawing.Size(78, 42);
             this.btnSearch.TabIndex = 10;
             this.btnSearch.Text = "Suchen";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click_1);
@@ -109,9 +113,10 @@
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.ImageSize = new System.Drawing.Size(12, 12);
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(377, 347);
+            this.btnAbort.Location = new System.Drawing.Point(440, 519);
+            this.btnAbort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Size = new System.Drawing.Size(89, 30);
+            this.btnAbort.Size = new System.Drawing.Size(104, 39);
             this.btnAbort.TabIndex = 201;
             this.btnAbort.Text = "Abbrechen";
             this.btnAbort.Click += new System.EventHandler(this.btnAbort_Click);
@@ -122,9 +127,10 @@
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.ImageSize = new System.Drawing.Size(12, 12);
             this.btnOK.IsStandardControl = false;
-            this.btnOK.Location = new System.Drawing.Point(317, 347);
+            this.btnOK.Location = new System.Drawing.Point(370, 519);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(59, 30);
+            this.btnOK.Size = new System.Drawing.Size(69, 39);
             this.btnOK.TabIndex = 200;
             this.btnOK.Text = "OK";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -285,6 +291,7 @@
             ultraGridColumn20.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn21.Header.VisiblePosition = 20;
             ultraGridColumn22.Header.VisiblePosition = 21;
+            ultraGridColumn23.Header.VisiblePosition = 22;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2,
@@ -307,7 +314,8 @@
             ultraGridColumn19,
             ultraGridColumn20,
             ultraGridColumn21,
-            ultraGridColumn22});
+            ultraGridColumn22,
+            ultraGridColumn23});
             ultraGridBand1.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
             ultraGridBand1.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
             this.dgMedikamente.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
@@ -317,9 +325,10 @@
             this.dgMedikamente.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             this.dgMedikamente.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.dgMedikamente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgMedikamente.Location = new System.Drawing.Point(9, 44);
+            this.dgMedikamente.Location = new System.Drawing.Point(10, 58);
+            this.dgMedikamente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgMedikamente.Name = "dgMedikamente";
-            this.dgMedikamente.Size = new System.Drawing.Size(728, 298);
+            this.dgMedikamente.Size = new System.Drawing.Size(825, 455);
             this.dgMedikamente.TabIndex = 100;
             this.dgMedikamente.DoubleClick += new System.EventHandler(this.dgMedikamente_DoubleClick);
             // 
@@ -335,15 +344,16 @@
             this.btnAddMedikament.AutoWorkLayout = false;
             this.btnAddMedikament.ImageSize = new System.Drawing.Size(12, 12);
             this.btnAddMedikament.IsStandardControl = false;
-            this.btnAddMedikament.Location = new System.Drawing.Point(705, 17);
+            this.btnAddMedikament.Location = new System.Drawing.Point(798, 22);
+            this.btnAddMedikament.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddMedikament.Name = "btnAddMedikament";
-            this.btnAddMedikament.Size = new System.Drawing.Size(26, 23);
+            this.btnAddMedikament.Size = new System.Drawing.Size(30, 30);
             this.btnAddMedikament.TabIndex = 202;
             this.btnAddMedikament.Click += new System.EventHandler(this.btnAddMedikament_Click);
             // 
             // contSearchMedikamente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btnAddMedikament);
@@ -353,8 +363,10 @@
             this.Controls.Add(this.dgMedikamente);
             this.Controls.Add(this.txtMedikament);
             this.Controls.Add(this.lblMedikament);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "contSearchMedikamente";
-            this.Size = new System.Drawing.Size(745, 381);
+            this.Size = new System.Drawing.Size(845, 563);
             this.Load += new System.EventHandler(this.contSearchMedikamente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtMedikament)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
