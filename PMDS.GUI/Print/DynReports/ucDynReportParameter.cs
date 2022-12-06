@@ -11,21 +11,16 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using PMDS.Global;
-using System.Runtime.Remoting;
-using PMDS.Print;
 using PMDS.BusinessLogic;
 using PMDS.GUI.BaseControls;
 using PMDS.DB;
 using PMDS.GUI.VB;
 using System.Linq;
 using PMDS.Global.db.ERSystem;
-using PMDSClient.Sitemap;
 using S2Extensions;
 using System.Data.OleDb;
 using Infragistics.Documents.Excel;
@@ -37,31 +32,25 @@ namespace PMDS.GUI
     public partial class ucDynReportParameter : QS2.Desktop.ControlManagment.BaseControl
     {
         private bool _ucValueChangedInProgress = false;             // Signalisiert dass alle ucs informiert werden dass sich ein Abhängigkeitswert verändert hat
-        public string _CurrentFormToShow = "";                     // Speichert die evtl. aufzurufende Form
-        private string _CurrentAssemblyForForm = "";                // Speichert die evtl. aufzurufende Assembly wo die Form zu finden ist
-        private string _CurrentAssemblyForDataSources = "";         // Speichert die evtl. aufzurufende Assembly wo die Datenquellen zu finden sind
         private string _CurrentReportFile = "";                     // Speichert die aktuelle Datei
         private string _CurrentReportInfo = "";                     // Speichert die aktuelle Info zum Report
-
-        public event EventHandler ParameterChanged;                 // Wird aufgerufen wenn Parameter verändert wurden
-
         private BerichtParameterReplaceDelegate _delegate;
-
         private List<PMDS.Print.CR.BerichtDatenquelle> _CurrentBerichtDatenquellen = new List<PMDS.Print.CR.BerichtDatenquelle>();  // Die DatenquellenListen (Klasse/Bereich)
-        public string XMLFileAlternate = "";
-
-        public PMDS.DB.PMDSBusiness b = new PMDSBusiness();
 
         private bool SavePBSToArchiv { set; get; } = true;          //Pflegebegleitschreiben auch ins Archiv ablegen
-        private bool SavePSBToArchiv { set; get; } = false;         //Pflegesituationsbericht auch ins Archiv ablegen
+        private bool SavePSBToArchiv { set; get; }                  //Pflegesituationsbericht auch ins Archiv ablegen
         private MemoryStream msPSB = new MemoryStream();            //ELGA Pflegesituationsbericht 
+
+        public event EventHandler ParameterChanged;                 // Wird aufgerufen wenn Parameter verändert wurden
+        public string _CurrentFormToShow = "";                      // Speichert die evtl. aufzurufende Form
+        public string XMLFileAlternate = "";
+        public PMDS.DB.PMDSBusiness b = new PMDSBusiness();
 
         public ucDynReportParameter()
         {
             InitializeComponent();
             _delegate = new BerichtParameterReplaceDelegate(ParameterHelper_ReplaceString);
             ParameterHelper.ReplaceString += _delegate;
-            
         }
 
         //----------------------------------------------------------------------------
@@ -216,11 +205,8 @@ namespace PMDS.GUI
                 }
                 else if (!extension.sEquals(".rpt"))
                 {
-                    string DefaultApp = PMDS.Global.Tools.AssocQueryString(PMDS.Global.Tools.AssocStr.ASSOCSTR_EXECUTABLE, extension);
-
                     System.Diagnostics.Process myProcess = new System.Diagnostics.Process();
-                    myProcess.StartInfo.FileName = DefaultApp;
-
+                    myProcess.StartInfo.FileName = PMDS.Global.Tools.AssocQueryString(PMDS.Global.Tools.AssocStr.ASSOCSTR_EXECUTABLE, extension);
                     myProcess.StartInfo.Arguments = ReportFile;
                     myProcess.Start();
                     return;
@@ -232,8 +218,8 @@ namespace PMDS.GUI
                 {
                     SavePSBToArchiv = false;
 
-                    bool ELGAAbgemeldet = false;
-                    bool ELGASOOJN = false;
+                    bool ELGAAbgemeldet;
+                    bool ELGASOOJN;
 
                     using (PMDS.db.Entities.ERModellPMDSEntities dbTemp = DB.PMDSBusiness.getDBContext())
                     {
@@ -475,7 +461,7 @@ namespace PMDS.GUI
                                                 PMDS.db.Entities.ERModellPMDSEntities db,  
                                                 Guid IDAufenthalt, 
                                                 Guid IDPatient, string PatName,
-                                                Nullable<Guid> IDUrlaub,
+                                                Guid? IDUrlaub,
                                                 string ELGAUniqueId)
         {
             try
@@ -551,8 +537,6 @@ namespace PMDS.GUI
                 retList.Add(rMedizinischeDaten.ID);
 
                 return retList;
-
-                //PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this._IDAufenthalt).First();
             }
             catch (Exception ex)
             {
@@ -569,31 +553,14 @@ namespace PMDS.GUI
         public string ParameterHelper_ReplaceString(string StringToReplace)
         {
             string sRet = StringToReplace;
+            Patient p = new Patient(ENV.CurrentIDPatient);
 
             // Vordefinierte Werte ersetzen
-            if (StringToReplace.Contains("{{{IDKlient_current}}}"))
-                sRet = sRet.Replace("{{{IDKlient_current}}}", ENV.CurrentIDPatient.ToString());
-
-            if (StringToReplace.Contains("{{{IDUser_current}}}"))
-                sRet = sRet.Replace("{{{IDUser_current}}}", ENV.USERID.ToString());
-
-            if (StringToReplace.Contains("{{{IDAufenthalt_current}}}"))
-            {
-                Patient p = new Patient(ENV.CurrentIDPatient);
-                sRet = sRet.Replace("{{{IDAufenthalt_current}}}", p.Aufenthalt.ID.ToString());
-            }
-
-            if (StringToReplace.Contains("{{{IDAbteilung_current}}}"))
-            {
-                Patient p = new Patient(ENV.CurrentIDPatient);
-                sRet = sRet.Replace("{{{IDAbteilung_current}}}", p.Aufenthalt.IDAbteilung.ToString());
-            }
-
-            if (StringToReplace.Contains("{{{IDKlinik_current}}}"))
-            {
-                Patient p = new Patient(ENV.CurrentIDPatient);
-                sRet = sRet.Replace("{{{IDKlinik_current}}}", p.Aufenthalt.IDKlinik.ToString());
-            }
+            sRet = sRet.Replace("{{{IDKlient_current}}}", ENV.CurrentIDPatient.ToString());
+            sRet = sRet.Replace("{{{IDUser_current}}}", ENV.USERID.ToString());
+            sRet = sRet.Replace("{{{IDAufenthalt_current}}}", p.Aufenthalt.ID.ToString());
+            sRet = sRet.Replace("{{{IDAbteilung_current}}}", p.Aufenthalt.IDAbteilung.ToString());
+            sRet = sRet.Replace("{{{IDKlinik_current}}}", p.Aufenthalt.IDKlinik.ToString());
 
             // Alle Parameter iterieren
             foreach (IBerichtParameterGUI u in this.pnlParameter.Controls)
@@ -620,7 +587,6 @@ namespace PMDS.GUI
                     {
                         if (u.BERICHTPARAMETER.Typ.sEquals("Datum"))
                         {
-
                             string sTemp = "=== PARSE('" + u.VALUE_TEXT + "' AS DATE USING '" + System.Globalization.CultureInfo.CurrentCulture  + "') ===";
                             sRet = sRet.Replace(sField1, sTemp);
                             sRet = sRet.Replace("'===", "").Replace("==='", "");
@@ -657,8 +623,6 @@ namespace PMDS.GUI
             try
             {
                 _CurrentFormToShow = "";
-                _CurrentAssemblyForForm = "";
-                _CurrentAssemblyForDataSources = "";
                 _CurrentReportInfo = "";
                 _CurrentBerichtDatenquellen.Clear();
                 pnlParameter.Controls.Clear();
@@ -673,8 +637,6 @@ namespace PMDS.GUI
                 def.LoadFromConfig(XMLFILE);
                 _CurrentReportInfo              = def.Reportinfo;
                 _CurrentFormToShow              = def.FormToLoad;
-                _CurrentAssemblyForForm         = def.FormAssembly;             // Dynamische Form
-                _CurrentAssemblyForDataSources  = def.DatasetAssemly;
                 _CurrentBerichtDatenquellen     = def.DataSources;              // Dynamische Datenquellen
 
                 IBerichtParameterGUI uc = null;
@@ -717,7 +679,6 @@ namespace PMDS.GUI
                             uc = new ucParameterBool(true);
                             break;
 
-
                         case PMDS.Print.CR.BerichtParameter.BerichtParameterTyp.Klient:
                             uc = new ucParameterKlient();
                             break;
@@ -750,9 +711,6 @@ namespace PMDS.GUI
 
                         case PMDS.Print.CR.BerichtParameter.BerichtParameterTyp.TextHidden:
                             uc = new ucParameterText(true);
-                            break;
-
-                        default:
                             break;
                     }
 
@@ -803,6 +761,7 @@ namespace PMDS.GUI
         private void AddUserControl(IBerichtParameterGUI uc)
         {
             Control c = (Control)uc;
+            c.Height = 30;
             pnlParameter.Controls.Add(c);
             c.Dock = DockStyle.Top;
             c.BringToFront();
@@ -957,6 +916,5 @@ namespace PMDS.GUI
              this.pnlParameter .ContextMenuStrip = contextMenuStripParReport;
 
         }
-
     }
 }

@@ -370,6 +370,9 @@ namespace RBU
             }
             catch (Exception ex)
             {
+                if (ex.HResult == -2146232011)
+                    return 0;
+
                 if (PMDS.Global.ENV.checkExceptionDBNetLib2(ex.ToString()) || PMDS.Global.ENV.checkExceptionAbfragetimeout(ex.ToString()))
                 {
                     Exception exTmp = new Exception("RBU.Update: 2'nd try" + "\r\n" + sInfoExcept + "\r\n");
