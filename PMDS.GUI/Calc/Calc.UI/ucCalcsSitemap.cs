@@ -13,6 +13,9 @@ using PMDS.Calc.Logic;
 using System.Linq;
 using PMDS.DB;
 using S2Extensions;
+using Infragistics.Documents.Excel;
+using System.Collections;
+using System.Globalization;
 
 namespace PMDS.Calc.UI
 {
@@ -845,6 +848,129 @@ namespace PMDS.Calc.UI
             {
             }
         }
-    
+
+        public void PflegestufenlisteXLS(DateTime month)
+        {
+            try
+            {
+                //Excel erstellen und öffnen
+                Infragistics.Documents.Excel.Workbook wb = new Infragistics.Documents.Excel.Workbook(WorkbookFormat.Excel2007);
+                Infragistics.Documents.Excel.Worksheet ws = wb.Worksheets.Add("FiBU Pflegestufenübersicht");
+                ws.Rows[0].Cells[0].Value = "Familienname";
+                ws.Rows[0].Cells[1].Value = "Vorname";
+                ws.Rows[0].Cells[2].Value = "Abteilung";
+                ws.Rows[0].Cells[3].Value = "Bereich";
+                ws.Rows[0].Cells[4].Value = "Pflegestufe";
+                ws.Rows[0].Cells[5].Value = "von";
+                ws.Rows[0].Cells[6].Value = "bis";
+                ws.Rows[0].Cells[7].Value = "FiBu";
+
+                ws.Columns[0].Width = 7000;
+                ws.Columns[0].CellFormat.WrapText = Infragistics.Documents.Excel.ExcelDefaultableBoolean.True;
+                ws.Columns[1].Width = 4000;
+                ws.Columns[2].Width = 7000;
+                ws.Columns[3].Width = 4000;
+                ws.Columns[4].Width = 14000;
+                ws.Columns[5].Width = 3000;
+                ws.Columns[6].Width = 3000;
+                ws.Columns[7].Width = 3000;
+
+                for (int c = 0; c <= 7; c++)
+                {
+                    ws.Rows[0].Cells[c].CellFormat.Fill = CellFill.CreateSolidFill(System.Drawing.Color.LightSalmon);
+                    ws.Rows[0].Cells[c].CellFormat.LeftBorderStyle = CellBorderLineStyle.Thin;
+                    ws.Rows[0].Cells[c].CellFormat.RightBorderStyle = CellBorderLineStyle.Thin;
+                }
+
+                int z = 0;
+                var dec = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                var thousend = CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator;
+                var curency = CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol;
+                string EuroString = "#" + thousend + "##0" + dec + "00 [$€-x-euro2]; -#" + thousend + "##" + dec +
+                                    "00 [$€-x-euro2]; 0,00 [$€-x-euro2]";
+
+
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    //Sort list ascending
+                    System.Collections.ArrayList listIDSort = new ArrayList();
+                    for (int i = this.sitemap.listID.Count - 1; i >= 0; i--)
+                    {
+                        listIDSort.Add(this.sitemap.listID[i]);
+                    }
+
+                    foreach (var IDKlient in listIDSort)
+                    {
+                        //Klient lesen (Vorname, Nachname, Abteilung, Bereich, )
+                        Guid gIDKlient = new Guid(IDKlient.ToString());
+                        DateTime dtCheckVon = month.AddMonths(1).AddSeconds(-1);
+                        var rAufenthalt = (from a in db.vAufenthaltsliste
+                                           where a.IDPatient == gIDKlient
+                                           select new
+                                           {
+                                               Nachname = a.Nachname,
+                                               Vorname = a.Vorname,
+                                               Abteilung = a.Abteilung,
+                                               Bereich = a.Bereich
+                                           }).FirstOrDefault();
+
+                        //Pflegegeldstufenbezeichnung, Ab-Datum, Bis-Datum, FiBu-Konto  lesen
+                        var rLeistungsplan = (from lp in db.PatientLeistungsplan
+                                              join lk in db.Leistungskatalog on lp.IDLeistungskatalog equals lk.ID
+                                              where lp.IDPatient == gIDKlient &&
+                                                  lk.enumLeistungsgruppe == 1 &&
+                                                  lp.GueltigAb <= dtCheckVon &&
+                                                  (lp.GueltigBis == null || lp.GueltigBis > month)
+                                              select new
+                                              {
+                                                  PS = lk.Bezeichnung,
+                                                  von = lp.GueltigAb,
+                                                  bis = lp.GueltigBis,
+                                                  FiBu = lk.FIBUKonto
+                                              }).FirstOrDefault();
+
+                        if (rLeistungsplan != null)
+                        {
+                            z++;
+                            ws.Rows[z].Cells[0].Value = rAufenthalt.Nachname;
+                            ws.Rows[z].Cells[1].Value = rAufenthalt.Vorname;
+                            ws.Rows[z].Cells[2].Value = rAufenthalt.Abteilung;
+                            ws.Rows[z].Cells[3].Value = rAufenthalt.Bereich;
+                            ws.Rows[z].Cells[4].Value = rLeistungsplan.PS ?? "k.A.";
+                            ws.Rows[z].Cells[5].Value = (object)rLeistungsplan.von ?? "k.A.";
+                            ws.Rows[z].Cells[6].Value = (object)rLeistungsplan.bis ?? "laufend";
+                            ws.Rows[z].Cells[7].Value = rLeistungsplan.FiBu ?? "k.A.";
+                        }
+                    }
+
+                    string xlsWorking = System.IO.Path.Combine(ENV.FSW_EZAUF, "FiBu_Pflegestufenübersicht_" + month.ToString("yyMM_") + Guid.NewGuid().ToString("D") + ".xlsx");
+                    wb.Save(xlsWorking);
+                    if (System.IO.File.Exists(xlsWorking))
+                    {
+                        if (generic.IsExcelInstalled())
+                        {
+                            System.Diagnostics.Process.Start(xlsWorking);
+                            return;
+                        }
+                        else
+                        {
+                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox(
+                                "Datei wurde gespeichert (" + xlsWorking +
+                                "), kann aber nicht geöffnet werden, weil Excel nicht installiert ist.", "Hinweis",
+                                System.Windows.Forms.MessageBoxButtons.OK);
+                            return;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+
+            }
+        }
     }
 }

@@ -57,6 +57,9 @@ namespace PMDS.Calc.UI
             info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Sperre Storno und Rollung aufheben");
             this.ultraToolTipManager1.SetUltraToolTip(this.btnRollungSperreLöschen, info);
 
+            info = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo();
+            info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Alt-Taste halten -> Pflegestufenliste erzeugen");
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnExportAsExcel, info);
 
             this.uGridAbrech2.ContextMenuStrip = null;
 
@@ -860,9 +863,15 @@ namespace PMDS.Calc.UI
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
-                this.exportGridAsExcel(false);
-
+                if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftAlt))
+                {
+                    this.uiSiteMapForm.PflegestufenlisteXLS(this.dtAbrechMonat.DateTime);
+                }
+                else
+                {
+                    this.Cursor = Cursors.WaitCursor;
+                    this.exportGridAsExcel(false);
+                }
             }
             catch (Exception ex)
             {
