@@ -553,14 +553,30 @@ namespace PMDS.GUI
         public string ParameterHelper_ReplaceString(string StringToReplace)
         {
             string sRet = StringToReplace;
-            Patient p = new Patient(ENV.CurrentIDPatient);
-
             // Vordefinierte Werte ersetzen
-            sRet = sRet.Replace("{{{IDKlient_current}}}", ENV.CurrentIDPatient.ToString());
-            sRet = sRet.Replace("{{{IDUser_current}}}", ENV.USERID.ToString());
-            sRet = sRet.Replace("{{{IDAufenthalt_current}}}", p.Aufenthalt.ID.ToString());
-            sRet = sRet.Replace("{{{IDAbteilung_current}}}", p.Aufenthalt.IDAbteilung.ToString());
-            sRet = sRet.Replace("{{{IDKlinik_current}}}", p.Aufenthalt.IDKlinik.ToString());
+            if (StringToReplace.sContains("{{{IDKlient_current}}}"))
+                sRet = sRet.Replace("{{{IDKlient_current}}}", ENV.CurrentIDPatient.ToString());
+
+            if (StringToReplace.sContains("{{{IDUser_current}}}"))
+                sRet = sRet.Replace("{{{IDUser_current}}}", ENV.USERID.ToString());
+
+            if (StringToReplace.sContains("{{{IDAufenthalt_current}}}"))
+            {
+                Patient p = new Patient(ENV.CurrentIDPatient);
+                sRet = sRet.Replace("{{{IDAufenthalt_current}}}", p.Aufenthalt.ID.ToString());
+            }
+
+            if (StringToReplace.sContains("{{{IDAbteilung_current}}}"))
+            {
+                Patient p = new Patient(ENV.CurrentIDPatient);
+                sRet = sRet.Replace("{{{IDAbteilung_current}}}", p.Aufenthalt.IDAbteilung.ToString());
+            }
+
+            if (StringToReplace.sContains("{{{IDKlinik_current}}}"))
+            {
+                Patient p = new Patient(ENV.CurrentIDPatient);
+                sRet = sRet.Replace("{{{IDKlinik_current}}}", p.Aufenthalt.IDKlinik.ToString());
+            }
 
             // Alle Parameter iterieren
             foreach (IBerichtParameterGUI u in this.pnlParameter.Controls)
