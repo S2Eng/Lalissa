@@ -910,8 +910,9 @@ namespace PMDS.Global.db
                                 }
                             }
                         }
-                    }
-                BreakSearchForCertificate:
+                    } 
+
+                    BreakSearchForCertificate:
 
                     //Wenn als Zertifikat ein existierendes Zertifiakt angegeben ist und das Passwort gesetzt ist
                     if (String.IsNullOrWhiteSpace(certFile) || String.IsNullOrWhiteSpace(STAMP_PW))

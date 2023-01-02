@@ -1,36 +1,34 @@
-﻿using qs2.core.db.ERSystem;
-using S2Extensions;
-using System;
-using System.Data.OleDb;
+﻿using System;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-//using Microsoft.SqlServer.Management.Smo;
-//using Microsoft.SqlServer.Management.Common;
-//using System.Data.SqlClient;
 using System.Web;
 using System.Windows.Forms;
+using S2Extensions;
 
 
 namespace qs2.core
 {
-
-
-
     public class dbBase
     {
+        private static System.Data.SqlClient.SqlConnection _dbConnThreadMain;
+        private static string prefixFunction = "fnc";
+
         public static string Provider = "";
         public static string Database = "";
         public static string Server = "";
         public static string User = "";
-        public static string PwdDecrypted = "";
-        public static string PwdEncrypted = "";
         public static bool TrustedConnection = false;
+        public static string PwdDecrypted = "";
+        //public static string PwdEncrypted = "";
         public static System.DateTime minDateTime = new System.DateTime(1900, 1, 1);
         public static string tableNameQueries = "Qry";
         public static string tableNameDsQueries = "ds";
-        public static string prefixFunction = "fnc";
         public static string dbSchema = " qs2.";
+        public static string typDecimal = "decimal";
+        public static string typFloat = "float";
+        public static string typInt = "int";
+        public static string Yes = "yes";
+        //public static string No = "no";
 
         public enum DBTypeSqlServer
         {
@@ -44,11 +42,6 @@ namespace qs2.core
             newid = 80307,
         }
 
-        public static string typDecimal = "decimal";
-        public static string typFloat = "float";
-        public static string typInt = "int";
-        public static string Yes = "yes";
-        public static string No = "no";
 
         public enum TypeField
         {
@@ -63,21 +56,7 @@ namespace qs2.core
             xml = 200009,
             DBNull = 200010
         }
-
-        public enum eTypeInt
-        {
-            t_int = 0,
-            t_dbl = 1,
-            t_string = 2,
-            t_DateTime = 3,
-            t_Guid = 4,
-            t_DBNull = 5,
-            t_Binary = 6,
-            t_Boolean = 7,
-            none = -1
-        }
-        
-        private static System.Data.SqlClient.SqlConnection _dbConnThreadMain;
+       
 
         public bool setConnectionDB2()
         {
@@ -95,7 +74,7 @@ namespace qs2.core
             }
             catch (Exception ex)
             {
-                string eExcep = "Cann't connect to database!" + "\r\n" + "\r\n" + "setConnectionDB: " + ex.ToString();
+                string eExcep = "Cann't connect to database!" + "\r\n\r\n" + "setConnectionDB: " + ex.ToString();
                 MessageBox.Show(ex.ToString());
                 Process currentProcess = Process.GetCurrentProcess();
                 currentProcess.Kill();
@@ -116,7 +95,7 @@ namespace qs2.core
             }
         }
 
-        public static void getVarConnStr(string ConnectionStr)
+        private static void getVarConnStr(string ConnectionStr)
         {
             try
             {
@@ -169,7 +148,7 @@ namespace qs2.core
 
         public static void generateDeleteCommandGuid(string table, string columnWhere, string  value, ref string cmdDelete)
         {
-            cmdDelete += sqlTxt.delete + table + sqlTxt.where + columnWhere + "='" + value.ToString() + "'" + ";";
+            cmdDelete += sqlTxt.delete + table + sqlTxt.where + columnWhere + "='" + value + "';";
         }
 
         public static bool executeCommand(string sqlCommand)
@@ -203,12 +182,8 @@ namespace qs2.core
                     foreach (System.Data.SqlClient.SqlParameter par in parameters)
                     {
                         cmd.Parameters.Add(par);
-                        AllParametersAsTxtReturn += par.ParameterName + "= " + par.Value.ToString() + "\r\n";
+                        AllParametersAsTxtReturn += par.ParameterName + "= " + par.Value + "\r\n";
                     }
-                }
-                else
-                {
-                    string xy = "";
                 }
                 cmd.CommandText = HttpUtility.HtmlDecode(cmd.CommandText);
 
@@ -282,7 +257,7 @@ namespace qs2.core
                 }
                 else
                 {
-                    if (rColSys.IS_NULLABLE.ToLower() == qs2.core.dbBase.Yes.ToLower())
+                    if (rColSys.IS_NULLABLE.sEquals(qs2.core.dbBase.Yes))
                     {
                         qs2.core.dbBase.setResultDbNull(ref ret);
                         if (rColSys.DATA_TYPE.Equals(qs2.core.dbBase.DBTypeSqlServer.datetime.ToString(), StringComparison.OrdinalIgnoreCase))
@@ -298,18 +273,12 @@ namespace qs2.core
                             {
                                 if (!rColSys.DATA_TYPE.Equals(qs2.core.dbBase.DBTypeSqlServer.datetime.ToString(), StringComparison.OrdinalIgnoreCase))
                                 {
-                                    bool noCheck = false;
                                     foreach (string tableNameNoCheck in lstTablesNoDateTimeCheck)
                                     {
                                         if (tableNameNoCheck.Equals(rColSys.TABLE_NAME))
                                         {
                                             NoDefaultValuePossible = true;
-                                            noCheck = true;
                                         }    
-                                    }
-                                    if (!noCheck)
-                                    {
-                                        //throw new Exception(ExceptionStrDefault + "rColSys.IsCOLUMN_DEFAULTNull()=True");    //lth
                                     }
                                 }
                             }
@@ -383,7 +352,6 @@ namespace qs2.core
                         }
                     }
                 }
-
                 return ret;
             }
             catch (Exception ex)
@@ -394,7 +362,7 @@ namespace qs2.core
             }
         }
 
-       public static void getDefaultDBValueDateTime(ref qs2.core.SysDB.dsSysDB.COLUMNSRow rColSys, bool onlyDateTimeWithoutDefaultValue, 
+       private static void getDefaultDBValueDateTime(ref qs2.core.SysDB.dsSysDB.COLUMNSRow rColSys, bool onlyDateTimeWithoutDefaultValue, 
                                                                     ref qs2.core.generic.retValue ret)
         {
             if (!rColSys.IsCOLUMN_DEFAULTNull())
@@ -403,7 +371,7 @@ namespace qs2.core
                 if (rColSys.COLUMN_DEFAULT.Contains(qs2.core.dbBase.DBTypeSqlServer.getdate.ToString()))
                 {
                     DateTime dateTime = System.DateTime.Now.Date;
-                    ret.valueStr = dateTime.ToString(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat);
+                    ret.valueStr = dateTime.ToString(System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat);
                     ret.valueObj = dateTime;
                 }
                 else
