@@ -79,7 +79,6 @@ namespace PMDS.Global
             DekursErstellenAls = 2,
             PrintTermine = 3,
             PrintTermineBereich = 4
-
         }
 
         public static string IGStyle = "pmds";
@@ -99,7 +98,8 @@ namespace PMDS.Global
         public static string MedikamenteImportType = "ftp";         //oder file, oder service
         public static string ApoToken = "";                         //bei service
         public static bool ApoZusatzdaten;                             //oder file, oder service
-        public static string ApoKHIX = "165664200";                   //"165663200" = Modul L, "165664200" = Modul L + A;;
+        //public static string ApoKHIX = "165664200";                 //"165663200" = Modul L, "165664200" = Modul L + A  - Version 2.1
+        public static string ApoKHIX = "165664100";                 //"165664100" = Modul L + A, Version 2.5;
         public static string ftpFileImportMedikamente = "";         //bei file
         public static string ftpUserName = "";                      //bei ftp
         public static string ftpPassword = "";                      //bei ftp
@@ -414,8 +414,8 @@ namespace PMDS.Global
             public Guid IDKlinik = System.Guid.Empty;
             public Guid IDAbteilung = System.Guid.Empty;
             public Guid IDBereich = System.Guid.Empty;
-            public Nullable<DateTime> dFrom = null;
-            public Nullable<DateTime> dTo = null;
+            public DateTime? dFrom = null;
+            public DateTime? dTo = null;
             public string UserLoggedOn = "";
             public string lstKlients = "";
             public string lstUsers = "";
